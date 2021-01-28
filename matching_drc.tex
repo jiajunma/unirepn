@@ -2246,7 +2246,7 @@ Let $\cO$ be a nilpotent orbit of type D with at most 2 columns.
         \]
         We define
         \[
-          \bfpp_{\uptau}:=\bfxx_{\uptau} := x_{1}\cdots x_{n} \text{ and }x_{\uptau}:=x_{n}
+          \bfpp_{\uptau}:=\bfxx_{\uptau} := \tytb{{x_{1}},\vdots,{x_{n}}} \text{ and }x_{\uptau}:=x_{n}
         \]
         We call $\bfpp_{\uptau}=\bfxx_{\uptau}$ the ``peduncle'' part of $\uptau$ and
         $x_{\uptau}$ the
@@ -2305,7 +2305,7 @@ longest column on the left.
 % could be empty and $w_{0}$ is non-empty if $\uptau_{R}\neq \emptyset$.
 The definition splits in cases below. In all these cases we define
 \begin{equation}\label{eq:x.uptau}
- \bfxx_{\uptau} := x_{1}\cdots x_{n} \text{ and } x_{\uptau} := x_{n}
+\bfxx_{\uptau} := x_{1}\cdots x_{n} \text{ and } x_{\uptau} := x_{n}
 \end{equation}
 which is marked by $s/r/c/d$.
 For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part consisting of $\bullet$ and $s$ by dot-s switching algorithm.
@@ -2321,9 +2321,9 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
       \]
         Suppose $y_{1} = c$ and $(x_{1}, \cdots, x_{n}) = (r, \cdots, r)$ or
         $(r, \cdots, r,d)$, then let $z_{1}= r$; otherwise, set $z_{1}:= y_{1}$.
-           We define
+        We define
         \[
-           \bfpp_{\uptau}=\tytb{{x_1}{y_1},\vdots,{x_n}}.
+        \bfpp_{\uptau}:=\tytb{{x_{1}{y_{1}},\vdots,{x_{n}}}}.
         \]
   \item When $\uptau$ has special shape, the descent is given by the following diagram
       \[\tiny
@@ -2340,12 +2340,14 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
       \]
   \item When $\uptau$ has non-special shape, then
       \[\tiny
-       \uptau: \hspace{1em} \ytb{\cdots\cdots\cdots,{\ast}{\ast}{\cdots},{x_{0}}{y_{1}},{x_1}{y_{2}},\vdots,{x_n}}
-        \times \ytb{\cdots\cdots\cdots,{\ast}{\ast}{\cdots},\none,\none,\none,\none}
-        \mapsto
-       \uptaup:  \ytb{\none\cdots\cdots,{\none}{\ast}{\cdots},{\none}{z_{1}},{\none}{z_{2}},\none,\none}
-        \times \ytb{\cdots\cdots\cdots,{\ast}{\ast}{\cdots},\none,\none,\none,\none}
-      \]
+    \uptau:\ytb{{\cdots}\cdots\cdots\cdots,{\ast}{\ast}{\cdots}{\cdots},{*(srcol)s}{*(srcol)r}{\cdots}\cdots,
+      {*(srcol)\vdots}{*(srcol)\vdots},{*(srcol)s}{*(srcol)r},{x_{0}}{y_{1}},{x_{1}}{y_{2}},{\vdots},{x_{n}} }
+    \times\ytb{{\cdots}\cdots\cdots,{\ast}{\cdots}\cdots,\ ,\ ,\ ,\ ,\ ,\ ,\ }
+    \mapsto
+    \uptau':\ytb{\cdots\cdots\cdots,{\ast}{\ast}{\cdots},{*(srcol)r}{*}\cdots,
+      {*(srcol)\vdots},{*(srcol)r},{z_{1}},{z_{2}},\ ,\ }
+    \times\ytb{{\cdots}\cdots\cdots,{\ast}{\cdots}\cdots,\ ,\ ,\ ,\ ,\ ,\ ,\ }
+        \]
       In most of the case, we just delete the longest column on the left and set
       $(z_{1},z_{2})=(y_{1},y_{2})$. The exceptional cases are listed below:
       \[\tiny
