@@ -49,6 +49,11 @@
 %\usepackage[abbrev,shortalphabetic]{amsrefs}
 
 
+\usepackage{imakeidx}
+\def\idxemph#1{\emph{#1}\index{#1}}
+\makeindex
+
+
 \usepackage[normalem]{ulem}
 
 % circled number
@@ -214,7 +219,11 @@
 %\newcommand{\Aut}{\mathrm{Aut}}
 
 \def\mstar{{\medstar}}
+\def\YD{{\mathcal{YD}}}
+\def\SYD{{\mathcal{SYD}}}
+\def\MYD{{\mathcal{MYD}}}
 
+\def\KM{{\mathcal{K_M}}}
 
 \newcommand{\bfonenp}{\mathbf{1}^{-,+}}
 \newcommand{\bfonepn}{\mathbf{1}^{+,-}}
@@ -239,6 +248,7 @@
 \def\Kur{{K^{\mathrm{u}}}}
 
 \def\Im{\operatorname{Im}}
+
 
 \providecommand{\bcN}{{\overline{\cN}}}
 
@@ -1230,9 +1240,6 @@
 }
 \makeatother
 
-\newcommand{\uum}{{\dotminus}}
-\newcommand{\uup}{\divideontimes}
-
 
 \def\cOp{\cO^{\prime}}
 \def\cOpp{\cO^{\prime\prime}}
@@ -1265,6 +1272,18 @@
 
 \def\deltas{\delta^s}
 \def\deltans{\delta^{ns}}
+
+
+\def\uum{{\dotminus}}
+\def\uup{\divideontimes}
+
+\def\umm{{=}}
+\def\upp{{\ast}}
+\def\upp{
+  {{\setbox0\hbox{$\times$}
+      \rlap{\hbox to \wd0{\hss$+$\hss}}\box0
+    }}
+}
 
 \begin{document}
 
@@ -2050,18 +2069,33 @@ We define a bijection between ``special'' diagram $\uptau^{s}$ and
 ``non-special'' diagrams $\uptau$.
 
 \begin{defn}\label{def:sp-nsp.C.sp}
-  Let $\cO\in \Nil(C)$ such that $C_{2k}=2c_{2k}$ and $C_{2k-1}=2c_{2k-1}$.
-  A representation $\tau^{s}$ attached to $\cO$ has the shape
+  Let $\cO = (C_{2k},C_{2k-1}, \cdots, C_{1},C_{0}, C_{-1}=0)\in \dpeNil(C)$
+  with $k\geq 0$.
+  Let
   \[
-    \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}=(c_{2k-1},\tau_{L,2k-3},\cdots, \tau_{L,1} )
+  \tau = (\tau_{2k-1}, \cdots, \tau_{1},\tau_{-1}=0) \times (\tau_{2k}, \cdots, \tau_{0}).
+  \]
+  be a Weyl group representation attached to $\cO\in \dpeNil(C)$.
+  We say $\tau$ has
+  \begin{itemize}
+    \item \idxemph{special shape} if $\tau_{2k-1}\leq \tau_{2k}+1$;
+    \item \idxemph{non-special shape} if $\tau_{2k-1}> \tau_{2k}+1$.
+  \end{itemize}
+  Clearly, this gives a partition of the set of Weyl group representations
+  attached to $\cO$.
+
+  Suppose $k\geq 1$, $C_{2k}=2c_{2k}$ and $C_{2k-1}=2c_{2k-1}$.
+  The special shape representation $\tau^{s}$
+  \[
+    \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}=(c_{2k-1},\tau_{2k-3},\cdots, \tau_{1} )
     \times (c_{2k},\tau_{R,2k-2},\cdots, \tau_{R,0})
   \]
-  is paired with
+  is paired with the non-special shape representation
   \[
-    \tau^{ns} = \tau_{L}^{ns}\times \tau_{R}^{ns} = (c_{2k}+1,\tau_{L,2k-3},\cdots, \tau_{L,1} )
+    \tau^{ns} = \tau_{L}^{ns}\times \tau_{R}^{ns} = (c_{2k}+1,\tau_{2k-3},\cdots, \tau_{1} )
     \times (c_{2k-1}-1,\tau_{R,2k-2},\cdots, \tau_{R,0})
   \]
-  where the $\tau_{L,j}$ and $\tau_{R,j}$ are unchanged for $j\leq 2k-2$.
+  In the paring $\tau^{s}\leftrightarrow \tau^{ns}$, $\tau_{j}$  is unchanged for $j\leq 2k-2$.
   We call $\tau^{s}$ the \emph{special shape} and $\tau^{ns}$ the
   corresponding \emph{non-special shape}
 \end{defn}
@@ -2115,23 +2149,34 @@ to the reader.
 \subsection{Special and non-special shapes of type D}
 Now we define the notion of special and non-special shape of type D.
 \begin{defn}\label{def:sp-nsp.D.sp}
+  Let
+  \[
+  \tau = (\tau_{2k+1},\tau_{2k-1}, \cdots, \tau_{1})\times (\tau_{2k}, \cdots, \tau_{0})
+  \]
+  be a Weyl group representation attached to $\cO\in \dpeNil(D)$.
+  We say $\tau$ has
+  \begin{itemize}
+    \item \idxemph{special shape} if $\tau_{2k-1}\leq \tau_{2k}+1$;
+    \item \idxemph{non-special shape} if $\tau_{2k-1}> \tau_{2k}+1$.
+  \end{itemize}
+
   Suppose
   $\cO=(C_{2k+1}=2c_{2k+1},C_{2k}=2c_{2k},C_{2k-1}=2c_{2k-1},\cdots,C_{0}\geq 0)$
   with $k\geq 1$.\footnote{Note that $C_{2k}$ and $C_{2k-1}$ are non-zero
     even integers.}
   A representation $\tau^{s}$ attached to $\cO$ has the shape
   \[
-    \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}=(c_{2k+1},c_{2k-1},\tau_{L,2k-3},\cdots, \tau_{L,1} )
-    \times (c_{2k},\tau_{R,2k-2},\cdots, \tau_{R,0})
+    \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}=(c_{2k+1},c_{2k-1},\tau_{2k-3},\cdots, \tau_{1} )
+    \times (c_{2k},\tau_{2k-2},\cdots, \tau_{0})
   \]
   is paired with
   \[
-    \tau^{ns} = \tau_{L}^{ns}\times \tau_{R}^{ns} = (c_{2k+1},c_{2k}+1,\tau_{L,2k-3},\cdots, \tau_{L,1} )
-    \times (c_{2k-1}-1,\tau_{R,2k-2},\cdots, \tau_{R,0})
+    \tau^{ns} = \tau_{L}^{ns}\times \tau_{R}^{ns} = (c_{2k+1},c_{2k}+1,\tau_{2k-3},\cdots, \tau_{1} )
+    \times (c_{2k-1}-1,\tau_{2k-2},\cdots, \tau_{0}).
   \]
-  where the $\tau_{L,j}$ and $\tau_{R,j}$ are unchanged for $j\leq 2k-2$.
-  We call $\tau^{s}$ the \emph{special shape} and $\tau^{ns}$ the
-  corresponding \emph{non-special shape}
+  In the paring $\tau^{s}\leftrightarrow \tau^{ns}$, $\tau_{j}$  is unchanged for $j\leq 2k-2$.
+  % We call $\tau^{s}$ the \emph{special shape} and $\tau^{ns}$ the
+  % corresponding \emph{non-special shape}
 \end{defn}
 
 \begin{table}[hpb]
@@ -2215,8 +2260,8 @@ $\uppi_{\uptau_{\cO}}=\bfone$ is the trivial representation, see \eqref{eq:uptau
   \[
     \upepsilon_{\uptau} :=
     \begin{cases}
-      0, & \text{if }\abs{\taulf}-\abs{\taurf} <  2;\\
-      1, & \text{if }\abs{\taulf} - \abs{\taurf}\geq 2.
+      0, & \text{if $\uptau$ has special shape, i.e. } \abs{\taulf}-\abs{\taurf} \leq  1;\\
+      1, & \text{if $\uptau$ has non-special shape, i.e. }\abs{\taulf} - \abs{\taurf}> 1.
     \end{cases}
   \]
 \end{enumerate}
@@ -2379,7 +2424,7 @@ The following lemma is the key property satisfied by our definition
     \item \label{lem:sp-nsp.D.1} For every $\uptau\in \drc(\tau^{s})\sqcup \drc(\tau^{ns})$, the shape
     of $\eDD^{2}(\uptau)$ is
     \[
-      \taupp = (c_{2k-1},\tau_{L,2k-3},\tau_{L,1})\times (\tau_{R,2k-2},\cdots, \tau_{R,0})
+      \taupp = (c_{2k-1},\tau_{2k-3},\tau_{1})\times (\tau_{2k-2},\cdots, \tau_{0})
     \]
     \item \label{lem:sp-nsp.D.2} Let $\cO_{1}= (2(c_{2k+1}-c_{2k}),)\in \Nil(D)$ be the trivial orbit
     of $\rO(2(c_{2k-1}-c_{2k}),\bC)$.
@@ -2502,16 +2547,124 @@ The following lemma is the key property satisfied by our definition
 
 
 
-\subsection{Convention on the local system}
-An irreducible local system is represented by a signed young diagram. A general
-local system is understand as the union of irreducible ones. By our computation
-later, it would be clear that the local systems appeared in our cases are always
-\emph{multiplicity one}.
+\section{Convention on the local system}
+An irreducible local system is represented by a {\emph{marked Young
+    diagram}\index{Young Diagram}}. A general local system is understand as the
+union of irreducible ones. By our computation later, it would be clear that the
+local systems appeared in our cases are always \emph{multiplicity one}.
 
-We use $+/-$ (resp. $\ast / =$) to denote the trivial character on the
+\subsection{marked Young diagram}
+We now explain the combinatiorial objects to parameterize local systems.
+Basically ,we use $+/-$ (resp. $\upp/\umm$) to denote the associated character on the
 corresponding factor of the isotropic group.
+Let $\star=B,C,D,M$.
+
+\begin{itemize}
+  \item {\bf Young diagram } We identify a Young diagram with a finite multi-set
+        $\cO$ of positive integers. Suppose $\cO = \set{R_{1}, \cdots, R_{k}}$
+        with $R_{i-1}\geq R_{i}$ where $R_{i}$ is the length of the $i$-th row
+        of the Young diagram. $\cO$ consists of the row lengths appeared in the
+        corresponding Young diagram.
+
+        Let $\YD$ be the set of all Young diagrams. Let $\YD(\star)$ to denote
+        the Young diagrams corresponding to partitions of type $\star$. The set
+        $\YD(\star)$ parameterizes the set of nilpotent orbits of type $\star$.
+        Note that $\YD(C)=\YD(M)$.
+
+  \item {\bf Signed Young diagram } We identify a Signed Young diagram with a
+        finite multi-set $\sO$ of finite strings of alternating signs
+        $+-+\cdots$ or $-+-\cdots$.
+
+        Let $\SYD$ be the set of all signed Young diagrams. We have an obvious
+        map
+        \[
+        \begin{tikzcd}[row sep=0em]
+          \YD \ar[r] & \SYD\\
+          \set{\bfrr_{1},\cdots, \bfrr_{k}} \ar[r,maps to] & \set{\abs{\bfrr_{1}},\cdots, \abs{\bfrr_{k}}}
+        \end{tikzcd}
+        \]
+        where $\abs{\bfrr_{j}}$ denote the length of the string $\bfrr_{j}$.
+
+        For $\sO\in \YD$, we define the two signatures of $\cO$:
+        \[
+          \ssign(\sO) = (p,q) \quad
+          \lsign(\sO) = (p_{1},q_{1})
+        \]
+        where $p$ and $q$ are the total number of $+$ and $-$ signs in $\sO$
+        respectively; $p_{1}$ and $q_{1}$ are the total number of strings in
+        $\sO$ begin with $+$ and $-$ signs respectively.
+
+        We define $\SYD(\star)$ to be the preimage of $\YD(\star)$ under the
+        above map. The set $\SYD(\star)$ parameterizes the real nilpotent orbits
+        of type $\star$ and $\bfK$-orbits in $\fpp$.
+
+  \item {\bf Marked Young diagram} We identify a Signed Young diagram with a
+        finite multi-set $\sO$ of finite strings of alternating signs
+        $+-+\cdots$,$-+-\cdots$, $\upp\umm\upp\cdots$, $\umm\upp\umm\cdots$.
+
+        Let $\SYD$ be the set of all signed Young diagrams. We have an obvious
+        map
+        \[
+        \begin{tikzcd}[row sep=0em]
+          \sF: \MYD \ar[r] & \SYD\\
+          \set{\bfrr'_{1},\cdots, \bfrr'_{k}} \ar[r,maps to] & \set{\bfrr_{1},\cdots, \bfrr_{k}}.
+        \end{tikzcd}
+        \]
+        Here $\bfrr'_{j}$ is a row in $\cL$ and it determines the string
+        $\bfrr_{j}$ of the same length $\abs{\bfrr'_{j}}$ according to the
+        following formula
+        \[
+        \bfrr_{j} := \sF(\bfrr'_{j}) := \begin{cases}
+          +-+\cdots & \text{ if } \bfrr'_{j} = +-+\cdots \text{ or } \upp\umm\upp\cdots\\
+          -+-\cdots & \text{ if } \bfrr'_{j} = -+-\cdots \text{ or } \umm\upp\umm\cdots\\
+        \end{cases}
+        \]
+        For $\cL\in MYD$, we define
+        \[
+          \ssign(\cL) = \ssign(\sF(\cL)) \quad \text{and} \quad \lsign(\cL) = \lsign(\sF(\cL)).
+        \]
+        We define $\MYD(\star)$ to be a subset of the preimage of the above map:
+        \[
+        \MYD(\star) =\Set{\cL\in \MYD(\star)|\begin{minipage}{18em}
+            $\sF(\cL)\in \SYD(\star)$;\\
+            $\bfrr_{1}=\bfrr_{2}$ if $\bfrr_1, \bfrr_2\in \cL$ and
+            $\sF(\bfrr_{1})=\sF(\bfrr_{2})$;\\
+            $\bfrr = +-+\cdots $ or $-+-\cdots $ if the length of $\bfrr$ is odd
+            (resp. even ) when $\star \in \set{C,M}$ (resp.
+            $\star\in \set{B,D}$).
+          \end{minipage}
+        }
+        \]
+        We will use $\MYD(\star)$  to parameterize irreducible local systems
+        attached to the nilpotent orbits of type $\star$.
+\end{itemize}
+The sets $\YD$, $\SYD$ and $\MYD$ are obviously commutative monoids under the following
+``$\cdot$'' operation:
+\[
+  \set{\bfrr_{1},\cdots, \bfrr_{k_{1}}}\cdot \set{\bfrr'_{1}, \cdots \bfrr'_{k_{2}}}
+  := \set{\bfrr_{1},\cdots,\bfrr_{k_{1}}, \bfrr'_{1}, \cdots, \bfrr'_{k_{2}}}.
+\]
+Also note that it could happen that $\cL_{1}\cdot \cL_{2}\notin \MYD(\star)$ for
+$\cL_{1},\cL_{2}\in \MYD(\star)$.
+We will represent an element $\cL$ in $\SYD$ or $\MYD$ by the Young diagram whose
+rows are filled with the strings in $\cL$.
+
+The empty set $\emptyset$ is the ``identity'' element in $\MYD$ and is always in
+$\MYD(\star)$ by convention.
+
+
+For an local system $\cL,\cC\in \MYD$, $\cL\succ\cC$ means there is $\cB\in \MYD$
+such that the
+factorization $\cL = \cB\cdot \cC$ holds.
+
+In the following we will represent an element $\cL\in \MYD$ by the Young diagram whose rows are
+filled with the strings in $\cL$.
+If we do not care the mark is $\upp/+$ or $\umm/=$, we will use $\uup$ or $\uum$
+to mark the corresponding position.
+
 \begin{eg}
-  For example
+  The following two diagrams $\ddagger_{p,q}$ and $\dagger_{p,q}$ are in
+  $\MYD(B)\cup \MYD(D)$.
   \[
     \ddagger_{p,q} := \tytb{+,\vdots,+,=,\vdots,=}
   \]
@@ -2523,12 +2676,28 @@ corresponding factor of the isotropic group.
   denote the trivial local system on the trivial orbit.
 \end{eg}
 
-If we do not care about the associated character, we will use $\uup/\uum$ to denote the
-line.
 
-For a local system $\cL$, $\dagger\cL$ means adding a column on the left of
-every irreducible components of $\cL$, the sign is determined the LS lifting
-algorithm and we do not care about it in most of the time.
+
+\subsubsection{Local systems}
+We define  $\KM$ to be the free commutative monoid (i.e.
+multiset) generated by $\MYD$ and identify $\MYD$  as the subset of $\KM$ naturally.
+The addition in $\KM$ is denoted by ``$+$''.
+Let $\KM(\star)$ be the sub-monoid generated by $\MYD(\star)$.
+
+The operation `''$\cdot$'' naturally extends to $\KM(\star)$:
+\[
+  (\sum_{i}  m_{i}\cL_{i})\cdot (\sum_{j} m_{j}\cL_{j}) := \sum_{i,j} m_{i}m_{j}(\cL_{i}\cdot \cL_{j}).
+\]
+Let $0$ be the identity element in $\KM$, then $\cL\cdot 0=0$ for any
+$\cL\in \KM$.
+
+For $\cL,\cD\in \KM$, $\cL\succ \cD$ means there exists $\cB\in \KM$ such that
+$\cL=\cB\cdot \cD$.
+
+
+\subsubsection{Maps on $\KM(\star)$}
+
+
 
 We use $\cB\cdot\cC$ to denote attach the local system $\cC$ below $\cB$ and the
 operation is distributive. And use $\cup$ or $+$ to denote the union of local systems
@@ -2557,6 +2726,8 @@ factorization of $\cL = \cB\cdot \cC$;
 $\cL\supset \cC$ means there is an irreducible component $\cL_{1}$ of $\cL$ such
 that $\cL_{1}\succeq \cC$.
 
+
+\subsubsection{}
 
 %\subsection{Definition of $\eDD$}
 \subsubsection{Signs of the local system}
@@ -4432,16 +4603,17 @@ We define a bijection between ``special'' diagram $\uptau^{s}$ and
 ``non-special'' diagrams $\uptau$.
 
 \begin{defn}\label{def:sp-nsp.M.sp}
+
   Let $\cO\in \Nil(C)$ such that $C_{2k}=2c_{2k}-1$ and $C_{2k-1}=2c_{2k-1}+1$.
   A representation $\tau^{s}$ attached to $\cO$ has the shape
   \[
     \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}=
-    (c_{2k},\tau_{L,2k-2},\cdots, \tau_{L,2}) \times (c_{2k-1},\tau_{R,2k-3},\cdots, \tau_{R,1})
+    (c_{2k},\tau_{2k-2},\cdots, \tau_{2}) \times (c_{2k-1},\tau_{2k-3},\cdots, \tau_{1})
   \]
   is paired with
   \[
     \tau^{ns} = \tau_{L}^{ns}\times \tau_{R}^{ns} =
-    (c_{2k-1},\tau_{L,2k-2},\cdots, \tau_{L,2}) \times (c_{2k},\tau_{R,2k-3},\cdots, \tau_{R,1})
+    (c_{2k-1},\tau_{2k-2},\cdots, \tau_{2}) \times (c_{2k},\tau_{2k-3},\cdots, \tau_{1})
   \]
   where the $c_{j}$ are unchanged for $j\leq 2k-2$.
   We call $\tau^{s}$ the \emph{special shape} and $\tau^{ns}$ the
@@ -4449,8 +4621,8 @@ We define a bijection between ``special'' diagram $\uptau^{s}$ and
 \end{defn}
 
 Note that the shape
-$\tau = (\tau_{L,2k},\cdots, \tau_{2},0)\times (\tau_{2k-1},\cdots, \tau_{1})$
-is a special shape if and only if $\tau_{L,2k}>\tau_{R,2k-1}$.
+$\tau = (\tau_{2k},\cdots, \tau_{2},0)\times (\tau_{2k-1},\cdots, \tau_{1})$
+is a special shape if and only if $\tau_{2k}>\tau_{2k-1}$.
 
 Without loss of generality, we can assume
 that $\uptau^{s}\in \drc(\tau^{s})$ and $\uptau^{ns}\in \drc(\tau^{ns})$ have the following shapes:
@@ -4520,8 +4692,8 @@ Now we define the notion of special and non-special shape of type B.
     (c_{2k-1},c_{2k-2},\cdots, c_{2},0) \times (c_{2k},c_{2k-3},\cdots, c_{1})
   \]
   where the $c_{j}$ are unchanged for $j\leq 2k-2$.
-  We call $\tau^{s}$ the \emph{special shape} and $\tau^{ns}$ the
-  corresponding \emph{non-special shape}
+  We call $\tau^{s}$ the \idxemph{special shape} and $\tau^{ns}$ the
+  corresponding \idxemph{non-special shape}
 \end{defn}
 
 \begin{table}[hpb]
@@ -4954,7 +5126,7 @@ $\cA_{9}=\set{d\cdots d}$
 % \begin{enumS}
 % \item If the first row of $\uptau$ ends with $s$, $\pcL = \ncL = 0$.
 % \item If the first row of $\uptau$ ends with $c/r$, $\pcL \neq 0$ and $\ncL=0$.
-% \item If the first row of $\uptau$ ends with $d$, $\pcL$ and $\ncL$ are both non-zero.
+% \item If the first ro
 % \end{enumS}
 % \ref{p:drcls.1} follows from the above properties.
 
@@ -4967,8 +5139,8 @@ $\cA_{9}=\set{d\cdots d}$
 % Note that
 % \begin{enumI}
 % \item the descent $\uptaupp$ of $\uptaup$ never ends with $s$.
-% \item When $\uptaup_{L,0}$ ends with $c/r$, $p_{1}\geq 1$ ans so $\bsign{\cL_{\uptaup}} = (p_{1}-1,q_{1})$.
-% \item When $\uptaup_{L,0}$ ends with $d$,  $\bsign{\cL_{\uptaup}}=\set{(p_{1},q_{1}-1),(p_{1}-1,q_{1})}$
+% \item When $\uptaup_{0}$ ends with $c/r$, $p_{1}\geq 1$ ans so $\bsign{\cL_{\uptaup}} = (p_{1}-1,q_{1})$.
+% \item When $\uptaup_{0}$ ends with $d$,  $\bsign{\cL_{\uptaup}}=\set{(p_{1},q_{1}-1),(p_{1}-1,q_{1})}$
 % \end{enumI}
 
 
@@ -5164,6 +5336,9 @@ Number of DRCS: 35840
         certain parabolically induced modules described as above?
 \end{enumerate}
 }
+
+
+\printindex
 
 \begin{bibdiv}
   \begin{biblist}
