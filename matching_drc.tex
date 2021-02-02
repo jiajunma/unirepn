@@ -2584,7 +2584,7 @@ It is equipped with the binary operation, say $\bullet$ such that
 In the following, we always identify $\sfA$ with the subset of $\sfC(\sfA)$
 consists of singletons.
 
-Suppose $\sfM$ is an monoid, a map $f\colon \sfA\rightarrow \sfM$ is
+Suppose $\sfM$ is a commutative monoid, a map $f\colon \sfA\rightarrow \sfM$ is
 uniquelly eextends to a morphism $\sfC(\sfA)\rightarrow \sfM$ which is still
 called $f$ by abuse of notations.
 
@@ -2845,27 +2845,72 @@ The $\bZ/2\bZ\times \bZ/2\bZ$ action extends to actions on $\KM(D)$ and $\KM(B)$
 \subsubsection{Twists on $\KM(C)$ and $\KM(M)$}
 We define an involution $\maltese_{C} \colon \sfM\rightarrow \sfM$ on $\sfM$ by
 \[
-  \maltese_{C}(\bfrr):= \begin{cases}
+  \maltese(\bfrr):= \begin{cases}
     \overline{\bfrr} & \text{if } \abs{\bfrr} \equiv 2 \pmod{4}\\
     \bfrr & \text{otherwise}.
   \end{cases}
 \]
-The involution $\maltese_{C}$ extends to an involution on $\KM$%$(C)$.
+The involution $\maltese$ extends to an involution on $\KM$.%$(C)$.
+We will only apply $\maltese$ on $\cL\in \KM(C)$ or $\KM(M)$.
 
-Now fix a signature $(p,q)\in \bN\times \bN$ such that $p+q$ is even.
-For $\cL\in \KM(C)$, we define
-\[
-  \maltese_{(p,q)}(\cL) := \begin{cases}
-    \cL & \text{if } p-q \equiv 0 \pmod{4}\\
-    \maltese_{C}(\cL) & \text{if } p-q \equiv 2 \pmod{4}\\
-  \end{cases}
-\]
-
-{
-  \color{red} twists of type M are % on $\KM(M)$ -is
-  TBA.
+% Now fix a signature $(p,q)\in \bN\times \bN$ such that $p+q$ is even.
+% For $\cL\in \KM(C)$, we define
+% \[
+%   \maltese_{(p,q)}(\cL) := \maltese^{\frac{p-q}{2}}(\cL)= \begin{cases}
+%     \cL & \text{if } p-q \equiv 0 \pmod{4}\\
+%     \maltese(\cL) & \text{if } p-q \equiv 2 \pmod{4}\\
+%   \end{cases}
+% \]
+\trivial{
+  We take a splitting $\rO(p,q)\times \Sp(n,\bR)$ in to the big metaplectic
+  group $\Mp$ such that $\rO(p,\bC)\times\rO(q,\bC)$ acts on the Fock model linearly.
+  The maximal compact $K_{\Sp(n,\bR)}= \rU(2n)$ acts on the Fock model by the
+  character $\zeta=\det^{(p-q)/2}$.
+  For the component of the rational nilpotent orbit $\Sp(2n,\bR)$,
+  the factor of the component group is $\Sp$ if the corresponding row has odd
+  length.
+  Otherwise the component group is $\rO(p_{2k})\times\rO(q_{2k})$ where
+  $(p_{2k},q_{2k})$ is the signature corresponding to the $2k$-rows.
+  $\zeta|_{\rO(p_{2k})}= \det^{(p-q)k/2}_{\rO(p_{2k})}$ which is nontrivial if
+  and only if $p-q\equiv 2\pmod{4}$ and $2k\equiv 2\pmod{4}$.
+  This gives the formula above.
 }
 
+\trivial{
+  For odd orthogonal-metaplectic group case, we still take the splitting such
+  that $\rO(p,q)$ acts linearly.
+
+  The maximal compact $\wtK_{\Sp(n,\bR)}= \widetilde{\rU(2n)}$ acts on the Fock model by the
+  character $\zeta=\det^{(p-q)/2}$.
+
+  Then
+  $\det^{(p-q)/2}|_{\rO(p_{2k})\times \rO(q_{2k})}=\det^{\frac{(p-q)k}{2}}_{\rO(p_{2k})}\boxtimes
+  \det^{\frac{(p-q)k}{2}}_{\rO(q_{2k})}. $
+  Note that $p-q$ is an odd number.
+  When $k$ is even the character on $\widetilde{\rO(p_{2k})}/\widetilde{\rO(q_{2k})}$ are
+  $\bfone$ or $\det$. When $k$ is odd the character would be $\det^{\half}$ or
+  $\det^{\half+1}$.
+
+  We assume the default character on $2k$-rows is $\det^{\frac{k}{2}}$, and
+  we use $+/-$ to mark the row. Otherwise, we use $\upp/\umm$ to mark the rows.
+}
+
+% For $\cL\in \KM(M)$, let
+% \[
+%   \maltese_{(p,q)}:=\maltese^{\frac{p-q-1}/2} =
+%   \begin{case}
+%     \cL & \text{if } p-q\equiv 1 \pmod{4}\\
+%     \maltese{\cL} & \text{if } p-q\equiv 3 \pmod{4}
+%   \end{case}
+% \]
+
+% \[
+%   \maltese^{(p,q)}:=\maltese^{\frac{p-q+1}/2} =
+%   \begin{case}
+%     \cL & \text{if } p-q\equiv 3 \pmod{4}\\
+%     \maltese{\cL} & \text{if } p-q\equiv 1 \pmod{4}
+%   \end{case}
+% \]
 % We define the action of $\bZ/2\bZ \times \bZ/2\bZ$ action on $\sfM$ by:
 % \[
 %   \bfrr \otimes \chi := \begin{cases}
@@ -2919,7 +2964,7 @@ We define
 \[
   \vartheta_{CD,(p,q)}(\cL) =
   \begin{cases}
-    (\dagger \maltese_{(p,q)}(\cL))\cdot \dagger_{p_{0}, q_{0}} &
+    (\dagger \maltese^{\frac{p-q}{2}}(\cL))\cdot \dagger_{p_{0}, q_{0}} &
     \text{if } p_{0}, q_{0} \geq 0 \text{ and } p-q\equiv 2\pmod{4}\\
     0 & \text{otherwise}
   \end{cases}
@@ -2943,14 +2988,14 @@ We define
 \[
   \vartheta_{DC,(p,q)}(\cL) =
   \begin{cases}
-    \maltese_{(p,q)}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}}) &
+    \maltese^{\frac{p-q}{2}}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}}) &
     \text{if } n_{0}\in \bZ_{\geq 0}\\
-    \maltese_{(p,q)}(\dagger \cL^{+}  + \dagger \cL^{-})& \text{if } n_{0}=-1\\
+    \maltese^{\frac{p-q}{2}}(\dagger \cL^{+}  + \dagger \cL^{-})& \text{if } n_{0}=-1\\
     0&\text{otherwise}
   \end{cases}
 \]
 We remark that
-$\maltese_{(p,q)}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}})= (\maltese_{(p,q)}(\dagger\cL))\cdot \dagger_{n_{0},n_{0}}$.
+$\maltese^{\frac{p-q}{2}}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}})= (\maltese^{\frac{p-q}{2}}(\dagger\cL))\cdot \dagger_{n_{0},n_{0}}$.
 
 
 {

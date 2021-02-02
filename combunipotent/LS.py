@@ -1004,8 +1004,9 @@ def _char_twist_M_t(irr_s,twist):
     O(V_p) act on V_p\otimes W_2k  
     (dim V_p = p, W_2k is the standard repn of SL_2)
     (g,e)\in \wtO(V_p), then acts by e^k. 
-    When k is even, det is the default twist
-    When k is odd, det^1/2 is the default twist
+    # When k is even, det is the default twist
+    # When k is odd, det^1/2 is the default twist
+    The default twist is always det^(k/2)
     """
     # Suppose we twist det^1/2|K_X:
     # only twist even length row,
