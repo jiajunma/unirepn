@@ -35,7 +35,8 @@ def lift_extdrc_B_M_trivial(drc, cL=None):
     exttype = drcR[0][-1]
     drcR = (drcR[0][:-1], *drcR[1:])
     if cL is None:
-        cL = len(getz(drcR, 0, ''))
+        # cL = len(getz(drcR, 0, ''))
+        cL = len(drcR[0])
     cR = len(drcR[0])
     if cL < cR:
         return None
@@ -43,25 +44,25 @@ def lift_extdrc_B_M_trivial(drc, cL=None):
         tauL = [cL]+[c.count('*') for c in drcL]
         tauR = [c.count('*')+c.count('s') for c in drcR]
         sdrc = next(fill_rdot((tauL, tauR), sym='s'), None)
-        if sdrc[0] == tuple():
-            sdrc = (('',), ('',))
         if sdrc is None:
             return None
-        else:
-            sdrcL, sdrcR = sdrc
-            r = max(len(drcL)+1, len(drcR))
-            drcLL = (sdrcL[0], * _combine_tab(sdrcL[1:], drcL))
-            drcRR = _combine_tab(sdrcR, drcR)
-            if exttype == 'a':
+        if len(sdrc[0]) == 0:
+            sdrc = (('',), ('',))
+            #else:
+        sdrcL, sdrcR = sdrc
+        #r = max(len(drcL)+1, len(drcR))
+        drcLL = (sdrcL[0], * _combine_tab(sdrcL[1:], drcL))
+        drcRR = _combine_tab(sdrcR, drcR)
+        if exttype == 'a':
+            return (drcLL, drcRR)
+        elif exttype == 'b':
+            if drcLL[0][-1] == 's':
+                drcLL = (drcLL[0][:-1]+'c', *drcLL[1:])
                 return (drcLL, drcRR)
-            elif exttype == 'b':
-                if drcLL[0][-1] == 's':
-                    drcLL = (drcLL[0][:-1]+'c', *drcLL[1:])
-                    return (drcLL, drcRR)
-                else:
-                    return None
             else:
                 return None
+        else:
+            return None
 
 
 def lift_drc_B_M_det(drc, cL=None):

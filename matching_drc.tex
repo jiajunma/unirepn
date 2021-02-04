@@ -4963,7 +4963,7 @@ We define a bijection between ``special'' diagram $\uptau^{s}$ and
 
 \begin{defn}\label{def:sp-nsp.M.sp}
 
-  Let $\cO\in \Nil(C)$ such that $C_{2k}=2c_{2k}-1$ and $C_{2k-1}=2c_{2k-1}+1$.
+  Let $\cO\in \Nil(M)$ such that $C_{2k}=2c_{2k}-1$ and $C_{2k-1}=2c_{2k-1}+1$.
   A representation $\tau^{s}$ attached to $\cO$ has the shape
   \[
     \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}=
@@ -4987,14 +4987,14 @@ Without loss of generality, we can assume
 that $\uptau^{s}\in \drc(\tau^{s})$ and $\uptau^{ns}\in \drc(\tau^{ns})$ have the following shapes:
 \begin{equation}\label{eq:sp-nsp.M}
   \uptau^{s}:
-  \ytb{\cdots\cdots\cdots,{v_{0}}{\cdots}\cdots,{x_{3}}\cdots\cdots,{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},{x_{4}}}
+  \tytb{\cdots\cdots\cdots,{x_{3}}\cdots\cdots,{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},{x_{4}}}
   \times
-  \ytb{\cdots\cdots\cdots,{x_{0}}{\ast}{\cdots},{x_{1}}{x_{2}}{\cdots},\ ,\ ,\ ,\ }
+  \tytb{\cdots\cdots\cdots,{x_{1}}{x_{2}}{\cdots},\ ,\ ,\ ,\ }
   \longleftrightarrow \hspace{2em}
   \uptau^{ns}:
-  \ytb{\cdots\cdots\cdots,{w_{0}}{\cdots}\cdots,{x_{3}}\cdots\cdots,\ ,\ ,\ ,\ }
+  \tytb{\cdots\cdots\cdots,{y_{3}}\cdots\cdots,\ ,\ ,\ ,\ }
   \times
-  \ytb{\cdots\cdots\cdots,{y_{0}}{\ast}{\cdots},{y_{1}}{y_{2}}\cdots,{*(srcol)r},
+  \tytb{\cdots\cdots\cdots,{y_{1}}{y_{2}}\cdots,{*(srcol)r},
     {*(srcol)\vdots},{*(srcol)r},{y_{4}} }
 \end{equation}
 Here the grey parts have length $(C_{2k}-C_{2k-1})/2$ (could be zero length), the row contains
@@ -5170,15 +5170,17 @@ Now we define the notion of special and non-special shape of type B.
 The descent of a special shape diagram is simple, the descent of a non-special shape
 reduces to the corresponding special one:
 \begin{enumerate}[resume*=alg1]
-  \item Suppose $\abs{\taulf} - \abs{\taurf} < 2$, i.e. $\uptau$ has special shape.
-   Keep $r,c,d$ unchanged, delete $\taurf$ and fill the remaining part with
+  \item Suppose $\abs{\taulf} \geq \abs{\taurf} $, i.e. $\uptau$ has special shape.
+   Keep $r,d$ unchanged, delete $\taurf$ and fill the remaining part with
    ``$\bullet$'' and ``$s$'' by $\DDr(\uptau^{\bullet})$ using the dot-s switching algorithm.
-   \item Suppose $\abs{\taulf} - \abs{\taurf} \geq 2$.
+        If $\taulf$ ends with $c$, we set the mark of $\eDDo(\uptau)$ to be $a$.
+        Otherwise, we set the mark to be $b$.
+   \item Suppose $\abs{\taulf} < \abs{\taurf}$, i.e. $\uptau$ has non-special shape.
         We define $\uptaup=\eDDo(\uptau):=\eDDo(\uptau^{s})$ where $\uptau^{s}$ is the
-        special diagram corresponding to $\uptau$ defined in \Cref{def:sp-nsp.C}.
+        special diagram corresponding to $\uptau$ defined in \Cref{def:sp-nsp.M}.
 \end{enumerate}
 
-\begin{lem}\label{lem:ds.CD}
+\begin{lem}\label{lem:ds.BM}
   Suppose $\cO = (C_{2k},C_{2k-1}, \cdots, C_{0})$ with $k\geq 1$ and $C_{2k}$ even.
   Let $\cOp := \eDD(\cO)=(C_{2k-1},\cdots, C_{0})$.
   Then
