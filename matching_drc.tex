@@ -1609,7 +1609,7 @@ counting algorithm.
   following pairs when $c_{2i-1}\neq c_{2i}+1$ and $i=1, \cdots, k$ (these are
   pairs coming from even length columns)
   \[
-    (c_{2i}, c_{2i-1})\longleftrightarrow (c_{2i-1}-1,c_{2i}+1).
+    (c_{2i-1},c_{2i} )\longleftrightarrow (c_{2i}+1,c_{2i-1}-1).
   \]
   \trivial[h]{ Note that we always have $c_{2i-1}-1 \geq c_{2i-2}$ by our
     assumptions of the shape of the orbit. }
@@ -2102,37 +2102,22 @@ We define a bijection between ``special'' diagram $\uptau^{s}$ and
   The special shape representation $\tau^{s}$
   \[
     \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}=(c_{2k-1},\tau_{2k-3},\cdots, \tau_{1} )
-    \times (c_{2k},\tau_{R,2k-2},\cdots, \tau_{R,0})
+    \times (c_{2k},\tau_{2k-2},\cdots, \tau_{0})
   \]
   is paired with the non-special shape representation
   \[
     \tau^{ns} = \tau_{L}^{ns}\times \tau_{R}^{ns} = (c_{2k}+1,\tau_{2k-3},\cdots, \tau_{1} )
-    \times (c_{2k-1}-1,\tau_{R,2k-2},\cdots, \tau_{R,0})
+    \times (c_{2k-1}-1,\tau_{2k-2},\cdots, \tau_{0})
   \]
   In the paring $\tau^{s}\leftrightarrow \tau^{ns}$, $\tau_{j}$  is unchanged for $j\leq 2k-2$.
   We call $\tau^{s}$ the \emph{special shape} and $\tau^{ns}$ the
   corresponding \emph{non-special shape}
 \end{defn}
 
-Without loss of generality, we can assume
-that $\uptau^{s}\in \drc(\tau^{s})$ and $\uptau^{ns}\in \drc(\tau^{ns})$ have the following shapes:
-\begin{equation}\label{eq:sp-nsp.C}
-  \tiny
-  \uptau^{s}:\ytb{\cdots\cdots\cdots,{x_{0}}{\ast}{\cdots},{x_{1}}{x_{2}}{\cdots},\ ,\ ,\ ,\ }
-  \times\ytb{\cdots\cdots\cdots,{v_{0}}{\cdots},{x_{3}},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\ } \longleftrightarrow \hspace{2em}
-  \uptau^{ns}:\ytb{\cdots\cdots\cdots,{y_{0}}{\ast}{\cdots},{*(srcol)r}{y_{2}}\cdots,
-    {*(srcol)\vdots},{*(srcol)r},{y_{1}},{y_{3}} }
-  \times\ytb{\cdots\cdots\cdots,{w_{0}}{\cdots},\ ,\ ,\ ,\ ,\ }
-\end{equation}
-Here the grey parts have length $(C_{2k}-C_{2k-1})/2$ (could be zero length), the row contains
-$x_{0}$ and $y_{0}$ may be empty, and $*$/$\cdots$ are
-arbitrary entries. We remark that the value of $v_{0}$ and $w_{0}$ are
-completely determined by $x_{0}$ and $y_{0}$. In particular, $v_{0}$ and $w_{0}$
-are non-empty if and only if
-$x_{0}/y_{0}\neq \emptyset$, i.e. $C_{2k-1}\geq 4$.
 
 
 \begin{defn}\label{def:sp-nsp.C}
+  Suppose $C_{2k}$ is even.
 We retain the notation in \Cref{def:sp-nsp.C.sp} where the shapes $\tau^{s}$ and $\tau^{ns}$
 correspond with each other.
 We define a bijection between $\drc(\tau^{s})$ and $\drc(\tau^{ns})$:
@@ -2142,8 +2127,26 @@ We define a bijection between $\drc(\tau^{s})$ and $\drc(\tau^{ns})$:
     \uptau^{s} \ar[rr,<->]& & \uptau^{ns}
   \end{tikzcd}
 \]
-We marks the entries of $\uptau^{s}$ and $\uptau^{ns}$ as in
-\eqref{eq:sp-nsp.C}. The correspondence between $(x_{0},x_{1}, x_{2}, x_3)$, with
+
+Without loss of generality, we can assume
+that $\uptau^{s}\in \drc(\tau^{s})$ and $\uptau^{ns}\in \drc(\tau^{ns})$ have the following shapes:
+\begin{equation}\label{eq:sp-nsp.C}
+  \uptau^{s}:\tytb{\cdots\cdots\cdots,{x_{0}}{\ast}{\cdots},{x_{1}}{x_{2}}{\cdots},\ ,\ ,\ ,\ }
+  \times\tytb{\cdots\cdots\cdots,{v_{0}}{\cdots},{x_{3}},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\ } \longleftrightarrow \hspace{2em}
+  \uptau^{ns}:\tytb{\cdots\cdots\cdots,{y_{0}}{\ast}{\cdots},{*(srcol)r}{y_{2}}\cdots,
+    {*(srcol)\vdots},{*(srcol)r},{y_{1}},{y_{3}} }
+  \times\tytb{\cdots\cdots\cdots,{w_{0}}{\cdots},\ ,\ ,\ ,\ ,\ }
+\end{equation}
+(Here the grey parts have length $(C_{2k}-C_{2k-1})/2$ (could be zero length), the row contains
+$x_{0}$ and $y_{0}$ may be empty, and $*$/$\cdots$ are
+arbitrary entries. We remark that the value of $v_{0}$ and $w_{0}$ are
+completely determined by $x_{0}$ and $y_{0}$. In particular, $v_{0}$ and $w_{0}$
+are non-empty if and only if
+$x_{0}/y_{0}\neq \emptyset$, i.e. $C_{2k-1}\geq 4$.)
+
+% We marks the entries of $\uptau^{s}$ and $\uptau^{ns}$ as in
+% \eqref{eq:sp-nsp.C}.
+The correspondence between $(x_{0},x_{1}, x_{2}, x_3)$, with
 $(y_{0},y_{1},y_{2},y_{3})$ is given by \Cref{tab:nonsp.C}.
 The rest part of the diagrams are unchanged.
 
@@ -2152,7 +2155,7 @@ We define
   \drcs(\cO) := \bigsqcup_{\tau^{s}} \drc(\tau^{s}) \quad \text{ and }\quad
   \drcns(\cO) := \bigsqcup_{\tau^{ns}} \drc(\tau^{ns})
 \]
-where $\tau^{s}$ (resp. $\tau^{ns}$)runs over all specail (resp. non-special) shape representations attached to $\cO$.
+where $\tau^{s}$ (resp. $\tau^{ns}$) runs over all specail (resp. non-special) shape representations attached to $\cO$.
 Clearly $\drc(\cO) = \drcs(\cO)\sqcup \drcns(\cO)$.
 \end{defn}
 It is easy to check the bijectivity in the above definition, which we leave it
@@ -4957,55 +4960,68 @@ $\bfpp_{\uptau_{i}}$ must have one of the following form:
 \section{Type B/M case}
 
 
-\subsection{Bijection between ``special'' and ``non-special'' diagrams for type M}
-We define a bijection between ``special'' diagram $\uptau^{s}$ and
-``non-special'' diagrams $\uptau$.
+\subsection{``Special'' and ``non-special'' diagrams for type M}
 
 \begin{defn}\label{def:sp-nsp.M.sp}
-
-  Let $\cO\in \Nil(M)$ such that $C_{2k}=2c_{2k}-1$ and $C_{2k-1}=2c_{2k-1}+1$.
-  A representation $\tau^{s}$ attached to $\cO$ has the shape
+  Let $\cO = (C_{2k},C_{2k-1}, \cdots, C_{1},C_{0}=0)\in \dpeNil(M)$
+  with $k\geq 1$.
+  Let
   \[
-    \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}=
-    (c_{2k},\tau_{2k-2},\cdots, \tau_{2}) \times (c_{2k-1},\tau_{2k-3},\cdots, \tau_{1})
+  \tau =  (\tau_{2k}, \cdots, \tau_{2})\times  (\tau_{2k-1}, \cdots, \tau_{1}).
   \]
-  is paired with
+  be a Weyl group representation attached to $\cO\in \dpeNil(M)$.
+  We say $\tau$ has
+  \begin{itemize}
+    \item \idxemph{special shape} if $\tau_{2k}\geq \tau_{2k-1}$;
+    \item \idxemph{non-special shape} if $\tau_{2k}< \tau_{2k-1}$.
+  \end{itemize}
+  Clearly, this gives a partition of the set of Weyl group representations
+  attached to $\cO$.
+
+  Suppose $k\geq 1$, $C_{2k}=2c_{2k}-1$ and $C_{2k-1}=2c_{2k-1}+1$.
+  The special shape representation $\tau^{s}$
+  \[
+    \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}
+    = (c_{2k},\tau_{2k-2}, \cdots, \tau_{2})\times (c_{2k-1},\tau_{2k-3} \cdots, \tau_{1}).
+  \]
+  is paired with the non-special shape representation
   \[
     \tau^{ns} = \tau_{L}^{ns}\times \tau_{R}^{ns} =
-    (c_{2k-1},\tau_{2k-2},\cdots, \tau_{2}) \times (c_{2k},\tau_{2k-3},\cdots, \tau_{1})
+     (c_{2k-1},\tau_{2k-2},\cdots, \tau_{2})\times (c_{2k},\tau_{2k-3},\cdots, \tau_{1} )
   \]
-  where the $c_{j}$ are unchanged for $j\leq 2k-2$.
+  In the paring $\tau^{s}\leftrightarrow \tau^{ns}$, $\tau_{j}$  is unchanged for $j\leq 2k-2$.
   We call $\tau^{s}$ the \emph{special shape} and $\tau^{ns}$ the
   corresponding \emph{non-special shape}
 \end{defn}
+% We define a bijection between ``special'' diagram $\uptau^{s}$ and
+% ``non-special'' diagrams $\uptau^{ns}$.
 
-Note that the shape
-$\tau = (\tau_{2k},\cdots, \tau_{2},0)\times (\tau_{2k-1},\cdots, \tau_{1})$
-is a special shape if and only if $\tau_{2k}>\tau_{2k-1}$.
+% \begin{defn}\label{def:sp-nsp.M.sp}
 
-Without loss of generality, we can assume
-that $\uptau^{s}\in \drc(\tau^{s})$ and $\uptau^{ns}\in \drc(\tau^{ns})$ have the following shapes:
-\begin{equation}\label{eq:sp-nsp.M}
-  \uptau^{s}:
-  \tytb{\cdots\cdots\cdots,{x_{3}}\cdots\cdots,{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},{x_{4}}}
-  \times
-  \tytb{\cdots\cdots\cdots,{x_{1}}{x_{2}}{\cdots},\ ,\ ,\ ,\ }
-  \longleftrightarrow \hspace{2em}
-  \uptau^{ns}:
-  \tytb{\cdots\cdots\cdots,{y_{3}}\cdots\cdots,\ ,\ ,\ ,\ }
-  \times
-  \tytb{\cdots\cdots\cdots,{y_{1}}{y_{2}}\cdots,{*(srcol)r},
-    {*(srcol)\vdots},{*(srcol)r},{y_{4}} }
-\end{equation}
-Here the grey parts have length $(C_{2k}-C_{2k-1})/2$ (could be zero length), the row contains
-$x_{0}$ and $y_{0}$ may be empty, and $*$/$\cdots$ are
-arbitrary entries. We remark that the value of $v_{0}$ and $w_{0}$ are
-completely determined by $x_{0}$ and $y_{0}$. In particular, $v_{0}$ and $w_{0}$
-are non-empty if and only if
-$x_{0}/y_{0}\neq \emptyset$, i.e. $C_{2k-1}\geq 4$.
+%   Let $\cO\in \Nil(M)$ such that $C_{2k}=2c_{2k}-1$ and $C_{2k-1}=2c_{2k-1}+1$.
+%   A representation $\tau^{s}$ attached to $\cO$ has the shape
+%   \[
+%     \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}=
+%     (c_{2k},\tau_{2k-2},\cdots, \tau_{2}) \times (c_{2k-1},\tau_{2k-3},\cdots, \tau_{1})
+%   \]
+%   is paired with
+%   \[
+%     \tau^{ns} = \tau_{L}^{ns}\times \tau_{R}^{ns} =
+%     (c_{2k-1},\tau_{2k-2},\cdots, \tau_{2}) \times (c_{2k},\tau_{2k-3},\cdots, \tau_{1})
+%   \]
+%   where the $c_{j}$ are unchanged for $j\leq 2k-2$.
+%   We call $\tau^{s}$ the \emph{special shape} and $\tau^{ns}$ the
+%   corresponding \emph{non-special shape}
+% \end{defn}
+
+% Note that the shape
+% $\tau = (\tau_{2k},\cdots, \tau_{2},0)\times (\tau_{2k-1},\cdots, \tau_{1})$
+% is a special shape if and only if $\tau_{2k}>\tau_{2k-1}$.
+
 
 
 \begin{defn}\label{def:sp-nsp.M}
+  Suppose $C_{2k}$ is odd.
 We retain the notation in \Cref{def:sp-nsp.M.sp} where the shapes $\tau^{s}$ and $\tau^{ns}$
 correspond with each other.
 We define a bijection between $\drc(\tau^{s})$ and $\drc(\tau^{ns})$:
@@ -5015,10 +5031,49 @@ We define a bijection between $\drc(\tau^{s})$ and $\drc(\tau^{ns})$:
     \uptau^{s} \ar[rr,<->]& & \uptau^{ns}
   \end{tikzcd}
 \]
-We marks the entries of $\uptau^{s}$ and $\uptau^{ns}$ as in
-\eqref{eq:sp-nsp.C}. The correspondence between $(x_{0},x_{1}, x_{2}, x_3)$, with
-$(y_{0},y_{1},y_{2},y_{3})$ is given by \Cref{tab:nonsp.C}.
+Without loss of generality, we can assume
+that $\uptau^{s}\in \drc(\tau^{s})$ and $\uptau^{ns}\in \drc(\tau^{ns})$ have the following shapes:
+\begin{equation}\label{eq:sp-nsp.M}
+  \uptau^{s}:
+  \tytb{\cdots\cdots\cdots,{x_{1}}\cdots\cdots,{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},{x_{2}}}
+  \times
+  \tytb{\cdots\cdots\cdots,{x_{0}}{\cdots}{\cdots},\ ,\ ,\ ,\ }
+  \longleftrightarrow \hspace{2em}
+  \uptau^{ns}:
+  \tytb{\cdots\cdots\cdots,{y_{0}}\cdots\cdots,\ ,\ ,\ ,\ }
+  \times
+  \tytb{\cdots\cdots\cdots,{y_{1}}{\cdots}\cdots,{*(srcol)r},
+    {*(srcol)\vdots},{*(srcol)r},{y_{2}} }
+\end{equation}
+Here the grey parts have length $(C_{2k}-C_{2k-1})/2$ (could be zero length),
+$x_{0}$, $y_{0}$ and the rows contains them may be empty. % We remark that the
+% value of $v_{0}$ and $w_{0}$ are completely determined by $x_{0}$ and $y_{0}$.
+% In particular, $v_{0}$ and $w_{0}$ are non-empty if and only if
+% $x_{0}/y_{0}\neq \emptyset$, i.e. $C_{2k-1}\geq 4$.
+% We marks the entries of $\uptau^{s}$ and $\uptau^{ns}$ as in
+% \eqref{eq:sp-nsp.C}.
+The correspondence between $(x_{0},x_{1}, x_{2})$, with
+$(y_{0},y_{1},y_{2})$ is given by \Cref{tab:nonsp.M}.
 The rest part of the diagrams are unchanged.
+\begin{table}[hp!]
+  % \begin{tabular}
+  %   $\uptau$&&
+  % \end{tabular}
+  \[
+    \begin{array}{c|c:c|c}
+      &\uptau^{s} & \uptau^{ns} & \\
+      \hline
+      &
+  \tytb{{x_{1}},{x_{2}}}
+  \times
+        \tytb{{x_{0}},\none}&
+  \tytb{{y_{0}},\ }
+  \times
+  \tytb{{y_{1}},{y_{2}}} &\\
+                              \hline
+    \end{array}
+  \]
+\end{table}
 
 We define
 \[

@@ -303,6 +303,39 @@ def twist_M_nonspecial(drc):
     nspdrc = ((fLL, *drcL[1:]), (fRR, *drcR[1:]))
     return nspdrc
 
+## New version
+def twist_M_nonspecial(drc):
+    """
+    send a the special diagram to non-special diagram
+    special diagram means `switch' the left diagram longest column
+    to right diagram
+    We only implement fL = fR+1 case
+    """
+    drcL, drcR = drc
+    # first column of drcL and first, second column of drcR
+    fL, fR, sR = getz(drcL, 0, ''), getz(drcR, 0, ''), getz(drcR, 1, '')
+    assert(len(fL) == len(fR)+1 and len(fL) > 0)
+    if fL[-1] == 's':
+        if len(fR) > 0 and fR[-1] == 'd':
+            fLL = fL[:-2] +'c'
+            fRR = fR[:-1]+'rr'
+        else:
+            fLL = fL[:-1]
+            fRR = fR + 'r'
+    elif fL[-1] == 'c':
+        if len(fR) > 0 and fR[-1] == 'd':
+            fLL = fL[:-2]+'c'
+            fRR = fR[:-1]+'rd'
+        else:
+            fLL = fL[:-1]
+            fRR = fR+'d'
+    else:
+        print('Invalid original drc: %s' % (str_dgms(drc)))
+        return None
+    nspdrc = ((fLL, *drcL[1:]), (fRR, *drcR[1:]))
+    #print('abc')
+    return nspdrc
+
 
 def lift_drc_D_C_det(drc):
     spdrc = lift_drc_D_C_trivial(drc)
