@@ -1026,6 +1026,7 @@
 % {}^b\mathrm{Sign}(#1)
 % }
 %
+\def\tsign{{}^t\mathrm{Sign}}
 \def\lsign{{}^l\mathrm{Sign}}
 \def\bsign{{}^b\mathrm{Sign}}
 \def\ssign{\mathrm{Sign}}
@@ -1205,6 +1206,8 @@
 \def\LSaod{\mathrm{LS^{aod}}}
 \def\Unip{\mathrm{Unip}}
 \def\lUnip{\mathrm{{}^{\ell}Unip}}
+\def\tbfxx{\tilde{\bfxx}}
+
 
 \newcommand{\noticed}{noticed }
 \newcommand{\ess}{essential }
@@ -5246,41 +5249,69 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
       \]
         Suppose $y_{1} = c$ and $(x_{1}, \cdots, x_{n}) = (r, \cdots, r)$ or
         $(r, \cdots, r,d)$, then let $z_{1}= r$; otherwise, set $z_{1}:= y_{1}$.
-  \item When $\uptau$ has special shape, the descent is given by the following diagram
-      \[\tiny
+  \item When $C_{2k}$ is odd and $\uptau$ has special shape, the descent is given by the following diagram
+      \[
         \uptau: \hspace{1em}
-        \ytb{
+        \tytb{
         \cdots\cdots\cdots,
+        {\ast}{\cdots}{\cdots},
+        {*(srcol)\bullet},
+        {*(srcol)\vdots},{*(srcol)\bullet},{y_0},\none,\none,\none}
+      \times
+      \tytb{\cdots\cdots\cdots,
         {\ast}{\ast}{\cdots},
         {*(srcol)\bullet},
-        {*(srcol)\vdots},{*(srcol)\bullet},{x_1},\vdots,{x_n}}
-        \times \ytb{\cdots\cdots\cdots,{\ast}{\ast}{\cdots},{*(srcol)\bullet},{*(srcol)\vdots},{*(srcol)\bullet},\none,\none,\none}
+        {*(srcol)\vdots},
+        {*(srcol)\bullet},
+        {x_{1}},{\vdots},{x_{n}},{m_{\uptau}}}
         \mapsto
-       \uptaup: \ytb{\none\cdots\cdots,\none{\ast}{\cdots},\none,\none,\none,\none,\none,\none}
-        \times \ytb{\cdots\cdots\cdots,{\ast}{\ast}{\cdots},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\none,\none,\none}
+       \uptaup: \tytb{\cdots\cdots\cdots,{\ast}{\cdots}{\cdots},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},{y'_{0}},\none,\none,\none}
+        \times \tytb{\none\cdots\cdots,\none{\ast}{\cdots},\none,\none,\none,\none,\none,\none,\none}
       \]
-  \item When $\uptau$ has non-special shape, then
-      \[\tiny
-       \uptau: \hspace{1em} \ytb{\cdots\cdots\cdots,{\ast}{\ast}{\cdots},{x_{0}}{y_{1}},{x_1}{y_{2}},\vdots,{x_n}}
-        \times \ytb{\cdots\cdots\cdots,{\ast}{\ast}{\cdots},\none,\none,\none,\none}
+      The  ``$\ast/\cdots$'' part of $\uptaup$ is given by keeping the corresponding
+      entries marked by $r/d/c$ in
+       $\uptau$ unchange and filling $s/\bullet$ accordingly in the rest of the
+       entries.
+       The entry $y'_{0}$ of $\uptaup$ is given by the following formula:
+       \[
+         y'_{0} := \begin{cases}
+           s & \text{if $x_{1}=\bullet$ or $x_{1}\cdots x_{n}= r\cdots r$ \footnote{In this case, $y_{0}=c$.}}\\
+           c & \text{otherwise\footnote{In this case, $x_{1}=s$ or
+               $x_{1}\cdots x_{n}=r\cdots rd.$}}
+         \end{cases}
+       \]
+       We define $\tbfxx_{\uptau}$ be the diagram by replacing $\bullet$ to $s$
+       in $\bfxx_{\uptau}$.
+  \item When $C_{2k}$ is odd and $\uptau$ has non-special shape, then
+      \[
+        \uptau: \hspace{1em}
+        \tytb{
+        {\cdots}\cdots\cdots,
+        {\ast}{\cdots}{\cdots},
+        \none,\none,\none,\none,\none,\none,\none}
+      \times
+      \tytb{\cdots\cdots\cdots,
+        {\ast}{\ast}{\cdots},
+        {*(srcol)s}{*(srcol)r},
+        {*(srcol)\vdots}{*(srcol)\vdots},
+        {*(srcol)s}{*(srcol)r},
+        {x_{1}}{x_{0}},{\vdots},{x_{n}},{m_{\uptau}}}
         \mapsto
-       \uptaup:  \ytb{\none\cdots\cdots,{\none}{\ast}{\cdots},{\none}{z_{1}},{\none}{z_{2}},\none,\none}
-        \times \ytb{\cdots\cdots\cdots,{\ast}{\ast}{\cdots},\none,\none,\none,\none}
+       \uptaup: \tytb{\cdots\cdots\cdots,{\cdots}{\cdots}{\cdots},\none,\none,\none,\none,\none,\none,\none}
+        \times \tytb{\none\cdots\cdots,\none{\cdots}{\cdots},\none{*(srcol)r},\none{*(srcol)\vdots},\none{*(srcol)r},\none{x'_{0}},\none,\none,\none}
       \]
-      In most of the case, we just delete the longest column on the left and set
-      $(z_{1},z_{2})=(y_{1},y_{2})$. The exceptional cases are listed below:
-      \[\tiny
-        \begin{split}
-          \ytb{{x_{0}}{y_{1}}\none{r}{c},{x_{1}}{y_{2}}{=}{x_{1}}{d},\vdots\none\none\vdots,{x_{n}}\none\none{x_{n}}}
-          &\mapsto \ytb{{z_{1}}\none{r},{z_{2}}{:=}r,\none,\none} \quad \text{when
-          } x_{0}=r \\[1em]
-          \ytb{{x_{0}}{y_{1}},{x_{1}}{y_{2}}} = \ytb{cc,dd}
-          &\mapsto \ytb{{z_{1}},{z_{2}}}:=\ytb{r,c}  \quad\text{when }  x_{0}=c
-        \end{split}
-      \]
-    We remark that: when $x_{0}=r$, we have $(y_{1},y_{2})=(c,d)$;
-    when $x_{0}=c$, we have $n=1$ and $(y_{1},y_{2})=(c,d)$; $x_{0}$ never
-    equals to $d$.
+      The  ``$\ast/\cdots$'' part of $\uptaup$ is given by keeping the corresponding
+      entries marked by $r/d/c$ in
+       $\uptau$ unchange and filling $s/\bullet$ accordingly in the rest of the
+       entries.
+       The entry $x'_{0}$ of $\uptaup$ is given by the following formula:
+       \[
+         x'_{0} := \begin{cases}
+           r & \text{if $x_{1}\cdots x_{n}= r\cdots r$ \footnote{In this case, $x_{0}=d$.}}\\
+           x_{0} & \text{otherwise}
+         \end{cases}
+       \]
+       We define $\tbfxx_{\uptau}:=\bfxx_{\uptau}$.
 \end{enumerate}
 
 
@@ -5294,15 +5325,15 @@ The following lemma is the key property satisfied by our definition
   \Cref{def:sp-nsp.B.sp}.
   Then
   \begin{enumS}
-    \item \label{lem:sp-nsp.D.1} For every $\uptau\in \drc(\tau^{s})\sqcup \drc(\tau^{ns})$, the shape
+    \item \label{lem:sp-nsp.B.1} For every $\uptau\in \drc(\tau^{s})\sqcup \drc(\tau^{ns})$, the shape
     of $\eDD^{2}(\uptau)$ is
     \[
       \taupp = (\tau_{2k-2},\cdots, \tau_{2})\times  (c_{2k-1},\tau_{2k-3},\tau_{1})
     \]
-    \item \label{lem:sp-nsp.D.2} Let $\cO_{1}= (2(c_{2k+1}-c_{2k}),)\in \Nil(D)$ be the trivial orbit
-    of $\rO(2(c_{2k-1}-c_{2k}),\bC)$.
-    We define $\delta\colon \drc(\cO)\rightarrow \drc(\cOpp)$ by $\delta(\uptau) = (\eDD^{2}(\uptau),\bfxx_{\uptau})$.
-    The following maps are bijections
+    \item \label{lem:sp-nsp.B.2} Let $\cO_{1}= (C_{2k+1}-C_{2k}+1,)\in \Nil(B)$ be the trivial orbit
+    of $\rO(C_{2k+1}-C_{2k}+1,\bC)$.
+    We define $\delta\colon \drc(\cO)\rightarrow \drc(\cOpp)$ by $\delta(\uptau) = (\eDD^{2}(\uptau),\tbfxx_{\uptau})$.
+    The following maps are injections with the same image
     \[
       \begin{tikzcd}[row sep=0em]
         \drc(\tau^{s})\ar[r,"\delta"] & \drc(\taupp)\times \drc(\cO_{1}) &\ar[l,"\delta"'] \drc(\tau^{ns})\\
@@ -5312,12 +5343,19 @@ The following lemma is the key property satisfied by our definition
     \]
     In particular, we obtain an one-one correspondence
     $\uptau^{s}\leftrightarrow \uptau^{ns}$ such that $\delta(\uptau^{s})=\delta(\uptau^{ns})$.
-    \item\label{lem:sp-nsp.D.3}
+    \item\label{lem:sp-nsp.B.3}
     Suppose $\uptau^{s}$ and $\uptau^{ns}$ correspond as the above such that
-    $\delta(\uptau^{s})=\delta(\uptau^{ns})=(\uptaupp,\bfxx)$. Then
+    $\delta(\uptau^{s})=\delta(\uptau^{ns})=(\uptaupp,\tbfxx)$. Then
     \begin{equation} \label{eq:sp-nsp-sig}
-      \ssign(\uptau^{s})=\ssign(\uptau^{ns})=(C_{2k},C_{2k})+\ssign(\uptaupp)+\ssign(\bfxx).
+      \ssign(\uptau^{s})=\ssign(\uptau^{ns})=(C_{2k},C_{2k})+\ssign(\uptaupp)+\tsign(\tbfxx).
     \end{equation}
+    with
+    \[
+      \tsign(\tbfxx) = \begin{cases}
+        \ssign(\tbfxx) - (1,0) & \text{if $x_{1}\cdots x_{n}=r\cdots r$}\\
+        \ssign(\tbfxx) - (0,1) & \text{otherwise.}\\
+      \end{cases}
+    \]
   \end{enumS}
 \end{lem}
 \begin{proof}
@@ -5336,7 +5374,7 @@ The following lemma is the key property satisfied by our definition
       {*(srcol)\vdots},{*(srcol)\bullet},{x_0},\none,\none,\none}
     \times
     \tytb{{*(srcol)\cdots}\cdots\cdots,
-      {*(srcol)\ast}{\ast}{\cdots},{*(srcol)\bullet},{*(srcol)\vdots},{*(srcol)\bullet},{y_{1}},\vdots,{y_{n}},m}
+      {*(srcol)\ast}{\ast}{\cdots},{*(srcol)\bullet},{*(srcol)\vdots},{*(srcol)\bullet},{x_{1}},\vdots,{x_{n}},m}
     \mapsto
     \uptau'^{s}: \hspace{1em}
     \tytb{{*(srcol)\cdots}\cdots\cdots,{*(srcol)\ast}{\ast}{\cdots},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},{x'_{0}},
@@ -5887,7 +5925,7 @@ Number of DRCS: 35840
 \bib{ABV}{book}{
   title={The Langlands classification and irreducible characters for real reductive groups},
   author={Adams, J.},
-  author={Barbasch, D.},
+  author={Barbasch, B.},
   author={Vogan, D. A.},
   series={Progress in Math.},
   volume={104},
