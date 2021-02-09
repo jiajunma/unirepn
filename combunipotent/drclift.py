@@ -569,29 +569,44 @@ def gen_drc_B_two(fL, sL, fR, n):
     first row of L, first row of R, second row of R 
     """
     #print('fL, fR, n: %s, %s, %d'%(fL,fR,n))
-    RES = []
+   #RES = []
     ERES = []
     if sL == '':
         if len(fL) == 0 and len(fR) == 0:
-            RES.extend([('', 's'*i+'r'*(n-i), '', (1, -1)) for i in range(0, n+1)])
-            RES.extend([('', 's'*i+'r'*(n-i-1)+'d', '', (1, 1))
-                        for i in range(0, n)])
+            ERES.extend([('', 's'*i+'r'*(n-i)+'a', '', (1, -1)) for i in range(0, n+1)])
+            ERES.extend([('', 's'*i+'r'*(n-i-1)+'d'+'a', '', (1, 1)) for i in range(0, n)])
+            ERES.extend([('', 's'*i+'r'*(n-i)+'b', '', (1, -1)) for i in range(0, n+1)])
+            ERES.extend([('', 's'*i+'r'*(n-i-1)+'d'+'b', '', (1, 1)) for i in range(0, n)])
         elif (fL, fR) == ('s', ''):
-            RES.extend([('c', 'r'*n, '', (1, 1))])
-            RES.extend([('*', '*'+'s'*i+'r'*(n-i-1), '', (1, -1))
-                        for i in range(0, n)])
-            RES.extend([('*', '*'+'s'*i+'r'*(n-i-2)+'d', '', (1, 1))
-                        for i in range(0, n-1)])
+            #ERES.extend([('c', 'r'*n+'a', '', (1, -1))])
+            ERES.extend([('c', 'r'*n+'a', '', (1, 1))])
+            ERES.extend([('*', '*'+'s'*i+'r'*(n-i-1)+'a', '', (1, -1)) for i in range(0, n)])
+            ERES.extend([('*', '*'+'s'*i+'r'*(n-i-2)+'d'+'a', '', (1, 1)) for i in range(0, n-1)])
+            ERES.extend([('c', 'r'*n+'b', '', (1, 1))])
+            ERES.extend([('*', '*'+'s'*i+'r'*(n-i-1)+'b', '', (1, -1)) for i in range(0, n)])
+            ERES.extend([('*', '*'+'s'*i+'r'*(n-i-2)+'d'+'b', '', (1, 1)) for i in range(0, n-1)])
         elif (fL, fR) == ('c', ''):
-            RES.extend([('c', 's'*i+'r'*(n-i), '', (1, -1)) for i in range(1, n+1)])
-            RES.extend([('c', 's'*i+'r'*(n-i-1)+'d', '', (1, 1)) for i in range(0, n)])
+            ERES.extend([('c', 's'*i+'r'*(n-i)+'a', '', (1, -1)) for i in range(1, n+1)])
+            #ERES.extend([('c', 'r'*(n-1)+'d'+'a', '', (1, -1))])
+            ERES.extend([('c', 'r'*(n-1)+'d'+'a', '', (1, 1))])
+            ERES.extend([('c', 's'*i+'r'*(n-i-1)+'d'+'a', '', (1, 1)) for i in range(1, n)])
+            ERES.extend([('c', 's'*i+'r'*(n-i)+'b', '', (1, -1)) for i in range(1, n+1)])
+            ERES.extend([('c', 's'*i+'r'*(n-i-1)+'d'+'b', '', (1, 1)) for i in range(0, n)])
         elif (fL, fR) == ('', 'r'):
-            RES.extend([('', 'r'*n, 'd', (1, 1))])
-            RES.extend([('', 's'*i+'r'*(n-i), 'r', (1, -1)) for i in range(1, n+1)])
-            RES.extend([('', 's'*i+'r'*(n-i-1)+'d', 'r', (1, 1)) for i in range(1, n)])
+            #ERES.extend([('', 'r'*n+'a', 'd', (1, -1))])
+            ERES.extend([('', 'r'*n+'a', 'd', (1, 1))])
+            ERES.extend([('', 's'*i+'r'*(n-i)+'a', 'r', (1, -1)) for i in range(1, n+1)])
+            ERES.extend([('', 's'*i+'r'*(n-i-1)+'d'+'a', 'r', (1, 1)) for i in range(1, n)])
+            ERES.extend([('', 'r'*n+'b', 'd', (1, 1))])
+            ERES.extend([('', 's'*i+'r'*(n-i)+'b', 'r', (1, -1)) for i in range(1, n+1)])
+            ERES.extend([('', 's'*i+'r'*(n-i-1)+'d'+'b', 'r', (1, 1)) for i in range(1, n)])
         elif (fL, fR) == ('', 'd'):
-            RES.extend([('', 's'*i+'r'*(n-i), 'd', (1, -1)) for i in range(1, n+1)])
-            RES.extend([('', 's'*i+'r'*(n-i-1)+'d', 'd', (1, 1)) for i in range(0, n)])
+            ERES.extend([('', 's'*i+'r'*(n-i)+'a', 'd', (1, -1)) for i in range(1, n+1)])
+            #ERES.extend([('', 'r'*(n-1)+'d'+'a', 'd', (1, -1))])
+            ERES.extend([('', 'r'*(n-1)+'d'+'a', 'd', (1, 1))])
+            ERES.extend([('', 's'*i+'r'*(n-i-1)+'d'+'a', 'd', (1, 1)) for i in range(1, n)])
+            ERES.extend([('', 's'*i+'r'*(n-i)+'b', 'd', (1, -1)) for i in range(1, n+1)])
+            ERES.extend([('', 's'*i+'r'*(n-i-1)+'d'+'b', 'd', (1, 1)) for i in range(0, n)])
         elif (fL, fR) == ('*', '*'):
             ERES.extend([('*', '*'+'s'*i+'r'*(n-i-1)+'a',     's', (1, -1)) for i in range(0, n)])
             ERES.extend([('*', '*'+'s'*i+'r'*(n-i-2)+'d'+'a', 's', (1, 1)) for i in range(0, n-1)])
@@ -629,15 +644,15 @@ def gen_drc_B_two(fL, sL, fR, n):
             ERES.extend([('c', 's'*i+'r'*(n-i)+'b',       'd', (1, -1)) for i in range(1, n+1)])
             ERES.extend([('c', 's'*i+'r'*(n-i-1)+'d'+'b', 'd', (1, 1)) for i in range(0, n)])
         # Return extend the parameter directly
-        if len(fL)+len(fR) == 2:
-            EERES  = [(fL, '', fR, sR, twist) for fL, fR, sR, twist in ERES]
-            return EERES
+        #if len(fL)+len(fR) == 2:
+        EERES  = [(fL, '', fR, sR, twist) for fL, fR, sR, twist in ERES]
+        return EERES
         # else extend RES to ERES and return
-        else:
-            for fL, fR, sR, twist in RES:
-                ERES.append((fL, '', fR+'a', sR, twist))
-                ERES.append((fL, '', fR+'b', sR, twist))
-            return ERES
+        # else:
+        #     for fL, fR, sR, twist in RES:
+        #         ERES.append((fL, '', fR+'a', sR, twist))
+        #         ERES.append((fL, '', fR+'b', sR, twist))
+        #     return ERES
     else:
         if (fL, sL, fR) == ('*', 's', '*'):
             ERES.extend([('*', '*', '*'+'s'*i+'r'*(n-i-1)+'a',      '*', (1, -1)) for i in range(0, n)])

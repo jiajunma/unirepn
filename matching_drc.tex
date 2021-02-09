@@ -2006,11 +2006,7 @@ systems on the relevent nilpotent orbits, see.
 
 From now on, we assume
 \[
-  \uptau = (\taulf,\tauls,\cdots)\times(\taurf,\taurs,\cdots)
-\]
-and $(\uptau', \upepsilon) := \eDD(\uptau)$
-\[
-  \uptau' = (\tauplf,\taupls,\cdots,\tauprf,\tauprs,\cdots)
+  \uptau = (\taulf,\tauls,\cdots)\times(\taurf,\taurs,\cdots).
 \]
 
 % The definition of sign $\upepsilon$
@@ -2321,12 +2317,14 @@ Let $\cO$ be a nilpotent orbit of type D with at most 2 columns.
 The descent of a special shape diagram is simple, the descent of a non-special shape
 reduces to the corresponding special one:
 \begin{enumerate}[resume*=alg1]
-  \item Suppose $\abs{\taulf} - \abs{\taurf} < 2$, i.e. $\uptau$ has special shape.
-   Keep $r,c,d$ unchanged, delete $\taurf$ and fill the remaining part with
-   ``$\bullet$'' and ``$s$'' by $\DDr(\uptau^{\bullet})$ using the dot-s switching algorithm.
-   \item Suppose $\abs{\taulf} - \abs{\taurf} \geq 2$.
-        We define $\uptaup=\eDDo(\uptau):=\eDDo(\uptau^{s})$ where $\uptau^{s}$ is the
-        special diagram corresponding to $\uptau$ defined in \Cref{def:sp-nsp.C}.
+  \item Suppose $\abs{\taulf} - \abs{\taurf} < 2$, i.e. $\uptau$ has special
+        shape. Keep $r,c,d$ unchanged, delete $\taurf$ and fill the remaining
+        part with ``$\bullet$'' and ``$s$'' by $\DDr(\uptau^{\bullet})$ using
+        the dot-s switching algorithm.
+  \item Suppose $\abs{\taulf} - \abs{\taurf} \geq 2$. We define
+        \[\uptaup=\eDDo(\uptau):=\eDDo(\uptau^{s})\] where $\uptau^{s}$ is the
+        special diagram corresponding to $\uptau$ defined in
+        \Cref{def:sp-nsp.C}.
 \end{enumerate}
 
 \begin{lem}\label{lem:ds.CD}
@@ -2385,9 +2383,9 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
         $(r, \cdots, r,d)$, then let $z_{1}= r$; otherwise, set $z_{1}:= y_{1}$.
         We define
         \[
-        \bfpp_{\uptau}:=\tytb{{x_{1}{y_{1}},\vdots,{x_{n}}}}.
+        \bfpp_{\uptau}:=\tytb{{x_{1}}{y_{1}},\vdots,{x_{n}}}.
         \]
-  \item When $\uptau$ has special shape, the descent is given by the following diagram
+  \item When $C_{2k}$ is even and $\uptau$ has special shape, the descent is given by the following diagram
       \[\tiny
         \uptau: \hspace{1em}
         \ytb{
@@ -2400,7 +2398,7 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
        \uptaup: \ytb{\none\cdots\cdots,\none{\ast}{\cdots},\none,\none,\none,\none,\none,\none}
         \times \ytb{\cdots\cdots\cdots,{\ast}{\ast}{\cdots},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\none,\none,\none}
       \]
-  \item When $\uptau$ has non-special shape, then
+  \item When $C_{2k}$ is even and $\uptau$ has non-special shape, then
         \[
         \uptau:\tytb{{\cdots}\cdots\cdots\cdots,{\ast}{\ast}{\cdots}{\cdots},{*(srcol)s}{*(srcol)r}{\cdots}\cdots,
         {*(srcol)\vdots}{*(srcol)\vdots},{*(srcol)s}{*(srcol)r},{x_{0}}{y_{1}},{x_{1}}{y_{2}},{\vdots},{x_{n}}}
@@ -2440,7 +2438,7 @@ Let $\cOp=\eDD(\cO)$ and $\cOpp=\eDD(\cOp)$.
 The following lemma is the key property satisfied by our definition
 \begin{lem}\label{lem:sp-nsp.D}
   Let $\tau^{s}$ and $\tau^{ns}$ are two representations attached to $\cO$ as in
-  \Cref{def:sp-nsp.C}.
+  \Cref{def:sp-nsp.D.sp}.
   Then
   \begin{enumS}
     \item \label{lem:sp-nsp.D.1} For every $\uptau\in \drc(\tau^{s})\sqcup \drc(\tau^{ns})$, the shape
@@ -4960,7 +4958,8 @@ $\bfpp_{\uptau_{i}}$ must have one of the following form:
 \section{Type B/M case}
 
 
-\subsection{``Special'' and ``non-special'' diagrams for type M}
+\subsection{``Special'' and ``non-special'' diagrams}
+\subsubsection{type M}
 
 \begin{defn}\label{def:sp-nsp.M.sp}
   Let $\cO = (C_{2k},C_{2k-1}, \cdots, C_{1},C_{0}=0)\in \dpeNil(M)$
@@ -5035,45 +5034,34 @@ Without loss of generality, we can assume
 that $\uptau^{s}\in \drc(\tau^{s})$ and $\uptau^{ns}\in \drc(\tau^{ns})$ have the following shapes:
 \begin{equation}\label{eq:sp-nsp.M}
   \uptau^{s}:
-  \tytb{\cdots\cdots\cdots,{x_{1}}\cdots\cdots,{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},{x_{2}}}
+  \tytb{\cdots\cdots\cdots,{y_{1}}\cdots\cdots,{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},{y_{2}}}
   \times
   \tytb{\cdots\cdots\cdots,{x_{0}}{\cdots}{\cdots},\ ,\ ,\ ,\ }
   \longleftrightarrow \hspace{2em}
   \uptau^{ns}:
   \tytb{\cdots\cdots\cdots,{y_{0}}\cdots\cdots,\ ,\ ,\ ,\ }
   \times
-  \tytb{\cdots\cdots\cdots,{y_{1}}{\cdots}\cdots,{*(srcol)r},
-    {*(srcol)\vdots},{*(srcol)r},{y_{2}} }
+  \tytb{\cdots\cdots\cdots,{x_{1}}{\cdots}\cdots,{*(srcol)r},
+    {*(srcol)\vdots},{*(srcol)r},{x_{2}} }
 \end{equation}
-Here the grey parts have length $(C_{2k}-C_{2k-1})/2$ (could be zero length),
-$x_{0}$, $y_{0}$ and the rows contains them may be empty. % We remark that the
+Here the grey parts have length $(C_{2k}-C_{2k-1})/2$ (could be zero length).
+The entries $x_{0}$, $x_{1}$, $y_{0}$ and $y_{1}$ are either all empty or all
+non-empty.
+% and the rows contains them may be empty. % We remark that the
 % value of $v_{0}$ and $w_{0}$ are completely determined by $x_{0}$ and $y_{0}$.
 % In particular, $v_{0}$ and $w_{0}$ are non-empty if and only if
 % $x_{0}/y_{0}\neq \emptyset$, i.e. $C_{2k-1}\geq 4$.
 % We marks the entries of $\uptau^{s}$ and $\uptau^{ns}$ as in
 % \eqref{eq:sp-nsp.C}.
 The correspondence between $(x_{0},x_{1}, x_{2})$, with
-$(y_{0},y_{1},y_{2})$ is given by \Cref{tab:nonsp.M}.
-The rest part of the diagrams are unchanged.
-\begin{table}[hp!]
-  % \begin{tabular}
-  %   $\uptau$&&
-  % \end{tabular}
-  \[
-    \begin{array}{c|c:c|c}
-      &\uptau^{s} & \uptau^{ns} & \\
-      \hline
-      &
-  \tytb{{x_{1}},{x_{2}}}
-  \times
-        \tytb{{x_{0}},\none}&
-  \tytb{{y_{0}},\ }
-  \times
-  \tytb{{y_{1}},{y_{2}}} &\\
-                              \hline
-    \end{array}
-  \]
-\end{table}
+$(y_{0},y_{1},y_{2})$ is given by switching $r$ and $s$,  $d$ and $c$. i.e.
+\[
+  \begin{cases}
+    y_{i} = s \Leftrightarrow x_{i} = r\\
+    y_{i} = c \Leftrightarrow x_{i} = d\\
+  \end{cases}
+  \quad \text{for } i=0,1,2.
+\]
 
 We define
 \[
@@ -5088,85 +5076,36 @@ to the reader.
 
 
 
-\subsection{Special and non-special shapes of type B}
+\subsubsection{Special and non-special shapes of type B}
 Now we define the notion of special and non-special shape of type B.
-\begin{defn}\label{def:sp-nsp.D.sp}
-  Suppose
-  $\cO=(C_{2k+1}=2c_{2k+1}+1,C_{2k}=2c_{2k}-1,C_{2k-1}=2c_{2k-1}+1,\cdots,C_{0}\geq 0)$
-  with $k\geq 1$.\footnote{Note that $C_{2k}$ and $C_{2k-1}$ are non-zero
-    even integers.}
+\begin{defn}\label{def:sp-nsp.B.sp}
+  Let
+  \[
+    \tau = (\tau_{2k}, \cdots, \tau_{2}) \times (\tau_{2k+1},\tau_{2k-1}, \cdots, \tau_{1})
+  \]
+  be a Weyl group representation attached to $\cO\in \dpeNil(B)$. We say $\tau$
+  has
+  \begin{itemize}
+    \item \idxemph{special shape} if $\tau_{2k}\geq \tau_{2k-1}$;
+    \item \idxemph{non-special shape} if $\tau_{2k} < \tau_{2k-1}$.
+  \end{itemize}
+
+  Suppose $k\geq 1$ and
+  \begin{equation} \label{eq:B.orb.ds}
+    \cO=(C_{2k+1}=2c_{2k+1}+1,C_{2k}=2c_{2k}-1,C_{2k-1}=2c_{2k-1}+1,\cdots,C_{1}>0, C_{0}=0).
+  \end{equation}
   A representation $\tau^{s}$ attached to $\cO$ has the shape
   \[
-    \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}=
-    (c_{2k},c_{2k-2},\cdots, c_{2},0) \times (c_{2k+1},c_{2k-1},c_{2k-3},\cdots, c_{1})
+    \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}= (c_{2k},\tau_{2k-2},\cdots, \tau_{2}) \times (c_{2k+1},c_{2k-1},\tau_{2k-3},\cdots, \tau_{1})
   \]
   is paired with
   \[
-    \tau^{ns} = \tau_{L}^{ns}\times \tau_{R}^{ns} =
-    (c_{2k-1},c_{2k-2},\cdots, c_{2},0) \times (c_{2k},c_{2k-3},\cdots, c_{1})
+    \tau^{ns} = \tau_{L}^{ns}\times \tau_{R}^{ns} = (c_{2k-1},\tau_{2k-2},\cdots, \tau_{2}) \times (c_{2k+1},c_{2k},\tau_{2k-3},\cdots, \tau_{1}).
   \]
-  where the $c_{j}$ are unchanged for $j\leq 2k-2$.
-  We call $\tau^{s}$ the \idxemph{special shape} and $\tau^{ns}$ the
-  corresponding \idxemph{non-special shape}
+  In the paring $\tau^{s}\leftrightarrow \tau^{ns}$ described as the above,
+  $\tau_{j}$ are unchanged for $j\leq 2k-2$.
 \end{defn}
 
-\begin{table}[hpb]
-\[\tiny
-\begin{array}{c|c|c:c|c}
-  & \uptaup & \uptau^{s} & \uptau^{ns} \\
-  \hline
-           & \ytb{{x'_{0}}{\ast},{x'_{1}}{x'_{2}},\none,\none,\none,\none}
-             \times \ytb{\ast,\none,\none,\none,\none,\none}
-           &\ytb{{x_{0}}{\ast},{x_{1}}{x_{2}},\ ,\ ,\ ,\ }
-    \times\ytb{{\ast}{\ast},{x_{3}},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\ }&
-  \ytb{{y_{0}}{\ast},{*(srcol)r}{y_{2}},{*(srcol)\vdots},{*(srcol)r},{y_{1}},{y_{3}} }
-    \times\ytb{{\ast}\ast,\ ,\ ,\ ,\ ,\ }\\
-  \hline
-  \ytb{{x'_{1}}{=}{s},{\text{then}},{z_{0}}{=}{\emptyset/}{s},{x_{0}}{=}{\emptyset/}{\bullet},{x_{1}}{=}{\bullet},
-  {x_{2}}{=}{x'_{2}}}
-  &
-            \ytb{{x'_{0}}{\ast},{s}{x_{2}},\none,\none,\none,\none}
-             \times \ytb{\ast,\none,\none,\none,\none,\none}
-                &
-                \ytb{{x_{0}}{\ast},{\bullet}{x_{2}},\ ,\ ,\ ,\ }
-    \times\ytb{{\ast}\ast,{\bullet},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\ }&
-  \ytb{{x_{0}}{\ast},{*(srcol)r}{x_{2}},{*(srcol)\vdots},{*(srcol)r},{c},{d} }
-                          \times\ytb{{\ast}{\ast},\ ,\ ,\ ,\ ,\ }
-          &x_{2}\neq r
-  \\
-  \cline{3-5} & &
-                  \ytb{{x_{0}}{\ast},{\bullet}{r},\ ,\ ,\ ,\ }
-    \times\ytb{{\ast}\ast,{\bullet},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\ }&
-  \ytb{{x_{0}}{\ast},{*(srcol)r}{c},{*(srcol)\vdots},{*(srcol)r},{r},{d} }
-    \times\ytb{{\ast}\ast,\ ,\ ,\ ,\ ,\ } & x_{2}=r \\
-  \hline
-\ytb{{x'_{1}}{\neq}{s},{\text{then}},{x_{1}}{=}{x'_{1}},{x_{2}}{=}{x'_{2}}}
-  &
-            \ytb{{x'_{0}}{\ast},{x'_{1}}{x_{2}},\none,\none,\none,\none}
-             \times \ytb{\ast,\none,\none,\none,\none,\none}
-   &
-    \ytb{{x_{0}}{\ast},{x_{1}}{x_{2}},\ ,\ ,\ ,\ }
-    \times\ytb{{\ast}\ast,{s},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\ }&
-  \ytb{{x_{0}}{\ast},{*(srcol)r}{x_{2}},{*(srcol)\vdots},{*(srcol)r},{r},{x_{1}} }
-       \times\ytb{{\ast}\ast,\ ,\ ,\ ,\ ,\ } &
-     \ytb{{x'_{0}}{\neq}{c},{\text{then}},{x'_{0}}{=}{\emptyset/}{s/}{r},{x_{0}}{=}{\emptyset/}{\bullet/}{r}}
-  \\
-  %\hline
-  \cline{3-5}
-   & &
-    \ytb{{c}{\ast},{d}{x_{2}},\ ,\ ,\ ,\ }
-    \times\ytb{{\ast}\ast,{s},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\ }&
-  \ytb{{r}{\ast},{*(srcol)r}{x_{2}},{*(srcol)\vdots},{*(srcol)r},{c},{d} }
-  \times\ytb{{\ast}\ast,\ ,\ ,\ ,\ ,\ }&
-  \ytb{{x'_{0}}{=}{c}\none\none,{\text{then}},{x_{0}}{=}{x'_{0}}{=}{c},{x_{1}}{=}{x'_{1}}{=}{d},{x_{2}}{=}{x'_{2}}{=}{\emptyset/d}}
-  \\
-  \hline
-  \hline
-\end{array}
-\]
-\caption{``special-non-special'' switch}
-\label{tab:nonsp.C}
-\end{table}
 
 
 
@@ -5207,36 +5146,46 @@ Now we define the notion of special and non-special shape of type B.
         $\uptau \in \drc(\cO)$ maps to $\uptau_{0}$ (see \eqref{eq:uptau0}):
         \[\tiny
           \drc(\cO)\ni \uptau:= \hspace{1em} \ytb{\emptyset,\none,\none,\none}
-          \times \ytb{{x_{1}},\vdots,{x_{n}},{m}}
+          \times \ytb{{x_{1}},\vdots,{x_{n}},{m_{\uptau}}}
           \mapsto \uptaup_{0}:=\emptyset\times \emptyset
         \]
-        Here $m=a/b$ is the mark of $\uptau$.
+        Here $m_{\uptau}=a$ or $b$ is the mark of $\uptau$.
         We define
         \[
-          \bfpp_{\uptau}:=\bfxx_{\uptau} := x_{1}\cdots x_{n} m  \text{ and }x_{\uptau}:=x_{n}
+          \bfpp_{\uptau}:=\bfxx_{\uptau} := x_{1}\cdots x_{n} m_{\uptau}.%  \text{ and }x_{\uptau}:=x_{n}
         \]
-        We call $\bfpp_{\uptau}=\bfxx_{\uptau}$ the ``peduncle'' part of $\uptau$ and
-        $x_{\uptau}$ the
-        ``basal disk'' of $\uptau$.
-        Note that $\bfxx_{\uptau}$ consists of entries marked by $s/r/d$.
+        We call $\bfpp_{\uptau}=\bfxx_{\uptau}$ the ``peduncle'' part of
+        $\uptau$.
 \end{enumerate}
 
 \subsubsection{The descent from M to B}
 The descent of a special shape diagram is simple, the descent of a non-special shape
 reduces to the corresponding special one:
 \begin{enumerate}[resume*=alg1]
-  \item Suppose $\abs{\taulf} \geq \abs{\taurf} $, i.e. $\uptau$ has special shape.
-   Keep $r,d$ unchanged, delete $\taurf$ and fill the remaining part with
-   ``$\bullet$'' and ``$s$'' by $\DDr(\uptau^{\bullet})$ using the dot-s switching algorithm.
-        If $\taulf$ ends with $c$, we set the mark of $\eDDo(\uptau)$ to be $a$.
-        Otherwise, we set the mark to be $b$.
-   \item Suppose $\abs{\taulf} < \abs{\taurf}$, i.e. $\uptau$ has non-special shape.
-        We define $\uptaup=\eDDo(\uptau):=\eDDo(\uptau^{s})$ where $\uptau^{s}$ is the
-        special diagram corresponding to $\uptau$ defined in \Cref{def:sp-nsp.M}.
+  \item Suppose $\abs{\taulf} \geq \abs{\taurf} $, i.e. $\uptau$ has special
+        shape. Keep $r,d$ unchanged, delete $\taulf$ and fill the remaining part
+        with ``$\bullet$'' and ``$s$'' by $\DDr(\uptau^{\bullet})$ using the
+        dot-s switching algorithm. The mark $m_{\uptaup}$ of
+        $\uptaup:=\eDDo(\uptau)$ is given by the following formula:
+        % \footnote{Note that $\taulf$ ends with $s$ or $c$ since
+        % $\abs{\taulf}>\abs{\taurf}$}
+        \[
+        m_{\uptaup}:= \begin{cases}
+          a & \text{if  $\taulf$ ends with $s$ or $\bullet$},\\
+          b & \text{if $\taulf$ ends with $c$}.
+        \end{cases}
+        \]
+
+  \item Suppose $\abs{\taulf} < \abs{\taurf}$, i.e. $\uptau$ has non-special
+        shape. We define
+        \[\eDDo(\uptau):=\eDDo(\uptau^{s})\]
+        where $\uptau^{s}$ is the special diagram corresponding to $\uptau$
+        defined in \Cref{def:sp-nsp.M}.
 \end{enumerate}
 
 \begin{lem}\label{lem:ds.BM}
-  Suppose $\cO = (C_{2k},C_{2k-1}, \cdots, C_{0})$ with $k\geq 1$ and $C_{2k}$ even.
+  Suppose $\cO = (C_{2k},C_{2k-1}, \cdots, C_{0})$ with $k\geq 1$ and $C_{2k}$
+  is odd.
   Let $\cOp := \eDD(\cO)=(C_{2k-1},\cdots, C_{0})$.
   Then
   \[
@@ -5250,21 +5199,29 @@ reduces to the corresponding special one:
 \end{lem}
 \begin{proof}
   The claim for $\drcs(\cO)$ is clear by the definition of descent.
-  The claim for $\drcns(\cO)$ reduces to that of $\drcs(\cO)$ using \Cref{def:sp-nsp.C}.
+  The claim for $\drcns(\cO)$ reduces to that of $\drcs(\cO)$ using \Cref{def:sp-nsp.M}.
 \end{proof}
 
-\begin{lem}\label{lem:gd.CD}
-  Suppose $\cO = (C_{2k},C_{2k-1}, \cdots, C_{0})$ with $k\geq 1$ and $C_{2k}$ odd.
+\begin{lem}\label{lem:gd.BM}
+  Suppose $\cO = (C_{2k},C_{2k-1}, \cdots, C_{0})$ with $k\geq 1$ and $C_{2k}$ even.
   Let $\cOp := \eDD(\cO)=(C_{2k-1}+1,\cdots, C_{0})$.
   Then the following map is a bijection
   \[
-      \drc(\cO) \xrightarrow{\hspace{2em}\eDDo\hspace{2em}} \set{\uptaup\in \drc(\cOp)| x_{\uptau}\neq s}. %\subsetneq \drc(\cOp).
+    \drc(\cO) \xrightarrow{\hspace{2em}\eDDo\hspace{2em}}
+    \Set{\uptaup\in \drc(\cOp)| \begin{minipage}{11em}
+        $m_{\uptaup}\neq b$ and\\
+         $\uptaup_{R,0}$ dose not ends with $s$.
+      \end{minipage}
+    }. %\subsetneq \drc(\cOp).
   \]
 \end{lem}
 \begin{proof}
   This is clear by the descent algorithm.
 \end{proof}
-\subsubsection{Descent from $D$ to $C$} Now we consider the general case of the
+
+
+\subsubsection{Descent from $B$ to $M$}
+Now we consider the general case of the
 descent from type $D$ to type $C$. So we assume $\cO$ has at least 3 columns.
 First note that the shape of $\uptau' = \eDD(\uptau)$ is the shape of $\uptau$ deleting the
 longest column on the left.
@@ -5273,7 +5230,7 @@ longest column on the left.
 % could be empty and $w_{0}$ is non-empty if $\uptau_{R}\neq \emptyset$.
 The definition splits in cases below. In all these cases we define
 \begin{equation}\label{eq:x.uptau}
- \bfpp_{\uptau}:= \bfxx_{\uptau} := x_{1}\cdots x_{n} \text{ and } x_{\uptau} := x_{n}
+ \bfpp_{\uptau}:= \bfxx_{\uptau} := x_{1}\cdots x_{n}m_{\uptau} \text{ and } x_{\uptau} := x_{n}
 \end{equation}
 which is marked by $s/r/c/d$.
 For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part consisting of $\bullet$ and $s$ by dot-s switching algorithm.
@@ -5325,6 +5282,144 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
     when $x_{0}=c$, we have $n=1$ and $(y_{1},y_{2})=(c,d)$; $x_{0}$ never
     equals to $d$.
 \end{enumerate}
+
+
+\subsubsection{}
+Now we assume $\cO$ is given by \eqref{eq:B.orb.ds}
+Let $\cOp=\eDD(\cO)$ and $\cOpp=\eDD(\cOp)$.
+The following lemma is the key property satisfied by our definition
+\begin{lem}\label{lem:sp-nsp.B}
+  Suppose $k\geq 1$ and
+  $\tau^{s}$ and $\tau^{ns}$ are two representations attached to $\cO$ as in
+  \Cref{def:sp-nsp.B.sp}.
+  Then
+  \begin{enumS}
+    \item \label{lem:sp-nsp.D.1} For every $\uptau\in \drc(\tau^{s})\sqcup \drc(\tau^{ns})$, the shape
+    of $\eDD^{2}(\uptau)$ is
+    \[
+      \taupp = (\tau_{2k-2},\cdots, \tau_{2})\times  (c_{2k-1},\tau_{2k-3},\tau_{1})
+    \]
+    \item \label{lem:sp-nsp.D.2} Let $\cO_{1}= (2(c_{2k+1}-c_{2k}),)\in \Nil(D)$ be the trivial orbit
+    of $\rO(2(c_{2k-1}-c_{2k}),\bC)$.
+    We define $\delta\colon \drc(\cO)\rightarrow \drc(\cOpp)$ by $\delta(\uptau) = (\eDD^{2}(\uptau),\bfxx_{\uptau})$.
+    The following maps are bijections
+    \[
+      \begin{tikzcd}[row sep=0em]
+        \drc(\tau^{s})\ar[r,"\delta"] & \drc(\taupp)\times \drc(\cO_{1}) &\ar[l,"\delta"'] \drc(\tau^{ns})\\
+        \uptau^{s}\ar[r,maps to] & (\eDD^{2}(\uptau^{s}), \bfxx_{\uptau^{s}})&\\
+        & (\eDD^{2}(\uptau^{ns}), \bfxx_{\uptau^{ns}})& \uptau^{ns}\ar[l,maps to]\\
+      \end{tikzcd}
+    \]
+    In particular, we obtain an one-one correspondence
+    $\uptau^{s}\leftrightarrow \uptau^{ns}$ such that $\delta(\uptau^{s})=\delta(\uptau^{ns})$.
+    \item\label{lem:sp-nsp.D.3}
+    Suppose $\uptau^{s}$ and $\uptau^{ns}$ correspond as the above such that
+    $\delta(\uptau^{s})=\delta(\uptau^{ns})=(\uptaupp,\bfxx)$. Then
+    \begin{equation} \label{eq:sp-nsp-sig}
+      \ssign(\uptau^{s})=\ssign(\uptau^{ns})=(C_{2k},C_{2k})+\ssign(\uptaupp)+\ssign(\bfxx).
+    \end{equation}
+  \end{enumS}
+\end{lem}
+\begin{proof}
+  By our assumption, we have $c_{2k+1}\geq c_{2k}>c_{2k-1}$ and
+  \[
+    \tau^{s} = (c_{2k},\tau_{2k-2},\cdots, \tau_{2})\times (c_{2k+1}, c_{2k-1}).
+  \]
+  The the behavior of $\uptau^{s}$ under the descent map $\eDD$ is illostrated
+  as the following:
+  \[
+    \uptau^{s}: \hspace{1em}
+    \tytb{
+      {*(srcol)\cdots}\cdots\cdots,
+      {*(srcol)\ast}{\ast}{\cdots},
+      {*(srcol)\bullet},
+      {*(srcol)\vdots},{*(srcol)\bullet},{x_0},\none,\none,\none}
+    \times
+    \tytb{{*(srcol)\cdots}\cdots\cdots,
+      {*(srcol)\ast}{\ast}{\cdots},{*(srcol)\bullet},{*(srcol)\vdots},{*(srcol)\bullet},{y_{1}},\vdots,{y_{n}},m}
+    \mapsto
+    \uptau'^{s}: \hspace{1em}
+    \tytb{{*(srcol)\cdots}\cdots\cdots,{*(srcol)\ast}{\ast}{\cdots},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},{x'_{0}},
+      \none,\none,\none}
+    \times \tytb{\none\cdots\cdots,\none{\ast}{\cdots},\none,\none,\none,\none,\none,\none,\none}
+    \mapsto
+    \uptaupp:
+    \tytb{\none\cdots\cdots,\none{\ast}{\cdots},\none,\none,\none,\none,\none,\none,\none}
+    \times \tytb{\none\cdots\cdots,{\none}{\ast}{\cdots},\none{m'},\none,\none,\none,\none,\none,\none}
+  \]
+  Note that $\uptau^{s}$ is obtained from $\taupp$ by attaching the grey part
+  consisting totally $2c_{2k}$ dots and $\bfxx$. Now the claims for $\uptau^{s}$ is
+  clear.
+
+
+  Now consider the descent of a non-special diagram $\uptau^{ns}$:
+  \[\tiny
+    \uptau^{ns}:\ytb{{*(srcol)\cdots}\cdots\cdots\cdots,{*(srcol)\ast}{y_{0}}{\ast}{\cdots},{*(srcol)s}{*(srcol)r}{y_{2}}\cdots,
+      {*(srcol)\vdots}{*(srcol)\vdots},{*(srcol)s}{*(srcol)r},{x_{0}}{y_{1}},{x_{1}}{y_{3}},{\vdots},{x_{n}} }
+    \times\ytb{{*(srcol)\cdots}\cdots\cdots,{*(srcol)u_{0}}{\cdots},\ ,\ ,\ ,\ ,\ ,\ ,\ }
+    \mapsto
+    \uptau'^{ns}:\ytb{\cdots\cdots\cdots,{y'_{0}}{\ast}{\cdots},{*(srcol)r}{y'_{2}}\cdots,
+      {*(srcol)\vdots},{*(srcol)r},{y'_{1}},{y'_{3}},\ ,\ }
+    \times\ytb{{*(srcol)\cdots}\cdots\cdots,{*(srcol)w_{0}}{\cdots},\ ,\ ,\ ,\ ,\ ,\ ,\ }
+    \mapsto
+    \uptaupp:\hspace{1em}
+            \ytb{{\cdots}{\cdots}{\cdots},{x'_{0}}{\ast}{\cdots},{x'_{1}}{x'_{2}}\cdots,\none,\none,\none,\none,\none,\none}
+            \times
+            \ytb{{\cdots}{\cdots},{\cdots}\none,\none,\none,\none,\none,\none,\none,\none}
+            % \ytb{\emptyset,\none,\none,\none,\none,\none}
+  \]
+  The bijection follows from the observation that 1. $\uptau^{ns}$ is obtained by
+  attaching the grey part $x_{0},\cdots,x_{n}$ and $y_{0},y_{1},y_{2},y_{3}$
+  to the $\ast/\cdots$ part of $\uptaupp$;
+  2. the value of $(y_{0},y_{1},y_{2},y_{3})$ is completely determined by
+  $(x'_{0},x'_{1},x'_{2})$ and $\bfxx=x_{1}\cdots x_{n}$.
+
+  We leave it to the reader for checking case by case that the grey part of $\uptau^{ns}$ has signature
+  $(C_{2k}-2,C_{2k}-2)$ and
+  \[\ssign(x_{0}y_{0}y_{1}y_{2}y_{3})-\ssign(x'_{0}x'_{1}x'_{2})=(2,2).
+  \]
+ Therefore \eqref{eq:sp-nsp-sig} follows.
+
+ \trivial[]{
+   First assume that $C_{2k}=2$. Note that we can not/(or now?) assume $k=1$, consider the
+   orbit $\cOpp=(2,1,1,1,1)$.
+   \begin{enumPF}
+     \item
+     $x'_{1}=s$, now $y'_{0} = \emptyset/\bullet$ when $x'_{0}=\emptyset/s$
+     \begin{enumPF}
+       \item Suppose $x'_{2}\neq r$. Then $(y'_{2},y'_{1},y'_{3}) = (x'_{2},r,d)$,
+       $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (s,x'_{0}, x'_{2},c,d)$.
+       Therefore, the sign difference is $\ssign(s,c,d)-\ssign(s)=(2,2)$.
+       \item Suppose $x'_{2} = r$. Then $(y'_{2},y'_{1},y'_{3}) = (c,r,d)$.
+       $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (s,x'_{0},c,r,d)$.
+       Therefore, the sign difference is $\ssign(s,c,r,d)-\ssign(s,r)=(2,2)$.
+     \end{enumPF}
+     \item $x'_{1}\neq s$.
+     \begin{enumPF}
+       \item Suppose $x'_{0}\neq c$.
+       Then $x'_{0}=\emptyset/s/r$, $x'_{1}=r/c/d$, $(y'_{0}, y'_{2},y'_{1},y'_{3}) = (\emptyset/\bullet/r,x'_{2},r,x'_{1})$.
+       \begin{enumPF}
+         \item $x'_{1}=r$. Then
+         $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (r,x'_{0},x'_{2},c,d)$.
+         Therefore, the sign difference is $\ssign(r,c,d)-\ssign(r)=(2,2)$.
+         \item $x'_{1}=c$. Then  $x_{1}=d$.
+         $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (c,x'_{0},x'_{2},c,d)$.
+         Therefore, the sign difference is $\ssign(c,c,d)-\ssign(c)=(2,2)$.
+         \item $x'_{1}=d$. Then
+         $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (s,x'_{0},y'_{2},y'_{1},y'_{3})=(s,x'_{0},x'_{2},r,d)$.
+         Therefore, the sign difference is $\ssign(s,r,d)-\ssign(d)=(2,2)$.
+       \end{enumPF}
+       $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (s,r,x'_{2},c,d)$.
+       Therefore, the sign difference is $\ssign(s,r,x'_{2},c,d)-\ssign(c,d,x'_{2})=(2,2)$.
+       \item Suppose $x'_{0} = c$.
+       Then $x'_{1}=d$, $(y'_{0}, y'_{2},y'_{1},y'_{3}) = (r,x'_{2},c,d)$.
+       $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (s,r,x'_{2},c,d)$.
+       Therefore, the sign difference is $\ssign(s,r,x'_{2},c,d)-\ssign(c,d,x'_{2})=(2,2)$.
+     \end{enumPF}
+   \end{enumPF}
+   }
+ \end{proof}
+
 
 
 \section{An example}\label{sec:C.reg}
