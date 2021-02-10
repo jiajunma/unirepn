@@ -5224,31 +5224,21 @@ reduces to the corresponding special one:
 
 
 \subsubsection{Descent from $B$ to $M$}
-Now we consider the general case of the
-descent from type $D$ to type $C$. So we assume $\cO$ has at least 3 columns.
+Now we define the general case of the descent from type $B$ to type $M$.
+We assume $\cO$ has at least 3 columns.
 First note that the shape of $\uptau' = \eDD(\uptau)$ is the shape of $\uptau$ deleting the
-longest column on the left.
+most left column on the right diagram.
 
 % We assume $\uptau$ and $\uptau'$ has the following shape where $(y_{1},y_{2})$
 % could be empty and $w_{0}$ is non-empty if $\uptau_{R}\neq \emptyset$.
 The definition splits in cases below. In all these cases we define
 \begin{equation}\label{eq:x.uptau}
- \bfpp_{\uptau}:= \bfxx_{\uptau} := x_{1}\cdots x_{n}m_{\uptau} \text{ and } x_{\uptau} := x_{n}
+ % \bfpp_{\uptau}:=
+ \bfxx_{\uptau} := x_{1}\cdots x_{n}m_{\uptau} \text{ and } x_{\uptau} := x_{n}
 \end{equation}
 which is marked by $s/r/c/d$.
 For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part consisting of $\bullet$ and $s$ by dot-s switching algorithm.
 \begin{enumerate}[resume*=alg1]
-  \item When $C_{2k}=C_{2k-1}$ is odd, we could assume $\uptau$ and $\uptaup$ hase
-        the following forms with $n = (C_{2k+1}-C_{2k}+1)/2$.
-      \[
-        \uptau: \hspace{1em} \tytb{\cdots\cdots\cdots,{\ast}{\ast}{\cdots},{x_{1}}{y_{1}}\cdots,{\vdots},{x_{n}}}
-        \times \tytb{\cdots\cdots\cdots,{w_{0}}{\ast}{\cdots},\none,\none,\none}
-        \mapsto
-        \uptaup:  \tytb{\none\cdots\cdots,\none{\ast}{\cdots},\none{z_{1}}\cdots,\none,\none}
-        \times \tytb{\cdots\cdots\cdots,{w_{0}}{\ast}{\cdots},\none,\none,\none}
-      \]
-        Suppose $y_{1} = c$ and $(x_{1}, \cdots, x_{n}) = (r, \cdots, r)$ or
-        $(r, \cdots, r,d)$, then let $z_{1}= r$; otherwise, set $z_{1}:= y_{1}$.
   \item When $C_{2k}$ is odd and $\uptau$ has special shape, the descent is given by the following diagram
       \[
         \uptau: \hspace{1em}
@@ -5268,6 +5258,7 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
        \uptaup: \tytb{\cdots\cdots\cdots,{\ast}{\cdots}{\cdots},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},{y'_{0}},\none,\none,\none}
         \times \tytb{\none\cdots\cdots,\none{\ast}{\cdots},\none,\none,\none,\none,\none,\none,\none}
       \]
+      Here the grey columns has length $(C_{2k}-C_{2k-1})/2$ and $n = (C_{2k+1}-C_{2k})/2$.
       The  ``$\ast/\cdots$'' part of $\uptaup$ is given by keeping the corresponding
       entries marked by $r/d/c$ in
        $\uptau$ unchange and filling $s/\bullet$ accordingly in the rest of the
@@ -5297,9 +5288,10 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
         {*(srcol)s}{*(srcol)r},
         {x_{1}}{x_{0}},{\vdots},{x_{n}},{m_{\uptau}}}
         \mapsto
-       \uptaup: \tytb{\cdots\cdots\cdots,{\cdots}{\cdots}{\cdots},\none,\none,\none,\none,\none,\none,\none}
-        \times \tytb{\none\cdots\cdots,\none{\cdots}{\cdots},\none{*(srcol)r},\none{*(srcol)\vdots},\none{*(srcol)r},\none{x'_{0}},\none,\none,\none}
+       \uptaup: \tytb{\cdots\cdots\cdots,{\ast}{\cdots}{\cdots},\none,\none,\none,\none,\none,\none,\none}
+        \times \tytb{\none\cdots\cdots,\none{\ast}{\cdots},\none{*(srcol)r},\none{*(srcol)\vdots},\none{*(srcol)r},\none{x'_{0}},\none,\none,\none}
       \]
+      Here the grey columns has length $(C_{2k}-C_{2k-1})/2$ and $n = (C_{2k+1}-C_{2k})/2$.
       The  ``$\ast/\cdots$'' part of $\uptaup$ is given by keeping the corresponding
       entries marked by $r/d/c$ in
        $\uptau$ unchange and filling $s/\bullet$ accordingly in the rest of the
@@ -5312,6 +5304,17 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
          \end{cases}
        \]
        We define $\tbfxx_{\uptau}:=\bfxx_{\uptau}$.
+  \item When $C_{2k}=C_{2k-1}$ is even, we could assume $\uptau$ and $\uptaup$ hase
+        the following forms with $n = (C_{2k+1}-C_{2k}+1)/2$.
+      \[
+        \uptau: \hspace{1em} \tytb{\cdots\cdots\cdots,{\ast}{\ast}{\cdots},{x_{1}}{y_{1}}\cdots,{\vdots},{x_{n}}}
+        \times \tytb{\cdots\cdots\cdots,{w_{0}}{\ast}{\cdots},\none,\none,\none}
+        \mapsto
+        \uptaup:  \tytb{\none\cdots\cdots,\none{\ast}{\cdots},\none{z_{1}}\cdots,\none,\none}
+        \times \tytb{\cdots\cdots\cdots,{w_{0}}{\ast}{\cdots},\none,\none,\none}
+      \]
+        Suppose $y_{1} = c$ and $(x_{1}, \cdots, x_{n}) = (r, \cdots, r)$ or
+        $(r, \cdots, r,d)$, then let $z_{1}= r$; otherwise, set $z_{1}:= y_{1}$.
 \end{enumerate}
 
 
@@ -5337,8 +5340,8 @@ The following lemma is the key property satisfied by our definition
     \[
       \begin{tikzcd}[row sep=0em]
         \drc(\tau^{s})\ar[r,"\delta"] & \drc(\taupp)\times \drc(\cO_{1}) &\ar[l,"\delta"'] \drc(\tau^{ns})\\
-        \uptau^{s}\ar[r,maps to] & (\eDD^{2}(\uptau^{s}), \bfxx_{\uptau^{s}})&\\
-        & (\eDD^{2}(\uptau^{ns}), \bfxx_{\uptau^{ns}})& \uptau^{ns}\ar[l,maps to]\\
+        \uptau^{s}\ar[r,maps to] & (\eDD^{2}(\uptau^{s}), \tbfxx_{\uptau^{s}})&\\
+        & (\eDD^{2}(\uptau^{ns}), \tbfxx_{\uptau^{ns}})& \uptau^{ns}\ar[l,maps to]\\
       \end{tikzcd}
     \]
     In particular, we obtain an one-one correspondence
@@ -5356,6 +5359,7 @@ The following lemma is the key property satisfied by our definition
         \ssign(\tbfxx) - (0,1) & \text{otherwise.}\\
       \end{cases}
     \]
+    Note that $\tsign(\tbfxx)\in \bN\times \bN$.
   \end{enumS}
 \end{lem}
 \begin{proof}
@@ -5374,7 +5378,7 @@ The following lemma is the key property satisfied by our definition
       {*(srcol)\vdots},{*(srcol)\bullet},{x_0},\none,\none,\none}
     \times
     \tytb{{*(srcol)\cdots}\cdots\cdots,
-      {*(srcol)\ast}{\ast}{\cdots},{*(srcol)\bullet},{*(srcol)\vdots},{*(srcol)\bullet},{x_{1}},\vdots,{x_{n}},m}
+      {*(srcol)\ast}{\ast}{\cdots},{*(srcol)\bullet},{*(srcol)\vdots},{*(srcol)\bullet},{x_{1}},\vdots,{x_{n}},{m_{\uptau}}}
     \mapsto
     \uptau'^{s}: \hspace{1em}
     \tytb{{*(srcol)\cdots}\cdots\cdots,{*(srcol)\ast}{\ast}{\cdots},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},{x'_{0}},
@@ -5383,79 +5387,95 @@ The following lemma is the key property satisfied by our definition
     \mapsto
     \uptaupp:
     \tytb{\none\cdots\cdots,\none{\ast}{\cdots},\none,\none,\none,\none,\none,\none,\none}
-    \times \tytb{\none\cdots\cdots,{\none}{\ast}{\cdots},\none{m'},\none,\none,\none,\none,\none,\none}
+    \times \tytb{\none\cdots\cdots,{\none}{\ast}{\cdots},\none{\phantom{m}\mathclap{m_{\uptaupp}}},\none,\none,\none,\none,\none,\none}
   \]
-  Note that $\uptau^{s}$ is obtained from $\taupp$ by attaching the grey part
-  consisting totally $2c_{2k}$ dots and $\bfxx$. Now the claims for $\uptau^{s}$ is
-  clear.
+  The grey part consists of totally $2(c_{2k}-1)=C_{2k}-1$ dots.
+  Hence the total signature of the gray part is $(C_{2k}-1,C_{2k}-1)$.
+  Note that $\uptau^{s}$ is obtained from the ``$\ast\cdots$'' part of $\taupp$ by attaching the grey part
+  and $x_{0},\cdots, x_{n},m_{\uptau}$.
 
+  The descent of a non-special diagram $\uptau^{ns}$:
+      \[
+        \uptau^{ns}: \hspace{1em}
+        \tytb{
+        {*(srcol)\cdots}\cdots\cdots,
+        {*(srcol)\ast}{\ast}{\cdots},
+        \none,\none,\none,\none,\none,\none,\none}
+      \times
+      \tytb{{*(srcol)\cdots}\cdots\cdots,
+        {*(srcol)\ast}{\ast}{\cdots},
+        {*(srcol)s}{*(srcol)r},
+        {*(srcol)\vdots}{*(srcol)\vdots},
+        {*(srcol)s}{*(srcol)r},
+        {x_{1}}{x_{0}},{\vdots},{x_{n}},{m_{\uptau}}}
+        \mapsto
+       {\uptaup}^{ns}: \tytb{{*(srcol)\cdots}\cdots\cdots,{*(srcol)\ast}{\ast}{\cdots},\none,\none,\none,\none,\none,\none,\none}
+       \times
+       \tytb{\none\cdots\cdots,\none{\ast}{\cdots},
+         \none{*(srcol)r},
+         \none{*(srcol)\vdots},
+         \none{*(srcol)r},
+         \none{x'_{0}},\none,\none,\none}
+       \mapsto
+       \uptaupp:
+       \tytb{\none\cdots\cdots,\none{\ast}{\cdots},\none,\none,\none,\none,\none,\none,\none}
+       \times \tytb{\none\cdots\cdots,{\none}{\ast}{\cdots},\none{\phantom{m}\mathclap{m_{\uptaupp}}},\none,\none,\none,\none,\none,\none}
+     \]
+     Here the gray parts in $\uptau$ consists of $C_{2k}-1$ marks of $\bullet$, $s$, or
+     $r$ and $s$ and $r$ occur with the same multiplicity. Hence the total
+     signature of the gray part is $(C_{2k}-1,C_{2k}-1)$.
 
-  Now consider the descent of a non-special diagram $\uptau^{ns}$:
-  \[\tiny
-    \uptau^{ns}:\ytb{{*(srcol)\cdots}\cdots\cdots\cdots,{*(srcol)\ast}{y_{0}}{\ast}{\cdots},{*(srcol)s}{*(srcol)r}{y_{2}}\cdots,
-      {*(srcol)\vdots}{*(srcol)\vdots},{*(srcol)s}{*(srcol)r},{x_{0}}{y_{1}},{x_{1}}{y_{3}},{\vdots},{x_{n}} }
-    \times\ytb{{*(srcol)\cdots}\cdots\cdots,{*(srcol)u_{0}}{\cdots},\ ,\ ,\ ,\ ,\ ,\ ,\ }
-    \mapsto
-    \uptau'^{ns}:\ytb{\cdots\cdots\cdots,{y'_{0}}{\ast}{\cdots},{*(srcol)r}{y'_{2}}\cdots,
-      {*(srcol)\vdots},{*(srcol)r},{y'_{1}},{y'_{3}},\ ,\ }
-    \times\ytb{{*(srcol)\cdots}\cdots\cdots,{*(srcol)w_{0}}{\cdots},\ ,\ ,\ ,\ ,\ ,\ ,\ }
-    \mapsto
-    \uptaupp:\hspace{1em}
-            \ytb{{\cdots}{\cdots}{\cdots},{x'_{0}}{\ast}{\cdots},{x'_{1}}{x'_{2}}\cdots,\none,\none,\none,\none,\none,\none}
-            \times
-            \ytb{{\cdots}{\cdots},{\cdots}\none,\none,\none,\none,\none,\none,\none,\none}
-            % \ytb{\emptyset,\none,\none,\none,\none,\none}
-  \]
-  The bijection follows from the observation that 1. $\uptau^{ns}$ is obtained by
-  attaching the grey part $x_{0},\cdots,x_{n}$ and $y_{0},y_{1},y_{2},y_{3}$
-  to the $\ast/\cdots$ part of $\uptaupp$;
-  2. the value of $(y_{0},y_{1},y_{2},y_{3})$ is completely determined by
-  $(x'_{0},x'_{1},x'_{2})$ and $\bfxx=x_{1}\cdots x_{n}$.
+     To prove the lemma, it suffice to verify the following claims which we leave to the reader:
+     \begin{itemize}
+       \item In both the special shape and non-special shape cases, the
+       following map is injective:
+       \[
+       x_{0}x_{1}\cdots x_{n}m_{\uptau^{s/ns}}\mapsto (\tbfxx_{\uptau^{s/ns}},m_{\uptaupp}).
+       \]
+        Moreover, the images of the two cases are the same.
+       \item The following equation of signatures holds
+       \[
+         \ssign( x_{0}x_{1}\cdots x_{n}m_{\uptau} ) - \ssign(m_{\uptaupp})  = (1,1)+ \tsign(\tbfxx_{\uptau}).
+       \]
+     \end{itemize}
 
-  We leave it to the reader for checking case by case that the grey part of $\uptau^{ns}$ has signature
-  $(C_{2k}-2,C_{2k}-2)$ and
-  \[\ssign(x_{0}y_{0}y_{1}y_{2}y_{3})-\ssign(x'_{0}x'_{1}x'_{2})=(2,2).
-  \]
- Therefore \eqref{eq:sp-nsp-sig} follows.
-
- \trivial[]{
-   First assume that $C_{2k}=2$. Note that we can not/(or now?) assume $k=1$, consider the
-   orbit $\cOpp=(2,1,1,1,1)$.
-   \begin{enumPF}
-     \item
-     $x'_{1}=s$, now $y'_{0} = \emptyset/\bullet$ when $x'_{0}=\emptyset/s$
-     \begin{enumPF}
-       \item Suppose $x'_{2}\neq r$. Then $(y'_{2},y'_{1},y'_{3}) = (x'_{2},r,d)$,
-       $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (s,x'_{0}, x'_{2},c,d)$.
-       Therefore, the sign difference is $\ssign(s,c,d)-\ssign(s)=(2,2)$.
-       \item Suppose $x'_{2} = r$. Then $(y'_{2},y'_{1},y'_{3}) = (c,r,d)$.
-       $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (s,x'_{0},c,r,d)$.
-       Therefore, the sign difference is $\ssign(s,c,r,d)-\ssign(s,r)=(2,2)$.
-     \end{enumPF}
-     \item $x'_{1}\neq s$.
-     \begin{enumPF}
-       \item Suppose $x'_{0}\neq c$.
-       Then $x'_{0}=\emptyset/s/r$, $x'_{1}=r/c/d$, $(y'_{0}, y'_{2},y'_{1},y'_{3}) = (\emptyset/\bullet/r,x'_{2},r,x'_{1})$.
+     \trivial[]{ First consider the special shape diagram $\uptau=\uptau^{s}$.
        \begin{enumPF}
-         \item $x'_{1}=r$. Then
-         $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (r,x'_{0},x'_{2},c,d)$.
-         Therefore, the sign difference is $\ssign(r,c,d)-\ssign(r)=(2,2)$.
-         \item $x'_{1}=c$. Then  $x_{1}=d$.
-         $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (c,x'_{0},x'_{2},c,d)$.
-         Therefore, the sign difference is $\ssign(c,c,d)-\ssign(c)=(2,2)$.
-         \item $x'_{1}=d$. Then
-         $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (s,x'_{0},y'_{2},y'_{1},y'_{3})=(s,x'_{0},x'_{2},r,d)$.
-         Therefore, the sign difference is $\ssign(s,r,d)-\ssign(d)=(2,2)$.
+         \item Suppose $m_{\uptaupp}=a$:
+         \begin{enumPF}
+           \item Suppose $x_{0}x_{1}\cdots x_{n}=cr\cdots r$. Then
+           $\ssign(x_{0}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp})
+           = (1,1)-(1,0)+\ssign(x_{1}\cdots x_{n}m_{\uptau}) = (1,1)+\tsign(\tbfxx_{\uptau})$
+           \item Otherwise $x_{0}x_{1}=\bullet\bullet$. Then
+           $\ssign(x_{0}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp})
+           = (1,1)-(1,0)+(1,1)+\ssign(x_{2}\cdots x_{n}m_{\uptau})
+           = (1,1)+\ssign(sx_{2}\cdots x_{n}m_{\uptau}) - (0,1) = (1,1)+\tsign(\tbfxx_{\uptau})$
+         \end{enumPF}
+         \item Suppose $m_{\uptaupp}= b$. Then $x_{0}=c$ and $x_{1}\cdots x_{n}$
+         can be anything except $r\cdots r$.
+         $\ssign(x_{0}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp})
+         = (1,1)-(0,1)+\ssign(x_{1}x_{2}\cdots x_{n}m_{\uptau}) = (1,1)+\tsign(\tbfxx_{\uptau})$
        \end{enumPF}
-       $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (s,r,x'_{2},c,d)$.
-       Therefore, the sign difference is $\ssign(s,r,x'_{2},c,d)-\ssign(c,d,x'_{2})=(2,2)$.
-       \item Suppose $x'_{0} = c$.
-       Then $x'_{1}=d$, $(y'_{0}, y'_{2},y'_{1},y'_{3}) = (r,x'_{2},c,d)$.
-       $(x_{0},y_{0},y_{2},y_{1},y_{3}) = (s,r,x'_{2},c,d)$.
-       Therefore, the sign difference is $\ssign(s,r,x'_{2},c,d)-\ssign(c,d,x'_{2})=(2,2)$.
-     \end{enumPF}
-   \end{enumPF}
-   }
+       Now consider the non-special shape diagram $\uptau=\uptau^{ns}$.
+       \begin{enumPF}
+         \item Suppose $m_{\uptaupp}=a$:
+         \begin{enumPF}
+           \item Suppose $x_{0}x_{1}\cdots x_{n}=dr\cdots r$. Then
+           \[\ssign(x_{0}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp}) = (1,1)-(1,0)+\ssign(x_{1}\cdots x_{n}m_{\uptau})
+           = (1,1)+\tsign(\tbfxx_{\uptau}).\]
+           \item Otherwise $x_{0}x_{1}=rs$. Then
+           $\ssign(x_{0}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp})
+           = (2,2)-(1,0)+\ssign(x_{2}\cdots x_{n}m_{\uptau})
+           = (1,1)+\ssign(sx_{2}\cdots x_{n}m_{\uptau}) - (0,1) = (1,1)+\tsign(\tbfxx_{\uptau})$
+         \end{enumPF}
+         \item Suppose $m_{\uptaupp}= b$. Then $x_{0}=d$ and $x_{1}\cdots x_{n}$
+         can be anything except $r\cdots r$.
+         $\ssign(x_{0}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp})
+         = (1,1)-(0,1)+\ssign(x_{1}x_{2}\cdots x_{n}m_{\uptau}) = (1,1)+\tsign(\tbfxx_{\uptau})$
+       \end{enumPF}
+       The macthing between $\uptau^{s}$ and $\uptau^{ns}$ is also clear by the
+       above listing of cases.
+     }
  \end{proof}
 
 
