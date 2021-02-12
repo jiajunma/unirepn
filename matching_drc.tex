@@ -5117,7 +5117,7 @@ Now we define the notion of special and non-special shape of type B.
 
 \subsubsection{The defintion of $\upepsilon$.} \label{sec:upepsilon}
 \begin{enumerate}[label=(\arabic*).,series=alg1]
-  \item When $\uptau\in \drc(D)$, $\upepsilon$ is determined by the ``basal
+  \item When $\uptau\in \drc(B)$, $\upepsilon$ is determined by the ``basal
   disk'' of $\uptau$ (see \eqref{eq:x.uptau} for the definition of $x_{\uptau}$):
   \[
     \upepsilon_{\uptau}:=
@@ -5126,7 +5126,7 @@ Now we define the notion of special and non-special shape of type B.
       1, & \text{otherwise.}
     \end{cases}
   \]
-  \item When $\uptau\in \drc(C)$, the  $\upepsilon$  is determined by
+  \item When $\uptau\in \drc(M)$, the  $\upepsilon$  is determined by
   the lengths of $\taulf$ and $\taurf$:
   \[
     \upepsilon_{\uptau} :=
@@ -5266,10 +5266,20 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
        The entry $y'_{0}$ of $\uptaup$ is given by the following formula:
        \footnote{When $x_{1}\cdots x_{n}=r\cdots r$, we have $y_{0}=c$.
          Otherwise $x_{1}=s$ or $x_{1}\cdots x_{n} = r\cdots r d$.}
+       % \[
+       %   y'_{0} := \begin{cases}
+       %     s & \text{if $x_{1}=\bullet$ or
+       %       $x_{1}\cdots x_{n} m_{\uptau}= r\cdots ra$ or $r\cdots rda$}\\
+       %     c & \text{if $x_{1}=s$ or
+       %       $x_{1}\cdots x_{n} m_{\uptau}= r\cdots rb$ or $r\cdots rdb$}.
+       %   \end{cases}
+       % \]
        \[
          y'_{0} := \begin{cases}
-           s & \text{if $x_{1}=\bullet$ or $x_{1}\cdots x_{n}= r\cdots r$ }\\
-           c & \text{otherwise.}
+           s & \text{if $x_{1}=\bullet$ or
+             $(x_{1},m_{\uptau})=(r/d, a)$}\\
+           c & \text{if $x_{1}=s$ or
+             $(x_{1},m_{\uptau})=(r/d, b)$}.
          \end{cases}
        \]
        We define $\tbfxx_{\uptau}$ be the diagram by replacing $\bullet$ to $s$
@@ -5301,10 +5311,17 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
        \footnote{When $x_{1}\cdots x_{n}=r\cdots r$, we have $x_{0}=d$.}
        \[
          x'_{0} := \begin{cases}
-           r & \text{if $x_{1}\cdots x_{n}= r\cdots r$}\\
-           x_{0} & \text{otherwise}
+           r & \text{if $(x_{1},m_{\uptau})=(r/d, a)$}\\
+           d & \text{if $(x_{1},m_{\uptau})=(r/d, b)$}\\
+           x_{0} & \text{otherwise ($x_{1}=s$)}.
          \end{cases}
        \]
+       % \[
+       %   x'_{0} := \begin{cases}
+       %     r & \text{if $x_{1}\cdots x_{n}= r\cdots r$}\\
+       %     x_{0} & \text{otherwise}
+       %   \end{cases}
+       % \]
        We define $\tbfxx_{\uptau}:=\bfxx_{\uptau}$.
   \item When $C_{2k}=C_{2k-1}$ is even, we could assume $\uptau$ and $\uptaup$ hase
         the following forms with $n = (C_{2k+1}-C_{2k}+1)/2$.
@@ -5367,7 +5384,7 @@ The following lemma is the key property satisfied by our definition
     with
     \[
       \tsign(\tbfxx) = \begin{cases}
-        \ssign(\tbfxx) - (1,0) & \text{if $x_{1}\cdots x_{n}=r\cdots r$}\\
+        \ssign(x_{1}\cdots x_{n})  & \text{if $x_{1}=r/d$}\\
         \ssign(\tbfxx) - (0,1) & \text{otherwise.}\\
       \end{cases}
     \]
@@ -5506,8 +5523,8 @@ $c_{2k+1}\geq c_{2k}=c_{2k-1}$.
     \none,\none,\none,\none}
   \times
   \tytb{\cdots\cdots\cdots,
-    {x_{0}}{z}{\cdots},
-    {x_{1}},{\vdots},{x_{n}},{m_{\uptau}}}
+    {x_{1}}{z}{\cdots},
+    {x_{2}},{\vdots},{x_{n}},{m_{\uptau}}}
   \mapsto
   \uptaup: \tytb{\cdots\cdots\cdots,{y'_{0}}{\cdots}{\cdots},\none,\none,\none,\none}
   \times \tytb{\none\cdots\cdots,\none{z'}{\cdots},\none,\none,\none,\none}
