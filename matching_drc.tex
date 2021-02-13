@@ -2451,7 +2451,7 @@ The following lemma is the key property satisfied by our definition
     \]
     \item \label{lem:sp-nsp.D.2} Let $\cO_{1}= (2(c_{2k+1}-c_{2k}),)\in \Nil(D)$ be the trivial orbit
     of $\rO(2(c_{2k-1}-c_{2k}),\bC)$.
-    We define $\delta\colon \drc(\cO)\rightarrow \drc(\cOpp)$ by $\delta(\uptau) = (\eDD^{2}(\uptau),\bfxx_{\uptau})$.
+    We define $\delta\colon \drc(\cO)\rightarrow \drc(\cOpp)\times \drc(\cO_{1})$ by $\delta(\uptau) = (\eDD^{2}(\uptau),\bfxx_{\uptau})$.
     The following maps are bijections
     \[
       \begin{tikzcd}[row sep=0em]
@@ -4019,7 +4019,8 @@ $z_{1}$ is exactly the $x_{\uptaupp}$.
   \end{equation}
   Then $\uptau\mapsto (\uptaupp,\bfuu_{\uptau})$ is injective and
   \[
-  \ssign(\uptau) =\ssign(\uptaupp) + (n_1,n_{1})+\ssign(\bfuu_{\uptau}) \text{ where }2n_{1}+1 = C_{2k}.
+  %\ssign(\uptau) =\ssign(\uptaupp) + 2(n_1,n_{1})+\ssign(\bfuu_{\uptau}) \text{ where }2n_{1}+1 = C_{2k}.
+  \ssign(\uptau) =\ssign(\uptaupp) + (C_{2k}-1,C_{2k}-1)+\ssign(\bfuu_{\uptau}) \text{ where }2n_{1}+1 = C_{2k}.
   \]
   Now the lemma follows from
   $\bfuu_{\uptau}\mapsto (\ssign(\bfuu_{\uptau}), \upepsilon)$ is injective by \Cref{c:init.CD}.
@@ -5116,7 +5117,7 @@ Now we define the notion of special and non-special shape of type B.
 
 
 \subsubsection{The defintion of $\upepsilon$.} \label{sec:upepsilon}
-\begin{enumerate}[label=(\arabic*).,series=alg1]
+\begin{enumerate}[label=(\arabic*).,series=alg2]
   \item When $\uptau\in \drc(B)$, $\upepsilon$ is determined by the ``basal
   disk'' of $\uptau$ (see \eqref{eq:x.uptau} for the definition of $x_{\uptau}$):
   \[
@@ -5140,7 +5141,7 @@ Now we define the notion of special and non-special shape of type B.
 
 \subsubsection{Initial cases}
 
-\begin{enumerate}[resume*=alg1]
+\begin{enumerate}[resume*=alg2]
   \item Suppose $\cO = (2c_{1}+1)$ has only one column. Then
         $\cOp_{0}:=\eDD(\cO)$ is the trivial orbit of $\Mp(0,\bR)$. $\drc(\cO)$
         consists of diagrams of shape
@@ -5164,7 +5165,7 @@ Now we define the notion of special and non-special shape of type B.
 \subsubsection{The descent from M to B}
 The descent of a special shape diagram is simple, the descent of a non-special shape
 reduces to the corresponding special one:
-\begin{enumerate}[resume*=alg1]
+\begin{enumerate}[resume*=alg2]
   \item Suppose $\abs{\taulf} \geq \abs{\taurf} $, i.e. $\uptau$ has special
         shape. Keep $r,d$ unchanged, delete $\taulf$ and fill the remaining part
         with ``$\bullet$'' and ``$s$'' by $\DDr(\uptau^{\bullet})$ using the
@@ -5225,7 +5226,7 @@ reduces to the corresponding special one:
 
 \subsubsection{Descent from $B$ to $M$}
 Now we define the general case of the descent from type $B$ to type $M$.
-We assume $\cO$ has at least 3 columns.
+We assume that $k\geq 1$ i.e. $\cO$ has at least 3 columns.
 First note that the shape of $\uptau' = \eDD(\uptau)$ is the shape of $\uptau$ deleting the
 most left column on the right diagram.
 
@@ -5234,11 +5235,11 @@ most left column on the right diagram.
 The definition splits in cases below. In all these cases we define
 \begin{equation}\label{eq:x.uptau}
  % \bfpp_{\uptau}:=
- \bfxx_{\uptau} := x_{1}\cdots x_{n}m_{\uptau} \text{ and } x_{\uptau} := x_{n}
+ \tbfxx_{\uptau} := x_{1}\cdots x_{n}m_{\uptau} \text{ and } x_{\uptau} := x_{n}
 \end{equation}
 which is marked by $s/r/c/d$.
 For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part consisting of $\bullet$ and $s$ by dot-s switching algorithm.
-\begin{enumerate}[resume*=alg1]
+\begin{enumerate}[resume*=alg2]
   \item When $C_{2k}$ is odd and $\uptau$ has special shape, the descent is given by the following diagram
       \[
         \uptau: \hspace{1em}
@@ -5282,8 +5283,9 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
              $(x_{1},m_{\uptau})=(r/d, b)$}.
          \end{cases}
        \]
-       We define $\tbfxx_{\uptau}$ be the diagram by replacing $\bullet$ to $s$
-       in $\bfxx_{\uptau}$.
+       % We define $\tbfxx_{\uptau}$ be the diagram by replacing $\bullet$ to $s$
+       % in $\bfxx_{\uptau}$.
+       %  We define $\tfbfxx_{\uptau}\in \DRC()$
   \item When $C_{2k}$ is odd and $\uptau$ has non-special shape, then
       \[
         \uptau: \hspace{1em}
@@ -5322,7 +5324,7 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
        %     x_{0} & \text{otherwise}
        %   \end{cases}
        % \]
-       We define $\tbfxx_{\uptau}:=\bfxx_{\uptau}$.
+       % We define $\tbfxx_{\uptau}:=\bfxx_{\uptau}$.
   \item When $C_{2k}=C_{2k-1}$ is even, we could assume $\uptau$ and $\uptaup$ hase
         the following forms with $n = (C_{2k+1}-C_{2k}+1)/2$.
       \[
@@ -5339,17 +5341,41 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
        \uptaup: \tytb{\cdots\cdots\cdots,{\ast}{\cdots}{\cdots},{y'_{0}}\cdots,\none,\none,\none}
         \times \tytb{\none\cdots\cdots,\none{\ast}{\cdots},\none{x'_{0}},\none,\none,\none}
       \]
-        In the most of the case, $\uptau'$ is obtained from $\uptau$ by deleting
-        the first column of $\uptau_{R}$, keeping
-        $c/r/d$ and filling $s/\bullet$ accordingly.
-        The exceptional cases are the following:
-
+      In the most of the case, $\uptau'$ is obtained from $\uptau$ by deleting
+      the first column of $\uptau_{R}$, keeping $c/r/d$ and filling $s/\bullet$ accordingly.
+      The exceptional cases are when $x_{1}=r/d$. In the exceptional case we
+      always have $x_{0}=d$.  We define
+      \[
+        \begin{split}
+          x'_{0} & := d, \\
+          y'_{0} & := \begin{cases}
+            s & \text{if $m_{\uptau}=a$},\\
+            c & \text{if $m_{\uptau}=b$}.
+          \end{cases}
+        \end{split}
+      \]
+      Note that this definition is similar to that of the special
+      shape diagrams in the descent case.
 \end{enumerate}
 
+In all the cases, let
+$\cO_{1} = (2n,)$ is the trivial nilpotent of type D.
+For each $\uptau\in \drc(\cO)$, we define $\bfxx_{\uptau} \in \drc(\cO_{1})$ by
+require the entires of $\bfxx_{\uptau}$ forms the following multiset:
+\[
+\begin{cases}
+  \set{c, x_{2},\cdots, x_{n}} & \text{if $(x_1,m_{\uptau}) = (\bullet/s,a)$},\\
+  \set{s, x_{2},\cdots, x_{n}} & \text{if $(x_1,m_{\uptau}) = (\bullet/s,b)$},\\
+  \set{x_{1}, x_{2},\cdots, x_{n}} & \text{otherwise ($x_{1}=r/d$)}.
+\end{cases}
+\]
 
 \subsubsection{A key proposition for descent case}
 Now we assume $\cO$ is given by \eqref{eq:B.orb.ds}
 Let $\cOp=\eDD(\cO)$ and $\cOpp=\eDD(\cOp)$.
+
+
+
 The following lemma is the key property satisfied by our definition
 \begin{lem}\label{lem:sp-nsp.B}
   Suppose $k\geq 1$ and
@@ -5362,33 +5388,34 @@ The following lemma is the key property satisfied by our definition
     \[
       \taupp = (\tau_{2k-2},\cdots, \tau_{2})\times  (c_{2k-1},\tau_{2k-3},\tau_{1})
     \]
-    \item \label{lem:sp-nsp.B.2} Let $\cO_{1}= (C_{2k+1}-C_{2k}+1,)\in \Nil(B)$ be the trivial orbit
-    of $\rO(C_{2k+1}-C_{2k}+1,\bC)$.
-    We define $\delta\colon \drc(\cO)\rightarrow \drc(\cOpp)$ by $\delta(\uptau) = (\eDD^{2}(\uptau),\tbfxx_{\uptau})$.
-    The following maps are injections with the same image
+    \item \label{lem:sp-nsp.B.2} % Let $\cO_{1}= (C_{2k+1}-C_{2k}+1,)\in \Nil(B)$ be the trivial orbit
+    % of $\rO(C_{2k+1}-C_{2k}+1,\bC)$.
+    We define $\delta\colon \drc(\cO)\rightarrow \drc(\cOpp)\times\drc(\cO_{1})$
+    by $\delta(\uptau) = (\eDD^{2}(\uptau),\bfxx_{\uptau})$.
+    The following maps are bijective%with the same image
     \[
       \begin{tikzcd}[row sep=0em]
         \drc(\tau^{s})\ar[r,"\delta"] & \drc(\taupp)\times \drc(\cO_{1}) &\ar[l,"\delta"'] \drc(\tau^{ns})\\
-        \uptau^{s}\ar[r,maps to] & (\eDD^{2}(\uptau^{s}), \tbfxx_{\uptau^{s}})&\\
-        & (\eDD^{2}(\uptau^{ns}), \tbfxx_{\uptau^{ns}})& \uptau^{ns}\ar[l,maps to]\\
+        \uptau^{s}\ar[r,maps to] & (\eDD^{2}(\uptau^{s}), \bfxx_{\uptau^{s}})&\\
+        & (\eDD^{2}(\uptau^{ns}), \bfxx_{\uptau^{ns}})& \uptau^{ns}\ar[l,maps to]\\
       \end{tikzcd}
     \]
     In particular, we obtain an one-one correspondence
     $\uptau^{s}\leftrightarrow \uptau^{ns}$ such that $\delta(\uptau^{s})=\delta(\uptau^{ns})$.
     \item\label{lem:sp-nsp.B.3}
     Suppose $\uptau^{s}$ and $\uptau^{ns}$ correspond as the above such that
-    $\delta(\uptau^{s})=\delta(\uptau^{ns})=(\uptaupp,\tbfxx)$. Then
+    $\delta(\uptau^{s})=\delta(\uptau^{ns})=(\uptaupp,\bfxx)$. Then
     \begin{equation} \label{eq:sp-nsp-sig}
-      \ssign(\uptau^{s})=\ssign(\uptau^{ns})=(C_{2k},C_{2k})+\ssign(\uptaupp)+\tsign(\tbfxx).
+      \ssign(\uptau^{s})=\ssign(\uptau^{ns})=(C_{2k},C_{2k})+\ssign(\uptaupp)+\ssign(\bfxx).
     \end{equation}
-    with
-    \[
-      \tsign(\tbfxx) = \begin{cases}
-        \ssign(x_{1}\cdots x_{n})  & \text{if $x_{1}=r/d$}\\
-        \ssign(\tbfxx) - (0,1) & \text{otherwise.}\\
-      \end{cases}
-    \]
-    Note that $\tsign(\tbfxx)\in \bN\times \bN$.
+    % with
+    % \[
+    %   \tsign(\tbfxx) = \begin{cases}
+    %     \ssign(x_{1}\cdots x_{n})  & \text{if $x_{1}=r/d$}\\
+    %     \ssign(\tbfxx) - (0,1) & \text{otherwise.}\\
+    %   \end{cases}
+    % \]
+    Note that $\ssign(\bfxx)\in \bN\times \bN$.
   \end{enumS}
 \end{lem}
 \begin{proof}
@@ -5457,50 +5484,47 @@ The following lemma is the key property satisfied by our definition
      To prove the lemma, it suffice to verify the following claims which we leave to the reader:
      \begin{itemize}
        \item In both the special shape and non-special shape cases, the
-       following map is injective:
+       following map is bijective:
        \[
-       x_{0}x_{1}\cdots x_{n}m_{\uptau^{s/ns}}\mapsto (\tbfxx_{\uptau^{s/ns}},m_{\uptaupp}).
+       x_{0}x_{1}\cdots x_{n}m_{\uptau^{s/ns}}\mapsto (\bfxx_{\uptau^{s/ns}},m_{\uptaupp}).
        \]
-        Moreover, the images of the two cases are the same.
        \item The following equation of signatures holds
        \[
-         \ssign( x_{0}x_{1}\cdots x_{n}m_{\uptau} ) - \ssign(m_{\uptaupp})  = (1,1)+ \tsign(\tbfxx_{\uptau}).
+         \ssign( x_{0}x_{1}\cdots x_{n}m_{\uptau} ) - \ssign(m_{\uptaupp})  =\ssign(\bfxx_{\uptau}).
        \]
      \end{itemize}
+     In the verification, one can use the fact that $m_{\uptau}=m_{\uptaupp}$
+     when $x_{1} = r/d$.
 
-     \trivial[]{ First consider the special shape diagram $\uptau=\uptau^{s}$.
+     \trivial[]{
+       Suppose $x_{1}=r/d$. Then $x_{0} = c/d$ and
+       \[\ssign(x_{0}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp}) = (1,1)+\ssign(x_{1}\cdots x_{n}).\]
+
+       Now we consider the generic cases, i.e. $x_{1}=\bullet/s$:
+       In this case, we clain that $\ssign(x_{0}x_{1}) - \ssign(m_{\uptaupp}) = (1,2)$.
+       Now
+       \[
+         \begin{split}
+           & \ssign(x_{0}x_{1}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp}) \\
+           =& (1,1)+\ssign(x_{2}\cdots x_{n}m_{\uptau}) +(0,1) \\
+           = &\begin{cases} (1,1) +\ssign(x_{2}\cdots x_{n}) + \ssign(c)
+             & \text{if } m_{\uptau} = a\\
+             (1,1) +\ssign(x_{2}\cdots x_{n}) + \ssign(s) & \text{if } m_{\uptau} = b\\
+           \end{cases}\\
+         \end{split}
+       \]
+
+       First consider the special shape diagram $\uptau=\uptau^{s}$.
        \begin{enumPF}
-         \item Suppose $m_{\uptaupp}=a$:
-         \begin{enumPF}
-           \item Suppose $x_{0}x_{1}\cdots x_{n}=cr\cdots r$. Then
-           $\ssign(x_{0}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp})
-           = (1,1)-(1,0)+\ssign(x_{1}\cdots x_{n}m_{\uptau}) = (1,1)+\tsign(\tbfxx_{\uptau})$
-           \item Otherwise $x_{0}x_{1}=\bullet\bullet$. Then
-           $\ssign(x_{0}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp})
-           = (1,1)-(1,0)+(1,1)+\ssign(x_{2}\cdots x_{n}m_{\uptau})
-           = (1,1)+\ssign(sx_{2}\cdots x_{n}m_{\uptau}) - (0,1) = (1,1)+\tsign(\tbfxx_{\uptau})$
-         \end{enumPF}
-         \item Suppose $m_{\uptaupp}= b$. Then $x_{0}=c$ and $x_{1}\cdots x_{n}$
-         can be anything except $r\cdots r$.
-         $\ssign(x_{0}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp})
-         = (1,1)-(0,1)+\ssign(x_{1}x_{2}\cdots x_{n}m_{\uptau}) = (1,1)+\tsign(\tbfxx_{\uptau})$
+         \item Suppose $m_{\uptaupp}=a$. Then $x_{0}\times x_{1}=\bullet\times \bullet$.
+           \item Suppose $m_{\uptaupp}= b$. Then $x_{0}\times x_{1}=c\times s$.
        \end{enumPF}
        Now consider the non-special shape diagram $\uptau=\uptau^{ns}$.
        \begin{enumPF}
-         \item Suppose $m_{\uptaupp}=a$:
-         \begin{enumPF}
-           \item Suppose $x_{0}x_{1}\cdots x_{n}=dr\cdots r$. Then
-           \[\ssign(x_{0}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp}) = (1,1)-(1,0)+\ssign(x_{1}\cdots x_{n}m_{\uptau})
-           = (1,1)+\tsign(\tbfxx_{\uptau}).\]
-           \item Otherwise $x_{0}x_{1}=rs$. Then
-           $\ssign(x_{0}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp})
-           = (2,2)-(1,0)+\ssign(x_{2}\cdots x_{n}m_{\uptau})
-           = (1,1)+\ssign(sx_{2}\cdots x_{n}m_{\uptau}) - (0,1) = (1,1)+\tsign(\tbfxx_{\uptau})$
-         \end{enumPF}
-         \item Suppose $m_{\uptaupp}= b$. Then $x_{0}=d$ and $x_{1}\cdots x_{n}$
-         can be anything except $r\cdots r$.
-         $\ssign(x_{0}\cdots x_{n}m_{\uptau})-\ssign(m_{\uptaupp})
-         = (1,1)-(0,1)+\ssign(x_{1}x_{2}\cdots x_{n}m_{\uptau}) = (1,1)+\tsign(\tbfxx_{\uptau})$
+         \item Suppose $m_{\uptaupp}=a$. Then
+         $\emptyset \times x_{1}x_{0}=\emptyset \times sr$.
+         \item Suppose $m_{\uptaupp}= b$. Then
+         $\emptyset \times x_{1}x_{0}=\emptyset \times sd$.
        \end{enumPF}
        The macthing between $\uptau^{s}$ and $\uptau^{ns}$ is also clear by the
        above listing of cases.
@@ -5514,25 +5538,83 @@ The following lemma is the key property satisfied by our definition
 Now assume $C_{2k}$ is even. By our assumption, we have
 $c_{2k+1}\geq c_{2k}=c_{2k-1}$.
 
-
-\[
+\begin{equation}\label{eq:gd.drc.B}
   \uptau: \hspace{1em}
   \tytb{
-    \cdots\cdots\cdots,
+    {*(srcol)\cdots}\cdots\cdots,
     {y_{0}}{\cdots}{\cdots},
     \none,\none,\none,\none}
   \times
-  \tytb{\cdots\cdots\cdots,
-    {x_{1}}{z}{\cdots},
+  \tytb{{*(srcol)\cdots}\cdots\cdots,
+    {x_{1}}{x_{0}}{\cdots},
     {x_{2}},{\vdots},{x_{n}},{m_{\uptau}}}
   \mapsto
   \uptaup: \tytb{\cdots\cdots\cdots,{y'_{0}}{\cdots}{\cdots},\none,\none,\none,\none}
-  \times \tytb{\none\cdots\cdots,\none{z'}{\cdots},\none,\none,\none,\none}
+  \times \tytb{\none\cdots\cdots,\none{x'_{0}}{\cdots},\none,\none,\none,\none}
   \mapsto
-  \uptaup: \tytb{\none\cdots\cdots,{\none}{\cdots}{\cdots},\none,\none,\none,\none}
-  \times \tytb{\none\cdots\cdots,\none{z''}{\cdots},\none{m'},\none,\none,\none}
-\]
+  \uptaupp: \tytb{\none\cdots\cdots,{\none}{\cdots}{\cdots},\none,\none,\none,\none}
+  \times \tytb{\none\cdots\cdots,\none{x''}{\cdots},\none{\phantom{m}\mathclap{m_{\uptaupp}}},\none,\none,\none}
+\end{equation}
+Here the gray parts in $\uptau$ are two columns of $\bullet$ of length
+$C_{2k}/2-1$.
 
+\begin{lem}\label{lem:gd.inj.M}
+  In \eqref{eq:gd.drc.B}, $x''=x_{0}$.
+  The map $\delta\colon  \drc(\cO)\rightarrow \drc(\cOpp) \times \drc(\cO_{1})$.
+  Moreover,
+  \[
+  \ssign(\uptau) =\ssign(\uptaupp) + (C_{2k}-1, C_{2k}-1)+\ssign(\bfxx_{\uptau}).
+  \]
+  The map $\tdelta\colon \drc(\cO)\rightarrow \drc(\cOpp) \times \bN^{2}\times \bZ/2\bZ$
+  given by $\uptau\mapsto (\eDDo^{2}(\uptau), \ssign(\uptau),\upepsilon_{\uptau})$ is injective.
+\end{lem}
+\begin{proof}
+  The claim $x''=x_{0}$, the injectivity of $\delta$ and the siginature formula follows directly from our algorithm.
+
+  Now the injectivity of follows from
+  $\bfxx_{\uptau}\mapsto (\ssign(\bfxx_{\uptau}), \upepsilon)$ is injective by
+  \Cref{c:init.CD}.
+  \trivial{
+    We can fully recover $\uptau$ from $\bfxx_{\uptau}$ and $\uptaupp$.
+
+    Suppose $\bfxx_{\uptau}$ dose not contains $s$ or $c$.
+    Then $x_{1}=r/d$,  $m_{\uptau}=m_{\uptaupp}$, $y_{0}=c$.
+    Hence the claim holds.
+    \[
+      \ssign(\uptau) =\ssign(\uptaupp) + (C_{2k}-2,C_{2k}-2) + \ssign(c) +\ssign(\bfxx_{\uptau})
+    \]
+
+    Now assume $\bfxx_{\uptau}$ contain at least one $s$ or $c$.
+    Now
+    \[
+      m_{\uptau} = \begin{cases}
+        a & \text{if $\bfxx_{\uptau}$ contains $c$}\\
+        b & \text{otherwise}
+      \end{cases}
+    \]
+    Therefore, $\ssign(x_{2}\cdots x_{n}m_{\uptau}) = \ssign(\bfxx_{\uptau}) - (0,1)$.
+
+
+    Clearly, we can recover $x_{2}\cdots x_{n}$ from $\bfxx_{\uptau}$ by
+    deleting the $c$ (if it exists) or a $s$.
+    On the other hand, $(y_{0}, x_{1})$ is completely determined by
+    $m_{\uptaupp}$:
+    \[
+      (y_{0},x_{1}) = \begin{cases}
+        (\bullet, \bullet) & \text{if $m_{\uptaupp}=a$}\\
+        (c, s) & \text{if $m_{\uptaupp}=b$}
+      \end{cases}
+    \]
+    Hence $\ssign(y_{0}x_{1}) = \ssign(m_{\uptaupp}) + (1,2)$.
+
+    Now
+    $\ssign(y_{0}x_{0}x_{1}\cdots x_{n}m_{\uptau})  =  \ssign(\bfxx_{\uptau}) +\ssign(x'' m_{\uptaupp}) + (1,2)-(0,1)$.
+    This yields the signature identity.
+  }
+\end{proof}
+
+
+\delete{
 \section{An example}\label{sec:C.reg}
 Consider the case that
 $\cO = (2,\underbrace{1, \cdots, 1}_{(t+1)\text{-terms}})\in \Nil(D)$.
@@ -5810,6 +5892,7 @@ $\cA_{9}=\set{d\cdots d}$
 % {\color{red} The details of the definition of $\eDD$ and the proof of the above
 %   proposition will be supplied later.}
 
+}
 
 \appendix
 \delete{
@@ -5960,7 +6043,6 @@ Number of DRCS: 35840
 }
 
 
-\printindex
 
 \begin{bibdiv}
   \begin{biblist}
@@ -6898,6 +6980,9 @@ pages={147--167},
 
 \end{biblist}
 \end{bibdiv}
+
+
+\printindex
 
 
 \end{document}

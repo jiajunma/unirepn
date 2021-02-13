@@ -825,7 +825,8 @@ def gen_drc_B_two_new(L, R,  n):
             ERES = gen_fR_B('*','*',L,R,n-1)
             ERES.append((('c',*L[1:]), ('r'*(n-1)+'d'+'a',*R),(1, 1)))
             # if n==1 and len(L)==len(R):
-            ERES.append((('c',*L[1:]), ('r'*n+'a','d',*R[1:]),(1,-1)))
+            ERES.append((('c',*L[1:]), ('r'*n+'a', *R),(1,-1)))
+            #ERES.append((('c',*L[1:]), ('r'*n+'a','d',*R[1:]),(1,-1)))
             #ERES.append((('c',*L[1:]), ('r'*n+'b','d',*R[1:]),(1, -1)))
         elif (L[0],R[0]) == ('c','r'):
             ERES = gen_fR_B('c','s',L,R,n-1)
@@ -833,14 +834,15 @@ def gen_drc_B_two_new(L, R,  n):
             #     ERES.append((('c',*L[1:]), ('r'+'a','d',*R[1:]),(1, -1)))
         elif (L[0],R[0]) == ('c','d'):
             ERES = gen_fR_B('c','s',L,R,n-1)
-            ERES.append((('c',*L[1:]), ('r'*n+'b','d',*R[1:]),(1, -1)))
+            #ERES.append((('c',*L[1:]), ('r'*n+'b','d',*R[1:]),(1, -1)))
+            ERES.append((('c',*L[1:]), ('r'*n+'b', *R),(1, -1)))
+            ERES.append((L, ('r'*(n-1)+'d'+'b',*R),(1, 1)))
             # if n==1 and len(L)!=len(R):
             #     ERES.append((('c',*L[1:]), ('d'+'a','d',*R[1:]),(1, -1)))
             # if n==1 and len(L)==len(R):
             #     ERES.append((('c',*L[1:]), ('d'+'a','d',*R[1:]),(1, -1)))
             # if n>1:
             #     ERES.append((L, ('r'*n+'b',*R),(1, 1)))
-            ERES.append((L, ('r'*(n-1)+'d'+'b',*R),(1, 1)))
     return ERES
 
 ## New version
