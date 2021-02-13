@@ -5265,8 +5265,8 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
        $\uptau$ unchange and filling $s/\bullet$ accordingly in the rest of the
        entries.
        The entry $y'_{0}$ of $\uptaup$ is given by the following formula:
-       \footnote{When $x_{1}\cdots x_{n}=r\cdots r$, we have $y_{0}=c$.
-         Otherwise $x_{1}=s$ or $x_{1}\cdots x_{n} = r\cdots r d$.}
+       % \footnote{When $x_{1}\cdots x_{n}=r\cdots r$, we have $y_{0}=c$.
+       %   Otherwise $x_{1}=s$ or $x_{1}\cdots x_{n} = r\cdots r d$.}
        % \[
        %   y'_{0} := \begin{cases}
        %     s & \text{if $x_{1}=\bullet$ or
@@ -5287,44 +5287,51 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
        % in $\bfxx_{\uptau}$.
        %  We define $\tfbfxx_{\uptau}\in \DRC()$
   \item When $C_{2k}$ is odd and $\uptau$ has non-special shape, then
-      \[
+        \[
         \uptau: \hspace{1em}
         \tytb{
         {\cdots}\cdots\cdots,
         {\ast}{\cdots}{\cdots},
         \none,\none,\none,\none,\none,\none,\none}
-      \times
-      \tytb{\cdots\cdots\cdots,
+        \times
+        \tytb{\cdots\cdots\cdots,
         {\ast}{\ast}{\cdots},
         {*(srcol)s}{*(srcol)r},
         {*(srcol)\vdots}{*(srcol)\vdots},
         {*(srcol)s}{*(srcol)r},
         {x_{1}}{x_{0}},{\vdots},{x_{n}},{m_{\uptau}}}
         \mapsto
-       \uptaup: \tytb{\cdots\cdots\cdots,{\ast}{\cdots}{\cdots},\none,\none,\none,\none,\none,\none,\none}
-        \times \tytb{\none\cdots\cdots,\none{\ast}{\cdots},\none{*(srcol)r},\none{*(srcol)\vdots},\none{*(srcol)r},\none{x'_{0}},\none,\none,\none}
-      \]
-      Here the grey columns has length $(C_{2k}-C_{2k-1})/2$ and $n = (C_{2k+1}-C_{2k})/2$.
-      The  ``$\ast/\cdots$'' part of $\uptaup$ is given by keeping the corresponding
-      entries marked by $r/d/c$ in
-       $\uptau$ unchange and filling $s/\bullet$ accordingly in the rest of the
-       entries.
-       The entry $x'_{0}$ of $\uptaup$ is given by the following formula:
-       \footnote{When $x_{1}\cdots x_{n}=r\cdots r$, we have $x_{0}=d$.}
-       \[
-         x'_{0} := \begin{cases}
-           r & \text{if $(x_{1},m_{\uptau})=(r/d, a)$}\\
-           d & \text{if $(x_{1},m_{\uptau})=(r/d, b)$}\\
-           x_{0} & \text{otherwise ($x_{1}=s$)}.
-         \end{cases}
-       \]
-       % \[
-       %   x'_{0} := \begin{cases}
-       %     r & \text{if $x_{1}\cdots x_{n}= r\cdots r$}\\
-       %     x_{0} & \text{otherwise}
-       %   \end{cases}
-       % \]
-       % We define $\tbfxx_{\uptau}:=\bfxx_{\uptau}$.
+        \uptaup: \tytb{\cdots\cdots\cdots,{\ast}{\cdots}{\cdots},\none,\none,\none,\none,\none,\none,\none}
+        \times \tytb{
+        \none\cdots\cdots,\none{\ast}{\cdots},
+        \none{*(srcol)r},
+        \none{*(srcol)\vdots},
+        \none{*(srcol)r},
+        \none{x'_{0}},\none,\none,\none}
+        \]
+        Here the grey columns has length $(C_{2k}-C_{2k-1})/2$ and $n = (C_{2k+1}-C_{2k})/2$.
+        The  ``$\ast/\cdots$'' part of $\uptaup$ is given by keeping the corresponding
+        entries marked by $r/d/c$ in
+        $\uptau$ unchange and filling $s/\bullet$ accordingly in the rest of the
+        entries.
+        The entry $x'_{0}$ of $\uptaup$ is given by the following formula:
+        % \footnote{When $x_{1}\cdots x_{n}=r\cdots r$, we have $x_{0}=d$.}
+        \[
+        x'_{0} := \begin{cases}
+          r & \text{if $(x_{1},m_{\uptau})=(r/d, a)$,}\\
+          d & \text{if $(x_{1},m_{\uptau})=(r/d, b)$,}\\
+          x_{0} & \text{if $x_{1}=s$.}
+        \end{cases}
+        \]
+        Note that
+        % \[
+        %   x'_{0} := \begin{cases}
+        %     r & \text{if $x_{1}\cdots x_{n}= r\cdots r$}\\
+        %     x_{0} & \text{otherwise}
+        %   \end{cases}
+        % \]
+        % We define $\tbfxx_{\uptau}:=\bfxx_{\uptau}$.
+        %
   \item When $C_{2k}=C_{2k-1}$ is even, we could assume $\uptau$ and $\uptaup$ hase
         the following forms with $n = (C_{2k+1}-C_{2k}+1)/2$.
       \[
