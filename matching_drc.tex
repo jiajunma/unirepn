@@ -12,6 +12,7 @@
 \usepackage[bookmarksopen,bookmarksdepth=3]{hyperref}
 \usepackage[nameinlink]{cleveref}
 
+\usepackage{array}
 %% FONTS
 \usepackage{amssymb}
 %\usepackage{boisik}
@@ -1265,6 +1266,14 @@
 \def\uptaup{\uptau^{\prime}}
 \def\uptaupp{\uptau^{\prime\prime}}
 \def\uptauppp{\uptau^{\prime\prime\prime}}
+\def\bdelta{{\bar{\delta}}}
+\def\tcO{\tilde{\cO}}
+\def\tcOp{\tcO^{\prime}}
+\def\tcOpp{\tcO^{\prime\prime}}
+\def\tuptau{\tilde{\uptau}}
+\def\tuptaup{\tuptau^{\prime}}
+\def\tuptaupp{\tuptau^{\prime\prime}}
+\def\tuptauppp{\tuptau^{\prime\prime\prime}}
 \def\taup{\tau^{\prime}}
 \def\taupp{\tau^{\prime\prime}}
 \def\tauppp{\tau^{\prime\prime\prime}}
@@ -2566,7 +2575,97 @@ The following lemma is the key property satisfied by our definition
    }
  \end{proof}
 
+\subsubsection{A key proposition in the generalized descent case}\label{sec:gd2.CD}
 
+We now assume that $k\geq 1$ and $C_{2k}$ is odd, i.e. $\cOp\leadsto \cOpp$ is a
+generalized descent.
+
+Without loss of generality, we can assume the dot-r-c diagrams have the
+following shapes with $n = (C_{2k+1}-C_{2k}+1)/2$:
+\begin{equation}\label{eq:gd2.drc}
+  \uptau:\tytb{
+    {*(srcol)\cdots}\cdots\cdots\cdots,
+    {*(srcol)\ast}{\ast}{\ast}{\ast},
+    {x_{1}}{y_{1}}{\cdots}\cdots,
+    \vdots,
+    {x_{n}}
+  }
+  \times
+\tytb{{*(srcol)\cdots}\cdots\cdots,
+    {*(srcol)\ast}{\ast}{\cdots},
+    \none,\none,\none}
+  \xmapsto{\hspace{1em}\eDDo\hspace{1em}}
+  \uptaup:\tytb{
+    \cdots\cdots\cdots,
+    {\ast}{\ast}{\ast},
+    {x_{\uptaupp}}{\cdots}\cdots,
+    \none,
+    \none
+  }
+  \times
+\tytb{{*(srcol)\cdots}\cdots\cdots,
+    {*(srcol)\ast}{\ast}{\cdots},
+    \none,\none,\none}
+  \xmapsto{\hspace{1em}\eDDo\hspace{1em}}
+  \uptaupp:\tytb{
+    \cdots\cdots\cdots,
+    {\ast}{\ast}{\ast},
+    {x_{\uptaupp}}{\cdots}\cdots,
+    \none,
+    \none
+  }
+  \times
+\tytb{\cdots\cdots,
+    {\ast}{\cdots},
+    \none,\none,\none}
+\end{equation}
+
+The diagram $\uptau$ is obtained from the diagram of $\uptau$ by adding
+$\bullet$ at the
+grey parts, changing $x_{\uptaupp}$ to $y_{1}$ and attaching $x_{1}\cdots x_{n}$.
+
+
+We define
+\[
+  \bfpp_{\uptau}:=\tytb{{x_{1}}{y_{1}},\vdots,{x_{n}}}
+\]
+and call $\bfpp_{\uptau}$ the peduncle part of $\uptau$. Let
+$\cO_{1} = (C_{2k+1}-C_{2k}+1,)\in \dpeNil(D)$. We define
+$\bfuu_{\uptau}\in \drc(\cO_{1})$ by the following formula:
+\begin{equation}\label{eq:def.u}
+  \bfuu_{\uptau}:=u_{1} \cdots u_{n} =
+  \begin{cases}
+    r\cdots r c, & \text{when } \bfpp_{\uptau} = \tytb{rc,\vdots,r}\\
+    r\cdots c d, & \text{when } \bfpp_{\uptau} = \tytb{rc,\vdots,d}\\
+    x_{1}\cdots, x_{n} & \text{otherwise}.
+  \end{cases}
+\end{equation}
+
+
+\begin{lem}\label{lem:gd.inj}
+  The map $\delta\colon  \drc(\cO)\rightarrow \drc(\cOpp) \times \drc(\cO_{1})$
+  given by $\uptau\mapsto (\eDDo^{2}(\uptau),\bfuu_{\uptau})$ is injective.
+  Moreover,
+  \[
+  \ssign(\uptau) =\ssign(\uptaupp) + (C_{2k}-1, C_{2k}-1)+\ssign(\bfuu_{\uptau}).
+  \]
+  The map $\tdelta\colon \drc(\cO)\rightarrow \drc(\cOpp) \times \bN^{2}\times \bZ/2\bZ$
+  given by $\uptau\mapsto (\eDDo^{2}(\uptau), \ssign(\uptau),\upepsilon_{\uptau})$ is injective.
+\end{lem}
+\begin{proof}
+  The the injectivity of $\delta$ and the siginature formula follows directly from our algorithm.
+  Now the injectivity of $\tdelta$ follows from
+  $\bfxx_{\uptau}\mapsto (\ssign(\bfxx_{\uptau}), \upepsilon)$ is injective by
+  \Cref{c:init.CD}.
+  % Let $\uptaupp:=\eDDo^{2}(\uptau)$ and
+  % Then $\uptau\mapsto (\uptaupp,\bfuu_{\uptau})$ is injective and
+  % \[
+  % %\ssign(\uptau) =\ssign(\uptaupp) + 2(n_1,n_{1})+\ssign(\bfuu_{\uptau}) \text{ where }2n_{1}+1 = C_{2k}.
+  % \ssign(\uptau) =\ssign(\uptaupp) + (C_{2k}-1,C_{2k}-1)+\ssign(\bfuu_{\uptau}) \text{ where }2n_{1}+1 = C_{2k}.
+  % \]
+  % Now the lemma follows from
+  % $\bfuu_{\uptau}\mapsto (\ssign(\bfuu_{\uptau}), \upepsilon)$ is injective by \Cref{c:init.CD}.
+\end{proof}
 
 
 
@@ -3425,7 +3524,7 @@ in the following proof.
 % \begin{array}{c|c|c}
 %   \ytb{{x_{0}}{y_{1}},{x_{1}}{y_{2}},\vdots,{x_{n}}}= & \ytb{rc,{x_{1}}d,\vdots,{x_{n}}} & \ytb{cc,dd,\ ,\ }\\
 %   \hline
-%   \ytb{{z_{1}},{z_{2}}}= & \ytb{r,r} & \ytb{r,c}\\
+%   \ytb{{x_{\uptaupp}},{z_{2}}}= & \ytb{r,r} & \ytb{r,c}\\
 % \end{array}
 % \]
 
@@ -3522,7 +3621,7 @@ and so the factorization \eqref{eq:d.factor} holds.
 Therefore, our main theorem, \Cref{thm:count}, holds for $\cO$.
 
 
-\subsection{The descent case}
+\subsection{The descent case}\label{sec:pf.ds.CD}
 Now we assume $k\geq 1$ and $C_{2k}$ is even. In this case $\cOp\leadsto \cOpp$
 is a usual descent.
 
@@ -3739,7 +3838,7 @@ quasi-distinguished orbit are easy to verify. We leave them to the reader.
 %              &        &        &        &        & \                        &        &        &        &        \\
 %              &        & \cdots & \cdots & \cdots & \                        & \cdots & \cdots & \cdots & \cdots \\
 %     \uptau': &        & *      & *      & *      & \times                   & *      & *      & *      & *      \\
-%              &        & z_{1}  &        &        & \                        &        &        &        &        \\
+%              &        & x_{\uptaupp}  &        &        & \                        &        &        &        &        \\
 %              &        & z_{2}  &        &        & \ \ar[d,maps to,"\eDD"]  &        &        &        &        \\[1em]
 %     \uptaupp:
 %              &        & \cdots & \cdots & \cdots & \                        &        & \cdots & \cdots & \cdots & \\
@@ -3937,133 +4036,20 @@ quasi-distinguished orbit are easy to verify. We leave them to the reader.
 %              &        &        &        &        & \                        &        &        &        &        & \\
 %              &        & \cdots & \cdots & \cdots & \                        & \cdots & \cdots & \cdots & \cdots & \\
 %     \uptau': &        & *      & *      & *      & \times                   & *      & *      & *      & *      & \\
-%              &        & z_{1}  & w_{1}   &  \cdots   & \ \ar[d,maps to,"\eDD"]   &        &        &        &        & \\[1em]
+%              &        & x_{\uptaupp}  & w_{1}   &  \cdots   & \ \ar[d,maps to,"\eDD"]   &        &        &        &        & \\[1em]
 %              &        & \cdots & \cdots & \cdots & \                        &        & \cdots & \cdots & \cdots & \\
 %     \uptaupp:
 %              &        & *      & *      & *      & \times                   &        & *      & *      & *      & \\
-%              &        & z_{1}   & w_{1}  &        &                          &        &        &        &        & \\
+%              &        & x_{\uptaupp}   & w_{1}  &        &                          &        &        &        &        & \\
 %   \end{tikzcd}
 % \]
 
 
-\subsection{The general descent case}
+\subsection{The general descent case}\label{sec:pf.gd.CD}
 %We now starts with induction:
 We  assume $k\geq 1$ and all the properties are satisfied by $\uptaupp\in \drc(\cOpp)$.
+We retain the notation in \Cref{sec:gd2.CD}.
 
-We now assume that $\cOp\leadsto \cOpp$ is the generalized descent.
-Without loss of generality, we can assume the dot-r-c diagrams have the
-following shapes with $n = (C_{2k+1}-C_{2k}+1)/2$:
-\begin{equation}\label{eq:gd2.drc}
-  \uptau:\tytb{
-    {*(srcol)\cdots}\cdots\cdots\cdots,
-    {*(srcol)\ast}{\ast}{\ast}{\ast},
-    {x_{1}}{y_{1}}{w_{1}}\cdots,
-    \vdots,
-    {x_{n}}
-  }
-  \times
-\tytb{{*(srcol)\cdots}\cdots\cdots,
-    {*(srcol)\ast}{\ast}{\cdots},
-    \none,\none,\none}
-  \xmapsto{\hspace{1em}\eDDo\hspace{1em}}
-  \uptaup:\tytb{
-    \cdots\cdots\cdots,
-    {\ast}{\ast}{\ast},
-    {z_{1}}{w_{1}}\cdots,
-    \none,
-    \none
-  }
-  \times
-\tytb{{*(srcol)\cdots}\cdots\cdots,
-    {*(srcol)\ast}{\ast}{\cdots},
-    \none,\none,\none}
-  \xmapsto{\hspace{1em}\eDDo\hspace{1em}}
-  \uptaupp:\tytb{
-    \cdots\cdots\cdots,
-    {\ast}{\ast}{\ast},
-    {z_{1}}{w_{1}}\cdots,
-    \none,
-    \none
-  }
-  \times
-\tytb{\cdots\cdots,
-    {\ast}{\cdots},
-    \none,\none,\none}
-\end{equation}
-
-The diagram $\uptau$ is obtained from the diagram of $\uptau$ by adding
-$\bullet$ at the
-grey parts, changing $z_{1}$ to $y_{1}$ and attaching $x_{1}\cdots x_{n}$.
-
-
-In the following proof, we let
-\[
-\bfpp_{\uptau}:=\tytb{{x_{1}}{y_{1}},\vdots,{x_{n}}}
-\]
-and call $\bfpp_{\uptau}$ the peduncle part of $\uptau$. Also note that
-$z_{1}$ is exactly the $x_{\uptaupp}$.
-
-\begin{lem}\label{lem:gd.inj}
-  The map $\drc(\cO)\rightarrow \drc(\cOpp) \times \bN^{2}\times \bZ/2\bZ$
-  given by $\uptau\mapsto (\eDDo^{2}(\uptau), \ssign(\uptau),\upepsilon_{\uptau})$ is injective.
-\end{lem}
-\begin{proof}
-  Let $\uptaupp:=\eDDo^{2}(\uptau)$ and
-  \begin{equation}\label{eq:def.u}
-    \bfuu_{\uptau}:=u_{1} \cdots u_{n} =
-    \begin{cases}
-      r\cdots r c, & \text{when } \bfpp_{\uptau} = \tytb{rc,\vdots,r}\\
-      r\cdots c d, & \text{when } \bfpp_{\uptau} = \tytb{rc,\vdots,d}\\
-      x_{1}\cdots, x_{n} & \text{otherwise}.
-    \end{cases}
-  \end{equation}
-  Then $\uptau\mapsto (\uptaupp,\bfuu_{\uptau})$ is injective and
-  \[
-  %\ssign(\uptau) =\ssign(\uptaupp) + 2(n_1,n_{1})+\ssign(\bfuu_{\uptau}) \text{ where }2n_{1}+1 = C_{2k}.
-  \ssign(\uptau) =\ssign(\uptaupp) + (C_{2k}-1,C_{2k}-1)+\ssign(\bfuu_{\uptau}) \text{ where }2n_{1}+1 = C_{2k}.
-  \]
-  Now the lemma follows from
-  $\bfuu_{\uptau}\mapsto (\ssign(\bfuu_{\uptau}), \upepsilon)$ is injective by \Cref{c:init.CD}.
-\end{proof}
-
-% One of the key property for generalized descent is:
-% $\cL_{\uptau}\mapsto \pcL_{\uptau}$ is an injection for $x_{n}\neq s$.
-% We will establish this by induction.
-% Note that if $\cOpp\leadsto \cOp$ is a usual lift, the claim is clear.
-
-% \subsubsection{Initial step, starting from the usual descent}
-% Suppose the second longest row of $\cOpp$ is also even.
-% This is a simpler case.
-% $\bsign{\cL_{\uptaupp}}\succ (+2,0)$ when $z_{1}  = r$.
-% $\bsign{\cL_{\uptaupp}}\succ (+1,-1)$ when $z_{1}  = c$.
-% $\bsign{\cL_{\uptaupp}}\succ (+1,+1)$ when $z_{1}  = d$.
-
-% We could write $\cL_{\uptaupp} = \cT_{\uptaupp}\cB_{\uptaupp}$.
-% Then $\pcL_{\uptaupp} = \cT_{\uptaupp}\pcB_{\uptaupp}$
-% and $\ncL_{\uptaupp} = \cT_{\uptaupp}\ncB_{\uptaupp}$.
-% \[
-% \begin{array}{c|c|c|c|c}
-%   z_{1}  & s& r & c &d\\
-%   \hline
-%   \cB_{\uptaupp} & \ytb{=,=} & \ytb{+,+} & \ytb{+,=} & \ytb{+,-}\\
-%   \hline
-%   \pcB_{\uptaupp} & & \ytb{+} & \ytb{=} & \ytb{-}\\
-%   \hline
-%   \ncB_{\uptaupp} & &   &   & \ytb{+}
-% \end{array}
-% \]
-
-% Note that
-% $\pcL_{\uptaupp}$ contains full information of $\cL_{\uptaupp}$
-% since $\cL_{\uptaupp} = \pcL_{\uptaupp} \cdot +$
-% (when $y_{1}=d$,
-% $\ncL_{\uptaupp}$ also contains the full information).
-%
-
-
-
-%\subsubsection{Lift of local systems}
-% In this section, we
 \subsubsection{Local systems}
 We now describe the local systems $\cL_{\uptaup}$ and $\cL_{\uptau}$ more
 precisely using our formula of the associated character and the induction
@@ -4071,11 +4057,11 @@ hypothesis. Note that these local systems are always non-zero which implies that
 $\uppi_{\uptaup}$ and $\uppi_{\uptau}$ are unipotent representations attached to
 $\cOp$ and $\cO$ respectively.
 
-First note that in $\uptaup$ and $\uptaupp$, $z_{1}\neq s$ by the definition of
+First note that in $\uptaup$ and $\uptaupp$, $x_{\uptaupp}\neq s$ by the definition of
 dot-r-c diagram.
 \footnote{
   Suppose $\uptaupp\in \drc(\cOpp)$ has the shape in \eqref{eq:gd2.drc} and
-  $z_{1}=s$. By the induction hypothesis,   $\pcL_{\uptaupp}=\ncL_{\uptaupp}=0$ and so
+  $x_{\uptaupp}=s$. By the induction hypothesis,   $\pcL_{\uptaupp}=\ncL_{\uptaupp}=0$ and so
   the theta lift of $\uppi_{\uptaupp}$ vanishes.
 }
 % in generalized descent.
@@ -4160,7 +4146,7 @@ Then we have the following factorization of $\cL_{\uptau}$:
 \dagger\dagger \cB_{\uptaupp,i+1} & i\leq -1.
 \end{cases}
 \]
-Now we describle $\cP_{\uptau,i}$ according to $z_{1}$ case by case. In the
+Now we describle $\cP_{\uptau,i}$ according to $x_{\uptaupp}$ case by case. In the
 following discussion,
 \[
   \uup\cdots\uup\quad \text{ and }\quad  \uum\cdots\uum
@@ -4169,13 +4155,13 @@ always denote a row has length
 $2i+1$ with unspecified associated character.
 %We have the following cases
 %\subsubsection{}
-%First note that $z_{1}\neq s$ in generalized descent.
+%First note that $x_{\uptaupp}\neq s$ in generalized descent.
 
- \subsubsection{Case $z_{1}=r$}\label{sec:z.r}
+ \subsubsection{Case $x_{\uptaupp}=r$}\label{sec:z.r}
  We will see that the factorization \eqref{eq:d.factor} always holds
- when $z_{1}=x_{\uptaupp}=r$ and $n\geq 2$.
+ when $x_{\uptaupp}=r$ and $n\geq 2$.
  % according to the about list.
-  %\item $z_{1}=r$. %In this case, all length $3$ rows ends with $+$ sign!
+  %\item $x_{\uptaupp}=r$. %In this case, all length $3$ rows ends with $+$ sign!
   % So
   % $\bsign{\bfxx_{\uptaupp}} \succ (2,0)$, $\pcL_{\uptaupp}\neq 0$ has tail with
   % sign $+$, and $\ncL_{\uptaupp}=0$.
@@ -4211,7 +4197,7 @@ In particular, \eqref{eq:d.factor} holds.
 % factorization
 % $\cL_{\uptau} = \cB_{\uptau,1}\cdot \cD_{\uptau,1}$ such that $\cD_{\uptau,1}=\tytb{+,-}$.
  \item $\bfpp_{\uptau} = \tytb{sr\cdots,\vdots,s,{x_{j}},\vdots,{x_{n}}}$.
-% $y_{1}=z_{1}=r$ and $\bfxx_{\uptau} = s\cdots sx_{j}\cdots x_{n}$ with
+% $y_{1}=x_{\uptaupp}=r$ and $\bfxx_{\uptau} = s\cdots sx_{j}\cdots x_{n}$ with
  In this case $\#s(\bfxx_{\uptau})\geq 1$.
 
  When $n\geq 2$, the factorization \eqref{eq:d.factor} holds.
@@ -4263,7 +4249,7 @@ In particular, \eqref{eq:d.factor} holds.
   \end{enumT}
 
 
-  \subsubsection{Case $z_{1}=c$}\label{sec:z.c}
+  \subsubsection{Case $x_{\uptaupp}=c$}\label{sec:z.c}
   % In this case, the length $3$-rows will contain at least one $-$ sign.
   %$\pcL_{\uptaupp}\neq 0$ has tail sign $=$, and $\ncL_{\uptaupp}=0$.
   %We assume $\Sign(\bfxx_{\uptau})=(p_{1},q_{1})$.
@@ -4318,7 +4304,7 @@ In particular, \eqref{eq:d.factor} holds.
     and the factorization \eqref{eq:d.factor} holds.
   \end{enumT}
 
-  \subsubsection{Case $z_{1}=d$}\label{sec:z.d}
+  \subsubsection{Case $x_{\uptaupp}=d$}\label{sec:z.d}
   In this case, $\bfxx_{\uptau}$ could be anything.
 %  Then
   %$\pcL_{\uptaupp} = \cT_{\uptaupp} \cdot \pcB_{\uptaupp}$ and $\ncL_{\uptaupp}=\cT_{\uptaupp} \cdot \ncB_{\uptaupp}$.
@@ -4501,7 +4487,7 @@ $\ncL_{\uptaupp}$ from $\cL_{\uptaup}$:
   In any case, we get
   % recover $\lsign(\cL_{\uptaupp})=(p_{0},q_{0})$ and
   \begin{equation}\label{eq:uptaupp.sign}
-    \ssign(\uptaupp) = (n_{0},n_{0})+(p_{0},q_{0})\quad \text{where }
+    \ssign(\uptaupp) = (n_{0},n_{0})+(p''_{1},q''_{1})\quad \text{where }
     2n_{0} = \abs{\DD(\cOpp)}.
   \end{equation}
 % $+\half \abs{\DD(\cOpp)} \cdot(1,1)$.
@@ -4709,7 +4695,7 @@ that $\cL_{\uptau_{1}}=\cL_{\uptau_{2}}$.
 
 
 Recall \eqref{eq:gd.ls}: there is an pair of non-negative integers
-$(e_{i},f_{i})=\ssign(\bfuu_{\uptau})$ such that
+$(e_{i},f_{i})=\ssign(\bfuu_{\uptau_{i}})$ such that
 \[
   \cL_{\uptau_{i}} = \dagger\dagger \pcL_{\uptaupp_{i}}\cdot \pcE_{\uptau_{i}}
   + \dagger\dagger \ncL_{\uptaupp} \cdot \ncE_{\uptau_{i}}.
@@ -5235,7 +5221,7 @@ most left column on the right diagram.
 The definition splits in cases below. In all these cases we define
 \begin{equation}\label{eq:x.uptau}
  % \bfpp_{\uptau}:=
- \tbfxx_{\uptau} := x_{1}\cdots x_{n}m_{\uptau} \text{ and } x_{\uptau} := x_{n}
+ \tbfxx_{\uptau} := x_{1}\cdots x_{n}m_{\uptau} \text{ and } \txx_{\uptau} := x_{n}
 \end{equation}
 which is marked by $s/r/c/d$.
 For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part consisting of $\bullet$ and $s$ by dot-s switching algorithm.
@@ -5363,19 +5349,38 @@ For the part marked by $*/\cdots$ , $\eDD$ keeps $r,c,d$ and maps the rest part 
       \]
       Note that this definition is similar to that of the special
       shape diagrams in the descent case.
+      We define the ``peduncle'' of $\uptau$ to be
+      \[
+        \bfpp_{\uptau} = \tytb{{x_{1}}{x_{0}}, \vdots, {x_{n}},{m_{\uptau}}}.
+      \]
 \end{enumerate}
 
 In all the cases, let
 $\cO_{1} = (2n,)$ is the trivial nilpotent of type D.
 For each $\uptau\in \drc(\cO)$, we define $\bfxx_{\uptau} \in \drc(\cO_{1})$ by
-require the entires of $\bfxx_{\uptau}$ forms the following multiset:
+require the following identity of multisets: %the entires of $\bfxx_{\uptau}$ forms the following multiset:
 \[
+\set{\text{entry of }\bfxx_{\uptau}} =
 \begin{cases}
   \set{c, x_{2},\cdots, x_{n}} & \text{if $(x_1,m_{\uptau}) = (\bullet/s,a)$},\\
   \set{s, x_{2},\cdots, x_{n}} & \text{if $(x_1,m_{\uptau}) = (\bullet/s,b)$},\\
   \set{x_{1}, x_{2},\cdots, x_{n}} & \text{otherwise ($x_{1}=r/d$)}.
 \end{cases}
 \]
+In the above definition we include the initial case where $\cO$ is a trivial
+orbit of type B. We define $\bfxx_{\uptau}=\emptyset$ when $\cO$ is the trivial
+orbit of $\rO(1,\bC)$.
+
+We define the  ``basal disk'' of $\uptau$ as the following:
+\[
+  x_{\uptau} :=\begin{cases}
+    % \emptyset & \text{if $\cO = (1)$}\\
+    \bfxx_{\uptau} & \text{if $C_{2k+1}=C_{2k}+1$}.\\
+    c & \text{if $x_{n}m_{\uptau} =sa$ or $\bullet a$}\\
+    x_{n} & \text{otherwise}. % \text{if $C_{2k+1}-C_{2k}\geq 1$ and $x_{n}m_{\uptau}\neq sa$}\\
+  \end{cases}
+\]
+
 
 \subsubsection{A key proposition for descent case}
 Now we assume $\cO$ is given by \eqref{eq:B.orb.ds}
@@ -5432,7 +5437,7 @@ The following lemma is the key property satisfied by our definition
   \]
   The the behavior of $\uptau^{s}$ under the descent map $\eDD$ is illostrated
   as the following:
-  \[
+  \begin{equation}\label{eq:ds2.B.sp}
     \uptau^{s}: \hspace{1em}
     \tytb{
       {*(srcol)\cdots}\cdots\cdots,
@@ -5451,14 +5456,14 @@ The following lemma is the key property satisfied by our definition
     \uptaupp:
     \tytb{\none\cdots\cdots,\none{\ast}{\cdots},\none,\none,\none,\none,\none,\none,\none}
     \times \tytb{\none\cdots\cdots,{\none}{\ast}{\cdots},\none{\phantom{m}\mathclap{m_{\uptaupp}}},\none,\none,\none,\none,\none,\none}
-  \]
+  \end{equation}
   The grey part consists of totally $2(c_{2k}-1)=C_{2k}-1$ dots.
   Hence the total signature of the gray part is $(C_{2k}-1,C_{2k}-1)$.
   Note that $\uptau^{s}$ is obtained from the ``$\ast\cdots$'' part of $\taupp$ by attaching the grey part
   and $x_{0},\cdots, x_{n},m_{\uptau}$.
 
   The descent of a non-special diagram $\uptau^{ns}$:
-      \[
+  \begin{equation}\label{eq:ds2.B.nsp}
         \uptau^{ns}: \hspace{1em}
         \tytb{
         {*(srcol)\cdots}\cdots\cdots,
@@ -5483,7 +5488,7 @@ The following lemma is the key property satisfied by our definition
        \uptaupp:
        \tytb{\none\cdots\cdots,\none{\ast}{\cdots},\none,\none,\none,\none,\none,\none,\none}
        \times \tytb{\none\cdots\cdots,{\none}{\ast}{\cdots},\none{\phantom{m}\mathclap{m_{\uptaupp}}},\none,\none,\none,\none,\none,\none}
-     \]
+     \end{equation}
      Here the gray parts in $\uptau$ consists of $C_{2k}-1$ marks of $\bullet$, $s$, or
      $r$ and $s$ and $r$ occur with the same multiplicity. Hence the total
      signature of the gray part is $(C_{2k}-1,C_{2k}-1)$.
@@ -5567,7 +5572,8 @@ $C_{2k}/2-1$.
 
 \begin{lem}\label{lem:gd.inj.M}
   In \eqref{eq:gd.drc.B}, $x''=x_{0}$.
-  The map $\delta\colon  \drc(\cO)\rightarrow \drc(\cOpp) \times \drc(\cO_{1})$.
+  The map $\delta\colon  \drc(\cO)\rightarrow \drc(\cOpp) \times \drc(\cO_{1})$
+  given by $\uptau\mapsto (\eDDo^{2}(\uptau),\bfxx_{\uptau})$ is injective.
   Moreover,
   \[
   \ssign(\uptau) =\ssign(\uptaupp) + (C_{2k}-1, C_{2k}-1)+\ssign(\bfxx_{\uptau}).
@@ -5578,7 +5584,7 @@ $C_{2k}/2-1$.
 \begin{proof}
   The claim $x''=x_{0}$, the injectivity of $\delta$ and the siginature formula follows directly from our algorithm.
 
-  Now the injectivity of follows from
+  Now the injectivity of $\tdelta$ follows from
   $\bfxx_{\uptau}\mapsto (\ssign(\bfxx_{\uptau}), \upepsilon)$ is injective by
   \Cref{c:init.CD}.
   \trivial{
@@ -5621,6 +5627,185 @@ $C_{2k}/2-1$.
 \end{proof}
 
 
+\subsection{Proof of the type BM case}
+We will reduce the proof to the type CD case.
+
+In this section, $k\geq 1$ and
+$\cO = (C_{2k+1}, C_{2k}, \cdots,C_{1}, C_{0}=0)\in \dpeNil(B)$.
+$\cOp:=\eDD(\cO)$ and $\cOpp := \eDD(\cOp)$.
+
+Take $\uptau\in \drc(\cO)$, we marks the entries in $\uptau$ as in  \cref{eq:ds2.B.sp,eq:ds2.B.nsp,eq:gd.drc.B}.
+\subsubsection{Usual decent case}
+Thanks to \Cref{lem:sp-nsp.B}, the proof in the descent case is exactly the same
+as that in \Cref{sec:pf.ds.CD}.
+
+\subsubsection{Reduction to type CD case in the general descent case.}
+
+Suppose $C_{2k}$ is even.
+We define $\tcO = (C_{2k+1}-C_{2k}+1,1,1)\in\dpeNil(D)$ and
+$\tcOpp := \eDDo(\tcO)= (2)$.
+
+The key proposition of reduction.
+\begin{prop}
+ We have  the following properties:
+  \begin{enumC}
+    \item When $\uptaupp = \eDDo^{2}(\uptau)$ for certain $\uptau\in \drc(\cO)$,
+    we have $x_{\uptaupp}\neq s$;
+    \item For each $\uptaupp$ such that $x_{\uptaupp}\neq s$, we have a
+    bijection
+    \[
+      \begin{tikzcd}[row sep=0em]
+       \bdelta \colon  \set{\uptau\in \drc(\cO)| \eDDo^{2}(\uptau)=\uptaupp} \ar[r] &
+        \set{(x_{\tuptau},\bfuu_{\tuptau})| \tuptau\in \drc(\tcO) \text{ s.t.
+          } \eDDo^{2}(\tuptau)=x_{\uptaupp}}\\
+        \uptau \ar[r,mapsto] & (x_{\uptaupp}, \bfxx_{\uptau})
+      \end{tikzcd}
+  \]
+  where $\bfuu_{\tuptau}$ is defined in \eqref{eq:def.u}.
+  \end{enumC}
+\end{prop}
+
+
+The situation could be summarized in the following commutative diagram:
+  \[
+    \begin{tikzcd}
+     & \uptau \ar[r,"\delta",mapsto] \ar[d,mapsto]& (\uptaupp, \bfxx_{\uptau})\ar[d,mapsto]\ar[r,mapsto] & \uptaupp\ar[d,mapsto]\\
+     x_{\uptau} \ar[d,leftrightarrow,dashed] &\ar[l,mapsto]  \bfpp_{\uptau}\ar[r,mapsto]\ar[d,leftrightarrow]
+     & (x_{\uptaupp}, \bfxx_{\uptau}) \ar[d,equal]\ar[r,mapsto]& x_{\uptaupp} \ar[d,equal]\\
+    x_{\tuptau} & \ar[l,mapsto] \tuptau \ar[r,"\delta",mapsto]& (\tuptaupp,\bfuu_{\tuptau})\ar[r,mapsto]& \tuptaupp
+    \end{tikzcd}
+  \]
+  We remark that $x_{\uptau}$ and $x_{\tuptau}$ are equal in the most of the
+  case, especially when $n=1$. But there are exceptional cases.
+
+  \begin{proof}
+    This follows from a case by case verification according to our algorithm.
+    We list all possible cases below:
+
+    When $n=1$, see \Cref{tb:rd1}.% We have the following table:
+    \begin{table}[p]
+      \[
+        \begin{array}{c|c|c|c|c}
+          \hline
+          \hline
+          x_{\uptau} & \tytb{{\txx_{\uptaupp}},{m_{\uptaupp}}} & \bfpp_{\uptau} & (x_{\uptaupp},\bfxx_{\uptau}) & \tuptau_{L} \\
+          \hline
+          r & \tytb{r,a} &  \tytb{\bullet r,b} & (r,s) & \tytb{sr} \\
+          \cline{3-5}
+                     &            &  \tytb{\bullet r,a} & (r,c) & \tytb{rc} \\
+          \hline
+          r & \tytb{r,b} &  \tytb{sr,b} & (r,s) & \tytb{sr} \\
+          \cline{3-5}
+                     &            &  \tytb{sr,a} & (r,c) & \tytb{rc} \\
+          \hline
+          c & \tytb{s,a} &  \tytb{\bullet s,b} & (c,s) & \tytb{sc} \\
+          \cline{3-5}
+                     &            &  \tytb{\bullet s,a} & (c,c) & \tytb{cc} \\
+          \hline
+          d & \tytb{d,a} & \tytb{\bullet d,b} & (d,s) & \tytb{sd} \\
+          \cline{3-5}
+                     &            & \tytb{\bullet d,a} & (d,c) & \tytb{cd} \\
+          \cline{3-5}
+                     &            & \tytb{r d,a} & (d,r) & \tytb{rd} \\
+          \cline{3-5}
+                     &            & \tytb{d d,a} & (d,d) & \tytb{dd} \\
+          \cline{2-5}
+                     & \tytb{d,b} & \tytb{s d,b} & (d,s) & \tytb{sd} \\
+          \cline{3-5}
+                     &            & \tytb{s d,a} & (d,c) & \tytb{cd} \\
+          \cline{3-5}
+                     &            & \tytb{r d,b} & (d,r) & \tytb{rd} \\
+          \cline{3-5}
+                     &            & \tytb{d d,b} & (d,d) & \tytb{dd} \\
+          \hline
+          \hline
+        \end{array}
+      \]
+      \caption{Reduction when $n=1$}
+      \label{tb:rd1}
+    \end{table}
+
+    Now assume $n\geq 1$.
+    We let $\bfxx = x_{1}x_{2}\cdots x_{n}$ and define
+    \[
+      \bfxx' = \begin{cases}
+        \bfxx \text{ deleteing ``$c$''}  & \text{if } c\in \bfxx\\
+        \bfxx \text{ deleteing ``$s$''}  & \text{if } c\notin \bfxx, s\in \bfxx\\
+        \text{undefined} & \text{otherwise.}
+      \end{cases}
+    \]
+    Now all the cases are listed in \Cref{tb:rd2}.
+    % If $c\in \bfxx$, let $\bfxx'$ be the string obtained by deleting  $c$ from
+    % $\bfxx$.
+    % In the following table, if $c$ occures in $\bfxx$ or
+    % $\bfxx'$, we  will view $c$ as $s$ and
+    % arrange the order of entries when place them in $\bfpp_{\uptau}$.
+
+    \begin{table}[p]
+      \[
+        \begin{array}{c|c|c|c|c|c:c}
+          \hline
+          \hline
+          x_{\uptau} & \tytb{{\txx_{\uptaupp}},{m_{\uptaupp}}} & \bfpp_{\uptau} & x_{\uptaupp}, \bfxx_{\uptau}
+          & \tuptau_{L} & \multicolumn{2}{ c}{\text{conditions}}\\
+          \hline
+          r & \tytb{r,a} &  \tytb{\bullet r,{\bfxx'},a} & \tytb{r{,}{\bfxx}} & \tytb{{\bfxx}r,}& x_{1}\neq r& c\in \bfxx  \\
+          \cline{5-6}
+                     & & & &\tytb{rc,{\bfxx'}} & x_{1}=r& \\
+          \cline{3-3}\cline{4-7}
+                     &            &  \tytb{\bullet r,{\bfxx'},b} & \tytb{r{,}{\bfxx}} & \tytb{{\bfxx}r}
+                        & \multicolumn{2}{c}{c\notin \bfxx,s\in \bfxx} \\
+          \hline
+          r & \tytb{r,b} &  \tytb{sr,{\bfxx'},a} & \tytb{r{,}{\bfxx}} & \tytb{{\bfxx}r,}& x_{1}\neq r& c\in \bfxx  \\
+          \cline{5-6}
+                     & & & &\tytb{rc,{\bfxx'}} & x_{1}=r& \\
+          \cline{3-3}\cline{4-7}
+                     &            &  \tytb{sr,{\bfxx'},b} & \tytb{r{,}{\bfxx}} & \tytb{{\bfxx}r}
+                        & \multicolumn{2}{c}{c\notin \bfxx,s\in \bfxx} \\
+          \hline
+          c & \tytb{s,a} &\tytb{\bullet s,{\bfxx'},a} & \tytb{c{,}{\bfxx}} & \tytb{{\bfxx}c}
+                        & c\in \bfxx   & s\in \bfxx \text{ is automatic} \\%\multicolumn{2}{c}{c\in \bfxx}\\
+          \cline{3-3}\cline{6-6}
+                     &            &\tytb{\bullet s,{\bfxx'},b} &                    &
+                        & c\notin \bfxx   &\\%\multicolumn{2}{c}{c\in \bfxx}\\
+          \hline
+          d & \tytb{d,a} &\tytb{\bullet d,{\bfxx'},a} & \tytb{d{,}{\bfxx}} & \tytb{{\bfxx}d}& \multicolumn{2}{c}{c\in \bfxx}\\
+          \cline{3-3}\cline{6-7}
+                     &            &\tytb{\bullet d,{\bfxx'},b} &                    &
+                        & x_{1}=s & c\notin \bfxx   \\%\multicolumn{2}{c}{c\in \bfxx}\\
+          \cline{3-3}\cline{6-7}
+                     &            &\tytb{{\bfxx}d,a} &                    &
+                        & x_{1}\neq s & c\notin \bfxx   \\%\multicolumn{2}{c}{c\in \bfxx}\\
+          \hline
+          d & \tytb{d,b} &\tytb{s d,{\bfxx'},a} & \tytb{d{,}{\bfxx}} & \tytb{{\bfxx}d}
+                        & \multicolumn{2}{c}{c\in \bfxx}\\
+          \cline{3-3}\cline{6-7}
+                     &            &\tytb{s d,{\bfxx'},b} &                    &
+                        & x_{1}=s & c\notin \bfxx   \\%\multicolumn{2}{c}{c\in \bfxx}\\
+          \cline{3-3}\cline{6-7}
+                     &            &\tytb{{\bfxx}d,b} &                    &
+                        & x_{1}\neq s & c\notin \bfxx   \\%\multicolumn{2}{c}{c\in \bfxx}\\
+          \hline
+          \hline
+        \end{array}
+      \]
+      \caption{Reduction when $n\geq 1$}
+      \label{tb:rd2}
+    \end{table}
+  \end{proof}
+
+  Thanks to $\bdelta$ defined in  the above lemma, we can use \eqref{eq:gd.ls}.
+  The rest of the proof is similar to that in \Cref{sec:pf.gd.CD}.
+  We leave the details to the reader.
+
+% \begin{prop}
+%   Inductively, we can establish the following properties:
+%   \begin{enumS}
+%     \item  The local system $\cL_{\uptau}$ has the factorization according to
+%     $\txx_{\uptau}$.
+%   \end{enumS}
+% \end{prop}
+
 \delete{
 \section{An example}\label{sec:C.reg}
 Consider the case that
@@ -5661,36 +5846,6 @@ Now the
   \end{array}
 \end{equation}
 
-
-% \begin{equation} \label{eq:B1-2}
-% \begin{array}{cc|c|cc}
-%   \bfxx_{\uptaupp} & \cP_{\uptaupp}         & \cP_{\uptaup} & \bfxx_{\uptau} & \cP_{\uptaupp} \\
-%   \hline
-%   src              & \tytb{\ast=\ast=\ast,=} &                                                 \\
-%   \hline
-%   srd              & \tytb{+-+-+,=}          &                                                 \\
-%   \hline
-%   scc              & \tytb{-+-+-,=}          &                                                 \\
-%   \hline
-%   scd              & \tytb{=\ast=\ast=,=} &                                                 \\
-%   sdd              & %\tytb{=\ast=\ast=,=}
-%                                             &                                                 \\
-%   \hline
-%   rcc              & \tytb{\ast=\ast=\ast,+} & \tytb{-+-+-+}                                                \\
-%   \hline
-%   rcd              & \tytb{+-+-+,+} & \tytb{=\ast=\ast=\ast}                             \\
-%   rdd              & %\tytb{+-+-+,+} & \tytb{=\ast=\ast=\ast}                             \\
-%                                 & \\
-%   \hline
-%   ccc              & \tytb{-+-+-,+}          & \tytb{+-+-+-}                                               \\
-%   \hline
-%   ccd              & \tytb{=\ast=\ast=,+}          & \tytb{+-+-+-}                                               \\
-%   \hline
-%   cdd              & \tytb{=\ast=\ast=,+}\cup \tytb{+-+-+,=} & \\
-%   \hline
-%   ddd              & \tytb{-+-+-,+}\cup \tytb{+-+-+,-}          &                                                 \\
-% \end{array}
-% \end{equation}
 
 \begin{equation} \label{eq:B1-2}
 \begin{array}{cc|c|cc}
@@ -5807,249 +5962,9 @@ $\cA_{9}=\set{d\cdots d}$
                         &                    &                & dd\cA_{9} &\tytb{-\cdots,+} \cup \tytb{+\cdots,-}                       \\
 \end{array}
 \end{equation}
-
-% Now we back to a the situation $t$ is even.
-
-
-% % In this case, one check that all the claim holds for $\cL_{\uptau}$.
-% Case by case check, yields that we can recover $(\bfxx_{\uptau}, z_{1})$ for the
-% local system $\cL_{\uptau}$, and then we could recover the packet $[\cL_{\uptaupp}]$
-
-
-% Now assume the second longest row of $\cOpp$ is odd.
-% In this case, the step leads to $\cOpp$ is also an generalized descent.
-
-% Then $\abs{\tauls}-\abs{\taurs}=1$.
-
-% We observe the following facts for $\LLS{\uptau}$.
-% Suppose $(x_{0},\cdots,x_{n})=(s,\cdots, s,c)$ and $y_{1}=$
-
-% Assume 1. $C_{2k}=C_{2k-1}$ is even or 2. $C_{2k}$ is odd and $C_{2k+1}>C_{2k}+2$.
-% If $\uptau$ ends with $s$ then
-% $(\pcL_{\uptau},\ncL_{\uptau})=(\emptyset, \emptyset)$.
-% If $\taulf$ ends with $c/r/d$, $\pcL_{\uptau}\mapsto \pcL_{\uptau}$ is a well defined
-% injective map. Hence the generalized lift of these local system $\pcL_{\uptau}$ to
-% $(C_{2k+1}-1, C_{2k+1}-1, C_{2k}, \cdots)$ is injective.
-
-
-
-% Properties:
-% \begin{enumS}
-% \item If the first row of $\uptau$ ends with $s$, $\pcL = \ncL = 0$.
-% \item If the first row of $\uptau$ ends with $c/r$, $\pcL \neq 0$ and $\ncL=0$.
-% \item If the first ro
-% \end{enumS}
-% \ref{p:drcls.1} follows from the above properties.
-
-% Assume the properties above are satisfied by $\cOpp$.
-
-% The local system $\cL_{\uptaup}$ is given by attaching a column on the left of
-% $\pcL_{\uptaupp}+\ncL_{\uptaupp}$.
-
-% Assume $\bsign{\cL_{\uptaupp}} = (p_{1},q_{1})$.
-% Note that
-% \begin{enumI}
-% \item the descent $\uptaupp$ of $\uptaup$ never ends with $s$.
-% \item When $\uptaup_{0}$ ends with $c/r$, $p_{1}\geq 1$ ans so $\bsign{\cL_{\uptaup}} = (p_{1}-1,q_{1})$.
-% \item When $\uptaup_{0}$ ends with $d$,  $\bsign{\cL_{\uptaup}}=\set{(p_{1},q_{1}-1),(p_{1}-1,q_{1})}$
-% \end{enumI}
-
-
-% We now deal with the case
-% \[
-%   \cO = [C_{2k+1},C_{2k} =  C_{2k-1}\cdots C_{2k-2a+1} > C_{2k-2a},\cdots ]
-% \]
-
-
-% \subsection{}
-
-% To prove \Cref{thm:count}, % is a consequence of the followingwe will establish the following set of properties of $\eDD$.
-
-% \begin{prop}
-%   %The map $\cL$ is a well-defined injection. More precisely, we have
-%   We have
-%   \begin{enumS}
-%     \item $\cL_{\uptau}$ is non-zero for each $\uptau\in \edrc(\star)$.
-%     \item % For each \ess orbit $\cO$ of type C or M,
-%     When $\star = C$ or $M$,
-%     the following is an
-%     injection
-%     \[
-%       \begin{tikzcd}[row sep=0em]
-%         \drc(\star) \ar[r] & \LS(\star) \\
-%         \uptau \ar[r,maps to] & \Ch(\uppi_{\uptau}) = \cL_{\uptau}
-%       \end{tikzcd}
-%     \]
-%     \item
-%     When $\star = C$ or $M$,
-%     % For each \ess orbit $\cO$ of type D or B,
-%     the following is an
-%     injection
-%     \[
-%       \begin{tikzcd}[row sep=0em]
-%         \drc(\star)\times \bZ/2\bZ \ar[r] & \LS(\star)\\
-%         (\uptau,\upepsilon) \ar[r,maps to] & \Ch(\uppi_{\uptau}\otimes (\bfone_{p,q}^{-,-})^{\upepsilon})
-%         %= \cL_{\uptau}\otimes (\bfone_{p,q}^{-,-})^{\upepsilon}
-%       \end{tikzcd}
-%     \]
-%   \end{enumS}
-% \end{prop}
-
-
-% {\color{red} The details of the definition of $\eDD$ and the proof of the above
-%   proposition will be supplied later.}
-
 }
 
 \appendix
-\delete{
-\clearpage
-\section*{\color{blue} Progress reports and questions}
-I have written a program which realizes the algorithm of mataching dot-r-c
-diagram with local system for both even orthogonal-symplectic dual pairs and odd
-orthogonal-metaplectic dual pairs.
-The algorithm has been tested numerically. Some examples:
-\begin{enumerate}
-  \item
-        Consider the type $C$ partition with columns
-        $(9, 9, 8, 8, 7, 7, 5, 5, 3, 3, 1, 1)$.
-        All unipotent representations are theta lifts. Here are some data
-        generated by the program:
-
-        \vspace{-0.5em}
-\begin{lstlisting}
-Type D partition: (2,)
-Number of DRCS: 4
-Type C partition: (1, 1)
-Number of DRCS: 3
-Type D partition: (4, 1, 1)
-Number of DRCS: 20
-Type C partition: (3, 3, 1, 1)
-Number of DRCS: 17
-Type D partition: (6, 3, 3, 1, 1)
-Number of DRCS: 116
-Type C partition: (5, 5, 3, 3, 1, 1)
-Number of DRCS: 99
-Type D partition: (8, 5, 5, 3, 3, 1, 1)
-Number of DRCS: 676
-Type C partition: (7, 7, 5, 5, 3, 3, 1, 1)
-Number of DRCS: 577
-Type D partition: (8, 7, 7, 5, 5, 3, 3, 1, 1)
-Number of DRCS: 1632
-Type C partition: (8, 8, 7, 7, 5, 5, 3, 3, 1, 1)
-Number of DRCS: 3264
-Type D partition: (10, 8, 8, 7, 7, 5, 5, 3, 3, 1, 1)
-Number of DRCS: 13056
-Type C partition: (9, 9, 8, 8, 7, 7, 5, 5, 3, 3, 1, 1)
-Number of DRCS: 9792
-\end{lstlisting}
-\item
-        Consider the type $M$ partition with columns
-        $(9,9,8,8,7,7,6,6,4,4,2,2,1,1)$.
-        All unipotent representations are theta lifts:
-        \vspace{-0.5em}
-\begin{lstlisting}
-Type B partition: (1,)
-Number of DRCS: 1
-Type M partition: (1, 1)
-Number of DRCS: 4
-Type B partition: (3, 1, 1)
-Number of DRCS: 8
-Type M partition: (2, 2, 1, 1)
-Number of DRCS: 12
-Type B partition: (5, 2, 2, 1, 1)
-Number of DRCS: 40
-Type M partition: (4, 4, 2, 2, 1, 1)
-Number of DRCS: 68
-Type B partition: (7, 4, 4, 2, 2, 1, 1)
-Number of DRCS: 232
-Type M partition: (6, 6, 4, 4, 2, 2, 1, 1)
-Number of DRCS: 396
-Type B partition: (7, 6, 6, 4, 4, 2, 2, 1, 1)
-Number of DRCS: 560
-Type M partition: (7, 7, 6, 6, 4, 4, 2, 2, 1, 1)
-Number of DRCS: 2240
-Type B partition: (9, 7, 7, 6, 6, 4, 4, 2, 2, 1, 1)
-Number of DRCS: 4480
-Type M partition: (8, 8, 7, 7, 6, 6, 4, 4, 2, 2, 1, 1)
-Number of DRCS: 6720
-Type B partition: (9, 8, 8, 7, 7, 6, 6, 4, 4, 2, 2, 1, 1)
-Number of DRCS: 8960
-Type M partition: (9, 9, 8, 8, 7, 7, 6, 6, 4, 4, 2, 2, 1, 1)
-Number of DRCS: 35840
-\end{lstlisting}
-  \item The algorithm having the essentially the same shape of Barbasch's notes.
-        It using the information encoded in the longest 4 columns of the left
-        and right dot-r-c diagrams. So the proof of the validity of the
-        algorithm should be reduced to the case where at most 4 columns appears
-        in the Young diagram of the nilpotent orbit.
-  \item Through the theta lifting process, number of irreducible components in the
-        associated variety can be decreasing. This situation are very rare and
-        could be easily identified from the dot-r-c diagram.
-\end{enumerate}
-
-\subsection*{TODO}
-\begin{enumerate}
-  \item I am working on the proof of the algorithm.
-  \item {\color{red} Question:}
-        Our goal is to construct all unipotent representations for all purely
-        even orbit ${}^{L}\cO$. The remaining cases consist the orbits which are
-        note noticed. In these case, local systems on the associated variety are
-        not enough to separate the representations.
-
-        Let us consider the simplest case, a type $C$ orbit $\cO$ with columns
-        $(1,1,1,1,1,1)$.
-
-        Now $\#\drc(\cO) = 7$, however theta lifting only generates $5$ possible
-        local systems.
-
-        In fact, for the type C orbit $\cO$ with a single row of length $2r$,
-        $\#\drc(\cO) = 1+2r$ . When $2r\geq 4$, theta lifting only generates $5$ different
-        local systems: $4$ local systems have irreducible associated variety,
-        and $1$ local system support on
-        the union of the two real orbits.
-  \item
-         In Dan's notes and email, the rest
-        cases are expected to be treated by parabolic and
-        cohomological inductions. However, I have no idea how it should work precisely.
-        Continue with the notation in the previous item.
-        I now explain my confusion by the example.
-
-        Let $\cO_{0}$ be the orbit of type C with columns $(1,1)$ and let
-        $\cO = (1,1,1,1,1,1)$. Now $\#\Unip(\cO_{0})=3$. For each unipotent representation
-        $\uppi_{0}\in \Unip(\cO_{0})$,
-        we can form parabolic induced representations
-        \[
-        \Ind_{\GL(1,\bR)\times \GL(1,\bR)\times \Sp(2,\bR)}^{\Sp(6,\bR)} \chi_{1} \boxtimes \chi_{2}\boxtimes \uppi_{0}
-        \]
-        where $\chi_{1}$ and $\chi_{2}$ are trivial or determinant characters.
-
-        By the argument in Section~4.2.4 of our preprint arXiV:1712.05552, we
-        could identify {\color{red} the irreducible components of} these induced representations with double theta liftings,
-        and therefore {\color{red} some of the representations are reducible}
-        (this is pointed out by Binyong.)
-
-        However, for each $\uppi_{0}$, there are $3$ possible choices of
-        $\chi_{0}$ and $\chi_{1}$ up to permutation.
-        Therefore, there must be some {\color{red} coincidence} among these induced
-        representations, as $3\times 3 >7$.
-        The known coincidence for theta lifts might give all possible coincidences.
-        Hopefully these case are exactly all the coincidences and the
-        theta lifts yield all unipotent representations.
-        I {\color{red} verified} the case where $\cO$ has a single row of length $10$
-        by hand.
-        The idea might be tested numerically, and I will update my program later.
-
-        On the other hand, one may also use cohomological induction by inducing from
-        $\rU(1)\times \rU(1)\times \Sp(2,\bR)$ and put trivial representations
-        on the $\rU(1)$ factors. I have no idea about the
-        {\color{red} irreducibility} of them. Is it possible that these
-        cohomologically induced representations {\color{red} coincide} with
-        certain parabolically induced modules described as above?
-\end{enumerate}
-}
-
-
 
 \begin{bibdiv}
   \begin{biblist}
