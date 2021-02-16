@@ -6908,6 +6908,43 @@ In particular, \eqref{eq:d.factor} holds.
   cases.
 \end{proof}
 
+\begin{lem}
+  The local system $\cL_{\uptau}$ satisfies the following properties:
+  \begin{enumT}
+    \item When $x_{\uptau} = s$, then $\pcL_{\uptau} = \ncL_{\uptau} = 0$.
+    \item When $x_{\uptau} = r/c$, then $\pcL_{\uptau} \neq 0$ and $\ncL_{\uptau}=0$.
+    \item When $x_{\uptau} = d$, then $\pcL_{\uptau}\neq 0$ and $\ncL_{\uptau}\neq 0$.
+  \end{enumT}
+\end{lem}
+\begin{proof}
+  If $x_{\uptau}=s/r/c$,  ``$-$'' mark dose not appear as a 1-row in
+  $\cL_{\uptau}$ by \eqref{eq:gd.ls}. So $\ncL_{\uptau}=0$ in these case.
+
+  \begin{enumPF}
+    \item  Suppose $x_{\uptau}=s$. We have $\bfuu_{\uptau}=s\cdots s$.
+    Therefore, only the fist term in  \eqref{eq:gd.ls} is non-vanishing and
+    $\pcP_{\uptau}$ consists of $=$ marks. Hence $\pcL_{\uptau} =0$.
+    \item Suppose $x_{\uptau}=r$. If $\ssign(\bfuu_{\uptau})\succ(1,1)$, the
+    first term in \eqref{eq:gd.ls} non-vanishing and $\pcL_{\uptau}\succ \dagger_{(1,0)}$.
+    So $\pcL_{\uptau}\neq 0$.
+    Now suppose $\ssign(\bfuu_{\uptau})\nsucc (1,1)$. Then
+    $\bfuu_{\uptau}=r\cdots r$ and $x_{\uptaupp}=d$ by \Cref{lem:u}.
+    Now the second term of \eqref{eq:gd.ls} is non-vanishing and
+    $\ncL_{\uptau}\succ\dagger_{(1,0)}$. So $\pcL_{\uptau}\neq 0$.
+    \item Suppose $x_{\uptau}=d$. Suppose $\ssign(\bfuu_{\uptau})\succ (1,2)$.
+    Then the first term in \eqref{eq:gd.ls} is non-vanishing and
+    $\pcP_{\uptau}\succ \dagger_{(1,1)}$. So $\pcL_{\uptau}\neq 0$ and
+    $\ncL_{\uptau}\neq 0$.
+    Now suppose $\ssign(\bfuu_{\uptau})\nsucc(1,2)$. Then
+    $\bfuu_{\uptau} = r\cdots rd$
+    \footnote{$\bfuu_{\uptau}=d$ if it has length 1.} and
+    $x_{\uptaupp}=d$.
+    So the both terms in \eqref{eq:gd.ls} are non-vanishing. Since
+    $\pcP_{\uptau}\succ \dagger_{(1,0)}$  and
+    $\ncP_{\uptau}\succ \dagger_{(0,1)}$, we get the conclusion.
+  \end{enumPF}
+\end{proof}
+
 \subsubsection{Unipotent representations attached to $\cOp$}
 In this section, we let $\uptaup\in \drc(\cOp)$ and
 $\uptaupp  = \eDDo(\uptaup)\in \drc(\cOpp)$. First note that
@@ -7002,102 +7039,16 @@ $\ncL_{\uptaupp}$ from $\cL_{\uptaup}$:
  \]
 \end{proof}
 
+\begin{lem}
+
+\end{lem}
+
 
 \subsubsection{Noticed orbits}
 
-% \begin{claim}
-% Suppose $\uptau_{1}\neq \uptau_{2}$ and
-% $\cL_{\uptau_{1}}=\cL_{\uptau_{2}}$. Then, $\uptaup_{1}\neq \uptaup_{2}$ and
-% $\upepsilon_{1}=\upepsilon_{2}$.
-% \end{claim}
-% \begin{proof}
-% First note taht $\upepsilon_{i}$ is completely determined by the shape of local
-% system $\cL_{\uptau_{i}}$.
-% Observe that
-% $\abs{\ssign(\uptau)} - \abs{\ssign(\uptaupp)} = \abs{\ssign(\bfxx_{\uptau}y_{1})} - \abs{\ssign(z_{1})}$.
-% This implies that the signature of $\uptau$ is completely determined by
-% $\bfxx_{\uptau}y_{1}$ and $\uptaupp$.
-% Also observe that $\uptaupp$ is determined by $\uptaup$.
-
-% By our algorithm we see that, for every fixing $\uptaup, \upepsilon$,
-% the map
-% \[
-% \set{\uptau | \eDD(\uptau)= (\uptaup,\upepsilon)} \rightarrow \bZ
-% \]
-% defined by $\uptau\mapsto \abs{\ssign(\bfxx_{\uptau}y_{1})} - \abs{\ssign(z_{1})}$ is
-% injective.
-
-% Now $\cL_{\uptau_{1}}=\cL_{\uptau_{2}}$ implies
-% $\ssign(\uptau_{1})=\ssign(\uptau_{2})$.
-
-% Suppose $\uptaup:=\uptaup_{1}=\uptaup_{2}$ and $\upepsilon=\upepsilon_{1}=\upepsilon_{2}$, $\uptau_{1}$ and $\uptau_{2}$ are two
-% elements in the above set with the same image in $\bZ$. This yields an
-% contradiction.
-% \end{proof}
-
-
-% Now fix signature $(p,q)$. We will show that
-% \[
-%   \set{\cL_{\uptau}| \lsign(\cL_{\uptau}) = (p,q)}\longrightarrow \set{\cL_{\uptaup}}
-% \]
-% is injective when $\cO$ is noticed.
 
 
 In this section, we prove the claims about noticed and +noticed orbits.
-
-% \begin{claim}\label{c:gd.C2}
-%   Suppose $\cOpp$ is +noticed. Then
-%   \begin{enumT}
-%     \item \label{c:gd.C2.1}The map
-% $\set{\cL_{\uptaupp}| x_{\uptaupp}\neq s}\rightarrow \set{\cL_{\uptaup}}$ given by
-% $\cL_{\uptaupp}\mapsto \cL_{\uptaup}=\vartheta(\cL_{\uptaupp})$ is a bijection.
-% \item
-% The map $\drc(\cOp)\rightarrow \LLS(\cOp)$ given by $\uptaup\mapsto \cL_{\uptaup}$ is a bijection.
-% \end{enumT}
-% \end{claim}
-% \begin{proof} %Recall \eqref{eq:LS.taup}.
-%   Let $\uptaup\in \drc(\cOp)$.
-%   By \Cref{c:gd.C1}, we have a well defined map
-%   $\cL_{\uptaup}\mapsto \pcL_{\uptaupp}$ with $\pcL_{\uptaupp}\neq 0$.
-%   Since $\cOpp$ is +noticed, $\pcL_{\uptaupp}$ uniquely determines the local
-%   system $\cL_{\uptaupp}$ by inductive hypothesis. Therefore,
-%   $\cL_{\uptaup}\mapsto \pcL_{\uptaupp}\mapsto \cL_{\uptaupp}$ gives the inverse
-%   map in the claim.
-
-%   Now suppose $\uptaup_{1}\neq \uptaup_{2}\in \drc(\cOp)$. By \Cref{lem:gd.CD},
-%   $\uptaupp_{1}\neq \uptaupp_{2}$. Hence
-%   $\cL_{\uptaupp_{1}}\neq\cL_{\uptaupp_{2}}$ by the induction hypothesis.
-%   Therefore, $\cL_{\uptaup_{1}}\neq \cL_{\uptaup_{2}}$ by part \eqref{c:gd.C2.1}
-%   of the claim.
-% % Case $x_{\uptaupp}=d$:
-% %   When $\lsign(\cL_{\uptaupp}) = \set{(q_{0},p_{0}-1),(q_{0}-1,p_{0})}$ has two
-% %   elements,
-% %   we let $\pcL_{\uptaup}$ (resp. $\ncL_{\uptaup}$) be the parts whose
-% %   $\lsign = (q_{0},p_{0}-1)$ (resp. $=(q_{0}-1,p_{0})$).
-% %   If $\bsign(\cL_{\uptaup})= \set{(0,0)}$,
-% %   $\cL_{\uptaupp} = \DD(\pcL_{\uptaup})\cdot + \cup \DD(\ncL_{\uptaup})\cdot - $.
-% %   Otherwise, if every component of $\cL_{\uptaupp}$ $\succ \dagger_{(1,0)}$,
-% %   we have $\cL_{\uptaupp} = \DD(\pcL_{\uptaup})\cdot +$; if
-% %   $\cL_{\uptaupp} \succ \dagger_{(0,1)}$,
-% %   $\cL_{\uptaupp} = \DD(\ncL_{\uptaup})\cdot -$.
-
-% % Case $x_{\uptapp}=r/c$:
-% % Since $\cOpp$ is +noticed, we have
-% % $\cL_{\uptaup} = \dagger\pcL_{\uptaupp}\mapsto \pcL_{\uptaupp}\mapsto \cL_{\uptaupp}$
-% % is well defined, and bijective with $\set{\cL_{\uptaupp}|\pcL_{\uptaupp}\neq \emptyset}$.
-% % $\cL_{\uptaupp}\mapsto \pcL_{\uptaupp}$ is injective. Hence
-% % $\cL_{\uptaup}\mapsto \cL_{\uptaupp}$ is injective.
-% \end{proof}
-
-% \begin{prop}\label{c:gd.pnoticed}
-%     Suppose $\cO$ is +noticed.
-%     The map $\Upsilon \colon \set{\uptau\in\drc{\cO}|x_{\uptau}}
-%     \longrightarrow \set{\cL_{\uptau}|\pcL_{\uptau}\neq 0}\longrightarrow \set{\pcL_{\uptau}\neq 0}$
-%     is injective.
-%   %   \item
-%   %   Suppose $\cO$ is noticed the map $\Upsilon$ defined in \eqref{eq:up} is injective.
-%   % \end{enumC}
-% \end{prop}
 
 \begin{lem}\label{c:gd.C2}
   Suppose $\cOp$ is noticed. Then
@@ -8118,7 +8069,7 @@ $\tcOpp := \eDDo(\tcO)= (2)$.
 The key proposition of reduction.
 \begin{prop}
  We have  the following properties:
-  \begin{enumC}
+  \begin{enumS}
     \item When $\uptaupp = \eDDo^{2}(\uptau)$ for certain $\uptau\in \drc(\cO)$,
     we have $x_{\uptaupp}\neq s$;
     \item For each $\uptaupp$ such that $x_{\uptaupp}\neq s$, we have a
@@ -8132,7 +8083,13 @@ The key proposition of reduction.
       \end{tikzcd}
   \]
   where $\bfuu_{\tuptau}$ is defined in \eqref{eq:def.u}.
-  \end{enumC}
+  \item
+  We have the following properties:
+  \begin{enumS}
+    \item $x_{\tuptau}=s$ if and only if $x_{n}m_{\uptau} = sb$ or $\bullet b$.
+    \item $x_{\tuptau}=d$ if and only if $x_{n}=d$. \qedhere
+  \end{enumS}
+  \end{enumS}
 \end{prop}
 
 
