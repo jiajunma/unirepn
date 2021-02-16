@@ -218,8 +218,9 @@
 \newcommand{\nullpp}{N(\fpp'^*)}
 \newcommand{\nullp}{N(\fpp^*)}
 %\newcommand{\Aut}{\mathrm{Aut}}
+%\usepackage{mnsymbol}
 
-\def\mstar{{\medstar}}
+
 \def\YD{{\mathsf{YD}}}
 \def\SYD{{\mathsf{SYD}}}
 \def\MYD{{\mathsf{MYD}}}
@@ -715,6 +716,7 @@
 
 \renewcommand{\rk}{\mathrm k}
 
+\newcommand{\g}{\mathfrak g}
 \newcommand{\Z}{\mathbb{Z}}
 \DeclareDocumentCommand{\C}{}{\mathbb{C}}
 \newcommand{\R}{\mathbb R}
@@ -1134,6 +1136,11 @@
 % \def\acO{\acute{\cO}}
 % \def\asO{\acute{\sO}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\mstar{{\star}}
+
 \def\GVr{G}
 \def\tGVr{\wtG}
 \def\GVpr{G'}
@@ -5897,16 +5904,21 @@ The situation could be summarized in the following commutative diagram:
 %   \end{enumS}
 % \end{prop}
 
-\delete{
-\section{An example}\label{sec:C.reg}
+\section{Examples}
+\subsection{Regular orbit of type C}
+  \label{sec:C.reg}
 Consider the case that
-$\cO = (2,\underbrace{1, \cdots, 1}_{(t+1)\text{-terms}})\in \Nil(D)$.
+$\cO = (2,\underbrace{1, \cdots, 1}_{(2n)\text{-terms}})\in \Nil(D)$.
+Now $\cOp:=\eDD(\cO)$ is the regular orbit of $\Sp(2n)$.
 %$[2k+2,2k+1, \cdots, 2k+1, 2l, 2l,\cdots ]$.
 %here we have $2k+1$-columns $2t$.
 
-Then $\cOp$ is a regular orbit of the corresponding symplectic group. $\cOp$ is
-the opposite case compared to the noticed oribts. It is very ``degenerate''.
+% Then $\cOp$ is a regular orbit of the corresponding symplectic group.
+$\cOp$ is the opposite case compared to the noticed oribts. It is very ``degenerate''.
 
+{\color{red} TBA}
+
+\delete{
 By the calculation above, we have
 \[
   \cL_{\uptaupp} = \cB_{\uptaupp} \cdot \cP_{\bfpp_{\uptaupp}}.
@@ -6055,7 +6067,1380 @@ $\cA_{9}=\set{d\cdots d}$
 \end{equation}
 }
 
+
+
+\section{Concluding remarks} We record the following result, which is a form of automatic continuation.
+
+\begin{prop}Retain the setting in \Cref{sec:cons}.
+  The representation $ \pi_{\sO, \eta}$ is isomorphic to
+  \begin{equation}\label{anatheta}
+    (\omega_{\bfV_0, \bfV_1}\whotimes \omega_{\bfV_1, \bfV_2} \whotimes \cdots
+    \whotimes \omega_{\bfV_{k-1},\bfV_k}\otimes \eta)_{
+      \wtG_{\bfV_1}\times \wtG_{\bfV_2}\times \cdots \times  \wtG_{\bfV_k}},
+  \end{equation}
+  and its underlying Harish-Chandra module is isomorphic to
+  \begin{equation}\label{algtheta}
+    (\sY_{\bfV_0, \bfV_1} \otimes \sY_{\bfV_1, \bfV_2} \otimes \cdots
+    \otimes \sY_{\bfV_{k-1},\bfV_k}\otimes \eta )_{
+      (\g_{\bfV_1}\times \g_{\bfV_2}\times \cdots \times \g_{\bfV_k},
+      \wtbfK_{\bfV_1}\times  \wtbfK_{\bfV_2}\times \cdots \times \wtbfK_{\bfV_k})}.
+  \end{equation}
+\end{prop}
+\begin{proof}
+  Note that the representation $ \pi_{\sO, \eta}$ is a quotient of the
+  representation \eqref{anatheta}, and the underlying Harish-Chandra module of
+  \eqref{anatheta} is a quotient of \eqref{algtheta}. Thus it suffices to show
+  that \eqref{algtheta} is irreducible.  We prove by induction on $k$. Assume that $k\geq 1$ and
+  \[
+    \pi_1:= (\sY_{\bfV_1, \bfV_2} \otimes \cdots \otimes
+    \sY_{\bfV_{k-1},\bfV_k}\otimes \eta_1)_{(\g_{\bfV_1}\times \g_{\bfV_2}\times
+      \cdots \times \g_{\bfV_k}, \widetilde{\bfK}_{\bfV_1}\times
+      \widetilde{\bfK}_{\bfV_2}\times \cdots \times \widetilde{\bfK}_{\bfV_k})}
+  \]
+  is irreducible. Then $\pi_1$ is isomorphic to the Harish-Chandra module of
+  $ \pi_{\sO_1, \eta_1}$.  The representation \eqref{algtheta} is isomorphic to
+  \[
+    \pi_0:= \chi_0 \otimes (\sY_{\bfV_0, \bfV_1} \otimes \pi_1)_{(\g_{\bfV_1},
+      \widetilde{\bfK}_{\bfV_1})}.
+  \]
+  We know that  $\rU(\fgg)^{\bfG} $ acts on $\pi_{\sO, \eta}$ through the character $\lambda_{\cO}$ (\emph{cf}. \cite{PrzInf}), and by
+  \Cref{cor:Cbound}, $\pi_0$ is $\cO$-bounded.  Thus every irreducible
+  subquotient of $\pi_0$ is $\cO$-unipotent.  \Cref{prop:GDS.AC}
+  implies that $\AC_{\cO}(\pi_0)$ is bounded by $1\cdot [\sO]$. Now
+  \Cref{main} implies that $\pi_0$ must be irreducible.
+\end{proof}
+
+
 \appendix
+
+\section{Combinatorial parameterization of special unipotent representations}
+\subsection{Parameterize of Unipotent representations}
+We fix an abstract complex Cartan subgroup $\bfH_a$ and $\fhh_a$ in $\bfG$ and a
+set of simple roots $\Pi_a$.  Let $\cP(\bfG)$ be the set of all Langlands
+parameters of $G$-modules with character $\rho$ (i.e. the infinitesimal
+character of the trivial representation). For $\gamma\in \cP(\bfG)$, let
+$\cL(\gamma)$, $\cS(\gamma)$ and $\Phi_\gamma$ be the corresponding Langlands
+quotient, standard module and coherent family such that
+$\Phi_\gamma(\rho) = \cL(\gamma)$. Let $\cM(\bfG)$ be the span of $\cL(\gamma)$.
+Let $\set{\bB}$ be the set of all blocks. Then $\cP(\bfG) = \bigsqcup_\cB \cB$.
+The Weyl group $W = W(G)$ acts on $\cM(\bfG)$ by coherent continuation.  Let
+$\cM_{\cB}$ be the submodule of $\cM(\bfG)$ spand by $\gamma\in\cB$, then
+\[
+  \cM(\bfG) = \bigoplus_\cB \cM_{\cB}
+\]
+Let $\tau(\gamma)\subset \Pi_a$ be the $\tau$-invariant of $\gamma$.
+
+Let $\ckcO$ be even orbit. $\lambda= \half \ckhh$.  Define
+\[
+  S(\lambda) = \set{\alpha\in \Pi_a| \inn{\alpha}{\lambda}=0}.
+\]
+Let $\cP_{\lambda}(\bfG)$ be the set of all Langlands parameters with
+infinitesimal character $\lambda$. Let $T_{\lambda,\rho}$ be the translation
+functor.  Let
+\[
+  \cB(S) = \set{\gamma\in \cB|S\cap \tau(\gamma)=\emptyset}
+\]
+and
+\[
+  \cP(\bfG,S) = \bigsqcup_{\cB} \cB(S)
+\]
+
+
+Then
+\[
+  \begin{tikzcd}[row sep=0em]
+    \cP(\bfG,S) \ar[r] & \cP_{\lambda}(\bfG)\\
+    \gamma \ar[r, maps to]& T_{\lambda, \rho}(\gamma)
+  \end{tikzcd}
+\]
+
+Let $\cO$ be a complex nilpotent orbit in $\fgg$.  Let
+\[
+  \cB(S,\cO) = \set{\gamma\in \cB(S)|\AVC(\cL(\gamma))\subset \bcO}
+\]
+
+Let
+\[
+  \begin{aligned}
+    m_S(\sigma) &= [\sigma: \Ind_{W(S)}^{W}\bfone]\\
+    m_\cB(\sigma)& = [\sigma: \cM_\cB]
+  \end{aligned}
+\]
+
+Barbasch \cite[Theorem~9.1]{B10} established the following theorem.
+\begin{thm}
+  \[
+    |\cB(S,\cO)| = \sum_{\sigma} m_\cB(\sigma)m_S(\sigma)
+  \]
+  Here $\sigma\times \sigma$ running over the $W\times W$ appears in the double
+  cell $\cC(\cO)$.
+\end{thm}
+\begin{proof}
+  We need to take the graded module of $\cM(\bfG)$ with respect to the
+  $\LRleq$. By abuse of notation, we identify the basis $\cP(\bfG)$ with its
+  image in the graded module.  Note that $S\cap \tau(\lambda)=\emptyset$ if and
+  only if $W(S)$ acts on $\gamma$ trivially by \cite[Lemma~14.7]{V4}.  On the
+  other hand, by \cite[Theorem~14.10, and page 58]{V4},
+  $\AVC(\cL(\gamma))\subset \bcO$ only if $\gamma$ generate a $W$-module in the
+  double cell of $\cO$.
+\end{proof}
+
+Now assume $S=S(\lambda)$. By \cite[Cor~5.30 b) and c)]{BVUni},
+$[\sigma: \Ind_{W(S)}^{W}\bfone]=[\bfone|_{W(S)}:\sigma]\leq 1$.
+
+\subsection{Combinatorics of Weyl group representations}
+The irreducible representations of $S_n$ are parameterized by Young diagrams.
+We use the notation that the trivial representation corresponds to a row and the
+sign representation corresponds to a column.
+\[
+  triv \leftrightarrow \ytableaushort{n \ b o x e s} \quad \sgn \leftrightarrow
+  \ytableaushort{n,\ ,b,o,x,e,s}
+\]
+\trivial{ This notation coincide with the Springer correspondence, where a row
+  of boxes represents the regular nilpotent orbit and the corresponding
+  representation is the trivial representation.  The trivial orbit yeilds the
+  sign representation.  }
+
+Under the above paramterization, $\tau\mapsto \tau\otimes \sgn$ is described by
+the transpose of Young diagram. The branching rule is given by
+Littlewoods-Richardson.  Let $\cK = \bigoplus_n \Groth(S_n)$ be the graded ring
+of the Grothendieck groups of $S_n$.  This yeilds well defined ring structure on
+the graded algebra
+\[
+  \mu \nu :=\Ind_{S_{|\mu|}\times S_{|\nu|}}^{S_{|\mu|+|\nu|}}\mu\otimes \nu.
+\]
+
+Notation, we will use $[r_1, r_2, \cdots, r_k]$ or $(c_1,c_2, \cdots, c_k)$
+denote the Young diagram, where $\set{r_i}$ denote the lengthes of its rows and
+$\set{c_i}$ denote the lengthes of its columns.
+
+Let $W_n$ denote the Weyl group of type BC: $W_n = S_n \ltimes \set{\pm 1}^n$.
+Now $\Irr(W_n)$ is paramterized by a pair of Young diagram, we use the notation
+$\mu\times \nu$.
+
+As the tensor algebra, $\bigoplus_n \Groth(W_n)\cong \cK\otimes \cK$ via
+$\mu\times \nu \mapsto \mu \otimes \nu$.
+
+The branching rule is given by:
+$(\mu_1\times \nu_1)(\mu_2\times \nu_2) = (\mu_1\mu_2)\times (\nu_1 \nu_2)$.
+The sgn repersentation of $W_n$ is parameterized by $\emptyset\times (n)$.  From
+the definitioin of the identification of bipartition with $\Irr(W_n)$, we also
+have
+\[
+  (\mu\times \nu) \otimes \sgn = \nu^t\times \mu^t.
+\]
+
+We also will use the following branching formula:
+\[
+  \Ind_{S_n}^{W_n} \triv = \sum_{\substack{a,b,\\ a+b=n}} [a]\times [b],
+\]
+and
+\begin{equation}\label{eq:SW2}
+  \Ind_{S_n}^{W_n} \sgn = \sum_{\substack{a,b,\\ a+b=n}}
+  (a)\times (b).
+\end{equation}
+\trivial{ Sketch of the proof of the first formula, the dimension of LHS is
+  $n!2^n/n! = 2^n$.  On the other hand, by Mackey theory,
+  $[LHS:\Ind_{W_a\times W_b}^{W_n} \triv \otimes \chi ] \geq 1$ since
+  $S_n\cap W_a\times W_b = S_a\times S_b$.  Therefore, $LHS\supset RHS$.  On the
+  other hand, dimension of RHS is $\sum_{a} n!/a!b! = 2^n$.  This finished the
+  proof.  The proof of the second formula is similar. One also can obtain it by
+  tensoring with $\sgn$ of the first formula.  }
+
+\subsubsection{Coherent continuation representations}
+
+{\color{red} TBA}
+
+
+\section{A few geometric facts}
+%\section{Some Geometries}
+\def\dbM{\breve{M}}
+\def\dbMM{\breve{MM}}
+\def\dbX{\breve{X}}
+\def\dbfpp{\breve{\fpp}}
+\def\ZdbX{\cZ_{\dbX}}
+\def\aV{\acute{V}}
+
+\subsection{Geometry of moment maps}\label{sec:GM}
+In this section, let $(\bfV,\bfV')$ be a rational dual
+pair.% such that $\dim \bfV' \leq \dim \bfV$.
+We use the notation of \Cref{sec:descent}.
+Write
+ $\dbfpp := \fpp\oplus \fpp'$ and
+\[
+\xymatrix{
+\dbM := M\times M' \colon \cX \ar[r]& \dbfpp
+= \fpp\times \fpp'.
+}
+\]
+
+
+%For $w\in \cX$, let $\dbX := (X,X') := (M(w), M'(w))$.
+
+% For a vector space $\bfA$ with a reductive algebriac group $\bfE$ action, let
+% $\bfA//\bfE$ denote its affine quotient.
+
+When there is a morphism $f\colon A\rightarrow B$ between smooth
+algebraic varieties, let $\rdd f_a\colon \rT_aA
+\rightarrow \rT_{f(a)}B$ denote the tangent map at a closed point $a\in A$, where
+$\rT_aA$ and $\rT_{f(a)} B$ are the tangent spaces. For a
+sub-scheme $S$ of $B$, let $A\times_fS$ denote the scheme
+theoretical inverse image of $S$ under $f$, which is a subscheme of $A$.
+Along the proof, we will use the Jacobian criterion for
+regularity in various places (see \cite[Theorem~2.19]{LiuAG}).
+
+
+%\trivial[h]{
+\subsubsection{Fiber of the moment map}\label{sec:F.M}
+% In this section, we assume that $(\bfV,\bfV')$ is a rational dual pair and
+% $\colon \cX\longrightarrow \fpp$ is the moment map.
+
+We will study the fiber $M^{-1}(X)$ for an element $X\in \Im(M)$. %, using Luna's slice theory.
+
+From the general theory of affine quotient, we know that
+  $M^{-1}(X)$ contains a unique closed $\bfK'$-orbit.
+Set
+\[
+\cX_r = \Set{w\in \cX\subset \Hom(\bfV,\bfV')| \rank w\leq r}.
+\]
+
+The following lemma is a easy exercise in linear algebra, which we leave to the reader.
+\begin{lem}\label{lem:F.cl}
+Let $X\in\Im(\MMP)$. Suppose $\rank X = r$.
+Then $\cX_r\cap \MMP^{-1}(X)$ is the unique closed $\bfK'$-orbit in $\MMP^{-1}(X)$.
+Moreover, for any $w\in \cX_r\cap \MMP^{-1}(X)$ its image is a non-degenerate
+$L'$-invariant subspace of $\bfV'$. \qed
+\end{lem}
+
+\begin{proof}
+  % Since the general moment maps are build from those of compact dual pairs (where
+  % $G' = K'$).
+  Clearly $\bfW_r\cap \MMP^{-1}(X)$ is closed. Suppose it is non-empty then it
+  would be a single $\bfK'$-orbit by Witt's theorem \cite[3.7.1]{Howe95} and the
+  explicit formula of moment maps (see for example \cite[Appendix A]{LM}) since
+  $\Ker w_1 = \Ker X = \Ker w_2$ for any two $w_1, w_2 \in \bfW_r \cap \MMP^{-1}(X)$.
+
+  Now we show that $\cX_r\cap \MMP^{-1}(X)$ is non-empty.
+
+  Take a $L$-invariant decomposition $\bfV = \bfV_+\oplus \bfV_-\oplus \bfV_1 \oplus \bfV_0$,
+  such that
+  \begin{enumIL}
+  \item
+    $\Ker X = \bfV_+\oplus \bfV_1$;
+  \item $\Im X=(\Ker X)^\perp = \bfV_0\oplus \bfV_+$;
+  \item $\bfV_0$, $\bfV_1$ and $\bfV_+\oplus \bfV_-$ are non-degenerate subspaces.
+  \end{enumIL}
+  \trivial[h]{By $\inn{Xv_1}{v_2} = \inn{v_1}{-Xv_2}=0$ for $v_1\in V$ and
+    $v_2\in \Ker X$, we see $\Im X \subseteq (\Ker X)^\perp$. The equality
+    follows from dimension counting.}
+  \begin{claim*}
+    \begin{enumC}
+    \item $w|_{\bfV_0\oplus \bfV_-}$ is injective, its image
+      $\bfV'_0 := w(\bfV_0\oplus \bfV_-)$ is a non-generate subspace of $\bfV'$.
+    \item
+      $\bfV'_+ := w|_{\bfV_1\oplus \bfV_+}$ is in the radical of $\Im w$.
+    \item We have $w \bfV = \bfV'_0\oplus \bfV'_+$ and
+      $\dim \bfV'_0 = \rank X$.
+    \item $\bfV'_0$ and $\bfV'_+$ are $L'$-invariant.
+    \end{enumC}
+  \end{claim*}
+  \begin{proof}
+    Note that $X|_{\bfV_0\oplus \bfV_-}\colon \bfV_0\oplus \bfV_- \rightarrow \bfV_0\oplus
+    \bfV_+$ is an isomorphism.
+    For any $0\neq v_1\in \bfV_0\oplus
+    \bfV_-$, there exits $v_2\in \bfV_0\oplus \bfV_-$ such that $0\neq
+    \inn{v_1}{X v_2} = \innp{w v_1}{w
+      v_2}$. In particular,  $w^\mstar v_1\neq 0$.
+
+    On the other hand,  $v_1\in \bfV_1\oplus \bfV_+ = \Ker X$, $v\in \bfV$, we have
+    $\innp{w v}{w v_1} =\inn{v}{Xv} = 0$.
+    The rest is clear.
+  \end{proof}
+  Now take a $L'$-invariant decomposition $\bfV' = \bfV'_0 \oplus (\bfV'_+
+  \oplus \bfV'_-)$ and write
+  $w = (w_0, w_+) \in \Hom(\bfV,\bfV'_0)\oplus \Hom(\bfV,\bfV'_+)$.
+  It is easy to check that $w_0\in \cX_r\cap \MMP^{-1}(X)$ and the rest part of
+  the lemma is clear.
+\trivial{
+ Note that
+  $w^\mstar = w_0^\mstar + w_+^\mstar$ with $w_0^\mstar \in \Hom(\bfV'_0,\bfV)$ and
+  $w_+^\mstar\in \Hom(\bfV'_-,\bfV)$.
+  Now $\rank w_0 = \dim \bfV'_0 = \rank X$ and
+  $\MMP(w_0) = w_0^\mstar w_0  = (w_0^\mstar + w_+^\mstar)(w_0+ w_+) = \MMP(w)
+  = \Gamma$.
+  Hence we have constructed an element $w_0\in \cX_s\cap \MMP^{-1}(X)$.
+}
+\end{proof}
+%}
+
+\trivial[h]{
+Fix $w\in \cX_r\cap \MMP^{-1}(X)$. By \Cref{lem:F.cl}
+ we have an orthogonal decomposition
+\begin{equation}\label{eq:GD.dV}
+  \bfV' = \bfV'_0\oplus
+  \bfV'_1  \quad \text{with}\quad \bfV'_1 := w \bfV.
+\end{equation}
+
+Now the stabilizer $\bfK'_w$ of $w$ in $\bfK'$ is naturally identified with
+% \bfK'_0 :=
+$\bfG_{\bfV'_0}^{L'}$.
+
+  \def\ssfkkp{{}^{\boxslash}\fkk'}
+  \def\sscX{{}^\boxslash\cX}
+  \def\oocX{{}^1\cX}
+  \def\zzcX{{}^0\cX}
+  \def\ozcX{{}^{10}\cX}
+  \def\zocX{{}^{01}\cX}
+  \def\iicX{{}^{i}\cX}
+
+  Fix a $L$-invariant decomposition $\bfV = \bfV_1\oplus \bfV_0$ where
+  $\bfV_0 := \Ker X$ and $\bfV_1$ is a complement of $\bfV_0$. We have a decomposition
+  $\cX = \ozcX \oplus \zocX \oplus \oocX\oplus \zzcX$ where
+  \begin{enumI}
+  \item
+    $\ozcX = \cX \cap \Hom(\bfV_1,\bfV'_0)$ and
+    $\zocX = \cX \cap \Hom(\bfV_0,\bfV'_1)$,
+  \item $\iicX = \cX \cap \Hom(\bfV_i,\bfV'_i)$ for $i=0,1$.
+  \end{enumI}
+
+  Let
+  $\ssfkkp = \fkk' \cap (\Hom(\bfV'_1, \bfV'_0)\oplus \Hom(\bfV'_0,\bfV'_1))$.  Since
+  $\bfV'_1\perp \bfV'_0$, % $\ssfkkp \cong \Hom(\bfV'_1, \bfV'_0)\cap \fkk$ and
+  $\ssfkkp \xrightarrow{\cdot w} \Hom(\bfV_1,\bfV')\cap \cX =: \ozcX$.  Now the
+  tangent space of the orbit $\bfK'w$ at $w$ is
+  $\rT_w(\bfK'w) = \fkk'\cdot w = T_1 \oplus \ozcX$ where $T_1 \subset \oocX$.  Let
+  $N_1$ be any complement of $T_1 \subset \oocX$.  Therefore,
+  \[
+    N:=N_1 \oplus \zocX \oplus \zzcX
+  \]
+  is a $\bfK'_w$-invariant complement of
+  $T_w(\bfK'w)$ in $\cX$.
+  As $\bfK'_w$-module, $N$ is the direct sum of trivial
+  modules with $\zzcX$. Therefore, its null cone $\fN_w$ is precisely the null cone
+  of $\zzcX$ under $\bfK'_w$.
+
+  By \cite[Section~6.3]{PV}, we have the following diagram where the
+  horizontal morphisms are \'etale and the vertical morphisms are affine
+  quotients.
+  \[
+    \xymatrix@C=3em{
+      \bfK' \times_{\bfK'_w} N \ar[r] \ar[d]_<>(.5){\circnuma{1}}& \cX \ar[d]^{\MMP}\\
+     \makebox[0em][r]{$N//\bfK'_w =\;$}\bfK' \times_{\bfK'_w} N//\bfK' \ar[r] &  \Im(\MMP)
+     }
+  \]
+  Fix a slice $S$ at the identity of the right $\bfK'_w$-action on $\bfK'$.
+  Now the morphism $\circnuma{1}$   \'etale locally
+  looks like
+  \begin{equation}\label{eq:M.local}
+    S\times N_1\times \zocX\times \zzcX \longrightarrow  N_1\times \zocX\times
+    (\zzcX//\bfK'_w).
+  \end{equation}
+
+  The fiber $M^{-1}(X)$ is equivariantly isomorphic to
+  $\bfK'\times_{\bfK'_w}\fN_w$ (\emph{cf}.  \cite[Theorem~6.6]{PV}).
+
+
+\trivial[h]{
+  \medskip
+
+
+\begin{defn}
+  For any $L$-invariant subspace $\bfA \subset \bfV$.  Define
+  $\ssign\bfA = (\dim \bfA^{L,1}, \dim \bfA^{L,-1})$ (resp.
+$(\dim \bfA^{L,i}, \dim \bfA^{L,-i})$) if $\dotepsilon=1$ (resp.
+$\dotepsilon = -1$).
+\end{defn}
+}
+}
+
+
+\subsubsection{Scheme theoretical results on descents}\label{sec:Sdes}
+
+% Assume $\dim \bfV' \leq \dim \bfV$.
+
+\begin{lem}[{\cf \cite[Lemma~13 and Lemma 14]{Ohta}}]\label{lem:DS.sh}
+Suppose $\sO'\in \Nil_{\bfK'}(\fpp')$ is the descent of $\sO\in \Nil_\bfK(\fpp)$.
+Fix $X\in \sO$ and
+% \[
+% (\MMP(w),\MMP'(w)) = (X,X')\in \sO\times \sO'.
+% \]
+let
+\[
+\ZX := \cX\times_{M}\set{X}
+\]
+be the scheme theoretical
+inverse image of $X$ under the moment map $M: \CX\rightarrow \fpp$. Then
+\begin{enumT}
+\item\label{it:DS.G1} $\ZX$ is smooth (and hence reduced);
+\item\label{it:DS.G3}   $\ZX$ is
+  a single free $\bfK'$-orbit in $\Xo$;
+\item\label{it:DS.G2}$M'(\ZX) = \sO'$ and $\ZX = \cX\times_{\dbM}( \set{X} \times\bsOp)$.
+\end{enumT}
+\end{lem}
+ \begin{proof}
+  Fix a point  $w\in \cX^\circ$ such that $M(w)=X$. It is elementary to see that
+  \[
+  M^{-1}(X)=\bfK'\cdot w
+  \]
+  is a single $\bfK'$-orbit. This orbit is clearly Zariski closed and the
+  stabilizer $\Stab_{\bfK'}(w)$ of $w$ under the $\bfK'$-action is trivial. This
+  proves part \cref{it:DS.G3} and the first assertion of part \cref{it:DS.G2}.
+
+  We identify the tangent space $\rT_w\cX$ with $\cX$.  Let $N\subset \cX$
+be a complement of $\rT_w (\bfK'\cdot w)$ in $\rT_w \cX$.
+By \cite[Section~6.3]{PV}, there is an affine open subvariety $N^\circ$ of $N$ containing $0$ such that  the diagram
+%and the vertical morphisms $\circnuma{1}$ is the projection,
+\[\label{dg:FR}
+    \xymatrix@C=6em{
+      \bfK' \times N^\circ \ar[r]^<>(.5){(k',n)\mapsto k'\cdot (w+n)} \ar[d]_<>(.5){\text{projection}}& \cX \ar[d]^{\MMP}\\
+    N^\circ \ar[r]^<>(.5){n\mapsto M(w+n)}&  \MMP(\cX)
+     }
+\]
+is  Cartesian and the
+horizontal morphisms are \'etale. Therefore the scheme $\cX\times_M\set{X}$ is a smooth algebraic variety. This proves part (i), and the second assertion of (iii) then easily follows.
+\end{proof}
+
+
+
+%In this subsection, we assume that $\dim \bfV \geq \dim \bfV'$.
+\begin{remark} Retain the setting of \Cref{lem:DS.sh}.
+ Suppose $w\in \Xo$ realizes the descent from $X$ to  $X' \in \fpp'$. Let $\dbX :=
+  (X,X')\in \fpp\oplus \fpp'$ and
+  $\bfK'_{X'}$ be the stabilizer of $X'$ under the $\bfK'$-action.
+  By the $\bfK'$-equivariance,  the map $\ZX\rightarrow \sO'$ is  a
+  smooth morphism  between smooth schemes.
+  Hence the scheme theoretical fibre
+  $$\ZdbX := \cX\times_{\dbM}\set{\dbX} = \ZX\times_{M'|_{\ZX}}\set{X'}$$ is
+  smooth and equals the orbit $\bfK'_{X'}\cdot w$.
+% Moreover we have an exact
+%   sequence
+% \[
+% \xymatrix{
+% 0 \ar[r]& \rT_w\ZdbX\ar@{^(->}[r] & \rT_{w}\ZX \ar[r]^{\rdd
+% M'_w} & \rT_{X'}\fpp'.
+% }
+% \]
+% As a consequence of $\cX \rightarrow M(\cX)$ is smooth at $w$, we have the
+% following exact sequence:
+% \[
+% \xymatrix@C=3em{
+% 0 \ar[r] & \rT_w \ZX \ar@{^(->}[r] & \rT_{w} \cX  \ar[r]^{\rdd M_w}& \rT_{X}\fpp.
+% }
+% \]
+% where $\circnuma{1}$ is $X' \mapsto X'\circ w$ and $\circnuma{2}$ is $b\mapsto
+% w^\mstar b
+% + b^\mstar w$.
+%In other words, we will have an exact sequence
+Consequently,  we have an exact sequence by the Jacobian criterion for
+regularity:
+\begin{equation}\label{eq:DS.T1}
+\xymatrix@C=4em{
+0 \ar[r] & \rT_w\ZdbX \ar[r] & \rT_w\cX \ar[r]^<>(.5){\rdd \dbM_w} & \rT_X\fpp
+\oplus \rT_{X'}\fpp'.
+%\\
+%         & \fkk_{X'} \ar[r]\ar@{=}[u] & \cX \ar[r]\ar@{=}[u] & \fpp\oplus \fpp' \ar@{=}[u]
+}
+\end{equation}
+\end{remark}
+
+
+
+\begin{lem}\label{lem:DS.U}
+Retain the setup in \Cref{lem:DS.sh}. Let
+\[
+  U:= \fpp \setminus((\bcO\cap \fpp) \setminus \sO)  % \quad \text{ and } \quad
+\]
+and   $\cZ_{U,\bsOp} := \cX\times_{\dbM}(U\times \bsOp)$.
+Then
+\begin{enumT}
+\item \label{it:DS.U1} $U$ is a Zariski open subset of $\fpp$ such that
+  $U\cap M(M'^{-1}(\bsOp)) = \sO$;
+\item \label{it:DS.U2} $\cZ_{U,\bsOp}$ is smooth and it is a single
+  $\bfK\times \bfK'$-orbit.
+\end{enumT}
+\end{lem}
+\begin{proof}
+% Since to see that
+% $M^{-1}(U) = \cX^\circ$. %  = M(\cX) \cap \set{X\in \fpp|\rank X\geq \dim \bfV}$ is Zariski open
+% % dense in $M(\cX)$.
+% Let $U =  \Set{X\in\fpp|\rank X \geq \dim \bfV}$.
+Part~\cref{it:DS.U1} is clear by \cref{eq:def.LsO22}. It is also clear that the
+underlying set of $\cZ_{U, \bsOp}$ is a single $\bfK\times \bfK'$-orbit by \Cref{lem:DS.sh}~\cref{it:DS.G2}.
+
+Note that $M'|_{\cX^\circ}$ is smooth because $\rdd M'_w \colon \rT_w\cX^\circ \longrightarrow
+\rT_{M'(w)}\fpp'$ is surjective for each $w\in
+\cX^\circ$ (\emph{cf}. \cite[Proposition~10.4]{HS}). Since  smooth morphisms are stable under base changes and compositions, the scheme  $\cX^\circ\times_{M'}\sO'$ is a smooth algebraic variety. Also note that $\cZ_{U,\bsOp}$ is an open subscheme of  $\cX^\circ\times_{M'}\sO'$. Thus it is smooth.
+\end{proof}
+
+%To prove part~\cref{it:DS.U2}, n
+%Since $\cZ_U := \cX
+%\times_M{U}$ is the open subscheme  contained in $\cX^\circ \subset\cX$.
+%Then the morphism
+%$\cZ_{U,\bsOp}\rightarrow \bsOp$ is smooth and  the fiber $\cZ_{U, X''}:=
+%\cX \times_{\dbM}(U\times \set{X''})$ is smooth for each
+%$X''\in \sO'$. Also note that $\cZ_{U,X''}$ is empty if $X''\notin
+%\sO'$. Hence,
+%\cite[Proposition~11.3.13]{EGAIV3} yields that $\cZ_{U,\bsOp}$ is reduced.
+%The smoothness of $\cZ_{U,\bsOp}$ follows since it is a $\bfK\times
+%\bfK'$-orbit.
+
+ \trivial[h]{The surjectivity of $\rdd M'_w$ follows form the claim for $\rdd \bfM'_w\colon \rT_w
+  \bfW\rightarrow \rT_{M'(w)}\fgg'$. Note that
+  $w$ is surjective. Hence $\Hom(\bfV,\bfV') \rightarrow \Hom(\bfV',\bfV'):
+  b\mapsto w b^\mstar$ is surjective. But $\Hom(\bfV',\bfV')\rightarrow \fgg':
+  A\mapsto \half(A^*+A)$ is also surjective. This prove
+  $\rdd\bfM'_w$ is surjective.
+
+  $\cZ_{U,\bsOp}\rightarrow \bsOp$ is smooth since it is a base change of the
+  smooth map $\cZ_{U}\rightarrow \fpp'$. Same reason, $\cZ_{U,X''}$ is smooth.  }
+
+
+\begin{remark}
+  Suppose $w\in \Xo$ realizes the descent from $X\in \sO$ to
+  $X' \in \sO'\subset \fpp'$.  By the proof of \Cref{lem:DS.U},
+  \[
+  \cZ_{U,X'} :=\cX\times_{\dbM}(U\times\{X'\})= \bfK\bfK'_{X'}\cdot w
+  \]
+  is smooth. Similar to the remark of \Cref{lem:DS.sh}, this
+   yields % Since $M'^{-1}(X')\cap \cX^\circ$
+  % is a single orbit $\bfK\times \bfK'_{X'}$-orbit. The smoothness at $w$ yields
+  an exact sequence:
+\begin{equation}\label{eq:ES.UD}
+\xymatrix@C=7em{
+\fkk\oplus \fkk'_{X'} \ar[r]_<>(.5){(A,A') \mapsto A'w - wA}& \cX\ar[r]^{\rdd
+  M'_w}_<>(.5){b\mapsto b w^\mstar +wb^\mstar} & \fpp'.\\
+}
+\end{equation}
+\end{remark}
+
+
+
+\subsubsection{Scheme theoretical results on generalized descents of good orbits}
+%In this subsection, we still assume that $\dim \bfV' \leq \dim \bfV$.
+
+%The following lemma is key to the proof of \cref{prop:GDS.AC}.
+
+\begin{lem}\label{lem:GDS.sh}
+  Suppose $\sO\in \Nil_{\bfK}(\fpp)$ is good for generalized descent
+  (see \Cref{def:GD.good}) and
+  $\sO' = \gDD_{\bfV,\bfV'}(\sO)\in \Nil_{\bfK'}(\fpp')$. Fix $X\in \sO$ and
+  let $\ZX := \cX\times_{\dbM}(\set{X}\times\bsOp)$. Then
+\begin{enumT}
+\item\label{it:GDS.sh.2} $\ZX$ is smooth;
+\item\label{it:GDS.sh.1} $\ZX$ is a single $\bfK'$-orbit;
+\item\label{it:GDS.sh.3} $\ZX$ is contained in $\Xg$ and  $M'(\ZX) = \sO'$.
+
+%\item\label{it:GDS.sh.3} $\cX\times_{\dbM}(U\times\bsOp)$ is reduced and smooth, and is a single $\bfK\times \bfK'$-orbit.
+\end{enumT}
+\end{lem}
+\begin{proof} Part~\cref{it:GDS.sh.1} follows from \cite[Table~4]{DKP2}. Part~\cref{it:GDS.sh.3} follows from part~\cref{it:GDS.sh.1}. By the generic smoothness, in order to prove
+  part~\cref{it:GDS.sh.2}, it suffices to show that $\ZX$ is reduced.
+  % We may assume the complex group case first.
+  % Fix a $w\in \ZX$ and let $X' := \MMP'(w)$.
+  Note that the $\bfK'$-equivariant morphism $\xymatrix{\ZX\ar[r]^{M'}&\sO'}$ is
+  flat by generic flatness \cite[Th\'eor\`eme~6.9.1]{EGAIV2}.
+  % \trivial[h]{
+  % The statement of generic flatness is:
+  % \begin{thm*}
+  %   Suppose $Y$ is a locally noetherian integral scheme, $u\colon X\rightarrow
+  %   Y$ is a morphism of finite type and $\sF$ is a coherent $\sO_X$-module.
+  %   Then there exist a non-empty open subscheme $U$ of $Y$ such that
+  %   $\sF|_{u^{-1}(U)}$ is flat over $U$.
+  % \end{thm*}
+  % WLOG, applying the theorem to an irreducible component of $\sO'$ with
+  % $\sF = \sO_X$ get the claim.  }
+  By \cite[Proposition~11.3.13]{EGAIV3}, to show that $\ZX$ is reduced, it
+  suffices to show that
+  $$\ZdbX := \ZZ_X \times_{M'|_{\ZX}}\set{X'} = \cX \times_{\dbM}\set{\dbX}$$
+  is reduced, where $X'\in \sO'$ and $\dbX:=(X,X')$.
+  Let $w\in\ZdbX$ be a closed point. Then $\bfK'\cdot w$ is the underlying set of $\ZX$, and
+  $Z_{\dbX}:=\bfK'_{X'}\cdot w$ is the underlying set of
+  $\ZdbX$.  By
+  the Jacobian criterion for regularity, to complete the proof of the lemma, it remains to prove the following claim.
+
+  \begin{claim*}
+    The following sequence is exact:
+    \begin{equation} \label{eq:GDS.T1} \xymatrix@C=4em{ 0 \ar[r] & \rT_w
+        Z_{\dbX} \ar[r] & \rT_w\cX \ar[r]^<>(.5){\rdd \dbM} &
+        \rT_{X}{\fpp}\oplus \rT_{X'}{\fpp'}. }
+    \end{equation}
+  \end{claim*}
+
+We prove the above claim in what follows.
+    Identify $\rT_w\cX$, $\rT_X\fpp$ and $\rT_{X'}\fpp'$ with $\cX,\fpp$ and
+    $\fpp'$ respectively and view $\rT_{w} Z_{\dbX}$ as a quotient of
+    $\fkk'_{X'}$. It suffices to show that the following sequence is exact:
+    \begin{equation}\label{eq:GDS.T2}
+      \xymatrix@R=0em@C=9em{
+        \fkk'_{X'} \ar[r]_<>(.5){A' \mapsto A'w}& \cX\ar[r]^<>(.5){\rdd \dbM_{w}}_<>(.5){ b\mapsto (b^\mstar w+w^\mstar b, b w^\mstar + w b^\mstar) }&
+        \makebox[0em][l]{$\fpp\oplus \fpp' =\dbfpp$.}\\
+      }
+    \end{equation}
+
+    In fact, we will show that the following sequence
+    \begin{equation}\label{eq:GDS.T3}
+      \xymatrix@C=4em{
+        \fgg'_{X'} \ar[r]& \bfW \ar[r] & \fgg\oplus \fgg'
+      }
+    \end{equation}
+    is exact, where $\fgg'_{X'}$ is the Lie algebra of the stabilizer group $\Stab_{\bfG'}(X')$ and
+  the  arrows are defined by the same formulas in \cref{eq:GDS.T2}. Then the
+    exactness of \cref{eq:GDS.T2} will follow since \cref{eq:GDS.T3} is compatible
+    with the natural $(L,L')$-actions. %Cartan involutions.
+    % \trivial{ Note that there is a $\bZ/4\bZ$-grading on these spaces;
+    % $\fkk'_{X'}$(resp. $\cX$ and $\dbfpp$) is the grade $0$(resp. $1$ and $2$)
+    % part of $\fgg'_{X'}$(resp. $W$ and $\fgg\oplus \fgg'$). Moreover, each
+    % arrow raise the grading by $1$.  }
+
+    % We retain the notation in \Cref{sec:F.M} and the decomposition
+    % \cref{eq:GD.dV} and
+    We now prove the exactness of \cref{eq:GDS.T3}.
+    Let $\bfV'_1:=w\bfV$ and $\bfV'_2$ be the orthogonal complement of
+    $\bfV'_1$ so that \[ \bfV' = \bfV'_1\oplus
+    \bfV'_2.
+    \]
+    Let $\bfW_i := \Hom(\bfV,\bfV'_i)$ and $\fgg'_i := \fgg_{\bfV'_i}$ for
+    $i=1,2$. Let
+    $*\colon \Hom(\bfV'_1,\bfV'_2) \rightarrow \Hom(\bfV'_2,\bfV'_1)$ denote the
+    adjoint map.  We have $\bfW =\bfW_1\oplus \bfW_2$ and $\fgg' = \fgg'_{1}\oplus \fgg'_2 \oplus \fgg'^{\boxslash}$, where
+    \[ \fgg^{\boxslash}:= \Set{\begin{pmatrix}
+          0 & -E^*\\
+          E & 0
+        \end{pmatrix}|E\in \Hom(\bfV'_1,\bfV'_2)}.
+    \]
+    Now $w$ and $X'$ are naturally identified with an element
+    $w_1$ in $\bfW_1$
+    and an element $X_1'$ in  $\fgg'_1$, respectively.  We have $\fgg'_{X'} = \fgg'_{1,X'_1}\oplus \fgg'_2 \oplus \fgg'^{\boxslash}_{X'_1}$, where %$\fgg'_{1,X'_1}:= \set{T'_1\in \fgg'_1| [T'_1,X'_1]=0}$ and
+    % \begin{equation}\label{eq:fggslash}
+    \[ \fgg^{\boxslash}_{X'_1} = \Set{\begin{pmatrix}
+          0 & -E^*\\
+          E & 0
+        \end{pmatrix}|E\in \Hom(\bfV'_1,\bfV'_2),\ E X'_1 = 0}.
+    \]
+
+    Now maps in \cref{eq:GDS.T3} have the following forms respectively:
+    \begin{align*}
+      \fgg'_{X'}\ni  A' =  (A'_1,A'_2,{\tiny \begin{pmatrix}0 &
+          -E^*\\E &0\end{pmatrix}}) \mapsto &\; A'w = (A'_1 w_1, E w_1)\in \bfW  \qquad \text{and}\\
+      \bfW \ni (b_1,b_2) \mapsto & \left(b_1^\mstar w_1 + w_1^\mstar b_1, \begin{pmatrix}
+          b_1 w_1^\mstar + w_1b_1^\mstar & w_1 b_2^\mstar\\
+          b_2 w_1^\mstar & 0
+        \end{pmatrix}\right)\in \fgg\oplus \fgg'.
+    \end{align*}
+    \trivial[h]{
+
+      \[
+        \begin{pmatrix}
+          b_1\\
+          b_0
+        \end{pmatrix}
+        \begin{pmatrix}
+          w_1^\mstar & 0
+        \end{pmatrix}
+        +
+        \begin{pmatrix}
+          w_1\\
+          0
+        \end{pmatrix}
+        \begin{pmatrix}
+          b_1^\mstar & b_0^\mstar
+        \end{pmatrix}
+        = \begin{pmatrix}
+          b_1 w_1^\mstar + w_1b_1^\mstar & w_1 b_0^\mstar\\
+          b_0 w_1^\mstar & 0
+        \end{pmatrix}
+      \]
+    } Applying \cref{eq:DS.T1} to the complex dual pair $(\bfV, \bfV'_1)$, we see that the
+    sequence
+    \[
+      \xymatrix@C=11em{ \fgg'_{1,X'_1}\ar[r]^<>(.5){A'_1 \mapsto A'_1 w_1}& \bfW_1 \ar[r]^<>(.5){b_1\mapsto (b_1^\mstar w_1 + w_1^\mstar b_1 ,b_1w_1^\mstar+w_1b_1^\mstar)}& \fgg \oplus \fgg'_1
+      }
+    \]
+    is exact. The task is then reduced to show that the following
+    sequence is exact:
+    \begin{equation}\label{eq:GDS.T5}
+      \xymatrix@C=6em{ \fgg^{\boxslash}_{X'_1} \ar[r]^<>(.5){{\tiny \begin{pmatrix}
+              0 & -E^*\\
+              E & 0
+            \end{pmatrix}}\mapsto Ew_1}_<>(.5){\circnuma{1}} & \bfW_2
+        \ar[r]^<>(.5){b_2\mapsto b_2 w_1^\mstar}_<>(.5){\circnuma{2}} &
+        \Hom(\bfV'_1, \bfV'_2).}
+    \end{equation}
+    Note that $w_1$ is a surjection, hence $\circnuma{1}$ is an injection. We
+    have
+    \[
+      \dim \fgg^{\boxslash}_{X'_1} = \dim\bfV'_2 \cdot \dim \Ker(X'_1)
+      \]
+      and
+      \[
+      \dim \Ker(\circnuma{2}) = \dim \bfV'_2 \cdot (\dim \bfV - \dim \Im(w_1))
+                                = \dim \bfV'_2 \cdot (\dim \bfV - \dim \bfV'_1).
+    \]
+    Note that $\dim \Ker(X'_1) = c_{1}$, and $\dim \bfV - \dim \bfV'_1=c_{0}$. Since we are in the setting of good generalized descent (\Cref{def:GD.good}), we have $c_0=c_1$. Now the
+    exactness of \cref{eq:GDS.T5} follows by dimension counting.
+  \end{proof}
+
+  % For any affine scheme $\bfX$, let $\rmm_\bfX(x)$ denote the maximal ideal of
+  % $\bC[\bfX]$ corresponding to a closed point $x$ and let
+  % $\Omega_\bfX(x) = \rmm_\bfX(x)/(\rmm_\bfX(x))^2$ denote the stalk of the sheaf
+  % of differential at $x$. % Suppose that the underlying set of $\bfX$ is a
+  % % $\bC$-manifold, let $\rT_x\bfX$ denote the tangent space of this manifold at
+  % % $x$.
+
+  % Note that $\Omega_{\ZdbX}(x)$ is a quotient of
+  % $\Omega_{W}(w)/M^*(m_{\dbfpp}(\dbX)) =
+  % \rT^*_w\cX/\rdd\dbM_w^*(\rT^*_{\dbX}\dbfpp)$, where $\rT^*$ and
+  % $\rdd \dbM^*_w$ represent cotangent spaces and cotangent map respectively.
+  % Note that \cref{eq:GDS.T1} implies
+  % \[
+  %   \dim \rT_w Z_{\dbX} \leq \dim_\bC \Omega_{\ZdbX}(x) \leq \dim_\bC \rT^*_w\cX
+  %   /\rdd\dbM_w^*(\rT^*_{\dbX}\dbfpp) = \dim \rT_wZ_{\dbX}.
+  % \]
+  % Therefore all equalities in the above formula hold.  Hence $\ZdbX$ is regular
+  % and reduced at $w$.
+
+
+
+\begin{remark}
+  Suppose $\sO$ is not good for generalized descent. Then the underlying set of
+  $\ZX$ may not be a single $\bfK'$-orbit. Even if it is a single orbit, the
+  scheme $\ZX$ may not be reduced.  \trivial[h]{ Example, for
+    $(G,G') = (\rO(5),\Sp(4))$, $\cO = \bfD([3,2])$ and $\cO' = \bfD([4])$. Then
+    the fiber $\ZdbX$ is non-reduced (verified using Sage (Singular package)).
+  }
+\end{remark}
+
+%\subsubsection{Another scheme theoretical result}
+
+\begin{lem}\label{lem:GDS.U}
+Retain the notation in \Cref{lem:GDS.sh}. Let
+\[
+  U:=\fpp \setminus((\bcO\cap \fpp) \setminus \sO)  % \quad \text{ and } \quad
+\]
+and   $\cZ_{U,\bsOp} := \cX\times_{\dbM}(U\times \bsOp)$.
+Then
+\begin{enumT}
+\item \label{it:GDS.U1} $U$ is a Zariski open subset of $\fpp$ such that
+  $U\cap M(M'^{-1}(\bsOp)) = \sO$;
+\item \label{it:GDS.U2} $\cZ_{U,\bsOp}$ is smooth and it is a single
+  $\bfK\times \bfK'$-orbit.
+\end{enumT}
+\end{lem}
+\begin{proof}
+Part~\cref{it:DS.U1} is follows from \Cref{lem:GDS.set}. By \Cref{lem:GDS.sh}~\cref{it:GDS.sh.1}, the
+underlying set of $\cZ_{U, \bsOp}$ is a single $\bfK\times \bfK'$-orbit whose
+image under $M'$ is contained in $\sO'$ .
+By generic flatness \cite[Th\'eor\`eme~6.9.1]{EGAIV2}, the morphism $\cZ_{U,\bsOp}\longrightarrow
+\sO'$ is flat. To prove the scheme theoretical claim in part~\cref{it:GDS.U2},
+it suffices to show that
+\[
+\cZ_{U,X'}:= \cX\times_{\dbM}(U\times \set{X'})
+\]
+ is reduced, where $X'\in \sO'$.
+
+ Let  $w\in \cZ_{U,X'}$ be a closed point. As in the proof of
+\Cref{lem:GDS.sh}, by the Jacobian criterion for
+regularity,  it suffices to show that  the following sequence is  the exact:
+\[
+\xymatrix@C=7em{
+\fkk\oplus \fkk'_{X'} \ar[r]_<>(.5){(A,A') \mapsto A'w - wA}& \cX\ar[r]^{\rdd
+  M'_w}_<>(.5){b\mapsto b w^\mstar +wb^\mstar} & \fpp'.
+}
+\]
+The proof of the exactness follows the same line as the proof of \Cref{lem:GDS.sh}
+utilizing \cref{eq:GDS.T5} and the established exact sequence \cref{eq:ES.UD} in
+the descent case. We leave the details to the reader.
+\end{proof}
+\trivial[h]{
+It suffices to show
+\[
+\xymatrix{
+\fgg\oplus \fgg'_{X'} \ar[r]& \bfW_1\oplus \bfW_2 \ar[r]^<>(.5){\rdd M'_w}& \fgg'
+}
+\]
+is exact.
+Note that the image of $\fgg\oplus \fgg'_{1,X'_1} \oplus \fgg'_2$ is in $\bfW_1$
+and the image of $\bfW_1$ is in $\fgg'_1$. Therefore, the exactness still
+reduces to \cref{eq:GDS.T5}.
+}
+
+% Now we have $\cZ_{U,X'}$ is smooth. By generic flatness $\cZ_{U,
+%   \bsOp}\rightarrow \bsOp$ is flat since $\cZ_{U,\bsOp}$ is union of open
+% $\bfK\times \bfK'$-orbits. Therefore, $\cZ_{U,\bsOp}$ is reduced.
+
+%The following lemma is key to the proof of \cref{prop:GDS.AC}.
+% Let $\sO\in \Nil_\bfK(\fpp)$ and $\CO:=\bfG\cdot \sO \in \Nil_{\bfG}(\frak g) $.
+%  Put
+% \[
+%   \fpp_\sO:=\fpp\setminus ((\overline \CO \cap \fpp)\setminus \sO).
+% \]
+% It is a Zariski open subset of $\fpp$, and $\sO$ is a Zariski closed subset of it.
+
+% \begin{lem}\label{lem:GDS.sh3}
+%   Suppose $\sO'\in \Nil_{\bfK'}(\fpp')$ is the descent of $\sO$, or $\sO$ is good for generalized descent
+%   and
+%   $\sO' = \gDD_{\bfV,\bfV'}(\sO)\in \Nil_{\bfK'}(\fpp')$. Then
+%   the  $\cX\times_{\dbM}(\fpp_\sO \times\bsOp)$   are reduced and smooth  and is a single $\bfK\times \bfK'$-orbit. Moreover,
+%    \[
+%    \cX\times_{\dbM}(\fpp_\sO \times\bsOp)=\cX\times_{\dbM}(\sO\times\sO')
+%    \]
+%    subschemes  of $\cX$.
+%   \end{lem}
+% \begin{proof}
+% \end{proof}
+
+% \subsection{One other upper bound}
+
+% In this section, we record the following result, which follows easily from
+% results of \cite{DKPC,DKP2}.
+
+% \begin{prop}\label{}
+%   Suppose that $(\bfG',J')$ gives a real orthogonal group. Let $\cO' = \bfD(c_1,c_2,$
+%   $\cdots, c_k)\in \Nil_{\bfG'}(\fgg')$ such that
+%   \begin{equation}\label{eq:ineq.c1}
+%     c_{1} \geq c_{2}+2.
+%   \end{equation}
+%   Let $(\bfV,J)$ be a real symplectic space of dimension $\dim_\bC \bfV' + c_1-2$.
+%   Then
+%   \begin{equation}\label{eq:ineq.c1b}
+%     \vartheta (\cO') = \bfD(c_1-1,c_1-1, c_2,\cdots, c_k) =:\cO .
+%   \end{equation}
+%   Further assume $\sO' = \bfD(c_{1},c_2,\cdots,c_k)\in \Nil_{\bfK'}(\fpp')$ where $c_i$'s are understood
+%   as signatures. Let $\cO'$ be the complexification of $\sO'$ satisfing
+%   \eqref{eq:ineq.c1}.
+%   Then $M(M'^{-1}(\overline{\sO'}))\subset \overline{\cO}\cap \fpp$, and
+%   $M(M'^{-1}(\overline{\sO'}))$ contains an orbit $\sO \in \Nil_{\bfK}(\fpp)$ with complexification
+%   $\cO$ if and only if
+%   $c_{1} - c_{2} \succeq (1,1)$.
+%   % $\sign{\bfV,J} - \sign{\bfV',J'} = c_{k-1} - (1,1)$.
+%   If this is the case, $\sO$ is either
+%   \[
+%     \begin{split}
+%       \sO_1 & = \bfD(\ckcc_{1}-(0,1),c_{1}-(1,0), c_{2},\cdots,c_k) \quad \text{or}\\
+%       \sO_2 & = \bfD(\ckcc_{1}-(1,0),c_{1}-(0,1), c_{2},\cdots,c_k).
+%     \end{split}
+%   \]
+% \end{prop}
+
+% In the context of \cref{prop:UB2}, we will thus obtain an explicit upper bound
+% of the complex associated variety (resp. associated variety) of
+% $\bbThetav(\pi')$ (with respect to the rational dual pair $(\bfV',\bfV)$) if
+% $\pi'$ is $\cO'$-bounded (resp. $\sO'$-bounded), in view of \cref{cor:Cbound}
+% and \cref{lem:LM.E}.
+
+% The finer upper bound for the associated character will be discussed in \Cref{sec:AC}.
+
+
+
+\subsection{Proof of \Cref{lem:indR}}\label{sec:pf.indR}
+
+\def\Vker{\bfV_+}
+We will use notations of Section \ref{secdege} and Section \ref{subsec:induced}. % We also abbreviate $P := P_{\bfEz}$, $N := N_{\bfEz}$, and
+Let $\Hom_J$ denote the space of homomorphisms
+commuting with the $\dotepsilon$-real from $J$,  and $\fnn_\bR$ denote the Lie algebra of $N_{\bfE_0}$. %, $J= J_{\bfVpe}$.
+
+\def\XET{X_{E,T}}
+\def\XST{X_{S,T}}
+
+We first explicitly construct some elements in the induced orbits in $\Ind_{P_{\bfE_0}}^{G_{\bfVpe}} \sOR$.
+Fix an element $\bfii\,X\in \sOR$ and a $J$-invariant complement $\Vker$ of $\Im(X)$ in the vector space $\bfV^{-}=\bfV$ so that
+\[
+  \bfV^-=\Vker\oplus \Im(X).
+\]
+Fix any $J$-invariant
+  decompositions
+  \[
+  \bfEz = \bfL_1\oplus \bfL_0\quad\textrm{ and }\quad
+  \bfEzp = \bfL'_1\oplus \bfL'_0
+  \]
+   such that $\dim \bfL_1 = \dim \Vker$, and
+  $(\bfL_1\oplus \bfL'_1)\perp (\bfL_0\oplus \bfL'_0)$. (This is possible due to the dimension inequality in \cref{eq:dim-ine}.)
+
+  Fix a linear isomorphism
+  \[
+  S\in \Hom_J(\bfL_1', \Vker),
+\]
+and view it as an element of $\Hom_J(\bfEzp, \bfV^-)$ via the aforementioned decompositions.
+Put
+\[
+  \begin{split}
+    \sT & := \set{T\in \Hom_J(\bfL'_0,\bfL_0)| T^* + T = 0 } \quad \text{and}\\
+    \sT^\circ & := \set{T\in \sT| \text{$T$ has maximal possible rank}}
+  \end{split}
+\]
+to be viewed as subsets of $\Hom_J(\bfEzp, \bfEz)$ as before,
+where $T^*\in \Hom_J(\bfL'_0,\bfL_0)$ is specified by requiring that
+  \begin{equation}\label{tstar}
+   \inn{T\cdot u}{v}_{\bfV^\perp}=\inn{u}{T^*v}_{\bfV^\perp}, \quad\textrm{for all } u,v\in \bfL'_0,
+  \end{equation}
+and $\inn{}{}_{\bfV^\perp}$ denotes the $\epsilon$-symmetric bilinear form on
+$\bfV^\perp$.
+
+Each   $T\in \sT$
+  defines a $(-\epsilon)$-symmetric bilinear form $\inn{}{}_T$ on $\bfL'_0$
+  where
+  \[
+    \inn{v_1}{v_2}_T := -\inn{v_1}{Tv_2},\quad \textrm{for all }\, v_1,v_2\in \bfL'_0.
+  \]
+Put
+  \begin{equation}\label{eq:stab.X1}
+    \XST := \begin{pmatrix}
+      0 & S^* & T\\
+      & X & S\\
+      & & 0
+    \end{pmatrix} \in X + \fnn_\bR
+  \end{equation}
+  according to the decomposition $\bfVpe = \bfEz \oplus \bfV^- \oplus \bfEzp$,
+  where $S^*\in \Hom_J(\bfV^-, \bfEz)$ is  similarly defined as in \eqref{tstar}.
+  %\subsubsection{}
+
+  \medskip
+ Now suppose that $T\in \sT^\circ$.
+
+  In  case~\ref{it:indR.2} of \Cref{lem:indR},  the form $\inn{}{}_T$ must be
+  non-degenerate and $((\bfL'_0, \inn{}{}_T),J|_{\bfL'_0})$ becomes a $(-\epsilon,-\dotepsilon)$-space. Conversely, up to isomorphism, every $(-\epsilon,-\dotepsilon)$-space of dimension $l-c_1$ is isomorphic to $((\bfL'_0, \inn{}{}_T),J|_{\bfL'_0})$ for some $T\in \sT$.
+
+  Let $s$ be the signature of  $((\bfL'_0, \inn{}{}_T),J|_{\bfL'_0})$ and let
+  $G_T := \bfG_{\bfL'_0}^J$ denote the corresponding real group.  Then $\bfii\, \XST$
+  generates an induced orbit of $\sOR$ with signed Young diagram
+  $[d_1+s, \ckdd_1+\ckss, d_1, \cdots, d_k]$.\footnote{The signed Young diagram may be
+    computed using the explicit description of Kostant-Sekiguchi correspondence
+    in \cite[Propositions 6.2 and
+    6.4]{DKP2}.}
+  \trivial[h]{
+    About the signatures:
+
+    First note that our definition of the rational structure $(J,L)$ is
+    essentially the same as that of \cite[Lemma~5.4]{DKP2}, where $T=L$: For real
+    orthogonal and symplectic groups, they are the same. For quaternionic
+    groups, use $u\mapsto u^*$ to identify the left $\bH$-space $\bH^n$ with the
+    right $\bH$-space $\bH^n$.
+
+    We identify $\fgg$ with $\bfii \fgg$ by multiplying $\bfii$.
+
+    According to \cite[Equation~(6.7)]{SV} is given by the
+    correspondence in $\slt$:
+    \[\bfii E  = \begin{pmatrix}0 & \bfii \\0 & 0\end{pmatrix}
+      \leftrightarrow \frac{1}{2} \begin{pmatrix}1 & \bfii \\\bfii & -1\end{pmatrix}
+      = \mathop{Cayley}(\bfii E)
+    \]
+    under a  $(J,L)$-compatible morphism $\phi\colon
+    \slt\rightarrow \fgg$.
+
+    Therefore, the Kostant-Sekiguchi correspondence is $\cS$ in \cite{DKP2}
+    (cf. \cite[equation~(52)]{DKP2}).
+
+    For real nilpotent  orbits $\sOR$ one can define the notion of signed Young
+    diagram $\ssD_\bR(\sOR)$. (For a (signed) Young diagram, we call a maximal rectangular shape
+    sub-diagram consists of rows a ``block''.  )
+    Note that the ``signature'' for an indecomposable space in \cite{DKP2} is the signature on
+    $V/X(V)$, i.e the signature of the most right column of a block in the
+    diagram; the depth $m$ equals to the ``length of a block'' $-1$.
+    For $\Nil_{\bfK}(\fpp)$, degree $0, 1$ (resp. $2,3$) correspond to $+$ sign
+    (resp. $-$)
+
+    Now by \cite[Proposition 6.2, 6.4]{DKP2}, we see that the notion of signed
+    Young diagram compatible with the Kostant-Sekiguchi correspondence,
+    i.e. $\ssD_\bR(\sO_\bR) = \ssD(\KS(\sO_\bR))$, which agree with our
+    defintion of $\ssD(\sO_\bR)$.
+
+    Also note that, $X$ is viewed as a nilpotent element in $\bfG_{\bfV^-}^J$,
+    so its signature is ``dual'' to the original one. The role of $S$ in
+    \cref{eq:stab.X1} is extend a block by $1$-column on the left and by
+    $1$-column on the right. It is clear that, this procedure is equivalent to
+    attach two columns on the left of the original signed Young diagram.
+
+    For the signature $s$.
+    $T$ define a nilpotent element $X_T$ in $\bfL_0\oplus \bfL'_0$ where $\bfL_0$ is
+    the kernel of $X_T$. Under the notation of \cite[Theorem~3.18]{DKP2},
+    $m_1=2$, $F^{(1)} = \bfL'_0$, $X_T$ correspond to a hight $\dim \bfL'_0$,
+    width $2$ block. Its signature of the right column is given by the form
+    $\inn{v_1}{T v_2}$. Therefore, the signature of the left column is
+    given by the form $-\inn{v_1}{T v_2}$.
+  }
+  One checks that the
+  reductive quotient of $\Stab_{P_{\bfE_0}}(\bfii\,\XST)$ and $\Stab_{G_{\bfVpe}}(\bfii\,\XST)$ are both
+  canonically isomorphic to $R\times G_T$, where $R$ is the reductive
+  quotient of $\Stab_{G}(X)$. Hence $C_{P_{\bfE_0}}(\bfii\,\XST)\cong C_{G_{\bfVpe}}(\bfii\,\XST)$.
+  \trivial[h]{
+    % To
+    % calculate the component group $C_P(X)$, it is reduced to consider
+    % $\Stab_M(X)$.
+    Since $M$ stabilizes the decomposition $\fpp := \fmm\oplus \fnn$,
+    $\Stab_M(X) \subset S_{X_0}\times \GL(\bfE_0)$ where $S_0:=\Stab_{G_{\bfV}}(X_0)$
+    % Let $R_0$ be the reductive
+    % part of $\Stab_{G_{\bfV}}(X_0)$, then
+    % $C_{G_{0,X_0}\times \GL}(X) = C_{R_0\times \GL}(X)$.
+    Note that elements in
+    $S_0$ preserve $\Vker$.  Let $(h, g)\in \Stab_{S_0\times \GL}(X)$, and
+    $g^*\in \GL(\bfEzp)$
+    denote the adjoint $g$. Then
+\[
+  \XET = (h,g)\cdot \XET = \begin{pmatrix}
+    0 & g E^*h^{-1} & gTg^*\\
+    & h\cdot X_0 &  h E g^* \\
+    & & 0
+  \end{pmatrix}
+  = \begin{pmatrix}
+    0 & E^* & T\\
+    & X_0 & E\\
+    & & 0
+  \end{pmatrix},
+\]
+implies $g E^* h^{-1} = E^*$.  In particular, $g\in \GL(\bfEz)$ must stabilize
+$\Im(E^*) = \bfL_1$.  Hence it suffices to assume
+$g = (g_1,g_0) \in \GL(\bfL_1)\times \GL(\bfL_0)$.  Now it is easy to see that
+$g_1$ % $= E^* h E^{*-1}$
+is completely determined by $h$ and $g_0\in G_T$.
+
+On the other hand, using argument in \Cref{sec:KX}, we could compute the
+reductive part of $\Stab_{G}(\XET)$. It is easy to see this is the same as
+$R_0\times G_T$.
+}
+
+%\subsubsection{}
+\medskip
+
+In  case~\ref{it:indR.1} of \Cref{lem:indR}, $\inn{}{}_T$ is skew symmetric, and $T$ has  rank $\dim \bfL_0-1=l-c_1-1$ since
+$l-c_1$ is odd. One checks that $\bfii\, \XST$ generates an induced orbit of $\sOR$ with the signed
+Young diagram prescribed in \cref{it:indR.1} of \Cref{lem:indR}.
+
+Fix  decompositions
+\[
+ \bfL_0 = \bfL_2\oplus \bfL_3\quad \textrm{ and }\quad \bfL'_0 = \bfL'_2\oplus \bfL'_3
+ \]
+ which are dual to each other
+ such that  $\Ker(T) =
+\bfL'_3$ and $\inn{}{}_T|_{\bfL'_2\times \bfL'_2}$ is a
+non-degenerate skew symmetric bilinear form on $\bfL'_2$. %  and $T$ is trivial
+% on $\bfL'_3$.
+% Then the signature of the form on $\bfL'_2$ is
+% $s=(\frac{l-1}{2},\frac{l-1}{2})$ and
+ Let $G_T:=\bfG_{\bfL'_2}^J$. Then
+$G_T$ is a real symplectic
+group. The reductive quotient of
+$\Stab_{P_{\bfE_0}}(\bfii \XST)$ is canonically isomorphic to $R\times G_T\times \GL(\bfL_3)^J$
+and the reductive quotient of $\Stab_{G_{\bfVpe}}(\bfii \XST)$ is canonically isomorphic to
+$R\times G_T\times \bfG_{\bfL_3\oplus \bfL'_3}^J$, where $R$ is the reductive
+quotient of $\Stab_{G}(\bfii X)$ and $\bfG_{\bfL_3\oplus \bfL'_3}^J\cong \rO(1,1)$. The homomorphism
+\[
+C_{P_{\bfE_0}}(\bfii\,\XST)\longrightarrow  C_{G_{\bfVpe}}(\bfii \XST)
+\]
+is therefore an injection whose image has index $2$.
+\trivial[h]{
+  Let $E_1 = E|_{\bfL_2\oplus \bfL_1}$, $T_1 = T|_{\bfL'_2\oplus \bfL'_1}$.
+  Under the decomposition $\bfVpe = \bfL_3\oplus (\bfL_2 \oplus \bfL_1)\oplus
+  \bfV\oplus (\bfL'_2\oplus \bfL_1)\oplus \bfL'_3$,
+  \[
+    \XET = \begin{pmatrix}
+      0& 0 & 0 & 0 & 0 \\
+      &0 & E_1^* & T_1 & 0\\
+       &  & X & E_1 & 0\\
+       & & & 0 & 0\\
+      & & & & 0
+    \end{pmatrix}.
+  \]
+
+  An argument similar in case~\ref{it:indR.2} yields that the reductive part of
+  $\Stab_M(\XST)$ must stabilize $\bfL_i$ and so isomorphic to $R_0\times
+  \Sp(\bfL'_2)\times \GL(\bfL_3)$. The reductive part of $\Stab_G(\XET)$ is
+  computed by block decomposition in \Cref{sec:KX}.
+  The map between component groups is induced by the natural inclusion $R_0\times
+  \GL(\bfL_3)\rightarrow R_0\times \rO(\bfL_3\oplus \bfL'_3)$.
+  Now it is clear that the cokernel of maps between component groups is order
+  $2$.
+}
+
+%\subsubsection{}
+\medskip
+
+To finish the proof of the lemma, it suffices to show that
+\begin{equation}\label{eq:indorb}
+\Ind_{P_{\bfEz}}^{G_{\bfVpe}}\sOR = \set{G_{\bfVpe}\cdot \bfii
+  \XST|T\in \sT^\circ}.
+\end{equation}
+% $\set{G_{\bfVpe}\cdot \bfii\, X_{S,T}|T\in \sT^\circ}$ exhaust the
+% orbits in
+% $\Ind_{P_{\bfEz}}^{G_{\bfVpe}}\sOR$,
+Consider the set
+\[
+\fA :=
+\Set{ \begin{pmatrix}
+  0 & B^* & C \\
+  & X & B\\
+  & & 0
+\end{pmatrix}\in X + \fnn_\bR|%\parbox{22em}{
+\text{$X\oplus  B \in \Hom_J(\bfV^-\oplus \bfE'_0, \bfV^-)$ is surjective} \\
+%and \\
+%$C\oplus B \in \Hom_J(\bfE'_0, \bfE_0 \oplus \bfV^-)$ has maximal possible rank.
+%}
+}.
+\]
+% Note that the maximal possible rank of $C\oplus B$ in the above equation is
+% $\dim \bfE_0 -1$ in case~\ref{it:indR.1} and $\dim \bfE_0$ in case~\ref{it:indR.2}.
+Clearly $P'_{\bfEz}:=\GL_{\bfEz}\ltimes
+N_{\bfEz}$ acts on $\fA$ (\emph{cf}. \cref{eq:P'E0}).
+By suitable matrix manipulations, one sees that every element in $\fA$ is
+conjugated to an element in $\set{X_{S,T}|T\in \sT}$ under the
+$P'_{\bfEz}$-action.
+Hence $P'_{\bfEz}\cdot \set{X_{S,T}|T\in \sT^\circ}$ is open dense in $\fA$.
+Now \cref{eq:indorb} follows since $P_{\bfE_0}\cdot \bfii \fA$ is open dense in $\sOR+ \bfii \fnn_\bR$, \qed
+
+\trivial[h]{
+\begin{claim*}
+Every element in $\fA$ is conjugate by $\GL(\bfEz)\ltimes N$
+to an element of the form \eqref{eq:stab.X1}.
+\end{claim*}
+
+\begin{proof}
+Let $Y\in \fA$.
+Under $\GL(\bfE_0)^J$ action, we may assume $B|_{\bfL'_1}=E$ and $B(\bfL'_0)
+\subset \Im(X)$.
+Let $u\in \Hom(\bfE'_0,\bfV)$ and
+\[n_u:=\exp\begin{pmatrix}
+      0 & u^* & 0 \\
+      & 0 & u\\
+      & & 0
+    \end{pmatrix}.
+\]
+Then
+\[
+n_u\cdot Y = \begin{pmatrix} 0 &u^*X+B^* &-u^* X u+u^* B -B^* u+C\\
+  0&X &B-X u\\
+  0&0&0
+\end{pmatrix}.
+\]
+Therefore, by choosing a suitable $u\in \Hom_J(\bfL'_0,\bfV)$, we may assume $B$
+is an isomorphism in $\Hom_J(\bfL'_1,\bfV_+)$.
+Now consider $u = \begin{pmatrix} u_1 \\ u_0 \end{pmatrix}\in
+\Hom_J(\bfL'_1,\Ker(X))\oplus \Hom_J(\bfL'_0,\Ker(X))$.
+We have
+  \[
+    n_u\cdot Y = \begin{pmatrix}
+      0 & E^* & T'\\
+      & X & E \\
+      &&0
+    \end{pmatrix}
+    \quad \text{where} \quad
+    T' = \begin{pmatrix}
+      B^* u_1+u_1^* B & B^*u_0\\
+       u_0^* B & 0
+    \end{pmatrix} +C,
+  \]
+under the
+  decomposition $\bfE_0 =\bfL_1\oplus \bfL_0$.
+Note that the paring between $\bfV_+$ and $\Ker(X_0)$ is perfect.
+We see that by a suitable $n_u$ action as above, one can further assume $T\in
+\Hom_J(\bfL'_0,\bfL_0)$. Now the rank condition ensures that $T$ has maximal
+possible rank, i.e. $Y$ is an element of the form \cref{eq:stab.X1}.
+\end{proof}
+}
+% Note the following nature bijection between orbits:
+% \[
+% \xymatrix{
+% \Set{\sO|\sO \text{ is induced from } \sO_0} \ar@{<->}[r] &
+% \left(\cO\cap (\sO_0+ \fnn_\bR)\right) / P.
+% }
+% \]
+
+\trivial[h]{
+Note that $\pi\colon G\times_P \overline{\sO+\fnn_\bR}\longrightarrow
+\overline{\sO+\fnn_\bR}$ is a resolution of singularity.
+If $X' \in \overline{\sO+\fnn_\bR} \setminus P\cdot \fA$,  $P\cdot X'$ has
+lower dimension than $P\cdot \XET$.
+Hence $G\cdot X' = \pi(G\times_P (P\cdot X'))$ has lower dimension than $G\cdot
+\XET$, i.e. $G\cdot X'$ can not be in $\Ind_P^G$.
+}
+
+
+% \subsection{Proof of \Cref{lem:indR}}
+
+% Note the following nature bijection between orbits:
+% \[
+% \xymatrix{
+% \Set{\sO|\sO \text{ is induced from } \sO_0} \ar@{<->}[r] &
+% \left(\cO\cap (\sO_0+ \fnn_\bR)\right) / P.
+% }
+% \]
+
+% \def\Vker{\bfV_+}
+% To ease the notation, let $\Vker = \Ker (X_0)$, $P = P_{\bfEz}$, $J= J_{\bfVpe}$.
+
+
+% \begin{proof}[Proof of \Cref{lem:indR}~\ref{it:indR.2}]
+% First, we explicitly
+% construct the lifts of $X_0$: Fix any $J$-invariant decomposition of
+% $\bfEz = \bfL_1\oplus \bfLz$ such that $\dim \bfL_1 = \dim \Vker$.  Let
+% $E\in \Hom_J(\bfL_1^*, \Vker)\subset \Hom_J(\bfL_1^*, \bfV_0)$ be any invertible
+% element and $T=\Hom_J(\bfLz^*,\bfLz) \subset \Hom_J(\bfL^*,\bfL)$ is a skew
+% element, i.e. $T^* + T = 0$ (This is possible, since $l-\dim \Vker$ is even in
+% the orthogonal group case).  Clearly, $T$ define a
+% $(-\epsilon,-\dotepsilon)$-structure on $\bfLz$ and we let $G_T$ denote the
+% (real) isometry group.
+
+% Then, with respect to the decomposition $\bfVpe = \bfEz \oplus \bfV \oplus \bfEzp$,
+% \begin{equation}\label{eq:stab.X1}
+% X = \begin{pmatrix}
+% 0 & E^* & T\\
+%  & X_0 & E\\
+%  & & 0
+% \end{pmatrix}
+% \end{equation}
+% is a representative of an induced orbit of $\sO_0$.
+% Clearly $X$ has the prescribed Young diagram, hence is a lift of $\sO_0$.
+
+% To calculate the component group $C_P(X)$, it is reduced to consider
+% $\Stab_M(X)$. Since $X$ stabilizes the decomposition $\fpp := \fmm\oplus
+% \fnn$, $\Stab_M(X) \subset G_{0,X_0}\times \GL(\bfL_1)$. Let $R_0$ be the
+% reductive part of $G_{0,X_0}$, then $C_{G_{0,X_0}\times \GL}(X) = C_{R_0\times
+%   \GL}(X)$. Note that elements in $R_0$ preserve $\Vker$.
+% Let $(h, g)\in \Stab_{R_0\times \GL}(X)$, then
+% \[
+% (h,g)\cdot X = \begin{pmatrix}
+%  0 & g E^*h^{-1} & gTg^{*-1}\\
+% & h\cdot X_0 &  h E g^{*-1} \\
+%   & & 0
+% \end{pmatrix}
+%  = \begin{pmatrix}
+% 0 & E^* & T\\
+%  & X_0 & E\\
+%  & & 0
+% \end{pmatrix},
+% \]
+% which implies $g E^* h^{-1} = E^*$.
+% In particular, $g\in \GL$ must stabilize $\Im(E^*) = \bfL_1$.
+% Hence $C_{R_0\times \GL}(X) = C_{R_0\times \GL(\bfL_1)\times \GL(\bfLz)}(X)$.
+% Now it is easy to see that $(h, g_1,g_0) \in \Stab_{R_0 \times \GL(\bfL_1)\times
+% \GL(\bfLz)}(X)$ if and only if $g_1 =  E^* h E^{*-1}$ and $g_0\in G_T$.
+
+% In another word, we see that the reductive part of $\Stab_{P}(X)$ and $\Stab_{G}(X)$
+% are canonically isomorphic.
+
+% Now we show $X$ constructed above generates the unique orbit in $\Ind_P^G\sO_0$.
+% Let
+% \[
+% X'_0 = \begin{pmatrix}
+% 0 & E^* & T\\
+%   & 0 & E\\
+%   & & 0
+% \end{pmatrix}
+% \quad \text{ and } \quad  P' = \GL(\bfEz)\ltimes N \lneq P.
+% \]
+% \begin{claim*}
+% We have that $P'\cdot X'_0$ is a open dense subset of $\fnn_\bR$. Equivalently,
+% $\Ind_P^G 0$ has a single orbit generated by $X'_0$.
+% In fact, by varying the choices, $X$ will form a dense subset
+% of $X_0+\fnn_\bR$.
+% \end{claim*}
+% \begin{proof}
+%   We retain the decomposition of
+%   $\bfV:=(\bfL_1\oplus \bfL_2) \oplus \bfV_0 \oplus (\bfL_1^*\oplus \bfL_2^*)$.
+%   Any $X\in \fnn_\bR$ is of the form
+%   \[X=
+%     \begin{pmatrix}
+%       0 & \dotE^* & \dotT\\
+%       &  0      & \dotE\\
+%       & & 0
+%     \end{pmatrix}
+%   \]
+%   Let $\fss_1 := \set{X\in \fnn_\bR| \dotE^* \in \Hom(\bfV_0,\bfL) \text{ is full
+%       rank}}$.
+%   Clearly, $\fss_1$ is an open dense subset in $\fnn_\bR$.
+
+%   By $\GL(\bfL)$ action, clearly $\fss_1 = \GL(\bfL)\cdot \overline{\fss}$ where
+%   \[
+%     \fss := \set{X=
+%     \begin{pmatrix}
+%       0 & E^* & \dotT\\
+%       &  0      & E\\
+%     \end{pmatrix}
+%     |\dotT_{22} \text{ has maximal rank}}
+%   \]
+%   and $\dotT_{22}$ is the $\Hom(\bfL^*_2,\bfL_2)$ component of $\dotT$.
+
+%   By choosing a suitable basis in $\bfL$ and $\bfL^*$, we may assume $E
+%   = \begin{pmatrix}
+%     \bfone & 0
+%   \end{pmatrix}$, $E^* = \begin{pmatrix} \bfone \\ 0
+%   \end{pmatrix}$ and $T=T_{22}\in \Hom(\bfL^*_2,\bfL_2)$.
+
+%   For $u = \begin{pmatrix} u_1 & c \end{pmatrix}\in
+%   \Hom(\bfL^*_1,\bfV_0)\oplus \Hom(\bfL^*_2,\bfV_0)$, let
+%   \[
+%     n = \exp \begin{pmatrix}
+%       0 & u^* & 0 \\
+%       & 0 & u\\
+%       & &
+%     \end{pmatrix}
+%     = \begin{pmatrix}
+%     0 & u^* & \half u^* u\\
+%     & 0 & u \\
+%     & &0
+%     \end{pmatrix}
+%   \]
+%   Since
+%   \[
+%     n\cdot X'_0 = \begin{pmatrix}
+%       0 & E^* & T'\\
+%       & 0 & E \\
+%       &&0
+%     \end{pmatrix}
+%     \quad \text{with} \quad
+%     T' = \begin{pmatrix}
+%       u_1+u_1^* & c^*\\
+%       c  & T_{22}
+%     \end{pmatrix},
+%   \]
+%   we see $\fss  =  (\GL(\bfL_2)\ltimes N) \cdot X'_0$.
+%   Hence, $\bfnn_\bR = \overline{\GL(\bfL)\GL(\bfL_2)N \cdot X'_0}= \overline{P' \cdot X'_0}$
+% \end{proof}
+
+% Thanks to the claim, we have $P'\cdot X'_0 $ is open dense in $X_0+ \fnn_\bR$.
+% Therefore, $\Ind_P^G = \set{G\cdot X'_0}$.
+% \end{proof}
+
+% \begin{proof}[Proof of \Cref{lem:indR}~\ref{it:indR.1}]
+%   Note that $l-1 \geq \dim\Vker$. We further make a $J$-stable decomposition
+%   $\bfLz = \bfL_2\oplus \bfL_3$ with $\dim \bfL_2 = l- 1-\dim\Vker $ so
+%   that $\dim
+%   \bfL_3 =1$.
+%    Note that, if we consider $\dotbfV := (\bfL_1\oplus \bfL_2) \oplus \bfV_0
+%   (\bfL_1\oplus \bfL_2)^*$, then we are exactly in the situation of
+%   \cref{lem:stab.S1}
+%   if we replace $\bfV$ by $\dotbfV$. Let $\dotX$ be the nilpotent element
+%   as constructed in \cref{lem:stab.S1}. Then, under the decomposition $\bfV =
+%   \bfL_3\oplus \dotbfV \oplus \bfL_3^*$,
+%   $X = \begin{pmatrix}
+%     0 & 0 & 0 \\
+%     & \dotX & 0\\
+%     & & 0
+%   \end{pmatrix}.
+%   $
+
+%   More precisely,
+%   $X$ is constructed  by the same way as in \eqref{eq:stab.X1} except $T$ is an invertible
+%   element in $\Hom_J(\bfL_2^*,\bfL_2)$.
+%   Retaining the notation in the proof of \cref{lem:stab.S1}, a similar argument
+%   yields that $g\in \GL$ must both stabilize $\Im(E^*)$ and $\Im(T)$ so that
+%   \[C_{M}(X) = C_{R_0\times \GL(\bfL_1)\times \GL(\bfL_2)\times \GL(\bfL_3)}(X) =
+%   C_{R_0\times \GL(\bfL_1)\times\GL(\bfL_2)}(X) \times \GL(\bfL_3).\]
+
+%   On the other hand, $\bfL_3 \oplus \bfL_3^*$ gives a $O(1,1)$ factor in the
+%   reductive part of $\Stab_{G}(X)$.
+
+%   In another word, $C_M(X)\rightarrow C_{G}(X)$ is given by
+%   $C_{R_0\times \GL(bfL_1)}\times \mu_2\rightarrow C_{\dotG}(X)\times C(O(1,1))
+%   = C_{G}(X) $, where the map between the first factors is an
+%   isomorphism by \cref{lem:stab.S1} and the map between the second factors is
+%   $\set{\pm 1} \mapsto \begin{pmatrix}\pm 1 & \\ & \pm 1 \end{pmatrix}$.  Now
+%   the lemma is clear.
+
+%   The proof that $\Ind_P^G \sO_0$ contains a single orbit is the same as that of
+%   \cref{lem:stab.S1} and we leave the details to the reader.
+% \end{proof}
+
+
+
 
 \begin{bibdiv}
   \begin{biblist}
