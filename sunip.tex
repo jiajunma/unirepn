@@ -18,6 +18,7 @@
 %\usepackage{boisik}
 %\usepackage{amsmath}
 \usepackage{mathrsfs}
+%\usepackage{youngtab}
 %\usepackage{amsrefs}
 \usepackage{mathbbol,mathabx}
 \usepackage{amsthm}
@@ -810,7 +811,7 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
 \newtheorem*{remarks}{Remarks}
-
+\newtheorem*{Example}{Example}
 
 \def\cpc{\sigma}
 \def\ccJ{\epsilon\dotepsilon}
@@ -1219,7 +1220,12 @@
 \def\Unip{\mathrm{Unip}}
 \def\lUnip{\mathrm{{}^{\ell}Unip}}
 \def\tbfxx{\tilde{\bfxx}}
-
+\def\pbp{\mathrm{PBP}}
+\def\pbpst{\mathrm{PBP}_{\star}}
+\def\pbpssp{\pbp_{\star}^{\mathrm{ps}}}
+\def\pbpsns{\pbp_{\star}^{\mathrm{ns}}}
+\def\pbpsp{\pbp^{\mathrm{ps}}}
+\def\pbpns{\pbp^{\mathrm{ns}}}
 
 \newcommand{\noticed}{noticed }
 \newcommand{\ess}{essential }
@@ -1242,7 +1248,7 @@
 }
 \makeatother
 %\ytableausetup{noframe=on,smalltableaux}
-\ytableausetup{noframe=on,boxsize=1.3em}
+\ytableausetup{noframe=off,boxsize=1.3em}
 \let\ytb=\ytableaushort
 
 \newcommand{\tytb}[1]{{\tiny\ytb{#1}}}
@@ -1298,6 +1304,7 @@
 \def\deltas{\delta^s}
 \def\deltans{\delta^{ns}}
 
+\def\dp{\mathrm{dp}}
 
 \def\uum{{\dotminus}}
 \def\uup{\divideontimes}
@@ -1313,8 +1320,7 @@
 \begin{document}
 
 
-\title[]{Special unipotent representations of classical groups: orthogonal and
-  symplectic group case}
+\title[]{Special unipotent representations : orthogonal and symplectic groups}
 
 \author [D. Barbasch] {Dan M. Barbasch}
 \address{the Department of Mathematics\\
@@ -1326,11 +1332,17 @@
   Shanghai Jiao Tong University\\
   800 Dongchuan Road, Shanghai, 200240, China} \email{hoxide@sjtu.edu.cn}
 
+
 \author [B. Sun] {Binyong Sun}
 % MCM, HCMS, HLM, CEMS, UCAS,
-\address{Academy of Mathematics and Systems Science\\
-  Chinese Academy of Sciences\\
-  Beijing, 100190, China} \email{sun@math.ac.cn}
+%\address{Academy of Mathematics and Systems Science\\
+%  Chinese Academy of Sciences\\
+ % Beijing, 100190, China} \email{sun@math.ac.cn}
+
+\address{Institute for Advanced Study in Mathematics\\
+  Zhejiang University\\
+  Hangzhou, 310058, China} \email{sunbinyong@zju.edu.cn}
+
 
 \author [C.-B. Zhu] {Chen-Bo Zhu}
 \address{Department of Mathematics\\
@@ -1441,8 +1453,9 @@ is calculated in the following way:
 \]
 }
 
-\section{Introduction and the main result(old)}\label{sec:intro}
+\section{Introduction and the main results}\label{sec:intro}
 
+\subsection{Unitary representations and the orbit method}
 A fundamental problem in representation theory is to determine the
 unitary dual of a given Lie group $G$, namely the set of equivalent classes of irreducible unitary representations
 of $G$. A principal idea, due to Kirillov and Kostant, is that there is a close connection between irreducible unitary representations of $G$ and the orbits of $G$ on the dual of its Lie algebra \cite{Ki62,Ko70}. This is known as orbit method (or the method of coadjoint orbits). Due to its resemblance with the process of attaching a quantum mechanical system to a classical mechanical system, the process of attaching a unitary representation to a coadjoint orbit is also referred to as quantization in the representation theory literature.
@@ -1458,8 +1471,911 @@ In the present article we will demonstrate that the orbit method and Howe's theo
 group, and $\CO$ is a member of our preferred set of complex nilpotent orbits, large enough to include all those which are rigid special. Here we wish to emphasize that there have been extensive investigations of unipotent representations for real reductive groups by Vogan and his collaborators (see e.g. \cite{VoBook,Vo89,ABV}),
 %in particular on the related problems of classification of the primitive ideals and Fourier inversion of unipotent orbit integrals \cite{BVPri1, BVPri2},
 only for unitary groups complete results are known (\emph{cf}. \cite{BV83, Tr}), in which case all such representations may also be described in terms of cohomological induction.
-\vsp
 
+
+
+
+\subsection{Special unipotent representations of classical groups of type $B$, $C$ or $D$}\label{secsu}
+In this article, we are aimed to understand special unipotent representations of classical groups of type $B$, $C$ or $D$. As the cases of complex orthogonal groups  and complex symplectic groups are well-understood (see
+\cite{BVUni} and \cite{B17}), we will focus on the following groups:
+\be\label{typebcd}
+  \oO(p,q), \Sp_{2n}(\R), \  \widetilde \Sp_{2n}(\R), \ \Sp(p,q), \  \oO^*(2n), 
+  \ee
+  where $p,q, n\in \BN:=\{0,1,2, \cdots\}$. Here $ \widetilde \Sp_{2n}(\R)$ denotes the real metaplectic group, namely the double cover of the symplectic group  $\Sp_{2n}(\R)$ that does not split unless $n=0$.
+  
+Let $G$ be one the groups in   \eqref{typebcd}.  As usual, we view it as  a real form of $G_\C$, or a double cover of a real form of $G_\C$ in the metaplecitic case, where 
+\[
+  G_\C:=
+  \left\{
+    \begin{array}{ll}
+      \oO_{p+q}(\C) , & \hbox{if $G=\oO(p,q)$;} \smallskip\\
+    \Sp_{2n}(\C) , & \hbox{if $G=\Sp_{2n}(\R)$ or $\widetilde \Sp_{2n}(\R)$;} \smallskip \\
+  \Sp_{2p+2q}(\C) , & \hbox{if $G=\Sp(p,q)$;} \smallskip \\
+ \oO_{2n}(\C) , & \hbox{if $G=\oO^*(2n)$.} \\
+    \end{array}
+  \right.
+\]
+Respectively write $\fgg_\R$ and $\g$ for the Lie algebras of $G$ and $G_\C$. Then $\g$ is viewed as a complexification of $\g_\R$. 
+
+Let $r_\g$ denote the rank of $\fgg$. Let $W_{r_\g}$ denote the subgroup of $\GL_{r_\g}(\C)$ generated
+by the permutation matrices and the diagonal matrices with diagonal entries
+$\pm 1$.
+ %We identify a Cartan subalgebra of $\g_V$ with $\C^{r_V}$, using the standard coordinates.
+ Then as usual, Harish-Chandra
+isomorphism yields an identification
+\be\label{ugz}
+  \oU(\g)^{G_\C}=\left(\oS(\C^{r_\g})\right)^{W_{r_\g}}.
+\ee
+Here and henceforth,  ``$\oU$'' indicates the universal enveloping algebra of a Lie algebra,  a superscript group indicate the
+space of invariant vectors under the group action, and  ``$\oS$'' indicates
+the symmetric algebra. Unless $G_\C$ is an even orthogonal group,
+$\oU(\g)^{G_\C}$ equals the center $\oZ(\g)$ of $\oU(\g)$.
+By \eqref{ugz}, we have the following parameterization of  characters of $\oU(\g)^{G_\C}$:
+\[
+  \Hom_{\mathrm{alg}}(\oU(\g)^{G_\C}, \C)=W_{r_\g} \backslash (\C^{r_\g})^*= W_{r_\g}\backslash \C^{r_\g}
+\]
+Here ``$ \Hom_{\mathrm{alg}}$" indicates the set of $\C$-algebra homomorphisms, and a superscript ``$\,^*\,$" over a vector space indicates the dual space. 
+
+
+   We define the Langlands dual of $G$ to be the complex group
+\[
+  \check G:=
+  \left\{
+    \begin{array}{ll}
+      \Sp_{p+q-1}(\C) , & \hbox{if $G=\oO(p,q)$ and $p+q$ is odd;} \smallskip\\
+    \oO_{p+q}(\C) , & \hbox{if $G=\oO(p,q)$ and $p+q$ is even;} \smallskip \\
+    \oO_{2n+1}(\C) , & \hbox{if $G=\Sp_{2n}(\R)$;} \smallskip \\
+   \Sp_{2n}(\C) , & \hbox{if $G=\widetilde \Sp_{2n}(\R)$;} \smallskip \\
+ \oO_{2p+2q+1}(\C) , & \hbox{if $G=\Sp(p,q)$;} \smallskip \\
+ \oO_{2n}(\C) , & \hbox{if $G=\oO^*(2n)$.} \\
+    \end{array}
+  \right.
+\]
+ Write $\check \fgg$ for the Lie algebra of $\check G$.  
+
+Denote by $\Nil(\check \fgg)$ the set of nilpotent  $\check G$-orbits in $\check \fgg$, namely the set of all  orbits of nilpotent matrices under the adjoint action of $\check G$ in $\check \g$. 
+When no confusion is possible, we will not distinguish a nilpotent orbit in $\GL_n(\C)$, $\oO_n(\C)$ or $\Sp_{2n}(\C)$ with its corresponding Young diagram. In particular, the zero orbit is also regarded as the Young  with  one nonempty column at most. 
+
+Let  $\check \CO \in \Nil(\check \fgg) $.  It determines a character $\chi(\check \CO): \oU(\g)^{G_\C}\rightarrow \C$ as in what follows. For every  integer $a\geq 0$, write 
+\[
+  \rho(a):=\left\{ \begin{array}{ll}
+                  (1, 2, \cdots, \frac{a-1}{2}), \quad &\textrm{if $a$ is odd;}\\
+                    (\frac{1}{2}, \frac{3}{2}, \cdots, \frac{a-1}{2}), \quad &\textrm{if $a$ is even;}\\
+                    \end{array}
+                 \right. 
+\]
+By convention, $\rho(1)$ and $\rho(0)$ are  the empty sequence.
+Write $a_1\geq  a_2\geq \cdots\geq a_s>0$ ($s\geq 0$)  for the row lengths of  $\check \CO$. Define
+\be\label{chico}
+ \chi(\check \CO):= (\rho( a_1), \rho(a_2),  \cdots, \rho(a_s), 0, 0, \cdots, 0 ),
+\ee
+to be viewed as a character $\chi(\check \CO): \oU(\g)^{G_\C}\rightarrow \C$. 
+Here the number of $0$'s is 
+\[
+ \left\lfloor\frac{\textrm{the number of odd rows of the Young diagram of $\check \CO$}}{2}\right\rfloor.
+\]
+
+
+Recall the following well-known result of Dixmier (\cite[Section 3]{Bor}): for every algebraic character $\chi$ of $\oZ(\g)$, there exists a unique maximal ideal of $\oU(\g)$ that contains the kernel of $\chi$. %, to be called the maximal ideal of $\oU(\g)$ with infinitesimal character $\chi$. 
+As an easy consequence, we know that there is a unique maximal $G_\C$-stable ideal of $\oU(\g)$ that contains the kernel of $\chi(\check \CO)$. Write $I_{\check \CO}$ for this ideal. 
+
+Recall that a  smooth Fr\'echet representation of  moderate growth  of a real reductive group is called a Casselman-Wallach representation (\cite{Ca89,Wa2}) if its Harish-Chandra module has  finite length. When $G=\widetilde \Sp_{2n}(\R)$ is a metaplectic group, write $\varepsilon_G$ for the non-trivial element in the kernel of the covering map $G\rightarrow \Sp_{2n}(\R)$. Then a representation of $G$ is said to be genuine if $\varepsilon_G$ acts on it through the scalar multiplication by $-1$. 
+Following Barbasch and Vogan (\cite{ABV,BVUni}), we make the following definition. 
+
+\begin{defn}
+%Let $\check \CO\in \Nil(\check \g)$.
+Let $\check \CO\in \Nil(\check \g)$. An irreducible Casselman-Wallach representation $\pi$ of $G$  is attached to $\check \CO$ if
+\begin{itemize}
+\item  $I_{\check \CO}$ annihilates $\pi$; and
+\item $V$ is genuine if $G$ is a metaplectic group.
+\end{itemize}
+\end{defn}
+
+Write  $\Unip_{\check \cO}(G)$ for the  set of all isomorphism classes of irreducible Casselman-Wallach  representations of $G$ that are attached to $\check \CO$.
+We say that an irreducible Casselman-Wallach representation  of $G$ is special unipotent if it is attached to $\check \CO$, for some $\check \CO\in \Nil(\check \g)$.
+We will construct all the special unipotent representations, and show that they are all unitarizable as predicted by  the Arthur-Barbasch-Vogan conjecture \cite[Introduction]{ABV}.
+
+
+
+\subsection{Combinatorics :  bipartitions}\label{secbip}
+
+For every Young diagram $\CO$, write 
+\[
+ \mathbf r_1(\CO)\geq \mathbf r_2(\CO)\geq \mathbf r_3(\CO)\geq \cdots
+\]
+for its row lengths, and similarly, 
+write 
+\[
+ \mathbf c_1(\CO)\geq \mathbf c_2(\CO)\geq \mathbf c_3(\CO)\geq \cdots
+\]
+for its column lengths. 
+Denote by $\abs{\CO}:=\sum_{i=1}^\infty \mathbf r_i(\CO)$ the total size of $\CO$. 
+
+We introduce six symbols $B$, $C$, $D$, $\widetilde {C}$, $C^*$ and $D^*$ to indicate the types of the groups that we are considering as in \eqref{typebcd}, namely odd real orthogonal groups, real symplectic groups, even real orthogonal groups, real metaplectic groups, quaternionic symplectic groups and quaternionic orthogonal groups, respectively.
+  Let $\star\in \{B,C,D,\widetilde {C}, C^*, D^*\}$, and suppose that $G$ has type $\star$. 
+  %Then $\check G$ is a complex symplectic group if $\star=B$ or $\widetilde{C}$, and is a complex orthogonal group otherwise. 
+  
+  Following \cite[Definition 4.1]{MR},  We say that 
+    $\check \CO\in \Nil(\check \g)$ has  $\star$-good parity if
+\[
+  \left\{ \begin{array}{l}
+               \textrm{all nonzero row lengths of $\check \CO$ are even if $\check G$ is a complex symplectic group; and }\\
+                     \textrm{all nonzero row lengths of $\check \CO$ are odd if $\check G$ is a complex orthogonal group.}
+                       % \textrm{the total size $\abs{\check \CO}$ is  odd if and only if $\star\in \{C, C^*\}$}.                
+                          \end{array}
+                 \right. 
+\]
+%We will also not distinguish a Young diagram with the corresponding partition of a natural number.  
+%Let $\mathrm{YD}$ denote the set of all Young diagrams. 
+The study of the special unipotent representations in general case reduced to the case when $\check \CO$ has $\star$-good parity. See Appendix \ref{secapp}. Now we suppose that  $\check \CO$ has  $\star$-good parity. Equivalently but in a completely combinatorial setting, we consider $\check \CO$ as a Young diagram that has  $\star$-good parity in the following sense: 
+\[
+  \left\{ \begin{array}{l}
+               \textrm{all nonzero row lengths of $\check \CO$ are even if $\star\in \{B, \widetilde{C}\}$;}\\
+                     \textrm{all nonzero row lengths of $\check \CO$ are odd if $\star\in \{C, D, C^*, D^*\}$; and}\\
+                        \textrm{the total size $\abs{\check \CO}$ is  odd if and only if $\star\in \{C, C^*\}$}.                   \end{array}
+                 \right. 
+\]
+%In particular, the empty Young diagram $\emptyset$ is $\star$-even.  
+
+%We call an ordered pair of Young diagrams a  bipartition. In what follows we will define a  set   $\mathrm{BP}_\star(\check \CO)$ of bipartitions. 
+
+\begin{defn}
+ A $\star$-pair is a pair  $(i,i+1)$ of successive positive integers such that
+\[
+   \left\{
+     \begin{array}{ll}
+      i\textrm{ is odd}, \quad &\textrm{if $\star\in\{C, \widetilde{C}, C^*\}$};  \\
+      i \textrm{ is even}, \quad &\textrm{if $\star\in\{B, D, D^*\}$}. \\           
+       \end{array}
+   \right.
+\]
+A $\star$-pair   $(i,i+1)$ is said to be
+\begin{itemize}
+\item 
+empty in $\check \CO$, if $\mathbf r_i(\check \CO)=\mathbf r_{i+1}(\check \CO)=0$;
+\item
+balanced in $\check \CO$,  if  $\mathbf r_i(\check \CO)=\mathbf r_{i+1}(\check \CO)>0$;
+\item
+tailed in $\check \CO$,  if $\star\in \{C, D, C^*, D^*\}$ and $\mathbf r_i(\check \CO)>\mathbf r_{i+1}(\check \CO)=0$;
+\item 
+distinguished in $\check \CO$, if  it is not empty, balanced or tailed in $\check \CO$. 
+\end{itemize}
+
+\end{defn}
+
+Let $\mathrm{DP}_\star(\check \CO)$ denote the  set of all $\star$-pairs that are distinghuished in $\check \CO$. For every subset $\wp\subset \mathrm{DP}_\star(\check \CO)$, we define a pair \[
+(\imath_\wp, \jmath_\wp):=(\imath_\star(\check \CO, \wp), \jmath_\star(\check \CO, \wp))
+\]
+ of Young diagrams  as in what follows.
+
+If $\star=B$, then
+ \[
+   \mathbf c_{1}(\jmath_\wp)=\frac{\mathbf r_1(\check \CO)}{2},
+\]
+and for all $i\geq 1$, 
+\[
+(\mathbf c_{i}(\imath_\wp), \mathbf c_{i+1}(\jmath_\wp))=
+   \left\{
+     \begin{array}{ll}
+           (\frac{\mathbf r_{2i+1}(\check \CO)}{2},  \frac{\mathbf r_{2i}(\check \CO)}{2}), &\hbox{if $(2i, 2i+1)\in \wp$}; \smallskip\\
+            (\frac{\mathbf r_{2i}(\check \CO)}{2},  \frac{\mathbf r_{2i+1}(\check \CO)}{2}), &\hbox{otherwise}.\\
+            \end{array}
+   \right.
+\]
+
+
+If $\star=\widetilde{C}$, then for all $i\geq 1$, 
+\[
+(\mathbf c_{i}(\imath_\wp), \mathbf c_{i}(\jmath_\wp))=
+   \left\{
+     \begin{array}{ll}
+           (\frac{\mathbf r_{2i}(\check \CO)}{2},  \frac{\mathbf r_{2i-1}(\check \CO)}{2}), &\hbox{if $(2i-1, 2i)\in \wp$}; \smallskip\\
+            (\frac{\mathbf r_{2i-1}(\check \CO)}{2},  \frac{\mathbf r_{2i}(\check \CO)}{2}), &\hbox{otherwise}.\\
+            \end{array}
+   \right.
+\]
+
+
+If $\star=D$ or $D^*$, then
+ \[
+   \mathbf c_{1}(\imath_\wp)= \left\{
+     \begin{array}{ll}
+            \frac{\mathbf r_1(\check \CO)+1}{2},   &\hbox{if $\mathbf r_1(\check \CO)>0$}; \smallskip\\
+       0,  &\hbox{if $\mathbf r_1(\check \CO)=0$},\\
+            \end{array}
+   \right.
+ \]
+and for all $i\geq 1$, 
+\[
+(\mathbf c_{i}(\jmath_\wp), \mathbf c_{i+1}(\imath_\wp))=
+   \left\{
+     \begin{array}{ll}
+            (\frac{\mathbf r_{2i+1}(\check \CO)-1}{2},  \frac{\mathbf r_{2i}(\check \CO)+1}{2}), &\hbox{if $(2i, 2i+1)\in \wp$}; \smallskip\\
+        (\frac{\mathbf r_{2i}(\check \CO)-1}{2},  0), & \hbox{if $(2i, 2i+1)$ is tailed in $\check \CO$};\smallskip\\
+         (0,  0), &\hbox{if $(2i, 2i+1)$ is empty in $\check \CO$};\\
+         (\frac{\mathbf r_{2i}(\check \CO)-1}{2},  \frac{\mathbf r_{2i+1}(\check \CO)+1}{2}), &\hbox{otherwise}.\\
+            \end{array}
+   \right. 
+\]
+
+
+If $\star=C$ or $C^*$, then for all $i\geq 1$, 
+\[
+(\mathbf c_{i}(\jmath_\wp), \mathbf c_{i}(\imath_\wp))=
+   \left\{
+     \begin{array}{ll}
+            (\frac{\mathbf r_{2i}(\check \CO)-1}{2},  \frac{\mathbf r_{2i-1}(\check \CO)+1}{2}), &\hbox{if $(2i-1, 2i)\in \wp$}; \smallskip\\
+        (\frac{\mathbf r_{2i-1}(\check \CO)-1}{2},  0), & \hbox{if $(2i-1, 2i)$ is tailed in $\check \CO$};\smallskip\\
+         (0,  0), &\hbox{if $(2i-1, 2i)$ is empty in $\check \CO$};\\
+         (\frac{\mathbf r_{2i-1}(\check \CO)-1}{2},  \frac{\mathbf r_{2i}(\check \CO)+1}{2}), &\hbox{otherwise}.\\
+            \end{array}
+   \right.
+\]
+
+
+In all cases, it is known that (see \cite[Section13.2]{Carter}) 
+\be\label{eqbp}
+(\imath_\star(\check \CO, \wp), \jmath_\star(\check \CO, \wp))=(\imath_\star(\check \CO', \wp'), \jmath_\star(\check \CO', \wp'))\quad \textrm{if and only if}\quad 
+ \left\{
+     \begin{array}{l}
+           \check \CO=\check \CO';\\
+           \wp=\wp',   
+            \end{array}
+   \right.
+\ee
+where $\check \CO'$ is another  Young diagram that has $\star$-good parity, and $\wp'\subset \mathrm{DP}_\star(\check \CO')$. 
+Put
+\[
+\mathrm{BP}_\star(\check \CO) :=\{(\imath_\wp, \jmath_\wp)\mid \wp\subset \mathrm{DP}_\star(\check \CO)\}
+\]
+and
+\[
+  \mathrm{BP}_\star:=\bigcup_{\check \CO \textrm{ is Young diagram that has $\star$-good parity} }\mathrm{BP}_\star(\check \CO).
+\]
+The latter is a disjoint union by \eqref{eqbp}, and its elements are called $\star$-bipartitions.  
+Recall that  the set $\mathrm{BP}_\star(\check \CO)$ parametrizes certain Weyl group representations (\cite[Section 11.4]{Carter}). 
+
+
+\begin{Example} Suppose that $\star=C$, and $\check \CO$ is the following Young diagram which has $\star$-good parity.  
+\begin{equation*}\label{eq:sp-nsp.C}
+  \tytb{\ \ \ \ \  , \ \ \  , \ \ \ , \ \ \  , \ \ \ , \  ,\  }
+   \end{equation*}
+   Then 
+\[
+  \mathrm{DP}_\star(\check \CO)=\{(1,2), (5,6)\}.
+\]
+and $(\imath_\wp, \jmath_\wp)$ %\in \mathrm{BP}_\star(\check \CO)$ 
+has the  following form. 
+ 
+\begin{equation*}\label{eq:sp-nsp.C}
+\begin{array}{rclcrcl}
+  \wp=\emptyset & : & \tytb{\ \ \ ,\ \  } \times \tytb{\ \ \ , \  }  & \qquad \quad &  \wp=\{(1,2)\}& : & \tytb{\ \ \  , \ \ , \   } \times \tytb{\ \ \  } \medskip \medskip \medskip \\
+    \wp=\{(5,6)\} & : & \tytb{\ \ \ ,\ \ \ } \times \tytb{\ \ , \   }  & \qquad \quad &  \wp=\{(1,2), (5,6)\}  & : & \tytb{\ \ \  , \ \ \ ,  \ } \times \tytb{\ \   } \\
+  \end{array}
+  \end{equation*}
+   
+\end{Example}
+
+
+Here and henceforth, when no confusion is possible, we write $\alpha\times \beta$ for a pair $(\alpha, \beta)$.  We will also write $\alpha\times \beta\times \gamma$ for a triple $(\alpha, \beta, \gamma)$.
+
+
+\subsection{Combinatorics : painted bipartitions}
+
+Let $\imath$ be a Young diagram. Write $\mathrm{Box}(\imath)$ for the set of all boxes in $\imath$, which has $\abs{\imath}$ elements in total. We say that a Young diagram $\imath'$ is contained 
+in $\imath$ (and write $\imath'\subset \imath$) if 
+\[
+  \mathbf r_i(\imath')\leq \mathbf r_i(\imath)\qquad \textrm{for all } i=1,2, 3, \cdots. 
+\]
+When  this is the case, $\mathrm{Box}(\imath')$ is viewed as a subset of $\mathrm{Box}(\imath)$ concentrating on the upper-left corner. 
+We say that a subset of $\mathrm{Box}(\imath)$ is a Young subdiagram if it equals $\mathrm{Box}(\imath')$ for a Young diagram $\imath'\subset \imath$. 
+  In this case, we call $\imath'$ the Young diagram corresponding to this Young subdiagram.
+
+We introduce five symbols $\bullet$, $s$, $r$, $c$ and $d$. 
+\begin{defn}
+A painting on a Young diagram $\imath$ is a map 
+\[
+  \CP: \mathrm{Box}(\imath) \rightarrow \{\bullet, s, r, c, d \}
+\]
+with the following properties: 
+\begin{itemize}
+\item
+ $\CP^{-1}(S)$ is a Young subdiagram of $\mathrm{Box}(\imath)$ when $S=\{\bullet\}, \{\bullet, s \}, \{\bullet, s, r\}$ or $\{\bullet, s, r, c \} $;
+ \item
+ every row of $\imath$ has at most one  box in $\CP^{-1}(S)$ when $S=\{s\}$ or $ \{r\}$;
+   \item
+ every column of $\imath$ has at most one  box in $\CP^{-1}(S)$ when $S=\{c\}$ or $ \{d \}$.
+ \end{itemize}
+A painted Young diagram is a pair $(\imath, \CP)$ consisting of a Young diagram and a painting on it.  
+
+\end{defn}
+
+
+
+
+\begin{Example} Suppose that $\tau=\tytb{\ \ ,\  }$, then there are $25+12+6+2=45$ paintings on $\tau$ in total as listed below.  
+\begin{equation*}\label{eq:sp-nsp.C}
+\begin{array}{ll}
+   \tytb{\bullet \alpha ,\beta } \quad \alpha, \beta\in \{\bullet, s,r,c,d\} \qquad \qquad  \qquad  & \tytb{s \alpha ,\beta } \quad \alpha\in \{r,c,d\}, \beta\in \{s,r,c,d\} \medskip \medskip \\
+     \tytb{r \alpha ,\beta } \quad \alpha\in \{c,d\}, \beta\in \{r,c,d\} \qquad \qquad  \qquad
+   &  \tytb{c \alpha , d } \quad  \alpha\in \{c,d\}
+     \end{array}
+  \end{equation*}
+  
+  \end{Example}
+
+
+ We introduce two more symbols $B^+$ and $B^-$, and make the following definition.  
+ \begin{defn}\label{defpbp0}
+ A painted bipartition is a triple $\tau=(\imath, \CP)\times (\jmath, \CQ)\times \alpha$, where $(\imath, \CP)$ and $ (\jmath, \CQ)$ are painted Young diagrams, and $\alpha\in \{B^+,B^-, C,D,\widetilde {C}, C^*, D^*\}$, subject to the following conditions: 
+ \begin{itemize}
+ \item
+ $(\imath, \jmath)\in \mathrm{BP}_\alpha$ if $\alpha\notin\{B^+,B^-\}$, and  $(\imath, \jmath)\in \mathrm{BP}_{B}$ if $\alpha\in\{B^+,B^-\}$;
+\item
+ $\CP^{-1}(\bullet)$ and $\CQ^{-1}(\bullet)$ corresponding to the same Young diagram;
+ \item
+ the image of $\CP$ is contained in
+ \[
+ \left\{
+     \begin{array}{ll}
+         \{\bullet, c\}, &\hbox{if $\alpha=B^+$ or $B^-$}; \smallskip\\
+            \{\bullet,  r, c,d\}, &\hbox{if $\alpha=C$}; \smallskip\\
+          \{\bullet, s, r, c,d\}, &\hbox{if $\alpha=D$}; \smallskip\\
+            \{\bullet, s, c\}, &\hbox{if $\alpha=\widetilde{ C}$}; \smallskip \\
+        \{\bullet\}, &\hbox{if $\alpha=C^*$}; \smallskip \\        
+          \{\bullet, s\}, &\hbox{if $\alpha=D^*$},\\
+            \end{array}
+   \right.
+ \]
+ \item
+ the image of $\CQ$ is contained in
+ \[
+ \left\{
+     \begin{array}{ll}
+         \{\bullet, s, r, d\}, &\hbox{if $\alpha=B^+$ or $B^-$}; \smallskip\\
+           \{\bullet, s\}, &\hbox{if $\alpha=C$}; \smallskip\\
+           \{\bullet\}, &\hbox{if $\alpha=D$}; \smallskip\\
+             \{\bullet, r, d\}, &\hbox{if $\alpha=\widetilde{ C}$}; \smallskip\\
+        \{\bullet, s,r\}, &\hbox{if $\alpha=C^*$}; \smallskip \\
+          \{\bullet, r\}, &\hbox{if $\alpha=D^*$}.
+            \end{array}
+   \right.
+ \]
+ 
+
+ \end{itemize}
+
+ 
+ \end{defn}
+ With the notation of Definition \ref{defpbp0}, we define in what follows some objects attached to the painted bipartition $\tau$:
+ \[
+   \star_\tau, \ \check \CO_\tau, \  \wp_\tau, \  \abs{\tau}, \  \varepsilon_\tau, \  p_\tau, \ q_\tau, \ G_\tau\, \ \dim \tau. 
+ \]
+ 
+ \smallskip
+
+ 
+ \smallskip
+  
+ 
+ 
+  
+\noindent $\star_\tau$:  This is the symbol given by
+   \[
+  \star_\tau:= \left\{
+     \begin{array}{ll}
+         B, &\hbox{if $\alpha=B^+$ or $B^-$}; \smallskip\\
+            \alpha, & \hbox{otherwise}.           \end{array}
+   \right.
+   \]
+   
+   \noindent $\check \CO_\tau$ and $ \wp_\tau$: This is the unique pair such that 
+   \begin{itemize}
+   \item 
+   $\check \CO_\tau$ is a Young diagram that has $\star_\tau$-good parity;
+   \item $\wp_\tau\subset \mathrm{DP}_{\star_\tau}(\check \CO_\tau)$; and 
+   \item 
+   $
+   (\imath, \jmath)=(\imath_{\star_\tau}(\check \CO_\tau, \wp_\tau), \jmath_{\star_\tau}(\check \CO_\tau, \wp_\tau)).
+$
+\end{itemize}
+
+ 
+
+ 
+ \smallskip
+  
+ \smallskip
+ 
+ \noindent $\abs{\tau}$: This is the natural number \[
+  \abs{\tau}:=\abs{\imath}+\abs{\jmath}.
+\]
+Note that 
+\[
+ \abs{\tau}:= \left\{
+     \begin{array}{ll}
+        \frac{\abs{\check \CO_\tau}-1}{2}, &\hbox{if $\star_\tau=C$ or $C^*$}; \smallskip\\
+          \frac{\abs{\check \CO_\tau}}{2}, &\hbox{otherwise}. \smallskip\\
+                      \end{array}
+   \right.
+\]
+
+
+ 
+ \smallskip
+  
+ \smallskip
+ 
+ \noindent $\varepsilon_{\tau}$: This is an element of $\Z/2\Z$. It equals $0$ in the following cases: 
+   \begin{itemize}
+   \item[(a)] 
+   $\star_\tau=B$, $\abs{\tau}>0$ and  the symbol $d$ occurs in the first column of  the painted Young diagram $(\jmath, \CQ)$;
+    \item[(b)] 
+   $\star_\tau=D$, $\abs{\tau}>0$ and  the symbol $d$ occurs in the first column of  the painted Young diagram $(\imath, \CP)$;
+   \item[(c)] 
+   $\star_\tau\in \{C, \widetilde C\}$ and  $(1,2)\not\in \wp_\tau$.
+  \end{itemize}
+In all other case, $\varepsilon_{\tau}=1$. 
+
+ \smallskip
+
+ 
+ \smallskip
+  
+
+ 
+  \noindent $p_{\tau}$ and $q_\tau$: This is a pair of natural numbers given by counting  the various symbols appearing in $(\imath, \CP)$, $(\jmath, \CQ)$ and $\{\alpha\}$ :
+  \[
+  \left\{
+     \begin{array}{l}
+    p_\tau := \# \bullet+ 2 \# r + \# c + \# d + \# B^+;\smallskip\\
+    q_\tau := \# \bullet+ 2 \# s + \# c + \# d + \# B^-.\\
+    \end{array}
+    \right.
+\]
+
+\smallskip
+
+ 
+ \smallskip
+  
+ 
+  \noindent $G_{\tau}$: This is a classical group given by 
+  \[
+ G_\tau:= \left\{
+     \begin{array}{ll}
+         \oO(p_\tau, q_\tau), &\hbox{if $\star_\tau=B$ or $D$}; \smallskip\\
+            \Sp_{2\abs{\tau}}(\R), &\hbox{if $\star_\tau=C$}; \smallskip\\
+           \widetilde{\Sp}_{2\abs{\tau}}(\R), &\hbox{if $\star_\tau=\widetilde{ C}$}; \smallskip \\
+        \Sp(\frac{p_\tau}{2}, \frac{q_\tau}{2}), &\hbox{if $\star_\tau=C^*$}; \smallskip \\        
+          \oO^*(2\abs{\tau}), &\hbox{if $\star_\tau=D^*$}.\\
+            \end{array}
+   \right.
+\] 
+
+\smallskip
+
+ 
+ \smallskip
+  
+  \noindent $\dim \tau$: 
+This is the dimension of the standard representation of the complexification of $G_\tau$, equvalently, 
+ \[
+ \dim \tau:= \left\{
+     \begin{array}{ll}
+          2\abs{ \tau}+1, &\hbox{if $\star_\tau=B$}; \medskip\\  
+         2 \abs{\tau}, &\hbox{otherwise}. 
+            \end{array}
+   \right.
+ \]
+
+
+ \smallskip
+
+\begin{Example} Suppose that 
+\[
+\tau= \tytb{\bullet \bullet ,\bullet , c } \times \tytb{\bullet \bullet r d ,\bullet , d }\times B^+.
+\]
+Then
+\[
+\star_\tau=B, \qquad \check \CO_\tau =\tytb{\ \ \ \ \ \ , \ \ \ \ \ \ , \ \ , \ \ , \ \ , \ \  },  \qquad \wp_\tau=\{(6,7)\}, \quad \abs{\tau}=4+6=10, \qquad \varepsilon_\tau=0,
+\]
+and
+\[
+ p_\tau=6+2+1+2+1=12, \qquad q_\tau=6+0+1+2+0=9, \qquad G_\tau=\oO(12,9), \qquad \dim \tau=21. 
+ \]
+\end{Example}
+
+Write $\mathrm{PBP}$ for the set of all painted bipartitions. Then
+\[
+   \mathrm{PBP}=\bigsqcup_{(\star, \check \CO)}  \mathrm{PBP}_\star(\check \CO),
+\]
+where $\star$ runs over the set $\{ B,\mathrm  C,  D, \widetilde{C},  C^*, D^*\}$, $\check \CO$ runs over all Young diagrams that has $\star$-good parity, and 
+ \[
+  \mathrm{PBP}_\star(\check \CO):=\{\tau\in \mathrm{PBP} \mid \star_\tau=\star, \ \check \CO_\tau=\check \CO\}.
+   \] 
+   
+
+\subsection{Descents of painted bipartitions and theta lifts}
+
+Let $\star$ and $\check \CO$ be as before. For every $\tau\in \mathrm{PBP}_\star(\check \CO)$, in what follows we will construct a representation $\pi_\tau$ of $G_\tau$ by theta lift. 
+For the starting case when $\check \CO$ is the empty Young diagram, define 
+ \[
+ \pi_\tau:= \left\{
+     \begin{array}{ll}
+         \textrm{the one dimensional genuine representation} , &\hbox{ if $\star=\widetilde C$ so that $G_\tau=\widetilde{\Sp}_0(\R)$;} \smallskip\\
+ \textrm{the one dimensional trivial representation} , &\hbox{  if $\star\neq \widetilde C$.}            \end{array}
+   \right.
+\] 
+
+
+
+Define a symbol
+\[
+\star':=\widetilde{C}, \ D, \  C, \ B, \ D^*\  \textrm{ or } \ C^*  
+\]
+respectively if 
+\[
+\star=B,\  C, \ D, \ \widetilde{C}, \ C^* \ \textrm{ or }\  D^*.
+\]
+We call $\star'$ 
+ the Howe dual of $\star$. Now we assume that $\check \CO$ is nonempty, and define its decent to be the Young diagram
+ \[
+   \check \CO':=\textrm{the one obtained from $\check \CO$ by removing the first row.} 
+         \]
+% Here $\emptyset$ stands for the empty Young diagram, and $\tytb{\ }$ stands for the Young diagram of total size $1$. 
+ Note that $\check \CO'$ has $\star'$-good parity.
+ In section \ref{sec:desc}, we will define the descent map
+ \[
+   \nabla:  \mathrm{PBP}_\star(\check \CO)\rightarrow  \mathrm{PBP}_{\star'}(\check \CO').
+ \]
+ 
+ Let $\tau\in  \mathrm{PBP}_\star(\check \CO)$.  Put $\tau':=\nabla(\tau)$. 
+   Let $(W_{\tau, \tau'}, \la \,\cdot\,,\,\cdot\,\ra_{\tau, \tau'})$ be a real symplectic space of  dimension $\dim \tau\cdot \dim \tau'$. As usual, there are continuous homomorphisms $G_\tau\rightarrow \Sp(W_{\tau, \tau'})$ and $G_{\tau'}\rightarrow \Sp(W_{\tau, \tau'})$ whose images form a reductive dual pair in $\Sp(W_{\tau, \tau'})$. We form the semidirect prduct
+   \[
+   J_{\tau, \tau'}:=(G_\tau\times G_{\tau'})\ltimes \oH(W_{\tau, \tau'}),
+   \]
+   where 
+  \[
+  \oH(W_{\tau, \tau'}):=W_{\tau, \tau'}\times \R
+  \]
+  is the Heisenberg group with group multiplication 
+  \[
+  (w,t)(w',t'):=(w+w', t+t'+\la w,w'\ra_{\tau, \tau'}), \quad
+  w,w'\in W_{\tau, \tau'},\,\,t,t'\in \R.
+ \]
+ 
+ Let $\omega_{\tau, \tau'}$ be a suitably normalized smooth oscillator representation of $J_{\tau, \tau'}$ such that every $t\in \R\subset J_{\tau, \tau'}$ acts on it through the scalar multiplication by $e^{2\pi \sqrt{-1}\, t}$ (the letter $\pi$  often denotes a representation, but here it stands for the circumference ratio).  See Section \ref{secosc0} for details. 
+ 
+ For every  Casselman-Wallach representation $\pi'$ of $G_{\tau'}$, write 
+ \[
+   \check \Theta_{\tau'}^{\tau}(\pi'):=(\omega_{\tau, \tau'}\widehat \otimes \pi')_{G_{\tau'}} \qquad (\textrm{the Hausdorff coinvariant space}),
+ \]
+ where $\widehat \otimes$ indicates the complete projective tensor product. This is a Casselman-Wallach representation of $G_\tau$. 
+ Now we define the representation $\pi_\tau$ of $G_\tau$ by induction on $\mathbf c_1(\check \CO)$:  
+ \[
+   \pi_\tau:=\left\{
+     \begin{array}{ll}
+          %\textrm{the trivial representation $\C$}, &\hbox{if $\abs{\check \CO_\tau}\leq 1$}; \medskip\\  
+         \check \Theta_{\tau'}^{\tau}(\pi_{\tau'})\otimes (1_{p_\tau, q_\tau}^{+,-})^{\varepsilon_\tau}, &\hbox{if  $\star_\tau=B$ or $D$}; \\
+         \check \Theta_{\tau'}^{\tau}(\pi_{\tau'}\otimes \det^{\varepsilon_\tau}), &\hbox{if $\star_\tau=C$ or $\widetilde C$}; \\
+              \check \Theta_{\tau'}^{\tau}(\pi_{\tau'}), &\hbox{if $\star_\tau=C^*$ or $D^*$}. \\
+            \end{array}
+   \right.
+ \]
+ Here $1_{p_\tau, q_\tau}^{+,-}$ denotes the character of $\oO(p_\tau, q_\tau)$ whose restriction to $\oO(p_\tau)\times \oO(q_\tau)$ equals $1\otimes \det$ ($1$ stands for the trivial character). 
+ 
+ 
+ Put
+\[
+  \mathrm{Unip}_{\star}(\check \CO):=\left\{
+     \begin{array}{ll}
+         \bigsqcup_{p,q\in \BN, p+q=\abs{\check \CO}+1} \Unip_{\check \cO}(\oO(p,q)), &\hbox{if $\star=B$}; \medskip\\
+           \Unip_{\check \CO}(\Sp_{\abs{\check \CO}-1}(\R)), &\hbox{if $\star=C$}; \medskip\\
+           \bigsqcup_{p,q\in \BN, p+q=\abs{\check \CO}} \Unip_{\check \cO}(\oO(p,q)), &\hbox{if $\star=D$}; \medskip\\
+          \Unip_{\check \CO}(\widetilde \Sp_{\abs{\check \CO}}(\R)), &\hbox{if $\star=\widetilde{ C}$}; \medskip \\
+     \bigsqcup_{p,q\in \BN, 2p+2q=\abs{\check \CO}-1} \Unip_{\check \cO}(\Sp(p,q)), &\hbox{if $\star=C^*$}; \medskip \\        
+          \Unip_{\check \CO} \oO^*(\abs{\check \CO}), &\hbox{if $\star=D^*$}.\\
+            \end{array}
+   \right.
+\]
+
+We are now ready to formulate our first main theorem.
+\begin{thm}\label{thm1}
+Let $\star\in \{B, C,D,\widetilde {C}, C^*, D^*\}$, and let $\check \CO$ be a Young diagram that has $\star$-good parity.
+
+\noindent (a) For every $\tau\in \mathrm{PBP}_\star(\check \CO)$, the representation $\pi_\tau$ of $G_\tau$ is irreducible and attached to $\check \CO$. 
+
+\noindent  (b) If $\star\in \{B,D\}$ and $\abs{\check \CO}>0$, then the map
+\[
+\begin{array}{rcl}
+\mathrm{PBP}_\star(\check \CO)\times \Z/2\Z&\rightarrow &\mathrm{Unip}_{\star}(\check \CO),\\
+  (\tau, \epsilon)&\mapsto& \pi_\tau\otimes \det^\epsilon
+  \end{array}
+\]
+is bijective. 
+
+\noindent 
+(c) In all other cases, the map
+\[
+\begin{array}{rcl}
+\mathrm{PBP}_\star(\check \CO)&\rightarrow &\mathrm{Unip}_{\star}(\check \CO),\\
+  \tau&\mapsto& \pi_\tau
+  \end{array}
+\]
+is bijective.
+\end{thm}
+
+By the above theorem (and the reduction in Appendix \ref{secapp}), we have explicitly constructed all special unipotent representations of the classical groups in \eqref{typebcd}. By this construction and the method of matrix coefficient integrals, we are able to prove the unitarity of these representations.
+
+\begin{thm}
+All special unipotent representations of the classical groups in \eqref{typebcd} are unitarizable. 
+\end{thm}
+
+\subsection{Associated cycles}
+Let $G,  G_\C, \g_\R, \g, \check \g$ and $\check \CO \in \mathrm{Nil}(\check \g)$ be as in Section \ref{secsu}. Fix a maximal compact subgroup $K$ of $G$ whose Lie algebra is denoted by $\frak k_\R$. Then we have an orthogonal decomposition 
+\[
+  \g=\frak k\oplus \p,
+\]
+where $\frak k$ is the complexification of $\frak k_\R$, and $\g$ is equipped with the trace form. By taking the dual spaces, we have a 
+decomposition 
+\[
+  \g^*=\frak k^*\oplus \p^*,
+\]
+Write $K_\C$ for the complexification of the complex group $K$. It is a complex algebraic group with an obvious algebraic action on $\p^*$. 
+
+
+As before, suppose that $G$ has type $\star$ and $\check \CO$ has $\star$-good parity. Write $\CO\in \mathrm{Nil}(\g^*)$ for the Barbarsch-Vogan dual of $\check \CO$ so that its Zariski closure in $\g^*$ equals the associated variety of the ideal $I_{\check \CO}\subset \oU(\g)$.  
+The algebraic variety 
+$
+  \CO\cap \p^*
+$
+is a finite union of $K_\C$-orbits.  Given such an orbit $\sO$, write
+$\cK_{\sO}(K_\C)$ for the  Grothendieck group of the category of $K_\C$-equivariant algebraic vector bundles on $\sO$. Put
+\[
+\cK_{\CO}(K_\C):=\bigoplus_{\sO\textrm{ is a $K_\C$-orbit in
+      $\CO\cap \p^*$}} \cK_{\sO}(K_\C).
+\]
+
+%Recall the group $\cK^{\mathbb p}_{\cO}(\wtbfK)$ from  \Cref{sec:LVB}.
+
+
+We say that a Casselman-Wallach representation of $G$ is  $\CO$-bounded  if
+the associated variety  of its annihilator ideal 
+is contained in the Zariski closure of $\CO$. Note that all representations in $\mathrm{Unip}_{\check \CO}(G)$ are $\CO$-bounded. Write $\cK(G)_{\CO-\textrm{bounded}}$ for the  Grothendieck group of the category of all such representations. 
+From \cite[Theorem 2.13]{Vo89},  we have a canonical homomorphism
+\[
+\xymatrix{
+  \mathrm{AC}_\cO\colon   \cK(G)_{\CO-\textrm{bounded}} \ar[r]& \cK_{\CO}(K_\C).
+}
+\]
+We call $ \mathrm{AC}_\cO(\pi)$ the associated cycle of $\pi$, where $\pi$ is an $\CO$-bounded Casselman-Wallach representation of $G$. This is a very important invariant attached to $\pi$. 
+
+
+Following Vogan \cite[Section 8]{Vo89}, we make the following definition.
+
+\begin{defn}\label{defaod}
+  Let $\sO$ be a $K_\C$-orbit in $\CO\cap \p^*$. An admissible orbit datum over
+  $\sO$ is an irreducible $K_\C$-equivariant algebraic vector bundle $\CE$
+  on $\sO$ such that
+  \begin{itemize}
+    \item $\CE_X$ is isomorphic to a multiple of
+    $(\bigwedge^{\mathrm{top}} \fkk_X )^{\frac{1}{2}}$ as a representation of
+    $\fkk_X$;
+    \item if $\star=\widetilde C$, then $\varepsilon_G$ acts on $\CE$ by the scalar multiplication by $-1$.
+  \end{itemize}
+  Here $X\in \sO$, $\CE_X$ is the fibre of $\cE$ at $X$, $\fkk_X$
+  denotes the Lie algebra of the stabilizer of $X$ in $K_\C$, and
+  $(\bigwedge^{\mathrm{top}} \fkk_X)^{\frac{1}{2}}$ is a one-dimensional
+  representation of $\fkk_X$ whose tensor square is the top degree wedge
+  product $\bigwedge^{\mathrm{top}} \fkk_X$.
+\end{defn}
+
+Note that in the situation of the classical groups we consider here, all admissible
+orbit data are line bundles.  Denote by $\mathrm{AOD}_{\sO}(K_\C)$ the
+set of isomorphism classes of admissible orbit data over $\sO$, to be viewed as
+a subset of $\CK_{\CO}(K_\C)$. Put
+\[
+  \mathrm{AOD}_{\CO}(K_\C):=\bigsqcup_{\sO\textrm{ is a $K_\C$-orbit in
+      $\CO\cap \p^*$}} \mathrm{AOD}_{\sO}(K_\C)\subset
+  \CK_{\CO}(K_\C).
+\]
+
+
+Recall that a nilpotent orbit in $\check \g$ is said to be distinguished if it is has no intersection with every  proper Levi subalgebra of $\check \g$. Combinatorially, this is equivalent to saying that no pair of rows of the Young diagram  has equal nonzero length. Note that all  distinguished nilpotent orbits in $\check \g$ has $\star$-good parity. 
+
+\begin{defn}
+\noindent 
+(a) The orbit $\check \CO$ (which has $\star$-good parity) is said to be quasi-distinguished if there is no $\star$-pair that is balanced in $\check \CO$. 
+
+\noindent 
+(b) If  $\star\in \{B, D, D^*\}$, then $\check \CO$ is said to be  be pseudo-distinguished if there is no positive even integer $i$ such that $\mathbf{r}_i(\check \CO)=\mathbf{r}_{i+1}(\check \CO)= \mathbf{r}_{i+2}(\check \CO)=\mathbf{r}_{i+3}(\check \CO)>0$.
+
+ 
+\noindent 
+(c) If  $\star\in \{C, \widetilde C, C^*\}$ so that its Howe dual $\star'\in  \{B, D, D^*\}$, then $\check \CO$ is said to be  be pseudo-distinguished if either it is the empty Young diagram or it is nonempty and its descent $\check \CO'$ (which is a Young diagram that has $\star'$-good parity) is   pseudo-distinguished.
+
+\end{defn}
+
+
+
+
+
+We will calculate the associated character of $\pi_\tau$ for every  bipartition $\tau$. The calculation is a key ingredient in the proof of Theorem \ref{thm1}. 
+Especially, we have the following theorem concerning the associated characters of the special unipotent representations. 
+ 
+\begin{thm}
+Let $G$ be a group in \eqref{typebcd} that has type $\star\in \{B, C,D,\widetilde {C}, C^*, D^*\}$, and suppose that $\check \CO\in \mathrm{Nil}(\check \g)$  has $\star$-good parity.
+
+\noindent (a) For every $\pi\in \mathrm{Unip}_{\check \CO}(G)$, the associated cycle $\mathrm{AC}_{\CO}(\pi)\in \cK_{\CO}(K_\C) $ is a nonzero  sum of  pairwise distinct elements of $\mathrm{AOD}_{\CO}(K_\C)$.
+
+\noindent  (b) If $\check \CO$ is pseudo-distinguished, then the map
+\[
+\mathrm{AC}_\CO: \mathrm{Unip}_{\check \CO}(G)\rightarrow  \cK_{\CO}(K_\C)
+\]
+is injective.
+
+\noindent  (c) If $\check \CO$ is quasi-distinguished, then the map $\mathrm{AC}_{\check \CO}$ induces a bijection 
+\[
+\mathrm{Unip}_{\check \CO}(G)\rightarrow  \mathrm{AOD}_{\CO}(K_\C). 
+\]
+
+\end{thm}
+
+\begin{remark}
+Suppose that $\star\in \{C^*, D^*\}$ so that $G$ is quaternionic. 
+Then there is  precisely one admissible orbit datum over  $\sO$ for each $K_\C$-orbit $\sO\subset \CO\cap \p^*$. 
+Thus
+\[
+ \mathrm{AOD}_{\sO}(K_\C)=K_\C\backslash  (\CO\cap \p^*). 
+\] 
+If $\check \CO$ is not quasi-distinghuished, then 
+$\CO\cap \p^*$ is empty (see \cite[Theorems 9.3.4 and 9.3.5]{CM}), and hence $\mathrm{Unip}_{\check \CO}(G)$ is also empty. 
+
+
+\end{remark}
+
+
+
+ \section{The descents of painted bipartitions}\label{sec:comb}
+ 
+  Let  $\star\in \{ B, C,  D, \widetilde{C},  C^*, D^*\}$, and let $\check \CO$ be a Young diagrams that has $\star$-good parity. A painted bipartition $\tau\in  \mathrm{PBP}_\star(\check \CO) $ is said to be pre-special if  
+ \[
+  \left\{
+     \begin{array}{ll}
+          %\textrm{the trivial representation $\C$}, &\hbox{if $\abs{\check \CO_\tau}\leq 1$}; \medskip\\  
+        (1,2)\notin\wp_\tau, &\hbox{when  $\star \in \{C, \widetilde C, C^* \}$;} \\
+        (2,3)\notin\wp_\tau, &\hbox{when $\star\in \{ B, D, D^*\}$.} \\
+            \end{array}
+   \right.
+\]
+  
+ Write
+ \[
+   \pbp_\star(\check \CO)=\pbpssp(\check \CO)\sqcup 
+   \pbpsns(\check \CO),
+ \]
+ where $\pbpssp(\check \CO)$ is the set of pre-special elements in $\pbpst(\check \CO)$, and  $\pbpsns(\check \CO)$ is the complementary set of $\pbpssp(\ckcO)$.  
+We remark that $\pbpsns(\ckcO)$ is  empty in the following cases: 
+\begin{itemize}
+\item $\star\in \set{C^*,D^*}$;
+\item 
+ $\star\in \set{C,\wtC}$ and $(1,2)\notin \dp(\ckcO)$;
+\item  $\star \in \set{B,D}$ and $(2,3)\notin \dp(\ckcO)$.   
+\end{itemize}
+
+ \subsection{Switching painted bipartitions} 
+  In this subsection, we assume that $\star\in \{C, \widetilde C\}$ and $(1,2)\in \mathrm{DP}_\star(\check \CO)$. 
+  We will define a bijective map
+ \[
+ \pbpsns(\ckcO)\longrightarrow \pbpssp(\ckcO), \quad 
+ \tau \mapsto \barktau
+ \] 
+  in what follows. 
+
+  Let $\wp\in \mathrm{DP}_\star(\check \CO)$. Put
+ \[
+   \mathrm{PBP}_\star(\check \CO, \wp)=\{\tau\in \mathrm{PBP}_\star(\check \CO)\mid \wp_\tau=\wp \}. 
+ \]
+ We say that a painted bipartition $\tau$ is pre-special if $\wp_\tau$ has no intersection with the set $\{(1,2), (2,3)\}$. Write
+ \[
+   \mathrm{PBP}_\star(\check \CO)=\mathrm{PBP}^{\mathrm{ps}}_\star(\check \CO)\sqcup \mathrm{PBP}^{\mathrm{ns}}_\star(\check \CO),
+ \]
+ where $ \mathrm{PBP}^{\mathrm{ps}}_\star(\check \CO)$ is the set of pre-special elements in $ \mathrm{PBP}^{\mathrm{ps}}_\star(\check \CO)$, and  $\mathrm{PBP}^{\mathrm{ns}}_\star(\check \CO)$ is the complementary set.  
+ 
+For every painted bipartition $\tau=(\imath, \CP_{\mathrm l})\times (\jmath, \CP_{\mathrm r})\times \alpha$, we call the pained Young diagram $(\imath, \CP_{\mathrm l})$ the left painting of $\tau$, and call  $(\jmath, \CP_{\mathrm r})$ the right painting of $\tau$.
+
+ 
+% \[
+  %\mathrm{PBP}^{\mathrm{ps}}_\star(\check \CO):= \{\tau\in \mathrm{PBP}_\star(\check \CO) \mid \textrm{ $\tau$ is pre-special}\}.
+   %\] 
+ 
+ 
+ 
+ \subsection{Descending painted bipartitions}\label{sec:desc}
+Assume that $\abs{\check \CO}>0$ and let $\check \CO'$ be its descent as defined in the Introduction. Let $\tau\in  \mathrm{PBP}_\star(\check \CO)$.  In what follows we will define case by case a painted bipartition $\tau':=\nabla(\tau)\in  \mathrm{PBP}_{\star'}(\check \CO')$, to be called the descent of $\tau$.
+ 
+
+\begin{lem}
+Suppose that $\tau$ 
+
+\end{lem}
+\noindent 
+$\star=C$. In this case, 
+ 
+ is nonempty
+Put
+ \[
+  \mathrm{PBP}^{\mathrm{ps}}_\star(\check \CO):= \{\tau\in \mathrm{PBP}_\star(\check \CO) \mid \textrm{ $\tau$ is pre-special}\}.
+   \] 
+ 
+ 
+  
+ 
+ 
+  and the map \eqref{destau0}  has been defined.
+ In the rest of this subsection  we assume that $\mathrm{PBP}_\star(\check \CO)\neq \mathrm{PBP}^{\mathrm{ps}}_\star(\check \CO)$. Then 
+  either \[
+  \textrm{$\star\in \{B, D\}\quad $ and $\quad (2,3)\in \mathrm{DP}_\star(\check \CO)$}
+  \]
+  or 
+  \[
+   \textrm{$\star\in \{C, \widetilde C\}\quad $ and $\quad (1,2)\in \mathrm{DP}_\star(\check \CO)$. }
+ \]
+ We define the map  \eqref{destau0} case by case.
+ 
+ \smallskip
+ 
+ \smallskip
+ 
+ 
+ The goal of this subsection is to define a map
+  \be \label{destau0}
+   \mathrm{PBP}_\star(\check \CO) \rightarrow  \mathrm{PBP}^{\mathrm{ps}}_\star(\check \CO) , \quad \tau\mapsto \tau^{\mathrm{ps}}. 
+ \ee
+ Firstly, for every  $\tau \in \mathrm{PBP}^{\mathrm{ps}}_\star(\check \CO)$, we define $\tau^{\mathrm{ps}}:=\tau$. In particular, the map \eqref{destau0} has been defined when 
+ $\mathrm{PBP}_\star(\check \CO)= \mathrm{PBP}^{\mathrm{ps}}_\star(\check \CO)$. 
+ 
+   \noindent $\star=B$:  
+
+ 
+   \noindent $\star=C$:  
+ 
+ 
+
+  
+ 
+   \noindent $\star=C$:  keep the left painted Young diagram unchanged. 
+   
+    \noindent $\star=C$:  removing the first column of the left painted Young diagram. 
+   
+   
+   
+
+ \begin{lem}\label{wptauscd}
+ Suppose that $\star\in\{C^*,D^*\}$. Then $\wp_\tau=\emptyset$ for all $\tau\in  \mathrm{PBP}_\star(\check \CO)$. 
+ \end{lem}
+
+
+By Lemma \ref{wptauscd}, $\mathrm{PBP}_\star(\check \CO)= \mathrm{PBP}^{\mathrm{ps}}_\star(\check \CO)$   when  $\star\in\{C^*,D^*\}$.
+ 
+
+\section{The main results}\label{sec:intro}
+
+
+ 
+ 
+\subsection{Infinitesimal characters}
+
+
+Let $\epsilon=\pm 1$.  Let $V$ be an $\epsilon$-symmetric complex bilinear space, namely a finite dimensional complex vector space equipped with a non-degenerate $\epsilon$-symmetric bilinear form $\la \,,\,\ra_V: V\times V\rightarrow \C$.  Write $G_V$ for the isometry group of $V$, and write $\g_V$ for the  Lie algebra of $G_V$.
+
+ 
+We identify $\g_V^*$ with $\g_V$ via the trace form. Let $\mathrm{Nil}(\g_{ V}^*)$ ($=\mathrm{Nil}(\g_{ V})$) denote the set of  nilpotent  $G_{ V}$-orbits in $\g_{ V}^*$ ($=\g_V$).
+The following  result is due to Dixmier.
+
+  
+  
 
 We now proceed to our setup in order to state the main technical result of this article.
 
@@ -1815,15 +2731,15 @@ Following Vogan \cite[Section 8]{Vo89}, we make the following definition.
   on $\sO$ such that
   \begin{itemize}
     \item $\CE_X$ is isomorphic to a multiple of
-    $(\bigwedge^{\mathrm{top}} \k_X )^{\frac{1}{2}}$ as a representation of
-    $\k_X$;
+    $(\bigwedge^{\mathrm{top}} \fkk_X )^{\frac{1}{2}}$ as a representation of
+    $\fkk_X$;
     \item $\CE$ is $\mathbb p$-genuine.
   \end{itemize}
   Here $X\in \sO$, $\CE_X$ is the fibre of $\cE$ at $X$, $\fkk_X$
   denotes the Lie algebra of the stabilizer of $X$ in $\bfK$, and
-  $(\bigwedge^{\mathrm{top}} \k_X)^{\frac{1}{2}}$ is a one-dimensional
-  representation of $\k_X$ whose tensor square is the top degree wedge
-  product $\bigwedge^{\mathrm{top}} \k_X$.
+  $(\bigwedge^{\mathrm{top}} \fkk_X)^{\frac{1}{2}}$ is a one-dimensional
+  representation of $\fkk_X$ whose tensor square is the top degree wedge
+  product $\bigwedge^{\mathrm{top}} \fkk_X$.
 \end{defn}
 
 Note that in the situation of classical groups we consider here, all admissible
@@ -3200,7 +4116,7 @@ There is some restriction on the possibilities  of $\bfuu_{\uptau}$.
     \item  We have $x_{n}=d$ if and only $d\in \bfuu_{\uptau}$.
     \item If $x_{n}=d$ and $\uptaupp =r/c$,  we have $n\geq 2$ and
     $\ssign(\bfuu_{\uptau})\succeq (0,2)$.
-    \item If $\bfuu_{\uptau} = r\cdots r$, we have $\uptaupp=d$.
+    \item If $\bfuu_{\uptau} = r\cdots r$ or $r\cdots rd$, we have $\uptaupp=d$.\qedhere
   \end{enumS}
 
 \end{lem}
@@ -5882,7 +6798,50 @@ $\cOp\leadsto \cOpp$ is the usual descent,
 the local system $\cL_{\uptau}$ could be compared to a water hydra, see in
 \Cref{fig:wh}.
 \begin{figure}[pb]
-\includestandalone[width=.5\textwidth]{hydra}
+\begin{tikzpicture}
+\tikzstyle{tan}=[draw=black, line width=3pt]
+\tikzstyle{pen}=[fill=black, line width=3pt]
+\node  (0) at (-0.25, -0.5) {};
+\node  (2) at (-0.5, -2.75) {};
+\node  (4) at (-1.5, 5.25) {};
+\node  (5) at (2, 4.75) {};
+\node  (6) at (-2.75, 4) {};
+\node  (7) at (4, 3.5) {};
+\node  (8) at (3.25, 4) {};
+\node  (9) at (0, 2) {};
+\node  (10) at (0.25, 5.25) {};
+\node  (11) at (-0.25, -2.75) {};
+\node  (12) at (0, -1.25) {};
+\node  (13) at (-3, 5.75) {};
+\node  (15) at (-3, 2.1) {};
+\node  (16) at (-3, 1.9) {};
+\node  (17) at (-3, -3) {};
+\node  (18) at (5, -3) {};
+\node  (19) at (5, -2.5) {};
+\node  (20) at (5, -2.4) {};
+\node  (21) at (5, 5.75) {};
+\draw [style=tan, in=0, out=150, looseness=0.75] (9.center) to (6.center);
+\draw [style=tan, in=120, out=-45] (4.center) to (9.center);
+\draw [style=tan, in=30, out=-120] (8.center) to (9.center);
+\draw [style=tan, in=60, out=-90, looseness=0.75] (5.center) to (9.center);
+\draw [style=tan, in=0, out=-135, looseness=1.25] (7.center) to (9.center);
+\draw [style=tan, bend left=15] (10.center) to (9.center);
+\draw [style=pen] (2.center)
+to (11.center)
+to (12.center)
+to [bend right, looseness=0.25] (9.center)
+to [in=105, out=-115, looseness=0.75] (0.center)
+to [in=75, out=-75, looseness=1.25] cycle;
+\draw [decorate,decoration={brace,amplitude=5pt}] (15.center) --
+(13.center) node [black,midway,xshift=-4em] {$\mathcal{T}:$ tentacles};
+\draw [decorate,decoration={brace,amplitude=5pt}]
+(17.center) -- (16.center) node [black,midway,xshift=-4em] {$\mathcal{P}:$ peduncle};
+% \draw [decorate,decoration={brace,amplitude=5pt}]  (19.center) -- (18.center)
+%  node [black,midway,xshift=4em] {$\mathcal{D}:$ basal disk};
+% \draw [decorate,decoration={brace,amplitude=5pt}]  (21.center) -- (20.center)
+%  node [black,midway,xshift=4em] {$\mathcal{B}:$ body};
+\end{tikzpicture}
+%\includestandalone[width=.5\textwidth]{hydra}
  % \includegraphics[scale=0.5]{abc.pdf}
   \caption{Freshwater hydra}
   \label{fig:wh}
@@ -6918,28 +7877,28 @@ In particular, \eqref{eq:d.factor} holds.
 \end{lem}
 \begin{proof}
   If $x_{\uptau}=s/r/c$,  ``$-$'' mark dose not appear as a 1-row in
-  $\cL_{\uptau}$ by \eqref{eq:gd.ls}. So $\ncL_{\uptau}=0$ in these case.
+  $\cL_{\uptau}$ by \eqref{eq:gd.ls}. So $\ncL_{\uptau}=0$ in these cases.
 
   \begin{enumPF}
     \item  Suppose $x_{\uptau}=s$. We have $\bfuu_{\uptau}=s\cdots s$.
-    Therefore, only the fist term in  \eqref{eq:gd.ls} is non-vanishing and
+    Therefore, only the first term in  \eqref{eq:gd.ls} is non-zero and
     $\pcP_{\uptau}$ consists of $=$ marks. Hence $\pcL_{\uptau} =0$.
     \item Suppose $x_{\uptau}=r$. If $\ssign(\bfuu_{\uptau})\succ(1,1)$, the
-    first term in \eqref{eq:gd.ls} non-vanishing and $\pcL_{\uptau}\succ \dagger_{(1,0)}$.
+    first term in \eqref{eq:gd.ls} is non-zero and $\pcL_{\uptau}\succ \dagger_{(1,0)}$.
     So $\pcL_{\uptau}\neq 0$.
     Now suppose $\ssign(\bfuu_{\uptau})\nsucc (1,1)$. Then
     $\bfuu_{\uptau}=r\cdots r$ and $x_{\uptaupp}=d$ by \Cref{lem:u}.
-    Now the second term of \eqref{eq:gd.ls} is non-vanishing and
+    Now the second term of \eqref{eq:gd.ls} is non-zero and
     $\ncL_{\uptau}\succ\dagger_{(1,0)}$. So $\pcL_{\uptau}\neq 0$.
     \item Suppose $x_{\uptau}=d$. Suppose $\ssign(\bfuu_{\uptau})\succ (1,2)$.
-    Then the first term in \eqref{eq:gd.ls} is non-vanishing and
+    Then the first term in \eqref{eq:gd.ls} is non-zero and
     $\pcP_{\uptau}\succ \dagger_{(1,1)}$. So $\pcL_{\uptau}\neq 0$ and
     $\ncL_{\uptau}\neq 0$.
     Now suppose $\ssign(\bfuu_{\uptau})\nsucc(1,2)$. Then
     $\bfuu_{\uptau} = r\cdots rd$
     \footnote{$\bfuu_{\uptau}=d$ if it has length 1.} and
-    $x_{\uptaupp}=d$.
-    So the both terms in \eqref{eq:gd.ls} are non-vanishing. Since
+    $x_{\uptaupp}=d$ by \Cref{lem:u}.
+    So the both terms in \eqref{eq:gd.ls} are non-zero. Since
     $\pcP_{\uptau}\succ \dagger_{(1,0)}$  and
     $\ncP_{\uptau}\succ \dagger_{(0,1)}$, we get the conclusion.
   \end{enumPF}
@@ -7038,10 +7997,6 @@ $\ncL_{\uptaupp}$ from $\cL_{\uptaup}$:
   \neq \Thetab(\pi_{\uptaup_{2}})\otimes (\bfone^{+,-})^{\upepsilon_{\uptau_{2}}} = \uppi_{\uptau_{2}}
  \]
 \end{proof}
-
-\begin{lem}
-
-\end{lem}
 
 
 \subsubsection{Noticed orbits}
@@ -7181,12 +8136,12 @@ must be one of the following form by \Cref{lem:u}:
       Now assume $\cOpp$ is obtained by generalized descent and $\cOpp$ is
       +noticed, i.e. $\bfuu_{\uptaupp}$ has at least length $2$.
       Suppose $\ssign( \bfuu_{\uptaupp} )\succ (1,2)$. Applying \eqref{eq:gd.ls} to $\uptaupp$,
-      we see that the first term is non-vanishing and
+      we see that the first term is non-zero and
       $\cL_{\uptaupp}\supseteq \dagger_{(1,1)}$.
 
       Otherwise, $\ssign( \bfuu_{\uptaupp} ) = (2n_{0}-1,1)\succeq (3,1)$ where $n_{0}$ is the
       length of $\bfuu_{\uptaupp}$. By \eqref{eq:gd.ls}, the second term is
-      non-vanishing and $\cL_{\uptaupp}\succ \dagger_{(2n_{0}-1,1)}\succ +$.
+      non-zero and $\cL_{\uptaupp}\succ \dagger_{(2n_{0}-1,1)}\succ +$.
     \end{proof}
     % Note that $\cOpp$ is a +noticed orbit. Then
     % By the list in \Cref{sec:z.r,sec:z.c,sec:z.d}, we see that
@@ -7263,7 +8218,7 @@ must be one of the following form by \Cref{lem:u}:
       \]
       % By looking at \eqref{eq:ped.ssc} and \eqref{eq:ped.ssd},
       On the other hand, when $\bfpp_{\uptau_{i}}$ have the above form, the
-      first term of \eqref{eq:gd.ls} is non-vanishing. So we conclude that
+      first term of \eqref{eq:gd.ls} is non-zero. So we conclude that
       $\pcL_{\uptau_{1}}=\pcL_{\uptau_{2}}$ implies
       \begin{equation}\label{eq:pnoticed.1}
         \pcL_{\uptaupp_{1}}=\pcL_{\uptaupp_{2}}.
@@ -7291,7 +8246,7 @@ must be one of the following form by \Cref{lem:u}:
 % \item
 %  Suppose $\cO$ is noticed, we many need to consider the additional case where
 %  $\bfpp_{\uptau} = \tytb{{x_{1}} y}$ where $x_{1}= c/d$. But $x_{1}=d$ is
-%  equivalent to the non-vanishing of $\ncL_{\uptau}$.
+%  equivalent to the non-zero of $\ncL_{\uptau}$.
 % \end{enumPF}
 \end{proof}
 
@@ -8506,7 +9461,7 @@ $
 $
 
 
-\subsubsection{The oscillator representation}
+\subsubsection{The oscillator representation}\label{secosc0}
 The group $\tGVr\times \tGVar$ acts on $\oH(W)$ as group automorphisms through the natural action of $\GVr\times \GVar$ on $W$. Using this, we form the semidirect product $(\tGVr\times \tGVar)\ltimes \oH(W)$.
 As in   Section \ref{sec:LVB}, we assume that $\mathbb p$ is the parity of $\dim \bfV$ if $\epsilon=1$, and  the parity of $\dim \bfV'$ if $\epsilon '=1$.
 \begin{defn}\label{defor}
@@ -11444,6 +12399,126 @@ Hence $G\cdot X' = \pi(G\times_P (P\cdot X'))$ has lower dimension than $G\cdot
 
 
 
+
+\begin{Example} Suppose that $\star=C$, and $\check \CO$ is the following Young diagram which is $\star$-even. 
+\begin{equation*}\label{eq:sp-nsp.C}
+  \tytb{\ \ \ \ \ \ \ \ \ , \ \ \ \ \ , \ \ \ \ \ , \ \ \ \ \ , \ \ \ , \  ,\  }
+   \end{equation*}
+   Then 
+\[
+  \mathrm{DP}_\star(\check \CO)=\{(1,2), (5,6)\}.
+\]
+and $(\imath_\star(\check \CO, \wp), \jmath_\star(\check \CO, \wp))\in \mathrm{BP}_\star(\check \CO)$ has the  following form. 
+ 
+\begin{equation*}\label{eq:sp-nsp.C}
+\begin{array}{rclcrcl}
+  \wp=\emptyset & : & \tytb{\ \ \ ,\ \ , \ \ } \times \tytb{\ \ \ ,\ \ , \ , \  }  & \qquad \quad &  \wp=\{(1,2)\}& : & \tytb{\ \ \  , \ \ , \ \ , \ , \   } \times \tytb{\ \ \ ,\ \   } \medskip \medskip \medskip \\
+    \wp=\{(5,6)\} & : & \tytb{\ \ \ ,\ \ \ , \ \ } \times \tytb{\ \ ,\ \ , \ , \   }  & \qquad \quad &  \wp=\{(1,2), (5,6)\}  & : & \tytb{\ \ \  , \ \ \ ,\ \ , \ ,  \ } \times \tytb{\ \  ,\ \ } \\
+  \end{array}
+  \end{equation*}
+  
+   
+\end{Example}
+
+\appendix
+
+\appendix
+
+\section{The case of general orbits}\label{secapp}
+
+Let $G$, $\check \g$ and  $\star\in \{B, C, \widetilde C, D, C^*, D^*\}$ be as in Section \ref{secsu}. Suppose that $G$ has type $\star$.  Let $\check \CO\in \Nil(\check \g)$, to be considered as a Young diagram as usual.  By counting the row lengths, we identify Young diagrams with finite multisets of positive integers. We have a unique pair $(\check \CO_{\star-\mathrm{good}}, \check \CO_{\star-\mathrm{bad}})$ of  Young diagrams such that 
+\begin{itemize}
+\item   if $\star\in \{B, \widetilde{C}\}$, then  all nonzero row lengths of $\check \CO_{\star-\mathrm{good}}$ are even and all nonzero row lengths of $\check \CO_{\star-\mathrm{bad}}$ are odd;
+\item
+ if $\star\in \{C, D, C^*, D^*\}$, then  all nonzero row lengths of $\check \CO_{\star-\mathrm{good}}$ are odd and all nonzero row lengths of $\check \CO_{\star-\mathrm{bad}}$ are even;
+\item
+as  multisets, $\check \CO$ is the union of $\check \CO_{\star-\mathrm{good}}$ and $\check \CO_{\star-\mathrm{bad}}$. 
+\end{itemize}
+
+Note that $\check \CO_{\star-\mathrm{good}}$  has $\star$-good parity as defined in Section \ref{secbip}. Also 
+note that every positive integer occurs in the multiset $\check \CO_{\star-{\mathrm{bad}}}$  with even multiplicity. Thus  there is a Young diagram $\frac{1}{2}\check \CO_{\star-{\mathrm{bad}}}$  such that the union of it with itself equals $\check \CO_{\star-{\mathrm{bad}}}$. 
+
+
+
+Put
+\[
+  \mathbb K:=   
+   \left\{
+  \begin{array}{ll}
+        \R, &\hbox{if $\star=B, C, D$ or $\widetilde{C}$}; \smallskip\\
+         \textrm{the  quaternions algebra $\mathbb H=\R\oplus \R\mathbf i\oplus \R\mathbf j\oplus \R\mathbf k$}, & \hbox{if $\star=C^*$ or $D^*$},
+            \end{array}
+   \right.
+\]
+and put
+\[
+l:=l_{\check \CO}:= \left\{
+  \begin{array}{ll}
+        \frac{1}{2}\abs{\check \CO_{\star-{\mathrm{bad}}}}, &\hbox{if $\star=B, C, D$ or $\widetilde{C}$}; \smallskip\\
+        \frac{1}{4}\abs{\check \CO_{\star-{\mathrm{bad}}}} , & \hbox{if $\star=C^*$ or $D^*$}.
+            \end{array}
+   \right.
+\]
+Special unipotent representations of general linear groups are well-understood. 
+Similar to the situation  in Section \ref{secsu}, write $\mathrm{Unip}_{\frac{1}{2} \check \CO_{\star-{\mathrm{bad}}}}(\GL_{l}(\mathbb K))$ for the set of all isomorphism classes of  irreducible Casselman-Wallach representations of $\GL_{l}(\mathbb K)$ that are attached to $\frac{1}{2} \check \CO_{\star-{\mathrm{bad}}}$. The row lengths of the Young diagram $\frac{1}{2} \check \CO_{\star-{\mathrm{bad}}}$ forms a partition of $\abs{\frac{1}{2}\check \CO_{\star-{\mathrm{bad}}}}$, and hence corresponds to a standard parabolic subgroup $P_{\frac{1}{2}\check \CO_{\star-{\mathrm{bad}}}}$ of $\GL_{l}(\mathbb K)$. It is well-known that
+\[
+  \mathrm{Unip}_{\frac{1}{2} \check \CO_{\star-{\mathrm{bad}}}}(\GL_{l}(\mathbb K))=\left\{\Ind_{P_{\frac{1}{2} \check \CO_{\star-{\mathrm{bad}}}}}^{\GL_{l}(\mathbb K))} \chi\mid \chi \textrm{ is a quadratic character of } P_{\frac{1}{2}\check \CO_{\star-{\mathrm{bad}}}}\right\}.
+\]
+Note that this set is a singleton in the quaternionic case. 
+
+When the real rank of $G$ is at least $l$, respectively define 
+\[
+ G_l:=  \oO(p-l,q-l), \  \Sp_{2n-2l}(\R), \  \widetilde \Sp_{2n-2l}(\R), \ \Sp(p-l,q-l), \  \textrm{or }   \oO^*(2n-2l)
+ \]
+ if 
+ \[
+  G= \oO(p,q), \Sp_{2n}(\R), \  \widetilde \Sp_{2n}(\R), \ \Sp(p,q), \ \textrm{or }  \oO^*(2n).
+ \]
+ 
+
+
+If $\star=\widetilde C$ so that $G=\widetilde \Sp_{2n}(\R)$. Write $\varepsilon_G$ for the non-trivial element in the kernel of the covering map $G\rightarrow \Sp_{2n}(\R)$. The group $\Sp_{2n}(\R)$ has a Levi subgroup of the form $\GL_{l}(\R)\times \Sp_{2n-2l}(\R)$. Write $\widetilde{\GL}_{l}(\mathbb R)$  for the inverse images of 
+${\GL}_{l}(\mathbb R)$  under the covering map $G\rightarrow \Sp_{2n}(\R)$. Then  
+\[
+  L_l:=  \frac{\widetilde{\GL}_{l}(\mathbb R)\times G_l}{\textrm{the diagonal group }\ \{1,\varepsilon_G\}} 
+\]
+is a Levi subgroup of $G$. We fix a finite order genuine character $\zeta_l$ of $\widetilde{\GL}_{l}(\mathbb R)$. 
+
+ 
+ If $\star\neq \widetilde C$, then the group $G$ has a Levi subgroup of the form 
+\[
+     L_l:=  \GL_{l}(\mathbb K)\times G_l.
+     \]
+
+ 
+In all case, let $P_l=L_l\ltimes N_l$ be a parabolic subgroup of $G$ such that $L_l$ is a Levi factor of it and $N_l$ is the unipotent radical. Every representation of $L_l$ is viewed as a representation of $P_l$ with the trivial action of $N_l$. Given  $\sigma\in \mathrm{Unip}_{\frac{1}{2} \check \CO_{\star-{\mathrm{bad}}}}(\GL_{l}(\mathbb K))$ and $\pi\in \mathrm{Unip}_{\check \CO{\star-{\mathrm{good}}}}(G_l)$, put
+\[
+  \sigma\ltimes \pi:= \left\{
+  \begin{array}{ll}
+       \Ind_{P_l}^{G} ((\sigma\otimes \zeta_l)\widehat \otimes \pi), &\hbox{if $\star=\widetilde{C}$}; \smallskip\\
+          \Ind_{P_l}^{G} (\sigma \widehat \otimes \pi) , & \hbox{otherwise}.
+            \end{array}
+   \right.
+\]
+
+ 
+
+
+
+ 
+ 
+\begin{thm}
+\noindent (a) If the real rank of $G$ is smaller than $l$, then the set $\mathrm{Unip}_{\check \CO}(G)$ is empty.
+
+\noindent (b) Suppose that  the real rank of $G$ is greater than or equal to  $l$. Then for  every $\sigma\in \mathrm{Unip}_{\frac{1}{2} \check \CO_{\star-{\mathrm{bad}}}}(\GL_{l}(\mathbb K))$ and $\pi\in \mathrm{Unip}_{\check \CO{\star-{\mathrm{good}}}}(G_l)$, the representation $\sigma\ltimes \pi$ is irreducible and belongs to the set $\mathrm{Unip}_{\check \CO}(G)$.
+Moreover, the map 
+\[
+\mathrm{Unip}_{\frac{1}{2} \check \CO_{\star-{\mathrm{bad}}}}(\GL_{l}(\mathbb K)) \times\mathrm{Unip}_{\check \CO{\star-{\mathrm{good}}}}(G_l) \rightarrow \mathrm{Unip}_{\check \CO}(G),\qquad (\sigma, \pi)\mapsto \sigma\ltimes \pi
+\]
+is bijective. 
+\end{thm}
+
+
 \begin{bibdiv}
   \begin{biblist}
 % \bib{AB}{article}{
@@ -11634,6 +12709,14 @@ Hence $G\cdot X' = \pi(G\times_P (P\cdot X'))$ has lower dimension than $G\cdot
   volume = {213},
   pages = {49--67},
   year = {2003},
+}
+
+\bib{Bor}{article}{
+ author = {Borho, W.},
+ journal = {S\'eminaire Bourbaki, Exp. No. 489},
+ pages = {1--18},
+ title = {Recent advances in enveloping algebras of semisimple Lie-algebras},
+ year = {1976/77}
 }
 
 \bib{Carter}{book}{
@@ -12060,6 +13143,18 @@ year={1989},
   year = {2017}
 }
 
+\bib{MR}{article}{
+  author={M{\oe}glin, C.},
+    author={Renard, D.},
+  title = {Sur les paquets d'Arthur des groupes classiques r\'eels},
+  journal = {J. Eur. Math. Soc. },
+  %series ={Progress in Math.},
+  volume = {22},
+    issue = {6},
+    year = {2020},
+    pages ={1827--1892}
+    }
+
 
 \bib{MVW}{book}{
   volume={1291},
@@ -12415,6 +13510,12 @@ pages={147--167},
 
 \printindex
 
+
+
+  \[
+       \tytb{{\cdots}\cdots\cdots\cdots,{\ast}{\ast}{\cdots}{\cdots},{*(srcol)s}{*(srcol)r}{\cdots}\cdots,
+        {*(srcol)\vdots}{*(srcol)\vdots},{*(srcol)s}{*(srcol)r},{x_{0}}{y_{1}},{x_{1}}{y_{2}},{\vdots},{x_{n}}}
+               \]
 
 \end{document}
 
