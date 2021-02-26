@@ -239,18 +239,18 @@ The study of the special unipotent representations in general case reduced to th
 A $\star$-pair   $(i,i+1)$ is said to be
 \begin{itemize}
 \item
-empty in $\check \CO$, if $\mathbf r_i(\check \CO)=\mathbf r_{i+1}(\check \CO)=0$;
+vacan in $\check \CO$, if $\mathbf r_i(\check \CO)=\mathbf r_{i+1}(\check \CO)=0$;
 \item
 balanced in $\check \CO$,  if  $\mathbf r_i(\check \CO)=\mathbf r_{i+1}(\check \CO)>0$;
 \item
 tailed in $\check \CO$,  if $\star\in \{C, D, C^*, D^*\}$ and $\mathbf r_i(\check \CO)>\mathbf r_{i+1}(\check \CO)=0$;
 \item
-distinguished in $\check \CO$, if  it is not empty, balanced or tailed in $\check \CO$.
+primitive in $\check \CO$, if  it is not empty, balanced or tailed in $\check \CO$.
 \end{itemize}
 
 \end{defn}
 
-Let $\mathrm{DP}_\star(\check \CO)$ denote the  set of all $\star$-pairs that are distinghuished in $\check \CO$. For every subset $\wp\subset \mathrm{DP}_\star(\check \CO)$, we define a pair \[
+Let $\mathrm{PP}_\star(\check \CO)$ denote the  set of all $\star$-pairs that are primitive in $\check \CO$. For every subset $\wp\subset \mathrm{PP}_\star(\check \CO)$, we define a pair \[
 (\imath_\wp, \jmath_\wp):=(\imath_\star(\check \CO, \wp), \jmath_\star(\check \CO, \wp))
 \]
  of Young diagrams  as in what follows.
@@ -299,7 +299,7 @@ and for all $i\geq 1$,
      \begin{array}{ll}
             (\frac{\mathbf r_{2i+1}(\check \CO)-1}{2},  \frac{\mathbf r_{2i}(\check \CO)+1}{2}), &\hbox{if $(2i, 2i+1)\in \wp$}; \smallskip\\
         (\frac{\mathbf r_{2i}(\check \CO)-1}{2},  0), & \hbox{if $(2i, 2i+1)$ is tailed in $\check \CO$};\smallskip\\
-         (0,  0), &\hbox{if $(2i, 2i+1)$ is empty in $\check \CO$};\\
+         (0,  0), &\hbox{if $(2i, 2i+1)$ is vacant in $\check \CO$};\\
          (\frac{\mathbf r_{2i}(\check \CO)-1}{2},  \frac{\mathbf r_{2i+1}(\check \CO)+1}{2}), &\hbox{otherwise}.\\
             \end{array}
    \right.
@@ -313,7 +313,7 @@ If $\star=C$ or $C^*$, then for all $i\geq 1$,
      \begin{array}{ll}
             (\frac{\mathbf r_{2i}(\check \CO)-1}{2},  \frac{\mathbf r_{2i-1}(\check \CO)+1}{2}), &\hbox{if $(2i-1, 2i)\in \wp$}; \smallskip\\
         (\frac{\mathbf r_{2i-1}(\check \CO)-1}{2},  0), & \hbox{if $(2i-1, 2i)$ is tailed in $\check \CO$};\smallskip\\
-         (0,  0), &\hbox{if $(2i-1, 2i)$ is empty in $\check \CO$};\\
+         (0,  0), &\hbox{if $(2i-1, 2i)$ is vacant  in $\check \CO$};\\
          (\frac{\mathbf r_{2i-1}(\check \CO)-1}{2},  \frac{\mathbf r_{2i}(\check \CO)+1}{2}), &\hbox{otherwise}.\\
             \end{array}
    \right.
@@ -331,16 +331,7 @@ In all cases, it is known that (see \cite[Section13.2]{Carter})
    \right.
 \ee
 where $\check \CO'$ is another  Young diagram that has $\star$-good parity, and $\wp'\subset \mathrm{DP}_\star(\check \CO')$.
-Put
-\[
-\mathrm{BP}_\star(\check \CO) :=\{(\imath_\wp, \jmath_\wp)\mid \wp\subset \mathrm{DP}_\star(\check \CO)\}
-\]
-and
-\[
-  \mathrm{BP}_\star:=\bigcup_{\check \CO \textrm{ is Young diagram that has $\star$-good parity} }\mathrm{BP}_\star(\check \CO).
-\]
-The latter is a disjoint union by \eqref{eqbp}, and its elements are called $\star$-bipartitions.
-Recall that  the set $\mathrm{BP}_\star(\check \CO)$ parametrizes certain Weyl group representations (\cite[Section 11.4]{Carter}).
+%Recall that  the pair $\mathrm{BP}_\star(\check \CO)$ parametrizes certain Weyl group representations (\cite[Section 11.4]{Carter}).
 
 
 \begin{Example} Suppose that $\star=C$, and $\check \CO$ is the following Young diagram which has $\star$-good parity.
@@ -369,14 +360,21 @@ Here and henceforth, when no confusion is possible, we write $\alpha\times \beta
 
 \subsection{Combinatorics : painted bipartitions}
 
-Let $\imath$ be a Young diagram. Write $\mathrm{Box}(\imath)$ for the set of all boxes in $\imath$, which has $\abs{\imath}$ elements in total. We say that a Young diagram $\imath'$ is contained
-in $\imath$ (and write $\imath'\subset \imath$) if
-\[
-  \mathbf r_i(\imath')\leq \mathbf r_i(\imath)\qquad \textrm{for all } i=1,2, 3, \cdots.
-\]
-When  this is the case, $\mathrm{Box}(\imath')$ is viewed as a subset of $\mathrm{Box}(\imath)$ concentrating on the upper-left corner.
-We say that a subset of $\mathrm{Box}(\imath)$ is a Young subdiagram if it equals $\mathrm{Box}(\imath')$ for a Young diagram $\imath'\subset \imath$.
-  In this case, we call $\imath'$ the Young diagram corresponding to this Young subdiagram.
+For every Young diagram $\imath$, we view the set $\BOX(\imath)$ of boxes of $\imath$ as the following subset 
+of $\bN^+\times \bN^+$ ($\bN^+$ denotes the set of positive integers):
+\begin{equation}\label{eq:BOX}
+\BOX(\imath):=\Set{(i,j)\in\bN^+\times \bN^+| j\leq \bfrr_i(\imath)}.
+\end{equation}
+%We will also call a subset of $\bN^+\times \bN^+$  of the form \eqref{eq:BOX} a Young diagram.
+
+%We say that a Young diagram $\imath'$ is contained
+%in $\imath$ (and write $\imath'\subset \imath$) if
+%\[
+%  \mathbf r_i(\imath')\leq \mathbf r_i(\imath)\qquad \textrm{for all } i=1,2, 3, \cdots.
+%\]
+%When  this is the case, $\mathrm{Box}(\imath')$ is viewed as a subset of $\mathrm{Box}(\imath)$ concentrating on the upper-left corner.
+%We say that a subset of $\mathrm{Box}(\imath)$ is a Young subdiagram if it equals $\mathrm{Box}(\imath')$ for a Young diagram $\imath'\subset \imath$.
+%  In this case, we call $\imath'$ the Young diagram corresponding to this Young subdiagram.
 
 We introduce five symbols $\bullet$, $s$, $r$, $c$ and $d$.
 \begin{defn}
@@ -387,7 +385,7 @@ A painting on a Young diagram $\imath$ is a map
 with the following properties:
 \begin{itemize}
 \item
- $\CP^{-1}(S)$ is a Young subdiagram of $\mathrm{Box}(\imath)$ when $S=\{\bullet\}, \{\bullet, s \}, \{\bullet, s, r\}$ or $\{\bullet, s, r, c \} $;
+ $\CP^{-1}(S)$ is the set of boxes of a Young diagram when $S=\{\bullet\}, \{\bullet, s \}, \{\bullet, s, r\}$ or $\{\bullet, s, r, c \} $;
  \item
  every row of $\imath$ has at most one  box in $\CP^{-1}(S)$ when $S=\{s\}$ or $ \{r\}$;
    \item
@@ -396,8 +394,6 @@ with the following properties:
 A painted Young diagram is a pair $(\imath, \CP)$ consisting of a Young diagram and a painting on it.
 
 \end{defn}
-
-
 
 
 \begin{Example} Suppose that $\tau=\tytb{\ \ ,\  }$, then there are $25+12+6+2=45$ paintings on $\tau$ in total as listed below.
@@ -417,9 +413,7 @@ A painted Young diagram is a pair $(\imath, \CP)$ consisting of a Young diagram 
  A painted bipartition is a triple $\tau=(\imath, \CP)\times (\jmath, \CQ)\times \alpha$, where $(\imath, \CP)$ and $ (\jmath, \CQ)$ are painted Young diagrams, and $\alpha\in \{B^+,B^-, C,D,\widetilde {C}, C^*, D^*\}$, subject to the following conditions:
  \begin{itemize}
  \item
- $(\imath, \jmath)\in \mathrm{BP}_\alpha$ if $\alpha\notin\{B^+,B^-\}$, and  $(\imath, \jmath)\in \mathrm{BP}_{B}$ if $\alpha\in\{B^+,B^-\}$;
-\item
- $\CP^{-1}(\bullet)$ and $\CQ^{-1}(\bullet)$ corresponding to the same Young diagram;
+ $\CP^{-1}(\bullet)=\CQ^{-1}(\bullet)$;
  \item
  the image of $\CP$ is contained in
  \[
@@ -486,8 +480,8 @@ A painted Young diagram is a pair $(\imath, \CP)$ consisting of a Young diagram 
    (\imath, \jmath)=(\imath_{\star_\tau}(\check \CO_\tau, \wp_\tau), \jmath_{\star_\tau}(\check \CO_\tau, \wp_\tau)).
 $
 \end{itemize}
-
-
+The existence of such a pair is a consequence of the explicit description of the coherent continuation representations. See   \cite[Theorems 6, 7, 10, 11]{Mc} and 
+\cite[Proposition 6.9]{RT} 
 
 
  \smallskip

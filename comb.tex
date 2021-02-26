@@ -29,13 +29,35 @@ We remark that $\pbpsns(\ckcO)$ is  empty in the following cases:
 
 Let 
 \[
-    m_{\ckcO} := \begin{cases}
+\begin{split}
+    m_{\ckcO} &:= \begin{cases}
       \frac{\bfrr_1(\ckcO)-\bfrr_2(\ckcO)-2}{2} & \text{when } \star \in \set{C,\wtC,C^*}\\
       \frac{\bfrr_1(\ckcO)-\bfrr_2(\ckcO)+2}{2} & \text{when } \star \in \set{B,D,D^*}
-    \end{cases} 
+    \end{cases}\\ 
+    R_{\ckcO} &:= \max\left(0,\frac{\bfrr_2(\ckcO)-3}{2}\right) 
+\end{split}
 \]
+Suppose $\star=C$ and $\tau= (\imath,\cP)\times(\jmath,\cQ)\times \star_\tau\in \pbpst(\ckcO)$. 
+We define the leg 
+\[
+\LEG(\tau) := (\imath_0,\cP_0)\times (\jmath_0,\cQ_0)\times \star_\tau
+\]
+of $\tau$ as the following:
+   \begin{itemize}
+   \item $\imath_0 = \set{(i,j)| (i+R_{\ckcO},j)\in \imath \text{ and } j\leq 2}$ and $\cP_0\colon \imath_0\rightarrow \set{\bullet,s,r,c,d}$  
+   such that $\cP_0(i,j):= \cP(i+R,j)$;
+   \item $\jmath_0 = \set{(i,j)| (i+R_{\ckcO},j)\in \jmath \text{ and } j\leq 2}$ and $\cQ_0\colon \jmath_0\rightarrow \set{\bullet,s,r,c,d}$ 
+   such that $\cR_0(i,j) := \cQ(i+R,j)$.
+   \end{itemize}
+ The leg $\LEG(\tau)$ is also a painted bipartition.
+ The body of $\tau$ is a pair \[\BODY(\tau) = (\imath_1,\cP_1)\times (\jmath_1,\cQ_1)\] such that 
+\begin{itemize}
+    \item $\imath_1\subset \bN^+\times \bN^+$ is the complement of $\imath_0$ in $\imath$ and $\cP_1 := \cP|_{\imath_1}$.
+    \item $\jmath_1\subset \bN^+\times \bN^+$ is the complement of $\jmath_0$ in $\jmath$ and $\cQ_1 := \cQ|_{\jmath_1}$.
+\end{itemize}
+  
+\subsection{Switching painted bipartitions}
 
- \subsection{Switching painted bipartitions}
   In this subsection, we assume that $\star\in \{C, \widetilde C\}$ and $(1,2)\in \mathrm{DP}_\star(\check \CO)$.
   We will define a bijective map
  \[
@@ -43,23 +65,18 @@ Let
  \tau \mapsto \bartau
  \]
   in what follows.
+  
 
   
 \subsubsection{The case of $\star=C$}
 
 Suppose that $\star=C$ and write $m:=m_{\ckcO}$. 
 
-\begin{defn}[Body and tail]
-\begin{enumC}
-Suppose $\tau\in\pbpssp(\ckcO)$, define the tail of $\tau$ to be the  
-Wfine the tail of $\tau$ to be the first
-The $\tau$ has the following shape
-\end{enumC}
-\end{defn}
+First assume $\tau = \LEG(\tau)$. Then $\tau$ has the following shape
 \[
-  \ytb{{y_{0}}{\cdots},{*(srcol)r}{y_{2}},{*(srcol)\vdots},{*(srcol)r},{y_{1}},{y_{3}} }
-    \times\ytb{{\ast}\cdots,\none,\none ,\none ,\none ,\none }\\
-    \]
+  \ytb{{y_{0}}{y_4},{*(srcol)r}{y_{3}},{\enon[srcol]{\vdots}},{*(srcol)r},{y_{0}},{y_{2}} }
+    \times\ytb{{y_5}{y_6},\none,\none ,\none ,\none ,\none }
+\]
 
   Let $\wp\in \mathrm{DP}_\star(\check \CO)$. Put
  \[

@@ -1231,6 +1231,16 @@
   noframe/on/.style = {noframe/true},
   noframe/off/.style = {noframe/false},
 }
+
+\def\enon{\omit\enon@YT}
+\newcommand{\enon@YT}[2][clear]{%
+  \def\thisboxcolor@YT{#1}%
+  \let\hrule@YT=\hrule@none@YT
+  \let\vrule@YT=\vrule@none@YT
+  \startbox@@YT#2\endbox@YT
+  \nullfont
+}
+
 \makeatother
 %\ytableausetup{noframe=on,smalltableaux}
 \ytableausetup{noframe=off,boxsize=1.3em}
@@ -1285,6 +1295,7 @@
 \def\cnT{\cT^-}
 \def\cpB{\cB^+}
 \def\cnB{\cB^-}
+\def\BOX{\mathrm{Box}}
 
 \def\deltas{\delta^s}
 \def\deltans{\delta^{ns}}
@@ -1293,6 +1304,8 @@
 
 \def\uum{{\dotminus}}
 \def\uup{\divideontimes}
+\def\LEG{\mathrm{Leg}}
+\def\BODY{\mathrm{Body}}
 
 \def\umm{{=}}
 \def\upp{{\ast}}
