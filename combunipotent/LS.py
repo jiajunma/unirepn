@@ -967,13 +967,7 @@ For visialization:
 A local system is frozenset of irreducible local systems
 """
 
-#def _sign_twist(t):
-#    """
-#    For metaplectic group, the charactor is det^(1/2+ Z)
-#    """
-#    res = (1,1,-1,-1)
-#    return res[t%4]
-    
+
 """
 def _sign_ILS(irr_s):
     p,n = 0,0
@@ -996,35 +990,52 @@ def _sign_ILS_firstcol(irr_s):
     return (p,n)
 """        
 
-def _char_twist_M_t(irr_s,twist):
+# def _char_twist_M_t(irr_s,twist):
+#     """
+#     twist the irreducible local system of type metaplectic by det^t
+#     K_Mp = {(g,e)| e^2 = det(g): g\in U(n)}.
+#     det^1/2(g,e) = e
+#     O(V_p) act on V_p\otimes W_2k
+#     (dim V_p = p, W_2k is the standard repn of SL_2)
+#     (g,e)\in \wtO(V_p), then acts by e^k.
+#     # When k is even, det is the default twist
+#     # When k is odd, det^1/2 is the default twist
+#     The default twist is always det^(k/2)
+#     """
+#     # Suppose we twist det^1/2|K_X:
+#     # only twist even length row,
+#     # If the row is length 2k, then det restricted to det^(k/2) on each factor.
+#     # If k is even don't twist the character
+#     # If k is odd, we fix the default twist to be det^1/2
+#     #              the other twist is det^(-1/2)
+#     if twist == 1:
+#         irr_ss = tuple((-pp, -nn) if (i+1)%8==6 else (pp,nn)
+#                        for i, (pp,nn) in enumerate(irr_s))
+#         return irr_ss
+#     elif twist == 3:
+#         irr_ss = tuple((-pp, -nn) if (i+1)%8==2 else (pp,nn)
+#                        for i, (pp,nn) in enumerate(irr_s))
+#         return irr_ss
+#     else:
+#         assert(False)
+
+
+
+def _char_twist_CM(irr_s,j):
     """
-    twist the irreducible local system of type metaplectic by det^t  
-    K_Mp = {(g,e)| e^2 = det(g): g\in U(n)}.
-    det^1/2(g,e) = e
-    O(V_p) act on V_p\otimes W_2k  
-    (dim V_p = p, W_2k is the standard repn of SL_2)
-    (g,e)\in \wtO(V_p), then acts by e^k. 
-    # When k is even, det is the default twist
-    # When k is odd, det^1/2 is the default twist
-    The default twist is always det^(k/2)
+    twist the irreducible local system of type CM j times:
+    When j is even no tiwst
+    When j is odd twist the 2k rows for k odd.
     """
-    # Suppose we twist det^1/2|K_X:
-    # only twist even length row,
-    # If the row is length 2k, then det restricted to det^(k/2) on each factor. 
-    # If k is even don't twist the character 
-    # If k is odd, we fix the default twist to be det^1/2
-    #              the other twist is det^(-1/2)
-    if twist == 1:
-        irr_ss = tuple((-pp, -nn) if (i+1)%8==6 else (pp,nn)
-                       for i, (pp,nn) in enumerate(irr_s))
-        return irr_ss
-    elif twist == 3:
-        irr_ss = tuple((-pp, -nn) if (i+1)%8==2 else (pp,nn)
+    if j %2 == 1:
+        irr_ss = tuple((-pp, -nn) if (i+1)%4==2 else (pp,nn)
                        for i, (pp,nn) in enumerate(irr_s))
         return irr_ss
     else:
-        assert(False)
-        
+        return irr_s
+
+
+
 def _char_twist_M(irr_s, ps, ns):
     """
     Here (ps,ns) is the signature of the other group = odd orthogonal group.
@@ -1079,7 +1090,7 @@ def lift_irr_B_M(irr_s, n):
         # The descent case
         if addp>=0 and addn>=0:
             irr_ss = ((addp,addn),)+irr_s
-            irr_ss = _char_twist_M(irr_ss, ps, ns)
+            irr_ss = _char_twist_CM(irr_ss, (ps-ns-1)/2)
             return [irr_ss]
         #The generalized descent case
         elif (addp,addn) in [(-1,-1),(-2,0),(0,-2)]: 
@@ -1092,11 +1103,11 @@ def lift_irr_B_M(irr_s, n):
             """
             if pp>0:
                 irr_ss = ((0,0),(pp-1,nn))+irr_s[1:]
-                irr_ss = _char_twist_M(irr_ss, ps,ns)
+                irr_ss = _char_twist_CM(irr_ss, (ps-ns-1)/2)
                 ss.append(tuple(irr_ss))
             if nn>0:
                 irr_ss = ((0,0),(pp,nn-1))+irr_s[1:]
-                irr_ss = _char_twist_M(irr_ss, ps,ns)
+                irr_ss = _char_twist_CM(irr_ss, (ps-ns-1)/2)
                 ss.append(tuple(irr_ss))
             return ss
         else:
@@ -1138,7 +1149,7 @@ def lift_irr_M_B(irr_s,ps,ns):
         # The descent case
         if addp>=0 and addn>=0:
             # Twist 
-            irr_s = _char_twist_M(irr_s,ps,ns)
+            irr_s = _char_twist_CM(irr_s,(ps-ns+1)/2)
             #print(irr_s )
             irr_ss = ((addp,addn),)+irr_s
             return [irr_ss]

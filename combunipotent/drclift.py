@@ -35,7 +35,8 @@ def lift_extdrc_B_M_trivial(drc, cL=None):
     exttype = drcR[0][-1]
     drcR = (drcR[0][:-1], *drcR[1:])
     if cL is None:
-        cL = len(getz(drcR, 0, ''))
+        # cL = len(getz(drcR, 0, ''))
+        cL = len(drcR[0])
     cR = len(drcR[0])
     if cL < cR:
         return None
@@ -43,25 +44,25 @@ def lift_extdrc_B_M_trivial(drc, cL=None):
         tauL = [cL]+[c.count('*') for c in drcL]
         tauR = [c.count('*')+c.count('s') for c in drcR]
         sdrc = next(fill_rdot((tauL, tauR), sym='s'), None)
-        if sdrc[0] == tuple():
-            sdrc = (('',), ('',))
         if sdrc is None:
             return None
-        else:
-            sdrcL, sdrcR = sdrc
-            r = max(len(drcL)+1, len(drcR))
-            drcLL = (sdrcL[0], * _combine_tab(sdrcL[1:], drcL))
-            drcRR = _combine_tab(sdrcR, drcR)
-            if exttype == 'a':
+        if len(sdrc[0]) == 0:
+            sdrc = (('',), ('',))
+            #else:
+        sdrcL, sdrcR = sdrc
+        #r = max(len(drcL)+1, len(drcR))
+        drcLL = (sdrcL[0], * _combine_tab(sdrcL[1:], drcL))
+        drcRR = _combine_tab(sdrcR, drcR)
+        if exttype == 'a':
+            return (drcLL, drcRR)
+        elif exttype == 'b':
+            if drcLL[0][-1] == 's':
+                drcLL = (drcLL[0][:-1]+'c', *drcLL[1:])
                 return (drcLL, drcRR)
-            elif exttype == 'b':
-                if drcLL[0][-1] == 's':
-                    drcLL = (drcLL[0][:-1]+'c', *drcLL[1:])
-                    return (drcLL, drcRR)
-                else:
-                    return None
             else:
                 return None
+        else:
+            return None
 
 
 def lift_drc_B_M_det(drc, cL=None):
@@ -302,6 +303,39 @@ def twist_M_nonspecial(drc):
     nspdrc = ((fLL, *drcL[1:]), (fRR, *drcR[1:]))
     return nspdrc
 
+## New version
+def twist_M_nonspecial(drc):
+    """
+    send a the special diagram to non-special diagram
+    special diagram means `switch' the left diagram longest column
+    to right diagram
+    We only implement fL = fR+1 case
+    """
+    drcL, drcR = drc
+    # first column of drcL and first, second column of drcR
+    fL, fR, sR = getz(drcL, 0, ''), getz(drcR, 0, ''), getz(drcR, 1, '')
+    assert(len(fL) == len(fR)+1 and len(fL) > 0)
+    if fL[-1] == 's':
+        if len(fR) > 0 and fR[-1] == 'd':
+            fLL = fL[:-2] +'c'
+            fRR = fR[:-1]+'rr'
+        else:
+            fLL = fL[:-1]
+            fRR = fR + 'r'
+    elif fL[-1] == 'c':
+        if len(fR) > 0 and fR[-1] == 'd':
+            fLL = fL[:-2]+'c'
+            fRR = fR[:-1]+'rd'
+        else:
+            fLL = fL[:-1]
+            fRR = fR+'d'
+    else:
+        print('Invalid original drc: %s' % (str_dgms(drc)))
+        return None
+    nspdrc = ((fLL, *drcL[1:]), (fRR, *drcR[1:]))
+    #print('abc')
+    return nspdrc
+
 
 def lift_drc_D_C_det(drc):
     spdrc = lift_drc_D_C_trivial(drc)
@@ -529,35 +563,50 @@ def gp_form_B_c(drc):
     return (dp, dq+1)
 
 
-def gen_drc_B_two(fL, sL, fR, n):
+def gen_drc_B_two(fL, sL, fR,  n):
     """
     returns the tail of  
-    first row of L, first row of R, second row of R 
+    first column of L, second column of L, first column of R, second column of R
     """
     #print('fL, fR, n: %s, %s, %d'%(fL,fR,n))
-    RES = []
+   #RES = []
     ERES = []
     if sL == '':
         if len(fL) == 0 and len(fR) == 0:
-            RES.extend([('', 's'*i+'r'*(n-i), '', (1, -1)) for i in range(0, n+1)])
-            RES.extend([('', 's'*i+'r'*(n-i-1)+'d', '', (1, 1))
-                        for i in range(0, n)])
+            ERES.extend([('', 's'*i+'r'*(n-i)+'a', '', (1, -1)) for i in range(0, n+1)])
+            ERES.extend([('', 's'*i+'r'*(n-i-1)+'d'+'a', '', (1, 1)) for i in range(0, n)])
+            ERES.extend([('', 's'*i+'r'*(n-i)+'b', '', (1, -1)) for i in range(0, n+1)])
+            ERES.extend([('', 's'*i+'r'*(n-i-1)+'d'+'b', '', (1, 1)) for i in range(0, n)])
         elif (fL, fR) == ('s', ''):
-            RES.extend([('c', 'r'*n, '', (1, 1))])
-            RES.extend([('*', '*'+'s'*i+'r'*(n-i-1), '', (1, -1))
-                        for i in range(0, n)])
-            RES.extend([('*', '*'+'s'*i+'r'*(n-i-2)+'d', '', (1, 1))
-                        for i in range(0, n-1)])
+            ERES.extend([('c', 'r'*n+'a', '', (1, -1))])
+            #ERES.extend([('c', 'r'*n+'a', '', (1, 1))])
+            ERES.extend([('*', '*'+'s'*i+'r'*(n-i-1)+'a', '', (1, -1)) for i in range(0, n)])
+            ERES.extend([('*', '*'+'s'*i+'r'*(n-i-2)+'d'+'a', '', (1, 1)) for i in range(0, n-1)])
+            ERES.extend([('c', 'r'*n+'b', '', (1, 1))])
+            ERES.extend([('*', '*'+'s'*i+'r'*(n-i-1)+'b', '', (1, -1)) for i in range(0, n)])
+            ERES.extend([('*', '*'+'s'*i+'r'*(n-i-2)+'d'+'b', '', (1, 1)) for i in range(0, n-1)])
         elif (fL, fR) == ('c', ''):
-            RES.extend([('c', 's'*i+'r'*(n-i), '', (1, -1)) for i in range(1, n+1)])
-            RES.extend([('c', 's'*i+'r'*(n-i-1)+'d', '', (1, 1)) for i in range(0, n)])
+            ERES.extend([('c', 's'*i+'r'*(n-i)+'a', '', (1, -1)) for i in range(1, n+1)])
+            ERES.extend([('c', 'r'*(n-1)+'d'+'a', '', (1, -1))])
+            #ERES.extend([('c', 'r'*(n-1)+'d'+'a', '', (1, 1))])
+            ERES.extend([('c', 's'*i+'r'*(n-i-1)+'d'+'a', '', (1, 1)) for i in range(1, n)])
+            ERES.extend([('c', 's'*i+'r'*(n-i)+'b', '', (1, -1)) for i in range(1, n+1)])
+            ERES.extend([('c', 's'*i+'r'*(n-i-1)+'d'+'b', '', (1, 1)) for i in range(0, n)])
         elif (fL, fR) == ('', 'r'):
-            RES.extend([('', 'r'*n, 'd', (1, 1))])
-            RES.extend([('', 's'*i+'r'*(n-i), 'r', (1, -1)) for i in range(1, n+1)])
-            RES.extend([('', 's'*i+'r'*(n-i-1)+'d', 'r', (1, 1)) for i in range(1, n)])
+            ERES.extend([('', 'r'*n+'a', 'd', (1, -1))])
+            #ERES.extend([('', 'r'*n+'a', 'd', (1, 1))])
+            ERES.extend([('', 's'*i+'r'*(n-i)+'a', 'r', (1, -1)) for i in range(1, n+1)])
+            ERES.extend([('', 's'*i+'r'*(n-i-1)+'d'+'a', 'r', (1, 1)) for i in range(1, n)])
+            ERES.extend([('', 'r'*n+'b', 'd', (1, 1))])
+            ERES.extend([('', 's'*i+'r'*(n-i)+'b', 'r', (1, -1)) for i in range(1, n+1)])
+            ERES.extend([('', 's'*i+'r'*(n-i-1)+'d'+'b', 'r', (1, 1)) for i in range(1, n)])
         elif (fL, fR) == ('', 'd'):
-            RES.extend([('', 's'*i+'r'*(n-i), 'd', (1, -1)) for i in range(1, n+1)])
-            RES.extend([('', 's'*i+'r'*(n-i-1)+'d', 'd', (1, 1)) for i in range(0, n)])
+            ERES.extend([('', 's'*i+'r'*(n-i)+'a', 'd', (1, -1)) for i in range(1, n+1)])
+            ERES.extend([('', 'r'*(n-1)+'d'+'a', 'd', (1, -1))])
+            #ERES.extend([('', 'r'*(n-1)+'d'+'a', 'd', (1, 1))])
+            ERES.extend([('', 's'*i+'r'*(n-i-1)+'d'+'a', 'd', (1, 1)) for i in range(1, n)])
+            ERES.extend([('', 's'*i+'r'*(n-i)+'b', 'd', (1, -1)) for i in range(1, n+1)])
+            ERES.extend([('', 's'*i+'r'*(n-i-1)+'d'+'b', 'd', (1, 1)) for i in range(0, n)])
         elif (fL, fR) == ('*', '*'):
             ERES.extend([('*', '*'+'s'*i+'r'*(n-i-1)+'a',     's', (1, -1)) for i in range(0, n)])
             ERES.extend([('*', '*'+'s'*i+'r'*(n-i-2)+'d'+'a', 's', (1, 1)) for i in range(0, n-1)])
@@ -565,9 +614,9 @@ def gen_drc_B_two(fL, sL, fR, n):
             ERES.extend([('*', '*'+'s'*i+'r'*(n-i-2)+'d'+'b', 's', (1, 1)) for i in range(0, n-1)])
         elif (fL, fR) == ('s', 'r'):
             ## New test
-            ERES.extend([('c', 'r'*n+'a', 'd', (1, 1))])
-            #ERES.extend([('c', 'r'*n+'b', 'd', (1, 1))])
-            #print('[red]sr[/red]')
+            if n>1:
+                ERES.extend([('c', 'r'*n+'a', 'd', (1, -1))])
+            #ERES.extend([('c', 'r'*n+'a', 'd', (1, -1))])
             ERES.extend([('*', '*'+'s'*i+'r'*(n-i-1)+'a',     'r', (1, -1)) for i in range(0, n)])
             ERES.extend([('*', '*'+'s'*i+'r'*(n-i-2)+'d'+'a', 'r', (1, 1)) for i in range(0, n-1)])
             ERES.extend([('*', '*'+'s'*i+'r'*(n-i-1)+'b',     'r', (1, -1)) for i in range(0, n)])
@@ -576,34 +625,38 @@ def gen_drc_B_two(fL, sL, fR, n):
             ## New test
             ##print('[red]sd[/red]')
             ##ERES.extend([('c', 'r'*n+'a', 'd', (1, -1))])
-
-            ERES.extend([('c', 'r'*(n-1)+'d'+'a', 'd', (1, 1))])
+            if n>1:
+                ERES.extend([('c', 'r'*(n-1)+'d'+'a', 'd', (1, -1))])
+            #ERES.extend([('c', 'r'*(n-1)+'d'+'a', 'd', (1, -1))])
             ERES.extend([('*', '*'+'s'*i+'r'*(n-i-1)+'a',     'd', (1, -1)) for i in range(0, n)])
             ERES.extend([('*', '*'+'s'*i+'r'*(n-i-2)+'d'+'a', 'd', (1, 1)) for i in range(0, n-1)])
             ERES.extend([('*', '*'+'s'*i+'r'*(n-i-1)+'b',     'd', (1, -1)) for i in range(0, n)])
             ERES.extend([('*', '*'+'s'*i+'r'*(n-i-2)+'d'+'b', 'd', (1, 1)) for i in range(0, n-1)])
         elif (fL, fR) == ('c', 'r'):
-            #ERES.extend([('c', 'r'*n+'a', 'd', (1, 1))])
+            if n==1:
+                ERES.extend([('c', 'r'+'a', 'd', (1, -1))])
             ERES.extend([('c', 'r'*n+'b', 'd', (1, 1))])
             ERES.extend([('c', 's'*i+'r'*(n-i)+'a',       'r', (1, -1)) for i in range(1, n+1)])
             ERES.extend([('c', 's'*i+'r'*(n-i-1)+'d'+'a', 'r', (1, 1)) for i in range(1, n)])
             ERES.extend([('c', 's'*i+'r'*(n-i)+'b',       'r', (1, -1)) for i in range(1, n+1)])
             ERES.extend([('c', 's'*i+'r'*(n-i-1)+'d'+'b', 'r', (1, 1)) for i in range(1, n)])
         elif (fL, fR) == ('c', 'd'):
+            if n==1:
+                ERES.extend([('c', 'd'+'a', 'd', (1, -1))])
             ERES.extend([('c', 's'*i+'r'*(n-i)+'a',       'd', (1, -1)) for i in range(1, n+1)])
             ERES.extend([('c', 's'*i+'r'*(n-i-1)+'d'+'a', 'd', (1, 1)) for i in range(1, n)])
             ERES.extend([('c', 's'*i+'r'*(n-i)+'b',       'd', (1, -1)) for i in range(1, n+1)])
             ERES.extend([('c', 's'*i+'r'*(n-i-1)+'d'+'b', 'd', (1, 1)) for i in range(0, n)])
         # Return extend the parameter directly
-        if len(fL)+len(fR) == 2:
-            EERES  = [(fL, '', fR, sR, twist) for fL, fR, sR, twist in ERES]
-            return EERES
+        #if len(fL)+len(fR) == 2:
+        EERES  = [(fL, '', fR, sR, twist) for fL, fR, sR, twist in ERES]
+        return EERES
         # else extend RES to ERES and return
-        else:
-            for fL, fR, sR, twist in RES:
-                ERES.append((fL, '', fR+'a', sR, twist))
-                ERES.append((fL, '', fR+'b', sR, twist))
-            return ERES
+        # else:
+        #     for fL, fR, sR, twist in RES:
+        #         ERES.append((fL, '', fR+'a', sR, twist))
+        #         ERES.append((fL, '', fR+'b', sR, twist))
+        #     return ERES
     else:
         if (fL, sL, fR) == ('*', 's', '*'):
             ERES.extend([('*', '*', '*'+'s'*i+'r'*(n-i-1)+'a',      '*', (1, -1)) for i in range(0, n)])
@@ -616,9 +669,8 @@ def gen_drc_B_two(fL, sL, fR, n):
             ERES.extend([('*', 'c', '*'+'s'*i+'r'*(n-i-1)+'b',     's', (1, -1)) for i in range(0, n)])
             ERES.extend([('*', 'c', '*'+'s'*i+'r'*(n-i-2)+'d'+'b', 's', (1, 1)) for i in range(0, n-1)])
         elif (fL, sL, fR) == ('s', 'c', 'r'):
-            #if n>1:
-            ## Nwe test
-            ERES.extend([('c', 'c', 'r'*n+'a', 'd', (1, 1))])
+            if n>1:
+                ERES.extend([('c', 'c', 'r'*n+'a', 'd', (1, 1))])
             #ERES.extend([('c', 'c', 'r'*n+'b', 'd', (1, 1))])
             ERES.extend([('*', 'c', '*'+'s'*i+'r'*(n-i-1)+'a',     'r', (1, -1)) for i in range(0, n)])
             ERES.extend([('*', 'c', '*'+'s'*i+'r'*(n-i-2)+'d'+'a', 'r', (1, 1)) for i in range(0, n-1)])
@@ -628,20 +680,23 @@ def gen_drc_B_two(fL, sL, fR, n):
             #if n ==1:
             #    ERES.extend([('c', 'c', 'r'*n+'a', 'd', (1, -1))])
             #ERES.extend([('c', 'c', 'r'*n+'a', 'd', (1, -1))])
-
-            ERES.extend([('c', 'c', 'r'*(n-1)+'d'+'a', 'd', (1, 1))])
+            if n-1 >0:
+                ERES.extend([('c', 'c', 'r'*(n-1)+'d'+'a', 'd', (1, 1))])
             ERES.extend([('*', 'c',  '*'+'s'*i+'r'*(n-i-1)+'a',     'd', (1, -1)) for i in range(0, n)])
             ERES.extend([('*', 'c', '*'+'s'*i+'r'*(n-i-2)+'d'+'a', 'd', (1, 1)) for i in range(0, n-1)])
             ERES.extend([('*', 'c', '*'+'s'*i+'r'*(n-i-1)+'b',     'd', (1, -1)) for i in range(0, n)])
             ERES.extend([('*', 'c', '*'+'s'*i+'r'*(n-i-2)+'d'+'b', 'd', (1, 1)) for i in range(0, n-1)])
         elif (fL, sL, fR) == ('c', 'c', 'r'):
-            #ERES.extend([('c', 'r'*n+'a', 'd', (1, 1))])
+            if n==1:
+                ERES.extend([('c','c', 'r'*n+'a', 'd', (1, -1))])
             ERES.extend([('c', 'c', 'r'*n+'b', 'd', (1, 1))])
             ERES.extend([('c', 'c', 's'*i+'r'*(n-i)+'a',       'r', (1, -1)) for i in range(1, n+1)])
             ERES.extend([('c', 'c', 's'*i+'r'*(n-i-1)+'d'+'a', 'r', (1, 1)) for i in range(1, n)])
             ERES.extend([('c', 'c', 's'*i+'r'*(n-i)+'b',       'r', (1, -1)) for i in range(1, n+1)])
             ERES.extend([('c', 'c', 's'*i+'r'*(n-i-1)+'d'+'b', 'r', (1, 1)) for i in range(1, n)])
         elif (fL, sL, fR) == ('c', 'c', 'd'):
+            if n == 1:
+                ERES.extend([('c', 'c', 'd'+'a', 'd', (1, -1))])
             ERES.extend([('c', 'c', 's'*i+'r'*(n-i)+'a',       'd', (1, -1)) for i in range(1, n+1)])
             ERES.extend([('c', 'c', 's'*i+'r'*(n-i-1)+'d'+'a', 'd', (1, 1)) for i in range(1, n)])
             ERES.extend([('c', 'c', 's'*i+'r'*(n-i)+'b',       'd', (1, -1)) for i in range(1, n+1)])
@@ -660,6 +715,8 @@ def sdot_switcher(drcL, drcR, nR):
     return (ntauL, ntauR)
 
 
+
+
 def lift_drc_M_B(drc, a):
     """
     Here we use extended drc diagram:
@@ -671,7 +728,7 @@ def lift_drc_M_B(drc, a):
     Get the first and second column of left diagram
     and the first column of the right diagram.
     """
-    fL, sL, fR = getz(drcL, 0, ''), getz(drcL, 1, ''), getz(drcR, 0, '')
+    fL, sL, fR, sR = getz(drcL, 0, ''), getz(drcL, 1, ''), getz(drcR, 0, ''), getz(drcR, 1, '')
     nL, nsL, nR = len(fL), len(sL), len(fR)
     if nL != nR:
         t = min(nL, nR)
@@ -709,6 +766,136 @@ def lift_drc_M_B(drc, a):
         print(RES)
     return eRES
 
+## New version
+
+def gen_fR_B(tL,tR, L,R, n):
+    """
+    Generate columns of the right diagram
+    for O(2n+1)
+    """
+    LfR = []
+    LfR.extend([('s'*i+'r'*(n-i)+'a', (1, -1)) for i in range(0, n+1)])
+    LfR.extend([('s'*i+'r'*(n-i-1)+'d'+'a', (1, 1)) for i in range(0, n)])
+    LfR.extend([('s'*i+'r'*(n-i)+'b', (1, -1)) for i in range(0, n+1)])
+    LfR.extend([('s'*i+'r'*(n-i-1)+'d'+'b', (1, 1)) for i in range(0, n)])
+    ERES = []
+    for  fR, twist in LfR:
+        LL = (tL,  *L[1:])
+        RR = (tR+fR, *R)
+        ERES.append((LL, RR, twist))
+    return ERES
+
+def gen_drc_B_two_new(L, R,  n):
+    """
+    agruments: last row of left diagram and right diagram
+    returns the tail of
+    first column of L, second column of L, first column of R, second column of R, tiwst
+    """
+    #print('fL, fR, n: %s, %s, %d'%(fL,fR,n))
+    #RES = []
+    ERES = []
+    if len(L) == 0 and len(R) == 0:
+        ERES = gen_fR_B('','',L,R,n)
+    elif len(R) == 0:
+        if L[0]=='s':
+            ERES = gen_fR_B('*','*',L,R,n-1)
+            LL = ('c',* L[1:])
+            ERES.append((LL, ('r'*n+'a',), (1,-1)))
+            ERES.append((LL, ('r'*(n-1)+'d'+'a',), (1,1)))
+        elif L[0]=='c':
+            ERES = gen_fR_B('c','s',L,R,n-1)
+            LL = ('c',* L[1:])
+            ERES.append((LL, ('r'*(n-1)+'d'+'b',), (1,1)))
+            ERES.append((LL, ('r'*n+'b',), (1,-1)))
+    elif len(L) == 0:
+        if R[0]=='r':
+            ERES = gen_fR_B('','s',L,R,n-1)
+            ERES.append((tuple(), ('r'*n+'a','d',R[2:]), (1,-1)))
+            ERES.append((tuple(), ('r'*(n-1)+'d'+'a','d',*R[2:]), (1,1)))
+        elif R[0]=='d':
+            ERES = gen_fR_B('','s',L,R,n-1)
+            ERES.append((tuple(), ('r'*(n-1)+'d'+'b','d',*R[2:]), (1,1)))
+            ERES.append((tuple(), ('r'*n+'b','d',R[2:]), (1,-1)))
+    else:
+        if (L[0],R[0]) == ('s','r'):
+            ERES = gen_fR_B('*','*',L,R,n-1)
+            # if n>1: # or len(L)==len(R):
+            #     ERES.append((('c',*L[1:]), ('r'*n + 'a','d',*R[1:]),(1, -1)))
+        elif (L[0],R[0]) == ('s','d'):
+            ERES = gen_fR_B('*','*',L,R,n-1)
+            ERES.append((('c',*L[1:]), ('r'*(n-1)+'d'+'a',*R),(1, 1)))
+            # if n==1 and len(L)==len(R):
+            ERES.append((('c',*L[1:]), ('r'*n+'a', *R),(1,-1)))
+            #ERES.append((('c',*L[1:]), ('r'*n+'a','d',*R[1:]),(1,-1)))
+            #ERES.append((('c',*L[1:]), ('r'*n+'b','d',*R[1:]),(1, -1)))
+        elif (L[0],R[0]) == ('c','r'):
+            ERES = gen_fR_B('c','s',L,R,n-1)
+            # if n==1 and len(L)!=len(R):
+            #     ERES.append((('c',*L[1:]), ('r'+'a','d',*R[1:]),(1, -1)))
+        elif (L[0],R[0]) == ('c','d'):
+            ERES = gen_fR_B('c','s',L,R,n-1)
+            #ERES.append((('c',*L[1:]), ('r'*n+'b','d',*R[1:]),(1, -1)))
+            ERES.append((('c',*L[1:]), ('r'*n+'b', *R),(1, -1)))
+            ERES.append((L, ('r'*(n-1)+'d'+'b',*R),(1, 1)))
+            # if n==1 and len(L)!=len(R):
+            #     ERES.append((('c',*L[1:]), ('d'+'a','d',*R[1:]),(1, -1)))
+            # if n==1 and len(L)==len(R):
+            #     ERES.append((('c',*L[1:]), ('d'+'a','d',*R[1:]),(1, -1)))
+            # if n>1:
+            #     ERES.append((L, ('r'*n+'b',*R),(1, 1)))
+    return ERES
+
+## New version
+def lift_drc_M_B(drc, a):
+    """
+    Here we use extended drc diagram:
+    'a'/'b' at the end of the longest column to indicate the form of B
+    is given by adds 1 on p or q.
+    """
+    drcL, drcR = drc
+    """
+    Get the first and second column of left diagram
+    and the first column of the right diagram.
+    """
+    fL, fR = getz(drcL, 0, ''), getz(drcR, 0, '')
+    nL,  nR = len(fL), len(fR)
+    if nL != nR:
+        t = min(nL, nR)
+        assert(nL-t <= 1 and nR - t <= 1)
+    elif fL[-1:] == '*':
+        t = len(fL)
+    else:
+        t = max(nR-1, 0)
+    assert(nR <= a)
+    tdrcL = tuple(col[:t] for col in drcL)
+    tdrcR = tuple(col[:t] for col in drcR)
+    try:
+        tdrcL, tdrcR = sdot_switcher(tdrcL, tdrcR, t)
+    except:
+        print(str_dgms(drc), ' t=', t)
+        print(fL,sL,fR)
+        print(tdrcL,tdrcR)
+        print(str_dgms((tdrcL,tdrcR)))
+        return None
+    #bdrcL, bdrcR = _add_bullet_D([fL[:nR]]+list(drcL[1:]),drcR)
+    # print(fL)
+    RES = []
+    eRES = []
+    L = ''.join(col[t:] for col in drcL)
+    R = ''.join(col[t:] for col in drcR)
+    ldrcD2 = gen_drc_B_two_new(L, R, a-t)
+    for LL, RR, twist in ldrcD2:
+        # print('%s,%s,%s'%(ffL,ffR,ssR))
+        drcLL = tuple(col+getz(LL, i, '')  for i, col in enumerate(tdrcL))
+        drcRR = tuple(col+getz(RR, i, '')  for i, col in enumerate(tdrcR))
+        ndrc = reg_drc((drcLL, drcRR))
+        RES.append(ndrc)
+        eRES.append((ndrc, twist))
+    try:
+        assert(len(RES) == len(set(RES)))
+    except:
+        print(RES)
+    return eRES
 
 def updateDRCLS(RES, odrc, oLS, drc, LS, reportann = True):
     if drc in RES:
@@ -1251,7 +1438,7 @@ def test_purelyeven(part, rtype='D', report=False, reportann=False, reportpack =
                 #if LSDIC and prtype == 'B':
                 #    sLS = str_LS(LS),
                 print('~~~~~~~~~~~~~~~')
-            return False
+            return (lDRCLS, lLSDRC)
     return (lDRCLS, lLSDRC)
 
 def getLSpacket(LS, dLSDRC):

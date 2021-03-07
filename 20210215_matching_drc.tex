@@ -1253,10 +1253,8 @@
 \def\nUpsilon{\Upsilon^-}
 \def\pcL{\cL^+}
 \def\ncL{\cL^-}
-\def\pcP{\cP^+}
-\def\ncP{\cP^-}
-% \def\pcE{\cE^+}
-% \def\ncE{\cE^-}
+\def\pcE{\cE^+}
+\def\ncE{\cE^-}
 \def\pcC{\cC^+}
 \def\ncC{\cC^-}
 \def\pcLp{\cL^{\prime+}}
@@ -1823,7 +1821,7 @@ $[\cL]$ a  LS packet.
     groups.
     For example, $\cO$ is the regular orbit of $\Sp(2n,\bC)$, there is only 5 possible
     local systems when $n\geq 3$. But there are $2n+1$ unipotent
-    representations. %See \Cref{sec:C.reg}.
+    representations. See \Cref{sec:C.reg}.
     \item One will see easily from the proof that the associated character
     $\Ch_{\cO}(\pi)$ for every $\pi\in \Unip(\cO)$ is always multiplicity free.
     Even when $\Ch_{\cO}(\pi)$ is not irreducible, the character of the local
@@ -2588,7 +2586,7 @@ following shapes with $n = (C_{2k+1}-C_{2k}+1)/2$:
   \uptau:\tytb{
     {*(srcol)\cdots}\cdots\cdots\cdots,
     {*(srcol)\ast}{\ast}{\ast}{\ast},
-    {x_{1}}{x_{0}}{\cdots}\cdots,
+    {x_{1}}{y_{1}}{\cdots}\cdots,
     \vdots,
     {x_{n}}
   }
@@ -2624,12 +2622,12 @@ following shapes with $n = (C_{2k+1}-C_{2k}+1)/2$:
 
 The diagram $\uptau$ is obtained from the diagram of $\uptau$ by adding
 $\bullet$ at the
-grey parts, changing $x_{\uptaupp}$ to $x_{0}$ and attaching $x_{1}\cdots x_{n}$.
+grey parts, changing $x_{\uptaupp}$ to $y_{1}$ and attaching $x_{1}\cdots x_{n}$.
 
 
 We define
 \[
-  \bfpp_{\uptau}:=\tytb{{x_{1}}{x_{0}},\vdots,{x_{n}}}
+  \bfpp_{\uptau}:=\tytb{{x_{1}}{y_{1}},\vdots,{x_{n}}}
 \]
 and call $\bfpp_{\uptau}$ the peduncle part of $\uptau$. Let
 $\cO_{1} = (C_{2k+1}-C_{2k}+1,)\in \dpeNil(D)$. We define
@@ -2644,37 +2642,6 @@ $\bfuu_{\uptau}\in \drc(\cO_{1})$ by the following formula:
 \end{equation}
 
 
-Let $\tcO = (C_{2k+1}-C_{2k}+1,1,1,)\in \dpeNil(D)$ and
-$\tcOpp = \eDD^{2}(\tcO) = (2)\in \dpeNil(D)$. Then
-$\bfpp_{\uptau}\in \drc(\tcO)$ and $x_{\uptau}\in\dpeNil(D)$.
-There is some restriction on the possibilities  of $\bfuu_{\uptau}$.
-
-\begin{lem}\label{lem:u}
-  Let
-  \[
-    \uptau = \tytb{{x_{1}}{x_{0}},\vdots, {x_{n}}}\in \drc(\tcO)
-    \quad \text{and}\quad \uptaupp:=\eDDo^{2}(\uptau).
-  \]
-  Then we have the following properties which is easy to verify.
-  \begin{enumS}
-    \item  If $\uptaupp = r$, then $s \in \bfuu_{\uptau}$ or
-    $c \in \bfuu_{\uptau}$. In particular, $\ssign(\bfuu_{\uptau})\succ (0,1)$.
-    If $\ssign(\bfuu_{\uptau})\nsucc (0,2)$, we have
-    \[
-      \uptau = \tytb{rc, \vdots,r} \quad \text{and}\quad  \bfuu_{\uptau} = \tytb{r,\vdots,c}.
-    \]
-    \item  If $\uptaupp = c$, then $s \in \bfuu_{\uptau}$ or
-    $c \in \bfuu_{\uptau}$. In particular, $\ssign(\bfuu_{\uptau})\succeq (0,1)$.
-    \item If $\uptaupp = d$, there is no restriction on $\bfuu_{\uptau}$.
-    \item  We have $x_{n}=d$ if and only $d\in \bfuu_{\uptau}$.
-    \item If $x_{n}=d$ and $\uptaupp =r/c$,  we have $n\geq 2$ and
-    $\ssign(\bfuu_{\uptau})\succeq (0,2)$.
-    \item If $\bfuu_{\uptau} = r\cdots r$, we have $\uptaupp=d$.
-  \end{enumS}
-
-\end{lem}
-
-
 \begin{lem}\label{lem:gd.inj}
   The map $\delta\colon  \drc(\cO)\rightarrow \drc(\cOpp) \times \drc(\cO_{1})$
   given by $\uptau\mapsto (\eDDo^{2}(\uptau),\bfuu_{\uptau})$ is injective.
@@ -2686,14 +2653,9 @@ There is some restriction on the possibilities  of $\bfuu_{\uptau}$.
   given by $\uptau\mapsto (\eDDo^{2}(\uptau), \ssign(\uptau),\upepsilon_{\uptau})$ is injective.
 \end{lem}
 \begin{proof}
-  By our algorithm,
-  \[
-    (x_{\uptaupp},\bfuu_{\uptau}) = (x_{\eDDo^{2}(\bfpp_{\uptau})}, \bfuu_{\bfpp_{\uptau}}).
-  \]
-  The the injectivity of $\delta$ and the siginature formula follows directly
-  from the definition of $\bfuu_{\uptau}$.
-  Now the injectivity of $\tdelta$ follows from the injectivity of
-  $\bfuu_{\uptau}\mapsto (\ssign(\bfuu_{\uptau}), \upepsilon)$ by
+  The the injectivity of $\delta$ and the siginature formula follows directly from our algorithm.
+  Now the injectivity of $\tdelta$ follows from
+  $\bfxx_{\uptau}\mapsto (\ssign(\bfxx_{\uptau}), \upepsilon)$ is injective by
   \Cref{c:init.CD}.
   % Let $\uptaupp:=\eDDo^{2}(\uptau)$ and
   % Then $\uptau\mapsto (\uptaupp,\bfuu_{\uptau})$ is injective and
@@ -2851,7 +2813,7 @@ Let $\star=B,C,D,M$.
 For monoid  $\YD$, $\SYD$ or $\MYD$, the identity element is the empty set
 $\emptyset$, and the monoid binary operator is denoted by
 ``$\cdot$''.
-  The  $\emptyset$ is  always in
+The  $\emptyset$ is  always in
 $\MYD(\star)$ by convention.
 According to the definition of $\MYD(\star)$.  it could happen that $\cL_{1}\cdot \cL_{2}\notin \MYD(\star)$ for
 $\cL_{1},\cL_{2}\in \MYD(\star)$.
@@ -3308,9 +3270,7 @@ $\cO\in \dpeNil(D)$.
     % Suppose $\upepsilon=0$.
     % $\cL_{\uptau}\neq \cL_{\uptau}\otimes \bfonepn$.
     %Therefore $\lUnip(\cO)=\Unip(\cO)$.
-    %\
-    \delete{
-    \item {\color{red} abandon:}  $x_{\uptau}$ determine the factorization of local system described in
+    \item  $x_{\uptau}$ determine the factorization of local system described in
     \Cref{tab:ls.factor}:
     \[
       \cL_{\uptau} = \sum_{i=-k}^{k} \cB_{\uptau,i}\cdot \cD_{\uptau,i}.
@@ -3431,10 +3391,8 @@ $\cO\in \dpeNil(D)$.
     \label{tab:ls.factor}
     \label{eq:ls.factor}
   \end{table}
-  }
   \item
-  %In particular, we have:
-  We have
+  In particular, we have:
   \begin{enumT}
     \item $x_{\uptau} = s$, then $\pcL_{\uptau} = \ncL_{\uptau} = 0$.
     \item $x_{\uptau} = r/c$, then $\pcL_{\uptau} \neq 0$ and $\ncL_{\uptau}=0$.
@@ -3446,15 +3404,14 @@ $\cO\in \dpeNil(D)$.
   \item If $\cOp \leadsto \cOpp$ is a usual descent, we have a simpler
   factorization:
   \begin{equation}\label{eq:d.factor}
-    %\cL_{\uptau} = \cB_{\uptau,0}\cdot \cD_{\uptau,0}
-    \cL_{\uptau} = \cT_{\uptau}\cdot \cP_{\bfxx_{\uptau}}.
+    \cL_{\uptau} = \cB_{\uptau,0}\cdot \cD_{\uptau,0}
   \end{equation}
-  % where $\cD_{\uptau,0}$ is given by \eqref{eq:ls.srcd}.
+  where $\cD_{\uptau,0}$ is given by \eqref{eq:ls.srcd}.
 
-  % In particular, $\cD_{\uptau,0}=\tytb{=,=}$ (resp.
-  % $\cD_{\uptau,0}=\tytb{+,+}$) if and only if all 1-rows
-  % of $\cL_{\uptau}$ have ``$=$'' marks (resp. ``+'' marks), i.e. $x_{\uptau}=s$
-  % (resp. $x_{\uptau}=r$).
+  In particular, $\cD_{\uptau,0}=\tytb{=,=}$ (resp.
+  $\cD_{\uptau,0}=\tytb{+,+}$) if and only if all 1-rows
+  of $\cL_{\uptau}$ have ``$=$'' marks (resp. ``+'' marks), i.e. $x_{\uptau}=s$
+  (resp. $x_{\uptau}=r$).
   \item When $\cOp$ is noticed, the map
   $\cL\colon \drc( \cOp )\longrightarrow \LLS(\cOp)$ is a bijection.
   \item When $\cO$ is noticed, the map
@@ -3492,8 +3449,8 @@ $\uppi_{\uptau}$ and $\uppi_{\uptau}\otimes \det$ are two different
 representations of the orthogonal groups. Therefore $\drc(\cO)\times \bZ/2\bZ$
 counts the set of unipotent representations of orthogonal groups.
 
-% The factorization \eqref{eq:ls.srcd} also holds in more general cases, we
-% indicate when it holds in the proof of \Cref{prop:CD}.
+The factorization \eqref{eq:ls.srcd} also holds in more general cases, we
+indicate when it holds in the proof of \Cref{prop:CD}.
 
 The main theorem would be a consequence of \Cref{prop:CD}.
 
@@ -3513,24 +3470,24 @@ The tentacles part $\cT_{\uptau} = \dagger \cL_{\uptaup}$
 could be reducible. The peduncle part $\cP_{\uptau} := \cL_{\bfxx_{\uptau}}$ and
 $\cL_{\uptau} = \cT_{\uptau}\cdot \cP_{\uptau}$.
 
-% On the other hand, $\cL_{\uptau}$ also could be factorized into the body part
-% and the basal
-% disk part:
-% \[
-%   \cL_{\uptau} = \cB_{\uptau,0}\cdot \cD_{\uptau,0}.
-% \]
-% Here $\cD_{\uptau,0}$ is given in \eqref{eq:ls.srcd}.
-% % ) which will be used in the
-% % generalized descent case.
+On the other hand, $\cL_{\uptau}$ also could be factorized into the body part
+and the basal
+disk part:
+\[
+  \cL_{\uptau} = \cB_{\uptau,0}\cdot \cD_{\uptau,0}.
+\]
+Here $\cD_{\uptau,0}$ is given in \eqref{eq:ls.srcd}.
+% ) which will be used in the
+% generalized descent case.
 
 \medskip
 
 When $\cOp\leadsto \cOpp$ is a generalized descent, the situation is more
-complicated as the local system $\cL_{\uptau}$ may consists of two hydras, see \eqref{eq:gd.ls}.
+complicated as the local system $\cL_{\uptau}$ may consists of several ``hydras''.
 
-% To ease the notation, we will set $\cB_{\uptau} :=\cB_{\uptau,0}$  and
-% $\cD_{\uptau} :=\cD_{\uptau,0}$
-% in the following proof.
+To ease the notation, we will set $\cB_{\uptau} :=\cB_{\uptau,0}$  and
+$\cD_{\uptau} :=\cD_{\uptau,0}$
+in the following proof.
 % %On the other hand, $x_{\uptau}$ could been detected from the following list of 1-rows:
 % \[
 % \begin{array}{c|c|c|c|c}
@@ -3623,13 +3580,13 @@ one can check that the following maps are bijections
   \end{tikzcd}
 \]
 To see that $\drc(\cO)\ni\uptau\mapsto \cL_{\uptau}$ is an injection, one check the
-following lemma holds:
-\begin{lem}\label{c:init.CD}
+following claim holds:
+\begin{claim}\label{c:init.CD}
   The map $\drc(\cO_{1})\longrightarrow \bN^{2}\times \bZ/2\bZ$ given by
   $\uptau\mapsto (\ssign(\uptau),\upepsilon_{\uptau})$ is injective (see
   \Cref{sec:upepsilon} for the definition of $\upepsilon_{\uptau}$). Moreover,
   $\upepsilon_{\uptau}=0$ only if $\ssign(\uptau)\geq (0,1)$. \qedhere
-\end{lem}
+\end{claim}
 
 
 Moreover, $\cL_{\uptau}\otimes \det \notin \LLS(\cO)$ for any $\uptau\in \drc(\cO)$.
@@ -3639,7 +3596,6 @@ non-trivial restriction. When $\ssign(\bfxx_{\uptau})\nsucceq (1,0)$,
 $\bfxx_{\uptau}=s\cdots s$, all 1-rows of $\cL_{\uptau}$ are marked by ``$=$'' and
 all 1-rows of $\cL_{\uptau}\otimes \det$ are  marked by ``$-$''.
 
-\delete{
 Obviously we have a factoriation of the peduncle:
 \begin{equation}\label{eq:ped.factor1}
   \cP_{\uptau} = \cL_{\bfxx_{\uptau}} = \cB_{\bfxx_{\uptau}}\cdot \cD_{\bfxx_{\uptau}}
@@ -3663,8 +3619,7 @@ and so the factorization \eqref{eq:d.factor} holds.
 
 
 Therefore, our main theorem, \Cref{thm:count}, holds for $\cO$.
-}
-Therefore our main \Cref{thm:count} and main proposition \Cref{prop:CD} holds for $\cO$.
+
 
 \subsection{The descent case}\label{sec:pf.ds.CD}
 Now we assume $k\geq 1$ and $C_{2k}$ is even. In this case $\cOp\leadsto \cOpp$
@@ -3733,8 +3688,8 @@ By \eqref{eq:sp-nsp-sig}, we have
 In particular, $\uppi_{\uptau}\neq 0$ and we could determine $\bfxx_{\uptau}$ from
 the marks on the 1-rows of $\cL_{\uptau}$.
 
-% The factorization of $\cL_{\uptau}$ in the fashion of \Cref{eq:ls.factor} is also given by
-% \eqref{eq:ped.factor1} and \eqref{eq:bd.factor2}.
+The factorization of $\cL_{\uptau}$ in the fashion of \eqref{eq:ls.factor} is also given by
+\eqref{eq:ped.factor1} and \eqref{eq:bd.factor2}.
 % When $\upepsilon=0$, $(p_{0},q_{0})\succeq \ssign(d)=(1,1)$ and so
 % $\cL_{\uptau}\neq \cL_{\uptau}\otimes \bfone_{\ssign(\uptau)}^{+,-}$.
 
@@ -4127,8 +4082,7 @@ Then
 \lsign(\ncL_{\uptaupp})=(p_{0},q_{0}-1) \text{ if } \ncL_{\uptaupp}\neq \emptyset.
 \end{equation}
 \begin{equation}\label{eq:LS.taup}
-  \cL_{\uptaup} = \vartheta(\cL_{\uptaupp}) = \maltese^{\frac{\abs{\ssign(\uptaupp)}}{2}}
-  (\dagger \pcL_{\uptaupp} + \dagger \ncL_{\uptaupp}) \neq 0
+  \cL_{\uptaup} = \vartheta(\cL_{\uptaupp}) = \dagger \pcL_{\uptaupp} + \dagger \ncL_{\uptaupp} \neq 0
 \end{equation}
 where
 $\lsign(\dagger\pcL_{\uptaupp}) = (q''_{1}, p''_{1}-1)$ and
@@ -4136,10 +4090,8 @@ $\lsign(\dagger\ncL_{\uptaupp})=(q''_{1}-1,p''_{1})$ (if
 $\dagger\ncL_{\uptaupp}\neq 0$).
 
 Let $(p_{1},q_{1}) := \lsign(\cL_{\uptau})$ and
-$(e,f):=(p_{1}-p''_{1}+1, q_{1}-q''_{1}+1)$. Using \Cref{lem:gd.inj}
-% \eqref{eq:bd.prop} and
-% \eqref{eq:def.u},
-one can show that
+$(e,f):=(p_{1}-p''_{1}+1, q_{1}-q''_{1}+1)$. Using \eqref{eq:bd.prop} and
+\eqref{eq:def.u}, one can show that
 \[
   (e,f)=\ssign(\bfuu_{\uptau}).
 \]
@@ -4154,27 +4106,18 @@ one can show that
 
 Now
 \begin{equation}\label{eq:gd.ls}
-  \cL_{\uptau} =
-  \begin{cases}
-    (\bfone^{+,-}\otimes \dagger\maltese^t \dagger \pcL_{\uptaupp}) \cdot \pcP_{\uptau}
-    + (\bfone^{+,-}\otimes \dagger\maltese^{t} \dagger \ncL_{\uptaupp})  \cdot \ncP_{\uptau}
-    & \text{if } x_{\uptau} \neq d\\
-    (\dagger\maltese^t \dagger \pcL_{\uptaupp}) \cdot \pcP_{\uptau}
-    + (\dagger\maltese^{t} \dagger \ncL_{\uptaupp})  \cdot \ncP_{\uptau}
-    & \text{if } x_{\uptau} =d\\
-  \end{cases}
+  \cL_{\uptau} = \dagger\dagger \pcL_{\uptaupp} \cdot \pcE_{\uptau}   + \dagger\dagger \ncL_{\uptaupp}  \cdot \ncE_{\uptau}
 \end{equation}
 where
 \[
   \begin{split}
-    t & = \frac{\abs{\ssign(\uptau)-\ssign(\uptaupp)}}{2} = \frac{\abs{\ssign(\bfuu_{\uptau})}}{2}\\
-    \pcP_{\uptau}& = \begin{cases} \ddagger_{e,f-1} & \text{when
+    \pcE_{\uptau}& = \begin{cases} \ddagger_{e,f-1} & \text{when
       } f\geq 1 \text{ and } x_{\uptau}\neq d \\
       \dagger_{e,f-1} & \text{when
       } f\geq 1 \text{ and } x_{\uptau}= d \\
       0 & \text{otherwise}
     \end{cases}\\
-    \ncP_{\uptau}& = \begin{cases} \ddagger_{e-1,f} & \text{when
+    \ncE_{\uptau}& = \begin{cases} \ddagger_{e-1,f} & \text{when
       } e\geq 1 \text{ and } x_{\uptau}\neq d \\
       \dagger_{e-1,f} & \text{when
       } e\geq 1 \text{ and } x_{\uptau}= d \\
@@ -4183,12 +4126,11 @@ where
   \end{split}
 \]
 %
-% $\pcP$ and $\ncP$ are 1-rows of sign $(p_{1}-p''_{1}+1,q_{1}-q''_{1})$ and
+% $\pcE$ and $\ncE$ are 1-rows of sign $(p_{1}-p''_{1}+1,q_{1}-q''_{1})$ and
 % $(p-p'',q-q''+1)$ respectively.
 
 \medskip
 
-\delete{
 By induction hypothesis, we have
 a factorization of $\cL_{\uptaupp}$ as in \eqref{eq:ls.factor}
 \[
@@ -4510,24 +4452,11 @@ In particular, \eqref{eq:d.factor} holds.
         \cD_{\uptau,i} = \cP_{\utau,i}  \quad \forall i = -k, \cdots, -1,1,\cdots, k.\\
     \]
   \end{enumT}
-}
 
-%\subsubsection{Summary of the factorization}
-% We have the non-vanishing of the lifted local system $\cL_{\uptau}$ and the
-% factorization described in
-% \Cref{eq:ls.factor} holds.
-\begin{lem}
-  The local system $\cL_{\uptau}\neq 0$.
-\end{lem}
-\begin{proof}
-  Since $x_{\uptaupp}\neq s$, $\pcL_{\uptaupp}\neq 0$. When
-  $\ssign(\bfuu_{\uptau})\succeq (0,1)$, the first term in \eqref{eq:gd.ls} dose
-  not vanish. Now suppose $\ssign(\bfuu_{\uptau})\nsucc(0,1)$. We have
-  $x_{\uptaupp}=d$ by \Cref{lem:u} and $\ssign(\bfuu_{\uptau})\succ(1,0)$.
-  Therefore, $\ncL_{\uptaupp}\neq 0$ by the induction hypothesis and the second
-  term in \eqref{eq:gd.ls} dose not vanish. Hence $\cL_{\uptau}\neq 0$ in all
-  cases.
-\end{proof}
+\subsubsection{Summary of the factorization}
+We have the non-vanishing of the lifted local system $\cL_{\uptau}$ and the
+factorization described in
+\Cref{eq:ls.factor} holds.
 
 \subsubsection{Unipotent representations attached to $\cOp$}
 In this section, we let $\uptaup\in \drc(\cOp)$ and
@@ -4537,10 +4466,10 @@ $x_{\uptaupp}\neq s$ and so $\pcL_{\uptaupp}$ always non-zero.
 Recall \eqref{eq:LS.taup}.
 We claim that we can recover $\pcL_{\uptaupp}$ and
 $\ncL_{\uptaupp}$ from $\cL_{\uptaup}$:
-\begin{lem}\label{c:gd.C1}
+\begin{claim}\label{c:gd.C1}
   The map $\Omega_{\cOp}\colon \cL_{\uptaup}\mapsto (\pcL_{\uptaupp},\ncL_{\uptaupp})$ is a well
   defined map.
-\end{lem}
+\end{claim}
 \begin{proof}
   When $\lsign(\cL_{\uptaup})$ has two elements, $x_{\uptaupp}=d$ and
   $\lsign(\cL_{\uptaup}) = \set{(q''_{1},p''_{1}-1),(q''_{1}-1,p''_{1})}$. In
@@ -4558,7 +4487,7 @@ $\ncL_{\uptaupp}$ from $\cL_{\uptaup}$:
   In any case, we get
   % recover $\lsign(\cL_{\uptaupp})=(p_{0},q_{0})$ and
   \begin{equation}\label{eq:uptaupp.sign}
-    \ssign(\uptaupp) = (n_{0},n_{0})+(p''_{1},q''_{1})\quad \text{where }
+    \ssign(\uptaupp) = (n_{0},n_{0})+(p_{0},q_{0})\quad \text{where }
     2n_{0} = \abs{\DD(\cOpp)}.
   \end{equation}
 % $+\half \abs{\DD(\cOpp)} \cdot(1,1)$.
@@ -4568,10 +4497,10 @@ $\ncL_{\uptaupp}$ from $\cL_{\uptaup}$:
 \end{proof}
 
 
-\begin{lem}\label{c:gd.C3}
+\begin{claim}\label{c:gd.C3}
   Suppose $\uptaup_{1}\neq \uptaup_{2}\in \drc(\cOp)$. Then
   $\uppi_{\uptaup_{1}}\neq \uppi_{\uptaup_{2}}$.
-\end{lem}
+\end{claim}
 \begin{proof}
   It suffice to consider the case when $\cL_{\uptaup_{1}} = \cL_{\uptaup_{2}}$.
  By \eqref{eq:uptaupp.sign} in the proof of \Cref{c:gd.C1},
@@ -4603,9 +4532,9 @@ $\ncL_{\uptaupp}$ from $\cL_{\uptaup}$:
 
 \subsubsection{Unipotent representations attached to $\cO$}
 
-\begin{lem}\label{c:gd.D1}
+\begin{claim}\label{c:gd.D1}
   Suppose $\uptau_{1}\neq \uptau_{2}\in \drc(\cO)$. Then $\uppi_{\uptau_{1}}\neq \uppi_{\uptau_{2}}$.
-\end{lem}
+\end{claim}
 \begin{proof}
  It suffice to consider the case that $\cL_{\uptau_{1}}=\cL_{\uptau_{2}}$.
  Clearly, $\ssign(\uptau_{1})=\ssign(\uptau_{2})$. On the other hand,
@@ -4720,7 +4649,7 @@ In this section, we prove the claims about noticed and +noticed orbits.
 %   % \end{enumC}
 % \end{prop}
 
-\begin{lem}\label{c:gd.C2}
+\begin{claim}\label{c:gd.C2}
   Suppose $\cOp$ is noticed. Then
   \begin{enumT}
     \item \label{c:gd.C2.1}The map
@@ -4729,7 +4658,7 @@ $\cL_{\uptaupp}\mapsto \cL_{\uptaup}=\vartheta(\cL_{\uptaupp})$ is a bijection.
 \item
 The map $\drc(\cOp)\rightarrow \LLS(\cOp)$ given by $\uptaup\mapsto \cL_{\uptaup}$ is a bijection.
 \end{enumT}
-\end{lem}
+\end{claim}
 \begin{proof} %Recall \eqref{eq:LS.taup}.
   \begin{enumPF}
     \item
@@ -4755,21 +4684,21 @@ The map $\drc(\cOp)\rightarrow \LLS(\cOp)$ given by $\uptaup\mapsto \cL_{\uptaup
 \end{enumPF}
 \end{proof}
 
-\begin{lem}\label{c:noticed.bij}
+\begin{claim}\label{c:noticed.bij}
  Suppose $\cO$ is noticed, $\cL \colon \drc(\cO)\mapsto \LLS(\cO)$ given by
  $\uptau\mapsto \cL_{\uptau}$ is bijective.
 % Moreover, $\cL_{\uptau_{1}}=\cL_{\uptau_{2}}$ implies $\cL_{\uptaup_{1}}=\cL_{\uptaup_{2}}$.
-\end{lem}
+\end{claim}
 \begin{proof}
 We prove the claim by contradiction. We assume $\uptau_{1}\neq \uptau_{2}$ such
 that $\cL_{\uptau_{1}}=\cL_{\uptau_{2}}$.
 
 
 Recall \eqref{eq:gd.ls}: there is an pair of non-negative integers
-$(e_{i},f_{i})=\ssign(\bfuu_{\uptau_{i}})$ such that
+$(e_{i},f_{i})=\ssign(\bfuu_{\uptau})$ such that
 \[
-  \cL_{\uptau_{i}} = \dagger\dagger \pcL_{\uptaupp_{i}}\cdot \pcP_{\uptau_{i}}
-  + \dagger\dagger \ncL_{\uptaupp} \cdot \ncP_{\uptau_{i}}.
+  \cL_{\uptau_{i}} = \dagger\dagger \pcL_{\uptaupp_{i}}\cdot \pcE_{\uptau_{i}}
+  + \dagger\dagger \ncL_{\uptaupp} \cdot \ncE_{\uptau_{i}}.
 \]
 
 \begin{enumPF}
@@ -4780,7 +4709,7 @@ have
 %  \item
 $\upepsilon_{\uptau_{1}}=\upepsilon_{\uptau_{2}}$, which can be read from the mark $-/=$.
 Moreover, the term
-$\dagger\dagger\pcL_{\uptaupp_{i}}\cdot \pcP_{\uptau_{i}}\neq 0$ and we can
+$\dagger\dagger\pcL_{\uptaupp_{i}}\cdot \pcE_{\uptau_{i}}\neq 0$ and we can
 recover it from $\cL_{\uptau_{i}}$. So $\pcL_{\uptaupp_{1}} = \pcL_{\uptaupp_{2}}$.
 Since $\cOpp$ is +noticed, $\uptaupp_{1}=\uptaupp_{2}$ by
 \eqref{c:gd.pnoticed} and the induction hypothesis.
@@ -4788,21 +4717,20 @@ Note that $\ssign(\uptau_{1})=\ssign(\uptau_{2})$, we get
 $\uptau_{1}=\uptau_{2}$ by \Cref{lem:gd.inj} which is contradict to our assumption.
 
 % as the parts.. must contains the term
- % where $\pcP_{i}$ and $\ncP_{i}$ are columns of sign $(p_{i},q_{i}-1)$ and
+ % where $\pcE_{i}$ and $\ncE_{i}$ are columns of sign $(p_{i},q_{i}-1)$ and
  % $(p_{i}-1,q_{i})$ respectively.
- % Here we adapt the convention that $\pcP_{i} = \emptyset$ (resp. $\ncP_{i}$) if
+ % Here we adapt the convention that $\pcE_{i} = \emptyset$ (resp. $\ncE_{i}$) if
  % $q_{i}-1<0$ (resp. $p_{i}-1<0$).
 
 % Therefore, we have $\cL_{\uptaup_{i}}= \DD(\cL_{\uptau_{i}}) $ if $\cL_{\uptau}$ contains a 1-row
 % of $+$ sign and a 1-row of $-$ sign.
 \item
 Now we assume that $\cL_{\uptau_{i}}$ does not contains a 1-row marked by $-/=$.
-By \eqref{eq:gd.ls}, we conclude that $x_{\uptaupp}\neq d$ and
-$\bfuu_{\uptau} = r\cdots r$ or $ r\cdots rc$. Therefore $\bfpp_{\uptau_{i}}$
-must be one of the following form by \Cref{lem:u}:
+By checking the list in \Cref{sec:z.r,sec:z.c,sec:z.d}, we conclude that
+$\bfpp_{\uptau_{i}}$ must have one of the following form:
 % The exceptioinal cases are:
 % \begin{enumT}
-%   \item $(p_{i},q_{i}) = (2a,0)$ and so $\pcP_{i}=\emptyset$.
+%   \item $(p_{i},q_{i}) = (2a,0)$ and so $\pcE_{i}=\emptyset$.
 %   In this case, $\set{\bfpp_{\uptau_{i}}}$ must consists of the following three elements
   \[
     \bfpp_{1} =\tytb{rc,\vdots,r,r}, \quad \bfpp_{2}=\tytb{rc,\vdots,r,c}, \quad\text{and}
@@ -4825,48 +4753,26 @@ must be one of the following form by \Cref{lem:u}:
     %Since $\cOpp$ is +noticed, we get $\uptaupp_{1}=\uptaupp_{2}$ a contradiction.
     \item  Suppose
     $\set{\bfpp_{\uptau_{1}},\bfpp_{\uptau_{2}}} = \set{\bfpp_{1},\bfpp_{2}}$.
-    By the argument above, we have $\pcL_{\uptaupp_{1}}=\pcL_{\uptaupp_{2}}$
+    The the argument above, we have $\pcL_{\uptaupp_{1}}=\pcL_{\uptaupp_{2}}$
     Now $\uptaupp_{1}\neq \uptaupp_{2}$ since $\set{x_{\uptaupp_{1}},x_{\uptaupp_{2}}}=\set{r,c}$.
     This contradict to that $\cOpp$ is +noticed again.
     \item\label{it:c:noticed.bij.4} Suppose $\bfpp_{\uptau_{1}} = \bfpp_{1} \text{ or } \bfpp_{2}, \bfpp_{\uptau_{2}}=\bfpp_{3}$.
     Then
-   \[
-    \cL_{\uptau_{1}} = \dagger\maltese^{\frac{\abs{\bfuu_{\uptau_{1}}}}{2}}\dagger\pcL_{\uptaupp_{1}}\cdot \pcP_{\uptaupp_{1}}
-    \quad \text{and} \quad
-    \cL_{\uptau_{2}} = \dagger\maltese^{\frac{\abs{\bfuu_{\uptau_{2}}}}{2}}\dagger\ncL_{\uptaupp_{2}}\cdot \ncP_{\uptaupp_{2}}.
-    \]
-    This implies
-    $\abs{\ssign(\uptaupp_{1})} \equiv \abs{\ssign(\uptaupp_{2})}+2 \pmod{4}$
+    $\cL_{\uptau_{1}} = \dagger\dagger\pcL_{\uptaupp_{1}}\cdot \pcE_{\uptaupp_{1}}$
     and
-    $\maltese \dagger \pcL_{\uptaupp_{1}}= \dagger\ncL_{\uptaupp_{2}}$.
+    $\cL_{\uptau_{2}} = \dagger\dagger\ncL_{\uptaupp_{2}}\cdot \ncE_{\uptaupp_{2}}$.
+    This implies
+    $\dagger \pcL_{\uptaupp_{1}}= \dagger\ncL_{\uptaupp_{2}}$ and
+    $\abs{\ssign(\uptaupp_{1})} \equiv \abs{\ssign(\uptaupp_{2})}+2 \pmod{4}$.
 
+    By the list in \Cref{sec:z.r,sec:z.c,sec:z.d}, we see that
+    $\cL_{\uptaupp_{2}}\supset \tytb{-,+}$ and
+    $\ncL_{\uptaupp_{2}}\supset \tytb{+}$.
 
-    \begin{claim}\label{c:d+}
-      We have $\ncL_{\uptaupp_{2}}\supset \tytb{+}$.
-    \end{claim}
-    \begin{proof}
-      If $\cOpp$ is obtained by the usual descent, we have
-      $\cL_{\uptau}\succeq \tytb{-,+}$ and we are done.
-
-      Now assume $\cOpp$ is obtained by generalized descent and $\cOpp$ is
-      +noticed, i.e. $\bfuu_{\uptaupp}$ has at least length $2$.
-      Suppose $\ssign{\bfuu_{\uptaupp}}\succ (1,2)$. Applying \eqref{eq:gd.ls} to $\uptaupp$,
-      we see that the first term is non-vanishing and
-      $\cL_{\uptaupp}\supseteq \dagger_{(1,1)}$.
-
-      Otherwise, $\ssign( \bfuu_{\uptaupp} ) = (2n_{0}-1,1)\succeq (3,1)$ where $n_{0}$ is the
-      length of $\bfuu_{\uptaupp}$. By \eqref{eq:gd.ls}, the second term is
-      non-vanishing and $\cL_{\uptaupp}\succ \dagger_{(2n_{0}-1,1)}\succ +$.
-    \end{proof}
-    % Note that $\cOpp$ is a +noticed orbit. Then
-    % By the list in \Cref{sec:z.r,sec:z.c,sec:z.d}, we see that
-    % $\cL_{\uptaupp_{2}}\supset \tytb{-,+}$ and
-    % $\ncL_{\uptaupp_{2}}\supset \tytb{+}$.
-
-    The claim leads to a contradiction: Thanks to the character twist in the theta
+    This leads to a contradiction: Thanks to the character twist in the theta
     lifting formula of the local system, we see that the the associated
-    character restricted on the 2-row $\tytb{-+}$ of $\maltese \dagger \pcL_{\uptaupp_{1}}$ and
-    $\dagger \ncL_{\uptaupp_{2}}$ must be are different, a contradiction.
+    character restricted on the 2-row $\tytb{-+}$ of $\pcL_{\uptau_{1}}$ and
+    $\ncL_{\uptau_{2}}$ must be are different.
 
     % Note that  $\cL_{\uptau_{2}}\succ \dagger_{(1,1)}$ implies that
     % $\ncL_{\uptau_{2}}\succ \dagger_{(1,0)}$. So $\dagger\ncL_{\uptau_{2}}$ has
@@ -4881,7 +4787,7 @@ must be one of the following form by \Cref{lem:u}:
     % \item $\bfpp_{\uptau_{1}} = \bfpp_{2},\bfpp_{\uptau_{2}}=\bfpp_{3}$.
     % On argue by the same way as the case \eqref{} and yield a contRadiction.
   \end{enumPF}
-%   \item $(p_{i},q_{i}) = (0,2a)$ and so $\ncP_{i}=\emptyset$.
+%   \item $(p_{i},q_{i}) = (0,2a)$ and so $\ncE_{i}=\emptyset$.
 %   In this case, $\set{\bfpp_{\uptau_{i}}}$ must consists of two the following three elements
 %   \[
 %     \bfpp_{1} =\tytb{sc,\vdots,s}, \quad \bfpp_{2}=\tytb{sr,\vdots,s}, \quad\text{and}
@@ -4897,17 +4803,17 @@ must be one of the following form by \Cref{lem:u}:
 % \end{enumT}
 % \end{enumI}
 \end{enumPF}
-  We finished the proof of the lemma.
+  We finished the proof of the claim.
 \end{proof}
 
 \subsubsection{The maps $\pUpsilon_{\cO}$, $\nUpsilon_{\cO}$ and $\Upsilon_{\cO}$}
 
-\begin{lem}\label{c:gd.pnoticed}\label{c:gd.pnoticed.p}
+\begin{claim}\label{c:gd.pnoticed}\label{c:gd.pnoticed.p}
     Suppose $\cO$ is +noticed.
     The map
     $\pUpsilon_{\cO} \colon \set{\cL_{\uptau}|\pcL_{\uptau}\neq 0}\rightarrow \set{\pcL_{\uptau}\neq 0}$
     is injective.
-\end{lem}
+\end{claim}
 \begin{proof}
     %First assume $\cO$ is +noticed.
     We have two cases:
@@ -4925,15 +4831,13 @@ must be one of the following form by \Cref{lem:u}:
       $\uptau_{1}\neq \uptau_{2}$.\footnote{$\cL_{\uptau_{1}}\neq \cL_{\uptau_{2}}$
         clearly implies $\uptau_{1}\neq \uptau_{2}$.} We now show that
       $\pcL_{\uptau_{1}}=\pcL_{\uptau_{2}}\neq 0$ leads to a contradiction.
-      Clearly, $\ssign(\uptau_{1})=\ssign(\uptau_{2})$.
-      By \eqref{eq:gd.ls} and checking the properties in \Cref{lem:u}, we have
+      Clearly, $\ssign(\uptau_{1})=\ssign(\uptau_{2})$ By checking the list in
+      \Cref{sec:z.r,sec:z.c,sec:z.d}, for $i=1,2$, we have
       \[
         \bfpp_{\uptau_{i}} = \tytb{s{x_{\uptaupp}},\vdots,s,{x_{\uptau_{i}}}} \quad \text{
           where }x_{\uptaupp_{i}}=c/d, x_{\uptau_{i}}=c/d.
       \]
-      % By looking at \eqref{eq:ped.ssc} and \eqref{eq:ped.ssd},
-      On the other hand, when $\bfpp_{\uptau_{i}}$ have the above form, the
-      first term of \eqref{eq:gd.ls} is non-vanishing. So we conclude that
+      By looking at \eqref{eq:ped.ssc} and \eqref{eq:ped.ssd}, we see that
       $\pcL_{\uptau_{1}}=\pcL_{\uptau_{2}}$ implies
       \begin{equation}\label{eq:pnoticed.1}
         \pcL_{\uptaupp_{1}}=\pcL_{\uptaupp_{2}}.
@@ -4966,9 +4870,9 @@ must be one of the following form by \Cref{lem:u}:
 \end{proof}
 
 
-\begin{lem}\label{c:gd.noticed.inj}
+\begin{claim}\label{c:gd.noticed.inj}
   Suppose $\cO$ is noticed. Then the map $\Upsilon_{\cO}\colon \cL_{\uptau}\mapsto (\pcL_{\uptau},\ncL_{\uptau})$ is injective.
-\end{lem}
+\end{claim}
 \begin{proof}
   It suffice to consider the case where $\cO$ is noticed but not +noticed, i.e.
   $C_{2k+1}=C_{2k}+1$. In this case, $n=1$.
@@ -4991,11 +4895,11 @@ must be one of the following form by \Cref{lem:u}:
   conclude that $\Upsilon_{\cO}(\cL_{\uptau_{1}})\neq \Upsilon_{\cO}(\cL_{\uptau_{2}})$.
 \end{proof}
 
-\begin{lem}\label{c:gd.pnoticed.n}
+\begin{claim}\label{c:gd.pnoticed.n}
     Suppose $\cO$ is +noticed.
     The map $\nUpsilon_{\cO}\colon \set{\cL_{\uptau}|\ncL_{\uptau}\neq 0}\rightarrow \set{\ncL_{\uptau}\neq 0}$
     is injective.
-\end{lem}
+\end{claim}
 \begin{proof}
   The proof is similar to that of \Cref{c:gd.pnoticed.p}.
     We have two cases:
@@ -5014,8 +4918,8 @@ must be one of the following form by \Cref{lem:u}:
       % Clearly,
       % $\ssign(\uptau_{1})=\ssign(\uptau_{2})$
 
-      By \eqref{eq:gd.ls} and the properties in \Cref{lem:u}, we
-      see that $\bfpp_{\uptau_{i}}$ must be one of the following
+      By checking the list in \Cref{sec:z.r,sec:z.c,sec:z.d}, for $i=1,2$, we
+      have $\bfpp_{\uptau_{i}}$ must be one of the following
       \[
         \bfpp_{1}=  \tytb{rc,\vdots,r,d} \quad \text{ or } \quad \bfpp_{2}= \tytb{rd,\vdots,r,d}.
       \]
@@ -5026,11 +4930,16 @@ must be one of the following form by \Cref{lem:u}:
         \item $\bfpp_{\uptau_{1}}=\bfpp_{\uptau_{2}}=\bfpp_{2}$. We have
         $\ncL_{\uptaupp_{1}}=\ncL_{\uptaupp_{2}}$ and obtain the contradiction.
         \item $\bfpp_{\uptau_{1}}=\bfpp_{1}$ and $\bfpp_{\uptau_{2}}=\bfpp_{2}$.
-        Now we apply the same argument in the case~\ref{it:c:noticed.bij.4} of
-        the proof of \Cref{c:noticed.bij}. We get
-        $\maltese \dagger\pcL_{\uptaupp_{1}}=\dagger \ncL_{\uptaupp_{2}}$,
-        $\ncL_{\uptaupp_{2}} \supset +$ and a contradiction by looking at the
-        associated character on the 2-row $\tytb{-+}$ .
+        We get $\dagger\pcL_{\uptaupp_{1}}=\dagger \ncL_{\uptaupp_{2}}$.
+        Note that $x_{\uptaupp_{1}}=r$.
+        We inspect the list \Cref{sec:z.r,sec:z.c,sec:z.d} for the generalized descent case and
+        the factorization \eqref{eq:ls.srcd} for the descent case. We conclude
+        that $\pcL_{\uptaupp_{1}}$ must contain a 1-row with
+        $+$ mark. We obtain the contradiction to
+        $\dagger \pcL_{\uptaupp_{1}}=\dagger\ncL_{\uptaupp_{2}}$
+        by looking at the associated
+        character on the $\tytb{-+}$ row by the same argument in the
+        case~\ref{it:c:noticed.bij.4} of the proof of \Cref{c:noticed.bij}.
       \end{enumPF}
     \end{enumPF}
     This finished the proof.
