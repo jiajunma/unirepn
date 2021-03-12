@@ -4,34 +4,655 @@
  \section{The descents of painted bipartitions}\label{sec:comb}
 
 As before, let  $\star\in \{ B, C,  D, \widetilde{C},  C^*, D^*\}$ and let $\check \CO$ be a Young diagram that has $\star$-good parity. Put
-\be\label{l}
-  l:=l_{\star, \check \CO}:=\begin{cases}
-   \mathbf{c}_1(\jmath_\star(\check \CO, \emptyset)),&\quad \textrm{if } \star\in \{B, C , C^*\};\\
-      \mathbf{c}_1(\imath_\star(\check \CO, \emptyset)),&\quad \textrm{if } \star\in \{ \widetilde C, D, D^*\}.\\
-  \end{cases}
-\ee
-Then
 \begin{equation}\label{lstarco}
-  l=\begin{cases}
+  l:=l_{\star, \check \CO}:=\begin{cases}
  \frac{\bfrr_1(\ckcO)}{2}; & \quad \textrm{if } \star\in \{B, \widetilde C\};\smallskip\\
  \frac{\bfrr_1(\ckcO)-1}{2}, &\quad \textrm{if } \star\in \{C, C^* \};\smallskip\\
  \frac{\bfrr_1(\ckcO)+1}{2}, &\quad \textrm{if } \star\in \{ D, D^*\}.\\
 \end{cases}
 \end{equation}
-Let $\wp\subset \mathrm{PP}_\star(\check \CO)$.  
+This is the length of the leading column of every element of $\mathrm{PBP}_\star(\check \CO)$. 
 
-When $\check \CO$ is non-empty, we let $\check \CO'$ be its dual descent as defined in the Introduction. Then $\check \CO'$ has $\star'$-good parity, where $\star'$ is the  Howe dual of $\star$. Put
+ 
+ In various context, we use $\emptyset$ to denote the empty set, the empty Young diagram or the painted Young diagram whose underlying Young diagram is empty. For every Young diagram $\imath$, its descent, which is denoted by $\nabla(\jmath)$, is defined to be the Young diagram obtained from $\jmath$ by removing the first column. By convention, $\nabla(\emptyset)=\emptyset$. 
+ 
+ In the rest of this section, we assume that $\check \CO\neq \emptyset$, and write $\check \CO'$ for its dual descent. Write $\star'$ for the Howe dual of $\star$ so that $\check \CO'$ has $\star'$-good parity. Put
 \[
-  l':=l_{\star', \check \CO'}.
+l':=l_{\star', \check \CO'}
 \]
-Note that 
+    
+ \subsection{Naive descents of painted bipartitions }
+\def\bipartl{\mathrm{bi\cP_L}}
+\def\bipartr{\mathrm{bi\cP_R}}
+\def\dsdiagl{\mathrm{DS_L}}
+\def\dsdiagr{\mathrm{DS_R}}
+\def\DDl{\eDD_\mathrm{L}}
+\def\DDr{\eDD_\mathrm{R}}
+
+
+In this subsection, let $\tau=(\imath,\cP)\times (\jmath,\cQ)\times \alpha$ be a  painted bipartition such that $\star_\tau=\star$. Write $\star'$ for the Howe dual of $\star$ and put
+  \begin{equation} \label{eq:def.alphap}
+    \alpha'=\begin{cases} B^+,
+  & \textrm{if $\alpha=\widetilde{C}$ and $c$ does not occur in the leading column of $\tau$}; \smallskip \\
+  B^-,
+  & \textrm{if $\alpha=\widetilde{C}$ and  $c$ occurs in the leading column of $\tau$}; \smallskip \\
+  \star', & \textrm{if $\alpha\neq \widetilde C$}. 
+  \end{cases}
+  \end{equation}
+\begin{lem}\label{lemDDn1}
+  If $\star \in \set{B,C,C^*}$, then there is a unique painted bipartition of the form $\tau'= (\imath',\cP')\times (\jmath',\cQ')\times \alpha'$ with the following properties:
+  \begin{itemize}
+        \item $
+   (\imath',\jmath')= (\imath,\DD(\jmath)); \smallskip
+   $
+   \item for all $(i,j)\in \BOX(\imath')$,
+   \[
+     \cP'(i,j)=\begin{cases}   
+    \bullet \textrm{ or } s,&\textrm{ if  $\ \cP(i,j)\in \{\bullet, s\}$;} \smallskip \\
+  \cP(i,j),& \textrm{ if $\ \cP(i,j)\notin \{\bullet, s\}$};\end{cases}
+   \]
+   \item for all $(i,j)\in \BOX(\jmath')$,
+   \[
+     \cQ'(i,j)=\begin{cases}   
+    \bullet \textrm{ or } s,&\textrm{ if  $\ \cQ(i,j+1)\in \{\bullet, s\}$;} \smallskip \\
+  \cQ(i,j+1), & \textrm{ if $\ \cQ(i,j+1)\notin \{\bullet, s\}$}.  \end{cases}
+   \]
+    \end{itemize} 
+    \end{lem}
+    
+    
+
+
+   \begin{proof}
+    First assume that the images of $\cP$ and $\cQ$ are both contained in $\{\bullet, s\}$. Then  the image of $\cP$  is in fact contained in $\{\bullet\}$, and $(\imath, \jmath)$ is  right interlaced in the sense that 
+ \[
+ \mathbf{c}_1(\jmath)\geq \mathbf{c}_1(\imath)\geq \mathbf{c}_2(\jmath)\geq \mathbf{c}_2(\imath)\geq \mathbf{c}_3(\jmath)\geq \mathbf{c}_3(\imath) \geq \cdots.
+ \]
+ Hence $ (\imath',\jmath'):= (\imath,\DD(\jmath))$ is left interlaced in the sense that 
+ \[
+ \mathbf{c}_1(\imath')\geq \mathbf{c}_1(\jmath')\geq \mathbf{c}_2(\imath')\geq \mathbf{c}_2(\jmath')\geq \mathbf{c}_3(\imath')\geq \mathbf{c}_3(\jmath') \geq \cdots.
+ \]
+ Then it is clear that there is  unique painted bipartition of the form  $\tau'=(\imath',\cP')\times (\jmath',\cQ')\times \alpha'$ such that images of $\cP'$ and $\cQ'$ are both contained in $\{\bullet, s\}$. This proves the lemma in the special case when the images of $\cP$ and $\cQ$ are both contained in $\{\bullet, s\}$. 
+ 
+ The proof of the lemma in the general case is easily reduced to this special case. 
+   \end{proof}
+    \begin{lem}\label{lemDDn2}
+    If $\star \in \set{ \widetilde C, D,D^*}$, then there is a unique painted bipartition of the form $\tau'= (\imath',\cP')\times (\jmath',\cQ')\times \alpha'$ with the following properties:
+  \begin{itemize}
+        \item $
+   (\imath',\jmath')= (\DD(\imath),\jmath); \smallskip
+   $
+   \item for all $(i,j)\in \BOX(\imath')$,
+   \[
+     \cP'(i,j)=\begin{cases}   
+    \bullet \textrm{ or } s,&\textrm{ if  $\ \cP(i,j+1)\in \{\bullet, s\}$;} \smallskip \\
+  \cP(i,j+1),& \textrm{ if $\ \cP(i,j+1)\notin \{\bullet, s\}$};\end{cases}
+   \]
+   \item for all $(i,j)\in \BOX(\jmath')$,
+   \[
+     \cQ'(i,j)=\begin{cases}   
+    \bullet \textrm{ or } s,&\textrm{ if  $\ \cP(i,j)\in \{\bullet, s\}$;} \smallskip \\
+  \cQ(i,j), & \textrm{ if $\ \cQ(i,j)\notin \{\bullet, s\}$}.  \end{cases}
+   \]
+  
+    \end{itemize}
+\end{lem}
+\begin{proof}
+  The proof is similar to that of \Cref{lemDDn1}. 
+  
+\end{proof}
+
+ In the notation of \Cref{lemDDn1,lemDDn2}, we call $\tau'$ the naive descent of $\tau$, to be denoted by $\DDn(\tau)$.  
+ 
+
+  
+
+  
+ \begin{Example} If
+    \[
+     \tau = \ytb{\bullet\bullet\bullet {c},\bullet {s} {c},{s},{c}}
+    \times \ytb{\bullet\bullet\bullet ,\bullet {r} {d},{d}{d}, \none}
+    \times \widetilde C, \]
+   then 
+   \[
+    \nabla_{\mathrm{naive}}(\tau) =\ytb{\bullet\bullet{c} ,\bullet{c},\none }
+    \times  \ytb{\bullet\bullet {s} ,\bullet {r} {d},{d}{d}}\times B^-.
+    \]
+    
+\end{Example}
+ 
+  \subsection{Descents of painted bipartitions}\label{sec:desc}
+ 
+
+Suppose that 
+$
+\tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \mathrm{PBP}_\star(\check \CO)
+$
+and write 
 \[
- \mathrm{PP}_{\star'}(\check \CO')=\{(i,i+1)\mid i\in \bN^+, \, (i+1, i+2)\in \mathrm{PP}_{\star}(\check \CO) \}.
+  \tau'_{\mathrm{naive}}=(\imath', \cP'_{\mathrm{naive}})\times (\jmath', \cQ'_{\mathrm{naive}})\times \alpha'
 \]
-Define the dual descent of $\wp$ to be 
-\begin{equation}\label{eq:DD.wp}
-  \wp':=\ckDD(\wp):=\{(i,i+1)\mid i\in \bN^+, \, (i+1, i+2)\in \wp \}\subset \mathrm{PP}_{\star'}(\check \CO').
+for the naive descent of $\tau$. This is clearly an element of $  \mathrm{PBP}_{\star'}(\check \CO')$. 
+%Put
+%\begin{equation}\label{lstarco}
+%  l:=l_{\star, \check \CO}:=\begin{cases}
+% \frac{\bfrr_2(\ckcO)}{2}; & \quad \textrm{if } \star\in \{B, \widetilde C\};\\
+% \frac{\bfrr_2(\ckcO)+1}{2}, &\quad \textrm{if } \star\in \{C, C^* \};\\
+% \frac{\bfrr_2(\ckcO)-1}{2}, &\quad \textrm{if } \star\in \{ D, D^*\}.\\
+%\end{cases}
+%\end{equation}
+
+The following two lemmas are easily verified and we omit the proofs. We will give an example for each of them. 
+\delete{
+\begin{lem}\label{descb}
+Suppose that 
+\[ 
+\begin{cases}
+\alpha = B^+; & \\
+(2,3)\in \wp;\quad  &\\
+\cQ(l',1)\in \set{r,d}.
+\end{cases}
+\]
+Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO',\wp')$ of the form
+  \[
+      \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
+  \]
+such that 
+     $
+     \cP' = \cP'_{\mathrm{naive}}
+     $
+     and 
+     for all $(i,j)\in \BOX(\jmath')$, 
+\[
+\cQ'(i,j) = \begin{cases}
+  r, & \ \text{ if  $(i,j) = (l',1)$;}\\
+  \cQ'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
+\end{cases}
+\]
+\end{lem}
+
+
+\begin{Example}
+ If 
+ \[
+ \tau= \ytb{\bullet\bullet,\none} \times \ytb{\bullet \bullet, dd}\times 
+  B^+,
+ \]
+ then 
+\[
+ \tau'_{\mathrm{naive}}= \ytb{\bullet s,\none} \times \ytb{\bullet, d}\times 
+  \widetilde C\qquad\textrm{and}\qquad \tau'= \ytb{\bullet s,\none} \times \ytb{\bullet, r}\times 
+  \widetilde C.
+ \]
+ Note that in this case, the nonzero row lengths of $\check \CO$ are $4,4,2,2$, $\wp=\{(2,3)\}$ and $l'=2$.
+\end{Example}
+\delete{\begin{proof}
+ We only need to check that the triple $\tau'$ defined in the lemma is a painted bipartition. 
+ 
+ Note that 
+ \[
+  \bar \Lambda_{l-1,2}(\imath', \cP')=\bar \Lambda_{l-1,2}(\imath'_{\mathrm{naive}}, \cP'_{\mathrm{naive}})
+ \]
+ and 
+ \[
+ \begin{array}{ccc}
+ 
+      \Lambda_{l-1,1}(\cP_\tau)\times \Lambda_{l-1,2}(\cQ_\tau)
+     &  &
+        \Lambda_{l-1,1}(\cP_{\tau'})\times \Lambda_{l-1,2}(\cQ_{\tau'})\\
+     \hline 
+     \hspace{1em}\\
+       \emptyset
+      \times
+      \ytb{ {x_{1}}{x_0},{\enon{\vdots}},{\enon{\vdots}},{x_{n}}}
+      &
+        \mapsto  &
+        \emptyset 
+        \times
+      \ytb{ {\none}{r},{\none},{\none},\none}
+      \end{array}
+    \]
+  
+\end{proof}
+
+Lemma \ref{descb} is easy to check and we omit the details. Note that $(\frac{\bfrr_2(\ckcO)}{2},1) \in \BOX(\jmath')$ under the first two conditions  of Lemma \ref{descb}. Similarly, we also have the following three lemmas. 
+}
+ }
+\begin{lem}\label{descb2}
+  Suppose that 
+\[  \begin{cases}
+ \alpha = B^+; & \\
+ \bfrr_2(\ckcO)>0; & \\
+ \cQ(l,1)\in \set{r,d}.
+\end{cases}
+\]
+ Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO')$ of the form
+  \[
+      \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
+  \]
+ such that 
+     $
+     \cQ' = \cQ'_{\mathrm{naive}}
+     $
+     and
+     for all $(i,j)\in \BOX(\imath')$, 
+\[
+\cP'(i,j) = \begin{cases}
+  s, & \ \text{ if $(i,j) = (l',1)$;}\\
+  \cP'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
+\end{cases}
+\]
+\end{lem}
+
+\begin{Example}
+ If 
+ \[
+ \tau= \ytb{\bullet c, c} \times \ytb{\bullet r, rd}\times 
+  B^+,
+ \]
+ then 
+\[
+ \tau'_{\mathrm{naive}}= \ytb{s c, c} \times \ytb{r, d}\times 
+  \widetilde C\qquad\textrm{and}\qquad \tau'= \ytb{s c, s} \times \ytb{r, d}\times 
+  \widetilde C.
+ \]
+ Note that in this case, the nonzero row lengths of $\check \CO$ are $4,4,4,2$, and $l'=2$.
+\end{Example}
+
+\delete{
+\begin{lem}\label{descd1}
+  Suppose that 
+  \[  \begin{cases}
+ \alpha = D; & \\
+ (2,3)\in \wp;\quad  &\\
+ \cP(l',1) \in \set{r,c}.
+\end{cases}
+\]
+ Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO',\wp')$ of the form
+  \[
+      \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
+  \]
+  such that $\cQ'=\cQ'_{\mathrm{naive}}$ and  for all $(i,j)\in \BOX(\imath')$, 
+  \[
+\cP'(i,j) = \begin{cases}
+  r, & \ \text{ if } (i,j) = (l',1); \\
+  \cP(l',1), &\  \text{ if } (i,j) = (l'+1,1);\\
+  \cP'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
+\end{cases}
+\]
+   
+\end{lem}
+
+
+
+
+\begin{Example}
+ If 
+ \[
+ \tau= \ytb{\bullet s,  c c, d d} \times \ytb{\bullet,\none, \none }\times 
+  D,
+ \]
+ then 
+\[
+ \tau'_{\mathrm{naive}}=  \ytb{\bullet,  c,  d}  \times  \ytb{\bullet,\none, \none }\times 
+  C,\qquad\textrm{and}\qquad \tau'= \ytb{\bullet, r, c}  \times  \ytb{\bullet,\none, \none }\times
+  C.
+ \]
+ Note that in this case, the nonzero row lengths of $\check \CO$ are $5,5,3,1$,  $\wp=\{(2,3)\}$ and $l'=2$.
+\end{Example}
+}
+\begin{lem}\label{descd2}
+  Suppose that 
+  \[  \begin{cases}
+ \alpha = D; & \\
+\mathbf r_2(\check \CO)=\mathbf r_3(\check \CO)>0;  &\\
+\cP(l'+1,1)=r; &\\
+\cP(l'+1,2)=c; &\\
+ \cP(l,1)\in \set{r,d}.
+\end{cases}
+\]
+ Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO')$ of the form
+  \[
+      \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
+  \]
+  such that $\cQ'=\cQ'_{\mathrm{naive}}$ and  for all $(i,j)\in \BOX(\imath')$, 
+  \[
+\cP'(i,j) = \begin{cases}
+  r, & \ \text{ if } (i,j) = (l'+1,1); \\
+  \cP'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
+\end{cases}
+\]
+   
+\end{lem}
+
+
+\begin{Example}
+ If 
+ \[
+ \tau= \ytb{\bullet\bullet, \bullet s, \bullet s, r c} \times \ytb{\bullet\bullet,\bullet,\bullet, \none }\times 
+  D,
+ \]
+ then 
+\[
+ \tau'_{\mathrm{naive}}=\ytb{\bullet, \bullet , \bullet ,  c} \times \ytb{\bullet s,\bullet,\bullet, \none } \times 
+  C,\qquad\textrm{and}\qquad \tau'=\ytb{\bullet, \bullet , \bullet ,  r} \times \ytb{\bullet s,\bullet,\bullet, \none } \times
+  C.
+ \]
+ Note that in this case, the nonzero row lengths of $\check \CO$ are $7,7,7,3$,   and $l'=3$.
+\end{Example}
+
+Finally, we define the descent of $\tau$ to be 
+\[
+  \nabla(\tau):= \begin{cases}
+  \tau', & \ \text{ if the condition of Lemma \ref{descb2}  or \ref{descd2} holds}; \\
+  \nabla_{\mathrm{naive}}( \tau), & \ \text{ otherwise},
+\end{cases}
+\]
+which is an element of $  \mathrm{PBP}_{\star'}(\check \CO')$. 
+Here $\tau'$ is as in Lemmas  \ref{descb2} and \ref{descd2}. In conclusion, we have defined the descent map
+\[
+\nabla: \mathrm{PBP}_{\star}(\check \CO)\rightarrow \mathrm{PBP}_{\star'}(\check \CO').
+\]
+
+
+\subsection{Tails of painted bipartitions}
+Because of the following proposition, we assume in the rest of this paper that $\check \CO$ is quasi-distinghuished  when $\star\in \{C^*, D^*\}$. 
+ 
+
+\begin{prop}
+  Suppose that $\star\in \{C^*, D^*\}$. If the set $\mathrm{PBP}_\star(\check \CO)$ is nonempty, then $\check \CO$ is quasi-distinguished.  
+\end{prop}
+\begin{proof}
+  Suppose that $\tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \mathrm{PBP}_\star(\check \CO)$. If  $\star=C^*$, then  the definition of painted bipartitions implies that 
+ \[
+ \bfcc_i(\imath)\leq \bfcc_i(\jmath) \qquad \textrm{for all } i=1,2,3, \cdots.
+ \]
+This forces that $\check \CO$ is quasi-distinguished. 
+ 
+ If  $\star=D^*$, then  the definition of painted bipartitions implies that 
+ \[
+ \bfcc_{i+1}(\imath)\leq \bfcc_i(\jmath) \qquad \textrm{for all } i=1,2,3, \cdots.
+ \]
+This  also forces that   $\check \CO$ is quasi-distinguished.
+ \end{proof}
+
+In the rest of this subsection, we assume that $\star\in\{B, D, C^*\}$. Note that $l\geq l'$ if $\star\in \{B,C^*\}$,   and $l\geq l'+1$ if $\star=D$.
+Put
+\[
+  \star_{\mathbf t}:= \begin{cases}
+  D, & \ \text{ if $\star\in \{B,D\}$}; \\
+C^*, &\  \text{ if $\star=C^*$}.
+ \end{cases}
+\]
+Let $\ckcO_{\bftt}$ be the following Young diagram that is 
+determined by the pair $(\star, \ckcO)$.
+\begin{itemize}
+    \item If $\star =B$,
+then $\ckcO_{\bftt}$  consists of two rows with lengths $2(l-l')+1$ and $1$.
+\item
+If $\star =D$,
+then $\ckcO_{\bftt}$  consists of two rows with lengths $2(l-l')-1$
+and $1$.
+\item 
+If $\star =C^*$, then $\ckcO_{\bftt}$ consists of one row
+with length  $2(l-l')+1$.
+\end{itemize}
+Note that  in all these three cases
+ $\check \CO_{\mathbf t}$ has $\star_{\mathbf t}$-good parity and every element in $\PBP_{\star_\bftt}(\ckcO_\bftt)$ has the form 
+ \be\label{tail0}
+  \ytb{{x_1} , {x_2} , {\enon\vdots},{\enon{\vdots}},{x_k}  } \times \emptyset \times 
+  D,\qquad \qquad  \ytb{{x_1} , {x_2} , {\enon\vdots},{\enon{\vdots}},{x_k}  } \times \emptyset \times 
+  D\qquad\textrm{or}\qquad \emptyset \times  \ytb{{x_1} , {x_2} , {\enon\vdots},{\enon{\vdots}},{x_k}  } \times 
+ C^*,
+  \ee
+  respectively if $\star=B, D$ or $C^*$. Here $k=l-l'+1, l-l'$ or $l-l'$ respectively. 
+
+%\subsubsection{The case when $\star = B$}
+Let 
+$
+\tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \mathrm{PBP}_\star(\check \CO)
+$ be as before. 
+ 
+ 
+\noindent {\bf The case when $\star = B$.}
+In this case, we define the tail $\tau_\bftt$ of $\tau$ to be the first painted bipartition in \eqref{tail0} such that the multiset $\{x_1, x_2, \cdots, x_k\}$ is the 
+union of the multiset 
+\[
+\set{\cQ(l'+1,1),\cQ(l'+2,1),\cdots, \cQ(l,1)}
+\]
+with the set
+\[
+  \begin{cases}
+ \set{c}, &
+ \qquad 
+  \text{if $\alpha = B^+$, and either $l'=0$ or $\cQ(l',1)\in \set{\bullet,s}$};  \\ 
+ \set{s},&
+  \qquad \text{if $\alpha = B^-$, and either $l'=0$ or $\cQ(l',1)\in \set{\bullet,s}$}; \\
+%  \qquad\text{when } \alpha_\tau = B^-, \text{ and, } l'=0 \textrm{ or } \cQ_\tau(l',1)\in \set{\bullet,s},  \\ 
+\set{\cQ(l',1)},&
+\qquad  \text{if $l'>0$ and $\cQ(l',1)\in \{r,d\}$.}
+\end{cases}
+\]
+
+
+\smallskip
+
+ \smallskip
+
+
+
+
+ 
+ 
+\noindent {\bf The case when $\star = D$.}
+In this case, we define the tail $\tau_\bftt$ of $\tau$ to be the second painted bipartition in \eqref{tail0} such that the multiset $\{x_1, x_2, \cdots, x_k\}$ is the 
+union of the multiset 
+\[
+\set{\cP(l'+2,1),\cP(l'+3,1),\cdots, \cP(l,1)}
+\]
+with the set
+\[
+  \begin{cases}
+ \set{c}, &
+ \, 
+  \text{if $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)$, 
+  $\cP(l'+1,1) = r$, $\cP(l'+1,2) = c$ and $\cP(l,1)\in \set{r,d}$};  \\ 
+\set{\cP_\tau(l'+1,1)},&
+\,   \text{otherwise.}
+\end{cases}
+\]
+ 
+ \smallskip
+ 
+ \smallskip
+ 
+\noindent {\bf The case $\star = C^*$.}
+In this case, we define the tail $\tau_\bftt$ of $\tau$ to be the third painted bipartition in \eqref{tail0} such that 
+\[
+  (x_1, x_2, \cdots, x_k)= (\cQ(l'+1,1),\cQ(l'+2,1),\cdots, \cQ(l,1)).
+\]
+ 
+ 
+ When $\star \in \set{B,D}$, the symbol in the last box of the tail $\tau_\bftt\in \PBP_{\star_\bftt}(\ckcO_\bftt)$ will be impotent for us. We write $x_\tau$ for it, namely
+\[
+x_\tau := \cP_{\tau_\bftt}(\bfcc_1(\imath_{\tau_\bftt}),1).
+\]
+ The following lemma is easy to check.
+ 
+\begin{lem}\label{tailtip}
+If $\star=B$, then
+\[
+x_\tau=s\Longleftrightarrow
+\begin{cases}
+  \alpha=B^-;\\ 
+  \cQ(l,1) \in\{\bullet, s\}, 
+  \end{cases}
+%\quad \textrm{if and only if}\quad \alpha=B^- \ \textrm{ and }\  \cQ(l,1) = s, 
+\]
+and 
+\[
+x_\tau=d \Longleftrightarrow
+%\quad \textrm{if and only if}\quad
+\cQ(l,1) =d. 
+\]
+If $\star=D$, then
+\[
+x_\tau=s\Longleftrightarrow \cP(l,1) = s, 
+\]
+and 
+\[
+x_\tau=d\Longleftrightarrow \cP(l,1) =d. 
+\]
+
+\end{lem}
+
+
+
+
+
+
+
+\subsection{Some properties of the descent maps}
+
+
+
+%We state the key properties of the descent map in this section and the proofs will be given in \Cref{sec:DD.proof}.
+
+
+The key properties of the descent map when $\star\in \set{C,\wtC,D^*}$ are summarized in the following proposition.   
+
+\begin{prop}\label{lem:DD.bij}
+Suppose that $\star \in \set{C,\wtC,D^*}$ and cosider the
+descent map
+\begin{equation}\label{eq:DD.CC}
+\nabla: \PBP_\star(\ckcO)\longrightarrow  \PBP_{\star'}(\ckcOp). 
+\end{equation} 
+
+\noindent (a) If 
+$\star=D^*$ or $\bfrr_1(\ckcO)>\bfrr_2(\ckcO)$, then 
+the map \eqref{eq:DD.CC}  is bijective.
+ 
+ \noindent (b) If  $\star\in \{C,\widetilde C\}$ and $\bfrr_1(\ckcO)=\bfrr_2(\ckcO)$, then the  map \eqref{eq:DD.CC} is injective and its image equals 
+\[
+\Set{\tau'\in \PBP_{\star'}(\ckcOp)| x_{\tau'}\neq s}.
+\]
+
+\end{prop}
+
+\begin{proof}
+We assume that $\star = \wtC$ and $\bfrr_1(\ckcO)=\bfrr_2(\ckcO)$. The proofs in the other  cases are similar and are left to the reader. 
+
+Note that the map \eqref{eq:DD.CC} induces a map
+\begin{equation}\label{eq:DD.CC1}
+\nabla: \Set{\tau\in \PBP_{\star}(\ckcO)| \cP_\tau(l,1)\neq c}\rightarrow \Set{\tau'\in \PBP_{\star'}(\ckcOp)|  \alpha_{\tau'}=B^+}. 
 \end{equation}
+Suppose that $\tau'$ is an element  in the codomain of the map \eqref{eq:DD.CC1}. Similar to the proof of Lemma \ref{lemDDn1}, there is a unique element in $\tau:=\nabla^{-1}(\tau')\in \PBP_{\star}(\ckcO)$ such that
+for all $i=1,2, \cdots,l$, 
+\[
+  \cP_{\tau}(i,1)\in \{\bullet, s\},
+\]
+and
+for all $(i,j)\in \BOX(\tau')$, 
+\begin{equation}
+     \cP_\tau(i,j+1)=\begin{cases}   
+    \bullet \textrm{ or } s,&\textrm{ if  $\ \cP_{\tau'}(i,j)\in \{\bullet, s\}$;} \smallskip \\
+  \cP_{\tau'}(i,j),& \textrm{ if $\ \cP_{\tau'}(i,j)\notin \{\bullet, s\}$},\end{cases}
+   \end{equation}
+ and
+   \begin{equation}
+     \cQ_\tau(i,j)=\begin{cases}   
+    \bullet \textrm{ or } s,&\textrm{ if  $\ \cQ_{\tau'}(i,j)\in \{\bullet, s\}$;} \smallskip \\
+  \cQ_{\tau'}(i,j), & \textrm{ if $\ \cQ_{\tau'}(i,j)\notin \{\bullet, s\}$}.  \end{cases}
+   \end{equation}
+Note that $\tau$ is in the domain of \eqref{eq:DD.CC1}. It is then routine to check that the map
+\[
+  \nabla^{-1}: \Set{\tau'\in \PBP_{\star'}(\ckcOp)|  \alpha_{\tau'}=B^+} \rightarrow  \Set{\tau\in \PBP_{\star}(\ckcO)| \cP_\tau(l,1)\neq c}
+\]
+and the map \eqref{eq:DD.CC1} are inverse to each other. Hence the map \eqref{eq:DD.CC1} is bijective. 
+
+
+Similarly, the map
+\[
+\nabla: \Set{\tau\in \PBP_{\star}(\ckcO)| \cP_\tau(l,1)= c}\rightarrow \Set{\tau'\in \PBP_{\star'}(\ckcOp)| \alpha_{\tau'}=B^-, \cQ_{\tau'}(l,1)\in\{r,d\}} 
+\]
+is well-defined, and we show that it is bijective by explicitly  constructing its inverse. In view of Lemma \ref{tailtip}, this proves the proposition in the case we are considering. 
+
+
+\end{proof}
+
+\medskip
+
+The key properties of the descent map when $\star\in \set{D,B,C^*}$ are summarized in the following two propositions.   
+
+\begin{prop}\label{prop:DD.BD}
+Suppose that $\star \in \set{D,B,C^*}$.
+Then the map 
+\begin{equation}\label{eq:DD.BD}
+   \PBP_\star(\ckcO)\longrightarrow
+   \PBP_{\star'}(\ckcOp)\times \PBP_{\star_\bftt}(\ckcO_\bftt)
+   \qquad \tau \mapsto (\DD(\tau), \tau_\bftt)
+\end{equation}
+is injective. Moreover, \eqref{eq:DD.BD} is bijective 
+unless $\star\in \set{B,D}$ and $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$. 
+% when $\star = C^*$ 
+\end{prop}
+\begin{proof}
+ 
+\end{proof}
+
+
+
+
+
+%The following equation of signatures will be crucial in our computation of the local system in the next section. 
+
+
+For every painted bipartition $\tau$, write
+\[
+  \ssign(\tau):=(p_\tau, q_\tau).
+\]
+When $\bfrr_2(\check \CO)>0$, the double descent $\nabla^2(\tau):=\nabla(\nabla(\tau))$ is well-defined whenever $\tau\in \mathrm{PBP}_\star(\check \CO)$. 
+As in the Introduction, $\CO$ denotes the Barbasch-Vogan dual of $\check \CO$. We also consider it as a Young diagram. 
+
+\begin{prop}\label{prop:delta}
+Assume that $\star \in \set{D,B,C^*}$ and $\bfrr_2(\ckcO)>0$. Write $\ckcOpp := \ckDD(\ckcO')$ and consider the map 
+\begin{equation}\label{eq:delta}
+    \colon \PBP_\star(\ckcO)\longrightarrow 
+    \PBP_\star(\ckcOpp)\times \PBP_{\star_\bftt}(\ckcO_\bftt),
+    \qquad \tau \mapsto (\DD^2(\tau),\tau_\bftt).
+\end{equation}
+
+\noindent (a) Suppose that 
+$\star = C^*$ or $\bfrr_2(\ckcO)>\bfrr_3(\ckcO)$. Then the map \eqref{eq:delta} is a bijective, and for every $\tau\in  \PBP_\star(\ckcO) $, 
+    % We have the following equation of signatures.
+\[
+\ssign(\tau)
+=(\bfcc_2(\cO),\bfcc_2(\cO))+\ssign(\DD^2(\tau))+\ssign(\tau_\bftt).
+\]
+
+\noindent (b) Suppose that  $\star \in \set{B,D}$ and $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)$. Then the map \eqref{eq:delta} is  injection and its  image equals 
+    \[
+    \Set{ (\tau'',\tau_0)  \in \PBP_\star(\ckcOpp)\times \PBP_D(\ckcO_\bftt)  | 
+    x_{\tau''} = d\, \text{ or } \,
+    \cP_{\tau_0}^{-1}(\set{s,c})\neq \emptyset }.
+    \]
+    Moreover,  for every $\tau\in  \PBP_\star(\ckcO) $, 
+\[
+\ssign(\tau)
+=(\bfcc_2(\cO)-1,\bfcc_2(\cO)-1)+\ssign(\DD^2(\tau))+\ssign(\tau_\bftt).
+\]
+\end{prop}
+
+\begin{proof}
+ 
+\end{proof}
+
+
+
+\section{Marked Young diagrams}
+
+
+
 
 \subsection{Operations on  painted Young diagrams } 
   
@@ -65,6 +686,8 @@ Graphically, this is the complement of $\Lambda_{a,b}(\imath,\cP)$ in $(\imath, 
 \begin{defn}
 The descent of $(\imath, \cP)$, which is denoted by $\nabla(\imath, \cP)$, is the painted Young diagram obtained from $(\imath, \cP)$ by removing the first column. Similarly, the descent of a Young diagram $\jmath$, which is denoted by $\nabla(\jmath)$, is defined to be the Young diagram obtained from $\jmath$ by removing the first column.
  \end{defn}
+ By convention, the descents of the empty Young diagram and the empty painted Young diagram are empty. 
+ 
 \begin{Example}
 If 
 \[
@@ -170,106 +793,7 @@ represents the painted Young diagram
 
 }
    
-   
- \subsection{Naive descents of painted bipartitions }
-\def\bipartl{\mathrm{bi\cP_L}}
-\def\bipartr{\mathrm{bi\cP_R}}
-\def\dsdiagl{\mathrm{DS_L}}
-\def\dsdiagr{\mathrm{DS_R}}
-\def\DDl{\eDD_\mathrm{L}}
-\def\DDr{\eDD_\mathrm{R}}
 
-
-In this subsection, let $\tau=(\imath,\cP)\times (\jmath,\cQ)\times \alpha$ be a  painted bipartition. Write $\star_\tau'$ for the Howe dual of $\star_\tau$ and put
-  \begin{equation} \label{eq:def.alphap}
-    \alpha'=\begin{cases} B^+,
-  & \textrm{if $\alpha=\widetilde{C}$ and the label $c$ does not occur in the first column of $(\imath, \cP)$}; \smallskip \\
-  B^-,
-  & \textrm{if $\alpha=\widetilde{C}$ and the label $c$ occurs in the first column of $(\imath, \cP)$}; \smallskip \\
-  \star_\tau', & \textrm{if $\alpha\neq \widetilde C$}. 
-  \end{cases}
-  \end{equation}
-\begin{lem}\label{lemDDn1}
-  If $\star_\tau \in \set{B,C,C^*}$, then there is a unique painted bipartition $\tau'= (\imath',\cP')\times (\jmath',\cQ')\times \alpha'$ with the following properties:
-  \begin{itemize}
-        \item $
-   (\imath',\jmath')= (\imath,\DD(\jmath)); \smallskip
-   $
-   \item for all $(i,j)\in \BOX(\imath')$,
-   \[
-     \cP'(i,j)=\begin{cases}   
-    \bullet \textrm{ or } s,&\textrm{ if  $\ \cP(i,j)\in \{\bullet, s\}$;} \smallskip \\
-  \cP(i,j),& \textrm{ if $\ \cP(i,j)\notin \{\bullet, s\}$};\end{cases}
-   \]
-   \item for all $(i,j)\in \BOX(\jmath')$,
-   \[
-     \cQ'(i,j)=\begin{cases}   
-    \bullet \textrm{ or } s,&\textrm{ if  $\ \cQ(i,j+1)\in \{\bullet, s\}$;} \smallskip \\
-  \cQ(i,j+1), & \textrm{ if $\ \cQ(i,j+1)\notin \{\bullet, s\}$}.  \end{cases}
-   \]
-    \end{itemize} 
-    \end{lem}
-    
-    
-
-
-   \begin{proof}
-    First assume that the images of $\cP$ and $\cQ$ are both contained in $\{\bullet, s\}$. Then  the image of $\cP$  is in fact contained in $\{\bullet\}$, and $(\imath, \jmath)$ is  right interlaced in the sense that 
- \[
- \mathbf{c}_1(\jmath)\geq \mathbf{c}_1(\imath)\geq \mathbf{c}_2(\jmath)\geq \mathbf{c}_2(\imath)\geq \mathbf{c}_3(\jmath)\geq \mathbf{c}_3(\imath) \geq \cdots.
- \]
- Hence $ (\imath',\jmath'):= (\imath,\DD(\jmath))$ is left interlaced in the sense that 
- \[
- \mathbf{c}_1(\imath')\geq \mathbf{c}_1(\jmath')\geq \mathbf{c}_2(\imath')\geq \mathbf{c}_2(\jmath')\geq \mathbf{c}_3(\imath')\geq \mathbf{c}_3(\jmath') \geq \cdots.
- \]
- Then it is clear that there is  unique painted bipartition of the form  $\tau'=(\imath',\cP')\times (\jmath',\cQ')\times \alpha'$ such that images of $\cP'$ and $\cQ'$ are both contained in $\{\bullet, s\}$. This proves the lemma in the special case when the images of $\cP$ and $\cQ$ are both contained in $\{\bullet, s\}$. 
- 
- The proof of the lemma in the general case is easily reduced to this special case. 
-   \end{proof}
-    \begin{lem}\label{lemDDn2}
-    If $\star_\tau \in \set{D, \widetilde C, D^*}$, then there is a unique painted bipartition $\tau'= (\imath',\cP')\times (\jmath',\cQ')\times \alpha'$ with the following properties:
-  \begin{itemize}
-        \item $
-   (\imath',\jmath')= (\DD(\imath),\jmath); \smallskip
-   $
-   \item for all $(i,j)\in \BOX(\imath')$,
-   \[
-     \cP'(i,j)=\begin{cases}   
-    \bullet \textrm{ or } s,&\textrm{ if  $\ \cP(i,j+1)\in \{\bullet, s\}$;} \smallskip \\
-  \cP(i,j+1),& \textrm{ if $\ \cP(i,j+1)\notin \{\bullet, s\}$};\end{cases}
-   \]
-   \item for all $(i,j)\in \BOX(\jmath')$,
-   \[
-     \cQ'(i,j)=\begin{cases}   
-    \bullet \textrm{ or } s,&\textrm{ if  $\ \cP(i,j)\in \{\bullet, s\}$;} \smallskip \\
-  \cQ(i,j), & \textrm{ if $\ \cQ(i,j)\notin \{\bullet, s\}$}.  \end{cases}
-   \]
-  
-    \end{itemize}
-\end{lem}
-\begin{proof}
-  The proof is similar to that of \Cref{lemDDn1}. 
-  
-\end{proof}
-
- In the notation of \Cref{lemDDn1,lemDDn2}, we call $\tau'$ the naive descent of $\tau$, to be denoted by $\DDn(\tau)$.  
- 
-
-  
-
-  
- \begin{Example} If
-    \[
-     \tau = \ytb{\bullet\bullet\bullet {c},\bullet {s} {c},{s},{c}}
-    \times \ytb{\bullet\bullet\bullet ,\bullet {r} {d},{d}{d}, \none}
-    \times \widetilde C, \]
-   then 
-   \[
-    \nabla_{\mathrm{naive}}(\tau) =\ytb{\bullet\bullet{c} ,\bullet{c},\none }
-    \times  \ytb{\bullet\bullet {s} ,\bullet {r} {d},{d}{d}}\times B^-.
-    \]
-    
-\end{Example}
 
    
 \subsection{Switching painted bipartitions}
@@ -507,7 +1031,7 @@ The proposition then follows by verifying that the maps \eqref{switchc1} and \eq
 
 \subsubsection{The case of $\star=\wtC$}
 Suppose that $\star=\wtC$.
-Then $\bfrr_1(\ckcO)>\bfrr_2(\ckcO) \geq 0$ and $l'\geq 1$. 
+Then $\bfrr_1(\ckcO)>\bfrr_2(\ckcO) \geq 0$. 
 %Write
 %\[
 %       l:= l_{\star,\ckcO} :=  \begin{cases} \frac{\bfrr_2(\ckcO)-2}{2},
@@ -519,17 +1043,17 @@ Then $\bfrr_1(\ckcO)>\bfrr_2(\ckcO) \geq 0$ and $l'\geq 1$.
 
 For every  $\tau= (\imath,\cP)\times(\jmath,\cQ)\times \star\in \pbpst(\ckcO)$, its leg is defined to be the  pair
 \[
-\LEG(\tau) := \Lambda_{l'-1,1}(\imath,\cP)\times \Lambda_{l'-1,1}(\jmath,\cQ),
+\LEG(\tau) := \Lambda_{\max(l'-1,0),1}(\imath,\cP)\times \Lambda_{\max(l'-1,0),1}(\jmath,\cQ),
 \]
 and its  body  is defined to be the pair 
 \[\BODY(\tau) := 
-\barLambda_{l'-1,1}(\imath,\cP)\times \barLambda_{l'-1,1}(\jmath,\cQ).\]
+\barLambda_{\max(l'-1,0),1}(\imath,\cP)\times \barLambda_{\max(l'-1,0),1}(\jmath,\cQ).\]
   
  Note that if $\tau\in \mathrm{PBP}_\star(\ckcO,\wp ) $,  then $\LEG(\tau)$ is represented by the first pair  in \eqref{legtau11} where  
 \[
 x_1\neq \eee,\qquad x_0=\emptyset\Leftrightarrow x_2=\emptyset\Leftrightarrow \mathbf{r}_2(\check \CO)=0,
 \]
-and the grey part consisting of $m$ boxes with label $s$.
+and the grey part consisting of $l-l'-1$ boxes with label $r$.
  
 \begin{equation}\label{legtau11}
  \LEG(\tau):\ \   \ytb{{x_2},\none,\none ,\none ,\none ,\none}
@@ -550,7 +1074,7 @@ where
 \[
 y_1\neq \eee,\qquad y_0=\emptyset\Leftrightarrow y_2=\emptyset\Leftrightarrow \mathbf{r}_2(\check \CO)=0,
 \]
-and the grey part consisting of $m$ boxes with label $r$.
+and the grey part consisting of $l-l'-1$ boxes with label $s$.
  
  \delete{
  If $\tau\in \mathrm{PBP}_\star(\ckcO,\bar \wp ) $,  then $\LEG(\tau)$ is represented by a pair of the form
@@ -593,247 +1117,6 @@ Moreover, the map
 
 %\subsection{dot-$s$ bipartitions} % $s$-dot   bipartitions and  
 
- \subsection{Descending painted bipartitions}\label{sec:desc}
- 
- In this section, we assume that $\abs{\check \CO}>0$.
-%\delete{The goal of this subsection is to define a map
-%\[
-%  \nabla:  \mathrm{PBP}_\star(\check \CO, \wp)\rightarrow  \mathrm{PBP}_{\star'}(\check \CO', \wp'),
-%\]
-%to be called the descent map for painted bipartitions. 
-%}
-
-Let 
-$
-\tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \mathrm{PBP}_\star(\check \CO,\wp).
-$
-Write 
-\[
-  \tau'_{\mathrm{naive}}=(\imath', \cP'_{\mathrm{naive}})\times (\jmath', \cQ'_{\mathrm{naive}})\times \alpha'
-\]
-for the naive descent of $\tau$. This is clearly an element of $  \mathrm{PBP}_{\star'}(\check \CO',\wp')$. Put
-\begin{equation}\label{lstarco}
-  l:=l_{\star, \check \CO}:=\begin{cases}
- \frac{\bfrr_2(\ckcO)}{2}; & \quad \textrm{if } \star\in \{B, \widetilde C\};\\
- \frac{\bfrr_2(\ckcO)+1}{2}, &\quad \textrm{if } \star\in \{C, C^* \};\\
- \frac{\bfrr_2(\ckcO)-1}{2}, &\quad \textrm{if } \star\in \{ D, D^*\}.\\
-\end{cases}
-\end{equation}
-
-The following four lemmas are easily verified and we omit the proofs. We will give an example for each of them. 
-
-\begin{lem}\label{descb}
-  Suppose that 
-  \[  \begin{cases}
- \alpha = B^+; & \\
- (2,3)\in \wp;\quad  &\\
- \cQ(l,1)\in \set{r,d}.
-\end{cases}
-\]
- Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO',\wp')$ of the form
-  \[
-      \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
-  \]
-such that 
-     $
-     \cP' = \cP'_{\mathrm{naive}}
-     $
-     and 
-     for all $(i,j)\in \BOX(\jmath')$, 
-\[
-\cQ'(i,j) = \begin{cases}
-  r, & \ \text{ if  $(i,j) = (l,1)$;}\\
-  \cQ'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
-\end{cases}
-\]
-\end{lem}
-
-
-\begin{Example}
- If 
- \[
- \tau= \ytb{\bullet\bullet,\none} \times \ytb{\bullet \bullet, dd}\times 
-  B^+,
- \]
- then 
-\[
- \tau'_{\mathrm{naive}}= \ytb{\bullet s,\none} \times \ytb{\bullet, d}\times 
-  \widetilde C\qquad\textrm{and}\qquad \tau'= \ytb{\bullet s,\none} \times \ytb{\bullet, r}\times 
-  \widetilde C.
- \]
- Note that in this case, the nonzero row lengths of $\check \CO$ are $4,4,2,2$, $\wp=\{(2,3)\}$ and $l=2$.
-\end{Example}
-\delete{\begin{proof}
- We only need to check that the triple $\tau'$ defined in the lemma is a painted bipartition. 
- 
- Note that 
- \[
-  \bar \Lambda_{l-1,2}(\imath', \cP')=\bar \Lambda_{l-1,2}(\imath'_{\mathrm{naive}}, \cP'_{\mathrm{naive}})
- \]
- and 
- \[
- \begin{array}{ccc}
- 
-      \Lambda_{l-1,1}(\cP_\tau)\times \Lambda_{l-1,2}(\cQ_\tau)
-     &  &
-        \Lambda_{l-1,1}(\cP_{\tau'})\times \Lambda_{l-1,2}(\cQ_{\tau'})\\
-     \hline 
-     \hspace{1em}\\
-       \emptyset
-      \times
-      \ytb{ {x_{1}}{x_0},{\enon{\vdots}},{\enon{\vdots}},{x_{n}}}
-      &
-        \mapsto  &
-        \emptyset 
-        \times
-      \ytb{ {\none}{r},{\none},{\none},\none}
-      \end{array}
-    \]
-  
-\end{proof}
-
-Lemma \ref{descb} is easy to check and we omit the details. Note that $(\frac{\bfrr_2(\ckcO)}{2},1) \in \BOX(\jmath')$ under the first two conditions  of Lemma \ref{descb}. Similarly, we also have the following three lemmas. 
-}
-\begin{lem}\label{descb2}
-  Suppose that 
-\[  \begin{cases}
- \alpha = B^+; & \\
- (2,3)\notin \wp;\quad  &\\
- \bfrr_2(\ckcO)>0; & \\
- \cQ(l,1)\in \set{r,d}.
-\end{cases}
-\]
- Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO',\wp')$ of the form
-  \[
-      \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
-  \]
- such that 
-     $
-     \cQ' = \cQ'_{\mathrm{naive}}
-     $
-     and
-     for all $(i,j)\in \BOX(\imath')$, 
-\[
-\cP'(i,j) = \begin{cases}
-  s, & \ \text{ if $(i,j) = (l,1)$;}\\
-  \cP'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
-\end{cases}
-\]
-\end{lem}
-
-\begin{Example}
- If 
- \[
- \tau= \ytb{\bullet c, c} \times \ytb{\bullet r, rd}\times 
-  B^+,
- \]
- then 
-\[
- \tau'_{\mathrm{naive}}= \ytb{s c, c} \times \ytb{r, d}\times 
-  \widetilde C\qquad\textrm{and}\qquad \tau'= \ytb{s c, s} \times \ytb{r, d}\times 
-  \widetilde C.
- \]
- Note that in this case, the nonzero row lengths of $\check \CO$ are $4,4,4,2$, $\wp=\emptyset$ and $l=2$.
-\end{Example}
-
-\begin{lem}\label{descd1}
-  Suppose that 
-  \[  \begin{cases}
- \alpha = D; & \\
- (2,3)\in \wp;\quad  &\\
- \cP(l,1)\in \set{r,c}.
-\end{cases}
-\]
- Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO',\wp')$ of the form
-  \[
-      \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
-  \]
-  such that $\cQ'=\cQ'_{\mathrm{naive}}$ and  for all $(i,j)\in \BOX(\imath')$, 
-  \[
-\cP'(i,j) = \begin{cases}
-  r, & \ \text{ if } (i,j) = (l,1); \\
-  \cP(l,1), &\  \text{ if } (i,j) = (l+1,1);\\
-  \cP'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
-\end{cases}
-\]
-   
-\end{lem}
-
-
-
-
-\begin{Example}
- If 
- \[
- \tau= \ytb{\bullet s,  c c, d d} \times \ytb{\bullet,\none, \none }\times 
-  D,
- \]
- then 
-\[
- \tau'_{\mathrm{naive}}=  \ytb{\bullet,  c,  d}  \times  \ytb{\bullet,\none, \none }\times 
-  C,\qquad\textrm{and}\qquad \tau'= \ytb{\bullet, r, c}  \times  \ytb{\bullet,\none, \none }\times
-  C.
- \]
- Note that in this case, the nonzero row lengths of $\check \CO$ are $5,5,3,1$,  $\wp=\{(2,3)\}$ and $l=2$.
-\end{Example}
-
-\begin{lem}\label{descd2}
-  Suppose that 
-  \[  \begin{cases}
- \alpha = D; & \\
-\mathbf r_2(\check \CO)=\mathbf r_3(\check \CO)>0;  &\\
-\cP(l+1,1)=r; &\\
-\cP(l+1,2)=c; &\\
- \cP(\frac{\bfrr_1(\ckcO)+1}{2},1)\in \set{r,d}.
-\end{cases}
-\]
- Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO',\wp')$ of the form
-  \[
-      \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
-  \]
-  such that $\cQ'=\cQ'_{\mathrm{naive}}$ and  for all $(i,j)\in \BOX(\imath')$, 
-  \[
-\cP'(i,j) = \begin{cases}
-  r, & \ \text{ if } (i,j) = (l+1,1); \\
-  \cP'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
-\end{cases}
-\]
-   
-\end{lem}
-
-
-\begin{Example}
- If 
- \[
- \tau= \ytb{\bullet\bullet, \bullet s, \bullet s, r c} \times \ytb{\bullet\bullet,\bullet,\bullet, \none }\times 
-  D,
- \]
- then 
-\[
- \tau'_{\mathrm{naive}}=\ytb{\bullet, \bullet , \bullet ,  c} \times \ytb{\bullet\bullet,\bullet,\bullet, \none } \times 
-  C,\qquad\textrm{and}\qquad \tau'=\ytb{\bullet, \bullet , \bullet ,  r} \times \ytb{\bullet\bullet,\bullet,\bullet, \none } \times
-  C.
- \]
- Note that in this case, the nonzero row lengths of $\check \CO$ are $7,7,7,3$,  $\wp=\emptyset$ and $l=3$.
-\end{Example}
-
-Finally, we define the descent of $\tau$ to be 
-\[
-  \nabla(\tau):= \begin{cases}
-  \tau', & \ \text{ if the condition of Lemma \ref{descb}, \ref{descb2}, \ref{descd1} or \ref{descd2} holds}; \\
-  \nabla_{\mathrm{naive}}(\bar \tau), &\  \text{ if $\star\in \{C,\widetilde C\}$ and $(1,2)\in \wp$;}\\
-  \nabla_{\mathrm{naive}}( \tau), & \ \text{ otherwise},
-\end{cases}
-\]
-which is an element of $  \mathrm{PBP}_{\star'}(\check \CO',\wp')$. 
-Here $\tau'$ is as in Lemmas \ref{descb}, \ref{descb2}, \ref{descd1} and \ref{descd2}, and $\bar \tau$ is as in Lemmas \ref{propswithc} and \ref{propswithc2}. In conclusion, we have defined in all cases the descent map
-\[
-\nabla: \mathrm{PBP}_{\star}(\check \CO,\wp)\rightarrow \mathrm{PBP}_{\star'}(\check \CO',\wp').
-\]
-By varying $\wp$, we get an obvious descent map
-\[
-\nabla: \mathrm{PBP}_{\star}(\check \CO)\rightarrow \mathrm{PBP}_{\star'}(\check \CO').
-\]
 
 %In what follows we will define case by case a painted bipartition 
 %\be\label{taudes2}
@@ -1092,312 +1375,210 @@ We define  the descent of $\tau$ by
 %%
 %%
 
-\subsection{Tails of painted bipartitions}
-In this subsection, we assume that $\star\in\{B, D, C^*\}$. Put
-\[
-  \star_{\mathbf t}:= \begin{cases}
-  D, & \ \text{ if $\star\in \{B,D\}$}; \\
-C^*, &\  \text{ if $\star=C^*$}.
- \end{cases}
-\]
-Let $\check \CO_{\mathbf t}$ be the following Young diagram that is determined by the pair $(\star, \check \CO)$: if $\star \in \set{B,D}$, then $\check \CO_{\mathbf t}$  consists of two rows with lengths $\bfrr_1(\ckcO)-\bfrr_2(\ckcO)+1$ and $1$;  if $\star =C^*$, then $\check \CO_{\mathbf t}$ consists of one row with length  
-\[
-\begin{cases}
-\bfrr_1(\ckcO)-\bfrr_2(\ckcO)-1, &\quad \text{if } \bfrr_1(\ckcO)>\bfrr_2(\ckcO)>0\\
-\bfrr_1(\ckcO), &\quad  \text{if } \bfrr_1(\ckcO)> \bfrr_2(\ckcO)=0\\
-1, & \quad \text{if }  \bfrr_1(\ckcO)=\bfrr_2(\ckcO)>0.\\
-\end{cases}
-\]
-Note that $\check \CO_{\mathbf t}$ has $\star_{\mathbf t}$-good parity. 
 
+
+\smallskip
+
+ \smallskip
+
+
+ 
+ 
 \delete{
+We define $\tau_\bftt$ to be the painted bipartition in $\PBP_{\star_\bftt}(\ckcO_\bftt)$ such that 
 \[
-(\bfrr_1(\ckcO_{\bftt}) , \bfrr_2(\ckcO_{\bftt})) = 
-\begin{cases}
-\bfrr_1(\ckcO)-\bfrr_2(\ckcO)+1,1 & \text{if } \star \in \set{B,D}\\
-\bfrr_1(\ckcO)-\bfrr_2(\ckcO)-1,0 & \text{if } \star = C^* \text{ and } \bfrr_1(\ckcO)>\bfrr_2(\ckcO)>0\\
-\bfrr_1(\ckcO),0 & \text{if } \star = C^* \text{ and } \bfrr_2(\ckcO)=0\\
-1,0 & \text{if } \star = C^* \text{ and } \bfrr_1(\ckcO)=\bfrr_2(\ckcO)>0.\\
+\tau_\bftt = \emptyset \times \Lambda_{l',1}(\jmath_\tau,\cQ_\tau) \times  C^*
+\] 
+ 
+\noindent The case when $\star = D$: 
+In this case, we define the tail $\tau_\bftt$ of $\tau$ to be the first painted bipartition in \eqref{tail0} such that the multiset $\{x_1, x_2, \cdots, x_k\}$ is the 
+union of the multiset 
+\[
+\set{\cQ_\tau(l'+1,1),\cQ_\tau(l'+2,1),\cdots, \cQ_\tau(l,1)}
+\]
+with the set
+\[
+  \begin{cases}
+ \set{c}, &
+ \qquad 
+  \text{if $\alpha_\tau = B^+$, and either $l'=0$ or $\cQ_{\tau}(l',1)\in \set{\bullet,s}$};  \\ 
+ \set{s},&
+  \qquad \text{if $\alpha_\tau = B^-$, and either $l'=0$ or $\cQ_{\tau}(l',1)\in \set{\bullet,s}$}; \\
+%  \qquad\text{when } \alpha_\tau = B^-, \text{ and, } l'=0 \textrm{ or } \cQ_\tau(l',1)\in \set{\bullet,s},  \\ 
+\set{\cQ_\tau(l',1)},&
+\qquad  \text{otherwise.}
 \end{cases}
+\]
+
+
+
+
+
+unique element in $\PBP_{\star_\bftt}(\ckcO_\bftt)$ in the first triple of 
+
+
+such that the multiset of the labels appearing in the painted Young diagram $(\imath_{\tau_\bftt}, \cP_{\tau_\bftt})$
+equals 
+\begin{eqnarray*}
+  \{\cP_{\tau_\bftt}(i,1)\mid 1\leq i\leq l-l'+1\}\smallskip
+  =\begin{cases}
+ \set{c,\cQ_\tau(l'+1,1),\cdots, \cQ_\tau(l,1)}, &\\
+ \qquad 
+  \text{if } \alpha_\tau = B^+, 
+    (l',1)\in \cQ_{\tau}^{-1}(\set{\bullet,s})\cup\set{(0,1)} \\
+ % \text{ and, } l'=0 \textrm{ or } \cQ_\tau(l',1)\in \set{\bullet,s},  \\ 
+ \set{s,\cQ_\tau(l'+1,1),\cdots, \cQ_\tau(l,1)},\\
+  \qquad \text{if } \alpha_\tau = B^-, 
+    (l',1)\in \cQ_{\tau}^{-1}(\set{\bullet,s})\cup\set{(0,1)} \\
+%  \qquad\text{when } \alpha_\tau = B^-, \text{ and, } l'=0 \textrm{ or } \cQ_\tau(l',1)\in \set{\bullet,s},  \\ 
+\set{\cQ_\tau(l',1),\cdots, \cQ_\tau(l,1)}, \\
+\qquad  \text{otherwise}
+\end{cases}
+
+\begin{eqnarray*}
+  \{\cP_{\tau_\bftt}(i,1)\mid 1\leq i\leq l-l'+1\}\smallskip
+  =\begin{cases}
+ \set{c,\cQ_\tau(l'+1,1),\cdots, \cQ_\tau(l,1)}, &\\
+ \qquad 
+  \text{if } \alpha_\tau = B^+, 
+    (l',1)\in \cQ_{\tau}^{-1}(\set{\bullet,s})\cup\set{(0,1)} \\
+ % \text{ and, } l'=0 \textrm{ or } \cQ_\tau(l',1)\in \set{\bullet,s},  \\ 
+ \set{s,\cQ_\tau(l'+1,1),\cdots, \cQ_\tau(l,1)},\\
+  \qquad \text{if } \alpha_\tau = B^-, 
+    (l',1)\in \cQ_{\tau}^{-1}(\set{\bullet,s})\cup\set{(0,1)} \\
+%  \qquad\text{when } \alpha_\tau = B^-, \text{ and, } l'=0 \textrm{ or } \cQ_\tau(l',1)\in \set{\bullet,s},  \\ 
+\set{\cQ_\tau(l',1),\cdots, \cQ_\tau(l,1)}, \\
+\qquad  \text{otherwise}
+\end{cases}
+\end{eqnarray*}
+as a multiset.  
+
+\[
+\tau_\bftt = \cP_{\tau_\bftt}\times \emptyset \times D
+\]
+where
+\[
+\cP_{\tau_\bftt}  
+\begin{cases}
+  \text{consists of } \set{c,\cQ_\tau(l'+1,1),\cdots \cQ_\tau(l,1)} &
+  \text{if } \cQ_\tau(l',1)\in \set{\bullet,s}, \text{ and } \alpha_\tau = B^+\\ 
+  \text{consists of } \set{s,\cQ_\tau(l'+1,1),\cdots \cQ_\tau(l,1)} &
+  \text{if } \cQ_\tau(l',1)\in \set{\bullet,s}, \text{ and } \alpha_\tau = B^-\\ 
+ = \Lambda_{l'-1,1}(\imath_\tau,\cQ_\tau) & \text{otherwise}
+\end{cases}
+\]
+\begin{Example}
+If 
+\[
+\tau = \ytb{rc,r,r} \times \emptyset \times D 
+\quad\text{then} \quad 
+\tau_\bftt = \ytb{r,r,c}\times \emptyset\times D .
+\]
+If 
+\[
+\tau = \ytb{\bullet,\none,\none}\times \ytb{\bullet c,r,d}\times B^+
+\quad\text{then} \quad 
+\tau_\bftt = \ytb{r,c,d}\times \emptyset\times D .
+\]
+\end{Example}
+%\delete{
+%\[
+%(\bfrr_1(\ckcO_{\bftt}) , \bfrr_2(\ckcO_{\bftt})) = 
+%\begin{cases}
+%\bfrr_1(\ckcO)-\bfrr_2(\ckcO)+1,1 & \text{if } \star \in \set{B,D}\\
+%\bfrr_1(\ckcO)-\bfrr_2(\ckcO)-1,0 & \text{if } \star = C^* 
+%\text{ and } \bfrr_1(\ckcO)>\bfrr_2(\ckcO)>0\\
+%\bfrr_1(\ckcO),0 & \text{if } \star = C^* \text{ and } \bfrr_2(\ckcO)=0\\
+%1,0 & \text{if } \star = C^* \text{ and } \bfrr_1(\ckcO)=\bfrr_2(\ckcO)>0.\\
+%\end{cases}
+%\]
+%}
+
+\subsubsection{The case $\star=D$}
+%Recall the definition of $l_{\star,\ckcO}$ in \eqref{lstarco}.
+%Suppose $(2,3)\in \PP_\star(\ckcO)$. 
+%We define
+%\[
+%\tau_\bftt := \Lambda_{l_{\star,\ckcO},1}  \times \emptyset \times \star_\bftt.
+%\]
+%Suppose $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$.
+%(In particular, $(2,3)\notin \PP_\star(\ckcO)$.)
+We define the tail $\tau_\bftt$ of $\tau$ to be the unique element in $\PBP_{\star_\bftt}(\ckcO_\bftt)$ such that 
+\[
+\tau_\bftt = \cP_{\tau_\bftt}\times \emptyset \times D
+\]
+where
+\[
+\cP_{\tau_\bftt}  
+\begin{cases}
+  \text{consists of } \set{r,\cdots, r,c, \cP_\tau(l,1)} &
+  \begin{minipage}{12em}if $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$ and \\
+  $\cP_\tau(l',1) = r$, $\cP_\tau(l',2) = c$,\\ $\cP_\tau(l,1)\in \set{r,d}$
+  \end{minipage}
+  \\
+ = \Lambda_{l',1}(\imath_\tau,\cP_\tau) & \text{otherwise}
+\end{cases}
+\]
+
+\subsubsection{The case $\star = C^*$}
+We define $\tau_\bftt$ to be the painted bipartition in $\PBP_{\star_\bftt}(\ckcO_\bftt)$ such that 
+\[
+\tau_\bftt = \emptyset \times \Lambda_{l',1}(\jmath_\tau,\cQ_\tau) \times  C^*
 \]
 }
 
-\subsubsection{The case $\star=D$}
-Recall the definition of $l_{\star,\ckcO}$ in \eqref{lstarco}.
-Suppose $(2,3)\in \PP_\star(\ckcO)$. 
-We define
-\[
-\tau_\bftt := \Lambda_{l_{\star,\ckcO},1}  \times \emptyset \times \star_\bftt.
-\]
-Suppose $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$.
-(In particular, $(2,3)\notin \PP_\star(\ckcO)$.)
-We define
-\[
-\tau_\bftt := 
-\begin{cases}
-  \times \emptyset \times \star_\bftt & \text{if }\cP_\tau(l,2) = c 
-  \text{ and }  
-\Lambda_{l_{\star,\ckcO},1} \times \emptyset \times \star_\bftt & \text{otherwise}
-\end{cases}
-\]
-
-\subsection{Some properties of painted bipartitions and descent maps}
-
-The quaternionic case is relatively simple due to the following lemma. 
-\begin{prop}
-  Suppose that $\star\in \{C^*, D^*\}$. If the set $\mathrm{PBP}_\star(\check \CO,\wp)$ is nonempty, then $\check \CO$ is quasi-distinguished  and $\wp=\emptyset$.  
-\end{prop}
-\begin{proof}
-  Suppose that $\tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \mathrm{PBP}_\star(\check \CO,\wp)$. If  $\star=C^*$, then  the definition of painted bipartitions implies that 
- \[
- \bfcc_i(\imath)\leq \bfcc_i(\jmath) \qquad \textrm{for all } i=1,2,3, \cdots.
- \]
-This forces that  $\wp=\emptyset$ and  $\check \CO$ is quasi-distinguished. 
- 
- If  $\star=D^*$, then  the definition of painted bipartitions implies that 
- \[
- \bfcc_{i+1}(\imath)\leq \bfcc_i(\jmath) \qquad \textrm{for all } i=1,2,3, \cdots.
- \]
-This  also forces that  $\wp=\emptyset$ and  $\check \CO$ is quasi-distinguished.
- 
-\end{proof}
 
 
 
 
 
-% \subsection{Definition of $\eDD$ of Type D and C} \label{sec:alg.CD}
 
-% \subsubsection{Bijection between ``special'' and ``non-special'' diagrams for type C}
-% We define a bijection between ``special'' diagram $\uptau^{s}$ and
-% ``non-special'' diagrams $\uptau$.
+%$\delta_\wp$ is bijective. 
+%Moreover, for each $\tau\in \PBP_\star(\ckcO,\wp)$,
+%The following equation of signatures holds. 
+%\[
+%\ssign(\tau)
+%=(\bfcc_2(\cO),\bfcc_2(\cO))+\ssign(\DD^2(\tau))+\ssign(\tau_\bftt).
+%\]
 
-% \begin{defn}\label{def:sp-nsp.C.sp}
-%   Let $\cO = (C_{2k},C_{2k-1}, \cdots, C_{1},C_{0}, C_{-1}=0)\in \dpeNil(C)$
-%   with $k\geq 0$.
-%   Let
-%   \[
-%   \tau = (\tau_{2k-1}, \cdots, \tau_{1},\tau_{-1}=0) \times (\tau_{2k}, \cdots, \tau_{0}).
-%   \]
-%   be a Weyl group representation attached to $\cO\in \dpeNil(C)$.
-%   We say $\tau$ has
-%   \begin{itemize}
-%     \item \idxemph{special shape} if $\tau_{2k-1}\leq \tau_{2k}+1$;
-%     \item \idxemph{non-special shape} if $\tau_{2k-1}> \tau_{2k}+1$.
-%   \end{itemize}
-%   Clearly, this gives a partition of the set of Weyl group representations
-%   attached to $\cO$.
+%\begin{prop}\label{prop:PP.BD}
+%Suppose $\star \in \set{D,B,C^*}$ and $(2,3)\in\PP(\ckcO)$. 
+%Then the map $\delta_\wp$ is bijective. 
+%Moreover, for each $\tau\in \PBP_\star(\ckcO,\wp)$,
+%The following equation of signatures holds. 
+%\[
+%\ssign(\tau)
+%=(\bfcc_2(\cO),\bfcc_2(\cO))+\ssign(\DD^2(\tau))+\ssign(\tau_\bftt).
+%\]
+%\end{prop}
 
-%   Suppose $k\geq 1$, $C_{2k}=2c_{2k}$ and $C_{2k-1}=2c_{2k-1}$.
-%   The special shape representation $\tau^{s}$
-%   \[
-%     \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}=(c_{2k-1},\tau_{2k-3},\cdots, \tau_{1} )
-%     \times (c_{2k},\tau_{2k-2},\cdots, \tau_{0})
-%   \]
-%   is paired with the non-special shape representation
-%   \[
-%     \tau^{ns} = \tau_{L}^{ns}\times \tau_{R}^{ns} = (c_{2k}+1,\tau_{2k-3},\cdots, \tau_{1} )
-%     \times (c_{2k-1}-1,\tau_{2k-2},\cdots, \tau_{0})
-%   \]
-%   In the paring $\tau^{s}\leftrightarrow \tau^{ns}$, $\tau_{j}$  is unchanged for $j\leq 2k-2$.
-%   We call $\tau^{s}$ the \emph{special shape} and $\tau^{ns}$ the
-%   corresponding \emph{non-special shape}
-% \end{defn}
+%
+%\begin{prop}\label{prop:PP.BD}
+%Suppose $\star \in \set{D,B,C^*}$ and
+%$\bfrr_2(\ckcO) = \bfrr_3(\ckcO)>0$
+%(So $(2,3)\notin\PP(\ckcO)$). 
+%Then the map $\delta_\wp$ is injective with image 
+%\[
+%\Set{
+%(\tau'',\tau_0)  \in \PBP_\star(\ckcO,\wp'')\times \PBP_D(\ckcO_\bftt,\emptyset) 
+%| 
+%x_{\tau''} = d, \text{ or }
+%\cP_{\tau_0}^{-1}(\set{s,c})\neq \emptyset
+%%\begin{minipage}{15em}
+%%$x_{\tau''} = d$ , or \\
+%%$x_{\tau''} \in \set{r,c}$ and 
+%%$\cP_{\tau_\bftt}^{-1}(\set{s,c})\neq \emptyset$.
+%%\end{minipage}
+%}
+%\]
+%Moreover, for each $\tau\in \PBP_\star(\ckcO,\wp)$,
+%The following equation of signatures holds. 
+%\[
+%\ssign(\tau)
+%=(\bfcc_2(\cO)-1,\bfcc_2(\cO)-1)+\ssign(\DD^2(\tau))+\ssign(\tau_\bftt).
+%\]
+%\end{prop}
 
-% 
-
-% \begin{defn}\label{def:sp-nsp.C}
-%   Suppose $C_{2k}$ is even.
-% We retain the notation in \Cref{def:sp-nsp.C.sp} where the shapes $\tau^{s}$ and $\tau^{ns}$
-% correspond with each other.
-% We define a bijection between $\drc(\tau^{s})$ and $\drc(\tau^{ns})$:
-% \[
-%   \begin{tikzcd}[row sep=0em]
-%     \drc(\tau^{s}) \ar[rr,<->]&\hspace{2em} & \drc(\tau^{ns})\\
-%     \uptau^{s} \ar[rr,<->]& & \uptau^{ns}
-%   \end{tikzcd}
-% \]
-
-% Without loss of generality, we can assume
-% that $\uptau^{s}\in \drc(\tau^{s})$ and $\uptau^{ns}\in \drc(\tau^{ns})$ have the following shapes:
-% \begin{equation}\label{eq:sp-nsp.C}
-%   \uptau^{s}:\tytb{\cdots\cdots\cdots,{x_{0}}{\ast}{\cdots},{x_{1}}{x_{2}}{\cdots},\ ,\ ,\ ,\ }
-%   \times\tytb{\cdots\cdots\cdots,{v_{0}}{\cdots},{x_{3}},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\ } \longleftrightarrow \hspace{2em}
-%   \uptau^{ns}:\tytb{\cdots\cdots\cdots,{y_{0}}{\ast}{\cdots},{*(srcol)r}{y_{2}}\cdots,
-%     {*(srcol)\vdots},{*(srcol)r},{y_{1}},{y_{3}} }
-%   \times\tytb{\cdots\cdots\cdots,{w_{0}}{\cdots},\ ,\ ,\ ,\ ,\ }
-% \end{equation}
-% (Here the grey parts have length $(C_{2k}-C_{2k-1})/2$ (could be zero length), the row contains
-% $x_{0}$ and $y_{0}$ may be empty, and $*$/$\cdots$ are
-% arbitrary entries. We remark that the value of $v_{0}$ and $w_{0}$ are
-% completely determined by $x_{0}$ and $y_{0}$. In particular, $v_{0}$ and $w_{0}$
-% are non-empty if and only if
-% $x_{0}/y_{0}\neq \emptyset$, i.e. $C_{2k-1}\geq 4$.)
-
-% % We marks the entries of $\uptau^{s}$ and $\uptau^{ns}$ as in
-% % \eqref{eq:sp-nsp.C}.
-% The correspondence between $(x_{0},x_{1}, x_{2}, x_3)$, with
-% $(y_{0},y_{1},y_{2},y_{3})$ is given by \Cref{tab:nonsp.C}.
-% The rest part of the diagrams are unchanged.
-
-% We define
-% \[
-%   \drcs(\cO) := \bigsqcup_{\tau^{s}} \drc(\tau^{s}) \quad \text{ and }\quad
-%   \drcns(\cO) := \bigsqcup_{\tau^{ns}} \drc(\tau^{ns})
-% \]
-% where $\tau^{s}$ (resp. $\tau^{ns}$) runs over all specail (resp. non-special) shape representations attached to $\cO$.
-% Clearly $\drc(\cO) = \drcs(\cO)\sqcup \drcns(\cO)$.
-% \end{defn}
-% It is easy to check the bijectivity in the above definition, which we leave it
-% to the reader.
-
-% 
-
-% \subsubsection{Special and non-special shapes of type D}
-% Now we define the notion of special and non-special shape of type D.
-% \begin{defn}\label{def:sp-nsp.D.sp}
-%   Let
-%   \[
-%   \tau = (\tau_{2k+1},\tau_{2k-1}, \cdots, \tau_{1})\times (\tau_{2k}, \cdots, \tau_{0})
-%   \]
-%   be a Weyl group representation attached to $\cO\in \dpeNil(D)$.
-%   We say $\tau$ has
-%   \begin{itemize}
-%     \item \idxemph{special shape} if $\tau_{2k-1}\leq \tau_{2k}+1$;
-%     \item \idxemph{non-special shape} if $\tau_{2k-1}> \tau_{2k}+1$.
-%   \end{itemize}
-
-%   Suppose
-%   $\cO=(C_{2k+1}=2c_{2k+1},C_{2k}=2c_{2k},C_{2k-1}=2c_{2k-1},\cdots,C_{0}\geq 0)$
-%   with $k\geq 1$.\footnote{Note that $C_{2k}$ and $C_{2k-1}$ are non-zero
-%     even integers.}
-%   A representation $\tau^{s}$ attached to $\cO$ has the shape
-%   \[
-%     \tau^{s} = \tau_{L}^{s}\times \tau_{R}^{s}=(c_{2k+1},c_{2k-1},\tau_{2k-3},\cdots, \tau_{1} )
-%     \times (c_{2k},\tau_{2k-2},\cdots, \tau_{0})
-%   \]
-%   is paired with
-%   \[
-%     \tau^{ns} = \tau_{L}^{ns}\times \tau_{R}^{ns} = (c_{2k+1},c_{2k}+1,\tau_{2k-3},\cdots, \tau_{1} )
-%     \times (c_{2k-1}-1,\tau_{2k-2},\cdots, \tau_{0}).
-%   \]
-%   In the paring $\tau^{s}\leftrightarrow \tau^{ns}$, $\tau_{j}$  is unchanged for $j\leq 2k-2$.
-%   % We call $\tau^{s}$ the \emph{special shape} and $\tau^{ns}$ the
-%   % corresponding \emph{non-special shape}
-% \end{defn}
-
-
-
-
-\begin{prop}\label{lem:DD.bij}
-Suppose that either $\star \in \set{C,\wtC}$ and $(1,2)\in \mathrm{PP}_\star(\check \CO)$, or $\star=D^*$. Then the descent map 
-\begin{equation}\label{eq:DD.bij.s}
-\nabla: \PBP_\star(\ckcO,\wp)\longrightarrow  \PBP_{\star'}(\ckcOp,\wp') 
-\end{equation}
-is bijective. 
-\end{prop}
-\def\nds{\#_{\bullet,s}}
-\begin{proof}
-Suppose $\star = \wtC$. Let $\tau'\in \PBP_{\star'}(\ckcOp,\wp')$.
-Note that $\jmath(\ckcO,\wp) = \jmath_{\tau'}$ and 
-\[
-\bfcc_1(\imath_\tau) > %\bfcc_1(\jmath_{\tau'})\geq 
-\nds(\bfcc_1(\cQ_{\tau'})) \geq \bfcc_2(\imath_\tau)
-\geq \nds(\bfcc_2(\cQ_{\tau'})) \geq \bfcc_3(\imath_\tau)\cdots.  
-\]
-So there is an unique $\tau\in \PBP_{\star}(\ckcO,\wp)$ 
-such that 
-\[
-\begin{split}
-\cQ_\tau(i,j) & = 
-\begin{cases}
-\bullet & \text{if } \cQ_{\tau'}(i,j) \in \set{\bullet,s}\\
-\cQ_{\tau'}(i,j)  & \text{otherwise}
-\end{cases} \\
-%& \quad \text{and}\\
-\cP_\tau (\frac{\bfrr_1(\ckcO)}{2},1) & = \begin{cases}
-s  & \text{if } \alpha_{\tau'} = B^+,\\
-c  & \text{if } \alpha_{\tau'} = B^-.\\
-\end{cases}
-\end{split}
-\]
-This yields the inverse of \eqref{eq:DD.bij.s}.  
-
- The case $\star \in \set{C,D^*}$ is similar. We leave the details to the reader. 
-% When $\star = D^*$, $\jmath_\tau = \jmath_{\tau'}$ and 
-% So there is an unique $\tau\in \PBP_{\star}(\ckcO,\wp)$ 
-% such that 
-% \begin{equation} \label{eq:DD.CD1}
-%     \cQ_\tau(i,j) = 
-%     \begin{cases}
-%     \bullet & \text{if } \cQ_{\tau'}(i,j) \in \set{\bullet,s}\\
-%     \cQ_{\tau'}(i,j)  & \text{otherwise}
-%     % \text{if } (i,j)\in \BOX(\jmath_\tau) =\jmath_{\tau'} \text{ and } \cQ_{\tau'}(i,j) \in \set{r,d}.
-%     \end{cases}
-% \end{equation} 
-% This yields the inverse of \eqref{eq:DD.bij.s}.  
-% The case when $\star=D^*$ is similar. 
-% Now assume $\star = \wtC$.
-% Then $\bfcc_1(\imath(\ckcO,\wp))=\frac{\bfrr_1(\ckcO)}{2}>
-% \frac{\bfrr_2(\ckcO)}{2} = 
-% \bfcc_1(\jmath(\ckcO,\wp))$. Now there is a unique painted bipartition $\tau\in \PBP_\star(\ckcO,\wp)$ which satisfies  \eqref{eq:DD.CD1},
-% \[
-% \begin{split} 
-% \cQ_\tau(i,j) &= \cQ_{\tau'}(i,j)  \quad \text{for all} (i,j)\in \jmath_\tau =\jmath_{\tau'} \text{ and } \cQ_{\tau'}(i,j) \in \set{r,d}.\\
-% \cP_\tau(i+1,j) &= \cP_{\tau'}(i,j)  \quad \text{for all} (i,j)\in \imath_{\tau'} \text{ and } \cQ_{\tau'}(i,j) = \set{c}.
-% \end{split}
-% \]
-% Note that this is compatible with 
-% \eqref{eq:def.alphap}.
-\end{proof}
-
-By the definition of descent map, we have the following
-\begin{cor}
-Suppose $\star \in \set{C,\wtC}$.
-Let $\bar\wp := \set{(1,2)} \cup \wp$
-Then the descent map yields the following bijection:
-\begin{equation}\label{eq:DD.bij.ns}
-\PBP_\star(\ckcO,\bar\wp)\longrightarrow  \PBP_{\star'}(\ckcOp,\wp') ,\quad 
-\tau \mapsto \DD(\tau).  \qed
-\end{equation}
-\end{cor}
-
-\subsubsection{The case when $(1,2)$ is not a primitive pair}
-
-Suppose $\bfrr_1(\ckcO) = \bfrr_2(\ckcO)>1$. Now $(1,2)\notin \PP(\ckcO)$. 
-Fix $\wp\subset \PP(\ckcO)$ and let $\wp' = \ckDD(\wp)$. 
-Recall the definiton of $l:=l_{\star,\ckcO}$ in \eqref{lstarco}. 
-\begin{prop}
-When $\star = C$, the descent map yields the following bijection:
-\[
-\PBP_\star(\ckcO,\wp)\longrightarrow  \Set{\tau'\in \PBP_{\star'}(\ckcOp,\wp')| 
-\cP_{\tau'}(l_{\star,\ckcO},1)\neq s}.
-\]
-When $\star = \wtC$, the descent map yields the following bijection:
-\[
-\PBP_\star(\ckcO,\wp)\longrightarrow 
- \Set{\tau'\in \PBP_{\star'}(\ckcOp,\wp')| 
-(\cQ_{\tau'}(l_{\star,\ckcO},1),\alpha_{\tau'})\neq (s,B^-) }
-\]
-\end{prop}
-\begin{proof}
-Let $l = l_{\star,\ckcO}$.
-Suppose $\tau\in\PBP_\star(\ckcO,\wp)$.
-
-When $\star = C$, we have $\bfcc_1(\imath(\ckcO,\wp)) =l = \bfcc_1(\jmath(\ckcO,\wp))+1$.
-Hence $\cP_\tau(l,1)\neq \bullet$, which implies 
-$\cP_{\DD(\tau)}(l,1)\neq s$.
-
-When $\star = \wtC$, we have $\bfcc_1(\imath(\ckcO,\wp)) = l = \bfcc_1(\jmath(\ckcO,\wp))$.
-If $\cQ_{\DD(\tau')}(l,1) = s$,  
-then $\cP_\tau(l,1) = \bullet$, which implies 
-$\alpha_{\DD(\tau)} = B^+$.
-
-The inverse of the map $\DD|_{\PBP_\star(\ckcO,\wp)}$ is given by the same 
-receipt in the proof of \Cref{lem:DD.bij}.
-\end{proof}
-
-\subsection{Properties for descent from $D,B,C^*$ to $C,\wtC,D^*$}
 
 
 \subsubsection{A key property in the descent case}
@@ -1667,7 +1848,8 @@ There is some restriction on the possibilities  of $\bfuu_{\uptau}$.
 \section{Type B/M case}
 
 \subsection{Definition of $\eDD$ for type B and M}
-
+\def\taulf{\uptau_{L,1}}
+\def\taurf{\uptau_{R,1}}
 \subsubsection{The defintion of $\upepsilon$.} \label{sec:upepsilon.BM}
 \begin{enumerate}[label=(\arabic*).,series=alg2]
   \item When $\uptau\in \drc(B)$, $\upepsilon$ is determined by the ``basal
