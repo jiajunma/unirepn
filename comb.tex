@@ -31,6 +31,15 @@ l':=l_{\star', \check \CO'}
 
 
 In this subsection, let $\tau=(\imath,\cP)\times (\jmath,\cQ)\times \alpha$ be a  painted bipartition such that $\star_\tau=\star$. Write $\star'$ for the Howe dual of $\star$ and put
+\begin{equation} \label{eq:def.alphap}
+\alpha'=\begin{cases} B^+,
+& \textrm{if $\alpha = \wtC$ and $\cP_\tau(l_{\star,\ckcO},1),1) \neq c$;}\\
+B^-,
+& \textrm{if $\alpha = \wtC$ and $\cP_\tau(l_{\star,\ckcO},1),1)  = c$;}\\
+\star', & \textrm{if $\alpha\neq \widetilde C$}. 
+\end{cases}
+\end{equation}
+\trivial{
   \begin{equation} \label{eq:def.alphap}
     \alpha'=\begin{cases} B^+,
   & \textrm{if $\alpha=\widetilde{C}$ and $c$ does not occur in the leading column of $\tau$}; \smallskip \\
@@ -39,6 +48,7 @@ In this subsection, let $\tau=(\imath,\cP)\times (\jmath,\cQ)\times \alpha$ be a
   \star', & \textrm{if $\alpha\neq \widetilde C$}. 
   \end{cases}
   \end{equation}
+  }
 \begin{lem}\label{lemDDn1}
   If $\star \in \set{B,C,C^*}$, then there is a unique painted bipartition of the form $\tau'= (\imath',\cP')\times (\jmath',\cQ')\times \alpha'$ with the following properties:
   \begin{itemize}
@@ -102,8 +112,9 @@ In this subsection, let $\tau=(\imath,\cP)\times (\jmath,\cQ)\times \alpha$ be a
   
 \end{proof}
 
+\begin{defn}
  In the notation of \Cref{lemDDn1,lemDDn2}, we call $\tau'$ the naive descent of $\tau$, to be denoted by $\DDn(\tau)$.  
- 
+\end{defn} 
 
   
 
@@ -341,7 +352,8 @@ Lemma \ref{descb} is easy to check and we omit the details. Note that $(\frac{\b
  Note that in this case, the nonzero row lengths of $\check \CO$ are $7,7,7,3$,   and $l'=3$.
 \end{Example}
 
-Finally, we define the descent of $\tau$ to be 
+\begin{defn}
+We define the descent of $\tau$ to be 
 \[
   \nabla(\tau):= \begin{cases}
   \tau', & \ \text{ if the condition of Lemma \ref{descb2}  or \ref{descd2} holds}; \\
@@ -349,7 +361,9 @@ Finally, we define the descent of $\tau$ to be
 \end{cases}
 \]
 which is an element of $  \mathrm{PBP}_{\star'}(\check \CO')$. 
-Here $\tau'$ is as in Lemmas  \ref{descb2} and \ref{descd2}. In conclusion, we have defined the descent map
+Here $\tau'$ is as in Lemmas  \ref{descb2} and \ref{descd2}. 
+\end{defn}
+In conclusion, we have defined the descent map
 \[
 \nabla: \mathrm{PBP}_{\star}(\check \CO)\rightarrow \mathrm{PBP}_{\star'}(\check \CO').
 \]
@@ -503,7 +517,7 @@ and
 \[
 x_\tau=d\Longleftrightarrow \cP(l,1) =d. 
 \]
-
+\qed
 \end{lem}
 
 
@@ -597,12 +611,8 @@ unless $\star\in \set{B,D}$ and $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$.
 % when $\star = C^*$ 
 \end{prop}
 \begin{proof}
- 
+  
 \end{proof}
-
-
-
-
 
 %The following equation of signatures will be crucial in our computation of the local system in the next section. 
 
@@ -617,7 +627,7 @@ As in the Introduction, $\CO$ denotes the Barbasch-Vogan dual of $\check \CO$. W
 \begin{prop}\label{prop:delta}
 Assume that $\star \in \set{D,B,C^*}$ and $\bfrr_2(\ckcO)>0$. Write $\ckcOpp := \ckDD(\ckcO')$ and consider the map 
 \begin{equation}\label{eq:delta}
-    \colon \PBP_\star(\ckcO)\longrightarrow 
+  \delta  \colon \PBP_\star(\ckcO)\longrightarrow 
     \PBP_\star(\ckcOpp)\times \PBP_{\star_\bftt}(\ckcO_\bftt),
     \qquad \tau \mapsto (\DD^2(\tau),\tau_\bftt).
 \end{equation}

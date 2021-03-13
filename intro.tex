@@ -632,15 +632,17 @@ Define
 \[
 \mathrm{PBP}_\star(\check \CO):=\Set{
 \tau\textrm{ is a painted bipartition}  \mid  \star_\tau = \star \text{ and } (\imath_\tau,\jmath_\tau) = (\imath_\star(\check \CO), \jmath_\star(\check \CO)) 
-},
+}.
 \]
- and 
+We also define the following extended parameter set:
 \[
-\mathrm{PBP}'_\star(\check \CO):=\begin{cases}
+\PBPes(\check \CO):=\begin{cases}
 \mathrm{PBP}_\star(\check \CO)\times \{\wp\subset \mathrm{PP}_\star(\check \CO)\},\quad& \textrm{if }\star\in \{B,C, D, \widetilde C\};\\
 \mathrm{PBP}_\star(\check \CO)\times \{\emptyset \},\quad& \textrm{if }\star\in \{C^*, D^*\}.
 \end{cases}
 \]
+We use $\uptau=(\tau,\wp)$ to denote an element in $\PBPes(\ckcO)$. 
+
 Put
 \[
   \mathrm{Unip}_{\star}(\check \CO):=\left\{
@@ -654,7 +656,18 @@ Put
             \end{array}
    \right.
 \]
-We will use the set $\mathrm{PBP}'_\star(\check \CO)$ to parameterize the set $\mathrm{Unip}_{\star}(\check \CO)$.
+
+Now we can state the main result in \cite{BMSZ2}:
+\begin{thm}
+Suppose $\ckcO\in \Nil(\check\fgg)$ has $\star$-good parity and $\abs{\ckcO}>0$. Then 
+\[
+\abs{\Unip_{\star}{\ckcO}} = \begin{cases}
+\phantom{2}\abs{ \PBPes(\ckcO)} & \text{when } \star\in \set{C,\wtC,C^*,D^*};\\
+2 \abs{\PBPes(\ckcO)} & \text{when } \star\in \set{B,D}.\\
+\end{cases}
+\]
+\end{thm}
+We will use the set $\PBPes(\ckcO)$ to count the set $\mathrm{Unip}_{\star}(\check \CO)$.
 
 
 
@@ -674,10 +687,10 @@ In all other case, $\varepsilon_{\tau}=1$.
 
 \subsection{Descents of painted bipartitions and theta lifts}
 
-Let $\star$ and $\check \CO$ be as before. For every $(\tau,\wp)\in \mathrm{PBP}_\star(\check \CO)$, in what follows we will construct a representation $\pi_{\tau,\wp}$ of $G_\tau$ by theta lift.
+Let $\star$ and $\check \CO$ be as before. For every $\uptau = (\tau,\wp)\in \mathrm{PBP}_\star(\check \CO)$, in what follows we will construct a representation $\pi_{\tau,\wp}$ of $G_\tau$ by theta lift.
 For the starting case when $\check \CO$ is the empty Young diagram, define
  \[
- \pi_{\tau,\wp}:= \left\{
+ \pi_{\uptau}:= \left\{
      \begin{array}{ll}
          \textrm{the one dimensional genuine representation} , &\hbox{ if $\star=\widetilde C$ so that $G_\tau=\widetilde{\Sp}_0(\R)$;} \smallskip\\
  \textrm{the one dimensional trivial representation} , &\hbox{  if $\star\neq \widetilde C$.}            \end{array}
@@ -710,8 +723,13 @@ Define the dual descent of $\wp$ to be
  \[
    \nabla:  \mathrm{PBP}_\star(\check \CO)\rightarrow  \mathrm{PBP}_{\star'}(\check \CO').
  \]
-
- Put $\tau':=\nabla(\tau)$.
+ We the descent map naturally extends to the parameter space
+ \[
+\DD\colon \PBPes(\ckcO)\rightarrow \PBPesp(\ckcO') 
+\qquad (\tau,\wp)\mapsto (\DD(\tau), \ckDD(\wp))
+ \]
+%For $\uptau = (\tau,\wp)$, p
+Put $\uptau' := (\tau',\wp'):=\nabla(\uptau)$.
    Let $(W_{\tau, \tau'}, \la \,\cdot\,,\,\cdot\,\ra_{\tau, \tau'})$ be a real symplectic space of  dimension $\dim \tau\cdot \dim \tau'$. As usual, there are continuous homomorphisms $G_\tau\rightarrow \Sp(W_{\tau, \tau'})$ and $G_{\tau'}\rightarrow \Sp(W_{\tau, \tau'})$ whose images form a reductive dual pair in $\Sp(W_{\tau, \tau'})$. We form the semidirect prduct
    \[
    J_{\tau, \tau'}:=(G_\tau\times G_{\tau'})\ltimes \oH(W_{\tau, \tau'}),
@@ -735,34 +753,52 @@ Define the dual descent of $\wp$ to be
  where $\widehat \otimes$ indicates the complete projective tensor product. This is a Casselman-Wallach representation of $G_\tau$.
  Now we define the representation $\pi_{\tau,\wp}$ of $G_\tau$ by induction on $\mathbf c_1(\check \CO)$:
  \[
-   \pi_{\tau,\wp}:=\left\{
+   \pi_{\uptau}:=\left\{
      \begin{array}{ll}
           %\textrm{the trivial representation $\C$}, &\hbox{if $\abs{\check \CO_\tau}\leq 1$}; \medskip\\
-         \check \Theta_{\tau'}^{\tau}(\pi_{\tau',\wp'})\otimes (1_{p_\tau, q_\tau}^{+,-})^{\varepsilon_{\tau}}, &\hbox{if  $\star_\tau=B$ or $D$}; \\
-         \check \Theta_{\tau'}^{\tau}(\pi_{\tau',\wp'}\otimes \det^{\varepsilon_{\wp}}), &\hbox{if $\star_\tau=C$ or $\widetilde C$}; \\
-              \check \Theta_{\tau'}^{\tau}(\pi_{\tau',\wp'}), &\hbox{if $\star_\tau=C^*$ or $D^*$}. \\
+         \check \Theta_{\tau'}^{\tau}(\pi_{\uptau'})\otimes (1_{p_\tau, q_\tau}^{+,-})^{\varepsilon_{\tau}}, &\hbox{if  $\star_\tau=B$ or $D$}; \\
+         \check \Theta_{\tau'}^{\tau}(\pi_{\uptau'}\otimes \det^{\varepsilon_{\wp}}), &\hbox{if $\star_\tau=C$ or $\widetilde C$}; \\
+              \check \Theta_{\tau'}^{\tau}(\pi_{\uptau'}), &\hbox{if $\star_\tau=C^*$ or $D^*$}. \\
             \end{array}
    \right.
  \]
  Here $1_{p_\tau, q_\tau}^{+,-}$ denotes the character of $\oO(p_\tau, q_\tau)$ whose restriction to $\oO(p_\tau)\times \oO(q_\tau)$ equals $1\otimes \det$ ($1$ stands for the trivial character), and 
- $\varepsilon_{\wp}$ denote the element in $\Z/2\Z$ such that 
- \[
-  \varepsilon_\tau=1\Leftrightarrow  (1,2)\in \wp. 
-\].
-
-
+% $\varepsilon_{\wp}$ denote the element in $\Z/2\Z$ such that 
+% \[
+%  \varepsilon_{\wp}:=1\Leftrightarrow  (1,2)\in \wp. 
+%\]
+\begin{align*}
+ \varepsilon_{\wp} &:=
+ \begin{cases}
+ 1 &  \text{if } (1,2)\in \wp\\
+ 0 &  \text{if }(1,2)\notin \wp\\
+ \end{cases}\\
+ \varepsilon_{\tau} & :=
+ \begin{cases}
+ 0 & \text{if }(\star,\cP_\tau(\bfcc_1(\imath_\tau),1))  = (D,d)\\
+ 0 & \text{if }(\star,\cQ_\tau(\bfcc_1(\jmath_\tau),1)) = (B,d)\\
+ 1 & \text{otherwise}
+ \end{cases}\\
+\end{align*}
+%We define 
+%\[
+%\varepsilon_\uptau := \begin{cases}
+%\varepsilon_\wp & \text{if } \star \in \set{C,\wtC,D^*}\\
+%\varepsilon_\tau& \text{if } \star \in \set{B,D,C^*}
+%\end{cases}
+%\]
  
 We are now ready to formulate our first main theorem.
 \begin{thm}\label{thm1}
 Let $\star\in \{B, C,D,\widetilde {C}, C^*, D^*\}$, and let $\check \CO$ be a Young diagram that has $\star$-good parity.
 
-\noindent (a) For every $(\tau,\wp)\in \mathrm{PBP}'_\star(\check \CO)$, the representation $\pi_{\tau,\wp}$ of $G_\tau$ is irreducible and attached to $\check \CO$.
+\noindent (a) For every $\uptau = (\tau,\wp)\in \PBPes(\check \CO)$, the representation $\pi_{\uptau}$ of $G_\tau$ is irreducible and attached to $\ckcO$.
 
 \noindent  (b) If $\star\in \{B,D\}$ and $\abs{\check \CO}>0$, then the map
 \[
 \begin{array}{rcl}
-\mathrm{PBP}'_\star(\check \CO)\times \Z/2\Z&\rightarrow &\mathrm{Unip}_{\star}(\check \CO),\\
-  ((\tau,\wp), \epsilon)&\mapsto& \pi_{\tau,\wp}\otimes \det^\epsilon
+\PBPes(\check \CO)\times \Z/2\Z&\rightarrow &\mathrm{Unip}_{\star}(\check \CO),\\
+  (\uptau, \epsilon)&\mapsto& \pi_{\uptau}\otimes \det^\epsilon
   \end{array}
 \]
 is bijective.
@@ -771,14 +807,14 @@ is bijective.
 (c) In all other cases, the map
 \[
 \begin{array}{rcl}
-\mathrm{PBP}'_\star(\check \CO)&\rightarrow &\mathrm{Unip}_{\star}(\check \CO),\\
-  (\tau,\wp)&\mapsto& \pi_{\tau,\wp}
+\PBPes(\check \CO)&\rightarrow &\mathrm{Unip}_{\star}(\check \CO),\\
+  \uptau &\mapsto& \pi_{\uptau}
   \end{array}
 \]
 is bijective.
 \end{thm}
 
-By the above theorem (and the reduction in Appendix \ref{secapp}), we have explicitly constructed all special unipotent representations of the classical groups in \eqref{typebcd}. By this construction and the method of matrix coefficient integrals, we are able to prove the unitarity of these representations.
+By the above theorem (and the reduction in \Cref{secapp}), we have explicitly constructed all special unipotent representations of the classical groups in \eqref{typebcd}. By this construction and the method of matrix coefficient integrals, we are able to prove the unitarity of these representations.
 
 \begin{thm}
 All special unipotent representations of the classical groups in \eqref{typebcd} are unitarizable.
@@ -873,7 +909,7 @@ Recall that a nilpotent orbit in $\check \g$ is said to be distinguished if it i
 
 
 
-We will calculate the associated character of $\pi_\tau$ for every painted bipartition $\tau$ that has good parity. The calculation is a key ingredient in the proof of Theorem \ref{thm1}.
+We will calculate the associated cycle of $\pi_\uptau$ for every painted bipartition $\tau$ that has good parity. The calculation is a key ingredient in the proof of Theorem \ref{thm1}.
 Especially, we have the following theorem concerning the associated characters of the special unipotent representations.
 
 \begin{thm}
