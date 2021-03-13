@@ -90,8 +90,6 @@
 
 
 %\definecolor{srcol}{RGB}{255,255,51}
-
-%\definecolor{srcol}{RGB}{255,255,51}
 \colorlet{srcol}{black!15}
 
 \crefname{equation}{}{}
@@ -111,24 +109,7 @@
 {#1}
 \fi
 }
-\long\def\editc#1{{\color{red} #1}}
-\long\def\mjj#1{{{\color{blue}#1}}}
-\long\def\mjjr#1{{\color{red} (#1)}}
-\long\def\mjjd#1#2{{\color{blue} #1 \sout{#2}}}
-\def\mjjb{\color{blue}}
-\def\mjje{\color{black}}
-\def\mjjcb{\color{green!50!black}}
-\def\mjjce{\color{black}}
-
-\long\def\sun#1{{{\color{cyan}#1}}}
-\long\def\sund#1#2{{\color{cyan}#1  \sout{#2}}}
-\long\def\mv#1{{{\color{red} {\bf move to a proper place:} #1}}}
 \long\def\delete#1{}
-
-%\reversemarginpar
-\newcommand{\lokec}[1]{\marginpar{\color{blue}\tiny #1 \mbox{--loke}}}
-\newcommand{\mjjc}[1]{\marginpar{\color{green}\tiny #1 \mbox{--ma}}}
-
 
 %\def\showtrivial{\relax}
 
@@ -274,13 +255,6 @@
    \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
 
 
-
-
-
-
-
-
-
 \usepackage{xparse}
 \def\usecsname#1{\csname #1\endcsname}
 \def\useLetter#1{#1}
@@ -418,68 +392,10 @@
 % \usepackage{mathrsfs}
 
 
-\usepackage{diagbox}
-% Update the information and uncomment if AMS is not the copyright
-% holder.
-%\copyrightinfo{2006}{American Mathematical Society}
-%\usepackage{nicematrix}
-\usepackage{arydshln}
-\usepackage[mode=buildnew]{standalone}% requires -shell-escape
-
 \usepackage{tikz,etoolbox}
 \usetikzlibrary{matrix,arrows,positioning,backgrounds}
 \usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing}
 \usetikzlibrary{cd}
-% \usetikzlibrary{external}
-%   \tikzexternalize
-% \usetikzlibrary{cd}
-
-%  \AtBeginEnvironment{tikzcd}{\tikzexternaldisable}
-%  \AtEndEnvironment{tikzcd}{\tikzexternalenable}
-
-%  \usetikzlibrary{matrix,arrows,positioning,backgrounds}
-%  \usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing}
-
-% % externalization not work properly
-% % \usetikzlibrary{external}
-% \tikzexternalize[prefix=figures/]
-% % % activate the following such that you can check the macro expansion in
-% % % *-figure0.md5 manually
-% %\tikzset{external/up to date check=diff}
-% \usepackage{environ}
-
-% \def\temp{&} \catcode`&=\active \let&=\temp
-
-% \newcommand{\mytikzcdcontext}[2]{
-%   \begin{tikzpicture}[baseline=(maintikzcdnode.base)]
-%     \node (maintikzcdnode) [inner sep=0, outer sep=0] {\begin{tikzcd}[#2]
-%         #1
-%     \end{tikzcd}};
-%   \end{tikzpicture}}
-
-% \NewEnviron{mytikzcd}[1][]{%
-% % In the following, we need \BODY to expanded before \mytikzcdcontext
-% % such that the md5 function gets the tikzcd content with \BODY expanded.
-% % Howerver, expand it only once, because the \tikz-macros aren't
-% % defined at this point yet. The same thing holds for the arguments to
-% % the tikzcd-environment.
-% \def\myargs{#1}%
-% \edef\mydiagram{\noexpand\mytikzcdcontext{\expandonce\BODY}{\expandonce\myargs}}%
-% \mydiagram%
-% }
-
-\usepackage{upgreek}
-
-\usepackage{listings}
-\lstset{
-    basicstyle=\ttfamily\tiny,
-    keywordstyle=\color{black},
-    commentstyle=\color{white}, % white comments
-    stringstyle=\ttfamily, % typewriter type for strings
-    showstringspaces=false,
-    breaklines=true,
-    emph={Output},emphstyle=\color{blue},
-} 
 
 \newcommand{\BA}{{\mathbb{A}}}
 %\newcommand{\BB}{{\mathbb {B}}}
@@ -572,57 +488,7 @@
 %\DeclareMathOperator{\Ind}{Ind}
 
 
-
 \def\ckbfG{\check{\bfG}}
-
-\newcommand{\cod}{{\mathrm{cod}}}
-\newcommand{\cont}{{\mathrm{cont}}}
-\newcommand{\cl}{{\mathrm{cl}}}
-\newcommand{\cusp}{{\mathrm{cusp}}}
-
-\newcommand{\disc}{{\mathrm{disc}}}
-
-
-
-\newcommand{\Gm}{{\mathbb{G}_m}}
-
-
-
-\newcommand{\I}{{\mathrm{I}}}
-
-\newcommand{\Jac}{{\mathrm{Jac}}}
-\newcommand{\PM}{{\mathrm{PM}}}
-
-
-\newcommand{\new}{{\mathrm{new}}}
-\newcommand{\NS}{{\mathrm{NS}}}
-\newcommand{\N}{{\mathrm{N}}}
-
-\newcommand{\ord}{{\mathrm{ord}}}
-
-%\newcommand{\rank}{{\mathrm{rank}}}
-
-\newcommand{\rk}{{\mathrm{k}}}
-\newcommand{\rr}{{\mathrm{r}}}
-\newcommand{\rh}{{\mathrm{h}}}
-
-\newcommand{\Sel}{{\mathrm{Sel}}}
-\newcommand{\Sim}{{\mathrm{Sim}}}
-
-\newcommand{\wt}{\widetilde}
-\newcommand{\wh}{\widehat}
-\newcommand{\pp}{\frac{\partial\bar\partial}{\pi i}}
-\newcommand{\pair}[1]{\langle {#1} \rangle}
-\newcommand{\wpair}[1]{\left\{{#1}\right\}}
-\newcommand{\intn}[1]{\left( {#1} \right)}
-\newcommand{\sfrac}[2]{\left( \frac {#1}{#2}\right)}
-\newcommand{\ds}{\displaystyle}
-\newcommand{\ov}{\overline}
-\newcommand{\incl}{\hookrightarrow}
-\newcommand{\lra}{\longrightarrow}
-\newcommand{\imp}{\Longrightarrow}
-%\newcommand{\lto}{\longmapsto}
-\newcommand{\bs}{\backslash}
 
 \newcommand{\cover}[1]{\widetilde{#1}}
 
@@ -687,7 +553,6 @@
 
 \newcommand{\re}{\mathrm e}
 
-\renewcommand{\rk}{\mathrm k}
 
 \newcommand{\g}{\mathfrak g}
 \newcommand{\h}{\mathfrak h}
@@ -803,60 +668,12 @@
 \def\slt{\fsl_2(\bC)}
 \def\sltr{\fsl_2(\bR)}
 
-% \def\Jslt{{J_{\fslt}}}
-% \def\Lslt{{L_{\fslt}}}
-\def\slee{{
-\begin{pmatrix}
- 0 & 1\\
- 0 & 0
-\end{pmatrix}
-}}
-\def\slff{{
-\begin{pmatrix}
- 0 & 0\\
- 1 & 0
-\end{pmatrix}
-}}\def\slhh{{
-\begin{pmatrix}
- 1 & 0\\
- 0 & -1
-\end{pmatrix}
-}}
-\def\sleei{{
-\begin{pmatrix}
- 0 & i\\
- 0 & 0
-\end{pmatrix}
-}}
-\def\slxx{{\begin{pmatrix}
--\ihalf & \half\\
-\phantom{-}\half & \ihalf
-\end{pmatrix}}}
-% \def\slxx{{\begin{pmatrix}
-% -\sqrt{-1}/2 & 1/2\\
-% 1/2 & \sqrt{-1}/2
-% \end{pmatrix}}}
-\def\slyy{{\begin{pmatrix}
-\ihalf & \half\\
-\half & -\ihalf
-\end{pmatrix}}}
-\def\slxxi{{\begin{pmatrix}
-+\half & -\ihalf\\
--\ihalf & -\half
-\end{pmatrix}}}
-\def\slH{{\begin{pmatrix}
-   0   & -\mathbf i\\
-\mathbf i & 0
-\end{pmatrix}}
-}
-
 \ExplSyntaxOn
 \clist_map_inline:nn {J,L,C,X,Y,H,c,e,f,h,}{
   \expandafter\def\csname #1slt\endcsname{{\mathring{#1}}}}
 \ExplSyntaxOff
 
 
-\def\Mop{\fT}
 
 \def\fggJ{\fgg_J}
 \def\fggJp{\fgg'_{J'}}
@@ -1093,30 +910,6 @@
 
 \def\cKaod{\cK^{\mathrm{aod}}}
 
-%G_V's or G
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \def\GVr{G_{\bfV}}
-% \def\tGVr{\wtG_{\bfV}}
-% \def\GVpr{G_{\bfV'}}
-% \def\tGVpr{\wtG_{\bfV'}}
-% \def\GVpr{G_{\abfV}}
-% \def\tGVar{\wtG_{\abfV}}
-% \def\GV{\bfG_{\bfV}}
-% \def\GVp{\bfG_{\bfV'}}
-% \def\KVr{K_{\bfV}}
-% \def\tKVr{\wtK_{\bfV}}
-% \def\KV{\bfK_{\bfV}}
-% \def\KaV{\bfK_{\acute{V}}}
-
-% \def\KV{\bfK}
-% \def\KaV{\acute{\bfK}}
-% \def\acO{\acute{\cO}}
-% \def\asO{\acute{\sO}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\def\mstar{{\star}}
 
 \def\GVr{G}
 \def\tGVr{\wtG}
@@ -1192,9 +985,6 @@
 \def\Unip{\mathrm{Unip}}
 \def\lUnip{\mathrm{{}^{\ell}Unip}}
 \def\tbfxx{\tilde{\bfxx}}
-\def\PBPe{\mathrm{PBP}^{\mathrm{ext}}}
-\def\PBPes{\mathrm{PBP}^{\mathrm{ext}}_{\star}}
-\def\PBPesp{\mathrm{PBP}^{\mathrm{ext}}_{\star'}}
 \def\pbp{\mathrm{PBP}}
 \def\pbpst{\mathrm{PBP}_{\star}}
 \def\pbpssp{\pbp_{\star}^{\mathrm{ps}}}
@@ -1242,6 +1032,7 @@
   \let\vrule@YT=\vrule@enon@YT
   \startbox@@YT#2\endbox@YT
   \nullfont
+
 }
 
 \makeatother
@@ -1250,6 +1041,11 @@
 \let\ytb=\ytableaushort
 
 \newcommand{\tytb}[1]{{\tiny\ytb{#1}}}
+\newcommand{\nytb}[1]{{
+\ytableausetup{noframe=on,boxsize=1.3em}
+\ytb{#1}
+\ytableausetup{noframe=off,boxsize=1.3em}
+}}
 
 \makeatletter
 \newcommand{\dotminus}{\mathbin{\text{\@dotminus}}}
@@ -1328,7 +1124,7 @@
 
 
 
-\title[]{Special unipotent representations : orthogonal and symplectic groups}
+\title[]{Special unipotent representations: Counting}
 
 \author [D. Barbasch] {Dan M. Barbasch}
 \address{the Department of Mathematics\\
@@ -1370,8 +1166,8 @@
 
 \tableofcontents
 
-\subfile{intro}
-\subfile{comb}
+\subfile{pbp_counting}
+
 \subfile{bibdiv}
 
 \end{document}
