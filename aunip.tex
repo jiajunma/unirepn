@@ -23,6 +23,23 @@
 \usepackage{leftidx}
 %\usepackage{arydshln}
 
+% circled number
+\usepackage{pifont}
+\makeatletter
+\newcommand*{\circnuma}[1]{%
+  \ifnum#1<1 %
+    \@ctrerr
+  \else
+    \ifnum#1>20 %
+      \@ctrerr
+    \else
+      \mbox{\ding{\numexpr 171+(#1)\relax}}%
+     \fi
+  \fi
+}
+\makeatother
+
+
 \DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
 \DeclareSymbolFontAlphabet{\mathbbold}{bbold}
 
