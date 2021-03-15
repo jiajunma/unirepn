@@ -195,6 +195,7 @@
 \newcommand{\Res}{\mathrm{Res}}
 \newcommand{\Hol}{\mathrm{Hol}}
 \newcommand{\AC}{\mathrm{AC}}
+\newcommand{\ACw}{\mathrm{AC}^{\text{weak}}}
 %\newcommand{\AS}{\mathrm{AS}}
 \newcommand{\WF}{\mathrm{WF}}
 \newcommand{\AV}{\mathrm{AV}}
@@ -2019,6 +2020,9 @@ Define
 \tau\textrm{ is a painted bipartition}  \mid  \star_\tau = \star \text{ and } (\imath_\tau,\jmath_\tau) = (\imath_\star(\check \CO), \jmath_\star(\check \CO)) 
 }.
 \]
+
+
+
 We also define the following extended parameter set:
 \[
 \PBPes(\check \CO):=\begin{cases}
@@ -2104,11 +2108,27 @@ Define the dual descent of $\wp$ to be
 \begin{equation}\label{eq:DD.wp}
   \wp':=\ckDD(\wp):=\{(i,i+1)\mid i\in \bN^+, \, (i+1, i+2)\in \wp \}\subset \mathrm{PP}_{\star'}(\check \CO').
 \end{equation}
+
+
+\begin{align*}
+ \varepsilon_{\uptau} &:=
+ \begin{cases}
+ 1 &  \text{if } \star\in \set{C,\wtC,D^{*}} \text{ and } (1,2)\in \wp\\
+ 0 &  \text{if }  \star\in \set{C,\wtC,D^{*}} \text{ and } (1,2)\notin \wp\\
+ % \end{cases}\\
+ % \varepsilon_{\tau} & :=
+ % \begin{cases}
+ 0  & \text{if }(\star,\cP_\tau(\bfcc_1(\imath_\tau),1))  = (D,d)\\
+ 0 & \text{if }(\star,\cQ_\tau(\bfcc_1(\jmath_\tau),1)) = (B,d)\\
+ 1 & \text{otherwise}
+ \end{cases}\\
+\end{align*}
+
  In section \ref{sec:desc}, we will define the descent map
  \[
    \nabla:  \mathrm{PBP}_\star(\check \CO)\rightarrow  \mathrm{PBP}_{\star'}(\check \CO').
  \]
- We the descent map naturally extends to the parameter space
+ The descent map naturally extends to the
  \[
 \DD\colon \PBPes(\ckcO)\rightarrow \PBPesp(\ckcO') 
 \qquad (\tau,\wp)\mapsto (\DD(\tau), \ckDD(\wp))
@@ -2135,8 +2155,9 @@ Put $\uptau' := (\tau',\wp'):=\nabla(\uptau)$.
  \[
    \check \Theta_{\tau'}^{\tau}(\pi'):=(\omega_{\tau, \tau'}\widehat \otimes \pi')_{G_{\tau'}} \qquad (\textrm{the Hausdorff coinvariant space}),
  \]
- where $\widehat \otimes$ indicates the complete projective tensor product. This is a Casselman-Wallach representation of $G_\tau$.
- Now we define the representation $\pi_{\tau,\wp}$ of $G_\tau$ by induction on $\mathbf c_1(\check \CO)$:
+ where $\widehat \otimes$ indicates the complete projective tensor product. This
+ is a Casselman-Wallach representation of $G_\tau$.
+ Now we define the representation $\pi_{\uptau}$ of $G_\tau$ by induction on $\mathbf c_1(\check \CO)$:
  \[
    \pi_{\uptau}:=\left\{
      \begin{array}{ll}
@@ -2152,20 +2173,7 @@ Put $\uptau' := (\tau',\wp'):=\nabla(\uptau)$.
 % \[
 %  \varepsilon_{\wp}:=1\Leftrightarrow  (1,2)\in \wp. 
 %\]
-\begin{align*}
- \varepsilon_{\wp} &:=
- \begin{cases}
- 1 &  \text{if } (1,2)\in \wp\\
- 0 &  \text{if }(1,2)\notin \wp\\
- \end{cases}\\
- \varepsilon_{\tau} & :=
- \begin{cases}
- 0 & \text{if }(\star,\cP_\tau(\bfcc_1(\imath_\tau),1))  = (D,d)\\
- 0 & \text{if }(\star,\cQ_\tau(\bfcc_1(\jmath_\tau),1)) = (B,d)\\
- 1 & \text{otherwise}
- \end{cases}\\
-\end{align*}
-%We define 
+%We define
 %\[
 %\varepsilon_\uptau := \begin{cases}
 %\varepsilon_\wp & \text{if } \star \in \set{C,\wtC,D^*}\\
@@ -2925,23 +2933,23 @@ is well-defined, and we show that it is bijective by explicitly  constructing it
 
 \medskip
 
-The key properties of the descent map when $\star\in \set{D,B,C^*}$ are summarized in the following two propositions.   
 
-\begin{prop}\label{prop:DD.BD}
-Suppose that $\star \in \set{D,B,C^*}$.
-Then the map 
-\begin{equation}\label{eq:DD.BD}
-   \PBP_\star(\ckcO)\longrightarrow
-   \PBP_{\star'}(\ckcOp)\times \PBP_{\star_\bftt}(\ckcO_\bftt)
-   \qquad \tau \mapsto (\DD(\tau), \tau_\bftt)
-\end{equation}
-is injective. Moreover, \eqref{eq:DD.BD} is bijective 
-unless $\star\in \set{B,D}$ and $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$. 
-% when $\star = C^*$ 
-\end{prop}
-\begin{proof}
+% The following formulation of the proposition dose not work for type B and  r_2=0!
+% \begin{prop}\label{prop:DD.BD}
+% Suppose that $\star \in \set{D,B,C^*}$.
+% Then the map
+% \begin{equation}\label{eq:DD.BD}
+%    \PBP_\star(\ckcO)\longrightarrow
+%    \PBP_{\star'}(\ckcOp)\times \PBP_{\star_\bftt}(\ckcO_\bftt)
+%    \qquad \tau \mapsto (\DD(\tau), \tau_\bftt)
+% \end{equation}
+% is injective. Moreover, \eqref{eq:DD.BD} is bijective
+% unless $\star\in \set{B,D}$ and $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$.
+% % when $\star = C^*$
+% \end{prop}
+% \begin{proof}
   
-\end{proof}
+% \end{proof}
 
 %The following equation of signatures will be crucial in our computation of the local system in the next section. 
 
@@ -2952,6 +2960,9 @@ For every painted bipartition $\tau$, write
 \]
 When $\bfrr_2(\check \CO)>0$, the double descent $\nabla^2(\tau):=\nabla(\nabla(\tau))$ is well-defined whenever $\tau\in \mathrm{PBP}_\star(\check \CO)$. 
 As in the Introduction, $\CO$ denotes the Barbasch-Vogan dual of $\check \CO$. We also consider it as a Young diagram. 
+
+The key properties of the descent map when $\star\in \set{D,B,C^*}$ are
+summarized in the following propositions.
 
 \begin{prop}\label{prop:delta}
 Assume that $\star \in \set{D,B,C^*}$ and $\bfrr_2(\ckcO)>0$. Write $\ckcOpp := \ckDD(\ckcO')$ and consider the map 
@@ -2983,7 +2994,15 @@ $\star = C^*$ or $\bfrr_2(\ckcO)>\bfrr_3(\ckcO)$. Then the map \eqref{eq:delta} 
 \end{prop}
 
 \begin{proof}
- 
+  Suppose $\star=D$ and $\bfrr_{2}(\ckcO)>\bfrr_{3}(\ckcO)$. Then the painted Young partition $\cP_{\tau}$ is obtained
+  by attaching a column with $\frac{\bfcc_{2}(\ckcO)}{2}$ ``$\bullet$'' and
+  $\cP_{\tau_{\bftt}}$ on the left of $\cP_{\DD^{2}(\tau)}$;
+  $\cQ_{\tau}$ is obtained
+  by attaching a column with $\frac{\bfcc_{2}(\ckcO)}{2}$ ``$\bullet$''  on the
+  left of $\cQ_{\DD^{2}(\tau)}$.
+  This yields the injectivity and signature formula.
+
+  The other cases are similar.
 \end{proof}
 
 
@@ -5378,8 +5397,104 @@ $\lsign( \cL ) = \set{(p_{1}+1,q_{1}),(p_{1},q_{1}+1)}$.
 % the local system of length one rows in $\cL$.
 
 
-\section{Proof of main theorem in the type C/D case}
-We do induction on the number of columns of the nilpotent orbits.
+\section{Proof of theorem on counting}
+We do induction on the number of columns of the nilpotent orbits $\cO$.
+
+In this section, we let $\star \in \set{B,D,C^{*}}$. Now
+$\star' = \wtC, C, D^{*}$  respectively.
+
+We assume all the claim had been proven when $\cO$ has at most two columns, that
+is
+\begin{itemize}
+  \item When $\star = D$, $\bfrr_{3}(\ckcO) = 0$;
+  \item When $\star = B$, $\bfrr_{2}(\ckcO)=0$;% is the zero orbit.
+  \item When $\star = C^{*}$, $\bfrr_{2}(\ckcO)=0$.% is the zero orbit.
+\end{itemize}
+
+\begin{prop}\label{prop:LLS}
+   We have:
+  \begin{enumS}
+    \item For each $\uptau'\in \PBPesp(\ckcOp)$, $\cL_{\uptaup}\neq 0$.
+    \item For each $\uptau\in \PBPes(\ckcO)$, $\cL_{\uptau}\neq 0$.
+    \item Let $\uptau'_{1},\uptau'_{2}$ be two distinct elements in
+    $\PBPesp(\ckcOp)$. Then either
+    \begin{itemize}
+      \item      $\cL_{\uptau'_{1}}\neq \cL_{\uptau'_{2}}$; or
+      \item $(\tau''_{1},\varepsilon'_{1})\neq (\tau''_{2},\varepsilon'_{2})$
+      and $\Sign(\tau''_{1})=\Sign(\tau''_{2})$ where
+      $(\tau''_{i},\varepsilon'_{i}) := \DD(\uptaup_{i})$ for $i=1,2$.
+  \end{itemize}
+  \item Let $\uptau_{1},\uptau_{2}$ be two distinct elements in
+    $\PBPes(\ckcO)$. Then either
+    \begin{itemize}
+      \item $\cL_{\uptau_{1}}\neq \cL_{\uptau_{2}}$; or
+      \item $\tau'_{1}\neq \tau'_{2}$ and $\varepsilon_{1} = \varepsilon_{2})$
+       where $(\tau'_{i},\varepsilon_{i}) := \DD(\uptau_{i})$ for $i=1,2$.
+  \end{itemize}
+    \item \label{p:drcls.1}
+    When $\star \in \set{B,D}$
+    The local system $\cL_{\uptau}$ is disjoint with their determinant twist:
+    \begin{equation}\label{eq:LS.dis}
+      \set{\cL_{\uptau} | \uptau \in \PBPes(\ckcO)} \cap \set{\cL_{\uptau}\otimes \det| \uptau\in \PBPes(\ckcO)} = \emptyset.
+    \end{equation}
+  \item
+  We have
+  \begin{enumT}
+    \item If $x_{\uptau} = s$, then $\pcL_{\uptau} = \ncL_{\uptau} = 0$.
+    \item If $x_{\uptau} \in \set{r,c}$, then $\pcL_{\uptau} \neq 0$ and $\ncL_{\uptau}=0$.
+    \item If $x_{\uptau} = d$, then $\pcL_{\uptau}\neq 0$ and $\ncL_{\uptau}\neq 0$.
+  \end{enumT}
+  % \item
+  % When $x_{\uptau}=c$, $\cD_{\uptau,2}\neq \emptyset$ only if
+  % $\bftt_{\uptau} = \ytb{sd\cdots, \vdots,s,c}$.
+  % \item If $\cOp \leadsto \cOpp$ is a usual descent, we have a simpler
+  % factorization:
+  % \begin{equation}\label{eq:d.factor}
+  %   %\cL_{\uptau} = \cB_{\uptau,0}\cdot \cD_{\uptau,0}
+  %   \cL_{\uptau} = \cT_{\uptau}\cdot \cP_{\bfxx_{\uptau}}.
+  % \end{equation}
+  % where $\cD_{\uptau,0}$ is given by \eqref{eq:ls.srcd}.
+
+  % In particular, $\cD_{\uptau,0}=\tytb{=,=}$ (resp.
+  % $\cD_{\uptau,0}=\tytb{+,+}$) if and only if all 1-rows
+  % of $\cL_{\uptau}$ have ``$=$'' marks (resp. ``+'' marks), i.e. $x_{\uptau}=s$
+  % (resp. $x_{\uptau}=r$).
+  \item When $\ckcOp$ is noticed, the map
+  $\cL\colon \drc( \cOp )\longrightarrow \LLS(\cOp)$ is a bijection.
+  \item When $\cO$ is noticed, the map
+  $\cL\colon \drc(\cO)\longrightarrow \LLS(\cO)$ is a bijection.
+    \item When $\cO$ is +noticed, the maps
+    % $\pUpsilon_{1}:=\pr_{1}\circ \Upsilon$
+    \[
+      \begin{tikzcd}[row sep=0em]
+        \pUpsilon_{\cO} \colon \set{\cL_{\uptau}|\pcL_{\uptau}\neq 0} \ar[r] & \set{\pcL_{\uptau}}\\
+       \cL_{\uptau} \ar[r,maps to] & \pcL_{\uptau}& \text{and}\\
+        \nUpsilon_{\cO} \colon \set{\cL_{\uptau}|\ncL_{\uptau}\neq 0} \ar[r] & \set{\ncL_{\uptau}}&\\
+       \cL_{\uptau} \ar[r,maps to] & \ncL_{\uptau}
+      \end{tikzcd}
+    \]
+    are injective.
+    % \item If $C_{2k+1}-C_{2k}\geq 2$ and $\bfxx_{\uptau}$ ends with $d$, $\cL_{\uptau}$ has an irreducible
+    % component $\succeq \dagger_{(1,1)}$. In particular, if $\cO$ is +noticed and
+    % $\bfxx_{\uptau}$ ends with $d$, we have
+    % $\cL_{\uptau}\supset \dagger_{(1,1)}$.
+    \item When $\cO$ is noticed, the map
+    \begin{equation}\label{eq:up}
+      \begin{tikzcd}[row sep=0em]
+        \Upsilon_{\cO} \colon \set{\cL_{\uptau}|\pcL_{\uptau}\neq 0} \ar[r] & \set{(\pcL_{\uptau},\ncL_{\uptau})|\pcL_{\uptau}\neq 0} \\
+        \cL_{\uptau} \ar[r,maps to] & (\pcL_{\uptau},\ncL_{\uptau})
+      \end{tikzcd}
+    \end{equation}
+    is injective.\footnote{In fact, we only need to know whether $\ncL_{\uptau}$ is
+      non-zero or not.}
+  \end{enumS}
+\end{prop}
+
+
+\begin{proof}
+
+\end{proof}
+
 \subsection{Notation}
 In this section, $\cO$ is always an nilpotent orbit of type D in $\dpeNil(D)$.
 We always let
@@ -5398,11 +5513,14 @@ When  $k\geq 1$, we let
     \end{cases}
 \]
 
-For a $\uptau\in \drc(\cO)$, we let
+For a $\uptau\in \PBPes(\ckcO)$, we let
 \[
-(\uptaup,\upepsilon)=\eDD(\uptau) \quad\text{ and }\quad
-   (\uptaupp,\upepsilon')=\eDD(\uptaup) \text{ (when $k\geq 1$)}.
- \]
+  \uptaup := (\tau',\wp') := \DD(\uptau) \quad\text{ and }\quad
+  \uptaupp := (\tau'',\wp'') := \DD(\uptaup)
+\]
+% (\uptaup,\upepsilon)=\eDD(\uptau) \quad\text{ and }\quad
+%    (\uptaupp,\upepsilon')=\eDD(\uptaup) \text{ (when $k\geq 1$)}.
+%  \]
 
  \subsubsection{Main proposition}
 The aim of this section is to prove the following main proposition holds for
@@ -8109,7 +8227,7 @@ generalized descent cases. %Recall that $(\bfV,\bfV')$ is a rational dual pair.
 %The later case is similar to Gomez-Zhu's second paper.
 
 \begin{thm}\label{prop:GDS.AC}
-  Let $\cO\in \NilGC$ and $\cO'\in \NilGCp$ .  Suppose that
+  Let $\cO\in \NilGC$ and $\cO'\in \NilGCp$.  Suppose that
   \begin{enumC}
   \item \label{it:case.D} $\cO'$ is a descent of $\cO$, that is,  $\cO' = \DDc(\cO)$, or
   \item \label{it:case.GD} $\cO$ is good for generalized descent (see \Cref{def:GD.good}) and $\cO' = \gDDc_{\bfV,\bfV'}(\cO)$.
@@ -8423,6 +8541,115 @@ $\Thetav(\pi^{\mathrm{al}})$, where $\pi^{\mathrm{al}}$ denotes the  Harish-Chan
 \end{equation}
 We will devote the rest of this section to prove that the equality in \eqref{boundch}
 holds.
+
+
+\begin{thm}\label{prop:calas}\label{prop:Ch.eq}
+  Let $\cO\in \Nil_{\bfG}(\fgg)$ and $\cOp\in \Nil_{\bfG'}(\fgg')$. Suppose that
+  one of the following condition holds:
+  \begin{enumC}
+    \item \label{it:case.D}
+    $\cOp = \DD(\cO)$, and  if $G$ is a real orthogonal group $\bfcc_{1}(\cO)> \bfcc_{2}(\cO)$;
+    \item \label{it:case.GD}  $G$ is a real symplectic group, $\cO$ is good for generalized descent (see
+    \Cref{def:GD.good}) and $\cO' = \gDD_{\bfV,\bfV'}(\cO)$.
+  \end{enumC}
+  Then for every $\mathbb p$-genuine $\cO'$-bounded Casselman-Wallach
+  representation $\pi'$ of $\wtG'$ such that $(\pi', \bfV)$ is in the convergent
+  range (see \Cref{defn:CR}), $\Thetab_{\bfV',\bfV}(\pi')$ is $\cO$-bounded and
+  \begin{equation}\label{eq:LCh}
+    \AC_{\cOp}(\Thetab_{\bfV,\abfV}(\pi))= \dliftv_{\cO,\acO} (\AC_{\cO}(\pi)).
+  \end{equation}
+\end{thm}
+\begin{remark}
+  When $(\bfV', \bfV)$ is in the stable range, \Cref{prop:Ch.eq} is proved for unitary representations $\pi'$ in \cite{LM}.
+\end{remark}
+
+
+We keep the setting of Theorem \ref{prop:Ch.eq}. First observe that the
+Harish-Chandra module of $\Thetab_{\bfV,\abfV}(\pi')$ is isomorphic to a quotient
+of $\Thetav(\pi'^{\mathrm{al}})$, where $\pi'^{\mathrm{al}}$ denotes the
+Harish-Chandra module of $\pi'$. Thus Theorem \ref{prop:GDS.AC} implies that
+$\Thetab_{\bfV',\bfV}(\pi')$ is $\cO$-bounded and
+\begin{equation}\label{boundch}
+\AC_{\cO}(\Thetab_{\bfV',\bfV}(\pi'))\preceq \vartheta_{\cO',\cO}(\AC_{\cO}(\pi')).
+\end{equation}
+We will devote the rest of this section to prove that the equality in \eqref{boundch}
+holds.
+
+\subsubsection{Proof of the generalized descent case}
+Let $\bfU = \bfE\oplus \bfE'$ be a $(1,1)$-space such that
+$\dim(\bfE) = \dim \bfV +1$. We embed $\bfV'$ as a non-degenerate subspace in
+$\bfU$. Now
+\[
+  \begin{split}
+    &\Ind_{\wtP_{\bfE_0}}^{\wtG_{\bfV'^\perp}} \left(\pi'\otimes
+      \chi_{\bfE_0}\right) \\
+    &
+    \cong \cR_{\RI(\chi_{\bfE})} (\pi)
+    \cong \cR_{\Thetab_{\bfV,\bfU}(1_{\bfV})}(\pi)\oplus \CR_{\Thetab_{\bfV,\bfU}(1_{\bfV}) \otimes \sgn_{\bfU}}(\pi)\\
+    &\cong \Thetab_{\bfV,\bfV'^\perp}(\Thetab_{\bfV',\bfV}(\pi'))\oplus
+    (\Thetab_{\bfV,\bfV'^\perp}(\Thetab_{\bfV',\bfV}(\pi'\otimes \sgn_{\bfV'})))\otimes
+    \sgn_{\bfV'^\perp}.
+  \end{split}
+\]
+
+Let $\cO'^{\perp} = \Ind_{\bfP_{\bfE_{0}}}^{\bfG'^{\perp}}\cO'$.
+By \Cref{thm:Bar} and \cite[Theorem~1.4]{SV}, the representation
+  $\Ind_{\wtP_{\bfE_0}}^{\wtG_{\bfV'^\perp}} \left(\pi\otimes
+    \chi_{\bfE_0}\right))$ is $\cO'^\perp$-bounded, and
+  \begin{equation}
+    \label{chop1}
+    \ACw_{\CO^\perp}(\Ind_{\wtP_{\bfE_0}}^{\wtG_{\bfV^\perp}} \left(\pi\otimes
+      \chi_{\bfE_0}\right))= \sum_{\sO'^{\perp}} \rcc_\sO(\pi) [\sO'^\perp ],
+  \end{equation}
+  where the summation runs over all $\bfK_{\bfV'^{\perp}}$ orbit
+  $\sO'^\perp \subset \cO'^{\perp}\cap \fpp_{\bfV'^{\perp}}$
+  and $\sO$ is the unique orbit such that $\sO'^{\perp}\subset \Ind_{P_{\bfE_0}}^{G_{\bfVpe}}\sO$.
+
+  Note that by the assumption $\cO$ is good for generalized descent,
+  $\bfcc_{1}(\cO') > \bfcc_{2}(\cO')$.
+  Now $\Ind_{P_{\bfE_0}}^{G_{\bfVpe}}\sO$ consists the orbits
+  $\sO'^{\perp}_{2}:=\dagger\dagger \sO^{+}\cdot \dagger_{(0,1)}$
+  and $\sO'^{\perp}_{2}:=\dagger\dagger \sO^{-}\cdot \dagger_{(0,1)}$.
+
+  \def\AOD{\mathrm{AOD}}
+
+  On the other hand, for any $\cL'\in \AOD_{\cO}(\bfK_{\bfV'})$ supported on $\sO$,
+  \[
+    \vartheta_{\bfV, \bfV'^{\perp}}(\vartheta_{\bfV',\bfV}(\cL')) +
+    \vartheta_{\bfV, \bfV'^{\perp}}(\vartheta_{\bfV',\bfV}(\cL'\otimes \sgn))\otimes \sgn
+    % = \cL^{+}\cdot \dagger_{(1,0)}
+    %  + (\cL\otimes \sgn)^{+}\cdot (\dagger_{(1,0)}\otimes \sgn)
+    %  + \cL^{-}\cdot \ddagger_{(1,0)}+ (\cL\otimes \sgn)^{-}\cdot \dagger_{(0,1)}
+  \]
+  has at most two irreducible components with support $\sO'^{\perp}_{1}$ and
+  $\sO'^{\perp}_{2}$
+  respectively.
+  Hence
+  \[
+    \begin{split}
+    & \AC_{\cO'}(\Thetab_{\bfV,\bfV'^\perp}(\Thetab_{\bfV',\bfV}(\pi'))\oplus
+    (\Thetab_{\bfV,\bfV'^\perp}(\Thetab_{\bfV',\bfV}(\pi'\otimes \sgn_{\bfV'})))\otimes
+    \sgn_{\bfV'^\perp}) \\
+    &=
+    \vartheta_{\bfV, \bfV'^{\perp}}(\vartheta_{\bfV',\bfV}(\AC_{\cO'}(\pi'))) +
+    \vartheta_{\bfV, \bfV'^{\perp}}(\vartheta_{\bfV',\bfV}(\AC_{\cO'}(\pi')\otimes \sgn))\otimes \sgn
+    \end{split}
+  \]
+
+  If $\cL$ occures in $\vartheta_{\bfV',\bfV}(\cL')$, then
+  $\vartheta_{\bfV, \bfV'^{\perp}}(\cL)$ is non-vanish and irreducible.
+
+  Therefore, we conclude that
+  \[
+    \AC_{\cO}(\Thetab_{\bfV',\bfV}(\pi')) = \vartheta_{\bfV',\bfV}(\AC_{\cO'}(\pi')).
+  \]
+
+  \trivial{
+  This is because, if $\dagger_{(1,0)}\leq \sO'$, then
+   exactly one of $\cL^{+}$ or $(\cL\otimes \sgn)^{+}$ is non-zero.
+   Other cases are similar.
+ }
+
 
 \subsubsection{Doubling}
 We consider a two-step theta lifting.
