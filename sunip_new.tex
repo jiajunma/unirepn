@@ -7,7 +7,6 @@
 
 \usepackage{array}
 %% FONTS
-\usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{mathrsfs}
 \usepackage{mathbbol,mathabx}
@@ -17,6 +16,9 @@
 \usepackage{mathtools}
 
 \usepackage{amsrefs}
+
+\usepackage{amssymb}
+
 
 \usepackage[all,cmtip]{xy}
 \usepackage{rotating}
@@ -216,7 +218,10 @@
 
 \def\YD{{\mathsf{YD}}}
 \def\SYD{{\mathsf{SYD}}}
+\def\MK{\mathsf{MK}}
 \def\MYD{{\mathsf{MYD}}}
+\def\AND{\quad\text{and}\quad}
+\def\deti{{\det}_{\sqrt{-1}}}
 
 \def\AC{\mathrm{AC}}
 \def\wAC{\mathrm{AC}^{\mathrm{weak}}}
@@ -901,7 +906,7 @@
 \IfBooleanTF{#1}{\Nil_{\fpp'}}{\Nil_\fpp}
 }
 
-\def\KS{\mathsf{KS}}
+\def\KS{\cK_{\sfS}}
 \def\MM{\bfM}
 \def\MMP{M}
 
@@ -1091,8 +1096,20 @@
 
 %\def\KC#1{K_{#1,\bC}} %the complexcification of K.
 
-\NewDocumentCommand\KC{o}{
-  \IfNoValueTF{#1}{K_{\bC}}{K_{#1,\bC}}}
+\NewDocumentCommand\KC{s o e{_}}{
+  \IfBooleanTF{#1}{
+    \IfNoValueTF{#3}{
+      \IfNoValueTF{#2}{K_{\bC}^\circ}{K_{#2,\bC}^\circ}}
+    {
+      \IfNoValueTF{#2}{(K_{\bC})_{#3}^\circ}{(K_{#2,\bC})_{#3}^\circ}}
+  }{
+    \IfNoValueTF{#3}{
+      \IfNoValueTF{#2}{K_{\bC}}{K_{#2,\bC}}}
+    {
+      \IfNoValueTF{#2}{(K_{\bC})_{#3}}{(K_{#2,\bC})_{#3}}}
+  }
+}
+
 
 \def\fggR{\fgg_\bR}
 \def\rmtop{{\mathrm{top}}}
@@ -1355,6 +1372,8 @@
     }}
 }
 
+\def\upp{{\rotatebox[origin=c]{45}{$+$}}}
+\def\umm{{\rotatebox[origin=c]{45}{$-$}}}
 
 \def\oAC#1{\AC(#1)}
 \def\owAC#1{\wAC(#1)}
@@ -3349,7 +3368,7 @@ The rest of this section is denoted to a proof of the following theorem.
 
 \section{Nilpotent orbits: combinatorics}
 
-\def\ci{\sqrt{-1}}
+\def\sqii{\sqrt{-1}}
 \def\St#1{\mathrm{St}_{#1}}
 \def\VV#1{{}^{#1}V}
 \def\SLT{\varphi}
@@ -3376,7 +3395,7 @@ By abuse of notaition, we identify $\cO$ with the orbit $\GC\cdot X$.
 Let $\slt$ be the complex Lie algebra consisting of $2\times 2$ complex matrices
 of trace zero,
 \[
-  \Xslt := \begin{pmatrix}1/2 & \phantom{-} \ci /2 \\ \mathbf \ci /2 & -1/2 \end{pmatrix},
+  \Xslt := \begin{pmatrix}1/2 & \phantom{-} \sqii/2 \\ \mathbf \sqii/2 & -1/2 \end{pmatrix},
   \quad \text{and} \quad
 \eslt := \begin{pmatrix}0 & 1\\ 0 & 0 \end{pmatrix}.
 \]
@@ -3387,11 +3406,15 @@ Lie algebra homomorphism
 \]
  such that $\SLT(\Xslt)=X$.
 
+ Let $\St{i}=\Sym^{i-1}(\bC^{2})$ denote the realization of the irreducible
+ $\slt$-module $\SLT_{i}$ on the $i-1$-symmetric power of the standard
+ representation $\bC^{2}$.
+
 As an $\slt$-module via $\SLT$, we have
 \begin{equation}\label{eq:Vl.1}
-V = \bigoplus_{i\in \bN^{+}} V_{i} \otimes_\bC \St{i},  \qquad (k:=\depth(\sO)\geq -1)
+V = \bigoplus_{i\in \bN^{+}} V_{i} \otimes_\bC \St{i},
 \end{equation}
-Here $\St{i}=\bC^{i}$ denote the irreducible $\slt$-module $\SLT_{i}$ of dimension $i$, and
+and
 \[
 \VV{i} := \Hom_{\slt}( \St{i},V)
 \]
@@ -3410,13 +3433,19 @@ $\cO$ as the function
  $(\St{i},\inn{}{}_{\St{i}},J_{\St{i}},L_{\St{i}})$.% with classical symbol $(\star_{i},p_{i},q_{i})$.
  Here
  \begin{itemize}
-   \item   the classical signature of $\St{i}$ is $(B,1,1)$ if $i$ is odd and
-         $(C,-1,-1)$ if $i$ is even,
-   \item $J_{\St{i}}$ is the complex conjugation on $\St{i}=\bC^{i}$,
-   \item $L_{\St{i}} = (-1)^{\floor{\frac{i-1}{2}}}\, \SLT_{i}({\tiny\begin{pmatrix}\phantom{-}0 & 1 \\-1 & 0 \end{pmatrix}})$,
+   \item the classical signature of $\St{i}$ is $(B,(i+1)/2,(i-1)/2)$ if $i$ is odd and
+         $(C,i/2,i/2)$ if $i$ is even,
+   \item $J_{\St{i}}$ is the complex conjugation on $\St{i}=\Sym^{i-1}(\bC^{2})$,
+   \item $L_{\St{i}} = (-1)^{\floor{\frac{i-1}{2}}}\, \Sym^{i-1}({\tiny\begin{pmatrix}\phantom{-}0 & 1 \\-1 & 0 \end{pmatrix}})$,
    \item $\inn{}{}_{\St{i}}$ is uniquely determined by $J_{\St{i}}$ and $L_{\St{i}}$ up to
          a positive scalar (We fix a form $\inn{}{}_{\St{i}}$ for each $i$).
  \end{itemize}
+
+ {\color{red} $L_{\St{i}}$ should be the Lie group element action.}
+
+
+ We define a equivalent relation on the set $\set{B,C,\wtC,D,C^{*},D^{*}}$ with
+ the relation $B\sim D$ and $C\sim \wtC$.
 
 Let $(V,\inn{}{} J,L)$ be a classical group with signature $\sfss$.
 Let $ \sO\in \Nil(\fpp_{\sfss})$.
@@ -3425,45 +3454,65 @@ homomorphism $\SLT \colon \slt \rightarrow \fgg \subset \gl(V)$ such that
 $\SLT(\Xslt)\in \sO$ and compatible with the classical space structure on $V$.
 More precisely, the multiplicity space $\VV{i}$ have a unique classical space
 structure
-$(\VV{i}, \inn{}{}_{\VV{i}},J_{i},L_{i})$ with classical signature $\sfss_{i}$
-such that, restricted on the $\slt$-isotypic component $\VV{i}\otimes \St{i}$,
+$(\VV{i}, \inn{}{}_{\VV{i}},J_{i},L_{i})$ with classical signature
+$\sfss_{i}=(\star_{i},p_{i},q_{i})$
+such that $\star_{i}\neq \wtC$ and restricted on the $\slt$-isotypic component $\VV{i}\otimes \St{i}$,
 \begin{itemize}
   \item $\inn{}{}$ is given by $\inn{}{}_{\VV{i}}\otimes \inn{}{}_{\St{i}}$,
   \item $J$ is given by $J_{i}\otimes J_{\St{i}}$,
   \item $L$ is given by $L_{i}\otimes L_{\St{i}}$,
-  \item $\star_{\sfss_{i}} = \star_{\sfss}$ if $i$ is odd and
-        $\star_{\sfss_{i}} = \star'_{\sfss}$ if $i$ is even  ($\star'_{\sfss}$
-        is the Howe dual of $\star_{\sfss}$).
+  \item the symbol $\star_{i}$ satisfies the following condition
+        \begin{equation} \label{eq:ssrel}
+          \begin{cases}
+            \star_{i} \sim\star_{\sfss} & \text{if $i$ is odd}\\
+            \star_{i} \sim \star'_{\sfss} & \text{if $i$ is even}
+          \end{cases}
+          % $\star_{\sfss_{i}} \sim\star_{\sfss}$ if $i$ is odd and
+        % $\star_{\sfss_{i}} \sim \star'_{\sfss}$ if $i$ is even  ($\star'_{\sfss}$
+        % is the Howe dual of $\star_{\sfss}$).
+      \end{equation}
 \end{itemize}
-
-The signatures $\sfss_{i}$ are independent of the choice of $\SLT$
+Here $\star'_{\sfss}$ is the Howe dual of $\star_{\sfss}$, and
+ $\sim$ is the equivalent relation on $\set{B,C,\wtC,C^{*},D,D^{*}}$ such that
+ $B\sim D$ and $C\sim \wtC$.
+Then the classical signature $\sfss_{i}$ are independent of the choice of $\SLT$
 and uniquely determined the orbit $\sO$.
 
-\def\CCSS{\mathsf{CS}}
-Let $\CCSS$ denote the set of all classical signatures.
+\medskip
 
-Moreover, the choice of $\SLT$ also classifies the set $\Nil(\fgg_{\sfss})$ of
-real nilpotent orbits, and
-$G_{\sfss}\cdot \SLT(\eslt) \leftrightarrow  \KC[\sfss] \SLT(Xslt)$ give
-the Kostant-Sekiguchi correspondence.
 
-This is nothing but the signed Young diagram classification of rational nilpotent orbits.
-Hence we identify $\sO$ with the function
+\def\CCSS{\overline{\mathsf{CS}}}
+Let
+\[
+\CCSS := \set{(\star,p,q)| \star\neq \wtC \text{ and }(\star,p,q) \text{ is a classical signature}}.
+\]
+We identify $\sO$ with the function
 \[
   \sO\colon \bN^{+}\rightarrow \CCSS, \qquad i \mapsto \sfss_{i}.
 \]
 
+A important feature of a compatible $\SLT$ map is that the Kostant-Sekiguchi
+correspondence  is given by %classifies the set $\Nil(\fgg_{\sfss})$ of
+%real nilpotent orbits, and
+\[
+  G_{\sfss}\cdot \SLT(\eslt) \leftrightarrow  \KC[\sfss]\cdot \SLT(\Xslt).
+\]
+%give the Kostant-Sekiguchi correspondence.
+
+
+
+
 Let
 $\sfmm \colon \CCSS\rightarrow \bN$ be the map given by
-$\sfss=(\star,p,q)\mapsto p+q$. Now the  complexification
+$(\star,p,q)\mapsto p+q$. Now the  complexification
 $\GC\cdot \sO$ of a rational nilpotent orbit is given by $\cO := \sfmm\circ \sO$.
-
 Define
 \[
   \begin{split}
-  \SYD_{\star}(\cO) &:=\Set{\sO\colon \bN^{+}\rightarrow \CCSS| \begin{minipage}{11em}
-      $\star_{\sO( i )}$ equals $\star$ if $i$ is odd,\\% \\
-      $\star_{\sO( i )}$ equals $\star'$ otherwise, \\
+  \SYD_{\star}(\cO) &:=\Set{\sO\colon \bN^{+}\rightarrow \CCSS| \begin{minipage}{9em}
+      %$\star_{\sO( i )}$ equals $\star$ if $i$ is odd,\\% \\
+      %$\star_{\sO( i )}$ equals $\star'$ otherwise, \\
+      $\star_{\sO(i)}$ satisfies \eqref{eq:ssrel},\\
       $\sfmm\circ \sO = \cO$
       % % $\star_{\sO( i )} $
       % %$\star'$ if $i$ is even, \\
@@ -3473,25 +3522,63 @@ Define
     \SYD_{\star} &:= \bigsqcup_{\cO\in \Nil_{\star}} \SYD_{\star}(\cO).
   \end{split}
 \]
-
-Now $\SYD_{\star}$ is naturally identified with the set $\bigsqcup_{\sfss}\Nil(\fgg_{\sfss})$
+Now $\SYD_{\star}$ is naturally identified with the set
+$\bigsqcup_{\sfss}\Nil(\fgg_{\sfss})$ (the set of real nilpotent orbits)
 and $\bigsqcup_{\sfss}\Nil(\fpp_{\sfss})$.
+This is nothing but the signed Young diagram classification of rational
+nilpotent orbits, see \cite{CM}.
+
+For any $\sO\in \SYD_{\star}$, let $\Sign(\sO) = (p,q)$ if $\sF\circ \sO$
+corresponds to a nilpotent orbit in $\Nil_{\sfss}(\fpp)$ with the classical
+signature $\sfss=(\star,p,q)$. When $\sO(i)=(\sfss_{i},p_{i},q_{i})$, the
+signature is computed by the following formula.
+\[
+  \begin{split}
+    \Sign(\sO) = &
+    \sum_{i\in \bN^{+}} \big(i \cdot p_{2i} + i \cdot q_{2i},
+    i \cdot p_{2i}+i\cdot q_{2i}\big)\\
+    &  +
+    \sum_{i\in \bN^{+}} \big(i \cdot p_{2i-1} + (i-1)\cdot q_{2i-1},
+    (i-1) \cdot p_{2i-1}+i \cdot q_{2i-1}\big).
+  \end{split}
+\]
+The signature $\lsign(\sO)$ of the ``most left column'' of the
+signed Young diagram $\sO$ (see \Cref{eg:MYD}) is given by
+\[
+  \lsign(\sO) =
+    \sum_{i\in \bN^{+}} \big(q_{2i},p_{2i} \big)
+      + \sum_{i\in \bN^{+}} \big(p_{2i-1},q_{2i-1} \big).
+\]
+We write
+\[
+\SYD_{\sfss}(\cO) = \set{\sO\in \SYD_{\star}(\cO)| \Sign(\sO)=(p,q)}.
+\]
+which is identified with $\Nil_{\sfss}(\cO)$.
 
 \medskip
 
-The following lemma is  well known.
+For a classical signature $\sfss$, we define the complex group
+\[
+  \KC[[\sfss]] := \GC^{L_{\sfss}}.
+\]
+
+ Suppose $\sO\in \Nil(\bfpp_{\sfss})$, $\SLT$ is
+compatible with $\sO$ and $X = \SLT(\Xslt)\in \sO$. Let
+\[
+  \KC[[\sfss]]_{X}:=\Stab_{\KC[[\sfss]]}(X)
+\]
+be the stabilizer of $X$ in
+$\KC[[\sfss]]$.
+% centralizer of $\Im(\phi)$ in $\KC[\sfss]$.
+Using the signed Young diagram classification, we have the following well known
+fact of the isotropic subgroup.
 \begin{lem}\label{lem:KX1}
-  Suppose $\sO\in \Nil(\bfpp_{\sfss})$, $\SLT$ is compatible with $\sO$ and
-  $X = \SLT(\Xslt)\in \sO$.
-Let $K_{X}:=\Stab_{\GC^{L_{\sfss}}}(X)$ be the stabilizer of $X$ in $\GC^{L_{\sfss}}$, and $R_X$ the
-centralizer of $\Im(\phi)$ in $\KC[\sfss]$.
-Then $K_{X} = R_X\ltimes U_X$,
-  where $U_X$ is the unipotent radical of $\KC[X]$ and
- there is a canonical isomorphism
+ Then $\KC[[\sfss]]_{X}= R_X\ltimes U_X$,
+  where $U_X$ is the unipotent radical of $\KC[[\sfss]]_{X}$ and $R_{X}$ is a reductive
+  group canonically identified with
  \[
-   R_X \cong \prod_{i} \KC[ \sfss_{i} ].
+   \prod_{i\in \bN^{+}} \KC[[\sfss_{\sO(i)}]].
  \]
- {\color{red} covering is a problem}
 \end{lem}
 As a consequence, $R_{X}$ is a products of complex general linear group and
 orthogonal groups
@@ -3501,22 +3588,26 @@ orthogonal groups
     }} \rO_{p_{i}}(\bC)\times \rO_{q_{i}}(\bC).
 \]
 
-Let $\cE\in \AOD_{\sfss}(\sO)$ be an admissible orbital data on
-$\sO\in \Nil(\sfss)$,
-see \Cref{defaod}.
-the  $\KC[X]$-module $\cE_{X}$ is determined by its restriction on
-the connected components of the orthogonal factors.
+\medskip
 
+\def\DCO#1{\mathsf{LB}_{#1}(\sO)}
 
-\def\MK{\mathsf{MK}}
+Fix a one-dimensional character $\chi$ of the connected component $\KC[X]^{\circ}$ of $\KC[X]$,
+let
+\[
+\DCO{\chi} := \set{\text{line bundle $\cE$ on $\sO$ such that $\KC[X]^{\circ}$
+    acts on the fiber $\cE_{x}$ by $\chi$}}.
+\]
+By the structure of $R_{X}$, a line bundle $\cE\in DCO{\chi}$ is completely
+determined by
+the restruction of the $\KC[X]$-module $\cE_{X}$ on the
+the orthogonal factors of $R_{X}$.
 
 Let
 \[
-  \MK = \CCSS \cup \set{(\star,r,s)|\star\in \set{B,D}, r,s\in \bZ}
+  \MK = \CCSS \cup \set{(\star,r,s)|\star\in \set{B,D}, r,s\in \bZ}.
 \]
-it has a natural map $\sF\colon \MK\rightarrow \CCSS$ given by
-$(\star,r,s)\mapsto (\star,\abs{r},\abs{s})$.
-We identify $\cE$ with the map
+We identify $\cE \in \DCO{\chi}$ with the map
 \[
   \cE\colon \bN^{+}\rightarrow  \MK
 \]
@@ -3525,33 +3616,425 @@ for $\sO(i)=(\star_{i},p_{i} q_{i})$,
 \begin{itemize}
   \item $\cE(i) := \sO(i)$ if $\star_{i} \notin \set{B,D}$;
   \item $\cE(i) := (\star_{i},(-1)^{\epsilon^{+}}p_{i},(-1)^{\epsilon^{-}}q_{i})$
-        if the restriction of $\cE$ restricts on the factor
-        $\rO_{p_{i}}(\bC)\times \rO_{q_{i}}(\bC)$ is
+        if $\star_{i} \in \set{B,D}$, and  the factor
+        $\rO_{p_{i}}(\bC)\times \rO_{q_{i}}(\bC)$ acts on $\cE_{X}$ by
         ${\det}^{\epsilon^{+}}\otimes {\det}^{\epsilon^{-}}$.
 \end{itemize}
 
 Let
+ $\sF\colon \MK\rightarrow \CCSS$ be the map given by
+$(\star,r,s)\mapsto (\star,\abs{r},\abs{s})$ and
 \[
-  \MYD_{\sfss}(\cO) := \Set{\cE\colon \bN^{+}\rightarrow \MK|\sF\circ \cE \in \SYD_{\sfss}(\cO)}
+  \MYD(\sO) := \Set{\cE\colon \bN^{+}\rightarrow \MK|\sF\circ \cE=\sO }.
 \]
-and $\MYD_{\star}(\cO):=\bigsqcup_{\sfss}\MYD_{\sfss}(\cO)$. Clearly, if
-$\AOD_{\sfss}(\cO)$ is non-empty, then $\AOD_{\sfss}(\cO)$ is identified with
-$\MYD_{\sfss}(\cO)$.
+Thanks to the simple structure of $R_{X}$, the above recipe allows us to
+identify $\MYD(\sO)$ with the set $\DCO{\chi}$ when the later set is non-empty.
 
-\begin{eg}
- Let $1^{r,s}_{\star}$ denote the element in $\MYD_{\star}$ such that
+%The signature of $\cE$ is defined as the sginature of $\sf\circ\cE$.
+We wreite $\Sign(\cE):= \Sign$
+
+Let
+\[
+  \MYD_{\sfss}(\cO) := \bigcup_{\sO\in \Nil_{\sfss}(\cO)}\MYD(\sO),% \quad
+  \AND
+  \MYD_{\star}(\cO) := \bigcup_{\sO\in \Nil_{\star}(\cO)}\MYD(\sO)
+  %\MYD := \bigsqcup_{\star\in\set{B,C,D,C^{*},D^{*}}} \MYD_{\star}
+\]
+ In particular, we identify $\AOD_{\sfss}(\cO)$ with a subset of
+ $\MYD_{\star}(\cO)$, see \Cref{defaod}.
+
+
+ % By abuse of notation, we identify $\SYD_{\star}$ with a subset of
+Set
+\[
+  \MYD_{\star} := \bigcup_{\cO\in \Nil_{\star}}\MYD_{\star}(\cO),
+\]
+In the next section, we will define some operations on the  free abelian groups
+$\bZ[\SYD_{\star}]$ and $\bZ[\MYD_{\star}]$.
+%  denote the space of generated by signed Young diagrams and
+% marked Young diagrams respectively.
+
+\smallskip
+
+Suppose $\cE\in \MYD_{\star}$ such that $\cE(i)=(\sfss_{i},p_{i},q_{j})$.
+To ease the notation, we will use
+\[
+  ( i_{1}^{(p_{i_{1}},q_{i_{1}})}i_{2}^{(p_{i_{2}},q_{i_{2}})}\cdots i_{k}^{(p_{i_{k}},q_{i_{k}})} )_{\star}
+\]
+to represent $\cE$ where
+$i_{1},\cdots, i_{k}$ are all the indices such that $(p_{i},q_{i})\neq (0,0)$
+We adopt the usual convention to draw a singed Young diagram where the signature
+$(p_{i}, q_{i})$ equals to the total signature for the most right parts of all
+length $i$ rows.
+We use ``$\upp$'' and ``$\umm$'' instants ``$+$'' and ``$-$'' to mark the rows
+when $p_{i}$ or $q_{i}$ are negative.
+
+\begin{eg}\label{eg:MYD}
+The expression $(1^{r,s})_{\star}$ represents the marked Young diagram in $\MYD_{\star}$ such that
  \[
-   1^{r,s}_{\star}(i) := = \begin{cases}
+   1^{r,s}_{\star}(i) := \begin{cases}
      (\star,r,s) & \text{if } i=1\\
-     (\star,0,0) & \text{if $i>0$ and $i$ is odd}\\
-     (\star',0,0) & \text{if $i>0$ and $i$ is even}
+     (\star_{i},0,0) & \text{if $i>0$}\\
+     %(\star',0,0) & \text{if $i>0$ and $i$ is even}
    \end{cases}
  \]
+ Here the symbols $\star_{i}$ are uniquely determined by \eqref{eq:ssrel}.
+
+The marked Young diagram  $(1^{(1,-1)}2^{(2,0)}3^{(0,-1)})_{B}$ is drew as the
+following.
+\[
+  \ytb{\umm\upp\umm,-+,-+,+,\umm}
+\]
 \end{eg}
 
-\subsection{Operations on the orbit data}
+\subsection{Operations on diagrams}
+In this section, we define some operations on the signed Young diagrams and
+marked Young diagram.
+
+Suppose $\star\in \set{B,D}$.
+We define a $\bZ/2\bZ\times \bZ/2\bZ$ action on $\MYD_{\star}$.
+Let $(\epsilon^{+},\epsilon^{-})\in \bZ/2\bZ\times \bZ/2\bZ$ , $\cE\in \MYD_{\star}$ such that $(\star_{i},p_{i},q_{i}):=\cE(i)$,
+we define $\cE \otimes (\epsilon^{+},\epsilon^{-})\in \MYD_{\star}$ by
+\[
+(\cE \otimes 1^{\epsilon^{+},\epsilon^{-}})(i) := \begin{cases}
+  (\star_{i}, (-1)^{\frac{\epsilon^{+}(i+1)+\epsilon^{-}(i-1)}{2}}p_{i},(-1)^{\frac{\epsilon^{+}(i-1)+\epsilon^{-}(i+1)}{2}}q_{i})
+  & \text{if $i$  is odd,}\\
+  (\star_{i}, p_{i},q_{i}) & \text{otherwise.}
+\end{cases}
+\]
 
 
+For each $\cE\in \AOD_{\star}$, its twist
+$\cE\otimes  (1^{{-,+}})^{\epsilon^{+}}\otimes (1^{+,1})^{\epsilon^{-}}$
+is a line bundle  in $\AOD_{\star}$.
+As elements in $\MYD_{\star}$, we have
+\[
+  \cE\otimes  (1^{{-,+}})^{\epsilon^{+}}\otimes (1^{+,1})^{\epsilon^{-}} = \cE \otimes (\epsilon^{+},\epsilon^{-}).
+\]
+
+\medskip
+
+Suppose $\star\in \set{C,\wtC,D^{*}}$.
+
+For $\cE\in \MYD_{\star}$ such that $(\star_{i},p_{i},q_{i}):=\cE(i)$,
+we define $\maltese\cE\in \MYD_{\star}$ by
+\[
+(\maltese\cE)(i) := \begin{cases}
+  (\star_{i}, -p_{i},-q_{i})& \text{if $i\equiv 2 \pmod{4}$ and $\star_{i}\in \set{B,D}$,}\\
+  (\star_{i}, p_{i},q_{i}) & \text{otherwise.}
+\end{cases}
+\]
+
+Clearly, the a operation $\maltese$ defines an involution on
+$\MYD_{\star}$.
+%Suppose $\sfss = (\star,n,n)$ is a classical signature.
+For each $\cE\in \DCO{\chi}$, its twist  $\cE\otimes \deti$
+is a line bundle  in $\DCO{\chi'}$ where  $\chi'$ is a certain character. % $\chi'$.
+As elements in $\MYD_{\star}$, we have
+\[
+  \cE\otimes \deti = \maltese (\cE).
+\]
+
+We define the argumentation of a marked Young diagram.
+For each $\cE\in \MYD_{\star}$ and $\sfss_{0} = (\star'_{0},p,q)\in \CCSS$ such that
+$\star'\sim \star'_{0}$,
+let $\cE\cdot \sfss_{0}$ be the marked Young diagram in $\MYD_{\star'}$ given by
+\[
+  (\cE\cdot (p_{0},q_{0}))(i) :=
+  \begin{cases}
+    \sfss_{0} & \text{if } i=1,\\
+    \cE(i-1) & \text{if } i>1.
+  \end{cases}
+\]
+
+We will use the same notation to denote the  natural extension of above
+operations to $\bZ[\MYD_{\star}]$.
+% and we will use the same notation
+
+We define the partial order $\succeq$ on $\bZ\times \bZ$ by
+\[
+  (a,b) \succeq (c,d) \Leftrightarrow
+  \text{either } a\geq c\geq 0, b\geq d\geq 0  \text{ or }
+    a\leq c\leq 0, b\leq d\leq 0.
+\]
+For a $\cE\in \MYD$ and $(p_{0},q_{0})\in \bZ\times \bZ$, we write
+\[
+  \cE\succeq (p_{0},q_{0}) \Leftrightarrow
+  (p_{1},q_{1})\succeq (p_{0},q_{0})
+  \text{ where }\cE(1) = (\star_{1},p_{1},q_{1}).
+\]
+Morever, we define an involution $\sharp\colon \bZ\times \bZ$ by
+$(a,b)\mapsto (a,b)^{\sharp}:=(b,a)$.
+
+Suppose $\cE\succeq (p_{0},q_{0})$, we define the truncation of $\cE$ by
+\[
+  \Lambda_{(p_{0},q_{0})}(\cE) = \begin{cases}
+    (\star_{1},p_{1}-p_{0},q_{1}-q_{0}) & \text{if } i=1,\\
+    \cE(i) & \text{if } i>1.
+  \end{cases}
+\]
+We extend the truncation operation $\Lambda_{( p_{0},q_{0} )}$ to
+$\bZ[\MYD_{\star}]$
+by setting $\Lambda_{p_{0},q_{0}}(\cE) := 0$ when $(p_{0},q_{0})\npreceq \cE\in \MYD_{\star}$.
+Note that $\Lambda_{(0,0)}$ is the identity map.
+
+The augmentation and truncation of signed Young diagram are defined by the same
+formula.
+
+\medskip
+
+% For any $\cE\in \MYD_{\star}$, let $\Sign(\cE) = (p,q)$ if $\sF\circ \cE$
+% corresponds to a nilpotent orbit in $\Nil_{\sfss}(\fpp)$ with the classical
+% signature $\sfss=(\star,p,q)$. When $\sO(i)=(\sfss_{i},p_{i},q_{i})$, the
+% signature is
+% \[
+%   \begin{split}
+%     \Sign(\cE) = &
+%     \sum_{i\in \bN^{+}} \big(i \cdot\abs{p_{2i}} + i \cdot \abs{q_{2i}},
+%     i \cdot\abs{p_{2i}}+i\cdot\abs{q_{2i}}\big)\\
+%     &  +
+%     \sum_{i\in \bN^{+}} \big(i \cdot\abs{p_{2i-1}} + (i-1)\cdot \abs{q_{2i-1}},
+%     (i-1) \cdot\abs{p_{2i-1}}+i \cdot \abs{q_{2i-1}}\big).
+%   \end{split}
+% \]
+% The signature $\lsign(\cE)$ of the ``most left column'' of the
+% marked Young diagram $\cE$ (see \Cref{eg:MYD}) is given by
+% \[
+%   \lsign(\cE) =
+%     \sum_{i\in \bN^{+}} \big(\abs{q_{2i}},\abs{p_{2i}} \big)
+%       + \sum_{i\in \bN^{+}} \big(\abs{p_{2i-1}},\abs{q_{2i-1}} \big).
+% \]
+
+\NewDocumentCommand{\dlift}{O{\sfss'} O{\sfss}}{\vartheta_{#1,#2}}
+\def\cEp{\cE'}
+\subsection{Theta lifts of local systems}
+
+Let $\cO\in \Nil_{\star}$ and $\cO'\in \Nil_{\star'}$ such that  $\cO'$ is a
+regular descent of $\cO'$.
+Let $\sfss$ and $\sfss'$ be two fixed classical signature,
+the theta lifting of marked Young diagrams is a homomorphism between
+\[
+  \dlift \colon \bZ[\MYD_{\sfss'}(\cO')]\rightarrow \bZ[\MYD_{\sfss}(\cO)]
+\]
+It suffice to define $\dlift(\cEp)$ for  each $\cEp\in \MYD_{\sfss'}$ case by case.
+We set $t := \bfcc_{1}(\cO')-\bfcc_{2}(\cO)$.
+
+\medskip
+
+Suppose $\sfss'=(\star',n,n)$ and $\sfss =(\star,p,q)$ such that
+$\star'\in \set{ C,\wtC, D^{*}}$  and $\star \in \set{D,B, C^{*}}$.
+In this case, $t$ is always an even integer. We define
+\[
+  \dlift(\cEp) :=
+  \begin{cases}
+    (\maltese^{\frac{p-q}{2}}(\Lambda_{(\frac{t}{2},\frac{t}{2})}( \cE )))\cdot (p_{0},q_{0}) &
+    \text{if } ( p_{0},q_{0} ) \succeq (0,0) \text{ and } \star=D \\
+    (\maltese^{\frac{p-q+1}{2}}(\Lambda_{(\frac{t}{2},\frac{t}{2})}( \cE )))\cdot (p_{0},q_{0}) &
+    \text{if } ( p_{0},q_{0} ) \succeq (0,0) \text{ and } \star=B \\
+    (\Lambda_{(\frac{t}{2},\frac{t}{2})}( \cE ))\cdot (p_{0},q_{0}) &
+    \text{if } ( p_{0},q_{0} ) \succeq (0,0) \text{ and } \star=C^{*} \\
+    0 & \text{otherwise}
+  \end{cases}
+\]
+where $(p_{0}, q_{0})  := (p,q) -(n,n)-\lsign(\cEp)^{\sharp} + (\frac{t}{2},\frac{t}{2})$.
+
+\trivial[h]{
+When $t=0$, we define
+\[
+  \dlift(\cEp) :=
+  \begin{cases}
+    (\maltese^{\frac{p-q}{2}}(\cE))\cdot (D,p_{0},q_{0}) &
+    \text{if } ( p_{0},q_{0} ) \succeq (0,0) \\
+    0 & \text{otherwise}
+  \end{cases}
+\]
+where $(p_{0}, q_{0})  := (p,q) -(n,n)-\lsign(\cEp)^{\sharp} $.
+When $t>0$, we define
+\[
+  \dlift(\cEp) :=
+  \begin{cases}
+    (\maltese^{\frac{p-q}{2}}\Lambda_{(\frac{t}{2},\frac{t}{2})}(\cE)) \cdot (D,0,0) &
+    \text{if } ( p_{0},q_{0} ) \succeq (0,0) \\
+    0 & \text{otherwise}
+  \end{cases}
+\]
+where $(p_{0}, q_{0})  := (p,q) -(n,n)-\lsign(\cEp)^{\sharp} + (\frac{t}{2},\frac{t}{2})$.
+}
+
+\medskip
+
+Suppose $\sfss' =(\star',p,q)$ and $\sfss=(\star,n,n)$ such that
+$\star' \in \set{ D,B,C^{*}}$  and $\star \in \set{C,\wtC,D^{*}}$.
+We define
+\[
+  \dlift(\cE) :=
+  \begin{cases}
+    \maltese^{\frac{p-q}{2}}\big(\sum_{j=0}^{t} \Lambda_{(j,t-j)}( \cE)\cdot (n_{0},n_{0})\big) & \text{if
+    } \star = C\\
+    \maltese^{\frac{p-q-1}{2}}\big(\sum_{j=0}^{t} \Lambda_{(j,t-j)}( \cE)\cdot (n_{0},n_{0})\big) & \text{if
+    } \star = \wtC\\
+    \sum_{j=0}^{\frac{t}{2}} \Lambda_{(2j,t-2j)}( \cE)\cdot (n_{0},n_{0}) & \text{if
+    } \star = D^{*}
+  \end{cases}
+\]
+where $2n_{0} = \bfcc_{1}(\cO)-\bfcc_{2}(\cO)$.
+
+\trivial[h]{
+\[
+  \dlift(\cE) :=
+  \begin{cases}
+    \maltese^{\frac{p-q}{2}}\big(\cE \cdot (C,n_{0}, n_{0}) \big) &
+    \text{if } t=0\\
+    \maltese^{\frac{p-q}{2}}\big((\sum_{j=0}^{t} \Lambda_{(j,t-j)} \cE)\cdot (C,0,0)\big)& \text{if } t>0\\
+  \end{cases}
+\]
+where $2n_{0} = \bfcc_{1}(\cO)-\bfcc_{2}(\cO)$.
+}
+% We remark that
+% $\maltese^{\frac{p-q}{2}}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}})= (\maltese^{\frac{p-q}{2}}(\dagger\cL))\cdot \dagger_{n_{0},n_{0}}$.
+
+\trivial[h]{
+  We take a splitting $\rO(p,q)\times \Sp(n,\bR)$ in to the big metaplectic
+  group $\Mp$ such that $\rO(p,\bC)\times\rO(q,\bC)$ acts on the Fock model linearly.
+  The maximal compact $K_{\Sp(n,\bR)}= \rU(2n)$ acts on the Fock model by the
+  character $\zeta=\det^{(p-q)/2}$.
+  For the component of the rational nilpotent orbit $\Sp(2n,\bR)$,
+  the factor of the component group is $\Sp$ if the corresponding row has odd
+  length.
+  Otherwise the component group is $\rO(p_{2k})\times\rO(q_{2k})$ where
+  $(p_{2k},q_{2k})$ is the signature corresponding to the $2k$-rows.
+  $\zeta|_{\rO(p_{2k})}= \det^{(p-q)k/2}_{\rO(p_{2k})}$ which is nontrivial if
+  and only if $p-q\equiv 2\pmod{4}$ and $2k\equiv 2\pmod{4}$.
+  This gives the formula above.
+}
+
+% Suppose $\sfss'=(\wtC,n,n)$ and $\sfss =(B,p,q)$.
+% In this case, $t$ is always an even integer. We define
+% \[
+%   \dlift(\cEp) :=
+%   \begin{cases}
+%     (\maltese^{\frac{p-q+1}{2}}(\Lambda_{(\frac{t}{2},\frac{t}{2})}( \cE )))\cdot (D,p_{0},q_{0}) &
+%     \text{if } ( p_{0},q_{0} ) \succeq (0,0) \\
+%     0 & \text{otherwise}
+%   \end{cases}
+% \]
+% where $(p_{0}, q_{0})  := (p,q) -(n,n)-\lsign(\cEp)^{\sharp} + (\frac{t}{2},\frac{t}{2})$.
+
+% Suppose
+% For each signature $(p,q)\in \bN\times \bN$ such that $p+q$ is odd, we define a map
+% \[
+%   \vartheta_{MB,(p,q)} \colon \KM(M)\rightarrow \KM(B)
+% \]
+% as the following:
+% Let $\cL\in \MYD(M)$. Let $(p_{1},q_{1})=\lsign(\cL)$ and
+% \[
+% (p_{0}, q_{0})  = (p,q) -\ssign(\cL)-(q_{1},p_{1}).
+% \]
+% We define
+% \[
+%   \vartheta_{MB,(p,q)}(\cL) =
+%   \begin{cases}
+%     (\dagger \maltese^{\frac{p-q+1}{2}}(\cL))\cdot \dagger_{p_{0}, q_{0}} &
+%     \text{if } p_{0}\geq 0 \text{ and } q_{0} \geq 0\\
+%     0 & \text{otherwise}
+%   \end{cases}
+% \]
+
+
+% \subsubsection{Lift from type B to type M}
+
+% For each non-zero integer $n\in \bN$, we define a map
+% \[
+%   \vartheta_{BM,n} \colon \KM(B)\rightarrow \KM(M)
+% \]
+% as the following:
+% Let $\cL\in \MYD(D)$. Let $(p_{1},q_{1})=\lsign(\cL)$ and
+% $(p,q) = \ssign(\cL)$.
+% Let
+% \[
+%   n_{0} = n - (p+q)/2 - (p_{1}+q_{1})/2
+% \]
+% We define
+% \[
+%   \vartheta_{BM,n}(\cL) =
+%   \begin{cases}
+%     \maltese^{\frac{p-q-1}{2}}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}}) &
+%     \text{if } n_{0}\in \bZ_{\geq 0}\\
+%     \maltese^{\frac{p-q-1}{2}}(\dagger \cL^{+}  + \dagger \cL^{-})& \text{if } n_{0}=-1\\
+%     0&\text{otherwise}
+%   \end{cases}
+% \]
+
+\trivial{
+  For odd orthogonal-metaplectic group case, we still take the splitting such
+  that $\rO(p,q)$ acts linearly.
+
+  The maximal compact $\wtK_{\Sp(n,\bR)}= \widetilde{\rU(2n)}$ acts on the Fock model by the
+  character $\zeta=\det^{(p-q)/2}$.
+
+  Then
+  $\det^{(p-q)/2}|_{\rO(p_{2k})\times \rO(q_{2k})}=\det^{\frac{(p-q)k}{2}}_{\rO(p_{2k})}\boxtimes
+  \det^{\frac{(p-q)k}{2}}_{\rO(q_{2k})}. $
+  Note that $p-q$ is an odd number.
+  When $k$ is even the character on $\widetilde{\rO(p_{2k})}/\widetilde{\rO(q_{2k})}$ are
+  $\bfone$ or $\det$. When $k$ is odd the character would be $\det^{\half}$ or
+  $\det^{\half+1}$.
+
+  We assume the default character on $2k$-rows is $\det^{\frac{k}{2}}$, and
+  we use $+/-$ to mark the row. Otherwise, we use $\upp/\umm$ to mark the rows.
+}
+
+% \subsection{Examples and remarks}
+
+% \subsubsection{Example}
+% \begin{eg}
+%   Let
+%   $\cT :=\dagger\dagger (\dagger_{2,1}) + \dagger\dagger(\dagger_{{1,2}})$ and $\cP= \ddagger_{1,3}$.
+%   Then
+%   \[
+%     \cT\cdot \cP = \tytb{\uup\uum\uup,\uup\uum\uup,\uum\uup\uum,+,=,=,=}
+%     \cup
+%     \tytb{\uup\uum\uup,\uum\uup\uum,\uum\uup\uum,+,=,=,=}.
+%   \]
+% \end{eg}
+
+
+% For each local system $\cL$ of type B/D, define $\pcL$ (resp. $\ncL$) be the
+% part of $\cL$ obtained by deleting a $+$''-symbol (resp. ``$-$''=symbol) among 1-rows.
+% $\pcL:=0$ (resp. $\ncL:=0$) if there is no ``$+$''-symbol (resp.
+% ``$-$''-symbol).
+
+% For an local system $\cL$, $\cL\succeq\cC$ means there is a
+% factorization of $\cL = \cB\cdot \cC$;
+% $\cL\supset \cC$ means there is an irreducible component $\cL_{1}$ of $\cL$ such
+% that $\cL_{1}\succeq \cC$.
+
+
+% \subsubsection{}
+
+%\subsection{Definition of $\eDD$}
+\subsubsection{Signs of the local systems obtained by iterated lifting}
+
+
+Suppose $\cL\in \KM$ is obtained by iterated theta lifting and character
+twisting in \Cref{sec:tchar.DB}.
+Then the set $\lsign(\cL)$ has restricted possibilities.
+First, $\ssign(\cL)$ is always a singleton.
+
+When $\cO$ is of type B/D, $\lsign(\cL)$ is a singleton $\set{(p_{1},q_{1})}$
+where
+\[
+  (p_{1},q_{1})= \ssign(\cL) - (n_{0},n_{0}) \quad \text{and} \quad 2n_{0} = \abs{\eDD(\cO)}.
+\]
+
+When $\cO$ is of type C/M,
+$\lsign( \cL ) =\set{ (p_{1},q_{1})}$ is a singleton in the most of the case.
+The $\lsign(\cL)$
+may have two elements if $\cL$ is obtained by good generalized lifting, and it has the form
+$\lsign( \cL ) = \set{(p_{1}+1,q_{1}),(p_{1},q_{1}+1)}$.
+
+% Another important invariant is $\bsign( \cL )$ which indicates the signature of
+% the local system of length one rows in $\cL$.
 \subsection{Dual pairs, descent and lift of nilpotent orbits}\label{sec:descent}
 
 \begin{defn}[Dual pair]\label{def:DP}
@@ -6740,308 +7223,6 @@ $\pAC{\uptau_{i}}\neq 0$ for $i=1,2$.
 
 
 
-\subsubsection{Local systems}
-We define  $\KM$ to be the free commutative monoid generated by $\MYD$.
-The binary operation in $\KM$ is denoted by ``$+$''.
-
-The operation ``$\cdot$'' naturally extends to $\KM$:
-\[
-  (\sum_{i}  m_{i}\cL_{i})\cdot (\sum_{j} m_{j}\cL'_{j}) := \sum_{i,j} m_{i}m_{j}(\cL_{i}\cdot \cL'_{j}).
-\]
-where $\cL_{i},\cL'_{j}\in \MYD$, $m_{i},m_{j}\in \bZ_{\geq 0}$.
-
-Now $(\KM, +, \cdot)$ is in fact a commutative semiring. We let $0$ be the
-additive identity element in $\KM$ and $\emptyset$ is the multiplicative
-identify. Note that $\cL\cdot 0=0$ for any
- $\cL\in \KM$ by definition.
-
-For $\cL,\cD\in \KM$, $\cL\succ \cD$ means that there exists $\cB\in \KM$ such that
-$\cL=\cB\cdot \cD$.
-In addition, we write $\cL\supset \cD$ if there is $\cL_{1},\cL_{2}\in \KM$ such
-that $\cL_{1}\succ \cD$ and $\cL_{1}+\cL_{2}=\cL$.
-
-Let $\KM(\star)$ be the sub-monoid of $\KM$ generated by $\MYD(\star)$.
-Note that $\KM(\star)$ is not a sub semi-ring of $\KM$.
-
-For $\cL = \sum_{i=1}^{k}\cL_{i}\in \KM$ with $\cL_{i}\in \MYD$, we let
-\[
-  \ssign(\cL)= \Set{\ssign(\cL_{i})|i=1,\cdots,k}\text{ and }
-  \lsign(\cL)= \Set{\lsign(\cL_{i})|i=1,\cdots,k}
-\]
-
-\subsection{Operations on $\KM(\star)$}
-\def\npp{\#_{+}}
-\def\nmm{\#_{-}}
-% We use $\npp(\cS)$ to denote the number of $+$ and $\upp$ in the object $\cS$.
-% For example $\npp(\tytb{\upp\umm\upp,+})=3$.
-
-% The involution $\overline{\phantom{+}}$ defined in \eqref{eq:def.bar} extends to
-% an in
-
-The operation $\dagger$ defined in \eqref{eq:def.dagger} extends to an operation
-\[
-  \dagger \colon \KM\longrightarrow \KM
-\]
-on $\KM$ which adding a column on the left of the original marked Young diagram.
-
-
-\subsubsection{Character twists on $\KM(D)$ and $\KM(B)$}
-\label{sec:tchar.DB}
-Recall that  $\bZ/2\bZ\times \bZ/2\bZ$ paramterizes
-the characters of a indefinite orthogonal group $\rO(p,q)$:
-\[
-  \chi=(\chi^{+},\chi^{-})\longleftrightarrow (\bfone^{-,+})^{\chi^{+}}\otimes (\bfone^{+,-})^{\chi^{-}}.
-\]
-
-We define the action of $\bZ/2\bZ \times \bZ/2\bZ$ action on $\sfM$ by:
-\[
-  \bfrr \otimes \chi := \begin{cases}
-    \overline{\bfrr} & \text{if } p+q \equiv 1 \text{ and }\chi^{+}p + \chi^{-} q\equiv 1 \pmod{2}\\
-    \bfrr & \text{otherwise}%\text{if } \chi^{+}p + \chi^{-}q\equiv 0 \pmod{2} \\
-  \end{cases}
-\]
-where $\bfrr\in \sfM, \chi=(\chi^{+},\chi^{-}) \in \bZ/2\bZ\times \bZ/2\bZ$ and
-$(p,q)=\ssign(\bfrr)$.
-
-The $\bZ/2\bZ\times \bZ/2\bZ$ action extends to actions on $\KM(D)$ and $\KM(B)$.
-% Now $\bZ/2\bZ\times \bZ/2\bZ$ has an action on $\KM(D)$ and $\KM(B)$ defined as
-% the following:
-
-% Let $\chi\in \bZ/2\bZ\times \bZ/2\bZ$ and $\set{}$
-
-
-% We use $\cB\cdot\cC$ to denote attach the local system $\cC$ below $\cB$ and the
-% operation is distributive. And use $\cup$ or $+$ to denote the union of local systems
-% systems.
-
-\subsubsection{Twists on $\KM(C)$ and $\KM(M)$}
-We define an involution $\maltese_{C} \colon \sfM\rightarrow \sfM$ on $\sfM$ by
-\[
-  \maltese(\bfrr):= \begin{cases}
-    \overline{\bfrr} & \text{if } \abs{\bfrr} \equiv 2 \pmod{4}\\
-    \bfrr & \text{otherwise}.
-  \end{cases}
-\]
-The involution $\maltese$ extends to an involution on $\KM$.%$(C)$.
-We will only apply $\maltese$ on $\cL\in \KM(C)$ or $\KM(M)$.
-
-\subsubsection{Truncations}% on $\KM(D)$ and $\KM(B)$}.
-
-\def\Tpp{\sfT^+}
-\def\Tmm{\sfT^-}
-\def\Tpm{\sfT^{\pm}}
-
-We define the Truncation maps %$\Tpp$ and $\Tmm$
-\[
-  \Tpp \colon \KM\longrightarrow \KM
-\]
-such that for $\cL\in \MYD$
-\[
-\Tpp(\cL) = \begin{cases}
-  \cL_{1} & \text{if there is $\cL_{1}\in \MYD$ such that $\cL_{1}\cdot + = \cL $}\\
-  0 & \text{otherwise}
-\end{cases}
-\]
-We define $\Tmm\colon \KM \longrightarrow \KM$ similarly such that
-$\cL=\Tmm(\cL)\cdot - $ if $\cL\succ -$ and $\Tmm(\cL)=0$
-otherwise for $\cL\in \MYD$.
-
-To symplify the notation, we write $\sL^{\pm} := \Tpm(\sL)$ for $\cL\in \KM$.
-
-\subsection{Theta lifts of local systems}
-
-
-\subsubsection{Lift from type C to D}
-
-For each signature $(p,q)\in \bN\times \bN$ such that $p+q$ is even, we define a map
-\[
-  \vartheta_{CD,(p,q)} \colon \KM(C)\rightarrow \KM(D)
-\]
-as the following:
-Let $\cL\in \MYD(C)$. Let $(p_{1},q_{1})=\lsign(\cL)$ and
-\[
-(p_{0}, q_{0})  = (p,q) -\ssign(\cL)-(q_{1},p_{1}).
-\]
-We define
-\[
-  \vartheta_{CD,(p,q)}(\cL) =
-  \begin{cases}
-    (\dagger \maltese^{\frac{p-q}{2}}(\cL))\cdot \dagger_{p_{0}, q_{0}} &
-    \text{if } p_{0}\geq 0 \text{ and } q_{0} \geq 0 \\
-    0 & \text{otherwise}
-  \end{cases}
-\]
-
-
-\subsubsection{Lift from type D to type C}
-
-For each non-zero integer $n\in \bN$, we define a map
-\[
-  \vartheta_{DC,n} \colon \KM(D)\rightarrow \KM(C)
-\]
-as the following:
-Let $\cL\in \MYD(D)$. Let $(p_{1},q_{1})=\lsign(\cL)$ and
-$(p,q) = \ssign(\cL)$.
-Let
-\[
-  n_{0} = n - (p+q)/2 - (p_{1}+q_{1})/2
-\]
-We define
-\[
-  \vartheta_{DC,n}(\cL) =
-  \begin{cases}
-    \maltese^{\frac{p-q}{2}}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}}) &
-    \text{if } n_{0}\in \bZ_{\geq 0}\\
-    \maltese^{\frac{p-q}{2}}(\dagger \cL^{+}  + \dagger \cL^{-})& \text{if } n_{0}=-1\\
-    0&\text{otherwise}
-  \end{cases}
-\]
-We remark that
-$\maltese^{\frac{p-q}{2}}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}})= (\maltese^{\frac{p-q}{2}}(\dagger\cL))\cdot \dagger_{n_{0},n_{0}}$.
-
-\trivial{
-  We take a splitting $\rO(p,q)\times \Sp(n,\bR)$ in to the big metaplectic
-  group $\Mp$ such that $\rO(p,\bC)\times\rO(q,\bC)$ acts on the Fock model linearly.
-  The maximal compact $K_{\Sp(n,\bR)}= \rU(2n)$ acts on the Fock model by the
-  character $\zeta=\det^{(p-q)/2}$.
-  For the component of the rational nilpotent orbit $\Sp(2n,\bR)$,
-  the factor of the component group is $\Sp$ if the corresponding row has odd
-  length.
-  Otherwise the component group is $\rO(p_{2k})\times\rO(q_{2k})$ where
-  $(p_{2k},q_{2k})$ is the signature corresponding to the $2k$-rows.
-  $\zeta|_{\rO(p_{2k})}= \det^{(p-q)k/2}_{\rO(p_{2k})}$ which is nontrivial if
-  and only if $p-q\equiv 2\pmod{4}$ and $2k\equiv 2\pmod{4}$.
-  This gives the formula above.
-}
-
-
-{
-  \color{red}
-  In the proof later, we don't care above the marks for rows with length longer
-  than 1 in the most of the case. So we will omit $\maltese$ sometimes.
-  When there is no confusion, we will simply write $\vartheta$ for
-  $\vartheta_{CD,(p,q)}$ and $\vartheta_{CD,(p,q)}$.
-}
-
-
-\subsubsection{Lift from type M to B}
-
-For each signature $(p,q)\in \bN\times \bN$ such that $p+q$ is odd, we define a map
-\[
-  \vartheta_{MB,(p,q)} \colon \KM(M)\rightarrow \KM(B)
-\]
-as the following:
-Let $\cL\in \MYD(M)$. Let $(p_{1},q_{1})=\lsign(\cL)$ and
-\[
-(p_{0}, q_{0})  = (p,q) -\ssign(\cL)-(q_{1},p_{1}).
-\]
-We define
-\[
-  \vartheta_{MB,(p,q)}(\cL) =
-  \begin{cases}
-    (\dagger \maltese^{\frac{p-q+1}{2}}(\cL))\cdot \dagger_{p_{0}, q_{0}} &
-    \text{if } p_{0}\geq 0 \text{ and } q_{0} \geq 0\\
-    0 & \text{otherwise}
-  \end{cases}
-\]
-
-
-\subsubsection{Lift from type B to type M}
-
-For each non-zero integer $n\in \bN$, we define a map
-\[
-  \vartheta_{BM,n} \colon \KM(B)\rightarrow \KM(M)
-\]
-as the following:
-Let $\cL\in \MYD(D)$. Let $(p_{1},q_{1})=\lsign(\cL)$ and
-$(p,q) = \ssign(\cL)$.
-Let
-\[
-  n_{0} = n - (p+q)/2 - (p_{1}+q_{1})/2
-\]
-We define
-\[
-  \vartheta_{BM,n}(\cL) =
-  \begin{cases}
-    \maltese^{\frac{p-q-1}{2}}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}}) &
-    \text{if } n_{0}\in \bZ_{\geq 0}\\
-    \maltese^{\frac{p-q-1}{2}}(\dagger \cL^{+}  + \dagger \cL^{-})& \text{if } n_{0}=-1\\
-    0&\text{otherwise}
-  \end{cases}
-\]
-We remark that
-$\maltese^{\frac{p-q-1}{2}}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}})= (\maltese^{\frac{p-q-1}{2}}(\dagger\cL))\cdot \dagger_{n_{0},n_{0}}$.
-
-\trivial{
-  For odd orthogonal-metaplectic group case, we still take the splitting such
-  that $\rO(p,q)$ acts linearly.
-
-  The maximal compact $\wtK_{\Sp(n,\bR)}= \widetilde{\rU(2n)}$ acts on the Fock model by the
-  character $\zeta=\det^{(p-q)/2}$.
-
-  Then
-  $\det^{(p-q)/2}|_{\rO(p_{2k})\times \rO(q_{2k})}=\det^{\frac{(p-q)k}{2}}_{\rO(p_{2k})}\boxtimes
-  \det^{\frac{(p-q)k}{2}}_{\rO(q_{2k})}. $
-  Note that $p-q$ is an odd number.
-  When $k$ is even the character on $\widetilde{\rO(p_{2k})}/\widetilde{\rO(q_{2k})}$ are
-  $\bfone$ or $\det$. When $k$ is odd the character would be $\det^{\half}$ or
-  $\det^{\half+1}$.
-
-  We assume the default character on $2k$-rows is $\det^{\frac{k}{2}}$, and
-  we use $+/-$ to mark the row. Otherwise, we use $\upp/\umm$ to mark the rows.
-}
-
-\subsection{Examples and remarks}
-
-\subsubsection{Example}
-\begin{eg}
-  Let
-  $\cT :=\dagger\dagger (\dagger_{2,1}) + \dagger\dagger(\dagger_{{1,2}})$ and $\cP= \ddagger_{1,3}$.
-  Then
-  \[
-    \cT\cdot \cP = \tytb{\uup\uum\uup,\uup\uum\uup,\uum\uup\uum,+,=,=,=}
-    \cup
-    \tytb{\uup\uum\uup,\uum\uup\uum,\uum\uup\uum,+,=,=,=}.
-  \]
-\end{eg}
-
-
-% For each local system $\cL$ of type B/D, define $\pcL$ (resp. $\ncL$) be the
-% part of $\cL$ obtained by deleting a ``$+$''-symbol (resp. ``$-$''=symbol) among 1-rows.
-% $\pcL:=0$ (resp. $\ncL:=0$) if there is no ``$+$''-symbol (resp.
-% ``$-$''-symbol).
-
-% For an local system $\cL$, $\cL\succeq\cC$ means there is a
-% factorization of $\cL = \cB\cdot \cC$;
-% $\cL\supset \cC$ means there is an irreducible component $\cL_{1}$ of $\cL$ such
-% that $\cL_{1}\succeq \cC$.
-
-
-% \subsubsection{}
-
-%\subsection{Definition of $\eDD$}
-\subsubsection{Signs of the local systems obtained by iterated lifting}
-
-
-Suppose $\cL\in \KM$ is obtained by iterated theta lifting and character
-twisting in \Cref{sec:tchar.DB}.
-Then the set $\lsign(\cL)$ has restricted possibilities.
-First, $\ssign(\cL)$ is always a singleton.
-
-When $\cO$ is of type B/D, $\lsign(\cL)$ is a singleton $\set{(p_{1},q_{1})}$
-where
-\[
-  (p_{1},q_{1})= \ssign(\cL) - (n_{0},n_{0}) \quad \text{and} \quad 2n_{0} = \abs{\eDD(\cO)}.
-\]
-
-When $\cO$ is of type C/M,
-$\lsign( \cL ) =\set{ (p_{1},q_{1})}$ is a singleton in the most of the case.
-The $\lsign(\cL)$
-may have two elements if $\cL$ is obtained by good generalized lifting, and it has the form
-$\lsign( \cL ) = \set{(p_{1}+1,q_{1}),(p_{1},q_{1}+1)}$.
-
-% Another important invariant is $\bsign( \cL )$ which indicates the signature of
-% the local system of length one rows in $\cL$.
 
 
 \section{Matrix coefficient integrals and degenerate principal series}\label{sec:Integrals}
@@ -8543,145 +8724,6 @@ Finally, we remark that the Whittaker cycles (attached to $G$-orbits in $\cO\cap
 
 
 \appendix
-
-\section{Combinatorial parameterization of special unipotent representations}
-\subsection{Parameterize of Unipotent representations}
-We fix an abstract complex Cartan subgroup $\bfH_a$ and $\fhh_a$ in $\bfG$ and a
-set of simple roots $\Pi_a$.  Let $\cP(\bfG)$ be the set of all Langlands
-parameters of $G$-modules with character $\rho$ (i.e. the infinitesimal
-character of the trivial representation). For $\gamma\in \cP(\bfG)$, let
-$\cL(\gamma)$, $\cS(\gamma)$ and $\Phi_\gamma$ be the corresponding Langlands
-quotient, standard module and coherent family such that
-$\Phi_\gamma(\rho) = \cL(\gamma)$. Let $\cM(\bfG)$ be the span of $\cL(\gamma)$.
-Let $\set{\bB}$ be the set of all blocks. Then $\cP(\bfG) = \bigsqcup_\cB \cB$.
-The Weyl group $W = W(G)$ acts on $\cM(\bfG)$ by coherent continuation.  Let
-$\cM_{\cB}$ be the submodule of $\cM(\bfG)$ spand by $\gamma\in\cB$, then
-\[
-  \cM(\bfG) = \bigoplus_\cB \cM_{\cB}
-\]
-Let $\tau(\gamma)\subset \Pi_a$ be the $\tau$-invariant of $\gamma$.
-
-Let $\ckcO$ be even orbit. $\lambda= \half \ckhh$.  Define
-\[
-  S(\lambda) = \set{\alpha\in \Pi_a| \inn{\alpha}{\lambda}=0}.
-\]
-Let $\cP_{\lambda}(\bfG)$ be the set of all Langlands parameters with
-infinitesimal character $\lambda$. Let $T_{\lambda,\rho}$ be the translation
-functor.  Let
-\[
-  \cB(S) = \set{\gamma\in \cB|S\cap \tau(\gamma)=\emptyset}
-\]
-and
-\[
-  \cP(\bfG,S) = \bigsqcup_{\cB} \cB(S)
-\]
-
-
-Then
-\[
-  \begin{tikzcd}[row sep=0em]
-    \cP(\bfG,S) \ar[r] & \cP_{\lambda}(\bfG)\\
-    \gamma \ar[r, maps to]& T_{\lambda, \rho}(\gamma)
-  \end{tikzcd}
-\]
-
-Let $\cO$ be a complex nilpotent orbit in $\fgg$.  Let
-\[
-  \cB(S,\cO) = \set{\gamma\in \cB(S)|\AVC(\cL(\gamma))\subset \bcO}
-\]
-
-Let
-\[
-  \begin{aligned}
-    m_S(\sigma) &= [\sigma: \Ind_{W(S)}^{W}\bfone]\\
-    m_\cB(\sigma)& = [\sigma: \cM_\cB]
-  \end{aligned}
-\]
-
-Barbasch \cite[Theorem~9.1]{B10} established the following theorem.
-\begin{thm}
-  \[
-    |\cB(S,\cO)| = \sum_{\sigma} m_\cB(\sigma)m_S(\sigma)
-  \]
-  Here $\sigma\times \sigma$ running over the $W\times W$ appears in the double
-  cell $\cC(\cO)$.
-\end{thm}
-\begin{proof}
-  We need to take the graded module of $\cM(\bfG)$ with respect to the
-  $\LRleq$. By abuse of notation, we identify the basis $\cP(\bfG)$ with its
-  image in the graded module.  Note that $S\cap \tau(\lambda)=\emptyset$ if and
-  only if $W(S)$ acts on $\gamma$ trivially by \cite[Lemma~14.7]{V4}.  On the
-  other hand, by \cite[Theorem~14.10, and page 58]{V4},
-  $\AVC(\cL(\gamma))\subset \bcO$ only if $\gamma$ generate a $W$-module in the
-  double cell of $\cO$.
-\end{proof}
-
-Now assume $S=S(\lambda)$. By \cite[Cor~5.30 b) and c)]{BVUni},
-$[\sigma: \Ind_{W(S)}^{W}\bfone]=[\bfone|_{W(S)}:\sigma]\leq 1$.
-
-\subsection{Combinatorics of Weyl group representations}
-The irreducible representations of $S_n$ are parameterized by Young diagrams.
-We use the notation that the trivial representation corresponds to a row and the
-sign representation corresponds to a column.
-\[
-  triv \leftrightarrow \ytableaushort{n \ b o x e s} \quad \sgn \leftrightarrow
-  \ytableaushort{n,\ ,b,o,x,e,s}
-\]
-\trivial{ This notation coincide with the Springer correspondence, where a row
-  of boxes represents the regular nilpotent orbit and the corresponding
-  representation is the trivial representation.  The trivial orbit yeilds the
-  sign representation.  }
-
-Under the above paramterization, $\tau\mapsto \tau\otimes \sgn$ is described by
-the transpose of Young diagram. The branching rule is given by
-Littlewoods-Richardson.  Let $\cK = \bigoplus_n \Groth(S_n)$ be the graded ring
-of the Grothendieck groups of $S_n$.  This yeilds well defined ring structure on
-the graded algebra
-\[
-  \mu \nu :=\Ind_{S_{|\mu|}\times S_{|\nu|}}^{S_{|\mu|+|\nu|}}\mu\otimes \nu.
-\]
-
-Notation, we will use $[r_1, r_2, \cdots, r_k]$ or $(c_1,c_2, \cdots, c_k)$
-denote the Young diagram, where $\set{r_i}$ denote the lengthes of its rows and
-$\set{c_i}$ denote the lengthes of its columns.
-
-Let $W_n$ denote the Weyl group of type BC: $W_n = S_n \ltimes \set{\pm 1}^n$.
-Now $\Irr(W_n)$ is paramterized by a pair of Young diagram, we use the notation
-$\mu\times \nu$.
-
-As the tensor algebra, $\bigoplus_n \Groth(W_n)\cong \cK\otimes \cK$ via
-$\mu\times \nu \mapsto \mu \otimes \nu$.
-
-The branching rule is given by:
-$(\mu_1\times \nu_1)(\mu_2\times \nu_2) = (\mu_1\mu_2)\times (\nu_1 \nu_2)$.
-The sgn repersentation of $W_n$ is parameterized by $\emptyset\times (n)$.  From
-the definitioin of the identification of bipartition with $\Irr(W_n)$, we also
-have
-\[
-  (\mu\times \nu) \otimes \sgn = \nu^t\times \mu^t.
-\]
-
-We also will use the following branching formula:
-\[
-  \Ind_{S_n}^{W_n} \triv = \sum_{\substack{a,b,\\ a+b=n}} [a]\times [b],
-\]
-and
-\begin{equation}\label{eq:SW2}
-  \Ind_{S_n}^{W_n} \sgn = \sum_{\substack{a,b,\\ a+b=n}}
-  (a)\times (b).
-\end{equation}
-\trivial{ Sketch of the proof of the first formula, the dimension of LHS is
-  $n!2^n/n! = 2^n$.  On the other hand, by Mackey theory,
-  $[LHS:\Ind_{W_a\times W_b}^{W_n} \triv \otimes \chi ] \geq 1$ since
-  $S_n\cap W_a\times W_b = S_a\times S_b$.  Therefore, $LHS\supset RHS$.  On the
-  other hand, dimension of RHS is $\sum_{a} n!/a!b! = 2^n$.  This finished the
-  proof.  The proof of the second formula is similar. One also can obtain it by
-  tensoring with $\sgn$ of the first formula.  }
-
-\subsubsection{Coherent continuation representations}
-
-{\color{red} TBA}
-
 
 \section{A few geometric facts}
 %\section{Some Geometries}
