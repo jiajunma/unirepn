@@ -2,7 +2,7 @@
 \usepackage[margin=2.5cm,marginpar=2cm]{geometry}
 
 
-\usepackage[bookmarksopen,bookmarksdepth=3]{hyperref}
+\usepackage[bookmarksopen,bookmarksdepth=3,hidelinks]{hyperref}
 \usepackage[nameinlink]{cleveref}
 \usepackage[]{showkeys}
 
@@ -1330,6 +1330,8 @@
 \def\ncL{\cL^-}
 \def\pcP{\cP^+}
 \def\ncP{\cP^-}
+\def\pcT{\cT^+}
+\def\ncT{\cT^-}
 % \def\pcE{\cE^+}
 % \def\ncE{\cE^-}
 \def\pcC{\cC^+}
@@ -1389,6 +1391,7 @@
 
 \def\pac#1{\ac_{#1}^+}
 \def\nac#1{\ac_{#1}^-}
+
 
 \def\AOD{\mathrm{AOD}}
 \def\ttail#1{{#1}_{\bftt}}
@@ -5446,7 +5449,7 @@ This  also forces that   $\check \CO$ is quasi-distinguished.
 
 
 \subsection{Tails of painted bipartitions}
-
+\label{sec:tail}
 In the rest of this subsection, we assume that $\star\in\{B, D, C^*\}$.
 Let $(\imath,\jmath) = (\imath_{\star}(\ckcO),\jmath_{\star}(\ckcO))$.
 %Note that $l\geq l'$ if $\star\in \{B,C^*\}$,   and $l\geq l'+1$ if $\star=D$.
@@ -5488,9 +5491,11 @@ Note that  in all these three cases
   D\qquad\textrm{or}\qquad \emptyset \times  \ytb{{x_1} , {x_2} , {\enon\vdots},{\enon{\vdots}},{x_k}  } \times
  C^*,
 \end{equation}
-respectively if $\star=B, D$ or $C^*$. %Here $k=l-l'+1, l-l'$ or $l-l'$ respectively.
+respectively if $\star=B, D$ or $C^*$.
 
+% Here $k=l-l'+1, l-l'$ or $l-l'$ respectively.
 %\subsubsection{The case when $\star = B$}
+
 Let
 $
 \tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \mathrm{PBP}_\star(\check \CO)
@@ -5758,7 +5763,7 @@ When $\star\in \set{B,D}$ the following map is bijective:
   \begin{array}{rcl}
     \PBP_{\star}(\ckcO)& \longrightarrow& \Set{
     (p,q,\varepsilon) \in \bN\times\bN\times \bZ/2\bZ|
-    \varepsilon=1 \text{if} pq=0,\text{ and } p+q=\abs{\cO}
+    \varepsilon=1 \text{ if } pq=0,\text{ and } p+q=\abs{\cO}
     },\\
     \tau &  \mapsto & (p_{\tau},q_{\tau}, \varepsilon_{\tau}).
   \end{array}
@@ -6061,18 +6066,18 @@ explicit formulas on $\ac_{\uptau}$.
   When  $\bfrr_{2}(\cO)=\bfrr_{3}(\cO)$,
   \begin{equation}\label{eq:BD2}
     \ac_{\uptau} =
-    \big((\maltese^t (\pac{\uptaupp}\cdot (0,0)) \cdot \pcP_{\tau}
-    +  (\maltese^t(\nac{\uptaupp}\cdot (0,0)) ) \cdot \ncP_{\tau}\big)\lotimes(0,\varepsilon_{\tau})
+    \big((\maltese^t (\pac{\uptaupp}\cdot (0,0)) \cdot \pcT_{\tau}
+    +  (\maltese^t(\nac{\uptaupp}\cdot (0,0)) ) \cdot \ncT_{\tau}\big)\lotimes(0,\varepsilon_{\tau})
   \end{equation}
   where $\uptaupp = \DD^{2}(\uptau)$ and
   \[
   \begin{split}
     t &  = \frac{\abs{\ssign(\tau_{\bftt})}}{2},\\
-    \pcP_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}},q_{\tau_{\bftt}}-1) & \text{when
+    \pcT_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}},q_{\tau_{\bftt}}-1) & \text{when
       } q_{\tau_{\bftt}}-1\geq 0 , \\
       \emptyset & \text{otherwise},
     \end{cases}\\
-    \ncP_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}}-1,q_{\tau_{\bftt}}) & \text{when
+    \ncT_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}}-1,q_{\tau_{\bftt}}) & \text{when
       } p_{\tau_{\bftt}}-1\geq 0  ,\\
       \emptyset & \text{otherwise}.
     \end{cases}\\
@@ -6094,6 +6099,18 @@ explicit formulas on $\ac_{\uptau}$.
 \end{lem}
 % \begin{proof}
 % \end{proof}
+%
+
+
+
+\trivial[]{Hint of the proof of (c). It suffice to consider the most left three columns of the peduncle
+  part: this part has signature
+  $\lsign(\cT_{\uptau}) +(1,1) = \ssign(\tau_{\bftt}x_{\uptaupp})= \ssign(\tau_{\bftt})+\lsign(\cD_{\uptaupp})$.
+  Therfore,
+  \[\ssign(\tau_{\bftt}) = \lsign(\cT_{\uptau})-\lsign(\cD_{\uptaupp})
+  + (1,1) = \lsign(\ac_{\uptau})-\lsign(\ac_{\uptaupp})+(1,1).
+  \]
+}
 
 \subsection{Properties of $\ac_{\uptau}$}
 \label{sec:ac}
@@ -6197,6 +6214,9 @@ Suppose $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
      \end{array}
    \]
     are injective.
+  \item Suppose $\ckcO$ is weakly-distingushied and $\bfrr_{1}(\ckcO)> \bfrr_{3}(\ckcO)$.
+  If $x_{\tau}=d$, then there is $\cE\in \MYD$ with non-zero coefficient in
+  $\nac{\uptau}$ such that $\cE\sqsupseteq (1,0)$.
   \end{enuma}
 \end{lem}
 
@@ -6208,25 +6228,25 @@ $\cE_{j}\in \MYD_{\star}$, define
   \lsign(\sum_{j} m_{j} \cE_{j}) = \set{\lsign(\cE_{j})|j=1,2,\cdots, k}.
 \]
 
-\begin{lem}\label{lem:BD3}
-Suppose $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
+% \begin{lem}\label{lem:BD3}
+% Suppose $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
 
-\end{lem}
+% \end{lem}
 
 
-% In this section, we let $\star \in \set{B,D,C^{*}}$. Now
-% $\star' = \wtC, C, D^{*}$  respectively.
-%
+% % In this section, we let $\star \in \set{B,D,C^{*}}$. Now
+% % $\star' = \wtC, C, D^{*}$  respectively.
+% %
 
-We will prove the above lemmas by induction on the number of columns in $\cO$.
+% We will prove the above lemmas by induction on the number of columns in $\cO$.
 
-We assume all the claim had been proven when $\ckcO$ has at most two columns, that
-is
-\begin{itemize}
-  \item When $\star = D$, $\bfrr_{3}(\ckcO) = 0$;
-  \item When $\star = B$, $\bfrr_{2}(\ckcO)=0$;% is the zero orbit.
-  \item When $\star = C^{*}$, $\bfrr_{2}(\ckcO)=0$.% is the zero orbit.
-\end{itemize}
+% We assume all the claim had been proven when $\ckcO$ has at most two columns, that
+% is
+% \begin{itemize}
+%   \item When $\star = D$, $\bfrr_{3}(\ckcO) = 0$;
+%   \item When $\star = B$, $\bfrr_{2}(\ckcO)=0$;% is the zero orbit.
+%   \item When $\star = C^{*}$, $\bfrr_{2}(\ckcO)=0$.% is the zero orbit.
+% \end{itemize}
 
 All the claims for $\star\in \set{C^{*},D^{*}}$ in the above lemmas are straight forward to verify.
 We will focus on the non-quaternionic cases in the next two sections.
@@ -6416,662 +6436,180 @@ weakly-distinghuished.
 We get $\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$ by \eqref{eq:TBD} and so $\uptaup_{1}=\uptaup_{2}$.
 By \Cref{cor:dpinj}, we conclude that $\uptau_{1}=\uptau_{2}$. This proves
 \Cref{lem:BD}~(b).
+
+Suppose $\ckcO$ is quasi-distinghuished. Then $\ac_{\uptau}\in \MYD_{\star}$
+since $\ac_{\uptau'}\in \MYD_{\star'}$ by the quasi-distinguishness of
+$\ckcO'$.
+This proves \Cref{lem:BD}~(c).
+
+Using \eqref{eq:TBD}, all the claims (a-c) in \Cref{lem:BD2} follows from that of
+$\ckcO_{\bftt}$, see \Cref{sec:tail}. (Note that we always have
+$\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)$. So \Cref{lem:BD2}~(c) is not vacant.)
+
 \trivial[h]{
 Note that $\Sign(\tau_{1})=\Sign(\tau_{2})$,
 }
 
-\section{}
-Let $\uptau'\in \PBPeqsp(\ckcO')$.
-
-For $\cLpp\in \AOD(\cOpp)$, let $(p_{1},q_{1}) = \lsign(\cLpp)$ and
-$(p_2,q_2)=(C_{2}-q_{1},C_{2}-p_{1})$. Then
-\[
-  \vartheta(\cLpp) = (\maltese^{y}\dagger\cLpp) \cdot \dagger_{(n_{0},n_{0})}
-\]
-where $y$ is an integer determined by $\Sign(\uptaupp)$ and $n_{0} = (C_{2}-C_{3})/2$.
-%\sqcup \LLS(\cOpp)\otimes \det
-
-Therefore, $\LS(\cOpp)\longrightarrow \LS(\cOp)$ given by
-$\cL\mapsto \vartheta(\cL)$ is an injection between abelian groups.
-
-By \eqref{eq:LS.dis}, we have a injection
-\begin{equation}\label{eq:LS.CD.inj}
-  \begin{tikzcd}[row sep=0em]
-    \LLS(\cOpp)\times \bZ/2\bZ \ar[r] &\LLS(\cOp)\\
-    (\cLpp,\upepsilon') \ar[r,maps to] & \vartheta(\cLpp\otimes \det^{\upepsilon'}).
-  \end{tikzcd}
-\end{equation}
-In particular, we have $\ac_{\uptaup}\neq 0$ for every
-$\uptaup\in \drc(\cOp)$.
-
-Now suppose $\uptaup_{1}\neq \uptaup_{2}$.
-Suppose
-$\ac_{\uptaup_{1}} = \ac_{\uptaup_{2}}$. By \eqref{eq:LS.CD.inj},
-\begin{equation}\label{eq:eps.CD1}
-  \varepsilon_{\uptaup_{1}} = \varepsilon_{\uptaup_{2}}
-\end{equation}
-and
-$\ac_{\uptaupp_{1}} = \ac_{\uptaupp_{2}}$.
-In particular, we have
-$\Sign(\uptaupp_{1}) = \Sign(\ac_{\uptaupp_{1}}) = \Sign(\ac_{\uptaupp_{2}}) = \Sign(\uptaupp_{1})$.
-We now claim that $\uptaupp_{1}\neq \uptaupp_{2}$.
-It suffice to consider the case where $\wp_{\uptaupp_{1}} = \wp_{\uptaupp_{2}}$.
-Then $\wp_{\uptaup_{1}} = \wp_{\uptaup_{2}}$ by \eqref{eq:eps.CD1} and so
-$\taup_{1}\neq \taup_{2}$.
-By \Cref{prop:CC.bij}, $\taupp_{1}\neq \taupp_{2}$ and this proves the claim.
-
-\trivial{
-Now suppose $\uptaup_{1}\neq \uptaup_{2}\in \drc(\cOp)$ and
-$\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$. By \eqref{eq:LS.CD.inj},
-$\upepsilon'_{1}=\upepsilon'_{2}$ and $\ac_{\uptaupp_{1}}=\ac_{\uptaupp_{2}}$.
-In particular,  $\uptaupp_{1}$ and $\uptaupp_{2}$  have the same signature. %, say $(p'',q'')$.% are dot-r-c diagrams for the
-% same real orthogonal group.
-By \Cref{lem:ds.CD} and the induction hypothesis, $\uptaupp_{1}\neq \uptaupp_{2}$ and so
-$\uppi_{\uptaupp_{1}}\otimes {\det}^{\upepsilon'_{1}} \neq \uppi_{\uptaupp_{2}}\otimes {\det}^{\upepsilon'_{2}}$.
-Now the injectivity of theta lifting yields
-\[
-  \uppi_{\uptaup_{2}} = \Thetab(\uppi_{\uptaupp_{1}}\otimes {\det}^{\upepsilon'_{1}})
-  \neq \Thetab(\uppi_{\uptaupp_{2}}\otimes {\det}^{\upepsilon'_{2}}) = \uppi_{\uptaup_{2}}
-\]
-Suppose $\cOp$ is noticed. Then $\cOpp = \eDD(\cOp)$ is noticed by definition
-and
-$(\uptaupp,\upepsilon')\mapsto \Ch(\uppi_{\uptaupp}\otimes{\det}^{\upepsilon'})$
-is an injection into $\LS(\cOpp)$.
-Now \eqref{eq:LS.CD.inj} implies $\uptaup\mapsto\ac_{\uptaup}$ is also an injection.
-
-Suppose $\cOp$ is quasi-distingushed. Then $\cOpp = \eDD(\cOp)$ is
-quasi-distingushed by definition
-and
-$(\uptaupp,\upepsilon')\mapsto \Ch(\uppi_{\uptaupp}\otimes{\det}^{\upepsilon'})$
-is  a bijection with $\LSaod(\cOpp)$.
-Since the component group of each K-nilpotent orbit in $\cOp$ is naturally
-isomorphic to the component group of its descent. So we deduce that $\uptaup \mapsto \ac_{\uptaup}$
-is a bijection onto $\LSaod(\cOp)$.
-
-This proves the main proposition for $\cOp$.
-}
-
-\subsubsection{}
-
-Now we consider the local system attached to $\ckcO$.
-Let $\uptau\in \PBPes(\ckcO)$.
-By the signature formula \eqref{eq:sign.D}
-\begin{equation}\label{eq:LS.D.ds}
-  \begin{split}
-  \AC(\uptau)  & =\left( \left(\maltese^{y'}
-    (\AC(\uptaupp)\otimes (\det)^{\varepsilon_{\wp'}})
-    \cdot 1^{(n_{0},n_{0})}\right) \cdot
-   1^{\Sign(\tau_{\bftt})} \right) \otimes (1^{+,-})^{\varepsilon_{\tau}}\\
-  & =\left(\maltese^{y'} (\AC(\uptau'')\otimes (\det)^{\varepsilon_{\wp'}}) \otimes (1^{+,-})^{\varepsilon_{\tau}}
-    \right) \cdot \AC(\tau_{\bftt})\\
-  & =\left(\maltese^{y} \AC(\uptau') \otimes (1^{+,-})^{\varepsilon_{\tau}}
-    \right) \cdot \AC(\tau_{\bftt})
-  \end{split}
-\end{equation}
-where $y' = (p_{\tau}-q_{\tau}-p_{\tau''}+q_{\tau''})/2$ and $y$ is determined
-by $\Sign(\uptau)$ when
-$\star\in \set{B,D}$.
-Whne $\star\in \set{C^{*}}$, $y'=y''=0$.
-
-
-
-% Now let $\uptau\in \drc(\cO)$. % and $(p_{0},q_{0}):=\ssign(\bfxx_{\uptau})$.
-% By \eqref{eq:sp-nsp-sig}, we have
-% \begin{equation}\label{eq:LS.D.ds}
-%   \ac_{\uptau} =  \cT_{\uptau}\cdot \cP_{\uptau}\neq 0, \text{ where
-%   }\cT_{\uptau} := \dagger\ac_{\uptaup}, \text{ and } \cP_{\uptau}:=\ac_{\bfxx_{\uptau}}.
-% \end{equation}
-% In particular, $\uppi_{\uptau}\neq 0$ and we could determine $\bfxx_{\uptau}$ from
-% the marks on the 1-rows of $\ac_{\uptau}$.
-
-% The factorization of $\ac_{\uptau}$ in the fashion of \Cref{eq:ls.factor} is also given by
-% \eqref{eq:ped.factor1} and \eqref{eq:bd.factor2}.
-% When $\upepsilon=0$, $(p_{0},q_{0})\succeq \ssign(d)=(1,1)$ and so
-% $\ac_{\uptau}\neq \ac_{\uptau}\otimes \bfone_{\ssign(\uptau)}^{+,-}$.
-
-Now suppose $\uptau_{1} \neq \uptau_{2} \in \PBPes(\ckcO)$ and
-$\AC({\uptau_{1}})=\AC( \uptau_{2} )$. By \eqref{eq:LS.D.ds},
-
-By \eqref{eq:LS.D.ds}, we have
-$\AC({{\tau_{1}}_{\bftt}}) = \AC({{\tau_{2}}_{\bftt}})$ and .
-Therefore
-${\tau_{1}}_{\bftt}={\tau_{2}}_{\bftt}$, $\varepsilon_{\uptau_{1}} =\varepsilon_{\uptau_{2}}$ and
-$\AC( \uptaup_{1} )=\AC(\uptaup_{2} )$.
-Thanks to \Cref{cor:D.inj1}, $\uptaup_{1} \neq \uptaup_{2}$.
-
-% $\uptaupp_{1}\neq \uptaupp_{2}$.
-% Hence
-% Applying the main proposition of $\cOp$, we have
-% $\upepsilon'_{1}=\upepsilon'_{2}$ and $\uptaup_{1}\neq \uptaup_{2}$.
-% Now by the injectivity of theta lifing, we conclude that
-% \[
-%   \uppi_{\uptau_{2}} = \Thetab(\uppi_{\uptaup_{1}})\otimes (\bfone^{+,-})^{\upepsilon_{1}}
-%   \neq \Thetab(\uppi_{\uptaup_{2}})\otimes (\bfone^{+,-})^{\upepsilon_{2}} = \uppi_{\uptaup_{2}}
-% \]
-
-The claims in item \ref{it:LLS.4} follows from \eqref{eq:LS.D.ds} and the initial
-case for $\tau_{\bftt}$.
-
-\subsubsection{}
-
-Note that $\ac_{\uptau}$ is obtained from $\ac_{\uptaup}$ by attaching the peduncle
-determined by $\bfxx_{\uptau}$. The claims about noticed and
-quasi-distinguished orbit are easy to verify. We leave them to the reader.
-
-
-
-\subsection{The general descent case}\label{sec:pf.gd.CD}
-%We  assume $k\geq 1$ and all the properties are satisfied by $\uptaupp\in \drc(\cOpp)$.
-%We retain the notation in \Cref{sec:gd2.CD}.
-We assume $\bfrr_{2}(\ckcO) = \bfrr_{3}(\ckcO)>0$.
-Note that in this case, $\star\in \set{B,D}$.
-
-\subsubsection{}
-We now describe the local systems $\AC( \uptaup )$.
-
-\begin{equation}\label{eq:LS.taup}
-  \AC( \uptaup ) = \vartheta_{\sfss'}^{\sfss}(\AC(\uptaupp)) = \maltese^{y'}
-  (\Lambda_{+}( \AC(\uptaupp)) + \Lambda_{-}(\AC(\uptaupp)))\cdot 1^{(0,0)} \neq 0
-\end{equation}
-Here $y'$ is dentermined by $\Sign(\taupp)$.
-
-
-
-% \begin{equation}\label{eq:LS.taup}
-%   \ac_{\uptaup} = \vartheta(\ac_{\uptaupp}) = \maltese^{\frac{\abs{\ssign(\uptaupp)}}{2}}
-%   (\dagger \pac{\uptaupp} + \dagger \nac{\uptaupp}) \neq 0
-% \end{equation}
-% where
-% $\lsign(\dagger\pac{\uptaupp}) = (q''_{1}, p''_{1}-1)$ and
-% $\lsign(\dagger\nac{\uptaupp})=(q''_{1}-1,p''_{1})$ (if
-% $\dagger\nac{\uptaupp}\neq 0$).
-
-
-% \subsubsection{}
-% We now describe the associated cycle $\AC( \uptaup )$ and $\AC( \uptau )$ more
-% precisely using our formula of the associated character and the induction
-% hypothesis. Note that these local systems are always non-zero which implies that
-% $\uppi_{\uptaup}$ and $\uppi_{\uptau}$ are unipotent representations attached to
-% $\cOp$ and $\cO$ respectively.
-
-% First note that in $\uptaup$ and $\uptaupp$, $x_{\uptaupp}\neq s$ by the definition of
-% dot-r-c diagram.
-% \footnote{
-%   Suppose $\uptaupp\in \drc(\cOpp)$ has the shape in \eqref{eq:gd2.drc} and
-%   $x_{\uptaupp}=s$. By the induction hypothesis,   $\pac{\uptaupp}=\nac{\uptaupp}=0$ and so
-%   the theta lift of $\uppi_{\uptaupp}$ vanishes.
-% }
-% % in generalized descent.
-% By the induction hypothesis, $\ac_{\uptaupp}^{+}\neq 0$.
-% % , and so
-% % \[
-% %   \ac_{\uptaup} = \vartheta(\ac_{\uptaupp}) = \dagger \ac_{\uptaupp}^{+}\cup
-% %   \dagger \ac_{\uptaupp}^{-} \neq 0.
-% % \]
-
-% % Now for each $\uptaup\in \drc(\cOp)$, $\uptaupp$
-
-
-Let $(p''_{1},q''_{1}) := \lsign(\ac_{\uptaupp})$.
-Then
-\begin{equation}\label{eq:lsign.1}
-\lsign(\pac{\uptaupp}) = (p_{0}-1,q_{0}), \text{ and }
-\lsign(\nac{\uptaupp})=(p_{0},q_{0}-1) \text{ if } \nac{\uptaupp}\neq \emptyset.
-\end{equation}
-\begin{equation}\label{eq:LS.taup}
-  \ac_{\uptaup} = \vartheta(\ac_{\uptaupp}) = \maltese^{\frac{\abs{\ssign(\uptaupp)}}{2}}
-  (\dagger \pac{\uptaupp} + \dagger \nac{\uptaupp}) \neq 0
-\end{equation}
-where
-$\lsign(\dagger\pac{\uptaupp}) = (q''_{1}, p''_{1}-1)$ and
-$\lsign(\dagger\nac{\uptaupp})=(q''_{1}-1,p''_{1})$ (if
-$\dagger\nac{\uptaupp}\neq 0$).
-
-Let $(p_{1},q_{1}) := \lsign(\ac_{\uptau})$ and
-$(e,f):=(p_{1}-p''_{1}+1, q_{1}-q''_{1}+1)$. Using \Cref{lem:gd.inj}
-% \eqref{eq:bd.prop} and
-% \eqref{eq:def.u},
-one can show that
-\[
-  (e,f)=\ssign(\tau_{\bftt}).
-\]
-
-\trivial[]{ It suffice to consider the most left three columns of the peduncle
-  part: this part has signature
-  $\lsign(\cT_{\uptau}) +(1,1) = \ssign(\tau_{\bftt}x_{\uptaupp})= \ssign(\tau_{\bftt})+\lsign(\cD_{\uptaupp})$.
-  Therfore,
-  \[\ssign(\tau_{\bftt}) = \lsign(\cT_{\uptau})-\lsign(\cD_{\uptaupp})
-  + (1,1) = \lsign(\ac_{\uptau})-\lsign(\ac_{\uptaupp})+(1,1).
-  \]
-}
-
-% Now
-% \begin{equation}\label{eq:gd.ls}
-%   \ac_{\uptau} =
-%   \begin{cases}
-%     (\bfone^{+,-}\otimes \maltese^t (\Lambda_{+}\AC( \uptaupp )\cdot 1^{(0,0)}) \cdot \pcP_{\uptau}
-%     + (\bfone^{+,-}\otimes (\Lambda_{-}\AC( \uptaupp )\cdot 1^{(0,0)})  \cdot \ncP_{\uptau}
-%     & \text{if } x_{\uptau} \neq d\\
-%     (\dagger\maltese^t \dagger \pac{\uptaupp}) \cdot \pcP_{\uptau}
-%     + (\dagger\maltese^{t} \dagger \nac{\uptaupp})  \cdot \ncP_{\uptau}
-%     & \text{if } x_{\uptau} =d\\
-%   \end{cases}
-% \end{equation}
-% % \begin{equation}\label{eq:gd.ls}
-% %   \ac_{\uptau} =
-% %   \begin{cases}
-% %     (\bfone^{+,-}\otimes \dagger\maltese^t \dagger \pac{\uptaupp}) \cdot \pcP_{\uptau}
-% %     + (\bfone^{+,-}\otimes \dagger\maltese^{t} \dagger \nac{\uptaupp})  \cdot \ncP_{\uptau}
-% %     & \text{if } x_{\uptau} \neq d\\
-% %     (\dagger\maltese^t \dagger \pac{\uptaupp}) \cdot \pcP_{\uptau}
-% %     + (\dagger\maltese^{t} \dagger \nac{\uptaupp})  \cdot \ncP_{\uptau}
-% %     & \text{if } x_{\uptau} =d\\
-% %   \end{cases}
-% % \end{equation}
-% where
-% \[
-%   \begin{split}
-%     t & = \frac{\abs{\ssign(\uptau)-\ssign(\uptaupp)}}{2} = \frac{\abs{\ssign(\tau_{\bftt})}}{2}\\
-%     \pcP_{\uptau}& = \begin{cases} 1^{(e,(-1)^{\varepsilon_{\tau}}(f-1))} & \text{when
-%       } f\geq 1 \text{ and } x_{\uptau}\neq d \\
-%       \dagger_{e,f-1} & \text{when
-%       } f\geq 1 \text{ and } x_{\uptau}= d \\
-%       0 & \text{otherwise}
-%     \end{cases}\\
-%     \ncP_{\uptau}& = \begin{cases} \ddagger_{e-1,f} & \text{when
-%       } e\geq 1 \text{ and } x_{\uptau}\neq d \\
-%       \dagger_{e-1,f} & \text{when
-%       } e\geq 1 \text{ and } x_{\uptau}= d \\
-%       0 & \text{otherwise}
-%     \end{cases}.\\
-%   \end{split}
-% \]
-% %
-% % $\pcP$ and $\ncP$ are 1-rows of sign $(p_{1}-p''_{1}+1,q_{1}-q''_{1})$ and
-% % $(p-p'',q-q''+1)$ respectively.
-
 \medskip
 
-% \delete{
-% By induction hypothesis, we have
-% a factorization of $\ac_{\uptaupp}$ as in \eqref{eq:ls.factor}
-% \[
-%   \ac_{\uptaupp} = \sum_{i=-(k-1)}^{k-1}\cB_{\uptaupp,i}\cdot \cD_{\uptaupp,i}.
-% \]
-% %where $\abs{i}\leq k-1$ in the above formula.
-% Then we have the following factorization of $\ac_{\uptau}$:
-% \[
-% \ac_{\uptau}=\sum_{i\neq 0} \cT_{\uptau,i}\cdot \cT_{\uptau,i}, \text{ with
-% } \cT_{\uptau,i}:=
-% \begin{cases}
-% \dagger\dagger \cB_{\uptaupp,i-1} & i\geq 1 \\
-% \dagger\dagger \cB_{\uptaupp,i+1} & i\leq -1.
-% \end{cases}
-% \]
-% Now we describle $\cT_{\uptau,i}$ according to $x_{\uptaupp}$ case by case. In the
-% following discussion,
-% \[
-%   \uup\cdots\uup\quad \text{ and }\quad  \uum\cdots\uum
-% \]
-% always denote a row has length
-% $2i+1$ with unspecified associated character.
-% %We have the following cases
-% %\subsubsection{}
-% %First note that $x_{\uptaupp}\neq s$ in generalized descent.
 
-%  \subsubsection{Case $x_{\uptaupp}=r$}\label{sec:z.r}
-%  We will see that the factorization \eqref{eq:d.factor} always holds
-%  when $x_{\uptaupp}=r$ and $n\geq 2$.
-%  % according to the about list.
-%   %\item $x_{\uptaupp}=r$. %In this case, all length $3$ rows ends with $+$ sign!
-%   % So
-%   % $\bsign{\bfxx_{\uptaupp}} \succ (2,0)$, $\pac{\uptaupp}\neq 0$ has tail with
-%   % sign $+$, and $\nac{\uptaupp}=0$.
-%   We have three sub-cases:
-%   \begin{enumT}
-%   \item $\bfpp_{\uptau} = \tytb{rc\cdots,\vdots,r}$. Then
-%   $\ac_{\uptau}=\sum_{i=1}^{k} (\dagger\dagger \cB_{\uptaupp,i-1})\cdot \cT_{\uptau,i}$, where
-%   \begin{equation}\label{eq:rr.c}
-%   \cT_{\uptau,i}  = \tytb{\uup\cdots\uup,+,\vdots,+} \quad \forall i\geq 1.
-%   \end{equation}
+We now assume that $\bfrr_{2}(\ckcO)=\bfrr_{3}(\ckcO)$.
 
-%  When $n\geq 2$, we have $\cT_{\uptau,i}\succeq \tytb{+,+}$ and the
-%  factorization \eqref{eq:d.factor} holds.
-
-%  When $n=1$, we set
-%  \begin{equation} \label{eq:gd.rr}
-%    \cB_{\uptau,0} = 0,
-%    \cB_{\uptau,i} = \cT_{\uptau,i} \text{ and
-%    } \cD_{\uptau,i} = \cT_{\uptau,i} \text{ for } i\geq 1.
-%  \end{equation}
-%  Now $\ac_{\uptau} = \sum_{i=1}^{k} \cB_{\uptau,i}\cdot \cD_{\uptau,i}$.
-% %where $i$ is the index such that $\cB_{\uptaupp,i}\neq 0$.
-
-%  \item $\bfpp_{\uptau} = \tytb{rc\cdots,\vdots,r,d}$.
-%  In this case, $n\geq 2$.
-%   \begin{equation}\label{eq:rd.c}
-%   \cT_{\uptau,i}  = \tytb{\uup\cdots\uup,-,+,\vdots,+} \succ \tytb{-,+} \quad  \forall i\geq 1
-%   % \cT_{\uptau,1}  = \tytb{\uup\uum\uup,-,+,\vdots,+}\quad
-%   % \cT_{\uptau,2}  = \tytb{\uup\uum\uup\cdots,-,+,\vdots,+}
-%   \end{equation}
-% In particular, \eqref{eq:d.factor} holds.
-% % $\cT_{\uptau,i}\succeq \ddagger_{(2,1)}\succ \dagger_{(1,1)}$ and the
-% % factorization
-% % $\ac_{\uptau} = \cB_{\uptau,1}\cdot \cD_{\uptau,1}$ such that $\cD_{\uptau,1}=\tytb{+,-}$.
-%  \item $\bfpp_{\uptau} = \tytb{sr\cdots,\vdots,s,{x_{j}},\vdots,{x_{n}}}$.
-% % $y_{1}=x_{\uptaupp}=r$ and $\bfxx_{\uptau} = s\cdots sx_{j}\cdots x_{n}$ with
-%  In this case $\#s(\bfxx_{\uptau})\geq 1$.
-
-%  When $n\geq 2$, the factorization \eqref{eq:d.factor} holds.
-%  More precisely, we have four cases according to the mark of $x_{n}$.
-%  \begin{enumT}
-%    \item $x_{n}=s$, i.e. $\bfxx_{\uptau} = s\cdots s$. Then
-%    \[
-%   \cT_{\uptau,i}  = \tytb{\uup\cdots\uup,=,\vdots,=} \quad \forall i \geq 1
-%    \]
-%    When $n= 1$,
-%    $\ac_{\uptau} = \sum_{i=-1}^{-k} \cB_{\uptau,i}\cdot \cD_{\uptau,i}$
-%    with $\cB_{\uptau,i} = \cT_{\uptau,i}$ and $\cD_{\uptau,i} = \cT_{\uptau,i}$.
-%    % and the
-%    % factorization is also given by the formula \eqref{eq:gd.rr}.
-%    \item $x_{n}=r$. Then $n\geq 2$ and
-%    \[
-%   \cT_{\uptau,i}  = \tytb{\uup\cdots\uup,+,\vdots,+,=,\vdots,=} \succeq \tytb{+,+,=}\succ \tytb{+,+,\none}
-%   \quad \forall i\geq 1
-%   \]
-%    \item $x_{n}=c$. Then $n\geq 2$ and
-%    \[
-%   \cT_{\uptau,i}  = \tytb{\uup\cdots\uup,+,\vdots,+,=,\vdots,=} \succeq \tytb{+,=,=}\succ \tytb{+,=,\none}
-%   \quad \forall i\geq 1
-%   %\cT_{\uptau,2}  = \tytb{\uup\uum\uup\cdots,+,\vdots,+,=,\vdots,=} \succeq \tytb{+,=,=}\succ \tytb{+,=,\none}
-%    \]
-%    \item $x_{n}=d$. Then $n\geq 2$ and
-%    \[
-%   \cT_{\uptau,i}  = \tytb{\uup\cdots\uup,+,\vdots,+,-,\vdots,-}  \succeq \tytb{+,-,-}\succ \tytb{+,-,\none}
-%   \quad \forall i\geq 1
-%   %\cT_{\uptau,2}  = \tytb{\uup\uum\uup\cdots,+,\vdots,+,-,\vdots,-} \succeq \tytb{+,-,-}\succ \tytb{+,-,\none}
-%    \]
-%  \end{enumT}
-%  % Suppose $\Sign(\bfxx_{\uptau})=(p_{1},q_{1})$ with $p_{1}+q_{1}=2n$
-%   % \begin{equation}%\ac_{\uptau} = \dagger\dagger \pac{\uptaupp} \cdot \ytableaushort{+,\vdots,+,{-/=},\cdots,{-/=}}
-%   %   \cB_{\uptau}  =
-%   %   \tytb{+-+,+,\vdots,+,-,\vdots,-}  \text{ when } x_{n} = d \text{ or  } \tytb{+-+,+,\vdots,+,=,\vdots,=}
-%   %   \text{ when } x_{n} = r/c
-%   % \end{equation}
-%   % \[
-%   %   \cB_{\uptau} = \tytb{+-+,=,\vdots,=} \text{ when } x_{n}=s.
-%   % \]
-%   % Note that, we have at least one $-$ sign in 1-rows.
-%   % At least two $-$ signs if $x_{n}=c/d$.
-
-%   %  We have  $\cB_{\uptau}\succeq \ddagger_{(0,2)}$  when $x_{n}=s$;
-%   %  $\cB_{\uptau}\succeq \ddagger_{(2,1)}$  when $x_{n}=r$;
-%   % $\cB_{\uptau}\succeq \ddagger_{(2,1)}$ when $x_{n}=c$;
-%   % $\cB_{\uptau}\succeq \dagger_{(2,1)}$ when $x_{n}=d$.
-%   \end{enumT}
+Let $\uptaupp :=(\tau'',\wp''):= \DD^{2}(\uptau)$.
+By \Cref{lem:delta}, $x_{\tau''}\neq s$.
+% Since $x_{\uptaupp}\neq s$, $\AC(\uptaupp)\neq 0$.
 
 
-%   \subsubsection{Case $x_{\uptaupp}=c$}\label{sec:z.c}
-%   % In this case, the length $3$-rows will contain at least one $-$ sign.
-%   %$\pac{\uptaupp}\neq 0$ has tail sign $=$, and $\nac{\uptaupp}=0$.
-%   %We assume $\Sign(\bfxx_{\uptau})=(p_{1},q_{1})$.
-%   We always have $\cT_{\uptau,2}=\emptyset$.
-%   \begin{enumT}
-%     \item  $x_{n} =  s$. In this case $x_{\uptau}=s\cdots s$.
-%     \begin{equation}\label{eq:ss.c}
-%       \cT_{\uptau,i} = \tytb{\uum\cdots\uum,=,\vdots,=} \quad \forall i\geq 1.
-%     \end{equation}
-%     When $n\geq 2$, the  factorization \eqref{eq:d.factor} holds.
+{\bf Proof of \Cref{lem:ac0}. }
+When $\Sign(\tau_{\bftt})\succeq (0,1)$, the first term in \eqref{eq:BD2} dose
+not vanish since $\pac{\uptaupp}\neq 0$ by \Cref{lem:BD2}~(a).
+When $\Sign(\tau_{\bftt})\nsucceq (0,1)$, $\Sign(\tau_{\bftt}) = (2k,0)$ and
+$\cP_{\tau_{\bftt}}^{-1}(\set{s,c})=\emptyset$. Hence
+  $x_{\uptaupp}=d$ by \Cref{lem:delta}. Now $\nac{\uptaupp} \neq 0$ by
+  \Cref{lem:BD2}~(a) and
+  the second term in \eqref{eq:BD2} dose not vanish.
+This proves \Cref{lem:ac0}
 
-%     When $n=1$, we have
-%     \begin{equation}\label{eq:gd.ss}
-%       \ac_{\uptau} = \sum_{i=-1}^{-k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}
-%       \text{ where } \cB_{\uptau,i}=\cT_{\uptau,-i}
-%       \text{ and }\cD_{\uptau,i}=\cT_{\uptau,-i}.
-%   \end{equation}
-%   \item $x_{n} = r$.
-%     In this case, $\bfxx_{\uptau}= s\cdots sr\cdots r$ where
-%     $\#s(\bfxx_{\uptau})>1$ and $n\geq 2$.
-%    \[
-%      \cT_{\uptau,i}  = \tytb{\uum\cdots\uum,=,\vdots,=,+,\vdots,+,} \succeq \tytb{=,+,+}\succ\tytb{\none,+,+}
-%      \quad \forall i\geq 1.
-%    \]
-%    In particular, \eqref{eq:d.factor} holds.
-%    \item $x_{n} = c$.
-%    % In this case, $\bfxx_{\uptau}= s\cdots s r\cdots r$ where number of
-%    \begin{enumT}
-%      \item
-%      When $\#s(\bfxx_{\uptau})>1$ and so $n\geq 2$.
-%      \[
-%        \cT_{\uptau,i}  = \tytb{\uum\cdots\uum,+,\vdots,+,=,\vdots,=} \succ \tytb{+,=}
-%      \quad \forall i\geq 1.
-%      \]
-%      % The
-%      % Otherwise, $\cT_{\uptau,1}\succ \ddagger_{1,1}$.
-%      The factorization \eqref{eq:d.factor} holds.
-%      \item
-%      When $\bfxx_{\uptau}=r\cdots rc$ with $n_{r}:=\#r(\bfxx_{\uptau}) \geq 0$.
-%      \[
-%        \cT_{\uptau,i}  = \tytb{\uum\cdots\uum,+,\vdots,+} %\quad \forall i\geq 1. \succ \tytb{+}.
-%        \quad \forall i\geq 1.
-%      \]
-%      We have $\ac_{\uptau} = \sum_{i=1}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}$  where $\cD_{\uptau,i} = \tytb{\uum\cdots\uum,+}$ and
-%      $\cB_{\uptau,i} = \cT_{\uptau,i}\cdot \ddagger_{2n_{r},0}$.
-%    \end{enumT}
-%    \item $x_{n} = d$. In this case, $n\geq 2$ and
-%    $\#s(\bfxx_{\uptau})+\#c(\bfxx_{\uptau})\geq 1$. Therefore,
-%     \begin{equation}\label{eq:ss.c}
-%       \cT_{\uptau,i} = \tytb{\uum\uup\uum\cdots,-,\vdots,-,+,\vdots,+}\succ \tytb{-,+}, \quad \forall i\geq 1
-%     \end{equation}
-%     and the factorization \eqref{eq:d.factor} holds.
-%   \end{enumT}
 
-%   \subsubsection{Case $x_{\uptaupp}=d$}\label{sec:z.d}
-%   In this case, $\bfxx_{\uptau}$ could be anything.
-% %  Then
-%   %$\pac{\uptaupp} = \cT_{\uptaupp} \cdot \pcB_{\uptaupp}$ and $\nac{\uptaupp}=\cT_{\uptaupp} \cdot \ncB_{\uptaupp}$.
-%  % We assume $\bsign{\pac{\uptaupp}}=(p-1,q)$ and $\bsign{\nac{\uptaupp}}=(p,q-1)$.
-%   % \[
-%   %   \ac_{\uptau} = \dagger \dagger \cT_{\uptaupp}\cdot \cB_{\uptau}.
-%   % \]
-%   \begin{enumT}
-%     \item $\bfxx_{\uptau}=s\cdots s$. We have
-%     \[
-%       \cT_{\uptau,i} = \tytb{\uum\cdots\uum,=,\vdots,=} \quad \forall i\geq 1.
-%     \]
-%     When $n\geq 2$, the factorization \eqref{eq:d.factor} holds.
-% % Clearly $\pac{\uptau}=\emptyset$.
-%     When $n=1$, the factorizaton is given by \eqref{eq:gd.ss}.
-%     \item $\bfxx_{\uptau}=r\cdots r$.
-%     \[
-%       \cT_{\uptau,i} = \tytb{\uup\cdots\uup,+,\vdots,+} \quad \forall i\leq -1.
-%     \]
-%     When $n\geq 2$, the factorization \eqref{eq:d.factor} holds.
+{\bf Proof of \Cref{lem:BD2}~(a). }
 
-%     When $n=1$,
-%     \[
-%     \ac_{\uptau} = \sum_{i=1}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i} \text{
-%       where } \cB_{\uptau,i} = \cT_{\uptau,-i} \text{ and } \cD_{\uptau,i} = \cT_{\uptau,-i}.
-%     \]
-%     \item $\bfxx_{\uptau} = s\cdots sr\cdots r$ with $n_{s}:=\#s(\bfxx_{\uptau})\geq 1$
-%     and $n_{r}:=\#r(\bfxx_{\uptau})\geq 1$
-%     \[
-%       \cT_{\uptau,i} = \tytb{\uum\cdots\uum,=,+,+,+,\vdots,+,=,\vdots,=}
-%       \quad \cT_{\uptau,-i} = \tytb{\uup\cdots\uup,+,=,=,+,\vdots,+,=,\vdots,=}
-%       \quad \forall i\geq 1
-%     \]
-%     %Clearly $\cT_{\uptau,i}\succ \ddagger_{(1,1)}$ and $n\geq 2$.
-%     We have
-%     \[
-%       \ac_{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}.
-%     \]
-%     Here
-%       \begin{align*}
-%         \cB_{\uptau,0} &= \sum_{i=1}^{k} \cT_{\uptau,i}\cdot \tytb{\uum\cdots\uum,=} \cdot\ddagger_{2n_{r}-2,2n_{s}-2}, &
-%         \cD_{\uptau,0} &= \tytb{+,+},\\
-%         \cB_{\uptau,i} &= \cT_{\uptau,-i}\cdot \ddagger_{2n_{r}-2,2n_{s}},  &
-%         \cD_{\uptau,i} &= \tytb{\uup\cdots\uup,+}, \quad \forall i\geq 1\\
-%       \end{align*}
-%     \item $\bfxx_{\uptau} = s\cdots sc$ where $n_{s}:=\#s(\bfxx_{\uptau})\geq 0$.
-%     \begin{equation}\label{eq:ped.ssc}
-%       \cT_{\uptau,i} = \tytb{\uum\cdots\uum,+,=,\vdots,=} \quad \cT_{\uptau,-i} = \tytb{\uup\cdots\uup,=,=,\vdots,=} \quad \forall i\geq 1
-%     \end{equation}
-%     We have
-%     \[
-%       \ac_{\uptau} = \sum_{i=1}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}+ \sum_{i=1}^{k}\cB_{\uptau,-i}\cdot \cD_{\uptau,-i}.
-%     \]
-%     For $i\geq 1$,
-%       \begin{align*}
-%         \cB_{\uptau,i} &= \cT_{\uptau,i}\cdot \ddagger_{0,2n_{s}}, &
-%         \cD_{\uptau,i} &= \tytb{\uum\cdots\uum,+},\\
-%         \cB_{\uptau,-i} &= \cT_{\uptau,-i}\cdot \ddagger_{0,2n_{s}},  &
-%         \cD_{\uptau,-i} &= \tytb{\uup\cdots\uup,=}. %, \quad \forall i\geq 1\\
-%       \end{align*}
-%     \item $\bfxx_{\uptau} = r\cdots rc$ where $n_{r} = \#r(\bfxx_{\uptau})\geq 1$.
-%     \[
-%       \cT_{\uptau,i} = \tytb{\uum\cdots\uum,+,+,\vdots,+} \quad \cT_{\uptau,-i} = \tytb{\uup\cdots\uup,=,+,\vdots,+}
-%       \quad \forall i\geq 1
-%     \]
-%     We have
-%     \[
-%       \ac_{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}.
-%     \]
-%     where
-%       \begin{align*}
-%         \cB_{\uptau,0} &= \sum_{i=1}^{k}\cT_{\uptau,-i}\cdot \tytb{\uup\cdots\uup,+} \cdot \ddagger_{2n_{r}-2,0}, &
-%         \cD_{\uptau,0} &= \tytb{=,+},\\
-%         \cB_{\uptau,i} &= \cT_{\uptau,i}\cdot \ddagger_{2n_{r},0},  &
-%         \cD_{\uptau,i} &= \tytb{\uum\cdots\uum,+}  \quad \forall i\geq 1.\\
-%       \end{align*}
-%     \item $\bfxx_{\uptau} = s\cdots sr\cdots rc$ where
-%     $n_{s} := \#s(\bfxx_{\uptau})\geq 1, n_{r}:=\#r(\bfxx_{\uptau})\geq 1$.
-%     \[
-%       \cT_{\uptau,i} = \tytb{\uum\cdots\uum,+,+,\vdots,+,=,\vdots,=}\succ \tytb{+,=},
-%       \quad \cT_{\uptau,-i} = \tytb{\uup\cdots\uup,=,+,\vdots,+,=,\vdots,=}\succ \tytb{+,=} \quad \forall i\geq 1
-%     \]
-%     %Note that $\cT_{\uptau,i}\succ \ddagger_{(1,1)}$.
-%     Now the factorization \eqref{eq:d.factor} holds.
-%     \item $\bfxx_{\uptau} = s\cdots sd$ where $\#s(\bfxx_{\uptau})\geq 1$.
-%     \begin{equation}\label{eq:ped.ssd}
-%       \cT_{\uptau,i} = \tytb{\uum\cdots\uum,+,-,\vdots,-} \quad \cT_{\uptau,-i} = \tytb{\uup\cdots\uup,-,-,\vdots,-}
-%       \quad \forall i\geq 1
-%     \end{equation}
-%     We have
-%     \[
-%       \ac_{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,-i}\cdot \cD_{\uptau,-i}.
-%     \]
-%     where
-%       \begin{align*}
-%         \cB_{\uptau,0} &= \sum_{i=1}^{k}\cT_{\uptau,i}\cdot \tytb{\uum\cdots\uum,-} \cdot \dagger_{0,2n_{s}-2}, &
-%         \cD_{\uptau,0} &= \tytb{+,-},\\
-%         \cB_{\uptau,-i} &= \cT_{\uptau,-i}\cdot \ddagger_{0,2n_{s}},  &
-%         \cD_{\uptau,-i} &= \tytb{\uup\cdots\uup,-}  \quad \forall i\geq  1.\\
-%       \end{align*}
-%     \item $\bfxx_{\uptau} = r\cdots rd$ where $n_{r}=\#r(\bfxx_{\uptau})\geq 1$.
-%     \[
-%       \cT_{\uptau,i} = \tytb{\uum\cdots\uum,+,+,\vdots,+} \quad \cT_{\uptau,-i} = \tytb{\uup\cdots\uup,-,+,\vdots,+}
-%       \quad \forall i\geq 1
-%     \]
-%     We have
-%     \[
-%       \ac_{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}.
-%     \]
-%     where
-%       \begin{align*}
-%         \cB_{\uptau,0} &= \sum_{i=1}^{k}\cT_{\uptau,-i}\cdot \tytb{\uup\cdots\uup,+} \cdot \dagger_{2n_{r}-2,0}, &
-%         \cD_{\uptau,0} &= \tytb{-,+},\\
-%         \cB_{\uptau,i} &= \cT_{\uptau,i}\cdot \dagger_{2n_{r},0},  &
-%         \cD_{\uptau,i} &= \tytb{\uum\cdots\uum,+}  \quad \forall i\geq  1.\\
-%       \end{align*}
-%     \item $\bfxx_{\uptau} = s\cdots sr\cdots rd$ where
-%     $\#s(\bfxx_{\uptau})\geq 1, \#r(\bfxx_{\uptau})\geq 1$.
-%     \[
-%       \cT_{\uptau,i} = \tytb{\uum\cdots\uum,+,+,\vdots,+,-,\vdots,-} \succ\tytb{+,-},
-%       \quad \cT_{\uptau,-i} = \tytb{\uup\cdots\uup,-,+,\vdots,+,-,\vdots,-} \succ\tytb{+,-}
-%       \quad \forall i\geq 1.
-%     \]
-%     Now the factorization \eqref{eq:d.factor} holds.
-%     \item $\bfxx_{\uptau} = s\cdots sr\cdots rcd$ where
-%     $\#s(\bfxx_{\uptau})\geq 0, \#r(\bfxx_{\uptau})\geq 0$.
-%     \[
-%       \cT_{\uptau,i} = \tytb{\uum\cdots\uum,+,+,\vdots,+,-,\vdots,-}\succ\tytb{+,-},
-%       \quad \cT_{\uptau,-i} = \tytb{\uup\cdots\uup,-,+,\vdots,+,-,\vdots,-}\succ\tytb{+,-}
-%       \quad \forall i\geq 1.
-%     \]
-%     Now the factorization \eqref{eq:d.factor} holds.
-%     \item $\bfxx_{\uptau}=d$. In this case, $\bfpp_{\uptau} = dd\cdots$
-%     \[
-%       \cT_{\uptau,i} = \tytb{\uum\cdots\uum,+} \quad \cT_{\uptau,-i} = \tytb{\uup\cdots\uup,-}
-%       \quad \forall i \geq 1
-%     \]
-%     We have
-%     \[
-%       \ac_{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}+\sum_{i=0}^{k}\cB_{\uptau,-i}\cdot \cD_{\uptau,-i}.
-%     \]
-%     where
-%     \[
-%         \cB_{\uptau,i} = \cT_{\uptau,i}, \quad
-%         \cD_{\uptau,i} = \cT_{\utau,i}  \quad \forall i = -k, \cdots, -1,1,\cdots, k.\\
-%     \]
-%   \end{enumT}
-% }
+To ease the following discussion, we adopt the following convension.
+Suppose $\cA\in \bZ[\MYD]$. We write $\cA\rhd (p_{0},q_{0})$ if
+$\cE \sqsupset (p_{0},q_{0})$ for all $\cE\in \MYD$ with non-zero coefficient in
+$\cA$, and write $\cA \sqsupset (p_{0},q_{0})$ if there is an $\cE\in \MYD$ with
+non-zero coefficient in $\cA$ such that $\cE\sqsupseteq (p_{0},q_{0})$.
 
-%\subsubsection{Summary of the factorization}
-% We have the non-vanishing of the lifted local system $\ac_{\uptau}$ and the
-% factorization described in
-% \Cref{eq:ls.factor} holds.
-\begin{lem}
-  The local system $\AC(\uptau)\neq 0$.
-\end{lem}
-\begin{proof}
-  Since $x_{\uptaupp}\neq s$, $\AC(\uptaupp)\neq 0$. When
-  $\Sign(\tau_{\bftt})\succeq (0,1)$, the first term in \eqref{eq:gd.ls} dose
-  not vanish. Now suppose $\Sign(\tau_{\bftt})\nsucc(0,1)$. By \Cref{lem:delta},
-  $x_{\uptaupp}=d$, and so $\Lambda_{-}\AC(\uptaupp)\neq 0$ by induction
-  hypothesis.
-  Since $\ssign(\tau_{\bftt})\succ(2,0)$, the second term in \eqref{eq:gd.ls}
-  dose not vanish.
-  Hence $\AC( \uptau )\neq 0$ in all
-  cases.
-\end{proof}
-
-\begin{lem}
-  The local system $\AC( \uptau )$ satisfies the following properties:
-  \begin{enumT}
-    \item When $x_{\uptau} = s$, then $\Lambda_+(\AC(\uptau)) = \Lambda_{-}(\AC(\uptau)) = 0$.
-    \item When $x_{\uptau} = r/c$, then $\Lambda_+(\AC(\uptau)) \neq 0$ and $\Lambda_{-}(\AC(\uptau))=0$.
-    \item When $x_{\uptau} = d$, then $\Lambda_+(\AC(\uptau))\neq 0$ and $\Lambda_{-}(\AC(\uptau))\neq 0$.
-  \end{enumT}
-\end{lem}
-\begin{proof}
-  If $x_{\uptau}=s/r/c$, %  ``$-$'' mark dose not appear as a 1-row in
-  % $\ac_{\uptau}$
-  $\AC(\uptau)\nsupset 1^{(0,1)}$
-  by \eqref{eq:gd.ls}. So $\Lambda_{-}(\AC(\uptau))=0$ in these cases.
+It is clear that $\nac{\uptau}=0$ when $x_{\tau}\in \set{s,r,c}$ because of
+the twist $\lotimes(0, 1)$ in \Cref{eq:BD2}.
+  %In the following proof $\cE\in \MYD_{\star}$ be a
 
   \begin{enumPF}
-    \item  Suppose $x_{\uptau}=s$. We have $\Sign(\tau_{\bftt})=(0,2n_{0})$
-    where $n_{0}= \abs{\tau_{\bftt}}$.
-    Therefore, only the first term in  \eqref{eq:gd.ls} is non-zero and
-    $\pcP_{\uptau} = 1^{(0,-(2n_{0}-1))}$. Hence $\Lambda_{+}(\AC(\uptau)) =0$.
-    \item Suppose $x_{\uptau} \in \set{r,c}$. If $\ssign(\tau_{\bftt})\succ(1,1)$, the
-    first term in \eqref{eq:gd.ls} is non-zero and $\Lambda_+(\AC(\uptau))\succ 1^{(1,0)}$.
-    So $\Lambda_+(\AC(\uptau))\neq 0$.
-    Now suppose $\ssign(\tau_{\bftt})\nsucc (1,1)$. Then
-    $\tau_{\bftt}= r\cdots r$ and $x_{\uptaupp}=d$ by \Cref{prop:CC.bij}.
-    Now the second term of \eqref{eq:gd.ls} is non-zero and
-    $\ncP_{\uptau}\succ  1^{(1,0)}$. So $\Lambda_{+}\AC(\uptau)\neq 0$.
-    \item Suppose $x_{\uptau}=d$. Suppose $\ssign(\tau_{\bftt})\succ (1,2)$.
-    Then the first term in \eqref{eq:gd.ls} is non-zero and
-    $\Lambda_+(\AC(\uptau))\succ 1^{(1,1)}$. So $\Lambda_+(\AC(\uptau))\neq 0$ and
-    $\Lambda_-(\AC(\uptau))\neq 0$.
-    Now suppose $\ssign(\tau_{\bftt})\nsucc(1,2)$. Then $\tau_{\bftt} = r\cdots rd$ \footnote{$\tau_{\bftt}=d$ if it has length 1.} and
-    $x_{\uptaupp}=d$ by \Cref{prop:CC.bij}.
-    So the both terms in \eqref{eq:gd.ls} are non-zero. Since
-    $\pcP_{\uptau}\succ 1^{(1,0)}$  and
-    $\ncP_{\uptau}\succ 1^{(0,1)}$, we get the conclusion.
+    \item  Suppose $x_{\uptau}=s$. We have $\Sign(\tau_{\bftt})=(0,2k)$.
+    where $2k= \abs{\ckcO_{\bftt}}$.
+    Therefore, only the first term in  \eqref{eq:BD2} is non-zero and
+    $\cE(1) = (B,0,-(2k-1))$ for every $\cE\in \MYD_{\star}$ with non-zero
+    coefficient in
+    $\ac_{\uptau}$.
+    Hence $\pac{\uptau}=0$.
+    \item Suppose $x_{\uptau} \in \set{r,c}$. If
+    $\Sign(\tau_{\bftt})\succ(1,1)$, the first term in \eqref{eq:BD2} is
+    non-zero and $\ac_{\uptau} \sqsupseteq (1,0)$. If
+    $\ssign(\tau_{\bftt})\nsucc (1,1)$, then
+    $\cP_{\tau_{\bftt}}^{-1}(\set{s,c})=\emptyset$, $\Sign(\tau_{\bftt})=(2k,0)$
+    and $x_{\uptaupp}=d$ by \Cref{lem:delta}. Now the second term of
+    \eqref{eq:BD2} is non-zero and $\ncT_{\uptau}\succ (1,0)$.
+    In both cases, we conclude that $\pac{\uptau}\neq 0$.
+    \item Suppose $x_{\uptau}=d$. If $\ssign(\tau_{\bftt})\succ (1,2)$,
+    then the first term in \eqref{eq:BD2} is non-zero and so
+    $\ac_{\uptau}\sqsupseteq (1,1)$. Hence $\pac{\uptau}\neq 0$ and
+    $\nac{\uptau}\neq 0$.
+    If  $\ssign(\tau_{\bftt})\nsucc(1,2)$, then $\Sign(\tau_{\bftt}) = (2k-1,1)$
+    \footnote{$\tau_{\bftt}=d$ if it has length 1.} and
+    $x_{\uptaupp}=d$ by \Cref{lem:delta}.
+    So the both terms in \eqref{eq:BD2} are non-zero, which leads to the conclusion.
   \end{enumPF}
-\end{proof}
+
+{\bf Proof of \Cref{lem:BD}~(a). }
+\def\opac{\cL'^+}
+\def\onac{\cL'^-}
+\def\tpac{\widetilde{\cL'}^+}
+\def\tnac{\widetilde{\cL'}^-}
+The following proof only depends on \Cref{lem:BD2}~(a).
+Suppose $\cL' = \ac_{\uptau}\lotimes (\epsilon,\epsilon)$.
+Let
+  \begin{align*}
+    \opac &:= \Lambda_{(1,0)}(\cL'), &
+    \onac &:= \Lambda_{(0,1)}(\cL'), \\
+    \tpac &:= \Lambda_{(1,0)}(\cL'\lotimes (1,1)),\text{ and } &
+    \tnac &:= \Lambda_{(0,1)}(\cL'\lotimes (1,1)).
+  \end{align*}
+
+Note that $\bfcc_{1}(\cO)-\bfcc_{2}(\cO)>0$. So $\pac{\uptau}$, $\nac{\uptau}$,
+$\tpac$ and $\tnac$ can not all vanish.
+Using \Cref{lem:BD2}~(a), we have the following criteria for
+$(\varepsilon_{\tau},\epsilon)$:
+\[
+\begin{split}
+  (\varepsilon_{\tau},\epsilon) = (0,0) & \Leftrightarrow
+  \begin{cases} \opac \neq 0\\ \onac \neq 0 \end{cases};\\
+  (\varepsilon_{\tau},\epsilon) = (0,1) & \Leftrightarrow
+  \begin{cases} \tpac \neq 0\\ \tnac \neq 0 \end{cases};\\
+  (\varepsilon_{\tau},\epsilon) = (1,0) & \Leftrightarrow
+  \begin{cases} \opac \neq 0 \\ \onac  = 0 \end{cases} \text{ or} \quad
+  \begin{cases} \tpac = 0 \\ \tnac  \neq 0 \end{cases}; \\
+  (\varepsilon_{\tau},\epsilon) = (1,1) & \Leftrightarrow
+  \begin{cases} \tpac \neq 0 \\ \tnac  = 0 \end{cases} \text{ or} \quad
+  \begin{cases} \opac = 0 \\ \onac  \neq 0 \end{cases}.
+\end{split}
+\]
+This implies \Cref{lem:BD}~(a).
+
+
+{\bf Proof of \Cref{lem:BD}~(b). }
+First not that
+$\bfrr_{1}(\ckcO'') = \bfrr_{3}(\ckcO)=\bfrr_{2}(\ckcO)>\bfrr_{5}(\ckcO) = \bfrr_{3}(\ckcO'')$.
+
+Suppose that  $\ac_{\uptau_{i}} \sqsupset (0,1)$ or $\ac_{\uptau_{i}} \sqsupset (0,-1)$.
+The first term in \eqref{eq:BD2} for both $\uptau_{1}$ and $\uptau_{2}$ must be
+non-zero and equal.
+This implies $\pac{\uptaupp_{1}}=\pac{\uptaupp_{2}}$.
+By \Cref{lem:BD2}~(c) and \Cref{lem:BD}~(b), $\ac_{\uptaupp_{1}} = \ac_{\uptaupp_{2}}$ and  $\uptaupp_{1}=\uptaupp_{2}$.
+Since $\Sign(\uptau_{1})=\Sign(\uptau_{2})$, we get
+$\uptau_{1}=\uptau_{2}$ by \Cref{lem:delta}.
+
+\smallskip
+
+Now consider the case when $\ac_{\uptau_{i}}\nsqsupseteq (0,1)$
+and $\ac_{\uptau_{i}}\nsqsupseteq (0,-1)$. In partcular, $x_{\uptau}\neq d$.
+
+By \eqref{eq:BD2}, we conclude that $\Sign((\tau_{i})_{\bftt}) \in \set{ (2k,0),(2k-1,1)}$.
+
+We consider case by case according to the set $\set{\Sign((\tau_{i})_{\bftt})|i=1,2}$:
+  \begin{enumPF}
+    \item Suppose
+    $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k-1,1)}$. We have
+    $\pac{\uptaupp_{1}}=\pac{\uptaupp_{2}}$, and deduces
+    $\uptaupp_{1}=\uptaupp_{2}$.
+    \item
+    Suppose $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k,0)}$. We have
+    $\nac{\uptaupp_{1}}=\nac{\uptaupp_{2}}$, and deduces
+    $\uptaupp_{1}=\uptaupp_{2}$ by \Cref{lem:BD2}~(c) and \Cref{lem:BD}~(b).
+    \item
+    Without loss of generality, we now assume
+    $\Sign({\tau_{1}}_{\bftt}) = (2k-1,1)$ and
+    $\Sign({\tau_{2}}_{\bftt}) = (2k,0)$.
+    By \eqref{eq:BD2}, we get
+    \[
+      \pac{\uptaupp_{1}}\cdot (0,0)=\maltese(\nac{\uptaupp_{2}}\cdot (0,0)),
+    \]
+    which is contradict to \Cref{lem:BD2}~(d).
+%     \begin{claim}\label{c:d+}
+%       We have $\nac{\uptaupp_{2}}\supset 1^{(1,0)}$.
+%     \end{claim}
+%     \begin{proof}
+%       If $\bfrr_{2}(\ckcO'')>\bfrr_{3}(\ckcO'')$,  we have
+%       $\ac_{\uptau}\succeq 1^{(1,1)}$ and we are done.
+
+%       Now assume $\bfrr_{2}(\cOpp)=\bfrr_{3}(\ckcO)$. Then ${\tau''_{i}}_{\bftt}$ has at least length $2$.
+%       Suppose $\Sign( {\tau''_{i}}_{\bftt} )\succ (1,2)$. Applying \eqref{eq:gd.ls} to $\uptaupp$,
+%       we see that the first term is non-zero and $\ac_{\uptaupp}\supseteq 1^{(1,1)}$.
+
+%       Otherwise, $\Sign( {\tau_{2}}_{\bftt} ) = (2k''-1,1)\succeq (3,1)$ where
+%       $k'' = (\bfrr_{1}(\ckcO'')-\bfrr_{2}(\ckcO''))/2+1 $.
+%       By \eqref{eq:gd.ls}, the second term is
+%       non-zero and $\ac_{\uptaupp}\supset 1^{(2k''-1,1)}$.
+%     \end{proof}
+%     The claim leads to the contradiction to \eqref{eq:ct1}:
+%     the LHS of \eqref{eq:ct1} $\succeq 1^{(1,0)}$ and the
+%     RHS of \eqref{eq:ct1} $\succeq 1^{(-1,0)}$.
+%   \end{enumPF}
+% \end{enumPF}
+  \end{enumPF}
+  We finished the proof of the lemma.
+
+\section{}
+
+
 
 \subsubsection{Unipotent representations attached to $\cOp$}
 In this section, we let $\uptaup\in \PBPesp(\cOp)$ and
@@ -7148,25 +6686,6 @@ $\nac{\uptaupp}$ from $\ac_{\uptaup}$:
 
 \subsubsection{Unipotent representations attached to $\cO$}
 
-\begin{lem}\label{c:gd.D1}
-  Suppose $\uptau_{1}\neq \uptau_{2}\in \drc(\cO)$. Then $\uppi_{\uptau_{1}}\neq \uppi_{\uptau_{2}}$.
-\end{lem}
-\begin{proof}
- It suffice to consider the case that $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$.
- Clearly, $\ssign(\uptau_{1})=\ssign(\uptau_{2})$. On the other hand,
- the twisting $\upepsilon_{\uptau_{1}}=\upepsilon_{\uptau_{2}}$ since it is
- determined by the  local system:
- $\upepsilon_{\uptau_{i}}=0$ if and only if $\ac_{\uptau_{i}}\supset \tytb{-}$.
- %(see \eqref{eq:gd.ls}).
-
- We conclude that $\uptaupp_{1}\neq \uptaupp_{2}$ and $\uptaup_{1}\neq \uptaup_{2}$
- by \Cref{lem:gd.inj} and \Cref{lem:gd.CD}.
- By \Cref{c:gd.C3} and the injectivity of theta lift,
- \[
-   \uppi_{\uptau_{1}} = \Thetab(\pi_{\uptaup_{1}})\otimes (\bfone^{+,-})^{\upepsilon_{\uptau_{1}}}
-  \neq \Thetab(\pi_{\uptaup_{2}})\otimes (\bfone^{+,-})^{\upepsilon_{\uptau_{2}}} = \uppi_{\uptau_{2}}
- \]
-\end{proof}
 
 
 \subsubsection{Noticed orbits}
@@ -7223,8 +6742,8 @@ that $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$.
 Recall \eqref{eq:gd.ls}: there is an pair of non-negative integers
 $(e_{i},f_{i})=\ssign({\tau_{i}}_{\bftt})$ such that
 \[
-  \ac_{\uptau_{i}} = \dagger\dagger \Lambda_+(\AC{\uptaupp_{i}}\cdot \pcP_{\uptau_{i}}
-  + \dagger\dagger \nac{\uptaupp} \cdot \ncP_{\uptau_{i}}.
+  \ac_{\uptau_{i}} = \dagger\dagger \Lambda_+(\AC{\uptaupp_{i}}\cdot \pcT_{\uptau_{i}}
+  + \dagger\dagger \nac{\uptaupp} \cdot \ncT_{\uptau_{i}}.
 \]
 
 Note that we have $\varepsilon_{\tau_{1}}=\varepsilon_{\tau_{2}}$.
@@ -7235,7 +6754,7 @@ Note that we have $\varepsilon_{\tau_{1}}=\varepsilon_{\tau_{2}}$.
 Suppose that  $\wAC{\uptau_{i}}\supset 1^{(0,1)}$.
 
 Moreover, the term
-$\dagger\dagger\pac{\uptaupp_{i}}\cdot \pcP_{\uptau_{i}}\neq 0$ and we can
+$\dagger\dagger\pac{\uptaupp_{i}}\cdot \pcT_{\uptau_{i}}\neq 0$ and we can
 recover it from $\ac_{\uptau_{i}}$. So $\pac{\uptaupp_{1}} = \pac{\uptaupp_{2}}$.
 Since $\bfrr_{1}(\ckcO'')>\bfrr_{3}(\ckcO'')$,  we get
 $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$.
@@ -7259,7 +6778,7 @@ We consider case by case according to the set $\set{\Sign({\tau_{i}}_{\bftt})|i=
     $\uptaupp_{1}=\uptaupp_{2}$  as in (i).
     \item
     Suppose $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k,0)}$. We have
-    $\nac{\uptaupp_{1}}=\nac{\uptaupp_{2}}$, and deduces
+kkk    $\nac{\uptaupp_{1}}=\nac{\uptaupp_{2}}$, and deduces
     $\uptaupp_{1}=\uptaupp_{2}$ as in (i).
     \item
     Without loss of generality, we can assume
