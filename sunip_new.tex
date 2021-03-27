@@ -958,7 +958,8 @@
     {\bfW}}
 }
 
-
+\NewDocumentCommand{\ac}{E{^_}{{}{}}}{\cL^{#1}_{#2}}
+\NewDocumentCommand{\lotimes}{D(){(0,0)}}{\otimes ({#1})}
 
 
 \def\gpi{\wp}
@@ -1377,10 +1378,14 @@
 
 \def\oAC#1{\AC(#1)}
 \def\owAC#1{\wAC(#1)}
-\def\pAC#1{\Lambda_{+}(\AC(#1))}
-\def\nAC#1{\Lambda_{-}(\AC(#1))}
+
+\def\pac#1{\ac_{#1}^+}
+\def\nac#1{\ac_{#1}^-}
+
 \def\AOD{\mathrm{AOD}}
 \def\ttail#1{{#1}_{\bftt}}
+
+\def\Forall{\text{for all }}
 
 \usepackage{subfiles}
 
@@ -3615,10 +3620,25 @@ such that,
 for $\sO(i)=(\star_{i},p_{i} q_{i})$,
 \begin{itemize}
   \item $\cE(i) := \sO(i)$ if $\star_{i} \notin \set{B,D}$;
-  \item $\cE(i) := (\star_{i},(-1)^{\epsilon^{+}}p_{i},(-1)^{\epsilon^{-}}q_{i})$
-        if $\star_{i} \in \set{B,D}$, and  the factor
-        $\rO_{p_{i}}(\bC)\times \rO_{q_{i}}(\bC)$ acts on $\cE_{X}$ by
-        ${\det}^{\epsilon^{+}}\otimes {\det}^{\epsilon^{-}}$.
+  \item $\cE(i) := (\star_{i},(-1)^{\epsilon^{+}_{i}}p_{i},(-1)^{\epsilon^{-}_{i}}q_{i})$
+        if $\star_{i}\in \set{B,D}$, and  the factor
+        $\KC[[\cE(i)]] =\rO_{p_{i}}(\bC)\times \rO_{q_{i}}(\bC)$ acts by
+        ${\det}^{\epsilon^{+}_{i}}\otimes {\det}^{\epsilon^{-}_{i}}$
+        on
+        \[
+        \begin{cases}
+          \cE, & \text{when } \star = D,\\
+          \cE\otimes \deti^{-1} , & \text{when } \star = B.
+        \end{cases}
+        \].
+  % \item $\cE(i) := (\star_{i},(-1)^{\epsilon^{+}_{i}}p_{i},(-1)^{\epsilon^{-}_{i}}q_{i})$
+  %       if $\star_{i}\in B$, and  the factor
+  %       $\rO_{p_{i}}(\bC)\times \rO_{q_{i}}(\bC)$ acts on $\cE_{X}\otimes \detsqii$ by
+  %       ${\det}^{\epsilon^{+}_{i}}\otimes {\det}^{\epsilon^{-}_{i}}$.
+  % \item $\cE(i) := (\star_{i},(-1)^{\epsilon^{+}_{i}}p_{i},(-1)^{\epsilon^{-}_{i}}q_{i})$
+  %       if $\star_{i} \in \set{B,D}$, and  the factor
+  %       $\rO_{p_{i}}(\bC)\times \rO_{q_{i}}(\bC)$ acts on $\cE_{X}$ by
+  %       ${\det}^{\epsilon^{+}_{i}}\otimes {\det}^{\epsilon^{-}_{i}}$.
 \end{itemize}
 
 Let
@@ -3662,7 +3682,9 @@ To ease the notation, we will use
   ( i_{1}^{(p_{i_{1}},q_{i_{1}})}i_{2}^{(p_{i_{2}},q_{i_{2}})}\cdots i_{k}^{(p_{i_{k}},q_{i_{k}})} )_{\star}
 \]
 to represent $\cE$ where
-$i_{1},\cdots, i_{k}$ are all the indices such that $(p_{i},q_{i})\neq (0,0)$
+$i_{1},\cdots, i_{k}$ are all the indices such that $(p_{i},q_{i})\neq (0,0)$.
+A Young diagram in $\YD_{\star}$ is represented similarly.
+
 We adopt the usual convention to draw a singed Young diagram where the signature
 $(p_{i}, q_{i})$ equals to the total signature for the most right parts of all
 length $i$ rows.
@@ -3670,9 +3692,9 @@ We use ``$\upp$'' and ``$\umm$'' instants ``$+$'' and ``$-$'' to mark the rows
 when $p_{i}$ or $q_{i}$ are negative.
 
 \begin{eg}\label{eg:MYD}
-The expression $(1^{r,s})_{\star}$ represents the marked Young diagram in $\MYD_{\star}$ such that
+The expression $(1^{(r,s)})_{\star}$ represents the marked Young diagram in $\MYD_{\star}$ such that
  \[
-   1^{r,s}_{\star}(i) := \begin{cases}
+   (1^{(r,s)})_{\star}(i) := \begin{cases}
      (\star,r,s) & \text{if } i=1\\
      (\star_{i},0,0) & \text{if $i>0$}\\
      %(\star',0,0) & \text{if $i>0$ and $i$ is even}
@@ -3680,11 +3702,14 @@ The expression $(1^{r,s})_{\star}$ represents the marked Young diagram in $\MYD_
  \]
  Here the symbols $\star_{i}$ are uniquely determined by \eqref{eq:ssrel}.
 
-The marked Young diagram  $(1^{(1,-1)}2^{(2,0)}3^{(0,-1)})_{B}$ is drew as the
+The marked Young diagram  $\cE:=(1^{(1,-1)}2^{(2,0)}3^{(0,-1)})_{B}$ is drew as the
 following.
 \[
   \ytb{\umm\upp\umm,-+,-+,+,\umm}
 \]
+The singed Young diagram $\sO:=\sF\circ \cE$ is
+$(1^{(1,1)}2^{(2,0)}3^{(0,1)})_{B}$ and the complexification of $\sO$
+is $(1^{2}\,2^{2}\,3^{1})_{B}$.
 \end{eg}
 
 \subsection{Operations on diagrams}
@@ -3694,9 +3719,9 @@ marked Young diagram.
 Suppose $\star\in \set{B,D}$.
 We define a $\bZ/2\bZ\times \bZ/2\bZ$ action on $\MYD_{\star}$.
 Let $(\epsilon^{+},\epsilon^{-})\in \bZ/2\bZ\times \bZ/2\bZ$ , $\cE\in \MYD_{\star}$ such that $(\star_{i},p_{i},q_{i}):=\cE(i)$,
-we define $\cE \otimes (\epsilon^{+},\epsilon^{-})\in \MYD_{\star}$ by
+we define $\cE \lotimes (\epsilon^{+},\epsilon^{-})\in \MYD_{\star}$ by
 \[
-(\cE \otimes 1^{\epsilon^{+},\epsilon^{-}})(i) := \begin{cases}
+(\cE \lotimes(\epsilon^{+},\epsilon^{-}))(i) := \begin{cases}
   (\star_{i}, (-1)^{\frac{\epsilon^{+}(i+1)+\epsilon^{-}(i-1)}{2}}p_{i},(-1)^{\frac{\epsilon^{+}(i-1)+\epsilon^{-}(i+1)}{2}}q_{i})
   & \text{if $i$  is odd,}\\
   (\star_{i}, p_{i},q_{i}) & \text{otherwise.}
@@ -3706,10 +3731,10 @@ we define $\cE \otimes (\epsilon^{+},\epsilon^{-})\in \MYD_{\star}$ by
 
 For each $\cE\in \AOD_{\star}$, its twist
 $\cE\otimes  (1^{{-,+}})^{\epsilon^{+}}\otimes (1^{+,1})^{\epsilon^{-}}$
-is a line bundle  in $\AOD_{\star}$.
+is also  in $\AOD_{\star}$.
 As elements in $\MYD_{\star}$, we have
 \[
-  \cE\otimes  (1^{{-,+}})^{\epsilon^{+}}\otimes (1^{+,1})^{\epsilon^{-}} = \cE \otimes (\epsilon^{+},\epsilon^{-}).
+  \cE\otimes  (1^{{-,+}})^{\epsilon^{+}}\otimes (1^{+,-})^{\epsilon^{-}} = \cE \otimes (\epsilon^{+},\epsilon^{-}).
 \]
 
 \medskip
@@ -3728,7 +3753,7 @@ we define $\maltese\cE\in \MYD_{\star}$ by
 Clearly, the a operation $\maltese$ defines an involution on
 $\MYD_{\star}$.
 %Suppose $\sfss = (\star,n,n)$ is a classical signature.
-For each $\cE\in \DCO{\chi}$, its twist  $\cE\otimes \deti$
+For each $\cE\in \DCO{\chi}$, its twist  $\cE\otimes \deti^{-1}$
 is a line bundle  in $\DCO{\chi'}$ where  $\chi'$ is a certain character. % $\chi'$.
 As elements in $\MYD_{\star}$, we have
 \[
@@ -3736,9 +3761,12 @@ As elements in $\MYD_{\star}$, we have
 \]
 
 We define the argumentation of a marked Young diagram.
-For each $\cE\in \MYD_{\star}$ and $\sfss_{0} = (\star'_{0},p,q)\in \CCSS$ such that
-$\star'\sim \star'_{0}$,
-let $\cE\cdot \sfss_{0}$ be the marked Young diagram in $\MYD_{\star'}$ given by
+Suppose that $(p_{0},q_{0})\in \bZ\times \bZ$ and there is a
+$\star'_{0}\sim \star'$ such that
+$\sfss_{0} := (\star'_{0},p_{0},q_{0})\in \CCSS$.
+with $\star'_{0} \sim \star'$.
+For each $\cE\in \MYD_{\star}$,
+let $\cE\cdot (p_{0},q_{0})$ be the marked Young diagram in $\MYD_{\star'}$ given by
 \[
   (\cE\cdot (p_{0},q_{0}))(i) :=
   \begin{cases}
@@ -3754,19 +3782,21 @@ operations to $\bZ[\MYD_{\star}]$.
 We define the partial order $\succeq$ on $\bZ\times \bZ$ by
 \[
   (a,b) \succeq (c,d) \Leftrightarrow
-  \text{either } a\geq c\geq 0, b\geq d\geq 0  \text{ or }
-    a\leq c\leq 0, b\leq d\leq 0.
+  \begin{cases}a\geq c\geq 0\\ b\geq d\geq 0\end{cases}
+  \quad  \text{or} \quad
+  \begin{cases} a\leq c\leq 0\\ b\leq d\leq 0 \end{cases}.
 \]
 For a $\cE\in \MYD$ and $(p_{0},q_{0})\in \bZ\times \bZ$, we write
 \[
-  \cE\succeq (p_{0},q_{0}) \Leftrightarrow
+  \cE\sqsupseteq (p_{0},q_{0}) \Leftrightarrow
   (p_{1},q_{1})\succeq (p_{0},q_{0})
   \text{ where }\cE(1) = (\star_{1},p_{1},q_{1}).
 \]
-Morever, we define an involution $\sharp\colon \bZ\times \bZ$ by
-$(a,b)\mapsto (a,b)^{\sharp}:=(b,a)$.
+Morever, we define an involution on $\bZ\times \bZ$ % $\rightarrow \bZ\times \bZ$
+by
+$(a,b)\mapsto (a,b)^{-}:=(b,a)$.
 
-Suppose $\cE\succeq (p_{0},q_{0})$, we define the truncation of $\cE$ by
+Suppose $\cE\sqsupseteq (p_{0},q_{0})$, we define the truncation of $\cE$ by
 \[
   \Lambda_{(p_{0},q_{0})}(\cE) = \begin{cases}
     (\star_{1},p_{1}-p_{0},q_{1}-q_{0}) & \text{if } i=1,\\
@@ -3775,7 +3805,7 @@ Suppose $\cE\succeq (p_{0},q_{0})$, we define the truncation of $\cE$ by
 \]
 We extend the truncation operation $\Lambda_{( p_{0},q_{0} )}$ to
 $\bZ[\MYD_{\star}]$
-by setting $\Lambda_{p_{0},q_{0}}(\cE) := 0$ when $(p_{0},q_{0})\npreceq \cE\in \MYD_{\star}$.
+by setting $\Lambda_{p_{0},q_{0}}(\cE) := 0$ when $(p_{0},q_{0})\nsqsubseteq \cE\in \MYD_{\star}$.
 Note that $\Lambda_{(0,0)}$ is the identity map.
 
 The augmentation and truncation of signed Young diagram are defined by the same
@@ -3817,25 +3847,28 @@ the theta lifting of marked Young diagrams is a homomorphism between
   \dlift \colon \bZ[\MYD_{\sfss'}(\cO')]\rightarrow \bZ[\MYD_{\sfss}(\cO)]
 \]
 It suffice to define $\dlift(\cEp)$ for  each $\cEp\in \MYD_{\sfss'}$ case by case.
-We set $t := \bfcc_{1}(\cO')-\bfcc_{2}(\cO)$.
+We set
+\[
+  t := \bfcc_{1}(\cO')-\bfcc_{2}(\cO).
+\]
 
 \medskip
 
 Suppose $\sfss'=(\star',n,n)$ and $\sfss =(\star,p,q)$ such that
 $\star'\in \set{ C,\wtC, D^{*}}$  and $\star \in \set{D,B, C^{*}}$.
 In this case, $t$ is always an even integer. We define
-\[
+\begin{equation}\label{eq:LCD}
   \dlift(\cEp) :=
   \begin{cases}
-    (\maltese^{\frac{p-q}{2}}(\Lambda_{(\frac{t}{2},\frac{t}{2})}( \cE )))\cdot (p_{0},q_{0}) &
+    (\maltese^{\frac{p-q}{2}}(\Lambda_{(\frac{t}{2},\frac{t}{2})}( \cEp)))\cdot (p_{0},q_{0}) &
     \text{if } ( p_{0},q_{0} ) \succeq (0,0) \text{ and } \star=D \\
-    (\maltese^{\frac{p-q+1}{2}}(\Lambda_{(\frac{t}{2},\frac{t}{2})}( \cE )))\cdot (p_{0},q_{0}) &
+    (\maltese^{\frac{p-q+1}{2}}(\Lambda_{(\frac{t}{2},\frac{t}{2})}( \cEp)))\cdot (p_{0},q_{0}) &
     \text{if } ( p_{0},q_{0} ) \succeq (0,0) \text{ and } \star=B \\
-    (\Lambda_{(\frac{t}{2},\frac{t}{2})}( \cE ))\cdot (p_{0},q_{0}) &
+    (\Lambda_{(\frac{t}{2},\frac{t}{2})}( \cEp))\cdot (p_{0},q_{0}) &
     \text{if } ( p_{0},q_{0} ) \succeq (0,0) \text{ and } \star=C^{*} \\
     0 & \text{otherwise}
   \end{cases}
-\]
+\end{equation}
 where $(p_{0}, q_{0})  := (p,q) -(n,n)-\lsign(\cEp)^{\sharp} + (\frac{t}{2},\frac{t}{2})$.
 
 \trivial[h]{
@@ -3853,7 +3886,7 @@ When $t>0$, we define
 \[
   \dlift(\cEp) :=
   \begin{cases}
-    (\maltese^{\frac{p-q}{2}}\Lambda_{(\frac{t}{2},\frac{t}{2})}(\cE)) \cdot (D,0,0) &
+    (\maltese^{\frac{p-q}{2}}\Lambda_{(\frac{t}{2},\frac{t}{2})}(\cEp)) \cdot (D,0,0) &
     \text{if } ( p_{0},q_{0} ) \succeq (0,0) \\
     0 & \text{otherwise}
   \end{cases}
@@ -3866,24 +3899,24 @@ where $(p_{0}, q_{0})  := (p,q) -(n,n)-\lsign(\cEp)^{\sharp} + (\frac{t}{2},\fra
 Suppose $\sfss' =(\star',p,q)$ and $\sfss=(\star,n,n)$ such that
 $\star' \in \set{ D,B,C^{*}}$  and $\star \in \set{C,\wtC,D^{*}}$.
 We define
-\[
-  \dlift(\cE) :=
+\begin{equation}\label{eq:LDC}
+  \dlift(\cEp) :=
   \begin{cases}
-    \maltese^{\frac{p-q}{2}}\big(\sum_{j=0}^{t} \Lambda_{(j,t-j)}( \cE)\cdot (n_{0},n_{0})\big) & \text{if
+    \maltese^{\frac{p-q}{2}}\big(\sum_{j=0}^{t} \Lambda_{(j,t-j)}( \cEp)\cdot (n_{0},n_{0})\big) & \text{if
     } \star = C\\
-    \maltese^{\frac{p-q-1}{2}}\big(\sum_{j=0}^{t} \Lambda_{(j,t-j)}( \cE)\cdot (n_{0},n_{0})\big) & \text{if
+    \maltese^{\frac{p-q-1}{2}}\big(\sum_{j=0}^{t} \Lambda_{(j,t-j)}( \cEp)\cdot (n_{0},n_{0})\big) & \text{if
     } \star = \wtC\\
-    \sum_{j=0}^{\frac{t}{2}} \Lambda_{(2j,t-2j)}( \cE)\cdot (n_{0},n_{0}) & \text{if
+    \sum_{j=0}^{\frac{t}{2}} \Lambda_{(2j,t-2j)}( \cEp)\cdot (n_{0},n_{0}) & \text{if
     } \star = D^{*}
   \end{cases}
-\]
+\end{equation}
 where $2n_{0} = \bfcc_{1}(\cO)-\bfcc_{2}(\cO)$.
 
 \trivial[h]{
 \[
-  \dlift(\cE) :=
+  \dlift(\cEp) :=
   \begin{cases}
-    \maltese^{\frac{p-q}{2}}\big(\cE \cdot (C,n_{0}, n_{0}) \big) &
+    \maltese^{\frac{p-q}{2}}\big(\cEp\cdot (C,n_{0}, n_{0}) \big) &
     \text{if } t=0\\
     \maltese^{\frac{p-q}{2}}\big((\sum_{j=0}^{t} \Lambda_{(j,t-j)} \cE)\cdot (C,0,0)\big)& \text{if } t>0\\
   \end{cases}
@@ -3965,7 +3998,7 @@ where $2n_{0} = \bfcc_{1}(\cO)-\bfcc_{2}(\cO)$.
 %   \end{cases}
 % \]
 
-\trivial{
+\trivial[h]{
   For odd orthogonal-metaplectic group case, we still take the splitting such
   that $\rO(p,q)$ acts linearly.
 
@@ -4035,944 +4068,931 @@ $\lsign( \cL ) = \set{(p_{1}+1,q_{1}),(p_{1},q_{1}+1)}$.
 
 % Another important invariant is $\bsign( \cL )$ which indicates the signature of
 % the local system of length one rows in $\cL$.
-\subsection{Dual pairs, descent and lift of nilpotent orbits}\label{sec:descent}
-
-\begin{defn}[Dual pair]\label{def:DP}
-\begin{enumT}
-\item A \emph{complex dual pair} is a pair consisting of an $\epsilon $-symmetric
-  bilinear space and an $\epsilon '$-symmetric bilinear space, where
-  $\epsilon ,\epsilon '\in \set{\pm1}$ with $\epsilon \epsilon '=-1$.
-\item  A \emph{rational dual pair} is a pair consisting of an $(\epsilon,\dotepsilon)$-space
-  and an $(\epsilon',\dotepsilon')$-space, where
-  $\epsilon, \epsilon', \dotepsilon, \dotepsilon' \in \set{\pm1}$ with
-  $\epsilon\epsilon'= \dotepsilon\dotepsilon'=-1$.
-\end{enumT}
-\end{defn}
 
 
-\subsubsection{Lifts and descents of nilpotent orbits}\label{sec:LD}
+% \subsubsection{Lifts and descents of nilpotent orbits}\label{sec:LD}
 
-Let
-\begin{equation*}
-\bfWo := \set{T \in \bfW | T \text{ is a surjective map from $\bfV$ onto $\bfV'$}}.
-\end{equation*}
-Clearly $\bfWo\neq \emptyset$ only if $\dim \bfV\geq \dim \bfV'$.
-
-
-Suppose $\bfee\in \cO \in \Nil_{\bfG}(\fgg)$ and
-$\bfee'\in \cO' \in \Nil_{\bfG'}(\fgg')$.  We call $\bfee'$ (resp. $\cO'$) a
-descent of $\bfee$ (resp. $\cO$), if there exits  $T\in \bfWo$ such that
-$$
-\MM(T) = \bfee\quad\textrm{and}\quad \MM'(T) = \bfee'.
-$$
-Put $$\Xo := \bfW^\circ \cap \cX,$$
- and write $\bfK:=\bfK_{\bfV}$ and $\bfK':=\bfK_{\bfV'}$. Suppose $X\in \sO \in \Nil_{\bfK}(\fpp)$ and
-$X'\in \sO' \in \Nil_{\bfK'}(\fpp')$.  We call $X'$ (resp. $\sO'$) a
-descent of $X$ (resp. $\sO$), if there exits
-$T\in \Xo$ such that
-$$
-\MMP(T) = X\quad\textrm{and}\quad \MMP'(T) = X'.
-$$
-In all cases, we will say that $T$ realizes the descent, and $\cO$ (resp. $\sO$) is the lift of $\cO'$ (resp. $\sO'$).
-In the notation of \Cref{defdo}, we then have
-\[
-\DDc(\bfdd_{\cO}) = \bfdd_{\cO'}\quad\textrm{ and }\quad \DD(\ssdd_{\sO}) = \ssdd_{\sO'}.
-\]
-Hence the notion of descent (for nilpotent orbits) defined here agrees with  that of \Cref{defdo} and \eqref{dedd} (for Young diagrams).
-We will thus write
-\[
-\cO' = \DDc(\cO)=\DDc_{\bfV, \bfV'}(\cO)\quad \textrm{and}\quad  \sO' = \DD(\sO)=\DD_{\bfV, \bfV'}(\sO).
-\]
-We record a key property on descent and lift:
-\begin{equation}\label{eq:def.LsO22}
-\MM(\MM'^{-1}(\bcOp)) = \bcO \quad \text{and} \quad
-\MMP(\MMP'^{-1}(\bsOp)) = \bsO,
-\end{equation}
-where ``$\;\overline{\phantom{m}}\;$'' means taking Zariski closure. This is checked by
-using explicit formulas in \cite{KP,DKPC} (for complex dual pairs) and
-\cite[Lemma~14]{Ohta} (for rational dual pairs).
+% Let
+% \begin{equation*}
+% \bfWo := \set{T \in \bfW | T \text{ is a surjective map from $\bfV$ onto $\bfV'$}}.
+% \end{equation*}
+% Clearly $\bfWo\neq \emptyset$ only if $\dim \bfV\geq \dim \bfV'$.
 
 
-In fact by \cite[Theorem 1.1]{DKPC}, the notion of lift can be extended to an arbitrary complex dual pair and  an arbitrary complex nilpotent orbit: for any $\cO'\in \Nil_{\bfG'}(\fgg')$, $\MM(\MM'^{-1}(\bcO'))$ equals to the closure of a
- unique nilpotent orbit $\cO \in \Nil_{\bfG}(\fgg)$. We call $\cO$ the \emph{theta lift} of $\cO'$, written as
- \begin{equation}
- \label{def:LC}
-  \cO=\oliftc_{\bfV',\bfV}(\cO').
- \end{equation}
-%We will also say $\sO'$ is in the domain of theta lift of nilpotent orbits with respect to the rational dual pair $(\bfV',\bfV)$ and similarly write
-%\begin{equation}\label{eq:def.LsO}
-  %\sO = \olift_{\bfV',\bfV}(\sO').
-%\end{equation}
-
-%\begin{remark}
-%The maps $\vartheta_{\bfV',\bfV}$ and $\vartheta_{\bfV,\bfV'}$ are not the mutually inverse maps. In fact, for most of
-%$\cO'\in \Nil_{\bfG'}(\fgg')$, $\vartheta_{\bfV',\bfV}(\vartheta_{\bfV,\bfV'}(\cO'))\neq \cO'$.
-%\end{remark}
-
-\subsubsection{Generalized descent of nilpotent orbits}
-\label{def:GD}
-Let
-\[
-\bfWg := \set{T \in \bfW| \text{the image of $T$ is a
-      non-degenerate subspace of $\bfV'$}}
-\]
-and
-\[
-  \Xg:= \bfWg\cap \cX.
-\]
-Suppose $X\in \sO \in \Nil_{\bfK}(\fpp)$ and
-$X'\in \sO' \in \Nil_{\bfK'}(\fpp')$.  We call $X'$ (resp. $\sO'$) a
-generalized descent of $X$ (resp. $\sO$), if there exits
-$T\in \Xg$ such that
-$$
-\MMP(T) = X\quad\textrm{and}\quad \MMP'(T) = X'.
-$$
-As before, we say that $T$ realizes the generalized descent.
-
- It is easy to see that for each  nilpotent orbit $\sO\in \Nil_{\bfK}(\fpp)$,
- the following three assertions are equivalent (\emph{cf.} \cite[Table~4]{DKP2}).
- \begin{itemize}
- \item
-   The orbit $\sO$ has a generalized descent.
-   \item
-  The orbit  $\sO$ is contained in the image of the moment map $M$.
-  \item
-  Write $\ssdd_\sO = [d_0, d_1, \cdots, d_k]\in \ssP$, then
-  $$\sign{\bfV'}  \succeq \sum_{i=1}^{k} d_i.$$
-  \end{itemize}
-  When this is the case,   $\sO$ has a unique generalized
-descent $\sO'\in \Nil_{\bfK'}(\fpp')$, and
-  \begin{equation}\label{eq:GD}
-\ssdd_{\sO'} = [d_{1}+s, d_{2}, \cdots, d_k], \quad \textrm{where } \, s:= \sign{\bfV'} - \sum_{i=1}^{k} d_i.
-\end{equation}
-We write $\sO' = \gDD_{\bfV,\bfV'}(\sO).$ On the other hand, different nilpotent
-orbits may map to a same nilpotent orbit under $\gDD_{\bfV,\bfV'}$.
-\trivial[h]{
-Using  \cite[Table~4]{DKP2} or the observation that $M^{-1}(X)\cap \Xg$ is the
-unique closed
-$\bfK'$-orbit in $M^{-1}(X)$ for an element $X\in \sO$, we see that
-$\sO'$ is the minimal
-$\bfK$-orbit in $M'(M^{-1}(\sO))$ and \cref{eq:GD.min} holds.
-}
-\trivial[h]{
-To show the equation \Cref{eq:GD}, it suffices to consider the descent case,
-i.e. when $s = (0,0)$.
-
-Fix a $T\in \cX^\circ \subset \Hom(\bfV,\bfV')$ realizing the descent.
-Fix a $L$ invariant decomposition $\bfV = \Ker(X) \oplus \bfY$. $T|_\bfY$ is an
-isomorphism.
-It suffices to check that $\sign{\bfY} = \sign{\bfV'}$.
-This is clear since $\dotepsilon L' T L^{-1}  = \bfii\, T$.  (If $v\in
-\bfY^{L, \pm 1}$, then $L' T v = \pm L' T  L^{-1} v = \pm \bfii\, Tv$,
-i.e. $v\in \bfV'^{L', \pm \bfii}$. Similarly, If $v\in
-\bfY^{L, \pm \bfii}$, then $L' T v = \mp\bfii L' T  L^{-1} v = \mp\bfii \bfii\,
-Tv = \pm Tv$,
-i.e. $v\in \bfV'^{L', \pm 1}$.
-}
-
-Analogously, suppose $\bfee\in \cO\in \Nil_{\bfG}(\fgg)$ and
-$\bfee'\in \cO' \in \Nil_{\bfG'}(\fgg')$.  We call $\bfee'$ (resp. $\cO'$) a generalized descent of $\bfee$ (resp.
-$\cO$), if there exits an element  $T\in \bfWg$ such that
-\[
-\MM(T) = \bfee \quad\textrm{and}\quad \MM'(T) = \bfee'.
-\]
-When this is the case, $\cO'$ is determined by $\cO$ and we write $\cO' = \gDDc_{\bfV,\bfV'}(\cO)$.
-
-
-
-  \begin{lem}\label{gendec}
-  Assume that $\sO\in \Nil_{\bfK}(\fpp)$ has a generalized descent $\sO'\in \Nil_{\bfK'}(\fpp')$. Let $X\in \sO$ and $T\in \Xg$ such that $M(T)=X$. Then $\bfK'\cdot T$ is the unique closed $\bfK'$-orbit in $M^{-1}(X)$. Moreover,     \begin{equation}\label{eq:GD.min}
-\sO' =
-M'(M^{-1}(\sO))\cap \CO'=M'(M^{-1}(\sO))\cap \overline{\CO'},
-\end{equation}
-where $\CO':=\bfG'\cdot \sO'$, which is the generalized descent of $\CO:=\bfG\cdot \sO$.
-  \end{lem}
-  \begin{proof}
- It is elementary to check that $\bfK'\cdot T$ is Zariski closed in $\cX$.  Then the first assertion follows by using the isomorphism \eqref{clinv}. Note that $\sO'$ is the only $\bfK'$-orbit in
- $\overline{\CO'}\cap \fpp'$ whose Zariski closure contains $\sO'$.
-  Thus the first assertion implies the second one.
-    \end{proof}
-
-
-
-
-
-\medskip
-
-In this article, we will need to consider the following special types of nilpotent orbits.
-
-\begin{defn}\label{def:GD.good}
-  A nilpotent oribit $\cO \in \Nil_{\bfG}(\fgg)$ with $\rdd_\cO = [c_0, c_{1} \cdots, c_k]
-  \in \cP_\epsilon$
-  is said to be good for generalized descent if $k\geq 1$ and $c_0 = c_{1}$.  A nilpotent
-  orbit $\sO \in \Nil_{\bfK}(\fpp)$ is said to be  \emph{good} for generalized descent if
-  the  nilpotent orbit  $\bfG \cdot \sO\in \Nil_{\bfG}(\fgg)$ is  good for generalized descent.
-\end{defn}
-
-The following lemma exhibits a certain maximality property of nilpotent orbits which are good for generalized descent.
-\begin{lem}\label{lem:GDS.set}
- If $\cO\in \Nil_{\bfG}(\fgg) $ is good for generalized descent, and
-  $\cO' = \gDDc_{\bfV,\bfV'}(\cO)$, then
-  $\MM(\MM'^{-1}(\bcOp)) = \bcO$. Consequently, if $\sO\in \Nil_{\bfK}(\fpp)$ is good for generalized descent and
-  $\sO' = \gDD_{\bfV,\bfV'}(\sO)$, then $\sO$ is an open $\bfK$-orbit in
-  $\MMP(\MMP'^{-1}(\bsOp))$.
-\end{lem}
-
-%\begin{remark}
-%Good geometric properties of good orbits (\Cref{lem:GDS.sh}) will play a crucial role in \Cref{prop:GDS.AC}.
-%\end{remark}
-
-\begin{proof}
-This is easy to check using the explicit description of
-$\MM(\MM'^{-1}(\bcO'))$ in \cite[Theorem~5.2 and 5.6]{DKPC}. % \cite[]{DKP2}).
-\end{proof}
-
-
-%\subsubsection{Extending to $\slt$-modules}
-% We now extend the notion of descent to $\slt$ homomorphisms, \Cref{sec:KX}.
-
-% \begin{defn}
-%   \begin{enumT}
-%   \item \label{it:dec.slt1} Let $(\bfV, \bfV')$ be a rational dual pair.  Let
-%     $\gamma =\set{\bfee,\bfhh,\bfff}$ be an $\slt$-triple in $\fgg$ and let
-%     $\gamma '=\set{\bfee',\bfhh',\bfff'} $ be an $\slt$-triple in $\fgg'$.
-%     % let $\phi\colon \slt\rightarrow \fgg$ be the corresponding Lie algebra
-%     % morphism.
-%     % let $\phi'\colon \slt\rightarrow \fgg'$ be the corresponding Lie algebra
-%     % morphism.
-%     We say the $\gamma '$ is a descent of $\gamma $ if
-%     \begin{enumC}
-%     \item $\bfee'$ is a descent of $\bfee$, and
-%     \item there exists
-%       \[
-%         T\in \bfW_{1} := \set{T\in \bfW| (\bfhh,\bfhh')\cdot T = T}.
-%       \]
-%       realizing the descent.
-%     \end{enumC}
-%   \item \label{it:dec.slt2} Let $(\bfV, \bfV')$ be a rational dual pair.
-%     \begin{itemize}
-%     \item Let $\phi \colon \slt\rightarrow \fgg$ be a $J$-compatible morphism,
-%       and $\phi ' \colon \slt\rightarrow \fgg'$ be a $J'$-compatible morphism.
-%       We say $\phi '$ is a descent of $\phi $ if
-%       \begin{enumC}
-%       \item \label{it:dec.slt3} $\phi'(\eslt)$ is a descent of $\phi(\eslt)$,
-%         and
-%       \item there exists an element $T \in W_1=:W\cap \bfW_1$ realizing the
-%         descent.
-%       \end{enumC}
-%     \item Let $\phi \colon \slt\rightarrow \fgg$ be a $L$-compatible morphism,
-%       and $\phi ' \colon \slt\rightarrow \fgg'$ be a $L'$-compatible morphism.
-%       We say $\phi '$ is a descent of $\phi $ if
-%       \begin{enumC}
-%       \item \label{it:dec.slt4} $\phi'(\Xslt)$ is a descent of $\phi(\Xslt)$,
-%         and
-%       \item there exists an element $T \in \cX_1=:\cX \cap \bfW_1$ realizing the
-%         descent.
-%       \end{enumC}
-%     \end{itemize}
-%   \item In all cases, we will say that $T$ realizes the descent, and we write
-%     $\phi' = \DD(\phi)$.
-%   \end{enumT}
-% \end{defn}
-
-% \begin{remark}
-% %\begin{enumR}
-% %Note that the pair $\set{\bfee,\bfhh}$ already determine an $\slt$-triple. On the other
-% %hand, an arbitrary pair $(\bfee,\bfhh)$ where $\bfee$ is nilpotent, $\bfhh$ is semisimple and
-% %  $[\bfhh,\bfee]=2\bfee$ may not come from an $\slt$-triple in general.
-% Suppose $\bfee'$ is a descent of $\bfee$ realized by $T\in \bfWo$. Given an $\slt$-triple $\set{\bfee,\bfhh,\bfff}$, we define $\bfhh'\in \fgg'$ by
-%   $\bfhh'(T(v)) := T(\bfhh(v)) + T(v)$ for all $v\in \bfV$, so that $(\bfhh,\bfhh')\cdot T = T$. One checks that pair
-%   $(\bfee',\bfhh')$  extends to an $\slt$-triple $\set{\bfee',\bfhh',\bfff'}$ and thus descent of a nilpotent orbit can always be extended to descent of the corresponding $\slt$-triple\footnote{There is no clean formula for $\bfff'$ but its existence is clear by examining the decomposition in \Cref{eq:Vl.1}. See discussions in \cite{DKP2}.}.
-%   Similar statements hold for rational descents.
-% \end{remark}
-
-% The arguments in \cite[Section~8]{DKP2} (for stable range case) extends naturely to the descent of nilpotent
-% orbit case. Hence we have the compatibility of descent and Kostant-Sekiguchi correspondence:
-% \begin{lem}
-%   Suppose $\sOr'\in \Nil_{G'}(\fgg'_{\R})$, $\sOr\in \Nil_{G}(\fgg_{\R})$, $\KS{\sOr'}=:\sO'\in \Nil_{\bfK'}(\fpp')$ and
-%   $\KS{\sOr}=:\sO\in \Nil_{\bfK}(\fpp)$.
-%   Then $\DD {\sOr}  = \sOr'$ if and only if $\DD {\sO} = \sO'$, i.e.
-%   \[
-%     \DD{\KS{\sOr}} = \KS{\DD{\sOr}}.
-%   \]
-%   \qed
-% \end{lem}
-
-
-\trivial[h]{An alternative proof: Let $\phi \colon \slt\rightarrow \fgg$ be a $(J,L)$-compatible morphism realizing the Kostant-Sekiguchi correspondence of $\cO$ with $\KS{\cO}$.
-Let $\phi'$ be a $J$-compatible descent of $\phi$, realized by an element $T\in W_1$. By conjugating with an element of $G'$ if necessary, one may assume that $\phi'$ is $(J',L')$-compatible.
-From the $\slt$-morphisms, we define the Cayley elements
-\[
-C := \phi(\cslt)\in \bfG, \text{ and } C' := \phi'(\cslt)\in \bfG'.
-\]
-Let $T' = C'TC^{-1}$. Since $(C'TC^{-1})^\mstar = C T^\mstar C'^{-1}$ we see
-that it realize the descent from $\phi(\Xslt)$ to $\phi'(\Xslt)$.
-Now it suffices to verify that $T'\in \cX$.
-Using the block decomposition \cref{eq:Vl.1}, the problem reduces to case where
-$\phi(\eslt)$ is in the principle
-nilpotent orbit in $\rO(n+1,n)$ or $\Sp(2n)$. This could be down by a explicit calculation, see formulas in \cite[Section~6]{DKP2}.
-}
-
-\subsubsection{Map between isotropy groups}\label{sec:alpha}
-%\subsubsection{Correspondence between nilpotent orbits}
-
-
-% We now review some the geometry of moment maps.
-
-% \begin{defn}
-% For any closed set $S'\subset \fpp'$, define
+% Suppose $\bfee\in \cO \in \Nil_{\bfG}(\fgg)$ and
+% $\bfee'\in \cO' \in \Nil_{\bfG'}(\fgg')$.  We call $\bfee'$ (resp. $\cO'$) a
+% descent of $\bfee$ (resp. $\cO$), if there exits  $T\in \bfWo$ such that
+% $$
+% \MM(T) = \bfee\quad\textrm{and}\quad \MM'(T) = \bfee'.
+% $$
+% Put $$\Xo := \bfW^\circ \cap \cX,$$
+%  and write $\bfK:=\bfK_{\bfV}$ and $\bfK':=\bfK_{\bfV'}$. Suppose $X\in \sO \in \Nil_{\bfK}(\fpp)$ and
+% $X'\in \sO' \in \Nil_{\bfK'}(\fpp')$.  We call $X'$ (resp. $\sO'$) a
+% descent of $X$ (resp. $\sO$), if there exits
+% $T\in \Xo$ such that
+% $$
+% \MMP(T) = X\quad\textrm{and}\quad \MMP'(T) = X'.
+% $$
+% In all cases, we will say that $T$ realizes the descent, and $\cO$ (resp. $\sO$) is the lift of $\cO'$ (resp. $\sO'$).
+% In the notation of \Cref{defdo}, we then have
 % \[
-% \olift{S'} := M(M'^{-1}(S')).
+% \DDc(\bfdd_{\cO}) = \bfdd_{\cO'}\quad\textrm{ and }\quad \DD(\ssdd_{\sO}) = \ssdd_{\sO'}.
 % \]
-
-% Suppose $\cO'$ is a nilpotent $K$-orbit in $\fpp'$, define
+% Hence the notion of descent (for nilpotent orbits) defined here agrees with  that of \Cref{defdo} and \eqref{dedd} (for Young diagrams).
+% We will thus write
 % \[
-% \olift{\cO'} := \set{\cO | \cO \text{ is open in } \olift{\bcO'}}.
+% \cO' = \DDc(\cO)=\DDc_{\bfV, \bfV'}(\cO)\quad \textrm{and}\quad  \sO' = \DD(\sO)=\DD_{\bfV, \bfV'}(\sO).
 % \]
-
-% Define $\oliftc$ and $\oliftr$ for the complex and real moment maps similarly.
-% \end{defn}
-% \begin{remark}
-% By \cite{DKPC}, $\oliftc(\cO'_\bC)$ is always a singleton for any complex
-% nilpotent orbit $\cO'_\bC$.
-% On the other hand, by \cite{DKP2}, $\olift(\bcO')$ has several open orbits in
-% general.
-% \end{remark}
-
+% We record a key property on descent and lift:
+% \begin{equation}\label{eq:def.LsO22}
+% \MM(\MM'^{-1}(\bcOp)) = \bcO \quad \text{and} \quad
+% \MMP(\MMP'^{-1}(\bsOp)) = \bsO,
+% \end{equation}
+% where ``$\;\overline{\phantom{m}}\;$'' means taking Zariski closure. This is checked by
+% using explicit formulas in \cite{KP,DKPC} (for complex dual pairs) and
+% \cite[Lemma~14]{Ohta} (for rational dual pairs).
 
 
+% In fact by \cite[Theorem 1.1]{DKPC}, the notion of lift can be extended to an arbitrary complex dual pair and  an arbitrary complex nilpotent orbit: for any $\cO'\in \Nil_{\bfG'}(\fgg')$, $\MM(\MM'^{-1}(\bcO'))$ equals to the closure of a
+%  unique nilpotent orbit $\cO \in \Nil_{\bfG}(\fgg)$. We call $\cO$ the \emph{theta lift} of $\cO'$, written as
+%  \begin{equation}
+%  \label{def:LC}
+%   \cO=\oliftc_{\bfV',\bfV}(\cO').
+%  \end{equation}
+% %We will also say $\sO'$ is in the domain of theta lift of nilpotent orbits with respect to the rational dual pair $(\bfV',\bfV)$ and similarly write
+% %\begin{equation}\label{eq:def.LsO}
+%   %\sO = \olift_{\bfV',\bfV}(\sO').
+% %\end{equation}
 
-% By \Cref{lem:LM.E}, it is important to understand the set
-% $\olift{\bcO'}$.
+% %\begin{remark}
+% %The maps $\vartheta_{\bfV',\bfV}$ and $\vartheta_{\bfV,\bfV'}$ are not the mutually inverse maps. In fact, for most of
+% %$\cO'\in \Nil_{\bfG'}(\fgg')$, $\vartheta_{\bfV',\bfV}(\vartheta_{\bfV,\bfV'}(\cO'))\neq \cO'$.
+% %\end{remark}
 
+% \subsubsection{Generalized descent of nilpotent orbits}
+% \label{def:GD}
+% Let
+% \[
+% \bfWg := \set{T \in \bfW| \text{the image of $T$ is a
+%       non-degenerate subspace of $\bfV'$}}
+% \]
+% and
+% \[
+%   \Xg:= \bfWg\cap \cX.
+% \]
+% Suppose $X\in \sO \in \Nil_{\bfK}(\fpp)$ and
+% $X'\in \sO' \in \Nil_{\bfK'}(\fpp')$.  We call $X'$ (resp. $\sO'$) a
+% generalized descent of $X$ (resp. $\sO$), if there exits
+% $T\in \Xg$ such that
+% $$
+% \MMP(T) = X\quad\textrm{and}\quad \MMP'(T) = X'.
+% $$
+% As before, we say that $T$ realizes the generalized descent.
 
-
-
-
-
-
-% \begin{defn}
-% Define the partial order on $\bN^2$ by: $(n^+_1,_1)\succeq (\nn+_2,\nn-_2)$ iff
-% $\nn+_1\geq \nn+_2$ and $\nn-_1\geq \nn-_2$.
-% For $\epsilon$-Hermitian space $V$, define $\sign{V} := (\nn+{V},\nn-{V})$ as
-% the following table
-
-% \centerline{
-% \begin{tabular}{c|c}
-%   \hline
-%   $G_\bR$ & $\sign{V}$ \\
-%   \hline
-%   $\rO(p,q)$ & $(p,q)$\\
-%   $\Sp(2n,\bR)$ & $(n,n)$\\
-%   $\rU(p,q)$ & $(p,q)$ \\
-%   $\rO^*(2n)$ & $(n,n)$\\
-%   $\Sp(p,q)$ & $(2p,2q)$\\
-%   \hline
-% \end{tabular}
+%  It is easy to see that for each  nilpotent orbit $\sO\in \Nil_{\bfK}(\fpp)$,
+%  the following three assertions are equivalent (\emph{cf.} \cite[Table~4]{DKP2}).
+%  \begin{itemize}
+%  \item
+%    The orbit $\sO$ has a generalized descent.
+%    \item
+%   The orbit  $\sO$ is contained in the image of the moment map $M$.
+%   \item
+%   Write $\ssdd_\sO = [d_0, d_1, \cdots, d_k]\in \ssP$, then
+%   $$\sign{\bfV'}  \succeq \sum_{i=1}^{k} d_i.$$
+%   \end{itemize}
+%   When this is the case,   $\sO$ has a unique generalized
+% descent $\sO'\in \Nil_{\bfK'}(\fpp')$, and
+%   \begin{equation}\label{eq:GD}
+% \ssdd_{\sO'} = [d_{1}+s, d_{2}, \cdots, d_k], \quad \textrm{where } \, s:= \sign{\bfV'} - \sum_{i=1}^{k} d_i.
+% \end{equation}
+% We write $\sO' = \gDD_{\bfV,\bfV'}(\sO).$ On the other hand, different nilpotent
+% orbits may map to a same nilpotent orbit under $\gDD_{\bfV,\bfV'}$.
+% \trivial[h]{
+% Using  \cite[Table~4]{DKP2} or the observation that $M^{-1}(X)\cap \Xg$ is the
+% unique closed
+% $\bfK'$-orbit in $M^{-1}(X)$ for an element $X\in \sO$, we see that
+% $\sO'$ is the minimal
+% $\bfK$-orbit in $M'(M^{-1}(\sO))$ and \cref{eq:GD.min} holds.
 % }
-% The set $\NilP$ of nilpotent $K$-orbits in $\fpp$ is parameterized by signed Young
-% diagram.
-% For $\cO' \in \NilP$, let $[c_k,\cdots, c_0]$ be the list of length columns of the
-% underlying diagram.
-% Let \[
-% \lsign{\cO} := (\lnn+{\cO},\lnn-{\cO})
+% \trivial[h]{
+% To show the equation \Cref{eq:GD}, it suffices to consider the descent case,
+% i.e. when $s = (0,0)$.
+
+% Fix a $T\in \cX^\circ \subset \Hom(\bfV,\bfV')$ realizing the descent.
+% Fix a $L$ invariant decomposition $\bfV = \Ker(X) \oplus \bfY$. $T|_\bfY$ is an
+% isomorphism.
+% It suffices to check that $\sign{\bfY} = \sign{\bfV'}$.
+% This is clear since $\dotepsilon L' T L^{-1}  = \bfii\, T$.  (If $v\in
+% \bfY^{L, \pm 1}$, then $L' T v = \pm L' T  L^{-1} v = \pm \bfii\, Tv$,
+% i.e. $v\in \bfV'^{L', \pm \bfii}$. Similarly, If $v\in
+% \bfY^{L, \pm \bfii}$, then $L' T v = \mp\bfii L' T  L^{-1} v = \mp\bfii \bfii\,
+% Tv = \pm Tv$,
+% i.e. $v\in \bfV'^{L', \pm 1}$.
+% }
+
+% Analogously, suppose $\bfee\in \cO\in \Nil_{\bfG}(\fgg)$ and
+% $\bfee'\in \cO' \in \Nil_{\bfG'}(\fgg')$.  We call $\bfee'$ (resp. $\cO'$) a generalized descent of $\bfee$ (resp.
+% $\cO$), if there exits an element  $T\in \bfWg$ such that
+% \[
+% \MM(T) = \bfee \quad\textrm{and}\quad \MM'(T) = \bfee'.
 % \]
-% be the sign of the most left column
-% of $\cO$.
+% When this is the case, $\cO'$ is determined by $\cO$ and we write $\cO' = \gDDc_{\bfV,\bfV'}(\cO)$.
+
+
+
+%   \begin{lem}\label{gendec}
+%   Assume that $\sO\in \Nil_{\bfK}(\fpp)$ has a generalized descent $\sO'\in \Nil_{\bfK'}(\fpp')$. Let $X\in \sO$ and $T\in \Xg$ such that $M(T)=X$. Then $\bfK'\cdot T$ is the unique closed $\bfK'$-orbit in $M^{-1}(X)$. Moreover,     \begin{equation}\label{eq:GD.min}
+% \sO' =
+% M'(M^{-1}(\sO))\cap \CO'=M'(M^{-1}(\sO))\cap \overline{\CO'},
+% \end{equation}
+% where $\CO':=\bfG'\cdot \sO'$, which is the generalized descent of $\CO:=\bfG\cdot \sO$.
+%   \end{lem}
+%   \begin{proof}
+%  It is elementary to check that $\bfK'\cdot T$ is Zariski closed in $\cX$.  Then the first assertion follows by using the isomorphism \eqref{clinv}. Note that $\sO'$ is the only $\bfK'$-orbit in
+%  $\overline{\CO'}\cap \fpp'$ whose Zariski closure contains $\sO'$.
+%   Thus the first assertion implies the second one.
+%     \end{proof}
+
+
+
+
+
+% \medskip
+
+% In this article, we will need to consider the following special types of nilpotent orbits.
+
+% \begin{defn}\label{def:GD.good}
+%   A nilpotent oribit $\cO \in \Nil_{\bfG}(\fgg)$ with $\rdd_\cO = [c_0, c_{1} \cdots, c_k]
+%   \in \cP_\epsilon$
+%   is said to be good for generalized descent if $k\geq 1$ and $c_0 = c_{1}$.  A nilpotent
+%   orbit $\sO \in \Nil_{\bfK}(\fpp)$ is said to be  \emph{good} for generalized descent if
+%   the  nilpotent orbit  $\bfG \cdot \sO\in \Nil_{\bfG}(\fgg)$ is  good for generalized descent.
 % \end{defn}
 
-
-
-
-
-% In our paper, we make could describe the lift of orbits explicitly.
-% \begin{lem}[]
-%   Suppose $\sign{V}\succ \sign{V'}$.
-%   Then
-%   \[
-%     \RR{\fpp'}{\Xo} = \set{\cO'\in \NilP'|d(V,V') \succeq \lsign{\cO'}},
-%   \]
-%   where $d(V,V'):= \sign{V}-\sign{V'}$.
-%   Let $\cO'\in \RR{\fpp'}{\Xo}$, then $\olift{\cO'}$ is the signed Young diagram
-%   obtained by attaching $d(V,V')$ on the left of $\cO'$.
-
-%   In particular, $\oliftc{\cO'_\bC} = (\olift{\cO'})_\bC$ corresponding to the
-%   Young diagram obtained by attaching a column of $\dim V - \dim V'$ boxes on
-%   the left of $\cO'_\bC$.
+% The following lemma exhibits a certain maximality property of nilpotent orbits which are good for generalized descent.
+% \begin{lem}\label{lem:GDS.set}
+%  If $\cO\in \Nil_{\bfG}(\fgg) $ is good for generalized descent, and
+%   $\cO' = \gDDc_{\bfV,\bfV'}(\cO)$, then
+%   $\MM(\MM'^{-1}(\bcOp)) = \bcO$. Consequently, if $\sO\in \Nil_{\bfK}(\fpp)$ is good for generalized descent and
+%   $\sO' = \gDD_{\bfV,\bfV'}(\sO)$, then $\sO$ is an open $\bfK$-orbit in
+%   $\MMP(\MMP'^{-1}(\bsOp))$.
 % \end{lem}
+
+% %\begin{remark}
+% %Good geometric properties of good orbits (\Cref{lem:GDS.sh}) will play a crucial role in \Cref{prop:GDS.AC}.
+% %\end{remark}
+
 % \begin{proof}
-%   The lemma follows immediately by \cite[Theorem~5.2 and 5.6]{DKPC} and
-%   \cite[Table~4]{DKP2} (see also \cite{Ohta4} for the unitary group case.).
+% This is easy to check using the explicit description of
+% $\MM(\MM'^{-1}(\bcO'))$ in \cite[Theorem~5.2 and 5.6]{DKPC}. % \cite[]{DKP2}).
 % \end{proof}
 
-%For $T\in \cX$, $X\in \fpp$ and $X' \in \fpp'$, we denote corresponding isotropy subgroups by
-%\[
-%  \bfS_T :=
-%  \Stab_{\bfK\times \bfK'}(T), \quad  \bfK_X:= \Stab_{\bfK}(X)\quad \text{and}\quad \bfK'_{X'}
-%  := \Stab_{\bfK'}(X') \quad \text{respectively}.
-%\]
 
-Suppose $\sO\in \Nil_{\bfK}(\fpp)$ admits a descent $\sO'\in
-  \Nil_{\bfK'}(\fpp')$. % is the descent of $\sO\in \Nil_{\bfK}(\fpp)$.
-  According to
-  \cite[Proposition 11.1]{KP} and \cite[Lemmas~13 and 14]{Ohta},
-  $\MMP^{-1}(\sO)$
-  is a single
-  $\bfK\times \bfK'$-orbit contained in $\Xo$ and $\MMP'(\MMP^{-1}(\sO)) =
-  \sO'$. Moreover $\bfK'$ acts on $\MMP^{-1}(\sO)$ freely.
+% %\subsubsection{Extending to $\slt$-modules}
+% % We now extend the notion of descent to $\slt$ homomorphisms, \Cref{sec:KX}.
 
-  Fix $T\in \MMP^{-1}(\sO)$ which realizes the descent from $X := \MMP(T)\in \sO$
-  to $X' := \MMP'(T)\in \sO'$. Denote the respective isotropy subgroups by
-  \[
-    \bfS_T :=
-    \Stab_{\bfK\times \bfK'}(T), \quad  \bfK_X:= \Stab_{\bfK}(X)\quad \text{and}\quad \bfK'_{X'}
-    := \Stab_{\bfK'}(X').
-  \]
-  Then there is a unique homomorphism
-  \begin{equation}
-    \label{eq:alpha}
-    \alpha\colon \bfK_X \mapsto \bfK'_{X'}
-  \end{equation}
-  such that $\bfS_T$ is the graph of $\alpha$:
-  \[
-    \bfS_T = \set{(k,\alpha(k))\in \bfK_X\times \bfK'_{X'}|k\in \bfK_X}.
-  \]
-  % \begin{proof} \cref{it:lemM.0} amounts to the first fundamental theorem of classical invariant theory \cite{Weyl}. \Cref{it:lemM.1} and \cref{it:lemM.2} are in. \cref{it:lemM.3} is an immediate consequence of \cref{it:lemM.2}.
-% \end{proof}
-% \begin{lem}[{\cite{Weyl}, \cite[Proposition 11.1]{KP}, \cite[Lemmas 13 and 14]{Ohta}}]\label{lem:O1}\label{lem:DS.set}
-% Suppose $(\bfV,\bfV')$ is a rational dual pair such that $\dim(\bfV)\geq \dim (\bfV')$.
-% The followings hold true.
-% \begin{enumT}
-% \item \label{it:lemM.0} $\MMP'\colon \cX \rightarrow \fpp'$ is the affine quotient of
-%   $\cX$ by the $\bfK$ action. The image of $\MMP$ is reduced and $\MMP\colon \cX \rightarrow
-%   M(\cX)$ is the affine quotient of $\cX$ by the $\bfK'$ action.
-% \item \label{it:lemM.1} $\MMP' \colon \Xo \rightarrow \fpp'$ is smooth and $\MMP \colon
-%   \Xo \rightarrow \MMP(\Xo)$ is a locally trivial fibration with typical fiber
-%   $\bfK'$.
-% \end{enumT}
-% Suppose further $\sO'\in
-%   \Nil_{\bfK'}(\fpp')$ is the descent of $\sO\in \Nil_{\bfK}(\fpp)$. The following hold true.
-% \begin{enumT}[resume]
-% \item \label{it:lemM.2} % $\bfY:=\MMP^{-1}(\sO)$
+% % \begin{defn}
+% %   \begin{enumT}
+% %   \item \label{it:dec.slt1} Let $(\bfV, \bfV')$ be a rational dual pair.  Let
+% %     $\gamma =\set{\bfee,\bfhh,\bfff}$ be an $\slt$-triple in $\fgg$ and let
+% %     $\gamma '=\set{\bfee',\bfhh',\bfff'} $ be an $\slt$-triple in $\fgg'$.
+% %     % let $\phi\colon \slt\rightarrow \fgg$ be the corresponding Lie algebra
+% %     % morphism.
+% %     % let $\phi'\colon \slt\rightarrow \fgg'$ be the corresponding Lie algebra
+% %     % morphism.
+% %     We say the $\gamma '$ is a descent of $\gamma $ if
+% %     \begin{enumC}
+% %     \item $\bfee'$ is a descent of $\bfee$, and
+% %     \item there exists
+% %       \[
+% %         T\in \bfW_{1} := \set{T\in \bfW| (\bfhh,\bfhh')\cdot T = T}.
+% %       \]
+% %       realizing the descent.
+% %     \end{enumC}
+% %   \item \label{it:dec.slt2} Let $(\bfV, \bfV')$ be a rational dual pair.
+% %     \begin{itemize}
+% %     \item Let $\phi \colon \slt\rightarrow \fgg$ be a $J$-compatible morphism,
+% %       and $\phi ' \colon \slt\rightarrow \fgg'$ be a $J'$-compatible morphism.
+% %       We say $\phi '$ is a descent of $\phi $ if
+% %       \begin{enumC}
+% %       \item \label{it:dec.slt3} $\phi'(\eslt)$ is a descent of $\phi(\eslt)$,
+% %         and
+% %       \item there exists an element $T \in W_1=:W\cap \bfW_1$ realizing the
+% %         descent.
+% %       \end{enumC}
+% %     \item Let $\phi \colon \slt\rightarrow \fgg$ be a $L$-compatible morphism,
+% %       and $\phi ' \colon \slt\rightarrow \fgg'$ be a $L'$-compatible morphism.
+% %       We say $\phi '$ is a descent of $\phi $ if
+% %       \begin{enumC}
+% %       \item \label{it:dec.slt4} $\phi'(\Xslt)$ is a descent of $\phi(\Xslt)$,
+% %         and
+% %       \item there exists an element $T \in \cX_1=:\cX \cap \bfW_1$ realizing the
+% %         descent.
+% %       \end{enumC}
+% %     \end{itemize}
+% %   \item In all cases, we will say that $T$ realizes the descent, and we write
+% %     $\phi' = \DD(\phi)$.
+% %   \end{enumT}
+% % \end{defn}
+
+% % \begin{remark}
+% % %\begin{enumR}
+% % %Note that the pair $\set{\bfee,\bfhh}$ already determine an $\slt$-triple. On the other
+% % %hand, an arbitrary pair $(\bfee,\bfhh)$ where $\bfee$ is nilpotent, $\bfhh$ is semisimple and
+% % %  $[\bfhh,\bfee]=2\bfee$ may not come from an $\slt$-triple in general.
+% % Suppose $\bfee'$ is a descent of $\bfee$ realized by $T\in \bfWo$. Given an $\slt$-triple $\set{\bfee,\bfhh,\bfff}$, we define $\bfhh'\in \fgg'$ by
+% %   $\bfhh'(T(v)) := T(\bfhh(v)) + T(v)$ for all $v\in \bfV$, so that $(\bfhh,\bfhh')\cdot T = T$. One checks that pair
+% %   $(\bfee',\bfhh')$  extends to an $\slt$-triple $\set{\bfee',\bfhh',\bfff'}$ and thus descent of a nilpotent orbit can always be extended to descent of the corresponding $\slt$-triple\footnote{There is no clean formula for $\bfff'$ but its existence is clear by examining the decomposition in \Cref{eq:Vl.1}. See discussions in \cite{DKP2}.}.
+% %   Similar statements hold for rational descents.
+% % \end{remark}
+
+% % The arguments in \cite[Section~8]{DKP2} (for stable range case) extends naturely to the descent of nilpotent
+% % orbit case. Hence we have the compatibility of descent and Kostant-Sekiguchi correspondence:
+% % \begin{lem}
+% %   Suppose $\sOr'\in \Nil_{G'}(\fgg'_{\R})$, $\sOr\in \Nil_{G}(\fgg_{\R})$, $\KS{\sOr'}=:\sO'\in \Nil_{\bfK'}(\fpp')$ and
+% %   $\KS{\sOr}=:\sO\in \Nil_{\bfK}(\fpp)$.
+% %   Then $\DD {\sOr}  = \sOr'$ if and only if $\DD {\sO} = \sO'$, i.e.
+% %   \[
+% %     \DD{\KS{\sOr}} = \KS{\DD{\sOr}}.
+% %   \]
+% %   \qed
+% % \end{lem}
+
+
+% \trivial[h]{An alternative proof: Let $\phi \colon \slt\rightarrow \fgg$ be a $(J,L)$-compatible morphism realizing the Kostant-Sekiguchi correspondence of $\cO$ with $\KS{\cO}$.
+% Let $\phi'$ be a $J$-compatible descent of $\phi$, realized by an element $T\in W_1$. By conjugating with an element of $G'$ if necessary, one may assume that $\phi'$ is $(J',L')$-compatible.
+% From the $\slt$-morphisms, we define the Cayley elements
+% \[
+% C := \phi(\cslt)\in \bfG, \text{ and } C' := \phi'(\cslt)\in \bfG'.
+% \]
+% Let $T' = C'TC^{-1}$. Since $(C'TC^{-1})^\mstar = C T^\mstar C'^{-1}$ we see
+% that it realize the descent from $\phi(\Xslt)$ to $\phi'(\Xslt)$.
+% Now it suffices to verify that $T'\in \cX$.
+% Using the block decomposition \cref{eq:Vl.1}, the problem reduces to case where
+% $\phi(\eslt)$ is in the principle
+% nilpotent orbit in $\rO(n+1,n)$ or $\Sp(2n)$. This could be down by a explicit calculation, see formulas in \cite[Section~6]{DKP2}.
+% }
+
+% \subsubsection{Map between isotropy groups}\label{sec:alpha}
+% %\subsubsection{Correspondence between nilpotent orbits}
+
+
+% % We now review some the geometry of moment maps.
+
+% % \begin{defn}
+% % For any closed set $S'\subset \fpp'$, define
+% % \[
+% % \olift{S'} := M(M'^{-1}(S')).
+% % \]
+
+% % Suppose $\cO'$ is a nilpotent $K$-orbit in $\fpp'$, define
+% % \[
+% % \olift{\cO'} := \set{\cO | \cO \text{ is open in } \olift{\bcO'}}.
+% % \]
+
+% % Define $\oliftc$ and $\oliftr$ for the complex and real moment maps similarly.
+% % \end{defn}
+% % \begin{remark}
+% % By \cite{DKPC}, $\oliftc(\cO'_\bC)$ is always a singleton for any complex
+% % nilpotent orbit $\cO'_\bC$.
+% % On the other hand, by \cite{DKP2}, $\olift(\bcO')$ has several open orbits in
+% % general.
+% % \end{remark}
+
+
+
+
+% % By \Cref{lem:LM.E}, it is important to understand the set
+% % $\olift{\bcO'}$.
+
+
+
+
+
+
+
+% % \begin{defn}
+% % Define the partial order on $\bN^2$ by: $(n^+_1,_1)\succeq (\nn+_2,\nn-_2)$ iff
+% % $\nn+_1\geq \nn+_2$ and $\nn-_1\geq \nn-_2$.
+% % For $\epsilon$-Hermitian space $V$, define $\sign{V} := (\nn+{V},\nn-{V})$ as
+% % the following table
+
+% % \centerline{
+% % \begin{tabular}{c|c}
+% %   \hline
+% %   $G_\bR$ & $\sign{V}$ \\
+% %   \hline
+% %   $\rO(p,q)$ & $(p,q)$\\
+% %   $\Sp(2n,\bR)$ & $(n,n)$\\
+% %   $\rU(p,q)$ & $(p,q)$ \\
+% %   $\rO^*(2n)$ & $(n,n)$\\
+% %   $\Sp(p,q)$ & $(2p,2q)$\\
+% %   \hline
+% % \end{tabular}
+% % }
+% % The set $\NilP$ of nilpotent $K$-orbits in $\fpp$ is parameterized by signed Young
+% % diagram.
+% % For $\cO' \in \NilP$, let $[c_k,\cdots, c_0]$ be the list of length columns of the
+% % underlying diagram.
+% % Let \[
+% % \lsign{\cO} := (\lnn+{\cO},\lnn-{\cO})
+% % \]
+% % be the sign of the most left column
+% % of $\cO$.
+% % \end{defn}
+
+
+
+
+
+% % In our paper, we make could describe the lift of orbits explicitly.
+% % \begin{lem}[]
+% %   Suppose $\sign{V}\succ \sign{V'}$.
+% %   Then
+% %   \[
+% %     \RR{\fpp'}{\Xo} = \set{\cO'\in \NilP'|d(V,V') \succeq \lsign{\cO'}},
+% %   \]
+% %   where $d(V,V'):= \sign{V}-\sign{V'}$.
+% %   Let $\cO'\in \RR{\fpp'}{\Xo}$, then $\olift{\cO'}$ is the signed Young diagram
+% %   obtained by attaching $d(V,V')$ on the left of $\cO'$.
+
+% %   In particular, $\oliftc{\cO'_\bC} = (\olift{\cO'})_\bC$ corresponding to the
+% %   Young diagram obtained by attaching a column of $\dim V - \dim V'$ boxes on
+% %   the left of $\cO'_\bC$.
+% % \end{lem}
+% % \begin{proof}
+% %   The lemma follows immediately by \cite[Theorem~5.2 and 5.6]{DKPC} and
+% %   \cite[Table~4]{DKP2} (see also \cite{Ohta4} for the unitary group case.).
+% % \end{proof}
+
+% %For $T\in \cX$, $X\in \fpp$ and $X' \in \fpp'$, we denote corresponding isotropy subgroups by
+% %\[
+% %  \bfS_T :=
+% %  \Stab_{\bfK\times \bfK'}(T), \quad  \bfK_X:= \Stab_{\bfK}(X)\quad \text{and}\quad \bfK'_{X'}
+% %  := \Stab_{\bfK'}(X') \quad \text{respectively}.
+% %\]
+
+% Suppose $\sO\in \Nil_{\bfK}(\fpp)$ admits a descent $\sO'\in
+%   \Nil_{\bfK'}(\fpp')$. % is the descent of $\sO\in \Nil_{\bfK}(\fpp)$.
+%   According to
+%   \cite[Proposition 11.1]{KP} and \cite[Lemmas~13 and 14]{Ohta},
 %   $\MMP^{-1}(\sO)$
 %   is a single
-%   $\bfK\times \bfK'$-orbit  contained in $\Xo$ and $\MMP'(\MMP^{-1}(\sO)) = \sO'$. Moreover, as the scheme theoretical
-%   pre-image of $\sO$, $\MMP^{-1}(\sO)$  is reduced and smooth.
-% \item \label{it:lemM.3} Fix $T\in \MMP^{-1}(\sO)$ and let $X := \MMP(T)\in \sO$
-%   and $X' := \MMP'(T)\in \sO'$.  Then there is a (unique) homomorphism
-% \begin{equation}
-% \label{eq:alpha}
-% \alpha\colon \bfK_X \mapsto \bfK'_{X'}
-% \end{equation}
-% such that $\bfS_T$ is the graph of $\alpha$:
+%   $\bfK\times \bfK'$-orbit contained in $\Xo$ and $\MMP'(\MMP^{-1}(\sO)) =
+%   \sO'$. Moreover $\bfK'$ acts on $\MMP^{-1}(\sO)$ freely.
+
+%   Fix $T\in \MMP^{-1}(\sO)$ which realizes the descent from $X := \MMP(T)\in \sO$
+%   to $X' := \MMP'(T)\in \sO'$. Denote the respective isotropy subgroups by
+%   \[
+%     \bfS_T :=
+%     \Stab_{\bfK\times \bfK'}(T), \quad  \bfK_X:= \Stab_{\bfK}(X)\quad \text{and}\quad \bfK'_{X'}
+%     := \Stab_{\bfK'}(X').
+%   \]
+%   Then there is a unique homomorphism
+%   \begin{equation}
+%     \label{eq:alpha}
+%     \alpha\colon \bfK_X \mapsto \bfK'_{X'}
+%   \end{equation}
+%   such that $\bfS_T$ is the graph of $\alpha$:
+%   \[
+%     \bfS_T = \set{(k,\alpha(k))\in \bfK_X\times \bfK'_{X'}|k\in \bfK_X}.
+%   \]
+%   % \begin{proof} \cref{it:lemM.0} amounts to the first fundamental theorem of classical invariant theory \cite{Weyl}. \Cref{it:lemM.1} and \cref{it:lemM.2} are in. \cref{it:lemM.3} is an immediate consequence of \cref{it:lemM.2}.
+% % \end{proof}
+% % \begin{lem}[{\cite{Weyl}, \cite[Proposition 11.1]{KP}, \cite[Lemmas 13 and 14]{Ohta}}]\label{lem:O1}\label{lem:DS.set}
+% % Suppose $(\bfV,\bfV')$ is a rational dual pair such that $\dim(\bfV)\geq \dim (\bfV')$.
+% % The followings hold true.
+% % \begin{enumT}
+% % \item \label{it:lemM.0} $\MMP'\colon \cX \rightarrow \fpp'$ is the affine quotient of
+% %   $\cX$ by the $\bfK$ action. The image of $\MMP$ is reduced and $\MMP\colon \cX \rightarrow
+% %   M(\cX)$ is the affine quotient of $\cX$ by the $\bfK'$ action.
+% % \item \label{it:lemM.1} $\MMP' \colon \Xo \rightarrow \fpp'$ is smooth and $\MMP \colon
+% %   \Xo \rightarrow \MMP(\Xo)$ is a locally trivial fibration with typical fiber
+% %   $\bfK'$.
+% % \end{enumT}
+% % Suppose further $\sO'\in
+% %   \Nil_{\bfK'}(\fpp')$ is the descent of $\sO\in \Nil_{\bfK}(\fpp)$. The following hold true.
+% % \begin{enumT}[resume]
+% % \item \label{it:lemM.2} % $\bfY:=\MMP^{-1}(\sO)$
+% %   $\MMP^{-1}(\sO)$
+% %   is a single
+% %   $\bfK\times \bfK'$-orbit  contained in $\Xo$ and $\MMP'(\MMP^{-1}(\sO)) = \sO'$. Moreover, as the scheme theoretical
+% %   pre-image of $\sO$, $\MMP^{-1}(\sO)$  is reduced and smooth.
+% % \item \label{it:lemM.3} Fix $T\in \MMP^{-1}(\sO)$ and let $X := \MMP(T)\in \sO$
+% %   and $X' := \MMP'(T)\in \sO'$.  Then there is a (unique) homomorphism
+% % \begin{equation}
+% % \label{eq:alpha}
+% % \alpha\colon \bfK_X \mapsto \bfK'_{X'}
+% % \end{equation}
+% % such that $\bfS_T$ is the graph of $\alpha$:
+% % \[
+% % \bfS_T = \set{(k,\alpha(k))\in \bfK_X\times \bfK'_{X'}|k\in \bfK_X}.
+% % \]
+% % \qedhere
+% % \end{enumT}
+% % \end{lem}
+% % \begin{proof} \cref{it:lemM.0} amounts to the first fundamental theorem of classical invariant theory \cite{Weyl}. \Cref{it:lemM.1} and \cref{it:lemM.2} are in \cite[Proposition 11.1]{KP} and \cite[Lemmas 13 and 14]{Ohta}. \cref{it:lemM.3} is an immediate consequence of \cref{it:lemM.2}.
+% % \end{proof}
+% The homomorphism $\alpha$ is uniquely determined by the requirement that
 % \[
-% \bfS_T = \set{(k,\alpha(k))\in \bfK_X\times \bfK'_{X'}|k\in \bfK_X}.
+% \alpha(k)(Tv) = T(kv)\quad \textrm{ for all }v\in \bfV, \, k\in \bfK_X.
 % \]
-% \qedhere
-% \end{enumT}
+
+
+% \medskip
+
+% We recall the notation in \Cref{sec:KX} where $\phik$ is an $L$-compatible
+% $\slt$-triple attached to $X$. Let $\Hslt := \slH$. Then there is a unique
+% $L'$-compatible $\slt$-triple $\phikp$ attached to $X'$ such that (see \cite[Section~5.2]{GZ})
+% $$\phikp(\Hslt)
+% \circ T - T \circ \phik(\Hslt) = T.$$
+% As an $\slt$-module via $\phikp$,
+% \[
+% \bfV' = \bigoplus_{l\geq 0}^{k-1} \bfV`l' \otimes \bC^{l+1}.
+% \]
+% We adopt notations in \Cref{sec:KX} to $X' \in
+% \sO'$, via $\phikp$. In particular, we have $\bfK_X = \bfR_X \ltimes \bfU_X$ and $\bfK'_{X'} =\bfR_{X'}
+% \ltimes \bfU_{X'}$. Here $\bfU_X$ and $\bfU'_{X'}$ are the unipotent radicals, and $\bfR_X =
+% \prod_{l=0}^k {\KK`l}$ and $\bfR_{X'} = \prod_{l=0}^{k-1}{\KK`l'}$ are Levi factors
+%  of $\bfK_X$ and $\bfK'_{X'}$, respectively.
+% %which are compatible with the $\slt$-module structures on $\bfV$ and $\bfV'$ respectively.
+
+
+%  For each irreducible $\slt$-module $\bC^{l+1}$ fix a nonzero vector
+%  $v_l\in (\bC^{l+1})^{\Xslt}$.
+%  % \Ker(\rdd\phi_l(\Xslt))$
+%       For each $l\geq 0$, the map
+%  $\nu \mapsto \nu(v_l)$ identifies $\bfV`l = \Hom_{\slt}(\bC^{l+1},\bfV)$
+%  (resp. $\bfV`l'$) with a subspace $\bfV`l_0$ of $\bfV$ (resp. $\bfV`l'_0$ of
+%  $\bfV'$). For $1\leq l\leq k$,  $T^\mstar$ induces a vector space isomorphism\footnote{In fact, it
+%  is a similitude between the two formed spaces and satisfis $L\circ \tau_{l}=\bfii \,\tau_l\circ L'$.}
+% \[
+% \xymatrix@C=5em{
+% \tau_l\colon \bfV`{l-1}' = \bfV`{l-1}'_0 \ar[r]^<>(.5){v \mapsto T^\mstar(v)}
+% & \bfV`{l}_0 = \bfV`{l}.
+% }
+% \]
+% This results in an isomorphism (which is independent of the choices of $v_l$ and $v_{l-1}$)
+% \begin{equation}\label{eq:alpha_l}
+%     \alpha_l :  \KK`{l}   \xrightarrow{\ \ \cong \ \ }  {\KK`{l-1}'} ,\qquad h_l\mapsto (\tau_l)^{-1} \circ h_l \circ\tau_l.
+% \end{equation}
+
+
+% \medskip
+
+% %The following lemma gives a more precise description of the map $\alpha$.
+
+% \begin{lem}\label{lem:alpha.e} The homomorphism $\alpha$ maps $\bfR_X$ into $\bfR_{X'}$ and maps $\bfU_X$ into $\bfU_{X'}$. Moreover, the map
+%   $\alpha|_{\bfR_X}$ is given by
+% \[
+% \xymatrix@R=0em{
+% \flushmr{\alpha|_{\bfR_X}\colon}\prod_{l=0}^{k} {\KK`l} \ar[r]& \prod_{l=0}^{k-1} {\KK`l'},\\
+% (h_0, h_1, \cdots h_k) \ar@{|->}[r]& (\alpha_1(h_1),\cdots,
+% \alpha_k(h_k)), \quad \quad h_l\in \KK`l,
+% }
+% \]
+% where $\alpha _l$ ($1\leq l\leq k$) is given in \eqref{eq:alpha_l}.
 % \end{lem}
-% \begin{proof} \cref{it:lemM.0} amounts to the first fundamental theorem of classical invariant theory \cite{Weyl}. \Cref{it:lemM.1} and \cref{it:lemM.2} are in \cite[Proposition 11.1]{KP} and \cite[Lemmas 13 and 14]{Ohta}. \cref{it:lemM.3} is an immediate consequence of \cref{it:lemM.2}.
+% \begin{proof}
+%   Note that $\alpha$ is a surjection since $M^{-1}(X)$ is a $\bfK'$-orbit (see
+%   \Cref{lem:DS.sh}~\cref{it:DS.G3} or \cite[Lemma~13]{Ohta}).  So $\alpha(\bfU_X)$ is a unipotent normal
+%   subgroup in $\bfK'_{X'}$ which must be contained in $\bfU_{X'}$. Note that
+%   (see \cite[Lemma~3.4.4]{CM})
+%   \[ \bfR_X = \Stab_{\bfK}(\phi_\fkk(\Xslt)) \cap
+%     \Stab_{\bfK}(\phi_{\fkk}(\Hslt)).
+% \] By the defintion of $\alpha$ and
+% $\phi_{\fkk'}$,  we see
+% \[
+% \alpha(\bfR_X) \subset \Stab_{\bfK'}(\phi_{\fkk'}(\Xslt)) \cap
+% \Stab_{\bfK'}(\phi_{\fkk'}(\Hslt)) = \bfR_{X'}.
+% \]
+% The rest follows from the discussions before the lemma.
 % \end{proof}
-The homomorphism $\alpha$ is uniquely determined by the requirement that
-\[
-\alpha(k)(Tv) = T(kv)\quad \textrm{ for all }v\in \bfV, \, k\in \bfK_X.
-\]
-
-
-\medskip
-
-We recall the notation in \Cref{sec:KX} where $\phik$ is an $L$-compatible
-$\slt$-triple attached to $X$. Let $\Hslt := \slH$. Then there is a unique
-$L'$-compatible $\slt$-triple $\phikp$ attached to $X'$ such that (see \cite[Section~5.2]{GZ})
-$$\phikp(\Hslt)
-\circ T - T \circ \phik(\Hslt) = T.$$
-As an $\slt$-module via $\phikp$,
-\[
-\bfV' = \bigoplus_{l\geq 0}^{k-1} \bfV`l' \otimes \bC^{l+1}.
-\]
-We adopt notations in \Cref{sec:KX} to $X' \in
-\sO'$, via $\phikp$. In particular, we have $\bfK_X = \bfR_X \ltimes \bfU_X$ and $\bfK'_{X'} =\bfR_{X'}
-\ltimes \bfU_{X'}$. Here $\bfU_X$ and $\bfU'_{X'}$ are the unipotent radicals, and $\bfR_X =
-\prod_{l=0}^k {\KK`l}$ and $\bfR_{X'} = \prod_{l=0}^{k-1}{\KK`l'}$ are Levi factors
- of $\bfK_X$ and $\bfK'_{X'}$, respectively.
-%which are compatible with the $\slt$-module structures on $\bfV$ and $\bfV'$ respectively.
-
-
- For each irreducible $\slt$-module $\bC^{l+1}$ fix a nonzero vector
- $v_l\in (\bC^{l+1})^{\Xslt}$.
- % \Ker(\rdd\phi_l(\Xslt))$
-      For each $l\geq 0$, the map
- $\nu \mapsto \nu(v_l)$ identifies $\bfV`l = \Hom_{\slt}(\bC^{l+1},\bfV)$
- (resp. $\bfV`l'$) with a subspace $\bfV`l_0$ of $\bfV$ (resp. $\bfV`l'_0$ of
- $\bfV'$). For $1\leq l\leq k$,  $T^\mstar$ induces a vector space isomorphism\footnote{In fact, it
- is a similitude between the two formed spaces and satisfis $L\circ \tau_{l}=\bfii \,\tau_l\circ L'$.}
-\[
-\xymatrix@C=5em{
-\tau_l\colon \bfV`{l-1}' = \bfV`{l-1}'_0 \ar[r]^<>(.5){v \mapsto T^\mstar(v)}
-& \bfV`{l}_0 = \bfV`{l}.
-}
-\]
-This results in an isomorphism (which is independent of the choices of $v_l$ and $v_{l-1}$)
-\begin{equation}\label{eq:alpha_l}
-    \alpha_l :  \KK`{l}   \xrightarrow{\ \ \cong \ \ }  {\KK`{l-1}'} ,\qquad h_l\mapsto (\tau_l)^{-1} \circ h_l \circ\tau_l.
-\end{equation}
-
-
-\medskip
-
-%The following lemma gives a more precise description of the map $\alpha$.
-
-\begin{lem}\label{lem:alpha.e} The homomorphism $\alpha$ maps $\bfR_X$ into $\bfR_{X'}$ and maps $\bfU_X$ into $\bfU_{X'}$. Moreover, the map
-  $\alpha|_{\bfR_X}$ is given by
-\[
-\xymatrix@R=0em{
-\flushmr{\alpha|_{\bfR_X}\colon}\prod_{l=0}^{k} {\KK`l} \ar[r]& \prod_{l=0}^{k-1} {\KK`l'},\\
-(h_0, h_1, \cdots h_k) \ar@{|->}[r]& (\alpha_1(h_1),\cdots,
-\alpha_k(h_k)), \quad \quad h_l\in \KK`l,
-}
-\]
-where $\alpha _l$ ($1\leq l\leq k$) is given in \eqref{eq:alpha_l}.
-\end{lem}
-\begin{proof}
-  Note that $\alpha$ is a surjection since $M^{-1}(X)$ is a $\bfK'$-orbit (see
-  \Cref{lem:DS.sh}~\cref{it:DS.G3} or \cite[Lemma~13]{Ohta}).  So $\alpha(\bfU_X)$ is a unipotent normal
-  subgroup in $\bfK'_{X'}$ which must be contained in $\bfU_{X'}$. Note that
-  (see \cite[Lemma~3.4.4]{CM})
-  \[ \bfR_X = \Stab_{\bfK}(\phi_\fkk(\Xslt)) \cap
-    \Stab_{\bfK}(\phi_{\fkk}(\Hslt)).
-\] By the defintion of $\alpha$ and
-$\phi_{\fkk'}$,  we see
-\[
-\alpha(\bfR_X) \subset \Stab_{\bfK'}(\phi_{\fkk'}(\Xslt)) \cap
-\Stab_{\bfK'}(\phi_{\fkk'}(\Hslt)) = \bfR_{X'}.
-\]
-The rest follows from the discussions before the lemma.
-\end{proof}
-
-Let $A$, $A_X$ and $A'_{X'}$ be the component groups of $G$, $\bfK_X$ and $\bfK'_{X'}$
-respectively. We will identify $A$ with the component group of $\bfK$ and let
-$\chi|_{A_X}$ denote the pullback of $\chi \in \whA$ via the natural map $A_X
-\rightarrow A$.
-The homomorphism $\alpha\colon \bfK_X \mapsto \bfK'_{X'}$ induces a homomorphism $\alpha\colon A_X \mapsto A'_{X'}$, which further yields a homomorphism
-\[
-\widehat{A'_{X'}}\rightarrow \widehat{A_{X}}, \quad \rho'\mapsto \rho'\circ\alpha.
-\]
-
-\begin{lem}\label{lem:char.surj}
-The following map is surjective:
-%\begin{equation}
-\[
-\xymatrix@R=0em{
-\widehat{A} \times \widehat{A'_{X'}} \ar@{->>}[r]&  \widehat{A_X},\\
-(\chi,\rho') \ar@{|->}[r] & \chi|_{A_X} \cdot (\rho'\circ\alpha).}
-%\end{equation}
-\]
-\end{lem}
-
-\begin{proof} This follows easily from \Cref{lem:alpha.e} and \Cref{lem:char.res}.
-\end{proof}
-
-\subsection{Lifting of equivariant vector bundles and admissible orbit
-  data}\label{sec:LVB}
-Recall from the Introduction the complexification $\wtbfK$ of $\widetilde K$, which is  $\bfK$ except when $G$ is a  real symplectic group.
-For a nilpotent $\bfK$-orbit $\sO\in \Nil_{\bfK}(\fpp)$, % is also viewed as an
-% $\wtbfK$-orbit.
-let $\cK_{\sO}^{\mathbb p}(\wtbfK)$ denote the Grothendieck group of $\mathbb p$-genuine $\wtbfK$-equivariant coherent sheaves on
-$\sO$. This is a free abelian group with a free basis consisting of isomorphism classes of  irreducible $\mathbb p$-genuine $\wtbfK$-equivariant algebraic vector
-bundles on $\sO$.  Taking the isotropy representation at a point $X\in \sO$ yields an identification
-\begin{equation}\label{idenkr}
-  \cK_{\sO}^{\mathbb p}(\wtbfK)=\cR^{\mathbb p}(\wtbfK_{X}),
-\end{equation}
-where the right hand side denotes
-  the Grothendieck group  of the category of $\mathbb p$-genuine
-  algebraic representations of the stabilizer group $\wtbfK_X$.
-
-
-  For $\cO\in \Nil_{\bfG}(\fgg)$, let $\cK^{\mathbb p}_{\cO}(\wt{\bfK})$ denote the
-  Grothendieck group
-  % (with integral coefficients) of the category
-  of $\mathbb p$-genuine $\wt{\bfK}$-equivariant coherent sheaves on $\cO\cap \fpp$. Since
-  $\cO\cap \fpp$ is the finite union of its $\bfK$-orbits, we have
-  \begin{equation}\label{eq:dec.KO}
-    \cK_{\cO}^{\mathbb p}(\wt{\bfK})=\bigoplus_{\sO\textrm{ is a $\bfK$-orbit in $\cO\cap \fpp$}} \cK^{\mathbb p}_{\sO}(\wt{\bfK}).
-  \end{equation}
-
-  There is a natural partial order $\succeq$ on $\cK_{\cO}^{\mathbb p}(\wt{\bfK})$ and
-  $\cK^{\mathbb p}_{\sO}(\wt{\bfK})$: we say $c_1\succeq c_2$ (or $c_2\preceq c_1$) if $c_1-c_2$ is represented by a
-  % non-trivial
-  $\mathbb p$-genuine $\wtbfK$-equivariant coherent sheaf. The same notation obviously applies  to other Grothendieck groups.
-
-
-
-  % \subsubsection{Lift of algebraic vector bundles I: the descent
-  % case}\label{sec:lift.AC}
-  \subsubsection{An algebraic character}%\label{sec:lift.AC}
-  Attached to a rational dual pair $(\bfV,\bfV')$, there is a distinguished character
-  $\mktvvp$ of
-  $\wtbfK\times\wtbfK'$ arising from the oscillator
-  representation, which we shall describe.
-
-  When $G$ is a real symplectic group, let $\cX_{\bfV}$ denote the $\mathbf i$-eigenspace of
-  $L$. Then $\wtbfK$ is identified with \[
-    \set{(g,c)\in \GL(\cX_{\bfV})\times
-      \bC^\times|\det(g) = c^2}.\]
-  It has a %genuine
-  character
-  $ (g,c)\mapsto c$, which is denoted by $\det_{\cX_{\bfV}}^{\half}$. % $\varsigma_{\bfV}$
-
-
-  When $G$ is a quaternionic orthogonal group, still let
-  $\cX_V$ denote the $\mathbf i$-eigenspace of $L$. Then $\wtbfK = \GL(\cX_{\bfV})$. Let $\det_{\cX_{\bfV}}$ denote its determinant character.
-
-  Write $\sign{\bfV'} = (n'^+,n'^-)$. Then the character $\mktvvp|_{\wtbfK}$ is
-  given by the following formula: %\footnote{If we denote $\varsigma_\cX$
-  % (resp. trivial character) by $\det_{\cX}^{-\half}$ (resp. $\det_{\cX}^0$),
-  % then
-  % $\mktvvp|_{\wtbfK}$ always equals $\det_{\cX}^{-\frac{n^+-n^-}{2}}$.}
-  \[%\begin{equation} \label{ktwvv1}
-    \mktvvp|_{\wtbfK}:=\begin{cases}
-      \left(\det_{\cX_{\bfV}}^{\half}\right)^{n'^+-n'^-} ,
-      %\varsigma_{\bfV}^{n'^+-n'^-} ,
-      & \text{if  $G$ is a real symplectic group};\\
-      \det_{\cX_{\bfV}}^{\frac{n'^+-n'^-}{2}},&  \text{if  $G$ is a quaternionic orthogonal group}; \medskip \\
-      \textrm{the trivial character, } & \text{otherwise}.\\
-    \end{cases}
-  \]%\end{equation}
-  % The role of $\bfV$ and $\bfV'$ is symmetric, and
-  The character $\mktvvp|_{\wtbfK'}$ is given by a similar formula
-  with $n'^+-n'^-$ replaced by $n^--n^+$, where $(n^+, n^-)=\sign{\bfV}$.
-
-  \trivial[h]{
-    The key property of $\mktvvp$ is that $(\mktvvp)^{-2}$ restricted on the
-    conncected component of $\wtK\times \wtK'$ is the determinant
-    of the $\wtbfK\times \wtbfK'$ action on $\cX$.
-
-    We calculate $\det|_\cX$. When $\dotepsilon = 1$, $\cX  = \Hom(\bfV_1,
-    \bfV'^{L',+\bfii}) \oplus \Hom(\bfV_{-1},\bfV'^{L', -\bfii})$ and
-    $\det|_{\cX}(g_1,g_{-1}) = (\det g_1)^{-n'^+}(\det g_2)^{-n'^-}$. (Here by
-    right we should take $\mktvvp|_\bfK$ be the character of half
-    determinant when $G = \rO(p,q)$.
-    However, we always fix the splitting $\rO(p,q)\rightarrow
-    \widetilde{\rO(p,q)}$ so that the $\rO(p)\times \rO(q)$-action
-    on the minimal $K$-type of the Weil
-    representation is trivial.
-
-    When $\dotepsilon = -1$, $\cX = \Hom(\bfV_{+\bfii}, \bfV'_0)\oplus
-    \Hom(\bfV_{-\bfii}, \bfV'_{-1})$. Now $\det|_{\cX}(g) = \det(g)^{-n'^+ +
-      n'^-}$.
-
-    Similarly, when $\dotepsilon' = -1$, $\det|_{\cX}(g') = \det(g)^{n^+ -
-      n'^-}$.
-    These yields the claim.
-  }
-
-  \subsubsection{Lift of algebraic vector bundles}\label{sec:lift.AC}
-
-  In the rest of this section, we assume that $\mathbb p$ is the parity of $\dim \bfV$ if $\epsilon=1$, and  the parity of $\dim \bfV'$ if $\epsilon'=1$.  Then $\mktvvp|_{\wtbfK}$ and
-  $\mktvvp|_{\wtbfK'}$ are $\mathbb p$-genuine.
-
-  Suppose $T\in \Xo$ realizes the descent from  $X = \MMP(T)\in \sO\in \Nil_{\bfK}(\fpp)$
-  to
-  $X' = \MMP'(T)\in \sO'\in \Nil_{\bfK'}(\fpp')$. Let  $\alpha\colon
-  {\bfK}_X\rightarrow {\bfK'}_{X'}$ be the homomorphism as in \cref{eq:alpha}.
-
-  Let $\rho'$ be a $\mathbb p$-genuine algebraic representation  of $\wtbfK'_{X'}$. Then  the representation $\mktvvp|_{\wt{\bfK'}_{X'}}\otimes \rho'$ of $\wtbfK'_{X'}$ descends  to a representation of $\bfK'_{X'}$.  Define
-  \begin{equation}\label{defn:tlift.rho}
-    \dliftv_{T}(\rho'):= \mktvvp|_{\wt{\bfK}_{X}} \otimes (\mktvvp|_{\wt{\bfK'}_{X'}}\otimes \rho')\circ \alpha,
-  \end{equation}
-  which  is a $\mathbb p$-genuine algebraic representation of $\wt{\bfK}_{X}$.
-
-  Clearly $\dliftv_T$ induces a homomorphism from
-  $\cR^{\mathbb p}(\wtbfK'_{X'})$ to $\cR^{\mathbb p}(\wtbfK_X)$.
-  In view of \eqref{idenkr}, we thus have a homomorphism
-  \begin{equation}\label{defn:DS.ch}
-    \xymatrix{
-      \dliftv_{\sO',\sO}\colon \cK^{\mathbb p}_{\sO'}(\wt{\bfK}') \ar[r]&
-      \cK^{\mathbb p}_{\sO}(\wt{\bfK}).
-    }
-  \end{equation}
-  This is independent of the choice of $T$.
-
-
-
-  Suppose $\cO\in\Nil_{\bfG}(\fgg)$ and $\cO'=\DD(\CO)\in \Nil_{\bfG'}(\fgg')$. Using decomposition \cref{eq:dec.KO}, we define a homomorphism
-  \begin{equation}\label{eq:DS.chc}
-    \xymatrix{
-      \dliftv_{\cO',\cO} := \displaystyle\sum_{\substack{\sO\subset \cO\cap \fpp\\ \sO' =
-          \DD(\sO) \subset \fpp'}}\dliftv_{\sO',\sO}\colon \cK^{\mathbb p}_{\cO'}(\wt{\bfK}') \ar[r]&
-      \cK^{\mathbb p}_{\cO}(\wt{\bfK})
-    }
-  \end{equation}
-  where the summation
-  is over all pairs  $(\sO, \sO')$ such that $\sO'\subset \fpp'$ is the descent of
-  $\sO\subset \cO\cap \fpp$.
-
-  % \begin{remark}
-  %   The explicit form of $\KTW|_{\wtK'_{X'}}$ is not important for us. We
-  %   refer the interested reader to \Cref{sec:KTW} for the explicit formula.
-  % \end{remark}
-
-  % Using \Cref{defn:tlift.rho}, we have the following estimate of associated
-  % character by
-
-
-  % Likewise let $\CK_{\KV}(\sO)$ denote the Grothendieck group of the category
-  % of $\KV$-equivariant algebraic vector bundles on $\sO$.  Then
-  % \begin{equation}\label{decomk}
-  %   \CK_{\widetilde \KV}(\sO)=\left\{ \begin{array}{ll}
-  %       \CK_{ \KV}(\sO)\oplus \CK_{\widetilde \KV}^{\mathrm{gen}}(\sO), & \textrm{if } (\epsilon, \dot \epsilon)=(-1,-1);\medskip\\
-  %       \CK_{ \KV}(\sO),&  \textrm{otherwise, } \\
-  %     \end{array}
-  %   \right.
-  % \end{equation}
-  % where $\CK^{\mathrm{gen}}_{\widetilde \KV}(\sO)$ denotes the Grothendieck
-  % group of the category of genuine $\widetilde \KV$-equivariant algebraic
-  % vector bundles on $\sO$.  Here and as usual, ``genuine" means that the
-  % non-trivial element in the kernel of the covering map
-  % $\widetilde \KV\rightarrow \KV$ acts through the scalar multiplication by
-  % $-1$.
-
-
-  % \subsubsection{Lift of algebraic vector bundles II: the generalized descent
-  % case}
-  \medskip
-  Now suppose $\sO'=\gDD_{\bfV,\bfV'}(\sO) \in \Nil_{\bfK'}(\fpp')$ is the
-  generalized decent of $\sO\in \Nil_{\bfK}(\fpp)$. From the discussion in
-  \Cref{def:GD}, there is an $(\epsilon',\dotepsilon')$-space decomposition
-  $\bfV' = \bfV'_1\oplus \bfV'_2$ and an element
-  \[
-  T\in
-  \CX_1^\circ:=\{w\in\Hom(\bfV,\bfV'_1)\mid w\textrm{ is surjective}\}\cap \CX\subseteq \CX^{\mathrm{gen}}
-  \]
-   such that
-  $\sO'_1:= \bfK'_1 \cdot X' \in \Nil_{\bfK'_1}(\fpp'_1)$ is the descent of
-  $\sO$. Here $X' := M'(T)\in \sO'$,
-  $\bfK'_i:= \bfG_{\bfV'_i}^{L'}$ is a
-  subgroup of $\bfK'$ for $i=1,2$, and $\fpp'_1 := \fpp_{\bfV'_1}$.
-
-
-  Let $X := M(T)\in \sO$ and
-  \begin{equation}\label{eq:def.alpha1}
-    \alpha_1\colon \bfK_X \rightarrow \bfK'_{1,X'}
-  \end{equation}
-  be
-  the (surjective) homomorphism defined in
-  \cref{eq:alpha} with respect to the descent from $\sO$ to $\sO'_1$.
-  Then the stabilizer $\bfS_T := \Stab_{\bfK\times
-    \bfK'}(T)$ of $T$ is given by
-  \begin{equation}\label{labst}
-    \bfS_T = \Set{(k,\alpha_1(k)k'_2)\in \bfK\times \bfK' |k\in \bfK \text{ and } k'_2\in \bfK'_2}.
-  \end{equation}
-  For a $\mathbb p$-genuine algebraic representation $\rho'$ of $\wtbfK'_{X'}$, define a
-  representation
-  \begin{equation}\label{defn:glift.rho}
-    \gdlift_{T}(\rho'):= \mktvvp|_{\wt{\bfK}_{X}} \otimes \left((\mktvvp|_{\wt{\bfK}'_{X'}}\otimes
-      \rho')^{\bfK'_2}\right)\circ \alpha_1.
-  \end{equation}
-  Clearly, \cref{defn:glift.rho} is a generalization of \cref{defn:tlift.rho}, as ${\bfK'_2}$ is the trivial group in the latter case.
-  As in the descent case, $\gdlift_{T}$ induces a homomorphism
-  \[
-    \dliftv_{\sO',\sO}\colon \cK^{\mathbb p}_{\wt{\bfK}'}(\sO')
-    \rightarrow \cK^{\mathbb p}_{\wt{\bfK}}(\sO).
-  \]
-  Furthermore, \cref{eq:DS.chc} is extended to the generalized descent case: for every pair $(\cO,\cO')\in \Nil_{\bfG}(\fgg)\times  \Nil_{\bfG'}(\fgg')$ with $\cO' =\gDD_{\bfV,\bfV'}(\cO)$, we define a homomorhism
-  \[
-    \dliftv_{\cO',\cO} := \sum_{\substack{\sO \subset \cO\cap \fpp,\\
-        \sO' = \gDD_{\bfV,\bfV'}(\sO)\subset \fpp'}}\dliftv_{\sO',\sO}\colon \cK^{\mathbb p}_{\wt{\bfK}'}(\cO')
-    \rightarrow \cK^{\mathbb p}_{\wt{\bfK}}(\cO).
-  \]
-
-
-
-
-  \subsubsection{Lift of admissible orbit data}\label{sec:aod}
-  % \subsubsection{Admissible orbit data}
-
-    % The symbol ``$\widetilde{\phantom A}$" will be used in similar situations
-  % without further explanation.
-
-  Now let $\sO$ be a $\bfK$-orbit in $\CO\cap \p$, where
-  $\cO\in \Nil_{\bfG}^{\mathbb p}(\fgg)$. Let $X\in \sO$.   The component group  $A_X:=\bfK_X/\bfK_X^\circ$  is an
-  elementary abelian $2$-group by \Cref{sec:KX}.  Let $\fkk_X$ be the Lie algebra of $\bfK_X$. Denote by $\bbfK_X\rightarrow \bfK_X$ the covering map induced by the covering $\bbfK\rightarrow \bfK$.
-
-
-
-  We make the following definition.
-
-\begin{defn}[{\cite[Definition~7.13]{Vo89}}]\label{def:admD}
-  Let $\gamma_X$ denote the one-dimensional $\bfK_X$-module
-  $\bigwedge^{\rmtop} \fkk_X$ and let $\rdd\gamma_X$ be its
-  differential. \footnote{$\rdd\gamma_X$ is the same as $\rdd\gamma_\fkk$ in
-    \cite[Theorem~7.11]{Vo89} since $\fkk$ is reductive.}  An irreducible
-  representation $\rho$ of $\bbfK_X$ is called \emph{admissible} if
-  \begin{enumT}
-  \item its differential $\rdd\rho$ is isomorphic to a multiple of
-    $\half \rdd\gamma_X$, equivalently,
-    \[
-      \rho(\exp(x)) = \gamma_X(\exp(x/2))\cdot \id, \quad\textrm{for all }x\in
-      \fkk_X\text{, and}
-    \]
-  \item it is $\bpp$-genuine.
-  \end{enumT}
-
-  Let $\Phi_X$ denote the set of all isomorphism classes of admissible
-  irreducible representations of $\bbfK_X$.
-  % Note that $\Phi_X$ may be empty.
-  % \begin{defn}[{\cite[Definition~7.13]{Vo89}}]
-  %   If $\Phi_X\neq \emptyset$, we say that the orbit $\sO:=\bfK\cdot X$ is
-  %   \emph{admissible}.
-\end{defn}
-
-\Cref{def:admD} is obviously consistent with \Cref{defaod}, since a
-representation $\rho\in \Phi_X$ determines an admissible orbit datum
-$\cE\in \cKaod_\sO(\wtbfK)$, where $\cE$ is a $\bbfK$-equivariant algebraic
-vector bundle on $\sO$ whose isotropy representation $\cE_X$ at $X$ is
-isomorphic to $\rho$.  We therefore have an identification
-\begin{equation}\label{idenip}
-  \cKaod_\sO(\wtbfK)=\Phi_X.
-\end{equation}
-\trivial[h]{
-  % \begin{obs}
-  Suppose $\sO$ is an admissible orbit and $X\in \sO$.
-  When $\bfG$ is an orthogonal group or symplectic group then
-  \begin{enumT}
-  \item $\Phi_X$ is a set of one-dimensional representations of $\wtK_X$ and
-  \item
-  \end{enumT}
-  When $\bfG$ is a general linear group. Then $\Phi_X$ is a singleton, since $K_X$
-  is always connected.
-  % \end{obs}
-
-  % \begin{obs}\label{obs:admchar}
-  Suppose $\rho_0 \in \Phi_X$ is a character. Then $\Phi_X = \set{\chi \otimes \rho_0|\chi\in
-    \whAX}$. Furthermore, if $A_X$
-  is abelian, then $\Phi_X$ consists of
-  characters and the tensor product action of the character
-  group $\whAX$ on $\Phi_X$ is free and transitive, i.e. $\Phi_X$ is an $\whAX$
-  torsor.
-  % \end{obs}
-  % \begin{proof}
-  This follows by Mackey theory. Suppose $\rho\in \Phi_X$, then
-  $\Hom_{\nu \bbfK_X^\circ}(\rho, \rho_0)\neq 0$.
-  Therefore, $\rho$ is a sub-representation of
-  \[
-    \Ind_{\nu \bbfK_X^\circ}^{\bbfK_X}(\rho_0|_{\nu \bbfK_X^\circ}) = \Ind_{\nu \bbfK_X^\circ}^{\bbfK_X}
-    \bfone \otimes \rho_0 = \Ind_{\bfK_X^\circ}^{\bfK_X} \bfone \otimes \rho_0.
-  \]
-  Hence $\rho \cong \chi \otimes \rho_0$ for some
-  character  $\chi\in \widehat{A_X}$.
-  The rest is clear.
-  % \end{proof}
-}
-From the structure of $\bfK_X$ in \Cref{lem:KX1} and \Cref{lem:char.res}, it is
-easy to see  that $\Phi_X$ consists of one-dimensional representations.
-\medskip
-
-\begin{lem}\label{lem:Kaod}
-  The tensor product yields a simply transitive action of the character group
-  $\widehat{A_X}$ on the set $\Phi_X$.
-\end{lem}
-\begin{proof}
-  It is clear that we only need to show that $\Phi_X$ is nonempty. Consider a
-  rational dual pair $(\bfV,\bfV')$ such that
-  $\sO' = \DD(\sO) \in \Nil_{\bfK'}(\fpp')$ is the descent of
-  $\sO\in \Nil_{\bfK}(\fpp)$. Suppose that $T\in \Xo$ realizes the descent from
-  $X$ to $X'\in \sO'$. The proof of \cite[Proposition~6.1]{LM} shows that if
-  $\rho'\in \Phi_{X'}$ is admissible, then $\dliftv_T(\rho')$ is
-  admissible.
-  Therefore, we may do reductions and eventually reduce the problem
-  to the case when $\bfV$ is the zero space.  It is clear that $\Phi_X$ is a
-  singleton in this case.
-  \trivial[h]{
-    Note that, the role of $V$ and $V'$ are switched in that proof.
-    The short exact sequence for the proof of \cite[(23)]{LM} still
-    holds since the moment map $M$ is smooth at
-    $T$ (see the property of principle straum in \cite[page 217]{PV} or
-    \Cref{sec:Sdes}).
-  }
-\end{proof}
-
-\begin{remark}
-By \Cref{lem:Kaod}, the set $\cKaod_\sO(\wtbfK)$ of admissible orbit data over
-$\sO$ has $2^r$ elements, where $r$ is the number of orthogonal groups appearing in the decomposition
-of $\bfR_X$ in \Cref{lem:KX1}.
-\end{remark}
-
-As in the proof of Lemma \ref{lem:Kaod},
-the homomorphism \eqref{defn:DS.ch} restricts to a map
-\begin{equation}\label{eq:l.adm}
-  \dliftv_{\sO',\sO}\colon \cKaod_{\sO'}(\wtbfK') \rightarrow \cKaod_{\sO}(\wtbfK).
-\end{equation}
-
-\medskip
-
-\begin{lem}\label{lem:admchar.surj}
-  Let $A$ be the component group of $G$ which is identified with the component
-  group of $\bfK$.  Then the following map is
-  surjective:\footnote{%The component group $A$ of $G$ is
-    % identified with the component group of $\bfK$.
-    Under the identification \eqref{idenip}, the tensor product of a character
-    $\chi\in \whA$ on $\cKaod_{\sO}(\wtbfK)$ is identified with the tensor
-    product of $\chi|_{A_X}$ with the isotropy representation.}
-  \[
-    \xymatrix@C=4em@R=0em{
-      \whA \times \cKaod_{\sO'}(\wtbfK')\ar[r] & \cKaod_{\sO}(\wtbfK),\\
-      (\chi,\cE') \ar@{|->}[r] & \chi \otimes \dliftv_{\sO',\sO}(\cE').  }
-  \]
-  In particular, $\cKaod_{\sO}(\wtbfK)$ is a singleton if $G$ is a quaternionic
-  group.
-\end{lem}
-\begin{proof}
-  This follows from \Cref{lem:char.surj} and \Cref{lem:Kaod}.
-\end{proof}
-
-
-
-
-\trivial[h]{
-  \begin{proof}
-    \begin{enumPF}
-    \item follows from the fact that \begin{enumIL}
-      \item $\gamma_X$ is always trivial since $R_X$ is semisimple and
-      \item $\bfK_X$ is connected.
-      \end{enumIL}
-    \item Recall that $\bfK_X = R_X \ltimes U_X$, where
-      $R_X=\prod_{l} {^{l}{\bfK}}$. Note that $\gamma_X|_{U_X}$ is trivial and
-      \[
-        \gamma_X |_{R_X} = \bigboxtimes_{l} {\det}_{^{l}{\bfK}}^{n_l}
-      \]
-      where $\det_{^{l}{\bfK}}$ is the restriction of the determinant character
-      of $\GL(\bfV`l)$ on $^{l}{\bfK}$, and $n_l$ is a certain non-negative
-      integer.
-
-      % Let $R_{-}=\prod_{l \text{ odd}} {^{l}{\bfK}}$ and
-      % $R_+ = \prod_{l \text{ even}}{^{l}{\bfK}}$.
-      Suppose $G$ is a symplectic group, then $^{l}{\bfK}$ is a product of
-      orthogonal groups for $l$ odd, and a general linear group for $l$ even.
-      The preimage $\breve{^{l}{\bfK}}$ of $^{l}{\bfK}$ is thus a genuine double
-      covering for $l$ even (see \Cref{eq:def.brK}).
-
-      If the parity $\bpp$ is even, then $\Phi_X$ is non-empty if and only if
-      $n_l$ is even for all $l$ even. In that case, one may choose
-      \begin{equation}\label{eq:rho0.sp}
-        \rho_0 =
-        \bigboxtimes_{l\text{ odd}} \bfone \boxtimes \bigboxtimes_{l\text{
-            even}}{\det}_{^{l}{\bfK}}^{n_l/2}
-      \end{equation}
-      and apply %\cref{obs:admchar}.
-
-      If the parity $\bpp$ is odd, then $\Phi_X$ is non-empty if and only if
-      $n_l$ is odd for all $l$ even. One can choose $\rho_0$ as in
-      \eqref{eq:rho0.sp} by replacing $\det_{^{l}{\bfK}}^{n_l/2}$ with the
-      genuine character
-      $\det_{\breve{^{l}{\bfK}}}^{n_l/2}\colon (g,c) \mapsto c^{n_l}$ of
-      $\breve{^{l}{\bfK}}$.
-
-      When $G$ is an orthogonal group, the argument is similar. We leave it to
-      the reader.
-    \end{enumPF}
-  \end{proof}
-}
+
+% Let $A$, $A_X$ and $A'_{X'}$ be the component groups of $G$, $\bfK_X$ and $\bfK'_{X'}$
+% respectively. We will identify $A$ with the component group of $\bfK$ and let
+% $\chi|_{A_X}$ denote the pullback of $\chi \in \whA$ via the natural map $A_X
+% \rightarrow A$.
+% The homomorphism $\alpha\colon \bfK_X \mapsto \bfK'_{X'}$ induces a homomorphism $\alpha\colon A_X \mapsto A'_{X'}$, which further yields a homomorphism
+% \[
+% \widehat{A'_{X'}}\rightarrow \widehat{A_{X}}, \quad \rho'\mapsto \rho'\circ\alpha.
+% \]
+
+% \begin{lem}\label{lem:char.surj}
+% The following map is surjective:
+% %\begin{equation}
+% \[
+% \xymatrix@R=0em{
+% \widehat{A} \times \widehat{A'_{X'}} \ar@{->>}[r]&  \widehat{A_X},\\
+% (\chi,\rho') \ar@{|->}[r] & \chi|_{A_X} \cdot (\rho'\circ\alpha).}
+% %\end{equation}
+% \]
+% \end{lem}
+
+% \begin{proof} This follows easily from \Cref{lem:alpha.e} and \Cref{lem:char.res}.
+% \end{proof}
+
+% \subsection{Lifting of equivariant vector bundles and admissible orbit
+%   data}\label{sec:LVB}
+% Recall from the Introduction the complexification $\wtbfK$ of $\widetilde K$, which is  $\bfK$ except when $G$ is a  real symplectic group.
+% For a nilpotent $\bfK$-orbit $\sO\in \Nil_{\bfK}(\fpp)$, % is also viewed as an
+% % $\wtbfK$-orbit.
+% let $\cK_{\sO}^{\mathbb p}(\wtbfK)$ denote the Grothendieck group of $\mathbb p$-genuine $\wtbfK$-equivariant coherent sheaves on
+% $\sO$. This is a free abelian group with a free basis consisting of isomorphism classes of  irreducible $\mathbb p$-genuine $\wtbfK$-equivariant algebraic vector
+% bundles on $\sO$.  Taking the isotropy representation at a point $X\in \sO$ yields an identification
+% \begin{equation}\label{idenkr}
+%   \cK_{\sO}^{\mathbb p}(\wtbfK)=\cR^{\mathbb p}(\wtbfK_{X}),
+% \end{equation}
+% where the right hand side denotes
+%   the Grothendieck group  of the category of $\mathbb p$-genuine
+%   algebraic representations of the stabilizer group $\wtbfK_X$.
+
+
+%   For $\cO\in \Nil_{\bfG}(\fgg)$, let $\cK^{\mathbb p}_{\cO}(\wt{\bfK})$ denote the
+%   Grothendieck group
+%   % (with integral coefficients) of the category
+%   of $\mathbb p$-genuine $\wt{\bfK}$-equivariant coherent sheaves on $\cO\cap \fpp$. Since
+%   $\cO\cap \fpp$ is the finite union of its $\bfK$-orbits, we have
+%   \begin{equation}\label{eq:dec.KO}
+%     \cK_{\cO}^{\mathbb p}(\wt{\bfK})=\bigoplus_{\sO\textrm{ is a $\bfK$-orbit in $\cO\cap \fpp$}} \cK^{\mathbb p}_{\sO}(\wt{\bfK}).
+%   \end{equation}
+
+%   There is a natural partial order $\succeq$ on $\cK_{\cO}^{\mathbb p}(\wt{\bfK})$ and
+%   $\cK^{\mathbb p}_{\sO}(\wt{\bfK})$: we say $c_1\succeq c_2$ (or $c_2\preceq c_1$) if $c_1-c_2$ is represented by a
+%   % non-trivial
+%   $\mathbb p$-genuine $\wtbfK$-equivariant coherent sheaf. The same notation obviously applies  to other Grothendieck groups.
+
+
+
+%   % \subsubsection{Lift of algebraic vector bundles I: the descent
+%   % case}\label{sec:lift.AC}
+%   \subsubsection{An algebraic character}%\label{sec:lift.AC}
+%   Attached to a rational dual pair $(\bfV,\bfV')$, there is a distinguished character
+%   $\mktvvp$ of
+%   $\wtbfK\times\wtbfK'$ arising from the oscillator
+%   representation, which we shall describe.
+
+%   When $G$ is a real symplectic group, let $\cX_{\bfV}$ denote the $\mathbf i$-eigenspace of
+%   $L$. Then $\wtbfK$ is identified with \[
+%     \set{(g,c)\in \GL(\cX_{\bfV})\times
+%       \bC^\times|\det(g) = c^2}.\]
+%   It has a %genuine
+%   character
+%   $ (g,c)\mapsto c$, which is denoted by $\det_{\cX_{\bfV}}^{\half}$. % $\varsigma_{\bfV}$
+
+
+%   When $G$ is a quaternionic orthogonal group, still let
+%   $\cX_V$ denote the $\mathbf i$-eigenspace of $L$. Then $\wtbfK = \GL(\cX_{\bfV})$. Let $\det_{\cX_{\bfV}}$ denote its determinant character.
+
+%   Write $\sign{\bfV'} = (n'^+,n'^-)$. Then the character $\mktvvp|_{\wtbfK}$ is
+%   given by the following formula: %\footnote{If we denote $\varsigma_\cX$
+%   % (resp. trivial character) by $\det_{\cX}^{-\half}$ (resp. $\det_{\cX}^0$),
+%   % then
+%   % $\mktvvp|_{\wtbfK}$ always equals $\det_{\cX}^{-\frac{n^+-n^-}{2}}$.}
+%   \[%\begin{equation} \label{ktwvv1}
+%     \mktvvp|_{\wtbfK}:=\begin{cases}
+%       \left(\det_{\cX_{\bfV}}^{\half}\right)^{n'^+-n'^-} ,
+%       %\varsigma_{\bfV}^{n'^+-n'^-} ,
+%       & \text{if  $G$ is a real symplectic group};\\
+%       \det_{\cX_{\bfV}}^{\frac{n'^+-n'^-}{2}},&  \text{if  $G$ is a quaternionic orthogonal group}; \medskip \\
+%       \textrm{the trivial character, } & \text{otherwise}.\\
+%     \end{cases}
+%   \]%\end{equation}
+%   % The role of $\bfV$ and $\bfV'$ is symmetric, and
+%   The character $\mktvvp|_{\wtbfK'}$ is given by a similar formula
+%   with $n'^+-n'^-$ replaced by $n^--n^+$, where $(n^+, n^-)=\sign{\bfV}$.
+
+%   \trivial[]{
+%     The key property of $\mktvvp$ is that $(\mktvvp)^{-2}$ restricted on the
+%     conncected component of $\wtK\times \wtK'$ is the determinant
+%     of the $\wtbfK\times \wtbfK'$ action on $\cX$.
+
+%     We calculate $\det|_\cX$. When $\dotepsilon = 1$, $\cX  = \Hom(\bfV_1,
+%     \bfV'^{L',+\bfii}) \oplus \Hom(\bfV_{-1},\bfV'^{L', -\bfii})$ and
+%     $\det|_{\cX}(g_1,g_{-1}) = (\det g_1)^{-n'^+}(\det g_2)^{-n'^-}$. (Here by
+%     right we should take $\mktvvp|_\bfK$ be the character of half
+%     determinant when $G = \rO(p,q)$.
+%     However, we always fix the splitting $\rO(p,q)\rightarrow
+%     \widetilde{\rO(p,q)}$ so that the $\rO(p)\times \rO(q)$-action
+%     on the minimal $K$-type of the Weil
+%     representation is trivial.
+
+%     When $\dotepsilon = -1$, $\cX = \Hom(\bfV_{+\bfii}, \bfV'_0)\oplus
+%     \Hom(\bfV_{-\bfii}, \bfV'_{-1})$. Now $\det|_{\cX}(g) = \det(g)^{-n'^+ +
+%       n'^-}$.
+
+%     Similarly, when $\dotepsilon' = -1$, $\det|_{\cX}(g') = \det(g)^{n^+ -
+%       n'^-}$.
+%     These yields the claim.
+%   }
+
+%   \subsubsection{Lift of algebraic vector bundles}\label{sec:lift.AC}
+
+%   In the rest of this section, we assume that $\mathbb p$ is the parity of $\dim \bfV$ if $\epsilon=1$, and  the parity of $\dim \bfV'$ if $\epsilon'=1$.  Then $\mktvvp|_{\wtbfK}$ and
+%   $\mktvvp|_{\wtbfK'}$ are $\mathbb p$-genuine.
+
+%   Suppose $T\in \Xo$ realizes the descent from  $X = \MMP(T)\in \sO\in \Nil_{\bfK}(\fpp)$
+%   to
+%   $X' = \MMP'(T)\in \sO'\in \Nil_{\bfK'}(\fpp')$. Let  $\alpha\colon
+%   {\bfK}_X\rightarrow {\bfK'}_{X'}$ be the homomorphism as in \cref{eq:alpha}.
+
+%   Let $\rho'$ be a $\mathbb p$-genuine algebraic representation  of $\wtbfK'_{X'}$. Then  the representation $\mktvvp|_{\wt{\bfK'}_{X'}}\otimes \rho'$ of $\wtbfK'_{X'}$ descends  to a representation of $\bfK'_{X'}$.  Define
+%   \begin{equation}\label{defn:tlift.rho}
+%     \dliftv_{T}(\rho'):= \mktvvp|_{\wt{\bfK}_{X}} \otimes (\mktvvp|_{\wt{\bfK'}_{X'}}\otimes \rho')\circ \alpha,
+%   \end{equation}
+%   which  is a $\mathbb p$-genuine algebraic representation of $\wt{\bfK}_{X}$.
+
+%   Clearly $\dliftv_T$ induces a homomorphism from
+%   $\cR^{\mathbb p}(\wtbfK'_{X'})$ to $\cR^{\mathbb p}(\wtbfK_X)$.
+%   In view of \eqref{idenkr}, we thus have a homomorphism
+%   \begin{equation}\label{defn:DS.ch}
+%     \xymatrix{
+%       \dliftv_{\sO',\sO}\colon \cK^{\mathbb p}_{\sO'}(\wt{\bfK}') \ar[r]&
+%       \cK^{\mathbb p}_{\sO}(\wt{\bfK}).
+%     }
+%   \end{equation}
+%   This is independent of the choice of $T$.
+
+
+
+%   Suppose $\cO\in\Nil_{\bfG}(\fgg)$ and $\cO'=\DD(\CO)\in \Nil_{\bfG'}(\fgg')$. Using decomposition \cref{eq:dec.KO}, we define a homomorphism
+%   \begin{equation}\label{eq:DS.chc}
+%     \xymatrix{
+%       \dliftv_{\cO',\cO} := \displaystyle\sum_{\substack{\sO\subset \cO\cap \fpp\\ \sO' =
+%           \DD(\sO) \subset \fpp'}}\dliftv_{\sO',\sO}\colon \cK^{\mathbb p}_{\cO'}(\wt{\bfK}') \ar[r]&
+%       \cK^{\mathbb p}_{\cO}(\wt{\bfK})
+%     }
+%   \end{equation}
+%   where the summation
+%   is over all pairs  $(\sO, \sO')$ such that $\sO'\subset \fpp'$ is the descent of
+%   $\sO\subset \cO\cap \fpp$.
+
+%   % \begin{remark}
+%   %   The explicit form of $\KTW|_{\wtK'_{X'}}$ is not important for us. We
+%   %   refer the interested reader to \Cref{sec:KTW} for the explicit formula.
+%   % \end{remark}
+
+%   % Using \Cref{defn:tlift.rho}, we have the following estimate of associated
+%   % character by
+
+
+%   % Likewise let $\CK_{\KV}(\sO)$ denote the Grothendieck group of the category
+%   % of $\KV$-equivariant algebraic vector bundles on $\sO$.  Then
+%   % \begin{equation}\label{decomk}
+%   %   \CK_{\widetilde \KV}(\sO)=\left\{ \begin{array}{ll}
+%   %       \CK_{ \KV}(\sO)\oplus \CK_{\widetilde \KV}^{\mathrm{gen}}(\sO), & \textrm{if } (\epsilon, \dot \epsilon)=(-1,-1);\medskip\\
+%   %       \CK_{ \KV}(\sO),&  \textrm{otherwise, } \\
+%   %     \end{array}
+%   %   \right.
+%   % \end{equation}
+%   % where $\CK^{\mathrm{gen}}_{\widetilde \KV}(\sO)$ denotes the Grothendieck
+%   % group of the category of genuine $\widetilde \KV$-equivariant algebraic
+%   % vector bundles on $\sO$.  Here and as usual, ``genuine" means that the
+%   % non-trivial element in the kernel of the covering map
+%   % $\widetilde \KV\rightarrow \KV$ acts through the scalar multiplication by
+%   % $-1$.
+
+
+%   % \subsubsection{Lift of algebraic vector bundles II: the generalized descent
+%   % case}
+%   \medskip
+%   Now suppose $\sO'=\gDD_{\bfV,\bfV'}(\sO) \in \Nil_{\bfK'}(\fpp')$ is the
+%   generalized decent of $\sO\in \Nil_{\bfK}(\fpp)$. From the discussion in
+%   \Cref{def:GD}, there is an $(\epsilon',\dotepsilon')$-space decomposition
+%   $\bfV' = \bfV'_1\oplus \bfV'_2$ and an element
+%   \[
+%   T\in
+%   \CX_1^\circ:=\{w\in\Hom(\bfV,\bfV'_1)\mid w\textrm{ is surjective}\}\cap \CX\subseteq \CX^{\mathrm{gen}}
+%   \]
+%    such that
+%   $\sO'_1:= \bfK'_1 \cdot X' \in \Nil_{\bfK'_1}(\fpp'_1)$ is the descent of
+%   $\sO$. Here $X' := M'(T)\in \sO'$,
+%   $\bfK'_i:= \bfG_{\bfV'_i}^{L'}$ is a
+%   subgroup of $\bfK'$ for $i=1,2$, and $\fpp'_1 := \fpp_{\bfV'_1}$.
+
+
+%   Let $X := M(T)\in \sO$ and
+%   \begin{equation}\label{eq:def.alpha1}
+%     \alpha_1\colon \bfK_X \rightarrow \bfK'_{1,X'}
+%   \end{equation}
+%   be
+%   the (surjective) homomorphism defined in
+%   \cref{eq:alpha} with respect to the descent from $\sO$ to $\sO'_1$.
+%   Then the stabilizer $\bfS_T := \Stab_{\bfK\times
+%     \bfK'}(T)$ of $T$ is given by
+%   \begin{equation}\label{labst}
+%     \bfS_T = \Set{(k,\alpha_1(k)k'_2)\in \bfK\times \bfK' |k\in \bfK \text{ and } k'_2\in \bfK'_2}.
+%   \end{equation}
+%   For a $\mathbb p$-genuine algebraic representation $\rho'$ of $\wtbfK'_{X'}$, define a
+%   representation
+%   \begin{equation}\label{defn:glift.rho}
+%     \gdlift_{T}(\rho'):= \mktvvp|_{\wt{\bfK}_{X}} \otimes \left((\mktvvp|_{\wt{\bfK}'_{X'}}\otimes
+%       \rho')^{\bfK'_2}\right)\circ \alpha_1.
+%   \end{equation}
+%   Clearly, \cref{defn:glift.rho} is a generalization of \cref{defn:tlift.rho}, as ${\bfK'_2}$ is the trivial group in the latter case.
+%   As in the descent case, $\gdlift_{T}$ induces a homomorphism
+%   \[
+%     \dliftv_{\sO',\sO}\colon \cK^{\mathbb p}_{\wt{\bfK}'}(\sO')
+%     \rightarrow \cK^{\mathbb p}_{\wt{\bfK}}(\sO).
+%   \]
+%   Furthermore, \cref{eq:DS.chc} is extended to the generalized descent case: for every pair $(\cO,\cO')\in \Nil_{\bfG}(\fgg)\times  \Nil_{\bfG'}(\fgg')$ with $\cO' =\gDD_{\bfV,\bfV'}(\cO)$, we define a homomorhism
+%   \[
+%     \dliftv_{\cO',\cO} := \sum_{\substack{\sO \subset \cO\cap \fpp,\\
+%         \sO' = \gDD_{\bfV,\bfV'}(\sO)\subset \fpp'}}\dliftv_{\sO',\sO}\colon \cK^{\mathbb p}_{\wt{\bfK}'}(\cO')
+%     \rightarrow \cK^{\mathbb p}_{\wt{\bfK}}(\cO).
+%   \]
+
+
+
+
+%   \subsubsection{Lift of admissible orbit data}\label{sec:aod}
+%   % \subsubsection{Admissible orbit data}
+
+%     % The symbol ``$\widetilde{\phantom A}$" will be used in similar situations
+%   % without further explanation.
+
+%   Now let $\sO$ be a $\bfK$-orbit in $\CO\cap \p$, where
+%   $\cO\in \Nil_{\bfG}^{\mathbb p}(\fgg)$. Let $X\in \sO$.   The component group  $A_X:=\bfK_X/\bfK_X^\circ$  is an
+%   elementary abelian $2$-group by \Cref{sec:KX}.  Let $\fkk_X$ be the Lie algebra of $\bfK_X$. Denote by $\bbfK_X\rightarrow \bfK_X$ the covering map induced by the covering $\bbfK\rightarrow \bfK$.
+
+
+
+%   We make the following definition.
+
+% \begin{defn}[{\cite[Definition~7.13]{Vo89}}]\label{def:admD}
+%   Let $\gamma_X$ denote the one-dimensional $\bfK_X$-module
+%   $\bigwedge^{\rmtop} \fkk_X$ and let $\rdd\gamma_X$ be its
+%   differential. \footnote{$\rdd\gamma_X$ is the same as $\rdd\gamma_\fkk$ in
+%     \cite[Theorem~7.11]{Vo89} since $\fkk$ is reductive.}  An irreducible
+%   representation $\rho$ of $\bbfK_X$ is called \emph{admissible} if
+%   \begin{enumT}
+%   \item its differential $\rdd\rho$ is isomorphic to a multiple of
+%     $\half \rdd\gamma_X$, equivalently,
+%     \[
+%       \rho(\exp(x)) = \gamma_X(\exp(x/2))\cdot \id, \quad\textrm{for all }x\in
+%       \fkk_X\text{, and}
+%     \]
+%   \item it is $\bpp$-genuine.
+%   \end{enumT}
+
+%   Let $\Phi_X$ denote the set of all isomorphism classes of admissible
+%   irreducible representations of $\bbfK_X$.
+%   % Note that $\Phi_X$ may be empty.
+%   % \begin{defn}[{\cite[Definition~7.13]{Vo89}}]
+%   %   If $\Phi_X\neq \emptyset$, we say that the orbit $\sO:=\bfK\cdot X$ is
+%   %   \emph{admissible}.
+% \end{defn}
+
+% \Cref{def:admD} is obviously consistent with \Cref{defaod}, since a
+% representation $\rho\in \Phi_X$ determines an admissible orbit datum
+% $\cE\in \cKaod_\sO(\wtbfK)$, where $\cE$ is a $\bbfK$-equivariant algebraic
+% vector bundle on $\sO$ whose isotropy representation $\cE_X$ at $X$ is
+% isomorphic to $\rho$.  We therefore have an identification
+% \begin{equation}\label{idenip}
+%   \cKaod_\sO(\wtbfK)=\Phi_X.
+% \end{equation}
+% \trivial[h]{
+%   % \begin{obs}
+%   Suppose $\sO$ is an admissible orbit and $X\in \sO$.
+%   When $\bfG$ is an orthogonal group or symplectic group then
+%   \begin{enumT}
+%   \item $\Phi_X$ is a set of one-dimensional representations of $\wtK_X$ and
+%   \item
+%   \end{enumT}
+%   When $\bfG$ is a general linear group. Then $\Phi_X$ is a singleton, since $K_X$
+%   is always connected.
+%   % \end{obs}
+
+%   % \begin{obs}\label{obs:admchar}
+%   Suppose $\rho_0 \in \Phi_X$ is a character. Then $\Phi_X = \set{\chi \otimes \rho_0|\chi\in
+%     \whAX}$. Furthermore, if $A_X$
+%   is abelian, then $\Phi_X$ consists of
+%   characters and the tensor product action of the character
+%   group $\whAX$ on $\Phi_X$ is free and transitive, i.e. $\Phi_X$ is an $\whAX$
+%   torsor.
+%   % \end{obs}
+%   % \begin{proof}
+%   This follows by Mackey theory. Suppose $\rho\in \Phi_X$, then
+%   $\Hom_{\nu \bbfK_X^\circ}(\rho, \rho_0)\neq 0$.
+%   Therefore, $\rho$ is a sub-representation of
+%   \[
+%     \Ind_{\nu \bbfK_X^\circ}^{\bbfK_X}(\rho_0|_{\nu \bbfK_X^\circ}) = \Ind_{\nu \bbfK_X^\circ}^{\bbfK_X}
+%     \bfone \otimes \rho_0 = \Ind_{\bfK_X^\circ}^{\bfK_X} \bfone \otimes \rho_0.
+%   \]
+%   Hence $\rho \cong \chi \otimes \rho_0$ for some
+%   character  $\chi\in \widehat{A_X}$.
+%   The rest is clear.
+%   % \end{proof}
+% }
+% From the structure of $\bfK_X$ in \Cref{lem:KX1} and \Cref{lem:char.res}, it is
+% easy to see  that $\Phi_X$ consists of one-dimensional representations.
+% \medskip
+
+% \begin{lem}\label{lem:Kaod}
+%   The tensor product yields a simply transitive action of the character group
+%   $\widehat{A_X}$ on the set $\Phi_X$.
+% \end{lem}
+% \begin{proof}
+%   It is clear that we only need to show that $\Phi_X$ is nonempty. Consider a
+%   rational dual pair $(\bfV,\bfV')$ such that
+%   $\sO' = \DD(\sO) \in \Nil_{\bfK'}(\fpp')$ is the descent of
+%   $\sO\in \Nil_{\bfK}(\fpp)$. Suppose that $T\in \Xo$ realizes the descent from
+%   $X$ to $X'\in \sO'$. The proof of \cite[Proposition~6.1]{LM} shows that if
+%   $\rho'\in \Phi_{X'}$ is admissible, then $\dliftv_T(\rho')$ is
+%   admissible.
+%   Therefore, we may do reductions and eventually reduce the problem
+%   to the case when $\bfV$ is the zero space.  It is clear that $\Phi_X$ is a
+%   singleton in this case.
+%   \trivial[h]{
+%     Note that, the role of $V$ and $V'$ are switched in that proof.
+%     The short exact sequence for the proof of \cite[(23)]{LM} still
+%     holds since the moment map $M$ is smooth at
+%     $T$ (see the property of principle straum in \cite[page 217]{PV} or
+%     \Cref{sec:Sdes}).
+%   }
+% \end{proof}
+
+% \begin{remark}
+% By \Cref{lem:Kaod}, the set $\cKaod_\sO(\wtbfK)$ of admissible orbit data over
+% $\sO$ has $2^r$ elements, where $r$ is the number of orthogonal groups appearing in the decomposition
+% of $\bfR_X$ in \Cref{lem:KX1}.
+% \end{remark}
+
+% As in the proof of Lemma \ref{lem:Kaod},
+% the homomorphism \eqref{defn:DS.ch} restricts to a map
+% \begin{equation}\label{eq:l.adm}
+%   \dliftv_{\sO',\sO}\colon \cKaod_{\sO'}(\wtbfK') \rightarrow \cKaod_{\sO}(\wtbfK).
+% \end{equation}
+
+% \medskip
+
+% \begin{lem}\label{lem:admchar.surj}
+%   Let $A$ be the component group of $G$ which is identified with the component
+%   group of $\bfK$.  Then the following map is
+%   surjective:\footnote{%The component group $A$ of $G$ is
+%     % identified with the component group of $\bfK$.
+%     Under the identification \eqref{idenip}, the tensor product of a character
+%     $\chi\in \whA$ on $\cKaod_{\sO}(\wtbfK)$ is identified with the tensor
+%     product of $\chi|_{A_X}$ with the isotropy representation.}
+%   \[
+%     \xymatrix@C=4em@R=0em{
+%       \whA \times \cKaod_{\sO'}(\wtbfK')\ar[r] & \cKaod_{\sO}(\wtbfK),\\
+%       (\chi,\cE') \ar@{|->}[r] & \chi \otimes \dliftv_{\sO',\sO}(\cE').  }
+%   \]
+%   In particular, $\cKaod_{\sO}(\wtbfK)$ is a singleton if $G$ is a quaternionic
+%   group.
+% \end{lem}
+% \begin{proof}
+%   This follows from \Cref{lem:char.surj} and \Cref{lem:Kaod}.
+% \end{proof}
+
+
+
+
+% \trivial[h]{
+%   \begin{proof}
+%     \begin{enumPF}
+%     \item follows from the fact that \begin{enumIL}
+%       \item $\gamma_X$ is always trivial since $R_X$ is semisimple and
+%       \item $\bfK_X$ is connected.
+%       \end{enumIL}
+%     \item Recall that $\bfK_X = R_X \ltimes U_X$, where
+%       $R_X=\prod_{l} {^{l}{\bfK}}$. Note that $\gamma_X|_{U_X}$ is trivial and
+%       \[
+%         \gamma_X |_{R_X} = \bigboxtimes_{l} {\det}_{^{l}{\bfK}}^{n_l}
+%       \]
+%       where $\det_{^{l}{\bfK}}$ is the restriction of the determinant character
+%       of $\GL(\bfV`l)$ on $^{l}{\bfK}$, and $n_l$ is a certain non-negative
+%       integer.
+
+%       % Let $R_{-}=\prod_{l \text{ odd}} {^{l}{\bfK}}$ and
+%       % $R_+ = \prod_{l \text{ even}}{^{l}{\bfK}}$.
+%       Suppose $G$ is a symplectic group, then $^{l}{\bfK}$ is a product of
+%       orthogonal groups for $l$ odd, and a general linear group for $l$ even.
+%       The preimage $\breve{^{l}{\bfK}}$ of $^{l}{\bfK}$ is thus a genuine double
+%       covering for $l$ even (see \Cref{eq:def.brK}).
+
+%       If the parity $\bpp$ is even, then $\Phi_X$ is non-empty if and only if
+%       $n_l$ is even for all $l$ even. In that case, one may choose
+%       \begin{equation}\label{eq:rho0.sp}
+%         \rho_0 =
+%         \bigboxtimes_{l\text{ odd}} \bfone \boxtimes \bigboxtimes_{l\text{
+%             even}}{\det}_{^{l}{\bfK}}^{n_l/2}
+%       \end{equation}
+%       and apply %\cref{obs:admchar}.
+
+%       If the parity $\bpp$ is odd, then $\Phi_X$ is non-empty if and only if
+%       $n_l$ is odd for all $l$ even. One can choose $\rho_0$ as in
+%       \eqref{eq:rho0.sp} by replacing $\det_{^{l}{\bfK}}^{n_l/2}$ with the
+%       genuine character
+%       $\det_{\breve{^{l}{\bfK}}}^{n_l/2}\colon (g,c) \mapsto c^{n_l}$ of
+%       $\breve{^{l}{\bfK}}$.
+
+%       When $G$ is an orthogonal group, the argument is similar. We leave it to
+%       the reader.
+%     \end{enumPF}
+%   \end{proof}
+% }
 
 
 
@@ -5068,7 +5088,7 @@ Recall the group $\cK^{\mathbb p}_{\cO}(\wtbfK)$ from  \Cref{sec:LVB}.
 From \cite[Theorem~2.13]{Vo89},  we have a canonical homomorphism
 \[
 \xymatrix{
-  \Ch_\cO\colon   \cK^{\mathbb p}_\cO(\fgg, \wtK)\ar[r]& \cK^{\mathbb p}_{\cO}(\wtbfK).
+  \AC \colon   \cK^{\mathbb p}_\cO(\fgg, \wtK)\ar[r]& \cK^{\mathbb p}_{\cO}(\wtbfK).
 }
 \]
 For a $\mathbb p$-genuine $\cO$-bounded $(\fgg,\wtK)$-module $\pi$ of finite
@@ -5668,37 +5688,82 @@ is well-defined, and we show that it is bijective by explicitly  constructing it
 
 \medskip
 
-The key properties of the descent map when $\star\in \set{D,B,C^*}$ are summarized in the following two propositions.
 
 
 %The following equation of signatures will be crucial in our computation of the local system in the next section.
-
+As in the Introduction, $\cO$ denotes the Barbasch-Vogan dual of $\ckcO$. % We also consider it as a Young diagram.
 The following proposition is easy to verify:
-\begin{prop}\label{prop:D.sign}
-  \begin{enuma}
-    \item
-Suppose $k\in \bN^{+}$, $\star = D$ and $\ckcO$ consists of two rows with lengths $2k-1$ and $1$.
-The following map is bijective:
+
+% \begin{prop}\label{prop:D.sign}
+%   \begin{enuma}
+%     \item
+%     Suppose $k\in \bN^{+}$, and either
+%     \begin{itemize}
+%       \item $\star = B$ and $\ckcO$ consists of one row with length $2k$,
+%              or
+%       \item $\star = D$ and $\ckcO$ consists of two rows with lengths $2k-1$ and
+%             $1$.  %(so $\cO= (1^{2k})_{D}$), or
+%     \end{itemize}
+% Then $\cO = (1^{\bfrr_{1}(\ckcO)+1})_{\star}$ and the following map is bijective:
+% \[
+%   \begin{array}{rcl}
+%     \PBP_{\star}(\ckcO)& \longrightarrow& \Set{
+%     (p,q,\varepsilon)|
+%     \begin{minipage}{13em}
+%       $p,q \in \bN$ such that $p+q=\abs{\cO}$,\\
+%       % $\varepsilon \in \bZ/2\bZ$
+%       $\varepsilon=1$ if $pq=0$, and \\
+%       $\varepsilon\in \set{0,1}$ otherwise.
+%     \end{minipage}
+%     },\\
+%     \tau &  \mapsto & (p_{\tau},q_{\tau}, \varepsilon_{\tau}).
+%   \end{array}
+% \]
+% \item
+% Suppose $k\in \bN$, $\star = C^{*}$ and $\ckcO$ consists of one row with length $2k+1$.
+% The following map is bijective:
+% \[
+%   \PBP_{\star}(\ckcO) \longrightarrow \set{(2p,2q)|p,q \in \bN \text{ such that } p+q=k}, \quad \tau \mapsto (p_{\tau},q_{\tau}).
+% \]
+% \end{enuma}
+% \qed
+% \end{prop}
+
+\begin{lem}
+\label{lem:D.sign}
+  Suppose $k\in \bN^{+}$, $\star\in \set{B,D,C^{*}}$. Let $\ckcO$ be the
+    $\star$-good parity orbit such that   $\bfrr_{3}(\ckcO)=0$ and
+    \[
+      (\bfrr_{1}(\ckcO), \bfrr_{2}(\ckcO))
+      =
+      \begin{cases}
+        (2k-2,0) & \text{if } \star=B,\\
+        (2k-1,1) & \text{if } \star=D,\\
+        (2k-1,0) & \text{if } \star=C^{*}.\\
+      \end{cases}
+    \]
+    Then $\ckcO$ is the regular nilpotent orbit % in $\check \fgg$
+    and $\cO = (1^{\bfrr_{1}(\ckcO)+1})_{\star}$.
+
+When $\star\in \set{B,D}$ the following map is bijective:
 \[
-  \PBP_{\star}(\ckcO) \longrightarrow \Set{
-    (p,q,\varepsilon)|
-    \begin{minipage}{13em}
-      $p,q \in \bN$ such that $p+q=2k$,\\
-      % $\varepsilon \in \bZ/2\bZ$
-      $\varepsilon=1$ if $pq=0$, and \\
-      $\varepsilon\in \set{0,1}$ otherwise.
-    \end{minipage}
-  }, \quad \tau \mapsto (p_{\tau},q_{\tau}, \varepsilon_{\tau}).
+  \begin{array}{rcl}
+    \PBP_{\star}(\ckcO)& \longrightarrow& \Set{
+    (p,q,\varepsilon) \in \bN\times\bN\times \bZ/2\bZ|
+    \text{ $p+q=\abs{\cO}$,\\
+        $\varepsilon=1$ if $pq=0$
+    }},\\
+    \tau &  \mapsto & (p_{\tau},q_{\tau}, \varepsilon_{\tau}).
+  \end{array}
 \]
-\item
-Suppose $k\in \bN$, $\star = C^{*}$ and $\ckcO$ consists of one row with length $2k+1$.
-The following map is bijective:
+
+When $\star = C^{*}$, the following map is bijective:
 \[
-  \PBP_{\star}(\ckcO) \longrightarrow \set{(2p,2q)|p,q \in \bN \text{ such that } p+q=k}, \quad \tau \mapsto (p_{\tau},q_{\tau}).
+  \PBP_{\star}(\ckcO) \longrightarrow \set{(p,q)|p,q \in 2\bN \text{ and }
+    p+q=\abs{\cO} }, \quad \tau \mapsto (p_{\tau},q_{\tau}).
 \]
-\end{enuma}
 \qed
-\end{prop}
+\end{lem}
 
 
 
@@ -5709,10 +5774,13 @@ For every painted bipartition $\tau$, write
 
 When $\bfrr_2(\check \CO)>0$, the double descent
 $\DD^2(\tau):=\DD(\DD(\tau))$ is well-defined whenever
-$\tau\in \PBP_{\star}(\ckcO)$. As in the Introduction, $\CO$ denotes
-the Barbasch-Vogan dual of $\check \CO$. We also consider it as a Young diagram.
+$\tau\in \PBP_{\star}(\ckcO)$.
 
-\begin{prop}\label{prop:delta}
+
+The key properties of the descent map when $\star\in \set{D,B,C^*}$ are summarized in the following two propositions.
+
+\begin{lem}
+\label{lem:delta}
 Assume that $\star \in \set{D,B,C^*}$ and $\bfrr_2(\ckcO)>0$. Write $\ckcOpp := \ckDD(\ckcO')$ and consider the map
 \begin{equation}\label{eq:delta}
   \delta  \colon \PBP_\star(\ckcO)\longrightarrow
@@ -5745,7 +5813,7 @@ Moreover,  for every $\tau\in  \PBP_\star(\ckcO) $,
 =(\bfcc_2(\cO)-1,\bfcc_2(\cO)-1)+\ssign(\DD^2(\tau))+\ssign(\tau_\bftt).
 \end{equation}
 \end{enuma}
-\end{prop}
+\end{lem}
 
 \begin{proof}
   We give the detailed proof of part (b) when $\star=B$.
@@ -5886,15 +5954,15 @@ unless $\star\in \set{B,D}$ and $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$.
 \begin{proof}
   % Suppose $\tau_{1}, \tau_{2} \in \PBP_{\star}(\ckcO)$ such that
   % $ \delta' (\tau_{1}) = \delta'(\tau_{2})$. Now $\DD(\tau_{1}) = \DD(\tau_{2})$ follows from
-  % the injectivity results in \Cref{prop:delta} and \Cref{prop:CC.bij}.
-It follows from the injectivity results in \Cref{prop:delta} and \Cref{prop:CC.bij}.
+  % the injectivity results in \Cref{lem:delta} and \Cref{prop:CC.bij}.
+It follows from the injectivity results in \Cref{lem:delta} and \Cref{prop:CC.bij}.
   % Suppose $\uptau_{1}, \uptau_{2} \in \PBPes(\ckcO)$ such that
   % $ \delta' (\uptau_{1}) = \delta'(\uptau_{2})$. By the definition of descent,
   % $\wp_{\uptau_{1}} = \wp_{\uptau_{2}}$. Now $\tau_{1} = \tau_{2}$ follows from
-  % the injectivity results in \Cref{prop:delta} and \Cref{prop:CC.bij}.
+  % the injectivity results in \Cref{lem:delta} and \Cref{prop:CC.bij}.
 \end{proof}
 
-Combining the above propotition with \Cref{prop:D.sign}, we get the following.
+Combining the above propotition with \Cref{lem:D.sign}, we get the following.
 \begin{cor}\label{cor:dpinj}
 If $\star \in \set{B, D,C^*}$, then the map
 \begin{equation}
@@ -5908,26 +5976,118 @@ is injective. \qed
 \end{cor}
 
 \section{Associated cycles of painted bipartitions: combinatorics} \label{sec:ACC}
-We define
+% We define
+
+% \[
+%   \cK_{\star}(\ckcO) :=\bigsqcup_{\sfss} \cK_{\sfss}(\ckcO),
+% \]
+% where $\sfss$ running over all possible classical signatures.
+% %We do induction on the number of rows of the nilpotent orbits $\ckcO$.
+% We prove the properties of $\AC(\uptau)$ inductively.
+
+We fist define the combinatorical companion of $\AC(\uptau)$.
+Suppose $\abs{\ckcO}=0$. For $\uptau\in \PBP_{\star}(\ckcO)$, we define
 \[
-  \cK_{\star}(\ckcO) :=\bigsqcup_{\sfss} \cK_{\sfss}(\ckcO),
+  \ac_{\uptau} :=
+  \begin{cases}
+   (1^{\Sign(\uptau)})_{\star}\lotimes(0,1) & \text{if } \star=B\\
+   (1^{(0,0)})_{\star} & \text{otherwise}.
+  \end{cases}
 \]
-where $\sfss$ running over all possible classical signatures.
-%We do induction on the number of rows of the nilpotent orbits $\ckcO$.
-We prove the properties of $\AC(\uptau)$ inductively.
+Suppose $\abs{\ckcO} >0$. For $\uptau = (\tau,\wp)\in \PBP_{\star}(\ckcO)$, let
+$\uptau' = \DD(\uptau)$ and we define
+\[
+\ac_{\uptau} :=
+\begin{cases}
+  \dlift[\sfss_{\uptau'}][\sfss_{\uptau}](\ac_{\uptaup}\lotimes (\varepsilon_{\wp},\varepsilon_{\wp}))
+  & \text{if } \star\in \set{C,\wtC},\\
+  \dlift[\sfss_{\uptau'}][\sfss_{\uptau}](\ac_{\uptaup})
+  & \text{if } \star = D^{*}, \\
+  \dlift[\sfss_{\uptau'}][\sfss_{\uptau}](\ac_{\uptaup})\lotimes (0,\varepsilon_{\tau})
+  & \text{if } \star \in \set{B,D}, \\
+  \dlift[\sfss_{\uptau'}][\sfss_{\uptau}](\ac_{\uptaup})
+  & \text{if } \star = C^{*}.
+\end{cases}
+\]
 
-\subsection{Properties of $\AC(\tau)$}
+For $\star\in \set{B,D}$ and $\cE\in \bZ[\MYD_{\star}]$, we write
+\[
+\cE^{+} := \Lambda_{(1,0)}(\cE) \AND \cE^{-} := \Lambda_{(0,1)}(\cE).
+\]
+\begin{lem}\label{lem:dlift}
+  Suppose $\ckcO$ such that $\bfrr_{2}(\ckcO)>0$. Let
+  $\uptau = (\tau,\wp)\in \PBPes(\ckcO)$ and $\uptaup = \DD(\uptau)$.
+\begin{enuma}
+  \item
+  Suppose $\star\in \set{C,\wtC}$.  Then
+  \[
+    \ac_{\uptau}=
+    \begin{cases}
+    \maltese^{y}\big( (\ac_{\uptau'}\lotimes (\varepsilon_{\wp},\varepsilon_{\wp})\right)
+    \cdot (n_{0},n_{0})\big) & \text{if } \bfrr_{1}(\ckcO)>\bfrr_{2}(\ckcO)\\
+    \maltese^{y}\big( (\pac{\uptau'} + \nac{\uptaup})\cdot (0,0) \big)
+    & \text{if } \bfrr_{1}(\ckcOj=\bfrr_{2}(\ckcO)
+    \end{cases}
+  \]
+  where $y$ is an integer determined by $\Sign(\uptaup)$ and $n_{0} = (\bfcc_{1}(\cO)-\bfcc_{2}(\cO))/2$.
+  \item
+  Suppose $\star\in \set{B,D}$.
+  When  $\bfrr_{2}(\cO)>\bfrr_{3}(\cO)$,
+  \[
+    \ac_{\uptau}= \big(\maltese^{y}(\ac_{\uptau'})\lotimes (0,\varepsilon_{\tau})\right)
+    \cdot (p_{\tau_{\bftt}},q_{\tau_{\bftt}})
+  \]
+  where $y$ is an integer determined by $\Sign(\uptau)$.
 
+  When  $\bfrr_{2}(\cO)>\bfrr_{3}(\cO)$,
+  \[
+    \ac_{\uptau} =
+      \big((\maltese^t (\pac{\uptaupp}\cdot (0,0)) \cdot \pcP_{\tau}
+      +  (\maltese^t(\nac{\uptaupp}\cdot (0,0)) ) \cdot \ncP_{\tau}\big)\lotimes(0,\varepsilon_{\tau})
+  \]
+  where $\uptaupp = \DD^{2}(\uptau)$ and
+  \[
+  \begin{split}
+    t &  = \frac{\abs{\ssign(\tau_{\bftt})}}{2}\\
+    \pcP_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}},q_{\tau_{\bftt}}-1) & \text{when
+      } q_{\tau_{\bftt}}-1\geq 0  \\
+      \emptyset & \text{otherwise}
+    \end{cases}\\
+    \ncP_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}}-1,q_{\tau_{\bftt}}) & \text{when
+      } p_{\tau_{\bftt}}-1\geq 0  \\
+      \emptyset & \text{otherwise}
+    \end{cases}\\
+  \end{split}
+\]
+\item
+  Suppose $\star\in \set{D^{*}}$.  Then
+  \[
+    \ac_{\uptau}=\ac_{\uptau'} \cdot (n_{0},n_{0})
+\]
+  where $n_{0} = (\bfcc_{1}(\cO)-\bfcc_{2}(\cO))/2$.
+\item
+  Suppose $\star\in \set{C^{*}}$.  Then
+  \[
+    \ac_{\uptau}=\ac_{\uptau'} \cdot (p_{\tau_{\bftt}},q_{\tau_{\bftt}}).
+\]
+\end{enuma}
+\end{lem}
+\begin{proof}
+  \Cref{lem:delta}.
+\end{proof}
 
-\begin{prop}
-    For each $\uptau\in \PBPes(\ckcO)$, $\oAC{\uptau}\neq 0$.
-\end{prop}
+\subsection{Properties of $\ac_{\tau}$}
+\label{sec:ac}
 
-\begin{prop}
-  Suppose $\star \in \set{C,\wtC,D^{*}}$ and $\ckcO\neq \emptyset$.
+\begin{lem}
+For each $\uptau\in \PBPes(\ckcO)$, $\ac_{\uptau}\neq 0$.
+\end{lem}
+
+\begin{lem}
+Suppose $\star \in \set{C,\wtC,D^{*}}$ and $\ckcO\neq \emptyset$.
   \begin{enuma}
     \item Let $\uptau_{1} = (\tau_{1},\wp_{1})$ and $\uptau_{2}=(\tau_{2},\wp_{2})$ be two elements in
-    $\PBPesp(\ckcOp)$ such that $\oAC{\uptau_{1}} =  \oAC{\uptau_{2}}$.
+    $\PBPesp(\ckcOp)$ such that $\ac_{\uptau_{1}} =  \ac_{\uptau_{2}}$.
     Then
     \[\Sign(\tau'_{1})=\Sign(\tau'_{2}) \quad \text{and} \quad \varepsilon_{\wp_{1}}=\varepsilon_{\wp_{2}},
     \]
@@ -5942,84 +6102,87 @@ We prove the properties of $\AC(\uptau)$ inductively.
     % \end{itemize}
     \item When $\ckcO$ is weakly-distinguished, the following map is injective.
     \[
-      \AC\colon \PBPes( \cOp )\longrightarrow \cK_{\star}(\cO).
+      \ac\colon \PBPes( \cOp )\longrightarrow \bZ[\MYD_{\star}(\cO)].
+      %\AC\colon \PBPes( \cOp )\longrightarrow \cK_{\star}(\cO).
     \]
-    \item When $\ckcO$ is quasi-distinguished, the image of the above map is in $\AOD_{\star}(\ckcO)$.
+    \item When $\ckcO$ is quasi-distinguished, the image of the above map is in $\MYD_{\star}(\ckcO)$.
     %$\AC( \PBPes( \cOp )\longrightarrow K_{\star}(\cO)$ is injective.
   \end{enuma}
-\end{prop}
+\end{lem}
 
 
-\begin{prop}
-  Suppose $\star \in \set{B,D}$ and $(\star, \check \CO)\neq (D, \emptyset)$.
+\begin{lem}
+Suppose $\star \in \set{B,D}$ and $(\star, \check \CO)\neq (D, \emptyset)$.
   \begin{enuma}
   \item Let $\uptau_i=(\tau_i, \wp_i)\in \PBPe_\star(\ckcO)$ and
   $\epsilon_i\in \Z/2\Z$ ($i=1,2$) such that
   \[
-    \mathrm{AC}(\uptau_1)\otimes {\det}^{\epsilon_1}= \mathrm{AC}(\uptau_2)\otimes {\det}^{\epsilon_2}.
+    \ac_{\uptau_1}\lotimes (\epsilon_{1},\epsilon_{1})= \ac_{\uptau_2}\lotimes( \epsilon_{2},\epsilon_{2} ).
   \]
   Then
   \[
     \epsilon_1=\epsilon_2\qquad\textrm{and}\qquad \varepsilon_{\tau_1}=\varepsilon_{\tau_2}.
   \]
-  %   \item Let $\uptau_{1} = (\tau_{1},\wp_{1})$ and
-  %   $\uptau_{2}=(\tau_{2},\wp_{2})$ be two distinct elements in $\PBPes(\ckcO)$.
-  %   Then
-  %   \begin{itemize}
-  %     \item either $\oAC{\uptau_{1}}\neq \oAC{\uptau_{2}}$;
-  %     \item or $\uptau'_{1} \neq \uptau'_{2}$ and $\varepsilon_{\tau_{1}} = \varepsilon_{\tau_{2}}$
-  %      where $\uptau'_{i}:= \DD(\tau_{i})$ for $i=1,2$.
-  % \end{itemize}
-  %
+
   \item When $\ckcO$ is weakly-distinguished, the following map is injective.
   \[
-    \AC\colon \PBPes( \cOp )\times \bZ/2\bZ \longrightarrow \cK_{\star}(\cO),
+    \ac \colon \PBPes( \cOp )\times \bZ/2\bZ \longrightarrow \cK_{\star}(\cO),
     (\uptau,\epsilon) \mapsto \AC(\uptau)\otimes {\det}^{\epsilon}.
   \]
   \item When $\ckcO$ is quasi-distinguished, the image of the above map is in $\AOD_{\star}(\ckcO)$.
 \end{enuma}
-\end{prop}
+\end{lem}
 
-\begin{prop}
-  Suppose $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
+\begin{lem}
+Suppose $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
   \begin{enuma}
-  \item  We have
-  \begin{enumT}
-    \item If $x_{\uptau} = s$, then $\pAC{\uptau} = \nAC{\uptau} = 0$.
-    \item If $x_{\uptau} \in \set{r,c}$, then $\pAC{\uptau} \neq 0$ and $\nAC{\uptau}=0$.
-    \item If $x_{\uptau} = d$, then $\pAC{\uptau}\neq 0$ and $\nAC{\uptau}\neq 0$.
-  \end{enumT}
+  \item  Then $\ac_{\uptau}$ satisfies
+  \[
+    \begin{cases}
+      \ac_{\uptau}^{+} =0, \text{ and } \ac_{\uptau}^{-}=0, & \text{when } x_{\uptau}=s,\\
+      \ac_{\uptau}^{+} \neq 0, \text{ and }   \ac_{\uptau}^{-}=0 , & \text{when } x_{\uptau}\in \set{r,d},\\
+      \ac_{\uptau}^{+} \neq 0, \text{ and }   \ac_{\uptau}^{-}\neq 0,  & \text{when } x_{\uptau}=d.\\
+    \end{cases}
+  \]
+  % \begin{enumT}
+  %   \item If $x_{\uptau} = s$, then $\pac{\uptau} = \nac{\uptau} = 0$.
+  %   \item If $x_{\uptau} \in \set{r,c}$, then $\pac{\uptau} \neq 0$ and $\nac{\uptau}=0$.
+  %   \item If $x_{\uptau} = d$, then $\pac{\uptau}\neq 0$ and $\nac{\uptau}\neq 0$.
+  % \end{enumT}
     \item The map
     \begin{equation}\label{eq:up}
       \begin{array}{rcl}
-        \Upsilon_{\cO} \colon \set{\oAC{\uptau}|\pAC{\uptau}\neq 0}
-        & \rightarrow &  \set{(\pAC{\uptau},\nAC{\uptau})|\pAC{\uptau}\neq 0} \\
-        \oAC{\uptau} &\mapsto & (\pAC{\uptau},\nAC{\uptau})
+        \Upsilon_{\cO} \colon \set{\ac_{\uptau}|\pac{\uptau}\neq 0}
+        & \rightarrow &  \set{(\pac{\uptau},\nac{\uptau})|\pac{\uptau}\neq 0} \\
+        \ac_{\uptau} &\mapsto & (\pac{\uptau},\nac{\uptau})
       \end{array}
     \end{equation}
     is injective.
-    % \footnote{In fact, we only need to know whether $\nAC{\uptau}$ is
+    % \footnote{In fact, we only need to know whether $\nac{\uptau}$ is
     %   non-zero or not.}
   \item When $\bfrr_{1}(\ckcO)> \bfrr_{3}(\ckcO)$, the maps
     % $\pUpsilon_{1}:=\pr_{1}\circ \Upsilon$
     \[
       \begin{array}{rcl}
-        \pUpsilon_{\cO} \colon \set{\oAC{\uptau}|\pAC{\uptau}\neq 0} &\rightarrow  & \set{\pAC{\uptau}}\\
-       \oAC{\uptau} & \mapsto & \pAC{\uptau}\\
+        \pUpsilon_{\cO} \colon \set{\ac_{\uptau}|\pac{\uptau}\neq 0} &\rightarrow  & \set{\pac{\uptau}}\\
+       \ac_{\uptau} & \mapsto & \pac{\uptau}\\
       % \end{array} \quad \text{and}
       % \begin{array}{rcl}
-        \nUpsilon_{\cO} \colon \set{\oAC{\uptau}|\nAC{\uptau}\neq 0} &\rightarrow & \set{\nAC{\uptau}}\\
-       \oAC{\uptau} &\mapsto & \nAC{\uptau}
+        \nUpsilon_{\cO} \colon \set{\ac_{\uptau}|\nac{\uptau}\neq 0} &\rightarrow & \set{\nac{\uptau}}\\
+       \ac_{\uptau} &\mapsto & \nac{\uptau}
      \end{array}
    \]
     are injective.
   \end{enuma}
-\end{prop}
+\end{lem}
 
 % In this section, we let $\star \in \set{B,D,C^{*}}$. Now
 % $\star' = \wtC, C, D^{*}$  respectively.
+%
 
-We assume all the claim had been proven when $\cO$ has at most two columns, that
+We will prove the above lemmas by induction on the number of columns in $\cO$.
+
+We assume all the claim had been proven when $\ckcO$ has at most two columns, that
 is
 \begin{itemize}
   \item When $\star = D$, $\bfrr_{3}(\ckcO) = 0$;
@@ -6028,95 +6191,102 @@ is
 \end{itemize}
 
 
-% \begin{prop}\label{prop:LLS}
-%    We have:
-%   \begin{enumS}
-%     \item For each $\uptau'\in \PBPesp(\ckcOp)$, $\oAC{\uptaup}\neq 0$.
-%     \item For each $\uptau\in \PBPes(\ckcO)$, $\oAC{\uptau}\neq 0$.
-%     \item Let $\uptau'_{1},\uptau'_{2}$ be two distinct elements in
-%     $\PBPesp(\ckcOp)$. Then either
-%     \begin{itemize}
-%       \item      $\oAC{\uptau'_{1}}\neq \oAC{\uptau'_{2}}$; or
-%       \item $(\tau''_{1},\varepsilon'_{1})\neq (\tau''_{2},\varepsilon'_{2})$
-%       and $\Sign(\tau''_{1})=\Sign(\tau''_{2})$ where
-%       $(\tau''_{i},\varepsilon'_{i}) := \DD(\uptaup_{i})$ for $i=1,2$.
-%   \end{itemize}
-%   \item Let $\uptau_{1},\uptau_{2}$ be two distinct elements in
-%     $\PBPes(\ckcO)$. Then either
-%     \begin{itemize}
-%       \item $\oAC{\uptau_{1}}\neq \oAC{\uptau_{2}}$; or
-%       \item $\uptau'_{1}\neq \uptau'_{2}$ and $\varepsilon_{1} = \varepsilon_{2}$
-%        where $(\uptau'_{i},\varepsilon_{i}) := \DD(\uptau_{i})$ for $i=1,2$.
-%   \end{itemize}
-%     \item \label{p:drcls.1}
-%     When $\star \in \set{B,D}$
-%     The local system $\oAC{\uptau}$ is disjoint with their determinant twist:
-%     \begin{equation}\label{eq:LS.dis}
-%       \set{\oAC{\uptau} | \uptau \in \PBPes(\ckcO)} \cap
-%       \set{\oAC{\uptau}\otimes \det| \uptau\in \PBPes(\ckcO)} = \emptyset.
-%     \end{equation}
-%   \item \label{it:LLS.4}
-%   We have
-%   \begin{enumT}
-%     \item If $x_{\uptau} = s$, then $\pAC{\uptau} = \nAC{\uptau} = 0$.
-%     \item If $x_{\uptau} \in \set{r,c}$, then $\pAC{\uptau} \neq 0$ and $\nAC{\uptau}=0$.
-%     \item If $x_{\uptau} = d$, then $\pAC{\uptau}\neq 0$ and $\nAC{\uptau}\neq 0$.
-%   \end{enumT}
-%   \item When $\ckcO$ is weakly-distinguished, the map
-%   $\AC\colon \PBPes(\cO)\longrightarrow K_{\star}(\cO)$ is a injective.
-% \end{enumS}
-% \end{prop}
 
+\subsection{The initial cases}\label{sec:pfDC.init}
+Suppose $\bfcc_{1}(\cO)=0$. Then the group $G_{\bC}$ is the trivial group,
+everything are clear.
 
-\subsection{The initial case:}\label{sec:pfDC.init}
-When $k=0$, $\cO = (C_{1}=2c_{1},C_{0}=2c_{0})$ has  at most
-two columns.
-Now $\uppi_{\uptaup}$ is the trivial representation of $\Sp(2c_{0},\bR)$.
-The lift $\uppi_{\uptaup} \mapsto \Thetab(\uppi_{\uptaup})$ is in fact a stable
-range theta lift.%, and therefore $\uppi_{\uptau}\neq 0$.
-For $\uptau\in \drc(\cO)$, let $(p_{1},q_{1}) = \ssign(\bfxx_{\uptau})$ and
-$x_{\uptau}$ be the foot of $\uptau$. It is easy to see that  (using associated
-character formula)
-\[
-  \oAC{\uppi_{\uptau}} = \cT_{\uptau}\cdot \cP_{\uptau},
-  \text{ where }\cT_{\uptau}:=\dagger \dagger_{c_{0},c_{0}},
-  \text{ and } \cP_{\uptau}:=\begin{cases}
-    \ddagger_{p_{1},q_{1}}&  x_{\uptau} \neq d,\\
-    \dagger_{p_{1},q_{1}}& x_{\uptau} = d.\\
+We now assume $\bfcc_{1}(\cO)>0$ and $\bfcc_{2}(\cO)=0$.
+
+Suppose $\star \in \set{C,\wtC,D^*}$. There there is $k\in\bN^{+}$ such that
+$\cO = (1^{2k})_{\star}$, and
+\[ \ckcO =
+  \begin{cases}
+   ((2k+1)^{1})_{B} & \text{when } \star=C,\\
+   ((2k)^{1})_{C} & \text{when } \star=\wtC,\\
+   (1^{1}\, (2k-1)^{1} )_{D} & \text{when } \star=D^{*}. \\
   \end{cases}
 \]
-Note that $\oAC{\uppi_{\uptau}}$ is irreducible.
+Now $\PBPes(\ckcO)$ has only one element, say $\uptau_{0}$, which
+maps to $\ac_{\uptau_{0}} = (1^{(k,k)})_{\star}$.
 
-Let $\cO_{1} = (2(c_{1}-c_{0}))\in \dpeNil(D)$. Using the above formula,
-one can check that the following maps are bijections
+Suppose $\star \in \set{B,D,C^{*}}$. There is $k\in \bN^{+}$ such that
+$\cO$ and $\ckcO$ are given by \Cref{lem:D.sign}.
+When $\star \in \set{B,D}$,
 \[
-  \begin{tikzcd}[row sep=0em]
-    \drc(\cO_{1}) &\ar[l] \drc(\cO) \ar[r] & \LLS(\cO)\\
-    \bfxx_{\uptau} & \ar[l,maps to] \uptau \ar[r,mapsto] & \oAC{\uptau}.
-  \end{tikzcd}
+  \ac_{\uptau} = (1^{(p_{\tau},(-1)^{\varepsilon_{\tau}}q_{\tau})})_{\star}
+  \quad  \Forall \uptau\in \PBPes(\ckcO).
 \]
-To see that $\drc(\cO)\ni\uptau\mapsto \oAC{\uptau}$ is an injection, one check the
-following lemma holds:
-\begin{lem}\label{c:init.CD}
-  The map $\drc(\cO_{1})\longrightarrow \bN^{2}\times \bZ/2\bZ$ given by
-  $\uptau\mapsto (\ssign(\uptau),\upepsilon_{\uptau})$ is injective (see
-  \Cref{sec:upepsilon} for the definition of $\upepsilon_{\uptau}$). Moreover,
-  $\upepsilon_{\uptau}=0$ only if $\ssign(\uptau)\geq (0,1)$. \qedhere
-\end{lem}
+Thanks to \Cref{lem:D.sign}, it is easy to see that
+\[
+  \begin{array}{rcl}
+    \PBPes(\ckcO)\times \bZ/2\bZ & \rightarrow & \MYD_{\star}(\cO)\\
+    (\uptau,\epsilon) & \mapsto & \ac_{\uptau}\otimes (\epsilon,\epsilon)
+  \end{array}
+\]
+is a bijection.
+
+When $\star = C^{*}$, for $\uptau\in \PBPes(\ckcO)$,
+\[
+  \ac_{\uptau} = (1^{(p_{\tau},q_{\tau})})_{\star}\quad \Forall \uptau\in \PBPes(\ckcO).
+\]
+Now
+\[
+    \PBPes(\ckcO) \rightarrow  \MYD_{\star}(\cO), \quad
+    \uptau \mapsto \ac_{\uptau}
+\]
+is a bijection by \Cref{lem:D.sign}.
+
+In all the cases, the orbit $\ckcO$ is quasi-distinghuished and all the lemmas
+in \Cref{sec:ac} are clear now.
+% When $k=0$, $\cO = (C_{1}=2c_{1},C_{0}=2c_{0})$ has  at most
+% two columns.
+% Now $\uppi_{\uptaup}$ is the trivial representation of $\Sp(2c_{0},\bR)$.
+% The lift $\uppi_{\uptaup} \mapsto \Thetab(\uppi_{\uptaup})$ is in fact a stable
+% range theta lift.%, and therefore $\uppi_{\uptau}\neq 0$.
+% For $\uptau\in \drc(\cO)$, let $(p_{1},q_{1}) = \ssign(\bfxx_{\uptau})$ and
+% $x_{\uptau}$ be the foot of $\uptau$. It is easy to see that  (using associated
+% character formula)
+% \[
+%   \ac_{\uppi_{\uptau}} = \cT_{\uptau}\cdot \cP_{\uptau},
+%   \text{ where }\cT_{\uptau}:=\dagger \dagger_{c_{0},c_{0}},
+%   \text{ and } \cP_{\uptau}:=\begin{cases}
+%     \ddagger_{p_{1},q_{1}}&  x_{\uptau} \neq d,\\
+%     \dagger_{p_{1},q_{1}}& x_{\uptau} = d.\\
+%   \end{cases}
+% \]
+% Note that $\ac_{\uppi_{\uptau}}$ is irreducible.
+
+% Let $\cO_{1} = (2(c_{1}-c_{0}))\in \dpeNil(D)$. Using the above formula,
+% one can check that the following maps are bijections
+% \[
+%   \begin{tikzcd}[row sep=0em]
+%     \drc(\cO_{1}) &\ar[l] \drc(\cO) \ar[r] & \LLS(\cO)\\
+%     \bfxx_{\uptau} & \ar[l,maps to] \uptau \ar[r,mapsto] & \ac_{\uptau}.
+%   \end{tikzcd}
+% \]
+% To see that $\drc(\cO)\ni\uptau\mapsto \ac_{\uptau}$ is an injection, one check the
+% following lemma holds:
+% \begin{lem}\label{c:init.CD}
+%   The map $\drc(\cO_{1})\longrightarrow \bN^{2}\times \bZ/2\bZ$ given by
+%   $\uptau\mapsto (\ssign(\uptau),\upepsilon_{\uptau})$ is injective (see
+%   \Cref{sec:upepsilon} for the definition of $\upepsilon_{\uptau}$). Moreover,
+%   $\upepsilon_{\uptau}=0$ only if $\ssign(\uptau)\geq (0,1)$. \qedhere
+% \end{lem}
 
 
-Moreover, $\oAC{\uptau}\otimes \det \notin \LLS(\cO)$ for any $\uptau\in \drc(\cO)$.
-In fact, if $\ssign(\bfxx_{\uptau})\succeq (1,0)$, $\oAC{\uptau}$
-on the 1-rows with $+$-signs is trivial and $\oAC{\uptau}\otimes \det$ has
-non-trivial restriction. When $\ssign(\bfxx_{\uptau})\nsucceq (1,0)$,
-$\bfxx_{\uptau}=s\cdots s$, all 1-rows of $\oAC{\uptau}$ are marked by ``$=$'' and
-all 1-rows of $\oAC{\uptau}\otimes \det$ are  marked by ``$-$''.
+% Moreover, $\ac_{\uptau}\otimes \det \notin \LLS(\cO)$ for any $\uptau\in \drc(\cO)$.
+% In fact, if $\ssign(\bfxx_{\uptau})\succeq (1,0)$, $\ac_{\uptau}$
+% on the 1-rows with $+$-signs is trivial and $\ac_{\uptau}\otimes \det$ has
+% non-trivial restriction. When $\ssign(\bfxx_{\uptau})\nsucceq (1,0)$,
+% $\bfxx_{\uptau}=s\cdots s$, all 1-rows of $\ac_{\uptau}$ are marked by ``$=$'' and
+% all 1-rows of $\ac_{\uptau}\otimes \det$ are  marked by ``$-$''.
 
-Therefore our main \Cref{thm:count} and main proposition \Cref{prop:CD} holds for $\cO$.
+% Therefore our main \Cref{thm:count} and main proposition \Cref{prop:CD} holds for $\cO$.
 
 
 
-Let $C_{i} = \bfcc_{i}(\ckcO)$ for $i =1,2, \cdots$.
+% Let $C_{i} = \bfcc_{i}(\ckcO)$ for $i =1,2, \cdots$.
 
 \subsection{The descent case}\label{sec:pf.ds.CD}
 Now we assume
@@ -6145,19 +6315,19 @@ By \eqref{eq:LS.dis}, we have a injection
     (\cLpp,\upepsilon') \ar[r,maps to] & \vartheta(\cLpp\otimes \det^{\upepsilon'}).
   \end{tikzcd}
 \end{equation}
-In particular, we have $\oAC{\uptaup}\neq 0$ for every
+In particular, we have $\ac_{\uptaup}\neq 0$ for every
 $\uptaup\in \drc(\cOp)$.
 
 Now suppose $\uptaup_{1}\neq \uptaup_{2}$.
 Suppose
-$\oAC{\uptaup_{1}} = \oAC{\uptaup_{2}}$. By \eqref{eq:LS.CD.inj},
+$\ac_{\uptaup_{1}} = \ac_{\uptaup_{2}}$. By \eqref{eq:LS.CD.inj},
 \begin{equation}\label{eq:eps.CD1}
   \varepsilon_{\uptaup_{1}} = \varepsilon_{\uptaup_{2}}
 \end{equation}
 and
-$\oAC{\uptaupp_{1}} = \oAC{\uptaupp_{2}}$.
+$\ac_{\uptaupp_{1}} = \ac_{\uptaupp_{2}}$.
 In particular, we have
-$\Sign(\uptaupp_{1}) = \Sign(\oAC{\uptaupp_{1}}) = \Sign(\oAC{\uptaupp_{2}}) = \Sign(\uptaupp_{1})$.
+$\Sign(\uptaupp_{1}) = \Sign(\ac_{\uptaupp_{1}}) = \Sign(\ac_{\uptaupp_{2}}) = \Sign(\uptaupp_{1})$.
 We now claim that $\uptaupp_{1}\neq \uptaupp_{2}$.
 It suffice to consider the case where $\wp_{\uptaupp_{1}} = \wp_{\uptaupp_{2}}$.
 Then $\wp_{\uptaup_{1}} = \wp_{\uptaup_{2}}$ by \eqref{eq:eps.CD1} and so
@@ -6166,8 +6336,8 @@ By \Cref{prop:CC.bij}, $\taupp_{1}\neq \taupp_{2}$ and this proves the claim.
 
 \trivial{
 Now suppose $\uptaup_{1}\neq \uptaup_{2}\in \drc(\cOp)$ and
-$\oAC{\uptaup_{1}}=\oAC{\uptaup_{2}}$. By \eqref{eq:LS.CD.inj},
-$\upepsilon'_{1}=\upepsilon'_{2}$ and $\oAC{\uptaupp_{1}}=\oAC{\uptaupp_{2}}$.
+$\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$. By \eqref{eq:LS.CD.inj},
+$\upepsilon'_{1}=\upepsilon'_{2}$ and $\ac_{\uptaupp_{1}}=\ac_{\uptaupp_{2}}$.
 In particular,  $\uptaupp_{1}$ and $\uptaupp_{2}$  have the same signature. %, say $(p'',q'')$.% are dot-r-c diagrams for the
 % same real orthogonal group.
 By \Cref{lem:ds.CD} and the induction hypothesis, $\uptaupp_{1}\neq \uptaupp_{2}$ and so
@@ -6181,7 +6351,7 @@ Suppose $\cOp$ is noticed. Then $\cOpp = \eDD(\cOp)$ is noticed by definition
 and
 $(\uptaupp,\upepsilon')\mapsto \Ch(\uppi_{\uptaupp}\otimes{\det}^{\upepsilon'})$
 is an injection into $\LS(\cOpp)$.
-Now \eqref{eq:LS.CD.inj} implies $\uptaup\mapsto\oAC{\uptaup}$ is also an injection.
+Now \eqref{eq:LS.CD.inj} implies $\uptaup\mapsto\ac_{\uptaup}$ is also an injection.
 
 Suppose $\cOp$ is quasi-distingushed. Then $\cOpp = \eDD(\cOp)$ is
 quasi-distingushed by definition
@@ -6189,7 +6359,7 @@ and
 $(\uptaupp,\upepsilon')\mapsto \Ch(\uppi_{\uptaupp}\otimes{\det}^{\upepsilon'})$
 is  a bijection with $\LSaod(\cOpp)$.
 Since the component group of each K-nilpotent orbit in $\cOp$ is naturally
-isomorphic to the component group of its descent. So we deduce that $\uptaup \mapsto \oAC{\uptaup}$
+isomorphic to the component group of its descent. So we deduce that $\uptaup \mapsto \ac_{\uptaup}$
 is a bijection onto $\LSaod(\cOp)$.
 
 This proves the main proposition for $\cOp$.
@@ -6222,16 +6392,16 @@ Whne $\star\in \set{C^{*}}$, $y'=y''=0$.
 % Now let $\uptau\in \drc(\cO)$. % and $(p_{0},q_{0}):=\ssign(\bfxx_{\uptau})$.
 % By \eqref{eq:sp-nsp-sig}, we have
 % \begin{equation}\label{eq:LS.D.ds}
-%   \oAC{\uptau} =  \cT_{\uptau}\cdot \cP_{\uptau}\neq 0, \text{ where
-%   }\cT_{\uptau} := \dagger\oAC{\uptaup}, \text{ and } \cP_{\uptau}:=\oAC{\bfxx_{\uptau}}.
+%   \ac_{\uptau} =  \cT_{\uptau}\cdot \cP_{\uptau}\neq 0, \text{ where
+%   }\cT_{\uptau} := \dagger\ac_{\uptaup}, \text{ and } \cP_{\uptau}:=\ac_{\bfxx_{\uptau}}.
 % \end{equation}
 % In particular, $\uppi_{\uptau}\neq 0$ and we could determine $\bfxx_{\uptau}$ from
-% the marks on the 1-rows of $\oAC{\uptau}$.
+% the marks on the 1-rows of $\ac_{\uptau}$.
 
-% The factorization of $\oAC{\uptau}$ in the fashion of \Cref{eq:ls.factor} is also given by
+% The factorization of $\ac_{\uptau}$ in the fashion of \Cref{eq:ls.factor} is also given by
 % \eqref{eq:ped.factor1} and \eqref{eq:bd.factor2}.
 % When $\upepsilon=0$, $(p_{0},q_{0})\succeq \ssign(d)=(1,1)$ and so
-% $\oAC{\uptau}\neq \oAC{\uptau}\otimes \bfone_{\ssign(\uptau)}^{+,-}$.
+% $\ac_{\uptau}\neq \ac_{\uptau}\otimes \bfone_{\ssign(\uptau)}^{+,-}$.
 
 Now suppose $\uptau_{1} \neq \uptau_{2} \in \PBPes(\ckcO)$ and
 $\AC({\uptau_{1}})=\AC( \uptau_{2} )$. By \eqref{eq:LS.D.ds},
@@ -6258,7 +6428,7 @@ case for $\tau_{\bftt}$.
 
 \subsubsection{}
 
-Note that $\oAC{\uptau}$ is obtained from $\oAC{\uptaup}$ by attaching the peduncle
+Note that $\ac_{\uptau}$ is obtained from $\ac_{\uptaup}$ by attaching the peduncle
 determined by $\bfxx_{\uptau}$. The claims about noticed and
 quasi-distinguished orbit are easy to verify. We leave them to the reader.
 
@@ -6285,13 +6455,13 @@ By induction hypothesis, $\Lambda_{+}(\AC(\uptaupp)) \neq 0$. Hence
 $\AC(\uptaup)\neq 0$.
 
 % \begin{equation}\label{eq:LS.taup}
-%   \oAC{\uptaup} = \vartheta(\oAC{\uptaupp}) = \maltese^{\frac{\abs{\ssign(\uptaupp)}}{2}}
-%   (\dagger \pAC{\uptaupp} + \dagger \nAC{\uptaupp}) \neq 0
+%   \ac_{\uptaup} = \vartheta(\ac_{\uptaupp}) = \maltese^{\frac{\abs{\ssign(\uptaupp)}}{2}}
+%   (\dagger \pac{\uptaupp} + \dagger \nac{\uptaupp}) \neq 0
 % \end{equation}
 % where
-% $\lsign(\dagger\pAC{\uptaupp}) = (q''_{1}, p''_{1}-1)$ and
-% $\lsign(\dagger\nAC{\uptaupp})=(q''_{1}-1,p''_{1})$ (if
-% $\dagger\nAC{\uptaupp}\neq 0$).
+% $\lsign(\dagger\pac{\uptaupp}) = (q''_{1}, p''_{1}-1)$ and
+% $\lsign(\dagger\nac{\uptaupp})=(q''_{1}-1,p''_{1})$ (if
+% $\dagger\nac{\uptaupp}\neq 0$).
 
 
 % \subsubsection{}
@@ -6305,36 +6475,36 @@ $\AC(\uptaup)\neq 0$.
 % dot-r-c diagram.
 % \footnote{
 %   Suppose $\uptaupp\in \drc(\cOpp)$ has the shape in \eqref{eq:gd2.drc} and
-%   $x_{\uptaupp}=s$. By the induction hypothesis,   $\pAC{\uptaupp}=\nAC{\uptaupp}=0$ and so
+%   $x_{\uptaupp}=s$. By the induction hypothesis,   $\pac{\uptaupp}=\nac{\uptaupp}=0$ and so
 %   the theta lift of $\uppi_{\uptaupp}$ vanishes.
 % }
 % % in generalized descent.
-% By the induction hypothesis, $\oAC{\uptaupp}^{+}\neq 0$.
+% By the induction hypothesis, $\ac_{\uptaupp}^{+}\neq 0$.
 % % , and so
 % % \[
-% %   \oAC{\uptaup} = \vartheta(\oAC{\uptaupp}) = \dagger \oAC{\uptaupp}^{+}\cup
-% %   \dagger \oAC{\uptaupp}^{-} \neq 0.
+% %   \ac_{\uptaup} = \vartheta(\ac_{\uptaupp}) = \dagger \ac_{\uptaupp}^{+}\cup
+% %   \dagger \ac_{\uptaupp}^{-} \neq 0.
 % % \]
 
 % % Now for each $\uptaup\in \drc(\cOp)$, $\uptaupp$
 
 
-Let $(p''_{1},q''_{1}) := \lsign(\oAC{\uptaupp})$.
+Let $(p''_{1},q''_{1}) := \lsign(\ac_{\uptaupp})$.
 Then
 \begin{equation}\label{eq:lsign.1}
-\lsign(\pAC{\uptaupp}) = (p_{0}-1,q_{0}), \text{ and }
-\lsign(\nAC{\uptaupp})=(p_{0},q_{0}-1) \text{ if } \nAC{\uptaupp}\neq \emptyset.
+\lsign(\pac{\uptaupp}) = (p_{0}-1,q_{0}), \text{ and }
+\lsign(\nac{\uptaupp})=(p_{0},q_{0}-1) \text{ if } \nac{\uptaupp}\neq \emptyset.
 \end{equation}
 \begin{equation}\label{eq:LS.taup}
-  \oAC{\uptaup} = \vartheta(\oAC{\uptaupp}) = \maltese^{\frac{\abs{\ssign(\uptaupp)}}{2}}
-  (\dagger \pAC{\uptaupp} + \dagger \nAC{\uptaupp}) \neq 0
+  \ac_{\uptaup} = \vartheta(\ac_{\uptaupp}) = \maltese^{\frac{\abs{\ssign(\uptaupp)}}{2}}
+  (\dagger \pac{\uptaupp} + \dagger \nac{\uptaupp}) \neq 0
 \end{equation}
 where
-$\lsign(\dagger\pAC{\uptaupp}) = (q''_{1}, p''_{1}-1)$ and
-$\lsign(\dagger\nAC{\uptaupp})=(q''_{1}-1,p''_{1})$ (if
-$\dagger\nAC{\uptaupp}\neq 0$).
+$\lsign(\dagger\pac{\uptaupp}) = (q''_{1}, p''_{1}-1)$ and
+$\lsign(\dagger\nac{\uptaupp})=(q''_{1}-1,p''_{1})$ (if
+$\dagger\nac{\uptaupp}\neq 0$).
 
-Let $(p_{1},q_{1}) := \lsign(\oAC{\uptau})$ and
+Let $(p_{1},q_{1}) := \lsign(\ac_{\uptau})$ and
 $(e,f):=(p_{1}-p''_{1}+1, q_{1}-q''_{1}+1)$. Using \Cref{lem:gd.inj}
 % \eqref{eq:bd.prop} and
 % \eqref{eq:def.u},
@@ -6348,30 +6518,30 @@ one can show that
   $\lsign(\cT_{\uptau}) +(1,1) = \ssign(\tau_{\bftt}x_{\uptaupp})= \ssign(\tau_{\bftt})+\lsign(\cD_{\uptaupp})$.
   Therfore,
   \[\ssign(\tau_{\bftt}) = \lsign(\cT_{\uptau})-\lsign(\cD_{\uptaupp})
-  + (1,1) = \lsign(\oAC{\uptau})-\lsign(\oAC{\uptaupp})+(1,1).
+  + (1,1) = \lsign(\ac_{\uptau})-\lsign(\ac_{\uptaupp})+(1,1).
   \]
 }
 
 Now
 \begin{equation}\label{eq:gd.ls}
-  \oAC{\uptau} =
+  \ac_{\uptau} =
   \begin{cases}
     (\bfone^{+,-}\otimes \maltese^t (\Lambda_{+}\AC( \uptaupp )\cdot 1^{(0,0)}) \cdot \pcP_{\uptau}
     + (\bfone^{+,-}\otimes (\Lambda_{-}\AC( \uptaupp )\cdot 1^{(0,0)})  \cdot \ncP_{\uptau}
     & \text{if } x_{\uptau} \neq d\\
-    (\dagger\maltese^t \dagger \pAC{\uptaupp}) \cdot \pcP_{\uptau}
-    + (\dagger\maltese^{t} \dagger \nAC{\uptaupp})  \cdot \ncP_{\uptau}
+    (\dagger\maltese^t \dagger \pac{\uptaupp}) \cdot \pcP_{\uptau}
+    + (\dagger\maltese^{t} \dagger \nac{\uptaupp})  \cdot \ncP_{\uptau}
     & \text{if } x_{\uptau} =d\\
   \end{cases}
 \end{equation}
 % \begin{equation}\label{eq:gd.ls}
-%   \oAC{\uptau} =
+%   \ac_{\uptau} =
 %   \begin{cases}
-%     (\bfone^{+,-}\otimes \dagger\maltese^t \dagger \pAC{\uptaupp}) \cdot \pcP_{\uptau}
-%     + (\bfone^{+,-}\otimes \dagger\maltese^{t} \dagger \nAC{\uptaupp})  \cdot \ncP_{\uptau}
+%     (\bfone^{+,-}\otimes \dagger\maltese^t \dagger \pac{\uptaupp}) \cdot \pcP_{\uptau}
+%     + (\bfone^{+,-}\otimes \dagger\maltese^{t} \dagger \nac{\uptaupp})  \cdot \ncP_{\uptau}
 %     & \text{if } x_{\uptau} \neq d\\
-%     (\dagger\maltese^t \dagger \pAC{\uptaupp}) \cdot \pcP_{\uptau}
-%     + (\dagger\maltese^{t} \dagger \nAC{\uptaupp})  \cdot \ncP_{\uptau}
+%     (\dagger\maltese^t \dagger \pac{\uptaupp}) \cdot \pcP_{\uptau}
+%     + (\dagger\maltese^{t} \dagger \nac{\uptaupp})  \cdot \ncP_{\uptau}
 %     & \text{if } x_{\uptau} =d\\
 %   \end{cases}
 % \end{equation}
@@ -6401,14 +6571,14 @@ where
 
 \delete{
 By induction hypothesis, we have
-a factorization of $\oAC{\uptaupp}$ as in \eqref{eq:ls.factor}
+a factorization of $\ac_{\uptaupp}$ as in \eqref{eq:ls.factor}
 \[
-  \oAC{\uptaupp} = \sum_{i=-(k-1)}^{k-1}\cB_{\uptaupp,i}\cdot \cD_{\uptaupp,i}.
+  \ac_{\uptaupp} = \sum_{i=-(k-1)}^{k-1}\cB_{\uptaupp,i}\cdot \cD_{\uptaupp,i}.
 \]
 %where $\abs{i}\leq k-1$ in the above formula.
-Then we have the following factorization of $\oAC{\uptau}$:
+Then we have the following factorization of $\ac_{\uptau}$:
 \[
-\oAC{\uptau}=\sum_{i\neq 0} \cT_{\uptau,i}\cdot \cT_{\uptau,i}, \text{ with
+\ac_{\uptau}=\sum_{i\neq 0} \cT_{\uptau,i}\cdot \cT_{\uptau,i}, \text{ with
 } \cT_{\uptau,i}:=
 \begin{cases}
 \dagger\dagger \cB_{\uptaupp,i-1} & i\geq 1 \\
@@ -6432,12 +6602,12 @@ $2i+1$ with unspecified associated character.
  % according to the about list.
   %\item $x_{\uptaupp}=r$. %In this case, all length $3$ rows ends with $+$ sign!
   % So
-  % $\bsign{\bfxx_{\uptaupp}} \succ (2,0)$, $\pAC{\uptaupp}\neq 0$ has tail with
-  % sign $+$, and $\nAC{\uptaupp}=0$.
+  % $\bsign{\bfxx_{\uptaupp}} \succ (2,0)$, $\pac{\uptaupp}\neq 0$ has tail with
+  % sign $+$, and $\nac{\uptaupp}=0$.
   We have three sub-cases:
   \begin{enumT}
   \item $\bfpp_{\uptau} = \tytb{rc\cdots,\vdots,r}$. Then
-  $\oAC{\uptau}=\sum_{i=1}^{k} (\dagger\dagger \cB_{\uptaupp,i-1})\cdot \cT_{\uptau,i}$, where
+  $\ac_{\uptau}=\sum_{i=1}^{k} (\dagger\dagger \cB_{\uptaupp,i-1})\cdot \cT_{\uptau,i}$, where
   \begin{equation}\label{eq:rr.c}
   \cT_{\uptau,i}  = \tytb{\uup\cdots\uup,+,\vdots,+} \quad \forall i\geq 1.
   \end{equation}
@@ -6451,7 +6621,7 @@ $2i+1$ with unspecified associated character.
    \cB_{\uptau,i} = \cT_{\uptau,i} \text{ and
    } \cD_{\uptau,i} = \cT_{\uptau,i} \text{ for } i\geq 1.
  \end{equation}
- Now $\oAC{\uptau} = \sum_{i=1}^{k} \cB_{\uptau,i}\cdot \cD_{\uptau,i}$.
+ Now $\ac_{\uptau} = \sum_{i=1}^{k} \cB_{\uptau,i}\cdot \cD_{\uptau,i}$.
 %where $i$ is the index such that $\cB_{\uptaupp,i}\neq 0$.
 
  \item $\bfpp_{\uptau} = \tytb{rc\cdots,\vdots,r,d}$.
@@ -6464,7 +6634,7 @@ $2i+1$ with unspecified associated character.
 In particular, \eqref{eq:d.factor} holds.
 % $\cT_{\uptau,i}\succeq \ddagger_{(2,1)}\succ \dagger_{(1,1)}$ and the
 % factorization
-% $\oAC{\uptau} = \cB_{\uptau,1}\cdot \cD_{\uptau,1}$ such that $\cD_{\uptau,1}=\tytb{+,-}$.
+% $\ac_{\uptau} = \cB_{\uptau,1}\cdot \cD_{\uptau,1}$ such that $\cD_{\uptau,1}=\tytb{+,-}$.
  \item $\bfpp_{\uptau} = \tytb{sr\cdots,\vdots,s,{x_{j}},\vdots,{x_{n}}}$.
 % $y_{1}=x_{\uptaupp}=r$ and $\bfxx_{\uptau} = s\cdots sx_{j}\cdots x_{n}$ with
  In this case $\#s(\bfxx_{\uptau})\geq 1$.
@@ -6477,7 +6647,7 @@ In particular, \eqref{eq:d.factor} holds.
   \cT_{\uptau,i}  = \tytb{\uup\cdots\uup,=,\vdots,=} \quad \forall i \geq 1
    \]
    When $n= 1$,
-   $\oAC{\uptau} = \sum_{i=-1}^{-k} \cB_{\uptau,i}\cdot \cD_{\uptau,i}$
+   $\ac_{\uptau} = \sum_{i=-1}^{-k} \cB_{\uptau,i}\cdot \cD_{\uptau,i}$
    with $\cB_{\uptau,i} = \cT_{\uptau,i}$ and $\cD_{\uptau,i} = \cT_{\uptau,i}$.
    % and the
    % factorization is also given by the formula \eqref{eq:gd.rr}.
@@ -6500,7 +6670,7 @@ In particular, \eqref{eq:d.factor} holds.
    \]
  \end{enumT}
  % Suppose $\Sign(\bfxx_{\uptau})=(p_{1},q_{1})$ with $p_{1}+q_{1}=2n$
-  % \begin{equation}%\oAC{\uptau} = \dagger\dagger \pAC{\uptaupp} \cdot \ytableaushort{+,\vdots,+,{-/=},\cdots,{-/=}}
+  % \begin{equation}%\ac_{\uptau} = \dagger\dagger \pac{\uptaupp} \cdot \ytableaushort{+,\vdots,+,{-/=},\cdots,{-/=}}
   %   \cB_{\uptau}  =
   %   \tytb{+-+,+,\vdots,+,-,\vdots,-}  \text{ when } x_{n} = d \text{ or  } \tytb{+-+,+,\vdots,+,=,\vdots,=}
   %   \text{ when } x_{n} = r/c
@@ -6520,7 +6690,7 @@ In particular, \eqref{eq:d.factor} holds.
 
   \subsubsection{Case $x_{\uptaupp}=c$}\label{sec:z.c}
   % In this case, the length $3$-rows will contain at least one $-$ sign.
-  %$\pAC{\uptaupp}\neq 0$ has tail sign $=$, and $\nAC{\uptaupp}=0$.
+  %$\pac{\uptaupp}\neq 0$ has tail sign $=$, and $\nac{\uptaupp}=0$.
   %We assume $\Sign(\bfxx_{\uptau})=(p_{1},q_{1})$.
   We always have $\cT_{\uptau,2}=\emptyset$.
   \begin{enumT}
@@ -6532,7 +6702,7 @@ In particular, \eqref{eq:d.factor} holds.
 
     When $n=1$, we have
     \begin{equation}\label{eq:gd.ss}
-      \oAC{\uptau} = \sum_{i=-1}^{-k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}
+      \ac_{\uptau} = \sum_{i=-1}^{-k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}
       \text{ where } \cB_{\uptau,i}=\cT_{\uptau,-i}
       \text{ and }\cD_{\uptau,i}=\cT_{\uptau,-i}.
   \end{equation}
@@ -6562,7 +6732,7 @@ In particular, \eqref{eq:d.factor} holds.
        \cT_{\uptau,i}  = \tytb{\uum\cdots\uum,+,\vdots,+} %\quad \forall i\geq 1. \succ \tytb{+}.
        \quad \forall i\geq 1.
      \]
-     We have $\oAC{\uptau} = \sum_{i=1}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}$  where $\cD_{\uptau,i} = \tytb{\uum\cdots\uum,+}$ and
+     We have $\ac_{\uptau} = \sum_{i=1}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}$  where $\cD_{\uptau,i} = \tytb{\uum\cdots\uum,+}$ and
      $\cB_{\uptau,i} = \cT_{\uptau,i}\cdot \ddagger_{2n_{r},0}$.
    \end{enumT}
    \item $x_{n} = d$. In this case, $n\geq 2$ and
@@ -6576,10 +6746,10 @@ In particular, \eqref{eq:d.factor} holds.
   \subsubsection{Case $x_{\uptaupp}=d$}\label{sec:z.d}
   In this case, $\bfxx_{\uptau}$ could be anything.
 %  Then
-  %$\pAC{\uptaupp} = \cT_{\uptaupp} \cdot \pcB_{\uptaupp}$ and $\nAC{\uptaupp}=\cT_{\uptaupp} \cdot \ncB_{\uptaupp}$.
- % We assume $\bsign{\pAC{\uptaupp}}=(p-1,q)$ and $\bsign{\nAC{\uptaupp}}=(p,q-1)$.
+  %$\pac{\uptaupp} = \cT_{\uptaupp} \cdot \pcB_{\uptaupp}$ and $\nac{\uptaupp}=\cT_{\uptaupp} \cdot \ncB_{\uptaupp}$.
+ % We assume $\bsign{\pac{\uptaupp}}=(p-1,q)$ and $\bsign{\nac{\uptaupp}}=(p,q-1)$.
   % \[
-  %   \oAC{\uptau} = \dagger \dagger \cT_{\uptaupp}\cdot \cB_{\uptau}.
+  %   \ac_{\uptau} = \dagger \dagger \cT_{\uptaupp}\cdot \cB_{\uptau}.
   % \]
   \begin{enumT}
     \item $\bfxx_{\uptau}=s\cdots s$. We have
@@ -6587,7 +6757,7 @@ In particular, \eqref{eq:d.factor} holds.
       \cT_{\uptau,i} = \tytb{\uum\cdots\uum,=,\vdots,=} \quad \forall i\geq 1.
     \]
     When $n\geq 2$, the factorization \eqref{eq:d.factor} holds.
-% Clearly $\pAC{\uptau}=\emptyset$.
+% Clearly $\pac{\uptau}=\emptyset$.
     When $n=1$, the factorizaton is given by \eqref{eq:gd.ss}.
     \item $\bfxx_{\uptau}=r\cdots r$.
     \[
@@ -6597,7 +6767,7 @@ In particular, \eqref{eq:d.factor} holds.
 
     When $n=1$,
     \[
-    \oAC{\uptau} = \sum_{i=1}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i} \text{
+    \ac_{\uptau} = \sum_{i=1}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i} \text{
       where } \cB_{\uptau,i} = \cT_{\uptau,-i} \text{ and } \cD_{\uptau,i} = \cT_{\uptau,-i}.
     \]
     \item $\bfxx_{\uptau} = s\cdots sr\cdots r$ with $n_{s}:=\#s(\bfxx_{\uptau})\geq 1$
@@ -6610,7 +6780,7 @@ In particular, \eqref{eq:d.factor} holds.
     %Clearly $\cT_{\uptau,i}\succ \ddagger_{(1,1)}$ and $n\geq 2$.
     We have
     \[
-      \oAC{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}.
+      \ac_{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}.
     \]
     Here
       \begin{align*}
@@ -6625,7 +6795,7 @@ In particular, \eqref{eq:d.factor} holds.
     \end{equation}
     We have
     \[
-      \oAC{\uptau} = \sum_{i=1}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}+ \sum_{i=1}^{k}\cB_{\uptau,-i}\cdot \cD_{\uptau,-i}.
+      \ac_{\uptau} = \sum_{i=1}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}+ \sum_{i=1}^{k}\cB_{\uptau,-i}\cdot \cD_{\uptau,-i}.
     \]
     For $i\geq 1$,
       \begin{align*}
@@ -6641,7 +6811,7 @@ In particular, \eqref{eq:d.factor} holds.
     \]
     We have
     \[
-      \oAC{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}.
+      \ac_{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}.
     \]
     where
       \begin{align*}
@@ -6665,7 +6835,7 @@ In particular, \eqref{eq:d.factor} holds.
     \end{equation}
     We have
     \[
-      \oAC{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,-i}\cdot \cD_{\uptau,-i}.
+      \ac_{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,-i}\cdot \cD_{\uptau,-i}.
     \]
     where
       \begin{align*}
@@ -6681,7 +6851,7 @@ In particular, \eqref{eq:d.factor} holds.
     \]
     We have
     \[
-      \oAC{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}.
+      \ac_{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}.
     \]
     where
       \begin{align*}
@@ -6713,7 +6883,7 @@ In particular, \eqref{eq:d.factor} holds.
     \]
     We have
     \[
-      \oAC{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}+\sum_{i=0}^{k}\cB_{\uptau,-i}\cdot \cD_{\uptau,-i}.
+      \ac_{\uptau} = \sum_{i=0}^{k}\cB_{\uptau,i}\cdot \cD_{\uptau,i}+\sum_{i=0}^{k}\cB_{\uptau,-i}\cdot \cD_{\uptau,-i}.
     \]
     where
     \[
@@ -6724,7 +6894,7 @@ In particular, \eqref{eq:d.factor} holds.
 }
 
 %\subsubsection{Summary of the factorization}
-% We have the non-vanishing of the lifted local system $\oAC{\uptau}$ and the
+% We have the non-vanishing of the lifted local system $\ac_{\uptau}$ and the
 % factorization described in
 % \Cref{eq:ls.factor} holds.
 \begin{lem}
@@ -6733,7 +6903,7 @@ In particular, \eqref{eq:d.factor} holds.
 \begin{proof}
   Since $x_{\uptaupp}\neq s$, $\AC(\uptaupp)\neq 0$. When
   $\Sign(\tau_{\bftt})\succeq (0,1)$, the first term in \eqref{eq:gd.ls} dose
-  not vanish. Now suppose $\Sign(\tau_{\bftt})\nsucc(0,1)$. By \Cref{prop:delta},
+  not vanish. Now suppose $\Sign(\tau_{\bftt})\nsucc(0,1)$. By \Cref{lem:delta},
   $x_{\uptaupp}=d$, and so $\Lambda_{-}\AC(\uptaupp)\neq 0$ by induction
   hypothesis.
   Since $\ssign(\tau_{\bftt})\succ(2,0)$, the second term in \eqref{eq:gd.ls}
@@ -6752,7 +6922,7 @@ In particular, \eqref{eq:d.factor} holds.
 \end{lem}
 \begin{proof}
   If $x_{\uptau}=s/r/c$, %  ``$-$'' mark dose not appear as a 1-row in
-  % $\oAC{\uptau}$
+  % $\ac_{\uptau}$
   $\AC(\uptau)\nsupset 1^{(0,1)}$
   by \eqref{eq:gd.ls}. So $\Lambda_{-}(\AC(\uptau))=0$ in these cases.
 
@@ -6788,27 +6958,27 @@ by induction hypothesis.
 
 Recall \eqref{eq:LS.taup}.
 We claim that we can recover $\Lambda_+(\AC{\uptaupp}$ and
-$\nAC{\uptaupp}$ from $\oAC{\uptaup}$:
+$\nac{\uptaupp}$ from $\ac_{\uptaup}$:
 \begin{lem}\label{c:gd.C1}
-  The map $\Omega_{\cOp}\colon \oAC{\uptaup}\mapsto (\Lambda_+(\AC( \uptaupp)),\Lambda_-(\AC( \uptaupp)))$ is a well
+  The map $\Omega_{\cOp}\colon \ac_{\uptaup}\mapsto (\Lambda_+(\AC( \uptaupp)),\Lambda_-(\AC( \uptaupp)))$ is a well
   defined map.
 \end{lem}
 \begin{proof}
-  When $\lsign(\oAC{\uptaup})$ has two elements, $x_{\uptaupp}=d$ and
-  $\lsign(\oAC{\uptaup}) = \set{(q''_{1},p''_{1}-1),(q''_{1}-1,p''_{1})}$. In
-  \eqref{eq:LS.taup}, $\dagger\Lambda_+(\AC{\uptaupp}$ (resp. $\dagger\nAC{\uptaupp}$)
+  When $\lsign(\ac_{\uptaup})$ has two elements, $x_{\uptaupp}=d$ and
+  $\lsign(\ac_{\uptaup}) = \set{(q''_{1},p''_{1}-1),(q''_{1}-1,p''_{1})}$. In
+  \eqref{eq:LS.taup}, $\dagger\Lambda_+(\AC{\uptaupp}$ (resp. $\dagger\nac{\uptaupp}$)
   consists of components whose first column has siginature $(q''_{1},p''_{1}-1)$
-  (resp. $(q''_{1}-1,p''_{1})$). When $\lsign(\oAC{\uptaup})$ has only one
+  (resp. $(q''_{1}-1,p''_{1})$). When $\lsign(\ac_{\uptaup})$ has only one
   elements, $x_{\uptau}=r/c$,
-  $\lsign(\oAC{\uptaup}) = \set{(q''_{1},p''_{1}-1)}$,
-  $\oAC{\uptaup} = \dagger\Lambda_+(\AC{\uptaupp}$ and $\nAC{\uptaupp}=0$
+  $\lsign(\ac_{\uptaup}) = \set{(q''_{1},p''_{1}-1)}$,
+  $\ac_{\uptaup} = \dagger\Lambda_+(\AC{\uptaupp}$ and $\nac{\uptaupp}=0$
   % \trivial[h]{
   %   Note that, $\lsign( \dagger\Lambda_+(\AC{\uptaupp} ) = (q_{0},p_{0}-1)$ and
-  %   $\lsign( \dagger\nAC{\uptaupp} ) = (q_{0}-1,p_{0})$ (if it is none-zero) by
+  %   $\lsign( \dagger\nac{\uptaupp} ) = (q_{0}-1,p_{0})$ (if it is none-zero) by
   %   \eqref{eq:lsign.1}. }
 
   In any case, we get
-  % recover $\lsign(\oAC{\uptaupp})=(p_{0},q_{0})$ and
+  % recover $\lsign(\ac_{\uptaupp})=(p_{0},q_{0})$ and
   \begin{equation}\label{eq:uptaupp.sign}
     \ssign(\uptaupp) = (n_{0},n_{0})+(p''_{1},q''_{1})\quad \text{where }
     2n_{0} = \abs{\DD(\cOpp)}.
@@ -6816,7 +6986,7 @@ $\nAC{\uptaupp}$ from $\oAC{\uptaup}$:
 % $+\half \abs{\DD(\cOpp)} \cdot(1,1)$.
   Using the signature $\ssign(\uptaupp)$, we could recover the twisting
   characters in the theta lifting of local system. Therefore
-  $\Lambda_+(\AC{\uptaupp}$ and $\nAC{\uptaupp}$ can be recovered from  $\oAC{\uptaup}$.
+  $\Lambda_+(\AC{\uptaupp}$ and $\nac{\uptaupp}$ can be recovered from  $\ac_{\uptaup}$.
 \end{proof}
 
 
@@ -6825,7 +6995,7 @@ $\nAC{\uptaupp}$ from $\oAC{\uptaup}$:
 %   $\uppi_{\uptaup_{1}}\neq \uppi_{\uptaup_{2}}$.
 % \end{lem}
 % \begin{proof}
-%   It suffice to consider the case when $\oAC{\uptaup_{1}} = \oAC{\uptaup_{2}}$.
+%   It suffice to consider the case when $\ac_{\uptaup_{1}} = \ac_{\uptaup_{2}}$.
 %  By \eqref{eq:uptaupp.sign} in the proof of \Cref{c:gd.C1},
 %  $\ssign(\uptaupp_{1}) = \ssign(\uptaupp_{2})$.
 %  On the other hand, $\upepsilon_{1}=\upepsilon_{2}=0$ and
@@ -6842,11 +7012,11 @@ $\nAC{\uptaupp}$ from $\oAC{\uptaup}$:
 % When $\bfpp_{\uptau} = \tytb{sd\cdots,\vdots,s,{c/d}}$,
 % $\Lambda_+(\AC(\uptau)) = (\dagger\dagger \cB_{\uptaupp,1} \cT_{\uptau,1})^{+}$
 % and this is the only case that $\Lambda_+(\AC(\uptau))\neq \emptyset$ has less irreducible
-% components than that of $\oAC{\uptau}$.
+% components than that of $\ac_{\uptau}$.
 
 % {
 %   \color{red}
-%   The above computation also tells the shape of legs of $\oAC{\uptau}$ according
+%   The above computation also tells the shape of legs of $\ac_{\uptau}$ according
 %   to $\bfpp_{\uptau}$.
 % }
 
@@ -6859,11 +7029,11 @@ $\nAC{\uptaupp}$ from $\oAC{\uptaup}$:
   Suppose $\uptau_{1}\neq \uptau_{2}\in \drc(\cO)$. Then $\uppi_{\uptau_{1}}\neq \uppi_{\uptau_{2}}$.
 \end{lem}
 \begin{proof}
- It suffice to consider the case that $\oAC{\uptau_{1}}=\oAC{\uptau_{2}}$.
+ It suffice to consider the case that $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$.
  Clearly, $\ssign(\uptau_{1})=\ssign(\uptau_{2})$. On the other hand,
  the twisting $\upepsilon_{\uptau_{1}}=\upepsilon_{\uptau_{2}}$ since it is
  determined by the  local system:
- $\upepsilon_{\uptau_{i}}=0$ if and only if $\oAC{\uptau_{i}}\supset \tytb{-}$.
+ $\upepsilon_{\uptau_{i}}=0$ if and only if $\ac_{\uptau_{i}}\supset \tytb{-}$.
  %(see \eqref{eq:gd.ls}).
 
  We conclude that $\uptaupp_{1}\neq \uptaupp_{2}$ and $\uptaup_{1}\neq \uptaup_{2}$
@@ -6886,10 +7056,10 @@ In this section, we prove the claims about noticed and +noticed orbits.
   Suppose $\cOp$ is noticed. Then
   \begin{enumT}
     \item \label{c:gd.C2.1}The map
-$\set{\oAC{\uptaupp}| x_{\uptaupp}\neq s}\longrightarrow \set{\oAC{\uptaup}}=\LLS(\cOp)$ given by
-$\oAC{\uptaupp}\mapsto \oAC{\uptaup}=\vartheta(\oAC{\uptaupp})$ is a bijection.
+$\set{\ac_{\uptaupp}| x_{\uptaupp}\neq s}\longrightarrow \set{\ac_{\uptaup}}=\LLS(\cOp)$ given by
+$\ac_{\uptaupp}\mapsto \ac_{\uptaup}=\vartheta(\ac_{\uptaupp})$ is a bijection.
 \item
-The map $\drc(\cOp)\rightarrow \LLS(\cOp)$ given by $\uptaup\mapsto \oAC{\uptaup}$ is a bijection.
+The map $\drc(\cOp)\rightarrow \LLS(\cOp)$ given by $\uptaup\mapsto \ac_{\uptaup}$ is a bijection.
 \end{enumT}
 \end{lem}
 \begin{proof} %Recall \eqref{eq:LS.taup}.
@@ -6898,40 +7068,40 @@ The map $\drc(\cOp)\rightarrow \LLS(\cOp)$ given by $\uptaup\mapsto \oAC{\uptaup
   Note that $\cOpp$ is noticed by definition. Hence $\Upsilon_{\cOpp}$ is invertible.
   % Let $\uptaup\in \drc(\cOp)$.
   % By  and the induction hypothesis , we have a well defined map
-  % $\oAC{\uptaup}\mapsto \Lambda_+(\AC{\uptaupp}$ with $\Lambda_+(\AC{\uptaupp}\neq 0$.
+  % $\ac_{\uptaup}\mapsto \Lambda_+(\AC{\uptaupp}$ with $\Lambda_+(\AC{\uptaupp}\neq 0$.
   % Since $\cOpp$ is +noticed, $\Lambda_+(\AC{\uptaupp}$ uniquely determines the local
-  % system $\oAC{\uptaupp}$ by inductive hypothesis. Therefore,
+  % system $\ac_{\uptaupp}$ by inductive hypothesis. Therefore,
   %
   Recall \Cref{c:gd.C1}, we see that
   \[
     (\Upsilon_{\cOpp})^{-1}\circ \Omega_{\cOp}\colon
-    \oAC{\uptaup}\mapsto (\Lambda_+(\AC{\uptaupp},\nAC{\uptaupp})\mapsto \oAC{\uptaupp}
+    \ac_{\uptaup}\mapsto (\Lambda_+(\AC{\uptaupp},\nac{\uptaupp})\mapsto \ac_{\uptaupp}
   \]
   gives the inverse of the map in the claim.
   \item
   Suppose $\uptaup_{1}\neq \uptaup_{2}\in \drc(\cOp)$. By \Cref{lem:gd.CD},
   $\uptaupp_{1}\neq \uptaupp_{2}$. Hence
-  $\oAC{\uptaupp_{1}}\neq\oAC{\uptaupp_{2}}$ by the induction hypothesis.
-  Therefore, $\oAC{\uptaup_{1}}\neq \oAC{\uptaup_{2}}$ by \ref{c:gd.C2.1}
+  $\ac_{\uptaupp_{1}}\neq\ac_{\uptaupp_{2}}$ by the induction hypothesis.
+  Therefore, $\ac_{\uptaup_{1}}\neq \ac_{\uptaup_{2}}$ by \ref{c:gd.C2.1}
   of the claim.
 \end{enumPF}
 \end{proof}
 
 \begin{lem}\label{c:noticed.bij}
  Suppose $\cO$ is noticed, $\cL \colon \PBPes(\ckcO)\mapsto \LLS(\ckcO)$ given by
- $\uptau\mapsto \oAC{\uptau}$ is bijective.
-% Moreover, $\oAC{\uptau_{1}}=\oAC{\uptau_{2}}$ implies $\oAC{\uptaup_{1}}=\oAC{\uptaup_{2}}$.
+ $\uptau\mapsto \ac_{\uptau}$ is bijective.
+% Moreover, $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$ implies $\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$.
 \end{lem}
 \begin{proof}
 We prove the claim by contradiction. We assume $\uptau_{1}, \uptau_{2}\in \PBPes(\ckcO)$ such
-that $\oAC{\uptau_{1}}=\oAC{\uptau_{2}}$.
+that $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$.
 
 
 Recall \eqref{eq:gd.ls}: there is an pair of non-negative integers
 $(e_{i},f_{i})=\ssign({\tau_{i}}_{\bftt})$ such that
 \[
-  \oAC{\uptau_{i}} = \dagger\dagger \Lambda_+(\AC{\uptaupp_{i}}\cdot \pcP_{\uptau_{i}}
-  + \dagger\dagger \nAC{\uptaupp} \cdot \ncP_{\uptau_{i}}.
+  \ac_{\uptau_{i}} = \dagger\dagger \Lambda_+(\AC{\uptaupp_{i}}\cdot \pcP_{\uptau_{i}}
+  + \dagger\dagger \nac{\uptaupp} \cdot \ncP_{\uptau_{i}}.
 \]
 
 Note that we have $\varepsilon_{\tau_{1}}=\varepsilon_{\tau_{2}}$.
@@ -6942,10 +7112,10 @@ Note that we have $\varepsilon_{\tau_{1}}=\varepsilon_{\tau_{2}}$.
 Suppose that  $\wAC{\uptau_{i}}\supset 1^{(0,1)}$.
 
 Moreover, the term
-$\dagger\dagger\pAC{\uptaupp_{i}}\cdot \pcP_{\uptau_{i}}\neq 0$ and we can
-recover it from $\oAC{\uptau_{i}}$. So $\pAC{\uptaupp_{1}} = \pAC{\uptaupp_{2}}$.
+$\dagger\dagger\pac{\uptaupp_{i}}\cdot \pcP_{\uptau_{i}}\neq 0$ and we can
+recover it from $\ac_{\uptau_{i}}$. So $\pac{\uptaupp_{1}} = \pac{\uptaupp_{2}}$.
 Since $\bfrr_{1}(\ckcO'')>\bfrr_{3}(\ckcO'')$,  we get
-$\oAC{\uptau_{1}}=\oAC{\uptau_{2}}$.
+$\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$.
 Since $\cO''$ is noticed,
 $\uptaupp_{1}=\uptaupp_{2}$ by the induction hypothesis.
 Since $\Sign(\uptau_{1})=\Sign(\uptau_{2})$, we get
@@ -6962,11 +7132,11 @@ We consider case by case according to the set $\set{\Sign({\tau_{i}}_{\bftt})|i=
   \begin{enumPF}
     \item Suppose
     $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k-1,1)}$. We have
-    $\pAC{\uptaupp_{1}}=\pAC{\uptaupp_{2}}$, and deduces
+    $\pac{\uptaupp_{1}}=\pac{\uptaupp_{2}}$, and deduces
     $\uptaupp_{1}=\uptaupp_{2}$  as in (i).
     \item
     Suppose $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k,0)}$. We have
-    $\nAC{\uptaupp_{1}}=\nAC{\uptaupp_{2}}$, and deduces
+    $\nac{\uptaupp_{1}}=\nac{\uptaupp_{2}}$, and deduces
     $\uptaupp_{1}=\uptaupp_{2}$ as in (i).
     \item
     Without loss of generality, we can assume
@@ -6974,24 +7144,24 @@ We consider case by case according to the set $\set{\Sign({\tau_{i}}_{\bftt})|i=
     $\Sign({\tau_{2}}_{\bftt}) = (2k,0)$.
     But this implies
     \[
-      \pAC{\uptaupp_{1}}=\maltese\nAC{\uptaupp_{2}},
+      \pac{\uptaupp_{1}}=\maltese\nac{\uptaupp_{2}},
     \]
     which is contradict to \Cref{lem:pncont}.
 %     \begin{claim}\label{c:d+}
-%       We have $\nAC{\uptaupp_{2}}\supset 1^{(1,0)}$.
+%       We have $\nac{\uptaupp_{2}}\supset 1^{(1,0)}$.
 %     \end{claim}
 %     \begin{proof}
 %       If $\bfrr_{2}(\ckcO'')>\bfrr_{3}(\ckcO'')$,  we have
-%       $\oAC{\uptau}\succeq 1^{(1,1)}$ and we are done.
+%       $\ac_{\uptau}\succeq 1^{(1,1)}$ and we are done.
 
 %       Now assume $\bfrr_{2}(\cOpp)=\bfrr_{3}(\ckcO)$. Then ${\tau''_{i}}_{\bftt}$ has at least length $2$.
 %       Suppose $\Sign( {\tau''_{i}}_{\bftt} )\succ (1,2)$. Applying \eqref{eq:gd.ls} to $\uptaupp$,
-%       we see that the first term is non-zero and $\oAC{\uptaupp}\supseteq 1^{(1,1)}$.
+%       we see that the first term is non-zero and $\ac_{\uptaupp}\supseteq 1^{(1,1)}$.
 
 %       Otherwise, $\Sign( {\tau_{2}}_{\bftt} ) = (2k''-1,1)\succeq (3,1)$ where
 %       $k'' = (\bfrr_{1}(\ckcO'')-\bfrr_{2}(\ckcO''))/2+1 $.
 %       By \eqref{eq:gd.ls}, the second term is
-%       non-zero and $\oAC{\uptaupp}\supset 1^{(2k''-1,1)}$.
+%       non-zero and $\ac_{\uptaupp}\supset 1^{(2k''-1,1)}$.
 %     \end{proof}
 %     The claim leads to the contradiction to \eqref{eq:ct1}:
 %     the LHS of \eqref{eq:ct1} $\succeq 1^{(1,0)}$ and the
@@ -7006,28 +7176,28 @@ We consider case by case according to the set $\set{\Sign({\tau_{i}}_{\bftt})|i=
 
 \begin{lem}\label{lem:pncont}
   Suppose $\star\in \set{B,D}$, $\ckcO$ is weakly-distinguished and $\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)$.
-  Let $\uptau\in \PBPes( \ckcO )$ such that $\nAC{\uptau}\neq 0$.
+  Let $\uptau\in \PBPes( \ckcO )$ such that $\nac{\uptau}\neq 0$.
   Then
     \begin{equation}\label{eq:ct1}
-      \pAC{\uptau_{1}}\neq \maltese\nAC{\uptau} \quad \text{for
+      \pac{\uptau_{1}}\neq \maltese\nac{\uptau} \quad \text{for
         all} \quad \uptau_{1}\in \PBPes(\ckcO).
     \end{equation}
 \end{lem}
 \begin{proof}
-  Note that the condtion $\nAC{\uptau}\neq 0$ is equivalent to $x_{\tau}=d$.
-  We claim that $\nAC{\uptaupp_{2}}\supset 1^{(1,0)}$.
+  Note that the condtion $\nac{\uptau}\neq 0$ is equivalent to $x_{\tau}=d$.
+  We claim that $\nac{\uptaupp_{2}}\supset 1^{(1,0)}$.
 
   If $\bfrr_{2}(\ckcO'')>\bfrr_{3}(\ckcO'')$,  we have
-  $\oAC{\uptau}\succeq 1^{(1,1)}$ and we are done.
+  $\ac_{\uptau}\succeq 1^{(1,1)}$ and we are done.
 
   Now assume $\bfrr_{2}(\cOpp)=\bfrr_{3}(\ckcO)$. Then ${\tau''_{i}}_{\bftt}$ has at least length $2$.
       Suppose $\Sign( {\tau''_{i}}_{\bftt} )\succ (1,2)$. Applying \eqref{eq:gd.ls} to $\uptaupp$,
-      we see that the first term is non-zero and $\oAC{\uptaupp}\supseteq 1^{(1,1)}$.
+      we see that the first term is non-zero and $\ac_{\uptaupp}\supseteq 1^{(1,1)}$.
 
       Otherwise, $\Sign( {\tau_{2}}_{\bftt} ) = (2k''-1,1)\succeq (3,1)$ where
       $k'' = (\bfrr_{1}(\ckcO'')-\bfrr_{2}(\ckcO''))/2+1 $.
       By \eqref{eq:gd.ls}, the second term is
-      non-zero and $\oAC{\uptaupp}\supset 1^{(2k''-1,1)}$.
+      non-zero and $\ac_{\uptaupp}\supset 1^{(2k''-1,1)}$.
 
     The claim leads to \eqref{eq:ct1}:
      the RHS of \eqref{eq:ct1} $\succeq 1^{(-1,0)}$,
@@ -7040,26 +7210,26 @@ We consider case by case according to the set $\set{\Sign({\tau_{i}}_{\bftt})|i=
 \begin{lem}\label{c:gd.pnoticed}\label{c:gd.pnoticed.p}
     Suppose $\bfrr_{1}(\ckcO)>\bfrr_{2}(\ckcO) = \bfrr_{3}(\ckcO)$.
     The map
-    $\pUpsilon_{\cO} \colon \set{\oAC{\uptau}|\pAC{\uptau}\neq 0}\rightarrow \set{\pAC{\uptau}\neq 0}$
+    $\pUpsilon_{\cO} \colon \set{\ac_{\uptau}|\pac{\uptau}\neq 0}\rightarrow \set{\pac{\uptau}\neq 0}$
     is injective.
 \end{lem}
 \begin{proof}
 
-  Suppose $\oAC{\uptau}\supset 1^{(2,0)}$. This is equivalent to
-  $\pAC{ \uptau })\supset 1^{(1,0)}$.
+  Suppose $\ac_{\uptau}\supset 1^{(2,0)}$. This is equivalent to
+  $\pac{ \uptau })\supset 1^{(1,0)}$.
 
   Then we get the bijectivity of
   \[
-    \set{\oAC{\uptau}|\oAC{\uptau}\supset 1^{(2,0)}} \rightarrow \set{\pAC{\uptau}|\pAC{\uptau}\supset 1^{(1,0)}}.
+    \set{\ac_{\uptau}|\ac_{\uptau}\supset 1^{(2,0)}} \rightarrow \set{\pac{\uptau}|\pac{\uptau}\supset 1^{(1,0)}}.
   \]
-  $\oAC{\uptau} := \pAC{\uptau}\cdot 1^{(1,0)}$.
+  $\ac_{\uptau} := \pac{\uptau}\cdot 1^{(1,0)}$.
 
-  Consider the set $\set{\oAC{\uptau}|\pAC{\uptau}\neq 0, \oAC{\uptau}\nsupset 1^{(2,0)}}$. Let
-  $\oAC{\uptau_{1}}$ and $\oAC{\uptau_{2}}$ be two elements in it such that
-  $\pAC{\uptau_{1}}=\pAC{\uptau_{2}}$.
+  Consider the set $\set{\ac_{\uptau}|\pac{\uptau}\neq 0, \ac_{\uptau}\nsupset 1^{(2,0)}}$. Let
+  $\ac_{\uptau_{1}}$ and $\ac_{\uptau_{2}}$ be two elements in it such that
+  $\pac{\uptau_{1}}=\pac{\uptau_{2}}$.
 
   % By \Cref{c:noticed.bij}
-  % $\uptau_{1}\neq \uptau_{2}$.\footnote{$\oAC{\uptau_{1}}\neq \oAC{\uptau_{2}}$
+  % $\uptau_{1}\neq \uptau_{2}$.\footnote{$\ac_{\uptau_{1}}\neq \ac_{\uptau_{2}}$
   % clearly implies $\uptau_{1}\neq \uptau_{2}$.} We now show that
   % $\Lambda_+(\AC{\uptau_{1}}=\Lambda_+(\AC{\uptau_{2}}\neq 0$ leads to a
   % contradiction.
@@ -7075,16 +7245,16 @@ We consider case by case according to the set $\set{\Sign({\tau_{i}}_{\bftt})|i=
   Since the first term of \eqref{eq:gd.ls} is non-zero,
   we conclude that
   \begin{equation}\label{eq:pnoticed.1}
-    \pAC{\uptaupp_{1}}=\pAC{\uptaupp_{2}}.
+    \pac{\uptaupp_{1}}=\pac{\uptaupp_{2}}.
   \end{equation}
   Note that $\ckcO''$ is weakly-distinghuished and $\bfrr_{1}(\ckcO'')>\bfrr_{3}(\ckcO'')$, we deduce that
-  $\oAC{\uptaupp_{1}}=\oAC{\uptaupp_{2}}$ by induction hypothesis.
-  Now \eqref{eq:gd.ls} yields $\oAC{ \uptau_{1} }=\oAC{ \uptau_{2} }$.
+  $\ac_{\uptaupp_{1}}=\ac_{\uptaupp_{2}}$ by induction hypothesis.
+  Now \eqref{eq:gd.ls} yields $\ac_{ \uptau_{1} }=\ac_{ \uptau_{2} }$.
 \end{proof}
 
 
 \begin{lem}\label{c:gd.noticed.inj}
-  Suppose $\cO$ is noticed. Then the map $\Upsilon_{\cO}\colon \oAC{\uptau}\mapsto (\Lambda_+(\AC(\uptau)),\nAC{\uptau})$ is injective.
+  Suppose $\cO$ is noticed. Then the map $\Upsilon_{\cO}\colon \ac_{\uptau}\mapsto (\Lambda_+(\AC(\uptau)),\nac{\uptau})$ is injective.
 \end{lem}
 \begin{proof}
   Suppose $\bfrr_{1}(\ckcO)>\bfrr_{2}(\ckcO)$. The claim followed by the
@@ -7095,72 +7265,72 @@ We consider case by case according to the set $\set{\Sign({\tau_{i}}_{\bftt})|i=
   $\ttail{\tau_{i}} = x_{\tau_{i}}$ and $\bfrr_{1}(\ckcO'')>\bfrr_{3}(\ckcO'')$.
 
   Let $\uptau_{i} \PBPes(\ckcO)$ such that
-$\pAC{\uptau_{i}}\neq 0$ for $i=1,2$.
+$\pac{\uptau_{i}}\neq 0$ for $i=1,2$.
   Suppose $\Upsilon_{\ckcO}(\uptau_{1}) = \Upsilon_{\ckcO}(\uptau_{2})$.
 
   %We must have the following cases:
-  When $\nAC{ \tau_{i} }\neq 0$, we have $x_{\tau_{1}}=x_{\tau_{2}}=d$ and
-  $\pAC{\uptau''_{1}} = \pAC{\uptau''_{2}}$. Now by the injectivity of
+  When $\nac{ \tau_{i} }\neq 0$, we have $x_{\tau_{1}}=x_{\tau_{2}}=d$ and
+  $\pac{\uptau''_{1}} = \pac{\uptau''_{2}}$. Now by the injectivity of
   $\Upsilon_{\ckcO''}^{+}$, we deduce $\AC(\uptau''_{1})=\AC(\uptau''_{2})$ and
-  so $\oAC{ \uptau_{1} }=\oAC{ \uptau_{2} }$ by \eqref{eq:gd.ls}.
+  so $\ac_{ \uptau_{1} }=\ac_{ \uptau_{2} }$ by \eqref{eq:gd.ls}.
 
-  Suppose $\nAC{ \tau_{i} }=0$.
+  Suppose $\nac{ \tau_{i} }=0$.
   Thanks to \Cref{lem:pncont}, we must in one of the following two cases
   \begin{itemize}
-    \item $\pAC{\uptau''_{1}} = \pAC{\uptau''_{2}}$ and
+    \item $\pac{\uptau''_{1}} = \pac{\uptau''_{2}}$ and
     $x_{\tau_{1}}=x_{\tau_{2}} = c$;
-    \item $\nAC{\uptau''_{1}} = \nAC{\uptau''_{2}}$ and $x_{\tau_{1}}=x_{\tau_{2}} = r$.
+    \item $\nac{\uptau''_{1}} = \nac{\uptau''_{2}}$ and $x_{\tau_{1}}=x_{\tau_{2}} = r$.
   \end{itemize}
   By the injectivity of $\Upsilon_{\ckcO''}^{\pm}$ and \eqref{eq:gd.ls},
-  we conclude that $\oAC{ \uptau_{1} }=\oAC{ \uptau_{2} }$.
+  we conclude that $\ac_{ \uptau_{1} }=\ac_{ \uptau_{2} }$.
 \end{proof}
 
 \begin{lem}\label{c:gd.pnoticed.n}
     Suppose $\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)$.
-    The map $\nUpsilon_{\cO}\colon \set{\oAC{\uptau}|\nAC{\uptau}\neq 0}\rightarrow \set{\nAC{\uptau}\neq 0}$
+    The map $\nUpsilon_{\cO}\colon \set{\ac_{\uptau}|\nac{\uptau}\neq 0}\rightarrow \set{\nac{\uptau}\neq 0}$
     is injective.
 \end{lem}
 \begin{proof}
   The proof is similar to that of \Cref{c:gd.pnoticed.p}.
 
-  Suppose $\oAC{\uptau}\supset 1^{(0,2)}$. This is equivalent to
-  $\pAC{ \uptau })\supset 1^{(0,1)}$.
+  Suppose $\ac_{\uptau}\supset 1^{(0,2)}$. This is equivalent to
+  $\pac{ \uptau })\supset 1^{(0,1)}$.
 
   Then we get the bijectivity of
   \[
-    \set{\oAC{\uptau}|\oAC{\uptau}\supset 1^{(0,2)}} \rightarrow \set{\nAC{\uptau}|\nAC{\uptau}\supset 1^{(0,1)}}.
+    \set{\ac_{\uptau}|\ac_{\uptau}\supset 1^{(0,2)}} \rightarrow \set{\nac{\uptau}|\nac{\uptau}\supset 1^{(0,1)}}.
   \]
-  $\oAC{\uptau} := \pAC{\uptau}\cdot 1^{(0,1)}$.
+  $\ac_{\uptau} := \pac{\uptau}\cdot 1^{(0,1)}$.
 
-  Consider the set $\set{\oAC{\uptau}|\nAC{\uptau}\neq 0, \oAC{\uptau}\nsupset 1^{(0,2)}}$. Let
-  $\oAC{\uptau_{1}}$ and $\oAC{\uptau_{2}}$ be two elements in it such that
-  $\nAC{\uptau_{1}}=\nAC{\uptau_{2}}$.
+  Consider the set $\set{\ac_{\uptau}|\nac{\uptau}\neq 0, \ac_{\uptau}\nsupset 1^{(0,2)}}$. Let
+  $\ac_{\uptau_{1}}$ and $\ac_{\uptau_{2}}$ be two elements in it such that
+  $\nac{\uptau_{1}}=\nac{\uptau_{2}}$.
 
   Thanks to \Cref{lem:pncont}, we must in one of the following two cases
   \begin{itemize}
-    \item $\nAC{\uptau''_{1}} = \nAC{\uptau''_{2}}$, $\ttail{\tau_{i}}= r\cdots r d $ and
+    \item $\nac{\uptau''_{1}} = \nac{\uptau''_{2}}$, $\ttail{\tau_{i}}= r\cdots r d $ and
     $x_{\tau''_{i}} = d$ for $i=1,2$;
-    \item $\pAC{\uptau''_{1}} = \pAC{\uptau''_{2}}$,
+    \item $\pac{\uptau''_{1}} = \pac{\uptau''_{2}}$,
     $\ttail{\tau_{i}} =r\cdots r cd$ and
     $x_{\tau''_{i}}\in \set{r,c}$ for $i=1,2$.
   \end{itemize}
   Since $\bfrr_{1}(\ckcO'')>\bfrr_{3}(\ckcO'')$, we get
-  $\oAC{\uptau_{1}} = \oAC{\uptau_{2}}$ by the injectivity of
+  $\ac_{\uptau_{1}} = \ac_{\uptau_{2}}$ by the injectivity of
   $\Upsilon_{\ckcO''}^{\pm}$ and \eqref{eq:gd.ls}.
 
 
     % We have two cases:
     % \begin{enumPF}
-    %   \item $\oAC{\uptau}$ contain an irreducible component $\succ \tytb{-,-}$.
-    %   This is equivalent to $\nAC{\uptau}$ has an irreducible component
-    %   $\succ\tytb{-}$ and $\oAC{\uptau}\mapsto \nAC{\uptau}$ will
-    %   not kill any irreducible components. Hence we could recover $\oAC{\uptau}$
-    %   from $\nAC{\uptau}$.%, and the map $\Upsilon_{1}$.
+    %   \item $\ac_{\uptau}$ contain an irreducible component $\succ \tytb{-,-}$.
+    %   This is equivalent to $\nac{\uptau}$ has an irreducible component
+    %   $\succ\tytb{-}$ and $\ac_{\uptau}\mapsto \nac{\uptau}$ will
+    %   not kill any irreducible components. Hence we could recover $\ac_{\uptau}$
+    %   from $\nac{\uptau}$.%, and the map $\Upsilon_{1}$.
 
     %   \item Now we make a weaker assumption that $\uptau_{1}\neq \uptau_{2}\in \drc(\cO)$ such that
-    %   $\oAC{\uptau_{1}}$ and $\oAC{\uptau_{2}}$ do not contain a component
+    %   $\ac_{\uptau_{1}}$ and $\ac_{\uptau_{2}}$ do not contain a component
     %   $\succ \tytb{-,-}$.
-    %   % We now show that  $\nAC{\uptau_{1}}=\nAC{\uptau_{2}}\neq 0$ leads to a
+    %   % We now show that  $\nac{\uptau_{1}}=\nac{\uptau_{2}}\neq 0$ leads to a
     %   % contradiction.
     %   % Clearly,
     %   % $\ssign(\uptau_{1})=\ssign(\uptau_{2})$
@@ -7173,14 +7343,14 @@ $\pAC{\uptau_{i}}\neq 0$ for $i=1,2$.
     %   Without of loss of generality, we have the following possibilities:
     %   \begin{enumPF}
     %     \item $\bfpp_{\uptau_{1}}=\bfpp_{\uptau_{2}}=\bfpp_{1}$. We have
-    %     $\pAC{\uptaupp_{1}}=\pAC{\uptaupp_{2}}$ and obtain the contradiction.
+    %     $\pac{\uptaupp_{1}}=\pac{\uptaupp_{2}}$ and obtain the contradiction.
     %     \item $\bfpp_{\uptau_{1}}=\bfpp_{\uptau_{2}}=\bfpp_{2}$. We have
-    %     $\nAC{\uptaupp_{1}}=\nAC{\uptaupp_{2}}$ and obtain the contradiction.
+    %     $\nac{\uptaupp_{1}}=\nac{\uptaupp_{2}}$ and obtain the contradiction.
     %     \item $\bfpp_{\uptau_{1}}=\bfpp_{1}$ and $\bfpp_{\uptau_{2}}=\bfpp_{2}$.
     %     Now we apply the same argument in the case~\ref{it:c:noticed.bij.4} of
     %     the proof of \Cref{c:noticed.bij}. We get
-    %     $\maltese \dagger\pAC{\uptaupp_{1}}=\dagger \nAC{\uptaupp_{2}}$,
-    %     $\nAC{\uptaupp_{2}} \supset +$ and a contradiction by looking at the
+    %     $\maltese \dagger\pac{\uptaupp_{1}}=\dagger \nac{\uptaupp_{2}}$,
+    %     $\nac{\uptaupp_{2}} \supset +$ and a contradiction by looking at the
     %     associated character on the 2-row $\tytb{-+}$ .
     %   \end{enumPF}
     % \end{enumPF}
