@@ -4,11 +4,11 @@
 
 \usepackage[bookmarksopen,bookmarksdepth=3,hidelinks]{hyperref}
 \usepackage[nameinlink]{cleveref}
-\usepackage[]{showkeys}
+% \usepackage[]{showkeys}
 
-\makeatletter
-  \SK@def\Cref#1{\SK@\SK@@ref{#1}\SK@Cref{#1}}%
-\makeatother
+% \makeatletter
+%   \SK@def\Cref#1{\SK@\SK@@ref{#1}\SK@Cref{#1}}%
+% \makeatother
 
 \usepackage{array}
 %% FONTS
@@ -1473,118 +1473,142 @@ Barbasch and Vogan established some important local consequences for the unitary
 representation theory of the group $G$ of real points of a connected reductive
 algebraic group defined over $\R$. See \cite{ABV}. The problem of classifying
 (integral) special unipotent representations for complex semisimple groups was
-solved earlier by Barbasch and Vogan \cite{BVUni} and the unitarity of these representations
-was established by Barbasch for complex classical groups \cite[Section 10]{B.Class}. Shortly after,
-Barbasch outlined a proof of the unitarity of special unipotent
-representations for real classical groups in his 1990 ICM talk \cite{B.Uni}. The
-second major development is Vogan's theory of associated varieties \cite{Vo89}
-in which Vogan pursues the method of coadjoint orbits by investigating the
-relationship between a Harish-Chandra module and its associate variety. Roughly
-speaking, the Harish-Chandra module of a representation ``attached'' to a nilpotent
-coadjoint orbit should have a simple structure after taking the ``classical
-limit'', and it should have a specified support dictated by the nilpotent
-coadjoint orbit via the Kostant-Sekiguchi correspondence.
+solved earlier by Barbasch and Vogan \cite{BVUni} and the unitarity of these
+representations was established by Barbasch for complex classical groups
+\cite[Section 10]{B.Class}. Shortly after, Barbasch outlined a proof of the
+unitarity of special unipotent representations for real classical groups in his
+1990 ICM talk \cite{B.Uni}. The second major development is Vogan's theory of
+associated varieties \cite{Vo89} in which Vogan pursues the method of coadjoint
+orbits by investigating the relationship between a Harish-Chandra module and its
+associate variety. Roughly speaking, the Harish-Chandra module of a
+representation ``attached'' to a nilpotent coadjoint orbit should have a simple
+structure after taking the ``classical limit'', and it should have a specified
+support dictated by the nilpotent coadjoint orbit via the Kostant-Sekiguchi
+correspondence.
 
 Simultaneously but in an entirely different direction, there were significant
 developments in Howe's theory of (local) theta lifting and it was clear by the
 end of 1980's that the theory has much relevance for unitary representations of
 classical groups. The relevant works include the notion of rank by Howe
-\cite{HoweRank}, the description of discrete spectrum by Adams \cite{Ad83} and Li \cite{Li90},
-and the preservation of unitarity in stable range theta lifting by Li \cite{Li89}.
-Therefore it was natural, and there were many attempts, to link the orbit method
-with Howe's theory, and in particular to construct unipotent representations in
-this formalism. See for example \cite{Sa,Pz,HZ,HL,Br,He,Tr,PT,B17}. We would also like
-to mention the work of Przebinda \cite{Pz} in which a double
-fiberation of moment maps made its appearance in the context of theta lifting,
-and the work of He \cite{He} in which an innovative technique called quantum
-induction was devised to show the non-vanishing of the lifted representations.
-More recently the double fiberation of moment maps was successfully used by a
-number of authors to understand refined (nilpotent) invariants of
-representations such as associated cycles and generalized Whittaker models
-\cite{NOTYK, NZ, GZ, LM}, which among other things demonstrate the tight link
-between the orbit method and Howe's theory.
+\cite{HoweRank}, the description of discrete spectrum by Adams \cite{Ad83} and
+Li \cite{Li90}, and the preservation of unitarity in stable range theta lifting
+by Li \cite{Li89}. Therefore it was natural, and there were many attempts, to
+link the orbit method with Howe's theory, and in particular to construct
+unipotent representations in this formalism. See for example
+\cite{Sa,Pz,HZ,HL,Br,He,Tr,PT,B17}. We would also like to mention the work of
+Przebinda \cite{Pz} in which a double fiberation of moment maps made its
+appearance in the context of theta lifting, and the work of He \cite{He} in
+which an innovative technique called quantum induction was devised to show the
+non-vanishing of the lifted representations. More recently the double fiberation
+of moment maps was successfully used by a number of authors to understand
+refined (nilpotent) invariants of representations such as associated cycles and
+generalized Whittaker models \cite{NOTYK, NZ, GZ, LM}, which among other things
+demonstrate the tight link between the orbit method and Howe's theory.
 
 
 In the present article we will demonstrate that the orbit method and Howe's
-theory in fact have superb synergy when it comes to special unipotent representations.
-(Barbasch, M{\oe}glin, He and Trapa pursued a similar theme. See
-\cite{B17,Mo17,He,Tr}.) We will restrict our attention to a real classical group
-$G$ of type $B$, $C$ or $D$ (which in our terminology includes a real metaplectic group),
-and we will classify all special unipotent representations of $G$ attached to $\check \CO$, in the sense of Barbasch and
-Vogan. Here $\check \CO$ is a nilpotent adjoint orbit of $\check G$, the Langlands dual of $G$ (or the metaplectic dual of $G$ when $G$ is a real metaplectic group \cite{BMSZ1}).
-When $\check \CO$ is of good parity \cite{MR}, we will construct all special unipotent representations of $G$ attached to $\check \CO$ via the method of theta lifting.
-As a direct consequence of the construction and the classification, we conclude that all special unipotent representations of $G$ are unitarizable, as predicted by the Arthur-Barbasch-Vogan conjecture (\cite[Introduction]{ABV}). Here we wish to emphasize, that while there have
+theory in fact have superb synergy when it comes to special unipotent
+representations. (Barbasch, M{\oe}glin, He and Trapa pursued a similar theme.
+See \cite{B17,Mo17,He,Tr}.) We will restrict our attention to a real classical
+group $G$ of type $B$, $C$ or $D$ (which in our terminology includes a real
+metaplectic group), and we will classify all special unipotent representations
+of $G$ attached to $\check \CO$, in the sense of Barbasch and Vogan. Here
+$\check \CO$ is a nilpotent adjoint orbit of $\check G$, the Langlands dual of
+$G$ (or the metaplectic dual of $G$ when $G$ is a real metaplectic group
+\cite{BMSZ1}). When $\check \CO$ is of good parity \cite{MR}, we will construct
+all special unipotent representations of $G$ attached to $\check \CO$ via the
+method of theta lifting. As a direct consequence of the construction and the
+classification, we conclude that all special unipotent representations of $G$
+are unitarizable, as predicted by the Arthur-Barbasch-Vogan conjecture
+(\cite[Introduction]{ABV}). Here we wish to emphasize, that while there have
 been extensive investigations of unipotent representations for real reductive
 groups, by Vogan and his collaborators (see e.g. \cite{VoBook,Vo89,ABV}),
-%in particular on the related problems of classification of the primitive ideals and Fourier inversion of unipotent orbit integrals \cite{BVPri1, BVPri2},
-it is only for unitary groups complete results are known (\emph{cf}. \cite{BV83, Tr}), in which case all such representations may also be described in terms of cohomological induction.
+% in particular on the related problems of classification of the primitive
+% ideals and Fourier inversion of unipotent orbit integrals \cite{BVPri1,
+% BVPri2},
+it is only for unitary groups complete results are known (\emph{cf}. \cite{BV83,
+  Tr}), in which case all such representations may also be described in terms of
+cohomological induction.
 
 
 \subsection{Special unipotent representations of classical groups of type $B$, $C$ or $D$}\label{secsu}
-In this article, we aim to classify special unipotent representations of classical groups of type $B$, $C$ or $D$. As the cases of complex orthogonal groups  and complex symplectic groups are well-understood (see
-\cite{BVUni} and \cite{B17}), we will focus on the following groups:
-\be\label{typebcd}
-  \oO(p,q), \Sp_{2n}(\R), \  \widetilde \Sp_{2n}(\R), \ \Sp(p,q), \  \oO^*(2n),
-  \ee
-  where $p,q, n\in \BN:=\{0,1,2, \cdots\}$. Here $ \widetilde \Sp_{2n}(\R)$ denotes the real metaplectic group, namely the double cover of the symplectic group  $\Sp_{2n}(\R)$ that does not split unless $n=0$.
+In this article, we aim to classify special unipotent representations of
+classical groups of type $B$, $C$ or $D$. As the cases of complex orthogonal
+groups and complex symplectic groups are well-understood (see \cite{BVUni} and
+\cite{B17}), we will focus on the following groups: \be\label{typebcd} \oO(p,q),
+\Sp_{2n}(\R), \ \widetilde \Sp_{2n}(\R), \ \Sp(p,q), \ \oO^*(2n), \ee where
+$p,q, n\in \BN:=\{0,1,2, \cdots\}$. Here $ \widetilde \Sp_{2n}(\R)$ denotes the
+real metaplectic group, namely the double cover of the symplectic group
+$\Sp_{2n}(\R)$ that does not split unless $n=0$.
 
-Let $G$ be one of the groups in   \eqref{typebcd}.  As usual, we view $G$ as  a real form of $G_\C$ (or a double cover of a real form of $G_\C$ in the metaplecitic case), where
+Let $G$ be one of the groups in \eqref{typebcd}. As usual, we view $G$ as a real
+form of $G_\C$ (or a double cover of a real form of $G_\C$ in the metaplecitic
+case), where
 \[
-  G_\C:=
-  \left\{
+  G_\C:= \left\{
     \begin{array}{ll}
       \oO_{p+q}(\C) , & \hbox{if $G=\oO(p,q)$;} \smallskip\\
-    \Sp_{2n}(\C) , & \hbox{if $G=\Sp_{2n}(\R)$ or $\widetilde \Sp_{2n}(\R)$;} \smallskip \\
-  \Sp_{2p+2q}(\C) , & \hbox{if $G=\Sp(p,q)$;} \smallskip \\
- \oO_{2n}(\C) , & \hbox{if $G=\oO^*(2n)$.} \\
+      \Sp_{2n}(\C) , & \hbox{if $G=\Sp_{2n}(\R)$ or $\widetilde \Sp_{2n}(\R)$;} \smallskip \\
+      \Sp_{2p+2q}(\C) , & \hbox{if $G=\Sp(p,q)$;} \smallskip \\
+      \oO_{2n}(\C) , & \hbox{if $G=\oO^*(2n)$.} \\
     \end{array}
   \right.
 \]
-Write $\fgg_\R$ and $\g$ for the Lie algebras of $G$ and $G_\C$, respectively, and view $\g_\R$ as a real form of $\g$.
+Write $\fgg_\R$ and $\g$ for the Lie algebras of $G$ and $G_\C$, respectively,
+and view $\g_\R$ as a real form of $\g$.
 
-Denote $r_\g$ the rank of $\fgg$. Let $W_{r_\g}$ be the subgroup of $\GL_{r_\g}(\C)$ generated
-by the permutation matrices and the diagonal matrices with diagonal entries
-$\pm 1$.
- %We identify a Cartan subalgebra of $\g_V$ with $\C^{r_V}$, using the standard coordinates.
- Then as usual, Harish-Chandra
-isomorphism yields an identification
-\be\label{ugz}
-  \oU(\g)^{G_\C}=\left(\oS(\C^{r_\g})\right)^{W_{r_\g}}.
-\ee
-Here and henceforth,  ``$\oU$'' indicates the universal enveloping algebra of a Lie algebra,  a superscript group indicate the
-space of invariant vectors under the group action, and  ``$\oS$'' indicates
-the symmetric algebra. Unless $G_\C$ is an even orthogonal group,
-$\oU(\g)^{G_\C}$ equals the center $\oZ(\g)$ of $\oU(\g)$.
-By \eqref{ugz}, we have the following parameterization of  characters of $\oU(\g)^{G_\C}$:
+Denote $r_\g$ the rank of $\fgg$. Let $W_{r_\g}$ be the subgroup of
+$\GL_{r_\g}(\C)$ generated by the permutation matrices and the diagonal matrices
+with diagonal entries $\pm 1$.
+% We identify a Cartan subalgebra of $\g_V$ with $\C^{r_V}$, using the standard
+% coordinates.
+Then as usual, Harish-Chandra isomorphism yields an identification
+\be\label{ugz} \oU(\g)^{G_\C}=\left(\oS(\C^{r_\g})\right)^{W_{r_\g}}. \ee Here
+and henceforth, ``$\oU$'' indicates the universal enveloping algebra of a Lie
+algebra, a superscript group indicate the space of invariant vectors under the
+group action, and ``$\oS$'' indicates the symmetric algebra. Unless $G_\C$ is an
+even orthogonal group, $\oU(\g)^{G_\C}$ equals the center $\oZ(\g)$ of
+$\oU(\g)$. By \eqref{ugz}, we have the following parameterization of characters
+of $\oU(\g)^{G_\C}$:
 \[
   \Hom_{\mathrm{alg}}(\oU(\g)^{G_\C}, \C)=W_{r_\g} \backslash (\C^{r_\g})^*= W_{r_\g}\backslash \C^{r_\g}
 \]
-Here ``$ \Hom_{\mathrm{alg}}$" indicates the set of $\C$-algebra homomorphisms, and a superscript ``$\,^*\,$" over a vector space indicates the dual space.
+Here ``$ \Hom_{\mathrm{alg}}$" indicates the set of $\C$-algebra homomorphisms,
+and a superscript ``$\,^*\,$" over a vector space indicates the dual space.
 
 We define the Langlands dual of $G$ to be the complex group
 \[
-  \check G:=
-  \left\{
+  \check G:= \left\{
     \begin{array}{ll}
       \Sp_{p+q-1}(\C) , & \hbox{if $G=\oO(p,q)$ and $p+q$ is odd;} \smallskip\\
-    \oO_{p+q}(\C) , & \hbox{if $G=\oO(p,q)$ and $p+q$ is even;} \smallskip \\
-    \oO_{2n+1}(\C) , & \hbox{if $G=\Sp_{2n}(\R)$;} \smallskip \\
-   \Sp_{2n}(\C) , & \hbox{if $G=\widetilde \Sp_{2n}(\R)$;} \smallskip \\
- \oO_{2p+2q+1}(\C) , & \hbox{if $G=\Sp(p,q)$;} \smallskip \\
- \oO_{2n}(\C) , & \hbox{if $G=\oO^*(2n)$.} \\
+      \oO_{p+q}(\C) , & \hbox{if $G=\oO(p,q)$ and $p+q$ is even;} \smallskip \\
+      \oO_{2n+1}(\C) , & \hbox{if $G=\Sp_{2n}(\R)$;} \smallskip \\
+      \Sp_{2n}(\C) , & \hbox{if $G=\widetilde \Sp_{2n}(\R)$;} \smallskip \\
+      \oO_{2p+2q+1}(\C) , & \hbox{if $G=\Sp(p,q)$;} \smallskip \\
+      \oO_{2n}(\C) , & \hbox{if $G=\oO^*(2n)$.} \\
     \end{array}
   \right.
 \]
- Write $\check \fgg$ for the Lie algebra of $\check G$.
+Write $\check \fgg$ for the Lie algebra of $\check G$.
 
-\begin{remark} The authors have defined the notion of metaplectic dual for a real metaplectic group \cite{BMSZ1}. In this article, we have chosen to use the uniform terminology of Langlands dual (rather than metaplectic dual in the case of a real metaplectic group).
+\begin{remark} The authors have defined the notion of metaplectic dual for a
+  real metaplectic group \cite{BMSZ1}. In this article, we have chosen to use
+  the uniform terminology of Langlands dual (rather than metaplectic dual in the
+  case of a real metaplectic group).
 \end{remark}
 
-Denote by $\Nil(\check \fgg)$ the set of nilpotent  $\check G$-orbits in $\check \fgg$.
-%namely the set of all  orbits of nilpotent matrices under the adjoint action of $\check G$ in $\check \g$.
-When no confusion is possible, we will not distinguish a nilpotent orbit in $\GL_n(\C)$, $\oO_n(\C)$ or $\Sp_{2n}(\C)$ with its corresponding Young diagram. In particular, the zero orbit is represented by the Young diagram consisting of one nonempty column.
+Denote by $\Nil(\check \fgg)$ the set of nilpotent $\check G$-orbits in
+$\check \fgg$.
+% namely the set of all orbits of nilpotent matrices under the adjoint action of
+% $\check G$ in $\check \g$.
+When no confusion is possible, we will not distinguish a nilpotent orbit in
+$\GL_n(\C)$, $\oO_n(\C)$ or $\Sp_{2n}(\C)$ with its corresponding Young diagram.
+In particular, the zero orbit is represented by the Young diagram consisting of
+one nonempty column.
 
-Let  $\check \CO \in \Nil(\check \fgg) $.  It determines a character $\chi(\check \CO): \oU(\g)^{G_\C}\rightarrow \C$ as in what follows. For every  $a\in \bN$, write
+Let $\check \CO \in \Nil(\check \fgg) $. It determines a character
+$\chi(\check \CO): \oU(\g)^{G_\C}\rightarrow \C$ as in what follows. For every
+$a\in \bN$, write
 \[
   \rho(a):=\left\{ \begin{array}{ll}
                   (1, 2, \cdots, \frac{a-1}{2}), \quad &\textrm{if $a$ is odd;}\\
@@ -5987,15 +6011,7 @@ If $\star \in \set{B, D,C^*}$, then the map
 is injective. \qed
 \end{cor}
 
-\section{Associated cycles of painted bipartitions: combinatorics} \label{sec:ACC}
-% We define
-
-% \[
-%   \cK_{\star}(\ckcO) :=\bigsqcup_{\sfss} \cK_{\sfss}(\ckcO),
-% \]
-% where $\sfss$ running over all possible classical signatures.
-% %We do induction on the number of rows of the nilpotent orbits $\ckcO$.
-% We prove the properties of $\AC(\uptau)$ inductively.
+\section{Marked Young diagrams attached to the painted bipartitions: combinatorics} \label{sec:ACC}
 
 We fist define the combinatorical companion of $\AC(\uptau)$.
 Suppose $\abs{\ckcO}=0$. For $\uptau\in \PBP_{\star}(\ckcO)$, we define
@@ -6176,8 +6192,7 @@ Suppose $\star \in \set{B,D}$ and $(\star, \check \CO)\neq (D, \emptyset)$.
 
 \begin{lem}\label{lem:BD2}
 Suppose $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
-  \begin{enuma}
-  \item  Then $\ac_{\uptau}$ satisfies
+   Then $\ac_{\uptau}$ satisfies
   \[
     \begin{cases}
       \ac_{\uptau}^{+} =0, \text{ and } \ac_{\uptau}^{-}=0, & \text{when } x_{\uptau}=s,\\
@@ -6185,15 +6200,16 @@ Suppose $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
       \ac_{\uptau}^{+} \neq 0, \text{ and }   \ac_{\uptau}^{-}\neq 0,  & \text{when } x_{\uptau}=d.\\
     \end{cases}
   \]
-  % \begin{enumT}
-  %   \item If $x_{\uptau} = s$, then $\pac{\uptau} = \nac{\uptau} = 0$.
-  %   \item If $x_{\uptau} \in \set{r,c}$, then $\pac{\uptau} \neq 0$ and $\nac{\uptau}=0$.
-  %   \item If $x_{\uptau} = d$, then $\pac{\uptau}\neq 0$ and $\nac{\uptau}\neq 0$.
-  % \end{enumT}
+  \end{lem}
+
+\begin{lem}\label{lem:BD3}
+Suppose $\star \in \set{B,D}$, $\ckcO \neq \emptyset$ and $\ckcO$ is weakly-distinguished.
+\begin{enuma}
     \item The map
     \begin{equation}\label{eq:up}
       \begin{array}{rcl}
-        \Upsilon_{\ckcO} \colon \set{\ac_{\uptau}|\pac{\uptau}\neq 0, \uptau\in \PBPes(\ckcO)}
+        \Upsilon_{\ckcO} \colon \set{\ac_{\uptau}|\uptau\in \PBPes(\ckcO)
+        \text{ s.t. } \pac{\uptau}\neq 0 }
         & \rightarrow &  \bZ[\MYD]\times \bZ[\MYD] \\ %\set{(\pac{\uptau},\nac{\uptau})|\pac{\uptau}\neq 0} \\
         \ac_{\uptau} &\mapsto & (\pac{\uptau},\nac{\uptau})
       \end{array}
@@ -6205,18 +6221,19 @@ Suppose $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
     % $\pUpsilon_{1}:=\pr_{1}\circ \Upsilon$
     \[
       \begin{array}{rcl}
-        \pUpsilon_{\cO} \colon \set{\ac_{\uptau}|\pac{\uptau}\neq 0} &\rightarrow  & \set{\pac{\uptau}}\\
+        \pUpsilon_{\ckcO} \colon \set{\ac_{\uptau}|\uptau\in \PBPes(\ckcO)
+        \text{ s.t. } \pac{\uptau}\neq 0 } &\rightarrow  & \set{\pac{\uptau}}\\
        \ac_{\uptau} & \mapsto & \pac{\uptau}\\
       % \end{array} \quad \text{and}
       % \begin{array}{rcl}
-        \nUpsilon_{\cO} \colon \set{\ac_{\uptau}|\nac{\uptau}\neq 0} &\rightarrow & \set{\nac{\uptau}}\\
+        \nUpsilon_{\ckcO} \colon \set{\ac_{\uptau}|\uptau\in \PBPes(\ckcO)
+        \text{ s.t. } \pac{\uptau}\neq 0} &\rightarrow & \set{\nac{\uptau}}\\
        \ac_{\uptau} &\mapsto & \nac{\uptau}
      \end{array}
    \]
     are injective.
-  \item Suppose $\ckcO$ is weakly-distingushied and $\bfrr_{1}(\ckcO)> \bfrr_{3}(\ckcO)$.
-  If $x_{\tau}=d$, then there is $\cE\in \MYD$ with non-zero coefficient in
-  $\nac{\uptau}$ such that $\cE\sqsupseteq (1,0)$.
+    \item When $\bfrr_{1}(\ckcO)> \bfrr_{3}(\ckcO)$, and $x_{\tau}=d$.
+    Then there is $\cE\in \MYD$ with non-zero coefficient in $\nac{\uptau}$ such that $\cE\sqsupseteq (1,0)$.
   \end{enuma}
 \end{lem}
 
@@ -6298,6 +6315,8 @@ is a bijection by \Cref{lem:D.sign}.
 
 In all the cases, the orbit $\ckcO$ is quasi-distinghuished and all the lemmas
 in \Cref{sec:ac} are clear now.
+
+
 % When $k=0$, $\cO = (C_{1}=2c_{1},C_{0}=2c_{0})$ has  at most
 % two columns.
 % Now $\uppi_{\uptaup}$ is the trivial representation of $\Sp(2c_{0},\bR)$.
@@ -6357,9 +6376,14 @@ $\cE_{i}\in \MYD_{\star}$, we define
 \] where  $\sO'_{j} \in \SYD_{\star'}$ is given by $\sO'_{j}(i) := \sF\circ \cE_{j}(i+1)$ for all
 $i\in \bN^{+}$.
 
+\medskip
+
 We first consider the case when $\bfrr_{1}(\ckcO)>\bfrr_{2}(\ckcO)$.
 
 Since $\ac_{\uptau'}\neq 0$, $\ac_{\uptau}\neq 0$ by \eqref{eq:C}. This proves \Cref{lem:ac0}.
+
+
+\smallskip
 
 
 Suppose $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$. By \eqref{eq:C},
@@ -6370,9 +6394,15 @@ $\ac_{\uptau'_{1}}\otimes (\varepsilon_{\wp_{1}})=\ac_{\uptau'_{2}}\otimes (\var
 So $\varepsilon_{\wp_{1}}=\varepsilon_{\wp_{2}}$ and $\ac_{\uptau'_{1}}=\ac_{\uptau'_{2}}$ by \Cref{lem:BD}~(a).
 This proves \Cref{lem:C}~(a).
 
+
+\smallskip
+
 When $\ckcO$ is weakly-distinguished, $\ckcO'$ is also weakly-distinguished and  we get $\uptau'_{1}=\uptau'_{2}$ by
 \Cref{lem:BD}~(b). Hence $\uptau_{1}=\uptau_{2}$ by \Cref{prop:CC.bij}. This
 proves \Cref{lem:C}~(b).
+
+
+\smallskip
 
 
 When $\ckcO$ is quasi-distinguished, $\ckcO'$ is quasi-distinguished
@@ -6386,7 +6416,7 @@ proves \Cref{lem:C}~(c).
 Now we consider the rest case, where $\bfrr_{1}(\ckcO)=\bfrr_{2}(\ckcO)>0$.
 
 According to \Cref{prop:CC.bij},  $x_{\taup}\neq s$.
-Thanks to \Cref{lem:BD2}~(a) and \eqref{eq:C}, we have $\pac{\uptaup} \neq 0$ and
+Thanks to \Cref{lem:BD2} and \eqref{eq:C}, we have $\pac{\uptaup} \neq 0$ and
 \begin{equation}
 \label{eq:dsign1}
   \dsign(\ac_{\uptau}) =
@@ -6400,24 +6430,42 @@ In particular,
 $\ac_{\uptau}\neq 0$ and \Cref{lem:ac0} is proven.
 
 
+\smallskip
+
+
 Suppose $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$. By \eqref{eq:dsign1},
 $\Sign(\uptau'_{1})=\Sign(\uptau'_{2})$. Since we have
 $\varepsilon_{\wp_{1}}=\varepsilon_{\wp_{2}}=0$, \Cref{lem:C}~(a) is proven.
 
+
+\smallskip
+
 Now \eqref{eq:C} implies $\pac{\uptau'_{1}}=\pac{\uptau'_{2}}$ and
 $\nac{\uptau'_{1}}=\nac{\uptau'_{2}}$.
-By the injectivity of $\Upsilon_{\ckcO'}$ in \Cref{lem:BD2}~(b), we get
+By the injectivity of $\Upsilon_{\ckcO'}$ in \Cref{lem:BD3}~(a), we get
 $\ac_{\uptau'_{1}}=\ac_{\uptau'_{2}}$.
 Suppose $\ckcO$ is weakly-distinghuished, then $\ckcO'$ is
 weakly-distinghuished.
 So $\uptau'_{1}=\uptau'_{2}$ by \Cref{lem:BD}~(b).
 Now \Cref{prop:CC.bij} implies $\uptau_{1}=\uptau_{2}$, which proves \Cref{lem:C}~(b).
 
+
+\smallskip
+
 Note that $\ckcO$ is not quasi-distinguished, \Cref{lem:C}~(c) is vacant.
 
 
 \subsection{The general case for $\star\in \set{B,D}$}
-We now assume $\bfcc_{2}(\cO)>0$ and retain the notation in \Cref{lem:BD,lem:BD2}.
+
+To ease the following discussion, we adopt the following convension.
+Suppose $\cA\in \bZ[\MYD]$. We write $\cA\rhd (p_{0},q_{0})$ if
+$\cE \sqsupset (p_{0},q_{0})$ for all $\cE\in \MYD$ with non-zero coefficient in
+$\cA$, and write $\cA \sqsupset (p_{0},q_{0})$ if there is an $\cE\in \MYD$ with
+non-zero coefficient in $\cA$ such that $\cE\sqsupseteq (p_{0},q_{0})$.
+
+\medskip
+
+We now assume $\bfcc_{2}(\cO)>0$ and retain the notation in \Cref{lem:BD,lem:BD2,lem:BD3}.
 
 We first consider the case when $\bfrr_{2}(\ckcO)>\bfrr_{3}(\ckcO)$.
 \Cref{lem:ac0}, i.e. $\ac_{\uptau}\neq 0$, follows from \eqref{eq:BD} directly.
@@ -6431,20 +6479,28 @@ By the result in the initial case, we get $\epsilon_{1}=\epsilon_{2}$ and
 $\varepsilon_{\tau_{1}}=\varepsilon_{(\tau_{1})_{\bftt}}=\varepsilon_{(\tau_{2})_{\bftt}}=\varepsilon_{\tau_{2}}$.
 This proves \Cref{lem:BD}~(a).
 
+\smallskip
+
 Now assume $\ckcO$ is weakly-distinguished in addition. Then $\ckcO'$ is also
 weakly-distinghuished.
 We get $\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$ by \eqref{eq:TBD} and so $\uptaup_{1}=\uptaup_{2}$.
 By \Cref{cor:dpinj}, we conclude that $\uptau_{1}=\uptau_{2}$. This proves
 \Cref{lem:BD}~(b).
 
+
+\smallskip
+
 Suppose $\ckcO$ is quasi-distinghuished. Then $\ac_{\uptau}\in \MYD_{\star}$
 since $\ac_{\uptau'}\in \MYD_{\star'}$ by the quasi-distinguishness of
 $\ckcO'$.
 This proves \Cref{lem:BD}~(c).
 
-Using \eqref{eq:TBD}, all the claims (a-c) in \Cref{lem:BD2} follows from that of
+
+\smallskip
+
+Using \eqref{eq:TBD}, all the claims in \Cref{lem:BD2,lem:BD3} follows from that of
 $\ckcO_{\bftt}$, see \Cref{sec:tail}. (Note that we always have
-$\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)$. So \Cref{lem:BD2}~(c) is not vacant.)
+$\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)$. So \Cref{lem:BD2}~(b) is not vacant.)
 
 \trivial[h]{
 Note that $\Sign(\tau_{1})=\Sign(\tau_{2})$,
@@ -6460,24 +6516,19 @@ By \Cref{lem:delta}, $x_{\tau''}\neq s$.
 % Since $x_{\uptaupp}\neq s$, $\AC(\uptaupp)\neq 0$.
 
 
-{\bf Proof of \Cref{lem:ac0}. }
+\subsection*{\bf Proof of \Cref{lem:ac0}. }
 When $\Sign(\tau_{\bftt})\succeq (0,1)$, the first term in \eqref{eq:BD2} dose
-not vanish since $\pac{\uptaupp}\neq 0$ by \Cref{lem:BD2}~(a).
+not vanish since $\pac{\uptaupp}\neq 0$ by \Cref{lem:BD2}.
 When $\Sign(\tau_{\bftt})\nsucceq (0,1)$, $\Sign(\tau_{\bftt}) = (2k,0)$ and
 $\cP_{\tau_{\bftt}}^{-1}(\set{s,c})=\emptyset$. Hence
   $x_{\uptaupp}=d$ by \Cref{lem:delta}. Now $\nac{\uptaupp} \neq 0$ by
-  \Cref{lem:BD2}~(a) and
+  \Cref{lem:BD2} and
   the second term in \eqref{eq:BD2} dose not vanish.
 This proves \Cref{lem:ac0}
 
 
-{\bf Proof of \Cref{lem:BD2}~(a). }
+\subsection*{\bf Proof of \Cref{lem:BD2} }
 
-To ease the following discussion, we adopt the following convension.
-Suppose $\cA\in \bZ[\MYD]$. We write $\cA\rhd (p_{0},q_{0})$ if
-$\cE \sqsupset (p_{0},q_{0})$ for all $\cE\in \MYD$ with non-zero coefficient in
-$\cA$, and write $\cA \sqsupset (p_{0},q_{0})$ if there is an $\cE\in \MYD$ with
-non-zero coefficient in $\cA$ such that $\cE\sqsupseteq (p_{0},q_{0})$.
 
 It is clear that $\nac{\uptau}=0$ when $x_{\tau}\in \set{s,r,c}$ because of
 the twist $\lotimes(0, 1)$ in \Cref{eq:BD2}.
@@ -6509,12 +6560,12 @@ the twist $\lotimes(0, 1)$ in \Cref{eq:BD2}.
     So the both terms in \eqref{eq:BD2} are non-zero, which leads to the conclusion.
   \end{enumPF}
 
-{\bf Proof of \Cref{lem:BD}~(a). }
+\subsection*{\bf Proof of \Cref{lem:BD}~(a) }
 \def\opac{\cL'^+}
 \def\onac{\cL'^-}
 \def\tpac{\widetilde{\cL'}^+}
 \def\tnac{\widetilde{\cL'}^-}
-The following proof only depends on \Cref{lem:BD2}~(a).
+The following proof only depends on \Cref{lem:BD2}.
 Suppose $\cL' = \ac_{\uptau}\lotimes (\epsilon,\epsilon)$.
 Let
   \begin{align*}
@@ -6526,7 +6577,7 @@ Let
 
 Note that $\bfcc_{1}(\cO)-\bfcc_{2}(\cO)>0$. So $\pac{\uptau}$, $\nac{\uptau}$,
 $\tpac$ and $\tnac$ can not all vanish.
-Using \Cref{lem:BD2}~(a), we have the following criteria for
+Using \Cref{lem:BD2}, we have the following criteria for
 $(\varepsilon_{\tau},\epsilon)$:
 \[
 \begin{split}
@@ -6545,15 +6596,15 @@ $(\varepsilon_{\tau},\epsilon)$:
 This implies \Cref{lem:BD}~(a).
 
 
-{\bf Proof of \Cref{lem:BD}~(b). }
+\subsection*{\bf Proof of \Cref{lem:BD}~(b) }
 First not that
 $\bfrr_{1}(\ckcO'') = \bfrr_{3}(\ckcO)=\bfrr_{2}(\ckcO)>\bfrr_{5}(\ckcO) = \bfrr_{3}(\ckcO'')$.
 
-Suppose that  $\ac_{\uptau_{i}} \sqsupset (0,1)$ or $\ac_{\uptau_{i}} \sqsupset (0,-1)$.
+Suppose that  $\ac_{\uptau_{i}} \sqsupseteq (0,1)$ or $\ac_{\uptau_{i}} \sqsupseteq (0,-1)$.
 The first term in \eqref{eq:BD2} for both $\uptau_{1}$ and $\uptau_{2}$ must be
 non-zero and equal.
 This implies $\pac{\uptaupp_{1}}=\pac{\uptaupp_{2}}$.
-By \Cref{lem:BD2}~(c) and \Cref{lem:BD}~(b), $\ac_{\uptaupp_{1}} = \ac_{\uptaupp_{2}}$ and  $\uptaupp_{1}=\uptaupp_{2}$.
+By \Cref{lem:BD2}~(b) and \Cref{lem:BD}~(b), $\ac_{\uptaupp_{1}} = \ac_{\uptaupp_{2}}$ and  $\uptaupp_{1}=\uptaupp_{2}$.
 Since $\Sign(\uptau_{1})=\Sign(\uptau_{2})$, we get
 $\uptau_{1}=\uptau_{2}$ by \Cref{lem:delta}.
 
@@ -6573,247 +6624,343 @@ We consider case by case according to the set $\set{\Sign((\tau_{i})_{\bftt})|i=
     \item
     Suppose $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k,0)}$. We have
     $\nac{\uptaupp_{1}}=\nac{\uptaupp_{2}}$, and deduces
-    $\uptaupp_{1}=\uptaupp_{2}$ by \Cref{lem:BD2}~(c) and \Cref{lem:BD}~(b).
+    $\uptaupp_{1}=\uptaupp_{2}$ by \Cref{lem:BD2}~(b) and \Cref{lem:BD}~(b).
     \item
-    Without loss of generality, we now assume
+    Without loss of generality, we assume that
     $\Sign({\tau_{1}}_{\bftt}) = (2k-1,1)$ and
     $\Sign({\tau_{2}}_{\bftt}) = (2k,0)$.
     By \eqref{eq:BD2}, we get
     \[
       \pac{\uptaupp_{1}}\cdot (0,0)=\maltese(\nac{\uptaupp_{2}}\cdot (0,0)),
     \]
-    which is contradict to \Cref{lem:BD2}~(d).
-%     \begin{claim}\label{c:d+}
-%       We have $\nac{\uptaupp_{2}}\supset 1^{(1,0)}$.
-%     \end{claim}
-%     \begin{proof}
-%       If $\bfrr_{2}(\ckcO'')>\bfrr_{3}(\ckcO'')$,  we have
-%       $\ac_{\uptau}\succeq 1^{(1,1)}$ and we are done.
-
-%       Now assume $\bfrr_{2}(\cOpp)=\bfrr_{3}(\ckcO)$. Then ${\tau''_{i}}_{\bftt}$ has at least length $2$.
-%       Suppose $\Sign( {\tau''_{i}}_{\bftt} )\succ (1,2)$. Applying \eqref{eq:gd.ls} to $\uptaupp$,
-%       we see that the first term is non-zero and $\ac_{\uptaupp}\supseteq 1^{(1,1)}$.
-
-%       Otherwise, $\Sign( {\tau_{2}}_{\bftt} ) = (2k''-1,1)\succeq (3,1)$ where
-%       $k'' = (\bfrr_{1}(\ckcO'')-\bfrr_{2}(\ckcO''))/2+1 $.
-%       By \eqref{eq:gd.ls}, the second term is
-%       non-zero and $\ac_{\uptaupp}\supset 1^{(2k''-1,1)}$.
-%     \end{proof}
-%     The claim leads to the contradiction to \eqref{eq:ct1}:
-%     the LHS of \eqref{eq:ct1} $\succeq 1^{(1,0)}$ and the
-%     RHS of \eqref{eq:ct1} $\succeq 1^{(-1,0)}$.
-%   \end{enumPF}
-% \end{enumPF}
+    which is contradict to \Cref{lem:BD2}~(c).
   \end{enumPF}
-  We finished the proof of the lemma.
+  We finished the proof of \Cref{lem:BD}~(b).
 
-\section{}
-
-
-
-\subsubsection{Unipotent representations attached to $\cOp$}
-In this section, we let $\uptaup\in \PBPesp(\cOp)$ and
-$\uptaupp  = \DD(\uptaup)\in \PBPes(\cOpp)$. First note that
-$x_{\uptaupp}\neq s$ and so $\Lambda_+(\AC( \uptaupp ))$ always non-zero
-by induction hypothesis.
-
-Recall \eqref{eq:LS.taup}.
-We claim that we can recover $\Lambda_+(\AC{\uptaupp}$ and
-$\nac{\uptaupp}$ from $\ac_{\uptaup}$:
-\begin{lem}\label{c:gd.C1}
-  The map $\Omega_{\cOp}\colon \ac_{\uptaup}\mapsto (\Lambda_+(\AC( \uptaupp)),\Lambda_-(\AC( \uptaupp)))$ is a well
-  defined map.
-\end{lem}
-\begin{proof}
-  When $\lsign(\ac_{\uptaup})$ has two elements, $x_{\uptaupp}=d$ and
-  $\lsign(\ac_{\uptaup}) = \set{(q''_{1},p''_{1}-1),(q''_{1}-1,p''_{1})}$. In
-  \eqref{eq:LS.taup}, $\dagger\Lambda_+(\AC{\uptaupp}$ (resp. $\dagger\nac{\uptaupp}$)
-  consists of components whose first column has siginature $(q''_{1},p''_{1}-1)$
-  (resp. $(q''_{1}-1,p''_{1})$). When $\lsign(\ac_{\uptaup})$ has only one
-  elements, $x_{\uptau}=r/c$,
-  $\lsign(\ac_{\uptaup}) = \set{(q''_{1},p''_{1}-1)}$,
-  $\ac_{\uptaup} = \dagger\Lambda_+(\AC{\uptaupp}$ and $\nac{\uptaupp}=0$
-  % \trivial[h]{
-  %   Note that, $\lsign( \dagger\Lambda_+(\AC{\uptaupp} ) = (q_{0},p_{0}-1)$ and
-  %   $\lsign( \dagger\nac{\uptaupp} ) = (q_{0}-1,p_{0})$ (if it is none-zero) by
-  %   \eqref{eq:lsign.1}. }
-
-  In any case, we get
-  % recover $\lsign(\ac_{\uptaupp})=(p_{0},q_{0})$ and
-  \begin{equation}\label{eq:uptaupp.sign}
-    \ssign(\uptaupp) = (n_{0},n_{0})+(p''_{1},q''_{1})\quad \text{where }
-    2n_{0} = \abs{\DD(\cOpp)}.
-  \end{equation}
-% $+\half \abs{\DD(\cOpp)} \cdot(1,1)$.
-  Using the signature $\ssign(\uptaupp)$, we could recover the twisting
-  characters in the theta lifting of local system. Therefore
-  $\Lambda_+(\AC{\uptaupp}$ and $\nac{\uptaupp}$ can be recovered from  $\ac_{\uptaup}$.
-\end{proof}
+  \Cref{lem:BD}~(c) is vacant in the current case.
 
 
-% \begin{lem}\label{c:gd.C3}
-%   Suppose $\uptaup_{1}\neq \uptaup_{2}\in \drc(\cOp)$. Then
-%   $\uppi_{\uptaup_{1}}\neq \uppi_{\uptaup_{2}}$.
+\subsection*{\bf Proof of \Cref{lem:BD3}~(b)}
+Note that the condition $\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)=\bfrr_{2}(\ckcO)$
+implies $2k = \abs{\ckcO_{\bftt}}\geq 4$.
+
+
+We first prove the injectivity of $\Upsilon^{+}_{\ckcO}$.
+  Note that $\ac_{\uptau}\sqsupseteq (2,0)$ is equivalent to
+  $\pac{\uptau}\sqsupseteq (1,0)$.
+  We clearly have the following  bijection
+  \[
+    \set{\ac_{\uptau}|\uptau\in \PBPes(\ckcO),\ac_{\uptau}\sqsupseteq (2,0)} \rightarrow \set{\pac{\uptau}|\uptau\in \PBPes(\ckcO),\pac{\uptau}\sqsupseteq (1,0)},
+  \]
+  since  $\ac_{\uptau})\lhd (1,0)$ for each element in the domain by \eqref{eq:BD2}.
+  % Hence we
+  % $\ac_{\uptau} := \pac{\uptau}\cdot 1^{(1,0)}$.
+
+  Now we consider the set
+  $\set{\ac_{\uptau}|\uptau\in \PBPes(\ckcO), \pac{\uptau}\neq 0, \ac_{\uptau}\nsqsupseteq (2,0)}$. Let
+  $\ac_{\uptau_{1}}$ and $\ac_{\uptau_{2}}$ be two elements in this set such that
+  $\pac{\uptau_{1}}=\pac{\uptau_{2}}$.
+
+  By \eqref{eq:BD2}, we have $\Sign(\ttail{\tau_{i}}) = (1,2k-1)$ and the first term of \eqref{eq:BD2} non-vanish.
+
+    Note that $\cE(1) = (B,2k-2,(-1)^{\varepsilon^{\tau_{i}}}1)$ for each $\cE\in \MYD$ having non-zero
+    coefficient in the first term of \eqref{eq:BD2}. So $x_{\tau_{1}}=x_{\tau_{2}}$.
+    Compairing the first term of \eqref{eq:BD2} gives $\pac{\uptaupp_{1}}=\pac{\uptaupp_{2}}$.
+    Note that $\ckcO''$ is weakly-distinghuished and $\bfrr_{1}(\ckcO'')>\bfrr_{3}(\ckcO'')$, we deduce that
+    $\ac_{\uptaupp_{1}}=\ac_{\uptaupp_{2}}$ by the injectivity of $\Upsilon_{\ckcO''}^{+}$.
+    Now we conclude that $\ac_{ \uptau_{1} }=\ac_{ \uptau_{2} }$ by \eqref{eq:BD2} and
+    finished the proof of the injectivity of $\Upsilon_{\ckcO}^{+}$.
+
+    \smallskip
+
+    The injectivity of $\Upsilon_{\ckcO}^{-}$ is proved similarly.
+
+  Note that $\ac_{\uptau}\sqsupseteq (0,2)$ is equivalent to
+  $\nac{\uptau})\sqsupseteq (0,1)$.
+  We get the bijection
+  \[
+    \set{\ac_{\uptau}|\uptau\in \PBPes(\ckcO),\ac_{\uptau}\sqsupseteq (0,2)} \rightarrow
+    \set{\nac{\uptau}|\uptau\in \PBPes(\ckcO),\nac{\uptau}\sqsupseteq (0,1)}.
+  \]
+  %$\ac_{\uptau} := \pac{\uptau}\cdot 1^{(0,1)}$.
+
+  Now we consider the set
+  $\set{\ac_{\uptau}|\uptau\in \PBPes(\ckcO),\nac{\uptau}\neq 0, \ac_{\uptau}\nsqsupseteq (0,2)}$.
+  Let $\ac_{\uptau_{1}}$ and $\ac_{\uptau_{2}}$ be two elements in it such that
+  $\nac{\uptau_{1}}=\nac{\uptau_{2}}$.
+  By \eqref{eq:BD2}, we have $\Sign((\tau_{i})_{\bftt}) \in \set{ (2k-1,1),(2k-2,2)}$.
+  We consider case by case according to the set $\set{\Sign((\tau_{i})_{\bftt})|i=1,2}$:
+  \begin{enumPF}
+    \item Suppose
+    $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k-1,1)}$.
+    We have $\nac{\uptau''_{1}} = \nac{\uptau''_{2}}$, and so
+    $\ac_{\uptaupp_{1}}=\ac_{\uptaupp_{2}}$ by the injectivity of $\Upsilon_{\ckcO''}^{-}$.
+    \item Suppose
+    $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k-2,2)}$. We get
+    $\pac{\uptau''_{1}} = \pac{\uptau''_{2}}$, and so
+    $\ac_{\uptaupp_{1}}=\ac_{\uptaupp_{2}}$ by the injectivity of $\Upsilon_{\ckcO''}^{+}$.
+    \item
+    Without loss of generality, we assume that
+    $\Sign({\tau_{1}}_{\bftt}) = (2k-1,1)$ and
+    $\Sign({\tau_{2}}_{\bftt}) = (2k-2,2)$.
+    But this will leads to
+    $\maltese (\nac{\uptau''_{1}}\cdot (0,0)) = \pac{\uptau''_{2}}\cdot (0,0)$
+    which is contradict to \Cref{lem:BD3}~(c).
+  \end{enumPF}
+  Now we conclude that $\ac_{ \uptau_{1} }=\ac_{ \uptau_{2} }$ by \eqref{eq:BD2} and
+  finished the proof of the injectivity of $\Upsilon_{\ckcO}^{-}$.
+
+  \subsection*{\bf Proof of \Cref{lem:BD3}~(c)}
+
+  Note that we have $k\geq 2$ and $x_{\tau}=d$ under the stated condition.
+  Suppose $\Sign( {\tau}_{\bftt} )\succ (1,2)$, the
+  first term of \eqref{eq:BD2} is non-vanish.
+
+  Otherwise, $\Sign( \tau_{\bftt} ) = (2k-1,1)\succeq (3,1)$.
+  Since $\nac{\uptau}\neq 0$, the second term of \eqref{eq:BD2} must
+  non-vanish.
+
+ In all the cases,  $\ac_{\uptau}\sqsupseteq (1,1)$ and so  $\nac{\uptau}\sqsupseteq (1,0)$.
+
+
+\subsection*{\bf Proof of \Cref{lem:BD3}~(a)}
+
+Suppose $\bfrr_{1}(\ckcO)>\bfrr_{2}(\ckcO)=\bfrr_{3}(\ckcO)$. The injectivity
+followes from the injectivity of $\Upsilon_{\ckco}^{+}$.
+
+It left to consider the case when $\bfrr_{1}(\ckcO)=\bfrr_{2}(\ckcO)$.
+Note that we have $k=1$ and $\bfrr_{1}(\ckcO'')>\bfrr_{3}(\ckcO'')$.
+
+%Let $\uptau_{i} \PBPes(\ckco)$ such that $\pac{\uptau_{i}}\neq 0$ for $i=1,2$.
+Suppose $\Upsilon_{\ckcO}(\ac_{\uptau_{1}}) = \Upsilon_{\ckcO}(\ac_{\uptau_{2}})$.
+
+When $\nac{ \tau_{i} }\neq 0$, we have $x_{\tau_{1}}=x_{\tau_{2}}=d$ and
+$\pac{\uptau''_{1}} = \pac{\uptau''_{2}}$ by \eqref{eq:BD2}.
+
+Suppose $\nac{ \tau_{i} }=0$.
+By the similar argument in the proof of \Cref{lem:BD}~(b),
+we conclude that there are only two possibilities:
+\begin{itemize}
+  \item $\pac{\uptau''_{1}} = \pac{\uptau''_{2}}$ and
+  $x_{\tau_{1}}=x_{\tau_{2}} = c$;
+  \item $\nac{\uptau''_{1}} = \nac{\uptau''_{2}}$ and
+  $x_{\tau_{1}}=x_{\tau_{2}} = r$.
+\end{itemize}
+
+In all the cases,  we get $\ac_{\uptau''_{1}}=\ac_{\uptau''_{2}}$ by the
+injectivity of $\Upsilon_{\ckcO''}^{+}$ or $\Upsilon_{\ckcO''}^{-}$.
+Hence $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$ by \eqref{eq:BD2}.
+
+
+
+
+% \section{}
+
+
+
+% \subsubsection{Unipotent representations attached to $\cOp$}
+% In this section, we let $\uptaup\in \PBPesp(\cOp)$ and
+% $\uptaupp  = \DD(\uptaup)\in \PBPes(\cOpp)$. First note that
+% $x_{\uptaupp}\neq s$ and so $\Lambda_+(\AC( \uptaupp ))$ always non-zero
+% by induction hypothesis.
+
+% Recall \eqref{eq:LS.taup}.
+% We claim that we can recover $\Lambda_+(\AC{\uptaupp}$ and
+% $\nac{\uptaupp}$ from $\ac_{\uptaup}$:
+% \begin{lem}\label{c:gd.C1}
+%   The map $\Omega_{\cOp}\colon \ac_{\uptaup}\mapsto (\Lambda_+(\AC( \uptaupp)),\Lambda_-(\AC( \uptaupp)))$ is a well
+%   defined map.
 % \end{lem}
 % \begin{proof}
-%   It suffice to consider the case when $\ac_{\uptaup_{1}} = \ac_{\uptaup_{2}}$.
-%  By \eqref{eq:uptaupp.sign} in the proof of \Cref{c:gd.C1},
-%  $\ssign(\uptaupp_{1}) = \ssign(\uptaupp_{2})$.
-%  On the other hand, $\upepsilon_{1}=\upepsilon_{2}=0$ and
-%  $\uptaupp_{1}\neq \uptaupp_{2}$ by \Cref{lem:gd.CD}. So
-%  \[
-%    \uppi_{\uptaup_{1}} = \Thetab(\uppi_{\uptaupp_{1}})\neq\Thetab(\uppi_{\uptaupp_{2}}) = \uppi_{\uptaup_{2}}
-%  \]
-%   by the injectivity of theta lift.
+%   When $\lsign(\ac_{\uptaup})$ has two elements, $x_{\uptaupp}=d$ and
+%   $\lsign(\ac_{\uptaup}) = \set{(q''_{1},p''_{1}-1),(q''_{1}-1,p''_{1})}$. In
+%   \eqref{eq:LS.taup}, $\dagger\Lambda_+(\AC{\uptaupp}$ (resp. $\dagger\nac{\uptaupp}$)
+%   consists of components whose first column has siginature $(q''_{1},p''_{1}-1)$
+%   (resp. $(q''_{1}-1,p''_{1})$). When $\lsign(\ac_{\uptaup})$ has only one
+%   elements, $x_{\uptau}=r/c$,
+%   $\lsign(\ac_{\uptaup}) = \set{(q''_{1},p''_{1}-1)}$,
+%   $\ac_{\uptaup} = \dagger\Lambda_+(\AC{\uptaupp}$ and $\nac{\uptaupp}=0$
+%   % \trivial[h]{
+%   %   Note that, $\lsign( \dagger\Lambda_+(\AC{\uptaupp} ) = (q_{0},p_{0}-1)$ and
+%   %   $\lsign( \dagger\nac{\uptaupp} ) = (q_{0}-1,p_{0})$ (if it is none-zero) by
+%   %   \eqref{eq:lsign.1}. }
+
+%   In any case, we get
+%   % recover $\lsign(\ac_{\uptaupp})=(p_{0},q_{0})$ and
+%   \begin{equation}\label{eq:uptaupp.sign}
+%     \ssign(\uptaupp) = (n_{0},n_{0})+(p''_{1},q''_{1})\quad \text{where }
+%     2n_{0} = \abs{\DD(\cOpp)}.
+%   \end{equation}
+% % $+\half \abs{\DD(\cOpp)} \cdot(1,1)$.
+%   Using the signature $\ssign(\uptaupp)$, we could recover the twisting
+%   characters in the theta lifting of local system. Therefore
+%   $\Lambda_+(\AC{\uptaupp}$ and $\nac{\uptaupp}$ can be recovered from  $\ac_{\uptaup}$.
 % \end{proof}
 
 
-%\medskip
-
-% When $\bfpp_{\uptau} = \tytb{sd\cdots,\vdots,s,{c/d}}$,
-% $\Lambda_+(\AC(\uptau)) = (\dagger\dagger \cB_{\uptaupp,1} \cT_{\uptau,1})^{+}$
-% and this is the only case that $\Lambda_+(\AC(\uptau))\neq \emptyset$ has less irreducible
-% components than that of $\ac_{\uptau}$.
-
-% {
-%   \color{red}
-%   The above computation also tells the shape of legs of $\ac_{\uptau}$ according
-%   to $\bfpp_{\uptau}$.
-% }
-
-% , $\cOpp$ is noticed when
-% $C_{2k}$ is even or $\cOpp$ is +notice when $\cO_{2k}$ is odd.
-
-\subsubsection{Unipotent representations attached to $\cO$}
+% % \begin{lem}\label{c:gd.C3}
+% %   Suppose $\uptaup_{1}\neq \uptaup_{2}\in \drc(\cOp)$. Then
+% %   $\uppi_{\uptaup_{1}}\neq \uppi_{\uptaup_{2}}$.
+% % \end{lem}
+% % \begin{proof}
+% %   It suffice to consider the case when $\ac_{\uptaup_{1}} = \ac_{\uptaup_{2}}$.
+% %  By \eqref{eq:uptaupp.sign} in the proof of \Cref{c:gd.C1},
+% %  $\ssign(\uptaupp_{1}) = \ssign(\uptaupp_{2})$.
+% %  On the other hand, $\upepsilon_{1}=\upepsilon_{2}=0$ and
+% %  $\uptaupp_{1}\neq \uptaupp_{2}$ by \Cref{lem:gd.CD}. So
+% %  \[
+% %    \uppi_{\uptaup_{1}} = \Thetab(\uppi_{\uptaupp_{1}})\neq\Thetab(\uppi_{\uptaupp_{2}}) = \uppi_{\uptaup_{2}}
+% %  \]
+% %   by the injectivity of theta lift.
+% % \end{proof}
 
 
+% %\medskip
 
-\subsubsection{Noticed orbits}
+% % When $\bfpp_{\uptau} = \tytb{sd\cdots,\vdots,s,{c/d}}$,
+% % $\Lambda_+(\AC(\uptau)) = (\dagger\dagger \cB_{\uptaupp,1} \cT_{\uptau,1})^{+}$
+% % and this is the only case that $\Lambda_+(\AC(\uptau))\neq \emptyset$ has less irreducible
+% % components than that of $\ac_{\uptau}$.
 
+% % {
+% %   \color{red}
+% %   The above computation also tells the shape of legs of $\ac_{\uptau}$ according
+% %   to $\bfpp_{\uptau}$.
+% % }
 
+% % , $\cOpp$ is noticed when
+% % $C_{2k}$ is even or $\cOpp$ is +notice when $\cO_{2k}$ is odd.
 
-In this section, we prove the claims about noticed and +noticed orbits.
-
-\begin{lem}\label{c:gd.C2}
-  Suppose $\cOp$ is noticed. Then
-  \begin{enumT}
-    \item \label{c:gd.C2.1}The map
-$\set{\ac_{\uptaupp}| x_{\uptaupp}\neq s}\longrightarrow \set{\ac_{\uptaup}}=\LLS(\cOp)$ given by
-$\ac_{\uptaupp}\mapsto \ac_{\uptaup}=\vartheta(\ac_{\uptaupp})$ is a bijection.
-\item
-The map $\drc(\cOp)\rightarrow \LLS(\cOp)$ given by $\uptaup\mapsto \ac_{\uptaup}$ is a bijection.
-\end{enumT}
-\end{lem}
-\begin{proof} %Recall \eqref{eq:LS.taup}.
-  \begin{enumPF}
-    \item
-  Note that $\cOpp$ is noticed by definition. Hence $\Upsilon_{\cOpp}$ is invertible.
-  % Let $\uptaup\in \drc(\cOp)$.
-  % By  and the induction hypothesis , we have a well defined map
-  % $\ac_{\uptaup}\mapsto \Lambda_+(\AC{\uptaupp}$ with $\Lambda_+(\AC{\uptaupp}\neq 0$.
-  % Since $\cOpp$ is +noticed, $\Lambda_+(\AC{\uptaupp}$ uniquely determines the local
-  % system $\ac_{\uptaupp}$ by inductive hypothesis. Therefore,
-  %
-  Recall \Cref{c:gd.C1}, we see that
-  \[
-    (\Upsilon_{\cOpp})^{-1}\circ \Omega_{\cOp}\colon
-    \ac_{\uptaup}\mapsto (\Lambda_+(\AC{\uptaupp},\nac{\uptaupp})\mapsto \ac_{\uptaupp}
-  \]
-  gives the inverse of the map in the claim.
-  \item
-  Suppose $\uptaup_{1}\neq \uptaup_{2}\in \drc(\cOp)$. By \Cref{lem:gd.CD},
-  $\uptaupp_{1}\neq \uptaupp_{2}$. Hence
-  $\ac_{\uptaupp_{1}}\neq\ac_{\uptaupp_{2}}$ by the induction hypothesis.
-  Therefore, $\ac_{\uptaup_{1}}\neq \ac_{\uptaup_{2}}$ by \ref{c:gd.C2.1}
-  of the claim.
-\end{enumPF}
-\end{proof}
-
-\begin{lem}\label{c:noticed.bij}
- Suppose $\cO$ is noticed, $\cL \colon \PBPes(\ckcO)\mapsto \LLS(\ckcO)$ given by
- $\uptau\mapsto \ac_{\uptau}$ is bijective.
-% Moreover, $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$ implies $\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$.
-\end{lem}
-\begin{proof}
-We prove the claim by contradiction. We assume $\uptau_{1}, \uptau_{2}\in \PBPes(\ckcO)$ such
-that $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$.
+% \subsubsection{Unipotent representations attached to $\cO$}
 
 
-Recall \eqref{eq:gd.ls}: there is an pair of non-negative integers
-$(e_{i},f_{i})=\ssign({\tau_{i}}_{\bftt})$ such that
-\[
-  \ac_{\uptau_{i}} = \dagger\dagger \Lambda_+(\AC{\uptaupp_{i}}\cdot \pcT_{\uptau_{i}}
-  + \dagger\dagger \nac{\uptaupp} \cdot \ncT_{\uptau_{i}}.
-\]
 
-Note that we have $\varepsilon_{\tau_{1}}=\varepsilon_{\tau_{2}}$.
+% \subsubsection{Noticed orbits}
 
-\begin{enumPF}
 
-  \item
-Suppose that  $\wAC{\uptau_{i}}\supset 1^{(0,1)}$.
 
-Moreover, the term
-$\dagger\dagger\pac{\uptaupp_{i}}\cdot \pcT_{\uptau_{i}}\neq 0$ and we can
-recover it from $\ac_{\uptau_{i}}$. So $\pac{\uptaupp_{1}} = \pac{\uptaupp_{2}}$.
-Since $\bfrr_{1}(\ckcO'')>\bfrr_{3}(\ckcO'')$,  we get
-$\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$.
-Since $\cO''$ is noticed,
-$\uptaupp_{1}=\uptaupp_{2}$ by the induction hypothesis.
-Since $\Sign(\uptau_{1})=\Sign(\uptau_{2})$, we get
-$\uptau_{1}=\uptau_{2}$ by \Cref{cor:dpinj}.
+% In this section, we prove the claims about noticed and +noticed orbits.
 
-\item
-Suppose that  $\owAC{\uptau_{i}}\supset 1^{(0,1)}$.
-
-Now we assume that $\owAC{\uptau_{i}}\supset 1^{(0,1)}$.
-By \eqref{eq:gd.ls}, we conclude that $x_{\uptau}\neq d$ and
-$\Sign(\tau_{\bftt}) = (2k,0)$ or $(2k-1,1)$.
-
-We consider case by case according to the set $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2}$:
-  \begin{enumPF}
-    \item Suppose
-    $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k-1,1)}$. We have
-    $\pac{\uptaupp_{1}}=\pac{\uptaupp_{2}}$, and deduces
-    $\uptaupp_{1}=\uptaupp_{2}$  as in (i).
-    \item
-    Suppose $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k,0)}$. We have
-kkk    $\nac{\uptaupp_{1}}=\nac{\uptaupp_{2}}$, and deduces
-    $\uptaupp_{1}=\uptaupp_{2}$ as in (i).
-    \item
-    Without loss of generality, we can assume
-    $\Sign({\tau_{1}}_{\bftt}) = (2k-1,1)$ and
-    $\Sign({\tau_{2}}_{\bftt}) = (2k,0)$.
-    But this implies
-    \[
-      \pac{\uptaupp_{1}}=\maltese\nac{\uptaupp_{2}},
-    \]
-    which is contradict to \Cref{lem:pncont}.
-%     \begin{claim}\label{c:d+}
-%       We have $\nac{\uptaupp_{2}}\supset 1^{(1,0)}$.
-%     \end{claim}
-%     \begin{proof}
-%       If $\bfrr_{2}(\ckcO'')>\bfrr_{3}(\ckcO'')$,  we have
-%       $\ac_{\uptau}\succeq 1^{(1,1)}$ and we are done.
-
-%       Now assume $\bfrr_{2}(\cOpp)=\bfrr_{3}(\ckcO)$. Then ${\tau''_{i}}_{\bftt}$ has at least length $2$.
-%       Suppose $\Sign( {\tau''_{i}}_{\bftt} )\succ (1,2)$. Applying \eqref{eq:gd.ls} to $\uptaupp$,
-%       we see that the first term is non-zero and $\ac_{\uptaupp}\supseteq 1^{(1,1)}$.
-
-%       Otherwise, $\Sign( {\tau_{2}}_{\bftt} ) = (2k''-1,1)\succeq (3,1)$ where
-%       $k'' = (\bfrr_{1}(\ckcO'')-\bfrr_{2}(\ckcO''))/2+1 $.
-%       By \eqref{eq:gd.ls}, the second term is
-%       non-zero and $\ac_{\uptaupp}\supset 1^{(2k''-1,1)}$.
-%     \end{proof}
-%     The claim leads to the contradiction to \eqref{eq:ct1}:
-%     the LHS of \eqref{eq:ct1} $\succeq 1^{(1,0)}$ and the
-%     RHS of \eqref{eq:ct1} $\succeq 1^{(-1,0)}$.
-%   \end{enumPF}
+% \begin{lem}\label{c:gd.C2}
+%   Suppose $\cOp$ is noticed. Then
+%   \begin{enumT}
+%     \item \label{c:gd.C2.1}The map
+% $\set{\ac_{\uptaupp}| x_{\uptaupp}\neq s}\longrightarrow \set{\ac_{\uptaup}}=\LLS(\cOp)$ given by
+% $\ac_{\uptaupp}\mapsto \ac_{\uptaup}=\vartheta(\ac_{\uptaupp})$ is a bijection.
+% \item
+% The map $\drc(\cOp)\rightarrow \LLS(\cOp)$ given by $\uptaup\mapsto \ac_{\uptaup}$ is a bijection.
+% \end{enumT}
+% \end{lem}
+% \begin{proof} %Recall \eqref{eq:LS.taup}.
+%   \begin{enumPF}
+%     \item
+%   Note that $\cOpp$ is noticed by definition. Hence $\Upsilon_{\cOpp}$ is invertible.
+%   % Let $\uptaup\in \drc(\cOp)$.
+%   % By  and the induction hypothesis , we have a well defined map
+%   % $\ac_{\uptaup}\mapsto \Lambda_+(\AC{\uptaupp}$ with $\Lambda_+(\AC{\uptaupp}\neq 0$.
+%   % Since $\cOpp$ is +noticed, $\Lambda_+(\AC{\uptaupp}$ uniquely determines the local
+%   % system $\ac_{\uptaupp}$ by inductive hypothesis. Therefore,
+%   %
+%   Recall \Cref{c:gd.C1}, we see that
+%   \[
+%     (\Upsilon_{\cOpp})^{-1}\circ \Omega_{\cOp}\colon
+%     \ac_{\uptaup}\mapsto (\Lambda_+(\AC{\uptaupp},\nac{\uptaupp})\mapsto \ac_{\uptaupp}
+%   \]
+%   gives the inverse of the map in the claim.
+%   \item
+%   Suppose $\uptaup_{1}\neq \uptaup_{2}\in \drc(\cOp)$. By \Cref{lem:gd.CD},
+%   $\uptaupp_{1}\neq \uptaupp_{2}$. Hence
+%   $\ac_{\uptaupp_{1}}\neq\ac_{\uptaupp_{2}}$ by the induction hypothesis.
+%   Therefore, $\ac_{\uptaup_{1}}\neq \ac_{\uptaup_{2}}$ by \ref{c:gd.C2.1}
+%   of the claim.
 % \end{enumPF}
-  \end{enumPF}
-  We finished the proof of the lemma.
-\end{enumPF}
-\end{proof}
+% \end{proof}
+
+% \begin{lem}\label{c:noticed.bij}
+%  Suppose $\cO$ is noticed, $\cL \colon \PBPes(\ckcO)\mapsto \LLS(\ckcO)$ given by
+%  $\uptau\mapsto \ac_{\uptau}$ is bijective.
+% % Moreover, $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$ implies $\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$.
+% \end{lem}
+% \begin{proof}
+% We prove the claim by contradiction. We assume $\uptau_{1}, \uptau_{2}\in \PBPes(\ckcO)$ such
+% that $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$.
+
+
+% Recall \eqref{eq:gd.ls}: there is an pair of non-negative integers
+% $(e_{i},f_{i})=\ssign({\tau_{i}}_{\bftt})$ such that
+% \[
+%   \ac_{\uptau_{i}} = \dagger\dagger \Lambda_+(\AC{\uptaupp_{i}}\cdot \pcT_{\uptau_{i}}
+%   + \dagger\dagger \nac{\uptaupp} \cdot \ncT_{\uptau_{i}}.
+% \]
+
+% Note that we have $\varepsilon_{\tau_{1}}=\varepsilon_{\tau_{2}}$.
+
+% \begin{enumPF}
+
+%   \item
+% Suppose that  $\wAC{\uptau_{i}}\supset 1^{(0,1)}$.
+
+% Moreover, the term
+% $\dagger\dagger\pac{\uptaupp_{i}}\cdot \pcT_{\uptau_{i}}\neq 0$ and we can
+% recover it from $\ac_{\uptau_{i}}$. So $\pac{\uptaupp_{1}} = \pac{\uptaupp_{2}}$.
+% Since $\bfrr_{1}(\ckcO'')>\bfrr_{3}(\ckcO'')$,  we get
+% $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$.
+% Since $\cO''$ is noticed,
+% $\uptaupp_{1}=\uptaupp_{2}$ by the induction hypothesis.
+% Since $\Sign(\uptau_{1})=\Sign(\uptau_{2})$, we get
+% $\uptau_{1}=\uptau_{2}$ by \Cref{cor:dpinj}.
+
+% \item
+% Suppose that  $\owAC{\uptau_{i}}\supset 1^{(0,1)}$.
+
+% Now we assume that $\owAC{\uptau_{i}}\supset 1^{(0,1)}$.
+% By \eqref{eq:gd.ls}, we conclude that $x_{\uptau}\neq d$ and
+% $\Sign(\tau_{\bftt}) = (2k,0)$ or $(2k-1,1)$.
+
+% We consider case by case according to the set $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2}$:
+%   \begin{enumPF}
+%     \item Suppose
+%     $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k-1,1)}$. We have
+%     $\pac{\uptaupp_{1}}=\pac{\uptaupp_{2}}$, and deduces
+%     $\uptaupp_{1}=\uptaupp_{2}$  as in (i).
+%     \item
+%     Suppose $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k,0)}$. We have
+% kkk    $\nac{\uptaupp_{1}}=\nac{\uptaupp_{2}}$, and deduces
+%     $\uptaupp_{1}=\uptaupp_{2}$ as in (i).
+%     \item
+%     Without loss of generality, we can assume
+%     $\Sign({\tau_{1}}_{\bftt}) = (2k-1,1)$ and
+%     $\Sign({\tau_{2}}_{\bftt}) = (2k,0)$.
+%     But this implies
+%     \[
+%       \pac{\uptaupp_{1}}=\maltese\nac{\uptaupp_{2}},
+%     \]
+%     which is contradict to \Cref{lem:pncont}.
+% %     \begin{claim}\label{c:d+}
+% %       We have $\nac{\uptaupp_{2}}\supset 1^{(1,0)}$.
+% %     \end{claim}
+% %     \begin{proof}
+% %       If $\bfrr_{2}(\ckcO'')>\bfrr_{3}(\ckcO'')$,  we have
+% %       $\ac_{\uptau}\succeq 1^{(1,1)}$ and we are done.
+
+% %       Now assume $\bfrr_{2}(\cOpp)=\bfrr_{3}(\ckcO)$. Then ${\tau''_{i}}_{\bftt}$ has at least length $2$.
+% %       Suppose $\Sign( {\tau''_{i}}_{\bftt} )\succ (1,2)$. Applying \eqref{eq:gd.ls} to $\uptaupp$,
+% %       we see that the first term is non-zero and $\ac_{\uptaupp}\supseteq 1^{(1,1)}$.
+
+% %       Otherwise, $\Sign( {\tau_{2}}_{\bftt} ) = (2k''-1,1)\succeq (3,1)$ where
+% %       $k'' = (\bfrr_{1}(\ckcO'')-\bfrr_{2}(\ckcO''))/2+1 $.
+% %       By \eqref{eq:gd.ls}, the second term is
+% %       non-zero and $\ac_{\uptaupp}\supset 1^{(2k''-1,1)}$.
+% %     \end{proof}
+% %     The claim leads to the contradiction to \eqref{eq:ct1}:
+% %     the LHS of \eqref{eq:ct1} $\succeq 1^{(1,0)}$ and the
+% %     RHS of \eqref{eq:ct1} $\succeq 1^{(-1,0)}$.
+% %   \end{enumPF}
+% % \end{enumPF}
+%   \end{enumPF}
+%   We finished the proof of the lemma.
+% \end{enumPF}
+% \end{proof}
 
 
 \begin{lem}\label{lem:pncont}
