@@ -4,7 +4,8 @@
 
 \usepackage[bookmarksopen,bookmarksdepth=3,hidelinks]{hyperref}
 \usepackage[nameinlink]{cleveref}
-\usepackage[]{showkeys}
+%\usepackage[final,color]{showkeys}
+\usepackage[color]{showkeys}
 \makeatletter
   \SK@def\Cref#1{\SK@\SK@@ref{#1}\SK@Cref{#1}}%
 \makeatother
@@ -457,8 +458,10 @@
 \def\AC{\mathrm{AC}}
 \def\wAC{\mathrm{AC}^{\mathrm{weak}}}
 
-\NewDocumentCommand{\ac}{E{^_}{{}{}}}{\cL^{#1}_{#2}}
-\NewDocumentCommand{\lotimes}{D(){(0,0)}}{\otimes ({#1})}
+% \NewDocumentCommand{\ac}{k{^_}{{}{}}}{\cL^{#1}_{#2}}
+\def\ac{\cL}
+\def\lotimes{\otimes}
+%\NewDocumentCommand{\lotimes}{D(){(0,0)}}{\otimes ({#1})}
 
 \def\KM{{\mathcal{K_{\mathsf{M}}}}}
 
@@ -4479,6 +4482,446 @@ Moreover, the above set is a single $G_{\sfss, \C}\times G_{\sfss',\C}$-orbit.
 \end{lem}
 
 
+\section{Geometries of regular descent}
+
+\def\UU{U}
+\def\dbM{\breve{M}}
+\def\dbMM{\breve{MM}}
+\def\dbX{\breve{X}}
+\def\dbfpp{\breve{\fpp}}
+\def\ZdbX{\cZ_{\dbX}}
+\def\aV{\acute{V}}
+\def\fggs{\fgg_{\sfss}}
+\def\fggsp{\fgg_{\sfss'}}
+\def\fggspo{\fgg_{\sfss'_1}}
+\def\fggspt{\fgg_{\sfss'_2}}
+\def\fggspi{\fgg_{\sfss'_i}}
+\def\fkks{\fkk_{\sfss}}
+\def\fkksp{\fkk_{\sfss'}}
+\def\fkkspo{\fkk_{\sfss'_1}}
+\def\fkkspt{\fkk_{\sfss'_2}}
+\def\fkkspi{\fkk_{\sfss'_i}}
+\def\fpps{\fpp_{\sfss}}
+\def\fppsp{\fpp_{\sfss'}}
+\def\fppspo{\fpp_{\sfss'_1}}
+\def\fppspt{\fpp_{\sfss'_2}}
+\def\fppspi{\fpp_{\sfss'_i}}
+\def\DDss{\DD_{\sfss'}^{\sfss}}
+\def\DDsso{\DD_{\sfss'_1}^{\sfss}}
+\def\Mss{M_{\sfss,\sfss'}}
+\def\Ms{M_{\sfss}}
+\def\Msp{M_{\sfss'}}
+
+\def\Gs{{G}_{\sfss}}
+\def\Gsp{{G}_{\sfss'}}
+\def\Gspo{{G}_{\sfss'_1}}
+\def\Gspt{{G}_{\sfss'_2}}
+\def\CMs{{\tilde M}_{\sfss}}
+\def\CMsp{{\tilde M}_{\sfss'}}
+\def\CMss{{\tilde M}_{\sfss,\sfss'}}
+\def\Wss{{W_{\sfss,\sfss'}}}
+\def\Woss{{W^{\circ}_{\sfss,\sfss'}}}
+\def\CXss{\cX_{\sfss,\sfss'}}
+\def\Xp{{\bfee'}}
+\def\Xpo{{\bfee'_1}}
+\def\ww{\phi}
+\def\wwo{\phi_1}
+
+\def\Vs{V_\sfss}
+\def\Vsp{V_{\sfss'}}
+\def\Vspo{V_{\sfss'_1}}
+\def\Vspt{V_{\sfss'_2}}
+\def\Vspi{V_{\sfss'_i}}
+\def\Wssi{W_{\sfss,\sfss'_i}}
+\def\Wsso{W_{\sfss,\sfss'_1}}
+\def\Wsst{W_{\sfss,\sfss'_2}}
+
+In this section, let $(V,V')$ be a complex dual
+pair. % such that $\dim \bfV' \leq \dim \bfV$.
+We investigate the geometric properties of regular descent.
+
+Suppose $\cO\in \Nil(\fggs)$ and $\cO' = \DDss(\cO)$ is
+the descent of $\cO$.
+
+
+
+Let $\UU = \fggs - (\overline{\cO} - \cO)$ which is a Zariski Open subset of $\fpp$.
+We define
+\[
+W_{\UU,\bcOp} = \Wss \times_{\Mss} (\UU\times \bcOp)
+\]
+to be the scheme theoretical pre-image of $\UU\times \bcOp$.
+For $\X \in \cO$, let
+\[
+  W_{\X,\bcOp} = \Wss\times_{\Mss} (\X\times \bcOp)
+\]
+be the scheme theoretical pre-image of  $\X\times \bcOp$.
+
+\begin{lem}\label{lem:RDS.C}
+  Suppose $\cO$ regular for $\DDss$. Then
+  \begin{enuma}
+    \item  The underlying set
+    \[
+      W_{\UU,\bcOp} = \CMs^{-1}(\cO)\cap \Wss^{\circ} = \CMss^{{-1}}(\cO\times \cOp)
+    \]
+    is a single $\Gs\times \Gsp$ orbit.
+    \item $W_{\UU,\bcOp}$ is a reduced scheme of $\Wss$.
+    \item  The underlying set
+    $W_{X,\bcOp} = \CMs^{-1}(X)\cap \Wss^{\circ} = \CMss^{{-1}}(\set{\X}\times \cOp)$
+    is a single $\Gsp$ orbit.
+    \item $W_{X,\bcOp}$ is a reduced scheme of $\Wss$.
+\end{enuma}
+\end{lem}
+\begin{proof}
+The set theoretical statements (a) and (c) follows from the explicit
+description of the nilpotent orbits under the moment maps, see \cite[Theorem~3.6]{DKPC}.
+
+Consider the following diagram.
+\[
+  \begin{tikzcd}
+   W_{\UU,\Xp} \ar[r] \ar[d]&  W_{\UU,\cOp} \ar[r,equal]\ar[d] & W_{\UU,\bcOp}\ar[r, hook] \ar[d]&  \Wss \ar[d,"\CMss"]\\
+   \UU\times \Xp \ar[r] \ar[d] &U\times \cOp \ar[r,hook] \ar[d]& \UU\times \bcOp \ar[r, hook] \ar[d]&
+   \fggs\times \fggsp \ar[d,"\pr_{2}"]\\
+   \Xp \ar[r] &\cOp \ar[r]& \bcOp \ar[r]& \fggsp\\
+  \end{tikzcd}
+\]
+Here $W_{\UU,\cOp} := \Wss\times_{\CMss} (\UU\times \cOp)$ and $W_{\UU,\bcOp}$ are
+naturally identified as schemes by the set theoretical result (a).
+
+By generic flatness \cite[Th\'eor\`eme~6.9.1]{EGAIV2}, the $\Gs\times \Gsp$-equivariant
+morphism $W_{\UU,\cOp}\rightarrow \cOp$ is flat. Since $\cOp$ is reduced
+it suffice to show that  $W_{\UU,\Xp}$ is reduced for every point
+$\Xp\in \cOp$ by \Cref{lem:red}.
+Note that $W_{\UU,\Xp}$ is a single $\Gs\times \Gsp$-orbit and open in $W_{\Xp}$.
+It suffice to prove that $\ww$ is reduced at $W_{\ww}$ for any fixed point
+$\ww\in W_{\UU,\Xp}$.
+
+\trivial[]{
+
+  Note that $\UU\times \cOp \rightarrow \UU \times \bcOp$ is \'etale, so
+  $W_{\UU,\cOp}\rightarrow W_{\UU,\bcOp}$.
+  Generic flatness: Suppose $f: X\rightarrow S $ is a morphism between scheme
+  and $\cF$ is a quasi-coherent sheaf of $\cO_{X}$ module, such that (1) $S$ is
+  reduced, (2) $f$ is of finite type, and (3) $\cF$ is a finite type
+  $\cO_{X}$-module.
+Then there is a open dense subscheme $U\subset S$ such that
+$X_{U}\rightarrow U $
+is flat and of finite presentation, and $\cF|_{X_U}$ is flat over $U$
+and of finite presentation over $\cO_{X_{U}}$.
+
+
+\begin{lem}[{\cite[Proposition~11.3.13]{EGAIV3}}] \label{lem:red}
+  Suppose $f\colon X\rightarrow Y$ is a morphism between schemes, $x$ is a point
+  in $X$ such that $f$ is flat at $x$. Let $y=f(x)$.
+  \begin{enuma}
+    \item  If $X$ is reduced at the point $x$, then $Y$ is reduced at $y$.
+    \item We assume $f$ is of finite presentation at the porint $x$.
+    If $Y$ is reduced at $x$ and $x$ is reduced at the scheme theoretical fiber
+    $X_{y}$, then $X$ is reduced at $x$.
+  \end{enuma}
+\end{lem}
+
+}
+\end{proof}
+
+
+Let $\ww\in \CMsp^{{-1}}(\cO)\cap \Woss$, and $\Xp = \CMsp(\ww)$.
+By the Jacobian criterion for
+regularity (see \cite[Theorem~2.19]{LiuAG}), the following sequence
+\begin{equation}\label{eq:tt1}
+  0\longrightarrow T_{\ww} \CMss^{{-1}}(\Xp) \longrightarrow T_{\ww} \Woss
+  \xrightarrow{\ \rdd \CMsp \ } T_{\Xp}\fggs
+\end{equation}
+is exact if and only if $\ww$ is regular at $\Wss_{\Xp}$.
+
+We identify  $T_{\ww}\Wss$ and $T_{\Xp}\fggsp$ with $\Wss$ and $\fggsp$
+respectively. Since $(\Gs\times (\Gsp)_{\Xp})\cdot \ww$ is open in $\CMs^{{-1}}(\Xp)$,
+the map
+\[
+  \fggs\times (\fggsp)_{\Xp}\xrightarrow{(A,A')\mapsto A'\ww - \ww A} T_{\ww}\CMsp^{-1}(\Xp)
+\]
+is surjective.
+Then the sequence \eqref{eq:tt1}
+is exact if and only if the sequence \eqref{eq:GG} is exact.
+\begin{equation}\label{eq:GG}
+  \fgg\times(\fggs)_{\Xp} \longrightarrow W
+  \xrightarrow{b\mapsto \ww b^{*} + b\ww^{*} } \fggs.
+\end{equation}
+
+
+\begin{lem}
+The sequence \eqref{eq:GG} is exact and $W_{\Xp}$ is regular at $\ww$.
+\end{lem}
+\begin{proof}
+
+  Suppose $\abs{\sfss'} = \DDss(\cO)$. Then every element
+  $\ww\in W_{U,\Xp}\subset \Hom(V,V')$ is a surjective morphism. Therefore
+  $\rdd \Msp \colon T_{\ww} \Wss \longrightarrow T_{\Xp}\fggsp$ is surjective,
+  which implies $\Msp$ is smooth at $\ww$ (\cf \cite[Proposition~10.4]{HS}).
+  Pulling back $\Msp$ via the inclusion $\Xp \hookrightarrow \fggs$, we conclude
+  that $W_{\UU,\Xp}$ is smooth and so regular at $\ww$. This also establishs the
+  exactness of \eqref{eq:GG}.
+
+  \smallskip
+
+  Now suppose $\abs{\sfss'}>\DDss(\cO)$ and $\bfcc_{1}(\cO) = \bfcc_{2}(\cO)$.
+  We now establish the exactness of \eqref{eq:GG}, which concludes the lemma.
+
+  Let $\Vspo:=\ww \Vs$ and $\Vspt$ be the orthogonal complement of $\Vspo$ so
+  that $\Vsp = \Vspo\oplus \Vspt$.
+
+  Let $\Wssi := \Hom(\Vs,\Vspi)$ and $\fggspi := \fgg_{\sfss_{i}}$ for $i=1,2$.
+  Let $*\colon \Hom(\Vspo,\Vspt) \rightarrow \Hom(\Vspt,\Vspo)$ denote the
+  adjoint map. We have $\Wss =\Wsso \oplus \Wsst$ and
+  $\fggsp = \fggspo\oplus \fggspt \oplus \fgg'^{\boxslash}$, where
+  \[ \fgg^{\boxslash}:= \Set{\begin{pmatrix}
+        0 & -E^*\\
+        E & 0
+      \end{pmatrix}|E\in \Hom(\Vspo,\Vspt)}.
+  \]
+  Now $\ww$ and $\Xp$ are naturally identified with an element $\wwo$ in $\Wsso$
+  and an element $\Xpo$ in $\fggspo$ respectively. We have
+  $(\fggsp)_{\Xp} = (\fggspo)_{\Xpo} \oplus \fggspt \oplus \fgg'^{\boxslash}_{\Xpo}$,
+  where %$\fgg'_{1,X'_1}:= \set{T'_1\in \fgg'_1| [T'_1,X'_1]=0}$ and
+  % \begin{equation}\label{eq:fggslash}
+  \[ \fgg^{\boxslash}_{\Xpo} = \Set{\begin{pmatrix}
+        0 & -E^*\\
+        E & 0
+      \end{pmatrix}|E\in \Hom(\Vspo,\Vspt) \text{ and } E \Xpo = 0}.
+  \]
+  Now maps in \cref{eq:GG} have the following forms respectively:
+  \[
+    \fggs \oplus (\fggsp)_{\Xp}\ni (A,A') = \left(A, ( A'_1,A'_2,{\tiny \begin{pmatrix}0 & -E^*\\E &0\end{pmatrix}})\right) \mapsto \; A'\ww - \ww A= (A'_1 \wwo - \wwo A, E \wwo)\in \Wss
+  \] and
+  \[
+    \Wss \ni (b_1,b_2) \mapsto \left(b_1^\mstar w_1 + w_1^\mstar b_1, \begin{pmatrix}
+        b_1 \wwo^\mstar + \wwo b_1^\mstar & \wwo b_2^\mstar\\
+        b_2 \wwo^\mstar & 0
+      \end{pmatrix}\right)\in \fggs\oplus \fggsp.
+  \]
+
+
+  Note that $\Gspo \cdot \Xpo = \cOp_{1} := \DDsso(\cO)$, we have the exactness of
+  the sequence
+  \[
+    \fggs\oplus (\fggspo)_{\Xpo}\longrightarrow \Wsso \longrightarrow \fggs\oplus \fggspo.
+  \]
+  It left to show that the following sequence is exact:
+  \begin{equation}\label{eq:GG2}
+    \begin{tikzcd}[column sep=5em]
+      \fgg^{\boxslash}_{\Xpo} \ar[r,"\eta_{1}"] & \Wsst \ar[r, "\eta_{2}"] & \Hom(\Vspo, \Vspt).
+    \end{tikzcd}
+  \end{equation}
+  Here $\eta_{1}$ is given by
+  ${\tiny \begin{pmatrix} 0 & -E^*\\ E & 0 \end{pmatrix}}\mapsto E \wwo$ and
+  $\eta_{2}$ is given by $b_2\mapsto b_2 \wwo^\mstar$.
+  We have
+  \[
+    \begin{split}
+      \dim \Im(\eta_{1}) &=
+      \dim \fgg^{\boxslash}_{\Xpo} \qquad (\text{$\wwo$ is surjective.})\\
+      &= \dim\Vspt \cdot \dim (\Vspo/\Im(\Xpo))\\
+      &= \dim\Vspt \cdot \dim \Ker(\Xpo)\\
+      & = \dim\Vspt \cdot \dim \bfcc_{2}(\cO)
+    \end{split}
+  \]
+  and
+  \[
+    \begin{split}
+      \dim \Ker(\eta_{2}) &= \dim \Vspt \cdot \dim (\Vs / \Im(\wwo^{\mstar})) \\
+      &= \dim \Vspt \cdot (\dim \Vs - \dim \Vspo) \\
+      &= \dim \Vspt \cdot \bfcc_{1}(\cO)\\
+      &= \dim \Vspt \cdot \bfcc_{2}(\cO).
+    \end{split}
+  \]
+  Now the exactness of \eqref{eq:GG2} and \eqref{eq:GG} follow by dimension
+  counting.
+\end{proof}
+
+
+
+\begin{lem}
+  The following sequence is exact.
+  \[
+  \fkks\times (\fkksp)_{\Xp} \longrightarrow \CXss \longrightarrow \fpps \oplus \fppsp
+  \]
+\end{lem}
+
+
+\begin{lem}
+
+\end{lem}
+
+
+\subsubsection{Scheme theoretical results on generalized descents of good orbits}
+%In this subsection, we still assume that $\dim \bfV' \leq \dim \bfV$.
+
+%The following lemma is key to the proof of \cref{prop:GDS.AC}.
+
+\begin{lem}\label{lem:GDS.sh}
+  Suppose $\sO\in \Nil_{\bfK}(\fpp)$ is good for generalized descent
+  (see \Cref{def:GD.good}) and
+  $\sO' = \gDD_{\bfV,\bfV'}(\sO)\in \Nil_{\bfK'}(\fpp')$. Fix $X\in \sO$ and
+  let $\ZX := \cX\times_{\dbM}(\set{X}\times\bsOp)$. Then
+\begin{enumT}
+\item\label{it:GDS.sh.2} $\ZX$ is smooth;
+\item\label{it:GDS.sh.1} $\ZX$ is a single $\bfK'$-orbit;
+\item\label{it:GDS.sh.3} $\ZX$ is contained in $\Xg$ and  $M'(\ZX) = \sO'$.
+
+%\item\label{it:GDS.sh.3} $\cX\times_{\dbM}(U\times\bsOp)$ is reduced and smooth, and is a single $\bfK\times \bfK'$-orbit.
+\end{enumT}
+\end{lem}
+\begin{proof} Part~\cref{it:GDS.sh.1} follows from \cite[Table~4]{DKP2}. Part~\cref{it:GDS.sh.3} follows from part~\cref{it:GDS.sh.1}. By the generic smoothness, in order to prove
+  part~\cref{it:GDS.sh.2}, it suffices to show that $\ZX$ is reduced.
+  % We may assume the complex group case first.
+  % Fix a $w\in \ZX$ and let $X' := \MMP'(w)$.
+  Note that the $\bfK'$-equivariant morphism $\xymatrix{\ZX\ar[r]^{M'}&\sO'}$ is
+  flat by generic flatness \cite[Th\'eor\`eme~6.9.1]{EGAIV2}.
+  % \trivial[h]{
+  % The statement of generic flatness is:
+  % \begin{thm*}
+  %   Suppose $Y$ is a locally noetherian integral scheme, $u\colon X\rightarrow
+  %   Y$ is a morphism of finite type and $\sF$ is a coherent $\sO_X$-module.
+  %   Then there exist a non-empty open subscheme $U$ of $Y$ such that
+  %   $\sF|_{u^{-1}(U)}$ is flat over $U$.
+  % \end{thm*}
+  % WLOG, applying the theorem to an irreducible component of $\sO'$ with
+  % $\sF = \sO_X$ get the claim.  }
+  By \cite[Proposition~11.3.13]{EGAIV3}, to show that $\ZX$ is reduced, it
+  suffices to show that
+  $$\ZdbX := \ZZ_X \times_{M'|_{\ZX}}\set{X'} = \cX \times_{\dbM}\set{\dbX}$$
+  is reduced, where $X'\in \sO'$ and $\dbX:=(X,X')$.
+  Let $w\in\ZdbX$ be a closed point. Then $\bfK'\cdot w$ is the underlying set of $\ZX$, and
+  $Z_{\dbX}:=\bfK'_{X'}\cdot w$ is the underlying set of
+  $\ZdbX$.  By
+  the Jacobian criterion for regularity, to complete the proof of the lemma, it remains to prove the following claim.
+
+  \begin{claim*}
+    The following sequence is exact:
+    \[%\begin{equation} \label{eq:GDS.T1}
+        \xymatrix@C=4em{ 0 \ar[r] & \rT_w
+        Z_{\dbX} \ar[r] & \rT_w\cX \ar[r]^<>(.5){\rdd \dbM} &
+        \rT_{X}{\fpp}\oplus \rT_{X'}{\fpp'}. }
+    \]%\end{equation}
+  \end{claim*}
+
+We prove the above claim in what follows.
+    Identify $\rT_w\cX$, $\rT_X\fpp$ and $\rT_{X'}\fpp'$ with $\cX,\fpp$ and
+    $\fpp'$ respectively and view $\rT_{w} Z_{\dbX}$ as a quotient of
+    $\fkk'_{X'}$. It suffices to show that the following sequence is exact:
+    \begin{equation}\label{eq:GDS.T2}
+      \xymatrix@R=0em@C=9em{
+        \fkk'_{X'} \ar[r]_<>(.5){A' \mapsto A'w}& \cX\ar[r]^<>(.5){\rdd \dbM_{w}}_<>(.5){ b\mapsto (b^\mstar w+w^\mstar b, b w^\mstar + w b^\mstar) }&
+        \makebox[0em][l]{$\fpp\oplus \fpp' =\dbfpp$.}\\
+      }
+    \end{equation}
+
+    In fact, we will show that the following sequence
+    \begin{equation}\label{eq:GDS.T3}
+      \xymatrix@C=4em{
+        \fgg'_{X'} \ar[r]& \bfW \ar[r] & \fgg\oplus \fgg'
+      }
+    \end{equation}
+    is exact, where $\fgg'_{X'}$ is the Lie algebra of the stabilizer group $\Stab_{\bfG'}(X')$ and
+  the  arrows are defined by the same formulas in \cref{eq:GDS.T2}. Then the
+    exactness of \cref{eq:GDS.T2} will follow since \cref{eq:GDS.T3} is compatible
+    with the natural $(L,L')$-actions. %Cartan involutions.
+    % \trivial{ Note that there is a $\bZ/4\bZ$-grading on these spaces;
+    % $\fkk'_{X'}$(resp. $\cX$ and $\dbfpp$) is the grade $0$(resp. $1$ and $2$)
+    % part of $\fgg'_{X'}$(resp. $W$ and $\fgg\oplus \fgg'$). Moreover, each
+    % arrow raise the grading by $1$.  }
+
+    % We retain the notation in \Cref{sec:F.M} and the decomposition
+    % \cref{eq:GD.dV} and
+    We now prove the exactness of \cref{eq:GDS.T3}.
+    Let $\bfV'_1:=w\bfV$ and $\bfV'_2$ be the orthogonal complement of
+    $\bfV'_1$ so that \[ \bfV' = \bfV'_1\oplus
+    \bfV'_2.
+    \]
+    Let $\bfW_i := \Hom(\bfV,\bfV'_i)$ and $\fgg'_i := \fgg_{\bfV'_i}$ for
+    $i=1,2$. Let
+    $*\colon \Hom(\bfV'_1,\bfV'_2) \rightarrow \Hom(\bfV'_2,\bfV'_1)$ denote the
+    adjoint map.  We have $\bfW =\bfW_1\oplus \bfW_2$ and $\fgg' = \fgg'_{1}\oplus \fgg'_2 \oplus \fgg'^{\boxslash}$, where
+    \[ \fgg^{\boxslash}:= \Set{\begin{pmatrix}
+          0 & -E^*\\
+          E & 0
+        \end{pmatrix}|E\in \Hom(\bfV'_1,\bfV'_2)}.
+    \]
+    Now $w$ and $X'$ are naturally identified with an element
+    $w_1$ in $\bfW_1$
+    and an element $X_1'$ in  $\fgg'_1$, respectively.  We have $\fgg'_{X'} = \fgg'_{1,X'_1}\oplus \fgg'_2 \oplus \fgg'^{\boxslash}_{X'_1}$, where %$\fgg'_{1,X'_1}:= \set{T'_1\in \fgg'_1| [T'_1,X'_1]=0}$ and
+    % \begin{equation}\label{eq:fggslash}
+    \[ \fgg^{\boxslash}_{X'_1} = \Set{\begin{pmatrix}
+          0 & -E^*\\
+          E & 0
+        \end{pmatrix}|E\in \Hom(\bfV'_1,\bfV'_2),\ E X'_1 = 0}.
+    \]
+
+    Now maps in \cref{eq:GDS.T3} have the following forms respectively:
+    \begin{align*}
+      \fgg'_{X'}\ni  A' =  (A'_1,A'_2,{\tiny \begin{pmatrix}0 &
+          -E^*\\E &0\end{pmatrix}}) \mapsto &\; A'w = (A'_1 w_1, E w_1)\in \bfW  \qquad \text{and}\\
+      \bfW \ni (b_1,b_2) \mapsto & \left(b_1^\mstar w_1 + w_1^\mstar b_1, \begin{pmatrix}
+          b_1 w_1^\mstar + w_1b_1^\mstar & w_1 b_2^\mstar\\
+          b_2 w_1^\mstar & 0
+        \end{pmatrix}\right)\in \fgg\oplus \fgg'.
+    \end{align*}
+    \trivial[h]{
+
+      \[
+        \begin{pmatrix}
+          b_1\\
+          b_0
+        \end{pmatrix}
+        \begin{pmatrix}
+          w_1^\mstar & 0
+        \end{pmatrix}
+        +
+        \begin{pmatrix}
+          w_1\\
+          0
+        \end{pmatrix}
+        \begin{pmatrix}
+          b_1^\mstar & b_0^\mstar
+        \end{pmatrix}
+        = \begin{pmatrix}
+          b_1 w_1^\mstar + w_1b_1^\mstar & w_1 b_0^\mstar\\
+          b_0 w_1^\mstar & 0
+        \end{pmatrix}
+      \]
+    } Applying \cref{eq:DS.T1} to the complex dual pair $(\bfV, \bfV'_1)$, we see that the
+    sequence
+    \[
+      \xymatrix@C=11em{ \fgg'_{1,X'_1}\ar[r]^<>(.5){A'_1 \mapsto A'_1 w_1}& \bfW_1 \ar[r]^<>(.5){b_1\mapsto (b_1^\mstar w_1 + w_1^\mstar b_1 ,b_1w_1^\mstar+w_1b_1^\mstar)}& \fgg \oplus \fgg'_1
+      }
+    \]
+    is exact. The task is then reduced to show that the following
+    sequence is exact:
+    \begin{equation}\label{eq:GDS.T5}
+      \xymatrix@C=6em{ \fgg^{\boxslash}_{X'_1} \ar[r]^<>(.5){{\tiny \begin{pmatrix}
+              0 & -E^*\\
+              E & 0
+            \end{pmatrix}}\mapsto Ew_1}_<>(.5){\circnuma{1}} & \bfW_2
+        \ar[r]^<>(.5){b_2\mapsto b_2 w_1^\mstar}_<>(.5){\circnuma{2}} &
+        \Hom(\bfV'_1, \bfV'_2).}
+    \end{equation}
+    Note that $w_1$ is a surjection, hence $\circnuma{1}$ is an injection. We
+    have
+    \[
+      \dim \fgg^{\boxslash}_{X'_1} = \dim\bfV'_2 \cdot \dim \Ker(X'_1)
+      \]
+      and
+      \[
+      \dim \Ker(\circnuma{2}) = \dim \bfV'_2 \cdot (\dim \bfV - \dim \Im(w_1))
+                                = \dim \bfV'_2 \cdot (\dim \bfV - \dim \bfV'_1).
+    \]
+    Note that $\dim \Ker(X'_1) = c_{1}$, and $\dim \bfV - \dim \bfV'_1=c_{0}$. Since we are in the setting of good generalized descent (\Cref{def:GD.good}), we have $c_0=c_1$. Now the
+    exactness of \cref{eq:GDS.T5} follows by dimension counting.
+  \end{proof}
+
+
+\section{}
+
 \begin{proof}%[Proof of \Cref{prop:DS.AC} and \Cref{prop:GDS.AC}]
 With the geometric properties investigated in \Cref{sec:GM}, the proof to be given is
 similar to that of \cite[Theorem~C]{LM}.
@@ -5888,6 +6331,12 @@ is injective. \qed
 
 \section{Marked Young diagrams attached to the painted bipartitions: combinatorics} \label{sec:ACC}
 
+\def\acm{\cL}
+\def\acme{\tilde{\cL}}
+
+Recall that $\AOD_{\star}(\cO)$ can be parameterized by $\MYD_{\star}(\cO)$.
+
+
 We fist define the combinatorical companion of $\AC(\uptau)$.
 Suppose $\abs{\ckcO}=0$. For $\uptau\in \PBP_{\star}(\ckcO)$, we define
 \[
@@ -6033,7 +6482,7 @@ Suppose $\star \in \set{C,\wtC,D^{*}}$ and $\ckcO\neq \emptyset$.
     % \end{itemize}
     \item When $\ckcO$ is weakly-distinguished, the following map is injective.
     \[
-      % \ac\colon
+      \acme \colon
       \PBPes( \ckcO )\longrightarrow \bZ[\MYD_{\star}(\cO)],
       \quad \uptau\mapsto \ac_{\uptau}.
       %\AC\colon \PBPes( \cOp )\longrightarrow \cK_{\star}(\cO).
@@ -6059,8 +6508,8 @@ Suppose $\star \in \set{B,D}$ and $(\star, \check \CO)\neq (D, \emptyset)$.
 
   \item When $\ckcO$ is weakly-distinguished, the following map is injective.
   \[
-    % \ac \colon
-    \PBPes( \cOp )\times \bZ/2\bZ \longrightarrow \bZ[\MYD_{\star}(\cO)],\quad
+    \acm \colon
+    \PBPes( \ckcO )\times \bZ/2\bZ \longrightarrow \bZ[\MYD_{\star}(\cO)],\quad
     (\uptau,\epsilon) \mapsto \ac_{\uptau}\otimes (\epsilon, \epsilon).
   \]
   \item When $\ckcO$ is quasi-distinguished, the image of the above map is $\MYD_{\star}(\cO)$.
@@ -6071,7 +6520,7 @@ Suppose $\star \in \set{B,D}$ and $(\star, \check \CO)\neq (D, \emptyset)$.
 Suppose $\star = C^{*}$.
   When $\ckcO$ is quasi-distinguished, the image of the map
     \[
-      \PBPes( \ckcO )\longrightarrow \bZ[\MYD_{\star}(\cO)],
+ \acm: \PBPes( \ckcO )\longrightarrow \bZ[\MYD_{\star}(\cO)],
       \quad \uptau\mapsto \ac_{\uptau}
     \]
     is $\MYD_{\star}(\cO)$.
@@ -6271,21 +6720,21 @@ $i\in \bN^{+}$.
 
 \medskip
 
-We first consider the case when $\bfrr_{1}(\ckcO)>\bfrr_{2}(\ckcO)$.
+\subsection*{The case when $\bfrr_{1}(\ckcO)>\bfrr_{2}(\ckcO)$}
 
+\subsubsection*{Proof of \Cref{lem:ac0}}
 Since $\ac_{\uptau'}\neq 0$, $\ac_{\uptau}\neq 0$ by \eqref{eq:C}. This proves \Cref{lem:ac0}.
 
 
 \smallskip
 
-
+\subsubsection*{Proof of \Cref{lem:C}~(a)}
 Suppose $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$. By \eqref{eq:C},
 $\set{\Sign(\uptau'_{1})}=\dsign(\ac_{\uptau_{1}}) =\dsign(\ac_{\uptau_{2}}) = \set{\Sign(\uptau'_{2})}$.
 In particular, $\Sign(\uptau'_{1})=\Sign(\uptau'_{2})$ and the integer ``$y$'' in \eqref{eq:C} are the same for $\uptau_{1}$
 and $\uptau_{2}$. We get
 $\ac_{\uptau'_{1}}\otimes (\varepsilon_{\wp_{1}})=\ac_{\uptau'_{2}}\otimes (\varepsilon_{\wp_{2}})$.
 So $\varepsilon_{\wp_{1}}=\varepsilon_{\wp_{2}}$ and $\ac_{\uptau'_{1}}=\ac_{\uptau'_{2}}$ by \Cref{lem:BD}~(a).
-This proves \Cref{lem:C}~(a).
 
 
 \smallskip
@@ -6352,8 +6801,8 @@ Note that $\ckcO$ is not quasi-distinguished, \Cref{lem:C}~(c) is vacant.
 
 To ease the following discussion, we adopt the following convension.
 Suppose $\cA\in \bZ[\MYD]$. We write $\cA\rhd (p_{0},q_{0})$ if
-$\cE \sqsupset (p_{0},q_{0})$ for all $\cE\in \MYD$ with non-zero coefficient in
-$\cA$, and write $\cA \sqsupset (p_{0},q_{0})$ if there is an $\cE\in \MYD$ with
+$\cE \sqsupseteq (p_{0},q_{0})$ for all $\cE\in \MYD$ with non-zero coefficient in
+$\cA$, and write $\cA \sqsupseteq (p_{0},q_{0})$ if there is an $\cE\in \MYD$ with
 non-zero coefficient in $\cA$ such that $\cE\sqsupseteq (p_{0},q_{0})$.
 
 \medskip
@@ -10086,146 +10535,6 @@ Finally, we remark that the Whittaker cycles (attached to $G$-orbits in $\cO\cap
 
 
 \appendix
-
-\section{Combinatorial parameterization of special unipotent representations}
-\subsection{Parameterize of Unipotent representations}
-We fix an abstract complex Cartan subgroup $\bfH_a$ and $\fhh_a$ in $\bfG$ and a
-set of simple roots $\Pi_a$.  Let $\cP(\bfG)$ be the set of all Langlands
-parameters of $G$-modules with character $\rho$ (i.e. the infinitesimal
-character of the trivial representation). For $\gamma\in \cP(\bfG)$, let
-$\cL(\gamma)$, $\cS(\gamma)$ and $\Phi_\gamma$ be the corresponding Langlands
-quotient, standard module and coherent family such that
-$\Phi_\gamma(\rho) = \cL(\gamma)$. Let $\cM(\bfG)$ be the span of $\cL(\gamma)$.
-Let $\set{\bB}$ be the set of all blocks. Then $\cP(\bfG) = \bigsqcup_\cB \cB$.
-The Weyl group $W = W(G)$ acts on $\cM(\bfG)$ by coherent continuation.  Let
-$\cM_{\cB}$ be the submodule of $\cM(\bfG)$ spand by $\gamma\in\cB$, then
-\[
-  \cM(\bfG) = \bigoplus_\cB \cM_{\cB}
-\]
-Let $\tau(\gamma)\subset \Pi_a$ be the $\tau$-invariant of $\gamma$.
-
-Let $\ckcO$ be even orbit. $\lambda= \half \ckhh$.  Define
-\[
-  S(\lambda) = \set{\alpha\in \Pi_a| \inn{\alpha}{\lambda}=0}.
-\]
-Let $\cP_{\lambda}(\bfG)$ be the set of all Langlands parameters with
-infinitesimal character $\lambda$. Let $T_{\lambda,\rho}$ be the translation
-functor.  Let
-\[
-  \cB(S) = \set{\gamma\in \cB|S\cap \tau(\gamma)=\emptyset}
-\]
-and
-\[
-  \cP(\bfG,S) = \bigsqcup_{\cB} \cB(S)
-\]
-
-
-Then
-\[
-  \begin{tikzcd}[row sep=0em]
-    \cP(\bfG,S) \ar[r] & \cP_{\lambda}(\bfG)\\
-    \gamma \ar[r, maps to]& T_{\lambda, \rho}(\gamma)
-  \end{tikzcd}
-\]
-
-Let $\cO$ be a complex nilpotent orbit in $\fgg$.  Let
-\[
-  \cB(S,\cO) = \set{\gamma\in \cB(S)|\AVC(\cL(\gamma))\subset \bcO}
-\]
-
-Let
-\[
-  \begin{aligned}
-    m_S(\sigma) &= [\sigma: \Ind_{W(S)}^{W}\bfone]\\
-    m_\cB(\sigma)& = [\sigma: \cM_\cB]
-  \end{aligned}
-\]
-
-Barbasch \cite[Theorem~9.1]{B10} established the following theorem.
-\begin{thm}
-  \[
-    |\cB(S,\cO)| = \sum_{\sigma} m_\cB(\sigma)m_S(\sigma)
-  \]
-  Here $\sigma\times \sigma$ running over the $W\times W$ appears in the double
-  cell $\cC(\cO)$.
-\end{thm}
-\begin{proof}
-  We need to take the graded module of $\cM(\bfG)$ with respect to the
-  $\LRleq$. By abuse of notation, we identify the basis $\cP(\bfG)$ with its
-  image in the graded module.  Note that $S\cap \tau(\lambda)=\emptyset$ if and
-  only if $W(S)$ acts on $\gamma$ trivially by \cite[Lemma~14.7]{V4}.  On the
-  other hand, by \cite[Theorem~14.10, and page 58]{V4},
-  $\AVC(\cL(\gamma))\subset \bcO$ only if $\gamma$ generate a $W$-module in the
-  double cell of $\cO$.
-\end{proof}
-
-Now assume $S=S(\lambda)$. By \cite[Cor~5.30 b) and c)]{BVUni},
-$[\sigma: \Ind_{W(S)}^{W}\bfone]=[\bfone|_{W(S)}:\sigma]\leq 1$.
-
-\subsection{Combinatorics of Weyl group representations}
-The irreducible representations of $S_n$ are parameterized by Young diagrams.
-We use the notation that the trivial representation corresponds to a row and the
-sign representation corresponds to a column.
-\[
-  triv \leftrightarrow \ytableaushort{n \ b o x e s} \quad \sgn \leftrightarrow
-  \ytableaushort{n,\ ,b,o,x,e,s}
-\]
-\trivial{ This notation coincide with the Springer correspondence, where a row
-  of boxes represents the regular nilpotent orbit and the corresponding
-  representation is the trivial representation.  The trivial orbit yeilds the
-  sign representation.  }
-
-Under the above paramterization, $\tau\mapsto \tau\otimes \sgn$ is described by
-the transpose of Young diagram. The branching rule is given by
-Littlewoods-Richardson.  Let $\cK = \bigoplus_n \Groth(S_n)$ be the graded ring
-of the Grothendieck groups of $S_n$.  This yeilds well defined ring structure on
-the graded algebra
-\[
-  \mu \nu :=\Ind_{S_{|\mu|}\times S_{|\nu|}}^{S_{|\mu|+|\nu|}}\mu\otimes \nu.
-\]
-
-Notation, we will use $[r_1, r_2, \cdots, r_k]$ or $(c_1,c_2, \cdots, c_k)$
-denote the Young diagram, where $\set{r_i}$ denote the lengthes of its rows and
-$\set{c_i}$ denote the lengthes of its columns.
-
-Let $W_n$ denote the Weyl group of type BC: $W_n = S_n \ltimes \set{\pm 1}^n$.
-Now $\Irr(W_n)$ is paramterized by a pair of Young diagram, we use the notation
-$\mu\times \nu$.
-
-As the tensor algebra, $\bigoplus_n \Groth(W_n)\cong \cK\otimes \cK$ via
-$\mu\times \nu \mapsto \mu \otimes \nu$.
-
-The branching rule is given by:
-$(\mu_1\times \nu_1)(\mu_2\times \nu_2) = (\mu_1\mu_2)\times (\nu_1 \nu_2)$.
-The sgn repersentation of $W_n$ is parameterized by $\emptyset\times (n)$.  From
-the definitioin of the identification of bipartition with $\Irr(W_n)$, we also
-have
-\[
-  (\mu\times \nu) \otimes \sgn = \nu^t\times \mu^t.
-\]
-
-We also will use the following branching formula:
-\[
-  \Ind_{S_n}^{W_n} \triv = \sum_{\substack{a,b,\\ a+b=n}} [a]\times [b],
-\]
-and
-\begin{equation}\label{eq:SW2}
-  \Ind_{S_n}^{W_n} \sgn = \sum_{\substack{a,b,\\ a+b=n}}
-  (a)\times (b).
-\end{equation}
-\trivial{ Sketch of the proof of the first formula, the dimension of LHS is
-  $n!2^n/n! = 2^n$.  On the other hand, by Mackey theory,
-  $[LHS:\Ind_{W_a\times W_b}^{W_n} \triv \otimes \chi ] \geq 1$ since
-  $S_n\cap W_a\times W_b = S_a\times S_b$.  Therefore, $LHS\supset RHS$.  On the
-  other hand, dimension of RHS is $\sum_{a} n!/a!b! = 2^n$.  This finished the
-  proof.  The proof of the second formula is similar. One also can obtain it by
-  tensoring with $\sgn$ of the first formula.  }
-
-\subsubsection{Coherent continuation representations}
-
-{\color{red} TBA}
-
-
 \section{A few geometric facts}
 %\section{Some Geometries}
 \def\dbM{\breve{M}}
@@ -10234,6 +10543,11 @@ and
 \def\dbfpp{\breve{\fpp}}
 \def\ZdbX{\cZ_{\dbX}}
 \def\aV{\acute{V}}
+
+
+\subsection{Geometry properties of regular descent}.
+
+
 
 \subsection{Geometry of moment maps}\label{sec:GM}
 In this section, let $(\bfV,\bfV')$ be a rational dual
@@ -10264,7 +10578,7 @@ Along the proof, we will use the Jacobian criterion for
 regularity in various places (see \cite[Theorem~2.19]{LiuAG}).
 
 
-\trivial[h]{
+\trivial[]{
 \subsubsection{Fiber of the moment map}\label{sec:F.M}
 % In this section, we assume that $(\bfV,\bfV')$ is a rational dual pair and
 % $\colon \cX\longrightarrow \fpp$ is the moment map.
@@ -10347,7 +10661,7 @@ $L'$-invariant subspace of $\bfV'$. \qed
 \end{proof}
 }
 
-\trivial[h]{
+\trivial[]{
 Fix $w\in \cX_r\cap \MMP^{-1}(X)$. By \Cref{lem:F.cl}
  we have an orthogonal decomposition
 \[%\begin{equation}\label{eq:GD.dV}
@@ -10414,7 +10728,7 @@ $\bfG_{\bfV'_0}^{L'}$.
   $\bfK'\times_{\bfK'_w}\fN_w$ (\emph{cf}.  \cite[Theorem~6.6]{PV}).
 
 
-\trivial[h]{
+\trivial[]{
   \medskip
 
 
