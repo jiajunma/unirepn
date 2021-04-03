@@ -57,7 +57,6 @@
 
 \usepackage{imakeidx}
 \def\idxemph#1{\emph{#1}\index{#1}}
-\makeindex
 
 
 \usepackage[normalem]{ulem}
@@ -4783,7 +4782,8 @@ This proves the theorem.
 \subsection{Geometries of regular descent}
 \label{sec:GG}
 
-\def\UU{U}
+
+\def\UU{{\bar \partial}}
 \def\dbM{\breve{M}}
 \def\dbMM{\breve{MM}}
 \def\dbX{\breve{X}}
@@ -4792,21 +4792,22 @@ This proves the theorem.
 \def\aV{\acute{V}}
 \def\fggs{\fgg_{\sfss}}
 \def\fggsp{\fgg_{\sfss'}}
-\def\fggspo{\fgg_{\sfss'_1}}
-\def\fggspt{\fgg_{\sfss'_2}}
+\def\fggspo{\fgg_{\sfss'_0}}
+\def\fggspt{\fgg_{\sfss'_1}}
 \def\fggspi{\fgg_{\sfss'_i}}
 \def\fkks{\fkk_{\sfss}}
 \def\fkksp{\fkk_{\sfss'}}
-\def\fkkspo{\fkk_{\sfss'_1}}
-\def\fkkspt{\fkk_{\sfss'_2}}
+\def\fkkspo{\fkk_{\sfss'_0}}
+\def\fkkspt{\fkk_{\sfss'_1}}
 \def\fkkspi{\fkk_{\sfss'_i}}
 \def\fpps{\fpp_{\sfss}}
 \def\fppsp{\fpp_{\sfss'}}
-\def\fppspo{\fpp_{\sfss'_1}}
-\def\fppspt{\fpp_{\sfss'_2}}
+\def\fppspo{\fpp_{\sfss'_0}}
+\def\fppspt{\fpp_{\sfss'_1}}
 \def\fppspi{\fpp_{\sfss'_i}}
 \def\DDss{\DD_{\sfss'}^{\sfss}}
-\def\DDsso{\DD_{\sfss'_1}^{\sfss}}
+\def\DDsso{\DD_{\sfss'_0}^{\sfss}}
+\def\cOpo{\cOp_{0}}
 \def\Mss{M_{\sfss,\sfss'}}
 \def\Ms{M_{\sfss}}
 \def\Msp{M_{\sfss'}}
@@ -4814,32 +4815,38 @@ This proves the theorem.
 
 \def\Ks{{K}_{\sfss}}
 \def\Ksp{{K}_{\sfss'}}
-\def\Kspo{{K}_{\sfss'_1}}
-\def\Kspt{{K}_{\sfss'_2}}
+\def\Kspo{{K}_{\sfss'_0}}
+\def\Kspt{{K}_{\sfss'_1}}
 
 \def\Gs{{G}_{\sfss}}
 \def\Gsp{{G}_{\sfss'}}
-\def\Gspo{{G}_{\sfss'_1}}
-\def\Gspt{{G}_{\sfss'_2}}
+\def\Gspo{{G}_{\sfss'_0}}
+\def\Gspt{{G}_{\sfss'_1}}
 \def\CMs{{\tilde M}_{\sfss}}
 \def\CMsp{{\tilde M}_{\sfss'}}
 \def\CMss{{\tilde M}_{\sfss,\sfss'}}
 \def\Wss{{W_{\sfss,\sfss'}}}
 \def\Woss{{W^{\circ}_{\sfss,\sfss'}}}
 \def\CXss{\cX_{\sfss,\sfss'}}
+\def\X{\bfee}
 \def\Xp{{\bfee'}}
-\def\Xpo{{\bfee'_1}}
+\def\Xpo{{\bfee'_0}}
 \def\ww{\phi}
-\def\wwo{\phi_1}
+\def\wwo{\phi_0}
+\def\sOp{\sO'}
+\def\fggpsb{{\fgg^{\boxslash}_{\sfss'}}}
+\def\fpppsb{{\fpp^{\boxslash}_{\sfss'}}}
+\def\fpppso{\fpp_{\sfss'_0}}
+\def\fpppst{\fpp_{\sfss'_1}}
 
 \def\Vs{V_\sfss}
 \def\Vsp{V_{\sfss'}}
-\def\Vspo{V_{\sfss'_1}}
-\def\Vspt{V_{\sfss'_2}}
+\def\Vspo{V_{\sfss'_0}}
+\def\Vspt{V_{\sfss'_1}}
 \def\Vspi{V_{\sfss'_i}}
 \def\Wssi{W_{\sfss,\sfss'_i}}
-\def\Wsso{W_{\sfss,\sfss'_1}}
-\def\Wsst{W_{\sfss,\sfss'_2}}
+\def\Wsso{W_{\sfss,\sfss'_0}}
+\def\Wsst{W_{\sfss,\sfss'_1}}
 
 \def\CXUO{\cX_{\sfss,\sfss'}^{\bar\partial ,\cOp}}
 \def\CXOO{\cX_{\sfss,\sfss'}^{\cO ,\cOp}}
@@ -4853,7 +4860,7 @@ Let $\ww\in \CMsp^{{-1}}(\cO)\cap \Woss$, and $\Xp = \CMsp(\ww)$.
 By the Jacobian criterion for
 regularity (see \cite[Theorem~2.19]{LiuAG}), the following sequence
 \begin{equation}\label{eq:tt1}
-  0\longrightarrow T_{\ww} \CMss^{{-1}}(\Xp) \longrightarrow T_{\ww} \Woss \xrightarrow{\ \rdd \CMsp \ } T_{\Xp}\fggs \end{equation}
+  0\longrightarrow T_{\ww} \CMss^{{-1}}(\Xp) \longrightarrow T_{\ww} \Wss \xrightarrow{\ \rdd \CMsp \ } T_{\Xp}\fggs \end{equation}
 is exact if and only if $\ww$ is regular at $\Wss_{\Xp}$.
 
 We identify  $T_{\ww}\Wss$ and $T_{\Xp}\fggsp$ with $\Wss$ and $\fggsp$
@@ -4864,38 +4871,39 @@ the map
 \]
 is surjective, where we identify $T_{\ww}\CMsp^{-1}(\Xp)$ as a subspace of $\Wss$.
 Then the sequence \eqref{eq:tt1}
-is exact if and only if the sequence \eqref{eq:GG} is exact.
-\begin{equation}\label{eq:GG}
-  \fgg\times(\fggs)_{\Xp} \xrightarrow{\ (A,A')\mapsto A'\ww - \ww A \ } W
+is exact if and only if the sequence \eqref{eq:CGG} is exact.
+\begin{equation}\label{eq:CGG}
+  \fgg\oplus (\fggs)_{\Xp} \xrightarrow{\ (A,A')\mapsto A'\ww - \ww A \ } W
   \xrightarrow{\ b\mapsto \ww b^{*} + b\ww^{*}\  } \fggs.
 \end{equation}
 
 
-\begin{lem}
-The sequence \eqref{eq:GG} is exact and $W_{\Xp}$ is regular at $\ww$.
+\begin{lem}\label{lem:CGG}
+The sequence \eqref{eq:CGG} is exact and $W_{\Xp}$ is regular at $\ww$.
 \end{lem}
 \begin{proof}
-
-  Suppose $\abs{\sfss'} = \DDss(\cO)$. Then every element
-  $\ww\in W_{U,\Xp}\subset \Hom(V,V')$ is a surjective morphism. Therefore
-  $\rdd \Msp \colon T_{\ww} \Wss \longrightarrow T_{\Xp}\fggsp$ is surjective,
-  which implies $\Msp$ is smooth at $\ww$ (\cf \cite[Proposition~10.4]{HS}).
-  Pulling back $\Msp$ via the inclusion $\Xp \hookrightarrow \fggs$, we conclude
-  that $W_{\UU,\Xp}$ is smooth and so regular at $\ww$. This also establishs the
-  exactness of \eqref{eq:GG}.
-
-  \smallskip
-
-  Now suppose $\abs{\sfss'}>\DDss(\cO)$ and $\bfcc_{1}(\cO) = \bfcc_{2}(\cO)$.
-  We now establish the exactness of \eqref{eq:GG}, which concludes the lemma.
 
   Let $\Vspo:=\ww \Vs$ and $\Vspt$ be the orthogonal complement of $\Vspo$ so
   that $\Vsp = \Vspo\oplus \Vspt$.
 
+  Suppose $\abs{\sfss'} = \DDss(\cO)$. Then every element
+  $\ww\in W_{U,\Xp}\subset \Hom(V,V')$ is a surjective morphism and $\Vspt=0$.
+  Therefore $\rdd \Msp \colon T_{\ww} \Wss \longrightarrow T_{\Xp}\fggsp$ is
+  surjective, which implies $\Msp$ is smooth at $\ww$ (\cf
+  \cite[Proposition~10.4]{HS}). Pulling back $\Msp$ via the inclusion
+  $\Xp \hookrightarrow \fggs$, we conclude that $W_{\UU,\Xp}$ is smooth and so
+  regular at $\ww$. This also establishs the exactness of \eqref{eq:CGG}.
+
+  \smallskip
+
+  Now suppose $\abs{\sfss'}>\DDss(\cO)$ and $\bfcc_{1}(\cO) = \bfcc_{2}(\cO)$.
+  We now establish the exactness of \eqref{eq:CGG}, which concludes the lemma.
+
+
   Let $\Wssi := \Hom(\Vs,\Vspi)$ and $\fggspi := \fgg_{\sfss_{i}}$ for $i=1,2$.
   Let $*\colon \Hom(\Vspo,\Vspt) \rightarrow \Hom(\Vspt,\Vspo)$ denote the
   adjoint map. We have $\Wss =\Wsso \oplus \Wsst$ and
-  $\fggsp = \fggspo\oplus \fggspt \oplus \fgg'^{\boxslash}$, where
+  $\fggsp = \fggspo\oplus \fggspt \oplus \fggpsb$, where
   \[ \fgg^{\boxslash}:= \Set{\begin{pmatrix}
         0 & -E^*\\
         E & 0
@@ -4906,24 +4914,26 @@ The sequence \eqref{eq:GG} is exact and $W_{\Xp}$ is regular at $\ww$.
   $(\fggsp)_{\Xp} = (\fggspo)_{\Xpo} \oplus \fggspt \oplus \fgg'^{\boxslash}_{\Xpo}$,
   where %$\fgg'_{1,X'_1}:= \set{T'_1\in \fgg'_1| [T'_1,X'_1]=0}$ and
   % \begin{equation}\label{eq:fggslash}
-  \[ \fgg^{\boxslash}_{\Xpo} = \Set{\begin{pmatrix}
+  \[ \fggpsb_{\Xpo} = \Set{\begin{pmatrix}
         0 & -E^*\\
         E & 0
       \end{pmatrix}|E\in \Hom(\Vspo,\Vspt) \text{ and } E \Xpo = 0}.
   \]
-  Now maps in \cref{eq:GG} have the following forms respectively:
+  Now maps in \eqref{eq:CGG} have the following forms respectively:
   \[
-    \fggs \oplus (\fggsp)_{\Xp}\ni (A,A') = \left(A, ( A'_1,A'_2,{\tiny \begin{pmatrix}0 & -E^*\\E &0\end{pmatrix}})\right) \mapsto \; A'\ww - \ww A= (A'_1 \wwo - \wwo A, E \wwo)\in \Wss
+    \fggs \oplus (\fggsp)_{\Xp}\ni (A,A') = \left(A, ( A'_0,A'_1,
+      {\tiny \begin{pmatrix}0 & -E^*\\E &0\end{pmatrix}})\right) \mapsto
+    \; A'\ww - \ww A= (A'_0 \wwo - \wwo A, E \wwo)\in \Wss
   \] and
   \[
-    \Wss \ni (b_1,b_2) \mapsto \left(b_1^\mstar w_1 + w_1^\mstar b_1, \begin{pmatrix}
-        b_1 \wwo^\mstar + \wwo b_1^\mstar & \wwo b_2^\mstar\\
-        b_2 \wwo^\mstar & 0
+    \Wss=\Hom(\Vs,\Vspo)\oplus \Hom(Vs,\Vspt) \ni (b_0,b_1) \mapsto \left(b_0^* \wwo + \wwo^* b_0, \begin{pmatrix}
+        b_0 \wwo^* + \wwo b_0^* & \wwo b_1^*\\
+        b_1 \wwo^* & 0
       \end{pmatrix}\right)\in \fggs\oplus \fggsp.
   \]
 
 
-  Note that $\Gspo \cdot \Xpo = \cOp_{1} := \DDsso(\cO)$, we have the exactness of
+  Note that $\Gspo \cdot \Xpo = \cOpo := \DDsso(\cO)$, we have the exactness of
   the sequence
   \[
     \fggs\oplus (\fggspo)_{\Xpo}\longrightarrow \Wsso \longrightarrow \fggs\oplus \fggspo.
@@ -4931,17 +4941,17 @@ The sequence \eqref{eq:GG} is exact and $W_{\Xp}$ is regular at $\ww$.
   It left to show that the following sequence is exact:
   \begin{equation}\label{eq:GG2}
     \begin{tikzcd}[column sep=5em]
-      \fgg^{\boxslash}_{\Xpo} \ar[r,"\eta_{1}"] & \Wsst \ar[r, "\eta_{2}"] & \Hom(\Vspo, \Vspt).
+      \fggpsb_{\Xpo} \ar[r,"\eta_{1}"] & \Wsst \ar[r, "\eta_{2}"] & \Hom(\Vspo, \Vspt).
     \end{tikzcd}
   \end{equation}
   Here $\eta_{1}$ is given by
   ${\tiny \begin{pmatrix} 0 & -E^*\\ E & 0 \end{pmatrix}}\mapsto E \wwo$ and
-  $\eta_{2}$ is given by $b_2\mapsto b_2 \wwo^\mstar$.
+  $\eta_{2}$ is given by $b_2\mapsto b_2 \wwo^*$.
   We have
   \[
     \begin{split}
       \dim \Im(\eta_{1}) &=
-      \dim \fgg^{\boxslash}_{\Xpo} \qquad (\text{$\wwo$ is surjective.})\\
+      \dim \fggpsb_{\wwo} \qquad (\text{$\wwo$ is surjective.})\\
       &= \dim\Vspt \cdot \dim (\Vspo/\Im(\Xpo))\\
       &= \dim\Vspt \cdot \dim \Ker(\Xpo)\\
       & = \dim\Vspt \cdot \dim \bfcc_{2}(\cO)
@@ -4950,23 +4960,24 @@ The sequence \eqref{eq:GG} is exact and $W_{\Xp}$ is regular at $\ww$.
   and
   \[
     \begin{split}
-      \dim \Ker(\eta_{2}) &= \dim \Vspt \cdot \dim (\Vs / \Im(\wwo^{\mstar})) \\
+      \dim \Ker(\eta_{2}) &= \dim \Vspt \cdot \dim (\Vs / \Im(\wwo^{*})) \\
       &= \dim \Vspt \cdot (\dim \Vs - \dim \Vspo) \\
       &= \dim \Vspt \cdot \bfcc_{1}(\cO)\\
       &= \dim \Vspt \cdot \bfcc_{2}(\cO).
     \end{split}
   \]
-  Now the exactness of \eqref{eq:GG2} and \eqref{eq:GG} follow by dimension
+  Now the exactness of \eqref{eq:GG2} and \eqref{eq:CGG} follow by dimension
   counting.
 \end{proof}
 
-Now take $\ww\in \CXss$. Then the sequence \eqref{eq:GG} is compatible with the
+Now take $\ww\in \CXss$. Then the sequence \eqref{eq:CGG} is compatible with the
 $(L_{\sfss},L_{\sfss'})$-actions.
 \begin{lem}\label{lem:GG}
   Suppose $\ww\in \CXOO$ and $\Xp :=\Msp(\ww)$. Then following sequence is exact.
-  \[
-  \fkks\times (\fkksp)_{\Xp} \longrightarrow \CXss \longrightarrow \fpps \oplus \fppsp.
-  \]
+  \begin{equation}
+    \label{eq:GG}
+    \fkks\oplus(\fkksp)_{\Xp} \longrightarrow \CXss \longrightarrow  \fppsp.
+  \end{equation}
   In particular, $\CXss \times_{\fppsp} \Xp$ is regular at $\ww$.
 \end{lem}
 \begin{proof}
@@ -5001,10 +5012,12 @@ We now recall the following lemma in EGA.
   Clearly $\cOp\cap \fppsp$ is reduced. We conclude that $\CXUO$ is reduced by \Cref{lem:red}.
 \end{proof}
 
-Using the argument we also have the following lemma which we will not use in the
+
+Using the same argument we also have the following lemma which we will not use in the
 paper.
 \begin{lem}\label{lem:RDS.C}
-  Suppose $\cO$ regular for $\DDss$. Then
+  Suppose $\cO$ regular for $\DDss$.
+  Then
   \[
     \Wss\times_{\fggs\times \fggsp} \big( (\fggs - \partial \cO)\times \cOp\big)
   \]
@@ -5013,7 +5026,7 @@ paper.
 
 
 
-\trivial[]{
+\trivial[h]{
 
 %   Note that $\UU\times \cOp \rightarrow \UU \times \bcOp$ is \'etale, so
 %   $W_{\UU,\cOp}\rightarrow W_{\UU,\bcOp}$.
@@ -5028,6 +5041,68 @@ and of finite presentation over $\cO_{X_{U}}$.
 }
 
 
+
+\def\wedgetop{{\bigwedge}^{\mathrm{top}}}
+
+  % Let $S_{\ww} := \Ks\times \Ksp$, $\fss_{\ww} := \Lie(S_{\ww})$,
+  % $S_{\wwo} := \Stab_{\Ks\times \Kspo}(\wwo)$ and $\fss_{\wwo} := \Lie(S_{\wwo})$.
+
+\medskip
+\def\dlift{{\check \vartheta}}
+\def\AOD{\mathrm{AOD}}
+
+\begin{lem}\label{lem:aod}
+  Suppose $\cO$ is regular for $\DDss$, $\sO$ is a $\Ks$-orbit in $\cO\cap \fpps$ and
+  $\sOp = \DDss(\sO)\subset \cOp\cap \fppsp$.
+  Suppose $\cE' \in \AOD_{\sfss'}(\sOp)$.
+  Then $\dlift_{\sO'}^{\sO}(\cE')$ is either zero or in $\AOD_{\sfss}(\sO)$.
+\end{lem}
+\begin{proof}
+  Note that $(\zeta_{\sfss,\sfss'})^{2} = (\wedgetop \CXss)^{-1}$.
+   The lemma follows from \Cref{lem:tan} below.
+\end{proof}
+
+\begin{lem}\label{lem:tan}
+  Suppose $\cO$ is regular for $\DDss$ and $\ww\in \CXOO$. Let $\X = \Ms(\ww)$ and
+  $\Xp=\Msp(\ww)$.
+  Then
+  \begin{equation}\label{eq:aod}
+    \wedgetop (\fkks)_{\X}  = \wedgetop (\fkksp)_{\Xp} \otimes \left(\wedgetop \CXss\right)^{{-1}}
+  \end{equation}
+  as $(\Ks\times \Ksp)_{\ww}$-module.
+\end{lem}
+\begin{proof}
+  We retain the notation in the proof of \Cref{lem:CGG} abd \Cref{lem:GG}.
+  Let $S_{\ww} := (\Ks\times \Ksp)_{\ww}$, $\fss_{\ww} = \Lie(S_{\ww})$,
+   $S_{\wwo} := (\Ks\times \Kspo)_{\wwo}$ and $\fss_{\wwo} := \Lie(S_{\wwo})$.
+  Then $\fss_{\ww} = \fss_{\wwo}\oplus \fkkspt$ and
+  $\fss_{\wwo}\xrightarrow{\cong} (\fkks)_{\X}$ as $S_{\ww}$-module.
+
+  The sequence \eqref{eq:GG} leads to the following short exact sequence
+  \[
+    0\longrightarrow (\fkks\oplus (\fkksp)_{\Xp})/ \fss_{\ww}
+    \longrightarrow \CXss \longrightarrow \fpppso \oplus \fpppsb \longrightarrow 0,
+  \]
+  where $\fpppsb = \fggpsb\cap \fpp$.
+
+  Note that the $S_{\ww}$-modules $\wedgetop \fkks$, $\wedgetop \fkkspt$,
+$\wedgetop \fpppst$ and $\wedgetop \fggsp$ are trivial.
+  Now
+  \[
+    \begin{split}
+      & \wedgetop (\fkksp)_{\Xp} \otimes \left(\wedgetop \CXss\right)^{{-1}}\\
+      & = \wedgetop (\fkksp)_{\Xp} \otimes
+      \left(\wedgetop  \big((\fkks\oplus (\fkksp)_{\Xp})/\fss_{\ww}\big)
+        \otimes \wedgetop \fpppso \otimes \wedgetop\fpppsb\right)^{-1}\\
+      & =  \wedgetop (\fss_{\wwo} \oplus \fkkspt) \otimes
+      \left(\wedgetop (\fkks \oplus \fkksp\oplus \fpppso \oplus \fpppsb )\right)^{{-1}} \\
+      & = \wedgetop \fss_{\wwo} \otimes \left(\wedgetop \fggsp  \right)^{-1}\\
+      & \qquad \text{(by $\fkksp \oplus \fpppso \oplus \fpppsb \oplus \fpppst = \fggsp $ )}\\
+      & = \wedgetop (\fkks)_{\X}.
+    \end{split}
+  \]
+ This proves the lemma.
+\end{proof}
 
 
 
@@ -5957,14 +6032,14 @@ $\star = C^*$ or $\bfrr_2(\ckcO)>\bfrr_3(\ckcO)$. Then the map \eqref{eq:delta} 
     \]
      with the form
      \[
-    \innw{T_1}{T_2} := \tr(T_1^\mstar T_2), \qquad\textrm{for all }T_1,T_2\in \bfW.
+    \innw{T_1}{T_2} := \tr(T_1^* T_2), \qquad\textrm{for all }T_1,T_2\in \bfW.
   \]
   Here
-  $\xymatrix{ \mstar\colon \Hom_{\bC}(\bfV,\bfV') \ar[r]^<>(.5){\cong} &
+  $\xymatrix{ \star \colon \Hom_{\bC}(\bfV,\bfV') \ar[r]^<>(.5){\cong} &
     \Hom_{\bC}(\bfV',\bfV) }$ is the adjoint map induced by the non-degenerate
   forms on $\bfV$ and $\bfV'$:
   \[
-    \inn{Tv}{v'}_{\bfV'} = \inn{v}{T^\mstar v'}_{\bfV},  \qquad\textrm{for all }v\in
+    \inn{Tv}{v'}_{\bfV'} = \inn{v}{T^* v'}_{\bfV},  \qquad\textrm{for all }v\in
     \bfV,v'\in \bfV', T\in \Hom_{\bC}(\bfV,\bfV').
   \]
   The pair of groups $(\bfG,\bfG'):=(\bfG_{\bfV},\bfG_{\bfV'})$ is a
@@ -5984,9 +6059,9 @@ a (real) reductive dual pair in $\Sp(W)$, where $W:=\bfW^{J_{\bfW}}$.
 
 
   \trivial[h]{ If one switch the role of $\bfV$ and $\bfV'$ the form on
-    $\inn{}{}_{\bfW}$ will switch the sign, i.e $\tr(T^\mstar T) = -
-    \tr((T^\mstar)^\mstar (T^\mstar))$.  Also note that $(J' T J^{-1})^\mstar = J T^\mstar J'^{-1}$ and
-    $(L'TL^{-1})^\mstar = L T^\mstar L'^{-1}$. Hence, once we verified $(J'
+    $\inn{}{}_{\bfW}$ will switch the sign, i.e $\tr(T^* T) = -
+    \tr((T^*)^* (T^*))$.  Also note that $(J' T J^{-1})^* = J T^* J'^{-1}$ and
+    $(L'TL^{-1})^* = L T^* L'^{-1}$. Hence, once we verified $(J'
     \bullet J^{-1}, L' \bullet L^{-1})$ satisfies \Cref{lem:cartan} for
     $\dotepsilon =1$. Then $(J'
     \bullet J^{-1}, - L' \bullet L^{-1})$ satisfies \Cref{lem:cartan} when
@@ -6000,7 +6075,7 @@ a (real) reductive dual pair in $\Sp(W)$, where $W:=\bfW^{J_{\bfW}}$.
     $\sign{\bfV} = (n^+,n^-)$. Then
     $\bfW \cong \bfV'^{\oplus n^+}\oplus \bfV'^{\oplus n^-}_{-}$ as formed space
     (to see this fix orthonormal basis $\set{e_j}$ of $\bfV_{1}$ then
-    $\tr(T^\mstar T) = \sum \inn{Te_j}{Te_j}$ ), the $J_\bfW$ action is just
+    $\tr(T^* T) = \sum \inn{Te_j}{Te_j}$ ), the $J_\bfW$ action is just
     complex conjugation. the $L_\bfW$ action is
     $L_{\bfV'}^{\oplus n^+} \oplus -L_{\bfV'}^{n^-}$. Hence $\inn{J_\bfW
       \;\bullet }{L_\bfW \;\bullet }_\bfW$ is positive definite.
@@ -6025,7 +6100,7 @@ $(\bfV,\bfV')$:
   \[
     \xymatrix@R=0em@C=4em{
       \fgg &\ar[l]_<>(.5){\MM} \bfW \ar[r]^<>(.5){\MM'} & \fgg',\\
-      T^\mstar T & \ar@{|->}[l] T \ar@{|->}[r] & T T^\mstar.
+      T^* T & \ar@{|->}[l] T \ar@{|->}[r] & T T^*.
     }
   \]
 %\end{itemize}
@@ -6040,7 +6115,7 @@ for the definition of $\fpp$ and $\fpp'$):
   \[
     \xymatrix@R=0em@C=6em{
       \fpp &\ar[l]_<>(.5){\MMP:=\MM|_{\cX}} \cX \ar[r]^<>(.5){\MMP':=\MM'|_{\cX}} & \fpp',
-  %    T^\mstar T & \ar@{|->}[l] T \ar@{|->}[r] & T T^\mstar.
+  %    T^* T & \ar@{|->}[l] T \ar@{|->}[r] & T T^*.
     }
   \]
   which are also called \emph{moment maps} (with respect to the rational dual
@@ -7078,100 +7153,10 @@ The following lemma exhibits a certain maximality property of nilpotent orbits w
   $\MMP(\MMP'^{-1}(\bsOp))$.
 \end{lem}
 
-%\begin{remark}
-%Good geometric properties of good orbits (\Cref{lem:GDS.sh}) will play a crucial role in \Cref{prop:GDS.AC}.
-%\end{remark}
-
 \begin{proof}
 This is easy to check using the explicit description of
 $\MM(\MM'^{-1}(\bcO'))$ in \cite[Theorem~5.2 and 5.6]{DKPC}. % \cite[]{DKP2}).
 \end{proof}
-
-
-%\subsubsection{Extending to $\slt$-modules}
-% We now extend the notion of descent to $\slt$ homomorphisms, \Cref{sec:KX}.
-
-% \begin{defn}
-%   \begin{enumT}
-%   \item \label{it:dec.slt1} Let $(\bfV, \bfV')$ be a rational dual pair.  Let
-%     $\gamma =\set{\bfee,\bfhh,\bfff}$ be an $\slt$-triple in $\fgg$ and let
-%     $\gamma '=\set{\bfee',\bfhh',\bfff'} $ be an $\slt$-triple in $\fgg'$.
-%     % let $\phi\colon \slt\rightarrow \fgg$ be the corresponding Lie algebra
-%     % morphism.
-%     % let $\phi'\colon \slt\rightarrow \fgg'$ be the corresponding Lie algebra
-%     % morphism.
-%     We say the $\gamma '$ is a descent of $\gamma $ if
-%     \begin{enumC}
-%     \item $\bfee'$ is a descent of $\bfee$, and
-%     \item there exists
-%       \[
-%         T\in \bfW_{1} := \set{T\in \bfW| (\bfhh,\bfhh')\cdot T = T}.
-%       \]
-%       realizing the descent.
-%     \end{enumC}
-%   \item \label{it:dec.slt2} Let $(\bfV, \bfV')$ be a rational dual pair.
-%     \begin{itemize}
-%     \item Let $\phi \colon \slt\rightarrow \fgg$ be a $J$-compatible morphism,
-%       and $\phi ' \colon \slt\rightarrow \fgg'$ be a $J'$-compatible morphism.
-%       We say $\phi '$ is a descent of $\phi $ if
-%       \begin{enumC}
-%       \item \label{it:dec.slt3} $\phi'(\eslt)$ is a descent of $\phi(\eslt)$,
-%         and
-%       \item there exists an element $T \in W_1=:W\cap \bfW_1$ realizing the
-%         descent.
-%       \end{enumC}
-%     \item Let $\phi \colon \slt\rightarrow \fgg$ be a $L$-compatible morphism,
-%       and $\phi ' \colon \slt\rightarrow \fgg'$ be a $L'$-compatible morphism.
-%       We say $\phi '$ is a descent of $\phi $ if
-%       \begin{enumC}
-%       \item \label{it:dec.slt4} $\phi'(\Xslt)$ is a descent of $\phi(\Xslt)$,
-%         and
-%       \item there exists an element $T \in \cX_1=:\cX \cap \bfW_1$ realizing the
-%         descent.
-%       \end{enumC}
-%     \end{itemize}
-%   \item In all cases, we will say that $T$ realizes the descent, and we write
-%     $\phi' = \DD(\phi)$.
-%   \end{enumT}
-% \end{defn}
-
-% \begin{remark}
-% %\begin{enumR}
-% %Note that the pair $\set{\bfee,\bfhh}$ already determine an $\slt$-triple. On the other
-% %hand, an arbitrary pair $(\bfee,\bfhh)$ where $\bfee$ is nilpotent, $\bfhh$ is semisimple and
-% %  $[\bfhh,\bfee]=2\bfee$ may not come from an $\slt$-triple in general.
-% Suppose $\bfee'$ is a descent of $\bfee$ realized by $T\in \bfWo$. Given an $\slt$-triple $\set{\bfee,\bfhh,\bfff}$, we define $\bfhh'\in \fgg'$ by
-%   $\bfhh'(T(v)) := T(\bfhh(v)) + T(v)$ for all $v\in \bfV$, so that $(\bfhh,\bfhh')\cdot T = T$. One checks that pair
-%   $(\bfee',\bfhh')$  extends to an $\slt$-triple $\set{\bfee',\bfhh',\bfff'}$ and thus descent of a nilpotent orbit can always be extended to descent of the corresponding $\slt$-triple\footnote{There is no clean formula for $\bfff'$ but its existence is clear by examining the decomposition in \Cref{eq:Vl.1}. See discussions in \cite{DKP2}.}.
-%   Similar statements hold for rational descents.
-% \end{remark}
-
-% The arguments in \cite[Section~8]{DKP2} (for stable range case) extends naturely to the descent of nilpotent
-% orbit case. Hence we have the compatibility of descent and Kostant-Sekiguchi correspondence:
-% \begin{lem}
-%   Suppose $\sOr'\in \Nil_{G'}(\fgg'_{\R})$, $\sOr\in \Nil_{G}(\fgg_{\R})$, $\KS{\sOr'}=:\sO'\in \Nil_{\bfK'}(\fpp')$ and
-%   $\KS{\sOr}=:\sO\in \Nil_{\bfK}(\fpp)$.
-%   Then $\DD {\sOr}  = \sOr'$ if and only if $\DD {\sO} = \sO'$, i.e.
-%   \[
-%     \DD{\KS{\sOr}} = \KS{\DD{\sOr}}.
-%   \]
-%   \qed
-% \end{lem}
-
-
-\trivial[h]{An alternative proof: Let $\phi \colon \slt\rightarrow \fgg$ be a $(J,L)$-compatible morphism realizing the Kostant-Sekiguchi correspondence of $\cO$ with $\KS{\cO}$.
-Let $\phi'$ be a $J$-compatible descent of $\phi$, realized by an element $T\in W_1$. By conjugating with an element of $G'$ if necessary, one may assume that $\phi'$ is $(J',L')$-compatible.
-From the $\slt$-morphisms, we define the Cayley elements
-\[
-C := \phi(\cslt)\in \bfG, \text{ and } C' := \phi'(\cslt)\in \bfG'.
-\]
-Let $T' = C'TC^{-1}$. Since $(C'TC^{-1})^\mstar = C T^\mstar C'^{-1}$ we see
-that it realize the descent from $\phi(\Xslt)$ to $\phi'(\Xslt)$.
-Now it suffices to verify that $T'\in \cX$.
-Using the block decomposition \cref{eq:Vl.1}, the problem reduces to case where
-$\phi(\eslt)$ is in the principle
-nilpotent orbit in $\rO(n+1,n)$ or $\Sp(2n)$. This could be down by a explicit calculation, see formulas in \cite[Section~6]{DKP2}.
-}
 
 \subsubsection{Map between isotropy groups}\label{sec:alpha}
 %\subsubsection{Correspondence between nilpotent orbits}
