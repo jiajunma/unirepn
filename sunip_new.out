@@ -1,0 +1,88 @@
+\BOOKMARK [1][]{section.1}{1. Introduction and the main results}{}% 1
+\BOOKMARK [2][]{subsection.1.1}{1.1. Unitary representations and the orbit method}{section.1}% 2
+\BOOKMARK [2][]{subsection.1.2}{1.2. Special unipotent representations of classical groups of type B, C or D}{section.1}% 3
+\BOOKMARK [2][]{subsection.1.3}{1.3. Combinatorial construct: painted bipartitions}{section.1}% 4
+\BOOKMARK [2][]{subsection.1.4}{1.4. Counting special unipotent representations by painted bipartitions}{section.1}% 5
+\BOOKMARK [2][]{subsection.1.5}{1.5. Descending painted bipartitions and constructing representations by induction}{section.1}% 6
+\BOOKMARK [2][]{subsection.1.6}{1.6. Computing associated cycles of the constructed representations}{section.1}% 7
+\BOOKMARK [1][]{section.2}{2. Descents of painted bipartitions: combinatorics}{}% 8
+\BOOKMARK [2][]{subsection.2.1}{2.1. Naive descents of painted bipartitions }{section.2}% 9
+\BOOKMARK [2][]{subsection.2.2}{2.2. Descents of painted bipartitions}{section.2}% 10
+\BOOKMARK [1][]{section.3}{3. From painted bipartitions to associated cycles}{}% 11
+\BOOKMARK [2][]{subsection.3.1}{3.1. Classical spaces}{section.3}% 12
+\BOOKMARK [2][]{subsection.3.2}{3.2. The moment maps}{section.3}% 13
+\BOOKMARK [2][]{subsection.3.3}{3.3. Geometric theta lift}{section.3}% 14
+\BOOKMARK [2][]{subsection.3.4}{3.4. Associated cycles of painted bipartitions}{section.3}% 15
+\BOOKMARK [2][]{subsection.3.5}{3.5. Distinguishing the constructed representations}{section.3}% 16
+\BOOKMARK [1][]{section.4}{4. Theta lifts via matrix coefficient integrals}{}% 17
+\BOOKMARK [2][]{subsection.4.1}{4.1. The oscillator representation}{section.4}% 18
+\BOOKMARK [2][]{subsection.4.2}{4.2. Growth of Casselman-Wallach representations}{section.4}% 19
+\BOOKMARK [2][]{subsection.4.3}{4.3. Matrix coefficient integrals against the oscillator representation}{section.4}% 20
+\BOOKMARK [2][]{subsection.4.4}{4.4. Unitarity}{section.4}% 21
+\BOOKMARK [1][]{section.5}{5. Double theta lifts and degenerate principal series}{}% 22
+\BOOKMARK [2][]{subsection.5.1}{5.1. Matrix coefficient integrals and double theta lifts}{section.5}% 23
+\BOOKMARK [2][]{subsection.5.2}{5.2. Matrix coefficient integrals against degenerate principal series}{section.5}% 24
+\BOOKMARK [2][]{subsection.5.3}{5.3. Double theta lifts and parabolic induction}{section.5}% 25
+\BOOKMARK [1][]{section.6}{6. Bounding the associated cycles}{}% 26
+\BOOKMARK [2][]{subsection.6.1}{6.1. Associated cycles}{section.6}% 27
+\BOOKMARK [2][]{subsection.6.2}{6.2. Algebraic theta lifts and commutative theta lifts}{section.6}% 28
+\BOOKMARK [2][]{subsection.6.3}{6.3. Regular descents of nilpotent orbits}{section.6}% 29
+\BOOKMARK [2][]{subsection.6.4}{6.4. Commutative theta lifts and geometric theta lifts}{section.6}% 30
+\BOOKMARK [2][]{subsection.6.5}{6.5. Algebraic theta lifts and geometric theta lifts}{section.6}% 31
+\BOOKMARK [2][]{subsection.6.6}{6.6. Geometries of regular descent}{section.6}% 32
+\BOOKMARK [1][]{section.7}{7. Induced orbits and double geometric lifts}{}% 33
+\BOOKMARK [1][]{section.8}{8. A proof of Theorem 3.9 }{}% 34
+\BOOKMARK [2][]{subsection.8.1}{8.1. Tails of painted bipartitions}{section.8}% 35
+\BOOKMARK [1][]{section.9}{9. Combinatorics}{}% 36
+\BOOKMARK [2][]{subsection.9.1}{9.1. An upper bound on the associated character of certain theta lift}{section.9}% 37
+\BOOKMARK [2][]{subsection.9.2}{9.2. The representation '* I\(\)}{section.9}% 38
+\BOOKMARK [2][]{subsection.9.3}{9.3. Degenerate principal series and Rallis quotients}{section.9}% 39
+\BOOKMARK [1][]{section.10}{10. Bounding the associated cycles}{}% 40
+\BOOKMARK [2][]{subsection.10.1}{10.1. Good descents of nilpotent orbits}{section.10}% 41
+\BOOKMARK [3][]{subsubsection.10.1.1}{10.1.1. Associated characters and associated cycles}{subsection.10.1}% 42
+\BOOKMARK [3][]{subsubsection.10.1.2}{10.1.2. Algebraic theta lifting}{subsection.10.1}% 43
+\BOOKMARK [3][]{subsubsection.10.1.3}{10.1.3. The bound in the descent and good generalized descent cases}{subsection.10.1}% 44
+\BOOKMARK [2][]{subsection.10.2}{10.2. Some properties of the descent maps}{section.10}% 45
+\BOOKMARK [3][]{subsubsection.10.2.1}{10.2.1. Moment maps}{subsection.10.2}% 46
+\BOOKMARK [3][]{subsubsection.10.2.2}{10.2.2. An algebraic character}{subsection.10.2}% 47
+\BOOKMARK [3][]{subsubsection.10.2.3}{10.2.3. Lift of algebraic vector bundles}{subsection.10.2}% 48
+\BOOKMARK [2][]{subsection.10.3}{10.3. Geometric theta lift}{section.10}% 49
+\BOOKMARK [2][]{subsection.10.4}{10.4. Real form, Cartan involution, and \(, \)-space}{section.10}% 50
+\BOOKMARK [2][]{subsection.10.5}{10.5. Metaplectic cover}{section.10}% 51
+\BOOKMARK [2][]{subsection.10.6}{10.6. Young diagrams and complex nilpotent orbits}{section.10}% 52
+\BOOKMARK [2][]{subsection.10.7}{10.7. Signed Young diagrams and rational nilpotent orbits}{section.10}% 53
+\BOOKMARK [3][]{subsubsection.10.7.1}{10.7.1. Parametrization}{subsection.10.7}% 54
+\BOOKMARK [3][]{subsubsection.10.7.2}{10.7.2. Stabilizers}{subsection.10.7}% 55
+\BOOKMARK [2][]{subsection.10.8}{10.8. Dual pairs, descent and lift of nilpotent orbits}{section.10}% 56
+\BOOKMARK [3][]{subsubsection.10.8.1}{10.8.1. Lifts and descents of nilpotent orbits}{subsection.10.8}% 57
+\BOOKMARK [3][]{subsubsection.10.8.2}{10.8.2. Generalized descent of nilpotent orbits}{subsection.10.8}% 58
+\BOOKMARK [3][]{subsubsection.10.8.3}{10.8.3. Map between isotropy groups}{subsection.10.8}% 59
+\BOOKMARK [2][]{subsection.10.9}{10.9. Lifting of equivariant vector bundles and admissible orbit data}{section.10}% 60
+\BOOKMARK [3][]{subsubsection.10.9.1}{10.9.1. An algebraic character}{subsection.10.9}% 61
+\BOOKMARK [3][]{subsubsection.10.9.2}{10.9.2. Lift of algebraic vector bundles}{subsection.10.9}% 62
+\BOOKMARK [3][]{subsubsection.10.9.3}{10.9.3. Lift of admissible orbit data}{subsection.10.9}% 63
+\BOOKMARK [1][]{section.11}{11. Matrix coefficient integrals and degenerate principal series}{}% 64
+\BOOKMARK [2][]{subsection.11.1}{11.1. Matrix coefficients: growth and positivity}{section.11}% 65
+\BOOKMARK [2][]{subsection.11.2}{11.2. Theta lifting via matrix coefficient integrals}{section.11}% 66
+\BOOKMARK [3][]{subsubsection.11.2.1}{11.2.1. Matrix coefficient integrals against oscillator representations}{subsection.11.2}% 67
+\BOOKMARK [3][]{subsubsection.11.2.2}{11.2.2. Unitarity}{subsection.11.2}% 68
+\BOOKMARK [2][]{subsection.11.3}{11.3. An equality of associated characters in the convergent range}{section.11}% 69
+\BOOKMARK [3][]{subsubsection.11.3.1}{11.3.1. Doubling}{subsection.11.3}% 70
+\BOOKMARK [3][]{subsubsection.11.3.2}{11.3.2. On certain induced orbits}{subsection.11.3}% 71
+\BOOKMARK [3][]{subsubsection.11.3.3}{11.3.3. Finishing the proof when G is a real orthogonal group}{subsection.11.3}% 72
+\BOOKMARK [3][]{subsubsection.11.3.4}{11.3.4. Finishing the proof when G is a real symplectic group}{subsection.11.3}% 73
+\BOOKMARK [3][]{subsubsection.11.3.5}{11.3.5. Finishing the proof when G is a quaternionic symplectic group}{subsection.11.3}% 74
+\BOOKMARK [3][]{subsubsection.11.3.6}{11.3.6. Finishing the proof when G is a quaternionic orthogonal group}{subsection.11.3}% 75
+\BOOKMARK [1][]{section.12}{12. The unipotent representations construction and iterated theta lifting}{}% 76
+\BOOKMARK [2][]{subsection.12.1}{12.1. The construction}{section.12}% 77
+\BOOKMARK [1][]{section.13}{13. Concluding remarks}{}% 78
+\BOOKMARK [1][]{appendix.A}{Appendix A. Combinatorial parameterization of special unipotent representations}{}% 79
+\BOOKMARK [2][]{subsection.A.1}{A.1. Parameterize of Unipotent representations}{appendix.A}% 80
+\BOOKMARK [2][]{subsection.A.2}{A.2. Combinatorics of Weyl group representations}{appendix.A}% 81
+\BOOKMARK [3][]{subsubsection.A.2.1}{A.2.1. Coherent continuation representations}{subsection.A.2}% 82
+\BOOKMARK [1][]{appendix.B}{Appendix B. A few geometric facts}{}% 83
+\BOOKMARK [2][]{subsection.B.1}{B.1. Geometry of moment maps}{appendix.B}% 84
+\BOOKMARK [3][]{subsubsection.B.1.1}{B.1.1. Scheme theoretical results on descents}{subsection.B.1}% 85
+\BOOKMARK [3][]{subsubsection.B.1.2}{B.1.2. Scheme theoretical results on generalized descents of good orbits}{subsection.B.1}% 86
+\BOOKMARK [2][]{subsection.B.2}{B.2. Proof of lem:indR}{appendix.B}% 87
+\BOOKMARK [1][]{section*.2}{References}{}% 88

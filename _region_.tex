@@ -1,0 +1,2946 @@
+\message{ !name(sunip_new.tex)}\documentclass[12pt,a4paper]{amsart}
+\usepackage[margin=2.5cm,marginpar=2cm]{geometry}
+
+
+\usepackage[bookmarksopen,bookmarksdepth=3]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+\usepackage{array}
+%% FONTS
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{mathbbol,mathabx}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{braket}
+\usepackage{mathtools}
+
+\usepackage{amsrefs}
+
+\usepackage[all,cmtip]{xy}
+\usepackage{rotating}
+\usepackage{leftidx}
+%\usepackage{arydshln}
+
+% circled number
+\usepackage{pifont}
+\makeatletter
+\newcommand*{\circnuma}[1]{%
+  \ifnum#1<1 %
+    \@ctrerr
+  \else
+    \ifnum#1>20 %
+      \@ctrerr
+    \else
+      \mbox{\ding{\numexpr 171+(#1)\relax}}%
+     \fi
+  \fi
+}
+\makeatother
+
+
+\DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
+\DeclareSymbolFontAlphabet{\mathbbold}{bbold}
+
+
+%\usepackage[dvipdfx,rgb,table]{xcolor}
+\usepackage[rgb,table,dvipsnames]{xcolor}
+%\usepackage{color}
+%\usepackage{mathrsfs}
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{3}
+
+%\usepackage[abbrev,shortalphabetic]{amsrefs}
+
+
+\usepackage{imakeidx}
+\def\idxemph#1{\emph{#1}\index{#1}}
+\makeindex
+
+
+\usepackage[normalem]{ulem}
+
+
+\usepackage[centertableaux]{ytableau}
+
+%\usepackage[mathlines,pagewise]{lineno}
+%\linenumbers
+
+\usepackage{enumitem}
+%% Enumitem
+\newlist{enumC}{enumerate}{1} % Conditions in Lemma/Theorem/Prop
+\setlist[enumC,1]{label=(\alph*),wide,ref=(\alph*)}
+\crefname{enumCi}{condition}{conditions}
+\Crefname{enumCi}{Condition}{Conditions}
+\newlist{enumT}{enumerate}{3} % "Theorem"=conclusions in Lemma/Theorem/Prop
+\setlist[enumT]{label=(\roman*),wide}
+\setlist[enumT,1]{label=(\roman*),wide}
+\setlist[enumT,2]{label=(\alph*),ref ={(\roman{enumTi}.\alph*)},left=2em}
+\setlist[enumT,3]{label*=.(\arabic*), ref ={(\roman{enumTi}.\alph{enumTii}.\alph*)}}
+\crefname{enumTi}{}{}
+\Crefname{enumTi}{Item}{Items}
+\crefname{enumTii}{}{}
+\Crefname{enumTii}{Item}{Items}
+\crefname{enumTiii}{}{}
+\Crefname{enumTiii}{Item}{Items}
+\newlist{enumPF}{enumerate}{3}
+%\setlist[enumPF]{label=(\alph*),wide}
+\setlist[enumPF,1]{label=(\roman*),wide}
+\setlist[enumPF,2]{label=(\alph*),left=2em}
+\setlist[enumPF,3]{label=\arabic*).,left=1em}
+\newlist{enumS}{enumerate}{3} % Statement outside Lemma/Theorem/Prop
+\setlist[enumS]{label=\roman*)}
+\setlist[enumS,1]{label=\roman*)}
+\setlist[enumS,2]{label=\alph*)}
+\setlist[enumS,3]{label=\arabic*.}
+\newlist{enumI}{enumerate}{3} % items
+\setlist[enumI,1]{label=\roman*),leftmargin=*}
+\setlist[enumI,2]{label=\alph*), leftmargin=*}
+\setlist[enumI,3]{label=\arabic*), leftmargin=*}
+\newlist{enumIL}{enumerate*}{1} %inline enum
+\setlist*[enumIL]{label=\roman*)}
+\newlist{enumR}{enumerate}{1} % remarks
+\setlist[enumR]{label=\arabic*.,wide,labelwidth=!, labelindent=0pt}
+\crefname{enumRi}{remark}{remarks}
+
+
+\newlist{enuma}{enumerate}{1} % Statement in Lemma/Theorem/Prop
+\setlist[enuma]{label=(\alph*),nosep,leftmargin=*}
+
+%\definecolor{srcol}{RGB}{255,255,51}
+
+%\definecolor{srcol}{RGB}{255,255,51}
+\colorlet{srcol}{black!15}
+
+\crefname{equation}{}{}
+\Crefname{equation}{Equation}{Equations}
+\Crefname{lem}{Lemma}{Lemma}
+\Crefname{thm}{Theorem}{Theorem}
+
+\newlist{des}{enumerate}{1}
+\setlist[des]{font=\upshape\sffamily\bfseries, label={}}
+%\setlist[des]{before={\renewcommand\makelabel[1]{\sffamily \bfseries ##1 }}}
+
+% editing macros.
+%\blendcolors{!80!black}
+\long\def\okay#1{\ifcsname highlightokay\endcsname
+{\color{red} #1}
+\else
+{#1}
+\fi
+}
+\long\def\editc#1{{\color{red} #1}}
+\long\def\mjj#1{{{\color{blue}#1}}}
+\long\def\mjjr#1{{\color{red} (#1)}}
+\long\def\mjjd#1#2{{\color{blue} #1 \sout{#2}}}
+\def\mjjb{\color{blue}}
+\def\mjje{\color{black}}
+\def\mjjcb{\color{green!50!black}}
+\def\mjjce{\color{black}}
+
+\long\def\sun#1{{{\color{cyan}#1}}}
+\long\def\sund#1#2{{\color{cyan}#1  \sout{#2}}}
+\long\def\mv#1{{{\color{red} {\bf move to a proper place:} #1}}}
+\long\def\delete#1{}
+
+%\reversemarginpar
+\newcommand{\lokec}[1]{\marginpar{\color{blue}\tiny #1 \mbox{--loke}}}
+\newcommand{\mjjc}[1]{\marginpar{\color{green}\tiny #1 \mbox{--ma}}}
+
+
+%\def\showtrivial{\relax}
+
+\newcommand{\trivial}[2][]{\if\relax\detokenize{#1}\relax
+  {%\hfill\break
+   % \begin{minipage}{\textwidth}
+      \color{orange} \vspace{0em} $[$  #2 $]$
+  %\end{minipage}
+  %\break
+      \color{black}
+  }
+  \else
+\ifx#1h
+\ifcsname showtrivial\endcsname
+{%\hfill\break
+ % \begin{minipage}{\textwidth}
+    \color{orange} \vspace{0em}  $[$ #2 $]$
+%\end{minipage}
+%\break
+    \color{black}
+}
+\fi
+\else {\red Wrong argument!} \fi
+\fi
+}
+
+\newcommand{\byhide}[2][]{\if\relax\detokenize{#1}\relax
+{\color{orange} \vspace{0em} Plan to delete:  #2}
+\else
+\ifx#1h\relax\fi
+\fi
+}
+
+
+
+\newcommand{\Rank}{\mathrm{rk}}
+\newcommand{\cqq}{\mathscr{D}}
+\newcommand{\rsym}{\mathrm{sym}}
+\newcommand{\rskew}{\mathrm{skew}}
+\newcommand{\fraksp}{\mathfrak{sp}}
+\newcommand{\frakso}{\mathfrak{so}}
+\newcommand{\frakm}{\mathfrak{m}}
+\newcommand{\frakp}{\mathfrak{p}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\rhopst}{\rho'^*}
+\newcommand{\Rad}{\mathrm{Rad}}
+\newcommand{\Res}{\mathrm{Res}}
+\newcommand{\Hol}{\mathrm{Hol}}
+\newcommand{\AC}{\mathrm{AC}}
+%\newcommand{\AS}{\mathrm{AS}}
+\newcommand{\WF}{\mathrm{WF}}
+\newcommand{\AV}{\mathrm{AV}}
+\newcommand{\AVC}{\mathrm{AV}_\bC}
+\newcommand{\VC}{\mathrm{V}_\bC}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\depth}{\mathrm{depth}}
+\newcommand{\wtM}{\widetilde{M}}
+\newcommand{\wtMone}{{\widetilde{M}^{(1,1)}}}
+
+\newcommand{\nullpp}{N(\fpp'^*)}
+\newcommand{\nullp}{N(\fpp^*)}
+%\newcommand{\Aut}{\mathrm{Aut}}
+%\usepackage{mnsymbol}
+
+
+\def\YD{{\mathsf{YD}}}
+\def\SYD{{\mathsf{SYD}}}
+\def\MK{\mathsf{MK}}
+\def\MYD{{\mathsf{MYD}}}
+\def\AND{\quad\text{and}\quad}
+\def\deti{{\det}_{\sqrt{-1}}}
+
+\def\AC{\mathrm{AC}}
+\def\wAC{\mathrm{AC}^{\mathrm{weak}}}
+
+
+\def\KM{{\mathcal{K_{\mathsf{M}}}}}
+
+\newcommand{\bfonenp}{\mathbf{1}^{-,+}}
+\newcommand{\bfonepn}{\mathbf{1}^{+,-}}
+\newcommand{\bfone}{\mathbf{1}}
+\newcommand{\piSigma}{\pi_\Sigma}
+\newcommand{\piSigmap}{\pi'_\Sigma}
+
+
+\newcommand{\sfVprime}{\mathsf{V}^\prime}
+\newcommand{\sfVdprime}{\mathsf{V}^{\prime \prime}}
+\newcommand{\gminusone}{\mathfrak{g}_{-\frac{1}{m}}}
+
+\newcommand{\eva}{\mathrm{eva}}
+
+% \newcommand\iso{\xrightarrow{
+%    \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+\def\Ueven{{U_{\rm{even}}}}
+\def\Uodd{{U_{\rm{odd}}}}
+\def\ttau{\tilde{\tau}}
+\def\Wcp{W}
+\def\Kur{{K^{\mathrm{u}}}}
+
+\def\Im{\operatorname{Im}}
+
+
+\providecommand{\bcN}{{\overline{\cN}}}
+
+
+
+\makeatletter
+
+\def\gen#1{\left\langle
+    #1
+      \right\rangle}
+\makeatother
+
+\makeatletter
+\def\inn#1#2{\left\langle
+      \def\ta{#1}\def\tb{#2}
+      \ifx\ta\@empty{\;} \else {\ta}\fi ,
+      \ifx\tb\@empty{\;} \else {\tb}\fi
+      \right\rangle}
+\def\binn#1#2{\left\lAngle
+      \def\ta{#1}\def\tb{#2}
+      \ifx\ta\@empty{\;} \else {\ta}\fi ,
+      \ifx\tb\@empty{\;} \else {\tb}\fi
+      \right\rAngle}
+\makeatother
+
+\makeatletter
+\def\binn#1#2{\overline{\inn{#1}{#2}}}
+\makeatother
+
+
+\def\innwi#1#2{\inn{#1}{#2}_{W_i}}
+\def\innw#1#2{\inn{#1}{#2}_{\bfW}}
+\def\innv#1#2{\inn{#1}{#2}_{\bfV}}
+\def\innbfv#1#2{\inn{#1}{#2}_{\bfV}}
+\def\innvi#1#2{\inn{#1}{#2}_{V_i}}
+\def\innvp#1#2{\inn{#1}{#2}_{\bfV'}}
+\def\innp#1#2{\inn{#1}{#2}'}
+
+% choose one of then
+\def\simrightarrow{\iso}
+\def\surj{\twoheadrightarrow}
+%\def\simrightarrow{\xrightarrow{\sim}}
+
+\newcommand\iso{\xrightarrow{
+   \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+\newcommand\riso{\xleftarrow{
+   \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+
+
+
+
+
+
+
+
+\usepackage{xparse}
+\def\usecsname#1{\csname #1\endcsname}
+\def\useLetter#1{#1}
+\def\usedbletter#1{#1#1}
+
+% \def\useCSf#1{\csname f#1\endcsname}
+
+\ExplSyntaxOn
+
+\def\mydefcirc#1#2#3{\expandafter\def\csname
+  circ#3{#1}\endcsname{{}^\circ {#2{#1}}}}
+\def\mydefvec#1#2#3{\expandafter\def\csname
+  vec#3{#1}\endcsname{\vec{#2{#1}}}}
+\def\mydefdot#1#2#3{\expandafter\def\csname
+  dot#3{#1}\endcsname{\dot{#2{#1}}}}
+
+\def\mydefacute#1#2#3{\expandafter\def\csname a#3{#1}\endcsname{\acute{#2{#1}}}}
+\def\mydefbr#1#2#3{\expandafter\def\csname br#3{#1}\endcsname{\breve{#2{#1}}}}
+\def\mydefbar#1#2#3{\expandafter\def\csname bar#3{#1}\endcsname{\bar{#2{#1}}}}
+\def\mydefhat#1#2#3{\expandafter\def\csname hat#3{#1}\endcsname{\hat{#2{#1}}}}
+\def\mydefwh#1#2#3{\expandafter\def\csname wh#3{#1}\endcsname{\widehat{#2{#1}}}}
+\def\mydeft#1#2#3{\expandafter\def\csname t#3{#1}\endcsname{\tilde{#2{#1}}}}
+\def\mydefu#1#2#3{\expandafter\def\csname u#3{#1}\endcsname{\underline{#2{#1}}}}
+\def\mydefr#1#2#3{\expandafter\def\csname r#3{#1}\endcsname{\mathrm{#2{#1}}}}
+\def\mydefb#1#2#3{\expandafter\def\csname b#3{#1}\endcsname{\mathbb{#2{#1}}}}
+\def\mydefwt#1#2#3{\expandafter\def\csname wt#3{#1}\endcsname{\widetilde{#2{#1}}}}
+%\def\mydeff#1#2#3{\expandafter\def\csname f#3{#1}\endcsname{\mathfrak{#2{#1}}}}
+\def\mydefbf#1#2#3{\expandafter\def\csname bf#3{#1}\endcsname{\mathbf{#2{#1}}}}
+\def\mydefc#1#2#3{\expandafter\def\csname c#3{#1}\endcsname{\mathcal{#2{#1}}}}
+\def\mydefsf#1#2#3{\expandafter\def\csname sf#3{#1}\endcsname{\mathsf{#2{#1}}}}
+\def\mydefs#1#2#3{\expandafter\def\csname s#3{#1}\endcsname{\mathscr{#2{#1}}}}
+\def\mydefcks#1#2#3{\expandafter\def\csname cks#3{#1}\endcsname{{\check{
+        \csname s#2{#1}\endcsname}}}}
+\def\mydefckc#1#2#3{\expandafter\def\csname ckc#3{#1}\endcsname{{\check{
+      \csname c#2{#1}\endcsname}}}}
+\def\mydefck#1#2#3{\expandafter\def\csname ck#3{#1}\endcsname{{\check{#2{#1}}}}}
+
+\cs_new:Npn \mydeff #1#2#3 {\cs_new:cpn {f#3{#1}} {\mathfrak{#2{#1}}}}
+
+\cs_new:Npn \doGreek #1
+{
+  \clist_map_inline:nn {alpha,beta,gamma,Gamma,delta,Delta,epsilon,varepsilon,zeta,eta,theta,vartheta,Theta,iota,kappa,lambda,Lambda,mu,nu,xi,Xi,pi,Pi,rho,sigma,varsigma,Sigma,tau,upsilon,Upsilon,phi,varphi,Phi,chi,psi,Psi,omega,Omega,tG} {#1{##1}{\usecsname}{\useLetter}}
+}
+
+\cs_new:Npn \doSymbols #1
+{
+  \clist_map_inline:nn {otimes,boxtimes} {#1{##1}{\usecsname}{\useLetter}}
+}
+
+\cs_new:Npn \doAtZ #1
+{
+  \clist_map_inline:nn {A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z} {#1{##1}{\useLetter}{\useLetter}}
+}
+
+\cs_new:Npn \doatz #1
+{
+  \clist_map_inline:nn {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z} {#1{##1}{\useLetter}{\usedbletter}}
+}
+
+\cs_new:Npn \doallAtZ
+{
+\clist_map_inline:nn {mydefsf,mydeft,mydefu,mydefwh,mydefhat,mydefr,mydefwt,mydeff,mydefb,mydefbf,mydefc,mydefs,mydefck,mydefcks,mydefckc,mydefbar,mydefvec,mydefcirc,mydefdot,mydefbr,mydefacute} {\doAtZ{\csname ##1\endcsname}}
+}
+
+\cs_new:Npn \doallatz
+{
+\clist_map_inline:nn {mydefsf,mydeft,mydefu,mydefwh,mydefhat,mydefr,mydefwt,mydeff,mydefb,mydefbf,mydefc,mydefs,mydefck,mydefbar,mydefvec,mydefdot,mydefbr,mydefacute} {\doatz{\csname ##1\endcsname}}
+}
+
+\cs_new:Npn \doallGreek
+{
+\clist_map_inline:nn {mydefck,mydefwt,mydeft,mydefwh,mydefbar,mydefu,mydefvec,mydefcirc,mydefdot,mydefbr,mydefacute} {\doGreek{\csname ##1\endcsname}}
+}
+
+\cs_new:Npn \doallSymbols
+{
+\clist_map_inline:nn {mydefck,mydefwt,mydeft,mydefwh,mydefbar,mydefu,mydefvec,mydefcirc,mydefdot} {\doSymbols{\csname ##1\endcsname}}
+}
+
+
+
+\cs_new:Npn \doGroups #1
+{
+  \clist_map_inline:nn {GL,Sp,rO,rU,fgl,fsp,foo,fuu,fkk,fuu,ufkk,uK} {#1{##1}{\usecsname}{\useLetter}}
+}
+
+\cs_new:Npn \doallGroups
+{
+\clist_map_inline:nn {mydeft,mydefu,mydefwh,mydefhat,mydefwt,mydefck,mydefbar} {\doGroups{\csname ##1\endcsname}}
+}
+
+
+\cs_new:Npn \decsyms #1
+{
+\clist_map_inline:nn {#1} {\expandafter\DeclareMathOperator\csname ##1\endcsname{##1}}
+}
+
+\decsyms{Mp,id,SL,Sp,SU,SO,GO,GSO,GU,GSp,PGL,Pic,Lie,Mat,Ker,Hom,Ext,Ind,reg,res,inv,Isom,Det,Tr,Norm,Sym,Span,Stab,Spec,PGSp,PSL,tr,Ad,Br,Ch,Cent,End,Aut,Dvi,Frob,Gal,GL,Gr,DO,ur,vol,ab,Nil,Supp,rank,Sign}
+
+\def\abs#1{\left|{#1}\right|}
+\def\norm#1{{\left\|{#1}\right\|}}
+
+
+% \NewDocumentCommand\inn{m m}{
+% \left\langle
+% \IfValueTF{#1}{#1}{000}
+% ,
+% \IfValueTF{#2}{#2}{000}
+% \right\rangle
+% }
+\NewDocumentCommand\cent{o m }{
+  \IfValueTF{#1}{
+    \mathop{Z}_{#1}{(#2)}}
+  {\mathop{Z}{(#2)}}
+}
+
+
+\def\fsl{\mathfrak{sl}}
+\def\fsp{\mathfrak{sp}}
+
+
+%\def\cent#1#2{{\mathrm{Z}_{#1}({#2})}}
+
+
+\doallAtZ
+\doallatz
+\doallGreek
+\doallGroups
+\doallSymbols
+\ExplSyntaxOff
+
+
+% \usepackage{geometry,amsthm,graphics,tabularx,amssymb,shapepar}
+% \usepackage{amscd}
+% \usepackage{mathrsfs}
+
+
+\usepackage{diagbox}
+% Update the information and uncomment if AMS is not the copyright
+% holder.
+%\copyrightinfo{2006}{American Mathematical Society}
+%\usepackage{nicematrix}
+\usepackage{arydshln}
+\usepackage[mode=buildnew]{standalone}% requires -shell-escape
+
+\usepackage{tikz,etoolbox}
+\usetikzlibrary{matrix,arrows,positioning,backgrounds}
+\usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing}
+\usetikzlibrary{cd}
+% \usetikzlibrary{external}
+%   \tikzexternalize
+% \usetikzlibrary{cd}
+
+%  \AtBeginEnvironment{tikzcd}{\tikzexternaldisable}
+%  \AtEndEnvironment{tikzcd}{\tikzexternalenable}
+
+%  \usetikzlibrary{matrix,arrows,positioning,backgrounds}
+%  \usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing}
+
+% % externalization not wog properly
+% % \usetikzlibrary{external}
+% \tikzexternalize[prefix=figures/]
+% % % activate the following such that you can check the macro expansion in
+% % % *-figure0.md5 manually
+% %\tikzset{external/up to date check=diff}
+% \usepackage{environ}
+
+% \def\temp{&} \catcode`&=\active \let&=\temp
+
+% \newcommand{\mytikzcdcontext}[2]{
+%   \begin{tikzpicture}[baseline=(maintikzcdnode.base)]
+%     \node (maintikzcdnode) [inner sep=0, outer sep=0] {\begin{tikzcd}[#2]
+%         #1
+%     \end{tikzcd}};
+%   \end{tikzpicture}}
+
+% \NewEnviron{mytikzcd}[1][]{%
+% % In the following, we need \BODY to expanded before \mytikzcdcontext
+% % such that the md5 function gets the tikzcd content with \BODY expanded.
+% % Howerver, expand it only once, because the \tikz-macros aren't
+% % defined at this point yet. The same thing holds for the arguments to
+% % the tikzcd-environment.
+% \def\myargs{#1}%
+% \edef\mydiagram{\noexpand\mytikzcdcontext{\expandonce\BODY}{\expandonce\myargs}}%
+% \mydiagram%
+% }
+
+\usepackage{upgreek}
+
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\tiny,
+    keywordstyle=\color{black},
+    commentstyle=\color{white}, % white comments
+    stringstyle=\ttfamily, % typewriter type for strings
+    showstringspaces=false,
+    breaklines=true,
+    emph={Output},emphstyle=\color{blue},
+}
+
+\newcommand{\BA}{{\mathbb{A}}}
+%\newcommand{\BB}{{\mathbb {B}}}
+\newcommand{\BC}{{\mathbb {C}}}
+\newcommand{\BD}{{\mathbb {D}}}
+\newcommand{\BE}{{\mathbb {E}}}
+\newcommand{\BF}{{\mathbb {F}}}
+\newcommand{\BG}{{\mathbb {G}}}
+\newcommand{\BH}{{\mathbb {H}}}
+\newcommand{\BI}{{\mathbb {I}}}
+\newcommand{\BJ}{{\mathbb {J}}}
+\newcommand{\BK}{{\mathbb {U}}}
+\newcommand{\BL}{{\mathbb {L}}}
+\newcommand{\BM}{{\mathbb {M}}}
+\newcommand{\BN}{{\mathbb {N}}}
+\newcommand{\BO}{{\mathbb {O}}}
+\newcommand{\BP}{{\mathbb {P}}}
+\newcommand{\BQ}{{\mathbb {Q}}}
+\newcommand{\BR}{{\mathbb {R}}}
+\newcommand{\BS}{{\mathbb {S}}}
+\newcommand{\BT}{{\mathbb {T}}}
+\newcommand{\BU}{{\mathbb {U}}}
+\newcommand{\BV}{{\mathbb {V}}}
+\newcommand{\BW}{{\mathbb {W}}}
+\newcommand{\BX}{{\mathbb {X}}}
+\newcommand{\BY}{{\mathbb {Y}}}
+\newcommand{\BZ}{{\mathbb {Z}}}
+\newcommand{\Bk}{{\mathbf {k}}}
+
+\newcommand{\CA}{{\mathcal {A}}}
+\newcommand{\CB}{{\mathcal {B}}}
+\newcommand{\CC}{{\mathcal {C}}}
+
+\newcommand{\CE}{{\mathcal {E}}}
+\newcommand{\CF}{{\mathcal {F}}}
+\newcommand{\CG}{{\mathcal {G}}}
+\newcommand{\CH}{{\mathcal {H}}}
+\newcommand{\CI}{{\mathcal {I}}}
+\newcommand{\CJ}{{\mathcal {J}}}
+\newcommand{\CK}{{\mathcal {K}}}
+\newcommand{\CL}{{\mathcal {L}}}
+\newcommand{\CM}{{\mathcal {M}}}
+\newcommand{\CN}{{\mathcal {N}}}
+\newcommand{\CO}{{\mathcal {O}}}
+\newcommand{\CP}{{\mathcal {P}}}
+\newcommand{\CQ}{{\mathcal {Q}}}
+\newcommand{\CR}{{\mathcal {R}}}
+\newcommand{\CS}{{\mathcal {S}}}
+\newcommand{\CT}{{\mathcal {T}}}
+\newcommand{\CU}{{\mathcal {U}}}
+\newcommand{\CV}{{\mathcal {V}}}
+\newcommand{\CW}{{\mathcal {W}}}
+\newcommand{\CX}{{\mathcal {X}}}
+\newcommand{\CY}{{\mathcal {Y}}}
+\newcommand{\CZ}{{\mathcal {Z}}}
+
+
+\newcommand{\RA}{{\mathrm {A}}}
+\newcommand{\RB}{{\mathrm {B}}}
+\newcommand{\RC}{{\mathrm {C}}}
+\newcommand{\RD}{{\mathrm {D}}}
+\newcommand{\RE}{{\mathrm {E}}}
+\newcommand{\RF}{{\mathrm {F}}}
+\newcommand{\RG}{{\mathrm {G}}}
+\newcommand{\RH}{{\mathrm {H}}}
+\newcommand{\RI}{{\mathrm {I}}}
+\newcommand{\RJ}{{\mathrm {J}}}
+\newcommand{\RK}{{\mathrm {K}}}
+\newcommand{\RL}{{\mathrm {L}}}
+\newcommand{\RM}{{\mathrm {M}}}
+\newcommand{\RN}{{\mathrm {N}}}
+\newcommand{\RO}{{\mathrm {O}}}
+\newcommand{\RP}{{\mathrm {P}}}
+\newcommand{\RQ}{{\mathrm {Q}}}
+%\newcommand{\RR}{{\mathrm {R}}}
+\newcommand{\RS}{{\mathrm {S}}}
+\newcommand{\RT}{{\mathrm {T}}}
+\newcommand{\RU}{{\mathrm {U}}}
+\newcommand{\RV}{{\mathrm {V}}}
+\newcommand{\RW}{{\mathrm {W}}}
+\newcommand{\RX}{{\mathrm {X}}}
+\newcommand{\RY}{{\mathrm {Y}}}
+\newcommand{\RZ}{{\mathrm {Z}}}
+
+\DeclareMathOperator{\absNorm}{\mathfrak{N}}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\LAnn}{L-Ann}
+\DeclareMathOperator{\RAnn}{R-Ann}
+\DeclareMathOperator{\ind}{ind}
+%\DeclareMathOperator{\Ind}{Ind}
+
+
+
+\def\ckbfG{\check{\bfG}}
+
+\newcommand{\cod}{{\mathrm{cod}}}
+\newcommand{\cont}{{\mathrm{cont}}}
+\newcommand{\cl}{{\mathrm{cl}}}
+\newcommand{\cusp}{{\mathrm{cusp}}}
+
+\newcommand{\disc}{{\mathrm{disc}}}
+
+
+
+\newcommand{\Gm}{{\mathbb{G}_m}}
+
+
+
+\newcommand{\I}{{\mathrm{I}}}
+
+\newcommand{\Jac}{{\mathrm{Jac}}}
+\newcommand{\PM}{{\mathrm{PM}}}
+
+
+\newcommand{\new}{{\mathrm{new}}}
+\newcommand{\NS}{{\mathrm{NS}}}
+\newcommand{\N}{{\mathrm{N}}}
+
+\newcommand{\ord}{{\mathrm{ord}}}
+
+%\newcommand{\rank}{{\mathrm{rank}}}
+
+\newcommand{\rk}{{\mathrm{k}}}
+\newcommand{\rr}{{\mathrm{r}}}
+\newcommand{\rh}{{\mathrm{h}}}
+
+\newcommand{\Sel}{{\mathrm{Sel}}}
+\newcommand{\Sim}{{\mathrm{Sim}}}
+
+\newcommand{\wt}{\widetilde}
+\newcommand{\wh}{\widehat}
+\newcommand{\pp}{\frac{\partial\bar\partial}{\pi i}}
+\newcommand{\pair}[1]{\langle {#1} \rangle}
+\newcommand{\wpair}[1]{\left\{{#1}\right\}}
+\newcommand{\intn}[1]{\left( {#1} \right)}
+\newcommand{\sfrac}[2]{\left( \frac {#1}{#2}\right)}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ov}{\overline}
+\newcommand{\incl}{\hookrightarrow}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\imp}{\Longrightarrow}
+%\newcommand{\lto}{\longmapsto}
+\newcommand{\bs}{\backslash}
+
+\newcommand{\cover}[1]{\widetilde{#1}}
+
+\renewcommand{\vsp}{{\vspace{0.2in}}}
+
+\newcommand{\Norma}{\operatorname{N}}
+\newcommand{\Ima}{\operatorname{Im}}
+\newcommand{\con}{\textit{C}}
+\newcommand{\gr}{\operatorname{gr}}
+\newcommand{\ad}{\operatorname{ad}}
+\newcommand{\der}{\operatorname{der}}
+\newcommand{\dif}{\operatorname{d}\!}
+\newcommand{\pro}{\operatorname{pro}}
+\newcommand{\Ev}{\operatorname{Ev}}
+% \renewcommand{\span}{\operatorname{span}} \span is an innernal command.
+%\newcommand{\degree}{\operatorname{deg}}
+\newcommand{\Invf}{\operatorname{Invf}}
+\newcommand{\Inv}{\operatorname{Inv}}
+\newcommand{\slt}{\operatorname{SL}_2(\mathbb{R})}
+%\newcommand{\temp}{\operatorname{temp}}
+%\newcommand{\otop}{\operatorname{top}}
+%\renewcommand{\small}{\operatorname{small}}
+\newcommand{\HC}{\operatorname{HC}}
+\newcommand{\lef}{\operatorname{left}}
+\newcommand{\righ}{\operatorname{right}}
+\newcommand{\Diff}{\operatorname{DO}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\sh}{\varsigma}
+\newcommand{\sch}{\operatorname{sch}}
+%\newcommand{\oleft}{\operatorname{left}}
+%\newcommand{\oright}{\operatorname{right}}
+\newcommand{\open}{\operatorname{open}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\triv}{\operatorname{triv}}
+\newcommand{\Sh}{\operatorname{Sh}}
+\newcommand{\oN}{\operatorname{N}}
+
+\newcommand{\oc}{\operatorname{c}}
+\newcommand{\od}{\operatorname{d}}
+\newcommand{\os}{\operatorname{s}}
+\newcommand{\ol}{\operatorname{l}}
+\newcommand{\oL}{\operatorname{L}}
+\newcommand{\oJ}{\operatorname{J}}
+\newcommand{\oH}{\operatorname{H}}
+\newcommand{\oO}{\operatorname{O}}
+\newcommand{\oS}{\operatorname{S}}
+\newcommand{\oR}{\operatorname{R}}
+\newcommand{\oT}{\operatorname{T}}
+%\newcommand{\rU}{\operatorname{U}}
+\newcommand{\oZ}{\operatorname{Z}}
+\newcommand{\oD}{\textit{D}}
+\newcommand{\oW}{\textit{W}}
+\newcommand{\oE}{\operatorname{E}}
+\newcommand{\oP}{\operatorname{P}}
+\newcommand{\PD}{\operatorname{PD}}
+\newcommand{\oU}{\operatorname{U}}
+
+\newcommand{\gC}{{\mathfrak g}_{\C}}
+%\renewcommand{\sl}{\mathfrak s \mathfrak l}
+\newcommand{\gl}{\mathfrak g \mathfrak l}
+
+
+\newcommand{\re}{\mathrm e}
+
+\renewcommand{\rk}{\mathrm k}
+
+\newcommand{\g}{\mathfrak g}
+\newcommand{\h}{\mathfrak h}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\Z}{\mathbb{Z}}
+\DeclareDocumentCommand{\C}{}{\mathbb{C}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\renewcommand{\H}{\mathbb{H}}
+%\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+%\renewcommand{\S}{\mathbf S}
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathbf{B}}
+%\renewcommand{\G}{\mathbf{G}}
+\newcommand{\V}{\mathbf{V}}
+\newcommand{\W}{\mathbf{W}}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\E}{\mathbf{E}}
+%\newcommand{\J}{\mathbf{J}}
+\renewcommand{\H}{\mathbf{H}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Y}{\mathbf{Y}}
+%\newcommand{\RR}{\mathcal R}
+\newcommand{\FF}{\mathcal F}
+%\newcommand{\BB}{\mathcal B}
+\newcommand{\HH}{\mathcal H}
+%\newcommand{\UU}{\mathcal U}
+%\newcommand{\MM}{\mathcal M}
+%\newcommand{\CC}{\mathcal C}
+%\newcommand{\DD}{\mathcal D}
+%\def\eDD{\mathrm{d}^{e}}
+%\def\eDD{\bigtriangledown}
+\def\eDD{\overline{\nabla}}
+\def\eDDo{\overline{\nabla}_1}
+%\def\eDD{\mathrm{d}}
+\def\DD{\nabla}
+\def\DDc{\boldsymbol{\nabla}}
+\def\gDD{\nabla^{\mathrm{gen}}}
+\def\gDDc{\boldsymbol{\nabla}^{\mathrm{gen}}}
+%\newcommand{\OO}{\mathcal O}
+%\newcommand{\ZZ}{\mathcal Z}
+\newcommand{\ve}{{\vee}}
+\newcommand{\aut}{\mathcal A}
+\newcommand{\ii}{\mathbf{i}}
+\newcommand{\jj}{\mathbf{j}}
+\newcommand{\kk}{\mathbf{k}}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bp}{\bigskip}
+\newcommand{\be}{\begin {equation}}
+\newcommand{\ee}{\end {equation}}
+
+\newcommand{\LRleq}{\stackrel{LR}{\leq}}
+
+\numberwithin{equation}{section}
+
+
+\def\flushl#1{\ifmmode\makebox[0pt][l]{${#1}$}\else\makebox[0pt][l]{#1}\fi}
+\def\flushr#1{\ifmmode\makebox[0pt][r]{${#1}$}\else\makebox[0pt][r]{#1}\fi}
+\def\flushmr#1{\makebox[0pt][r]{${#1}$}}
+
+
+%\theoremstyle{Theorem}
+% \newtheorem*{thmM}{Main Theorem}
+% \crefformat{thmM}{main theorem}
+% \Crefformat{thmM}{Main Theorem}
+\newtheorem*{thm*}{Theorem}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{thml}[thm]{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{lemt}[thm]{Lemma}
+\newtheorem*{lem*}{Lemma}
+\newtheorem{whyp}[thm]{Working Hypothesis}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{prpt}[thm]{Proposition}
+\newtheorem{prpl}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+%\newtheorem*{prop*}{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem*{claim*}{Claim}
+%\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{dfnl}[thm]{Definition}
+\newtheorem*{IndH}{Induction Hypothesis}
+
+\newtheorem*{eg*}{Example}
+\newtheorem{eg}[thm]{Example}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{remarks}{Remarks}
+\newtheorem*{Example}{Example}
+
+\def\cpc{\sigma}
+\def\ccJ{\epsilon\dotepsilon}
+\def\ccL{c_L}
+
+\def\wtbfK{\widetilde{\bfK}}
+%\def\abfV{\acute{\bfV}}
+\def\AbfV{\acute{\bfV}}
+%\def\afgg{\acute{\fgg}}
+%\def\abfG{\acute{\bfG}}
+\def\abfV{\bfV'}
+\def\afgg{\fgg'}
+\def\abfG{\bfG'}
+
+\def\half{{\tfrac{1}{2}}}
+\def\ihalf{{\tfrac{\mathbf i}{2}}}
+\def\slt{\fsl_2(\bC)}
+\def\sltr{\fsl_2(\bR)}
+
+% \def\Jslt{{J_{\fslt}}}
+% \def\Lslt{{L_{\fslt}}}
+\def\slee{{
+\begin{pmatrix}
+ 0 & 1\\
+ 0 & 0
+\end{pmatrix}
+}}
+\def\slff{{
+\begin{pmatrix}
+ 0 & 0\\
+ 1 & 0
+\end{pmatrix}
+}}\def\slhh{{
+\begin{pmatrix}
+ 1 & 0\\
+ 0 & -1
+\end{pmatrix}
+}}
+\def\sleei{{
+\begin{pmatrix}
+ 0 & i\\
+ 0 & 0
+\end{pmatrix}
+}}
+\def\slxx{{\begin{pmatrix}
+-\ihalf & \half\\
+\phantom{-}\half & \ihalf
+\end{pmatrix}}}
+% \def\slxx{{\begin{pmatrix}
+% -\sqrt{-1}/2 & 1/2\\
+% 1/2 & \sqrt{-1}/2
+% \end{pmatrix}}}
+\def\slyy{{\begin{pmatrix}
+\ihalf & \half\\
+\half & -\ihalf
+\end{pmatrix}}}
+\def\slxxi{{\begin{pmatrix}
++\half & -\ihalf\\
+-\ihalf & -\half
+\end{pmatrix}}}
+\def\slH{{\begin{pmatrix}
+   0   & -\mathbf i\\
+\mathbf i & 0
+\end{pmatrix}}
+}
+
+\ExplSyntaxOn
+\clist_map_inline:nn {J,L,C,X,Y,H,c,e,f,h,}{
+  \expandafter\def\csname #1slt\endcsname{{\mathring{#1}}}}
+\ExplSyntaxOff
+
+\def\eeslt{\mathring{\bfee}}
+
+\def\Mop{\fT}
+
+\def\fggJ{\fgg_J}
+\def\fggJp{\fgg'_{J'}}
+
+\def\NilGC{\Nil_{\bfG}(\fgg)}
+\def\NilGCp{\Nil_{\bfG'}(\fgg')}
+\def\Nilgp{\Nil_{\fgg'_{J'}}}
+\def\Nilg{\Nil_{\fgg_{J}}}
+%\def\NilP'{\Nil_{\fpp'}}
+\def\peNil{\Nil^{\mathrm{pe}}}
+\def\dpeNil{\Nil^{\mathrm{dpe}}}
+\def\nNil{\Nil^{\mathrm n}}
+\def\eNil{\Nil^{\mathrm e}}
+
+
+\NewDocumentCommand{\NilP}{t'}{
+\IfBooleanTF{#1}{\Nil_{\fpp'}}{\Nil_\fpp}
+}
+
+\def\KS{\cK_{\sfS}}
+\def\MM{\bfM}
+\def\MMP{M}
+
+\NewDocumentCommand{\KTW}{o g}{
+  \IfValueTF{#2}{
+    \left.\varsigma_{\IfValueT{#1}{#1}}\right|_{#2}}{
+    \varsigma_{\IfValueT{#1}{#1}}}
+}
+\def\IST{\rho}
+\def\tIST{\trho}
+
+\NewDocumentCommand{\CHI}{o g}{
+  \IfValueTF{#1}{
+    {\chi}_{\left[#1\right]}}{
+    \IfValueTF{#2}{
+      {\chi}_{\left(#2\right)}}{
+      {\chi}}
+  }
+}
+\NewDocumentCommand{\PR}{g}{
+  \IfValueTF{#1}{
+    \mathop{\pr}_{\left(#1\right)}}{
+    \mathop{\pr}}
+}
+\NewDocumentCommand{\XX}{g}{
+  \IfValueTF{#1}{
+    {\cX}_{\left(#1\right)}}{
+    {\cX}}
+}
+\NewDocumentCommand{\PP}{g}{
+  \IfValueTF{#1}{
+    {\fpp}_{\left(#1\right)}}{
+    {\fpp}}
+}
+\NewDocumentCommand{\LL}{g}{
+  \IfValueTF{#1}{
+    {\bfL}_{\left(#1\right)}}{
+    {\bfL}}
+}
+\NewDocumentCommand{\ZZ}{g}{
+  \IfValueTF{#1}{
+    {\cZ}_{\left(#1\right)}}{
+    {\cZ}}
+}
+
+\NewDocumentCommand{\WW}{g}{
+  \IfValueTF{#1}{
+    {\bfW}_{\left(#1\right)}}{
+    {\bfW}}
+}
+
+
+
+
+\def\gpi{\wp}
+% \NewDocumentCommand\KK{g}{
+% \IfValueTF{#1}{K_{(#1)}}{K}}
+% \NewDocumentCommand\OO{g}{
+% \IfValueTF{#1}{\cO_{(#1)}}{K}}
+\NewDocumentCommand\XXo{d()}{
+\IfValueTF{#1}{\cX^\circ_{(#1)}}{\cX^\circ}}
+\def\bfWo{\bfW^\circ}
+\def\bfWoo{\bfW^{\circ \circ}}
+\def\bfWg{\bfW^{\mathrm{gen}}}
+\def\Xg{\cX^{\mathrm{gen}}}
+\def\Xo{\cX^\circ}
+\def\Xoo{\cX^{\circ \circ}}
+\def\fppo{\fpp^\circ}
+\def\fggo{\fgg^\circ}
+\NewDocumentCommand\ZZo{g}{
+\IfValueTF{#1}{\cZ^\circ_{(#1)}}{\cZ^\circ}}
+
+% \ExplSyntaxOn
+% \NewDocumentCommand{\bcO}{t' E{^_}{{}{}}}{
+%   \overline{\cO\sb{\use_ii:nn#2}\IfBooleanTF{#1}{^{'\use_i:nn#2}}{^{\use_i:nn#2}}
+%   }
+% }
+% \ExplSyntaxOff
+
+\NewDocumentCommand{\bcO}{t'}{
+  \overline{\cO\IfBooleanT{#1}{'}}}
+
+\NewDocumentCommand{\oliftc}{g}{
+\IfValueTF{#1}{\boldsymbol{\vartheta} (#1)}{\boldsymbol{\vartheta}}
+}
+\NewDocumentCommand{\oliftr}{g}{
+\IfValueTF{#1}{\vartheta_\bR(#1)}{\vartheta_\bR}
+}
+\NewDocumentCommand{\olift}{g}{
+\IfValueTF{#1}{\vartheta(#1)}{\vartheta}
+}
+% \NewDocumentCommand{\dliftv}{g}{
+% \IfValueTF{#1}{\ckvartheta(#1)}{\ckvartheta}
+% }
+\def\dliftv{\vartheta}
+\NewDocumentCommand{\tlift}{g}{
+\IfValueTF{#1}{\wtvartheta(#1)}{\wtvartheta}
+}
+
+\def\slift{\cL}
+
+\def\BB{\bB}
+
+
+\def\thetaO#1{\vartheta\left(#1\right)}
+
+\def\bbThetav{\check{\mathbbold{\Theta}}}
+\def\Thetav{\check{\Theta}}
+\def\thetav{\check{\theta}}
+
+\DeclareDocumentCommand{\NN}{g}{
+\IfValueTF{#1}{\fN(#1)}{\fN}
+}
+\DeclareDocumentCommand{\RR}{m m}{
+\fR({#1},{#2})
+}
+
+%\DeclareMathOperator*{\sign}{Sign}
+
+% \NewDocumentCommand{\lsign}{m}{
+% {}^l\mathrm{Sign}(#1)
+% }
+
+% \NewDocumentCommand{\bsign}{m}{
+% {}^b\mathrm{Sign}(#1)
+% }
+%
+\def\tsign{{}^t\mathrm{Sign}}
+\def\lsign{{}^l\mathrm{Sign}}
+\def\bsign{{}^b\mathrm{Sign}}
+\def\ssign{\mathrm{Sign}}
+\NewDocumentCommand{\sign}{m}{
+  \mathrm{Sign}(#1)
+}
+
+\NewDocumentCommand\lnn{t+ t- g}{
+  \IfBooleanTF{#1}{{}^l n^+\IfValueT{#3}{(#3)}}{
+    \IfBooleanTF{#2}{{}^l n^-\IfValueT{#3}{(#3)}}{}
+  }
+}
+
+
+% Fancy bcO, support feature \bcO'^a_b = \overline{\cO'^a_b}
+\makeatletter
+\def\bcO{\def\O@@{\cO}\@ifnextchar'\@Op\@Onp}
+\def\@Opnext{\@ifnextchar^\@Opsp\@Opnsp}
+\def\@Op{\afterassignment\@Opnext\let\scratch=}
+\def\@Opnsp{\def\O@@{\cO'}\@Otsb}
+\def\@Onp{\@ifnextchar^\@Onpsp\@Otsb}
+\def\@Opsp^#1{\def\O@@{\cO'^{#1}}\@Otsb}
+\def\@Onpsp^#1{\def\O@@{\cO^{#1}}\@Otsb}
+\def\@Otsb{\@ifnextchar_\@Osb{\@Ofinalnsb}}
+\def\@Osb_#1{\overline{\O@@_{#1}}}
+\def\@Ofinalnsb{\overline{\O@@}}
+
+% Fancy \command: \command`#1 will translate to {}^{#1}\bfV, i.e. superscript on the
+% lift conner.
+
+\def\defpcmd#1{
+  \def\nn@tmp{#1}
+  \def\nn@np@tmp{@np@#1}
+  \expandafter\let\csname\nn@np@tmp\expandafter\endcsname \csname\nn@tmp\endcsname
+  \expandafter\def\csname @pp@#1\endcsname`##1{{}^{##1}{\csname @np@#1\endcsname}}
+  \expandafter\def\csname #1\endcsname{\,\@ifnextchar`{\csname
+      @pp@#1\endcsname}{\csname @np@#1\endcsname}}
+}
+
+% \def\defppcmd#1{
+% \expandafter\NewDocumentCommand{\csname #1\endcsname}{##1 }{}
+% }
+
+
+
+\defpcmd{bfV}
+\def\KK{\bfK}\defpcmd{KK}
+\defpcmd{bfG}
+\def\A{\!A}\defpcmd{A}
+\def\K{\!K}\defpcmd{K}
+\def\G{G}\defpcmd{G}
+\def\J{\!J}\defpcmd{J}
+\def\L{\!L}\defpcmd{L}
+\def\eps{\epsilon}\defpcmd{eps}
+\def\pp{p}\defpcmd{pp}
+\defpcmd{wtK}
+\makeatother
+
+
+%\def\KC#1{K_{#1,\bC}} %the complexcification of K.
+
+\NewDocumentCommand\KC{s o e{_}}{
+  \IfBooleanTF{#1}{
+    \IfNoValueTF{#3}{
+      \IfNoValueTF{#2}{K_{\bC}^\circ}{K_{#2,\bC}^\circ}}
+    {
+      \IfNoValueTF{#2}{(K_{\bC})_{#3}^\circ}{(K_{#2,\bC})_{#3}^\circ}}
+  }{
+    \IfNoValueTF{#3}{
+      \IfNoValueTF{#2}{K_{\bC}}{K_{#2,\bC}}}
+    {
+      \IfNoValueTF{#2}{(K_{\bC})_{#3}}{(K_{#2,\bC})_{#3}}}
+  }
+}
+
+
+\def\fggR{\fgg_\bR}
+\def\rmtop{{\mathrm{top}}}
+\def\dimo{\dim^\circ}
+
+\NewDocumentCommand\LW{g}{
+\IfValueTF{#1}{L_{W_{#1}}}{L_{W}}}
+%\def\LW#1{L_{W_{#1}}}
+\def\JW#1{J_{W_{#1}}}
+
+\def\floor#1{{\lfloor #1 \rfloor}}
+
+\def\KSP{K}
+\def\UU{\rU}
+\def\UUC{\rU_\bC}
+\def\tUUC{\widetilde{\rU}_\bC}
+\def\OmegabfW{\Omega_{\bfW}}
+
+
+\def\BB{\bB}
+
+
+\def\thetaO#1{\vartheta\left(#1\right)}
+
+\def\Thetav{\check{\Theta}}
+\def\thetav{\check{\theta}}
+
+\def\Thetab{\bar{\Theta}}
+
+\def\cKaod{\cK^{\mathrm{aod}}}
+
+%G_V's or G
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \def\GVr{G_{\bfV}}
+% \def\tGVr{\wtG_{\bfV}}
+% \def\GVpr{G_{\bfV'}}
+% \def\tGVpr{\wtG_{\bfV'}}
+% \def\GVpr{G_{\abfV}}
+% \def\tGVar{\wtG_{\abfV}}
+% \def\GV{\bfG_{\bfV}}
+% \def\GVp{\bfG_{\bfV'}}
+% \def\KVr{K_{\bfV}}
+% \def\tKVr{\wtK_{\bfV}}
+% \def\KV{\bfK_{\bfV}}
+% \def\KaV{\bfK_{\acute{V}}}
+
+% \def\KV{\bfK}
+% \def\KaV{\acute{\bfK}}
+% \def\acO{\acute{\cO}}
+% \def\asO{\acute{\sO}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\mstar{{\star}}
+
+\def\GVr{G}
+\def\tGVr{\wtG}
+\def\GVpr{G'}
+\def\tGVpr{\widetilde{G'}}
+\def\GVar{G'}
+\def\tGVar{\wtG'}
+\def\GV{\bfG}
+\def\GVp{\bfG'}
+\def\KVr{K_{\bfV}}
+\def\tKVr{\wtK_{\bfV}}
+\def\KV{\bfK_{\bfV}}
+\def\KaV{\bfK_{\acute{V}}}
+
+\def\KV{\bfK}
+\def\KaV{\acute{\bfK}}
+\def\acO{{\cO'}}
+\def\asO{{\sO'}}
+
+\DeclareMathOperator{\sspan}{span}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\sp{{\mathrm{sp}}}
+
+\def\bfLz{\bfL_0}
+\def\sOpe{\sO^\perp}
+\def\sOpeR{\sO^\perp_\bR}
+\def\sOR{\sO_\bR}
+
+\def\ZX{\cZ_{X}}
+\def\gdliftv{\vartheta}
+\def\gdlift{\vartheta^{\mathrm{gen}}}
+\def\bcOp{\overline{\cO'}}
+\def\bsO{\overline{\sO}}
+\def\bsOp{\overline{\sO'}}
+\def\bfVpe{\bfV^\perp}
+\def\bfEz{\bfE_0}
+\def\bfVn{\bfV^-}
+\def\bfEzp{\bfE'_0}
+
+\def\totimes{\widehat{\otimes}}
+\def\dotbfV{\dot{\bfV}}
+
+\def\aod{\mathrm{aod}}
+\def\unip{\mathrm{unip}}
+
+
+\def\ssP{{\ddot\cP}}
+\def\ssD{\ddot{\bfD}}
+\def\ssdd{\ddot{\bfdd}}
+\def\phik{\phi_{\fkk}}
+\def\phikp{\phi_{\fkk'}}
+%\def\bbfK{\breve{\bfK}}
+\def\bbfK{\wtbfK}
+\def\brrho{\breve{\rho}}
+
+\def\whAX{\widehat{A_X}}
+\def\mktvvp{\varsigma_{{\bf V},{\bf V}'}}
+
+\def\Piunip{\Pi^{\mathrm{unip}}}
+\def\cf{\emph{cf.} }
+\def\Groth{\mathrm{Groth}}
+\def\Irr{\mathrm{Irr}}
+
+\def\edrc{\mathrm{DRC}^{\mathrm e}}
+\def\drc{\mathrm{DRC}}
+\def\drcs{\mathrm{DRC}^{s}}
+\def\drcns{\mathrm{DRC}^{ns}}
+\def\LS{\mathrm{LS}}
+\def\LLS{\mathrm{{}^{\ell} LS}}
+\def\LSaod{\mathrm{LS^{aod}}}
+\def\Unip{\mathrm{Unip}}
+\def\lUnip{\mathrm{{}^{\ell}Unip}}
+\def\tbfxx{\tilde{\bfxx}}
+\def\PBPe{\mathrm{PBP}^{\mathrm{ext}}}
+\def\PBPes{\mathrm{PBP}^{\mathrm{ext}}_{\star}}
+\def\PBPesp{\mathrm{PBP}^{\mathrm{ext}}_{\star'}}
+\def\pbp{\mathrm{PBP}}
+\def\pbpst{\mathrm{PBP}_{\star}}
+\def\pbpssp{\pbp_{\star}^{\mathrm{ps}}}
+\def\pbpsns{\pbp_{\star}^{\mathrm{ns}}}
+\def\pbpsp{\pbp^{\mathrm{ps}}}
+\def\pbpns{\pbp^{\mathrm{ns}}}
+\def\DDn{\DD_{\mathrm{naive}}}
+\newcommand{\noticed}{noticed }
+\newcommand{\ess}{essential }
+
+\def\dsrcd{\set{\bullet,s,r,c,d}}
+\def\taupna{{\tau^{\prime}_{\mathrm{naive}}}}
+\def\tauna{{\tau_{\mathrm{naive}}}}
+
+% Ytableau tweak
+\makeatletter
+\pgfkeys{/ytableau/options,
+  noframe/.default = false,
+  noframe/.is choice,
+  noframe/true/.code = {%
+    \global\let\vrule@YT=\vrule@none@YT
+    \global\let\hrule@YT=\hrule@none@YT
+  },
+  noframe/false/.code = {%
+    \global\let\vrule@YT=\vrule@normal@YT
+    \global\let\hrule@YT=\hrule@normal@YT
+  },
+  noframe/on/.style = {noframe/true},
+  noframe/off/.style = {noframe/false},
+}
+
+\def\hrule@enon@YT{%
+  \hrule width  \dimexpr \boxdim@YT + \fboxrule *2 \relax
+  height 0pt
+}
+\def\vrule@enon@YT{%
+  \vrule height \dimexpr  \boxdim@YT + \fboxrule\relax
+     width \fboxrule
+}
+
+\def\enon{\omit\enon@YT}
+\newcommand{\enon@YT}[2][clear]{%
+  \def\thisboxcolor@YT{#1}%
+  \let\hrule@YT=\hrule@enon@YT
+  \let\vrule@YT=\vrule@enon@YT
+  \startbox@@YT#2\endbox@YT
+  \nullfont
+}
+
+\makeatother
+%\ytableausetup{noframe=on,smalltableaux}
+\ytableausetup{noframe=off,boxsize=1.3em}
+\let\ytb=\ytableaushort
+
+\newcommand{\tytb}[1]{{\tiny\ytb{#1}}}
+
+\makeatletter
+\newcommand{\dotminus}{\mathbin{\text{\@dotminus}}}
+
+\newcommand{\@dotminus}{%
+  \ooalign{\hidewidth\raise1ex\hbox{.}\hidewidth\cr$\m@th-$\cr}%
+}
+\makeatother
+
+
+\def\ckcOp{\ckcO^{\prime}}
+\def\ckcOpp{\ckcO^{\prime\prime}}
+
+\def\cOp{\cO^{\prime}}
+\def\cOpp{\cO^{\prime\prime}}
+\def\cLpp{\cL^{\prime\prime}}
+\def\cLppp{\cL^{\prime\prime\prime}}
+\def\pUpsilon{\Upsilon^+}
+\def\nUpsilon{\Upsilon^-}
+\def\pcL{\cL^+}
+\def\ncL{\cL^-}
+\def\pcP{\cP^+}
+\def\ncP{\cP^-}
+% \def\pcE{\cE^+}
+% \def\ncE{\cE^-}
+\def\pcC{\cC^+}
+\def\ncC{\cC^-}
+\def\pcLp{\cL^{\prime+}}
+\def\ncLp{\cL^{\prime-}}
+\def\pcLpp{\cL^{\prime\prime+}}
+\def\ncLpp{\cL^{\prime\prime-}}
+\def\pcB{\cB^+}
+\def\ncB{\cB^-}
+\def\uptaup{\uptau^{\prime}}
+\def\uptaupp{\uptau^{\prime\prime}}
+\def\uptauppp{\uptau^{\prime\prime\prime}}
+\def\bdelta{{\bar{\delta}}}
+\def\tcO{\tilde{\cO}}
+\def\tcOp{\tcO^{\prime}}
+\def\tcOpp{\tcO^{\prime\prime}}
+\def\tuptau{\tilde{\uptau}}
+\def\tuptaup{\tuptau^{\prime}}
+\def\tuptaupp{\tuptau^{\prime\prime}}
+\def\tuptauppp{\tuptau^{\prime\prime\prime}}
+\def\taup{\tau^{\prime}}
+\def\taupp{\tau^{\prime\prime}}
+\def\tauppp{\tau^{\prime\prime\prime}}
+\def\cpT{\cT^+}
+\def\cnT{\cT^-}
+\def\cpB{\cB^+}
+\def\cnB{\cB^-}
+\def\BOX{\mathrm{Box}}
+\def\ckDD{{\check\DD}}
+\def\deltas{\delta^s}
+\def\deltans{\delta^{ns}}
+
+\def\PP{\mathrm{PP}}
+
+\def\uum{{\dotminus}}
+\def\uup{\divideontimes}
+\def\LEG{\mathrm{Leg}}
+\def\PBP{\mathrm{PBP}}
+\def\BODY{\mathrm{Body}}
+\def\eee{\emptyset}
+
+
+\def\umm{{=}}
+\def\upp{{\ast}}
+\def\upp{
+  {{\setbox0\hbox{$\times$}
+      \rlap{\hbox to \wd0{\hss$+$\hss}}\box0
+    }}
+}
+
+
+\def\oAC#1{\AC(#1)}
+\def\owAC#1{\wAC(#1)}
+\def\pAC#1{\Lambda_{+}(\AC(#1))}
+\def\nAC#1{\Lambda_{-}(\AC(#1))}
+\def\AOD{\mathrm{AOD}}
+\def\ttail#1{{#1}_{\bftt}}
+
+\usepackage{subfiles}
+
+
+
+\title[]{Special unipotent representations : orthogonal and symplectic groups}
+
+\author [D. Barbasch] {Dan M. Barbasch}
+\address{the Department of Mathematics\\
+  310 Malott Hall, Cornell University, Ithaca, New York 14853 }
+\email{dmb14@cornell.edu}
+
+\author [J.-J. Ma] {Jia-jun Ma}
+\address{School of Mathematical Sciences\\
+  Shanghai Jiao Tong University\\
+  800 Dongchuan Road, Shanghai, 200240, China} \email{hoxide@sjtu.edu.cn}
+
+
+\author [B. Sun] {Binyong Sun}
+% MCM, HCMS, HLM, CEMS, UCAS,
+%\address{Academy of Mathematics and Systems Science\\
+%  Chinese Academy of Sciences\\
+ % Beijing, 100190, China} \email{sun@math.ac.cn}
+
+\address{Institute for Advanced Study in Mathematics\\
+  Zhejiang University\\
+  Hangzhou, 310058, China} \email{sunbinyong@zju.edu.cn}
+
+
+\author [C.-B. Zhu] {Chen-Bo Zhu}
+\address{Department of Mathematics\\
+  National University of Singapore\\
+  10 Lower Kent Ridge Road, Singapore 119076} \email{matzhucb@nus.edu.sg}
+
+
+
+\subjclass[2000]{22E45, 22E46} \keywords{orbit method, unitary dual, unipotent
+  representation, classical group, theta lifting, moment map}
+
+\begin{document}
+
+\message{ !name(sunip_new.tex) !offset(1943) }
+\section{Nilpotent orbits: combinatorics}
+
+\def\sqii{\sqrt{-1}}
+\def\St#1{\mathrm{St}_{#1}}
+\def\VV#1{{}^{#1}V}
+\def\SLT{\varphi}
+\def\SLTK{\varphi_{\sfss}}
+\def\GC{G_{\bC}}
+
+
+In this section, we describes our combinatorical parameterization of nilpotent orbits and
+the local systems in details.
+
+\subsection{Young diagrams, signed Young diagrams and admissible orbit data}
+
+The set of $\Nil(\fgg)$ nilpotent $\GC$-orbits in $\fgg$ are parameterized
+by Young diagrams, see \cite[Section~5.1]{CM}. The nilpotent obit $\GC\cdot X$ generated by a nilpotent
+element $X$ in $\fgg$
+is attached to the Young diagram $\cO$ such that  such that
+\[
+\bfcc_{i}(\cO) = \dim (\Ker(X^{i+1})/\Ker(X^{i})), \quad \textrm{for all  }\,
+ i\in \bN^{+}
+\]
+By abuse of notaition, we identify $\cO$ with the orbit $\GC\cdot X$.
+
+
+Let $\slt$ be the complex Lie algebra consisting of $2\times 2$ complex matrices
+of trace zero,
+\[
+  \Xslt := \begin{pmatrix}1/2 & \phantom{-} \sqii/2 \\ \mathbf \sqii/2 & -1/2 \end{pmatrix},
+  \quad \text{and} \quad
+\eslt := \begin{pmatrix}0 & 1\\ 0 & 0 \end{pmatrix}.
+\]
+By the Jacobson-Morozov theorem,  there is a
+Lie algebra homomorphism
+\[
+\SLT \colon \slt \rightarrow \fgg \subset \gl(V)
+\]
+ such that $\SLT(\Xslt)=X$.
+
+ Let $\St{i}=\Sym^{i-1}(\bC^{2})$ denote the realization of the irreducible
+ $\slt$-module $\SLT_{i}$ on the $i-1$-symmetric power of the standard
+ representation $\bC^{2}$.
+
+As an $\slt$-module via $\SLT$, we have
+\begin{equation}\label{eq:Vl.1}
+V = \bigoplus_{i\in \bN^{+}} V_{i} \otimes_\bC \St{i},  \qquad (k:=\depth(\sO)\geq -1)
+\end{equation}
+and
+\[
+\VV{i} := \Hom_{\slt}( \St{i},V)
+\]
+is the multiplicity space and
+$\dim \VV{i} = \bfcc_{i}(\cO) - \bfcc_{i-1}(\cO)$.
+We view %the Young diagram
+$\cO$ as the function
+\[
+  \cO\colon \bfN^{+} \rightarrow \bN \text{ such that } \cO(i) = \dim \VV{i}.
+\]
+
+% Let $\SLT_{i}\colon  \slt\rightarrow \mathfrak{gl}_{n}(\bC)$ be the representation
+%  of $\slt$ on $\St{i}$.
+
+ We equip $\St{i}$ with a ``standard'' classical space structure
+ $(\St{i},\inn{}{}_{\St{i}},J_{\St{i}},L_{\St{i}})$.% with classical symbol $(\star_{i},p_{i},q_{i})$.
+ Here
+ \begin{itemize}
+   \item the classical signature of $\St{i}$ is $(B,(i+1)/2,(i-1)/2)$ if $i$ is odd and
+         $(C,i/2,i/2)$ if $i$ is even,
+   \item $J_{\St{i}}$ is the complex conjugation on $\St{i}=\Sym^{i-1}(\bC^{2})$,
+   \item $L_{\St{i}} = (-1)^{\floor{\frac{i-1}{2}}}\, \Sym^{i-1}({\tiny\begin{pmatrix}\phantom{-}0 & 1 \\-1 & 0 \end{pmatrix}})$,
+   \item $\inn{}{}_{\St{i}}$ is uniquely determined by $J_{\St{i}}$ and $L_{\St{i}}$ up to
+         a positive scalar (We fix a form $\inn{}{}_{\St{i}}$ for each $i$).
+ \end{itemize}
+
+ {\color{red} $L_{\St{i}}$ should be the Lie group element action.}
+
+
+ We define a equivalent relation on the set $\set{B,C,\wtC,D,C^{*},D^{*}}$ with
+ the relation $B\sim D$ and $C\sim \wtC$.
+
+Let $(V,\inn{}{} J,L)$ be a classical group with signature $\sfss$.
+Let $ \sO\in \Nil(\fpp_{\sfss})$.
+By \cite{Se} (also see \cite[Section~6]{Vo89}), there is a Lie-algebra
+homomorphism $\SLT \colon \slt \rightarrow \fgg \subset \gl(V)$ such that
+$\SLT(\Xslt)\in \sO$ and compatible with the classical space structure on $V$.
+More precisely, the multiplicity space $\VV{i}$ have a unique classical space
+structure
+$(\VV{i}, \inn{}{}_{\VV{i}},J_{i},L_{i})$ with classical signature
+$\sfss_{i}=(\star_{i},p_{i},q_{i})$
+such that $\star_{i}\neq \wtC$ and restricted on the $\slt$-isotypic component $\VV{i}\otimes \St{i}$,
+\begin{itemize}
+  \item $\inn{}{}$ is given by $\inn{}{}_{\VV{i}}\otimes \inn{}{}_{\St{i}}$,
+  \item $J$ is given by $J_{i}\otimes J_{\St{i}}$,
+  \item $L$ is given by $L_{i}\otimes L_{\St{i}}$,
+  \item the symbol $\star_{i}$ satisfies the following condition
+        \begin{equation} \label{eq:ssrel}
+          \begin{cases}
+            \star_{i} \sim\star_{\sfss} & \text{if $i$ is odd}\\
+            \star_{i} \sim \star'_{\sfss} & \text{if $i$ is even}
+          \end{cases}
+          % $\star_{\sfss_{i}} \sim\star_{\sfss}$ if $i$ is odd and
+        % $\star_{\sfss_{i}} \sim \star'_{\sfss}$ if $i$ is even  ($\star'_{\sfss}$
+        % is the Howe dual of $\star_{\sfss}$).
+      \end{equation}
+\end{itemize}
+Here $\star'_{\sfss}$ is the Howe dual of $\star_{\sfss}$, and
+ $\sim$ is the equivalent relation on $\set{B,C,\wtC,C^{*},D,D^{*}}$ such that
+ $B\sim D$ and $C\sim \wtC$.
+Then the classical signature $\sfss_{i}$ are independent of the choice of $\SLT$
+and uniquely determined the orbit $\sO$.
+
+\medskip
+
+
+\def\CCSS{\overline{\mathsf{CS}}}
+Let
+\[
+\CCSS := \set{(\star,p,q)| \star\neq \wtC \text{ and }(\star,p,q) \text{ is a classical signature}}.
+\]
+We identify $\sO$ with the function
+\[
+  \sO\colon \bN^{+}\rightarrow \CCSS, \qquad i \mapsto \sfss_{i}.
+\]
+
+A important feature of a compatible $\SLT$ map is that the Kostant-Sekiguchi
+correspondence  is given by %classifies the set $\Nil(\fgg_{\sfss})$ of
+%real nilpotent orbits, and
+\[
+  G_{\sfss}\cdot \SLT(\eslt) \leftrightarrow  \KC[\sfss]\cdot \SLT(\Xslt).
+\]
+%give the Kostant-Sekiguchi correspondence.
+
+
+
+
+Let
+$\sfmm \colon \CCSS\rightarrow \bN$ be the map given by
+$(\star,p,q)\mapsto p+q$. Now the  complexification
+$\GC\cdot \sO$ of a rational nilpotent orbit is given by $\cO := \sfmm\circ \sO$.
+Define
+\[
+  \begin{split}
+  \SYD_{\star}(\cO) &:=\Set{\sO\colon \bN^{+}\rightarrow \CCSS| \begin{minipage}{9em}
+      %$\star_{\sO( i )}$ equals $\star$ if $i$ is odd,\\% \\
+      %$\star_{\sO( i )}$ equals $\star'$ otherwise, \\
+      $\star_{\sO(i)}$ satisfies \eqref{eq:ssrel},\\
+      $\sfmm\circ \sO = \cO$
+      % % $\star_{\sO( i )} $
+      % %$\star'$ if $i$ is even, \\
+      % $p_{\sO(i)}=q_{\sO(i)}=0$ except for finite many $i$.
+      \end{minipage}
+    }\\
+    \SYD_{\star} &:= \bigsqcup_{\cO\in \Nil_{\star}} \SYD_{\star}(\cO).
+  \end{split}
+\]
+Now $\SYD_{\star}$ is naturally identified with the set
+$\bigsqcup_{\sfss}\Nil(\fgg_{\sfss})$ (the set of real nilpotent orbits)
+and $\bigsqcup_{\sfss}\Nil(\fpp_{\sfss})$.
+This is nothing but the signed Young diagram classification of rational
+nilpotent orbits, see \cite{CM}.
+
+
+\medskip
+
+For a classical signature $\sfss$, we define the complex group
+\[
+  \KC[[\sfss]] := \GC^{L_{\sfss}}.
+\]
+
+ Suppose $\sO\in \Nil(\bfpp_{\sfss})$, $\SLT$ is
+compatible with $\sO$ and $X = \SLT(\Xslt)\in \sO$. Let
+\[
+  \KC[[\sfss]]_{X}:=\Stab_{\KC[[\sfss]]}(X)
+\]
+be the stabilizer of $X$ in
+$\KC[[\sfss]]$.
+% centralizer of $\Im(\phi)$ in $\KC[\sfss]$.
+Using the signed Young diagram classification, we have the following well known
+fact of the isotropic subgroup.
+\begin{lem}\label{lem:KX1}
+ Then $\KC[[\sfss]]_{X}= R_X\ltimes U_X$,
+  where $U_X$ is the unipotent radical of $\KC[[\sfss]]_{X}$ and $R_{X}$ is a reductive
+  group canonically identified with
+ \[
+   \prod_{i\in \bN^{+}} \KC[[\sfss_{\sO(i)}]].
+ \]
+\end{lem}
+As a consequence, $R_{X}$ is a products of complex general linear group and
+orthogonal groups
+\[
+  \prod_{\substack{\sO(i)=(\star_{i},p_{i},q_{i})\\
+      \star_{i}\in \set{B,D}, p_{i}+q_{i}>0
+    }} \rO_{p_{i}}(\bC)\times \rO_{q_{i}}(\bC).
+\]
+
+\medskip
+
+\def\DCO#1{\mathsf{LB}_{#1}(\sO)}
+
+Fix a one-dimensional character $\chi$ of the connected component $\KC[X]^{\circ}$ of $\KC[X]$,
+let
+\[
+\DCO{\chi} := \set{\text{line bundle $\cE$ on $\sO$ such that $\KC[X]^{\circ}$
+    acts on the fiber $\cE_{x}$ by $\chi$}}.
+\]
+By the structure of $R_{X}$, a line bundle $\cE\in DCO{\chi}$ is completely
+determined by
+the restruction of the $\KC[X]$-module $\cE_{X}$ on the
+the orthogonal factors of $R_{X}$.
+
+Let
+\[
+  \MK = \CCSS \cup \set{(\star,r,s)|\star\in \set{B,D}, r,s\in \bZ}.
+\]
+We identify $\cE \in \DCO{\chi}$ with the map
+\[
+  \cE\colon \bN^{+}\rightarrow  \MK
+\]
+such that,
+for $\sO(i)=(\star_{i},p_{i} q_{i})$,
+\begin{itemize}
+  \item $\cE(i) := \sO(i)$ if $\star_{i} \notin \set{B,D}$;
+  \item $\cE(i) := (\star_{i},(-1)^{\epsilon^{+}}p_{i},(-1)^{\epsilon^{-}}q_{i})$
+        if $\star_{i} \in \set{B,D}$, and  the factor
+        $\rO_{p_{i}}(\bC)\times \rO_{q_{i}}(\bC)$ acts on $\cE_{X}$ by
+        ${\det}^{\epsilon^{+}}\otimes {\det}^{\epsilon^{-}}$.
+\end{itemize}
+
+
+
+Let
+ $\sF\colon \MK\rightarrow \CCSS$ be the map given by
+$(\star,r,s)\mapsto (\star,\abs{r},\abs{s})$ and
+\[
+  \MYD(\sO) := \Set{\cE\colon \bN^{+}\rightarrow \MK|\sF\circ \cE=\sO }.
+\]
+Thanks to the simple structure of $R_{X}$,  the above recipe allows us to identify $\MYD(\sO)$  with the set $\DCO{\chi}$ when
+the later set is non-empty.
+
+Let
+\[
+  \MYD_{\star}(\cO) := \bigcup_{\sO\in \Nil_{\star}(\cO)}\MYD(\sO)
+  \AND
+  \MYD_{\star} := \bigcup_{\cO\in \Nil_{\star}}\MYD_{\star}(\cO).
+  %\MYD := \bigsqcup_{\star\in\set{B,C,D,C^{*},D^{*}}} \MYD_{\star}
+\]
+ In particular,we identify $\AOD_{\sfss}(\cO)$ with a subset of
+ $\MYD_{\star}(\cO)$, see \Cref{defaod}.
+
+
+
+\begin{eg}
+ Let $1^{r,s}_{\star}$ denote the element in $\MYD_{\star}$ such that
+ \[
+   1^{r,s}_{\star}(i) := \begin{cases}
+     (\star,r,s) & \text{if } i=1\\
+     (\star_{i},0,0) & \text{if $i>0$}\\
+     %(\star',0,0) & \text{if $i>0$ and $i$ is even}
+   \end{cases}
+ \]
+ Here the symbol $\star_{i}$ is uniquely determined by \eqref{eq:ssrel}.
+\end{eg}
+
+We let $\bZ[\SYD_{\star}]$ and $\bZ[\MYD_{\star}]$
+ denote the space of free abelian group generated by signed Young diagrams and
+marked Young diagrams respectively.
+
+\subsection{Operations on diagrams}
+In this section, we define some operations on the signed Young diagrams and
+marked Young diagram.
+
+Suppose $\star\in \set{B,D}$.
+We define a $\bZ/2\bZ\times \bZ/2\bZ$ action on $\MYD_{\star}$.
+Let $(\epsilon^{+},\epsilon^{-})\in \bZ/2\bZ\times \bZ/2\bZ$ , $\cE\in \MYD_{\star}$ such that $(\star_{i},p_{i},q_{i}):=\cE(i)$,
+we define $\cE \otimes (\epsilon^{+},\epsilon^{-})\in \MYD_{\star}$ by
+\[
+(\cE \otimes 1^{\epsilon^{+},\epsilon^{-}})(i) := \begin{cases}
+  (\star_{i}, (-1)^{\frac{\epsilon^{+}(i+1)+\epsilon^{-}(i-1)}{2}}p_{i},(-1)^{\frac{\epsilon^{+}(i-1)+\epsilon^{-}(i+1)}{2}}q_{i})
+  & \text{if $i$  is odd,}\\
+  (\star_{i}, p_{i},q_{i}) & \text{otherwise.}
+\end{cases}
+\]
+
+
+For each $\cE\in \AOD_{\star}$, its twist
+$\cE\otimes  (1^{{-,+}})^{\epsilon^{+}}\otimes (1^{+,1})^{\epsilon^{-}}$
+is a line bundle  in $\AOD_{\star}$.
+As elements in $\MYD_{\star}$, we have
+\[
+  \cE\otimes  (1^{{-,+}})^{\epsilon^{+}}\otimes (1^{+,1})^{\epsilon^{-}} = \cE \otimes (\epsilon^{+},\epsilon^{-}).
+\]
+
+\medskip
+
+Suppose $\star\in \set{C,\wtC,D^{*}}$.
+
+For $\cE\in \MYD_{\star}$ such that $(\star_{i},p_{i},q_{i}):=\cE(i)$,
+we define $\maltese\cE\in \MYD_{\star}$ by
+\[
+(\maltese\cE)(i) := \begin{cases}
+  (\star_{i}, -p_{i},-q_{i})& \text{if $i\equiv 2 \pmod{4}$ and $\star_{i}\in \set{B,D}$,}\\
+  (\star_{i}, p_{i},q_{i}) & \text{otherwise.}
+\end{cases}
+\]
+
+Clearly, the a operation $\maltese$ defines an involution on
+$\MYD_{\star}$.
+%Suppose $\sfss = (\star,n,n)$ is a classical signature.
+For each $\cE\in \DCO{\chi}$, its twist  $\cE\otimes \deti$
+is a line bundle  in $\DCO{\chi'}$ where  $\chi'$ is a certain character. % $\chi'$.
+As elements in $\MYD_{\star}$, we have
+\[
+  \cE\otimes \deti = \maltese (\cE).
+\]
+
+We define the argumentation of a marked Young diagram.
+For each $\cE\in \MYD_{\star}$ and $\sfss_{0} = (\star'_{0},p,q)\in \CCSS$ such that
+$\star'\sim \star'_{0}$,
+let $\cE\cdot \sfss_{0}$ be the marked Young diagram in $\MYD_{\star'}$ given by
+\[
+  (\cE\cdot \sfss_{0})(i) :=
+  \begin{cases}
+    \sfss_{0} & \text{if } i=1,\\
+    \cE(i-1) & \text{if } i>1.
+  \end{cases}
+\]
+
+We will use the same notation to denote the  natural extension of above
+operations to $\bZ[\MYD_{\star}]$.
+% and we will use the same notation
+
+We define the partial order $\succeq$ on $\bZ\times \bZ$ by
+\[
+  (a,b) \succeq (c,d) \Leftrightarrow
+  \text{either } a\geq c\geq 0, b\geq d\geq 0  \text{ or }
+    a\leq c\leq 0, b\leq d\leq 0.
+\]
+For a $\cE\in \MYD$ and $(p_{0},q_{0})\in \bZ\times \bZ$, we write
+\[
+  \cE\succeq (p_{0},q_{0}) \Leftrightarrow
+  (p_{1},q_{1})\succeq (p_{0},q_{0})
+  \text{ where }\cE(1) = (\star_{1},p_{1},q_{1}).
+\]
+
+Suppose $\cE\succeq (p_{0},q_{0})$, we define the truncation of $\cE$ by
+\[
+  \Lambda_{(p_{0},q_{0})}(\cE) = \begin{cases}
+    (\star_{1},p_{1}-p_{0},q_{1}-q_{0}) & \text{if } i=1,\\
+    \cE(i) & \text{if } i>1.
+  \end{cases}
+\]
+We extend to the truncation operation $\Lambda_{p_{0},q_{0}}$ to
+$\bZ[\MYD_{\star}]$
+by define $\Lambda_{p_{0},q_{0}}(\cE) := 0$ when $\cE \nsucceq (p_{0},q_{0})$.
+
+The augmentation and truncation of signed Young diagram are defined by the same
+formula.
+
+% For $\cL = \sum_{i=1}^{k}\cL_{i}\in \KM$ with $\cL_{i}\in \MYD$, we let
+% \[
+%   \ssign(\cL)= \Set{\ssign(\cL_{i})|i=1,\cdots,k}\text{ and }
+%   \lsign(\cL)= \Set{\lsign(\cL_{i})|i=1,\cdots,k}
+% \]
+
+For any $\sO\in \SYD_{\star}$, let $\Sign(\sO) = (p,q)$ if $\sO$ corresponds
+a nilpotent orbit in $\Nil_{\sfss}(\fpp)$ with $\sfss=(\star,p,q)$.
+When $\sO(i)=(\sfss_{i},p_{i},q_{i})$, the signature is
+\[
+  \Sign(\sO) = \sum_{i} (\floor{\frac{i+1}{2}}p_{i}+\floor{\frac{i}{2}}q_{i}, \floor{\frac{i}{2}}p_{i}+\floor{\frac{i+1}{2}}q_{i})
+\]
+
+\subsection{Theta lifts of local systems}
+
+\subsubsection{Lift from type C to D}
+
+For each signature $(p,q)\in \bN\times \bN$ such that $p+q$ is even, we define a map
+\[
+  \vartheta_{CD,(p,q)} \colon \KM(C)\rightarrow \KM(D)
+\]
+as the following:
+Let $\cL\in \MYD(C)$. Let $(p_{1},q_{1})=\lsign(\cL)$ and
+\[
+(p_{0}, q_{0})  = (p,q) -\ssign(\cL)-(q_{1},p_{1}).
+\]
+We define
+\[
+  \vartheta_{CD,(p,q)}(\cL) =
+  \begin{cases}
+    (\dagger \maltese^{\frac{p-q}{2}}(\cL))\cdot \dagger_{p_{0}, q_{0}} &
+    \text{if } p_{0}\geq 0 \text{ and } q_{0} \geq 0 \\
+    0 & \text{otherwise}
+  \end{cases}
+\]
+
+
+\subsubsection{Lift from type D to type C}
+
+For each non-zero integer $n\in \bN$, we define a map
+\[
+  \vartheta_{DC,n} \colon \KM(D)\rightarrow \KM(C)
+\]
+as the following:
+Let $\cL\in \MYD(D)$. Let $(p_{1},q_{1})=\lsign(\cL)$ and
+$(p,q) = \ssign(\cL)$.
+Let
+\[
+  n_{0} = n - (p+q)/2 - (p_{1}+q_{1})/2
+\]
+We define
+\[
+  \vartheta_{DC,n}(\cL) =
+  \begin{cases}
+    \maltese^{\frac{p-q}{2}}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}}) &
+    \text{if } n_{0}\in \bZ_{\geq 0}\\
+    \maltese^{\frac{p-q}{2}}(\dagger \cL^{+}  + \dagger \cL^{-})& \text{if } n_{0}=-1\\
+    0&\text{otherwise}
+  \end{cases}
+\]
+We remark that
+$\maltese^{\frac{p-q}{2}}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}})= (\maltese^{\frac{p-q}{2}}(\dagger\cL))\cdot \dagger_{n_{0},n_{0}}$.
+
+\trivial{
+  We take a splitting $\rO(p,q)\times \Sp(n,\bR)$ in to the big metaplectic
+  group $\Mp$ such that $\rO(p,\bC)\times\rO(q,\bC)$ acts on the Fock model linearly.
+  The maximal compact $K_{\Sp(n,\bR)}= \rU(2n)$ acts on the Fock model by the
+  character $\zeta=\det^{(p-q)/2}$.
+  For the component of the rational nilpotent orbit $\Sp(2n,\bR)$,
+  the factor of the component group is $\Sp$ if the corresponding row has odd
+  length.
+  Otherwise the component group is $\rO(p_{2k})\times\rO(q_{2k})$ where
+  $(p_{2k},q_{2k})$ is the signature corresponding to the $2k$-rows.
+  $\zeta|_{\rO(p_{2k})}= \det^{(p-q)k/2}_{\rO(p_{2k})}$ which is nontrivial if
+  and only if $p-q\equiv 2\pmod{4}$ and $2k\equiv 2\pmod{4}$.
+  This gives the formula above.
+}
+
+
+{
+  \color{red}
+  In the proof later, we don't care above the marks for rows with length longer
+  than 1 in the most of the case. So we will omit $\maltese$ sometimes.
+  When there is no confusion, we will simply write $\vartheta$ for
+  $\vartheta_{CD,(p,q)}$ and $\vartheta_{CD,(p,q)}$.
+}
+
+
+\subsubsection{Lift from type M to B}
+
+For each signature $(p,q)\in \bN\times \bN$ such that $p+q$ is odd, we define a map
+\[
+  \vartheta_{MB,(p,q)} \colon \KM(M)\rightarrow \KM(B)
+\]
+as the following:
+Let $\cL\in \MYD(M)$. Let $(p_{1},q_{1})=\lsign(\cL)$ and
+\[
+(p_{0}, q_{0})  = (p,q) -\ssign(\cL)-(q_{1},p_{1}).
+\]
+We define
+\[
+  \vartheta_{MB,(p,q)}(\cL) =
+  \begin{cases}
+    (\dagger \maltese^{\frac{p-q+1}{2}}(\cL))\cdot \dagger_{p_{0}, q_{0}} &
+    \text{if } p_{0}\geq 0 \text{ and } q_{0} \geq 0\\
+    0 & \text{otherwise}
+  \end{cases}
+\]
+
+
+\subsubsection{Lift from type B to type M}
+
+For each non-zero integer $n\in \bN$, we define a map
+\[
+  \vartheta_{BM,n} \colon \KM(B)\rightarrow \KM(M)
+\]
+as the following:
+Let $\cL\in \MYD(D)$. Let $(p_{1},q_{1})=\lsign(\cL)$ and
+$(p,q) = \ssign(\cL)$.
+Let
+\[
+  n_{0} = n - (p+q)/2 - (p_{1}+q_{1})/2
+\]
+We define
+\[
+  \vartheta_{BM,n}(\cL) =
+  \begin{cases}
+    \maltese^{\frac{p-q-1}{2}}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}}) &
+    \text{if } n_{0}\in \bZ_{\geq 0}\\
+    \maltese^{\frac{p-q-1}{2}}(\dagger \cL^{+}  + \dagger \cL^{-})& \text{if } n_{0}=-1\\
+    0&\text{otherwise}
+  \end{cases}
+\]
+We remark that
+$\maltese^{\frac{p-q-1}{2}}((\dagger \cL)\cdot \dagger_{n_{0}, n_{0}})= (\maltese^{\frac{p-q-1}{2}}(\dagger\cL))\cdot \dagger_{n_{0},n_{0}}$.
+
+\trivial{
+  For odd orthogonal-metaplectic group case, we still take the splitting such
+  that $\rO(p,q)$ acts linearly.
+
+  The maximal compact $\wtK_{\Sp(n,\bR)}= \widetilde{\rU(2n)}$ acts on the Fock model by the
+  character $\zeta=\det^{(p-q)/2}$.
+
+  Then
+  $\det^{(p-q)/2}|_{\rO(p_{2k})\times \rO(q_{2k})}=\det^{\frac{(p-q)k}{2}}_{\rO(p_{2k})}\boxtimes
+  \det^{\frac{(p-q)k}{2}}_{\rO(q_{2k})}. $
+  Note that $p-q$ is an odd number.
+  When $k$ is even the character on $\widetilde{\rO(p_{2k})}/\widetilde{\rO(q_{2k})}$ are
+  $\bfone$ or $\det$. When $k$ is odd the character would be $\det^{\half}$ or
+  $\det^{\half+1}$.
+
+  We assume the default character on $2k$-rows is $\det^{\frac{k}{2}}$, and
+  we use $+/-$ to mark the row. Otherwise, we use $\upp/\umm$ to mark the rows.
+}
+
+\subsection{Examples and remarks}
+
+\subsubsection{Example}
+\begin{eg}
+  Let
+  $\cT :=\dagger\dagger (\dagger_{2,1}) + \dagger\dagger(\dagger_{{1,2}})$ and $\cP= \ddagger_{1,3}$.
+  Then
+  \[
+    \cT\cdot \cP = \tytb{\uup\uum\uup,\uup\uum\uup,\uum\uup\uum,+,=,=,=}
+    \cup
+    \tytb{\uup\uum\uup,\uum\uup\uum,\uum\uup\uum,+,=,=,=}.
+  \]
+\end{eg}
+
+
+% For each local system $\cL$ of type B/D, define $\pcL$ (resp. $\ncL$) be the
+% part of $\cL$ obtained by deleting a ``$+$''-symbol (resp. ``$-$''=symbol) among 1-rows.
+% $\pcL:=0$ (resp. $\ncL:=0$) if there is no ``$+$''-symbol (resp.
+% ``$-$''-symbol).
+
+% For an local system $\cL$, $\cL\succeq\cC$ means there is a
+% factorization of $\cL = \cB\cdot \cC$;
+% $\cL\supset \cC$ means there is an irreducible component $\cL_{1}$ of $\cL$ such
+% that $\cL_{1}\succeq \cC$.
+
+
+% \subsubsection{}
+
+%\subsection{Definition of $\eDD$}
+\subsubsection{Signs of the local systems obtained by iterated lifting}
+
+
+Suppose $\cL\in \KM$ is obtained by iterated theta lifting and character
+twisting in \Cref{sec:tchar.DB}.
+Then the set $\lsign(\cL)$ has restricted possibilities.
+First, $\ssign(\cL)$ is always a singleton.
+
+When $\cO$ is of type B/D, $\lsign(\cL)$ is a singleton $\set{(p_{1},q_{1})}$
+where
+\[
+  (p_{1},q_{1})= \ssign(\cL) - (n_{0},n_{0}) \quad \text{and} \quad 2n_{0} = \abs{\eDD(\cO)}.
+\]
+
+When $\cO$ is of type C/M,
+$\lsign( \cL ) =\set{ (p_{1},q_{1})}$ is a singleton in the most of the case.
+The $\lsign(\cL)$
+may have two elements if $\cL$ is obtained by good generalized lifting, and it has the form
+$\lsign( \cL ) = \set{(p_{1}+1,q_{1}),(p_{1},q_{1}+1)}$.
+
+% Another important invariant is $\bsign( \cL )$ which indicates the signature of
+% the local system of length one rows in $\cL$.
+\subsection{Dual pairs, descent and lift of nilpotent orbits}\label{sec:descent}
+
+\begin{defn}[Dual pair]\label{def:DP}
+\begin{enumT}
+\item A \emph{complex dual pair} is a pair consisting of an $\epsilon $-symmetric
+  bilinear space and an $\epsilon '$-symmetric bilinear space, where
+  $\epsilon ,\epsilon '\in \set{\pm1}$ with $\epsilon \epsilon '=-1$.
+\item  A \emph{rational dual pair} is a pair consisting of an $(\epsilon,\dotepsilon)$-space
+  and an $(\epsilon',\dotepsilon')$-space, where
+  $\epsilon, \epsilon', \dotepsilon, \dotepsilon' \in \set{\pm1}$ with
+  $\epsilon\epsilon'= \dotepsilon\dotepsilon'=-1$.
+\end{enumT}
+\end{defn}
+
+
+\subsubsection{Lifts and descents of nilpotent orbits}\label{sec:LD}
+
+Let
+\begin{equation*}
+\bfWo := \set{T \in \bfW | T \text{ is a surjective map from $\bfV$ onto $\bfV'$}}.
+\end{equation*}
+Clearly $\bfWo\neq \emptyset$ only if $\dim \bfV\geq \dim \bfV'$.
+
+
+Suppose $\bfee\in \cO \in \Nil_{\bfG}(\fgg)$ and
+$\bfee'\in \cO' \in \Nil_{\bfG'}(\fgg')$.  We call $\bfee'$ (resp. $\cO'$) a
+descent of $\bfee$ (resp. $\cO$), if there exits  $T\in \bfWo$ such that
+$$
+\MM(T) = \bfee\quad\textrm{and}\quad \MM'(T) = \bfee'.
+$$
+Put $$\Xo := \bfW^\circ \cap \cX,$$
+ and write $\bfK:=\bfK_{\bfV}$ and $\bfK':=\bfK_{\bfV'}$. Suppose $X\in \sO \in \Nil_{\bfK}(\fpp)$ and
+$X'\in \sO' \in \Nil_{\bfK'}(\fpp')$.  We call $X'$ (resp. $\sO'$) a
+descent of $X$ (resp. $\sO$), if there exits
+$T\in \Xo$ such that
+$$
+\MMP(T) = X\quad\textrm{and}\quad \MMP'(T) = X'.
+$$
+In all cases, we will say that $T$ realizes the descent, and $\cO$ (resp. $\sO$) is the lift of $\cO'$ (resp. $\sO'$).
+In the notation of \Cref{defdo}, we then have
+\[
+\DDc(\bfdd_{\cO}) = \bfdd_{\cO'}\quad\textrm{ and }\quad \DD(\ssdd_{\sO}) = \ssdd_{\sO'}.
+\]
+Hence the notion of descent (for nilpotent orbits) defined here agrees with  that of \Cref{defdo} and \eqref{dedd} (for Young diagrams).
+We will thus write
+\[
+\cO' = \DDc(\cO)=\DDc_{\bfV, \bfV'}(\cO)\quad \textrm{and}\quad  \sO' = \DD(\sO)=\DD_{\bfV, \bfV'}(\sO).
+\]
+We record a key property on descent and lift:
+\begin{equation}\label{eq:def.LsO22}
+\MM(\MM'^{-1}(\bcOp)) = \bcO \quad \text{and} \quad
+\MMP(\MMP'^{-1}(\bsOp)) = \bsO,
+\end{equation}
+where ``$\;\overline{\phantom{m}}\;$'' means taking Zariski closure. This is checked by
+using explicit formulas in \cite{KP,DKPC} (for complex dual pairs) and
+\cite[Lemma~14]{Ohta} (for rational dual pairs).
+
+
+In fact by \cite[Theorem 1.1]{DKPC}, the notion of lift can be extended to an arbitrary complex dual pair and  an arbitrary complex nilpotent orbit: for any $\cO'\in \Nil_{\bfG'}(\fgg')$, $\MM(\MM'^{-1}(\bcO'))$ equals to the closure of a
+ unique nilpotent orbit $\cO \in \Nil_{\bfG}(\fgg)$. We call $\cO$ the \emph{theta lift} of $\cO'$, written as
+ \begin{equation}
+ \label{def:LC}
+  \cO=\oliftc_{\bfV',\bfV}(\cO').
+ \end{equation}
+%We will also say $\sO'$ is in the domain of theta lift of nilpotent orbits with respect to the rational dual pair $(\bfV',\bfV)$ and similarly write
+%\begin{equation}\label{eq:def.LsO}
+  %\sO = \olift_{\bfV',\bfV}(\sO').
+%\end{equation}
+
+%\begin{remark}
+%The maps $\vartheta_{\bfV',\bfV}$ and $\vartheta_{\bfV,\bfV'}$ are not the mutually inverse maps. In fact, for most of
+%$\cO'\in \Nil_{\bfG'}(\fgg')$, $\vartheta_{\bfV',\bfV}(\vartheta_{\bfV,\bfV'}(\cO'))\neq \cO'$.
+%\end{remark}
+
+\subsubsection{Generalized descent of nilpotent orbits}
+\label{def:GD}
+Let
+\[
+\bfWg := \set{T \in \bfW| \text{the image of $T$ is a
+      non-degenerate subspace of $\bfV'$}}
+\]
+and
+\[
+  \Xg:= \bfWg\cap \cX.
+\]
+Suppose $X\in \sO \in \Nil_{\bfK}(\fpp)$ and
+$X'\in \sO' \in \Nil_{\bfK'}(\fpp')$.  We call $X'$ (resp. $\sO'$) a
+generalized descent of $X$ (resp. $\sO$), if there exits
+$T\in \Xg$ such that
+$$
+\MMP(T) = X\quad\textrm{and}\quad \MMP'(T) = X'.
+$$
+As before, we say that $T$ realizes the generalized descent.
+
+ It is easy to see that for each  nilpotent orbit $\sO\in \Nil_{\bfK}(\fpp)$,
+ the following three assertions are equivalent (\emph{cf.} \cite[Table~4]{DKP2}).
+ \begin{itemize}
+ \item
+   The orbit $\sO$ has a generalized descent.
+   \item
+  The orbit  $\sO$ is contained in the image of the moment map $M$.
+  \item
+  Write $\ssdd_\sO = [d_0, d_1, \cdots, d_k]\in \ssP$, then
+  $$\sign{\bfV'}  \succeq \sum_{i=1}^{k} d_i.$$
+  \end{itemize}
+  When this is the case,   $\sO$ has a unique generalized
+descent $\sO'\in \Nil_{\bfK'}(\fpp')$, and
+  \begin{equation}\label{eq:GD}
+\ssdd_{\sO'} = [d_{1}+s, d_{2}, \cdots, d_k], \quad \textrm{where } \, s:= \sign{\bfV'} - \sum_{i=1}^{k} d_i.
+\end{equation}
+We write $\sO' = \gDD_{\bfV,\bfV'}(\sO).$ On the other hand, different nilpotent
+orbits may map to a same nilpotent orbit under $\gDD_{\bfV,\bfV'}$.
+\trivial[h]{
+Using  \cite[Table~4]{DKP2} or the observation that $M^{-1}(X)\cap \Xg$ is the
+unique closed
+$\bfK'$-orbit in $M^{-1}(X)$ for an element $X\in \sO$, we see that
+$\sO'$ is the minimal
+$\bfK$-orbit in $M'(M^{-1}(\sO))$ and \cref{eq:GD.min} holds.
+}
+\trivial[h]{
+To show the equation \Cref{eq:GD}, it suffices to consider the descent case,
+i.e. when $s = (0,0)$.
+
+Fix a $T\in \cX^\circ \subset \Hom(\bfV,\bfV')$ realizing the descent.
+Fix a $L$ invariant decomposition $\bfV = \Ker(X) \oplus \bfY$. $T|_\bfY$ is an
+isomorphism.
+It suffices to check that $\sign{\bfY} = \sign{\bfV'}$.
+This is clear since $\dotepsilon L' T L^{-1}  = \bfii\, T$.  (If $v\in
+\bfY^{L, \pm 1}$, then $L' T v = \pm L' T  L^{-1} v = \pm \bfii\, Tv$,
+i.e. $v\in \bfV'^{L', \pm \bfii}$. Similarly, If $v\in
+\bfY^{L, \pm \bfii}$, then $L' T v = \mp\bfii L' T  L^{-1} v = \mp\bfii \bfii\,
+Tv = \pm Tv$,
+i.e. $v\in \bfV'^{L', \pm 1}$.
+}
+
+Analogously, suppose $\bfee\in \cO\in \Nil_{\bfG}(\fgg)$ and
+$\bfee'\in \cO' \in \Nil_{\bfG'}(\fgg')$.  We call $\bfee'$ (resp. $\cO'$) a generalized descent of $\bfee$ (resp.
+$\cO$), if there exits an element  $T\in \bfWg$ such that
+\[
+\MM(T) = \bfee \quad\textrm{and}\quad \MM'(T) = \bfee'.
+\]
+When this is the case, $\cO'$ is determined by $\cO$ and we write $\cO' = \gDDc_{\bfV,\bfV'}(\cO)$.
+
+
+
+  \begin{lem}\label{gendec}
+  Assume that $\sO\in \Nil_{\bfK}(\fpp)$ has a generalized descent $\sO'\in \Nil_{\bfK'}(\fpp')$. Let $X\in \sO$ and $T\in \Xg$ such that $M(T)=X$. Then $\bfK'\cdot T$ is the unique closed $\bfK'$-orbit in $M^{-1}(X)$. Moreover,     \begin{equation}\label{eq:GD.min}
+\sO' =
+M'(M^{-1}(\sO))\cap \CO'=M'(M^{-1}(\sO))\cap \overline{\CO'},
+\end{equation}
+where $\CO':=\bfG'\cdot \sO'$, which is the generalized descent of $\CO:=\bfG\cdot \sO$.
+  \end{lem}
+  \begin{proof}
+ It is elementary to check that $\bfK'\cdot T$ is Zariski closed in $\cX$.  Then the first assertion follows by using the isomorphism \eqref{clinv}. Note that $\sO'$ is the only $\bfK'$-orbit in
+ $\overline{\CO'}\cap \fpp'$ whose Zariski closure contains $\sO'$.
+  Thus the first assertion implies the second one.
+    \end{proof}
+
+
+
+
+
+\medskip
+
+In this article, we will need to consider the following special types of nilpotent orbits.
+
+\begin{defn}\label{def:GD.good}
+  A nilpotent oribit $\cO \in \Nil_{\bfG}(\fgg)$ with $\rdd_\cO = [c_0, c_{1} \cdots, c_k]
+  \in \cP_\epsilon$
+  is said to be good for generalized descent if $k\geq 1$ and $c_0 = c_{1}$.  A nilpotent
+  orbit $\sO \in \Nil_{\bfK}(\fpp)$ is said to be  \emph{good} for generalized descent if
+  the  nilpotent orbit  $\bfG \cdot \sO\in \Nil_{\bfG}(\fgg)$ is  good for generalized descent.
+\end{defn}
+
+The following lemma exhibits a certain maximality property of nilpotent orbits which are good for generalized descent.
+\begin{lem}\label{lem:GDS.set}
+ If $\cO\in \Nil_{\bfG}(\fgg) $ is good for generalized descent, and
+  $\cO' = \gDDc_{\bfV,\bfV'}(\cO)$, then
+  $\MM(\MM'^{-1}(\bcOp)) = \bcO$. Consequently, if $\sO\in \Nil_{\bfK}(\fpp)$ is good for generalized descent and
+  $\sO' = \gDD_{\bfV,\bfV'}(\sO)$, then $\sO$ is an open $\bfK$-orbit in
+  $\MMP(\MMP'^{-1}(\bsOp))$.
+\end{lem}
+
+%\begin{remark}
+%Good geometric properties of good orbits (\Cref{lem:GDS.sh}) will play a crucial role in \Cref{prop:GDS.AC}.
+%\end{remark}
+
+\begin{proof}
+This is easy to check using the explicit description of
+$\MM(\MM'^{-1}(\bcO'))$ in \cite[Theorem~5.2 and 5.6]{DKPC}. % \cite[]{DKP2}).
+\end{proof}
+
+
+%\subsubsection{Extending to $\slt$-modules}
+% We now extend the notion of descent to $\slt$ homomorphisms, \Cref{sec:KX}.
+
+% \begin{defn}
+%   \begin{enumT}
+%   \item \label{it:dec.slt1} Let $(\bfV, \bfV')$ be a rational dual pair.  Let
+%     $\gamma =\set{\bfee,\bfhh,\bfff}$ be an $\slt$-triple in $\fgg$ and let
+%     $\gamma '=\set{\bfee',\bfhh',\bfff'} $ be an $\slt$-triple in $\fgg'$.
+%     % let $\phi\colon \slt\rightarrow \fgg$ be the corresponding Lie algebra
+%     % morphism.
+%     % let $\phi'\colon \slt\rightarrow \fgg'$ be the corresponding Lie algebra
+%     % morphism.
+%     We say the $\gamma '$ is a descent of $\gamma $ if
+%     \begin{enumC}
+%     \item $\bfee'$ is a descent of $\bfee$, and
+%     \item there exists
+%       \[
+%         T\in \bfW_{1} := \set{T\in \bfW| (\bfhh,\bfhh')\cdot T = T}.
+%       \]
+%       realizing the descent.
+%     \end{enumC}
+%   \item \label{it:dec.slt2} Let $(\bfV, \bfV')$ be a rational dual pair.
+%     \begin{itemize}
+%     \item Let $\phi \colon \slt\rightarrow \fgg$ be a $J$-compatible morphism,
+%       and $\phi ' \colon \slt\rightarrow \fgg'$ be a $J'$-compatible morphism.
+%       We say $\phi '$ is a descent of $\phi $ if
+%       \begin{enumC}
+%       \item \label{it:dec.slt3} $\phi'(\eslt)$ is a descent of $\phi(\eslt)$,
+%         and
+%       \item there exists an element $T \in W_1=:W\cap \bfW_1$ realizing the
+%         descent.
+%       \end{enumC}
+%     \item Let $\phi \colon \slt\rightarrow \fgg$ be a $L$-compatible morphism,
+%       and $\phi ' \colon \slt\rightarrow \fgg'$ be a $L'$-compatible morphism.
+%       We say $\phi '$ is a descent of $\phi $ if
+%       \begin{enumC}
+%       \item \label{it:dec.slt4} $\phi'(\Xslt)$ is a descent of $\phi(\Xslt)$,
+%         and
+%       \item there exists an element $T \in \cX_1=:\cX \cap \bfW_1$ realizing the
+%         descent.
+%       \end{enumC}
+%     \end{itemize}
+%   \item In all cases, we will say that $T$ realizes the descent, and we write
+%     $\phi' = \DD(\phi)$.
+%   \end{enumT}
+% \end{defn}
+
+% \begin{remark}
+% %\begin{enumR}
+% %Note that the pair $\set{\bfee,\bfhh}$ already determine an $\slt$-triple. On the other
+% %hand, an arbitrary pair $(\bfee,\bfhh)$ where $\bfee$ is nilpotent, $\bfhh$ is semisimple and
+% %  $[\bfhh,\bfee]=2\bfee$ may not come from an $\slt$-triple in general.
+% Suppose $\bfee'$ is a descent of $\bfee$ realized by $T\in \bfWo$. Given an $\slt$-triple $\set{\bfee,\bfhh,\bfff}$, we define $\bfhh'\in \fgg'$ by
+%   $\bfhh'(T(v)) := T(\bfhh(v)) + T(v)$ for all $v\in \bfV$, so that $(\bfhh,\bfhh')\cdot T = T$. One checks that pair
+%   $(\bfee',\bfhh')$  extends to an $\slt$-triple $\set{\bfee',\bfhh',\bfff'}$ and thus descent of a nilpotent orbit can always be extended to descent of the corresponding $\slt$-triple\footnote{There is no clean formula for $\bfff'$ but its existence is clear by examining the decomposition in \Cref{eq:Vl.1}. See discussions in \cite{DKP2}.}.
+%   Similar statements hold for rational descents.
+% \end{remark}
+
+% The arguments in \cite[Section~8]{DKP2} (for stable range case) extends naturely to the descent of nilpotent
+% orbit case. Hence we have the compatibility of descent and Kostant-Sekiguchi correspondence:
+% \begin{lem}
+%   Suppose $\sOr'\in \Nil_{G'}(\fgg'_{\R})$, $\sOr\in \Nil_{G}(\fgg_{\R})$, $\KS{\sOr'}=:\sO'\in \Nil_{\bfK'}(\fpp')$ and
+%   $\KS{\sOr}=:\sO\in \Nil_{\bfK}(\fpp)$.
+%   Then $\DD {\sOr}  = \sOr'$ if and only if $\DD {\sO} = \sO'$, i.e.
+%   \[
+%     \DD{\KS{\sOr}} = \KS{\DD{\sOr}}.
+%   \]
+%   \qed
+% \end{lem}
+
+
+\trivial[h]{An alternative proof: Let $\phi \colon \slt\rightarrow \fgg$ be a $(J,L)$-compatible morphism realizing the Kostant-Sekiguchi correspondence of $\cO$ with $\KS{\cO}$.
+Let $\phi'$ be a $J$-compatible descent of $\phi$, realized by an element $T\in W_1$. By conjugating with an element of $G'$ if necessary, one may assume that $\phi'$ is $(J',L')$-compatible.
+From the $\slt$-morphisms, we define the Cayley elements
+\[
+C := \phi(\cslt)\in \bfG, \text{ and } C' := \phi'(\cslt)\in \bfG'.
+\]
+Let $T' = C'TC^{-1}$. Since $(C'TC^{-1})^\mstar = C T^\mstar C'^{-1}$ we see
+that it realize the descent from $\phi(\Xslt)$ to $\phi'(\Xslt)$.
+Now it suffices to verify that $T'\in \cX$.
+Using the block decomposition \cref{eq:Vl.1}, the problem reduces to case where
+$\phi(\eslt)$ is in the principle
+nilpotent orbit in $\rO(n+1,n)$ or $\Sp(2n)$. This could be down by a explicit calculation, see formulas in \cite[Section~6]{DKP2}.
+}
+
+\subsubsection{Map between isotropy groups}\label{sec:alpha}
+%\subsubsection{Correspondence between nilpotent orbits}
+
+
+% We now review some the geometry of moment maps.
+
+% \begin{defn}
+% For any closed set $S'\subset \fpp'$, define
+% \[
+% \olift{S'} := M(M'^{-1}(S')).
+% \]
+
+% Suppose $\cO'$ is a nilpotent $K$-orbit in $\fpp'$, define
+% \[
+% \olift{\cO'} := \set{\cO | \cO \text{ is open in } \olift{\bcO'}}.
+% \]
+
+% Define $\oliftc$ and $\oliftr$ for the complex and real moment maps similarly.
+% \end{defn}
+% \begin{remark}
+% By \cite{DKPC}, $\oliftc(\cO'_\bC)$ is always a singleton for any complex
+% nilpotent orbit $\cO'_\bC$.
+% On the other hand, by \cite{DKP2}, $\olift(\bcO')$ has several open orbits in
+% general.
+% \end{remark}
+
+
+
+
+% By \Cref{lem:LM.E}, it is important to understand the set
+% $\olift{\bcO'}$.
+
+
+
+
+
+
+
+% \begin{defn}
+% Define the partial order on $\bN^2$ by: $(n^+_1,_1)\succeq (\nn+_2,\nn-_2)$ iff
+% $\nn+_1\geq \nn+_2$ and $\nn-_1\geq \nn-_2$.
+% For $\epsilon$-Hermitian space $V$, define $\sign{V} := (\nn+{V},\nn-{V})$ as
+% the following table
+
+% \centerline{
+% \begin{tabular}{c|c}
+%   \hline
+%   $G_\bR$ & $\sign{V}$ \\
+%   \hline
+%   $\rO(p,q)$ & $(p,q)$\\
+%   $\Sp(2n,\bR)$ & $(n,n)$\\
+%   $\rU(p,q)$ & $(p,q)$ \\
+%   $\rO^*(2n)$ & $(n,n)$\\
+%   $\Sp(p,q)$ & $(2p,2q)$\\
+%   \hline
+% \end{tabular}
+% }
+% The set $\NilP$ of nilpotent $K$-orbits in $\fpp$ is parameterized by signed Young
+% diagram.
+% For $\cO' \in \NilP$, let $[c_k,\cdots, c_0]$ be the list of length columns of the
+% underlying diagram.
+% Let \[
+% \lsign{\cO} := (\lnn+{\cO},\lnn-{\cO})
+% \]
+% be the sign of the most left column
+% of $\cO$.
+% \end{defn}
+
+
+
+
+
+% In our paper, we make could describe the lift of orbits explicitly.
+% \begin{lem}[]
+%   Suppose $\sign{V}\succ \sign{V'}$.
+%   Then
+%   \[
+%     \RR{\fpp'}{\Xo} = \set{\cO'\in \NilP'|d(V,V') \succeq \lsign{\cO'}},
+%   \]
+%   where $d(V,V'):= \sign{V}-\sign{V'}$.
+%   Let $\cO'\in \RR{\fpp'}{\Xo}$, then $\olift{\cO'}$ is the signed Young diagram
+%   obtained by attaching $d(V,V')$ on the left of $\cO'$.
+
+%   In particular, $\oliftc{\cO'_\bC} = (\olift{\cO'})_\bC$ corresponding to the
+%   Young diagram obtained by attaching a column of $\dim V - \dim V'$ boxes on
+%   the left of $\cO'_\bC$.
+% \end{lem}
+% \begin{proof}
+%   The lemma follows immediately by \cite[Theorem~5.2 and 5.6]{DKPC} and
+%   \cite[Table~4]{DKP2} (see also \cite{Ohta4} for the unitary group case.).
+% \end{proof}
+
+%For $T\in \cX$, $X\in \fpp$ and $X' \in \fpp'$, we denote corresponding isotropy subgroups by
+%\[
+%  \bfS_T :=
+%  \Stab_{\bfK\times \bfK'}(T), \quad  \bfK_X:= \Stab_{\bfK}(X)\quad \text{and}\quad \bfK'_{X'}
+%  := \Stab_{\bfK'}(X') \quad \text{respectively}.
+%\]
+
+Suppose $\sO\in \Nil_{\bfK}(\fpp)$ admits a descent $\sO'\in
+  \Nil_{\bfK'}(\fpp')$. % is the descent of $\sO\in \Nil_{\bfK}(\fpp)$.
+  According to
+  \cite[Proposition 11.1]{KP} and \cite[Lemmas~13 and 14]{Ohta},
+  $\MMP^{-1}(\sO)$
+  is a single
+  $\bfK\times \bfK'$-orbit contained in $\Xo$ and $\MMP'(\MMP^{-1}(\sO)) =
+  \sO'$. Moreover $\bfK'$ acts on $\MMP^{-1}(\sO)$ freely.
+
+  Fix $T\in \MMP^{-1}(\sO)$ which realizes the descent from $X := \MMP(T)\in \sO$
+  to $X' := \MMP'(T)\in \sO'$. Denote the respective isotropy subgroups by
+  \[
+    \bfS_T :=
+    \Stab_{\bfK\times \bfK'}(T), \quad  \bfK_X:= \Stab_{\bfK}(X)\quad \text{and}\quad \bfK'_{X'}
+    := \Stab_{\bfK'}(X').
+  \]
+  Then there is a unique homomorphism
+  \begin{equation}
+    \label{eq:alpha}
+    \alpha\colon \bfK_X \mapsto \bfK'_{X'}
+  \end{equation}
+  such that $\bfS_T$ is the graph of $\alpha$:
+  \[
+    \bfS_T = \set{(k,\alpha(k))\in \bfK_X\times \bfK'_{X'}|k\in \bfK_X}.
+  \]
+  % \begin{proof} \cref{it:lemM.0} amounts to the first fundamental theorem of classical invariant theory \cite{Weyl}. \Cref{it:lemM.1} and \cref{it:lemM.2} are in. \cref{it:lemM.3} is an immediate consequence of \cref{it:lemM.2}.
+% \end{proof}
+% \begin{lem}[{\cite{Weyl}, \cite[Proposition 11.1]{KP}, \cite[Lemmas 13 and 14]{Ohta}}]\label{lem:O1}\label{lem:DS.set}
+% Suppose $(\bfV,\bfV')$ is a rational dual pair such that $\dim(\bfV)\geq \dim (\bfV')$.
+% The followings hold true.
+% \begin{enumT}
+% \item \label{it:lemM.0} $\MMP'\colon \cX \rightarrow \fpp'$ is the affine quotient of
+%   $\cX$ by the $\bfK$ action. The image of $\MMP$ is reduced and $\MMP\colon \cX \rightarrow
+%   M(\cX)$ is the affine quotient of $\cX$ by the $\bfK'$ action.
+% \item \label{it:lemM.1} $\MMP' \colon \Xo \rightarrow \fpp'$ is smooth and $\MMP \colon
+%   \Xo \rightarrow \MMP(\Xo)$ is a locally trivial fibration with typical fiber
+%   $\bfK'$.
+% \end{enumT}
+% Suppose further $\sO'\in
+%   \Nil_{\bfK'}(\fpp')$ is the descent of $\sO\in \Nil_{\bfK}(\fpp)$. The following hold true.
+% \begin{enumT}[resume]
+% \item \label{it:lemM.2} % $\bfY:=\MMP^{-1}(\sO)$
+%   $\MMP^{-1}(\sO)$
+%   is a single
+%   $\bfK\times \bfK'$-orbit  contained in $\Xo$ and $\MMP'(\MMP^{-1}(\sO)) = \sO'$. Moreover, as the scheme theoretical
+%   pre-image of $\sO$, $\MMP^{-1}(\sO)$  is reduced and smooth.
+% \item \label{it:lemM.3} Fix $T\in \MMP^{-1}(\sO)$ and let $X := \MMP(T)\in \sO$
+%   and $X' := \MMP'(T)\in \sO'$.  Then there is a (unique) homomorphism
+% \begin{equation}
+% \label{eq:alpha}
+% \alpha\colon \bfK_X \mapsto \bfK'_{X'}
+% \end{equation}
+% such that $\bfS_T$ is the graph of $\alpha$:
+% \[
+% \bfS_T = \set{(k,\alpha(k))\in \bfK_X\times \bfK'_{X'}|k\in \bfK_X}.
+% \]
+% \qedhere
+% \end{enumT}
+% \end{lem}
+% \begin{proof} \cref{it:lemM.0} amounts to the first fundamental theorem of classical invariant theory \cite{Weyl}. \Cref{it:lemM.1} and \cref{it:lemM.2} are in \cite[Proposition 11.1]{KP} and \cite[Lemmas 13 and 14]{Ohta}. \cref{it:lemM.3} is an immediate consequence of \cref{it:lemM.2}.
+% \end{proof}
+The homomorphism $\alpha$ is uniquely determined by the requirement that
+\[
+\alpha(k)(Tv) = T(kv)\quad \textrm{ for all }v\in \bfV, \, k\in \bfK_X.
+\]
+
+
+\medskip
+
+We recall the notation in \Cref{sec:KX} where $\phik$ is an $L$-compatible
+$\slt$-triple attached to $X$. Let $\Hslt := \slH$. Then there is a unique
+$L'$-compatible $\slt$-triple $\phikp$ attached to $X'$ such that (see \cite[Section~5.2]{GZ})
+$$\phikp(\Hslt)
+\circ T - T \circ \phik(\Hslt) = T.$$
+As an $\slt$-module via $\phikp$,
+\[
+\bfV' = \bigoplus_{l\geq 0}^{k-1} \bfV`l' \otimes \bC^{l+1}.
+\]
+We adopt notations in \Cref{sec:KX} to $X' \in
+\sO'$, via $\phikp$. In particular, we have $\bfK_X = \bfR_X \ltimes \bfU_X$ and $\bfK'_{X'} =\bfR_{X'}
+\ltimes \bfU_{X'}$. Here $\bfU_X$ and $\bfU'_{X'}$ are the unipotent radicals, and $\bfR_X =
+\prod_{l=0}^k {\KK`l}$ and $\bfR_{X'} = \prod_{l=0}^{k-1}{\KK`l'}$ are Levi factors
+ of $\bfK_X$ and $\bfK'_{X'}$, respectively.
+%which are compatible with the $\slt$-module structures on $\bfV$ and $\bfV'$ respectively.
+
+
+ For each irreducible $\slt$-module $\bC^{l+1}$ fix a nonzero vector
+ $v_l\in (\bC^{l+1})^{\Xslt}$.
+ % \Ker(\rdd\phi_l(\Xslt))$
+      For each $l\geq 0$, the map
+ $\nu \mapsto \nu(v_l)$ identifies $\bfV`l = \Hom_{\slt}(\bC^{l+1},\bfV)$
+ (resp. $\bfV`l'$) with a subspace $\bfV`l_0$ of $\bfV$ (resp. $\bfV`l'_0$ of
+ $\bfV'$). For $1\leq l\leq k$,  $T^\mstar$ induces a vector space isomorphism\footnote{In fact, it
+ is a similitude between the two formed spaces and satisfis $L\circ \tau_{l}=\bfii \,\tau_l\circ L'$.}
+\[
+\xymatrix@C=5em{
+\tau_l\colon \bfV`{l-1}' = \bfV`{l-1}'_0 \ar[r]^<>(.5){v \mapsto T^\mstar(v)}
+& \bfV`{l}_0 = \bfV`{l}.
+}
+\]
+This results in an isomorphism (which is independent of the choices of $v_l$ and $v_{l-1}$)
+\begin{equation}\label{eq:alpha_l}
+    \alpha_l :  \KK`{l}   \xrightarrow{\ \ \cong \ \ }  {\KK`{l-1}'} ,\qquad h_l\mapsto (\tau_l)^{-1} \circ h_l \circ\tau_l.
+\end{equation}
+
+
+\medskip
+
+%The following lemma gives a more precise description of the map $\alpha$.
+
+\begin{lem}\label{lem:alpha.e} The homomorphism $\alpha$ maps $\bfR_X$ into $\bfR_{X'}$ and maps $\bfU_X$ into $\bfU_{X'}$. Moreover, the map
+  $\alpha|_{\bfR_X}$ is given by
+\[
+\xymatrix@R=0em{
+\flushmr{\alpha|_{\bfR_X}\colon}\prod_{l=0}^{k} {\KK`l} \ar[r]& \prod_{l=0}^{k-1} {\KK`l'},\\
+(h_0, h_1, \cdots h_k) \ar@{|->}[r]& (\alpha_1(h_1),\cdots,
+\alpha_k(h_k)), \quad \quad h_l\in \KK`l,
+}
+\]
+where $\alpha _l$ ($1\leq l\leq k$) is given in \eqref{eq:alpha_l}.
+\end{lem}
+\begin{proof}
+  Note that $\alpha$ is a surjection since $M^{-1}(X)$ is a $\bfK'$-orbit (see
+  \Cref{lem:DS.sh}~\cref{it:DS.G3} or \cite[Lemma~13]{Ohta}).  So $\alpha(\bfU_X)$ is a unipotent normal
+  subgroup in $\bfK'_{X'}$ which must be contained in $\bfU_{X'}$. Note that
+  (see \cite[Lemma~3.4.4]{CM})
+  \[ \bfR_X = \Stab_{\bfK}(\phi_\fkk(\Xslt)) \cap
+    \Stab_{\bfK}(\phi_{\fkk}(\Hslt)).
+\] By the defintion of $\alpha$ and
+$\phi_{\fkk'}$,  we see
+\[
+\alpha(\bfR_X) \subset \Stab_{\bfK'}(\phi_{\fkk'}(\Xslt)) \cap
+\Stab_{\bfK'}(\phi_{\fkk'}(\Hslt)) = \bfR_{X'}.
+\]
+The rest follows from the discussions before the lemma.
+\end{proof}
+
+Let $A$, $A_X$ and $A'_{X'}$ be the component groups of $G$, $\bfK_X$ and $\bfK'_{X'}$
+respectively. We will identify $A$ with the component group of $\bfK$ and let
+$\chi|_{A_X}$ denote the pullback of $\chi \in \whA$ via the natural map $A_X
+\rightarrow A$.
+The homomorphism $\alpha\colon \bfK_X \mapsto \bfK'_{X'}$ induces a homomorphism $\alpha\colon A_X \mapsto A'_{X'}$, which further yields a homomorphism
+\[
+\widehat{A'_{X'}}\rightarrow \widehat{A_{X}}, \quad \rho'\mapsto \rho'\circ\alpha.
+\]
+
+\begin{lem}\label{lem:char.surj}
+The following map is surjective:
+%\begin{equation}
+\[
+\xymatrix@R=0em{
+\widehat{A} \times \widehat{A'_{X'}} \ar@{->>}[r]&  \widehat{A_X},\\
+(\chi,\rho') \ar@{|->}[r] & \chi|_{A_X} \cdot (\rho'\circ\alpha).}
+%\end{equation}
+\]
+\end{lem}
+
+\begin{proof} This follows easily from \Cref{lem:alpha.e} and \Cref{lem:char.res}.
+\end{proof}
+
+\subsection{Lifting of equivariant vector bundles and admissible orbit
+  data}\label{sec:LVB}
+Recall from the Introduction the complexification $\wtbfK$ of $\widetilde K$, which is  $\bfK$ except when $G$ is a  real symplectic group.
+For a nilpotent $\bfK$-orbit $\sO\in \Nil_{\bfK}(\fpp)$, % is also viewed as an
+% $\wtbfK$-orbit.
+let $\cK_{\sO}^{\mathbb p}(\wtbfK)$ denote the Grothendieck group of $\mathbb p$-genuine $\wtbfK$-equivariant coherent sheaves on
+$\sO$. This is a free abelian group with a free basis consisting of isomorphism classes of  irreducible $\mathbb p$-genuine $\wtbfK$-equivariant algebraic vector
+bundles on $\sO$.  Taking the isotropy representation at a point $X\in \sO$ yields an identification
+\begin{equation}\label{idenkr}
+  \cK_{\sO}^{\mathbb p}(\wtbfK)=\cR^{\mathbb p}(\wtbfK_{X}),
+\end{equation}
+where the right hand side denotes
+  the Grothendieck group  of the category of $\mathbb p$-genuine
+  algebraic representations of the stabilizer group $\wtbfK_X$.
+
+
+  For $\cO\in \Nil_{\bfG}(\fgg)$, let $\cK^{\mathbb p}_{\cO}(\wt{\bfK})$ denote the
+  Grothendieck group
+  % (with integral coefficients) of the category
+  of $\mathbb p$-genuine $\wt{\bfK}$-equivariant coherent sheaves on $\cO\cap \fpp$. Since
+  $\cO\cap \fpp$ is the finite union of its $\bfK$-orbits, we have
+  \begin{equation}\label{eq:dec.KO}
+    \cK_{\cO}^{\mathbb p}(\wt{\bfK})=\bigoplus_{\sO\textrm{ is a $\bfK$-orbit in $\cO\cap \fpp$}} \cK^{\mathbb p}_{\sO}(\wt{\bfK}).
+  \end{equation}
+
+  There is a natural partial order $\succeq$ on $\cK_{\cO}^{\mathbb p}(\wt{\bfK})$ and
+  $\cK^{\mathbb p}_{\sO}(\wt{\bfK})$: we say $c_1\succeq c_2$ (or $c_2\preceq c_1$) if $c_1-c_2$ is represented by a
+  % non-trivial
+  $\mathbb p$-genuine $\wtbfK$-equivariant coherent sheaf. The same notation obviously applies  to other Grothendieck groups.
+
+
+
+  % \subsubsection{Lift of algebraic vector bundles I: the descent
+  % case}\label{sec:lift.AC}
+  \subsubsection{An algebraic character}%\label{sec:lift.AC}
+  Attached to a rational dual pair $(\bfV,\bfV')$, there is a distinguished character
+  $\mktvvp$ of
+  $\wtbfK\times\wtbfK'$ arising from the oscillator
+  representation, which we shall describe.
+
+  When $G$ is a real symplectic group, let $\cX_{\bfV}$ denote the $\mathbf i$-eigenspace of
+  $L$. Then $\wtbfK$ is identified with \[
+    \set{(g,c)\in \GL(\cX_{\bfV})\times
+      \bC^\times|\det(g) = c^2}.\]
+  It has a %genuine
+  character
+  $ (g,c)\mapsto c$, which is denoted by $\det_{\cX_{\bfV}}^{\half}$. % $\varsigma_{\bfV}$
+
+
+  When $G$ is a quaternionic orthogonal group, still let
+  $\cX_V$ denote the $\mathbf i$-eigenspace of $L$. Then $\wtbfK = \GL(\cX_{\bfV})$. Let $\det_{\cX_{\bfV}}$ denote its determinant character.
+
+  Write $\sign{\bfV'} = (n'^+,n'^-)$. Then the character $\mktvvp|_{\wtbfK}$ is
+  given by the following formula: %\footnote{If we denote $\varsigma_\cX$
+  % (resp. trivial character) by $\det_{\cX}^{-\half}$ (resp. $\det_{\cX}^0$),
+  % then
+  % $\mktvvp|_{\wtbfK}$ always equals $\det_{\cX}^{-\frac{n^+-n^-}{2}}$.}
+  \[%\begin{equation} \label{ktwvv1}
+    \mktvvp|_{\wtbfK}:=\begin{cases}
+      \left(\det_{\cX_{\bfV}}^{\half}\right)^{n'^+-n'^-} ,
+      %\varsigma_{\bfV}^{n'^+-n'^-} ,
+      & \text{if  $G$ is a real symplectic group};\\
+      \det_{\cX_{\bfV}}^{\frac{n'^+-n'^-}{2}},&  \text{if  $G$ is a quaternionic orthogonal group}; \medskip \\
+      \textrm{the trivial character, } & \text{otherwise}.\\
+    \end{cases}
+  \]%\end{equation}
+  % The role of $\bfV$ and $\bfV'$ is symmetric, and
+  The character $\mktvvp|_{\wtbfK'}$ is given by a similar formula
+  with $n'^+-n'^-$ replaced by $n^--n^+$, where $(n^+, n^-)=\sign{\bfV}$.
+
+  \trivial[h]{
+    The key property of $\mktvvp$ is that $(\mktvvp)^{-2}$ restricted on the
+    conncected component of $\wtK\times \wtK'$ is the determinant
+    of the $\wtbfK\times \wtbfK'$ action on $\cX$.
+
+    We calculate $\det|_\cX$. When $\dotepsilon = 1$, $\cX  = \Hom(\bfV_1,
+    \bfV'^{L',+\bfii}) \oplus \Hom(\bfV_{-1},\bfV'^{L', -\bfii})$ and
+    $\det|_{\cX}(g_1,g_{-1}) = (\det g_1)^{-n'^+}(\det g_2)^{-n'^-}$. (Here by
+    right we should take $\mktvvp|_\bfK$ be the character of half
+    determinant when $G = \rO(p,q)$.
+    However, we always fix the splitting $\rO(p,q)\rightarrow
+    \widetilde{\rO(p,q)}$ so that the $\rO(p)\times \rO(q)$-action
+    on the minimal $K$-type of the Weil
+    representation is trivial.
+
+    When $\dotepsilon = -1$, $\cX = \Hom(\bfV_{+\bfii}, \bfV'_0)\oplus
+    \Hom(\bfV_{-\bfii}, \bfV'_{-1})$. Now $\det|_{\cX}(g) = \det(g)^{-n'^+ +
+      n'^-}$.
+
+    Similarly, when $\dotepsilon' = -1$, $\det|_{\cX}(g') = \det(g)^{n^+ -
+      n'^-}$.
+    These yields the claim.
+  }
+
+  \subsubsection{Lift of algebraic vector bundles}\label{sec:lift.AC}
+
+  In the rest of this section, we assume that $\mathbb p$ is the parity of $\dim \bfV$ if $\epsilon=1$, and  the parity of $\dim \bfV'$ if $\epsilon'=1$.  Then $\mktvvp|_{\wtbfK}$ and
+  $\mktvvp|_{\wtbfK'}$ are $\mathbb p$-genuine.
+
+  Suppose $T\in \Xo$ realizes the descent from  $X = \MMP(T)\in \sO\in \Nil_{\bfK}(\fpp)$
+  to
+  $X' = \MMP'(T)\in \sO'\in \Nil_{\bfK'}(\fpp')$. Let  $\alpha\colon
+  {\bfK}_X\rightarrow {\bfK'}_{X'}$ be the homomorphism as in \cref{eq:alpha}.
+
+  Let $\rho'$ be a $\mathbb p$-genuine algebraic representation  of $\wtbfK'_{X'}$. Then  the representation $\mktvvp|_{\wt{\bfK'}_{X'}}\otimes \rho'$ of $\wtbfK'_{X'}$ descends  to a representation of $\bfK'_{X'}$.  Define
+  \begin{equation}\label{defn:tlift.rho}
+    \dliftv_{T}(\rho'):= \mktvvp|_{\wt{\bfK}_{X}} \otimes (\mktvvp|_{\wt{\bfK'}_{X'}}\otimes \rho')\circ \alpha,
+  \end{equation}
+  which  is a $\mathbb p$-genuine algebraic representation of $\wt{\bfK}_{X}$.
+
+  Clearly $\dliftv_T$ induces a homomorphism from
+  $\cR^{\mathbb p}(\wtbfK'_{X'})$ to $\cR^{\mathbb p}(\wtbfK_X)$.
+  In view of \eqref{idenkr}, we thus have a homomorphism
+  \begin{equation}\label{defn:DS.ch}
+    \xymatrix{
+      \dliftv_{\sO',\sO}\colon \cK^{\mathbb p}_{\sO'}(\wt{\bfK}') \ar[r]&
+      \cK^{\mathbb p}_{\sO}(\wt{\bfK}).
+    }
+  \end{equation}
+  This is independent of the choice of $T$.
+
+
+
+  Suppose $\cO\in\Nil_{\bfG}(\fgg)$ and $\cO'=\DD(\CO)\in \Nil_{\bfG'}(\fgg')$. Using decomposition \cref{eq:dec.KO}, we define a homomorphism
+  \begin{equation}\label{eq:DS.chc}
+    \xymatrix{
+      \dliftv_{\cO',\cO} := \displaystyle\sum_{\substack{\sO\subset \cO\cap \fpp\\ \sO' =
+          \DD(\sO) \subset \fpp'}}\dliftv_{\sO',\sO}\colon \cK^{\mathbb p}_{\cO'}(\wt{\bfK}') \ar[r]&
+      \cK^{\mathbb p}_{\cO}(\wt{\bfK})
+    }
+  \end{equation}
+  where the summation
+  is over all pairs  $(\sO, \sO')$ such that $\sO'\subset \fpp'$ is the descent of
+  $\sO\subset \cO\cap \fpp$.
+
+  % \begin{remark}
+  %   The explicit form of $\KTW|_{\wtK'_{X'}}$ is not important for us. We
+  %   refer the interested reader to \Cref{sec:KTW} for the explicit formula.
+  % \end{remark}
+
+  % Using \Cref{defn:tlift.rho}, we have the following estimate of associated
+  % character by
+
+
+  % Likewise let $\CK_{\KV}(\sO)$ denote the Grothendieck group of the category
+  % of $\KV$-equivariant algebraic vector bundles on $\sO$.  Then
+  % \begin{equation}\label{decomk}
+  %   \CK_{\widetilde \KV}(\sO)=\left\{ \begin{array}{ll}
+  %       \CK_{ \KV}(\sO)\oplus \CK_{\widetilde \KV}^{\mathrm{gen}}(\sO), & \textrm{if } (\epsilon, \dot \epsilon)=(-1,-1);\medskip\\
+  %       \CK_{ \KV}(\sO),&  \textrm{otherwise, } \\
+  %     \end{array}
+  %   \right.
+  % \end{equation}
+  % where $\CK^{\mathrm{gen}}_{\widetilde \KV}(\sO)$ denotes the Grothendieck
+  % group of the category of genuine $\widetilde \KV$-equivariant algebraic
+  % vector bundles on $\sO$.  Here and as usual, ``genuine" means that the
+  % non-trivial element in the kernel of the covering map
+  % $\widetilde \KV\rightarrow \KV$ acts through the scalar multiplication by
+  % $-1$.
+
+
+  % \subsubsection{Lift of algebraic vector bundles II: the generalized descent
+  % case}
+  \medskip
+  Now suppose $\sO'=\gDD_{\bfV,\bfV'}(\sO) \in \Nil_{\bfK'}(\fpp')$ is the
+  generalized decent of $\sO\in \Nil_{\bfK}(\fpp)$. From the discussion in
+  \Cref{def:GD}, there is an $(\epsilon',\dotepsilon')$-space decomposition
+  $\bfV' = \bfV'_1\oplus \bfV'_2$ and an element
+  \[
+  T\in
+  \CX_1^\circ:=\{w\in\Hom(\bfV,\bfV'_1)\mid w\textrm{ is surjective}\}\cap \CX\subseteq \CX^{\mathrm{gen}}
+  \]
+   such that
+  $\sO'_1:= \bfK'_1 \cdot X' \in \Nil_{\bfK'_1}(\fpp'_1)$ is the descent of
+  $\sO$. Here $X' := M'(T)\in \sO'$,
+  $\bfK'_i:= \bfG_{\bfV'_i}^{L'}$ is a
+  subgroup of $\bfK'$ for $i=1,2$, and $\fpp'_1 := \fpp_{\bfV'_1}$.
+
+
+  Let $X := M(T)\in \sO$ and
+  \begin{equation}\label{eq:def.alpha1}
+    \alpha_1\colon \bfK_X \rightarrow \bfK'_{1,X'}
+  \end{equation}
+  be
+  the (surjective) homomorphism defined in
+  \cref{eq:alpha} with respect to the descent from $\sO$ to $\sO'_1$.
+  Then the stabilizer $\bfS_T := \Stab_{\bfK\times
+    \bfK'}(T)$ of $T$ is given by
+  \begin{equation}\label{labst}
+    \bfS_T = \Set{(k,\alpha_1(k)k'_2)\in \bfK\times \bfK' |k\in \bfK \text{ and } k'_2\in \bfK'_2}.
+  \end{equation}
+  For a $\mathbb p$-genuine algebraic representation $\rho'$ of $\wtbfK'_{X'}$, define a
+  representation
+  \begin{equation}\label{defn:glift.rho}
+    \gdlift_{T}(\rho'):= \mktvvp|_{\wt{\bfK}_{X}} \otimes \left((\mktvvp|_{\wt{\bfK}'_{X'}}\otimes
+      \rho')^{\bfK'_2}\right)\circ \alpha_1.
+  \end{equation}
+  Clearly, \cref{defn:glift.rho} is a generalization of \cref{defn:tlift.rho}, as ${\bfK'_2}$ is the trivial group in the latter case.
+  As in the descent case, $\gdlift_{T}$ induces a homomorphism
+  \[
+    \dliftv_{\sO',\sO}\colon \cK^{\mathbb p}_{\wt{\bfK}'}(\sO')
+    \rightarrow \cK^{\mathbb p}_{\wt{\bfK}}(\sO).
+  \]
+  Furthermore, \cref{eq:DS.chc} is extended to the generalized descent case: for every pair $(\cO,\cO')\in \Nil_{\bfG}(\fgg)\times  \Nil_{\bfG'}(\fgg')$ with $\cO' =\gDD_{\bfV,\bfV'}(\cO)$, we define a homomorhism
+  \[
+    \dliftv_{\cO',\cO} := \sum_{\substack{\sO \subset \cO\cap \fpp,\\
+        \sO' = \gDD_{\bfV,\bfV'}(\sO)\subset \fpp'}}\dliftv_{\sO',\sO}\colon \cK^{\mathbb p}_{\wt{\bfK}'}(\cO')
+    \rightarrow \cK^{\mathbb p}_{\wt{\bfK}}(\cO).
+  \]
+
+
+
+
+  \subsubsection{Lift of admissible orbit data}\label{sec:aod}
+  % \subsubsection{Admissible orbit data}
+
+    % The symbol ``$\widetilde{\phantom A}$" will be used in similar situations
+  % without further explanation.
+
+  Now let $\sO$ be a $\bfK$-orbit in $\CO\cap \p$, where
+  $\cO\in \Nil_{\bfG}^{\mathbb p}(\fgg)$. Let $X\in \sO$.   The component group  $A_X:=\bfK_X/\bfK_X^\circ$  is an
+  elementary abelian $2$-group by \Cref{sec:KX}.  Let $\fkk_X$ be the Lie algebra of $\bfK_X$. Denote by $\bbfK_X\rightarrow \bfK_X$ the covering map induced by the covering $\bbfK\rightarrow \bfK$.
+
+
+
+  We make the following definition.
+
+\begin{defn}[{\cite[Definition~7.13]{Vo89}}]\label{def:admD}
+  Let $\gamma_X$ denote the one-dimensional $\bfK_X$-module
+  $\bigwedge^{\rmtop} \fkk_X$ and let $\rdd\gamma_X$ be its
+  differential. \footnote{$\rdd\gamma_X$ is the same as $\rdd\gamma_\fkk$ in
+    \cite[Theorem~7.11]{Vo89} since $\fkk$ is reductive.}  An irreducible
+  representation $\rho$ of $\bbfK_X$ is called \emph{admissible} if
+  \begin{enumT}
+  \item its differential $\rdd\rho$ is isomorphic to a multiple of
+    $\half \rdd\gamma_X$, equivalently,
+    \[
+      \rho(\exp(x)) = \gamma_X(\exp(x/2))\cdot \id, \quad\textrm{for all }x\in
+      \fkk_X\text{, and}
+    \]
+  \item it is $\bpp$-genuine.
+  \end{enumT}
+
+  Let $\Phi_X$ denote the set of all isomorphism classes of admissible
+  irreducible representations of $\bbfK_X$.
+  % Note that $\Phi_X$ may be empty.
+  % \begin{defn}[{\cite[Definition~7.13]{Vo89}}]
+  %   If $\Phi_X\neq \emptyset$, we say that the orbit $\sO:=\bfK\cdot X$ is
+  %   \emph{admissible}.
+\end{defn}
+
+\Cref{def:admD} is obviously consistent with \Cref{defaod}, since a
+representation $\rho\in \Phi_X$ determines an admissible orbit datum
+$\cE\in \cKaod_\sO(\wtbfK)$, where $\cE$ is a $\bbfK$-equivariant algebraic
+vector bundle on $\sO$ whose isotropy representation $\cE_X$ at $X$ is
+isomorphic to $\rho$.  We therefore have an identification
+\begin{equation}\label{idenip}
+  \cKaod_\sO(\wtbfK)=\Phi_X.
+\end{equation}
+\trivial[h]{
+  % \begin{obs}
+  Suppose $\sO$ is an admissible orbit and $X\in \sO$.
+  When $\bfG$ is an orthogonal group or symplectic group then
+  \begin{enumT}
+  \item $\Phi_X$ is a set of one-dimensional representations of $\wtK_X$ and
+  \item
+  \end{enumT}
+  When $\bfG$ is a general linear group. Then $\Phi_X$ is a singleton, since $K_X$
+  is always connected.
+  % \end{obs}
+
+  % \begin{obs}\label{obs:admchar}
+  Suppose $\rho_0 \in \Phi_X$ is a character. Then $\Phi_X = \set{\chi \otimes \rho_0|\chi\in
+    \whAX}$. Furthermore, if $A_X$
+  is abelian, then $\Phi_X$ consists of
+  characters and the tensor product action of the character
+  group $\whAX$ on $\Phi_X$ is free and transitive, i.e. $\Phi_X$ is an $\whAX$
+  torsor.
+  % \end{obs}
+  % \begin{proof}
+  This follows by Mackey theory. Suppose $\rho\in \Phi_X$, then
+  $\Hom_{\nu \bbfK_X^\circ}(\rho, \rho_0)\neq 0$.
+  Therefore, $\rho$ is a sub-representation of
+  \[
+    \Ind_{\nu \bbfK_X^\circ}^{\bbfK_X}(\rho_0|_{\nu \bbfK_X^\circ}) = \Ind_{\nu \bbfK_X^\circ}^{\bbfK_X}
+    \bfone \otimes \rho_0 = \Ind_{\bfK_X^\circ}^{\bfK_X} \bfone \otimes \rho_0.
+  \]
+  Hence $\rho \cong \chi \otimes \rho_0$ for some
+  character  $\chi\in \widehat{A_X}$.
+  The rest is clear.
+  % \end{proof}
+}
+From the structure of $\bfK_X$ in \Cref{lem:KX1} and \Cref{lem:char.res}, it is
+easy to see  that $\Phi_X$ consists of one-dimensional representations.
+\medskip
+
+\begin{lem}\label{lem:Kaod}
+  The tensor product yields a simply transitive action of the character group
+  $\widehat{A_X}$ on the set $\Phi_X$.
+\end{lem}
+\begin{proof}
+  It is clear that we only need to show that $\Phi_X$ is nonempty. Consider a
+  rational dual pair $(\bfV,\bfV')$ such that
+  $\sO' = \DD(\sO) \in \Nil_{\bfK'}(\fpp')$ is the descent of
+  $\sO\in \Nil_{\bfK}(\fpp)$. Suppose that $T\in \Xo$ realizes the descent from
+  $X$ to $X'\in \sO'$. The proof of \cite[Proposition~6.1]{LM} shows that if
+  $\rho'\in \Phi_{X'}$ is admissible, then $\dliftv_T(\rho')$ is
+  admissible.
+  Therefore, we may do reductions and eventually reduce the problem
+  to the case when $\bfV$ is the zero space.  It is clear that $\Phi_X$ is a
+  singleton in this case.
+  \trivial[h]{
+    Note that, the role of $V$ and $V'$ are switched in that proof.
+    The short exact sequence for the proof of \cite[(23)]{LM} still
+    holds since the moment map $M$ is smooth at
+    $T$ (see the property of principle straum in \cite[page 217]{PV} or
+    \Cref{sec:Sdes}).
+  }
+\end{proof}
+
+\begin{remark}
+By \Cref{lem:Kaod}, the set $\cKaod_\sO(\wtbfK)$ of admissible orbit data over
+$\sO$ has $2^r$ elements, where $r$ is the number of orthogonal groups appearing in the decomposition
+of $\bfR_X$ in \Cref{lem:KX1}.
+\end{remark}
+
+As in the proof of Lemma \ref{lem:Kaod},
+the homomorphism \eqref{defn:DS.ch} restricts to a map
+\begin{equation}\label{eq:l.adm}
+  \dliftv_{\sO',\sO}\colon \cKaod_{\sO'}(\wtbfK') \rightarrow \cKaod_{\sO}(\wtbfK).
+\end{equation}
+
+\medskip
+
+\begin{lem}\label{lem:admchar.surj}
+  Let $A$ be the component group of $G$ which is identified with the component
+  group of $\bfK$.  Then the following map is
+  surjective:\footnote{%The component group $A$ of $G$ is
+    % identified with the component group of $\bfK$.
+    Under the identification \eqref{idenip}, the tensor product of a character
+    $\chi\in \whA$ on $\cKaod_{\sO}(\wtbfK)$ is identified with the tensor
+    product of $\chi|_{A_X}$ with the isotropy representation.}
+  \[
+    \xymatrix@C=4em@R=0em{
+      \whA \times \cKaod_{\sO'}(\wtbfK')\ar[r] & \cKaod_{\sO}(\wtbfK),\\
+      (\chi,\cE') \ar@{|->}[r] & \chi \otimes \dliftv_{\sO',\sO}(\cE').  }
+  \]
+  In particular, $\cKaod_{\sO}(\wtbfK)$ is a singleton if $G$ is a quaternionic
+  group.
+\end{lem}
+\begin{proof}
+  This follows from \Cref{lem:char.surj} and \Cref{lem:Kaod}.
+\end{proof}
+
+
+
+
+\trivial[h]{
+  \begin{proof}
+    \begin{enumPF}
+    \item follows from the fact that \begin{enumIL}
+      \item $\gamma_X$ is always trivial since $R_X$ is semisimple and
+      \item $\bfK_X$ is connected.
+      \end{enumIL}
+    \item Recall that $\bfK_X = R_X \ltimes U_X$, where
+      $R_X=\prod_{l} {^{l}{\bfK}}$. Note that $\gamma_X|_{U_X}$ is trivial and
+      \[
+        \gamma_X |_{R_X} = \bigboxtimes_{l} {\det}_{^{l}{\bfK}}^{n_l}
+      \]
+      where $\det_{^{l}{\bfK}}$ is the restriction of the determinant character
+      of $\GL(\bfV`l)$ on $^{l}{\bfK}$, and $n_l$ is a certain non-negative
+      integer.
+
+      % Let $R_{-}=\prod_{l \text{ odd}} {^{l}{\bfK}}$ and
+      % $R_+ = \prod_{l \text{ even}}{^{l}{\bfK}}$.
+      Suppose $G$ is a symplectic group, then $^{l}{\bfK}$ is a product of
+      orthogonal groups for $l$ odd, and a general linear group for $l$ even.
+      The preimage $\breve{^{l}{\bfK}}$ of $^{l}{\bfK}$ is thus a genuine double
+      covering for $l$ even (see \Cref{eq:def.brK}).
+
+      If the parity $\bpp$ is even, then $\Phi_X$ is non-empty if and only if
+      $n_l$ is even for all $l$ even. In that case, one may choose
+      \begin{equation}\label{eq:rho0.sp}
+        \rho_0 =
+        \bigboxtimes_{l\text{ odd}} \bfone \boxtimes \bigboxtimes_{l\text{
+            even}}{\det}_{^{l}{\bfK}}^{n_l/2}
+      \end{equation}
+      and apply %\cref{obs:admchar}.
+
+      If the parity $\bpp$ is odd, then $\Phi_X$ is non-empty if and only if
+      $n_l$ is odd for all $l$ even. One can choose $\rho_0$ as in
+      \eqref{eq:rho0.sp} by replacing $\det_{^{l}{\bfK}}^{n_l/2}$ with the
+      genuine character
+      $\det_{\breve{^{l}{\bfK}}}^{n_l/2}\colon (g,c) \mapsto c^{n_l}$ of
+      $\breve{^{l}{\bfK}}$.
+
+      When $G$ is an orthogonal group, the argument is similar. We leave it to
+      the reader.
+    \end{enumPF}
+  \end{proof}
+}
+
+
+
+
+
+
+
+\message{ !name(sunip_new.tex) !offset(7722) }
+
+\end{document}
+
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% ispell-local-dictionary: "en_US"
+%%% End:
+
+
+
