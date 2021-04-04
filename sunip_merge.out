@@ -6,7 +6,7 @@
 \BOOKMARK [2][]{subsection.1.5}{1.5. Descending painted bipartitions and constructing representations by induction}{section.1}% 6
 \BOOKMARK [2][]{subsection.1.6}{1.6. Computing associated cycles of the constructed representations}{section.1}% 7
 \BOOKMARK [1][]{section.2}{2. Descents of painted bipartitions: combinatorics}{}% 8
-\BOOKMARK [2][]{subsection.2.1}{2.1. Naive descents of painted bipartitions }{section.2}% 9
+\BOOKMARK [2][]{subsection.2.1}{2.1. Naive descent of a painted bipartition }{section.2}% 9
 \BOOKMARK [2][]{subsection.2.2}{2.2. Descents of painted bipartitions}{section.2}% 10
 \BOOKMARK [1][]{section.3}{3. From painted bipartitions to associated cycles}{}% 11
 \BOOKMARK [2][]{subsection.3.1}{3.1. Classical spaces}{section.3}% 12
@@ -26,26 +26,33 @@
 \BOOKMARK [1][]{section.6}{6. Bounding the associated cycles}{}% 26
 \BOOKMARK [2][]{subsection.6.1}{6.1. Associated cycles}{section.6}% 27
 \BOOKMARK [2][]{subsection.6.2}{6.2. Algebraic theta lifts and commutative theta lifts}{section.6}% 28
-\BOOKMARK [2][]{subsection.6.3}{6.3. Regular descents of nilpotent orbits}{section.6}% 29
+\BOOKMARK [2][]{subsection.6.3}{6.3. Regular descent of a nilpotent orbit}{section.6}% 29
 \BOOKMARK [2][]{subsection.6.4}{6.4. Commutative theta lifts and geometric theta lifts}{section.6}% 30
 \BOOKMARK [2][]{subsection.6.5}{6.5. Algebraic theta lifts and geometric theta lifts}{section.6}% 31
 \BOOKMARK [2][]{subsection.6.6}{6.6. Geometries of regular descent}{section.6}% 32
-\BOOKMARK [1][]{section.7}{7. Induced orbits and double geometric lifts}{}% 33
-\BOOKMARK [2][]{subsubsection.7.0.1}{7.0.1. On certain induced orbits}{section.7}% 34
-\BOOKMARK [3][]{subsubsection.7.0.2}{7.0.2. Finishing the proof when G is a real orthogonal group}{subsubsection.7.0.1}% 35
-\BOOKMARK [3][]{subsubsection.7.0.3}{7.0.3. Finishing the proof when G is a real symplectic group}{subsubsection.7.0.1}% 36
-\BOOKMARK [3][]{subsubsection.7.0.4}{7.0.4. Finishing the proof when G is a quaternionic symplectic group}{subsubsection.7.0.1}% 37
-\BOOKMARK [3][]{subsubsection.7.0.5}{7.0.5. Finishing the proof when G is a quaternionic orthogonal group}{subsubsection.7.0.1}% 38
-\BOOKMARK [1][]{section.8}{8. The unipotent representations construction and iterated theta lifting}{}% 39
-\BOOKMARK [2][]{subsection.8.1}{8.1. The construction}{section.8}% 40
-\BOOKMARK [1][]{section.9}{9. Concluding remarks}{}% 41
-\BOOKMARK [1][]{appendix.A}{Appendix A. Combinatorial parameterization of special unipotent representations}{}% 42
-\BOOKMARK [2][]{subsection.A.1}{A.1. Parameterize of Unipotent representations}{appendix.A}% 43
-\BOOKMARK [2][]{subsection.A.2}{A.2. Combinatorics of Weyl group representations}{appendix.A}% 44
-\BOOKMARK [3][]{subsubsection.A.2.1}{A.2.1. Coherent continuation representations}{subsection.A.2}% 45
-\BOOKMARK [1][]{appendix.B}{Appendix B. A few geometric facts}{}% 46
-\BOOKMARK [2][]{subsection.B.1}{B.1. Geometry of moment maps}{appendix.B}% 47
-\BOOKMARK [3][]{subsubsection.B.1.1}{B.1.1. Scheme theoretical results on descents}{subsection.B.1}% 48
-\BOOKMARK [3][]{subsubsection.B.1.2}{B.1.2. Scheme theoretical results on generalized descents of good orbits}{subsection.B.1}% 49
-\BOOKMARK [2][]{subsection.B.2}{B.2. Proof of lem:indR}{appendix.B}% 50
-\BOOKMARK [1][]{section*.2}{References}{}% 51
+\BOOKMARK [1][]{section.7}{7. Nilpotent orbits: combinatorics}{}% 33
+\BOOKMARK [2][]{subsection.7.1}{7.1. Young diagrams, signed Young diagrams and admissible orbit data}{section.7}% 34
+\BOOKMARK [2][]{subsection.7.2}{7.2. Operations on diagrams}{section.7}% 35
+\BOOKMARK [2][]{subsection.7.3}{7.3. Theta lifts of local systems}{section.7}% 36
+\BOOKMARK [2][]{subsection.7.4}{7.4. Induced orbits and double geometric lifts}{section.7}% 37
+\BOOKMARK [1][]{section.8}{8. Properties of painted bipartitions}{}% 38
+\BOOKMARK [2][]{subsection.8.1}{8.1. Vanishing propotition}{section.8}% 39
+\BOOKMARK [2][]{subsection.8.2}{8.2. Tails of painted bipartitions}{section.8}% 40
+\BOOKMARK [2][]{subsection.8.3}{8.3. Some properties of the descent maps}{section.8}% 41
+\BOOKMARK [1][]{section.9}{9. Proof of thmpitau}{}% 42
+\BOOKMARK [1][]{section.10}{10. Associated cycles and the exhaustion of special representations}{}% 43
+\BOOKMARK [2][]{subsection.10.1}{10.1. Properties of L}{section.10}% 44
+\BOOKMARK [2][]{subsection.10.2}{10.2. The initial cases}{section.10}% 45
+\BOOKMARK [2][]{subsection.10.3}{10.3. The general case for `32768C,}{section.10}% 46
+\BOOKMARK [2][]{section*.2}{The case when r1\(\)>r2\(\)}{section.10}% 47
+\BOOKMARK [3][]{section*.3}{Proof of lem:ac0}{section*.2}% 48
+\BOOKMARK [3][]{section*.4}{Proof of lem:C \(a\)}{section*.2}% 49
+\BOOKMARK [2][]{subsection.10.4}{10.4. The general case for `32768B,D}{section.10}% 50
+\BOOKMARK [2][]{section*.5}{Proof of lem:ac0. }{section.10}% 51
+\BOOKMARK [2][]{section*.6}{Proof of lem:BD2 }{section.10}% 52
+\BOOKMARK [2][]{section*.7}{Proof of lem:BD \(a\) }{section.10}% 53
+\BOOKMARK [2][]{section*.8}{Proof of lem:BD \(b\) }{section.10}% 54
+\BOOKMARK [2][]{section*.9}{Proof of lem:BD3 \(b\)}{section.10}% 55
+\BOOKMARK [2][]{section*.10}{Proof of lem:BD3 \(c\)}{section.10}% 56
+\BOOKMARK [2][]{section*.11}{Proof of lem:BD3 \(a\)}{section.10}% 57
+\BOOKMARK [1][]{section*.12}{References}{}% 58
