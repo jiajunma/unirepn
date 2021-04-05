@@ -5,6 +5,11 @@
 \usepackage[bookmarksopen,bookmarksdepth=3,hidelinks]{hyperref}
 \usepackage[nameinlink]{cleveref}
 
+\usepackage[color]{showkeys}
+\makeatletter
+  \SK@def\Cref#1{\SK@\SK@@ref{#1}\SK@Cref{#1}}%
+\makeatother
+
 \usepackage{array}
 %% FONTS
 \usepackage{amssymb}
@@ -4457,7 +4462,7 @@ Suppose that $\rho'$ is a  $(\g_{\sfss'}, K_{\sfss'})$-module of finite length. 
 \end{proof}
 
 
-\subsection{Regular descent of a nilpotent orbit}
+\subsection{Regular descent of a nilpotent orbit} \label{sec:regdes}
 Recall from \eqref{momentmap2}  the moment maps
 \[
     \xymatrix@R=0em@C=3em{
@@ -4823,15 +4828,15 @@ This proves the theorem.
 \def\Msp{M_{\sfss'}}
 
 
-\def\Ks{{K}_{\sfss}}
-\def\Ksp{{K}_{\sfss'}}
-\def\Kspo{{K}_{\sfss'_0}}
-\def\Kspt{{K}_{\sfss'_1}}
+\def\Ks{{K}_{\sfss,\bC}}
+\def\Ksp{{K}_{\sfss',\bC}}
+\def\Kspo{{K}_{\sfss'_0,\bC}}
+\def\Kspt{{K}_{\sfss'_1,\bC}}
 
-\def\Gs{{G}_{\sfss}}
-\def\Gsp{{G}_{\sfss'}}
-\def\Gspo{{G}_{\sfss'_0}}
-\def\Gspt{{G}_{\sfss'_1}}
+\def\Gs{{G}_{\sfss,\bC}}
+\def\Gsp{{G}_{\sfss',\bC}}
+\def\Gspo{{G}_{\sfss'_0,\bC}}
+\def\Gspt{{G}_{\sfss'_1,\bC}}
 \def\CMs{{\tilde M}_{\sfss}}
 \def\CMsp{{\tilde M}_{\sfss'}}
 \def\CMss{{\tilde M}_{\sfss,\sfss'}}
@@ -4862,70 +4867,79 @@ This proves the theorem.
 \def\CXUO{\cX_{\sfss,\sfss'}^{\bar\partial ,\cOp}}
 \def\CXOO{\cX_{\sfss,\sfss'}^{\cO ,\cOp}}
 
-In this section, let $(V,V')$ be a complex dual
-pair. % such that $\dim \bfV' \leq \dim \bfV$.
-We investigate the geometric properties of regular descent.
-
+% In this section, let $(V,V')$ be a complex dual
+% pair.  such that $\dim \bfV' \leq \dim \bfV$.
+In this section, we investigate the geometric properties of regular descent.
+We retain the notation in \Cref{sec:regdes},
+where $\cO\in \Nil(\fggs)$ is regular for $\DDss$.
 
 Let $\ww\in \CMsp^{{-1}}(\cO)\cap \Woss$, and $\Xp = \CMsp(\ww)$.
 By the Jacobian criterion for
 regularity (see \cite[Theorem~2.19]{LiuAG}), the following sequence
 \begin{equation}\label{eq:tt1}
   0\longrightarrow T_{\ww} \CMss^{{-1}}(\Xp) \longrightarrow T_{\ww} \Wss \xrightarrow{\ \rdd \CMsp \ } T_{\Xp}\fggs \end{equation}
-is exact if and only if $\ww$ is regular at $\Wss_{\Xp}$.
+is exact if and only if $\ww$ is regular at the scheme theoretical fiber  
+\[
+  (\Wss)_{\Xp} := \Wss\times_{\fppsp} \Xp.
+\] %$\CMss^{-1}(\Xp)$. % $(\Wss)_{\Xp}$.
 
 We identify  $T_{\ww}\Wss$ and $T_{\Xp}\fggsp$ with $\Wss$ and $\fggsp$
-respectively. Since $(\Gs\times (\Gsp)_{\Xp})\cdot \ww$ is open in $\CMs^{{-1}}(\Xp)$,
+respectively. 
+We view $T_{\ww}\CMsp^{-1}(\Xp)$ as a subspace of $T_{\ww}\Wss = \Wss$.
+Since $(\Gs\times (\Gsp)_{\Xp})\cdot \ww$ is open in $\CMs^{{-1}}(\Xp)$,
 the map
 \[
   \fggs\times (\fggsp)_{\Xp}\xrightarrow{(A,A')\mapsto A'\ww - \ww A} T_{\ww}\CMsp^{-1}(\Xp)
 \]
-is surjective, where we identify $T_{\ww}\CMsp^{-1}(\Xp)$ as a subspace of $\Wss$.
-Then the sequence \eqref{eq:tt1}
+is surjective. 
+Hence the sequence \eqref{eq:tt1}
 is exact if and only if the sequence \eqref{eq:CGG} is exact.
 \begin{equation}\label{eq:CGG}
   \fgg\oplus (\fggs)_{\Xp} \xrightarrow{\ (A,A')\mapsto A'\ww - \ww A \ } W
   \xrightarrow{\ b\mapsto \ww b^{*} + b\ww^{*}\  } \fggs.
 \end{equation}
 
+\def\Wssr{W_{\sfss,\sfss'}^{\prime}}
 
 \begin{lem}\label{lem:CGG}
-The sequence \eqref{eq:CGG} is exact and $W_{\Xp}$ is regular at $\ww$.
+  Suppose $\cO$ is regular for $\DDss$ and $\ww\in \CMsp^{{-1}}(\cO)\cap \Woss$. 
+The sequence \eqref{eq:CGG} is exact and $(\Wss)_{\Xp}$ is regular at $\ww$.
 \end{lem}
 \begin{proof}
 
-  Let $\Vspo:=\ww \Vs$ and $\Vspt$ be the orthogonal complement of $\Vspo$ so
-  that $\Vsp = \Vspo\oplus \Vspt$.
+  Let $\Wssr := \set{w\in \Hom(\Vs,\Vsp)| \text{$w$ is surjective}}$. 
+  Then $\Wssr$ is open in $\Wss$ and 
+  $(\rdd \CMsp)_w: T_{w} \Wss \longrightarrow T_{\CMsp(w)}\fggsp$ is surjective for 
+  every point $w\in \Wssr$.
+  By \cite[Proposition~10.4]{HS}, $\CMsp|_{\Wssr}\colon \Wssr \rightarrow \fggsp$ is smooth.
+  Since $(\Wssr)_{\CMsp(w)}$ is open in $(\Wss)_{\CMsp(w)}$, 
+  we conclude that $(\Wssr)_{\CMsp(w)}$ is smooth at $w$ for every $w\in \Wssr$.   
 
-  Suppose $\abs{\sfss'} = \DDss(\cO)$. Then every element
-  $\ww\in W_{U,\Xp}\subset \Hom(V,V')$ is a surjective morphism and $\Vspt=0$.
-  Therefore $\rdd \Msp \colon T_{\ww} \Wss \longrightarrow T_{\Xp}\fggsp$ is
-  surjective, which implies $\Msp$ is smooth at $\ww$ (\cf
-  \cite[Proposition~10.4]{HS}). Pulling back $\Msp$ via the inclusion
-  $\Xp \hookrightarrow \fggs$, we conclude that $W_{\UU,\Xp}$ is smooth and so
-  regular at $\ww$. This also establishs the exactness of \eqref{eq:CGG}.
+  Suppose $\abs{\sfss'} = \abs{\DDss(\cO)}$. Then $\ww\in \Wssr$ and $(\Wss)_{\CMsp(w)}$
+  is smooth at $\ww$.
+  This also establishs the exactness of \eqref{eq:CGG}.
 
   \smallskip
 
-  Now suppose $\abs{\sfss'}>\DDss(\cO)$ and $\bfcc_{1}(\cO) = \bfcc_{2}(\cO)$.
-  We now establish the exactness of \eqref{eq:CGG}, which concludes the lemma.
-
-
-  Let $\Wssi := \Hom(\Vs,\Vspi)$ and $\fggspi := \fgg_{\sfss_{i}}$ for $i=1,2$.
-  Let $*\colon \Hom(\Vspo,\Vspt) \rightarrow \Hom(\Vspt,\Vspo)$ denote the
+  Now suppose $\abs{\sfss'}>\abs{\DDss(\cO)}$ and $\bfcc_{1}(\cO) = \bfcc_{2}(\cO)$.
+  Let $\Vspo:=\ww \Vs$ and $\Vspt$ be the orthogonal complement of $\Vspo$ so
+  that $\Vsp = \Vspo\oplus \Vspt$.
+  % We now establish the exactness of \eqref{eq:CGG}, which concludes the lemma.
+  Let $\Wssi := \Hom(\Vs,\Vspi)$, $\fggspi := \fgg_{\sfss_{i}}$ for $i=0,1$,
+  and $*\colon \Hom(\Vspo,\Vspt) \rightarrow \Hom(\Vspt,\Vspo)$ denote the
   adjoint map. We have $\Wss =\Wsso \oplus \Wsst$ and
   $\fggsp = \fggspo\oplus \fggspt \oplus \fggpsb$, where
-  \[ \fgg^{\boxslash}:= \Set{\begin{pmatrix}
+  \[ \fggpsb:= \Set{\begin{pmatrix}
         0 & -E^*\\
         E & 0
       \end{pmatrix}|E\in \Hom(\Vspo,\Vspt)}.
   \]
   Now $\ww$ and $\Xp$ are naturally identified with an element $\wwo$ in $\Wsso$
   and an element $\Xpo$ in $\fggspo$ respectively. We have
-  $(\fggsp)_{\Xp} = (\fggspo)_{\Xpo} \oplus \fggspt \oplus \fgg'^{\boxslash}_{\Xpo}$,
+  $(\fggsp)_{\Xp} = (\fggspo)_{\Xpo} \oplus \fggspt \oplus (\fggpsb)_{\Xpo}$,
   where %$\fgg'_{1,X'_1}:= \set{T'_1\in \fgg'_1| [T'_1,X'_1]=0}$ and
   % \begin{equation}\label{eq:fggslash}
-  \[ \fggpsb_{\Xpo} = \Set{\begin{pmatrix}
+  \[ (\fggpsb)_{\Xpo} = \Set{\begin{pmatrix}
         0 & -E^*\\
         E & 0
       \end{pmatrix}|E\in \Hom(\Vspo,\Vspt) \text{ and } E \Xpo = 0}.
@@ -4944,16 +4958,14 @@ The sequence \eqref{eq:CGG} is exact and $W_{\Xp}$ is regular at $\ww$.
   \]
 
 
-  Note that $\Gspo \cdot \Xpo = \cOpo := \DDsso(\cO)$, we have the exactness of
-  the sequence
+  Since $\Gspo \cdot \Xpo = \cOpo := \DDsso(\cO)$ and $\abs{\sfss'_0} = \abs{\DDsso(\cO)}$.
+   we already proved the exactness of the sequence
   \[
     \fggs\oplus (\fggspo)_{\Xpo}\longrightarrow \Wsso \longrightarrow \fggs\oplus \fggspo.
   \]
   It left to show that the following sequence is exact:
   \begin{equation}\label{eq:GG2}
-    \begin{tikzcd}[column sep=5em]
-      \fggpsb_{\Xpo} \ar[r,"\eta_{1}"] & \Wsst \ar[r, "\eta_{2}"] & \Hom(\Vspo, \Vspt).
-    \end{tikzcd}
+      (\fggpsb)_{\Xpo} \xrightarrow{\ \ \ \eta_{1}\ \ \ }  \Wsst \xrightarrow{\ \ \ \eta_{2}\ \ \ } \Hom(\Vspo, \Vspt).
   \end{equation}
   Here $\eta_{1}$ is given by
   ${\tiny \begin{pmatrix} 0 & -E^*\\ E & 0 \end{pmatrix}}\mapsto E \wwo$ and
@@ -4962,7 +4974,7 @@ The sequence \eqref{eq:CGG} is exact and $W_{\Xp}$ is regular at $\ww$.
   \[
     \begin{split}
       \dim \Im(\eta_{1}) &=
-      \dim \fggpsb_{\wwo} \qquad (\text{$\wwo$ is surjective.})\\
+      \dim (\fggpsb)_{\Xpo} \qquad (\text{$\wwo$ is surjective.})\\
       &= \dim\Vspt \cdot \dim (\Vspo/\Im(\Xpo))\\
       &= \dim\Vspt \cdot \dim \Ker(\Xpo)\\
       & = \dim\Vspt \cdot \dim \bfcc_{2}(\cO)
@@ -4979,10 +4991,12 @@ The sequence \eqref{eq:CGG} is exact and $W_{\Xp}$ is regular at $\ww$.
   \]
   Now the exactness of \eqref{eq:GG2} and \eqref{eq:CGG} follow by dimension
   counting.
+  This finishs the proof of the lemma. 
 \end{proof}
 
-Now take $\ww\in \CXss$. Then the sequence \eqref{eq:CGG} is compatible with the
+When $\ww\in \CXss$, the sequence \eqref{eq:CGG} is compatible with the
 $(L_{\sfss},L_{\sfss'})$-actions.
+
 \begin{lem}\label{lem:GG}
   Suppose $\ww\in \CXOO$ and $\Xp :=\Msp(\ww)$. Then following sequence is exact.
   \begin{equation}
@@ -5005,8 +5019,8 @@ We now recall the following lemma in EGA.
   \begin{enuma}
     \item  If $X$ is reduced at the point $x$, then $Y$ is reduced at $y$.
     \item We assume $f$ is of finite presentation at the porint $x$.
-    If $Y$ is reduced at $x$ and $x$ is reduced at the scheme theoretical fiber
-    $X_{y}$, then $X$ is reduced at $x$. \qed
+    If $Y$ is reduced at $y$ and  the scheme theoretical fiber
+    $X_{y}$ is reduced at $x$, then $X$ is reduced at $x$. \qed
   \end{enuma}
 \end{lem}
 
@@ -5016,7 +5030,7 @@ We now recall the following lemma in EGA.
     \CXUO:=\CX_{\sfss, \sfss'}^{\bar \partial}\times_{\p_{\sfss'}} ({\CO'}\cap \p_{\sfss'}) \longrightarrow  \cO'\cap \fppsp
   \]
   Since $\cO'\cap \fppsp$
-  is a finite union of $\Ksp$-orbits, the above morphism is flat  by generic
+  is a finite union of open $\Ksp$-orbits, the above morphism is flat  by generic
   flatness \cite[Th\'eor\`eme~6.9.1]{EGAIV2}.
   By \Cref{lem:GG}, $\CXUO \times_{\fppsp} \Xp$ is regular at every point $\ww$ since
   it is a open subscheme of $\CXss\times_{\fppsp}\Xp $ and $\ww\in \CXOO$.
@@ -5032,7 +5046,7 @@ paper.
   \[
     \Wss\times_{\fggs\times \fggsp} \big( (\fggs - \partial \cO)\times \cOp\big)
   \]
-  is a reduced scheme. \qed
+  is a smooth scheme. \qed
 \end{lem}
 
 
@@ -5083,7 +5097,8 @@ and of finite presentation over $\cO_{X_{U}}$.
   \begin{equation}\label{eq:aod}
     \wedgetop (\fkks)_{\X}  = \wedgetop (\fkksp)_{\Xp} \otimes \left(\wedgetop \CXss\right)^{{-1}}
   \end{equation}
-  as $(\Ks\times \Ksp)_{\ww}$-module.
+  as $(\Ks\times \Ksp)_{\ww}$-module. In particular, the $\Kspt$-action is trivial on the right hand side 
+  of \eqref{eq:aod}.
 \end{lem}
 \begin{proof}
   We retain the notation in the proof of \Cref{lem:CGG} abd \Cref{lem:GG}.
@@ -5097,19 +5112,19 @@ and of finite presentation over $\cO_{X_{U}}$.
     0\longrightarrow (\fkks\oplus (\fkksp)_{\Xp})/ \fss_{\ww}
     \longrightarrow \CXss \longrightarrow \fpppso \oplus \fpppsb \longrightarrow 0,
   \]
-  where $\fpppsb = \fggpsb\cap \fpp$.
+  where $\fpppsb = \fggpsb\cap \fppspt$.
 
-  Note that the $S_{\ww}$-modules $\wedgetop \fkks$, $\wedgetop \fkkspt$,
+  Note that the $S_{\ww}$-modules $\wedgetop \fkks$, $\wedgetop \fkksp$,
 $\wedgetop \fpppst$ and $\wedgetop \fggsp$ are trivial.
-  Now
+We have
   \[
     \begin{split}
       & \wedgetop (\fkksp)_{\Xp} \otimes \left(\wedgetop \CXss\right)^{{-1}}\\
       & = \wedgetop (\fkksp)_{\Xp} \otimes
-      \left(\wedgetop  \big((\fkks\oplus (\fkksp)_{\Xp})/\fss_{\ww}\big)
-        \otimes \wedgetop \fpppso \otimes \wedgetop\fpppsb\right)^{-1}\\
+      \left(\wedgetop  \big((\fkks\oplus (\fkksp)_{\Xp})/\fss_{\ww}
+        \oplus \fpppso \oplus \fpppsb\big) \right)^{-1}\\
       & =  \wedgetop (\fss_{\wwo} \oplus \fkkspt) \otimes
-      \left(\wedgetop (\fkks \oplus \fkksp\oplus \fpppso \oplus \fpppsb )\right)^{{-1}} \\
+      \left(\wedgetop (\fkks \oplus \fkksp\oplus \fpppso \oplus \fpppsb \oplus \fppspt )\right)^{{-1}} \\
       & = \wedgetop \fss_{\wwo} \otimes \left(\wedgetop \fggsp  \right)^{-1}\\
       & \qquad \text{(by $\fkksp \oplus \fpppso \oplus \fpppsb \oplus \fpppst = \fggsp $ )}\\
       & = \wedgetop (\fkks)_{\X}.
@@ -5944,6 +5959,11 @@ $\cE\in \cK_{\sfss''}(\cO'')$.
 
 
 
+
+\section{Proof of \Cref{thmpitau}}
+to be added by Binyong.
+
+
 \section{Properties of painted bipartitions}
 \def\ckfgg{{\check \fgg}}
 \def\pcT{\cT^+}
@@ -6512,8 +6532,6 @@ is injective. \qed
 \end{cor}
 
 
-\section{Proof of \Cref{thmpitau}}
-to be added by Binyong.
 
 %\section{Marked Young diagrams attached to the painted bipartitions: combinatorics} \label{sec:ACC}
 \section{Associated cycles and the exhaustion of special representations} \label{sec:ACC}
