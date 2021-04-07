@@ -5593,6 +5593,8 @@ diagram $\cO$ such that  such that
 \]
 By abuse of notaition, we identify $\cO$ with the orbit $\GC\cdot \X$.
 
+\def\Xslt{\mathring{\bfee}}
+\def\eslt{\mathring{X}}
 
 Let $\slt$ be the complex Lie algebra consisting of $2\times 2$ complex matrices
 of trace zero. Put
@@ -5756,9 +5758,25 @@ signed Young diagram $\sO$ (see \Cref{eg:MYD}) is also useful, which is given by
     \sum_{i\in \bN^{+}} \big(q_{2i},p_{2i} \big)
       + \sum_{i\in \bN^{+}} \big(p_{2i-1},q_{2i-1} \big).
 \]
-
-
-\medskip
+For each $\sO\in \SYD_\star$ define the naive desent $\DDn(\sO)\in
+\SYD_{\star'}$ by
+\[\big(\DDn(\sO)\big)(i) = \sO(i+1) \quad \text{for } i \in \bN^+.\]
+Now we can explicitly describe the decent map $\DDss$. 
+\begin{prop}\label{prop:DDss} 
+Suppose $\sfss=(\star,p,q)$ and
+$\sfss'=(\star,p',q')$. A nilpotent orbit $\sO\in \Nil_{\Ks}(\fpps)$ is in the
+image of moment map if and only if 
+\begin{equation}\label{eq:DDss1}
+  (p_0,q_0):= (p',q') - \Sign(\DDn(\sO)) \succeq (0,0).
+\end{equation}
+When \eqref{eq:DDss1} is satisfied, the desecnt $\sO' := \DDss(\sO)$ 
+is given by 
+\begin{itemize}
+\item $\sO'(1) = (\star'_1,p_2+p_0, q_2+q_0)$ where $\star'_1\sim \star'$ and  
+$(\star_2,p_2,q_2)=\sO(2)$;
+\item $\sO'(i) = \sO(i+1)$ for $i\geq 2$. \qed
+\end{itemize}
+\end{prop}
 
 \subsubsection*{Marked Young diagram classification of equivariant line bundles}
 \def\KCs{K_{[\sfss],\bC}}
@@ -6186,86 +6204,75 @@ Here the vertical arrows are given by our parameterization of admissible orbit d
 \label{subsec:induced}
 \def\indsss{\Ind_{G_{\sfss'}}^{G_{\sfss''}}}
 \def\indss{\Ind_{G_{\sfss',\bC}}^{G_{\sfss'',\bC}}}
+\def\WFw{{\mathrm{WF^{weak}}}}
+\def\fggor{\fgg_{1,\bR}}
+\def\frror{\frr_{1,\bR}}
+\def\fnnor{\fnn_{1,\bR}}
+\def\sOpr{\sO'_\bR}
+\def\sOr{\sO_\bR}
+\def\Indrg{\Ind_{R_{1}}^{G_{1}}}
 
-In this section we compute the weak associated cycle  
+In this section, we describe the weak associated cycle  
 of the induced representations appeared in \Cref{doubtt}. 
 
-The main step in the proof of \Cref{prop:Ch.eq} consists of comparison of bound of the associated cycle of
-$\Thetab_{\abfV,\bfV^\perp}(\Thetab_{\bfV,\abfV}(\pi))$ with the formula (due to Barbasch) of the wavefront cycle of
-a certain parabolically induced representation.
-
- In this section, let $\fgg_\bR
-=\fgg^J$ be the Lie algebra of $G$, which is identified with its dual space $\fgg^*_\R$ under the trace from. Let $\Nil_{G}(\mathbf i \fgg_\bR)$
-denote the set of nilpotent $G$-orbits in $\mathbf i\fgg_\bR$. Similar notation will be used without further explanation. For example, for every Levi subgroup $M$  of $G$, $\fmm_\bR$ denotes its Lie algebra, which is  identified with the dual space $\fmm^*_\bR$ by using the trace form on $\fgg$.
-
- Let
-\[
-\KS\colon \Nil_{G}(\mathbf i\fgg_\bR) \rightarrow \Nil_{\bfK}(\fpp)
+We first recall the notion of induction of real nilpotent orbits. Let $G_1$ be
+an arbitrary real reductive group and let $P_1$ be a real parabolic subgroup of
+$G_1$, namely a closed subgroup of $G_1$ whose Lie algebra is a parabolic
+subalgebra of $\fgg_{1,\bR}$. Let $N_1$ be the unipotent radical of $P_1$ and
+$R_1:=P_1/N_1$. Write
+\[ 
+r_1:  \fgg_{1, \bR}/\fnn_{1, \bR}\longrightarrow  \, \frr_{1, \bR}
 \]
- be the natural
-bijection given by the Kostant-Sekiguchi correspondence
-(\emph{cf}. \cite[Equation~(6.7)]{SV}).
-By abuse of notation, we also let $\ssD$ denote the map $\ssD\circ
-\KS\colon  \Nil_{G}(\mathbf i\fgg_\bR) \rightarrow \ssP$. See \Cref{subsec:SYD} for the parametrization map $\ssD \colon
-\Nil_{\bfK}(\fpp) \rightarrow \ssP$.
-
-
-\begin{thm}[\emph{cf}. Barbasch {\cite[Corollary~5.0.10]{B.Orbit}}]\label{thm:Bar}
-  Let $G_1$ be an arbitrary real reductive group and let $P_1$ be a real
-  parabolic subgroup of $G_1$, namely a closed subgroup of $G_1$ whose Lie
-  algebra is a parabolic subalgebra of $\g_{1,\bR}$. Let $N_1$ be the unipotent
-  radical of $P_1$ and $M_1:=P_1/N_1$. Write
-  $$r_1: \bfii (\fgg_{1, \bR}/\fnn_{1, \bR})^*\longrightarrow \bfii \, \fmm_{1,
-    \bR}^*$$ for the natural map.  Let $\pi_1$ be a Casselman-Wallach
-  representation of $M_1$ with the wavefront cycle
+We define a morphism 
 \[
-\WF(\pi_1) =
-\sum_{\sOR\in \Nil_{M_1}(\bfii \frak m^*_{1,\bR})} \rcc_{\sOR} [\sOR].
+  \Indrg \colon \bZ[\Nil(\frror)]\longrightarrow  \bZ[\Nil(\fggor)]
 \]
+by 
+\[
+  \Indrg (\sOpr) =  \sum_{\sOr} \frac{\# C_{G_1}(v)}{\#
+  C_{P_1}(v)} \sOr
+\]
+where $\sOr$ running over all open orbits in $G\cdot(\sOpr+\fnnor)$, $v\in
+\sOr$, $C_{G_1}(v)$ and $C_{P_1}(v)$ are the component groups of the
+centralizers of $v$ in $G_1$ and $P_1$ respectively. Note that the definition
+only depends on the Levi subgroup $R_1$ but indpendent of the choice of the
+parobolic subgroup $P_1$.  
+The induction of complex nilpotent orbit is defined similarly. 
+
+
+\begin{thm}[\emph{cf}. Barbasch {\cite[Corollary~5.0.10]{B.Orbit}}]
+  \label{thm:Bar} 
+  Let $\pi'$ be a Casselman-Wallach representation of $R_1$. 
 Then
 \[
-\WF(\Ind^{G_1}_{P_1} \pi) = \sum_{(\sOR, \sOR')} \rcc_{\sOR}\frac{\# C_{G_1}(v')}{\#
-  C_{P_1}(v')}
-[\sOR'],
+\WFw(\Ind^{G_1}_{P_1} \pi') = \Indrg (\WFw(\pi')).
 \]
-where the summation runs over all pairs $(\sOR, \sOR')$ such that $\sOR \in \Nil_{M_1}(\bfii \frak m^*_{1,\bR})$ and $\sOR' \in \Nil_{G_1}(\bfii \frak g^*_{1,\bR})$ is an induced orbit of $\sOR$, $v'$ is an element  of  $\sOR'\cap r_1^{-1}(\sOR)$, and $C_{G_1}(v')$ and $C_{P_1}(v')$ are the component groups of the centralizers of
-$v'$ in $G_1$ and $P_1$, respectively.
 \end{thm}
 
-\begin{remarks}
-\begin{enumR}
-\item While Barbasch proved the theorem when $G_1$ is the real points of a connected
-  reductive algebraic group, his proof still works in the slightly more general setting of \Cref{thm:Bar}.
-\item The notion of induced nilpotent orbits was introduced by Lusztig and Spaltenstein for complex reductive groups \cite{LS}. For a real reductive group $G_1$, a nilpotent orbit $\sOR' \in \Nil_{G}(\mathbf i \fgg^*_{1,\bR})$ is called an induced orbit of a nilpotent orbit $\sOR\in
-  \Nil_{M_1}(\mathbf i \fmm_{1,\bR}^*)$ if $\sOR'\cap r_1^{-1}(\sOR)$ is open in
-  $r_1^{-1}(\sOR)$ (see \cite[Definition~5.0.7]{B.Orbit} or \cite{Ohta2}).
-  We write $\Ind_{P_1}^{G_1} \sOR$ for the set of all induced orbits of $\sOR$. Similar notation applies for a complex reductive group.
-  %When $G_1$ is moreover a  complex reductive group,  write $\fgg_1$ for its Lie algebra and write $\fmm_1$ for the Lie algebra of $M_1$. Then for each complex nilpotent orbit $\cO_{1}\in \Nil_{M_1}(\fmm^*_{1})$, the induced %orbit $\Ind_{P_1}^{G_1} \cO_{1}\in \Nil_{G_1}(\fgg^*_{1})$ is similarly defined, as in \cite[Chapter 7]{CM}.
+While Barbasch proved the theorem when $G_1$ is the real points of a connected
+reductive algebraic group, his proof still works in the slightly more general
+setting of \Cref{thm:Bar}.
 
-  \item   According to the fundamental result of Schimd-Vilonen \cite{SV}, the wave front cycle
-  and the associated cycle agree under the Kostant-Sekiguchi correspondence. We thank Professor Vilonen for confirming that their result extends
-  to nonlinear groups. Therefore the associated cycle of a parabolically induced
-  representation as in the above theorem of Barbasch is also determined.
-\end{enumR}
-\end{remarks}
+According to the fundamental result of Schimd-Vilonen \cite{SV}, the weak wave
+front cycle and the weak associated cycle agree under the Kostant-Sekiguchi
+correspondence. We thank Professor Vilonen for confirming that their result
+extends to nonlinear groups. Therefore the weak associated cycle of a
+parabolically induced representation can be read from \Cref{thm:Bar}.
 
-In this subsection, we provide various formulas for the induced orbits and double
-geometric theta lifts. 
+\medskip
 
-Suppose $\sfss' = (\star',p',q')$. In this sectoin, we let $\cOp\in\Nil(\fggsp)$.
-Fix $l\in \bN$ such that $l\geq \bfcc_2(\cOp)$. 
-%Let $t\in \bN, \delta \in
-%\set{0,1}$ such that $2t+\delta = \abs{l-\bfcc_1(\cOp)}$.
-
-It is elementary to check the following lemma on the orbit induction. 
-\begin{lem}\label{lem:ind}
-Let $\sfss'' =(\star',p'+l,q'+l)$ and $t = l-\bfcc_1(\cOp)$.
-Let $\cOpp:=\indss(\cOp)$ and . % is the nilpotent oribt in $\fggspp$
-    $\sOp\in \Nil_{\sfss'}(\cOp)$.
+Using our parameterization of rational nilpotent orbits, we now present the following lemma on the orbit induction. 
+\begin{lem}\label{lem:ind} 
+Suppose $\sfss' = (\star',p',q')$ and
+$\cOp\in\Nil(\fggsp)$. Fix $l\in \bN$ such that $l\geq \bfcc_2(\cOp)$ and let
+$\sfss'' =(\star',p'+l,q'+l)$. 
+Let $\cOpp:=\indss(\cOp)$, $\sOp\in
+\Nil_{\sfss'}(\cOp)$ and $t = l-\bfcc_1(\cOp)$. 
+ Then $\cOpp$ satisfies 
+    $\bfcc_i(\cOpp)=\bfcc_{i-2}(\cOp)$ for $i\geq 4$. 
   \begin{enuma}
     \item Suppose $\star'\in \set{B,D}$.
-    Then $\cOpp$ satisfies 
-    $\bfcc_i(\cOpp)=\bfcc_{i-2}(\cOp)$ for $i\geq 4$ and
+    Then 
     \[
       (\bfcc_1(\cOpp), \bfcc_2(\cOpp),\bfcc_3(\cOpp))
       =\begin{cases}
@@ -6288,8 +6295,7 @@ Let $\cOpp:=\indss(\cOp)$ and . % is the nilpotent oribt in $\fggspp$
       \end{cases}
     \]
     \item Suppose $\star'\in \set{C,\wtC}$.
-    Then $\cOpp$ satisfies
-    $\bfcc_i(\cOpp)=\bfcc_{i-2}(\cOp)$ for $i\geq 4$ and
+    Then 
     \[
       (\bfcc_1(\cOpp), \bfcc_2(\cOpp),\bfcc_3(\cOpp))
       =\begin{cases}
@@ -6315,8 +6321,7 @@ Let $\cOpp:=\indss(\cOp)$ and . % is the nilpotent oribt in $\fggspp$
     \]
     \item Suppose $\star' \in \set{C^*,D^*}$. 
     Note that  $l$ and $k$ are even integers in this case.  
-    Then $\cOpp$ satisfies 
-    $\bfcc_i(\cOpp)=\bfcc_{i-2}(\cOp)$ for $i\geq 4$ and
+    Then 
     \[
       (\bfcc_1(\cOpp), \bfcc_2(\cOpp),\bfcc_3(\cOpp))
       =\begin{cases}
@@ -6354,6 +6359,8 @@ Let $\cOpp:=\indss(\cOp)$ and . % is the nilpotent oribt in $\fggspp$
   \end{enuma}
 \end{lem}
 
+
+\delete{
 Retain the notation in \Cref{lem:ind}.
 %Let $n\in \bN$ such that $n\geq \abs{\DDn(\cOpp)}$. 
 Let 
@@ -6441,6 +6448,7 @@ $\cE\in \cK_{\sfss''}(\cO'')$.
   and the inequality can be strict in general. \qed
   \end{enuma}
 \end{lem}
+}
 
 
 
