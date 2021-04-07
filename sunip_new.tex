@@ -4833,6 +4833,7 @@ This proves the theorem.
 \def\Kspo{{K}_{\sfss'_0,\bC}}
 \def\Kspt{{K}_{\sfss'_1,\bC}}
 
+\def\Gsr{{G}_{\sfss}}
 \def\Gs{{G}_{\sfss,\bC}}
 \def\Gsp{{G}_{\sfss',\bC}}
 \def\Gspo{{G}_{\sfss'_0,\bC}}
@@ -5145,6 +5146,7 @@ We have
 \def\YD{{\mathsf{YD}}}
 \def\SYD{{\mathsf{SYD}}}
 \def\MK{\mathsf{MK}}
+\def\MK{\widetilde{\mathsf{CS}}}
 \def\MYD{{\mathsf{MYD}}}
 \def\AND{\quad\text{and}\quad}
 \def\deti{{\det}_{\sqrt{-1}}}
@@ -5229,9 +5231,10 @@ $\cO$ as the function
 \[
   \cO\colon \bfN^{+} \rightarrow \bN \text{ such that } \cO(i) = \dim \VV{i}.
 \]
-
+Let $\YD_\star$ denote the set of all Young diagrams of type $\star$. 
 % Let $\SLT_{i}\colon  \slt\rightarrow \mathfrak{gl}_{n}(\bC)$ be the representation
 %  of $\slt$ on $\St{i}$.
+
 \subsubsection*{Signed Young diagram classifcation of rational nilpotent orbits}
  We equip $\St{i}$ with a ``standard'' classical space structure
  $(\St{i},\inn{}{}_{\St{i}},J_{\St{i}},L_{\St{i}})$.% with classical symbol $(\star_{i},p_{i},q_{i})$.
@@ -5258,7 +5261,7 @@ structure on $\Vs$ by \cite{Se} (also see \cite[Section~6]{Vo89}).
 %  We define a equivalent relation on the set $\set{B,C,\wtC,D,C^{*},D^{*}}$ with
 %  the relation $B\sim D$ and $C\sim \wtC$.
 More precisely, $\slt$-isotypic components $\VV{i}\otimes \St{i}$ 
-are invariant under the $J$ and $L$ actions. 
+are invariant under the $\Js$ and $\Ls$ actions. 
 In this case, the multiplicity space $\VV{i}$ have a unique classical space
 structure $(\VV{i}, \inn{}{}_{\VV{i}},J_{i},L_{i})$ with classical signature
 $\sfss_{i}=(\star_{i},p_{i},q_{i})$ such that $\star_{i}\neq \wtC$ and
@@ -5284,6 +5287,7 @@ and uniquely determined the orbit $\sO$.
 \smallskip
 
 \def\CCSS{\overline{\mathsf{CS}}}
+\def\CCSS{{\mathsf{CS}}}
 Let
 \[
 \CCSS := \set{(\star,p,q)| \star\neq \wtC \text{ and }(\star,p,q) \text{ is a classical signature}}.
@@ -5302,39 +5306,33 @@ Define
 \[
   \begin{split}
   \SYD_{\star}(\cO) &:=\Set{\sO\colon \bN^{+}\rightarrow \CCSS| \begin{minipage}{9em}
-      %$\star_{\sO( i )}$ equals $\star$ if $i$ is odd,\\% \\
-      %$\star_{\sO( i )}$ equals $\star'$ otherwise, \\
       $\star_{\sO(i)}$ satisfies \eqref{eq:ssrel},\\
       $\sfmm\circ \sO = \cO$
-      % % $\star_{\sO( i )} $
-      % %$\star'$ if $i$ is even, \\
-      % $p_{\sO(i)}=q_{\sO(i)}=0$ except for finite many $i$.
       \end{minipage}
     }\\
     \SYD_{\star} &:= \bigsqcup_{\cO\in \Nil_{\star}} \SYD_{\star}(\cO).
   \end{split}
 \]
 Now $\SYD_{\star}$ is naturally identified with the set
-$\bigsqcup_{\sfss}\Nil(\fpp_{\sfss})$.
-This is nothing but the signed Young diagram classification of rational
-nilpotent orbits, see \cite{CM}.
+$\bigsqcup_{\sfss}\Nil_{\Ks}(\fpp_{\sfss})$ where $\sfss$ running over all
+classical signatures of type $\star$. This is nothing but the signed Young
+diagram classification of rational nilpotent orbits, see \cite{CM}.
 
 A important feature of a compatible $\SLT$ map is that the Kostant-Sekiguchi
 correspondence is given by 
-%classifies the set $\Nil(\fgg_{\sfss})$ of
-%real nilpotent orbits, and
 \[
-  G_{\sfss}\cdot \SLT(\eslt) \leftrightarrow  \KC[\sfss]\cdot \SLT(\Xslt).
+  \Gsr \cdot \SLT(\eslt) \longleftrightarrow  \Ks\cdot \SLT(\Xslt).
 \]
 Therefore, we also identify $\SYD_\star$ with the set of real nilpotent
-orbits $\bigsqcup_{\sfss}\Nil(\fgg_{\sfss})$. 
+orbits $\bigsqcup_{\sfss}\Nil_{\Gsr}(\fgg_{\sfss})$ where $\sfss$ running over all
+classical signatures of type $\star$. 
 
 \smallskip
 
 For any $\sO\in \SYD_{\star}$, let $\Sign(\sO) = (p,q)$ if $\sO$
 corresponds to a nilpotent orbit in $\Nil_{\sfss}(\fpps)$ with the classical
 signature $\sfss=(\star,p,q)$. The
-signature $\Sign(\sO)$ is computed by the following formula:
+signature $\Sign(\sO)$ can be computed directly by the following formula:
 \[
   \begin{split}
     \Sign(\sO) = &
@@ -5366,59 +5364,68 @@ which is identified with $\Nil_{\sfss}(\cO)$.
 \def\KCsX{(K_{[\sfss],\bC})_{\X}}
 \def\KCsoX{(K_{[\sfss],\bC})_{\X}^{\circ}}
 %For a classical signature $\sfss$, 
-Suppose $\sO\in \Nil(\bfpp_{\sfss})$, $\SLT$ is
-compatible with $\sO$ and $\X = \SLT(\Xslt)\in \sO$. Let
+Suppose $\sO\in \Nil(\bfpp_{\sfss})$ and $\SLT$ is
+compatible with $\sO$. Let  $\X := \SLT(\Xslt)\in \sO$,
 \[
   \KCs := \GC^{L_{\sfss}}, \quad \text{and}\quad
   \KCsX:=\Stab_{\KC[[\sfss]]}(\X)
 \]
 be the stabilizer of $\X$ in $\KCs$.
 % centralizer of $\Im(\phi)$ in $\KC[\sfss]$.
-Using the signed Young diagram classification, we have the following well known
-fact of the isotropic subgroup.
+Using the signed Young diagram classification of $\sO$, we have the following
+well known fact of the isotropic subgroup.
 
-\begin{lem}\label{lem:KX1}
-  The isotropoic subgroup have decomposition 
-  $(\KCsX= R_\X\ltimes U_\X$, where
-  $U_\X$ is the unipotent radical of $\KCsX$ and $R_{\X}$ is a
-  reductive group canonically identified with
+\begin{lem}\label{lem:KX1} 
+  The isotropoic subgroup have decomposition $(\KCsX= R_\X\ltimes U_\X$, where
+  $U_\X$ is the unipotent radical of $\KCsX$ and $R_{\X}$ is a reductive group
+  canonically identified with
   \[
     \prod_{i\in \bN^{+}} \KC[[\sfss_{\sO(i)}]].
   \]
+  \qed
 \end{lem}
-As a consequence, $R_{\X}$ is a products of complex general linear group 
-with  complex symplectic groups or orthogonal groups
-\[
-  \prod_{\substack{\sO(i)=(\star_{i},p_{i},q_{i})\\
-      \star_{i}\in \set{B,D}, p_{i}+q_{i}>0
-    }} \rO_{p_{i}}(\bC)\times \rO_{q_{i}}(\bC).
-\]
+
+As a consequence, $R_{\X}$ is a products of complex general linear groups
+with  complex symplectic groups or orthogonal groups.
+% As a consequence, $R_{\X}$ is a products of complex general linear group 
+% with  complex symplectic groups or orthogonal groups
+% \[
+%   \prod_{\substack{\sO(i)=(\star_{i},p_{i},q_{i})\\
+%       \star_{i}\in \set{B,D}, p_{i}+q_{i}>0
+%     }} \rO_{p_{i}}(\bC)\times \rO_{q_{i}}(\bC).
+% \]
+
+
 
 \medskip
 
 \def\DCO#1{\mathsf{LB}_{#1}(\sO)}
+\def\KsoX{{(\Ks)_{\X}^{\circ}}}
+\def\KsX{(\Ks)_{\X}}
 
-Fix a one-dimensional character $\chi$ of the connected component $\KCsoX$ of 
-$\KCsX$.
-Let
+Recall that $\Ks$ is a dobule cover of $\KCs$ if $\star =  \wtC$ and $\Ks = \KCs$ otherwise. 
+Fix a one-dimensional character $\chi$ %of the connected component $\KsoX$
+ of $\KsX$. We assume $\chi$ is a genuine character if$\star=\wtC$.
+
+Let $\KsoX$ be the connected component of $\KsX$ and 
 \[
-\DCO{\chi} := \set{\text{line bundle $\cE$ on $\sO$ such that $\KCsoX$
-    acts on the fiber $\cE_{x}$ by $\chi$}}.
+\DCO{\chi} := \set{\text{$\Ks$-equivariant line bundle $\cE$ on $\sO$ 
+such that $\cE_{\X}\mid_{\KsoX}=\chi\mid_{\KsoX}$}}.
 \]
 By the structure of $R_{\X}$, a line bundle $\cE\in \DCO{\chi}$ is completely
-determined by the restruction of the $\KCsX$-module $\cE_{\X}$ on the
-the orthogonal factors of $R_{\X}$.
+determined by the restruction of the $\KsX$-module $\cE_{\X}$ on the the
+orthogonal group factors of $R_{\X}$. We introduce marked Young diagrams to
+parameterize the restrictions. 
 
 Let
 \[
   \MK = \CCSS \cup \set{(\star,r,s)|\star\in \set{B,D}, r,s\in \bZ}.
 \]
-We identify $\cE \in \DCO{\chi}$ with the map
+Suppose $\sO(i)=(\star_{i},p_{i} q_{i})$. We identify $\cE \in \DCO{\chi}$ with the map
 \[
   \cE\colon \bN^{+}\rightarrow  \MK
 \]
-such that,
-for $\sO(i)=(\star_{i},p_{i} q_{i})$,
+such that
 \begin{itemize}
   \item $\cE(i) := \sO(i)$ if $\star_{i} \notin \set{B,D}$;
   \item $\cE(i) := (\star_{i},(-1)^{\epsilon^{+}_{i}}p_{i},(-1)^{\epsilon^{-}_{i}}q_{i})$
@@ -5434,9 +5441,13 @@ for $\sO(i)=(\star_{i},p_{i} q_{i})$,
         \].
 \end{itemize}
 
+%  $\sF\colon \MK\rightarrow \CCSS$ be the map given by
+% $(\star,r,s)\mapsto (\star,\abs{r},\abs{s})$ 
 Let
- $\sF\colon \MK\rightarrow \CCSS$ be the map given by
-$(\star,r,s)\mapsto (\star,\abs{r},\abs{s})$ and
+\begin{equation}\label{eq:F1}
+\sF\colon \MK\rightarrow \CCSS\qquad (\star,r,s)\mapsto (\star,\abs{r},\abs{s}),
+\end{equation}
+and
 \[
   \MYD(\sO) := \Set{\cE\colon \bN^{+}\rightarrow \MK|\sF\circ \cE=\sO }.
 \]
@@ -5448,24 +5459,23 @@ identify $\MYD(\sO)$ with the set $\DCO{\chi}$ when the later set is non-empty.
 
 Let
 \[
-  \MYD_{\sfss}(\cO) := \bigcup_{\sO\in \Nil_{\sfss}(\cO)}\MYD(\sO),% \quad
-  \AND
-  \MYD_{\star}(\cO) := \bigcup_{\sO\in \Nil_{\star}(\cO)}\MYD(\sO)
-  %\MYD := \bigsqcup_{\star\in\set{B,C,D,C^{*},D^{*}}} \MYD_{\star}
+  \MYD_{\sfss}(\cO) := \bigcup_{\sO\in \SYD_{\sfss}(\cO)}\MYD(\sO).% \quad
 \]
- In particular, we identify $\AOD_{\sfss}(\cO)$ with a subset of
- $\MYD_{\star}(\cO)$, see \Cref{defaod}.
-
-
- % By abuse of notation, we identify $\SYD_{\star}$ with a subset of
-Set
+Then we identify $\AOD_{\Ks}(\cO)$ with a subset of
+ $\MYD_{\sfss}(\cO)$, see \Cref{defaod}.
+We also set 
 \[
-  \MYD_{\star} := \bigcup_{\cO\in \Nil_{\star}}\MYD_{\star}(\cO),
+  % \MYD_{\sfss} := \bigcup_{\sO\in \Nil_{\Ks}(\fpps)}\MYD(\sO) \AND
+  \MYD_\star := \bigcup_{\sfss, \cO\in \YD_\star} \MYD_{\sfss}(\cO)
 \]
-In the next section, we will define some operations on the  free abelian groups
-$\bZ[\SYD_{\star}]$ and $\bZ[\MYD_{\star}]$.
-%  denote the space of generated by signed Young diagrams and
-% marked Young diagrams respectively.
+where $\sfss$ running over all possilbe  classical signatures of type $\star$.
+%  % By abuse of notation, we identify $\SYD_{\star}$ with a subset of
+% Set
+% \[
+%   \MYD_{\star} := \bigcup_{\cO\in \Nil_{\star}}\MYD_{\star}(\cO),
+% \]
+% In the next section, we will define some operations on the  free abelian groups
+% $\bZ[\SYD_{\star}]$ and $\bZ[\MYD_{\star}]$.
 
 \smallskip
 
@@ -5479,10 +5489,10 @@ $i_{1},\cdots, i_{k}$ are all the indices such that $(p_{i},q_{i})\neq (0,0)$.
 A Young diagram in $\YD_{\star}$ is represented similarly.
 
 We adopt the usual convention to draw a singed Young diagram where the signature
-$(p_{i}, q_{i})$ equals to the total signature for the most right parts of all
+$(p_{i}, q_{i})$ equals to the total signature for the most right columns of 
 length $i$ rows.
-We use ``$\upp$'' and ``$\umm$'' instants ``$+$'' and ``$-$'' to mark the rows
-when $p_{i}$ or $q_{i}$ are negative.
+We use ``$\upp$'' and ``$\umm$'' instead ``$+$'' and ``$-$'' to mark the rows
+when $p_{i}$ or $q_{i}$ is negative.
 
 \begin{eg}\label{eg:MYD}
 The expression $(1^{(r,s)})_{\star}$ represents the marked Young diagram in $\MYD_{\star}$ such that
@@ -5493,10 +5503,9 @@ The expression $(1^{(r,s)})_{\star}$ represents the marked Young diagram in $\MY
      %(\star',0,0) & \text{if $i>0$ and $i$ is even}
    \end{cases}
  \]
- Here the symbols $\star_{i}$ are uniquely determined by \eqref{eq:ssrel}.
-
-The marked Young diagram  $\cE:=(1^{(1,-1)}2^{(2,0)}3^{(0,-1)})_{B}$ is drew as the
-following.
+ Here the symbols $\star_{i}$ are uniquely determined by \eqref{eq:ssrel}.\\
+The marked Young diagram  $\cE:=(1^{(1,-1)}2^{(2,0)}3^{(0,-1)})_{B}$ is drew as
+the following.
 \[
   \ytb{\umm\upp\umm,-+,-+,+,\umm}
 \]
@@ -5505,14 +5514,16 @@ $(1^{(1,1)}2^{(2,0)}3^{(0,1)})_{B}$ and the complexification of $\sO$
 is $(1^{2}\,2^{2}\,3^{1})_{B}$.
 \end{eg}
 
-\subsection{Operations on diagrams}
+\subsection{Operations on marked Young diagrams}
 In this section, we define some operations on the signed Young diagrams and
-marked Young diagram.
+marked Young diagram. We will use these operations to describe the theta lifting of admissible orbit data in the end of the section.
 
-Suppose $\star\in \set{B,D}$.
-We define a $\bZ/2\bZ\times \bZ/2\bZ$ action on $\MYD_{\star}$.
-Let $(\epsilon^{+},\epsilon^{-})\in \bZ/2\bZ\times \bZ/2\bZ$ , $\cE\in \MYD_{\star}$ such that $(\star_{i},p_{i},q_{i}):=\cE(i)$,
-we define $\cE \lotimes (\epsilon^{+},\epsilon^{-})\in \MYD_{\star}$ by
+\smallskip
+
+Suppose $\star\in \set{B,D}$. We define a $\bZ/2\bZ\times \bZ/2\bZ$ action on
+$\MYD_{\star}$. Let $(\epsilon^{+},\epsilon^{-})\in \bZ/2\bZ\times \bZ/2\bZ$ ,
+$\cE\in \MYD_{\star}$ such that $(\star_{i},p_{i},q_{i}):=\cE(i)$, we define
+$\cE \lotimes (\epsilon^{+},\epsilon^{-})\in \MYD_{\star}$ by
 \[
 (\cE \lotimes(\epsilon^{+},\epsilon^{-}))(i) := \begin{cases}
   (\star_{i}, (-1)^{\frac{\epsilon^{+}(i+1)+\epsilon^{-}(i-1)}{2}}p_{i},(-1)^{\frac{\epsilon^{+}(i-1)+\epsilon^{-}(i+1)}{2}}q_{i})
@@ -5522,30 +5533,28 @@ we define $\cE \lotimes (\epsilon^{+},\epsilon^{-})\in \MYD_{\star}$ by
 \]
 
 
-For each $\cE\in \AOD_{\star}$, its twist
-$\cE\otimes  (1^{{-,+}})^{\epsilon^{+}}\otimes (1^{+,1})^{\epsilon^{-}}$
-is also  in $\AOD_{\star}$.
+For each $\cE\in \AOD_{\Ks}(\cO)$, its twist
+$\cE\otimes  (1^{{-,+}}_{p,q})^{\epsilon^{+}}\otimes (
+  1^{+,-}_{p,q})^{\epsilon^{-}}$
+is also  in $\AOD_{\Ks}(\cO)$.
 As elements in $\MYD_{\star}$, we have
 \[
-  \cE\otimes  (1^{{-,+}})^{\epsilon^{+}}\otimes (1^{+,-})^{\epsilon^{-}} = \cE \otimes (\epsilon^{+},\epsilon^{-}).
+  \cE\otimes  (1^{{-,+}}_{p,q})^{\epsilon^{+}}\otimes (1^{+,-}_{p,q})^{\epsilon^{-}} = \cE \otimes (\epsilon^{+},\epsilon^{-}).
 \]
 
 \medskip
 
 Suppose $\star\in \set{C,\wtC,D^{*}}$.
-
+We define an involution $\maltese$ defines an involution on
+$\MYD_{\star}$:
 For $\cE\in \MYD_{\star}$ such that $(\star_{i},p_{i},q_{i}):=\cE(i)$,
-we define $\maltese\cE\in \MYD_{\star}$ by
+we define $\maltese\cE\in \MYD_{\star}$ such that  
 \[
 (\maltese\cE)(i) := \begin{cases}
   (\star_{i}, -p_{i},-q_{i})& \text{if $i\equiv 2 \pmod{4}$ and $\star_{i}\in \set{B,D}$,}\\
   (\star_{i}, p_{i},q_{i}) & \text{otherwise.}
 \end{cases}
 \]
-
-Clearly, the a operation $\maltese$ defines an involution on
-$\MYD_{\star}$.
-%Suppose $\sfss = (\star,n,n)$ is a classical signature.
 For each $\cE\in \DCO{\chi}$, its twist  $\cE\otimes \deti^{-1}$
 is a line bundle  in $\DCO{\chi'}$ where  $\chi'$ is a certain character. % $\chi'$.
 As elements in $\MYD_{\star}$, we have
@@ -5553,24 +5562,26 @@ As elements in $\MYD_{\star}$, we have
   \cE\otimes \deti = \maltese (\cE).
 \]
 
-We define the argumentation of a marked Young diagram.
+\medskip
+
+We define the argumentation operation on marked Young diagrams.
 Suppose that $(p_{0},q_{0})\in \bZ\times \bZ$ and there is a
 $\star'_{0}\sim \star'$ such that
 $\sfss_{0} := (\star'_{0},p_{0},q_{0})\in \CCSS$.
-with $\star'_{0} \sim \star'$.
 For each $\cE\in \MYD_{\star}$,
 let $\cE\cdot (p_{0},q_{0})$ be the marked Young diagram in $\MYD_{\star'}$ given by
 \[
-  (\cE\cdot (p_{0},q_{0}))(i) :=
+  \big(\cE\cdot (p_{0},q_{0})\big)(i) :=
   \begin{cases}
     \sfss_{0} & \text{if } i=1,\\
     \cE(i-1) & \text{if } i>1.
   \end{cases}
 \]
-
 We will use the same notation to denote the  natural extension of above
 operations to $\bZ[\MYD_{\star}]$.
 % and we will use the same notation
+
+\medskip
 
 We define the partial order $\succeq$ on $\bZ\times \bZ$ by
 \[
@@ -5579,19 +5590,19 @@ We define the partial order $\succeq$ on $\bZ\times \bZ$ by
   \quad  \text{or} \quad
   \begin{cases} a\leq c\leq 0\\ b\leq d\leq 0 \end{cases}.
 \]
-For a $\cE\in \MYD$ and $(p_{0},q_{0})\in \bZ\times \bZ$, we write
+For a $\cE\in \MYD_{\star}$ and $(p_{0},q_{0})\in \bZ\times \bZ$, we write
 \[
   \cE\sqsupseteq (p_{0},q_{0}) \Leftrightarrow
   (p_{1},q_{1})\succeq (p_{0},q_{0})
   \text{ where }\cE(1) = (\star_{1},p_{1},q_{1}).
 \]
 Morever, we define an involution on $\bZ\times \bZ$ % $\rightarrow \bZ\times \bZ$
-by
-$(a,b)\mapsto (a,b)^{-}:=(b,a)$.
+by $(a,b)\mapsto (a,b)^{-}:=(b,a)$.
 
-Suppose $\cE\sqsupseteq (p_{0},q_{0})$, we define the truncation of $\cE$ by
+Suppose $\cE\sqsupseteq (p_{0},q_{0})$, we define the truncation
+$\Lambda_{(p_0,q_0)}\cE$ by
 \[
-  \Lambda_{(p_{0},q_{0})}(\cE) = \begin{cases}
+  (\Lambda_{(p_{0},q_{0})}(\cE))(i) = \begin{cases}
     (\star_{1},p_{1}-p_{0},q_{1}-q_{0}) & \text{if } i=1,\\
     \cE(i) & \text{if } i>1.
   \end{cases}
@@ -5630,15 +5641,16 @@ formula.
 
 
 
+\subsubsection*{Theta lifts of admissible orbit data}
 \def\cEp{\cE'}
-\subsection{Theta lifts of local systems}
+Let $\sfss$ and $\sfss'$ be two fixed classical signature.
 
-Let $\cO\in \Nil_{\star}$ and $\cO'\in \Nil_{\star'}$ such that  $\cO'$ is a
-regular descent of $\cO'$.
-Let $\sfss$ and $\sfss'$ be two fixed classical signature,
-the theta lifting of marked Young diagrams is a homomorphism between
+Suppose $\cO\in \Nil(\fggs)$ and $\cO'\in \Nil_{\Ksp}(\fggsp)$ such that  
+$\cO'= \DDss(\cO)$ 
+
+We define the theta lifting of marked Young diagrams is a homomorphism between
 \[
-  \dliftv \colon \bZ[\MYD_{\sfss'}(\cO')]\rightarrow \bZ[\MYD_{\sfss}(\cO)]
+  \dliftv \colon \bZ[\MYD_{\sfss'}]\rightarrow \bZ[\MYD_{\sfss}(\cO)]
 \]
 It suffice to define $\dliftv(\cEp)$ for  each $\cEp\in \MYD_{\sfss'}$ case by case.
 We set
@@ -5647,6 +5659,7 @@ We set
 \]
 
 \medskip
+
 
 Suppose $\sfss'=(\star',n,n)$ and $\sfss =(\star,p,q)$ such that
 $\star'\in \set{ C,\wtC, D^{*}}$  and $\star \in \set{D,B, C^{*}}$.
