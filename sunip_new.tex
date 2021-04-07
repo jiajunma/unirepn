@@ -2965,7 +2965,7 @@ In the notation of Lemma \ref{descko}, write
 \]
 which is a $ K_{\mathsf s', \C}$-orbit in $\p_{\mathsf s'}$. This is called the descent of $\sO$. It is an element of $\mathrm{Nil}(\p_{\mathsf s'})$ if $\sO\in \mathrm{Nil}(\p_{\mathsf s})$.
 
-\subsection{Geometric theta lift}
+\subsection{Geometric theta lift}\label{sec:dlift}
 Let $\zeta_{\mathsf s, \mathsf s'}$ denote the algebraic character on $K_{\mathsf s, \C}\times K_{\mathsf s', \C}$  such that
 \[
  (\zeta_{\mathsf s, \mathsf s'})|_{K_{\mathsf s, \C}}=
@@ -5344,18 +5344,20 @@ signature $\Sign(\sO)$ can be computed directly by the following formula:
   \end{split}
 \]
 where $\sO(i)=(\sfss_{i},p_{i},q_{i})$. 
-% The signature $\lsign(\sO)$ of the ``most left column'' of the
-% signed Young diagram $\sO$ (see \Cref{eg:MYD}) is given by
-% \[
-%   \lsign(\sO) =
-%     \sum_{i\in \bN^{+}} \big(q_{2i},p_{2i} \big)
-%       + \sum_{i\in \bN^{+}} \big(p_{2i-1},q_{2i-1} \big).
-% \]
 We write
 \[
-\SYD_{\sfss}(\cO) = \set{\sO\in \SYD_{\star}(\cO)| \Sign(\sO)=(p,q)}.
+\SYD_{\sfss}(\cO) := \set{\sO\in \SYD_{\star}(\cO)| \Sign(\sO)=(p,q)}.
 \]
 which is identified with $\Nil_{\sfss}(\cO)$.
+
+The signature $\lsign(\sO)$ of the ``most left column'' of the
+signed Young diagram $\sO$ (see \Cref{eg:MYD}) is also useful, which is given by
+\[
+  \lsign(\sO) =
+    \sum_{i\in \bN^{+}} \big(q_{2i},p_{2i} \big)
+      + \sum_{i\in \bN^{+}} \big(p_{2i-1},q_{2i-1} \big).
+\]
+
 
 \medskip
 
@@ -5643,29 +5645,27 @@ formula.
 
 \subsubsection*{Theta lifts of admissible orbit data}
 \def\cEp{\cE'}
+\def\dliftso{{\check \vartheta}_{\sfss',\cO'}^{\sfss\,,\,\cO}}
 Let $\sfss$ and $\sfss'$ be two fixed classical signature.
-
 Suppose $\cO\in \Nil(\fggs)$ and $\cO'\in \Nil_{\Ksp}(\fggsp)$ such that  
-$\cO'= \DDss(\cO)$ 
-
-We define the theta lifting of marked Young diagrams is a homomorphism between
+$\cO'= \DDss(\cO)$. 
+The theta lifting of marked Young diagrams is a homomorphism 
 \[
-  \dliftv \colon \bZ[\MYD_{\sfss'}]\rightarrow \bZ[\MYD_{\sfss}(\cO)]
+  \dliftso \colon \bZ[\MYD_{\sfss'}(\cO')]\rightarrow \bZ[\MYD_{\sfss}(\cO)]
 \]
-It suffice to define $\dliftv(\cEp)$ for  each $\cEp\in \MYD_{\sfss'}$ case by case.
-We set
+defined below.  
+Let 
 \[
   t := \bfcc_{1}(\cO')-\bfcc_{2}(\cO).
 \]
 
 \medskip
 
-
 Suppose $\sfss'=(\star',n,n)$ and $\sfss =(\star,p,q)$ such that
 $\star'\in \set{ C,\wtC, D^{*}}$  and $\star \in \set{D,B, C^{*}}$.
-In this case, $t$ is always an even integer. We define
+Then $t$ is always a nonnegative even integer. For $\cEp\in \MYD_{\sfss}(\cO')$, we define
 \begin{equation}\label{eq:LCD}
-  \dliftv(\cEp) :=
+  \dliftso(\cEp) :=
   \begin{cases}
     \left(\maltese^{\frac{p-q}{2}}(\Lambda_{(\frac{t}{2},\frac{t}{2})}( \cEp))\right)\cdot (p_{0},q_{0}) &
     \text{if } ( p_{0},q_{0} ) \succeq (0,0) \text{ and } \star=D, \\
@@ -5681,7 +5681,7 @@ where $(p_{0}, q_{0})  := (p,q) -(n,n)-\lsign(\cEp)^{\sharp} + (\frac{t}{2},\fra
 \trivial[h]{
 When $t=0$, we define
 \[
-  \dliftv(\cEp) :=
+  \dliftao(\cEp) :=
   \begin{cases}
     (\maltese^{\frac{p-q}{2}}(\cE))\cdot (D,p_{0},q_{0}) &
     \text{if } ( p_{0},q_{0} ) \succeq (0,0) \\
@@ -5707,7 +5707,7 @@ Suppose $\sfss' =(\star',p,q)$ and $\sfss=(\star,n,n)$ such that
 $\star' \in \set{ D,B,C^{*}}$  and $\star \in \set{C,\wtC,D^{*}}$.
 We define
 \begin{equation}\label{eq:LDC}
-  \dliftv(\cEp) :=
+  \dliftso(\cEp) :=
   \begin{cases}
     \maltese^{\frac{p-q}{2}}\big(\sum_{j=0}^{t} \Lambda_{(j,t-j)}( \cEp)\cdot (n_{0},n_{0})\big) & \text{if
     } \star = C,\\
@@ -5768,12 +5768,87 @@ where $2n_{0} = \bfcc_{1}(\cO)-\bfcc_{2}(\cO)$.
   we use $+/-$ to mark the row. Otherwise, we use $\upp/\umm$ to mark the rows.
 }
 
-
+Suppose $\cO$ is regular with respect to $\DDss$, then admissible orbit data are
+lifted to admissible orbit data thanks to \Cref{lem:aod}.
+Now it is routine to check the following lemma.
+\begin{lem}\label{lem:clift}
+Suppose $\cO$ is regular with respect to $\DDss$. Then the following diagram is commute
+\[
+  \begin{tikzcd}
+    \bZ[\AOD_{\sfss'}(\cO')]\ar[r,"\dliftso"]\ar[d] & \bZ[\AOD_{\sfss}(\cO)]
+     \ar[d] \\
+    \bZ[\MYD_{\sfss'}(\cO')] \ar[r,"\dliftso"] & \bZ[\MYD_{\sfss'}(\cO')].\\
+  \end{tikzcd}
+\]
+Here the vertical arrows are given by our parameterization of admissible orbit data, the top horizontal map is defined in  \Cref{sec:dlift}. \qed
+\end{lem}
 
 \subsection{Induced orbits and double geometric lifts}
-
+\label{subsec:induced}
 \def\indsss{\Ind_{G_{\sfss'}}^{G_{\sfss''}}}
 \def\indss{\Ind_{G_{\sfss',\bC}}^{G_{\sfss'',\bC}}}
+
+In this section we compute the weak associated cycle  
+of the induced representations appeared in \Cref{doubtt} 
+
+The main step in the proof of \Cref{prop:Ch.eq} consists of comparison of bound of the associated cycle of
+$\Thetab_{\abfV,\bfV^\perp}(\Thetab_{\bfV,\abfV}(\pi))$ with the formula (due to Barbasch) of the wavefront cycle of
+a certain parabolically induced representation.
+
+ In this section, let $\fgg_\bR
+=\fgg^J$ be the Lie algebra of $G$, which is identified with its dual space $\fgg^*_\R$ under the trace from. Let $\Nil_{G}(\mathbf i \fgg_\bR)$
+denote the set of nilpotent $G$-orbits in $\mathbf i\fgg_\bR$. Similar notation will be used without further explanation. For example, for every Levi subgroup $M$  of $G$, $\fmm_\bR$ denotes its Lie algebra, which is  identified with the dual space $\fmm^*_\bR$ by using the trace form on $\fgg$.
+
+ Let
+\[
+\KS\colon \Nil_{G}(\mathbf i\fgg_\bR) \rightarrow \Nil_{\bfK}(\fpp)
+\]
+ be the natural
+bijection given by the Kostant-Sekiguchi correspondence
+(\emph{cf}. \cite[Equation~(6.7)]{SV}).
+By abuse of notation, we also let $\ssD$ denote the map $\ssD\circ
+\KS\colon  \Nil_{G}(\mathbf i\fgg_\bR) \rightarrow \ssP$. See \Cref{subsec:SYD} for the parametrization map $\ssD \colon
+\Nil_{\bfK}(\fpp) \rightarrow \ssP$.
+
+
+\begin{thm}[\emph{cf}. Barbasch {\cite[Corollary~5.0.10]{B.Orbit}}]\label{thm:Bar}
+  Let $G_1$ be an arbitrary real reductive group and let $P_1$ be a real
+  parabolic subgroup of $G_1$, namely a closed subgroup of $G_1$ whose Lie
+  algebra is a parabolic subalgebra of $\g_{1,\bR}$. Let $N_1$ be the unipotent
+  radical of $P_1$ and $M_1:=P_1/N_1$. Write
+  $$r_1: \bfii (\fgg_{1, \bR}/\fnn_{1, \bR})^*\longrightarrow \bfii \, \fmm_{1,
+    \bR}^*$$ for the natural map.  Let $\pi_1$ be a Casselman-Wallach
+  representation of $M_1$ with the wavefront cycle
+\[
+\WF(\pi_1) =
+\sum_{\sOR\in \Nil_{M_1}(\bfii \frak m^*_{1,\bR})} \rcc_{\sOR} [\sOR].
+\]
+Then
+\[
+\WF(\Ind^{G_1}_{P_1} \pi) = \sum_{(\sOR, \sOR')} \rcc_{\sOR}\frac{\# C_{G_1}(v')}{\#
+  C_{P_1}(v')}
+[\sOR'],
+\]
+where the summation runs over all pairs $(\sOR, \sOR')$ such that $\sOR \in \Nil_{M_1}(\bfii \frak m^*_{1,\bR})$ and $\sOR' \in \Nil_{G_1}(\bfii \frak g^*_{1,\bR})$ is an induced orbit of $\sOR$, $v'$ is an element  of  $\sOR'\cap r_1^{-1}(\sOR)$, and $C_{G_1}(v')$ and $C_{P_1}(v')$ are the component groups of the centralizers of
+$v'$ in $G_1$ and $P_1$, respectively.
+\end{thm}
+
+\begin{remarks}
+\begin{enumR}
+\item While Barbasch proved the theorem when $G_1$ is the real points of a connected
+  reductive algebraic group, his proof still works in the slightly more general setting of \Cref{thm:Bar}.
+\item The notion of induced nilpotent orbits was introduced by Lusztig and Spaltenstein for complex reductive groups \cite{LS}. For a real reductive group $G_1$, a nilpotent orbit $\sOR' \in \Nil_{G}(\mathbf i \fgg^*_{1,\bR})$ is called an induced orbit of a nilpotent orbit $\sOR\in
+  \Nil_{M_1}(\mathbf i \fmm_{1,\bR}^*)$ if $\sOR'\cap r_1^{-1}(\sOR)$ is open in
+  $r_1^{-1}(\sOR)$ (see \cite[Definition~5.0.7]{B.Orbit} or \cite{Ohta2}).
+  We write $\Ind_{P_1}^{G_1} \sOR$ for the set of all induced orbits of $\sOR$. Similar notation applies for a complex reductive group.
+  %When $G_1$ is moreover a  complex reductive group,  write $\fgg_1$ for its Lie algebra and write $\fmm_1$ for the Lie algebra of $M_1$. Then for each complex nilpotent orbit $\cO_{1}\in \Nil_{M_1}(\fmm^*_{1})$, the induced %orbit $\Ind_{P_1}^{G_1} \cO_{1}\in \Nil_{G_1}(\fgg^*_{1})$ is similarly defined, as in \cite[Chapter 7]{CM}.
+
+  \item   According to the fundamental result of Schimd-Vilonen \cite{SV}, the wave front cycle
+  and the associated cycle agree under the Kostant-Sekiguchi correspondence. We thank Professor Vilonen for confirming that their result extends
+  to nonlinear groups. Therefore the associated cycle of a parabolically induced
+  representation as in the above theorem of Barbasch is also determined.
+\end{enumR}
+\end{remarks}
 
 In this subsection, we provide various formulas for the induced orbits and double
 geometric theta lifts. 
