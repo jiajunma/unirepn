@@ -5,6 +5,11 @@
 \usepackage[bookmarksopen,bookmarksdepth=3,hidelinks]{hyperref}
 \usepackage[nameinlink]{cleveref}
 
+\usepackage[color]{showkeys}
+\makeatletter
+  \SK@def\Cref#1{\SK@\SK@@ref{#1}\SK@Cref{#1}}%
+\makeatother
+
 \usepackage{array}
 %% FONTS
 \usepackage{amssymb}
@@ -6624,13 +6629,17 @@ $\cE\in \cK_{\sfss''}(\cO'')$.
 \def\pcT{\cT^+}
 \def\ncT{\cT^-}
 
+In this section, we study the properties of the descent maps. These results are
+crucial for the calculations of associated cycles in \Cref{sec:ACC}.
+
 
 \subsection{Vanishing propotition}
-Because of the following proposition, we assume in the rest of this paper that $\check \CO$ is quasi-distinghuished  when $\star\in \{C^*, D^*\}$.
 
+Because of the following vanishing proposition, we only consider the
+quasi-distinghuished nilpotent orbits $\ckcO$ when $\star\in \set{C^*, D^*}$.
 
 \begin{prop}
-  Suppose that $\star\in \{C^*, D^*\}$. If the set $\mathrm{PBP}_\star(\check \CO)$ is nonempty, then $\check \CO$ is quasi-distinguished.
+  Suppose that $\star\in \set{C^*, D^*}$. If the set $\PBP_\star(\ckcO)$ is nonempty, then $\check \CO$ is quasi-distinguished.
 \end{prop}
 \begin{proof}
   Suppose that $\tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \mathrm{PBP}_\star(\check \CO)$. If  $\star=C^*$, then  the definition of painted bipartitions implies that
@@ -6646,10 +6655,9 @@ This forces that $\check \CO$ is quasi-distinguished.
 This  also forces that   $\check \CO$ is quasi-distinguished.
  \end{proof}
 
-
 \subsection{Tails of painted bipartitions}
 \label{sec:tail}
-In the rest of this subsection, we assume that $\star\in\{B, D, C^*\}$.
+In this subsection, we assume that $\star\in\{B, D, C^*\}$ and define the notation of ``tail'' of a painted bipartition.
 Let $(\imath,\jmath) = (\imath_{\star}(\ckcO),\jmath_{\star}(\ckcO))$.
 %Note that $l\geq l'$ if $\star\in \{B,C^*\}$,   and $l\geq l'+1$ if $\star=D$.
 Put
@@ -6670,7 +6678,7 @@ k := \begin{cases}
 Here $k = \bfcc_{1}(\jmath)-\bfcc_{1}(\imath)+1$,
 $\bfcc_{1}(\jmath)-\bfcc_{1}(\imath)$,
 and $\bfcc_{1}(\imath)-\bfcc_{1}(\jmath)$
-when $\star = B,C^{*},D^{*}$, respectively.
+when $\star = B,D,C^{*}$, respectively.
 
 Let $\ckcO_{\bftt}$ be the following Young diagram that is
 determined by the pair $(\star, \ckcO)$.
@@ -6690,18 +6698,19 @@ Note that  in all these three cases
   D\qquad\textrm{or}\qquad \emptyset \times  \ytb{{x_1} , {x_2} , {\enon\vdots},{\enon{\vdots}},{x_k}  } \times
  C^*,
 \end{equation}
-respectively if $\star=B, D$ or $C^*$.
+respectively if $\star=B, D$ or $C^*$. %Here $k$ can be zero if $\star = C^*$.
 
 % Here $k=l-l'+1, l-l'$ or $l-l'$ respectively.
 %\subsubsection{The case when $\star = B$}
 
-Let
-$
-\tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \mathrm{PBP}_\star(\check \CO)
-$ be as before.
+\medskip
 
 
-\noindent {\bf The case when $\star = B$.}
+Let $ \tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in
+\mathrm{PBP}_\star(\check \CO) $. The tail $\tau$ is a painted bipartition in
+$\PBP_{\star_\bftt}(\ckcO_\bftt)$. We define it case by case now. 
+
+\subsubsection*{The case when $\star = B$:}
 In this case, we define the tail $\tau_\bftt$ of $\tau$ to be the first painted bipartition in \eqref{tail0} such that the multiset $\{x_1, x_2, \cdots, x_k\}$ is the
 union of the multiset
 \[
@@ -6718,43 +6727,33 @@ with the set
   \qquad \text{if $\alpha = B^-$, and either $\bfcc_{1}(\imath)=0$ or $\cQ(\bfcc_{1}(\imath),1)\in \set{\bullet,s}$}; \\
 %  \qquad\text{when } \alpha_\tau = B^-, \text{ and, } l'=0 \textrm{ or } \cQ_\tau(l',1)\in \set{\bullet,s},  \\
 \set{\cQ(\bfcc_{1}(\imath),1)},&
-\qquad  \text{if $\bfcc_{1}(\imath)>0$ and $\cQ(\bfcc_{1}(\imath),1)\in \{r,d\}$.}
+\qquad 
+\text{otherwise.}
+%\text{if $\bfcc_{1}(\imath)>0$ and $\cQ(\bfcc_{1}(\imath),1)\in \{r,d\}$.}
 \end{cases}
 \]
 
-
-\smallskip
-
- \smallskip
-
-
-
-
-
-
-\noindent {\bf The case when $\star = D$.}
-In this case, we define the tail $\tau_\bftt$ of $\tau$ to be the second painted bipartition in \eqref{tail0} such that the multiset $\{x_1, x_2, \cdots, x_k\}$ is the
-union of the multiset
+\subsubsection*{The case when $\star = D$:}
+In this case, we define the tail $\tau_\bftt$ of $\tau$ to be the second painted
+bipartition in \eqref{tail0} such that the multiset $\{x_1, x_2, \cdots, x_k\}$
+is the union of the multiset
 \[
 \set{\cP(j,1)| \bfcc_{1}(\jmath)+2 \leq j \leq \bfcc_{1}(\imath)}
 \]
 with the set
 \[
-  \begin{cases}
-  &
- \ \text{if $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)$,}\\
- \set{c},& \quad \text{$(\cP(\bfcc_{1}(\jmath)+1,1) ,\cP(\bfcc_{1}(\jmath)+1,2)) = (r,c)$ }\\
- & \quad \text{ and $\cP(l,1)\in \set{r,d}$};  \\
-\set{\cP(\bfcc_{1}(\jmath)+1,1)},&
-\    \text{otherwise.}
-\end{cases}
+\begin{cases}
+    \set{c},                          &
+    \ \text{if $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)$,}                                                                         \\
+                                      & \quad \text{$(\cP(\bfcc_{1}(\jmath)+1,1) ,\cP(\bfcc_{1}(\jmath)+1,2)) = (r,c)$ } \\
+                                      & \quad \text{ and $\cP(l,1)\in \set{r,d}$};                                       \\
+    \set{\cP(\bfcc_{1}(\jmath)+1,1)}, &
+    \    \text{otherwise.}
+  \end{cases}
 \]
 
- \smallskip
 
- \smallskip
-
-\noindent {\bf The case $\star = C^*$.}
+\subsubsection{The case $\star = C^*$:}
 When $k=0$, we define the tail $\tau_{\bftt}$ of $\tau$ to be
 $\emptyset\times \emptyset \times C^{*}$.
 When $k> 0$, we define the tail $\tau_\bftt$ of $\tau$ to be the third painted bipartition in \eqref{tail0} such that
@@ -6772,10 +6771,10 @@ x_\tau := \cP_{\tau_\bftt}(k,1).
 \begin{lem}\label{tailtip}
 If $\star=B$, then
 \[
-x_\tau=s\Longleftrightarrow
+\hspace{9em} x_\tau=s\Longleftrightarrow
 \begin{cases}
   \alpha=B^-;\\
-  \cQ(\bfcc_{1}(\jmath),1) \in\{\bullet, s\},
+  \bfcc_1(\jmath)=0 \text{ or }\cQ(\bfcc_{1}(\jmath),1) \in\set{\bullet, s},
   \end{cases}
 %\quad \textrm{if and only if}\quad \alpha=B^- \ \textrm{ and }\  \cQ(l,1) = s,
 \]
@@ -6797,23 +6796,20 @@ x_\tau=d\Longleftrightarrow \cP(\bfcc_{1}(\imath),1) =d.
 \end{lem}
 
 
-
-
-
-
-
 \subsection{Some properties of the descent maps}
+\label{sec:DDP}
+In this section, we estabilsh the properies 
+of descent of painted bipartitions. Recall that $\ckcO$ is assumed to be
+quasi-distinghuished when $\star\in \set{C^*,D^*}$.
 
+\medskip
 
-
-%We state the key properties of the descent map in this section and the proofs will be given in \Cref{sec:DD.proof}.
-
-
-The key properties of the descent map when $\star\in \set{C,\wtC,D^*}$ are summarized in the following proposition.
+The key properties of the descent map when $\star\in \set{C,\wtC,D^*}$ are
+summarized in the following proposition.
 
 \begin{prop}\label{prop:CC.bij}
-Suppose that $\star \in \set{C,\wtC,D^*}$ and cosider the
-descent map
+Suppose that $\star \in \set{C,\wtC,D^*}$ and
+consider the descent map
 \begin{equation}\label{eq:DD.CC}
 \nabla: \PBP_\star(\ckcO)\longrightarrow  \PBP_{\star'}(\ckcOp).
 \end{equation}
