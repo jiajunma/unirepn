@@ -254,6 +254,7 @@
 
 
 
+
 \makeatletter
 
 \def\gen#1{\left\langle
@@ -5967,9 +5968,9 @@ Let
   \MK = \CCSS \cup \set{(\star,r,s)|\star\in \set{B,D}, r,s\in \bZ}.
 \]
 Suppose $\sO(i)=(\star_{i},p_{i} q_{i})$. We identify $\cE \in \DCO{\chi}$ with the map
-\[
+\begin{equation}\label{eq:myd}
   \cE\colon \bN^{+}\rightarrow  \MK
-\]
+\end{equation}
 such that
 \begin{itemize}
   \item $\cE(i) := \sO(i)$ if $\star_{i} \notin \set{B,D}$;
@@ -6638,7 +6639,7 @@ crucial for the calculations of associated cycles in \Cref{sec:ACC}.
 Because of the following vanishing proposition, we only consider the
 quasi-distinghuished nilpotent orbits $\ckcO$ when $\star\in \set{C^*, D^*}$.
 
-\begin{prop}
+\begin{prop}\label{prop:CD*}
   Suppose that $\star\in \set{C^*, D^*}$. If the set $\PBP_\star(\ckcO)$ is nonempty, then $\check \CO$ is quasi-distinguished.
 \end{prop}
 \begin{proof}
@@ -6799,7 +6800,9 @@ x_\tau=d\Longleftrightarrow \cP(\bfcc_{1}(\imath),1) =d.
 \subsection{Some properties of the descent maps}
 \label{sec:DDP}
 In this section, we estabilsh the properies 
-of descent of painted bipartitions. Recall that $\ckcO$ is assumed to be
+of descent of painted bipartitions. 
+These properties will be used extensively in \Cref{sec:ACC}
+Recall that $\ckcO$ is assumed to be
 quasi-distinghuished when $\star\in \set{C^*,D^*}$.
 
 \medskip
@@ -6818,7 +6821,8 @@ consider the descent map
 $\star=D^*$ or $\bfrr_1(\ckcO)>\bfrr_2(\ckcO)$, then
 the map \eqref{eq:DD.CC}  is bijective.
 
-\item If  $\star\in \{C,\widetilde C\}$ and $\bfrr_1(\ckcO)=\bfrr_2(\ckcO)$, then the  map \eqref{eq:DD.CC} is injective and its image equals
+\item If  $\star\in \{C,\widetilde C\}$ and $\bfrr_1(\ckcO)=\bfrr_2(\ckcO)$,
+then the  map \eqref{eq:DD.CC} is injective and its image equals
 \[
 \Set{\tau'\in \PBP_{\star'}(\ckcOp)| x_{\tau'}\neq s}.
 \]
@@ -6867,12 +6871,18 @@ and the map \eqref{eq:DD.CC1} are inverse to each other. Hence the map \eqref{eq
 \smallskip
 
 Similarly, the map
-\[
+\begin{equation}\label{eq:DD.CC2}
   \nabla: \Set{\tau\in \PBP_{\star}(\ckcO)| \cP_\tau(\bfcc_{1}(\imath),1)= c}
-  \rightarrow \Set{\tau'\in \PBP_{\star'}(\ckcOp)| \alpha_{\tau'}=B^-, \cQ_{\tau'}(\bfcc_{1}(\imath),1)\in\{r,d\}}
-\]
-is well-defined, and we show that it is bijective by explicitly  constructing its inverse. In view of Lemma \ref{tailtip}, this proves the proposition in the case we are considering.
-
+  \rightarrow \Set{\tau'\in \PBP_{\star'}(\ckcOp)| 
+ \begin{array}{l} 
+  \alpha_{\tau'}=B^- \text{ and } \\
+  \cQ_{\tau'}(\bfcc_{1}(\imath),1)\in\{r,d\}
+ \end{array}
+  }
+\end{equation}
+is well-defined, and the inverse of \eqref{eq:DD.CC2} can be construced straightfowardly.
+Therefore \eqref{eq:DD.CC2} is also bijective. In view of \Cref{tailtip}, this
+proves the proposition in the case we are considering.
 \trivial[h]{
   Suppose $\star = \wtC$ and $\bfrr_{1}(\ckcO) >\bfrr_{2}(\ckcO)$. Then
   $\bfcc_{1}(\imath)>\bfcc_{1}(\jmath)$ and the ``inverse'' of descent is
@@ -6897,11 +6907,9 @@ is well-defined, and we show that it is bijective by explicitly  constructing it
 \medskip
 
 
-
+Now we discuss the case when $\star \ in \set{B,D,C^*}$, which is more 
+involved. 
 %The following equation of signatures will be crucial in our computation of the local system in the next section.
-As in the Introduction, $\cO$ denotes the Barbasch-Vogan dual of $\ckcO$. % We also consider it as a Young diagram.
-The following proposition is easy to verify:
-
 % \begin{prop}\label{prop:D.sign}
 %   \begin{enuma}
 %     \item
@@ -6937,6 +6945,11 @@ The following proposition is easy to verify:
 % \qed
 % \end{prop}
 
+% Recall that $\cO$ denotes the Barbasch-Vogan dual of $\ckcO$. % We also consider it as a Young diagram.
+The following lemma deal with the case when the Barbasch-Vogan dual $\cO$ of
+$\ckcO$ has only one column. This is the most basic case and can be verified
+easily.
+
 \begin{lem}
 \label{lem:D.sign}
   Suppose $k\in \bN^{+}$, $\star\in \set{B,D,C^{*}}$. Let $\ckcO$ be the
@@ -6958,7 +6971,10 @@ When $\star\in \set{B,D}$ the following map is bijective:
   \begin{array}{rcl}
     \PBP_{\star}(\ckcO)& \longrightarrow& \Set{
     (p,q,\varepsilon) \in \bN\times\bN\times \bZ/2\bZ|
-    \varepsilon=1 \text{ if } pq=0,\text{ and } p+q=\abs{\cO}
+    \begin{array}{l}
+    p+q=\abs{\cO} \text{ and }\\
+    \varepsilon=1 \text{ if } pq=0\\
+    \end{array}
     },\\
     \tau &  \mapsto & (p_{\tau},q_{\tau}, \varepsilon_{\tau}).
   \end{array}
@@ -6974,21 +6990,16 @@ When $\star = C^{*}$, the following map is bijective:
 
 
 
-For every painted bipartition $\tau$, write
+For every painted bipartition $\tau\in \PBP_{\star}(\ckcO)$, write
 \[
   \ssign(\tau):=(p_\tau, q_\tau).
 \]
-
-When $\bfrr_2(\check \CO)>0$, the double descent
-$\DD^2(\tau):=\DD(\DD(\tau))$ is well-defined whenever
-$\tau\in \PBP_{\star}(\ckcO)$.
-
-
-The key properties of the descent map when $\star\in \set{D,B,C^*}$ are summarized in the following two propositions.
+The key properties of the descent map when $\star\in
+\set{D,B,C^*}$ are summarized in the following lemmas.
 
 \begin{lem}
 \label{lem:delta}
-Assume that $\star \in \set{D,B,C^*}$ and $\bfrr_2(\ckcO)>0$. Write $\ckcOpp := \ckDD(\ckcO')$ and consider the map
+Suppose that $\star \in \set{D,B,C^*}$ and $\bfrr_2(\ckcO)>0$. Write $\ckcOpp := \ckDD(\ckcO')$ and consider the map
 \begin{equation}\label{eq:delta}
   \delta  \colon \PBP_\star(\ckcO)\longrightarrow
     \PBP_\star(\ckcOpp)\times \PBP_{\star_\bftt}(\ckcO_\bftt),
@@ -7003,15 +7014,16 @@ $\star = C^*$ or $\bfrr_2(\ckcO)>\bfrr_3(\ckcO)$. Then the map \eqref{eq:delta} 
 =(\bfcc_2(\cO),\bfcc_2(\cO))+\ssign(\DD^2(\tau))+\ssign(\tau_\bftt).
 \end{equation}
 
-\item Suppose that  $\star \in \set{B,D}$ and $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$. Then the map \eqref{eq:delta} is  injection and its  image equals
+\item Suppose that  $\star \in \set{B,D}$ and $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$.
+Then the map \eqref{eq:delta} is an  injection and its  image equals
 \begin{equation}\label{eq:delta.I}
     \Set{ (\tau'',\tau_0)  \in \PBP_\star(\ckcOpp)\times \PBP_D(\ckcO_\bftt)  |
-      \begin{minipage}{15em}
-        either
-    $x_{\tau''} = d$, or \\
-    $x_{\tau''}\in \set{r,c}$  and
-    $\cP_{\tau_0}^{-1}(\set{s,c})\neq \emptyset$
-  \end{minipage}
+    \begin{array}{l}
+        \text{either
+    $x_{\tau''} = d$, or} \\
+    \text{$x_{\tau''}\in \set{r,c}$  and
+    $\cP_{\tau_0}^{-1}(\set{s,c})\neq \emptyset$}
+    \end{array}
 }.
 \end{equation}
 Moreover,  for every $\tau\in  \PBP_\star(\ckcO) $,
@@ -7024,12 +7036,12 @@ Moreover,  for every $\tau\in  \PBP_\star(\ckcO) $,
 
 \begin{proof}
   We give the detailed proof of part (b) when $\star=B$.
-  The proofs in the other  cases are similar and are left to the reader.
+  The proofs in the other  cases are similar. We  left them to the reader.
   Let $\tau = (\imath,\cP)\times (\jmath,\cQ)\times \alpha$ and $\tau'' = \DD^{2}(\tau)$.
   % $\tau' = \DD(\tau)  = (\imath',\cP')\times (\jmath',\cQ')\times \alpha$.
   % $\tau'' = \DD(\tau')  = (\imath'',\cP'')\times (\jmath'',\cQ')\times \alpha$.
 
-  According to the descent algorithm, we have
+  According to the descent algorithm (see \Cref{sec:comb}), we have
   \begin{equation}\label{eq:delta.1}
     \begin{split}
     \cP(i,j) &= \begin{cases}
@@ -7042,25 +7054,18 @@ Moreover,  for every $\tau\in  \PBP_\star(\ckcO) $,
       \end{cases}
     \end{split}
   \end{equation}
-
-  We label the boxes which are not considered in \eqref{eq:delta.1} as the following:
+  We label the boxes in $\cP$ and $\cQ$ which are not considered in \eqref{eq:delta.1} as the following:
   \begin{equation}\label{eq:ydelta}
   \tau: \hspace{1em}
   \ytb{
-    %{\none[1]},
-    %{\none[\bfcc_{1}(\jmath)]}
     {x_{0}},
     \none,\none,\none,\none}
   \times
   \ytb{
-    %{\none[1]}{\none[2]},
     {x_{1}}{x''},
     {x_{2}},{\enon{\vdots}},{\enon{\vdots}},{x_{k}}}
   \times
   \alpha
-   % \mapsto
-   % \tau': \ytb{{y'_{0}},\none,\none,\none,\none}
-   % \times \ytb{\none{x'_{0}},\none,\none,\none,\none}
    \quad
   \mapsto
   \quad
@@ -7070,14 +7075,14 @@ Moreover,  for every $\tau\in  \PBP_\star(\ckcO) $,
 \end{equation}
 where $k := \bfcc_{1}(\jmath)-\bfcc_{1}(\imath)+1$, $x_{0}$, $x_{1}$ and $y''$ has
 coordinate $(\bfcc_{1}(\imath),1)$ in the corresponding painted Young diagram.
-By the descent algorithm, $x'' = y''$.
+It is easy to check that $x'' = y''$ always holds.
 Also note that $\bfcc_{2}(\cO) = 2\bfcc_{1}(\imath)$.
 % We have the following two cases, $x_{1}\in \set{r,d}$ or
 % $x_{1}\in \set{\bullet,s}$.
+To establish \eqref{eq:sign.GD}, we discuss case by case according to the symbol $x_{1}$.
 
-We now discuss case by case according to the symbol $x_{1}$.
 When $x_{1} = s$, we have $(x_{0}, \alpha'') = (c,B^{-})$.
-Now
+So
 \begin{equation}\label{eq:sign.GD2}
   \begin{split}
     & \Sign(\tau) - \Sign(\tau'') \\
@@ -7086,22 +7091,26 @@ Now
     & = (\bfcc_{2}(\cO)-1, \bfcc_{2}(\cO)-1)+ \Sign(\tau_{\bftt}).
   \end{split}
 \end{equation}
-Here $\Sign$ counts the signature of various symbols in the same way of \eqref{defpbp0}.
-In second line of the above formula, the terms count the signatures of extra
-bullets, $x_{0}$, $x_{1}$, $\alpha''$, $\alpha$ and $x_{1}\cdots x_{k}$ respectively.
+Here $\Sign$ counts the signature of various symbols in the same way of
+\eqref{defpbp0}. In second line of the above formula, the terms count the
+signatures of extra bullets, $x_{0}$, $x_{1}$, $\alpha''$, $\alpha$ and
+$x_{1}\cdots x_{k}$ respectively.
 
-When $x_{1} = \bullet$, we have $(x_{0}, \alpha'') = (\bullet,B^{+})$.
-When $x_{1} \in \set{r,d}$, we have $x'' = y''= d$ $(x_{0}, \alpha'') = (c,\alpha)$.
-In these two cases, the signature formula can be checked similarly. % to \eqref{eq:sign.GD2}.
-It also clear that the image of $\delta$ is in \eqref{eq:delta.I}.
+When $x_{1} = \bullet$, we have $(x_{0}, \alpha'') = (\bullet,B^{+})$. When
+$x_{1} \in \set{r,d}$, we have $x'' = y''= d$ $(x_{0}, \alpha'') = (c,\alpha)$.
+In these two cases, the signature formula can be checked similarly.
 
-%One can check case by case that
-It is not hard to construct the inverse of  $\delta$ from \eqref{eq:delta.I} to
-$\PBP_{\star}(\ckcO)$, and then the proposition follows. To illustrate the idea,
-we give the detail construction of $\delta^{-1}(\tau'',\tau_{0})$
-when $\cP_{\tau_{0}}(k,1)=c$. Most of the entries in $\cP$ and $\cQ$ are defined
-by \eqref{eq:delta.1}. We refer to \eqref{eq:ydelta} for the labeling of the
-rest of the entries, and set $\alpha:=B^{-}$, $x'':= \cQ_{\tau''}(\bfcc_{1}(\imath),1)$,
+\smallskip 
+
+It clear that the image of $\delta$ is in \eqref{eq:delta.I} and is
+straightfoward to construct the inverse of $\delta$ from \eqref{eq:delta.I} to
+$\PBP_{\star}(\ckcO)$. To illustrate the idea, we give the detail construction
+of $\tau:=(\imath,\cP)\times (\jmath,\cQ)\times
+\alpha:=\delta^{-1}(\tau'',\tau_{0})$ when $\cP_{\tau_{0}}(k,1)=c$. We set
+$\alpha:=B^{-}$. Most of the entries in $\cP$ and $\cQ$ are already dertermined
+by  
+\eqref{eq:delta.1}. We refer to \eqref{eq:ydelta} for the labeling of the rest
+of the entries in $\cP$ and $\cQ$. We set  $x'':= \cQ_{\tau''}(\bfcc_{1}(\imath),1)$, 
 \[
 (x_{0},x_{1}) := \begin{cases}
   (\bullet,\bullet) & \text{if } \alpha''= B^{+},\\
@@ -7110,38 +7119,36 @@ rest of the entries, and set $\alpha:=B^{-}$, $x'':= \cQ_{\tau''}(\bfcc_{1}(\ima
 \quad \text{and}\quad
 x_{i} := \cP_{\tau_{0}}(i-1,1) \quad \text{for } i = 2,3,\cdots,k.
 \]
-
-\trivial{
+This gives $\tau := \delta^{-1}(\tau'',\tau_0)$ and finished the proof.
+\trivial[h]{
 In fact, it suffice to check the proposition for the orbit $\ckcO$
 consists of three rows with lengths $2k$, $2$, and $2$.
 }
+\trivial[h]{
+  Suppose $\star =  C^{*}$.
+  Then $\tau$ is obtained by attaching a column of $\bfcc_{1}(\imath)$
+  bullets on the left of $\cP$, and a column of  $\bfcc_{1}(\imath)$
+  bullets concatenated with $\tau_{\bftt}$ on the left of $\cQ$. The bijectivity is clear. The
+  signature formula follows from $2\bfcc_{1}(\imath)  = \bfcc_{2}(\cO)$.
 
 
+  Suppose $\star =  D$ and $\bfrr_{2}(\ckcO)>\bfrr_{3}(\ckcO)$.
+  Then $\tau$ is obtained by attaching a column of $\bfcc_{1}(\jmath)$
+  bullets concatenated with $\tau_{\bftt}$ on the left of $\cP$, and a column of  $\bfcc_{1}(\jmath)$
+  bullets on the left of $\cQ$. The bijectivity is clear. The
+  signature formula follows from $2\bfcc_{1}(\jmath)  = \bfcc_{2}(\cO)$.
 
-  \trivial{
-    Suppose $\star =  C^{*}$.
-    Then $\tau$ is obtained by attaching a column of $\bfcc_{1}(\imath)$
-    bullets on the left of $\cP$, and a column of  $\bfcc_{1}(\imath)$
-    bullets concatenated with $\tau_{\bftt}$ on the left of $\cQ$. The bijectivity is clear. The
-    signature formula follows from $2\bfcc_{1}(\imath)  = \bfcc_{2}(\cO)$.
-
-
-    Suppose $\star =  D$ and $\bfrr_{2}(\ckcO)>\bfrr_{3}(\ckcO)$.
-    Then $\tau$ is obtained by attaching a column of $\bfcc_{1}(\jmath)$
-    bullets concatenated with $\tau_{\bftt}$ on the left of $\cP$, and a column of  $\bfcc_{1}(\jmath)$
-    bullets on the left of $\cQ$. The bijectivity is clear. The
-    signature formula follows from $2\bfcc_{1}(\jmath)  = \bfcc_{2}(\cO)$.
-
-    % Suppose $\star =  D$ and $\bfrr_{2}(\ckcO)=\bfrr_{3}(\ckcO)$.
-    % Then $\tau$ is obtained by attaching a column of $\bfcc_{1}(\jmath)$
-    % bullets concatenated with $\tau_{\bftt}$ on the left of $\cP$, and a column of  $\bfcc_{1}(\jmath)$
-    % bullets on the left of $\cQ$. The bijectivity is clear. The
-    % signature formula follows from $2\bfcc_{1}(\jmath)  = \bfcc_{2}(\cO)$.
-  }
+  % Suppose $\star =  D$ and $\bfrr_{2}(\ckcO)=\bfrr_{3}(\ckcO)$.
+  % Then $\tau$ is obtained by attaching a column of $\bfcc_{1}(\jmath)$
+  % bullets concatenated with $\tau_{\bftt}$ on the left of $\cP$, and a column of  $\bfcc_{1}(\jmath)$
+  % bullets on the left of $\cQ$. The bijectivity is clear. The
+  % signature formula follows from $2\bfcc_{1}(\jmath)  = \bfcc_{2}(\cO)$.
+}
 \end{proof}
 
-
-\begin{prop}\label{cor:D.inj1}
+Combining the injectivity results in \Cref{lem:delta} and
+\Cref{prop:CC.bij}, we get the following lemma.
+\begin{lem}\label{cor:D.inj1}
 Suppose that $\star \in \set{D,B,C^*}$ and $\bfrr_{2}(\ckcO)>0$.
 Then the map
 \begin{equation}\label{eq:D.BD}
@@ -7157,19 +7164,9 @@ Then the map
 is injective. Moreover, \eqref{eq:D.BD} is bijective
 unless $\star\in \set{B,D}$ and $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$.
 % when $\star = C^*$
-\end{prop}
-\begin{proof}
-  % Suppose $\tau_{1}, \tau_{2} \in \PBP_{\star}(\ckcO)$ such that
-  % $ \delta' (\tau_{1}) = \delta'(\tau_{2})$. Now $\DD(\tau_{1}) = \DD(\tau_{2})$ follows from
-  % the injectivity results in \Cref{lem:delta} and \Cref{prop:CC.bij}.
-It follows from the injectivity results in \Cref{lem:delta} and \Cref{prop:CC.bij}.
-  % Suppose $\uptau_{1}, \uptau_{2} \in \PBPes(\ckcO)$ such that
-  % $ \delta' (\uptau_{1}) = \delta'(\uptau_{2})$. By the definition of descent,
-  % $\wp_{\uptau_{1}} = \wp_{\uptau_{2}}$. Now $\tau_{1} = \tau_{2}$ follows from
-  % the injectivity results in \Cref{lem:delta} and \Cref{prop:CC.bij}.
-\end{proof}
+\end{lem}
 
-Combining the above propotition with \Cref{lem:D.sign}, we get the following.
+Combining the above \Cref{lem:delta} with \Cref{lem:D.sign}, we get the following.
 \begin{cor}\label{cor:dpinj}
 If $\star \in \set{B, D,C^*}$, then the map
 \begin{equation}
@@ -7184,127 +7181,156 @@ is injective. \qed
 
 
 
-%\section{Marked Young diagrams attached to the painted bipartitions: combinatorics} \label{sec:ACC}
-\section{Associated cycles and the exhaustion of special representations} \label{sec:ACC}
+\section{Properties of Associated cycles}
+\label{sec:ACC}
 
 \def\dsign{{}^d\mathrm{Sign}}
 
 \def\acm{\cL}
 \def\acme{\tilde{\cL}}
+\def\dlifttso{{\check \vartheta}_{\sfss_{\tau'},\cO'}^{\sfss_{\tau},\cO}}
+\def\DDtss{\DD_{\sfss_{\tau'}}^{\sfss_{\tau}}}
 
-By \Cref{thmpitau},
- we reduce the study of the associated cycles of into 
- combinatorical problems.
-In this section, we  will be solve these problems. 
+In this section, we study the properties of the associated cycles $\AC(\uptau)$
+defined in \Cref{subsecass}.
+Let $\uptau=(\tau,\wp)\in \PBP_\star(\ckcO)$, $\uptau' := (\tau',\wp'):=\DD(\uptau)$ and  $\cO':=\DDtss(\cO)$.
 
-Recall that $\AOD_{\star}(\cO)$ can be parameterized by $\MYD_{\star}(\cO)$. 
-We fist define the combinatorical companion of $\AC(\uptau)$.
-Suppose $\abs{\ckcO}=0$. For $\uptau\in \PBP_{\star}(\ckcO)$, we define
+\subsection{Translate to combinatorical problem}
+
+\begin{lem}\label{lem:actau}
+  The cycle $\AC(\uptau)$ is an element in $\bN[\AOD_{\sfss_\tau}(\cO)]$.
+\end{lem}
+\begin{proof}
+We prove by induction on the number of rows in $\ckcO$. The lemma clearly holds
+for the initial case by the definition in \Cref{subsecass}. For the general
+case, $\cO$ is regular for $\DDtss$ by \Cref{lem78}. Therefore $\AC(\uptau)\in 
+\bN[\AOD_{\sfss_\tau}(\cO)]$  by \Cref{lem:aod} and the induction
+hypothesis that $\AC(\uptaup)\in \bN[\AOD_{\sfss_{\tau'}}(\cO')]$.
+\end{proof}
+
+
+Let $\ac_{\uptau}\in \bN[\MYD_\star]$ be the element corresponds to the
+associated cycle $\AC(\uptau)$ via \eqref{eq:myd}. 
+The study of $\AC(\uptau)$ now is translated to 
+the combinatorics problem of computing $\ac_{\uptau}$. 
+Via \Cref{lem:clift}, $\ac_{\uptau}$ is also
+defined combinatorically as the following:  
+\begin{itemize}
+\item
+When $\abs{\ckcO}=0$,
 \[
   \ac_{\uptau} :=
   \begin{cases}
-   (1^{\Sign(\uptau)})_{\star}\lotimes(0,1) & \text{if } \star=B\\
-   (1^{(0,0)})_{\star} & \text{otherwise}.
+   (1^{\Sign(\tau)})_{\star}\lotimes(0,1), & \text{if } \star=B;\\
+   (1^{(0,0)})_{\star}, & \text{otherwise}.
   \end{cases}
 \]
-
-Suppose $\abs{\ckcO} >0$. For $\uptau = (\tau,\wp)\in \PBP_{\star}(\ckcO)$, let
-$\uptau' = \DD(\uptau)$ and we define
+\item
+When $\abs{\ckcO} >0$, 
 \[
 \ac_{\uptau} :=
 \begin{cases}
-  \dliftv[\sfss_{\uptau'}][\sfss_{\uptau}](\ac_{\uptaup}\lotimes (\varepsilon_{\wp},\varepsilon_{\wp}))
-  & \text{if } \star\in \set{C,\wtC},\\
-  \dliftv[\sfss_{\uptau'}][\sfss_{\uptau}](\ac_{\uptaup})
-  & \text{if } \star = D^{*}, \\
-  \dliftv[\sfss_{\uptau'}][\sfss_{\uptau}](\ac_{\uptaup})\lotimes (0,\varepsilon_{\tau})
-  & \text{if } \star \in \set{B,D}, \\
-  \dliftv[\sfss_{\uptau'}][\sfss_{\uptau}](\ac_{\uptaup})
-  & \text{if } \star = C^{*}.
+  \dlifttso(\ac_{\uptaup}\lotimes (\varepsilon_{\wp},\varepsilon_{\wp}))
+  & \text{if } \star\in \set{C,\wtC};\\
+  \dlifttso(\ac_{\uptaup})\lotimes (0,\varepsilon_{\tau})
+  & \text{if } \star \in \set{B,D}; \\
+  \dlifttso(\ac_{\uptaup})
+  & \text{if } \star \in \set{C^*,D^{*}}. \\
 \end{cases}
 \]
-See  \eqref{eq:LCD} and \eqref{eq:LDC} for the definition of $\dlift[\sfss'][\sfss]$.
-
+Here $\dlifttso$ is defined by \eqref{eq:LCD} and \eqref{eq:LDC}.
+\end{itemize} 
 For $\star\in \set{B,D}$ and $\cE\in \bZ[\MYD_{\star}]$, we write
 \[
 \cE^{+} := \Lambda_{(1,0)}(\cE) \AND \cE^{-} := \Lambda_{(0,1)}(\cE).
 \]
 We adopt the convention that $\cE\cdot \emptyset = 0$ for $\cE\in\bZ[\MYD]$.
-
-Using the signature formulas in \Cref{lem:delta}, we have the following more
-explicit formulas on $\ac_{\uptau}$.
+We have the following more explicit formulas on $\ac_{\uptau}$.
 \begin{lem}\label{lem:dlift}
-  Suppose $\ckcO$ such that $\bfrr_{2}(\ckcO)>0$. Let
+  Suppose that $\ckcO$ such that $\bfrr_{2}(\ckcO)>0$. Let
   $\uptau = (\tau,\wp)\in \PBPes(\ckcO)$ and $\uptaup = \DD(\uptau)$.
 \begin{enuma}
   \item
-  Suppose $\star\in \set{C,\wtC}$.  Then
+  Suppose that $\star\in \set{C,\wtC}$.  Then
   \begin{equation}\label{eq:C}
     \ac_{\uptau}=
     \begin{cases}
       \maltese^{y}\big( (\ac_{\uptau'}\lotimes (\varepsilon_{\wp},\varepsilon_{\wp}))
-      \cdot (n_{0},n_{0})\big) & \text{if } \bfrr_{1}(\ckcO)>\bfrr_{2}(\ckcO)\\
-      \maltese^{y}\big( (\pac{\uptau'} + \nac{\uptaup})\cdot (0,0) \big)
-      & \text{if } \bfrr_{1}(\ckcO)=\bfrr_{2}(\ckcO)
+      \cdot (n_{0},n_{0})\big), & \text{if } \bfrr_{1}(\ckcO)>\bfrr_{2}(\ckcO);\\
+      \maltese^{y}\big( (\pac{\uptau'} + \nac{\uptaup})\cdot (0,0) \big),
+      & \text{if } \bfrr_{1}(\ckcO)=\bfrr_{2}(\ckcO);
     \end{cases}
   \end{equation}
-  where $y$ is an integer determined by $\Sign(\uptaup)$ and $n_{0} = (\bfcc_{1}(\cO)-\bfcc_{2}(\cO))/2$.
+  Here %\begin{itemize}
+   % \item 
+    $n_{0} = \frac{\bfcc_{1}(\cO)-\bfcc_{2}(\cO)}{2}$,
+   % \item 
+    $y = \frac{p_{\tau'}-q_{\tau'}}{2}$ if $\star=C$ and 
+    $y = \frac{p_{\tau'}-q_{\tau'}-1}{2}$ if $\star=\wtC$. 
+  %\end{itemize}
   \item
-  Suppose $\star\in \set{B,D}$ and $\bfrr_{2}(\cO)>\bfrr_{3}(\cO)$. Then
+  Suppose that $\star\in \set{B,D}$ and $\bfrr_{2}(\cO)>\bfrr_{3}(\cO)$. Then
   \begin{equation}\label{eq:BD}
     \ac_{\uptau}= \big((\maltese^{y}\ac_{\uptau'})\cdot (p_{\tau_{\bftt}},q_{\tau_{\bftt}})\big)
     \lotimes (0,\varepsilon_{\tau})
-    % \ac_{\uptau}= \big(\maltese^{y}(\ac_{\uptau'}\lotimes (0,\varepsilon_{\tau}))\big)
-    % \cdot (p_{\tau_{\bftt}},q_{\tau_{\bftt}})
   \end{equation}
-  where $y$ is an integer determined by $\Sign(\uptau)$.
+  Here %\begin{itemize}
+    $y = \frac{p_{\tau}-q_{\tau}+1}{2}$ if $\star=B$ and 
+    $y = \frac{p_{\tau}-q_{\tau}}{2}$ if $\star=D$. 
+  %where $y$ is an integer determined by $\Sign(\uptau)$.
   In particular,
   \begin{equation}\label{eq:TBD}
     \cE(1) = \ac_{(\tau_{\bftt},\emptyset)}(1)
   \end{equation}
   for each $\cE\in \MYD_\star$ has nonzero multiplicity in $\ac_{\uptau}$.
   \item
-  When  $\bfrr_{2}(\cO)=\bfrr_{3}(\cO)$,
+  Suppose that $\star\in \set{B,D}$ and $\bfrr_{2}(\cO)=\bfrr_{3}(\cO)$.
+  Then 
   \begin{equation}\label{eq:BD2}
     \ac_{\uptau} =
     \big((\maltese^t (\pac{\uptaupp}\cdot (0,0)) \cdot \pcT_{\tau}
-    +  (\maltese^t(\nac{\uptaupp}\cdot (0,0)) ) \cdot \ncT_{\tau}\big)\lotimes(0,\varepsilon_{\tau})
+    +  (\maltese^t(\nac{\uptaupp}\cdot (0,0)) ) \cdot \ncT_{\tau}\big)
+    \lotimes(0,\varepsilon_{\tau}).
   \end{equation}
-  where $\uptaupp = \DD^{2}(\uptau)$ and
+  Here $\uptaupp = \DD^{2}(\uptau)$ and
   \[
   \begin{split}
     t &  = \frac{\abs{\ssign(\tau_{\bftt})}}{2},\\
-    \pcT_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}},q_{\tau_{\bftt}}-1) & \text{when
+    \pcT_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}},q_{\tau_{\bftt}}-1) &
+       \text{when
       } q_{\tau_{\bftt}}-1\geq 0 , \\
       \emptyset & \text{otherwise},
     \end{cases}\\
-    \ncT_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}}-1,q_{\tau_{\bftt}}) & \text{when
+    \ncT_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}}-1,q_{\tau_{\bftt}}) &
+       \text{when
       } p_{\tau_{\bftt}}-1\geq 0  ,\\
       \emptyset & \text{otherwise}.
     \end{cases}\\
   \end{split}
 \]
 \item
-  Suppose $\star\in \set{D^{*}}$.  Then
+  Suppose that $\star\in \set{D^{*}}$.  Then
   \[
     \ac_{\uptau}=\ac_{\uptau'} \cdot (n_{0},n_{0}),
   \]
   where $n_{0} = (\bfcc_{1}(\cO)-\bfcc_{2}(\cO))/2$.
 \item
-  Suppose $\star\in \set{C^{*}}$.  Then
+  Suppose that $\star\in \set{C^{*}}$.  Then
   \[
     \ac_{\uptau}=\ac_{\uptau'} \cdot (p_{\tau_{\bftt}},q_{\tau_{\bftt}}).
 \]
 \end{enuma}
-\qed
 \end{lem}
+\begin{proof}
+ The lemma follows from the signature formulas in \Cref{lem:delta}, 
+\end{proof}
 
 
 
-\trivial[h]{Hint of the proof of (c). It suffice to consider the most left three columns of the peduncle
-  part: this part has signature
-  $\lsign(\cT_{\uptau}) +(1,1) = \ssign(\tau_{\bftt}x_{\uptaupp})= \ssign(\tau_{\bftt})+\lsign(\cD_{\uptaupp})$.
-  Therfore,
+\trivial[h]{Hint of the proof of (c). It suffice to consider the most left three
+  columns of the peduncle part: this part has signature $\lsign(\cT_{\uptau})
+  +(1,1) = \ssign(\tau_{\bftt}x_{\uptaupp})=
+  \ssign(\tau_{\bftt})+\lsign(\cD_{\uptaupp})$. Therfore,
   \[\ssign(\tau_{\bftt}) = \lsign(\cT_{\uptau})-\lsign(\cD_{\uptaupp})
   + (1,1) = \lsign(\ac_{\uptau})-\lsign(\ac_{\uptaupp})+(1,1).
   \]
@@ -7312,24 +7338,31 @@ explicit formulas on $\ac_{\uptau}$.
 
 \subsection{Properties of $\ac_{\uptau}$}
 \label{sec:ac}
-In this section, we summarizes the properties of $\ac_{\uptau}$ in the following
-lemmas. Their proofs are given in the next three sections.
+In this section, we summarizes the properties of $\ac_{\uptau}$. The proofs are
+given in the next three sections. 
 
-\begin{lem}\label{lem:ac0}
-  For each $\uptau\in \PBPes(\ckcO)$, $\ac_{\uptau}\neq 0$.
-  Moreover, the multiplicity of each $\cE\in \MYD_{\star}$ in $\ac_{\uptau}$ is
-  either $0$ or $1$.
+The following lemma implies the non-vanishing and multiplicity freeness of $\AC(\tau)$, see \Cref{thmac1}.
+ \begin{lem}\label{lem:ac0} 
+  For each $\uptau\in \PBPes(\ckcO)$,
+  $\ac_{\uptau}\neq 0$. Moreover, the multiplicity of each $\sO\in \SYD_{\star}$
+  in $\sF\circ \ac_{\uptau}$ is either $0$ or $1$.
 \end{lem}
 
+\smallskip
+
+The following three lemmas implie \Cref{thmac2} \Cref{thmac3}, \Cref{thmac4},
+\Cref{thmac5} and \Cref{thmac0} part (b) and (c).
 \begin{lem}\label{lem:C}
-Suppose $\star \in \set{C,\wtC,D^{*}}$ and $\ckcO\neq \emptyset$.
+  Suppose that $\star \in \set{C,\wtC,D^{*}}$ and $\ckcO\neq \emptyset$.
   \begin{enuma}
-    \item Let $\uptau_{1} = (\tau_{1},\wp_{1})$ and $\uptau_{2}=(\tau_{2},\wp_{2})$ be two elements in
-    $\PBPesp(\ckcOp)$ such that $\ac_{\uptau_{1}} =  \ac_{\uptau_{2}}$.
-    Then
-    \[\Sign(\tau'_{1})=\Sign(\tau'_{2}) \quad \text{and} \quad \varepsilon_{\wp_{1}}=\varepsilon_{\wp_{2}},
-    \]
-    where $\tau'_{i} := \DD(\tau_{i})$ for $i=1,2$.
+    \item Let $\uptau_{1} = (\tau_{1},\wp_{1})$ and
+    $\uptau_{2}=(\tau_{2},\wp_{2})$ be two elements in $\PBPesp(\ckcOp)$ such
+    that $\ac_{\uptau_{1}} =  \ac_{\uptau_{2}}$. Then
+    \[
+      \Sign(\tau'_{1})=\Sign(\tau'_{2}) \quad \text{and} \quad
+    \varepsilon_{\wp_{1}}=\varepsilon_{\wp_{2}}, \]
+    where $\tau'_{i} :=
+    \DD(\tau_{i})$ for $i=1,2$.
     % \item Let $\uptau_{1} = (\tau_{1},\wp_{1})$ and $\uptau_{2}=(\tau_{2},\wp_{2})$ be two distinct elements in
     % $\PBPesp(\ckcOp)$. Then
     % \begin{itemize}
@@ -7340,7 +7373,7 @@ Suppose $\star \in \set{C,\wtC,D^{*}}$ and $\ckcO\neq \emptyset$.
     % \end{itemize}
     \item When $\ckcO$ is weakly-distinguished, the following map is injective.
     \[
-      \acme \colon
+      \acm \colon
       \PBPes( \ckcO )\longrightarrow \bZ[\MYD_{\star}(\cO)],
       \quad \uptau\mapsto \ac_{\uptau}.
       %\AC\colon \PBPes( \cOp )\longrightarrow \cK_{\star}(\cO).
@@ -7366,7 +7399,7 @@ Suppose $\star \in \set{B,D}$ and $(\star, \check \CO)\neq (D, \emptyset)$.
 
   \item When $\ckcO$ is weakly-distinguished, the following map is injective.
   \[
-    \acm \colon
+    \acme \colon
     \PBPes( \ckcO )\times \bZ/2\bZ \longrightarrow \bZ[\MYD_{\star}(\cO)],\quad
     (\uptau,\epsilon) \mapsto \ac_{\uptau}\otimes (\epsilon, \epsilon).
   \]
@@ -7374,36 +7407,31 @@ Suppose $\star \in \set{B,D}$ and $(\star, \check \CO)\neq (D, \emptyset)$.
 \end{enuma}
 \end{lem}
 
+Note that $\ckcO$ is quasi-distinguished when $\star = C^*$, see \Cref{prop:CD*}.
 \begin{lem}\label{lem:C*}
-Suppose $\star = C^{*}$.
-  When $\ckcO$ is quasi-distinguished, the image of the map
+Suppose that $\star = C^{*}$. The map
     \[
  \acm: \PBPes( \ckcO )\longrightarrow \bZ[\MYD_{\star}(\cO)],
       \quad \uptau\mapsto \ac_{\uptau}
     \]
-    is $\MYD_{\star}(\cO)$.
+    is injective with image $\MYD_{\star}(\cO)$.
 \end{lem}
 
+\smallskip
+
+The following are technical lemmas.
 \begin{lem}\label{lem:BD2}
-Suppose $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
+Suppose that $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
 \begin{enuma}
   \item If $x_{\uptau}=s$, then $\ac_{\uptau}^{+} =0$ and $\ac_{\uptau}^{-}=0$.
   \item If $x_{\uptau}\in \set{r,c}$, then $\ac_{\uptau}^{+} \neq 0$ and $\ac_{\uptau}^{-}=0$.
   \item If $x_{\uptau}=d$, then $\ac_{\uptau}^{+} \neq 0$ and
   $\ac_{\uptau}^{-}\neq 0$.
 \end{enuma}
-% Then $\ac_{\uptau}$ satisfies
-%   \[
-%     \begin{cases}
-%       \ac_{\uptau}^{+} =0, \text{ and } \ac_{\uptau}^{-}=0, & \text{when } x_{\uptau}=s,\\
-%       \ac_{\uptau}^{+} \neq 0, \text{ and }   \ac_{\uptau}^{-}=0 , & \text{when } x_{\uptau}\in \set{r,d},\\
-%       \ac_{\uptau}^{+} \neq 0, \text{ and }   \ac_{\uptau}^{-}\neq 0,  & \text{when } x_{\uptau}=d.\\
-%     \end{cases}
-%   \]
 \end{lem}
 
 \begin{lem}\label{lem:BD3}
-Suppose $\star \in \set{B,D}$, $\ckcO \neq \emptyset$ and $\ckcO$ is weakly-distinguished.
+Suppose that $\star \in \set{B,D}$, $\ckcO \neq \emptyset$ and $\ckcO$ is weakly-distinguished.
 \begin{enuma}
     \item The map
     \begin{equation}\label{eq:up}
@@ -7432,50 +7460,31 @@ Suppose $\star \in \set{B,D}$, $\ckcO \neq \emptyset$ and $\ckcO$ is weakly-dist
      \end{array}
    \]
     are injective.
-    \item When $\bfrr_{1}(\ckcO)> \bfrr_{3}(\ckcO)$, and $x_{\tau}=d$.
+    \item Suppose that $\bfrr_{1}(\ckcO)> \bfrr_{3}(\ckcO)$ and $x_{\tau}=d$.
     Then there is $\cE\in \MYD$ with non-zero coefficient in $\nac{\uptau}$ such that $\cE\sqsupseteq (1,0)$.
+    In particular, there is no $\uptau_2\in \PBP_\star(\ckcO)$ satisfies 
+    \[
+     \pac{\uptau_2} \cdot (0,0) = \maltese (\nac{\uptau}\cdot (0,0)).
+    \]
   \end{enuma}
 \end{lem}
 
-%For $\sum_{i} m_{i} \cE_{i} \in \bZ[\MYD_{\star}]$ with
+All the claims for $\star\in \set{C^{*},D^{*}}$ are straightforward to verify.
+So we will focus on the non-quaternionic cases in the next three sections.
 
-% Suppose $\sum_{j=1}^{k} m_{j} \cE_{j} \in \bZ[\MYD_{\star}]$ where $k\in \bN$, $m_{j}>0$ and
-% $\cE_{j}\in \MYD_{\star}$, define
-% \[
-%   \lsign(\sum_{j} m_{j} \cE_{j}) = \set{\lsign(\cE_{j})|j=1,2,\cdots, k}.
-% \]
+\smallskip
 
-% \begin{lem}\label{lem:BD3}
-% Suppose $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
+We prove by induction on the number of columns in $\cO$.
 
-% \end{lem}
+\subsection{The initial cases}\label{sec:pfDC.init} Suppose $\bfcc_{1}(\cO)=0$.
+Then the group $G_{\sfss_\tau,\bC}$ is the trivial group and everything are
+clear.
 
+\smallskip
 
-% % In this section, we let $\star \in \set{B,D,C^{*}}$. Now
-% % $\star' = \wtC, C, D^{*}$  respectively.
-% %
-
-% We will prove the above lemmas by induction on the number of columns in $\cO$.
-
-% We assume all the claim had been proven when $\ckcO$ has at most two columns, that
-% is
-% \begin{itemize}
-%   \item When $\star = D$, $\bfrr_{3}(\ckcO) = 0$;
-%   \item When $\star = B$, $\bfrr_{2}(\ckcO)=0$;% is the zero orbit.
-%   \item When $\star = C^{*}$, $\bfrr_{2}(\ckcO)=0$.% is the zero orbit.
-% \end{itemize}
-
-All the claims for $\star\in \set{C^{*},D^{*}}$ in the above lemmas are straight forward to verify.
-We will focus on the non-quaternionic cases in the next two sections.
-
-\subsection{The initial cases}\label{sec:pfDC.init}
-Suppose $\bfcc_{1}(\cO)=0$. Then the group $G_{\bC}$ is the trivial group,
-everything are clear.
-
-We now assume $\bfcc_{1}(\cO)>0$ and $\bfcc_{2}(\cO)=0$.
-
-Suppose $\star \in \set{C,\wtC,D^*}$. There there is $k\in\bN^{+}$ such that
-$\cO = (1^{2k})_{\star}$, and $\ckcO$ is the regular nilpotent orbit in $\ckfgg$.
+We now assume that $\bfcc_{1}(\cO)>0$ and $\bfcc_{2}(\cO)=0$. Suppose that
+$\star \in \set{C,\wtC,D^*}$. There there is $k\in\bN^{+}$ such that $\cO =
+(1^{2k})_{\star}$ and $\ckcO$ is the regular nilpotent orbit in $\ckfgg$.
 % \[ \ckcO =
 %   \begin{cases}
 %    ((2k+1)^{1})_{B} & \text{when } \star=C,\\
@@ -7486,7 +7495,7 @@ $\cO = (1^{2k})_{\star}$, and $\ckcO$ is the regular nilpotent orbit in $\ckfgg$
 Now $\PBPes(\ckcO)$ has only one element, say $\uptau_{0}$, which
 maps to $\ac_{\uptau_{0}} = (1^{(k,k)})_{\star}$.
 
-Suppose $\star \in \set{B,D,C^{*}}$. There is $k\in \bN^{+}$ such that
+Suppose that $\star \in \set{B,D,C^{*}}$. There is $k\in \bN^{+}$ such that
 $\cO$ and $\ckcO$ are given by \Cref{lem:D.sign}.
 When $\star \in \set{B,D}$,
 \[
@@ -7502,7 +7511,7 @@ Thanks to \Cref{lem:D.sign}, it is easy to see that
 \]
 is a bijection.
 
-When $\star = C^{*}$, for $\uptau\in \PBPes(\ckcO)$,
+When $\star = C^{*}$, %for $\uptau\in \PBPes(\ckcO)$,
 \[
   \ac_{\uptau} = (1^{(p_{\tau},q_{\tau})})_{\star}\quad \Forall \uptau\in \PBPes(\ckcO).
 \]
@@ -7513,58 +7522,11 @@ Now
 \]
 is a bijection by \Cref{lem:D.sign}.
 
+\smallskip
+
 In all the cases, the orbit $\ckcO$ is quasi-distinghuished and all the lemmas
-in \Cref{sec:ac} are clear now.
+in \Cref{sec:ac} are straightforward to verify.
 
-
-% When $k=0$, $\cO = (C_{1}=2c_{1},C_{0}=2c_{0})$ has  at most
-% two columns.
-% Now $\uppi_{\uptaup}$ is the trivial representation of $\Sp(2c_{0},\bR)$.
-% The lift $\uppi_{\uptaup} \mapsto \Thetab(\uppi_{\uptaup})$ is in fact a stable
-% range theta lift.%, and therefore $\uppi_{\uptau}\neq 0$.
-% For $\uptau\in \drc(\cO)$, let $(p_{1},q_{1}) = \ssign(\bfxx_{\uptau})$ and
-% $x_{\uptau}$ be the foot of $\uptau$. It is easy to see that  (using associated
-% character formula)
-% \[
-%   \ac_{\uppi_{\uptau}} = \cT_{\uptau}\cdot \cP_{\uptau},
-%   \text{ where }\cT_{\uptau}:=\dagger \dagger_{c_{0},c_{0}},
-%   \text{ and } \cP_{\uptau}:=\begin{cases}
-%     \ddagger_{p_{1},q_{1}}&  x_{\uptau} \neq d,\\
-%     \dagger_{p_{1},q_{1}}& x_{\uptau} = d.\\
-%   \end{cases}
-% \]
-% Note that $\ac_{\uppi_{\uptau}}$ is irreducible.
-
-% Let $\cO_{1} = (2(c_{1}-c_{0}))\in \dpeNil(D)$. Using the above formula,
-% one can check that the following maps are bijections
-% \[
-%   \begin{tikzcd}[row sep=0em]
-%     \drc(\cO_{1}) &\ar[l] \drc(\cO) \ar[r] & \LLS(\cO)\\
-%     \bfxx_{\uptau} & \ar[l,maps to] \uptau \ar[r,mapsto] & \ac_{\uptau}.
-%   \end{tikzcd}
-% \]
-% To see that $\drc(\cO)\ni\uptau\mapsto \ac_{\uptau}$ is an injection, one check the
-% following lemma holds:
-% \begin{lem}\label{c:init.CD}
-%   The map $\drc(\cO_{1})\longrightarrow \bN^{2}\times \bZ/2\bZ$ given by
-%   $\uptau\mapsto (\ssign(\uptau),\upepsilon_{\uptau})$ is injective (see
-%   \Cref{sec:upepsilon} for the definition of $\upepsilon_{\uptau}$). Moreover,
-%   $\upepsilon_{\uptau}=0$ only if $\ssign(\uptau)\geq (0,1)$. \qedhere
-% \end{lem}
-
-
-% Moreover, $\ac_{\uptau}\otimes \det \notin \LLS(\cO)$ for any $\uptau\in \drc(\cO)$.
-% In fact, if $\ssign(\bfxx_{\uptau})\succeq (1,0)$, $\ac_{\uptau}$
-% on the 1-rows with $+$-signs is trivial and $\ac_{\uptau}\otimes \det$ has
-% non-trivial restriction. When $\ssign(\bfxx_{\uptau})\nsucceq (1,0)$,
-% $\bfxx_{\uptau}=s\cdots s$, all 1-rows of $\ac_{\uptau}$ are marked by ``$=$'' and
-% all 1-rows of $\ac_{\uptau}\otimes \det$ are  marked by ``$-$''.
-
-% Therefore our main \Cref{thm:count} and main proposition \Cref{prop:CD} holds for $\cO$.
-
-
-
-% Let $C_{i} = \bfcc_{i}(\ckcO)$ for $i =1,2, \cdots$.
 
 \subsection{The general case for $\star\in \set{C,\wtC}$}
 We now assume $\bfcc_{2}(\cO)>0$ and retain the notation in \Cref{lem:C}.
