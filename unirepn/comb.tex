@@ -1,0 +1,381 @@
+\documentclass[ssunip]{subfiles}
+
+\begin{document}
+ \section{The descents of painted bipartitions}\label{sec:comb}
+
+As before, let  $\star\in \{ B, C,  D, \widetilde{C},  C^*, D^*\}$ and let $\check \CO$ be a Young diagram that has $\star$-good parity. Put
+\begin{equation}\label{lstarco}
+  l:=l_{\star, \check \CO}:=\begin{cases}
+ \frac{\bfrr_1(\ckcO)}{2}; & \quad \textrm{if } \star\in \{B, \widetilde C\};\smallskip\\
+ \frac{\bfrr_1(\ckcO)-1}{2}, &\quad \textrm{if } \star\in \{C, C^* \};\smallskip\\
+ \frac{\bfrr_1(\ckcO)+1}{2}, &\quad \textrm{if } \star\in \{ D, D^*\}.\\
+\end{cases}
+\end{equation}
+This is the length of the leading column of every element of $\mathrm{PBP}_\star(\check \CO)$. 
+
+ 
+ In various context, we use $\emptyset$ to denote the empty set, the empty Young diagram or the painted Young diagram whose underlying Young diagram is empty. For every Young diagram $\imath$, its descent, which is denoted by $\nabla(\jmath)$, is defined to be the Young diagram obtained from $\jmath$ by removing the first column. By convention, $\nabla(\emptyset)=\emptyset$. 
+ 
+ In the rest of this section, we assume that $\check \CO\neq \emptyset$, and write $\check \CO'$ for its dual descent. Write $\star'$ for the Howe dual of $\star$ so that $\check \CO'$ has $\star'$-good parity. Put
+\[
+l':=l_{\star', \check \CO'}
+\]
+    
+ \subsection{Naive descents of painted bipartitions }
+\def\bipartl{\mathrm{bi\cP_L}}
+\def\bipartr{\mathrm{bi\cP_R}}
+\def\dsdiagl{\mathrm{DS_L}}
+\def\dsdiagr{\mathrm{DS_R}}
+\def\DDl{\eDD_\mathrm{L}}
+\def\DDr{\eDD_\mathrm{R}}
+
+
+In this subsection, let $\tau=(\imath,\cP)\times (\jmath,\cQ)\times \alpha$ be a  painted bipartition such that $\star_\tau=\star$. Write $\star'$ for the Howe dual of $\star$ and put
+\begin{equation} \label{eq:def.alphap}
+\alpha'=\begin{cases} B^+,
+& \textrm{if $\alpha = \wtC$ and $\cP_\tau(l_{\star,\ckcO},1),1) \neq c$;}\\
+B^-,
+& \textrm{if $\alpha = \wtC$ and $\cP_\tau(l_{\star,\ckcO},1),1)  = c$;}\\
+\star', & \textrm{if $\alpha\neq \widetilde C$}. 
+\end{cases}
+\end{equation}
+\trivial{
+  \begin{equation} \label{eq:def.alphap}
+    \alpha'=\begin{cases} B^+,
+  & \textrm{if $\alpha=\widetilde{C}$ and $c$ does not occur in the leading column of $\tau$}; \smallskip \\
+  B^-,
+  & \textrm{if $\alpha=\widetilde{C}$ and  $c$ occurs in the leading column of $\tau$}; \smallskip \\
+  \star', & \textrm{if $\alpha\neq \widetilde C$}. 
+  \end{cases}
+  \end{equation}
+  }
+\begin{lem}\label{lemDDn1}
+  If $\star \in \set{B,C,C^*}$, then there is a unique painted bipartition of the form $\tau'= (\imath',\cP')\times (\jmath',\cQ')\times \alpha'$ with the following properties:
+  \begin{itemize}
+        \item $
+   (\imath',\jmath')= (\imath,\DD(\jmath)); \smallskip
+   $
+   \item for all $(i,j)\in \BOX(\imath')$,
+   \[
+     \cP'(i,j)=\begin{cases}   
+    \bullet \textrm{ or } s,&\textrm{ if  $\ \cP(i,j)\in \{\bullet, s\}$;} \smallskip \\
+  \cP(i,j),& \textrm{ if $\ \cP(i,j)\notin \{\bullet, s\}$};\end{cases}
+   \]
+   \item for all $(i,j)\in \BOX(\jmath')$,
+   \[
+     \cQ'(i,j)=\begin{cases}   
+    \bullet \textrm{ or } s,&\textrm{ if  $\ \cQ(i,j+1)\in \{\bullet, s\}$;} \smallskip \\
+  \cQ(i,j+1), & \textrm{ if $\ \cQ(i,j+1)\notin \{\bullet, s\}$}.  \end{cases}
+   \]
+    \end{itemize} 
+    \end{lem}
+    
+    
+
+
+   \begin{proof}
+    First assume that the images of $\cP$ and $\cQ$ are both contained in $\{\bullet, s\}$. Then  the image of $\cP$  is in fact contained in $\{\bullet\}$, and $(\imath, \jmath)$ is  right interlaced in the sense that 
+ \[
+ \mathbf{c}_1(\jmath)\geq \mathbf{c}_1(\imath)\geq \mathbf{c}_2(\jmath)\geq \mathbf{c}_2(\imath)\geq \mathbf{c}_3(\jmath)\geq \mathbf{c}_3(\imath) \geq \cdots.
+ \]
+ Hence $ (\imath',\jmath'):= (\imath,\DD(\jmath))$ is left interlaced in the sense that 
+ \[
+ \mathbf{c}_1(\imath')\geq \mathbf{c}_1(\jmath')\geq \mathbf{c}_2(\imath')\geq \mathbf{c}_2(\jmath')\geq \mathbf{c}_3(\imath')\geq \mathbf{c}_3(\jmath') \geq \cdots.
+ \]
+ Then it is clear that there is  unique painted bipartition of the form  $\tau'=(\imath',\cP')\times (\jmath',\cQ')\times \alpha'$ such that images of $\cP'$ and $\cQ'$ are both contained in $\{\bullet, s\}$. This proves the lemma in the special case when the images of $\cP$ and $\cQ$ are both contained in $\{\bullet, s\}$. 
+ 
+ The proof of the lemma in the general case is easily reduced to this special case. 
+   \end{proof}
+    \begin{lem}\label{lemDDn2}
+    If $\star \in \set{ \widetilde C, D,D^*}$, then there is a unique painted bipartition of the form $\tau'= (\imath',\cP')\times (\jmath',\cQ')\times \alpha'$ with the following properties:
+  \begin{itemize}
+        \item $
+   (\imath',\jmath')= (\DD(\imath),\jmath); \smallskip
+   $
+   \item for all $(i,j)\in \BOX(\imath')$,
+   \[
+     \cP'(i,j)=\begin{cases}   
+    \bullet \textrm{ or } s,&\textrm{ if  $\ \cP(i,j+1)\in \{\bullet, s\}$;} \smallskip \\
+  \cP(i,j+1),& \textrm{ if $\ \cP(i,j+1)\notin \{\bullet, s\}$};\end{cases}
+   \]
+   \item for all $(i,j)\in \BOX(\jmath')$,
+   \[
+     \cQ'(i,j)=\begin{cases}   
+    \bullet \textrm{ or } s,&\textrm{ if  $\ \cP(i,j)\in \{\bullet, s\}$;} \smallskip \\
+  \cQ(i,j), & \textrm{ if $\ \cQ(i,j)\notin \{\bullet, s\}$}.  \end{cases}
+   \]
+  
+    \end{itemize}
+\end{lem}
+\begin{proof}
+  The proof is similar to that of \Cref{lemDDn1}. 
+  
+\end{proof}
+
+\begin{defn}
+ In the notation of \Cref{lemDDn1,lemDDn2}, we call $\tau'$ the naive descent of $\tau$, to be denoted by $\DDn(\tau)$.  
+\end{defn} 
+
+  
+
+  
+ \begin{Example} If
+    \[
+     \tau = \ytb{\bullet\bullet\bullet {c},\bullet {s} {c},{s},{c}}
+    \times \ytb{\bullet\bullet\bullet ,\bullet {r} {d},{d}{d}, \none}
+    \times \widetilde C, \]
+   then 
+   \[
+    \nabla_{\mathrm{naive}}(\tau) =\ytb{\bullet\bullet{c} ,\bullet{c},\none }
+    \times  \ytb{\bullet\bullet {s} ,\bullet {r} {d},{d}{d}}\times B^-.
+    \]
+    
+\end{Example}
+ 
+  \subsection{Descents of painted bipartitions}\label{sec:desc}
+ 
+
+Suppose that 
+$
+\tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \mathrm{PBP}_\star(\check \CO)
+$
+and write 
+\[
+  \tau'_{\mathrm{naive}}=(\imath', \cP'_{\mathrm{naive}})\times (\jmath', \cQ'_{\mathrm{naive}})\times \alpha'
+\]
+for the naive descent of $\tau$. This is clearly an element of $  \mathrm{PBP}_{\star'}(\check \CO')$. 
+%Put
+%\begin{equation}\label{lstarco}
+%  l:=l_{\star, \check \CO}:=\begin{cases}
+% \frac{\bfrr_2(\ckcO)}{2}; & \quad \textrm{if } \star\in \{B, \widetilde C\};\\
+% \frac{\bfrr_2(\ckcO)+1}{2}, &\quad \textrm{if } \star\in \{C, C^* \};\\
+% \frac{\bfrr_2(\ckcO)-1}{2}, &\quad \textrm{if } \star\in \{ D, D^*\}.\\
+%\end{cases}
+%\end{equation}
+
+The following two lemmas are easily verified and we omit the proofs. We will give an example for each of them. 
+\delete{
+\begin{lem}\label{descb}
+Suppose that 
+\[ 
+\begin{cases}
+\alpha = B^+; & \\
+(2,3)\in \wp;\quad  &\\
+\cQ(l',1)\in \set{r,d}.
+\end{cases}
+\]
+Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO',\wp')$ of the form
+  \[
+      \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
+  \]
+such that 
+     $
+     \cP' = \cP'_{\mathrm{naive}}
+     $
+     and 
+     for all $(i,j)\in \BOX(\jmath')$, 
+\[
+\cQ'(i,j) = \begin{cases}
+  r, & \ \text{ if  $(i,j) = (l',1)$;}\\
+  \cQ'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
+\end{cases}
+\]
+\end{lem}
+
+
+\begin{Example}
+ If 
+ \[
+ \tau= \ytb{\bullet\bullet,\none} \times \ytb{\bullet \bullet, dd}\times 
+  B^+,
+ \]
+ then 
+\[
+ \tau'_{\mathrm{naive}}= \ytb{\bullet s,\none} \times \ytb{\bullet, d}\times 
+  \widetilde C\qquad\textrm{and}\qquad \tau'= \ytb{\bullet s,\none} \times \ytb{\bullet, r}\times 
+  \widetilde C.
+ \]
+ Note that in this case, the nonzero row lengths of $\check \CO$ are $4,4,2,2$, $\wp=\{(2,3)\}$ and $l'=2$.
+\end{Example}
+\delete{\begin{proof}
+ We only need to check that the triple $\tau'$ defined in the lemma is a painted bipartition. 
+ 
+ Note that 
+ \[
+  \bar \Lambda_{l-1,2}(\imath', \cP')=\bar \Lambda_{l-1,2}(\imath'_{\mathrm{naive}}, \cP'_{\mathrm{naive}})
+ \]
+ and 
+ \[
+ \begin{array}{ccc}
+ 
+      \Lambda_{l-1,1}(\cP_\tau)\times \Lambda_{l-1,2}(\cQ_\tau)
+     &  &
+        \Lambda_{l-1,1}(\cP_{\tau'})\times \Lambda_{l-1,2}(\cQ_{\tau'})\\
+     \hline 
+     \hspace{1em}\\
+       \emptyset
+      \times
+      \ytb{ {x_{1}}{x_0},{\enon{\vdots}},{\enon{\vdots}},{x_{n}}}
+      &
+        \mapsto  &
+        \emptyset 
+        \times
+      \ytb{ {\none}{r},{\none},{\none},\none}
+      \end{array}
+    \]
+  
+\end{proof}
+
+Lemma \ref{descb} is easy to check and we omit the details. Note that $(\frac{\bfrr_2(\ckcO)}{2},1) \in \BOX(\jmath')$ under the first two conditions  of Lemma \ref{descb}. Similarly, we also have the following three lemmas. 
+}
+ }
+\begin{lem}\label{descb2}
+  Suppose that 
+\[  \begin{cases}
+ \alpha = B^+; & \\
+ \bfrr_2(\ckcO)>0; & \\
+ \cQ(l,1)\in \set{r,d}.
+\end{cases}
+\]
+ Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO')$ of the form
+  \[
+      \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
+  \]
+ such that 
+     $
+     \cQ' = \cQ'_{\mathrm{naive}}
+     $
+     and
+     for all $(i,j)\in \BOX(\imath')$, 
+\[
+\cP'(i,j) = \begin{cases}
+  s, & \ \text{ if $(i,j) = (l',1)$;}\\
+  \cP'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
+\end{cases}
+\]
+\end{lem}
+
+\begin{Example}
+ If 
+ \[
+ \tau= \ytb{\bullet c, c} \times \ytb{\bullet r, rd}\times 
+  B^+,
+ \]
+ then 
+\[
+ \tau'_{\mathrm{naive}}= \ytb{s c, c} \times \ytb{r, d}\times 
+  \widetilde C\qquad\textrm{and}\qquad \tau'= \ytb{s c, s} \times \ytb{r, d}\times 
+  \widetilde C.
+ \]
+ Note that in this case, the nonzero row lengths of $\check \CO$ are $4,4,4,2$, and $l'=2$.
+\end{Example}
+
+\delete{
+\begin{lem}\label{descd1}
+  Suppose that 
+  \[  \begin{cases}
+ \alpha = D; & \\
+ (2,3)\in \wp;\quad  &\\
+ \cP(l',1) \in \set{r,c}.
+\end{cases}
+\]
+ Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO',\wp')$ of the form
+  \[
+      \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
+  \]
+  such that $\cQ'=\cQ'_{\mathrm{naive}}$ and  for all $(i,j)\in \BOX(\imath')$, 
+  \[
+\cP'(i,j) = \begin{cases}
+  r, & \ \text{ if } (i,j) = (l',1); \\
+  \cP(l',1), &\  \text{ if } (i,j) = (l'+1,1);\\
+  \cP'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
+\end{cases}
+\]
+   
+\end{lem}
+
+
+
+
+\begin{Example}
+ If 
+ \[
+ \tau= \ytb{\bullet s,  c c, d d} \times \ytb{\bullet,\none, \none }\times 
+  D,
+ \]
+ then 
+\[
+ \tau'_{\mathrm{naive}}=  \ytb{\bullet,  c,  d}  \times  \ytb{\bullet,\none, \none }\times 
+  C,\qquad\textrm{and}\qquad \tau'= \ytb{\bullet, r, c}  \times  \ytb{\bullet,\none, \none }\times
+  C.
+ \]
+ Note that in this case, the nonzero row lengths of $\check \CO$ are $5,5,3,1$,  $\wp=\{(2,3)\}$ and $l'=2$.
+\end{Example}
+}
+\begin{lem}\label{descd2}
+  Suppose that 
+  \[  \begin{cases}
+ \alpha = D; & \\
+\mathbf r_2(\check \CO)=\mathbf r_3(\check \CO)>0;  &\\
+\cP(l'+1,1)=r; &\\
+\cP(l'+1,2)=c; &\\
+ \cP(l,1)\in \set{r,d}.
+\end{cases}
+\]
+ Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO')$ of the form
+  \[
+      \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
+  \]
+  such that $\cQ'=\cQ'_{\mathrm{naive}}$ and  for all $(i,j)\in \BOX(\imath')$, 
+  \[
+\cP'(i,j) = \begin{cases}
+  r, & \ \text{ if } (i,j) = (l'+1,1); \\
+  \cP'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
+\end{cases}
+\]
+   
+\end{lem}
+
+
+\begin{Example}
+ If 
+ \[
+ \tau= \ytb{\bullet\bullet, \bullet s, \bullet s, r c} \times \ytb{\bullet\bullet,\bullet,\bullet, \none }\times 
+  D,
+ \]
+ then 
+\[
+ \tau'_{\mathrm{naive}}=\ytb{\bullet, \bullet , \bullet ,  c} \times \ytb{\bullet s,\bullet,\bullet, \none } \times 
+  C,\qquad\textrm{and}\qquad \tau'=\ytb{\bullet, \bullet , \bullet ,  r} \times \ytb{\bullet s,\bullet,\bullet, \none } \times
+  C.
+ \]
+ Note that in this case, the nonzero row lengths of $\check \CO$ are $7,7,7,3$,   and $l'=3$.
+\end{Example}
+
+\begin{defn}
+We define the descent of $\tau$ to be 
+\[
+  \nabla(\tau):= \begin{cases}
+  \tau', & \ \text{ if the condition of Lemma \ref{descb2}  or \ref{descd2} holds}; \\
+  \nabla_{\mathrm{naive}}( \tau), & \ \text{ otherwise},
+\end{cases}
+\]
+which is an element of $  \mathrm{PBP}_{\star'}(\check \CO')$. 
+Here $\tau'$ is as in Lemmas  \ref{descb2} and \ref{descd2}. 
+\end{defn}
+In conclusion, we have defined the descent map
+\[
+\nabla: \mathrm{PBP}_{\star}(\check \CO)\rightarrow \mathrm{PBP}_{\star'}(\check \CO').
+\]
+
+
+
+\end{document}
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-master: "ssunip.tex"
+%%% TeX-engine: xetex
+%%% ispell-local-dictionary: "en_US"
+%%% End:

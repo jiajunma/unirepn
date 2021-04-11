@@ -1,0 +1,81 @@
+\documentclass[12pt,a4paper]{amsart}
+\usepackage[margin=2.5cm,marginpar=2cm]{geometry}
+
+
+
+\usepackage{tikz,etoolbox}
+\usetikzlibrary{matrix,arrows,positioning,backgrounds}
+\usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing}
+\usetikzlibrary{cd}
+
+\usepackage{ytableau}
+
+% Ytableau tweak
+\makeatletter
+\pgfkeys{/ytableau/options,
+  noframe/.default = false,
+  noframe/.is choice,
+  noframe/true/.code = {%
+    \global\let\vrule@YT=\vrule@none@YT
+    \global\let\hrule@YT=\hrule@none@YT
+  },
+  noframe/false/.code = {%
+    \global\let\vrule@YT=\vrule@normal@YT
+    \global\let\hrule@YT=\hrule@normal@YT
+  },
+  noframe/on/.style = {noframe/true},
+  noframe/off/.style = {noframe/false},
+}
+
+% Fancy none
+\def\hrule@enon@YT{%
+  \hrule width  \dimexpr \boxdim@YT + \fboxrule *2 \relax
+  height 0pt
+}
+\def\vrule@enon@YT{%
+  \vrule height \dimexpr  \boxdim@YT + \fboxrule\relax
+     width \fboxrule
+}
+
+\def\enon{\omit\enon@YT}
+\newcommand{\enon@YT}[2][clear]{%
+  \def\thisboxcolor@YT{#1}%
+  \let\hrule@YT=\hrule@none@YT
+  \let\vrule@YT=\vrule@none@YT
+  \startbox@@YT#2\endbox@YT
+  \nullfont
+}
+\makeatother
+%\ytableausetup{noframe=on,smalltableaux}
+\ytableausetup{noframe=off,boxsize=1.3em}
+\let\ytb=\ytableaushort
+
+\newcommand{\tytb}[1]{{\tiny\ytb{#1}}}
+
+\makeatletter
+\newcommand{\dotminus}{\mathbin{\text{\@dotminus}}}
+
+\newcommand{\@dotminus}{%
+  \ooalign{\hidewidth\raise1ex\hbox{.}\hidewidth\cr$\m@th-$\cr}%
+}
+\makeatother
+
+
+\begin{document}
+
+\makeatletter
+\[
+\ytb{{*(red)c},{\enon[blue]{b}},{\enon[red]{e}},b}
+\]
+\makeatother
+
+\end{document}
+
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% ispell-local-dictionary: "en_US"
+%%% End:
