@@ -7675,11 +7675,13 @@ We now assume $\bfcc_{2}(\cO)>0$ and all the lemmas in \Cref{sec:ac}
 holds for $\ckcO':=\ckDD(\ckcO)$ and $\ckcO'' := \ckDD(\ckcO')$.  
 
 
+
 \subsection*{The case when $\bfrr_{2}(\ckcO)>\bfrr_{3}(\ckcO)$}
 
 \subsubsection*{Proof of \Cref{lem:ac0}}
 
-Since $\ac_{\uptau'}\neq 0$ and mulitplicity free,  $\ac_{\uptau}\neq 0$ and multiplicity free by \eqref{eq:BD}.
+Since $\ac_{\uptau'}\neq 0$ and mulitplicity free,  $\ac_{\uptau}\neq 0$ and
+multiplicity free by \eqref{eq:BD}.
 
 
 \subsubsection*{Proof of \Cref{lem:BD}~(a)}
@@ -7693,33 +7695,97 @@ $\varepsilon_{\tau_{1}}=\varepsilon_{(\tau_{1})_{\bftt}}=\varepsilon_{(\tau_{2})
 %This proves \Cref{lem:BD}~(a).
 
 
-\subsubsection*{Proof of \Cref{lem:BD}~(b)}
-When $\ckcO$ is weakly-distinguished in addition, $\ckcO'$ is also
-weakly-distinghuished.
-We get $\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$ by \eqref{eq:TBD} and so $\uptaup_{1}=\uptaup_{2}$.
-By \Cref{cor:dpinj}, we conclude that $\uptau_{1}=\uptau_{2}$. 
-%This proves \Cref{lem:BD}~(b).
+\subsubsection*{Proof of \Cref{lem:BD}~(b)} 
+
+By $\varepsilon_{\tau_1} = \varepsilon_{\tau_1}$ and
+$\Sign(\tau_1)=\Sign(\tau_2)$, we deduce that
+$\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$ from  \eqref{eq:TBD}. Since $\ckcO$ is
+weakly-distinguished, $\ckcO'$ is also weakly-distinghuished and so
+$\uptaup_{1}=\uptaup_{2}$ by \Cref{lem:C}~(b). Applying \Cref{cor:dpinj}, we
+conclude that $\uptau_{1}=\uptau_{2}$. 
+
+\subsubsection*{Proof of \Cref{lem:BD}~(c)}
+
+Suppose $\ckcO$ is quasi-distinghuished.
+Then $\ckcO'$ is quasi-distinguished and $\ac_{\uptau'}\in \MYD_{\star'}(\cO')$. 
+By \Cref{eq:BD}, $\ac_{\uptau}\in \MYD_{\star}(\cO)$.
+
+%The bijectivity of $\acme\colon $
+
+For $\cE\in \MYD_{\star}$, we now construct $(\uptau, \epsilon)\in
+\PBP_\star(\ckcO)\times \bZ/2\bZ$ such that $\ac_{\uptau}\lotimes(\epsilon, \epsilon)=\cE$,
+which implies $\acme(\PBP_\star(\ckcO)) = \MYD_{\star}(\cO)$. By the initial case
+(see \Cref{sec:init}), there is a unique pair $(\tau_0, \epsilon)$ such that 
+\[
+ \cE(1) = \ac_{(\tau_0,\emptyset)}\lotimes (\epsilon,\epsilon). 
+\]
+By \Cref{lem:C}~(c), there is a unique $\uptau' = (\tau',\wp')\in \PBP_{\star'}(\ckcO')$
+such that 
+\[
+ \big(((\maltese^y\ac_{\uptau'})\cdot (p_{\tau_0},q_{\tau_0}))\lotimes (0,\varepsilon_{\tau_0})\big) (i) 
+ = \big(\cE\lotimes (\epsilon,\epsilon)\big)(i) \qquad \text{for all} i\geq 2.
+\]
+Using \Cref{cor:D.inj1}, we obtain a unique $\tau$ such that $(\DD(\tau),\taut) = (\tau',\tau_0)$.
+Let $\wp\in \PP(\ckcO)$ be the unique element such that $\DD(\wp) = \wp'$. 
+Then $\uptau = (\tau, \wp)$ is the anxiety element. 
 
 
-\smallskip
+\subsubsection*{Proof of \Cref{lem:BD2,lem:BD3}}
 
-Suppose $\ckcO$ is quasi-distinghuished. Then $\ac_{\uptau}\in \MYD_{\star}$
-since $\ac_{\uptau'}\in \MYD_{\star'}$ by the quasi-distinguishness of
-$\ckcO'$.
-This proves \Cref{lem:BD}~(c).
-
-
-\smallskip
-
-Using \eqref{eq:TBD}, all the claims in \Cref{lem:BD2,lem:BD3} follows from that of
-$\ckcO_{\bftt}$, see \Cref{sec:tail}. (Note that we always have
-$\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)$. So \Cref{lem:BD2}~(b) is not vacant.)
+Using \eqref{eq:TBD}, all the claims follows from that of $\ckcO_{\bftt}$, see
+\Cref{sec:tail,sec:init}. 
+% (Note that we always have
+% $\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)$. So \Cref{lem:BD2}~(b) is not vacant.)
 
 \trivial[h]{
 Note that $\Sign(\tau_{1})=\Sign(\tau_{2})$,
 }
 
-\medskip
+
+% \subsection*{The case when $\bfrr_{2}(\ckcO)>\bfrr_{3}(\ckcO)$}
+
+% \subsubsection*{Proof of \Cref{lem:ac0}}
+
+% Since $\ac_{\uptau'}\neq 0$ and mulitplicity free,  $\ac_{\uptau}\neq 0$ and multiplicity free by \eqref{eq:BD}.
+
+
+% \subsubsection*{Proof of \Cref{lem:BD}~(a)}
+% Suppose $\ac_{\uptau_1}\lotimes (\epsilon_{1},\epsilon_{1})
+% = \ac_{\uptau_2}\lotimes( \epsilon_{2},\epsilon_{2} )$.
+% According to \eqref{eq:TBD}, we have 
+% $\cL_{((\tau_{1})_{\bftt},\emptyset)}\lotimes(\epsilon_{1},\epsilon_{1}) =
+% \cL_{((\tau_{2})_{\bftt},\emptyset)}\lotimes(\epsilon_{2},\epsilon_{2})$.
+% By the  initial case (see \Cref{sec:init}), we get $\epsilon_{1}=\epsilon_{2}$ and
+% $\varepsilon_{\tau_{1}}=\varepsilon_{(\tau_{1})_{\bftt}}=\varepsilon_{(\tau_{2})_{\bftt}}=\varepsilon_{\tau_{2}}$.
+% %This proves \Cref{lem:BD}~(a).
+
+
+% \subsubsection*{Proof of \Cref{lem:BD}~(b)}
+% When $\ckcO$ is weakly-distinguished in addition, $\ckcO'$ is also
+% weakly-distinghuished.
+% We get $\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$ by \eqref{eq:TBD} and so $\uptaup_{1}=\uptaup_{2}$.
+% By \Cref{cor:dpinj}, we conclude that $\uptau_{1}=\uptau_{2}$. 
+% %This proves \Cref{lem:BD}~(b).
+
+
+% \smallskip
+
+% Suppose $\ckcO$ is quasi-distinghuished. Then $\ac_{\uptau}\in \MYD_{\star}$
+% since $\ac_{\uptau'}\in \MYD_{\star'}$ by the quasi-distinguishness of
+% $\ckcO'$.
+% This proves \Cref{lem:BD}~(c).
+
+
+% \smallskip
+
+% Using \eqref{eq:TBD}, all the claims in \Cref{lem:BD2,lem:BD3} follows from that of
+% $\ckcO_{\bftt}$, see \Cref{sec:tail}. (Note that we always have
+% $\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)$. So \Cref{lem:BD2}~(b) is not vacant.)
+
+% \trivial[h]{
+% Note that $\Sign(\tau_{1})=\Sign(\tau_{2})$,
+% }
+
 
 \subsection*{The case when $\bfrr_{2}(\ckcO)=\bfrr_{3}(\ckcO)$}
 
