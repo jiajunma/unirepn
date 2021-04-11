@@ -5,10 +5,10 @@
 \usepackage[bookmarksopen,bookmarksdepth=3,hidelinks]{hyperref}
 \usepackage[nameinlink]{cleveref}
 
-% \usepackage[color]{showkeys}
-% \makeatletter
-%   \SK@def\Cref#1{\SK@\SK@@ref{#1}\SK@Cref{#1}}%
-% \makeatother
+\usepackage[color]{showkeys}
+\makeatletter
+  \SK@def\Cref#1{\SK@\SK@@ref{#1}\SK@Cref{#1}}%
+\makeatother
 
 \usepackage{array}
 %% FONTS
@@ -5911,6 +5911,7 @@ $(\star_{2},p_2,q_2)=\sO(2)$;
 \end{prop}
 
 \subsection{Marked Young diagram classification of equivariant line bundles}
+\label{sec:MYD}
 \def\KCs{K_{[\sfss],\bC}}
 \def\KCsX{(K_{[\sfss],\bC})_{\X}}
 \def\KCsoX{(K_{[\sfss],\bC})_{\X}^{\circ}}
@@ -6003,6 +6004,7 @@ and
 \]
 From the structure of $R_{\X}$, the above recipe will then yield an identification of $\MYD(\sO)$ with the set $\DCO{\chi}$ whenever the later set is non-empty.
 
+
 %The signature of $\cE$ is defined as the sginature of $\sf\circ\cE$.
 %We wreite $\Sign(\cE):= \Sign$
 
@@ -6013,11 +6015,12 @@ Let
 
 Recall the set
 \[
-  \mathrm{AOD}_{K_{\sfss}}(\cO)=\bigsqcup_{\sO\textrm{ is a $K_{\sfss}$-orbit in
-      $\cO\cap \p_{\sfss}$}} \mathrm{AOD}_{K_{\sfss}}(\sO),
+  \AOD_{\sfss}(\cO)=\bigsqcup_{\sO\textrm{ is a $\Ks$-orbit in
+      $\cO\cap \fpps$}} \AOD_{\Ks}(\sO),
 \]
-where $\mathrm{AOD}_{K_{\sfss}}(\sO)$ is the set of isomorphism classes of admissible orbit data over $\sO$ (\Cref{defaod}). We may thus identify $\mathrm{AOD}_{K_{\sfss}}(\cO)$ with a subset of
- $\MYD_{\sfss}(\cO)$. We also set
+where $\AOD_{\sfss}(\sO)$ is the set of isomorphism classes of admissible orbit
+ data over $\sO$ (\Cref{defaod}). We may thus identify $\AOD_{\sfss}(\cO)$ with
+ a subset of $\MYD_{\sfss}(\cO)$. We also set
 \[
   % \MYD_{\sfss} := \bigcup_{\sO\in \Nil_{\Ks}(\fpps)}\MYD(\sO) \AND
   \MYD_\star := \bigcup_{\sfss, \cO\in \YD_\star} \MYD_{\sfss}(\cO)
@@ -6030,6 +6033,13 @@ where $\sfss$ runs over all possible classical signatures of type $\star$.
 % \]
 % In the next section, we will define some operations on the  free abelian groups
 % $\bZ[\SYD_{\star}]$ and $\bZ[\MYD_{\star}]$.
+
+
+The map $\sF$ natrually extends to a homomorphism 
+\begin{equation}\label{eq:F}
+\sF\colon \bZ[\MYD_\star] \rightarrow \bZ[\SYD_\star] 
+\end{equation}
+sending $\cE\in \MYD_\star$ to $\sF\circ \cE \in \SYD_\star$. 
 
 \smallskip
 
@@ -6143,11 +6153,12 @@ We introduce a partial order $\succeq$ on $\bZ\times \bZ$ by
 \]
 We also define an involution on $\bZ\times \bZ$ % $\rightarrow \bZ\times \bZ$
 by $(a,b)\mapsto (a,b)^{\sharp}:=(b,a)$. For a $\cE\in \MYD_{\star}$ and $(p_{0},q_{0})\in \bZ\times \bZ$, we write
-\[
+\begin{equation}
+  \label{eq:sub}
   \cE\sqsupseteq (p_{0},q_{0}) \Leftrightarrow
   (p_{1},q_{1})\succeq (p_{0},q_{0})
   \text{ where }\cE(1) = (\star_{1},p_{1},q_{1}).
-\]
+\end{equation}
 
 Suppose $\cE\sqsupseteq (p_{0},q_{0})$, we define the truncation
 $\Lambda_{(p_0,q_0)}\cE$ by
@@ -7460,7 +7471,7 @@ Suppose that $\star \in \set{B,D}$, $\ckcO \neq \emptyset$ and $\ckcO$ is weakly
       \begin{array}{rcl}
         \pUpsilon_{\ckcO} \colon \set{\ac_{\uptau}|\uptau\in \PBPes(\ckcO)
         \text{ s.t. } \pac{\uptau}\neq 0 } &\rightarrow  & \set{\pac{\uptau}}\\
-       \ac_{\uptau} & \mapsto & \pac{\uptau}\\
+       \ac_{\uptau} & \mapsto & \pac{\uptau},\qquad \AND\\
       % \end{array} \quad \text{and}
       % \begin{array}{rcl}
         \nUpsilon_{\ckcO} \colon \set{\ac_{\uptau}|\uptau\in \PBPes(\ckcO)
@@ -7485,7 +7496,9 @@ So we will focus on the non-quaternionic cases in the next three sections.
 
 We prove by induction on the number of columns in $\cO$.
 
-\subsection{The initial cases}\label{sec:pfDC.init} Suppose $\bfcc_{1}(\cO)=0$.
+\subsection{The initial cases}
+\label{sec:init}
+Suppose $\bfcc_{1}(\cO)=0$.
 Then the group $G_{\sfss_\tau,\bC}$ is the trivial group and everything are
 clear.
 
@@ -7578,12 +7591,16 @@ $\ac_{\uptau'_{1}}=\ac_{\uptau'_{2}}$ by \Cref{lem:BD}~(a) for $\cOp$.
 
 
 
-\subsubsection*{Proof of \Cref{lem:C}~(b)}
-When $\ckcO$ is weakly-distinguished, $\ckcO'$ is also weakly-distinguished and we get $\uptau'_{1}=\uptau'_{2}$ by
-\Cref{lem:BD}~(b) for $\cOp$. Hence $\uptau_{1}=\uptau_{2}$ by \Cref{prop:CC.bij}. 
+\subsubsection*{Proof of \Cref{lem:C}~(b)} 
+
+When $\ckcO$ is weakly-distinguished, $\ckcO'$ is also weakly-distinguished and
+we get $\uptau'_{1}=\uptau'_{2}$ by \Cref{lem:BD}~(b) for $\cOp$. Hence
+$\uptau_{1}=\uptau_{2}$ by $\varepsilon_{\wp_{1}}=\varepsilon_{\wp_{2}}$ and
+\Cref{prop:CC.bij}. 
 
 
 \subsubsection*{Proof of \Cref{lem:C}~(c)}
+
 By \eqref{eq:C},  $\dlifttso$ induces a bijection from $\MYD_{\star'}(\cO')$ to 
 $\MYD_{\star}(\cO)$.
 When $\ckcO$ is quasi-distinguished, $\ckcO'$ is quasi-distinguished 
@@ -7627,21 +7644,24 @@ multiplicity freeness.
 \smallskip
 
 \subsubsection*{Proof of \Cref{lem:C}~(a)}
-Suppose $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$. By \eqref{eq:dsign1},
-we conclude that $\Sign(\uptau'_{1})=\Sign(\uptau'_{2})$. Since we have
+
+Suppose $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$. By \eqref{eq:dsign1}, we conclude
+that $\Sign(\uptau'_{1})=\Sign(\uptau'_{2})$. Since we have
 $\varepsilon_{\wp_{1}}=\varepsilon_{\wp_{2}}=0$, \Cref{lem:C}~(a) is proven.
 
 
 
 \subsubsection*{Proof of \Cref{lem:C}~(b)}
-By consider the $\dsign$,  we get $\pac{\uptau_1}=\pac{\uptau_2}$
-and $\nac{\uptau_1}=\nac{\uptau_2}$. So $\pac{\uptau'_{1}}=\pac{\uptau'_{2}}$ and
-$\nac{\uptau'_{1}}=\nac{\uptau'_{2}}$ by \eqref{eq:C}.
-Suppose $\ckcO$ is weakly-distinghuished, then $\ckcO'$ is
-weakly-distinghuished.
-Due to the injectivity of $\Upsilon_{\ckcO'}$ in \Cref{lem:BD3}~(a), we get
-$\ac_{\uptau'_{1}}=\ac_{\uptau'_{2}}$ and so $\uptau'_{1}=\uptau'_{2}$ by \Cref{lem:BD}~(b).
-Now \Cref{prop:CC.bij} implies $\uptau_{1}=\uptau_{2}$, which proves \Cref{lem:C}~(b).
+
+By consider the $\dsign$,  we get $\pac{\uptau_1}=\pac{\uptau_2}$ and
+$\nac{\uptau_1}=\nac{\uptau_2}$. So $\pac{\uptau'_{1}}=\pac{\uptau'_{2}}$ and
+$\nac{\uptau'_{1}}=\nac{\uptau'_{2}}$ by \eqref{eq:C}. Suppose $\ckcO$ is
+weakly-distinghuished, then $\ckcO'$ is weakly-distinghuished. Due to the
+injectivity of $\Upsilon_{\ckcO'}$ in \Cref{lem:BD3}~(a), we get
+$\ac_{\uptau'_{1}}=\ac_{\uptau'_{2}}$ and so $\uptau'_{1}=\uptau'_{2}$ by
+\Cref{lem:BD}~(b). Now $\varepsilon_{\wp_{1}}=\varepsilon_{\wp_{2}}$ and  
+\Cref{prop:CC.bij} implies $\uptau_{1}=\uptau_{2}$, which proves
+\Cref{lem:C}~(b).
 
 \smallskip
 
@@ -7650,62 +7670,88 @@ Note that $\ckcO$ is not quasi-distinguished, \Cref{lem:C}~(c) is vacant.
 
 \subsection{The general case for $\star\in \set{B,D}$}
 
-To ease the following discussion, we adopt the following convension.
+To ease the following discussion, we adopt the following convension (c.f. \eqref{eq:sub}).
 Suppose $\cA\in \bZ[\MYD]$. We write $\cA\rhd (p_{0},q_{0})$ if
 $\cE \sqsupseteq (p_{0},q_{0})$ for all $\cE\in \MYD$ with non-zero coefficient in
 $\cA$, and write $\cA \sqsupseteq (p_{0},q_{0})$ if there is an $\cE\in \MYD$ with
 non-zero coefficient in $\cA$ such that $\cE\sqsupseteq (p_{0},q_{0})$.
 
-\medskip
+\smallskip
+Retain the notation in \Cref{lem:BD,lem:BD2,lem:BD3}. We now assume
+$\bfcc_{2}(\cO)>0$ and all the lemmas in \Cref{sec:ac} holds for
+$\ckcO':=\ckDD(\ckcO)$ and $\ckcO'' := \ckDD(\ckcO')$.  
 
-We now assume $\bfcc_{2}(\cO)>0$ and retain the notation in \Cref{lem:BD,lem:BD2,lem:BD3}.
 
-We first consider the case when $\bfrr_{2}(\ckcO)>\bfrr_{3}(\ckcO)$.
-\Cref{lem:ac0}, i.e. $\ac_{\uptau}\neq 0$, follows from \eqref{eq:BD} directly.
+\subsection*{The case when $\bfrr_{2}(\ckcO)>\bfrr_{3}(\ckcO)$}
 
+\subsubsection*{Proof of \Cref{lem:ac0}}
+
+Since $\ac_{\uptau'}\neq 0$ and mulitplicity free,  $\ac_{\uptau}\neq 0$ and
+multiplicity free by \eqref{eq:BD}.
+
+
+\subsubsection*{Proof of \Cref{lem:BD}~(a)}
 Suppose $\ac_{\uptau_1}\lotimes (\epsilon_{1},\epsilon_{1})
 = \ac_{\uptau_2}\lotimes( \epsilon_{2},\epsilon_{2} )$.
-By \eqref{eq:TBD},
-$\cL_{(\tau_{1})_{\bftt}}\lotimes(\epsilon_{1},\epsilon_{1}) =
-\cL_{(\tau_{2})_{\bftt}}\lotimes(\epsilon_{2},\epsilon_{2})$.
-By the result in the initial case, we get $\epsilon_{1}=\epsilon_{2}$ and
+According to \eqref{eq:TBD}, we have 
+$\cL_{((\tau_{1})_{\bftt},\emptyset)}\lotimes(\epsilon_{1},\epsilon_{1}) =
+\cL_{((\tau_{2})_{\bftt},\emptyset)}\lotimes(\epsilon_{2},\epsilon_{2})$.
+By the  initial case (see \Cref{sec:init}), we get $\epsilon_{1}=\epsilon_{2}$ and
 $\varepsilon_{\tau_{1}}=\varepsilon_{(\tau_{1})_{\bftt}}=\varepsilon_{(\tau_{2})_{\bftt}}=\varepsilon_{\tau_{2}}$.
-This proves \Cref{lem:BD}~(a).
-
-\smallskip
-
-Now assume $\ckcO$ is weakly-distinguished in addition. Then $\ckcO'$ is also
-weakly-distinghuished.
-We get $\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$ by \eqref{eq:TBD} and so $\uptaup_{1}=\uptaup_{2}$.
-By \Cref{cor:dpinj}, we conclude that $\uptau_{1}=\uptau_{2}$. This proves
-\Cref{lem:BD}~(b).
+%This proves \Cref{lem:BD}~(a).
 
 
-\smallskip
+\subsubsection*{Proof of \Cref{lem:BD}~(b)} 
 
-Suppose $\ckcO$ is quasi-distinghuished. Then $\ac_{\uptau}\in \MYD_{\star}$
-since $\ac_{\uptau'}\in \MYD_{\star'}$ by the quasi-distinguishness of
-$\ckcO'$.
-This proves \Cref{lem:BD}~(c).
+By $\varepsilon_{\tau_1} = \varepsilon_{\tau_1}$ and
+$\Sign(\tau_1)=\Sign(\tau_2)$, we deduce that
+$\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$ from  \eqref{eq:TBD}. Since $\ckcO$ is
+weakly-distinguished, $\ckcO'$ is also weakly-distinghuished and so
+$\uptaup_{1}=\uptaup_{2}$ by \Cref{lem:C}~(b). Applying \Cref{cor:dpinj}, we
+conclude that $\uptau_{1}=\uptau_{2}$. 
+
+\subsubsection*{Proof of \Cref{lem:BD}~(c)}
+
+Suppose $\ckcO$ is quasi-distinghuished.
+Then $\ckcO'$ is quasi-distinguished and $\ac_{\uptau'}\in \MYD_{\star}$. 
+By \Cref{eq:BD}, $\ac_{\uptau}\in \MYD_{\star}$.
+
+%The bijectivity of $\acme\colon $
+
+For $\cE\in \MYD_{\star}$, we now construct $(\uptau, \epsilon)\in
+\PBP_\star(\ckcO)\times \bZ/2\bZ$ such that $\ac_{\uptau}\lotimes(\epsilon, \epsilon)=\cE$,
+which implies $\acme(\PBP_\star(\ckcO)) = \MYD_{\star}(\cO)$. By the initial case
+(see \Cref{sec:init}), there is a unique pair $(\tau_0, \epsilon)$ such that 
+\[
+ \cE(1) = \ac_{(\tau_0,\emptyset)}\lotimes (\epsilon,\epsilon). 
+\]
+By \Cref{lem:C}~(c), there is a unique $\uptau' = (\tau',\wp')\in \PBP_{\star'}(\ckcO')$
+such that 
+\[
+ \big(((\maltese^y\ac_{\uptau'})\cdot (p_{\tau_0},q_{\tau_0}))\lotimes (0,\varepsilon_{\tau_0})\big) (i) 
+ = \big(\cE\lotimes (\epsilon,\epsilon)\big)(i) \qquad \text{for all} i\geq 2.
+\]
+Using \Cref{cor:D.inj1}, we obtain a unique $\tau$ such that $(\DD(\tau),\taut) = (\tau',\tau_0)$.
+Let $\wp\in \PP(\ckcO)$ be the unique element such that $\DD(\wp) = \wp'$. 
+Then $\uptau = (\tau, \wp)$ is the anxiety element. 
 
 
-\smallskip
+\subsubsection*{Proof of \Cref{lem:BD2,lem:BD3}}
 
-Using \eqref{eq:TBD}, all the claims in \Cref{lem:BD2,lem:BD3} follows from that of
-$\ckcO_{\bftt}$, see \Cref{sec:tail}. (Note that we always have
-$\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)$. So \Cref{lem:BD2}~(b) is not vacant.)
+Using \eqref{eq:TBD}, all the claims follows from that of $\ckcO_{\bftt}$, see
+\Cref{sec:tail}. 
+% (Note that we always have
+% $\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)$. So \Cref{lem:BD2}~(b) is not vacant.)
 
 \trivial[h]{
 Note that $\Sign(\tau_{1})=\Sign(\tau_{2})$,
 }
 
-\medskip
 
+\subsection*{The case when $\bfrr_{2}(\ckcO)=\bfrr_{3}(\ckcO)$}
 
-We now assume that $\bfrr_{2}(\ckcO)=\bfrr_{3}(\ckcO)$.
-
-Let $\uptaupp :=(\tau'',\wp''):= \DD^{2}(\uptau)$.
-By \Cref{lem:delta}, $x_{\tau''}\neq s$.
+We write $\uptaupp :=(\tau'',\wp''):= \DD^{2}(\uptau)$.
+Note that $x_{\tau''}\neq s$ by \Cref{lem:delta}.
 % Since $x_{\uptaupp}\neq s$, $\AC(\uptaupp)\neq 0$.
 
 
