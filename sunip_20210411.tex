@@ -7673,29 +7673,32 @@ Note that $\ckcO$ is not quasi-distinguished, so \Cref{lem:C}~(c) is vacant.
 
 \subsection{Establishing properties of $\ac_{\uptau}$: the general case for $\star\in \set{B,D}$}\label{generalBD}
 
+
 To ease the following discussion, we adopt the following convension (c.f. \eqref{eq:sub}).
 Suppose $\cA\in \bZ[\MYD]$. We write $\cA\rhd (p_{0},q_{0})$ if
-$\cE \sqsupseteq (p_{0},q_{0})$ for all $\cE\in \MYD$ with non-zero coefficient in
-$\cA$, and write $\cA \sqsupseteq (p_{0},q_{0})$ if there is an $\cE\in \MYD$ with
+$\cE \sqsupseteq (p_{0},q_{0})$ for all marked Young diagram $\cE$ with non-zero coefficient in
+$\cA$, and write $\cA \sqsupseteq (p_{0},q_{0})$ if there is an marked Young diagram $\cE$ with
 non-zero coefficient in $\cA$ such that $\cE\sqsupseteq (p_{0},q_{0})$.
 
 \smallskip
 Retain the notation in \Cref{lem:BD,lem:BD2,lem:BD3}.
-We now assume $\bfcc_{2}(\cO)>0$ and all the lemmas in \Cref{sec:ac}
-holds for $\ckcO':=\ckDD(\ckcO)$ and $\ckcO'' := \ckDD(\ckcO')$.
+We now assume $\bfcc_{2}(\cO)>0$ and all the lemmas in \Cref{sec:ac} 
+holds for $\ckcO':=\ckDD(\ckcO)$ and $\ckcO'' := \ckDD(\ckcO')$.  
+
 
 
 \subsection*{The case when $\bfrr_{2}(\ckcO)>\bfrr_{3}(\ckcO)$}
 
 \subsubsection*{Proof of \Cref{lem:ac0}}
 
-Since $\ac_{\uptau'}\neq 0$ and mulitplicity free,  $\ac_{\uptau}\neq 0$ and multiplicity free by \eqref{eq:BD}.
+Since $\ac_{\uptau'}\neq 0$ and mulitplicity free,  $\ac_{\uptau}\neq 0$ and
+multiplicity free by \eqref{eq:BD}.
 
 
 \subsubsection*{Proof of \Cref{lem:BD}~(a)}
 Suppose $\ac_{\uptau_1}\lotimes (\epsilon_{1},\epsilon_{1})
 = \ac_{\uptau_2}\lotimes( \epsilon_{2},\epsilon_{2} )$.
-According to \eqref{eq:TBD}, we have
+According to \eqref{eq:TBD}, we have 
 $\cL_{((\tau_{1})_{\bftt},\emptyset)}\lotimes(\epsilon_{1},\epsilon_{1}) =
 \cL_{((\tau_{2})_{\bftt},\emptyset)}\lotimes(\epsilon_{2},\epsilon_{2})$.
 By the  initial case (see \Cref{sec:init}), we get $\epsilon_{1}=\epsilon_{2}$ and
@@ -7703,92 +7706,180 @@ $\varepsilon_{\tau_{1}}=\varepsilon_{(\tau_{1})_{\bftt}}=\varepsilon_{(\tau_{2})
 %This proves \Cref{lem:BD}~(a).
 
 
-\subsubsection*{Proof of \Cref{lem:BD}~(b)}
-When $\ckcO$ is weakly-distinguished in addition, $\ckcO'$ is also
-weakly-distinghuished.
-We get $\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$ by \eqref{eq:TBD} and so $\uptaup_{1}=\uptaup_{2}$.
-By \Cref{cor:dpinj}, we conclude that $\uptau_{1}=\uptau_{2}$.
-%This proves \Cref{lem:BD}~(b).
+\subsubsection*{Proof of \Cref{lem:BD}~(b)} 
+
+By $\varepsilon_{\tau_1} = \varepsilon_{\tau_1}$ and
+$\Sign(\tau_1)=\Sign(\tau_2)$, we deduce that
+$\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$ from  \eqref{eq:TBD}. Since $\ckcO$ is
+weakly-distinguished, $\ckcO'$ is also weakly-distinghuished and so
+$\uptaup_{1}=\uptaup_{2}$ by \Cref{lem:C}~(b). Applying \Cref{cor:dpinj}, we
+conclude that $\uptau_{1}=\uptau_{2}$. 
+
+\subsubsection*{Proof of \Cref{lem:BD}~(c)}
+
+Suppose $\ckcO$ is quasi-distinghuished.
+Then $\ckcO'$ is quasi-distinguished and $\ac_{\uptau'}\in \MYD_{\star'}(\cO')$. 
+By \Cref{eq:BD}, $\ac_{\uptau}\in \MYD_{\star}(\cO)$.
+
+%The bijectivity of $\acme\colon $
+
+For $\cE\in \MYD_{\star}$ with $(p,q)=\Sign(\cE)$, we now construct $(\uptau, \epsilon)\in
+\PBP_\star(\ckcO)\times \bZ/2\bZ$ such that $\ac_{\uptau}\lotimes(\epsilon, \epsilon)=\cE$,
+which implies $\acme(\PBP_\star(\ckcO)) = \MYD_{\star}(\cO)$. By the initial case
+(see \Cref{sec:init}), there is a unique pair $(\tau_0, \epsilon)$ such that 
+\[
+ \cE(1) = \ac_{(\tau_0,\emptyset)}\lotimes (\epsilon,\epsilon). 
+\]
+By \Cref{lem:C}~(c), there is a unique $\uptau' = (\tau',\wp')\in \PBP_{\star'}(\ckcO')$
+such that 
+\[
+ \big(((\maltese^{y'}\ac_{\uptau'})\cdot (p_{\tau_0},q_{\tau_0}))\lotimes (0,\varepsilon_{\tau_0})\big) (i) 
+ = \big(\cE\lotimes (\epsilon,\epsilon)\big)(i) \qquad \text{for all} i\geq 2.
+\]
+Here $y' = \frac{p-q+1}{2}$ if $\star = B$ and $y' = \frac{p-q+1}{2}$ if $\star
+= D$. Using \Cref{cor:D.inj1}, we obtain a unique $\tau$ such that
+$(\DD(\tau),\taut) = (\tau',\tau_0)$. Let $\wp\in \PP(\ckcO)$ be the unique
+element such that $\DD(\wp) = \wp'$. Then $\uptau = (\tau, \wp)$ is the anxiety
+element. 
 
 
-\smallskip
+\subsubsection*{Proof of \Cref{lem:BD2,lem:BD3}}
 
-Suppose $\ckcO$ is quasi-distinghuished. Then $\ac_{\uptau}\in \MYD_{\star}$
-since $\ac_{\uptau'}\in \MYD_{\star'}$ by the quasi-distinguishness of
-$\ckcO'$.
-This proves \Cref{lem:BD}~(c).
-
-
-\smallskip
-
-Using \eqref{eq:TBD}, all the claims in \Cref{lem:BD2,lem:BD3} follows from that of
-$\ckcO_{\bftt}$, see \Cref{sec:tail}. (Note that we always have
-$\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)$. So \Cref{lem:BD2}~(b) is not vacant.)
+Using \eqref{eq:TBD}, all the claims follows from that of $\ckcO_{\bftt}$, see
+\Cref{sec:tail,sec:init}. 
+% (Note that we always have
+% $\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)$. So \Cref{lem:BD2}~(b) is not vacant.)
 
 \trivial[h]{
 Note that $\Sign(\tau_{1})=\Sign(\tau_{2})$,
 }
 
-\medskip
+
+% \subsection*{The case when $\bfrr_{2}(\ckcO)>\bfrr_{3}(\ckcO)$}
+
+% \subsubsection*{Proof of \Cref{lem:ac0}}
+
+% Since $\ac_{\uptau'}\neq 0$ and mulitplicity free,  $\ac_{\uptau}\neq 0$ and multiplicity free by \eqref{eq:BD}.
+
+
+% \subsubsection*{Proof of \Cref{lem:BD}~(a)}
+% Suppose $\ac_{\uptau_1}\lotimes (\epsilon_{1},\epsilon_{1})
+% = \ac_{\uptau_2}\lotimes( \epsilon_{2},\epsilon_{2} )$.
+% According to \eqref{eq:TBD}, we have 
+% $\cL_{((\tau_{1})_{\bftt},\emptyset)}\lotimes(\epsilon_{1},\epsilon_{1}) =
+% \cL_{((\tau_{2})_{\bftt},\emptyset)}\lotimes(\epsilon_{2},\epsilon_{2})$.
+% By the  initial case (see \Cref{sec:init}), we get $\epsilon_{1}=\epsilon_{2}$ and
+% $\varepsilon_{\tau_{1}}=\varepsilon_{(\tau_{1})_{\bftt}}=\varepsilon_{(\tau_{2})_{\bftt}}=\varepsilon_{\tau_{2}}$.
+% %This proves \Cref{lem:BD}~(a).
+
+
+% \subsubsection*{Proof of \Cref{lem:BD}~(b)}
+% When $\ckcO$ is weakly-distinguished in addition, $\ckcO'$ is also
+% weakly-distinghuished.
+% We get $\ac_{\uptaup_{1}}=\ac_{\uptaup_{2}}$ by \eqref{eq:TBD} and so $\uptaup_{1}=\uptaup_{2}$.
+% By \Cref{cor:dpinj}, we conclude that $\uptau_{1}=\uptau_{2}$. 
+% %This proves \Cref{lem:BD}~(b).
+
+
+% \smallskip
+
+% Suppose $\ckcO$ is quasi-distinghuished. Then $\ac_{\uptau}\in \MYD_{\star}$
+% since $\ac_{\uptau'}\in \MYD_{\star'}$ by the quasi-distinguishness of
+% $\ckcO'$.
+% This proves \Cref{lem:BD}~(c).
+
+
+% \smallskip
+
+% Using \eqref{eq:TBD}, all the claims in \Cref{lem:BD2,lem:BD3} follows from that of
+% $\ckcO_{\bftt}$, see \Cref{sec:tail}. (Note that we always have
+% $\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)$. So \Cref{lem:BD2}~(b) is not vacant.)
+
+% \trivial[h]{
+% Note that $\Sign(\tau_{1})=\Sign(\tau_{2})$,
+% }
+
 
 \subsection*{The case when $\bfrr_{2}(\ckcO)=\bfrr_{3}(\ckcO)$}
+\def\ppac#1{\cL_{#1,+}}
+\def\nnac#1{\cL_{#1,-}}
 
 We write $\uptaupp :=(\tau'',\wp''):= \DD^{2}(\uptau)$.
 Note that $x_{\tau''}\neq s$ by \Cref{lem:delta}.
 % Since $x_{\uptaupp}\neq s$, $\AC(\uptaupp)\neq 0$.
+To ease the notation, we write 
+\begin{equation}
+ \label{eq:BD4} 
+  \begin{split}
+    \ac_{\uptau} & = \ppac{\uptau} + \nnac{\uptau} \qquad \text{with} \\
+  \ppac{\uptau} & := \left(\maltese^t \big(\pac{\uptaupp}\cdot (0,0)\big) \cdot \pcT_{\uptau}\right)\lotimes (0,\varepsilon_\tau) \AND \\
+  \nnac{\uptau} & := \left(\maltese^t \big(\nac{\uptaupp}\cdot (0,0)\big) \cdot \ncT_{\uptau}\right)\lotimes (0,\varepsilon_\tau).
+  \end{split}
+\end{equation}
+Recall that $k = \frac{\bfrr_1(\ckcO)-\bfrr_2(\ckcO)}{2}+1$, see \Cref{sec:tail}. 
 
+\subsubsection*{Proof of \Cref{lem:ac0}. }
 
-\subsection*{\bf Proof of \Cref{lem:ac0}. }
-When $\Sign(\tau_{\bftt})\succeq (0,1)$, the first term in \eqref{eq:BD2} dose
-not vanish since $\pac{\uptaupp}\neq 0$ by \Cref{lem:BD2}.
-When $\Sign(\tau_{\bftt})\nsucceq (0,1)$, $\Sign(\tau_{\bftt}) = (2k,0)$ and
-$\cP_{\tau_{\bftt}}^{-1}(\set{s,c})=\emptyset$. Hence
-  $x_{\uptaupp}=d$ by \Cref{lem:delta}. Now $\nac{\uptaupp} \neq 0$ by
-  \Cref{lem:BD2} and
-  the second term in \eqref{eq:BD2} dose not vanish.
+When $\Sign(\tau_{\bftt})\succeq (0,1)$, the term $\ppac{\uptau}$ in \eqref{eq:BD4} dose
+not vanish since $\pac{\uptaupp}\neq 0$ by \Cref{lem:BD2} for $\ckcO''$ and $\pcT_{\uptau}\neq \emptyset$. 
+
+When $\Sign(\tau_{\bftt})\nsucceq (0,1)$, we must have $\Sign(\tau_{\bftt}) =
+(2k,0)$ and so $\cP_{\tau_{\bftt}}^{-1}(\set{s,c})=\emptyset$. Hence
+$x_{\uptaupp}=d$ by \Cref{lem:delta}. Now $\nac{\uptaupp} \neq 0$ by
+\Cref{lem:BD2} and $\nnac{\uptau}$  in \eqref{eq:BD4} dose not vanish. 
+These prove the non-vanishing of $\ac_{\uptau}$.
+
+Note that
+$\sF(\ppac{\uptau})$ and $\sF(\nnac{\uptau})$ have no common terms since
+$\pcT_{\uptau}\neq \ncT_{\uptau}$. Thererfore, the multiplicity freeness of
+$\ac_{\uptau}$ follows from the multiplicity freeness of $\ac_{\uptau'}$.
 This proves \Cref{lem:ac0}
 
 
-\subsection*{\bf Proof of \Cref{lem:BD2} }
-
+\subsubsection*{Proof of \Cref{lem:BD2} }
 
 It is clear that $\nac{\uptau}=0$ when $x_{\tau}\in \set{s,r,c}$ because of
-the twist $\lotimes(0, 1)$ in \Cref{eq:BD2}.
+the twist ``$\lotimes(0, 1)$'' in \eqref{eq:BD2}.
   %In the following proof $\cE\in \MYD_{\star}$ be a
 
   \begin{enumPF}
     \item  Suppose $x_{\uptau}=s$. We have $\Sign(\tau_{\bftt})=(0,2k)$.
-    where $2k= \abs{\ckcO_{\bftt}}$.
-    Therefore, only the first term in  \eqref{eq:BD2} is non-zero and
-    $\cE(1) = (B,0,-(2k-1))$ for every $\cE\in \MYD_{\star}$ with non-zero
-    coefficient in
-    $\ac_{\uptau}$.
-    Hence $\pac{\uptau}=0$.
-    \item Suppose $x_{\uptau} \in \set{r,c}$. If
-    $\Sign(\tau_{\bftt})\succ(1,1)$, the first term in \eqref{eq:BD2} is
-    non-zero and $\ac_{\uptau} \sqsupseteq (1,0)$. If
-    $\ssign(\tau_{\bftt})\nsucc (1,1)$, then
-    $\cP_{\tau_{\bftt}}^{-1}(\set{s,c})=\emptyset$, $\Sign(\tau_{\bftt})=(2k,0)$
-    and $x_{\uptaupp}=d$ by \Cref{lem:delta}. Now the second term of
-    \eqref{eq:BD2} is non-zero and $\ncT_{\uptau}\succ (1,0)$.
+    Therefore,  $\ppac{\uptau}\neq 0$, $\nnac{\uptau}=0$ and $\cE(1) =
+    (B,0,-(2k-1))$ for every $\cE\in \MYD_{\star}$ with non-zero coefficient in
+    $\ac_{\uptau}$. Hence $\pac{\uptau}=0$.
+    \item Suppose $x_{\uptau} \in \set{r,c}$. When 
+    $\Sign(\tau_{\bftt})\succ(1,1)$, the term $\ppac{\uptau}$ in \eqref{eq:BD4} is
+    non-zero. 
+    So 
+    \[
+    \pac{\uptau}\succeq \Lambda_{(1,0)} (\ppac{\uptau}) \neq 0.
+    \]
+    When $\ssign(\tau_{\bftt})\nsucc (1,1)$,  we have $\Sign(\tau_{\bftt})=(2k,0)$
+    and $\cP_{\tau_{\bftt}}^{-1}(\set{s,c})=\emptyset$. 
+    So $x_{\uptaupp}=d$ by \Cref{lem:delta}. Now $\ncL_{\uptau''}\neq 0$  
+    and $\ncT_{\uptau}\succ (1,0)$.
+    Hence  $\nnac{\uptau}\neq 0$ and 
+    \[
+    \pac{\uptau}\succeq \Lambda_{(1,0)} (\nnac{\uptau}) \neq 0.
+    \]
     In both cases, we conclude that $\pac{\uptau}\neq 0$.
-    \item Suppose $x_{\uptau}=d$. If $\ssign(\tau_{\bftt})\succ (1,2)$,
-    then the first term in \eqref{eq:BD2} is non-zero and so
-    $\ac_{\uptau}\sqsupseteq (1,1)$. Hence $\pac{\uptau}\neq 0$ and
+    \item Suppose $x_{\uptau}=d$. When $\ssign(\tau_{\bftt})\succ (1,2)$,
+    the term $\ppac{\uptau}\neq $ and so
+    $\ac_{\uptau}\sqsupseteq (1,1)$. Therefore $\pac{\uptau}\neq 0$ and
     $\nac{\uptau}\neq 0$.
-    If  $\ssign(\tau_{\bftt})\nsucc(1,2)$, then $\Sign(\tau_{\bftt}) = (2k-1,1)$
-    \footnote{$\tau_{\bftt}=d$ if it has length 1.} and
-    $x_{\uptaupp}=d$ by \Cref{lem:delta}.
-    So the both terms in \eqref{eq:BD2} are non-zero, which leads to the conclusion.
+    When $\ssign(\tau_{\bftt})\nsucc(1,2)$, we must have  $\Sign(\tau_{\bftt}) = (2k-1,1)\succeq (1,1)$.
+    In particular, $\cP_{\tau_{\bftt}}^{-1}(\set{s,c})=\emptyset$ and 
+    so $x_{\uptaupp}=d$ by \Cref{lem:delta}.
+    Now both of $\ppac{\uptau}$ and $\nnac{\uptau}$ in \eqref{eq:BD4} are non-zero, which leads to the conclusion.
   \end{enumPF}
 
-\subsection*{\bf Proof of \Cref{lem:BD}~(a) }
+\subsubsection*{ Proof of \Cref{lem:BD}~(a) }
 \def\opac{\cL'^+}
 \def\onac{\cL'^-}
 \def\tpac{\widetilde{\cL'}^+}
 \def\tnac{\widetilde{\cL'}^-}
 The following proof only depends on \Cref{lem:BD2}.
-Suppose $\cL' = \ac_{\uptau}\lotimes (\epsilon,\epsilon)$.
+Suppose $\cL' = \ac_{\uptau}\lotimes (\epsilon,\epsilon)$ for $(\uptau,\epsilon)\in \PBP_\star(\ckcO)\times \bZ/2\bZ$.
 Let
   \begin{align*}
     \opac &:= \Lambda_{(1,0)}(\cL'), &
@@ -7796,11 +7887,11 @@ Let
     \tpac &:= \Lambda_{(1,0)}(\cL'\lotimes (1,1)),\text{ and } &
     \tnac &:= \Lambda_{(0,1)}(\cL'\lotimes (1,1)).
   \end{align*}
+Note that $\bfcc_{1}(\cO)-\bfcc_{2}(\cO)>0$. So at least one of $\opac$,
+$\onac$, $\tpac$ and $\tnac$ is non-vanishing.
 
-Note that $\bfcc_{1}(\cO)-\bfcc_{2}(\cO)>0$. So $\pac{\uptau}$, $\nac{\uptau}$,
-$\tpac$ and $\tnac$ can not all vanish.
-Using \Cref{lem:BD2}, we have the following criteria for
-$(\varepsilon_{\tau},\epsilon)$:
+Using \Cref{lem:BD2}, we
+have the following criteria for $(\varepsilon_{\tau},\epsilon)$:
 \[
 \begin{split}
   (\varepsilon_{\tau},\epsilon) = (0,0) & \Leftrightarrow
@@ -7818,69 +7909,86 @@ $(\varepsilon_{\tau},\epsilon)$:
 This implies \Cref{lem:BD}~(a).
 
 
-\subsection*{\bf Proof of \Cref{lem:BD}~(b) }
-First not that
-$\bfrr_{1}(\ckcO'') = \bfrr_{3}(\ckcO)=\bfrr_{2}(\ckcO)>\bfrr_{5}(\ckcO) = \bfrr_{3}(\ckcO'')$.
+\subsubsection*{Proof of \Cref{lem:BD}~(b)}
+\def\tauot{(\tau_1)_{\bftt}}
+\def\tautt{(\tau_2)_{\bftt}}
+The weakly-distinguishness of $\ckcO$ implies that  
+\begin{equation}\label{eq:wplus}
+  \bfrr_{1}(\ckcO'') = \bfrr_{3}(\ckcO)=\bfrr_{2}(\ckcO)>\bfrr_{5}(\ckcO) = \bfrr_{3}(\ckcO'').
+\end{equation}
 
 Suppose that  $\ac_{\uptau_{i}} \sqsupseteq (0,1)$ or $\ac_{\uptau_{i}} \sqsupseteq (0,-1)$.
-The first term in \eqref{eq:BD2} for both $\uptau_{1}$ and $\uptau_{2}$ must be
-non-zero and equal.
-This implies $\pac{\uptaupp_{1}}=\pac{\uptaupp_{2}}$.
-By \Cref{lem:BD2}~(b) and \Cref{lem:BD}~(b), $\ac_{\uptaupp_{1}} = \ac_{\uptaupp_{2}}$ and  $\uptaupp_{1}=\uptaupp_{2}$.
-Since $\Sign(\uptau_{1})=\Sign(\uptau_{2})$, we get
-$\uptau_{1}=\uptau_{2}$ by \Cref{lem:delta}.
+% The first term in \eqref{eq:BD2} for both $\uptau_{1}$ and $\uptau_{2}$ must be
+% non-zero and equal.
+We must have $\Sign(\tauot)\succeq (0,1)$, $\Sign(\tautt)\succeq (0,1)$ and so
+$\ppac{\uptau_1} = \ppac{\uptau_2}\neq 0$.  
+This implies $\pac{\uptaupp_{1}}=\pac{\uptaupp_{2}}\neq 0$. By \eqref{eq:wplus},
+$\Upsilon^+_{\ckcO''}$ is injective \Cref{lem:BD3}~(b). So  $\ac_{\uptaupp_{1}}
+= \ac_{\uptaupp_{2}}$.  
 
 \smallskip
 
-Now consider the case when $\ac_{\uptau_{i}}\nsqsupseteq (0,1)$
-and $\ac_{\uptau_{i}}\nsqsupseteq (0,-1)$. In partcular, $x_{\uptau}\neq d$.
+Now consider the case when $\ac_{\uptau_{i}}\nsqsupseteq (0,1)$ and
+$\ac_{\uptau_{i}}\nsqsupseteq (0,-1)$. By \Cref{lem:BD2}, $x_{\uptau}\neq d$.
 
-By \eqref{eq:BD2}, we conclude that $\Sign((\tau_{i})_{\bftt}) \in \set{ (2k,0),(2k-1,1)}$.
+From \eqref{eq:BD2}, we conclude that $\set{\Sign((\tau_{i})_{\bftt})|i=1,2}
+\subset\set{ (2k,0),(2k-1,1)}$.
 
-We consider case by case according to the set $\set{\Sign((\tau_{i})_{\bftt})|i=1,2}$:
+We now discuss case by case according to the set $\set{\Sign((\tau_{i})_{\bftt})|i=1,2}$:
   \begin{enumPF}
     \item Suppose
-    $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k-1,1)}$. We have
-    $\pac{\uptaupp_{1}}=\pac{\uptaupp_{2}}$, and deduces
-    $\uptaupp_{1}=\uptaupp_{2}$.
+    $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k-1,1)}$. We have 
+    $\ppac{\uptau_1} = \ppac{\uptau_2}\neq 0$ and so 
+    $\pac{\uptaupp_{1}}=\pac{\uptaupp_{2}}\neq 0$.
+    %By \eqref{eq:wplus}, $\Upsilon^+_{\ckcO''}$ is injective \Cref{lem:BD3}~(b). 
+   %So  $\ac_{\uptaupp_{1}} = \ac_{\uptaupp_{2}}$.  
+    By \eqref{eq:wplus} and \Cref{lem:BD3}~(b), we deduces
+    that $\ac_{\uptaupp_{1}}=\ac_{\uptaupp_{2}}$.
     \item
     Suppose $\set{\Sign({\tau_{i}}_{\bftt})|i=1,2} = \set{(2k,0)}$. We have
-    $\nac{\uptaupp_{1}}=\nac{\uptaupp_{2}}$, and deduces
-    $\uptaupp_{1}=\uptaupp_{2}$ by \Cref{lem:BD2}~(b) and \Cref{lem:BD}~(b).
-    \item
-    Without loss of generality, we assume that
-    $\Sign({\tau_{1}}_{\bftt}) = (2k-1,1)$ and
-    $\Sign({\tau_{2}}_{\bftt}) = (2k,0)$.
-    By \eqref{eq:BD2}, we get
+   $\ppac{\uptau_1}=\nnac{\uptau_2}\neq 0$ and so
+   $\nac{\uptaupp_{1}}=\nac{\uptaupp_{2}}\neq 0$. By \eqref{eq:wplus} and
+   \Cref{lem:BD3}~(b), we deduces that $\ac_{\uptaupp_{1}}=\ac_{\uptaupp_{2}}$.
+    \item 
+    Without loss of generality, we can assume that $\Sign({\tau_{1}}_{\bftt}) =
+    (2k-1,1)$ and $\Sign({\tau_{2}}_{\bftt}) = (2k,0)$. By \eqref{eq:BD2}, we
+    get $\ppac{\uptau_1} = \nnac{\uptau_2}$ and so 
     \[
       \pac{\uptaupp_{1}}\cdot (0,0)=\maltese(\nac{\uptaupp_{2}}\cdot (0,0)),
     \]
-    which is contradict to \Cref{lem:BD2}~(c).
+    which is contradict to \Cref{lem:BD3}~(c).
   \end{enumPF}
-  We finished the proof of \Cref{lem:BD}~(b).
 
-  \Cref{lem:BD}~(c) is vacant in the current case.
+In all the cases, we have $\ac_{\uptaupp_1} = \ac_{\uptaupp_2}$. 
+Since $\cO''$ is weakly-distinguished,   $\uptaupp_{1}=\uptaupp_{2}$ by
+\Cref{lem:BD}~(b). Note that $\varepsilon_{\tau_1}=\varepsilon_{\tau_2}$ by
+\Cref{lem:BD}~(a) and $\Sign(\uptau_{1})=\Sign(\uptau_{2})$. We conclude that  
+$\uptau_{1}=\uptau_{2}$ by combining \Cref{cor:dpinj} and \Cref{prop:CC.bij}.
+This finished the proof of \Cref{lem:BD}~(b).
+
+\subsubsection*{\Cref{lem:BD}~(c) is vacant in the current case.}
 
 
 \subsection*{\bf Proof of \Cref{lem:BD3}~(b)}
+
 Note that the condition $\bfrr_{1}(\ckcO)>\bfrr_{3}(\ckcO)=\bfrr_{2}(\ckcO)$
 implies $2k = \abs{\ckcO_{\bftt}}\geq 4$.
 
 
-We first prove the injectivity of $\Upsilon^{+}_{\ckcO}$.
-  Note that $\ac_{\uptau}\sqsupseteq (2,0)$ is equivalent to
-  $\pac{\uptau}\sqsupseteq (1,0)$.
-  We clearly have the following  bijection
+We first prove the injectivity of $\Upsilon^{+}_{\ckcO}$. Note that
+  $\ac_{\uptau}\sqsupseteq (2,0)$ is equivalent to $\pac{\uptau}\sqsupseteq
+  (1,0)$. We clearly have the following  bijection
   \[
     \set{\ac_{\uptau}|\uptau\in \PBPes(\ckcO),\ac_{\uptau}\sqsupseteq (2,0)} \rightarrow \set{\pac{\uptau}|\uptau\in \PBPes(\ckcO),\pac{\uptau}\sqsupseteq (1,0)},
   \]
-  since  $\ac_{\uptau})\lhd (1,0)$ for each element in the domain by \eqref{eq:BD2}.
+  since  $\ac_{\uptau})\lhd (1,0)$ for each element in the domain by
+  \eqref{eq:BD2}.
   % Hence we
   % $\ac_{\uptau} := \pac{\uptau}\cdot 1^{(1,0)}$.
 
-  Now we consider the set
-  $\set{\ac_{\uptau}|\uptau\in \PBPes(\ckcO), \pac{\uptau}\neq 0, \ac_{\uptau}\nsqsupseteq (2,0)}$. Let
-  $\ac_{\uptau_{1}}$ and $\ac_{\uptau_{2}}$ be two elements in this set such that
+  Now we consider the set $\set{\ac_{\uptau}|\uptau\in \PBPes(\ckcO),
+  \pac{\uptau}\neq 0, \ac_{\uptau}\nsqsupseteq (2,0)}$. Let $\ac_{\uptau_{1}}$
+  and $\ac_{\uptau_{2}}$ be two elements in this set such that
   $\pac{\uptau_{1}}=\pac{\uptau_{2}}$.
 
   By \eqref{eq:BD2}, we have $\Sign(\ttail{\tau_{i}}) = (1,2k-1)$ and the first term of \eqref{eq:BD2} non-vanish.
@@ -7972,6 +8080,7 @@ we conclude that there are only two possibilities:
 In all the cases,  we get $\ac_{\uptau''_{1}}=\ac_{\uptau''_{2}}$ by the
 injectivity of $\Upsilon_{\ckcO''}^{+}$ or $\Upsilon_{\ckcO''}^{-}$.
 Hence $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$ by \eqref{eq:BD2}.
+
 
 
 

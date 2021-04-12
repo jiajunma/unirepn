@@ -1,6 +1,6 @@
 \documentclass[12pt,a4paper]{amsart}
 \usepackage[margin=2.5cm,marginpar=2cm]{geometry}
-
+\usepackage{amscd}
 
 \usepackage[bookmarksopen,bookmarksdepth=3,hidelinks]{hyperref}
 \usepackage[nameinlink]{cleveref}
@@ -1534,7 +1534,7 @@ We define the Langlands dual of $G$ to be the complex group
 Denote by $\Nil(\check \fgg)$ the set of   $\check G$-orbits  of nilpotent matrices in $\check \fgg$. 
 %Likewise,  $\Nil(\fgg)$ denotes the set of   $G_\C$-orbits  of nilpotent matrices in $\fgg$.
 %namely the set of all  orbits of nilpotent matrices under the adjoint action of $\check G$ in $\check \g$.
-When no confusion is possible, we will not distinguish a nilpotent orbit in $\GL_n(\C)$, $\oO_n(\C)$ or $\Sp_{2n}(\C)$ with its corresponding Young diagram. In particular, the zero orbit is represented by the Young diagram consisting of one nonempty column at most. 
+When no confusion is possible, we will not distinguish a nilpotent orbit for $\GL_n(\C)$, $\oO_n(\C)$ or $\Sp_{2n}(\C)$ with its corresponding Young diagram. In particular, the zero orbit is represented by the Young diagram consisting of one nonempty column at most. 
 
 Let  $\check \CO \in \Nil(\check \fgg) $.  It determines a character $\chi(\check \CO): \oU(\g)^{G_\C}\rightarrow \C$ as in what follows. For every  $a\in \bN$, write
 \[
@@ -1644,7 +1644,7 @@ A painted Young diagram is then a pair $(\imath, \CP)$, consisting of a Young di
   \end{Example}
 
 
- We introduce two more symbols $B^+$ and $B^-$, and make the following definition.
+When no confusion is possible, we write $\alpha\times \beta\times \gamma$ for a triple $(\alpha, \beta, \gamma)$.   We introduce two more symbols $B^+$ and $B^-$, and make the following definition.
  \begin{defn}\label{defpbp0}
  A painted bipartition is a triple $\tau=(\imath, \CP)\times (\jmath, \CQ)\times \alpha$, where $(\imath, \CP)$ and $ (\jmath, \CQ)$ are painted Young diagrams, and $\alpha\in \{B^+,B^-, C,D,\widetilde {C}, C^*, D^*\}$, subject to the following conditions:
  \begin{itemize}
@@ -1978,11 +1978,11 @@ primitive in $\check \CO$, if    $\mathbf r_i(\check \CO)-\mathbf r_{i+1}(\check
 Denote $\mathrm{PP}_\star(\check \CO)$ the  set of all $\star$-pairs that are primitive in $\check \CO$.
 \end{defn}
 
-For any $\check \CO$, we attach a pair of Young diagrams
+We attach to $\check \CO$ a pair of Young diagrams
 \[
 (\imath_{\check \CO}, \jmath_{\check \CO}):=(\imath_\star(\check \CO), \jmath_\star(\check \CO)),
 \]
-as follows.
+ as follows.
 
 \medskip
 
@@ -2190,7 +2190,7 @@ We call $\star'$
    \check \nabla_{\mathrm{naive}}(\check \CO), \quad & \textrm{otherwise},
     \end{cases}
   \]
-  where $\tytb{\   }$ denote the Young diagram that has total size $1$. 
+  where $\tytb{\   }$ denotes the Young diagram that has total size $1$. 
   
   % Here $\emptyset$ stands for the empty Young diagram, and $\tytb{\ }$ stands for the Young diagram of total size $1$.
  Note that $\check \CO'$ has $\star'$-good parity, and
@@ -2419,7 +2419,8 @@ We will compute the associated cycle of $\pi_\uptau$ for every painted bipartiti
 
 \begin{thm}\label{thmac0} Suppose that $\check \CO\in \mathrm{Nil}(\check \g)$  has $\star$-good parity.
 
-\noindent (a) For any $\pi\in \mathrm{Unip}_{\check \CO}(G)$, the associated cycle $\mathrm{AC}_{\CO}(\pi)\in \cK_{K_\C}(\CO) $ is a nonzero  sum of  pairwise distinct elements of $\mathrm{AOD}_{K_\C}(\CO)$.
+\noindent (a) For every $\pi\in \mathrm{Unip}_{\check \CO}(G)$, the associated cycle $\mathrm{AC}_{\CO}(\pi)\in \cK_{K_\C}(\CO) $ is a nonzero  sum of  admissible orbit data 
+over pairwise distinct $K_\C$-orbits in $\CO\cap \p^*$. % elements of $\mathrm{AOD}_{K_\C}(\CO)$ 
 
 \noindent  (b) If $\check \CO$ is weakly-distinguished, then the map
 \[
@@ -2439,7 +2440,7 @@ Suppose that $\star\in \{C^*, D^*\}$ so that $G$ is quaternionic.
 Then there is  precisely one admissible orbit datum over  $\sO$ for each $K_\C$-orbit $\sO\subset \CO\cap \p^*$.
 Thus
 \[
- \mathrm{AOD}_{K_\C}(\sO)=K_\C\backslash  (\CO\cap \p^*).
+ \mathrm{AOD}_{K_\C}(\CO)=K_\C\backslash  (\CO\cap \p^*).
 \]
 If $\check \CO$ is not quasi-distinghuished, then
 $\CO\cap \p^*$ is empty (see \cite[Theorems 9.3.4 and 9.3.5]{CM}), and hence $\mathrm{Unip}_{\check \CO}(G)$ is also empty.
@@ -2818,7 +2819,7 @@ In conclusion, we have by now a well-defined descent map
 \]
 
 
-The following injectivity result will be  proved in Section \ref{Secpd}. %will be important for us. 
+The following injectivity result will be  proved in Section \ref{secppb}. %will be important for us. 
 %The key property that we will need  of the descent map when $\star\in \set{D,B,C^*}$ are summarized in the following two propositions.
 
 \begin{prop}\label{prop:DD.BDinj}
@@ -2851,14 +2852,14 @@ is injective.
 % \subsubsection{complex orthogonal and symplectic groups}
 \subsection{Classical spaces}
 Let $\star\in \{B,C,D, \widetilde C, C^*, D^*\}$ as before. Put
-\[
+\be\label{epsilond}
 (\epsilon, \dot \epsilon):=(\epsilon_\star, \dot \epsilon_\star):=\begin{cases}
   (1,1),&\quad \textrm{ if  $\star\in \{B,D\}$;} \smallskip \\
  (-1,-1),&\quad \textrm{ if  $\star\in \{C,\widetilde C\}$;} \smallskip \\
  (-1,1),&\quad \textrm{ if  $\star=C^*$;} \smallskip \\
  (1,-1),&\quad \textrm{ if  $\star=D^*$.}
  \end{cases}
-\]
+\ee
 A classical signature is defined to be a triple  $\mathsf s=(\star, p,q)\in  \{B,C,D, \widetilde C, C^*, D^*\}\times \bN\times \bN$ such that
 \[
 \begin{cases}
@@ -2879,7 +2880,7 @@ and we call $\star$ the type of $\sfss$.
 %We recall a standard result on (global) Cartan involution.
 We omit the proof of the following lemma (\cf \cite[Section~1.3]{Ohta}).
 \begin{lem}\label{lem:cartan}
-  Then there is quadruple  $(V, \la\,,\,\ra, J,L)$ satisfying the following conditions:
+  There is quadruple  $(V, \la\,,\,\ra, J,L)$ satisfying the following conditions:
   \begin{itemize}
 %  \item \label{it:cartan.1} $\inn{Lu}{Lv}_{\bfV} = \inn{u}{v}_{\bfV} $ and $L^2 = \dotepsilon$;
    % and $\epsilon\ccL\ccJ = 1$;
@@ -3058,11 +3059,11 @@ Let $\sO$ be a $K_{\mathsf s, \C}$-orbit in $\p_{\mathsf s}$. Suppose that $\sO$
 \be\label{kkpo}
   M_{\mathsf s}^{-1}(\sO)\cap \cX_{\mathsf s, \mathsf s'}^\circ
 \ee
-is a single $K_{\mathsf s,\C}\times K_{\mathsf s', \C}$-orbit. Moreover, for any element $\phi$ in $M_{\mathsf s}^{-1}(\sO)\cap \cX_{\mathsf s, \mathsf s'}^\circ$, there is an exact sequence of algebraic groups:
+is a single $K_{\mathsf s,\C}\times K_{\mathsf s', \C}$-orbit. Moreover, for every element $\phi$ in $M_{\mathsf s}^{-1}(\sO)\cap \cX_{\mathsf s, \mathsf s'}^\circ$, there is an exact sequence of algebraic groups:
 \[
-  1\rightarrow K_{\mathsf s_1,\C}\rightarrow (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi\xrightarrow{\textrm{the projection to the first factor}} (K_{\mathsf s,\C})_{\mathbf e}\rightarrow 1,
+  1\rightarrow (K_{\mathsf s',\C})_\phi \rightarrow (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi\xrightarrow{\textrm{the projection to the first factor}} (K_{\mathsf s,\C})_{\mathbf e}\rightarrow 1,
 \]
-where $\mathbf e:=M_\mathsf s(\phi)\in \sO$,  $\mathsf s_1$ is a classical signature of type  $\star'$, $(K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$ is the stabilizer of $\phi$ in $K_{\mathsf s,\C}\times K_{\mathsf s', \C}$, and $(K_{\mathsf s,\C})_{\mathbf e}$ is the stabilizer of $\mathbf e$ in $K_{\mathsf s,\C}$.
+where $\mathbf e:=M_\mathsf s(\phi)\in \sO$,  $(K_{\mathsf s',\C})_\phi$ is the stabilizer of $\phi$ in $K_{\mathsf s',\C}$, $(K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$ is the stabilizer of $\phi$ in $K_{\mathsf s,\C}\times K_{\mathsf s', \C}$, and $(K_{\mathsf s,\C})_{\mathbf e}$ is the stabilizer of $\mathbf e$ in $K_{\mathsf s,\C}$.
 \end{lem}
 
 
@@ -3117,8 +3118,8 @@ Let $\zeta_{\mathsf s, \mathsf s'}$ denote the algebraic character on $K_{\maths
  (\zeta_{\mathsf s, \mathsf s'})|_{K_{\mathsf s, \C}}=
    \begin{cases}
     1, \quad & \textrm{if $\star\in \{B, D, C^*\}$}; \smallskip\\
-      ({\det}_{\sqrt{-1}})^{\frac{q'-p'}{2}}, \quad & \textrm{if $\star\in \{C, D^*\}$};\smallskip\\
-     ({\det}_{\sqrt{-1}}^{\frac{1}{2}})^{q'-p'}, \quad & \textrm{if $\star=\widetilde C$,}\\
+      ({\det}_{\sqrt{-1}})^{\frac{p'-q'}{2}}, \quad & \textrm{if $\star\in \{C, D^*\}$};\smallskip\\
+     ({\det}_{\sqrt{-1}}^{\frac{1}{2}})^{p'-q'}, \quad & \textrm{if $\star=\widetilde C$,}\\
   \end{cases}
 \]
 and
@@ -3126,15 +3127,15 @@ and
  (\zeta_{\mathsf s, \mathsf s'})|_{K_{\mathsf s', \C}}=
    \begin{cases}
     1, \quad & \textrm{if $\star\in \{C, \widetilde C, D^*\}$}; \smallskip\\
-      ({\det}_{\sqrt{-1}})^{\frac{p-q}{2}}, \quad & \textrm{if $\star\in \{D, C^*\}$};\smallskip\\
-     ({\det}_{\sqrt{-1}}^{\frac{1}{2}})^{p-q}, \quad & \textrm{if $\star=B$}.
+      ({\det}_{\sqrt{-1}})^{\frac{q-p}{2}}, \quad & \textrm{if $\star\in \{D, C^*\}$};\smallskip\\
+     ({\det}_{\sqrt{-1}}^{\frac{1}{2}})^{q-p}, \quad & \textrm{if $\star=B$}.
  \end{cases}
 \]
 Here and henceforth, when no confusion is possible, we  use $1$ to indicate the trivial representation of a group (we also use $1$ to denote the identity element of a group).
 Let  $\sO$ be a $K_{\mathsf s, \C}$-orbit in $\p_{\mathsf s}$ as before. Suppose that $\sO$ is contained in the image of the moment map $M_{\mathsf s}$, and write $\sO':=\nabla^{\mathsf s}_{\mathsf s'}(\sO)$.
 Let $\phi,\mathbf e$ be as in Lemma  \ref{descko} and let $\mathbf e':=M_{\mathsf s'}(\phi)$. We have an exact sequence
 \[
-  1\rightarrow K_{\mathsf s_1,\C}\rightarrow (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi\rightarrow (K_{\mathsf s,\C})_{\mathbf e}\rightarrow 1
+  1\rightarrow  (K_{\mathsf s',\C})_\phi\rightarrow (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi\rightarrow (K_{\mathsf s,\C})_{\mathbf e}\rightarrow 1
 \]
 as in Lemma  \ref{descko}.
 
@@ -3146,7 +3147,7 @@ $(K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$ by the pull-back through the 
 \]
 Then $\CE'_{\mathbf e'} \otimes \zeta_{\mathsf s, \mathsf s'}$ is a representation of $ (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$, and the coinvariant space
 \[
-(\CE'_{\mathbf e'} \otimes \zeta_{\mathsf s, \mathsf s'})_{K_{\mathsf s_1,\C}}
+(\CE'_{\mathbf e'} \otimes \zeta_{\mathsf s, \mathsf s'})_{ (K_{\mathsf s',\C})_\phi}
 \]
  is an algebraic representation of $(K_{\mathsf s,\C})_{\mathbf e}$. Write $\CE:= \check \vartheta_{\sO'}^{\sO}(\mathcal E')$ for the  $K_{\mathsf s,\C}$-equivariant algebraic vector bundle  over $\sO$ whose fibre at $\mathbf e$ equals this coinvariant space representation. In this way, we get an exact functor $  \check \vartheta_{\sO'}^{\sO}$ from the category of
 $K_{\mathsf s',\C}$-equivariant algebraic vector bundle  over $\sO'$ to the category of $K_{\mathsf s,\C}$-equivariant algebraic vector bundle  over $\sO$. This exact functor induces a  homomorphism of the  Grothendieck groups:
@@ -3276,7 +3277,9 @@ $\mathrm{AC}(\uptau)\in \CK_{\mathsf s}(\CO) $ by
 We have the following three analogous results of Theorem \ref{thmac0}.
 
 \begin{prop}\label{thmac1}
- For every $\uptau\in \PBPe_\star(\check \CO)$,  the associated cycle $\mathrm{AC}(\uptau)\in \CK_{\mathsf s}(\CO)$ is a nonzero  sum of  pairwise distinct elements of $\mathrm{AOD}_{\CO}(K_{\mathsf s, \C})$.
+ For every $\uptau\in \PBPe_\star(\check \CO)$,  the associated cycle $\mathrm{AC}(\uptau)\in \CK_{\mathsf s}(\CO)$ is a nonzero  sum of  admissible orbit data 
+over pairwise distinct $K_{\sfss,\C}$-orbits in $\CO\cap \p$.
+%  a nonzero  sum of  pairwise distinct elements of $\mathrm{AOD}_{\CO}(K_{\mathsf s, \C})$.
 \end{prop}
 
 \begin{proof}
@@ -3487,10 +3490,10 @@ The group $G_{\mathsf s}\times G_{\mathsf s'}$ acts on $H_{\mathsf s, \mathsf s'
 \]
 From this action, we form the semidirect product $(G_{\mathsf s}\times G_{\mathsf s'})\ltimes H_{\mathsf s, \mathsf s'}$.
 
-
+Recall the character $\zeta_{\mathsf s, \mathsf s'}$ from Section \ref{sec:dlift}.
 
 %As in   Section \ref{sec:LVB}, we assume that $\mathbb p$ is the parity of $\dim \bfV$ if $\epsilon=1$, and  the parity of $\dim \bfV'$ if $\epsilon '=1$.
-\begin{lem}\label{deforos}
+\begin{lem}[{\cf \cite[Proposition 7.5]{Ad07}}]\label{deforos}
 The representation $\omega_{\mathsf s, \mathsf s'}$ of $H_{\mathsf s, \mathsf s'}$ in Lemma \ref{vn} uniquely extends to a  smooth representation of $(G_{\mathsf s}\times G_{\mathsf s'})\ltimes H_{\mathsf s, \mathsf s'}$ such  that $K_{\mathsf s}\times  K_{\mathsf s'}$ acts on  $ \omega_{\mathsf s, \mathsf s'}^{\cX_{\mathsf s, \mathsf s'}}$ through the scalar multiplication by $\zeta_{\mathsf s, \mathsf s'}$.
 \end{lem}
 
@@ -3551,17 +3554,13 @@ Denote by  $\Psi_\mathsf s$ the function of $G_\mathsf s$ satisfying the followi
 \item it is both left and right $K_\mathsf s$-invariant;
 \item for all $g\in \exp(\p_\mathsf s^{J_\mathsf s})$,
 \[
-  \Psi_\mathsf s=\prod_{a} \left(\frac{1+a}{2}\right)^{-\frac{1}{2}},
+  \Psi_\mathsf s(g)=\prod_{a} \left(\frac{1+a}{2}\right)^{-\frac{1}{2}},
 \]
  where $a$ runs over all eigenvalues of $g: V_\mathsf s\rightarrow V_\mathsf s$, counted with multiplicities.
 \end{itemize}
 Note that all the  eigenvalues of $g \in \exp(\p_\mathsf s^{J_\mathsf s})$ are positive real numbers, and  $0<\Psi_\mathsf s(g)\leq 1$ for all $g\in G_\mathsf s$.
 
 Set
-\[
-\abs{\mathsf s}:=p+q,
-\]
- and
 \[
   \nu_\mathsf s:=\begin{cases}
     \abs{\mathsf s},\quad &\textrm{if }\star\in \{C, \widetilde C\};\\
@@ -3849,7 +3848,7 @@ Put
 \]
  Lemmas  \ref{int} and \ref{matrico} imply that the integral
 \[
- \int_{G_{\mathsf s'}} \la g.u,v\ra \cdot \Xi_{G_{\mathsf s'}}(g)\od\!g
+ \int_{G_{\mathsf s'}} \la g\cdot u,v\ra \cdot \Xi_{G_{\mathsf s'}}(g)\od\!g
 \]
 is absolutely convergent for all $u,v\in \pi' \otimes \omega_{\mathsf s_1, \mathsf s'}$. The theorem then follows by Lemma \ref{positivity}.
 
@@ -3918,7 +3917,7 @@ This follows from the  estimate of Harish-Chandra's $\Xi$ function (\cite[Theore
 
 
  \begin{defn}\label{defn:CR33}
-The Casselman-Wallach representation  $\pi'^-$ of $G_{\mathsf s'^-}$ is convergent  for a Casselman-Wallach representation  $\dot \pi$ of $G_{\dsfss}$ if there are real number $\nu'$ and $\dot \nu$ such that $\pi'$ is $\nu'$-bounded, $\dot \pi$ is $\dot \nu$-bounded, and
+The Casselman-Wallach representation  $\pi'^-$ of $G_{\mathsf s'^-}$ is convergent  for a Casselman-Wallach representation  $\dot \pi$ of $G_{\dsfss}$ if there are real numbers $\nu'$ and $\dot \nu$ such that $\pi'$ is $\nu'$-bounded, $\dot \pi$ is $\dot \nu$-bounded, and
 \[
   \nu'+\dot \nu>-\abs{\sfss''}.
 \]
@@ -3978,10 +3977,10 @@ Then
  \item $\Thetab^{\sfss}_{\sfss'}(\pi')$  is convergent for $\check \Theta^{\sfss''}_{\sfss}$;
  \item
   the trivial representation
-$1$ of $G_{\bar \sfss}$ is convergent for $\check \Theta^{\dsfss}_{\bar \sfss}$;
+$1$ of $G_{[\sfss]}$ is convergent for $\check \Theta^{\dsfss}_{\bar \sfss}$;
 \item
   $\pi'^-$ is convergent for  $\Thetab_{[\sfss]}^\dsfss(1)$;
- \item as representations of $G_{\sfss''}$, we have
+ \item as representations of $G_{\sfss''}$, 
 \begin{equation}
 \label{thetabv00}
   \Thetab^{\sfss''}_{\sfss}(\Thetab^{\sfss}_{\sfss'}(\pi'))\cong \pi'^-* \Thetab_{[\sfss]}^\dsfss(1).
@@ -4013,7 +4012,7 @@ Suppose that $\dsfss$ is split,  and
 \[
   p'\leq p''\qquad\textrm{and}\qquad q'\leq q''.
 \]
-Then there is a  split classical signature $\sfss_0=(\star_0, p_0, q_0)$ such that
+Then $\star'=\star''$, and there is a  split classical signature $\sfss_0=(\star_0, p_0, q_0)$ such that
 \begin{itemize}
 \item $\star_0=\dot \star$;
   \item $(p', q')+(p_0, q_0)=(p'', q'')$.
@@ -4036,9 +4035,9 @@ Suppose that
  \]
 %They are  maximal $J_{\dsfss}$-stable totally isotropic subspaces of $V_{\dsfss}$ such that $Y_{\dsfss}=L_\dsfss(X_\dsfss)$.
 In summary, we have decompositions
-\[
+\be\label{decomv0}
   V_{\dsfss}=V_{\sfss'^-}\oplus V_{\sfss''}= V_{\sfss'^-}\oplus V_{\sfss'}\oplus  V_{\sfss_0}= (V_{\sfss'}^\triangle \oplus X_{\sfss_0})\oplus (V_{\sfss'}^\nabla \oplus Y_{\sfss_0}).
-\]
+\ee
 
 As before, $X_\dsfss$ and $X_{\sfss_0}$ yield
  the Siegel parabolic subgroups
@@ -4077,7 +4076,7 @@ $\pi'^-$ of $G_{\sfss'^-}$. If $\dsfss=\widetilde C$, we assume that both $\pi'$
 Let $\nu_{\dot \chi}\in \R$ be  as in \eqref{nuchi}. The rest of this subsection is devoted to a proof of the following theorem.
 
 \begin{thm}\label{midp}
-Assume that $\pi'$ is $\nu'$ bounded for some
+Assume that the Casselman-Wallach representation $\pi'$ of $G_{\sfss'}$ is $\nu'$-bounded for some
 \[
  \nu'>\begin{cases}
   2\abs{\nu_{\dot \chi}}- \frac{\abs{\sfss_0}}{2}-1,\quad &\textrm{if $\dot \star\in \{B,C,D, \widetilde C\}$};\\
@@ -4257,20 +4256,20 @@ By \cite[Lemma 3.5]{SZ1},  the right-hand side  functional  equals  $\la u_0, \,
 
 
 
-\subsection{Double theta lifts and parabolic induction}
+\subsection{Double theta lifts and parabolic induction}\label{doublep}
 Let $\star$ be the Howe dual of $\star'=\star''$. Let $k\in \bN$ and we assume that the set
 \[
- S_{\star, k}:=\{\sfss_1=(\star, p_1,q_1) \mid  \textrm{$\sfss_1$ is a classical signature}, \, p_1+q_1=k\}
+ S_{\star, k}:=\{ \textrm{$\sfss_1$ is a classical signature}\mid \textrm{$\sfss_1$ has type $\star$, and $\abs{\sfss_1}=k$}\}
 \]
 is non-empty. Thus $k$ is odd if $\star=B$, and $k$ is even in all other cases. 
 In this subsection, we further assume that $k\geq 2$ and
-\[
+\be\label{dotp}
  \dot p=\dot q= \begin{cases}
  k-1,\quad   &\textrm{if } \star\in \{B,D\};\\
 k+1,  & \textrm{if $\star\in \{C, \widetilde C\}$;}\\
 k & \textrm{if $ \star\in\{C^*,D^*\}$.}
 \end{cases}
- \]
+ \ee
 %For technical   reason, we also assume that $k\geq 2$ when $\star\in \{B,D\}$. 
 
 We also assume that the character $\dot \chi: R_{\dsfss}\rightarrow \C^\times $
@@ -4337,7 +4336,7 @@ For all $\mathsf s_1$ appearing in Lemma \ref{degens}, the trivial representatio
 
 \end{lem}
 \begin{proof}
-Note that the trivial representation $1$ of $G_{\mathsf s_1}$ is $0$-bounded, and $0>\nu_{\mathsf s_1}+\nu_{\mathsf s_1}^\circ -\abs{\dsfss}$. This implies the first assertion.
+Note that the trivial representation $1$ of $G_{\mathsf s_1}$ is $(-\nu_{\mathsf s_1})$-bounded, and $-\nu_{\mathsf s_1}>\nu_{\mathsf s_1}^\circ -\abs{\dsfss}$. This implies the first assertion.
 Since $\check \Theta_{\mathsf s_1}^{\dsfss}(1)$ is irreducible and $\Thetab_{\mathsf s_1}^{\dsfss}(1)$ is  a quotient of $\check \Theta_{\mathsf s_1}^{\dsfss}(1)$, for the proof of the second assertion, it suffices to show that $\Thetab_{\mathsf s_1}^{\dsfss}(1)$ is nonzero.
 
 Put
@@ -4386,13 +4385,13 @@ Assume that $\pi'$  is $\nu'$-bounded for some
  \end{lem}
 \begin{proof}
 The first assertion follows by noting that
-\[
+\be\label{p123}
 \nu_{\sfss'}-\abs{\sfss_1}=
   \begin{cases}
- -\frac{\abs{\sfss_0}}{2}-3,\quad& \textrm{if $\dsfss =D^*$};\\
+ -\frac{\abs{\sfss_0}}{2}-3,\quad& \textrm{if $\star =C^*$};\\
    -\frac{\abs{\sfss_0}}{2}-1,\quad& \textrm{otherwise}.
    \end{cases}
-   \]
+   \ee
 The proof of second assertion is similar to the proof of the first assertion of Lemma \ref{lem:coinv}.
 \end{proof}
 
@@ -4486,7 +4485,7 @@ Lemma \ref{lem:coinv} and Proposition \ref{doublelift} imply that
 Therefore the theorem follows.
 \end{proof}
 
-\section{Bounding the associated  cycles}\label{sec:AC}
+\section{Regular descents and bounding the associated  cycles}\label{sec:AC}
 
 In this section, let $\mathsf s=(\star, p,q)$ and $ \mathsf s'=(\star', p',q')$ be classical signatures such that $\star'$ is the Howe dual of $\star$.
 Let $\CO\in \mathrm{Nil}(\g_\mathsf s)$, whose Zariski closure in $\g_\sfss$ is denoted by $\overline \CO$. 
@@ -4513,7 +4512,7 @@ is $H_{\C}$-equivariant. An $(\CA, H_\C)$-module is said to be finitely generate
 %For every complex vector space $E$, let $\oS(E)$ denote the symmetric algebra of $E$.
 
 
-For every affine complex algebraic variety $Z$, write $\C[Z]$ the algebra of regular functions on $Z$.
+For every affine complex algebraic variety $Z$, write $\C[Z]$ for the algebra of regular functions on $Z$. By convention, all elements of complex algebraic varieties are closed. 
 %Write $\C[\overline \CO\cap \p]$ for the algebra of algebraic functions on $\overline \CO\cap \p$.  The notion of $(\C[\overline \CO\cap \p], K_{\sfss, \C})$-modules is similarly defined as in Definition \ref{spkmodule}. An  $(\oS(\p_{\sfss}), K_{\sfss, \C})$-module is said to be finitely generated if it is so as a $\oS(\p_{\sfss})$-module.
 %Similarly, a  $(\C[\overline \CO\cap \p], K_{\sfss, \C})$-module is said to be finitely generated if it is so as a $\C[\overline \CO\cap \p]$-module.
 Given a finitely generated $(\C[\overline \CO\cap \p_\sfss], K_{\sfss, \C})$-module $\sigma^\circ$, for each $K_{\sfss, \C}$-orbit $\sO\subset \CO\cap \p_\sfss$, the set
@@ -4567,13 +4566,13 @@ Then the grading
 \[
   \mathrm{Gr}(\rho):= \mathrm{Gr}(\rho,\CF):=\bigoplus_{i\in \Z} \rho_i/\rho_{i+1}
 \]
-is naturally a finitely generated  $(\oS(\p_{\sfss}), K_{\sfss, \C})$-module, where $\oS(\p_{\sfss})$ denotes the symmetric algebra. Recall that we have identify $\p_\sfss$ with its dual space $\p_\sfss^*$ by using the trace from. Hence $\oS(\p_{\sfss})$ is identified with $\C[\p_\sfss]$, and $\mathrm{Gr}(\rho)$ is a $(\C[\p_{\sfss}], K_{\sfss, \C})$-module.
+is naturally a finitely generated  $(\oS(\p_{\sfss}), K_{\sfss, \C})$-module, where $\oS(\p_{\sfss})$ denotes the symmetric algebra of $\p_\sfss$. Recall that we have identified $\p_\sfss$ with its dual space $\p_\sfss^*$ by using the trace from. Hence $\oS(\p_{\sfss})$ is identified with $\C[\p_\sfss]$, and $\mathrm{Gr}(\rho)$ is a $(\C[\p_{\sfss}], K_{\sfss, \C})$-module.
 
 
 Recall that $\rho$ is said to be $\CO$-bounded if the associated variety of its annihilator ideal in $\oU(\g_\mathsf s)$ is contained in  $\overline \CO$.
 
 \begin{lem}\label{l62}
-Let $\rho$ be a $(\g_\sfss, K_{\sfss})$-module  of finite length,  and let $\CF$ be a  good filtration of $\rho$. Then $\rho$ is $\CO$-bounded if and only if $\mathrm{Gr}(\rho, \CF)$ is $\CO$-bounded.
+Let $\rho$ be a $(\g_\sfss, K_{\sfss})$-module  of finite length,  and let $\CF$ be a  good filtration of $\rho$. Then $\rho$ is $\CO$-bounded if and only if $\mathrm{Gr}(\rho, \CF)$ is $\CO$-bounded as a $(\C[\p_{\sfss}], K_{\sfss, \C})$-module.
 \end{lem}
 \begin{proof}
 This is a direct consequence of   \cite[Theorem 8.4]{Vo89}.
@@ -4670,26 +4669,7 @@ $(\g_{\sfss}, K_{\sfss})$-module homomorphisms
 \end{proof}
 
 
-\subsection{Regular descent of a nilpotent orbit}
-Recall from \eqref{momentmap2}  the moment maps
-\[
-    \xymatrix@R=0em@C=3em{
-      \g_\mathsf s &\ar[l]_{\tilde M_\mathsf s} W_{\mathsf s, \mathsf s'}\ar[r]^{\tilde M_{\mathsf s'}}& \g_{\mathsf s'},\\
-     \phi^* \phi & \ar@{|->}[l] \phi \ar@{|->}[r] & \phi \phi^*.
-    }
-  \]
-
-\begin{lem}
-The orbit $\CO$ is contained in the image of the moment map $\tilde M_{\mathsf s}$ if and only if
-\[
- \delta:=  \abs{\sfss'}-\abs{\DD_\mathrm{naive}(\CO)}\geq 0.
-\]
-When this is the case, the Young diagram of $\DD_{\mathsf s'}^{\mathsf s}(\CO)\in \mathrm{Nil}(\g_{\mathsf s'})$ is obtained from that of $\DD_\mathrm{naive}(\CO)$ by adding $\delta$ boxes in the first column.
-
-\end{lem}
-\begin{proof}
-This is implied by \cite[Theorem 3.6]{DKPC}.
-\end{proof}
+\subsection{Regular descent of a nilpotent orbit}\label{regud}
 
 \begin{defn}
 The orbit $\CO\in \mathrm{Nil}(\g_\mathsf s)$ is regular for $\DD_{\mathsf s'}^{\mathsf s}$ if
@@ -4706,10 +4686,10 @@ either
 
 
 
-In the rest of this section we assume that $\CO$ is regular for $\DD_{\mathsf s'}^{\mathsf s}$. Then $\CO$ is contained in the image of the moment map $\tilde M_{\mathsf s}$. Put  $\CO':=\DD_{\mathsf s'}^{\mathsf s}(\CO)\in  \mathrm{Nil}(\g_{\mathsf s'})$, and let  $\overline{\CO'}$ denote the Zariski closure of $\CO'$ in $\g_{\sfss'}$.
+In the rest of this section we assume that $\CO$ is regular for $\DD_{\mathsf s'}^{\mathsf s}$. Then Lemma \ref{imageofmm} implies that  $\CO$ is contained in the image of the moment map $\tilde M_{\mathsf s}$. Put  $\CO':=\DD_{\mathsf s'}^{\mathsf s}(\CO)\in  \mathrm{Nil}(\g_{\mathsf s'})$, and let  $\overline{\CO'}$ denote the Zariski closure of $\CO'$ in $\g_{\sfss'}$.
 
 
-\begin{lem}\label{liftop0}
+\begin{lem}\label{liftop000}
 As subsets of $\g_\sfss$,
 \[
   \tilde M_{\mathsf s}(\tilde M_{\mathsf s'}^{-1}(\overline{\CO'}))=\overline{\CO}.
@@ -4720,19 +4700,11 @@ This is implied by \cite[Theorems 5.2 and 5.6]{DKPC}.
 \end{proof}
 
 
-\begin{lem}\label{comobound}
+\begin{lem}\label{comobound2}
 Suppose that $\sigma'$ is an $\CO'$-bounded $(\C[\p_{\sfss'}], K_{\sfss', \C})$-module.  Then the  $(\C[\p_{\sfss}], K_{\sfss, \C})$-module   $\check \Theta_{\mathsf s'}^{\mathsf s}(\sigma')$ is $\CO$-bounded.
 \end{lem}
 \begin{proof}
-Lemma \ref{liftop0} implies that
-\[
-   M_{\mathsf s}^{-1}(\overline{\CO}\cap \p_\sfss)\supset M_{\mathsf s'}^{-1}(\overline{\CO'}\cap \p_{\sfss'}).
-\]
-Thus
-\[
- ( I_{\overline{\CO}\cap \p_\sfss})^i\cdot \C[\CX_{\sfss, \sfss'}] \subset I_{\overline{\CO'}\cap \p_{\sfss'}}\cdot  \C[\CX_{\sfss, \sfss'}]\qquad \textrm{for some } i\in \bN,
-\]
-and the lemma follows. Here $I_{\overline{\CO'}\cap \p_{\sfss'}}$ denotes  the radical ideal of $\C[\p_\sfss]$ corresponding to the closed subvariety $\overline{\CO'}\cap \p_{\sfss'}$.
+This follows from Lemmas \ref{liftop000} and \ref{comobound}. 
 \end{proof}
 
 
@@ -4760,7 +4732,13 @@ The first assertion is implied by \cite[Theorem 3.6]{DKPC}. Recall from \eqref{k
 \[
 W_{\sfss,\sfss'}^\circ\cap W_{\sfss, \sfss'}^{\CO, \CO'}=W_{\sfss,\sfss'}^\circ\cap \tilde M_{\sfss}^{-1}(\CO),
 \]
-which  is also a   single  $G_{\sfss, \C}\times G_{\sfss',\C}$-orbit. Hence $W_{\sfss, \sfss'}^{\CO, \CO'}\subset W_{\sfss,\sfss'}^\circ$. The last assertion is a direct consequence of Lemma \ref{liftop0}.
+which  is also a   single  $G_{\sfss, \C}\times G_{\sfss',\C}$-orbit. Hence $W_{\sfss, \sfss'}^{\CO, \CO'}\subset W_{\sfss,\sfss'}^\circ$. 
+
+In fact, \cite[Theorem 3.6]{DKPC} also implies that
+\[
+W_{\sfss, \sfss'}^{\CO, \CO'}=\tilde M_{\sfss}^{-1}(\CO)\cap  \tilde M_{\sfss'}^{-1}(\overline{\CO'}).
+\]
+Thus the last assertion is a direct consequence of Lemma \ref{liftop000}.
 
 \end{proof}
 
@@ -4782,7 +4760,7 @@ Then  $ \CX_{\sfss, \sfss'}^{\bar \partial}$ is an open subvariety of $ \CX_{\sf
 
 \medskip
 
-We defer the proof of the following proposition to \Cref{sec:GG}.
+We defer the proof of the following proposition to Sections \ref{sec:GG} and \ref{secpp}.
 \begin{prop}\label{propreduced}
  The scheme theoretic  fibre product
 \[
@@ -4798,12 +4776,12 @@ By Lemma \ref{liftop0} and Proposition \ref{propreduced}, we know that
  which  is a smooth closed subvariety of $\CX_{\sfss, \sfss'}^{\bar \partial}$.
 
 
-For every element $\mathbf e\in \CO\cap \p_\sfss$, write $K_\mathbf e$ for the stabilizer of $\mathbf e$ in $K_{\sfss, \C}$. Let $\C_\mathbf e$ be the field $\C$ viewing a  $\C[\overline \CO\cap \p_\sfss]$-algebra via the evaluation map at $\mathbf e$. Put
+For every element $\mathbf e\in \CO\cap \p_\sfss$, write $K_\mathbf e$ for the stabilizer of $\mathbf e$ in $K_{\sfss, \C}$. Let $\C_\mathbf e$ be the field $\C$ viewing as a  $\C[\overline \CO\cap \p_\sfss]$-algebra via the evaluation map at $\mathbf e$. Put
 \[
   \CX_{\sfss, \sfss'}^{\mathbf e, \CO'}:=M_\sfss^{-1}(\mathbf e)\cap M_{\sfss'}^{-1}(\CO'\cap\p_{\sfss'})=M_\sfss^{-1}(\mathbf e)\cap M_{\sfss'}^{-1}(\overline{\CO'}\cap\p_{\sfss'}),
 \]
 which is a closed subvariety of $\CX_{\sfss, \sfss'}$. If $\mathbf e$ is not contained in the image of $M_\sfss$, then $\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}=\emptyset$. Otherwise, it is a single
-$(K_\mathbf e\times K_{\sfss,\C})$-orbit, and Lemma \ref{descko} implies that it is also a single $K_{\sfss,\C}$-orbit.
+$(K_\mathbf e\times K_{\sfss',\C})$-orbit, and Lemma \ref{descko} implies that it is also a single $K_{\sfss',\C}$-orbit.
 \begin{lem}\label{fiber111}
 For every element $\mathbf e\in \CO\cap \p_\sfss$,
 \[
@@ -4828,7 +4806,7 @@ The last equality holds because the morphism $M_\sfss: \CX_{\sfss, \sfss'}^{\CO,
 
 \subsection{Commutative theta lifts and  geometric theta lifts}
 
-The purpose of this subsection is to prove the following 
+The purpose of this subsection is to prove the following proposition.
 \begin{prop}\label{propthetag}
 Suppose that $\sigma'$ is a finitely generated  $(\C[\overline{\CO'}\cap \p_{\sfss'}], K_{\sfss', \C})$-module. Then
 \[
@@ -4869,7 +4847,7 @@ which implies the  lemma.
 
 
 \begin{lem}\label{geotheta2}
-Suppose that  $Z$ is an affine complex algebraic variety with a transitive algebraic action of $K_{\sfss, \C}$-action. Let $\sigma$ be a finitely generated $(\C[Z], K_{\sfss, \C})$-module.
+Suppose that  $Z$ is an affine complex algebraic variety with a transitive algebraic action of $K_{\sfss, \C}$. Let $\sigma$ be a finitely generated $(\C[Z], K_{\sfss, \C})$-module.
 Let $z\in Z$ and write $K_z$ for the stabilizer of $z$ in $K_{\sfss, \C}$. Then  the natural map
 \[
   \sigma^{K_{\sfss, \C}}\rightarrow (\C_z\otimes_{\C[Z]} \sigma)^{K_{z}}
@@ -4923,24 +4901,24 @@ Suppose that $\mathbf e\in \CO\cap \p_\sfss$. Then
 
 If $\mathbf e$ is not in the image of $M_\sfss$, then the above module is zero. Now we assume that $\mathbf e$ is in the image of $M_\sfss$ so that $\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}$ is a single $K_{\sfss',\C}$-orbit. Pick an arbitrary element $\phi\in \CX_{\sfss, \sfss'}^{\mathbf e, \CO'}$, and write $\mathbf e':=M_{\sfss'}(\phi)$. Let
 \[
-  1\rightarrow K_{\mathsf s_0,\C}\rightarrow (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi\xrightarrow{\textrm{the projection to the first factor}} (K_{\mathsf s,\C})_{\mathbf e}\rightarrow 1
+  1\rightarrow  (K_{\mathsf s',\C})_\phi \rightarrow (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi\xrightarrow{\textrm{the projection to the first factor}} (K_{\mathsf s,\C})_{\mathbf e}\rightarrow 1
 \]
-be the exact  sequence as in Lemma \ref{descko}. Note that $ K_{\mathsf s_0,\C}$ equals the stabilizer of $\phi$ in $K_{\sfss', \C}$.
+be the exact  sequence as in Lemma \ref{descko}. %Note that $ K_{\mathsf s_1,\C}$ equals the stabilizer of $\phi$ in $K_{\sfss', \C}$.
 
 
  Let $\C_\phi$ denote the field $\C$ viewing as a $\C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}]$-algebra via the evaluation map at $\phi$. Then we have that
 \begin{eqnarray*}
       &&\left( \C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}] \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)_{K_{\mathsf s', \C}}\\
              &=&\left( \C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}] \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)^{K_{\mathsf s', \C}}\quad \qquad (\textrm{because $K_{\sfss',\C}$ is reductive})\\
-             &=&\left( \C_\phi\otimes_{\C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}]} \C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}] \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)^{K_{\sfss_0,\C}} \qquad (\textrm{by Lemma \ref{geotheta2}})\\
-               &=&\left( \C_{\mathbf e'}  \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)^{K_{\sfss_0, \C}}\\
-                 &=&\left( \C_{\mathbf e'}  \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)_{K_{\sfss_0, \C}} \quad \qquad (\textrm{because $K_{\sfss_0,\C}$ is reductive}).
+             &=&\left( \C_\phi\otimes_{\C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}]} \C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}] \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)^{ (K_{\mathsf s',\C})_\phi} \qquad (\textrm{by Lemma \ref{geotheta2}})\\
+               &=&\left( \C_{\mathbf e'}  \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)^{ (K_{\mathsf s',\C})_\phi}\\
+                 &=&\left( \C_{\mathbf e'}  \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)_{ (K_{\mathsf s',\C})_\phi} \quad \qquad (\textrm{because $ (K_{\mathsf s',\C})_\phi$ is reductive}).
 \end{eqnarray*}
 Putting all things together, we have an identification
 \[
-\C_\mathbf e \otimes_{\C[\overline \CO\cap \p_{\sfss}]} (\C[\overline \CO\cap \p_{\sfss}]\otimes_{\C[\p_{\sfss}]} \sigma)=\left( \C_{\mathbf e'}  \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)_{K_{\sfss_0, \C}}.
+\C_\mathbf e \otimes_{\C[\overline \CO\cap \p_{\sfss}]} (\C[\overline \CO\cap \p_{\sfss}]\otimes_{\C[\p_{\sfss}]} \sigma)=\left( \C_{\mathbf e'}  \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)_{ (K_{\mathsf s',\C})_\phi}.
 \]
-It is routine to check that this identification respects the $(K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$-actions, and thus the $K_{\mathbf e}$-actions. This proves the proposition.
+It is routine to check that this identification respects the $(K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$-actions, and $ (K_{\mathsf s',\C})_\phi$ acts trivially on the both sides. Thus the identification respects the $K_{\mathbf e}$-actions. In view of Lemmas \ref{geotheta1} and \ref{geotheta3}, this proves the proposition.
 \end{proof}
 
 
@@ -4986,14 +4964,14 @@ Let $\CF'$ and $\CF$ be  good filtrations  on $\rho'$ and  $\check \Theta_{\math
 \be\label{surpkm}
   \check \Theta_{\mathsf s'}^{\mathsf s}(\mathrm{Gr}(\rho',\CF')) \rightarrow \mathrm{Gr}(\check \Theta_{\mathsf s'}^{\mathsf s}(\rho'),\CF).
 \ee
-The first assertion then follows from Lemmas \ref{l62} and \ref{comobound}.
+The first assertion then follows from Lemmas \ref{l62} and \ref{comobound2}.
 
 Put $\sigma':=\mathrm{Gr}(\rho',\CF')$.
 Then
 \begin{eqnarray*}
       && \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\rho'))\\
       &=&  \mathrm{AC}_{\cO}(\mathrm{Gr}(\check \Theta_{\mathsf s'}^{\mathsf s}(\rho'),\CF))\\
-             &\preceq& \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\sigma')) \quad \qquad (\textrm{by \eqref{surpkm}})\\
+             &\preceq& \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\sigma')) \quad\  \qquad (\textrm{by \eqref{surpkm}})\\
           &  \preceq & \check \vartheta_{\CO'}^{\CO}(\mathrm{AC}_{\CO'}(\sigma'))\quad \qquad (\textrm{by Proposition \ref{propthetag2}})\\
                &=&\check \vartheta_{\CO'}^{\CO}(\mathrm{AC}_{\CO'}(\rho')).
                \end{eqnarray*}
@@ -5074,141 +5052,239 @@ This proves the theorem.
 
 \def\CXUO{\cX_{\sfss,\sfss'}^{\bar\partial ,\cOp}}
 \def\CXOO{\cX_{\sfss,\sfss'}^{\cO ,\cOp}}
+%We investigate the geometric properties of regular descent.
 
-Recall that  $\CO\in \mathrm{Nil}(\g_\sfss)$ is regular for $\DD_{\mathsf s'}^{\mathsf s}$. We investigate the geometric properties of regular descent.
 
 
-Let $\ww\in \CMs^{{-1}}(\cO)\cap \Woss$, and $\Xp = \CMsp(\ww)$.
-By the Jacobian criterion for
-regularity (see \cite[Theorem~2.19]{LiuAG}), the following sequence
-\begin{equation}\label{eq:tt1}
-  0\longrightarrow T_{\ww} \CMss^{{-1}}(\Xp) \longrightarrow T_{\ww} \Wss \xrightarrow{\ \rdd \CMsp \ } T_{\Xp}\fggsp \end{equation}
-is exact if and only if $\ww$ is regular at $\Wss_{\Xp}$.
+The following lemma is a form of  the Jacobian criterion for
+regularity (see \cite[Theorem~2.19]{LiuAG}).
+\begin{lem}\label{jacobic}
+Let $Z$ and $Z'$ be smooth complex algebraic varieties, and let $z'\in Z$. Let $f: Z\rightarrow Z'$ be a morphism of algebraic varieties such that $f^{-1}(z')$ is a smooth subvariety of $Z$. Then the scheme theoretic fibre product $Z\times_{Z'} \{z'\}$ is reduced if and only if the sequence 
+\be\label{jc0}
+  \mathrm T_z(f^{-1}(z'))\xrightarrow{\textrm{ inclusion }} \mathrm T_z(Z)\xrightarrow{\textrm{the differential of $f$}} \mathrm T_{z'}(Z')
+\ee
+is exact for all $z\in f^{-1}(z')$. 
+\end{lem}
 
-We identify  $T_{\ww}\Wss$ and $T_{\Xp}\fggsp$ with $\Wss$ and $\fggsp$
-respectively. Since $(\Gs\times (\Gsp)_{\Xp})\cdot \ww$ is open in $\CMs^{{-1}}(\Xp)$,
-the map
+Here and as usual $\mathrm T$ indicates the tangent space. 
+
+Recall that  $\CO\in \mathrm{Nil}(\g_\sfss)$ is regular for $\DD_{\mathsf s'}^{\mathsf s}$. 
+Let $\mathbf e'\in \CO'=\DD_{\mathsf s'}^{\mathsf s}(\CO)$. Denote by $G_{\mathbf e'}$ the stabilizer of $\mathbf e'$ in $G_{\sfss',\C}$, and by $\g_{\mathbf e'}$ the Lie algebra of $G_{\mathbf e'}$. Consider the map
 \[
-  \fggs\times (\fggsp)_{\Xp}\xrightarrow{(A,A')\mapsto A'\ww - \ww A} T_{\ww}\CMsp^{-1}(\Xp)
+ \tilde M':=  (\tilde M_{\sfss'})|_{W_{\sfss, \sfss'}^{\bar \partial}} : W_{\sfss, \sfss'}^{\bar \partial}\rightarrow \g_{\sfss'}. 
 \]
-is surjective, where we identify $T_{\ww}\CMsp^{-1}(\Xp)$ as a subspace of $\Wss$.
-Then the sequence \eqref{eq:tt1}
-is exact if and only if the sequence \eqref{eq:CGG} is exact.
+By Lemma \ref{liftop0}, its fibre at $\mathbf e'$ equals the set
+\[
+W_{\sfss, \sfss'}^{\CO, \mathbf e'}:=\tilde M_{\sfss}^{-1}(\CO)\cap  \tilde M_{\sfss'}^{-1}(\mathbf e'),
+\]
+and this set is a single $G_{\sfss,\C}\times G_{\mathbf e'}$-orbit. Thus the set $W_{\sfss, \sfss'}^{\CO, \mathbf e'}$ is a smooth closed subvariety of $W_{\sfss, \sfss'}^{\bar \partial}$. 
+
+Let $\phi\in W_{\sfss, \sfss'}^{\CO, \mathbf e'}$. Then we have a sequence 
+\be\label{jc1}
+    \mathrm T_\phi (W_{\sfss, \sfss'}^{\CO, \mathbf e'})\xrightarrow{\textrm{ inclusion}} \mathrm T_\phi(W_{\sfss, \sfss'}^{\bar \partial})\xrightarrow{\textrm{the differential of $\tilde M'$}} \mathrm T_{\mathbf e'}(\g_{\sfss'})
+\ee
+as in \eqref{jc0}.  
+The tangent spaces $\mathrm T_\phi(W_{\sfss, \sfss'}^{\bar \partial})$ and $\mathrm T_{\mathbf e'}(\g_{\sfss'})$ are respectively identified with $W_{\sfss, \sfss'}$ and $\g_{\sfss'}$ as usual. Then the second map in \eqref{jc1} equals the map 
+\be\label{differ1}
+  W_{\sfss, \sfss'}\rightarrow \g_{\sfss'}, \qquad b\mapsto b\ww^{*}+\ww b^{*} . 
+\ee
+Note that the  image of the first map in \eqref{jc1} is identified with the image of the following map
+\be\label{differ2}
+ \fggs\times  \g_{\mathbf e'} \rightarrow W_{\sfss, \sfss'}, \qquad (a,a')\mapsto a'\ww - \ww a.
+\ee
+Thus the sequence \eqref{jc1} is exact if and only if the following sequence is exact: 
 \begin{equation}\label{eq:CGG}
-  \fgg\oplus (\fggs)_{\Xp} \xrightarrow{\ (A,A')\mapsto A'\ww - \ww A \ } W
-  \xrightarrow{\ b\mapsto \ww b^{*} + b\ww^{*}\  } \fggs.
+  \fggs\times  \g_{\mathbf e'} \xrightarrow{\eqref{differ2} } W_{\sfss, \sfss'}
+  \xrightarrow{\eqref{differ1}} \fggsp.
 \end{equation}
 
 
-\begin{lem}\label{lem:CGG}
-The sequence \eqref{eq:CGG} is exact and $W_{\Xp}$ is regular at $\ww$.
+
+
+\begin{lem}\label{lemexact1}
+The sequence \eqref{jc1} is exact when $\abs{\sfss'}=\abs{\nabla_{\mathrm{naive}}(\CO)}$.
 \end{lem}
 \begin{proof}
+The map \eqref{differ1} equals the composition of 
+\be\label{differ3}
+  W_{\sfss, \sfss'}\xrightarrow{b\mapsto b\phi^*} \g\mathfrak l(V_{\sfss'})\xrightarrow{x\mapsto x-x^*} \g_{\sfss'}.
+\ee
+Here $ \g\mathfrak l(V_{\sfss'})$ denotes the algebra of  linear endomorphisms of $V_{\sfss'}$, and $x^*\in  \g\mathfrak l(V_{\sfss'})$ is specified by requiring that
+\be\label{ajoint4}
+  \la x u, v\ra_{\sfss'}=\la u, x^* v\ra_{\sfss'},\qquad \textrm{for all }u,v\in V_{\sfss'}. 
+\ee
+The second map in \eqref{differ3} is always surjective. 
 
-  Let $\Vspo:=\ww \Vs$ and $\Vspt$ be the orthogonal complement of $\Vspo$ so
-  that $\Vsp = \Vspo\oplus \Vspt$.
-
-  Suppose $\abs{\sfss'} = \DDss(\cO)$. Then every element
-  $\ww\in W_{U,\Xp}\subset \Hom(V,V')$ is a surjective morphism and $\Vspt=0$.
-  Therefore $\rdd \Msp \colon T_{\ww} \Wss \longrightarrow T_{\Xp}\fggsp$ is
-  surjective, which implies $\Msp$ is smooth at $\ww$ (\cf
-  \cite[Proposition~10.4]{HS}). Pulling back $\Msp$ via the inclusion
-  $\Xp \hookrightarrow \fggs$, we conclude that $W_{\UU,\Xp}$ is smooth and so
-  regular at $\ww$. This also establishs the exactness of \eqref{eq:CGG}.
-
-  \smallskip
-
-  Now suppose $\abs{\sfss'}>\DDss(\cO)$ and $\bfcc_{1}(\cO) = \bfcc_{2}(\cO)$.
-  We now establish the exactness of \eqref{eq:CGG}, which concludes the lemma.
+Note that $\abs{\sfss'}=\abs{\nabla_{\mathrm{naive}}(\CO)}$ if and only if  $\phi: V_{\sfss}\rightarrow V_{\sfss'}$ is surjective. Assume this is the case. Then $\phi^*$ is injective, and consequently the first map in  \eqref{differ3}  is  surjective. Thus the map \eqref{differ1} is also surjective. Since $\phi\in W_{\sfss, \sfss'}^{\CO, \mathbf e'}$ is arbitrary, this implies that the scheme theoretic  fibre product 
+$W_{\sfss, \sfss'}^{\bar \partial}\times_{\g_{\sfss'}}\{\mathbf e'\}$ is reduced (see \cite[Proposition~10.4]{HS}). Lemma \ref{jacobic} then implies that the sequence \eqref{jc1} is exact.
 
 
-  Let $\Wssi := \Hom(\Vs,\Vspi)$ and $\fggspi := \fgg_{\sfss_{i}}$ for $i=1,2$.
-  Let $*\colon \Hom(\Vspo,\Vspt) \rightarrow \Hom(\Vspt,\Vspo)$ denote the
-  adjoint map. We have $\Wss =\Wsso \oplus \Wsst$ and
-  $\fggsp = \fggspo\oplus \fggspt \oplus \fggpsb$, where
-  \[ \fgg^{\boxslash}:= \Set{\begin{pmatrix}
-        0 & -E^*\\
-        E & 0
-      \end{pmatrix}|E\in \Hom(\Vspo,\Vspt)}.
-  \]
-  Now $\ww$ and $\Xp$ are naturally identified with an element $\wwo$ in $\Wsso$
-  and an element $\Xpo$ in $\fggspo$ respectively. We have
-  $(\fggsp)_{\Xp} = (\fggspo)_{\Xpo} \oplus \fggspt \oplus \fgg'^{\boxslash}_{\Xpo}$,
-  where %$\fgg'_{1,X'_1}:= \set{T'_1\in \fgg'_1| [T'_1,X'_1]=0}$ and
-  % \begin{equation}\label{eq:fggslash}
-  \[ \fggpsb_{\Xpo} = \Set{\begin{pmatrix}
-        0 & -E^*\\
-        E & 0
-      \end{pmatrix}|E\in \Hom(\Vspo,\Vspt) \text{ and } E \Xpo = 0}.
-  \]
-  Now maps in \eqref{eq:CGG} have the following forms respectively:
-  \[
-    \fggs \oplus (\fggsp)_{\Xp}\ni (A,A') = \left(A, ( A'_0,A'_1,
-      {\tiny \begin{pmatrix}0 & -E^*\\E &0\end{pmatrix}})\right) \mapsto
-    \; A'\ww - \ww A= (A'_0 \wwo - \wwo A, E \wwo)\in \Wss
-  \] and
-  \[
-    \Wss=\Hom(\Vs,\Vspo)\oplus \Hom(Vs,\Vspt) \ni (b_0,b_1) \mapsto \left(b_0^* \wwo + \wwo^* b_0, \begin{pmatrix}
-        b_0 \wwo^* + \wwo b_0^* & \wwo b_1^*\\
-        b_1 \wwo^* & 0
-      \end{pmatrix}\right)\in \fggs\oplus \fggsp.
-  \]
-
-
-  Note that $\Gspo \cdot \Xpo = \cOpo := \DDsso(\cO)$, we have the exactness of
-  the sequence
-  \[
-    \fggs\oplus (\fggspo)_{\Xpo}\longrightarrow \Wsso \longrightarrow \fggs\oplus \fggspo.
-  \]
-  It left to show that the following sequence is exact:
-  \begin{equation}\label{eq:GG2}
-    \begin{tikzcd}[column sep=5em]
-      \fggpsb_{\Xpo} \ar[r,"\eta_{1}"] & \Wsst \ar[r, "\eta_{2}"] & \Hom(\Vspo, \Vspt).
-    \end{tikzcd}
-  \end{equation}
-  Here $\eta_{1}$ is given by
-  ${\tiny \begin{pmatrix} 0 & -E^*\\ E & 0 \end{pmatrix}}\mapsto E \wwo$ and
-  $\eta_{2}$ is given by $b_2\mapsto b_2 \wwo^*$.
-  We have
-  \[
-    \begin{split}
-      \dim \Im(\eta_{1}) &=
-      \dim \fggpsb_{\wwo} \qquad (\text{$\wwo$ is surjective.})\\
-      &= \dim\Vspt \cdot \dim (\Vspo/\Im(\Xpo))\\
-      &= \dim\Vspt \cdot \dim \Ker(\Xpo)\\
-      & = \dim\Vspt \cdot \dim \bfcc_{2}(\cO)
-    \end{split}
-  \]
-  and
-  \[
-    \begin{split}
-      \dim \Ker(\eta_{2}) &= \dim \Vspt \cdot \dim (\Vs / \Im(\wwo^{*})) \\
-      &= \dim \Vspt \cdot (\dim \Vs - \dim \Vspo) \\
-      &= \dim \Vspt \cdot \bfcc_{1}(\cO)\\
-      &= \dim \Vspt \cdot \bfcc_{2}(\cO).
-    \end{split}
-  \]
-  Now the exactness of \eqref{eq:GG2} and \eqref{eq:CGG} follow by dimension
-  counting.
 \end{proof}
 
-Now take $\ww\in \CXss$. Then the sequence \eqref{eq:CGG} is compatible with the
-$(L_{\sfss},L_{\sfss'})$-actions.
-\begin{lem}\label{lem:GG}
-  Suppose $\ww\in \CXOO$ and $\Xp :=\Msp(\ww)$. Then following sequence is exact.
-  \begin{equation}
-    \label{eq:GG}
-    \fkks\oplus(\fkksp)_{\Xp} \longrightarrow \CXss \longrightarrow  \fppsp.
-  \end{equation}
-  In particular, $\CXss \times_{\fppsp} \Xp$ is regular at $\ww$.
+\begin{lem}\label{lemexact2}
+The sequence \eqref{jc1} is exact when $\mathbf c_1(\CO)=\mathbf c_2(\CO)$.
 \end{lem}
 \begin{proof}
-The exactness of the sequence is clear by taking eign-spaces of \eqref{eq:GG2}
-under the $(L_{\sfss},L_{\sfss'})$-action.
-Since $\Ks\Ksp \cdot \ww$ is open in $\Msp^{{-1}}(\Xp)$,
-$\CXss \times_{\fppsp} \Xp$ is regular at $\ww$ by Jacobian criterion.
+Write 
+\be\label{v12}
+V_{\sfss'}=V_1'\oplus V_2',
+\ee
+where $V_1':=\phi(V_{\sfss})$, which is a non-degenerate subspace of $V_{\sfss'}$, and $V_2'$ is the orthogonal complement of $V_1'$ in $V_{\sfss'}$. Then
+\[
+   W_{\sfss, \sfss'}=\left\{\begin{bmatrix}
+        b_1\\
+        b_2
+      \end{bmatrix} \mid b_1\in  \Hom_\C(V_\sfss, V_1'), \ b_2\in  \Hom_\C(V_\sfss, V_2')\right\} \qquad\textrm{and}\qquad \phi=\begin{bmatrix}
+        \phi_1\\
+        0
+      \end{bmatrix},
+\]
+where $\phi_1\in \Hom_\C(V_\sfss, V_1')$ is a surjective linear map. 
+
+Using the decomposition \eqref{v12}, we also have that 
+\[
+ \g_{\sfss'}:= \Set{\begin{bmatrix}
+        a_1 & -\psi^*\\
+        \psi & a_2
+      \end{bmatrix}\mid a_1\in \g_1', \, a_2\in \g_2', \,\psi \in \Hom_\C(V_1', V_2')},
+\]
+where $\g_1'$ and $\g_2'$ are respectively the Lie algebras of the isometry groups of $V_1'$ and $V_2'$. Here and henceforth, the adjoint operation $\psi\mapsto \psi^*$ is defined as in 
+\eqref{ajoint4} and \eqref{adjointmap}. 
+
+Note that 
+\[
+  \mathbf e'=\begin{bmatrix}
+        \mathbf e'_1 & 0\\
+        0 & 0
+      \end{bmatrix}, \qquad \textrm{where  } \, \mathsf e_1':=\phi_1 \phi_1^*\in \g_1',%\qquad (\textrm{$\phi_1^*$ is defined as in \eqref{ajoint4}}),
+\]
+and 
+\[
+ \g_{\mathbf e'}:= \Set{\begin{bmatrix}
+        a_1 & -\psi^*\\
+        \psi & a_2
+      \end{bmatrix}\mid a_1\in \g_{\mathbf e_1'}, \, a_2\in \g_2', \,\psi \in \Hom_\C(V_1', V_2')^{\mathbf e_1'}},
+\]
+where $\g_{\mathbf e_1'}$ denotes the centralizer of $\mathbf e_1'$ in $\g_1'$, and 
+\[
+   \Hom_\C(V_1', V_2')^{\mathbf e_1'}:=\{\psi\in  \Hom_\C(V_1', V_2')\mid \psi  {\mathbf e_1'}=0\}.
+\]
+
+
+The two maps in \eqref{eq:CGG} are respectively given by
+\[
+  \left(a, \begin{bmatrix}
+        a_1 & -\psi^*\\
+        \psi & a_2
+      \end{bmatrix}\right)\mapsto   \begin{bmatrix}
+        a_1 \phi_1-\phi_1 a\\
+        \psi \phi_1
+      \end{bmatrix}
+\]
+and
+\[
+  \begin{bmatrix}
+       b_1\\
+       b_2
+      \end{bmatrix}\mapsto   \begin{bmatrix}
+       b_1 \phi_1^*+\phi_1 b_1^*  & \phi_1 b_2^*\\
+        b_2 \phi_1^* & 0
+      \end{bmatrix}.
+\]
+In order to prove the lemma, it suffices to show that the sequences 
+ \[
+  \fggs\times  \g_{\mathbf e_1'} \xrightarrow{(a,a_1)\mapsto  a_1 \phi_1-\phi_1 a } \Hom_\C(V_\sfss, V_1')
+  \xrightarrow{b_1\mapsto  b_1\phi_1^{*}+\phi_1 b_1^{*} } \g_1'
+  \]
+and 
+\be\label{exacthom}
+  \Hom_\C(V_1', V_2')^{\mathbf e_1'} \xrightarrow{\psi \mapsto  \psi \phi_1 } \Hom_\C(V_\sfss, V_2')
+  \xrightarrow{b_2\mapsto  b_2\phi_1^{*}}  \Hom_\C(V_1', V_2') 
+\ee
+are both exact. Lemma \ref{lemexact1} implies that the first sequence is exact. 
+
+Note that the Young diagram of the nilpotent orbit in $\g_1'$ containing $\mathbf e_1'$ equals $\nabla_{\mathrm{naive}}(\CO)$. Thus 
+\[
+  \dim (V_1'/\mathbf e_1'(V_1'))=\mathbf c_1(\nabla_{\mathrm{naive}}(\CO))=\mathbf c_2(\CO). 
+\]
+On the other hand, 
+\begin{eqnarray*}
+  \dim (V_{\sfss}/\phi_1^*(V_1'))&=&\dim (V_{\sfss})-\dim (\phi(V_{\sfss}))\\
+  &=&\dim(\Ker(\phi))\\
+  &=&\dim(\Ker(\phi^*\phi))\\
+  &=&\mathbf c_1(\CO). 
+\end{eqnarray*}
+The first map of \eqref{exacthom} is injective since $\phi_1$ is surjective. Then we have that  
+\begin{eqnarray*}
+     && \dim ( \Hom_\C(V_1', V_2')^{\mathbf e_1'} ) \\
+      &=& \dim V_2' \cdot \dim (V_1'/\mathbf e_1'(V_1'))\\
+      & = &\dim V_2' \cdot  \bfcc_{2}(\cO)\\
+      & = &\dim V_2' \cdot  \bfcc_{1}(\cO)\\ 
+        & = &\dim V_2' \cdot  \dim (V_{\sfss}/\phi_1^*(V_1'))\\ 
+        &=& \textrm{dimension of the kernel of the second map of  \eqref{exacthom}}.
+    \end{eqnarray*}
+Therefore the sequence \eqref{exacthom} is exact since the composition of  \eqref{exacthom} is the zero map. This finishes the proof the lemma. 
+
 \end{proof}
 
+\subsection{A proof of Proposition \ref{propreduced}} \label{secpp}
+%We are aimed to prove Proposition \ref{propreduced} in this subsection.
+Now we suppose that $\mathbf e'\in \CO'\cap \p_{\sfss'}$. Denote by $K_{\mathbf e'}$ the stabilizer of $\mathbf e'$ in $K_{\sfss',\C}$. Consider the map
+\[
+ M':=  M_{\sfss'}|_{\CX_{\sfss, \sfss'}^{\bar \partial}} : \CX_{\sfss, \sfss'}^{\bar \partial}\rightarrow \p_{\sfss'}. 
+\]
+As before, its fibre at $\mathbf e'$ equals the variety
+\[
+\CX_{\sfss, \sfss'}^{\CO, \mathbf e'}:=M_{\sfss}^{-1}(\CO\cap \p_\sfss)\cap  M_{\sfss'}^{-1}(\mathbf e').
+\]
+This variety is a finite union of open and closed 
+$K_{\sfss,\C}\times K_{\mathbf e'}$-orbits: 
+\[
+   \CX_{\sfss, \sfss'}^{\CO, \mathbf e'}=\bigsqcup_{\sO\textrm{ is a   $K_{\sfss, \C}$-orbit in $ \CO\cap \p_\sfss$ such that $\sO\subset M_\sfss(\CX_{\sfss, \sfss'})$ and $\mathbf e'\in \nabla^\sfss_{\sfss'}(\sO)$}}  \CX_{\sfss, \sfss'}^{\sO, \mathbf e'},
+ \]
+ where
+ \[
+   \CX_{\sfss, \sfss'}^{\sO, \mathbf e'}:=M_\sfss^{-1}(\sO)\cap \CX_{\sfss, \sfss'}^{\CO, \mathbf e'}. 
+ \]
+Thus  $\CX_{\sfss, \sfss'}^{\CO, \mathbf e'}$ is a smooth closed subvariety of $\CX_{\sfss, \sfss'}^{\bar \partial}$. 
+
+\begin{lem}\label{jacobic22}
+Suppose that  $\phi\in \CX_{\sfss, \sfss'}^{\CO, \mathbf e'}$. Then the sequence 
+\be\label{jc111}
+    \mathrm T_\phi (\CX_{\sfss, \sfss'}^{\CO, \mathbf e'})\xrightarrow{\textrm{ inclusion}} \mathrm T_\phi(\CX_{\sfss, \sfss'}^{\bar \partial})\xrightarrow{\textrm{the differential of $M'$}} \mathrm T_{\mathbf e'}(\p_{\sfss'})
+\ee
+is exact. 
+\end{lem}
+\begin{proof}
+Recall $\dot \epsilon\in \{\pm 1\}$ form \eqref{epsilond}. We have commutative diagrams
+\[
+ \begin{CD} 
+ \fggs \times  \g_{\mathbf e'} @>  \qquad  \textrm{\eqref{differ2} }\qquad  >>  W_{\sfss, \sfss'}
+  @> \qquad  \textrm{\eqref{differ1}} \qquad  >>\fggsp\\
+  @V(a,\,a') \mapsto  (L_\sfss\circ a \circ L_{\sfss}^{-1},\,  L_{\sfss'} \circ a' \circ L_{\sfss'}^{-1}) VV  @V b\mapsto - \dot \epsilon \sqrt{-1} L_{\sfss'}\circ b \circ L_\sfss^{-1} VV 
+  @V a' \mapsto - L_{\sfss'} \circ a' \circ L_{\sfss'}^{-1} VV \\
+\fggs \times  \g_{\mathbf e'} @> \qquad   \textrm{\eqref{differ2} }\qquad  >>  W_{\sfss, \sfss'}
+  @>\qquad  \textrm{\eqref{differ1}} \qquad  >> \fggsp.
+\end{CD}
+\]
+Lemmas \ref{lemexact1} and \ref{lemexact2} imply that the horizontal sequences are exact. The lemma then follows by taking the fixed points of the vertical arrows. 
+
+\end{proof}
+
+Lemmas \ref{jacobic} and \ref{jacobic22} implies that the scheme theoretic fibre product $\CX_{\sfss, \sfss'}^{\bar \partial}\times_{\p_{\sfss'}} \{\mathbf e'\}$ is reduced. 
+In other words, 
+\[
+\left(\CX_{\sfss, \sfss'}^{\bar \partial}\times_{\p_{\sfss'}} ({\CO'}\cap \p_{\sfss'})\right)\times_{\CO'\cap \p_{\sfss'}}\{\mathbf e'\}
+\]
+is reduced. 
+Since $\mathbf e'\in \CO\cap \p_{\sfss'}$ is arbitrary, this further implies that  the scheme theoretic  fibre product
+\[
+\CX_{\sfss, \sfss'}^{\bar \partial}\times_{\p_{\sfss'}} ({\CO'}\cap \p_{\sfss'})
+\]
+is reduced (see \cite[Proposition~11.3.13]{EGAIV3} and \cite[Th\'eor\`eme~6.9.1]{EGAIV2}). Proposition  \ref{propreduced} is now proved. 
+
+
+\delete{
 We now recall the following lemma in EGA.
 \begin{lem}[{\cite[Proposition~11.3.13]{EGAIV3}}] \label{lem:red}
   Suppose $f\colon X\rightarrow Y$ is a morphism between schemes, $x$ is a point
@@ -5246,10 +5322,9 @@ paper.
   is a reduced scheme. \qed
 \end{lem}
 
-
+}
 
 \trivial[h]{
-
 %   Note that $\UU\times \cOp \rightarrow \UU \times \bcOp$ is \'etale, so
 %   $W_{\UU,\cOp}\rightarrow W_{\UU,\bcOp}$.
   Generic flatness: Suppose $f: X\rightarrow S $ is a morphism between scheme
@@ -5262,7 +5337,7 @@ is flat and of finite presentation, and $\cF|_{X_U}$ is flat over $U$
 and of finite presentation over $\cO_{X_{U}}$.
 }
 
-
+\subsection{Geometric theta lifts of admissible orbit data} 
 
 \def\wedgetop{{\bigwedge}^{\mathrm{top}}}
 
@@ -5276,60 +5351,58 @@ and of finite presentation over $\cO_{X_{U}}$.
 \def\dlift{{\check\vartheta}}
 \def\AOD{\mathrm{AOD}}
 
-\begin{lem}\label{lem:aod}
-  Suppose $\cO$ is regular for $\DDss$, $\sO$ is a $\Ks$-orbit in $\cO\cap \fpps$ and
-  $\sOp = \DDss(\sO)\subset \cOp\cap \fppsp$.
-  Suppose $\cE' \in \AOD_{\sfss'}(\sOp)$.
-  Then $\dlift_{\sO'}^{\sO}(\cE')$ is either zero or in $\AOD_{\sfss}(\sO)$.
-\end{lem}
-\begin{proof}
-  Note that $(\zeta_{\sfss,\sfss'})^{2} = (\wedgetop \CXss)^{-1}$.
-   The lemma follows from \Cref{lem:tan} below.
-\end{proof}
-
+Recall that  $\CO$ is regular for $\DDss$. Suppose that $\phi\in \CXOO$, $\mathbf e=M_\sfss(\phi)$ and $\mathbf e'=M_{\sfss'}(\phi)$. As before, $K_\mathbf e$ and $K_{\mathbf e'}$ are respectively the  stabilizers of $\mathbf e$ and $\mathbf e'$ in $K_{\sfss, \C}$ and $K_{\sfss', \C}$.  Write $\mathfrak k_{\mathbf e}$ and $\mathfrak k_{\mathbf e'}$ for the Lie algebras of $K_{\mathbf e}$ and $K_{\mathbf e'}$, respectively. As before, $(K_{\sfss, \C}\times K_{\sfss', \C})_{\ww}$ denotes the stabilizer of $\phi$ in $K_{\sfss, \C}\times K_{\sfss', \C}$. 
+   Write $\mathfrak s_\phi$ for the Lie algebra of  $(\Ks\times \Ksp)_{\ww}$.
+  
 \begin{lem}\label{lem:tan}
-  Suppose $\cO$ is regular for $\DDss$ and $\ww\in \CXOO$. Let $\X = \Ms(\ww)$ and
-  $\Xp=\Msp(\ww)$.
-  Then
+ As representations of  $\mathfrak s_\phi$, 
   \begin{equation}\label{eq:aod}
-    \wedgetop (\fkks)_{\X}  = \wedgetop (\fkksp)_{\Xp} \otimes \left(\wedgetop \CXss\right)^{{-1}}
+    \wedgetop \mathfrak k_{\X} \otimes \wedgetop \CXss  \cong \wedgetop \mathfrak k_{\Xp}.
   \end{equation}
-  as $(\Ks\times \Ksp)_{\ww}$-module.
 \end{lem}
 \begin{proof}
-  We retain the notation in the proof of \Cref{lem:CGG} abd \Cref{lem:GG}.
-  Let $S_{\ww} := (\Ks\times \Ksp)_{\ww}$, $\fss_{\ww} = \Lie(S_{\ww})$,
-   $S_{\wwo} := (\Ks\times \Kspo)_{\wwo}$ and $\fss_{\wwo} := \Lie(S_{\wwo})$.
-  Then $\fss_{\ww} = \fss_{\wwo}\oplus \fkkspt$ and
-  $\fss_{\wwo}\xrightarrow{\cong} (\fkks)_{\X}$ as $S_{\ww}$-module.
-
-  The sequence \eqref{eq:GG} leads to the following short exact sequence
+  We retain the notation in the proof of \Cref{lemexact2}. Since $\phi\in \CX_{\sfss, \sfss'}$, both $V_1'$ and $V_2'$ are $L_{\sfss'}$-stable.  Write
   \[
-    0\longrightarrow (\fkks\oplus (\fkksp)_{\Xp})/ \fss_{\ww}
-    \longrightarrow \CXss \longrightarrow \fpppso \oplus \fpppsb \longrightarrow 0,
+    \g_i'=\mathfrak k_i'\oplus \p_i'\qquad (i=1,2),
   \]
-  where $\fpppsb = \fggpsb\cap \fpp$.
+  where $\mathfrak k_i'$ is the centralizer of $L_{\sfss'}$ in $\g_i'$, and $\p_i'$ is its orthogonal complement in $\g_i'$ under the trace form. 
 
-  Note that the $S_{\ww}$-modules $\wedgetop \fkks$, $\wedgetop \fkkspt$,
-$\wedgetop \fpppst$ and $\wedgetop \fggsp$ are trivial.
-  Now
+   The sequence \eqref{jc111} leads to a short exact sequence
   \[
-    \begin{split}
-      & \wedgetop (\fkksp)_{\Xp} \otimes \left(\wedgetop \CXss\right)^{{-1}}\\
-      & = \wedgetop (\fkksp)_{\Xp} \otimes
-      \left(\wedgetop  \big((\fkks\oplus (\fkksp)_{\Xp})/\fss_{\ww}\big)
-        \otimes \wedgetop \fpppso \otimes \wedgetop\fpppsb\right)^{-1}\\
-      & =  \wedgetop (\fss_{\wwo} \oplus \fkkspt) \otimes
-      \left(\wedgetop (\fkks \oplus \fkksp\oplus \fpppso \oplus \fpppsb )\right)^{{-1}} \\
-      & = \wedgetop \fss_{\wwo} \otimes \left(\wedgetop \fggsp  \right)^{-1}\\
-      & \qquad \text{(by $\fkksp \oplus \fpppso \oplus \fpppsb \oplus \fpppst = \fggsp $ )}\\
-      & = \wedgetop (\fkks)_{\X}.
-    \end{split}
+    0\longrightarrow (\fkks\oplus \mathfrak k_{\mathbf e'})/ \fss_{\ww}
+    \longrightarrow \CXss \longrightarrow \p_{\sfss'}/\p_2'  \longrightarrow 0
   \]
- This proves the lemma.
+  of representations of $(\Ks\times \Ksp)_{\ww}$. 
+By 
+Lemma \ref{descko}, we have an exact sequence 
+\[
+  0\rightarrow \mathfrak k_2'\rightarrow \mathfrak s_\phi\rightarrow \mathfrak k_{\mathbf e}\rightarrow 1
+\]
+of representations of $(\Ks\times \Ksp)_{\ww}$. Therefore, as  representations of $(\Ks\times \Ksp)_{\ww}$, we have that
+\begin{eqnarray*}
+      &&\wedgetop \mathfrak k_{\X} \otimes \wedgetop \CXss\\
+      & \cong & \wedgetop (\p_{\sfss'}/\p_2')  \otimes \wedgetop (\fkks\oplus \mathfrak k_{\mathbf e'}) \otimes
+      \left(\wedgetop \mathfrak k_2'\right)^{-1}\\
+       & \cong & \wedgetop (\p_{\sfss'}/\p_2')  \otimes  \wedgetop \fkks \otimes
+      \left(\wedgetop \mathfrak k_2'\right)^{-1}\otimes \wedgetop  \mathfrak k_{\mathbf e'}. \\
+\end{eqnarray*}
+The lemma then follows since $\mathfrak s_\phi$ acts trivially on $ \wedgetop (\p_{\sfss'}/\p_2')  \otimes  \wedgetop \fkks \otimes
+      \left(\wedgetop \mathfrak k_2'\right)^{-1}$. 
+      
+      \end{proof}
+
+
+
+\begin{lem}\label{lem:aod}
+  Suppose that $\sO$ is a $K_{\sfss,\C}$-orbit in $\cO\cap \fpps$ that is contained in the image of $M_\sfss$,  and
+  $\sOp = \DDss(\sO)\subset \cOp\cap \fppsp$.
+  Then for every $\cE' \in \AOD_{\sfss'}(\sOp)$, 
+   the geometric theta lift $\dlift_{\sO'}^{\sO}(\cE')$ is either zero or an element of  $\AOD_{\sfss}(\sO)$.
+\end{lem}
+\begin{proof}
+  Note that $(\zeta_{\sfss,\sfss'})^{2} \cong (\wedgetop \CXss)^{-1}$ as representations of $\mathfrak k_\sfss\times \mathfrak k_{\sfss'}$, and $\cE'$ is represented by a line bundle. Thus  
+   the lemma is a direct consequence of  \Cref{lem:tan}.
 \end{proof}
-
-
 
 \section{Equating  the associated  cycles and a proof of Theorem \ref{thmpitau}}\label{sec:equac}
 
@@ -5359,9 +5432,23 @@ In the rest of this section we suppose that $\CO\in \mathrm{Nil}(\g_\sfss)$ is g
   p_0:=q_0:=\begin{cases}
     \abs{\sfss}-\abs{\sfss'}-1, \qquad  &\textrm{if $\star \in\{B,D\}$}; \\
        \abs{\sfss}-\abs{\sfss'}+1, \qquad  &\textrm{if $\star \in\{C, \widetilde C\}$}; \\
- \abs{\sfss}-\abs{\sfss'},\qquad  &\textrm{if $\star \in \{C^*, D^*\}$}.
+ \abs{\sfss}-\abs{\sfss'},\qquad  &\textrm{if $\star \in \{C^*, D^*\}$},
   \end{cases}
 \]
+which is a non-negative integer.
+Similar to \eqref{p123}, we have that 
+\be\label{p1234}
+-p_0-1=
+  \begin{cases}
+ \nu_{\sfss'}-\abs{\sfss} +2,\quad& \textrm{if $\star =C^*$};\\
+  \nu_{\sfss'}-\abs{\sfss},\quad& \textrm{otherwise}.
+   \end{cases}
+   \ee
+Thus    $\pi'$ is convergent for $\check \Theta_{\mathsf s'}^{\mathsf s}$ whenever $\pi'$ is a Casselman-Wallach representation of $G_{\sfss'}$  that is  $\nu'$-bounded for some
+$
+  \nu'>
+ -p_0-1.
+$
 
 We will prove the following theorem in this section. 
 \begin{thm}\label{thm:GDS.AC}
@@ -5370,18 +5457,22 @@ $
   \nu'>
  -p_0-1.
 $
-Let $\rho'$ be the   $(\g_{\mathsf s'}, K_{\mathsf s'})$-module associated to $\pi'$.  Then $\Thetab_{\mathsf s'}^{\mathsf s}(\pi')$, $\check \Theta_{\mathsf s'}^{\mathsf s}(\pi')$  and $\check \Theta_{\mathsf s'}^{\mathsf s}(\rho')$ are all $\CO$-bounded,  and
+%Let $\rho'$ be the   $(\g_{\mathsf s'}, K_{\mathsf s'})$-module associated to $\pi'$.  
+Then $\Thetab_{\mathsf s'}^{\mathsf s}(\pi')$, $\check \Theta_{\mathsf s'}^{\mathsf s}(\pi')$  and $\check \Theta_{\mathsf s'}^{\mathsf s}(\pi'^{\mathrm{alg}})$ are all $\CO$-bounded,  and
     \[
-  \mathrm{AC}_{\cO}(\Thetab_{\mathsf s'}^{\mathsf s}(\pi'))=    \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\pi'))= \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\rho'))=   \check \vartheta_{\cO'}^\cO(\mathrm{AC}_{\cO'}(\pi'))\in \CK_\sfss(\CO).
+  \mathrm{AC}_{\cO}(\Thetab_{\mathsf s'}^{\mathsf s}(\pi'))=    \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\pi'))= \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\pi'^{\mathrm{alg}}))=   \check \vartheta_{\cO'}^\cO(\mathrm{AC}_{\cO'}(\pi'))\in \CK_\sfss(\CO).
   \]
 \end{thm}
 
-We remark that by Lemma \ref{doublelift5}, $\pi'$ is convergent for $\check \Theta_{\mathsf s'}^{\mathsf s}$ so that $\Thetab_{\mathsf s'}^{\mathsf s}(\pi')$ is defined. 
+%We remark that by Lemma \ref{doublelift5}, $\pi'$ is convergent for $\check \Theta_{\mathsf s'}^{\mathsf s}$ so that $\Thetab_{\mathsf s'}^{\mathsf s}(\pi')$ is defined. 
 
 
 
-Theorem \ref{thm:GDS.AC} is obviously true when $\abs{\sfss'}=0$. In the rest of this subsection we further assume that $\abs{\sfss'}>0$. 
-Then $p_0=q_0\geq 0$.  Define three classical signatures
+%Theorem \ref{thm:GDS.AC} is obviously true when $\abs{\sfss'}=0$. In the rest of this subsection we further assume that $\abs{\sfss'}>0$. 
+  
+
+
+  Define three classical signatures
 \[
   \dsfss:=(\dot \star, \dot p, \dot q):=\begin{cases}
     (\star', \abs{\sfss'}+p_0,  \abs{\sfss'}+q_0), \qquad  &\textrm{if $\star'\neq B$}; \\
@@ -5395,7 +5486,18 @@ Then we have decompositions
 \[
   V_{\dsfss}=V_{\sfss'^-}\oplus V_{\sfss''}= V_{\sfss'^-}\oplus V_{\sfss'}\oplus  V_{\sfss_0}= (V_{\sfss'}^\triangle \oplus X_{\sfss_0})\oplus (V_{\sfss'}^\nabla \oplus Y_{\sfss_0}).
 \]
-as in \eqref{decvdsfss}. 
+as in \eqref{decomv0}. 
+
+Theorem \ref{thm:GDS.AC} is obviously true when $\abs{\sfss}\leq 1$. Thus  we  assume in the rest of this subsection that $\abs{\sfss}\geq 2$. As in \eqref{dotp}, we have that 
+\[
+ \dot p=\dot q= \begin{cases}
+ \abs{\sfss}-1,\quad   &\textrm{if } \star\in \{B,D\};\\
+ \abs{\sfss}+1,  & \textrm{if $\star\in \{C, \widetilde C\}$;}\\
+ \abs{\sfss} & \textrm{if $ \star\in\{C^*,D^*\}$.}
+\end{cases}
+\]
+Thus we are in the situation of 
+Section \ref{doublep} (with $\abs{\sfss}$ equals the integer $k$ of Section \ref{doublep}).
 
 Let 
 \[
@@ -5407,7 +5509,7 @@ Define
   \CO'':= \Ind_{P_{\sfss'',\sfss_0}}^{G_{\sfss''}}  \CO'%  \Ind_{\g_{\sfss'}\times \mathfrak r_{\sfss_0}}^{\g_{\sfss''}}(\CO'\times \{0\}).
 \]
 to be the unique nilpotent orbit in $\mathrm{Nil}(\g_{\sfss''})$ that contains a non-empty Zariski open subset of  $
-  \CO'+\mathfrak n_{\sfss'',\sfss_0}$ (see \cite{CM}).
+  \CO'+\mathfrak n_{\sfss'',\sfss_0}$ (see \cite[Theorem 7.1.1]{CM}).
 
 
 \begin{lem}
@@ -5437,12 +5539,13 @@ such that if $\CE$ is represented by a $K_{\sfss_1,\C}$-equivariant algebraic ve
    \CE^{\mathrm{weak}}=\textrm{(rank of $\CE_0$)}\cdot \sO_1. 
 \]
 
-For all $\sfss_1=S_{\star, \abs{\sfss}}$,  $\g_{\sfss_1}$ is identified with $\g_{\sfss}$ and we consider $\CO$ also as an element of $\mathrm{Nil}(\g_{\sfss_1})$. 
+For all $\sfss_1\in S_{\star, \abs{\sfss}}$,  $\g_{\sfss_1}$ is identified with $\g_{\sfss}$ and we consider $\CO$ also as an element of $\mathrm{Nil}(\g_{\sfss_1})$. 
 
 
-Note that for every Cassleman-Wallach representation $\pi_1$ of $R_{\sfss'',\sfss_0}=G_{\sfss'}\cdot R_{\sfss_0}$ such that $(\pi_1)|_{G_{\sfss'}}$ is an $\CO'$-bounded Casselman-Wallach representation,   the parabolic induction 
-$\Ind_{P_{\sfss'',\sfss_0}}^{G_{\sfss''}} \pi_1$ is an $\CO''$-bounded Casselman-Wallach representation  of $G_{\sfss''}$ (\cite{?}).
- 
+Note that for every Cassleman-Wallach representation $\pi_1$ of $R_{\sfss'',\sfss_0}=G_{\sfss'}\cdot R_{\sfss_0}$ such that $(\pi_1)|_{G_{\sfss'}}$ is an $\CO'$-bounded Casselman-Wallach representation,   the parabolic induction
+$\Ind_{P_{\sfss'',\sfss_0}}^{G_{\sfss''}} \pi_1$ is an $\CO''$-bounded Casselman-Wallach representation  of $G_{\sfss''}$ (see \cite[Corollary~5.0.10]{B.Orbit}).
+
+
 
 
 \begin{prop}\label{prpaseq}
@@ -5503,13 +5606,13 @@ Then
 \begin{proof}
 There is no loss of generality to assume that $\pi'$ is genuine when $\star'=\widetilde C$. When $\star\neq C^*$, the lemma is a direct consequence of Theorem \ref{doubtt} and Proposition \ref{prpaseq}. 
 
-Now assume that $\star=C^*$.  Let $\CJ$ be as in Theorem \ref{doubtt}. In view of Lemma \ref{comobound}, and using formulas in  \cite[Theorems 5.2 and 5.6]{DKPC}, one checks that $\CJ$ is $\CO_2$-bounded for a certain oribit $\CO_2\in \mathrm{Nil}(\g_{\sfss''})$ that is contained in the boundary $\overline{\CO''}\setminus \CO$ of  $\CO''$. Thus 
-$ \mathrm{AC}_{\cO''}(\CJ)=0$. Thus the  lemma in the case when $\star=C^*$  is also a consequence of Theorem \ref{doubtt} and Proposition \ref{prpaseq}. 
+Now assume that $\star=C^*$.  Let $\CJ$ be as in Theorem \ref{doubtt}. In view of Lemma \ref{comobound}, and using formulas in  \cite[Theorems 5.2 and 5.6]{DKPC}, one checks that $\CJ$ is $\CO_2$-bounded for a certain oribit $\CO_2\in \mathrm{Nil}(\g_{\sfss''})$ that is contained in the boundary $\overline{\CO''}\setminus \CO''$ of  $\CO''$. Thus 
+$\CJ$ is $\cO''$-bounded, and $ \mathrm{AC}_{\cO''}(\CJ)=0$. Hence  the  lemma in the case when $\star=C^*$  is also a consequence of Theorem \ref{doubtt} and Proposition \ref{prpaseq}. 
 
 \end{proof}
 
 
-\subsection{Proof of Theorem \ref{thm:GDS.AC}}
+\subsection{A proof of Theorem \ref{thm:GDS.AC}}
 %\begin{proof}[Proof of Theorem \ref{thm:GDS.AC}] 
  We are now ready to prove Theorem \ref{thm:GDS.AC}.
 Let $\pi'$ be as in Theorem \ref{thm:GDS.AC}. 
@@ -5530,9 +5633,10 @@ surjective $(\g_{\sfss_1}, K_{\sfss_1})$-module homomorphisms
    \be\label{acco}
    \mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s_1}(\pi'))\preceq   \check \vartheta_{\sfss', \cO'}^{\sfss_1, \cO}(\mathrm{AC}_{\cO'}(\pi')).
   \ee
+
 By Lemma \ref{doublelift5},  $ \Thetab_{\mathsf s'}^{\mathsf s_1}(\pi')$ is over-convergent for $ \check \Theta_{\mathsf s_1}^{\mathsf s''}$ so that $\Thetab_{\mathsf s_1}^{\mathsf s''}( \Thetab_{\mathsf s'}^{\mathsf s_1}(\pi'))$ is defined.  Similar to \eqref{acco}, we have that
    \be\label{acco2}
-   \mathrm{AC}_{\cO}( \Thetab_{\mathsf s_1}^{\mathsf s''}(\Thetab_{\mathsf s'}^{\mathsf s_1}(\pi')))\preceq   \check \vartheta_{\sfss_1, \cO}^{\sfss'', \cO''}(\mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s_1}(\pi'))).
+   \mathrm{AC}_{\cO''}( \Thetab_{\mathsf s_1}^{\mathsf s''}(\Thetab_{\mathsf s'}^{\mathsf s_1}(\pi')))\preceq   \check \vartheta_{\sfss_1, \cO}^{\sfss'', \cO''}(\mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s_1}(\pi'))).
   \ee
 Combining \eqref{acco} and \eqref{acco2}, we obtain that
 \be\label{acineq}
@@ -5542,16 +5646,29 @@ Then Lemma \ref{lem:GDS.AC2} implies that the equality in \eqref{acineq} holds. 
 \be\label{acineq2}
    \mathrm{AC}_{\cO''}( \Thetab_{\mathsf s}^{\mathsf s''}(\Thetab_{\mathsf s'}^{\mathsf s}(\pi')))=  \check \vartheta_{\sfss, \cO}^{\sfss'', \cO''}(\check \vartheta_{\sfss', \cO'}^{\sfss, \cO}(\mathrm{AC}_{\cO'}(\pi'))).
 \ee
-Then Theorem \ref{prop:GDS.AC} and  Lemma \ref{lem74} imply that 
+
+In view of \eqref{acco}, write 
 \[
-   \mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s}(\pi'))=  \check \vartheta_{\sfss', \cO'}^{\sfss, \cO}(\mathrm{AC}_{\cO'}(\pi')).
+  \check \vartheta_{\sfss', \cO'}^{\sfss, \cO}(\mathrm{AC}_{\cO'}(\pi'))=\mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s}(\pi'))+\CE,\qquad\textrm{where $\ \CE\in \CK^+_\sfss(\CO)$}.
 \]
-In view of \eqref{ineq000}, this proves Theorem \ref{thm:GDS.AC}. 
+Then 
+\begin{eqnarray}
+\nonumber \check \vartheta_{\sfss, \cO}^{\sfss'', \cO''}(\check \vartheta_{\sfss', \cO'}^{\sfss, \cO}(\mathrm{AC}_{\cO'}(\pi')))
+\nonumber &=&\mathrm{AC}_{\cO''}( \Thetab_{\mathsf s}^{\mathsf s''}(\Thetab_{\mathsf s'}^{\mathsf s}(\pi')))\\
+\nonumber &\preceq &  \check \vartheta_{\sfss, \cO}^{\sfss'', \cO''}(\mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s}(\pi')))\\
+\label{prece}  &\preceq &  \check \vartheta_{\sfss, \cO}^{\sfss'', \cO''}(\mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s}(\pi'))+\CE)\\
+\nonumber &=&\check \vartheta_{\sfss, \cO}^{\sfss'', \cO''}(\check \vartheta_{\sfss', \cO'}^{\sfss, \cO}(\mathrm{AC}_{\cO'}(\pi'))).
+\end{eqnarray}
+In particular,  the equality holds in \eqref{prece}. Therefore  $\check \vartheta_{\sfss, \cO}^{\sfss'', \cO''}(\CE)=0$, and 
+Lemma \ref{lem74} imply that $\CE=0$. This proves Theorem \ref{thm:GDS.AC}. 
+
+
+%Theorem \ref{prop:GDS.AC} and   In view of \eqref{ineq000}, 
 
  
  \subsection{A proof of Theorem \ref{thmpitau} }\label{sec:comANDgeo}
-  As in Section \ref{secd}, $\check \CO$ is a Young diagram that has $\star$-good parity, and 
-$\uptau=(\tau, \wp)\in \PBPe_\star(\check \CO,\mathsf s)$.  When $\check \CO\neq \emptyset$, we have the dual descent 
+  As in Section \ref{secd}, $\check \CO$ is a Young diagram that has $\star$-good parity,   and 
+$\uptau=(\tau, \wp)\in \PBPe_\star(\check \CO,\mathsf s)$.  We have the dual descent 
 \[
   \check \CO':=\check \nabla(\check \CO), 
 \]
@@ -5559,23 +5676,39 @@ and the descent
  \[
   \uptau' := (\tau',\wp'):=\nabla(\uptau):= (\DD(\tau), \ckDD(\wp))\in \mathrm{\PBPe}_{\star'}(\check \CO').
  \]
- In general, we set 
-\[
-  \mathrm d'_\tau:=\begin{cases}
-    \dim \tau', &\qquad \textrm{if $\check \CO\neq \emptyset$};\\
-    0, &\qquad \textrm{if $\check \CO= \emptyset$}.
-    \end{cases}
+ Set
+ \[
+  \mathrm d'_\tau:=
+    \dim \tau'.
     \]
-
 
 Suppose that $\CO\in \mathrm{Nil}(\g_\sfss)$ equals the Barbasch-Vogan dual of $\check \CO$.   Recall that $\pi_\uptau$ is the Casselman-Wallach representation of $G_{\mathsf s}$, defined in the introductory section. 
 Also recall the element $\mathrm{AC}(\uptau)\in \CK_{\mathsf s}(\CO)$ from Section \ref{subsecass}.
 
+Recall the character $\chi(\check \CO): \oU(\g_\sfss)^{G_{\sfss, \C}}\rightarrow \C$  defined in the Introduction.
+\begin{lem}\label{inf1}
+The algebra $\oU(\g_\sfss)^{G_{\sfss, \C}}$ acts on $\pi_\uptau$ through the character $\chi(\check \CO)$.% as defined in the Introduction. 
+\end{lem}
+\begin{proof}
+By induction, this is implied by \cite[Theorem1.19]{PrzInf}.
+\end{proof}
 
 
-Wwe will prove in the rest of this subsection the following theorem, which implies  Theorem \ref{thmpitau}. 
+
+Recall the ideal $I_{\check \CO}\subset \oU(\g_\sfss)$ from the Introduction. 
+\begin{lem}\label{inf2}
+Let $\pi$ be an $\CO$-bounded irreducible Casselman-Wallach representation of $G_{\sfss}$ such that $\oU(\g_\sfss)^{G_{\sfss, \C}}$ acts on it  through the character $\chi(\check \CO)$. Then $\mathrm{AC}_{\CO}(\pi)\neq 0$, and  $I_{\check \CO}$ annihilated $\pi$. 
+%by   $I_{\check \CO}$ if and only if $\pi$ is $\CO$-bounded.  
+\end{lem}
+\begin{proof}
+This is implied by \cite[Theorem ?]{BK} and \cite[Theorem 8.4]{Vo89}. 
+
+\end{proof}
+
+
+We will prove in the rest of this subsection the following theorem, which, together with Lemmas \ref{inf1} and \ref{inf2},  implies  Theorem \ref{thmpitau}. 
 \begin{thm}\label{thmpitau222}
-The representation $\pi_\uptau$ is irreducible, unitarizable, $\CO$-bounded and $(\mathrm d'_\tau-\nu_{\sfss})$-bounded.     Moreover,
+The representation $\pi_\uptau$ is irreducible, unitarizable, $\CO$-bounded and $( \mathrm d'_\tau-\nu_{\sfss})$-bounded.     Moreover,
 \[
 \mathrm{AC}_\CO(\pi_\uptau)=\mathrm{AC}(\uptau)\in \CK_{\mathsf s}(\CO).
 \]
@@ -5587,7 +5720,7 @@ We prove Theorem \ref{thmpitau222} by induction on $\mathbf c_1(\check \CO)$ (wh
  The orbit $\CO$ is good for $\nabla^\sfss_{\sfss_{\tau'}}$, and $\nabla^\sfss_{\sfss_{\tau'}}(\CO)$ equals the Barbasch-Vogan dual  of $\check \CO'$. 
  \end{lem}
 \begin{proof}
-Similar to Lemma \ref{dualdesc}, this is  elementary to check by using Lemma \ref{bvdual}.
+The first assertion is routine to check, and the second one is Lemma \ref{dualdesc}. %, this is  elementary to check by using Lemma \ref{bvdual}.
 \end{proof}
 
 In view of Lemma \ref{lem78}, we assume that $\sfss'=\sfss_{\tau'}$. Then   
@@ -5597,19 +5730,22 @@ In view of Lemma \ref{lem78}, we assume that $\sfss'=\sfss_{\tau'}$. Then
 
 
 
-By the induction hypothesis, the representation $\pi_{\uptau'}$ is irreducible, unitarizable, $\CO'$-bounded and $(\mathrm d'_{\tau'}-\nu_{\sfss'})$-bounded,     and
+By the induction hypothesis, the representation $\pi_{\uptau'}$ is irreducible, unitarizable, $\CO'$-bounded and $( \mathrm d'_{\tau'}-\nu_{\sfss'})$-bounded,     and
 \[
 \mathrm{AC}_\CO(\pi_{\uptau'})=\mathrm{AC}(\uptau')\in \CK_{\mathsf s'}(\CO').
 \]
 
 It is routine to check case by case  that 
 \[
-  \mathrm d'_{\tau'}-\nu_{\sfss'}> \begin{cases}
- -\frac{\abs{\sfss_0}}{2}-3,\quad& \textrm{if $\star =C^*$};\\
-   -\frac{\abs{\sfss_0}}{2}-1,\quad& \textrm{otherwise}.
-   \end{cases}.
+\mathrm d'_{\tau'}-\nu_{\sfss'}>\max \left \{\nu^\circ_{\sfss'}-\abs{\sfss}, -p_0-1\right \}=
+  \begin{cases}
+\nu^\circ_{\sfss'}-\abs{\sfss} +1,\quad& \textrm{if $\star =C^*$};\\
+ \nu^\circ_{\sfss'}-\abs{\sfss},\quad& \textrm{otherwise}.
+   \end{cases}
 \]
-In particular, $\pi_{\uptau'}\otimes \chi$ is over-convergent for $\check \Theta_{\sfss'}^{\sfss}$ for every unitary character $\chi$ of $G_\sfss$.  
+Thus $\pi_{\uptau'}\otimes \chi$ is over-convergent for $\check \Theta_{\sfss'}^{\sfss}$ for every unitary character $\chi$ of $G_\sfss$. 
+
+
 
 Recall from \eqref{eq:def-pi} that 
 \[
@@ -5638,15 +5774,16 @@ $\bar \pi_{\uptau}$ is unitarizable.  Theorem \ref{thm:GDS.AC} and Proposition \
 \[
     \mathrm{AC}_{\cO}( \bar \pi_{\uptau})=\mathrm{AC}_{\cO}(\pi_{\uptau})=\mathrm{AC}(\uptau)\neq 0. 
 \]
-Hence $\bar \pi_{\uptau}$ is irreducible, since $\bar \pi_{\uptau}$ is a quotient of $\pi_{\uptau}$ and $\pi_{\uptau}$ has a unique irreducible quotient. Write 
-$\CJ_\uptau$ for the kernel of the natural surjective homomorphism $\pi_{\uptau}\rightarrow \bar \pi_{\uptau}$. Then $\oU(\g_\sfss)^{G_{\sfss, \C}}$ acts on $\CJ_{\uptau}$ through the character $\chi(\check \CO)$ as defined in the Introduction. Moreover, $\CJ_\uptau$  is $\CO$-bounded and  $\mathrm{AC}(\CJ_{\uptau})=0$. This implies that $\CJ_{\uptau}=0$. 
+Since $\bar \pi_{\uptau}$ is a completely reducible quotient of $\pi_{\uptau}$, and $\pi_{\uptau}$ has at most one  irreducible quotient by the fundamental result of Howe (\cite[Theorem 1A]{Howe89}), we conclude that $\bar \pi_{\uptau}$ is irreducible. 
+
+Write 
+$\CJ_\uptau$ for the kernel of the natural surjective homomorphism $\pi_{\uptau}\rightarrow \bar \pi_{\uptau}$. By Lemma \ref{inf1},  $\oU(\g_\sfss)^{G_{\sfss, \C}}$ acts on $\CJ_{\uptau}$ through the character $\chi(\check \CO)$. Moreover, $\CJ_\uptau$  is $\CO$-bounded and  $\mathrm{AC}(\CJ_{\uptau})=0$. This implies that $\CJ_{\uptau}=0$ by Lemma \ref{inf2}. 
 Thus $\pi_{\uptau}=\bar \pi_{\uptau}$. Finally, Proposition \ref{boundm} implies that  $\bar \pi_{\uptau}$ is $(\mathrm d'_\tau-\nu_{\sfss})$-bounded. This finishes the proof of Theorem 
 \ref{thmpitau222}. 
 
 
-
-
-\section{Nilpotent orbits: combinatorics}
+\section{Nilpotent orbits: odds and ends}
+%\section{Nilpotent orbits: combinatorics}
 
 \def\upp{{\rotatebox[origin=c]{45}{$+$}}}
 \def\umm{{\rotatebox[origin=c]{45}{$-$}}}
@@ -5691,22 +5828,23 @@ Thus $\pi_{\uptau}=\bar \pi_{\uptau}$. Finally, Proposition \ref{boundm} implies
 \def\Js{J_\sfss}
 \def\Ls{L_\sfss}
 
-In this section, we describes our combinatorical parameterization of nilpotent
-orbits and the local systems in details.
+In this section, we review the combinatorial parametrization of nilpotent
+orbits, and describe several constructions related to nilpotent orbits in combinatorial terms.
 
-\subsection{Young diagrams, signed Young diagrams and admissible orbit data}
-Let $(\Vs,\inn{}{} \Js,\Ls)$ be a classical group with signature $\sfss$.
+\subsection{Signed Young diagrams and the descent map}
+Let $(\Vs,\inn{}{} \Js,\Ls)$ be a classical space with signature $\sfss$, as in Section \ref{sec:Nil}.
 
-\subsubsection*{Young diagram classification of nilpotent orbits over $\bC$}
-The set $\Nil(\fggs)$ of nilpotent $\Gs$-orbits in $\fggs$ are parameterized by
-Young diagrams, see \cite[Section~5.1]{CM}. The nilpotent obit $\GC\cdot \X$
+%\subsubsection*{Young diagram classification of nilpotent orbits over $\bC$}
+The set $\Nil(\fggs)$ of nilpotent $\GC$-orbits in $\fggs$ is parameterized by
+Young diagrams: the nilpotent obit $\GC\cdot \X$
 generated by a nilpotent element $\X$ in $\fggs$ is attached to the Young
-diagram $\cO$ such that  such that
+diagram $\cO$ such that
 \[
 \bfcc_{i}(\cO) = \dim (\Ker(\X^{i})/\Ker(\X^{i-1})) \quad \textrm{for all  }\,
  i\in \bN^{+}.
 \]
-By abuse of notaition, we identify $\cO$ with the orbit $\GC\cdot \X$.
+See \cite[Section~5.1]{CM}. By abuse of notation, we identify the Young
+diagram $\cO$ with the orbit $\GC\cdot \X$. Let $\YD_\star$ denote the set of all Young diagrams of type $\star$.
 
 \def\Xslt{\mathring{\bfee}}
 \def\eslt{\mathring{X}}
@@ -5714,8 +5852,8 @@ By abuse of notaition, we identify $\cO$ with the orbit $\GC\cdot \X$.
 Let $\slt$ be the complex Lie algebra consisting of $2\times 2$ complex matrices
 of trace zero. Put
 \[
-  \Xslt := \begin{pmatrix}1/2 & \phantom{-} \sqii/2 \\ 
-    \mathbf \sqii/2 & -1/2 \end{pmatrix},
+  \Xslt := \begin{pmatrix}1/2 & \phantom{-} \sqii/2 \\
+    \phantom{-} \sqii/2 & -1/2 \end{pmatrix},
   \quad \text{and} \quad
 \eslt := \begin{pmatrix}0 & 1\\ 0 & 0 \end{pmatrix}.
 \]
@@ -5727,7 +5865,7 @@ Lie algebra homomorphism
  \end{equation}
 
  Let $\St{i}=\Sym^{i-1}(\bC^{2})$ denote the realization of the irreducible
- $\slt$-module $\SLT_{i}$ on the $(i-1)$th-symmetric power of the standard
+ $\slt$-module $\SLT_{i}$ on the $(i-1)^{\text{th}}$-symmetric power of the standard
  representation $\bC^{2}$.
 
 As an $\slt$-module via $\SLT$, we have
@@ -5743,48 +5881,51 @@ $\dim \VV{i} = \bfcc_{i}(\cO) - \bfcc_{i-1}(\cO)$.
 We view %the Young diagram
 $\cO$ as the function
 \[
-  \cO\colon \bfN^{+} \rightarrow \bN \text{ such that } \cO(i) = \dim \VV{i}.
+  \cO\colon \bN^{+} \rightarrow \bN \text{ such that } \cO(i) = \dim \VV{i}.
 \]
-Let $\YD_\star$ denote the set of all Young diagrams of type $\star$. 
+
 % Let $\SLT_{i}\colon  \slt\rightarrow \mathfrak{gl}_{n}(\bC)$ be the representation
 %  of $\slt$ on $\St{i}$.
 
-\subsubsection*{Signed Young diagram classifcation of rational nilpotent orbits}
- We equip $\St{i}$ with a ``standard'' classical space structure
- $(\St{i},\inn{}{}_{\St{i}},J_{\St{i}},L_{\St{i}})$.% with classical symbol $(\star_{i},p_{i},q_{i})$.
- Here
+%\subsubsection*{Signed Young diagram classification of rational nilpotent orbits}
+
+We equip $\St{i}$ with a ``standard'' classical space structure
+ $(\St{i},\inn{}{}_{\St{i}},J_{\St{i}},L_{\St{i}})$. % with classical symbol $(\star_{i},p_{i},q_{i})$.
+ Specifically,
  \begin{itemize}
    \item the classical signature of $\St{i}$ is $(B,(i+1)/2,(i-1)/2)$ if $i$ is odd and
          $(C,i/2,i/2)$ if $i$ is even,
    \item $J_{\St{i}}$ is the complex conjugation on $\St{i}=\Sym^{i-1}(\bC^{2})$,
    \item $L_{\St{i}} = (-1)^{\floor{\frac{i-1}{2}}}\, \Sym^{i-1}({\tiny\begin{pmatrix}\phantom{-}0 & 1 \\-1 & 0 \end{pmatrix}})$,
    \item $\inn{}{}_{\St{i}}$ is uniquely determined by $J_{\St{i}}$ and $L_{\St{i}}$ up to
-         a positive scalar (We fix a form $\inn{}{}_{\St{i}}$ for each $i$).
- \end{itemize}
+         a positive scalar. (We fix one for each $i$.)
+          \end{itemize}
 
 \trivial[h]{\color{red} $L_{\St{i}}$ should be the Lie group element action.}
 
 
-Suppose $ \sO\in \Nil_\sfss(\cO)$ and $\X\in \sO$. Then the Lie-algebra
-homomorphism \eqref{eq:slt}  can be made compatible with the classical space
-structure on $\Vs$ by \cite{Se} (also see \cite[Section~6]{Vo89}). 
+Suppose we have a rational nilpotent orbit $ \sO\in \Nil_\sfss(\cO)$,
+%:=\Nil_{\Ks}(\fpp_{\sfss})\cap \cO $
+and $\X\in \sO$. Then the Lie-algebra
+homomorphism \eqref{eq:slt} can be made compatible with the classical space
+structure on $\Vs$ so that
 % Let $ \sO\in \Nil_\sfss(\cO)$.
 % By \cite{Se} (also see \cite[Section~6]{Vo89}), the Lie-algebra
 % homomorphism $\SLT \colon \slt \rightarrow \fgg \subset \gl(V)$ such that
 %$\SLT(\Xslt)\in \sO$ and compatible with the classical space structure on $V$.
 %  We define a equivalent relation on the set $\set{B,C,\wtC,D,C^{*},D^{*}}$ with
 %  the relation $B\sim D$ and $C\sim \wtC$.
-More precisely, $\slt$-isotypic components $\VV{i}\otimes \St{i}$ 
-are invariant under the $\Js$ and $\Ls$ actions. 
-In this case, the multiplicity space $\VV{i}$ have a unique classical space
+$\slt$-isotypic components $\VV{i}\otimes \St{i}$
+are invariant under the $\Js$ and $\Ls$ actions. See \cite{Se} (and also \cite[Section~6]{Vo89}).
+When this is done, the multiplicity space $\VV{i}$ will have a unique classical space
 structure $(\VV{i}, \inn{}{}_{\VV{i}},J_{i},L_{i})$ with classical signature
 $\sfss_{i}=(\star_{i},p_{i},q_{i})$ such that $\star_{i}\neq \wtC$ and
-restricted on the $\slt$-isotypic component $\VV{i}\otimes \St{i}$,
+when restricted on $\VV{i}\otimes \St{i}$, the following conditions hold:
 \begin{itemize}
   \item $\inn{}{}$ is given by $\inn{}{}_{\VV{i}}\otimes \inn{}{}_{\St{i}}$,
   \item $\Js$ is given by $J_{i}\otimes J_{\St{i}}$,
   \item $\Ls$ is given by $L_{i}\otimes L_{\St{i}}$,
-  \item the symbol $\star_{i}$ satisfies the following condition
+  \item the symbol $\star_{i}$ satisfies the following ``type'' condition
         \begin{equation} \label{eq:ssrel}
           \begin{cases}
             \star_{i} \sim\star_{\sfss} & \text{if $i$ is odd}\\
@@ -5795,8 +5936,8 @@ restricted on the $\slt$-isotypic component $\VV{i}\otimes \St{i}$,
 Here $\star'_{\sfss}$ is the Howe dual of $\star_{\sfss}$, and
  $\sim$ is the equivalent relation on $\set{B,C,\wtC,C^{*},D,D^{*}}$ such that
  $B\sim D$ and $C\sim \wtC$.
-Here the classical signature $\sfss_{i}$ are independent of the choice of $\SLT$
-and uniquely determined the orbit $\sO$.
+Moreover the classical signature $\sfss_{i}$ (for each $i\in \bN^{+}$) is independent of the choice of $\SLT$
+and together they uniquely determine the orbit $\sO$.
 
 \smallskip
 
@@ -5811,11 +5952,12 @@ We identify $\sO$ with the function
   \sO\colon \bN^{+}\rightarrow \CCSS, \qquad i \mapsto \sfss_{i}.
 \]
 Let $\sfmm \colon \CCSS\rightarrow \bN$ be the map given by $(\star,p,q)\mapsto
-p+q$. The  complexification $\GC\cdot \sO$ of a rational nilpotent orbit is
-given by $\cO := \sfmm\circ \sO$. 
+p+q$. The complexification $\GC\cdot \sO$ of a rational nilpotent orbit $\sO$ is then
+given by $\cO := \sfmm\circ \sO$.
 
 \smallskip
 
+We now recall the signed Young diagram classification of rational nilpotent orbits \cite[Chapter 9]{CM}.
 Define
 \[
   \begin{split}
@@ -5827,34 +5969,39 @@ Define
     \SYD_{\star} &:= \bigsqcup_{\cO\in \Nil_{\star}} \SYD_{\star}(\cO).
   \end{split}
 \]
-Now $\SYD_{\star}$ is naturally identified with the set
-$\bigsqcup_{\sfss}\Nil_{\Ks}(\fpp_{\sfss})$ where $\sfss$ running over all
-classical signatures of type $\star$. This is nothing but the signed Young
-diagram classification of rational nilpotent orbits, see \cite{CM}.
+Then $\SYD_{\star}$ is naturally identified with the set
+$\bigsqcup_{\sfss}\Nil_{\Ks}(\fpp_{\sfss})$ where $\sfss$ runs over all
+classical signatures of type $\star$.
 
 \def\Gsr{G_{\sfss}}
 \def\fggsr{\fgg_{\sfss,\bR}}
 
-A important feature of a compatible $\SLT$ map is that the Kostant-Sekiguchi
-correspondence is given by 
+An important property of a compatible map $\SLT$ is that the Kostant-Sekiguchi
+correspondence is given by
 \[
   \Gsr \cdot \SLT(\eslt) \longleftrightarrow  \Ks\cdot \SLT(\Xslt).
 \]
 % Therefore, we also identify $\SYD_\star$ with the set of real nilpotent orbits
 % $\bigsqcup_{\sfss}\Nil_{\Gsr}(\fgg_{\sfss})$ where $\sfss$ running over all
-% classical signatures of type $\star$. 
-Therefore, we make the following
-indentification via the Kostant-Sekiguchi correspondence.
+% classical signatures of type $\star$.
+Via this correspondence, we may therefore make the following
+identification:
 \begin{equation}\label{eq:KS}
 \Nil_{\Gs}(\fggsr) = \SYD_\sfss = \Nil_{\Ks}(\fpps).
 \end{equation}
 
 \smallskip
 
-For any $\sO\in \SYD_{\star}$, let $\Sign(\sO) = (p,q)$ if $\sO$
-corresponds to a nilpotent orbit in $\Nil_{\sfss}(\fpps)$ with the classical
-signature $\sfss=(\star,p,q)$. The
-signature $\Sign(\sO)$ can be computed directly by the following formula:
+For any $\sO\in \SYD_{\star}$, we define $\Sign(\sO) = (p,q)$, again called the signature,
+ if $\sO$ corresponds to a nilpotent orbit in $\Nil_{\sfss}(\fpps)$ with the classical
+signature $\sfss=(\star,p,q)$. Also we write
+\[
+\SYD_{\sfss}(\cO) := \set{\sO\in \SYD_{\star}(\cO)| \Sign(\sO)=(p,q)}.
+\]
+which is identified with $\Nil_{\sfss}(\cO)$.
+
+The signature $\Sign(\sO)$ can be computed from the signatures of $\sO(i)$ ($i\in \bN^+$)
+by the following formula:
 \[
   \begin{split}
     \Sign(\sO) = &
@@ -5865,69 +6012,64 @@ signature $\Sign(\sO)$ can be computed directly by the following formula:
     (i-1) \cdot p_{2i-1}+i \cdot q_{2i-1}\big),
   \end{split}
 \]
-where $\sO(i)=(\sfss_{i},p_{i},q_{i})$. 
-We write
-\[
-\SYD_{\sfss}(\cO) := \set{\sO\in \SYD_{\star}(\cO)| \Sign(\sO)=(p,q)}.
-\]
-which is identified with $\Nil_{\sfss}(\cO)$.
-
-The signature $\lsign(\sO)$ of the ``most left column'' of the
-signed Young diagram $\sO$ (see \Cref{eg:MYD}) is also useful, which is given by
+where $\sO(i)=(\star_{i}, p_{i},q_{i})$. The signature $\lsign(\sO)$ of the ``leftmost column'' of the
+signed Young diagram $\sO$ (see \Cref{eg:MYD}) is also useful, which is computed by
 \[
   \lsign(\sO) =
     \sum_{i\in \bN^{+}} \big(q_{2i},p_{2i} \big)
       + \sum_{i\in \bN^{+}} \big(p_{2i-1},q_{2i-1} \big).
 \]
-For each $\sO\in \SYD_\star$ define the naive desent $\DDn(\sO)\in
+
+For each $\sO\in \SYD_\star$ define the naive descent $\DDn(\sO)\in
 \SYD_{\star'}$ by
 \[\big(\DDn(\sO)\big)(i) = \sO(i+1) \quad \text{for } i \in \bN^+.\]
-Now we can explicitly describe the decent map $\DDss$. 
-\begin{prop}\label{prop:DDss} 
+
+We can now explicitly describe the decent map $\DDss$.
+\begin{prop}\label{prop:DDss}
 Suppose $\sfss=(\star,p,q)$ and
 $\sfss'=(\star,p',q')$. A nilpotent orbit $\sO\in \Nil_{\Ks}(\fpps)$ is in the
-image of moment map if and only if 
+image of moment map if and only if
 \begin{equation}\label{eq:DDss1}
   (p_0,q_0):= (p',q') - \Sign(\DDn(\sO)) \succeq (0,0).
 \end{equation}
-When \eqref{eq:DDss1} is satisfied, the desecnt $\sO' := \DDss(\sO)$ 
-is given by 
+When \eqref{eq:DDss1} is satisfied, the descent $\sO' := \DDss(\sO)$
+is given by
 \begin{itemize}
-\item $\sO'(1) = (\star'_1,p_2+p_0, q_2+q_0)$ where $\star'_1\sim \star'$ and  
-$(\star_2,p_2,q_2)=\sO(2)$;
-\item $\sO'(i) = \sO(i+1)$ for $i\geq 2$. \qed
+\item $\sO'(1) = (\star'_1,p_2+p_0, q_2+q_0)$ where $\star'_1\sim \star'$ and
+$(\star_{2},p_2,q_2)=\sO(2)$;
+\item $\sO'(i) = \sO(i+1)$, for $i\geq 2$. \qed
 \end{itemize}
 \end{prop}
 
-\subsubsection*{Marked Young diagram classification of equivariant line bundles}
+\subsection{Marked Young diagram classification of equivariant line bundles}
 \def\KCs{K_{[\sfss],\bC}}
 \def\KCsX{(K_{[\sfss],\bC})_{\X}}
 \def\KCsoX{(K_{[\sfss],\bC})_{\X}^{\circ}}
-%For a classical signature $\sfss$, 
-Suppose $\sO\in \Nil(\bfpp_{\sfss})$ and $\SLT$ is
+%For a classical signature $\sfss$,
+Suppose $\sO\in \Nil_{\Ks}(\fpps)$ and $\SLT$ is
 compatible with $\sO$. Let  $\X := \SLT(\Xslt)\in \sO$,
 \[
   \KCs := \GC^{L_{\sfss}}, \quad \text{and}\quad
-  \KCsX:=\Stab_{\KC[[\sfss]]}(\X)
+  \KCsX:=\Stab_{\KC[[\sfss]]}(\X),
 \]
-be the stabilizer of $\X$ in $\KCs$.
+the stabilizer of $\X$ in $\KCs$.
 % centralizer of $\Im(\phi)$ in $\KC[\sfss]$.
 Using the signed Young diagram classification of $\sO$, we have the following
-well known fact of the isotropic subgroup.
+well-known fact on the isotropy subgroup $\KCsX$.
 
-\begin{lem}\label{lem:KX1} 
-  The isotropoic subgroup have decomposition $(\KCsX= R_\X\ltimes U_\X$, where
+\begin{lem}\label{lem:KX1}
+  The isotropy subgroup have decomposition $\KCsX= R_\X\ltimes U_\X$, where
   $U_\X$ is the unipotent radical of $\KCsX$ and $R_{\X}$ is a reductive group
   canonically identified with
   \[
     \prod_{i\in \bN^{+}} \KC[[\sfss_{\sO(i)}]].
   \]
-  \qed
+ Consequently $R_{\X}$ is a product of complex general linear groups
+with complex symplectic groups or orthogonal groups. \qed
 \end{lem}
 
-As a consequence, $R_{\X}$ is a products of complex general linear groups
-with  complex symplectic groups or orthogonal groups.
-% As a consequence, $R_{\X}$ is a products of complex general linear group 
+
+% As a consequence, $R_{\X}$ is a products of complex general linear group
 % with  complex symplectic groups or orthogonal groups
 % \[
 %   \prod_{\substack{\sO(i)=(\star_{i},p_{i},q_{i})\\
@@ -5943,25 +6085,24 @@ with  complex symplectic groups or orthogonal groups.
 \def\KsoX{{(\Ks)_{\X}^{\circ}}}
 \def\KsX{(\Ks)_{\X}}
 
-Recall that $\Ks$ is a dobule cover of $\KCs$ if $\star =  \wtC$ and $\Ks = \KCs$ otherwise. 
+Recall that $\Ks$ is a double cover of $\KCs$ if $\star =  \wtC$ and $\Ks = \KCs$ otherwise.
 Fix a one-dimensional character $\chi$ %of the connected component $\KsoX$
- of $\KsX$. We assume $\chi$ is a genuine character if$\star=\wtC$.
+ of $\KsX$. We assume $\chi$ is a genuine character if $\star=\wtC$.
 
-Let $\KsoX$ be the connected component of $\KsX$ and 
+Let $\KsoX$ be the connected component of $\KsX$ and
 \[
-\DCO{\chi} := \set{\text{$\Ks$-equivariant line bundle $\cE$ on $\sO$ 
+\DCO{\chi} := \set{\text{$\Ks$-equivariant line bundle $\cE$ on $\sO$
 such that $\cE_{\X}\mid_{\KsoX}=\chi\mid_{\KsoX}$}}.
 \]
 By the structure of $R_{\X}$, a line bundle $\cE\in \DCO{\chi}$ is completely
-determined by the restruction of the $\KsX$-module $\cE_{\X}$ on the the
-orthogonal group factors of $R_{\X}$. We introduce marked Young diagrams to
-parameterize the restrictions. 
+determined by the restriction of the $\KsX$-module $\cE_{\X}$ on the orthogonal group factors of $R_{\X}$. We introduce marked Young diagrams to
+parameterize the restrictions.
 
 Let
 \[
   \MK = \CCSS \cup \set{(\star,r,s)|\star\in \set{B,D}, r,s\in \bZ}.
 \]
-Suppose $\sO(i)=(\star_{i},p_{i} q_{i})$. We identify $\cE \in \DCO{\chi}$ with the map
+Suppose $\sO(i)=(\star_{i},p_{i}, q_{i})$. We identify $\cE \in \DCO{\chi}$ with the map
 \[
   \cE\colon \bN^{+}\rightarrow  \MK
 \]
@@ -5978,11 +6119,11 @@ such that
           \cE, & \text{when } \star = D,\\
           \cE\otimes \deti^{-1} , & \text{when } \star = B.
         \end{cases}
-        \].
+        \]
 \end{itemize}
 
 %  $\sF\colon \MK\rightarrow \CCSS$ be the map given by
-% $(\star,r,s)\mapsto (\star,\abs{r},\abs{s})$ 
+% $(\star,r,s)\mapsto (\star,\abs{r},\abs{s})$
 Let
 \begin{equation}\label{eq:F1}
 \sF\colon \MK\rightarrow \CCSS\qquad (\star,r,s)\mapsto (\star,\abs{r},\abs{s}),
@@ -5991,8 +6132,7 @@ and
 \[
   \MYD(\sO) := \Set{\cE\colon \bN^{+}\rightarrow \MK|\sF\circ \cE=\sO }.
 \]
-Thanks to the simple structure of $R_{\X}$, the above recipe allows us to
-identify $\MYD(\sO)$ with the set $\DCO{\chi}$ when the later set is non-empty.
+From the structure of $R_{\X}$, the above recipe will then yield an identification of $\MYD(\sO)$ with the set $\DCO{\chi}$ whenever the later set is non-empty.
 
 %The signature of $\cE$ is defined as the sginature of $\sf\circ\cE$.
 %We wreite $\Sign(\cE):= \Sign$
@@ -6001,14 +6141,19 @@ Let
 \[
   \MYD_{\sfss}(\cO) := \bigcup_{\sO\in \SYD_{\sfss}(\cO)}\MYD(\sO).% \quad
 \]
-Then we identify $\AOD_{\Ks}(\cO)$ with a subset of
- $\MYD_{\sfss}(\cO)$, see \Cref{defaod}.
-We also set 
+
+Recall the set
+\[
+  \mathrm{AOD}_{K_{\sfss}}(\cO)=\bigsqcup_{\sO\textrm{ is a $K_{\sfss}$-orbit in
+      $\cO\cap \p_{\sfss}$}} \mathrm{AOD}_{K_{\sfss}}(\sO),
+\]
+where $\mathrm{AOD}_{K_{\sfss}}(\sO)$ is the set of isomorphism classes of admissible orbit data over $\sO$ (\Cref{defaod}). We may thus identify $\mathrm{AOD}_{K_{\sfss}}(\cO)$ with a subset of
+ $\MYD_{\sfss}(\cO)$. We also set
 \[
   % \MYD_{\sfss} := \bigcup_{\sO\in \Nil_{\Ks}(\fpps)}\MYD(\sO) \AND
   \MYD_\star := \bigcup_{\sfss, \cO\in \YD_\star} \MYD_{\sfss}(\cO)
 \]
-where $\sfss$ running over all possilbe  classical signatures of type $\star$.
+where $\sfss$ runs over all possible classical signatures of type $\star$.
 %  % By abuse of notation, we identify $\SYD_{\star}$ with a subset of
 % Set
 % \[
@@ -6025,13 +6170,13 @@ To ease the notation, we will use
   ( i_{1}^{(p_{i_{1}},q_{i_{1}})}i_{2}^{(p_{i_{2}},q_{i_{2}})}\cdots i_{k}^{(p_{i_{k}},q_{i_{k}})} )_{\star}
 \]
 to represent $\cE$ where
-$i_{1},\cdots, i_{k}$ are all the indices such that $(p_{i},q_{i})\neq (0,0)$.
+$i_{1},\cdots, i_{k}$ are all the indices $i$ such that $(p_{i},q_{i})\neq (0,0)$.
 A Young diagram in $\YD_{\star}$ is represented similarly.
 
-We adopt the usual convention to draw a singed Young diagram where the signature
-$(p_{i}, q_{i})$ equals to the total signature for the most right columns of 
+We adopt the usual convention to depict a signed Young diagram where the signature
+$(p_{i}, q_{i})$ equals the total signature for the rightmost columns of
 length $i$ rows.
-We use ``$\upp$'' and ``$\umm$'' instead ``$+$'' and ``$-$'' to mark the rows
+We use ``$\upp$'' and ``$\umm$'' instead of ``$+$'' and ``$-$'' to mark the rows
 when $p_{i}$ or $q_{i}$ is negative.
 
 \begin{eg}\label{eg:MYD}
@@ -6044,8 +6189,7 @@ The expression $(1^{(r,s)})_{\star}$ represents the marked Young diagram in $\MY
    \end{cases}
  \]
  Here the symbols $\star_{i}$ are uniquely determined by \eqref{eq:ssrel}.\\
-The marked Young diagram  $\cE:=(1^{(1,-1)}2^{(2,0)}3^{(0,-1)})_{B}$ is drew as
-the following.
+The marked Young diagram  $\cE:=(1^{(1,-1)}2^{(2,0)}3^{(0,-1)})_{B}$ is depicted as follows:
 \[
   \ytb{\umm\upp\umm,-+,-+,+,\umm}
 \]
@@ -6054,15 +6198,15 @@ $(1^{(1,1)}2^{(2,0)}3^{(0,1)})_{B}$ and the complexification of $\sO$
 is $(1^{2}\,2^{2}\,3^{1})_{B}$.
 \end{eg}
 
-\subsection{Operations on marked Young diagrams}
-In this section, we define some operations on the signed Young diagrams and
-marked Young diagram. We will use these operations to describe the theta lifting of admissible orbit data in the end of the section.
+%\subsection{Operations on marked Young diagrams}
+\subsection{Theta lifts of admissible orbit data: combinatorial descriptions}
+In this section, we will first define some operations on marked Young diagrams. We then use these operations to describe theta lifts of admissible orbit data.
 
 \smallskip
 
 Suppose $\star\in \set{B,D}$. We define a $\bZ/2\bZ\times \bZ/2\bZ$ action on
-$\MYD_{\star}$. Let $(\epsilon^{+},\epsilon^{-})\in \bZ/2\bZ\times \bZ/2\bZ$ ,
-$\cE\in \MYD_{\star}$ such that $(\star_{i},p_{i},q_{i}):=\cE(i)$, we define
+$\MYD_{\star}$, as follows. Given $\cE\in \MYD_{\star}$ such that $(\star_{i},p_{i},q_{i}):=\cE(i)$, and $(\epsilon^{+},\epsilon^{-})\in \bZ/2\bZ\times \bZ/2\bZ$,
+we define
 $\cE \lotimes (\epsilon^{+},\epsilon^{-})\in \MYD_{\star}$ by
 \[
 (\cE \lotimes(\epsilon^{+},\epsilon^{-}))(i) := \begin{cases}
@@ -6071,7 +6215,6 @@ $\cE \lotimes (\epsilon^{+},\epsilon^{-})\in \MYD_{\star}$ by
   (\star_{i}, p_{i},q_{i}) & \text{otherwise.}
 \end{cases}
 \]
-
 
 For each $\cE\in \AOD_{\Ks}(\cO)$, its twist
 $\cE\otimes  (1^{{-,+}}_{p,q})^{\epsilon^{+}}\otimes (
@@ -6084,27 +6227,26 @@ As elements in $\MYD_{\star}$, we have
 
 \medskip
 
-Suppose $\star\in \set{C,\wtC,D^{*}}$.
-We define an involution $\maltese$ defines an involution on
+Suppose $\star\in \set{C,\wtC,D^{*}}$. We define an involution $\maltese$ on
 $\MYD_{\star}$:
 For $\cE\in \MYD_{\star}$ such that $(\star_{i},p_{i},q_{i}):=\cE(i)$,
-we define $\maltese\cE\in \MYD_{\star}$ such that  
+we define $\maltese\cE\in \MYD_{\star}$ such that
 \[
 (\maltese\cE)(i) := \begin{cases}
   (\star_{i}, -p_{i},-q_{i})& \text{if $i\equiv 2 \pmod{4}$ and $\star_{i}\in \set{B,D}$,}\\
   (\star_{i}, p_{i},q_{i}) & \text{otherwise.}
 \end{cases}
 \]
-For each $\cE\in \DCO{\chi}$, its twist  $\cE\otimes \deti^{-1}$
+For each $\cE\in \DCO{\chi}$, its twist $\cE\otimes \deti^{-1}$
 is a line bundle  in $\DCO{\chi'}$ where  $\chi'$ is a certain character. % $\chi'$.
 As elements in $\MYD_{\star}$, we have
 \[
-  \cE\otimes \deti = \maltese (\cE).
+  \cE\otimes \deti^{-1} = \maltese (\cE).
 \]
 
 \medskip
 
-We define the argumentation operation on marked Young diagrams.
+We now define the argumentation operation on marked Young diagrams.
 Suppose that $(p_{0},q_{0})\in \bZ\times \bZ$ and there is a
 $\star'_{0}\sim \star'$ such that
 $\sfss_{0} := (\star'_{0},p_{0},q_{0})\in \CCSS$.
@@ -6118,26 +6260,25 @@ let $\cE\cdot (p_{0},q_{0})$ be the marked Young diagram in $\MYD_{\star'}$ give
   \end{cases}
 \]
 We will use the same notation to denote the  natural extension of above
-operations to $\bZ[\MYD_{\star}]$.
+operation to $\bZ[\MYD_{\star}]$.
 % and we will use the same notation
 
 \medskip
 
-We define the partial order $\succeq$ on $\bZ\times \bZ$ by
+We introduce a partial order $\succeq$ on $\bZ\times \bZ$ by
 \[
   (a,b) \succeq (c,d) \Leftrightarrow
   \begin{cases}a\geq c\geq 0\\ b\geq d\geq 0\end{cases}
   \quad  \text{or} \quad
   \begin{cases} a\leq c\leq 0\\ b\leq d\leq 0 \end{cases}.
 \]
-For a $\cE\in \MYD_{\star}$ and $(p_{0},q_{0})\in \bZ\times \bZ$, we write
+We also define an involution on $\bZ\times \bZ$ % $\rightarrow \bZ\times \bZ$
+by $(a,b)\mapsto (a,b)^{\sharp}:=(b,a)$. For a $\cE\in \MYD_{\star}$ and $(p_{0},q_{0})\in \bZ\times \bZ$, we write
 \[
   \cE\sqsupseteq (p_{0},q_{0}) \Leftrightarrow
   (p_{1},q_{1})\succeq (p_{0},q_{0})
   \text{ where }\cE(1) = (\star_{1},p_{1},q_{1}).
 \]
-Morever, we define an involution on $\bZ\times \bZ$ % $\rightarrow \bZ\times \bZ$
-by $(a,b)\mapsto (a,b)^{-}:=(b,a)$.
 
 Suppose $\cE\sqsupseteq (p_{0},q_{0})$, we define the truncation
 $\Lambda_{(p_0,q_0)}\cE$ by
@@ -6152,7 +6293,7 @@ $\bZ[\MYD_{\star}]$
 by setting $\Lambda_{p_{0},q_{0}}(\cE) := 0$ when $(p_{0},q_{0})\nsqsubseteq \cE\in \MYD_{\star}$.
 Note that $\Lambda_{(0,0)}$ is the identity map.
 
-The augmentation and truncation of signed Young diagram are defined by the same
+The augmentation and truncation of a signed Young diagram are defined by the same
 formula.
 
 \medskip
@@ -6181,18 +6322,20 @@ formula.
 
 
 
-\subsubsection*{Theta lifts of admissible orbit data}
+
 \def\cEp{\cE'}
 \def\dliftso{{\check \vartheta}_{\sfss',\cO'}^{\sfss\,,\,\cO}}
-Let $\sfss$ and $\sfss'$ be two fixed classical signature.
-Suppose $\cO\in \Nil(\fggs)$ and $\cO'\in \Nil_{\Ksp}(\fggsp)$ such that  
-$\cO'= \DDss(\cO)$. 
-The theta lifting of marked Young diagrams is a homomorphism 
+
+We are now ready to describe theta lifting of admissible orbit data in terms of marked Young diagrams.
+
+Let $\sfss$ and $\sfss'$ be two fixed classical signatures.
+Suppose $\cO\in \Nil(\fggs)$ and $\cO'\in \Nil(\fggsp)$ such that
+$\cO'= \DDss(\cO)$.
+The theta lifting of marked Young diagrams is a homomorphism
 \[
   \dliftso \colon \bZ[\MYD_{\sfss'}(\cO')]\rightarrow \bZ[\MYD_{\sfss}(\cO)]
 \]
-defined below.  
-Let 
+defined as follows. Set
 \[
   t := \bfcc_{1}(\cO')-\bfcc_{2}(\cO).
 \]
@@ -6201,7 +6344,7 @@ Let
 
 Suppose $\sfss'=(\star',n,n)$ and $\sfss =(\star,p,q)$ such that
 $\star'\in \set{ C,\wtC, D^{*}}$  and $\star \in \set{D,B, C^{*}}$.
-Then $t$ is always a nonnegative even integer. For $\cEp\in \MYD_{\sfss}(\cO')$, we define
+For $\cEp\in \MYD_{\sfss}(\cO')$, we define
 \begin{equation}\label{eq:LCD}
   \dliftso(\cEp) :=
   \begin{cases}
@@ -6210,11 +6353,11 @@ Then $t$ is always a nonnegative even integer. For $\cEp\in \MYD_{\sfss}(\cO')$,
     \left(\maltese^{\frac{p-q+1}{2}}(\Lambda_{(\frac{t}{2},\frac{t}{2})}( \cEp))\right)\cdot (p_{0},q_{0}) &
     \text{if } ( p_{0},q_{0} ) \succeq (0,0) \text{ and } \star=B, \\
     \big(\Lambda_{(\frac{t}{2},\frac{t}{2})}( \cEp)\big)\cdot (p_{0},q_{0}) &
-    \text{if } ( p_{0},q_{0} ) \succeq (0,0) \text{ and } \star=C^{*}, \\
+    \text{if } ( p_{0},q_{0} ) \succeq (0,0) \text{ and } \star=C^{*}. \\
     0 & \text{otherwise}
   \end{cases}
 \end{equation}
-where $(p_{0}, q_{0})  := (p,q) -(n,n)-\lsign(\cEp)^{\sharp} + (\frac{t}{2},\frac{t}{2})$.
+Here $(p_{0}, q_{0})  := (p,q) -(n,n)-\lsign(\cEp)^{\sharp} + (\frac{t}{2},\frac{t}{2})$. Note that $t$ is a nonnegative even integer for the mentioned cases.
 
 \trivial[h]{
 When $t=0$, we define
@@ -6243,7 +6386,7 @@ where $(p_{0}, q_{0})  := (p,q) -(n,n)-\lsign(\cEp)^{\sharp} + (\frac{t}{2},\fra
 
 Suppose $\sfss' =(\star',p,q)$ and $\sfss=(\star,n,n)$ such that
 $\star' \in \set{ D,B,C^{*}}$  and $\star \in \set{C,\wtC,D^{*}}$.
-We define
+For $\cEp\in \MYD_{\sfss}(\cO')$, we define
 \begin{equation}\label{eq:LDC}
   \dliftso(\cEp) :=
   \begin{cases}
@@ -6252,10 +6395,10 @@ We define
     \maltese^{\frac{p-q-1}{2}}\big(\sum_{j=0}^{t} \Lambda_{(j,t-j)}( \cEp)\cdot (n_{0},n_{0})\big) & \text{if
     } \star = \wtC,\\
     \sum_{j=0}^{\frac{t}{2}} \Lambda_{(2j,t-2j)}( \cEp)\cdot (n_{0},n_{0}) & \text{if
-    } \star = D^{*},
+    } \star = D^{*}.
   \end{cases}
 \end{equation}
-where $2n_{0} = \bfcc_{1}(\cO)-\bfcc_{2}(\cO)$.
+Here $2n_{0} = \bfcc_{1}(\cO)-\bfcc_{2}(\cO)$.
 
 \trivial[h]{
 \[
@@ -6307,8 +6450,7 @@ where $2n_{0} = \bfcc_{1}(\cO)-\bfcc_{2}(\cO)$.
 }
 
 Suppose $\cO$ is regular with respect to $\DDss$, then admissible orbit data are
-lifted to admissible orbit data thanks to \Cref{lem:aod}.
-Now it is routine to check the following lemma.
+lifted to admissible orbit data, in view of \Cref{lem:aod}. The following lemma is now routine to check, which we skip.
 \begin{lem}\label{lem:clift}
 Suppose $\cO$ is regular with respect to $\DDss$. Then the following diagram is commute
 \[
@@ -6318,7 +6460,7 @@ Suppose $\cO$ is regular with respect to $\DDss$. Then the following diagram is 
     \bZ[\MYD_{\sfss'}(\cO')] \ar[r,"\dliftso"] & \bZ[\MYD_{\sfss'}(\cO')].\\
   \end{tikzcd}
 \]
-Here the vertical arrows are given by our parameterization of admissible orbit data, the top horizontal map is defined in  \Cref{sec:dlift}. \qed
+Here the vertical arrows are given by the parameterization of admissible orbit data of this section, and the top horizontal map is defined in  \Cref{sec:dlift}. \qed
 \end{lem}
 
 \subsection{Induced orbits and double geometric lifts}
@@ -6336,51 +6478,49 @@ Here the vertical arrows are given by our parameterization of admissible orbit d
 \def\Indrg{\Ind_{R_{1}}^{G_{1}}}
 \def\Indrgc{\Ind_{R_{1,\bC}}^{G_{1,\bC}}}
 
-In this section, we describe the weak associated cycle  
-of the induced representations appeared in \Cref{doubtt}. 
+In this section, we describe the weak associated cycles
+of the induced representations appearing in \Cref{doubtt}.
 
 We first recall the notion of induction of real nilpotent orbits. Let $G_1$ be
 an arbitrary real reductive group and let $P_1$ be a real parabolic subgroup of
 $G_1$, namely a closed subgroup of $G_1$ whose Lie algebra is a parabolic
 subalgebra of $\fgg_{1,\bR}$. Let $N_1$ be the unipotent radical of $P_1$ and
 $R_1:=P_1/N_1$. Let $\fpp_{1,\bR} := \Lie(P_1)$, $\frr_{1,R} := \Lie(R_1)$
-\[ 
+\[
 r_1:  \fpp_{1, \bR} \longrightarrow  \, \frr_{1, \bR}
 \]
-be the natural quotient map. 
+be the natural quotient map.
 
-We define a morphism 
+Define a morphism
 \[
   \Indrg \colon \bZ[\Nil_{\Ror}(\frror)]\longrightarrow  \bZ[\Nil_{\Gor}(\fggor)]
 \]
-by 
+by
 \[
   \Indrg (\sOpr) =  \sum_{\sOr} \frac{\# C_{G_1}(v)}{\#
   C_{P_1}(v)} \sOr
 \]
-where $\sOr$ running over all open orbits in $G_1\cdot r_1^{-1}(\sOpr)$, 
+where $\sOr$ runs over all open orbits in $G_1\cdot r_1^{-1}(\sOpr)$,
 $v\in \sOr$, $C_{G_2}(v)$ and $C_{P_1}(v)$ are the component groups of the
-centralizers of $v$ in $G_1$ and $P_1$ respectively. It can be shown that the
-definition only depends on the Levi subgroup $R_1$ but indpendent of the choice
-of the parobolic subgroup $P_1$.  
+centralizers of $v$ in $G_1$ and $P_1$ respectively. It is well-known that this definition only depends on the Levi subgroup $R_1$ but independent of the choice
+of the parobolic subgroup $P_1$.
 
-Via \eqref{eq:KS}, we translates  $\Ind_{R_1}^{G_1}$  to a morphism 
+Via the identification in \eqref{eq:KS}, we translate  $\Ind_{R_1}^{G_1}$  to a morphism
 \[
   \Ind_{R_1}^{G_1}\colon \bZ[\Nil_{K_{R_1,\bC}}(\fpp_{\frr_1})]\rightarrow
-\bZ[\Nil_{K_{G_1,\bC}}(\fpp_{\fgg_1})]
-\] 
+\bZ[\Nil_{K_{G_1,\bC}}(\fpp_{\fgg_1})].
+\]
 Here $K_{R_1,\bC}$ and $K_{G_1,\bC}$
 are maximal compact subgroups of $R_1$ and $G_1$ respectively; $\fpp_{\frr_1}$
 and $\fpp_{\fgg_1}$ are the non-compact parts of $\frr_1$ and $\fgg_1$ respectively.
 
-The notion of induced nilpotent orbits was first
+We remark that the notion of induced nilpotent orbits was first
 introduced by Lusztig and Spaltenstein for complex reductive groups \cite{LS}.
-Let $r_{1,\bC}\colon \fpp_1 \rightarrow \frr_1$ be the natrual quotient map
+Let $r_{1,\bC}\colon \fpp_1 \rightarrow \frr_1$ be the natural quotient map
 where $\fpp_1$ and $\frr_1$ are the complexification of $\fpp_{1,\bR}$ and
-$\frr_{1,\bR}$ respectively. 
+$\frr_{1,\bR}$ respectively.
 For a complex nilpotent orbit $\cO'\in \Nil_{R_{1,\bC}}(\bfrr_1)$, there is a
-unique open orbit in $G_{1,\bC}\cdot r_{1,\bC}^{-1}(\cO')$ which is defined to 
-be the induced orbit $\Indrgc(\cO')$.
+unique open orbit in $G_{1,\bC}\cdot r_{1,\bC}^{-1}(\cO')$ which is, by definition, the induced orbit $\Indrgc(\cO')$.
 
   %When $G_1$ is moreover a  complex reductive group,  write $\fgg_1$ for its Lie algebra and write $\fmm_1$ for the Lie algebra of $M_1$. Then for each complex nilpotent orbit $\cO_{1}\in \Nil_{M_1}(\fmm^*_{1})$, the induced %orbit $\Ind_{P_1}^{G_1} \cO_{1}\in \Nil_{G_1}(\fgg^*_{1})$ is similarly defined, as in \cite[Chapter 7]{CM}.
 
@@ -6388,58 +6528,59 @@ be the induced orbit $\Indrgc(\cO')$.
 
 
 \begin{lem}[\emph{cf}. Barbasch {\cite[Corollary~5.0.10]{B.Orbit}}]
-  \label{thm:Bar} 
+  \label{thm:Bar}
   Let $\cO'\in \Nil_{R_{1,\bC}}(\bfrr_1)$ and  $\pi'$ be an $\cO'$-bounded Casselman-Wallach
-  representation of $R_1$. Then $\Ind^{G_1}_{P_1}\pi'$ 
+  representation of $R_1$. Then $\Ind^{G_1}_{P_1}\pi'$
   is $\cO:= \Indrgc(\cO')$-bounded. Moreover
 \[
 \WFw(\Ind^{G_1}_{P_1} \pi') = \Indrg (\WFw(\pi'))
 \]
 and
 \[
-\wAC_{\cO}(\Ind^{G_1}_{P_1} \pi') = \Indrg (\wAC_{\cO'}(\pi'))
-\] 
+\wAC_{\cO}(\Ind^{G_1}_{P_1} \pi') = \Indrg (\wAC_{\cO'}(\pi')).
+\]
 \end{lem}
 \begin{proof}
-Barbasch proved the formula of weak wavefront cycles when $G_1$ is the
-real points of a connected reductive algebraic group. The proof still works in
+Barbasch proved the required formula for weak wavefront cycles when $G_1$ is the group of
+real points of a connected reductive algebraic group. The proof carries over in
 the slightly more general setting here.
 
 According to the fundamental result of Schimd-Vilonen \cite{SV}, the weak wave
 front cycle and the weak associated cycle agree under the Kostant-Sekiguchi
-correspondence. Therefore, we get the formula for weak associated cycles. 
+correspondence. Therefore, we obtain the required formula for weak associated cycles.
 \end{proof}
-We thank Professor Vilonen for confirming that their result
-extends to nonlinear groups. 
+
+\begin{remark} We thank Professor Vilonen for confirming that the results of \cite{SV} carry over to nonlinear groups.
+\end{remark}
 
 \medskip
 \def\Rsppo{R_{\sfss'',\sfss_0}}
 \def\Rso{R_{\sfss_0}}
 
-We now retain the notation in \Cref{sec:DP} and describe the inductions of
-certain nilpotent orbits explicitly using the signed Young diagram
+We retain the notation in \Cref{sec:DP} and proceed to describe inductions of
+certain nilpotent orbits in terms of signed Young diagram
 parameterization. These results are used in the proof of \Cref{prpaseq}.
 
-Let $\cOp\in \Nil(\fggsp)$.  
+Let $\cOp\in \Nil(\fggsp)$.
 Suppose that  $\sfss_0 = (\star_0, p_0,q_0)$ such that $p_0=q_0\geq
 \bfcc_2(\cOp)$. Recall that $\sfss' = (\star',p',q')$, $\sfss''
 =(\star',p'+p_0,q'+q_0)$ and the Levi subgroup $\Rsppo = \Rso\times \Gsp$. We
 identify $\sOp\in \Nil_{\Gsp}(\fggsp)$ with the nilpotent orbit $\set{0}\times
-\sOp$ of $\Rsppo$. 
+\sOp$ of $\Rsppo$.
 
 
 \def\po{a}
 \def\qo{b}
 \def\lll{p_0}
 
-\begin{lem}\label{lem:ind} 
+\begin{lem}\label{lem:ind}
 Let $\cOpp:=\indss(\cOp)$, $\sOp\in
-\Nil_{\sfss'}(\cOp)$ and $t = p_0-\bfcc_1(\cOp)$. 
- Then $\cOpp$ satisfies 
-    $\bfcc_i(\cOpp)=\bfcc_{i-2}(\cOp)$ for $i\geq 4$. 
+\Nil_{\sfss'}(\cOp)$ and $t = p_0-\bfcc_1(\cOp)$.
+ Then $\cOpp$ satisfies
+    $\bfcc_i(\cOpp)=\bfcc_{i-2}(\cOp)$ for $i\geq 4$.
   \begin{enuma}
     \item Suppose $\star'\in \set{B,D}$.
-    Then 
+    Then
     \[
       (\bfcc_1(\cOpp), \bfcc_2(\cOpp),\bfcc_3(\cOpp))
       =\begin{cases}
@@ -6462,7 +6603,7 @@ Let $\cOpp:=\indss(\cOp)$, $\sOp\in
       \end{cases}
     \]
     \item Suppose $\star'\in \set{C,\wtC}$.
-    Then 
+    Then
     \[
       (\bfcc_1(\cOpp), \bfcc_2(\cOpp),\bfcc_3(\cOpp))
       =\begin{cases}
@@ -6481,14 +6622,14 @@ Let $\cOpp:=\indss(\cOp)$, $\sOp\in
         (\Lambda_{(-\frac{t}{2},-\frac{t}{2})}\sOp) \cdot (0,0)
         \cdot (-\frac{t}{2},-\frac{t}{2})
          & \text{if $t < 0$ is even},  \\
-        \sum_{\po+\qo = 2}(\Lambda_{(-\frac{t-1}{2},-\frac{t-1}{2})}\sOp) 
+        \sum_{\po+\qo = 2}(\Lambda_{(-\frac{t-1}{2},-\frac{t-1}{2})}\sOp)
         \cdot (\po,\qo) \cdot (\frac{1-t}{2},\frac{1-t}{2})
             & \text{if $t<0$ is odd}.             \\
       \end{cases}
     \]
-    \item Suppose $\star' \in \set{C^*,D^*}$. 
-    Note that  $\lll$ and $t$ are even integers in this case.  
-    Then 
+    \item Suppose $\star' \in \set{C^*,D^*}$.
+    Note that  $\lll$ and $t$ are even integers in this case.
+    Then
     \[
       (\bfcc_1(\cOpp), \bfcc_2(\cOpp),\bfcc_3(\cOpp))
       =\begin{cases}
@@ -6504,7 +6645,7 @@ Let $\cOpp:=\indss(\cOp)$, $\sOp\in
         \sum_{\po+\qo =\frac{t}{2}}
         \sOp\cdot (2\po,2\qo)\cdot (0,0)
          & \text{if $t \geq 0$}, \\
-        \left(\Lambda_{(-\frac{t}{2},-\frac{t}{2})} \sOp \right)\cdot (0,0) 
+        \left(\Lambda_{(-\frac{t}{2},-\frac{t}{2})} \sOp \right)\cdot (0,0)
         \cdot (-\frac{t}{2},-\frac{t}{2})
          & \text{if $t < 0$}. \\
       \end{cases}
@@ -6517,7 +6658,7 @@ Let $\cOpp:=\indss(\cOp)$, $\sOp\in
         \sOp\cdot (\frac{t}{2},\frac{t}{2}) \cdot (0,0)
          & \text{if $t \geq 0$}, \\
          \sum_{\po+\qo = -\frac{t}{2}}
-        \left(\Lambda_{(2\po,2\qo)} \sOp \right)\cdot (0,0) 
+        \left(\Lambda_{(2\po,2\qo)} \sOp \right)\cdot (0,0)
         \cdot (2\po,2\qo)
          & \text{if $t < 0$}. \\
       \end{cases}
@@ -6529,89 +6670,89 @@ Let $\cOpp:=\indss(\cOp)$, $\sOp\in
 
 \delete{
 Retain the notation in \Cref{lem:ind}.
-%Let $n\in \bN$ such that $n\geq \abs{\DDn(\cOpp)}$. 
-Let 
+%Let $n\in \bN$ such that $n\geq \abs{\DDn(\cOpp)}$.
+Let
 \[
-  \sF\colon \bigsqcup_{\sfss,\cO} \cK_{\sfss}(\cO)\longrightarrow 
-  \bigsqcup_{\sfss,\cO} \bZ[ \Nil_{\sfss}(\cO) ] 
+  \sF\colon \bigsqcup_{\sfss,\cO} \cK_{\sfss}(\cO)\longrightarrow
+  \bigsqcup_{\sfss,\cO} \bZ[ \Nil_{\sfss}(\cO) ]
   \]
-  be the map defined  by $\cE \mapsto \dim (\cE_{\bfee''})\sO''$ where 
+  be the map defined  by $\cE \mapsto \dim (\cE_{\bfee''})\sO''$ where
 $\bfee''\in \sO'' \subset \cO''\cap \fpp_{\sfss''}$ and
 $\cE\in \cK_{\sfss''}(\cO'')$.
 
 
 \def\dblift{{\check \vartheta^2}}
 
-\begin{lem}\label{lem:dblift} 
+\begin{lem}\label{lem:dblift}
   Let  $\cE' \in \cK_{\sfss'}(\cO)$.
 %$\sOp \in \Nil_{\sfss'}(\cO)$ and
   \begin{enuma}
  \item Suppose $\star' \in \set{B,D}$ and  $2n = \abs{\DDn(\cOpp)}$.
- Let $\sfss = (\star, n,n)$ and 
+ Let $\sfss = (\star, n,n)$ and
  \[
    \dblift(\cE') := \dlift_{\sfss}^{\sfss''}(\dlift_{\sfss'}^{\sfss}(\cE'))
    + \dlift_{\sfss}^{\sfss''}(\dlift_{\sfss'}^{\sfss}
    (\cE' \otimes {\det}))\otimes {\det}.
-   \]    
+   \]
 
-  Then     
+  Then
   \[
     \sF(\dblift(\cE')) = \begin{cases}
-     2 \indsss(\sF(\cE')) & \text{if $t\geq 0$ is even},\\ 
-     \indsss(\sF(\cE')) & \text{if $t\geq -1$ is odd}.\\ 
-     %\indsss(\sO') & \text{if $t <-1$ is odd}.\\ 
+     2 \indsss(\sF(\cE')) & \text{if $t\geq 0$ is even},\\
+     \indsss(\sF(\cE')) & \text{if $t\geq -1$ is odd}.\\
+     %\indsss(\sO') & \text{if $t <-1$ is odd}.\\
     \end{cases}
   \]
-  When $t <-1$, $\sF(\dblift(\cE')) \preceq \indsss(\sF(\cE'))$ and the inequality 
+  When $t <-1$, $\sF(\dblift(\cE')) \preceq \indsss(\sF(\cE'))$ and the inequality
   can be strict in general.
 
- \item Suppose $\star' \in \set{C,\wtC}$. 
-  %and  $m = \abs{\DDn(\cOpp)}+d$.   
+ \item Suppose $\star' \in \set{C,\wtC}$.
+  %and  $m = \abs{\DDn(\cOpp)}+d$.
   Let $d\in \bN$ and $m = \abs{\DDn(\cOpp)}+d$.
-  When $t\geq 0$ or $(-t,d) \in (2\bN)\times \set{0}$, define 
+  When $t\geq 0$ or $(-t,d) \in (2\bN)\times \set{0}$, define
  \[
-   \dblift(\cE') := 
+   \dblift(\cE') :=
    \sum_{\substack{\sfss = (\star,p,q)\\ p+q=m}}
    \dlift_{\sfss}^{\sfss''}(\dlift_{\sfss'}^{\sfss}(\cE')).
-   \]    
+   \]
    When $t\geq 0$ or $(t,d)=(-2,0)$,\\
   \[
     \sF(\dblift(\cE')) = (d+1) \indsss(\sF(\cE')).
   \]
-   When $t< -2$ is even and $d=0$, 
+   When $t< -2$ is even and $d=0$,
     $\sF(\dblift(\cE')) \preceq \indsss(\sF(\cE'))$  and the inequality can be strict
-    in general 
+    in general
   \trivial[h]{
-    When $t<0$ is odd, the operation $\dlift_{\sfss'}^{\sfss}$ is out 
-    of our scope. 
+    When $t<0$ is odd, the operation $\dlift_{\sfss'}^{\sfss}$ is out
+    of our scope.
   }
 
- \item Suppose $\star' = C^*$ and $2n = \abs{\DDn(\cOpp)}$. 
-  Let $\sfss = (\star,n,n)$ and 
+ \item Suppose $\star' = C^*$ and $2n = \abs{\DDn(\cOpp)}$.
+  Let $\sfss = (\star,n,n)$ and
  \[
-   \dblift(\cE') := 
+   \dblift(\cE') :=
       \dlift_{\sfss}^{\sfss''}(\dlift_{\sfss'}^{\sfss}(\cE')).
-   \]    
-  When $t\geq -2$, 
+   \]
+  When $t\geq -2$,
   \[
-    \sF(\dblift(\cE')) = \indsss(\sF(\cE')). 
+    \sF(\dblift(\cE')) = \indsss(\sF(\cE')).
   \]
-  When $t <-2$, $\sF(\dblift(\cE')) \preceq \indsss(\sF(\cE'))$ and the inequality 
+  When $t <-2$, $\sF(\dblift(\cE')) \preceq \indsss(\sF(\cE'))$ and the inequality
   is strict in general.
 
- \item Suppose $\star' = D^*$. 
+ \item Suppose $\star' = D^*$.
     Let $d\in \bN$ and $2m = \abs{\DDn(\cOpp)}+2d$.
     When $t\geq 0$ or $(-t,d) \in (2\bN)\times \set{0}$, define
  \[
-   \dblift(\cE') := 
+   \dblift(\cE') :=
    \sum_{\substack{\sfss = (\star,2p,2q)\\ 2p+2q=2m}}
    \dlift_{\sfss}^{\sfss''}(\dlift_{\sfss'}^{\sfss}(\cE')).
-   \]    
-  When $t\geq 0$,   
+   \]
+  When $t\geq 0$,
   \[
-    \sF(\dblift(\cE')) = (d+1) \indsss(\sF(\cE')). 
+    \sF(\dblift(\cE')) = (d+1) \indsss(\sF(\cE')).
   \]
-  When $t< 0$ and $d=0$,  $\sF(\dblift(\cE')) = \indsss(\sF(\cE'))$ 
+  When $t< 0$ and $d=0$,  $\sF(\dblift(\cE')) = \indsss(\sF(\cE'))$
   and the inequality can be strict in general. \qed
   \end{enuma}
 \end{lem}
@@ -6619,18 +6760,22 @@ $\cE\in \cK_{\sfss''}(\cO'')$.
 
 
 
-\section{Properties of painted bipartitions}
+\section{Properties of painted bipartitions}\label{secppb}
 \def\ckfgg{{\check \fgg}}
 \def\pcT{\cT^+}
 \def\ncT{\cT^-}
 
+In this section, we study the properties of the descent maps. The results of this section are
+crucial for the calculation of associated cycles in \Cref{sec:ACC}.
 
-\subsection{Vanishing propotition}
-Because of the following proposition, we assume in the rest of this paper that $\check \CO$ is quasi-distinghuished  when $\star\in \{C^*, D^*\}$.
 
+\subsection{Vanishing proposition}
 
-\begin{prop}
-  Suppose that $\star\in \{C^*, D^*\}$. If the set $\mathrm{PBP}_\star(\check \CO)$ is nonempty, then $\check \CO$ is quasi-distinguished.
+Because of the following vanishing proposition, we will only need to consider 
+quasi-distinguished nilpotent orbits $\ckcO$ when $\star\in \set{C^*, D^*}$.
+
+\begin{prop}\label{prop:CD*}
+  Suppose that $\star\in \set{C^*, D^*}$. If the set $\PBP_\star(\ckcO)$ is nonempty, then $\check \CO$ is quasi-distinguished.
 \end{prop}
 \begin{proof}
   Suppose that $\tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \mathrm{PBP}_\star(\check \CO)$. If  $\star=C^*$, then  the definition of painted bipartitions implies that
@@ -6646,10 +6791,9 @@ This forces that $\check \CO$ is quasi-distinguished.
 This  also forces that   $\check \CO$ is quasi-distinguished.
  \end{proof}
 
-
 \subsection{Tails of painted bipartitions}
 \label{sec:tail}
-In the rest of this subsection, we assume that $\star\in\{B, D, C^*\}$.
+In this subsection, we assume that $\star\in\{B, D, C^*\}$ and define the notion of ``tail'' of a painted bipartition.
 Let $(\imath,\jmath) = (\imath_{\star}(\ckcO),\jmath_{\star}(\ckcO))$.
 %Note that $l\geq l'$ if $\star\in \{B,C^*\}$,   and $l\geq l'+1$ if $\star=D$.
 Put
@@ -6667,13 +6811,12 @@ k := \begin{cases}
 \frac{\bfrr_{1}(\ckcO)-\bfrr_{2}(\ckcO)}{2} -1 &  \text{if $\star=C^*$}.
   \end{cases}
 \]
-Here $k = \bfcc_{1}(\jmath)-\bfcc_{1}(\imath)+1$,
+We have $k = \bfcc_{1}(\jmath)-\bfcc_{1}(\imath)+1$,
 $\bfcc_{1}(\jmath)-\bfcc_{1}(\imath)$,
 and $\bfcc_{1}(\imath)-\bfcc_{1}(\jmath)$
-when $\star = B,C^{*},D^{*}$, respectively.
+when $\star = B,D,C^{*}$, respectively.
 
-Let $\ckcO_{\bftt}$ be the following Young diagram that is
-determined by the pair $(\star, \ckcO)$.
+From the pair $(\star, \ckcO)$, we define a Young diagram $\ckcO_{\bftt}$ as follows:  
 \begin{itemize}
     \item If $\star \in \set{B,D}$,
 then $\ckcO_{\bftt}$  consists of two rows with lengths $2k-1$ and $1$.
@@ -6681,7 +6824,7 @@ then $\ckcO_{\bftt}$  consists of two rows with lengths $2k-1$ and $1$.
 If $\star =C^*$, then $\ckcO_{\bftt}$ consists of one row
 with length  $2k+1$.
 \end{itemize}
-Note that  in all these three cases
+Note that in all three cases
  $\check \CO_{\mathbf t}$ has $\star_{\mathbf t}$-good parity and every element in $\PBP_{\star_\bftt}(\ckcO_\bftt)$ has the form
  \begin{equation}
  \label{tail0}
@@ -6690,19 +6833,20 @@ Note that  in all these three cases
   D\qquad\textrm{or}\qquad \emptyset \times  \ytb{{x_1} , {x_2} , {\enon\vdots},{\enon{\vdots}},{x_k}  } \times
  C^*,
 \end{equation}
-respectively if $\star=B, D$ or $C^*$.
+according to $\star=B, D$ or $C^*$, respectively. %Here $k$ can be zero if $\star = C^*$.
 
 % Here $k=l-l'+1, l-l'$ or $l-l'$ respectively.
 %\subsubsection{The case when $\star = B$}
 
-Let
-$
-\tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \mathrm{PBP}_\star(\check \CO)
-$ be as before.
+\medskip
 
 
-\noindent {\bf The case when $\star = B$.}
-In this case, we define the tail $\tau_\bftt$ of $\tau$ to be the first painted bipartition in \eqref{tail0} such that the multiset $\{x_1, x_2, \cdots, x_k\}$ is the
+Let $ \tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in
+\mathrm{PBP}_\star(\check \CO) $. The tail $\tau_\bftt$ of $\tau$ will be a painted bipartition in
+$\PBP_{\star_\bftt}(\ckcO_\bftt)$, which is defined below case by case. 
+
+\subsubsection*{The case when $\star = B$:}
+In this case, we define the tail $\tau_\bftt$ to be the first painted bipartition in \eqref{tail0} such that the multiset $\{x_1, x_2, \cdots, x_k\}$ is the
 union of the multiset
 \[
   \set{\cQ(j,1)| \bfcc_{1}(\imath)+1 \leq j \leq  \bfcc_{1}(\jmath) }
@@ -6718,52 +6862,42 @@ with the set
   \qquad \text{if $\alpha = B^-$, and either $\bfcc_{1}(\imath)=0$ or $\cQ(\bfcc_{1}(\imath),1)\in \set{\bullet,s}$}; \\
 %  \qquad\text{when } \alpha_\tau = B^-, \text{ and, } l'=0 \textrm{ or } \cQ_\tau(l',1)\in \set{\bullet,s},  \\
 \set{\cQ(\bfcc_{1}(\imath),1)},&
-\qquad  \text{if $\bfcc_{1}(\imath)>0$ and $\cQ(\bfcc_{1}(\imath),1)\in \{r,d\}$.}
+\qquad
+\text{otherwise.}
+%\text{if $\bfcc_{1}(\imath)>0$ and $\cQ(\bfcc_{1}(\imath),1)\in \{r,d\}$.}
 \end{cases}
 \]
 
-
-\smallskip
-
- \smallskip
-
-
-
-
-
-
-\noindent {\bf The case when $\star = D$.}
-In this case, we define the tail $\tau_\bftt$ of $\tau$ to be the second painted bipartition in \eqref{tail0} such that the multiset $\{x_1, x_2, \cdots, x_k\}$ is the
-union of the multiset
+\subsubsection*{The case when $\star = D$:}
+In this case, we define the tail $\tau_\bftt$ to be the second painted
+bipartition in \eqref{tail0} such that the multiset $\{x_1, x_2, \cdots, x_k\}$
+is the union of the multiset
 \[
 \set{\cP(j,1)| \bfcc_{1}(\jmath)+2 \leq j \leq \bfcc_{1}(\imath)}
 \]
 with the set
 \[
-  \begin{cases}
-  &
- \ \text{if $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)$,}\\
- \set{c},& \quad \text{$(\cP(\bfcc_{1}(\jmath)+1,1) ,\cP(\bfcc_{1}(\jmath)+1,2)) = (r,c)$ }\\
- & \quad \text{ and $\cP(l,1)\in \set{r,d}$};  \\
-\set{\cP(\bfcc_{1}(\jmath)+1,1)},&
-\    \text{otherwise.}
-\end{cases}
+\begin{cases}
+    \set{c},                          &
+    \ \text{if $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)$,}                                                                         \\
+                                      & \quad \text{$(\cP(\bfcc_{1}(\jmath)+1,1) ,\cP(\bfcc_{1}(\jmath)+1,2)) = (r,c)$ } \\
+                                      & \quad \text{ and $\cP(\bfcc_1(\imath),1)\in \set{r,d}$};                                       \\
+    \set{\cP(\bfcc_{1}(\jmath)+1,1)}, &
+    \    \text{otherwise.}
+  \end{cases}
 \]
 
- \smallskip
 
- \smallskip
-
-\noindent {\bf The case $\star = C^*$.}
-When $k=0$, we define the tail $\tau_{\bftt}$ of $\tau$ to be
+\subsubsection{The case $\star = C^*$:}
+If $k=0$, we define the tail $\tau_{\bftt}$ to be
 $\emptyset\times \emptyset \times C^{*}$.
-When $k> 0$, we define the tail $\tau_\bftt$ of $\tau$ to be the third painted bipartition in \eqref{tail0} such that
+If $k> 0$, we define the tail $\tau_\bftt$ to be the third painted bipartition in \eqref{tail0} such that
 \[
   (x_1, x_2, \cdots, x_k)= (\cQ(\bfcc_{1}(\imath)+1,1),\cQ(\bfcc_{1}(\imath)+2,1),\cdots, \cQ(\bfcc_{1}(\jmath),1)).
 \]
 
 
- When $\star \in \set{B,D}$, the symbol in the last box of the tail $\tau_\bftt\in \PBP_{\star_\bftt}(\ckcO_\bftt)$ will be impotent for us. We write $x_\tau$ for it, namely
+ When $\star \in \set{B,D}$, the symbol in the last box of the tail $\tau_\bftt\in \PBP_{\star_\bftt}(\ckcO_\bftt)$ will be important for us. We write $x_\tau$ for it, namely
 \[
 x_\tau := \cP_{\tau_\bftt}(k,1).
 \]
@@ -6772,10 +6906,10 @@ x_\tau := \cP_{\tau_\bftt}(k,1).
 \begin{lem}\label{tailtip}
 If $\star=B$, then
 \[
-x_\tau=s\Longleftrightarrow
+\hspace{9em} x_\tau=s\Longleftrightarrow
 \begin{cases}
   \alpha=B^-;\\
-  \cQ(\bfcc_{1}(\jmath),1) \in\{\bullet, s\},
+  \bfcc_1(\jmath)=0 \text{ or }\cQ(\bfcc_{1}(\jmath),1) \in\set{\bullet, s},
   \end{cases}
 %\quad \textrm{if and only if}\quad \alpha=B^- \ \textrm{ and }\  \cQ(l,1) = s,
 \]
@@ -6797,23 +6931,22 @@ x_\tau=d\Longleftrightarrow \cP(\bfcc_{1}(\imath),1) =d.
 \end{lem}
 
 
+\subsection{Key properties of the descent map}
+\label{sec:DDP}
+In this subsection, we establish some relevant properties
+of the descent of painted bipartitions.
+These properties will be used extensively in \Cref{sec:ACC}. 
+Recall that $\ckcO$ is assumed to be
+quasi-distinguished when $\star\in \set{C^*,D^*}$.
 
+\medskip
 
-
-
-
-\subsection{Some properties of the descent maps}
-
-
-
-%We state the key properties of the descent map in this section and the proofs will be given in \Cref{sec:DD.proof}.
-
-
-The key properties of the descent map when $\star\in \set{C,\wtC,D^*}$ are summarized in the following proposition.
+The key properties of the descent map when $\star\in \set{C,\wtC,D^*}$ are
+summarized in the following proposition.
 
 \begin{prop}\label{prop:CC.bij}
-Suppose that $\star \in \set{C,\wtC,D^*}$ and cosider the
-descent map
+Suppose that $\star \in \set{C,\wtC,D^*}$ and
+consider the descent map
 \begin{equation}\label{eq:DD.CC}
 \nabla: \PBP_\star(\ckcO)\longrightarrow  \PBP_{\star'}(\ckcOp).
 \end{equation}
@@ -6822,7 +6955,8 @@ descent map
 $\star=D^*$ or $\bfrr_1(\ckcO)>\bfrr_2(\ckcO)$, then
 the map \eqref{eq:DD.CC}  is bijective.
 
-\item If  $\star\in \{C,\widetilde C\}$ and $\bfrr_1(\ckcO)=\bfrr_2(\ckcO)$, then the  map \eqref{eq:DD.CC} is injective and its image equals
+\item If  $\star\in \{C,\widetilde C\}$ and $\bfrr_1(\ckcO)=\bfrr_2(\ckcO)$,
+then the  map \eqref{eq:DD.CC} is injective and its image equals
 \[
 \Set{\tau'\in \PBP_{\star'}(\ckcOp)| x_{\tau'}\neq s}.
 \]
@@ -6831,11 +6965,11 @@ the map \eqref{eq:DD.CC}  is bijective.
 
 \begin{proof}
   We give the detailed proof of part (b) when $\star=\wtC$.
-  The proofs in the other  cases are similar and are left to the reader.
+  The proofs in the other  cases are similar, which we skip. 
 
 %We assume that $\star = \wtC$ and $\bfrr_1(\ckcO)=\bfrr_2(\ckcO)$.
-By the definition of descent map (see \eqref{eq:def.alphap}), we have a well
-defined map% , the map \eqref{eq:DD.CC} induces a map
+By the definition of descent map (see \eqref{eq:def.alphap}), we have a well-defined map
+% , the map \eqref{eq:DD.CC} induces a map
 \begin{equation}\label{eq:DD.CC1}
 \DD: \Set{\tau\in \PBP_{\star}(\ckcO)| \cP_\tau(\bfcc_{1}(\imath),1)\neq c}\rightarrow \Set{\tau'\in \PBP_{\star'}(\ckcOp)|  \alpha_{\tau'}=B^+}.
 \end{equation}
@@ -6871,12 +7005,18 @@ and the map \eqref{eq:DD.CC1} are inverse to each other. Hence the map \eqref{eq
 \smallskip
 
 Similarly, the map
-\[
+\begin{equation}\label{eq:DD.CC2}
   \nabla: \Set{\tau\in \PBP_{\star}(\ckcO)| \cP_\tau(\bfcc_{1}(\imath),1)= c}
-  \rightarrow \Set{\tau'\in \PBP_{\star'}(\ckcOp)| \alpha_{\tau'}=B^-, \cQ_{\tau'}(\bfcc_{1}(\imath),1)\in\{r,d\}}
-\]
-is well-defined, and we show that it is bijective by explicitly  constructing its inverse. In view of Lemma \ref{tailtip}, this proves the proposition in the case we are considering.
-
+  \rightarrow \Set{\tau'\in \PBP_{\star'}(\ckcOp)|
+ \begin{array}{l}
+  \alpha_{\tau'}=B^- \text{ and } \\
+  \cQ_{\tau'}(\bfcc_{1}(\imath),1)\in\{r,d\}
+ \end{array}
+  }
+\end{equation}
+is well-defined, and shown to be bijective by constructing its inverse. 
+In view of \Cref{tailtip}, this
+proves the proposition for the case concerned. 
 \trivial[h]{
   Suppose $\star = \wtC$ and $\bfrr_{1}(\ckcO) >\bfrr_{2}(\ckcO)$. Then
   $\bfcc_{1}(\imath)>\bfcc_{1}(\jmath)$ and the ``inverse'' of descent is
@@ -6901,11 +7041,9 @@ is well-defined, and we show that it is bijective by explicitly  constructing it
 \medskip
 
 
-
+Now we discuss the case when $\star \in \set{B,D,C^*}$, which is more
+involved.
 %The following equation of signatures will be crucial in our computation of the local system in the next section.
-As in the Introduction, $\cO$ denotes the Barbasch-Vogan dual of $\ckcO$. % We also consider it as a Young diagram.
-The following proposition is easy to verify:
-
 % \begin{prop}\label{prop:D.sign}
 %   \begin{enuma}
 %     \item
@@ -6941,6 +7079,11 @@ The following proposition is easy to verify:
 % \qed
 % \end{prop}
 
+% Recall that $\cO$ denotes the Barbasch-Vogan dual of $\ckcO$. % We also consider it as a Young diagram.
+The following lemma deals with the case when the Barbasch-Vogan dual $\cO$ of
+$\ckcO$ has only one column. This is the most basic case, which can be verified
+easily.
+
 \begin{lem}
 \label{lem:D.sign}
   Suppose $k\in \bN^{+}$, $\star\in \set{B,D,C^{*}}$. Let $\ckcO$ be the
@@ -6957,12 +7100,15 @@ The following proposition is easy to verify:
     Then $\ckcO$ is the regular nilpotent orbit % in $\check \fgg$
     and $\cO = (1^{\bfrr_{1}(\ckcO)+1})_{\star}$.
 
-When $\star\in \set{B,D}$ the following map is bijective:
+When $\star\in \set{B,D}$, the following map is bijective:
 \[
   \begin{array}{rcl}
     \PBP_{\star}(\ckcO)& \longrightarrow& \Set{
     (p,q,\varepsilon) \in \bN\times\bN\times \bZ/2\bZ|
-    \varepsilon=1 \text{ if } pq=0,\text{ and } p+q=\abs{\cO}
+    \begin{array}{l}
+    p+q=\abs{\cO} \text{ and }\\
+    \varepsilon=1 \text{ if } pq=0\\
+    \end{array}
     },\\
     \tau &  \mapsto & (p_{\tau},q_{\tau}, \varepsilon_{\tau}).
   \end{array}
@@ -6973,26 +7119,19 @@ When $\star = C^{*}$, the following map is bijective:
   \PBP_{\star}(\ckcO) \longrightarrow \set{(p,q)|p,q \in 2\bN \text{ and }
     p+q=\abs{\cO} }, \quad \tau \mapsto (p_{\tau},q_{\tau}).
 \]
-\qed
 \end{lem}
 
 
-
-For every painted bipartition $\tau$, write
+For every painted bipartition $\tau\in \PBP_{\star}(\ckcO)$, write
 \[
-  \ssign(\tau):=(p_\tau, q_\tau).
+  \ssign(\tau):=(p_\tau, q_\tau). 
 \]
-
-When $\bfrr_2(\check \CO)>0$, the double descent
-$\DD^2(\tau):=\DD(\DD(\tau))$ is well-defined whenever
-$\tau\in \PBP_{\star}(\ckcO)$.
-
-
-The key properties of the descent map when $\star\in \set{D,B,C^*}$ are summarized in the following two propositions.
+The key properties of the descent map when $\star\in
+\set{D,B,C^*}$ are summarized in the following lemma.
 
 \begin{lem}
 \label{lem:delta}
-Assume that $\star \in \set{D,B,C^*}$ and $\bfrr_2(\ckcO)>0$. Write $\ckcOpp := \ckDD(\ckcO')$ and consider the map
+Suppose that $\star \in \set{D,B,C^*}$ and $\bfrr_2(\ckcO)>0$. Write $\ckcOpp := \ckDD(\ckcO')$ and consider the map
 \begin{equation}\label{eq:delta}
   \delta  \colon \PBP_\star(\ckcO)\longrightarrow
     \PBP_\star(\ckcOpp)\times \PBP_{\star_\bftt}(\ckcO_\bftt),
@@ -7000,22 +7139,23 @@ Assume that $\star \in \set{D,B,C^*}$ and $\bfrr_2(\ckcO)>0$. Write $\ckcOpp := 
 \end{equation}
 \begin{enuma}
 \item Suppose that
-$\star = C^*$ or $\bfrr_2(\ckcO)>\bfrr_3(\ckcO)$. Then the map \eqref{eq:delta} is a bijective, and for every $\tau\in  \PBP_\star(\ckcO) $,
+$\star = C^*$ or $\bfrr_2(\ckcO)>\bfrr_3(\ckcO)$. Then the map \eqref{eq:delta} is bijective, and for every $\tau\in  \PBP_\star(\ckcO) $,
     % We have the following equation of signatures.
 \begin{equation}\label{eq:sign.D}
 \ssign(\tau)
 =(\bfcc_2(\cO),\bfcc_2(\cO))+\ssign(\DD^2(\tau))+\ssign(\tau_\bftt).
 \end{equation}
 
-\item Suppose that  $\star \in \set{B,D}$ and $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$. Then the map \eqref{eq:delta} is  injection and its  image equals
+\item Suppose that  $\star \in \set{B,D}$ and $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$.
+Then the map \eqref{eq:delta} is an  injection and its  image equals
 \begin{equation}\label{eq:delta.I}
     \Set{ (\tau'',\tau_0)  \in \PBP_\star(\ckcOpp)\times \PBP_D(\ckcO_\bftt)  |
-      \begin{minipage}{15em}
-        either
-    $x_{\tau''} = d$, or \\
-    $x_{\tau''}\in \set{r,c}$  and
-    $\cP_{\tau_0}^{-1}(\set{s,c})\neq \emptyset$
-  \end{minipage}
+    \begin{array}{l}
+        \text{either
+    $x_{\tau''} = d$, or} \\
+    \text{$x_{\tau''}\in \set{r,c}$  and
+    $\cP_{\tau_0}^{-1}(\set{s,c})\neq \emptyset$}
+    \end{array}
 }.
 \end{equation}
 Moreover,  for every $\tau\in  \PBP_\star(\ckcO) $,
@@ -7028,12 +7168,12 @@ Moreover,  for every $\tau\in  \PBP_\star(\ckcO) $,
 
 \begin{proof}
   We give the detailed proof of part (b) when $\star=B$.
-  The proofs in the other  cases are similar and are left to the reader.
+  The proofs in the other  cases are similar, which we skip. 
   Let $\tau = (\imath,\cP)\times (\jmath,\cQ)\times \alpha$ and $\tau'' = \DD^{2}(\tau)$.
   % $\tau' = \DD(\tau)  = (\imath',\cP')\times (\jmath',\cQ')\times \alpha$.
   % $\tau'' = \DD(\tau')  = (\imath'',\cP'')\times (\jmath'',\cQ')\times \alpha$.
 
-  According to the descent algorithm, we have
+  According to the descent algorithm (see \Cref{sec:comb}), we have
   \begin{equation}\label{eq:delta.1}
     \begin{split}
     \cP(i,j) &= \begin{cases}
@@ -7046,25 +7186,18 @@ Moreover,  for every $\tau\in  \PBP_\star(\ckcO) $,
       \end{cases}
     \end{split}
   \end{equation}
-
-  We label the boxes which are not considered in \eqref{eq:delta.1} as the following:
+  We label the boxes in $\cP$ and $\cQ$ which are not considered in \eqref{eq:delta.1} as the following:
   \begin{equation}\label{eq:ydelta}
   \tau: \hspace{1em}
   \ytb{
-    %{\none[1]},
-    %{\none[\bfcc_{1}(\jmath)]}
     {x_{0}},
     \none,\none,\none,\none}
   \times
   \ytb{
-    %{\none[1]}{\none[2]},
     {x_{1}}{x''},
     {x_{2}},{\enon{\vdots}},{\enon{\vdots}},{x_{k}}}
   \times
   \alpha
-   % \mapsto
-   % \tau': \ytb{{y'_{0}},\none,\none,\none,\none}
-   % \times \ytb{\none{x'_{0}},\none,\none,\none,\none}
    \quad
   \mapsto
   \quad
@@ -7072,16 +7205,16 @@ Moreover,  for every $\tau\in  \PBP_\star(\ckcO) $,
   \times \ytb{\none{y''},\none,\none,\none,\none}
   \times \alpha'',
 \end{equation}
-where $k := \bfcc_{1}(\jmath)-\bfcc_{1}(\imath)+1$, $x_{0}$, $x_{1}$ and $y''$ has
+where $k := \bfcc_{1}(\jmath)-\bfcc_{1}(\imath)+1$, $x_{0}$, $x_{1}$ and $y''$ have
 coordinate $(\bfcc_{1}(\imath),1)$ in the corresponding painted Young diagram.
-By the descent algorithm, $x'' = y''$.
+It is easy to check that $x'' = y''$ always holds.
 Also note that $\bfcc_{2}(\cO) = 2\bfcc_{1}(\imath)$.
 % We have the following two cases, $x_{1}\in \set{r,d}$ or
 % $x_{1}\in \set{\bullet,s}$.
+To establish \eqref{eq:sign.GD}, we examine case by case according to the symbol $x_{1}$.
 
-We now discuss case by case according to the symbol $x_{1}$.
 When $x_{1} = s$, we have $(x_{0}, \alpha'') = (c,B^{-})$.
-Now
+So
 \begin{equation}\label{eq:sign.GD2}
   \begin{split}
     & \Sign(\tau) - \Sign(\tau'') \\
@@ -7090,22 +7223,26 @@ Now
     & = (\bfcc_{2}(\cO)-1, \bfcc_{2}(\cO)-1)+ \Sign(\tau_{\bftt}).
   \end{split}
 \end{equation}
-Here $\Sign$ counts the signature of various symbols in the same way of \eqref{defpbp0}.
-In second line of the above formula, the terms count the signatures of extra
-bullets, $x_{0}$, $x_{1}$, $\alpha''$, $\alpha$ and $x_{1}\cdots x_{k}$ respectively.
+Here $\Sign$ counts the signature of various symbols in the same way as 
+\eqref{ptqt}. In the second line of the above formula, the terms count the
+signatures of extra bullets, $x_{0}$, $x_{1}$, $\alpha''$, $\alpha$ and
+$x_{1}\cdots x_{k}$ respectively.
 
-When $x_{1} = \bullet$, we have $(x_{0}, \alpha'') = (\bullet,B^{+})$.
-When $x_{1} \in \set{r,d}$, we have $x'' = y''= d$ $(x_{0}, \alpha'') = (c,\alpha)$.
-In these two cases, the signature formula can be checked similarly. % to \eqref{eq:sign.GD2}.
-It also clear that the image of $\delta$ is in \eqref{eq:delta.I}.
+When $x_{1} = \bullet$, we have $(x_{0}, \alpha'') = (\bullet,B^{+})$. When
+$x_{1} \in \set{r,d}$, we have $x'' = y''= d$, $(x_{0}, \alpha'') = (c,\alpha)$.
+In these two cases, the signature formula can be checked similarly.
 
-%One can check case by case that
-It is not hard to construct the inverse of  $\delta$ from \eqref{eq:delta.I} to
-$\PBP_{\star}(\ckcO)$, and then the proposition follows. To illustrate the idea,
-we give the detail construction of $\delta^{-1}(\tau'',\tau_{0})$
-when $\cP_{\tau_{0}}(k,1)=c$. Most of the entries in $\cP$ and $\cQ$ are defined
-by \eqref{eq:delta.1}. We refer to \eqref{eq:ydelta} for the labeling of the
-rest of the entries, and set $\alpha:=B^{-}$, $x'':= \cQ_{\tau''}(\bfcc_{1}(\imath),1)$,
+\smallskip
+
+It is clear that the image of $\delta$ is in \eqref{eq:delta.I} and is
+straightforward to construct the inverse of $\delta$ from \eqref{eq:delta.I} to
+$\PBP_{\star}(\ckcO)$. To illustrate the idea, we give the detail construction
+of $\tau:=(\imath,\cP)\times (\jmath,\cQ)\times
+\alpha:=\delta^{-1}(\tau'',\tau_{0})$ when $\cP_{\tau_{0}}(k,1)=c$. We set
+$\alpha:=B^{-}$. Most of the entries in $\cP$ and $\cQ$ are already determined
+by
+\eqref{eq:delta.1}. We refer to \eqref{eq:ydelta} for the labeling of the rest
+of the entries in $\cP$ and $\cQ$. We set  $x'':= \cQ_{\tau''}(\bfcc_{1}(\imath),1)$,
 \[
 (x_{0},x_{1}) := \begin{cases}
   (\bullet,\bullet) & \text{if } \alpha''= B^{+},\\
@@ -7114,38 +7251,36 @@ rest of the entries, and set $\alpha:=B^{-}$, $x'':= \cQ_{\tau''}(\bfcc_{1}(\ima
 \quad \text{and}\quad
 x_{i} := \cP_{\tau_{0}}(i-1,1) \quad \text{for } i = 2,3,\cdots,k.
 \]
-
-\trivial{
-In fact, it suffice to check the proposition for the orbit $\ckcO$
+This gives $\tau := \delta^{-1}(\tau'',\tau_0)$ and finishes the proof for the case concerned.
+\trivial[h]{
+In fact, it suffices to check the proposition for the orbit $\ckcO$
 consists of three rows with lengths $2k$, $2$, and $2$.
 }
+\trivial[h]{
+  Suppose $\star =  C^{*}$.
+  Then $\tau$ is obtained by attaching a column of $\bfcc_{1}(\imath)$
+  bullets on the left of $\cP$, and a column of  $\bfcc_{1}(\imath)$
+  bullets concatenated with $\tau_{\bftt}$ on the left of $\cQ$. The bijectivity is clear. The
+  signature formula follows from $2\bfcc_{1}(\imath)  = \bfcc_{2}(\cO)$.
 
 
+  Suppose $\star =  D$ and $\bfrr_{2}(\ckcO)>\bfrr_{3}(\ckcO)$.
+  Then $\tau$ is obtained by attaching a column of $\bfcc_{1}(\jmath)$
+  bullets concatenated with $\tau_{\bftt}$ on the left of $\cP$, and a column of  $\bfcc_{1}(\jmath)$
+  bullets on the left of $\cQ$. The bijectivity is clear. The
+  signature formula follows from $2\bfcc_{1}(\jmath)  = \bfcc_{2}(\cO)$.
 
-  \trivial{
-    Suppose $\star =  C^{*}$.
-    Then $\tau$ is obtained by attaching a column of $\bfcc_{1}(\imath)$
-    bullets on the left of $\cP$, and a column of  $\bfcc_{1}(\imath)$
-    bullets concatenated with $\tau_{\bftt}$ on the left of $\cQ$. The bijectivity is clear. The
-    signature formula follows from $2\bfcc_{1}(\imath)  = \bfcc_{2}(\cO)$.
-
-
-    Suppose $\star =  D$ and $\bfrr_{2}(\ckcO)>\bfrr_{3}(\ckcO)$.
-    Then $\tau$ is obtained by attaching a column of $\bfcc_{1}(\jmath)$
-    bullets concatenated with $\tau_{\bftt}$ on the left of $\cP$, and a column of  $\bfcc_{1}(\jmath)$
-    bullets on the left of $\cQ$. The bijectivity is clear. The
-    signature formula follows from $2\bfcc_{1}(\jmath)  = \bfcc_{2}(\cO)$.
-
-    % Suppose $\star =  D$ and $\bfrr_{2}(\ckcO)=\bfrr_{3}(\ckcO)$.
-    % Then $\tau$ is obtained by attaching a column of $\bfcc_{1}(\jmath)$
-    % bullets concatenated with $\tau_{\bftt}$ on the left of $\cP$, and a column of  $\bfcc_{1}(\jmath)$
-    % bullets on the left of $\cQ$. The bijectivity is clear. The
-    % signature formula follows from $2\bfcc_{1}(\jmath)  = \bfcc_{2}(\cO)$.
-  }
+  % Suppose $\star =  D$ and $\bfrr_{2}(\ckcO)=\bfrr_{3}(\ckcO)$.
+  % Then $\tau$ is obtained by attaching a column of $\bfcc_{1}(\jmath)$
+  % bullets concatenated with $\tau_{\bftt}$ on the left of $\cP$, and a column of  $\bfcc_{1}(\jmath)$
+  % bullets on the left of $\cQ$. The bijectivity is clear. The
+  % signature formula follows from $2\bfcc_{1}(\jmath)  = \bfcc_{2}(\cO)$.
+}
 \end{proof}
 
-
-\begin{prop}\label{cor:D.inj1}
+Combining the injectivity results in \Cref{lem:delta} and
+\Cref{prop:CC.bij}, we get the following lemma.
+\begin{lem}\label{cor:D.inj1}
 Suppose that $\star \in \set{D,B,C^*}$ and $\bfrr_{2}(\ckcO)>0$.
 Then the map
 \begin{equation}\label{eq:D.BD}
@@ -7159,22 +7294,12 @@ Then the map
 %    \qquad \tau \mapsto (\DD(\tau), \tau_\bftt)
 % \end{equation}
 is injective. Moreover, \eqref{eq:D.BD} is bijective
-unless $\star\in \set{B,D}$ and $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$.
+unless $\star\in \set{D,B}$ and $\bfrr_2(\ckcO)=\bfrr_3(\ckcO)>0$.
 % when $\star = C^*$
-\end{prop}
-\begin{proof}
-  % Suppose $\tau_{1}, \tau_{2} \in \PBP_{\star}(\ckcO)$ such that
-  % $ \delta' (\tau_{1}) = \delta'(\tau_{2})$. Now $\DD(\tau_{1}) = \DD(\tau_{2})$ follows from
-  % the injectivity results in \Cref{lem:delta} and \Cref{prop:CC.bij}.
-It follows from the injectivity results in \Cref{lem:delta} and \Cref{prop:CC.bij}.
-  % Suppose $\uptau_{1}, \uptau_{2} \in \PBPes(\ckcO)$ such that
-  % $ \delta' (\uptau_{1}) = \delta'(\uptau_{2})$. By the definition of descent,
-  % $\wp_{\uptau_{1}} = \wp_{\uptau_{2}}$. Now $\tau_{1} = \tau_{2}$ follows from
-  % the injectivity results in \Cref{lem:delta} and \Cref{prop:CC.bij}.
-\end{proof}
+\end{lem}
 
-Combining the above propotition with \Cref{lem:D.sign}, we get the following.
-\begin{cor}\label{cor:dpinj}
+Combining Lemmas \ref{lem:D.sign}, \ref{lem:delta} and \ref{cor:D.inj1}, we obtain the following proposition. 
+\begin{prop}\label{cor:dpinj}
 If $\star \in \set{B, D,C^*}$, then the map
 \begin{equation}
   \begin{array}{rcl}
@@ -7184,131 +7309,160 @@ If $\star \in \set{B, D,C^*}$, then the map
    \end{array}
 \end{equation}
 is injective. \qed
-\end{cor}
+\end{prop}
 
 
 
-%\section{Marked Young diagrams attached to the painted bipartitions: combinatorics} \label{sec:ACC}
-\section{Associated cycles and the exhaustion of special representations} \label{sec:ACC}
+\section{Properties of associated cycles}
+\label{sec:ACC}
 
 \def\dsign{{}^d\mathrm{Sign}}
 
 \def\acm{\cL}
 \def\acme{\tilde{\cL}}
+\def\dlifttso{{\check \vartheta}_{\sfss_{\tau'},\cO'}^{\sfss_{\tau},\cO}}
+\def\DDtss{\DD_{\sfss_{\tau'}}^{\sfss_{\tau}}}
 
-By \Cref{thmpitau},
- we reduce the study of the associated cycles of into 
- combinatorical problems.
-In this section, we  will be solve these problems. 
+In this section, we study the properties of the associated cycles $\AC(\uptau)$
+defined in \Cref{subsecass}.
+Let $\uptau=(\tau,\wp)\in \PBP_\star(\ckcO)$, $\uptau' := (\tau',\wp'):=\DD(\uptau)$ and  $\cO':=\DDtss(\cO)$.
 
-Recall that $\AOD_{\star}(\cO)$ can be parameterized by $\MYD_{\star}(\cO)$. 
-We fist define the combinatorical companion of $\AC(\uptau)$.
-Suppose $\abs{\ckcO}=0$. For $\uptau\in \PBP_{\star}(\ckcO)$, we define
+\subsection{Translate to combinatorical problem}
+
+\begin{lem}\label{lem:actau}
+  The cycle $\AC(\uptau)$ is an element in $\bN[\AOD_{\sfss_\tau}(\cO)]$.
+\end{lem}
+\begin{proof}
+We prove by induction on the number of rows in $\ckcO$. The lemma clearly holds
+for the initial case by the definition in \Cref{subsecass}. For the general
+case, $\cO$ is regular for $\DDtss$ by \Cref{lem78}. Therefore $\AC(\uptau)\in
+\bN[\AOD_{\sfss_\tau}(\cO)]$  by \Cref{lem:aod} and the induction
+hypothesis that $\AC(\uptaup)\in \bN[\AOD_{\sfss_{\tau'}}(\cO')]$.
+\end{proof}
+
+
+Let $\ac_{\uptau}\in \bN[\MYD_\star]$ be the element corresponds to the
+associated cycle $\AC(\uptau)$ via \eqref{eq:myd}.
+The study of $\AC(\uptau)$ now is translated to
+the combinatorics problem of computing $\ac_{\uptau}$.
+Via \Cref{lem:clift}, $\ac_{\uptau}$ is also
+defined combinatorically as the following:
+\begin{itemize}
+\item
+When $\abs{\ckcO}=0$,
 \[
   \ac_{\uptau} :=
   \begin{cases}
-   (1^{\Sign(\uptau)})_{\star}\lotimes(0,1) & \text{if } \star=B\\
-   (1^{(0,0)})_{\star} & \text{otherwise}.
+   (1^{\Sign(\tau)})_{\star}\lotimes(0,1), & \text{if } \star=B;\\
+   (1^{(0,0)})_{\star}, & \text{otherwise}.
   \end{cases}
 \]
-
-Suppose $\abs{\ckcO} >0$. For $\uptau = (\tau,\wp)\in \PBP_{\star}(\ckcO)$, let
-$\uptau' = \DD(\uptau)$ and we define
+\item
+When $\abs{\ckcO} >0$,
 \[
 \ac_{\uptau} :=
 \begin{cases}
-  \dliftv[\sfss_{\uptau'}][\sfss_{\uptau}](\ac_{\uptaup}\lotimes (\varepsilon_{\wp},\varepsilon_{\wp}))
-  & \text{if } \star\in \set{C,\wtC},\\
-  \dliftv[\sfss_{\uptau'}][\sfss_{\uptau}](\ac_{\uptaup})
-  & \text{if } \star = D^{*}, \\
-  \dliftv[\sfss_{\uptau'}][\sfss_{\uptau}](\ac_{\uptaup})\lotimes (0,\varepsilon_{\tau})
-  & \text{if } \star \in \set{B,D}, \\
-  \dliftv[\sfss_{\uptau'}][\sfss_{\uptau}](\ac_{\uptaup})
-  & \text{if } \star = C^{*}.
+  \dlifttso(\ac_{\uptaup}\lotimes (\varepsilon_{\wp},\varepsilon_{\wp}))
+  & \text{if } \star\in \set{C,\wtC};\\
+  \dlifttso(\ac_{\uptaup})\lotimes (0,\varepsilon_{\tau})
+  & \text{if } \star \in \set{B,D}; \\
+  \dlifttso(\ac_{\uptaup})
+  & \text{if } \star \in \set{C^*,D^{*}}. \\
 \end{cases}
 \]
-See  \eqref{eq:LCD} and \eqref{eq:LDC} for the definition of $\dlift[\sfss'][\sfss]$.
-
+Here $\dlifttso$ is defined by \eqref{eq:LCD} and \eqref{eq:LDC}.
+\end{itemize}
 For $\star\in \set{B,D}$ and $\cE\in \bZ[\MYD_{\star}]$, we write
 \[
 \cE^{+} := \Lambda_{(1,0)}(\cE) \AND \cE^{-} := \Lambda_{(0,1)}(\cE).
 \]
 We adopt the convention that $\cE\cdot \emptyset = 0$ for $\cE\in\bZ[\MYD]$.
-
-Using the signature formulas in \Cref{lem:delta}, we have the following more
-explicit formulas on $\ac_{\uptau}$.
+We have the following more explicit formulas on $\ac_{\uptau}$.
 \begin{lem}\label{lem:dlift}
-  Suppose $\ckcO$ such that $\bfrr_{2}(\ckcO)>0$. Let
+  Suppose that $\ckcO$ such that $\bfrr_{2}(\ckcO)>0$. Let
   $\uptau = (\tau,\wp)\in \PBPes(\ckcO)$ and $\uptaup = \DD(\uptau)$.
 \begin{enuma}
   \item
-  Suppose $\star\in \set{C,\wtC}$.  Then
+  Suppose that $\star\in \set{C,\wtC}$.  Then
   \begin{equation}\label{eq:C}
     \ac_{\uptau}=
     \begin{cases}
       \maltese^{y}\big( (\ac_{\uptau'}\lotimes (\varepsilon_{\wp},\varepsilon_{\wp}))
-      \cdot (n_{0},n_{0})\big) & \text{if } \bfrr_{1}(\ckcO)>\bfrr_{2}(\ckcO)\\
-      \maltese^{y}\big( (\pac{\uptau'} + \nac{\uptaup})\cdot (0,0) \big)
-      & \text{if } \bfrr_{1}(\ckcO)=\bfrr_{2}(\ckcO)
+      \cdot (n_{0},n_{0})\big), & \text{if } \bfrr_{1}(\ckcO)>\bfrr_{2}(\ckcO);\\
+      \maltese^{y}\big( (\pac{\uptau'} + \nac{\uptaup})\cdot (0,0) \big),
+      & \text{if } \bfrr_{1}(\ckcO)=\bfrr_{2}(\ckcO);
     \end{cases}
   \end{equation}
-  where $y$ is an integer determined by $\Sign(\uptaup)$ and $n_{0} = (\bfcc_{1}(\cO)-\bfcc_{2}(\cO))/2$.
+  Here %\begin{itemize}
+   % \item
+    $n_{0} = \frac{\bfcc_{1}(\cO)-\bfcc_{2}(\cO)}{2}$,
+   % \item
+    $y = \frac{p_{\tau'}-q_{\tau'}}{2}$ if $\star=C$ and
+    $y = \frac{p_{\tau'}-q_{\tau'}-1}{2}$ if $\star=\wtC$.
+  %\end{itemize}
   \item
-  Suppose $\star\in \set{B,D}$ and $\bfrr_{2}(\cO)>\bfrr_{3}(\cO)$. Then
+  Suppose that $\star\in \set{B,D}$ and $\bfrr_{2}(\cO)>\bfrr_{3}(\cO)$. Then
   \begin{equation}\label{eq:BD}
     \ac_{\uptau}= \big((\maltese^{y}\ac_{\uptau'})\cdot (p_{\tau_{\bftt}},q_{\tau_{\bftt}})\big)
     \lotimes (0,\varepsilon_{\tau})
-    % \ac_{\uptau}= \big(\maltese^{y}(\ac_{\uptau'}\lotimes (0,\varepsilon_{\tau}))\big)
-    % \cdot (p_{\tau_{\bftt}},q_{\tau_{\bftt}})
   \end{equation}
-  where $y$ is an integer determined by $\Sign(\uptau)$.
+  Here %\begin{itemize}
+    $y = \frac{p_{\tau}-q_{\tau}+1}{2}$ if $\star=B$ and
+    $y = \frac{p_{\tau}-q_{\tau}}{2}$ if $\star=D$.
+  %where $y$ is an integer determined by $\Sign(\uptau)$.
   In particular,
   \begin{equation}\label{eq:TBD}
     \cE(1) = \ac_{(\tau_{\bftt},\emptyset)}(1)
   \end{equation}
   for each $\cE\in \MYD_\star$ has nonzero multiplicity in $\ac_{\uptau}$.
   \item
-  When  $\bfrr_{2}(\cO)=\bfrr_{3}(\cO)$,
+  Suppose that $\star\in \set{B,D}$ and $\bfrr_{2}(\cO)=\bfrr_{3}(\cO)$.
+  Then
   \begin{equation}\label{eq:BD2}
     \ac_{\uptau} =
     \big((\maltese^t (\pac{\uptaupp}\cdot (0,0)) \cdot \pcT_{\tau}
-    +  (\maltese^t(\nac{\uptaupp}\cdot (0,0)) ) \cdot \ncT_{\tau}\big)\lotimes(0,\varepsilon_{\tau})
+    +  (\maltese^t(\nac{\uptaupp}\cdot (0,0)) ) \cdot \ncT_{\tau}\big)
+    \lotimes(0,\varepsilon_{\tau}).
   \end{equation}
-  where $\uptaupp = \DD^{2}(\uptau)$ and
+  Here $\uptaupp = \DD^{2}(\uptau)$ and
   \[
   \begin{split}
     t &  = \frac{\abs{\ssign(\tau_{\bftt})}}{2},\\
-    \pcT_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}},q_{\tau_{\bftt}}-1) & \text{when
+    \pcT_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}},q_{\tau_{\bftt}}-1) &
+       \text{when
       } q_{\tau_{\bftt}}-1\geq 0 , \\
       \emptyset & \text{otherwise},
     \end{cases}\\
-    \ncT_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}}-1,q_{\tau_{\bftt}}) & \text{when
+    \ncT_{\uptau}& = \begin{cases} (p_{\tau_{\bftt}}-1,q_{\tau_{\bftt}}) &
+       \text{when
       } p_{\tau_{\bftt}}-1\geq 0  ,\\
       \emptyset & \text{otherwise}.
     \end{cases}\\
   \end{split}
 \]
 \item
-  Suppose $\star\in \set{D^{*}}$.  Then
+  Suppose that $\star\in \set{D^{*}}$.  Then
   \[
     \ac_{\uptau}=\ac_{\uptau'} \cdot (n_{0},n_{0}),
   \]
   where $n_{0} = (\bfcc_{1}(\cO)-\bfcc_{2}(\cO))/2$.
 \item
-  Suppose $\star\in \set{C^{*}}$.  Then
+  Suppose that $\star\in \set{C^{*}}$.  Then
   \[
     \ac_{\uptau}=\ac_{\uptau'} \cdot (p_{\tau_{\bftt}},q_{\tau_{\bftt}}).
 \]
 \end{enuma}
-\qed
 \end{lem}
+\begin{proof}
+ The lemma follows from the signature formulas in \Cref{lem:delta},
+\end{proof}
 
 
 
-\trivial[h]{Hint of the proof of (c). It suffice to consider the most left three columns of the peduncle
-  part: this part has signature
-  $\lsign(\cT_{\uptau}) +(1,1) = \ssign(\tau_{\bftt}x_{\uptaupp})= \ssign(\tau_{\bftt})+\lsign(\cD_{\uptaupp})$.
-  Therfore,
+\trivial[h]{Hint of the proof of (c). It suffice to consider the most left three
+  columns of the peduncle part: this part has signature $\lsign(\cT_{\uptau})
+  +(1,1) = \ssign(\tau_{\bftt}x_{\uptaupp})=
+  \ssign(\tau_{\bftt})+\lsign(\cD_{\uptaupp})$. Therfore,
   \[\ssign(\tau_{\bftt}) = \lsign(\cT_{\uptau})-\lsign(\cD_{\uptaupp})
   + (1,1) = \lsign(\ac_{\uptau})-\lsign(\ac_{\uptaupp})+(1,1).
   \]
@@ -7316,24 +7470,31 @@ explicit formulas on $\ac_{\uptau}$.
 
 \subsection{Properties of $\ac_{\uptau}$}
 \label{sec:ac}
-In this section, we summarizes the properties of $\ac_{\uptau}$ in the following
-lemmas. Their proofs are given in the next three sections.
+In this section, we summarizes the properties of $\ac_{\uptau}$. The proofs are
+given in the next three sections.
 
-\begin{lem}\label{lem:ac0}
-  For each $\uptau\in \PBPes(\ckcO)$, $\ac_{\uptau}\neq 0$.
-  Moreover, the multiplicity of each $\cE\in \MYD_{\star}$ in $\ac_{\uptau}$ is
-  either $0$ or $1$.
+The following lemma implies the non-vanishing and multiplicity freeness of $\AC(\tau)$, see \Cref{thmac1}.
+ \begin{lem}\label{lem:ac0}
+  For each $\uptau\in \PBPes(\ckcO)$,
+  $\ac_{\uptau}\neq 0$. Moreover, the multiplicity of each $\sO\in \SYD_{\star}$
+  in $\sF\circ \ac_{\uptau}$ is either $0$ or $1$.
 \end{lem}
 
+\smallskip
+
+The following three lemmas implie \Cref{thmac2} \Cref{thmac3}, \Cref{thmac4},
+\Cref{thmac5} and \Cref{thmac0} part (b) and (c).
 \begin{lem}\label{lem:C}
-Suppose $\star \in \set{C,\wtC,D^{*}}$ and $\ckcO\neq \emptyset$.
+  Suppose that $\star \in \set{C,\wtC,D^{*}}$ and $\ckcO\neq \emptyset$.
   \begin{enuma}
-    \item Let $\uptau_{1} = (\tau_{1},\wp_{1})$ and $\uptau_{2}=(\tau_{2},\wp_{2})$ be two elements in
-    $\PBPesp(\ckcOp)$ such that $\ac_{\uptau_{1}} =  \ac_{\uptau_{2}}$.
-    Then
-    \[\Sign(\tau'_{1})=\Sign(\tau'_{2}) \quad \text{and} \quad \varepsilon_{\wp_{1}}=\varepsilon_{\wp_{2}},
-    \]
-    where $\tau'_{i} := \DD(\tau_{i})$ for $i=1,2$.
+    \item Let $\uptau_{1} = (\tau_{1},\wp_{1})$ and
+    $\uptau_{2}=(\tau_{2},\wp_{2})$ be two elements in $\PBPesp(\ckcOp)$ such
+    that $\ac_{\uptau_{1}} =  \ac_{\uptau_{2}}$. Then
+    \[
+      \Sign(\tau'_{1})=\Sign(\tau'_{2}) \quad \text{and} \quad
+    \varepsilon_{\wp_{1}}=\varepsilon_{\wp_{2}}, \]
+    where $\tau'_{i} :=
+    \DD(\tau_{i})$ for $i=1,2$.
     % \item Let $\uptau_{1} = (\tau_{1},\wp_{1})$ and $\uptau_{2}=(\tau_{2},\wp_{2})$ be two distinct elements in
     % $\PBPesp(\ckcOp)$. Then
     % \begin{itemize}
@@ -7344,7 +7505,7 @@ Suppose $\star \in \set{C,\wtC,D^{*}}$ and $\ckcO\neq \emptyset$.
     % \end{itemize}
     \item When $\ckcO$ is weakly-distinguished, the following map is injective.
     \[
-      \acme \colon
+      \acm \colon
       \PBPes( \ckcO )\longrightarrow \bZ[\MYD_{\star}(\cO)],
       \quad \uptau\mapsto \ac_{\uptau}.
       %\AC\colon \PBPes( \cOp )\longrightarrow \cK_{\star}(\cO).
@@ -7370,7 +7531,7 @@ Suppose $\star \in \set{B,D}$ and $(\star, \check \CO)\neq (D, \emptyset)$.
 
   \item When $\ckcO$ is weakly-distinguished, the following map is injective.
   \[
-    \acm \colon
+    \acme \colon
     \PBPes( \ckcO )\times \bZ/2\bZ \longrightarrow \bZ[\MYD_{\star}(\cO)],\quad
     (\uptau,\epsilon) \mapsto \ac_{\uptau}\otimes (\epsilon, \epsilon).
   \]
@@ -7378,36 +7539,31 @@ Suppose $\star \in \set{B,D}$ and $(\star, \check \CO)\neq (D, \emptyset)$.
 \end{enuma}
 \end{lem}
 
+Note that $\ckcO$ is quasi-distinguished when $\star = C^*$, see \Cref{prop:CD*}.
 \begin{lem}\label{lem:C*}
-Suppose $\star = C^{*}$.
-  When $\ckcO$ is quasi-distinguished, the image of the map
+Suppose that $\star = C^{*}$. The map
     \[
  \acm: \PBPes( \ckcO )\longrightarrow \bZ[\MYD_{\star}(\cO)],
       \quad \uptau\mapsto \ac_{\uptau}
     \]
-    is $\MYD_{\star}(\cO)$.
+    is injective with image $\MYD_{\star}(\cO)$.
 \end{lem}
 
+\smallskip
+
+The following are technical lemmas.
 \begin{lem}\label{lem:BD2}
-Suppose $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
+Suppose that $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
 \begin{enuma}
   \item If $x_{\uptau}=s$, then $\ac_{\uptau}^{+} =0$ and $\ac_{\uptau}^{-}=0$.
   \item If $x_{\uptau}\in \set{r,c}$, then $\ac_{\uptau}^{+} \neq 0$ and $\ac_{\uptau}^{-}=0$.
   \item If $x_{\uptau}=d$, then $\ac_{\uptau}^{+} \neq 0$ and
   $\ac_{\uptau}^{-}\neq 0$.
 \end{enuma}
-% Then $\ac_{\uptau}$ satisfies
-%   \[
-%     \begin{cases}
-%       \ac_{\uptau}^{+} =0, \text{ and } \ac_{\uptau}^{-}=0, & \text{when } x_{\uptau}=s,\\
-%       \ac_{\uptau}^{+} \neq 0, \text{ and }   \ac_{\uptau}^{-}=0 , & \text{when } x_{\uptau}\in \set{r,d},\\
-%       \ac_{\uptau}^{+} \neq 0, \text{ and }   \ac_{\uptau}^{-}\neq 0,  & \text{when } x_{\uptau}=d.\\
-%     \end{cases}
-%   \]
 \end{lem}
 
 \begin{lem}\label{lem:BD3}
-Suppose $\star \in \set{B,D}$, $\ckcO \neq \emptyset$ and $\ckcO$ is weakly-distinguished.
+Suppose that $\star \in \set{B,D}$, $\ckcO \neq \emptyset$ and $\ckcO$ is weakly-distinguished.
 \begin{enuma}
     \item The map
     \begin{equation}\label{eq:up}
@@ -7436,50 +7592,31 @@ Suppose $\star \in \set{B,D}$, $\ckcO \neq \emptyset$ and $\ckcO$ is weakly-dist
      \end{array}
    \]
     are injective.
-    \item When $\bfrr_{1}(\ckcO)> \bfrr_{3}(\ckcO)$, and $x_{\tau}=d$.
+    \item Suppose that $\bfrr_{1}(\ckcO)> \bfrr_{3}(\ckcO)$ and $x_{\tau}=d$.
     Then there is $\cE\in \MYD$ with non-zero coefficient in $\nac{\uptau}$ such that $\cE\sqsupseteq (1,0)$.
+    In particular, there is no $\uptau_2\in \PBP_\star(\ckcO)$ satisfies
+    \[
+     \pac{\uptau_2} \cdot (0,0) = \maltese (\nac{\uptau}\cdot (0,0)).
+    \]
   \end{enuma}
 \end{lem}
 
-%For $\sum_{i} m_{i} \cE_{i} \in \bZ[\MYD_{\star}]$ with
+All the claims for $\star\in \set{C^{*},D^{*}}$ are straightforward to verify.
+So we will focus on the non-quaternionic cases in the next three sections.
 
-% Suppose $\sum_{j=1}^{k} m_{j} \cE_{j} \in \bZ[\MYD_{\star}]$ where $k\in \bN$, $m_{j}>0$ and
-% $\cE_{j}\in \MYD_{\star}$, define
-% \[
-%   \lsign(\sum_{j} m_{j} \cE_{j}) = \set{\lsign(\cE_{j})|j=1,2,\cdots, k}.
-% \]
+\smallskip
 
-% \begin{lem}\label{lem:BD3}
-% Suppose $\star \in \set{B,D}$ and $\ckcO \neq \emptyset$.
+We prove by induction on the number of columns in $\cO$.
 
-% \end{lem}
+\subsection{The initial cases}\label{sec:pfDC.init} Suppose $\bfcc_{1}(\cO)=0$.
+Then the group $G_{\sfss_\tau,\bC}$ is the trivial group and everything are
+clear.
 
+\smallskip
 
-% % In this section, we let $\star \in \set{B,D,C^{*}}$. Now
-% % $\star' = \wtC, C, D^{*}$  respectively.
-% %
-
-% We will prove the above lemmas by induction on the number of columns in $\cO$.
-
-% We assume all the claim had been proven when $\ckcO$ has at most two columns, that
-% is
-% \begin{itemize}
-%   \item When $\star = D$, $\bfrr_{3}(\ckcO) = 0$;
-%   \item When $\star = B$, $\bfrr_{2}(\ckcO)=0$;% is the zero orbit.
-%   \item When $\star = C^{*}$, $\bfrr_{2}(\ckcO)=0$.% is the zero orbit.
-% \end{itemize}
-
-All the claims for $\star\in \set{C^{*},D^{*}}$ in the above lemmas are straight forward to verify.
-We will focus on the non-quaternionic cases in the next two sections.
-
-\subsection{The initial cases}\label{sec:pfDC.init}
-Suppose $\bfcc_{1}(\cO)=0$. Then the group $G_{\bC}$ is the trivial group,
-everything are clear.
-
-We now assume $\bfcc_{1}(\cO)>0$ and $\bfcc_{2}(\cO)=0$.
-
-Suppose $\star \in \set{C,\wtC,D^*}$. There there is $k\in\bN^{+}$ such that
-$\cO = (1^{2k})_{\star}$, and $\ckcO$ is the regular nilpotent orbit in $\ckfgg$.
+We now assume that $\bfcc_{1}(\cO)>0$ and $\bfcc_{2}(\cO)=0$. Suppose that
+$\star \in \set{C,\wtC,D^*}$. There there is $k\in\bN^{+}$ such that $\cO =
+(1^{2k})_{\star}$ and $\ckcO$ is the regular nilpotent orbit in $\ckfgg$.
 % \[ \ckcO =
 %   \begin{cases}
 %    ((2k+1)^{1})_{B} & \text{when } \star=C,\\
@@ -7490,7 +7627,7 @@ $\cO = (1^{2k})_{\star}$, and $\ckcO$ is the regular nilpotent orbit in $\ckfgg$
 Now $\PBPes(\ckcO)$ has only one element, say $\uptau_{0}$, which
 maps to $\ac_{\uptau_{0}} = (1^{(k,k)})_{\star}$.
 
-Suppose $\star \in \set{B,D,C^{*}}$. There is $k\in \bN^{+}$ such that
+Suppose that $\star \in \set{B,D,C^{*}}$. There is $k\in \bN^{+}$ such that
 $\cO$ and $\ckcO$ are given by \Cref{lem:D.sign}.
 When $\star \in \set{B,D}$,
 \[
@@ -7506,7 +7643,7 @@ Thanks to \Cref{lem:D.sign}, it is easy to see that
 \]
 is a bijection.
 
-When $\star = C^{*}$, for $\uptau\in \PBPes(\ckcO)$,
+When $\star = C^{*}$, %for $\uptau\in \PBPes(\ckcO)$,
 \[
   \ac_{\uptau} = (1^{(p_{\tau},q_{\tau})})_{\star}\quad \Forall \uptau\in \PBPes(\ckcO).
 \]
@@ -7517,58 +7654,11 @@ Now
 \]
 is a bijection by \Cref{lem:D.sign}.
 
+\smallskip
+
 In all the cases, the orbit $\ckcO$ is quasi-distinghuished and all the lemmas
-in \Cref{sec:ac} are clear now.
+in \Cref{sec:ac} are straightforward to verify.
 
-
-% When $k=0$, $\cO = (C_{1}=2c_{1},C_{0}=2c_{0})$ has  at most
-% two columns.
-% Now $\uppi_{\uptaup}$ is the trivial representation of $\Sp(2c_{0},\bR)$.
-% The lift $\uppi_{\uptaup} \mapsto \Thetab(\uppi_{\uptaup})$ is in fact a stable
-% range theta lift.%, and therefore $\uppi_{\uptau}\neq 0$.
-% For $\uptau\in \drc(\cO)$, let $(p_{1},q_{1}) = \ssign(\bfxx_{\uptau})$ and
-% $x_{\uptau}$ be the foot of $\uptau$. It is easy to see that  (using associated
-% character formula)
-% \[
-%   \ac_{\uppi_{\uptau}} = \cT_{\uptau}\cdot \cP_{\uptau},
-%   \text{ where }\cT_{\uptau}:=\dagger \dagger_{c_{0},c_{0}},
-%   \text{ and } \cP_{\uptau}:=\begin{cases}
-%     \ddagger_{p_{1},q_{1}}&  x_{\uptau} \neq d,\\
-%     \dagger_{p_{1},q_{1}}& x_{\uptau} = d.\\
-%   \end{cases}
-% \]
-% Note that $\ac_{\uppi_{\uptau}}$ is irreducible.
-
-% Let $\cO_{1} = (2(c_{1}-c_{0}))\in \dpeNil(D)$. Using the above formula,
-% one can check that the following maps are bijections
-% \[
-%   \begin{tikzcd}[row sep=0em]
-%     \drc(\cO_{1}) &\ar[l] \drc(\cO) \ar[r] & \LLS(\cO)\\
-%     \bfxx_{\uptau} & \ar[l,maps to] \uptau \ar[r,mapsto] & \ac_{\uptau}.
-%   \end{tikzcd}
-% \]
-% To see that $\drc(\cO)\ni\uptau\mapsto \ac_{\uptau}$ is an injection, one check the
-% following lemma holds:
-% \begin{lem}\label{c:init.CD}
-%   The map $\drc(\cO_{1})\longrightarrow \bN^{2}\times \bZ/2\bZ$ given by
-%   $\uptau\mapsto (\ssign(\uptau),\upepsilon_{\uptau})$ is injective (see
-%   \Cref{sec:upepsilon} for the definition of $\upepsilon_{\uptau}$). Moreover,
-%   $\upepsilon_{\uptau}=0$ only if $\ssign(\uptau)\geq (0,1)$. \qedhere
-% \end{lem}
-
-
-% Moreover, $\ac_{\uptau}\otimes \det \notin \LLS(\cO)$ for any $\uptau\in \drc(\cO)$.
-% In fact, if $\ssign(\bfxx_{\uptau})\succeq (1,0)$, $\ac_{\uptau}$
-% on the 1-rows with $+$-signs is trivial and $\ac_{\uptau}\otimes \det$ has
-% non-trivial restriction. When $\ssign(\bfxx_{\uptau})\nsucceq (1,0)$,
-% $\bfxx_{\uptau}=s\cdots s$, all 1-rows of $\ac_{\uptau}$ are marked by ``$=$'' and
-% all 1-rows of $\ac_{\uptau}\otimes \det$ are  marked by ``$-$''.
-
-% Therefore our main \Cref{thm:count} and main proposition \Cref{prop:CD} holds for $\cO$.
-
-
-
-% Let $C_{i} = \bfcc_{i}(\ckcO)$ for $i =1,2, \cdots$.
 
 \subsection{The general case for $\star\in \set{C,\wtC}$}
 We now assume $\bfcc_{2}(\cO)>0$ and retain the notation in \Cref{lem:C}.
@@ -7955,6 +8045,7 @@ In all the cases,  we get $\ac_{\uptau''_{1}}=\ac_{\uptau''_{2}}$ by the
 injectivity of $\Upsilon_{\ckcO''}^{+}$ or $\Upsilon_{\ckcO''}^{-}$.
 Hence $\ac_{\uptau_{1}}=\ac_{\uptau_{2}}$ by \eqref{eq:BD2}.
 
+
 \begin{bibdiv}
   \begin{biblist}
 % \bib{AB}{article}{
@@ -8171,6 +8262,22 @@ pages = {1--39},
  pages = {1--18},
  title = {Recent advances in enveloping algebras of semisimple Lie-algebras},
  year = {1976/77}
+}
+
+\bib{BK}{article}{
+   author={Borho, Walter},
+   author={Kraft, Hanspeter},
+   title={\"{U}ber Bahnen und deren Deformationen bei linearen Aktionen
+   reduktiver Gruppen},
+   language={German, with English summary},
+   journal={Comment. Math. Helv.},
+   volume={54},
+   date={1979},
+   number={1},
+   pages={61--104},
+   issn={0010-2571},
+   review={\MR{522032}},
+   doi={10.1007/BF02566256},
 }
 
 \bib{Carter}{book}{
