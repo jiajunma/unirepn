@@ -1,6 +1,6 @@
 \documentclass[12pt,a4paper]{amsart}
 \usepackage[margin=2.5cm,marginpar=2cm]{geometry}
-
+\usepackage{amscd}
 
 \usepackage[bookmarksopen,bookmarksdepth=3,hidelinks]{hyperref}
 \usepackage[nameinlink]{cleveref}
@@ -55,7 +55,7 @@
 %\usepackage{mathrsfs}
 
 \setcounter{tocdepth}{1}
-\setcounter{secnumdepth}{3}
+\setcounter{secnumdepth}{2}
 
 %\usepackage[abbrev,shortalphabetic]{amsrefs}
 
@@ -1536,10 +1536,10 @@ We define the Langlands dual of $G$ to be the complex group
 \begin{remark} The authors have defined the notion of metaplectic dual for a real metaplectic group \cite{BMSZ1}. In this article, we have chosen to use the uniform terminology of Langlands dual (rather than metaplectic dual in the case of a real metaplectic group).
 \end{remark}
 
-Denote by $\Nil(\check \fgg)$ the set of   $\check G$-orbits  of nilpotent matrices in $\check \fgg$.
+Denote by $\Nil(\check \fgg)$ the set of   $\check G$-orbits  of nilpotent matrices in $\check \fgg$. 
 %Likewise,  $\Nil(\fgg)$ denotes the set of   $G_\C$-orbits  of nilpotent matrices in $\fgg$.
 %namely the set of all  orbits of nilpotent matrices under the adjoint action of $\check G$ in $\check \g$.
-When no confusion is possible, we will not distinguish a nilpotent orbit in $\GL_n(\C)$, $\oO_n(\C)$ or $\Sp_{2n}(\C)$ with its corresponding Young diagram. In particular, the zero orbit is represented by the Young diagram consisting of one nonempty column at most.
+When no confusion is possible, we will not distinguish a nilpotent orbit for $\GL_n(\C)$, $\oO_n(\C)$ or $\Sp_{2n}(\C)$ with its corresponding Young diagram. In particular, the zero orbit is represented by the Young diagram consisting of one nonempty column at most. 
 
 Let  $\check \CO \in \Nil(\check \fgg) $.  It determines a character $\chi(\check \CO): \oU(\g)^{G_\C}\rightarrow \C$ as in what follows. For every  $a\in \bN$, write
 \[
@@ -1649,7 +1649,7 @@ A painted Young diagram is then a pair $(\imath, \CP)$, consisting of a Young di
   \end{Example}
 
 
- We introduce two more symbols $B^+$ and $B^-$, and make the following definition.
+When no confusion is possible, we write $\alpha\times \beta\times \gamma$ for a triple $(\alpha, \beta, \gamma)$.   We introduce two more symbols $B^+$ and $B^-$, and make the following definition.
  \begin{defn}\label{defpbp0}
  A painted bipartition is a triple $\tau=(\imath, \CP)\times (\jmath, \CQ)\times \alpha$, where $(\imath, \CP)$ and $ (\jmath, \CQ)$ are painted Young diagrams, and $\alpha\in \{B^+,B^-, C,D,\widetilde {C}, C^*, D^*\}$, subject to the following conditions:
  \begin{itemize}
@@ -1741,8 +1741,8 @@ We further attach some objects to $\tau$ in what follows:
 %   (\imath, \jmath)=(\imath_{\star_\tau}(\check \CO_\tau, \wp_\tau), \jmath_{\star_\tau}(\check \CO_\tau, \wp_\tau)).
 %$
 %\end{itemize}
-%The existence of such a pair is a consequence of the explicit description of the coherent continuation representations. See   \cite[Theorems 6, 7, 10, 11]{Mc} and
-%\cite[Proposition 6.9]{RT}
+%The existence of such a pair is a consequence of the explicit description of the coherent continuation representations. See   \cite[Theorems 6, 7, 10, 11]{Mc} and 
+%\cite[Proposition 6.9]{RT} 
 
  \noindent $\abs{\tau}$ : This is the natural number \[
   \abs{\tau}:=\abs{\imath}+\abs{\jmath}.
@@ -1759,7 +1759,7 @@ We further attach some objects to $\tau$ in what follows:
 }
 
 
-
+ 
 
  \smallskip
 
@@ -1777,12 +1777,12 @@ We further attach some objects to $\tau$ in what follows:
     \end{array}
     \right.
 \end{equation}
-Here
+Here 
 \[
 \#\bullet:=\#(\cP^{-1}(\bullet))+\#(\cQ^{-1}(\bullet))\qquad (\textrm{$\#$ indicates the cardinality of a finite set}),
-\]
-and the other terms are similarly defined.
-If $\star_\tau\in \{C, \widetilde C, D^*\}$,  $p_\tau:=q_\tau:=\abs{\tau}$.
+\] 
+and the other terms are similarly defined. 
+If $\star_\tau\in \{C, \widetilde C, D^*\}$,  $p_\tau:=q_\tau:=\abs{\tau}$. 
 
 \smallskip
 
@@ -1809,7 +1809,7 @@ If $\star_\tau\in \{C, \widetilde C, D^*\}$,  $p_\tau:=q_\tau:=\abs{\tau}$.
  \smallskip
 
   \noindent $\dim \tau$:
-This is the dimension of the standard representation of the complexification of $G_\tau$, or equivalently,
+This is the dimension of the standard representation of the complexification of $G_\tau$, or equivalently, 
  \[
  \dim \tau:= \left\{
      \begin{array}{ll}
@@ -1825,9 +1825,9 @@ This is the dimension of the standard representation of the complexification of 
  \smallskip
 
   \noindent $\varepsilon_\tau$:
-This is the element in $\Z/2\Z$ such that
+This is the element in $\Z/2\Z$ such that 
 \[
-  \varepsilon_\tau=0\Leftrightarrow  \textrm{the symbol $d$ occurs in the first column of $( \imath, \cP)$ or $(\jmath, \cQ)$}.
+  \varepsilon_\tau=0\Leftrightarrow  \textrm{the symbol $d$ occurs in the first column of $( \imath, \cP)$ or $(\jmath, \cQ)$}. 
 \]
 
  \smallskip
@@ -1983,11 +1983,11 @@ primitive in $\check \CO$, if    $\mathbf r_i(\check \CO)-\mathbf r_{i+1}(\check
 Denote $\mathrm{PP}_\star(\check \CO)$ the  set of all $\star$-pairs that are primitive in $\check \CO$.
 \end{defn}
 
-For any $\check \CO$, we attach a pair of Young diagrams
+We attach to $\check \CO$ a pair of Young diagrams
 \[
 (\imath_{\check \CO}, \jmath_{\check \CO}):=(\imath_\star(\check \CO), \jmath_\star(\check \CO)),
 \]
-as follows.
+ as follows.
 
 \medskip
 
@@ -2188,21 +2188,21 @@ We call $\star'$
  \[
   \check \nabla_{\mathrm{naive}}(\check \CO):= \textrm{the Young diagram obtained from $\check \CO$ by removing the first row}.
   \]
-   By convention, $\check \nabla_{\mathrm{naive}}(\emptyset)=\emptyset$. The dual descent of $\check \CO$ is defined to be
+   By convention, $\check \nabla_{\mathrm{naive}}(\emptyset)=\emptyset$. The dual descent of $\check \CO$ is defined to be 
   \[
    \check \CO':=\check \nabla(\check \CO):=\check \nabla_\star( \check \CO):=\begin{cases}
    \tytb{\   }\, , \quad& \textrm{if $\star\in \{D, D^*\}$ and $\check \CO=\emptyset$};\smallskip\\
    \check \nabla_{\mathrm{naive}}(\check \CO), \quad & \textrm{otherwise},
     \end{cases}
   \]
-  where $\tytb{\   }$ denote the Young diagram that has total size $1$.
-
+  where $\tytb{\   }$ denotes the Young diagram that has total size $1$. 
+  
   % Here $\emptyset$ stands for the empty Young diagram, and $\tytb{\ }$ stands for the Young diagram of total size $1$.
  Note that $\check \CO'$ has $\star'$-good parity, and
 \[
  \mathrm{PP}_{\star'}(\check \CO')=\{(i,i+1)\mid i\in \bN^+, \, (i+1, i+2)\in \mathrm{PP}_{\star}(\check \CO) \}.
 \]
-Define the dual descent of a subset $\wp\subset \mathrm{PP}_{\star}(\check \CO)$ to be the subset
+Define the dual descent of a subset $\wp\subset \mathrm{PP}_{\star}(\check \CO)$ to be the subset 
 \begin{equation}\label{eq:DD.wp}
   \wp':=\ckDD(\wp):=\{(i,i+1)\mid i\in \bN^+, \, (i+1, i+2)\in \wp \}\subset \mathrm{PP}_{\star'}(\check \CO').
 \end{equation}
@@ -2230,7 +2230,7 @@ Let $(W_{\tau, \tau'}, \la \,\cdot\,,\,\cdot\,\ra_{\tau, \tau'})$ be a real symp
   w,w'\in W_{\tau, \tau'},\,\,t,t'\in \R.
  \]
 
- Let $\omega_{\tau, \tau'}$ be a suitably normalized smooth oscillator representation of $J_{\tau, \tau'}$ such that every $t\in \R\subset J_{\tau, \tau'}$ acts on it through the scalar multiplication by $e^{\sqrt{-1}\, t}$. % (the letter $\pi$  often denotes a representation, but here it stands for the circumference ratio).
+ Let $\omega_{\tau, \tau'}$ be a suitably normalized smooth oscillator representation of $J_{\tau, \tau'}$ such that every $t\in \R\subset J_{\tau, \tau'}$ acts on it through the scalar multiplication by $e^{\sqrt{-1}\, t}$. % (the letter $\pi$  often denotes a representation, but here it stands for the circumference ratio).  
  See Section \ref{secoscil} for details.
  For any Casselman-Wallach representation $\pi'$ of $G_{\tau'}$, write
  \[
@@ -2318,13 +2318,13 @@ is bijective.
 \end{thm}
 
 By the above theorem, we have explicitly constructed all special unipotent representations in $\mathrm{Unip}_{\star}(\check \CO)$, when $\check \CO$ has $\star$-good parity.
-The method of matrix coefficient integrals (Section \ref{sec:Integrals}) will imply the following unitarity result.
+The method of matrix coefficient integrals (Section \ref{sec:Integrals}) will imply the following unitarity result. 
 
 \begin{cor}\label{cor1}
 Suppose that $\check \CO\in \Nil(\check \g)$ has $\star$-good parity. Then all special unipotent representations in $\mathrm{Unip}_{\star}(\check \CO)$ are unitarizable.
 \end{cor}
 
-The reduction of \cite{BMSZ2} allows us to classify all special unipotent presentations attached to a general $\check \CO\in \Nil(\check \g)$ from those which have $\star$-good parity, by using irreducible unitary parabolic inductions. We thus conclude the following generalization of Corollary \ref{cor1}.
+The reduction of \cite{BMSZ2} allows us to classify all special unipotent presentations attached to a general $\check \CO\in \Nil(\check \g)$ from those which have $\star$-good parity, by using irreducible unitary parabolic inductions. We thus conclude the following generalization of Corollary \ref{cor1}. 
 
 \begin{thm}
 All special unipotent representations of the classical groups in \eqref{typebcd} are unitarizable.
@@ -2343,7 +2343,7 @@ decomposition
   \g^*=\frak k^*\oplus \p^*.
 \]
 Write $K_\C$ for the complexification of the compact group $K$. It is a complex algebraic group with an obvious algebraic action on $\p^*$.
-We identify $\g^*$ with $\g$ by using the trace form, and denote by $\mathrm{Nil}(\g)=\mathrm{Nil}(\g^*)$ the set of $G_\C$-orbits of nilpotent matrices in $\g=\g^*$.
+We identify $\g^*$ with $\g$ by using the trace form, and denote by $\mathrm{Nil}(\g)=\mathrm{Nil}(\g^*)$ the set of $G_\C$-orbits of nilpotent matrices in $\g=\g^*$.  
 
 For any $\check \CO\in \Nil(\check \g)$, write $\CO\in \mathrm{Nil}(\g^*)$ for the Barbarsch-Vogan dual of $\check \CO$ so that its Zariski closure in $\g^*$ equals the associated variety of the ideal $I_{\check \CO}\subset \oU(\g)$. See \cite{BVUni,BMSZ1} and Section \ref{subsecass}. The algebraic variety
 $
@@ -2414,7 +2414,7 @@ Recall that a nilpotent orbit in $\check \g$ is said to be distinguished if it i
 
 \noindent
 (c) If  $\star\in \{C, \widetilde C, C^*\}$ so that its Howe dual $\star'\in  \{B, D, D^*\}$, then $\check \CO$ is said to be weakly-distinguished if its dual descent $\check \CO'$
-% (which is a Young diagram that has $\star'$-good parity)
+% (which is a Young diagram that has $\star'$-good parity) 
 is weakly-distinguished.
 
 \end{defn}
@@ -2424,7 +2424,8 @@ We will compute the associated cycle of $\pi_\uptau$ for every painted bipartiti
 
 \begin{thm}\label{thmac0} Suppose that $\check \CO\in \mathrm{Nil}(\check \g)$  has $\star$-good parity.
 
-\noindent (a) For any $\pi\in \mathrm{Unip}_{\check \CO}(G)$, the associated cycle $\mathrm{AC}_{\CO}(\pi)\in \cK_{K_\C}(\CO) $ is a nonzero  sum of  pairwise distinct elements of $\mathrm{AOD}_{K_\C}(\CO)$.
+\noindent (a) For every $\pi\in \mathrm{Unip}_{\check \CO}(G)$, the associated cycle $\mathrm{AC}_{\CO}(\pi)\in \cK_{K_\C}(\CO) $ is a nonzero  sum of  admissible orbit data 
+over pairwise distinct $K_\C$-orbits in $\CO\cap \p^*$. % elements of $\mathrm{AOD}_{K_\C}(\CO)$ 
 
 \noindent  (b) If $\check \CO$ is weakly-distinguished, then the map
 \[
@@ -2444,7 +2445,7 @@ Suppose that $\star\in \{C^*, D^*\}$ so that $G$ is quaternionic.
 Then there is  precisely one admissible orbit datum over  $\sO$ for each $K_\C$-orbit $\sO\subset \CO\cap \p^*$.
 Thus
 \[
- \mathrm{AOD}_{K_\C}(\sO)=K_\C\backslash  (\CO\cap \p^*).
+ \mathrm{AOD}_{K_\C}(\CO)=K_\C\backslash  (\CO\cap \p^*).
 \]
 If $\check \CO$ is not quasi-distinghuished, then
 $\CO\cap \p^*$ is empty (see \cite[Theorems 9.3.4 and 9.3.5]{CM}), and hence $\mathrm{Unip}_{\check \CO}(G)$ is also empty.
@@ -2471,7 +2472,7 @@ This is the length of the leading column of every element of $\mathrm{PBP}_\star
 
 For a Young diagram $\imath$, its naive descent, which is denoted by $\nabla_\mathrm{naive}(\imath)$, is defined to be the Young diagram obtained from $\imath$ by removing the first column. By convention, $\nabla_\mathrm{naive}(\emptyset)=\emptyset$.
 
-%In the rest of this section, we assume that $\check \CO\neq \emptyset$.
+%In the rest of this section, we assume that $\check \CO\neq \emptyset$. 
 
  %Put\[
 %l':=l_{\star', \check \CO'}
@@ -2823,7 +2824,7 @@ In conclusion, we have by now a well-defined descent map
 \]
 
 
-The following injectivity result will be  proved in Section \ref{Secpd}. %will be important for us.
+The following injectivity result will be  proved in Section \ref{secppb}. %will be important for us. 
 %The key property that we will need  of the descent map when $\star\in \set{D,B,C^*}$ are summarized in the following two propositions.
 
 \begin{prop}\label{prop:DD.BDinj}
@@ -2856,14 +2857,14 @@ is injective.
 % \subsubsection{complex orthogonal and symplectic groups}
 \subsection{Classical spaces}
 Let $\star\in \{B,C,D, \widetilde C, C^*, D^*\}$ as before. Put
-\[
+\be\label{epsilond}
 (\epsilon, \dot \epsilon):=(\epsilon_\star, \dot \epsilon_\star):=\begin{cases}
   (1,1),&\quad \textrm{ if  $\star\in \{B,D\}$;} \smallskip \\
  (-1,-1),&\quad \textrm{ if  $\star\in \{C,\widetilde C\}$;} \smallskip \\
  (-1,1),&\quad \textrm{ if  $\star=C^*$;} \smallskip \\
  (1,-1),&\quad \textrm{ if  $\star=D^*$.}
  \end{cases}
-\]
+\ee
 A classical signature is defined to be a triple  $\mathsf s=(\star, p,q)\in  \{B,C,D, \widetilde C, C^*, D^*\}\times \bN\times \bN$ such that
 \[
 \begin{cases}
@@ -2874,17 +2875,17 @@ A classical signature is defined to be a triple  $\mathsf s=(\star, p,q)\in  \{B
  \end{cases}
 \]
  Suppose that $\mathsf s=(\star, p,q)$ is a classical  signature in the rest of this section.
-Set
+Set 
 \[
   \abs{\sfss}:=p+q,
 \]
-and we call $\star$ the type of $\sfss$.
+and we call $\star$ the type of $\sfss$. 
 
 %\subsubsection{Cartan involution}
 %We recall a standard result on (global) Cartan involution.
 We omit the proof of the following lemma (\cf \cite[Section~1.3]{Ohta}).
 \begin{lem}\label{lem:cartan}
-  Then there is quadruple  $(V, \la\,,\,\ra, J,L)$ satisfying the following conditions:
+  There is quadruple  $(V, \la\,,\,\ra, J,L)$ satisfying the following conditions:
   \begin{itemize}
 %  \item \label{it:cartan.1} $\inn{Lu}{Lv}_{\bfV} = \inn{u}{v}_{\bfV} $ and $L^2 = \dotepsilon$;
    % and $\epsilon\ccL\ccJ = 1$;
@@ -3063,11 +3064,11 @@ Let $\sO$ be a $K_{\mathsf s, \C}$-orbit in $\p_{\mathsf s}$. Suppose that $\sO$
 \be\label{kkpo}
   M_{\mathsf s}^{-1}(\sO)\cap \cX_{\mathsf s, \mathsf s'}^\circ
 \ee
-is a single $K_{\mathsf s,\C}\times K_{\mathsf s', \C}$-orbit. Moreover, for any element $\phi$ in $M_{\mathsf s}^{-1}(\sO)\cap \cX_{\mathsf s, \mathsf s'}^\circ$, there is an exact sequence of algebraic groups:
+is a single $K_{\mathsf s,\C}\times K_{\mathsf s', \C}$-orbit. Moreover, for every element $\phi$ in $M_{\mathsf s}^{-1}(\sO)\cap \cX_{\mathsf s, \mathsf s'}^\circ$, there is an exact sequence of algebraic groups:
 \[
-  1\rightarrow K_{\mathsf s_1,\C}\rightarrow (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi\xrightarrow{\textrm{the projection to the first factor}} (K_{\mathsf s,\C})_{\mathbf e}\rightarrow 1,
+  1\rightarrow (K_{\mathsf s',\C})_\phi \rightarrow (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi\xrightarrow{\textrm{the projection to the first factor}} (K_{\mathsf s,\C})_{\mathbf e}\rightarrow 1,
 \]
-where $\mathbf e:=M_\mathsf s(\phi)\in \sO$,  $\mathsf s_1$ is a classical signature of type  $\star'$, $(K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$ is the stabilizer of $\phi$ in $K_{\mathsf s,\C}\times K_{\mathsf s', \C}$, and $(K_{\mathsf s,\C})_{\mathbf e}$ is the stabilizer of $\mathbf e$ in $K_{\mathsf s,\C}$.
+where $\mathbf e:=M_\mathsf s(\phi)\in \sO$,  $(K_{\mathsf s',\C})_\phi$ is the stabilizer of $\phi$ in $K_{\mathsf s',\C}$, $(K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$ is the stabilizer of $\phi$ in $K_{\mathsf s,\C}\times K_{\mathsf s', \C}$, and $(K_{\mathsf s,\C})_{\mathbf e}$ is the stabilizer of $\mathbf e$ in $K_{\mathsf s,\C}$.
 \end{lem}
 
 
@@ -3087,7 +3088,7 @@ Similar to \eqref{momentmap}, we have the following two well-defined algebraic m
 These two maps are also called the moment maps. Similar to the maps in \eqref{momentmap},   they  are both $G_{\mathsf s,\C}\times G_{\mathsf s', \C}$-equivariant.
 
 
-We record the following lemma for later use.
+We record the following lemma for later use. 
 \begin{lem}\label{imageofmm}
 Suppose that $\CO\in \mathrm{Nil}(\g_\sfss)$. Then  $\CO$ is contained in the image of the moment map $\tilde M_{\mathsf s}$ if and only if
 \[
@@ -3122,8 +3123,8 @@ Let $\zeta_{\mathsf s, \mathsf s'}$ denote the algebraic character on $K_{\maths
  (\zeta_{\mathsf s, \mathsf s'})|_{K_{\mathsf s, \C}}=
    \begin{cases}
     1, \quad & \textrm{if $\star\in \{B, D, C^*\}$}; \smallskip\\
-      ({\det}_{\sqrt{-1}})^{\frac{q'-p'}{2}}, \quad & \textrm{if $\star\in \{C, D^*\}$};\smallskip\\
-     ({\det}_{\sqrt{-1}}^{\frac{1}{2}})^{q'-p'}, \quad & \textrm{if $\star=\widetilde C$,}\\
+      ({\det}_{\sqrt{-1}})^{\frac{p'-q'}{2}}, \quad & \textrm{if $\star\in \{C, D^*\}$};\smallskip\\
+     ({\det}_{\sqrt{-1}}^{\frac{1}{2}})^{p'-q'}, \quad & \textrm{if $\star=\widetilde C$,}\\
   \end{cases}
 \]
 and
@@ -3131,15 +3132,15 @@ and
  (\zeta_{\mathsf s, \mathsf s'})|_{K_{\mathsf s', \C}}=
    \begin{cases}
     1, \quad & \textrm{if $\star\in \{C, \widetilde C, D^*\}$}; \smallskip\\
-      ({\det}_{\sqrt{-1}})^{\frac{p-q}{2}}, \quad & \textrm{if $\star\in \{D, C^*\}$};\smallskip\\
-     ({\det}_{\sqrt{-1}}^{\frac{1}{2}})^{p-q}, \quad & \textrm{if $\star=B$}.
+      ({\det}_{\sqrt{-1}})^{\frac{q-p}{2}}, \quad & \textrm{if $\star\in \{D, C^*\}$};\smallskip\\
+     ({\det}_{\sqrt{-1}}^{\frac{1}{2}})^{q-p}, \quad & \textrm{if $\star=B$}.
  \end{cases}
 \]
 Here and henceforth, when no confusion is possible, we  use $1$ to indicate the trivial representation of a group (we also use $1$ to denote the identity element of a group).
 Let  $\sO$ be a $K_{\mathsf s, \C}$-orbit in $\p_{\mathsf s}$ as before. Suppose that $\sO$ is contained in the image of the moment map $M_{\mathsf s}$, and write $\sO':=\nabla^{\mathsf s}_{\mathsf s'}(\sO)$.
 Let $\phi,\mathbf e$ be as in Lemma  \ref{descko} and let $\mathbf e':=M_{\mathsf s'}(\phi)$. We have an exact sequence
 \[
-  1\rightarrow K_{\mathsf s_1,\C}\rightarrow (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi\rightarrow (K_{\mathsf s,\C})_{\mathbf e}\rightarrow 1
+  1\rightarrow  (K_{\mathsf s',\C})_\phi\rightarrow (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi\rightarrow (K_{\mathsf s,\C})_{\mathbf e}\rightarrow 1
 \]
 as in Lemma  \ref{descko}.
 
@@ -3151,7 +3152,7 @@ $(K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$ by the pull-back through the 
 \]
 Then $\CE'_{\mathbf e'} \otimes \zeta_{\mathsf s, \mathsf s'}$ is a representation of $ (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$, and the coinvariant space
 \[
-(\CE'_{\mathbf e'} \otimes \zeta_{\mathsf s, \mathsf s'})_{K_{\mathsf s_1,\C}}
+(\CE'_{\mathbf e'} \otimes \zeta_{\mathsf s, \mathsf s'})_{ (K_{\mathsf s',\C})_\phi}
 \]
  is an algebraic representation of $(K_{\mathsf s,\C})_{\mathbf e}$. Write $\CE:= \check \vartheta_{\sO'}^{\sO}(\mathcal E')$ for the  $K_{\mathsf s,\C}$-equivariant algebraic vector bundle  over $\sO$ whose fibre at $\mathbf e$ equals this coinvariant space representation. In this way, we get an exact functor $  \check \vartheta_{\sO'}^{\sO}$ from the category of
 $K_{\mathsf s',\C}$-equivariant algebraic vector bundle  over $\sO'$ to the category of $K_{\mathsf s,\C}$-equivariant algebraic vector bundle  over $\sO$. This exact functor induces a  homomorphism of the  Grothendieck groups:
@@ -3192,33 +3193,33 @@ The  Barbasch-Vogan dual $\mathrm d_{\mathrm{BV}}^\star(\check \CO)$ of $\check 
   &=&\begin{cases}
       (\mathbf r_i(\check \CO), \mathbf r_{i+1}(\check \CO)),\quad& \textrm{if  $(i,i+1)$ is a $\star$-pair that is vacant or balanced in $\check \CO$};  \\
         (\mathbf r_i(\check \CO)-1, 0),\quad& \textrm{if  $(i,i+1)$ is a $\star$-pair that is  tailed in $\check \CO$};  \\
-         (\mathbf r_i(\check \CO)-1, \mathbf r_{i+1}(\check \CO)+1),\quad& \textrm{if  $(i,i+1)$ is a $\star$-pair that is primitive in $\check \CO$},
+         (\mathbf r_i(\check \CO)-1, \mathbf r_{i+1}(\check \CO)+1),\quad& \textrm{if  $(i,i+1)$ is a $\star$-pair that is primitive in $\check \CO$},  
   \end{cases}
   \end{eqnarray*}
-and
+and 
 \[
     \mathbf c_1(\mathrm d_{\mathrm{BV}}^\star(\check \CO))=\begin{cases}
       0,\qquad& \textrm{if  $\star\in \{D, D^*\}$ and $\check \CO=\emptyset$};  \\
-       \mathbf r_1(\check \CO)+1, \qquad& \textrm{if  either $\star=B$, or $\star\in \{D, D^*\}$ and $\check \CO\neq \emptyset$.}
+       \mathbf r_1(\check \CO)+1, \qquad& \textrm{if  either $\star=B$, or $\star\in \{D, D^*\}$ and $\check \CO\neq \emptyset$.}  
           \end{cases}
 \]
 
 \end{defn}
 
-Assume that
+Assume that 
 \[
  \abs{\mathrm d_{\mathrm{BV}}^\star(\check \CO)}=\abs{\sfss}.
 \]
-Then  $\mathrm d_{\mathrm{BV}}^\star(\check \CO)$ is identified with an element of $\mathrm{Nil}(\g_\sfss)$.
+Then  $\mathrm d_{\mathrm{BV}}^\star(\check \CO)$ is identified with an element of $\mathrm{Nil}(\g_\sfss)$. 
 Recall  the ideal $I_{\check \CO}$ of $\oU(\g_\sfss)$ from Section \ref{secsu}.
 
-% be as in Definition \ref{bvdual0}. Assume that $\abs{\CO}=\abs{\sfss}$. Then $\CO$ is
+% be as in Definition \ref{bvdual0}. Assume that $\abs{\CO}=\abs{\sfss}$. Then $\CO$ is 
 
 \begin{lem}\label{bvdual}
 The  associated variety of $I_{\check \CO}$ equals   $\mathrm d_{\mathrm{BV}}^\star(\check \CO)$.
 \end{lem}
 \begin{proof}
-This is implied by \cite[Corollary A3]{BVUni} and \cite[Theorem B]{BMSZ1}.
+This is implied by \cite[Corollary A3]{BVUni} and \cite[Theorem B]{BMSZ1}. 
 \end{proof}
 
 %Then
@@ -3230,7 +3231,7 @@ As before, let $\check \CO'$ be the dual descent of $\check \CO$, which has $\st
 \[
   \abs{\mathrm d_{\mathrm{BV}}^{\star'}(\check \CO')}=\abs{\sfss'}.
 \]
-Then  $\mathrm d_{\mathrm{BV}}^{\star'}(\check \CO')$ is identified with an element of $\mathrm{Nil}(\g_{\sfss'})$.
+Then  $\mathrm d_{\mathrm{BV}}^{\star'}(\check \CO')$ is identified with an element of $\mathrm{Nil}(\g_{\sfss'})$. 
 
 \begin{lem}\label{dualdesc}
 The orbit $\mathrm d_{\mathrm{BV}}^{\star}(\check \CO)$ is contained in the image of the moment map $\tilde M_{\mathsf s}$, and
@@ -3242,19 +3243,19 @@ The orbit $\mathrm d_{\mathrm{BV}}^{\star}(\check \CO)$ is contained in the imag
 This is elementary to check by using Lemmas \ref{imageofmm}.
 \end{proof}
 
-In view of Lemma \ref{dualdesc}, we suppose that
+In view of Lemma \ref{dualdesc}, we suppose that 
 \[
 \CO=\mathrm d_{\mathrm{BV}}^\star(\check \CO)\in \mathrm{Nil}(\g_\sfss)\quad \textrm{and}\quad \CO'=\mathrm d_{\mathrm{BV}}^{\star'}(\check \CO')\in \mathrm{Nil}(\g_{\sfss'}).
-\]
+\] 
 
 Put
 \[
   \PBPe_\star(\check \CO,\mathsf s):=\{(\tau, \wp)\in  \PBPe_\star(\check \CO)\mid (p_\tau,q_\tau)=(p,q)\}.
 \]
-Let $\uptau=(\tau, \wp)\in \PBPe_\star(\check \CO)$.
+Let $\uptau=(\tau, \wp)\in \PBPe_\star(\check \CO)$. 
 In what follows we will define the associated cycle $\mathrm{AC}(\uptau)\in\CK_{\mathsf s}(\CO)$ of $\uptau$.
 
-For the initial case when $\check \CO$ is the empty Young diagram so that $\CO\cap \p_{\mathsf s}$ is a singleton, we define  $\mathrm{AC}(\uptau)\in\CK_{\mathsf s}(\CO)$ to be the element that corresponds to the following  representation of $K_{\mathsf s,\C}$:
+For the initial case when $\check \CO$ is the empty Young diagram so that $\CO\cap \p_{\mathsf s}$ is a singleton, we define  $\mathrm{AC}(\uptau)\in\CK_{\mathsf s}(\CO)$ to be the element that corresponds to the following  representation of $K_{\mathsf s,\C}$: 
  \[
 \left\{
      \begin{array}{ll}
@@ -3277,11 +3278,13 @@ $\mathrm{AC}(\uptau)\in \CK_{\mathsf s}(\CO) $ by
             \end{array}
    \right.
  \]
-
+ 
 We have the following three analogous results of Theorem \ref{thmac0}.
 
 \begin{prop}\label{thmac1}
- For every $\uptau\in \PBPe_\star(\check \CO)$,  the associated cycle $\mathrm{AC}(\uptau)\in \CK_{\mathsf s}(\CO)$ is a nonzero  sum of  pairwise distinct elements of $\mathrm{AOD}_{\CO}(K_{\mathsf s, \C})$.
+ For every $\uptau\in \PBPe_\star(\check \CO)$,  the associated cycle $\mathrm{AC}(\uptau)\in \CK_{\mathsf s}(\CO)$ is a nonzero  sum of  admissible orbit data 
+over pairwise distinct $K_{\sfss,\C}$-orbits in $\CO\cap \p$.
+%  a nonzero  sum of  pairwise distinct elements of $\mathrm{AOD}_{\CO}(K_{\mathsf s, \C})$.
 \end{prop}
 
 \begin{proof}
@@ -3472,7 +3475,7 @@ Denote by $\h_{\mathsf s, \mathsf s'}$ the complexified Lie algebra of $H_{\math
 
 The following is the smooth version of the Stone-von Neumann Theorem.
 
-\begin{lem}[{\cf \cite[Theorem 5.1]{Cl89} and \cite[Section 4]{Ad07}}]\label{vn}
+\begin{lem}[{\cf \cite[Theorem 5.1]{Cl89} and \cite[Section 4]{Ad07}}]\label{vn} 
 Up to isomorphism, there exists a unique irreducible smooth Fr\'echet representation $\omega_{\mathsf s, \mathsf s'}$ of $H_{\mathsf s, \mathsf s'}$ of moderate growth with central character
 \[
 \R\rightarrow \C^\times, \ t\mapsto e^{\sqrt{-1}\, t}.
@@ -3492,10 +3495,10 @@ The group $G_{\mathsf s}\times G_{\mathsf s'}$ acts on $H_{\mathsf s, \mathsf s'
 \]
 From this action, we form the semidirect product $(G_{\mathsf s}\times G_{\mathsf s'})\ltimes H_{\mathsf s, \mathsf s'}$.
 
-
+Recall the character $\zeta_{\mathsf s, \mathsf s'}$ from Section \ref{sec:dlift}.
 
 %As in   Section \ref{sec:LVB}, we assume that $\mathbb p$ is the parity of $\dim \bfV$ if $\epsilon=1$, and  the parity of $\dim \bfV'$ if $\epsilon '=1$.
-\begin{lem}\label{deforos}
+\begin{lem}[{\cf \cite[Proposition 7.5]{Ad07}}]\label{deforos}
 The representation $\omega_{\mathsf s, \mathsf s'}$ of $H_{\mathsf s, \mathsf s'}$ in Lemma \ref{vn} uniquely extends to a  smooth representation of $(G_{\mathsf s}\times G_{\mathsf s'})\ltimes H_{\mathsf s, \mathsf s'}$ such  that $K_{\mathsf s}\times  K_{\mathsf s'}$ acts on  $ \omega_{\mathsf s, \mathsf s'}^{\cX_{\mathsf s, \mathsf s'}}$ through the scalar multiplication by $\zeta_{\mathsf s, \mathsf s'}$.
 \end{lem}
 
@@ -3556,17 +3559,13 @@ Denote by  $\Psi_\mathsf s$ the function of $G_\mathsf s$ satisfying the followi
 \item it is both left and right $K_\mathsf s$-invariant;
 \item for all $g\in \exp(\p_\mathsf s^{J_\mathsf s})$,
 \[
-  \Psi_\mathsf s=\prod_{a} \left(\frac{1+a}{2}\right)^{-\frac{1}{2}},
+  \Psi_\mathsf s(g)=\prod_{a} \left(\frac{1+a}{2}\right)^{-\frac{1}{2}},
 \]
  where $a$ runs over all eigenvalues of $g: V_\mathsf s\rightarrow V_\mathsf s$, counted with multiplicities.
 \end{itemize}
 Note that all the  eigenvalues of $g \in \exp(\p_\mathsf s^{J_\mathsf s})$ are positive real numbers, and  $0<\Psi_\mathsf s(g)\leq 1$ for all $g\in G_\mathsf s$.
 
 Set
-\[
-\abs{\mathsf s}:=p+q,
-\]
- and
 \[
   \nu_\mathsf s:=\begin{cases}
     \abs{\mathsf s},\quad &\textrm{if }\star\in \{C, \widetilde C\};\\
@@ -3854,7 +3853,7 @@ Put
 \]
  Lemmas  \ref{int} and \ref{matrico} imply that the integral
 \[
- \int_{G_{\mathsf s'}} \la g.u,v\ra \cdot \Xi_{G_{\mathsf s'}}(g)\od\!g
+ \int_{G_{\mathsf s'}} \la g\cdot u,v\ra \cdot \Xi_{G_{\mathsf s'}}(g)\od\!g
 \]
 is absolutely convergent for all $u,v\in \pi' \otimes \omega_{\mathsf s_1, \mathsf s'}$. The theorem then follows by Lemma \ref{positivity}.
 
@@ -3923,7 +3922,7 @@ This follows from the  estimate of Harish-Chandra's $\Xi$ function (\cite[Theore
 
 
  \begin{defn}\label{defn:CR33}
-The Casselman-Wallach representation  $\pi'^-$ of $G_{\mathsf s'^-}$ is convergent  for a Casselman-Wallach representation  $\dot \pi$ of $G_{\dsfss}$ if there are real number $\nu'$ and $\dot \nu$ such that $\pi'$ is $\nu'$-bounded, $\dot \pi$ is $\dot \nu$-bounded, and
+The Casselman-Wallach representation  $\pi'^-$ of $G_{\mathsf s'^-}$ is convergent  for a Casselman-Wallach representation  $\dot \pi$ of $G_{\dsfss}$ if there are real numbers $\nu'$ and $\dot \nu$ such that $\pi'$ is $\nu'$-bounded, $\dot \pi$ is $\dot \nu$-bounded, and
 \[
   \nu'+\dot \nu>-\abs{\sfss''}.
 \]
@@ -3983,10 +3982,10 @@ Then
  \item $\Thetab^{\sfss}_{\sfss'}(\pi')$  is convergent for $\check \Theta^{\sfss''}_{\sfss}$;
  \item
   the trivial representation
-$1$ of $G_{\bar \sfss}$ is convergent for $\check \Theta^{\dsfss}_{\bar \sfss}$;
+$1$ of $G_{[\sfss]}$ is convergent for $\check \Theta^{\dsfss}_{\bar \sfss}$;
 \item
   $\pi'^-$ is convergent for  $\Thetab_{[\sfss]}^\dsfss(1)$;
- \item as representations of $G_{\sfss''}$, we have
+ \item as representations of $G_{\sfss''}$, 
 \begin{equation}
 \label{thetabv00}
   \Thetab^{\sfss''}_{\sfss}(\Thetab^{\sfss}_{\sfss'}(\pi'))\cong \pi'^-* \Thetab_{[\sfss]}^\dsfss(1).
@@ -4018,7 +4017,7 @@ Suppose that $\dsfss$ is split,  and
 \[
   p'\leq p''\qquad\textrm{and}\qquad q'\leq q''.
 \]
-Then there is a  split classical signature $\sfss_0=(\star_0, p_0, q_0)$ such that
+Then $\star'=\star''$, and there is a  split classical signature $\sfss_0=(\star_0, p_0, q_0)$ such that
 \begin{itemize}
 \item $\star_0=\dot \star$;
   \item $(p', q')+(p_0, q_0)=(p'', q'')$.
@@ -4041,9 +4040,9 @@ Suppose that
  \]
 %They are  maximal $J_{\dsfss}$-stable totally isotropic subspaces of $V_{\dsfss}$ such that $Y_{\dsfss}=L_\dsfss(X_\dsfss)$.
 In summary, we have decompositions
-\[
+\be\label{decomv0}
   V_{\dsfss}=V_{\sfss'^-}\oplus V_{\sfss''}= V_{\sfss'^-}\oplus V_{\sfss'}\oplus  V_{\sfss_0}= (V_{\sfss'}^\triangle \oplus X_{\sfss_0})\oplus (V_{\sfss'}^\nabla \oplus Y_{\sfss_0}).
-\]
+\ee
 
 As before, $X_\dsfss$ and $X_{\sfss_0}$ yield
  the Siegel parabolic subgroups
@@ -4051,7 +4050,7 @@ As before, $X_\dsfss$ and $X_{\sfss_0}$ yield
   P_{\dsfss}=R_{\dsfss}\ltimes N_\dsfss\subset G_\dsfss\qquad \textrm{and}\qquad P_{\sfss_0}=R_{\sfss_0}\ltimes N_{\sfss_0}\subset G_{\sfss_0}.
  \]
  Write
-\be\label{parabolic}
+\be\label{parabolic} 
   P_{\sfss'',\sfss_0}=R_{\sfss'',\sfss_0}\ltimes N_{\sfss'',\sfss_0}
 \ee
 for the parabolic subgroup of $G_{\sfss''}$ stabilizing $X_{\sfss_0}$, where $R_{\sfss'',\sfss_0}$ is the Levi subgroup stabilizing both $X_{\sfss_0}$ and $Y_{\sfss_0}$, and $N_{\sfss'',\sfss_0}$ is the unipotent radical. We have an obvious homomorphism
@@ -4082,7 +4081,7 @@ $\pi'^-$ of $G_{\sfss'^-}$. If $\dsfss=\widetilde C$, we assume that both $\pi'$
 Let $\nu_{\dot \chi}\in \R$ be  as in \eqref{nuchi}. The rest of this subsection is devoted to a proof of the following theorem.
 
 \begin{thm}\label{midp}
-Assume that $\pi'$ is $\nu'$ bounded for some
+Assume that the Casselman-Wallach representation $\pi'$ of $G_{\sfss'}$ is $\nu'$-bounded for some
 \[
  \nu'>\begin{cases}
   2\abs{\nu_{\dot \chi}}- \frac{\abs{\sfss_0}}{2}-1,\quad &\textrm{if $\dot \star\in \{B,C,D, \widetilde C\}$};\\
@@ -4262,21 +4261,21 @@ By \cite[Lemma 3.5]{SZ1},  the right-hand side  functional  equals  $\la u_0, \,
 
 
 
-\subsection{Double theta lifts and parabolic induction}
+\subsection{Double theta lifts and parabolic induction}\label{doublep}
 Let $\star$ be the Howe dual of $\star'=\star''$. Let $k\in \bN$ and we assume that the set
 \[
- S_{\star, k}:=\{\sfss_1=(\star, p_1,q_1) \mid  \textrm{$\sfss_1$ is a classical signature}, \, p_1+q_1=k\}
+ S_{\star, k}:=\{ \textrm{$\sfss_1$ is a classical signature}\mid \textrm{$\sfss_1$ has type $\star$, and $\abs{\sfss_1}=k$}\}
 \]
-is non-empty. Thus $k$ is odd if $\star=B$, and $k$ is even in all other cases.
+is non-empty. Thus $k$ is odd if $\star=B$, and $k$ is even in all other cases. 
 In this subsection, we further assume that $k\geq 2$ and
-\[
+\be\label{dotp}
  \dot p=\dot q= \begin{cases}
  k-1,\quad   &\textrm{if } \star\in \{B,D\};\\
 k+1,  & \textrm{if $\star\in \{C, \widetilde C\}$;}\\
 k & \textrm{if $ \star\in\{C^*,D^*\}$.}
 \end{cases}
- \]
-%For technical   reason, we also assume that $k\geq 2$ when $\star\in \{B,D\}$.
+ \ee
+%For technical   reason, we also assume that $k\geq 2$ when $\star\in \{B,D\}$. 
 
 We also assume that the character $\dot \chi: R_{\dsfss}\rightarrow \C^\times $
 satisfies  the following conditions:
@@ -4342,7 +4341,7 @@ For all $\mathsf s_1$ appearing in Lemma \ref{degens}, the trivial representatio
 
 \end{lem}
 \begin{proof}
-Note that the trivial representation $1$ of $G_{\mathsf s_1}$ is $0$-bounded, and $0>\nu_{\mathsf s_1}+\nu_{\mathsf s_1}^\circ -\abs{\dsfss}$. This implies the first assertion.
+Note that the trivial representation $1$ of $G_{\mathsf s_1}$ is $(-\nu_{\mathsf s_1})$-bounded, and $-\nu_{\mathsf s_1}>\nu_{\mathsf s_1}^\circ -\abs{\dsfss}$. This implies the first assertion.
 Since $\check \Theta_{\mathsf s_1}^{\dsfss}(1)$ is irreducible and $\Thetab_{\mathsf s_1}^{\dsfss}(1)$ is  a quotient of $\check \Theta_{\mathsf s_1}^{\dsfss}(1)$, for the proof of the second assertion, it suffices to show that $\Thetab_{\mathsf s_1}^{\dsfss}(1)$ is nonzero.
 
 Put
@@ -4391,13 +4390,13 @@ Assume that $\pi'$  is $\nu'$-bounded for some
  \end{lem}
 \begin{proof}
 The first assertion follows by noting that
-\[
+\be\label{p123}
 \nu_{\sfss'}-\abs{\sfss_1}=
   \begin{cases}
- -\frac{\abs{\sfss_0}}{2}-3,\quad& \textrm{if $\dsfss =D^*$};\\
+ -\frac{\abs{\sfss_0}}{2}-3,\quad& \textrm{if $\star =C^*$};\\
    -\frac{\abs{\sfss_0}}{2}-1,\quad& \textrm{otherwise}.
    \end{cases}
-   \]
+   \ee
 The proof of second assertion is similar to the proof of the first assertion of Lemma \ref{lem:coinv}.
 \end{proof}
 
@@ -4491,10 +4490,10 @@ Lemma \ref{lem:coinv} and Proposition \ref{doublelift} imply that
 Therefore the theorem follows.
 \end{proof}
 
-\section{Bounding the associated  cycles}\label{sec:AC}
+\section{Regular descents and bounding the associated  cycles}\label{sec:AC}
 
 In this section, let $\mathsf s=(\star, p,q)$ and $ \mathsf s'=(\star', p',q')$ be classical signatures such that $\star'$ is the Howe dual of $\star$.
-Let $\CO\in \mathrm{Nil}(\g_\mathsf s)$, whose Zariski closure in $\g_\sfss$ is denoted by $\overline \CO$.
+Let $\CO\in \mathrm{Nil}(\g_\mathsf s)$, whose Zariski closure in $\g_\sfss$ is denoted by $\overline \CO$. 
 
 
 \subsection{Associated cycles}%{Graded $(\oS(\p_{\sfss}), K_{\sfss, \C})$-modules}
@@ -4518,7 +4517,7 @@ is $H_{\C}$-equivariant. An $(\CA, H_\C)$-module is said to be finitely generate
 %For every complex vector space $E$, let $\oS(E)$ denote the symmetric algebra of $E$.
 
 
-For every affine complex algebraic variety $Z$, write $\C[Z]$ the algebra of regular functions on $Z$.
+For every affine complex algebraic variety $Z$, write $\C[Z]$ for the algebra of regular functions on $Z$. By convention, all elements of complex algebraic varieties are closed. 
 %Write $\C[\overline \CO\cap \p]$ for the algebra of algebraic functions on $\overline \CO\cap \p$.  The notion of $(\C[\overline \CO\cap \p], K_{\sfss, \C})$-modules is similarly defined as in Definition \ref{spkmodule}. An  $(\oS(\p_{\sfss}), K_{\sfss, \C})$-module is said to be finitely generated if it is so as a $\oS(\p_{\sfss})$-module.
 %Similarly, a  $(\C[\overline \CO\cap \p], K_{\sfss, \C})$-module is said to be finitely generated if it is so as a $\C[\overline \CO\cap \p]$-module.
 Given a finitely generated $(\C[\overline \CO\cap \p_\sfss], K_{\sfss, \C})$-module $\sigma^\circ$, for each $K_{\sfss, \C}$-orbit $\sO\subset \CO\cap \p_\sfss$, the set
@@ -4572,13 +4571,13 @@ Then the grading
 \[
   \mathrm{Gr}(\rho):= \mathrm{Gr}(\rho,\CF):=\bigoplus_{i\in \Z} \rho_i/\rho_{i+1}
 \]
-is naturally a finitely generated  $(\oS(\p_{\sfss}), K_{\sfss, \C})$-module, where $\oS(\p_{\sfss})$ denotes the symmetric algebra. Recall that we have identify $\p_\sfss$ with its dual space $\p_\sfss^*$ by using the trace from. Hence $\oS(\p_{\sfss})$ is identified with $\C[\p_\sfss]$, and $\mathrm{Gr}(\rho)$ is a $(\C[\p_{\sfss}], K_{\sfss, \C})$-module.
+is naturally a finitely generated  $(\oS(\p_{\sfss}), K_{\sfss, \C})$-module, where $\oS(\p_{\sfss})$ denotes the symmetric algebra of $\p_\sfss$. Recall that we have identified $\p_\sfss$ with its dual space $\p_\sfss^*$ by using the trace from. Hence $\oS(\p_{\sfss})$ is identified with $\C[\p_\sfss]$, and $\mathrm{Gr}(\rho)$ is a $(\C[\p_{\sfss}], K_{\sfss, \C})$-module.
 
 
 Recall that $\rho$ is said to be $\CO$-bounded if the associated variety of its annihilator ideal in $\oU(\g_\mathsf s)$ is contained in  $\overline \CO$.
 
 \begin{lem}\label{l62}
-Let $\rho$ be a $(\g_\sfss, K_{\sfss})$-module  of finite length,  and let $\CF$ be a  good filtration of $\rho$. Then $\rho$ is $\CO$-bounded if and only if $\mathrm{Gr}(\rho, \CF)$ is $\CO$-bounded.
+Let $\rho$ be a $(\g_\sfss, K_{\sfss})$-module  of finite length,  and let $\CF$ be a  good filtration of $\rho$. Then $\rho$ is $\CO$-bounded if and only if $\mathrm{Gr}(\rho, \CF)$ is $\CO$-bounded as a $(\C[\p_{\sfss}], K_{\sfss, \C})$-module.
 \end{lem}
 \begin{proof}
 This is a direct consequence of   \cite[Theorem 8.4]{Vo89}.
@@ -4606,7 +4605,7 @@ Denote by $\omega^{\mathrm{alg}}_{\mathsf s, \mathsf s'}$ the $\h_{\mathsf s, \m
 \[
    \check \Theta_{\mathsf s'}^{\mathsf s}(\rho'):=(\omega^{\mathrm{alg}}_{\mathsf s, \mathsf s'}\otimes \rho')_{\g_{\mathsf s'}, K_{\mathsf s'}} \qquad (\textrm{the  coinvariant space}).
 \]
-It has finite length whenever $\rho'$ has finite length (\cite[Section 4]{Howe89}).
+It has finite length whenever $\rho'$ has finite length (\cite[Section 4]{Howe89}). 
 
 
 
@@ -4629,7 +4628,7 @@ which is naturally a  $(\C[\p_{\sfss}], K_{\sfss, \C})$-module.
 \begin{lem}
 Suppose that $\sigma'$ is a finitely generated  $(\C[\p_{\sfss'}], K_{\sfss', \C})$-module. Then the  $(\C[\p_{\sfss}], K_{\sfss, \C})$-module   $\check \Theta_{\mathsf s'}^{\mathsf s}(\sigma')$ is also finitely generated.
 \end{lem}
-\begin{proof} This follows from the structural analysis of the space of joint harmonics, as in \cite[Section 4]{Howe89}.
+\begin{proof} This follows from the structural analysis of the space of joint harmonics, as in \cite[Section 4]{Howe89}. 
 \end{proof}
 
 \begin{lem}\label{lm}
@@ -4652,7 +4651,7 @@ Recall from \eqref{momentmap2}  the moment maps
 
 
 \begin{lem}\label{comobound}
-Suppose that $\CO'\in \mathrm{Nil}(\g_{\sfss'})$ and  $M_{\sfss'}^{-1}(\overline{\CO'})\subset M_{\sfss'}^{-1}(\overline{\CO})$, where  $\overline{\CO'}$ denotes the Zariski closure of $\CO'$ in $\g_{\sfss'}$.  Then
+Suppose that $\CO'\in \mathrm{Nil}(\g_{\sfss'})$ and  $M_{\sfss'}^{-1}(\overline{\CO'})\subset M_{\sfss'}^{-1}(\overline{\CO})$, where  $\overline{\CO'}$ denotes the Zariski closure of $\CO'$ in $\g_{\sfss'}$.  Then 
 \begin{itemize}
 \item
 $\check \Theta_{\mathsf s'}^{\mathsf s}(\sigma')$ is $\CO$-bounded for every $\CO'$-bounded $(\C[\p_{\sfss'}], K_{\sfss', \C})$-module $\sigma'$;
@@ -4661,12 +4660,12 @@ $\check \Theta_{\mathsf s'}^{\mathsf s}(\sigma')$ is $\CO$-bounded for every $\C
  \item $\check \Theta_{\mathsf s'}^{\mathsf s}(\pi')$ is $\CO$-bounded for every $\CO'$-bounded Casselman-Wallach representation $\pi'$ of $G_{\mathsf s'}$.
  \end{itemize}
 \end{lem}
-\begin{proof} The assumption of the lemma implies  that
+\begin{proof} The assumption of the lemma implies  that 
 \[
  ( I_{\overline{\CO}\cap \p_\sfss})^i\cdot \C[\CX_{\sfss, \sfss'}] \subset I_{\overline{\CO'}\cap \p_{\sfss'}}\cdot  \C[\CX_{\sfss, \sfss'}]\qquad \textrm{for some } i\in \bN,
 \]
 where $I_{\overline{\CO'}\cap \p_{\sfss'}}$ denotes  the radical ideal of $\C[\p_\sfss]$ corresponding to the closed subvariety $\overline{\CO'}\cap \p_{\sfss'}$.
-This implies the first assertion of the lemma. In view of Lemma \ref{l62}, the second assertion is implied by the first one and Lemma \ref{lm}. The third assertion is implied by the second one since there is a surjective
+This implies the first assertion of the lemma. In view of Lemma \ref{l62}, the second assertion is implied by the first one and Lemma \ref{lm}. The third assertion is implied by the second one since there is a surjective 
 $(\g_{\sfss}, K_{\sfss})$-module homomorphisms
 \[
 \check \Theta_{\mathsf s}^{\mathsf s'}(\pi'^{\mathrm{alg}})\rightarrow \left (\check \Theta_{\mathsf s'}^{\mathsf s_1}(\pi')\right )^{\mathrm{alg}}.
@@ -4675,26 +4674,7 @@ $(\g_{\sfss}, K_{\sfss})$-module homomorphisms
 \end{proof}
 
 
-\subsection{Regular descent of a nilpotent orbit}
-Recall from \eqref{momentmap2}  the moment maps
-\[
-    \xymatrix@R=0em@C=3em{
-      \g_\mathsf s &\ar[l]_{\tilde M_\mathsf s} W_{\mathsf s, \mathsf s'}\ar[r]^{\tilde M_{\mathsf s'}}& \g_{\mathsf s'},\\
-     \phi^* \phi & \ar@{|->}[l] \phi \ar@{|->}[r] & \phi \phi^*.
-    }
-  \]
-
-\begin{lem}
-The orbit $\CO$ is contained in the image of the moment map $\tilde M_{\mathsf s}$ if and only if
-\[
- \delta:=  \abs{\sfss'}-\abs{\DD_\mathrm{naive}(\CO)}\geq 0.
-\]
-When this is the case, the Young diagram of $\DD_{\mathsf s'}^{\mathsf s}(\CO)\in \mathrm{Nil}(\g_{\mathsf s'})$ is obtained from that of $\DD_\mathrm{naive}(\CO)$ by adding $\delta$ boxes in the first column.
-
-\end{lem}
-\begin{proof}
-This is implied by \cite[Theorem 3.6]{DKPC}.
-\end{proof}
+\subsection{Regular descent of a nilpotent orbit}\label{regud}
 
 \begin{defn}
 The orbit $\CO\in \mathrm{Nil}(\g_\mathsf s)$ is regular for $\DD_{\mathsf s'}^{\mathsf s}$ if
@@ -4711,10 +4691,10 @@ either
 
 
 
-In the rest of this section we assume that $\CO$ is regular for $\DD_{\mathsf s'}^{\mathsf s}$. Then $\CO$ is contained in the image of the moment map $\tilde M_{\mathsf s}$. Put  $\CO':=\DD_{\mathsf s'}^{\mathsf s}(\CO)\in  \mathrm{Nil}(\g_{\mathsf s'})$, and let  $\overline{\CO'}$ denote the Zariski closure of $\CO'$ in $\g_{\sfss'}$.
+In the rest of this section we assume that $\CO$ is regular for $\DD_{\mathsf s'}^{\mathsf s}$. Then Lemma \ref{imageofmm} implies that  $\CO$ is contained in the image of the moment map $\tilde M_{\mathsf s}$. Put  $\CO':=\DD_{\mathsf s'}^{\mathsf s}(\CO)\in  \mathrm{Nil}(\g_{\mathsf s'})$, and let  $\overline{\CO'}$ denote the Zariski closure of $\CO'$ in $\g_{\sfss'}$.
 
 
-\begin{lem}\label{liftop0}
+\begin{lem}\label{liftop000}
 As subsets of $\g_\sfss$,
 \[
   \tilde M_{\mathsf s}(\tilde M_{\mathsf s'}^{-1}(\overline{\CO'}))=\overline{\CO}.
@@ -4725,19 +4705,11 @@ This is implied by \cite[Theorems 5.2 and 5.6]{DKPC}.
 \end{proof}
 
 
-\begin{lem}\label{comobound}
+\begin{lem}\label{comobound2}
 Suppose that $\sigma'$ is an $\CO'$-bounded $(\C[\p_{\sfss'}], K_{\sfss', \C})$-module.  Then the  $(\C[\p_{\sfss}], K_{\sfss, \C})$-module   $\check \Theta_{\mathsf s'}^{\mathsf s}(\sigma')$ is $\CO$-bounded.
 \end{lem}
 \begin{proof}
-Lemma \ref{liftop0} implies that
-\[
-   M_{\mathsf s}^{-1}(\overline{\CO}\cap \p_\sfss)\supset M_{\mathsf s'}^{-1}(\overline{\CO'}\cap \p_{\sfss'}).
-\]
-Thus
-\[
- ( I_{\overline{\CO}\cap \p_\sfss})^i\cdot \C[\CX_{\sfss, \sfss'}] \subset I_{\overline{\CO'}\cap \p_{\sfss'}}\cdot  \C[\CX_{\sfss, \sfss'}]\qquad \textrm{for some } i\in \bN,
-\]
-and the lemma follows. Here $I_{\overline{\CO'}\cap \p_{\sfss'}}$ denotes  the radical ideal of $\C[\p_\sfss]$ corresponding to the closed subvariety $\overline{\CO'}\cap \p_{\sfss'}$.
+This follows from Lemmas \ref{liftop000} and \ref{comobound}. 
 \end{proof}
 
 
@@ -4765,7 +4737,13 @@ The first assertion is implied by \cite[Theorem 3.6]{DKPC}. Recall from \eqref{k
 \[
 W_{\sfss,\sfss'}^\circ\cap W_{\sfss, \sfss'}^{\CO, \CO'}=W_{\sfss,\sfss'}^\circ\cap \tilde M_{\sfss}^{-1}(\CO),
 \]
-which  is also a   single  $G_{\sfss, \C}\times G_{\sfss',\C}$-orbit. Hence $W_{\sfss, \sfss'}^{\CO, \CO'}\subset W_{\sfss,\sfss'}^\circ$. The last assertion is a direct consequence of Lemma \ref{liftop0}.
+which  is also a   single  $G_{\sfss, \C}\times G_{\sfss',\C}$-orbit. Hence $W_{\sfss, \sfss'}^{\CO, \CO'}\subset W_{\sfss,\sfss'}^\circ$. 
+
+In fact, \cite[Theorem 3.6]{DKPC} also implies that
+\[
+W_{\sfss, \sfss'}^{\CO, \CO'}=\tilde M_{\sfss}^{-1}(\CO)\cap  \tilde M_{\sfss'}^{-1}(\overline{\CO'}).
+\]
+Thus the last assertion is a direct consequence of Lemma \ref{liftop000}.
 
 \end{proof}
 
@@ -4787,7 +4765,7 @@ Then  $ \CX_{\sfss, \sfss'}^{\bar \partial}$ is an open subvariety of $ \CX_{\sf
 
 \medskip
 
-We defer the proof of the following proposition to \Cref{sec:GG}.
+We defer the proof of the following proposition to Sections \ref{sec:GG} and \ref{secpp}.
 \begin{prop}\label{propreduced}
  The scheme theoretic  fibre product
 \[
@@ -4803,12 +4781,12 @@ By Lemma \ref{liftop0} and Proposition \ref{propreduced}, we know that
  which  is a smooth closed subvariety of $\CX_{\sfss, \sfss'}^{\bar \partial}$.
 
 
-For every element $\mathbf e\in \CO\cap \p_\sfss$, write $K_\mathbf e$ for the stabilizer of $\mathbf e$ in $K_{\sfss, \C}$. Let $\C_\mathbf e$ be the field $\C$ viewing a  $\C[\overline \CO\cap \p_\sfss]$-algebra via the evaluation map at $\mathbf e$. Put
+For every element $\mathbf e\in \CO\cap \p_\sfss$, write $K_\mathbf e$ for the stabilizer of $\mathbf e$ in $K_{\sfss, \C}$. Let $\C_\mathbf e$ be the field $\C$ viewing as a  $\C[\overline \CO\cap \p_\sfss]$-algebra via the evaluation map at $\mathbf e$. Put
 \[
   \CX_{\sfss, \sfss'}^{\mathbf e, \CO'}:=M_\sfss^{-1}(\mathbf e)\cap M_{\sfss'}^{-1}(\CO'\cap\p_{\sfss'})=M_\sfss^{-1}(\mathbf e)\cap M_{\sfss'}^{-1}(\overline{\CO'}\cap\p_{\sfss'}),
 \]
 which is a closed subvariety of $\CX_{\sfss, \sfss'}$. If $\mathbf e$ is not contained in the image of $M_\sfss$, then $\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}=\emptyset$. Otherwise, it is a single
-$(K_\mathbf e\times K_{\sfss,\C})$-orbit, and Lemma \ref{descko} implies that it is also a single $K_{\sfss,\C}$-orbit.
+$(K_\mathbf e\times K_{\sfss',\C})$-orbit, and Lemma \ref{descko} implies that it is also a single $K_{\sfss',\C}$-orbit.
 \begin{lem}\label{fiber111}
 For every element $\mathbf e\in \CO\cap \p_\sfss$,
 \[
@@ -4833,7 +4811,7 @@ The last equality holds because the morphism $M_\sfss: \CX_{\sfss, \sfss'}^{\CO,
 
 \subsection{Commutative theta lifts and  geometric theta lifts}
 
-The purpose of this subsection is to prove the following
+The purpose of this subsection is to prove the following proposition.
 \begin{prop}\label{propthetag}
 Suppose that $\sigma'$ is a finitely generated  $(\C[\overline{\CO'}\cap \p_{\sfss'}], K_{\sfss', \C})$-module. Then
 \[
@@ -4874,7 +4852,7 @@ which implies the  lemma.
 
 
 \begin{lem}\label{geotheta2}
-Suppose that  $Z$ is an affine complex algebraic variety with a transitive algebraic action of $K_{\sfss, \C}$-action. Let $\sigma$ be a finitely generated $(\C[Z], K_{\sfss, \C})$-module.
+Suppose that  $Z$ is an affine complex algebraic variety with a transitive algebraic action of $K_{\sfss, \C}$. Let $\sigma$ be a finitely generated $(\C[Z], K_{\sfss, \C})$-module.
 Let $z\in Z$ and write $K_z$ for the stabilizer of $z$ in $K_{\sfss, \C}$. Then  the natural map
 \[
   \sigma^{K_{\sfss, \C}}\rightarrow (\C_z\otimes_{\C[Z]} \sigma)^{K_{z}}
@@ -4928,24 +4906,24 @@ Suppose that $\mathbf e\in \CO\cap \p_\sfss$. Then
 
 If $\mathbf e$ is not in the image of $M_\sfss$, then the above module is zero. Now we assume that $\mathbf e$ is in the image of $M_\sfss$ so that $\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}$ is a single $K_{\sfss',\C}$-orbit. Pick an arbitrary element $\phi\in \CX_{\sfss, \sfss'}^{\mathbf e, \CO'}$, and write $\mathbf e':=M_{\sfss'}(\phi)$. Let
 \[
-  1\rightarrow K_{\mathsf s_0,\C}\rightarrow (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi\xrightarrow{\textrm{the projection to the first factor}} (K_{\mathsf s,\C})_{\mathbf e}\rightarrow 1
+  1\rightarrow  (K_{\mathsf s',\C})_\phi \rightarrow (K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi\xrightarrow{\textrm{the projection to the first factor}} (K_{\mathsf s,\C})_{\mathbf e}\rightarrow 1
 \]
-be the exact  sequence as in Lemma \ref{descko}. Note that $ K_{\mathsf s_0,\C}$ equals the stabilizer of $\phi$ in $K_{\sfss', \C}$.
+be the exact  sequence as in Lemma \ref{descko}. %Note that $ K_{\mathsf s_1,\C}$ equals the stabilizer of $\phi$ in $K_{\sfss', \C}$.
 
 
  Let $\C_\phi$ denote the field $\C$ viewing as a $\C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}]$-algebra via the evaluation map at $\phi$. Then we have that
 \begin{eqnarray*}
       &&\left( \C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}] \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)_{K_{\mathsf s', \C}}\\
              &=&\left( \C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}] \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)^{K_{\mathsf s', \C}}\quad \qquad (\textrm{because $K_{\sfss',\C}$ is reductive})\\
-             &=&\left( \C_\phi\otimes_{\C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}]} \C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}] \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)^{K_{\sfss_0,\C}} \qquad (\textrm{by Lemma \ref{geotheta2}})\\
-               &=&\left( \C_{\mathbf e'}  \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)^{K_{\sfss_0, \C}}\\
-                 &=&\left( \C_{\mathbf e'}  \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)_{K_{\sfss_0, \C}} \quad \qquad (\textrm{because $K_{\sfss_0,\C}$ is reductive}).
+             &=&\left( \C_\phi\otimes_{\C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}]} \C[\CX_{\sfss, \sfss'}^{\mathbf e, \CO'}] \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)^{ (K_{\mathsf s',\C})_\phi} \qquad (\textrm{by Lemma \ref{geotheta2}})\\
+               &=&\left( \C_{\mathbf e'}  \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)^{ (K_{\mathsf s',\C})_\phi}\\
+                 &=&\left( \C_{\mathbf e'}  \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)_{ (K_{\mathsf s',\C})_\phi} \quad \qquad (\textrm{because $ (K_{\mathsf s',\C})_\phi$ is reductive}).
 \end{eqnarray*}
 Putting all things together, we have an identification
 \[
-\C_\mathbf e \otimes_{\C[\overline \CO\cap \p_{\sfss}]} (\C[\overline \CO\cap \p_{\sfss}]\otimes_{\C[\p_{\sfss}]} \sigma)=\left( \C_{\mathbf e'}  \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)_{K_{\sfss_0, \C}}.
+\C_\mathbf e \otimes_{\C[\overline \CO\cap \p_{\sfss}]} (\C[\overline \CO\cap \p_{\sfss}]\otimes_{\C[\p_{\sfss}]} \sigma)=\left( \C_{\mathbf e'}  \otimes_{\C[\overline{\CO'}\cap \p_{\sfss'}]}\sigma'\otimes \zeta_{\sfss, \sfss'}\right)_{ (K_{\mathsf s',\C})_\phi}.
 \]
-It is routine to check that this identification respects the $(K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$-actions, and thus the $K_{\mathbf e}$-actions. This proves the proposition.
+It is routine to check that this identification respects the $(K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$-actions, and $ (K_{\mathsf s',\C})_\phi$ acts trivially on the both sides. Thus the identification respects the $K_{\mathbf e}$-actions. In view of Lemmas \ref{geotheta1} and \ref{geotheta3}, this proves the proposition.
 \end{proof}
 
 
@@ -4991,14 +4969,14 @@ Let $\CF'$ and $\CF$ be  good filtrations  on $\rho'$ and  $\check \Theta_{\math
 \be\label{surpkm}
   \check \Theta_{\mathsf s'}^{\mathsf s}(\mathrm{Gr}(\rho',\CF')) \rightarrow \mathrm{Gr}(\check \Theta_{\mathsf s'}^{\mathsf s}(\rho'),\CF).
 \ee
-The first assertion then follows from Lemmas \ref{l62} and \ref{comobound}.
+The first assertion then follows from Lemmas \ref{l62} and \ref{comobound2}.
 
 Put $\sigma':=\mathrm{Gr}(\rho',\CF')$.
 Then
 \begin{eqnarray*}
       && \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\rho'))\\
       &=&  \mathrm{AC}_{\cO}(\mathrm{Gr}(\check \Theta_{\mathsf s'}^{\mathsf s}(\rho'),\CF))\\
-             &\preceq& \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\sigma')) \quad \qquad (\textrm{by \eqref{surpkm}})\\
+             &\preceq& \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\sigma')) \quad\  \qquad (\textrm{by \eqref{surpkm}})\\
           &  \preceq & \check \vartheta_{\CO'}^{\CO}(\mathrm{AC}_{\CO'}(\sigma'))\quad \qquad (\textrm{by Proposition \ref{propthetag2}})\\
                &=&\check \vartheta_{\CO'}^{\CO}(\mathrm{AC}_{\CO'}(\rho')).
                \end{eqnarray*}
@@ -5079,141 +5057,239 @@ This proves the theorem.
 
 \def\CXUO{\cX_{\sfss,\sfss'}^{\bar\partial ,\cOp}}
 \def\CXOO{\cX_{\sfss,\sfss'}^{\cO ,\cOp}}
+%We investigate the geometric properties of regular descent.
 
-Recall that  $\CO\in \mathrm{Nil}(\g_\sfss)$ is regular for $\DD_{\mathsf s'}^{\mathsf s}$. We investigate the geometric properties of regular descent.
 
 
-Let $\ww\in \CMs^{{-1}}(\cO)\cap \Woss$, and $\Xp = \CMsp(\ww)$.
-By the Jacobian criterion for
-regularity (see \cite[Theorem~2.19]{LiuAG}), the following sequence
-\begin{equation}\label{eq:tt1}
-  0\longrightarrow T_{\ww} \CMss^{{-1}}(\Xp) \longrightarrow T_{\ww} \Wss \xrightarrow{\ \rdd \CMsp \ } T_{\Xp}\fggsp \end{equation}
-is exact if and only if $\ww$ is regular at $\Wss_{\Xp}$.
+The following lemma is a form of  the Jacobian criterion for
+regularity (see \cite[Theorem~2.19]{LiuAG}).
+\begin{lem}\label{jacobic}
+Let $Z$ and $Z'$ be smooth complex algebraic varieties, and let $z'\in Z$. Let $f: Z\rightarrow Z'$ be a morphism of algebraic varieties such that $f^{-1}(z')$ is a smooth subvariety of $Z$. Then the scheme theoretic fibre product $Z\times_{Z'} \{z'\}$ is reduced if and only if the sequence 
+\be\label{jc0}
+  \mathrm T_z(f^{-1}(z'))\xrightarrow{\textrm{ inclusion }} \mathrm T_z(Z)\xrightarrow{\textrm{the differential of $f$}} \mathrm T_{z'}(Z')
+\ee
+is exact for all $z\in f^{-1}(z')$. 
+\end{lem}
 
-We identify  $T_{\ww}\Wss$ and $T_{\Xp}\fggsp$ with $\Wss$ and $\fggsp$
-respectively. Since $(\Gs\times (\Gsp)_{\Xp})\cdot \ww$ is open in $\CMs^{{-1}}(\Xp)$,
-the map
+Here and as usual $\mathrm T$ indicates the tangent space. 
+
+Recall that  $\CO\in \mathrm{Nil}(\g_\sfss)$ is regular for $\DD_{\mathsf s'}^{\mathsf s}$. 
+Let $\mathbf e'\in \CO'=\DD_{\mathsf s'}^{\mathsf s}(\CO)$. Denote by $G_{\mathbf e'}$ the stabilizer of $\mathbf e'$ in $G_{\sfss',\C}$, and by $\g_{\mathbf e'}$ the Lie algebra of $G_{\mathbf e'}$. Consider the map
 \[
-  \fggs\times (\fggsp)_{\Xp}\xrightarrow{(A,A')\mapsto A'\ww - \ww A} T_{\ww}\CMsp^{-1}(\Xp)
+ \tilde M':=  (\tilde M_{\sfss'})|_{W_{\sfss, \sfss'}^{\bar \partial}} : W_{\sfss, \sfss'}^{\bar \partial}\rightarrow \g_{\sfss'}. 
 \]
-is surjective, where we identify $T_{\ww}\CMsp^{-1}(\Xp)$ as a subspace of $\Wss$.
-Then the sequence \eqref{eq:tt1}
-is exact if and only if the sequence \eqref{eq:CGG} is exact.
+By Lemma \ref{liftop0}, its fibre at $\mathbf e'$ equals the set
+\[
+W_{\sfss, \sfss'}^{\CO, \mathbf e'}:=\tilde M_{\sfss}^{-1}(\CO)\cap  \tilde M_{\sfss'}^{-1}(\mathbf e'),
+\]
+and this set is a single $G_{\sfss,\C}\times G_{\mathbf e'}$-orbit. Thus the set $W_{\sfss, \sfss'}^{\CO, \mathbf e'}$ is a smooth closed subvariety of $W_{\sfss, \sfss'}^{\bar \partial}$. 
+
+Let $\phi\in W_{\sfss, \sfss'}^{\CO, \mathbf e'}$. Then we have a sequence 
+\be\label{jc1}
+    \mathrm T_\phi (W_{\sfss, \sfss'}^{\CO, \mathbf e'})\xrightarrow{\textrm{ inclusion}} \mathrm T_\phi(W_{\sfss, \sfss'}^{\bar \partial})\xrightarrow{\textrm{the differential of $\tilde M'$}} \mathrm T_{\mathbf e'}(\g_{\sfss'})
+\ee
+as in \eqref{jc0}.  
+The tangent spaces $\mathrm T_\phi(W_{\sfss, \sfss'}^{\bar \partial})$ and $\mathrm T_{\mathbf e'}(\g_{\sfss'})$ are respectively identified with $W_{\sfss, \sfss'}$ and $\g_{\sfss'}$ as usual. Then the second map in \eqref{jc1} equals the map 
+\be\label{differ1}
+  W_{\sfss, \sfss'}\rightarrow \g_{\sfss'}, \qquad b\mapsto b\ww^{*}+\ww b^{*} . 
+\ee
+Note that the  image of the first map in \eqref{jc1} is identified with the image of the following map
+\be\label{differ2}
+ \fggs\times  \g_{\mathbf e'} \rightarrow W_{\sfss, \sfss'}, \qquad (a,a')\mapsto a'\ww - \ww a.
+\ee
+Thus the sequence \eqref{jc1} is exact if and only if the following sequence is exact: 
 \begin{equation}\label{eq:CGG}
-  \fgg\oplus (\fggs)_{\Xp} \xrightarrow{\ (A,A')\mapsto A'\ww - \ww A \ } W
-  \xrightarrow{\ b\mapsto \ww b^{*} + b\ww^{*}\  } \fggs.
+  \fggs\times  \g_{\mathbf e'} \xrightarrow{\eqref{differ2} } W_{\sfss, \sfss'}
+  \xrightarrow{\eqref{differ1}} \fggsp.
 \end{equation}
 
 
-\begin{lem}\label{lem:CGG}
-The sequence \eqref{eq:CGG} is exact and $W_{\Xp}$ is regular at $\ww$.
+
+
+\begin{lem}\label{lemexact1}
+The sequence \eqref{jc1} is exact when $\abs{\sfss'}=\abs{\nabla_{\mathrm{naive}}(\CO)}$.
 \end{lem}
 \begin{proof}
+The map \eqref{differ1} equals the composition of 
+\be\label{differ3}
+  W_{\sfss, \sfss'}\xrightarrow{b\mapsto b\phi^*} \g\mathfrak l(V_{\sfss'})\xrightarrow{x\mapsto x-x^*} \g_{\sfss'}.
+\ee
+Here $ \g\mathfrak l(V_{\sfss'})$ denotes the algebra of  linear endomorphisms of $V_{\sfss'}$, and $x^*\in  \g\mathfrak l(V_{\sfss'})$ is specified by requiring that
+\be\label{ajoint4}
+  \la x u, v\ra_{\sfss'}=\la u, x^* v\ra_{\sfss'},\qquad \textrm{for all }u,v\in V_{\sfss'}. 
+\ee
+The second map in \eqref{differ3} is always surjective. 
 
-  Let $\Vspo:=\ww \Vs$ and $\Vspt$ be the orthogonal complement of $\Vspo$ so
-  that $\Vsp = \Vspo\oplus \Vspt$.
-
-  Suppose $\abs{\sfss'} = \DDss(\cO)$. Then every element
-  $\ww\in W_{U,\Xp}\subset \Hom(V,V')$ is a surjective morphism and $\Vspt=0$.
-  Therefore $\rdd \Msp \colon T_{\ww} \Wss \longrightarrow T_{\Xp}\fggsp$ is
-  surjective, which implies $\Msp$ is smooth at $\ww$ (\cf
-  \cite[Proposition~10.4]{HS}). Pulling back $\Msp$ via the inclusion
-  $\Xp \hookrightarrow \fggs$, we conclude that $W_{\UU,\Xp}$ is smooth and so
-  regular at $\ww$. This also establishs the exactness of \eqref{eq:CGG}.
-
-  \smallskip
-
-  Now suppose $\abs{\sfss'}>\DDss(\cO)$ and $\bfcc_{1}(\cO) = \bfcc_{2}(\cO)$.
-  We now establish the exactness of \eqref{eq:CGG}, which concludes the lemma.
+Note that $\abs{\sfss'}=\abs{\nabla_{\mathrm{naive}}(\CO)}$ if and only if  $\phi: V_{\sfss}\rightarrow V_{\sfss'}$ is surjective. Assume this is the case. Then $\phi^*$ is injective, and consequently the first map in  \eqref{differ3}  is  surjective. Thus the map \eqref{differ1} is also surjective. Since $\phi\in W_{\sfss, \sfss'}^{\CO, \mathbf e'}$ is arbitrary, this implies that the scheme theoretic  fibre product 
+$W_{\sfss, \sfss'}^{\bar \partial}\times_{\g_{\sfss'}}\{\mathbf e'\}$ is reduced (see \cite[Proposition~10.4]{HS}). Lemma \ref{jacobic} then implies that the sequence \eqref{jc1} is exact.
 
 
-  Let $\Wssi := \Hom(\Vs,\Vspi)$ and $\fggspi := \fgg_{\sfss_{i}}$ for $i=1,2$.
-  Let $*\colon \Hom(\Vspo,\Vspt) \rightarrow \Hom(\Vspt,\Vspo)$ denote the
-  adjoint map. We have $\Wss =\Wsso \oplus \Wsst$ and
-  $\fggsp = \fggspo\oplus \fggspt \oplus \fggpsb$, where
-  \[ \fgg^{\boxslash}:= \Set{\begin{pmatrix}
-        0 & -E^*\\
-        E & 0
-      \end{pmatrix}|E\in \Hom(\Vspo,\Vspt)}.
-  \]
-  Now $\ww$ and $\Xp$ are naturally identified with an element $\wwo$ in $\Wsso$
-  and an element $\Xpo$ in $\fggspo$ respectively. We have
-  $(\fggsp)_{\Xp} = (\fggspo)_{\Xpo} \oplus \fggspt \oplus \fgg'^{\boxslash}_{\Xpo}$,
-  where %$\fgg'_{1,X'_1}:= \set{T'_1\in \fgg'_1| [T'_1,X'_1]=0}$ and
-  % \begin{equation}\label{eq:fggslash}
-  \[ \fggpsb_{\Xpo} = \Set{\begin{pmatrix}
-        0 & -E^*\\
-        E & 0
-      \end{pmatrix}|E\in \Hom(\Vspo,\Vspt) \text{ and } E \Xpo = 0}.
-  \]
-  Now maps in \eqref{eq:CGG} have the following forms respectively:
-  \[
-    \fggs \oplus (\fggsp)_{\Xp}\ni (A,A') = \left(A, ( A'_0,A'_1,
-      {\tiny \begin{pmatrix}0 & -E^*\\E &0\end{pmatrix}})\right) \mapsto
-    \; A'\ww - \ww A= (A'_0 \wwo - \wwo A, E \wwo)\in \Wss
-  \] and
-  \[
-    \Wss=\Hom(\Vs,\Vspo)\oplus \Hom(Vs,\Vspt) \ni (b_0,b_1) \mapsto \left(b_0^* \wwo + \wwo^* b_0, \begin{pmatrix}
-        b_0 \wwo^* + \wwo b_0^* & \wwo b_1^*\\
-        b_1 \wwo^* & 0
-      \end{pmatrix}\right)\in \fggs\oplus \fggsp.
-  \]
-
-
-  Note that $\Gspo \cdot \Xpo = \cOpo := \DDsso(\cO)$, we have the exactness of
-  the sequence
-  \[
-    \fggs\oplus (\fggspo)_{\Xpo}\longrightarrow \Wsso \longrightarrow \fggs\oplus \fggspo.
-  \]
-  It left to show that the following sequence is exact:
-  \begin{equation}\label{eq:GG2}
-    \begin{tikzcd}[column sep=5em]
-      \fggpsb_{\Xpo} \ar[r,"\eta_{1}"] & \Wsst \ar[r, "\eta_{2}"] & \Hom(\Vspo, \Vspt).
-    \end{tikzcd}
-  \end{equation}
-  Here $\eta_{1}$ is given by
-  ${\tiny \begin{pmatrix} 0 & -E^*\\ E & 0 \end{pmatrix}}\mapsto E \wwo$ and
-  $\eta_{2}$ is given by $b_2\mapsto b_2 \wwo^*$.
-  We have
-  \[
-    \begin{split}
-      \dim \Im(\eta_{1}) &=
-      \dim \fggpsb_{\wwo} \qquad (\text{$\wwo$ is surjective.})\\
-      &= \dim\Vspt \cdot \dim (\Vspo/\Im(\Xpo))\\
-      &= \dim\Vspt \cdot \dim \Ker(\Xpo)\\
-      & = \dim\Vspt \cdot \dim \bfcc_{2}(\cO)
-    \end{split}
-  \]
-  and
-  \[
-    \begin{split}
-      \dim \Ker(\eta_{2}) &= \dim \Vspt \cdot \dim (\Vs / \Im(\wwo^{*})) \\
-      &= \dim \Vspt \cdot (\dim \Vs - \dim \Vspo) \\
-      &= \dim \Vspt \cdot \bfcc_{1}(\cO)\\
-      &= \dim \Vspt \cdot \bfcc_{2}(\cO).
-    \end{split}
-  \]
-  Now the exactness of \eqref{eq:GG2} and \eqref{eq:CGG} follow by dimension
-  counting.
 \end{proof}
 
-Now take $\ww\in \CXss$. Then the sequence \eqref{eq:CGG} is compatible with the
-$(L_{\sfss},L_{\sfss'})$-actions.
-\begin{lem}\label{lem:GG}
-  Suppose $\ww\in \CXOO$ and $\Xp :=\Msp(\ww)$. Then following sequence is exact.
-  \begin{equation}
-    \label{eq:GG}
-    \fkks\oplus(\fkksp)_{\Xp} \longrightarrow \CXss \longrightarrow  \fppsp.
-  \end{equation}
-  In particular, $\CXss \times_{\fppsp} \Xp$ is regular at $\ww$.
+\begin{lem}\label{lemexact2}
+The sequence \eqref{jc1} is exact when $\mathbf c_1(\CO)=\mathbf c_2(\CO)$.
 \end{lem}
 \begin{proof}
-The exactness of the sequence is clear by taking eign-spaces of \eqref{eq:GG2}
-under the $(L_{\sfss},L_{\sfss'})$-action.
-Since $\Ks\Ksp \cdot \ww$ is open in $\Msp^{{-1}}(\Xp)$,
-$\CXss \times_{\fppsp} \Xp$ is regular at $\ww$ by Jacobian criterion.
+Write 
+\be\label{v12}
+V_{\sfss'}=V_1'\oplus V_2',
+\ee
+where $V_1':=\phi(V_{\sfss})$, which is a non-degenerate subspace of $V_{\sfss'}$, and $V_2'$ is the orthogonal complement of $V_1'$ in $V_{\sfss'}$. Then
+\[
+   W_{\sfss, \sfss'}=\left\{\begin{bmatrix}
+        b_1\\
+        b_2
+      \end{bmatrix} \mid b_1\in  \Hom_\C(V_\sfss, V_1'), \ b_2\in  \Hom_\C(V_\sfss, V_2')\right\} \qquad\textrm{and}\qquad \phi=\begin{bmatrix}
+        \phi_1\\
+        0
+      \end{bmatrix},
+\]
+where $\phi_1\in \Hom_\C(V_\sfss, V_1')$ is a surjective linear map. 
+
+Using the decomposition \eqref{v12}, we also have that 
+\[
+ \g_{\sfss'}:= \Set{\begin{bmatrix}
+        a_1 & -\psi^*\\
+        \psi & a_2
+      \end{bmatrix}\mid a_1\in \g_1', \, a_2\in \g_2', \,\psi \in \Hom_\C(V_1', V_2')},
+\]
+where $\g_1'$ and $\g_2'$ are respectively the Lie algebras of the isometry groups of $V_1'$ and $V_2'$. Here and henceforth, the adjoint operation $\psi\mapsto \psi^*$ is defined as in 
+\eqref{ajoint4} and \eqref{adjointmap}. 
+
+Note that 
+\[
+  \mathbf e'=\begin{bmatrix}
+        \mathbf e'_1 & 0\\
+        0 & 0
+      \end{bmatrix}, \qquad \textrm{where  } \, \mathsf e_1':=\phi_1 \phi_1^*\in \g_1',%\qquad (\textrm{$\phi_1^*$ is defined as in \eqref{ajoint4}}),
+\]
+and 
+\[
+ \g_{\mathbf e'}:= \Set{\begin{bmatrix}
+        a_1 & -\psi^*\\
+        \psi & a_2
+      \end{bmatrix}\mid a_1\in \g_{\mathbf e_1'}, \, a_2\in \g_2', \,\psi \in \Hom_\C(V_1', V_2')^{\mathbf e_1'}},
+\]
+where $\g_{\mathbf e_1'}$ denotes the centralizer of $\mathbf e_1'$ in $\g_1'$, and 
+\[
+   \Hom_\C(V_1', V_2')^{\mathbf e_1'}:=\{\psi\in  \Hom_\C(V_1', V_2')\mid \psi  {\mathbf e_1'}=0\}.
+\]
+
+
+The two maps in \eqref{eq:CGG} are respectively given by
+\[
+  \left(a, \begin{bmatrix}
+        a_1 & -\psi^*\\
+        \psi & a_2
+      \end{bmatrix}\right)\mapsto   \begin{bmatrix}
+        a_1 \phi_1-\phi_1 a\\
+        \psi \phi_1
+      \end{bmatrix}
+\]
+and
+\[
+  \begin{bmatrix}
+       b_1\\
+       b_2
+      \end{bmatrix}\mapsto   \begin{bmatrix}
+       b_1 \phi_1^*+\phi_1 b_1^*  & \phi_1 b_2^*\\
+        b_2 \phi_1^* & 0
+      \end{bmatrix}.
+\]
+In order to prove the lemma, it suffices to show that the sequences 
+ \[
+  \fggs\times  \g_{\mathbf e_1'} \xrightarrow{(a,a_1)\mapsto  a_1 \phi_1-\phi_1 a } \Hom_\C(V_\sfss, V_1')
+  \xrightarrow{b_1\mapsto  b_1\phi_1^{*}+\phi_1 b_1^{*} } \g_1'
+  \]
+and 
+\be\label{exacthom}
+  \Hom_\C(V_1', V_2')^{\mathbf e_1'} \xrightarrow{\psi \mapsto  \psi \phi_1 } \Hom_\C(V_\sfss, V_2')
+  \xrightarrow{b_2\mapsto  b_2\phi_1^{*}}  \Hom_\C(V_1', V_2') 
+\ee
+are both exact. Lemma \ref{lemexact1} implies that the first sequence is exact. 
+
+Note that the Young diagram of the nilpotent orbit in $\g_1'$ containing $\mathbf e_1'$ equals $\nabla_{\mathrm{naive}}(\CO)$. Thus 
+\[
+  \dim (V_1'/\mathbf e_1'(V_1'))=\mathbf c_1(\nabla_{\mathrm{naive}}(\CO))=\mathbf c_2(\CO). 
+\]
+On the other hand, 
+\begin{eqnarray*}
+  \dim (V_{\sfss}/\phi_1^*(V_1'))&=&\dim (V_{\sfss})-\dim (\phi(V_{\sfss}))\\
+  &=&\dim(\Ker(\phi))\\
+  &=&\dim(\Ker(\phi^*\phi))\\
+  &=&\mathbf c_1(\CO). 
+\end{eqnarray*}
+The first map of \eqref{exacthom} is injective since $\phi_1$ is surjective. Then we have that  
+\begin{eqnarray*}
+     && \dim ( \Hom_\C(V_1', V_2')^{\mathbf e_1'} ) \\
+      &=& \dim V_2' \cdot \dim (V_1'/\mathbf e_1'(V_1'))\\
+      & = &\dim V_2' \cdot  \bfcc_{2}(\cO)\\
+      & = &\dim V_2' \cdot  \bfcc_{1}(\cO)\\ 
+        & = &\dim V_2' \cdot  \dim (V_{\sfss}/\phi_1^*(V_1'))\\ 
+        &=& \textrm{dimension of the kernel of the second map of  \eqref{exacthom}}.
+    \end{eqnarray*}
+Therefore the sequence \eqref{exacthom} is exact since the composition of  \eqref{exacthom} is the zero map. This finishes the proof the lemma. 
+
 \end{proof}
 
+\subsection{A proof of Proposition \ref{propreduced}} \label{secpp}
+%We are aimed to prove Proposition \ref{propreduced} in this subsection.
+Now we suppose that $\mathbf e'\in \CO'\cap \p_{\sfss'}$. Denote by $K_{\mathbf e'}$ the stabilizer of $\mathbf e'$ in $K_{\sfss',\C}$. Consider the map
+\[
+ M':=  M_{\sfss'}|_{\CX_{\sfss, \sfss'}^{\bar \partial}} : \CX_{\sfss, \sfss'}^{\bar \partial}\rightarrow \p_{\sfss'}. 
+\]
+As before, its fibre at $\mathbf e'$ equals the variety
+\[
+\CX_{\sfss, \sfss'}^{\CO, \mathbf e'}:=M_{\sfss}^{-1}(\CO\cap \p_\sfss)\cap  M_{\sfss'}^{-1}(\mathbf e').
+\]
+This variety is a finite union of open and closed 
+$K_{\sfss,\C}\times K_{\mathbf e'}$-orbits: 
+\[
+   \CX_{\sfss, \sfss'}^{\CO, \mathbf e'}=\bigsqcup_{\sO\textrm{ is a   $K_{\sfss, \C}$-orbit in $ \CO\cap \p_\sfss$ such that $\sO\subset M_\sfss(\CX_{\sfss, \sfss'})$ and $\mathbf e'\in \nabla^\sfss_{\sfss'}(\sO)$}}  \CX_{\sfss, \sfss'}^{\sO, \mathbf e'},
+ \]
+ where
+ \[
+   \CX_{\sfss, \sfss'}^{\sO, \mathbf e'}:=M_\sfss^{-1}(\sO)\cap \CX_{\sfss, \sfss'}^{\CO, \mathbf e'}. 
+ \]
+Thus  $\CX_{\sfss, \sfss'}^{\CO, \mathbf e'}$ is a smooth closed subvariety of $\CX_{\sfss, \sfss'}^{\bar \partial}$. 
+
+\begin{lem}\label{jacobic22}
+Suppose that  $\phi\in \CX_{\sfss, \sfss'}^{\CO, \mathbf e'}$. Then the sequence 
+\be\label{jc111}
+    \mathrm T_\phi (\CX_{\sfss, \sfss'}^{\CO, \mathbf e'})\xrightarrow{\textrm{ inclusion}} \mathrm T_\phi(\CX_{\sfss, \sfss'}^{\bar \partial})\xrightarrow{\textrm{the differential of $M'$}} \mathrm T_{\mathbf e'}(\p_{\sfss'})
+\ee
+is exact. 
+\end{lem}
+\begin{proof}
+Recall $\dot \epsilon\in \{\pm 1\}$ form \eqref{epsilond}. We have commutative diagrams
+\[
+ \begin{CD} 
+ \fggs \times  \g_{\mathbf e'} @>  \qquad  \textrm{\eqref{differ2} }\qquad  >>  W_{\sfss, \sfss'}
+  @> \qquad  \textrm{\eqref{differ1}} \qquad  >>\fggsp\\
+  @V(a,\,a') \mapsto  (L_\sfss\circ a \circ L_{\sfss}^{-1},\,  L_{\sfss'} \circ a' \circ L_{\sfss'}^{-1}) VV  @V b\mapsto - \dot \epsilon \sqrt{-1} L_{\sfss'}\circ b \circ L_\sfss^{-1} VV 
+  @V a' \mapsto - L_{\sfss'} \circ a' \circ L_{\sfss'}^{-1} VV \\
+\fggs \times  \g_{\mathbf e'} @> \qquad   \textrm{\eqref{differ2} }\qquad  >>  W_{\sfss, \sfss'}
+  @>\qquad  \textrm{\eqref{differ1}} \qquad  >> \fggsp.
+\end{CD}
+\]
+Lemmas \ref{lemexact1} and \ref{lemexact2} imply that the horizontal sequences are exact. The lemma then follows by taking the fixed points of the vertical arrows. 
+
+\end{proof}
+
+Lemmas \ref{jacobic} and \ref{jacobic22} implies that the scheme theoretic fibre product $\CX_{\sfss, \sfss'}^{\bar \partial}\times_{\p_{\sfss'}} \{\mathbf e'\}$ is reduced. 
+In other words, 
+\[
+\left(\CX_{\sfss, \sfss'}^{\bar \partial}\times_{\p_{\sfss'}} ({\CO'}\cap \p_{\sfss'})\right)\times_{\CO'\cap \p_{\sfss'}}\{\mathbf e'\}
+\]
+is reduced. 
+Since $\mathbf e'\in \CO\cap \p_{\sfss'}$ is arbitrary, this further implies that  the scheme theoretic  fibre product
+\[
+\CX_{\sfss, \sfss'}^{\bar \partial}\times_{\p_{\sfss'}} ({\CO'}\cap \p_{\sfss'})
+\]
+is reduced (see \cite[Proposition~11.3.13]{EGAIV3} and \cite[Th\'eor\`eme~6.9.1]{EGAIV2}). Proposition  \ref{propreduced} is now proved. 
+
+
+\delete{
 We now recall the following lemma in EGA.
 \begin{lem}[{\cite[Proposition~11.3.13]{EGAIV3}}] \label{lem:red}
   Suppose $f\colon X\rightarrow Y$ is a morphism between schemes, $x$ is a point
@@ -5251,10 +5327,9 @@ paper.
   is a reduced scheme. \qed
 \end{lem}
 
-
+}
 
 \trivial[h]{
-
 %   Note that $\UU\times \cOp \rightarrow \UU \times \bcOp$ is \'etale, so
 %   $W_{\UU,\cOp}\rightarrow W_{\UU,\bcOp}$.
   Generic flatness: Suppose $f: X\rightarrow S $ is a morphism between scheme
@@ -5267,7 +5342,7 @@ is flat and of finite presentation, and $\cF|_{X_U}$ is flat over $U$
 and of finite presentation over $\cO_{X_{U}}$.
 }
 
-
+\subsection{Geometric theta lifts of admissible orbit data} 
 
 \def\wedgetop{{\bigwedge}^{\mathrm{top}}}
 
@@ -5281,60 +5356,58 @@ and of finite presentation over $\cO_{X_{U}}$.
 \def\dlift{{\check\vartheta}}
 \def\AOD{\mathrm{AOD}}
 
-\begin{lem}\label{lem:aod}
-  Suppose $\cO$ is regular for $\DDss$, $\sO$ is a $\Ks$-orbit in $\cO\cap \fpps$ and
-  $\sOp = \DDss(\sO)\subset \cOp\cap \fppsp$.
-  Suppose $\cE' \in \AOD_{\sfss'}(\sOp)$.
-  Then $\dlift_{\sO'}^{\sO}(\cE')$ is either zero or in $\AOD_{\sfss}(\sO)$.
-\end{lem}
-\begin{proof}
-  Note that $(\zeta_{\sfss,\sfss'})^{2} = (\wedgetop \CXss)^{-1}$.
-   The lemma follows from \Cref{lem:tan} below.
-\end{proof}
-
+Recall that  $\CO$ is regular for $\DDss$. Suppose that $\phi\in \CXOO$, $\mathbf e=M_\sfss(\phi)$ and $\mathbf e'=M_{\sfss'}(\phi)$. As before, $K_\mathbf e$ and $K_{\mathbf e'}$ are respectively the  stabilizers of $\mathbf e$ and $\mathbf e'$ in $K_{\sfss, \C}$ and $K_{\sfss', \C}$.  Write $\mathfrak k_{\mathbf e}$ and $\mathfrak k_{\mathbf e'}$ for the Lie algebras of $K_{\mathbf e}$ and $K_{\mathbf e'}$, respectively. As before, $(K_{\sfss, \C}\times K_{\sfss', \C})_{\ww}$ denotes the stabilizer of $\phi$ in $K_{\sfss, \C}\times K_{\sfss', \C}$. 
+   Write $\mathfrak s_\phi$ for the Lie algebra of  $(\Ks\times \Ksp)_{\ww}$.
+  
 \begin{lem}\label{lem:tan}
-  Suppose $\cO$ is regular for $\DDss$ and $\ww\in \CXOO$. Let $\X = \Ms(\ww)$ and
-  $\Xp=\Msp(\ww)$.
-  Then
+ As representations of  $\mathfrak s_\phi$, 
   \begin{equation}\label{eq:aod}
-    \wedgetop (\fkks)_{\X}  = \wedgetop (\fkksp)_{\Xp} \otimes \left(\wedgetop \CXss\right)^{{-1}}
+    \wedgetop \mathfrak k_{\X} \otimes \wedgetop \CXss  \cong \wedgetop \mathfrak k_{\Xp}.
   \end{equation}
-  as $(\Ks\times \Ksp)_{\ww}$-module.
 \end{lem}
 \begin{proof}
-  We retain the notation in the proof of \Cref{lem:CGG} abd \Cref{lem:GG}.
-  Let $S_{\ww} := (\Ks\times \Ksp)_{\ww}$, $\fss_{\ww} = \Lie(S_{\ww})$,
-   $S_{\wwo} := (\Ks\times \Kspo)_{\wwo}$ and $\fss_{\wwo} := \Lie(S_{\wwo})$.
-  Then $\fss_{\ww} = \fss_{\wwo}\oplus \fkkspt$ and
-  $\fss_{\wwo}\xrightarrow{\cong} (\fkks)_{\X}$ as $S_{\ww}$-module.
-
-  The sequence \eqref{eq:GG} leads to the following short exact sequence
+  We retain the notation in the proof of \Cref{lemexact2}. Since $\phi\in \CX_{\sfss, \sfss'}$, both $V_1'$ and $V_2'$ are $L_{\sfss'}$-stable.  Write
   \[
-    0\longrightarrow (\fkks\oplus (\fkksp)_{\Xp})/ \fss_{\ww}
-    \longrightarrow \CXss \longrightarrow \fpppso \oplus \fpppsb \longrightarrow 0,
+    \g_i'=\mathfrak k_i'\oplus \p_i'\qquad (i=1,2),
   \]
-  where $\fpppsb = \fggpsb\cap \fpp$.
+  where $\mathfrak k_i'$ is the centralizer of $L_{\sfss'}$ in $\g_i'$, and $\p_i'$ is its orthogonal complement in $\g_i'$ under the trace form. 
 
-  Note that the $S_{\ww}$-modules $\wedgetop \fkks$, $\wedgetop \fkkspt$,
-$\wedgetop \fpppst$ and $\wedgetop \fggsp$ are trivial.
-  Now
+   The sequence \eqref{jc111} leads to a short exact sequence
   \[
-    \begin{split}
-      & \wedgetop (\fkksp)_{\Xp} \otimes \left(\wedgetop \CXss\right)^{{-1}}\\
-      & = \wedgetop (\fkksp)_{\Xp} \otimes
-      \left(\wedgetop  \big((\fkks\oplus (\fkksp)_{\Xp})/\fss_{\ww}\big)
-        \otimes \wedgetop \fpppso \otimes \wedgetop\fpppsb\right)^{-1}\\
-      & =  \wedgetop (\fss_{\wwo} \oplus \fkkspt) \otimes
-      \left(\wedgetop (\fkks \oplus \fkksp\oplus \fpppso \oplus \fpppsb )\right)^{{-1}} \\
-      & = \wedgetop \fss_{\wwo} \otimes \left(\wedgetop \fggsp  \right)^{-1}\\
-      & \qquad \text{(by $\fkksp \oplus \fpppso \oplus \fpppsb \oplus \fpppst = \fggsp $ )}\\
-      & = \wedgetop (\fkks)_{\X}.
-    \end{split}
+    0\longrightarrow (\fkks\oplus \mathfrak k_{\mathbf e'})/ \fss_{\ww}
+    \longrightarrow \CXss \longrightarrow \p_{\sfss'}/\p_2'  \longrightarrow 0
   \]
- This proves the lemma.
+  of representations of $(\Ks\times \Ksp)_{\ww}$. 
+By 
+Lemma \ref{descko}, we have an exact sequence 
+\[
+  0\rightarrow \mathfrak k_2'\rightarrow \mathfrak s_\phi\rightarrow \mathfrak k_{\mathbf e}\rightarrow 1
+\]
+of representations of $(\Ks\times \Ksp)_{\ww}$. Therefore, as  representations of $(\Ks\times \Ksp)_{\ww}$, we have that
+\begin{eqnarray*}
+      &&\wedgetop \mathfrak k_{\X} \otimes \wedgetop \CXss\\
+      & \cong & \wedgetop (\p_{\sfss'}/\p_2')  \otimes \wedgetop (\fkks\oplus \mathfrak k_{\mathbf e'}) \otimes
+      \left(\wedgetop \mathfrak k_2'\right)^{-1}\\
+       & \cong & \wedgetop (\p_{\sfss'}/\p_2')  \otimes  \wedgetop \fkks \otimes
+      \left(\wedgetop \mathfrak k_2'\right)^{-1}\otimes \wedgetop  \mathfrak k_{\mathbf e'}. \\
+\end{eqnarray*}
+The lemma then follows since $\mathfrak s_\phi$ acts trivially on $ \wedgetop (\p_{\sfss'}/\p_2')  \otimes  \wedgetop \fkks \otimes
+      \left(\wedgetop \mathfrak k_2'\right)^{-1}$. 
+      
+      \end{proof}
+
+
+
+\begin{lem}\label{lem:aod}
+  Suppose that $\sO$ is a $K_{\sfss,\C}$-orbit in $\cO\cap \fpps$ that is contained in the image of $M_\sfss$,  and
+  $\sOp = \DDss(\sO)\subset \cOp\cap \fppsp$.
+  Then for every $\cE' \in \AOD_{\sfss'}(\sOp)$, 
+   the geometric theta lift $\dlift_{\sO'}^{\sO}(\cE')$ is either zero or an element of  $\AOD_{\sfss}(\sO)$.
+\end{lem}
+\begin{proof}
+  Note that $(\zeta_{\sfss,\sfss'})^{2} \cong (\wedgetop \CXss)^{-1}$ as representations of $\mathfrak k_\sfss\times \mathfrak k_{\sfss'}$, and $\cE'$ is represented by a line bundle. Thus  
+   the lemma is a direct consequence of  \Cref{lem:tan}.
 \end{proof}
-
-
 
 \section{Equating  the associated  cycles and a proof of Theorem \ref{thmpitau}}\label{sec:equac}
 
@@ -5364,29 +5437,47 @@ In the rest of this section we suppose that $\CO\in \mathrm{Nil}(\g_\sfss)$ is g
   p_0:=q_0:=\begin{cases}
     \abs{\sfss}-\abs{\sfss'}-1, \qquad  &\textrm{if $\star \in\{B,D\}$}; \\
        \abs{\sfss}-\abs{\sfss'}+1, \qquad  &\textrm{if $\star \in\{C, \widetilde C\}$}; \\
- \abs{\sfss}-\abs{\sfss'},\qquad  &\textrm{if $\star \in \{C^*, D^*\}$}.
+ \abs{\sfss}-\abs{\sfss'},\qquad  &\textrm{if $\star \in \{C^*, D^*\}$},
   \end{cases}
 \]
+which is a non-negative integer.
+Similar to \eqref{p123}, we have that 
+\be\label{p1234}
+-p_0-1=
+  \begin{cases}
+ \nu_{\sfss'}-\abs{\sfss} +2,\quad& \textrm{if $\star =C^*$};\\
+  \nu_{\sfss'}-\abs{\sfss},\quad& \textrm{otherwise}.
+   \end{cases}
+   \ee
+Thus    $\pi'$ is convergent for $\check \Theta_{\mathsf s'}^{\mathsf s}$ whenever $\pi'$ is a Casselman-Wallach representation of $G_{\sfss'}$  that is  $\nu'$-bounded for some
+$
+  \nu'>
+ -p_0-1.
+$
 
-We will prove the following theorem in this section.
+We will prove the following theorem in this section. 
 \begin{thm}\label{thm:GDS.AC}
   Let $\pi'$ be an $\CO'$-bounded Casselman-Wallach representation of $G_{\sfss'}$  that is  $\nu'$-bounded for some
 $
   \nu'>
  -p_0-1.
 $
-Let $\rho'$ be the   $(\g_{\mathsf s'}, K_{\mathsf s'})$-module associated to $\pi'$.  Then $\Thetab_{\mathsf s'}^{\mathsf s}(\pi')$, $\check \Theta_{\mathsf s'}^{\mathsf s}(\pi')$  and $\check \Theta_{\mathsf s'}^{\mathsf s}(\rho')$ are all $\CO$-bounded,  and
+%Let $\rho'$ be the   $(\g_{\mathsf s'}, K_{\mathsf s'})$-module associated to $\pi'$.  
+Then $\Thetab_{\mathsf s'}^{\mathsf s}(\pi')$, $\check \Theta_{\mathsf s'}^{\mathsf s}(\pi')$  and $\check \Theta_{\mathsf s'}^{\mathsf s}(\pi'^{\mathrm{alg}})$ are all $\CO$-bounded,  and
     \[
-  \mathrm{AC}_{\cO}(\Thetab_{\mathsf s'}^{\mathsf s}(\pi'))=    \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\pi'))= \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\rho'))=   \check \vartheta_{\cO'}^\cO(\mathrm{AC}_{\cO'}(\pi'))\in \CK_\sfss(\CO).
+  \mathrm{AC}_{\cO}(\Thetab_{\mathsf s'}^{\mathsf s}(\pi'))=    \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\pi'))= \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s}(\pi'^{\mathrm{alg}}))=   \check \vartheta_{\cO'}^\cO(\mathrm{AC}_{\cO'}(\pi'))\in \CK_\sfss(\CO).
   \]
 \end{thm}
 
-We remark that by Lemma \ref{doublelift5}, $\pi'$ is convergent for $\check \Theta_{\mathsf s'}^{\mathsf s}$ so that $\Thetab_{\mathsf s'}^{\mathsf s}(\pi')$ is defined.
+%We remark that by Lemma \ref{doublelift5}, $\pi'$ is convergent for $\check \Theta_{\mathsf s'}^{\mathsf s}$ so that $\Thetab_{\mathsf s'}^{\mathsf s}(\pi')$ is defined. 
 
 
 
-Theorem \ref{thm:GDS.AC} is obviously true when $\abs{\sfss'}=0$. In the rest of this subsection we further assume that $\abs{\sfss'}>0$.
-Then $p_0=q_0\geq 0$.  Define three classical signatures
+%Theorem \ref{thm:GDS.AC} is obviously true when $\abs{\sfss'}=0$. In the rest of this subsection we further assume that $\abs{\sfss'}>0$. 
+  
+
+
+  Define three classical signatures
 \[
   \dsfss:=(\dot \star, \dot p, \dot q):=\begin{cases}
     (\star', \abs{\sfss'}+p_0,  \abs{\sfss'}+q_0), \qquad  &\textrm{if $\star'\neq B$}; \\
@@ -5396,30 +5487,41 @@ Then $p_0=q_0\geq 0$.  Define three classical signatures
 \[
   \sfss'':=(\star', p'+p_0, q'+q_0)\qquad\textrm{and}\qquad \sfss_0:=(\dot \star, p_0, q_0). %:=( \star'', p'', q'')
   \]
-Then we have decompositions
+Then we have decompositions 
 \[
   V_{\dsfss}=V_{\sfss'^-}\oplus V_{\sfss''}= V_{\sfss'^-}\oplus V_{\sfss'}\oplus  V_{\sfss_0}= (V_{\sfss'}^\triangle \oplus X_{\sfss_0})\oplus (V_{\sfss'}^\nabla \oplus Y_{\sfss_0}).
 \]
-as in \eqref{decvdsfss}.
+as in \eqref{decomv0}. 
 
-Let
+Theorem \ref{thm:GDS.AC} is obviously true when $\abs{\sfss}\leq 1$. Thus  we  assume in the rest of this subsection that $\abs{\sfss}\geq 2$. As in \eqref{dotp}, we have that 
+\[
+ \dot p=\dot q= \begin{cases}
+ \abs{\sfss}-1,\quad   &\textrm{if } \star\in \{B,D\};\\
+ \abs{\sfss}+1,  & \textrm{if $\star\in \{C, \widetilde C\}$;}\\
+ \abs{\sfss} & \textrm{if $ \star\in\{C^*,D^*\}$.}
+\end{cases}
+\]
+Thus we are in the situation of 
+Section \ref{doublep} (with $\abs{\sfss}$ equals the integer $k$ of Section \ref{doublep}).
+
+Let 
 \[
   P_{\sfss'',\sfss_0}=R_{\sfss'',\sfss_0}\ltimes N_{\sfss'',\sfss_0}=(G_{\sfss'}\cdot R_{\sfss_0})\ltimes N_{\sfss'',\sfss_0}
 \]
-be the parabolic subgroup of $G_{\sfss''}$ as in \eqref{parabolic} and \eqref{parabolic2}. Write $\mathfrak r_{\sfss_0}$ and $\mathfrak n_{\sfss'',\sfss_0}$ for the complexified Lie algebras of $R_{\sfss_0}$ and $N_{\sfss'',\sfss_0}$ respectively so that  the complexified Lie algebra of $P_{\sfss'', \sfss_0}$ equals $(\g_{\sfss'}\times \mathfrak r_{\sfss_0})\ltimes \mathfrak n_{\sfss'',\sfss_0}$.
+be the parabolic subgroup of $G_{\sfss''}$ as in \eqref{parabolic} and \eqref{parabolic2}. Write $\mathfrak r_{\sfss_0}$ and $\mathfrak n_{\sfss'',\sfss_0}$ for the complexified Lie algebras of $R_{\sfss_0}$ and $N_{\sfss'',\sfss_0}$ respectively so that  the complexified Lie algebra of $P_{\sfss'', \sfss_0}$ equals $(\g_{\sfss'}\times \mathfrak r_{\sfss_0})\ltimes \mathfrak n_{\sfss'',\sfss_0}$.   
 Define
 \[
   \CO'':= \Ind_{P_{\sfss'',\sfss_0}}^{G_{\sfss''}}  \CO'%  \Ind_{\g_{\sfss'}\times \mathfrak r_{\sfss_0}}^{\g_{\sfss''}}(\CO'\times \{0\}).
 \]
 to be the unique nilpotent orbit in $\mathrm{Nil}(\g_{\sfss''})$ that contains a non-empty Zariski open subset of  $
-  \CO'+\mathfrak n_{\sfss'',\sfss_0}$ (see \cite{CM}).
+  \CO'+\mathfrak n_{\sfss'',\sfss_0}$ (see \cite[Theorem 7.1.1]{CM}).
 
 
 \begin{lem}
-The nilpotent orbit $\CO''$ is good for  $\nabla_\mathsf s^{\sfss''}$ and $\nabla_\mathsf s^{\sfss''}(\CO'')=\CO$.
+The nilpotent orbit $\CO''$ is good for  $\nabla_\mathsf s^{\sfss''}$ and $\nabla_\mathsf s^{\sfss''}(\CO'')=\CO$.  
 \end{lem}
 \begin{proof}
-This follows from the description of induced orbits in \cite[Section 7.3]{CM}.
+This follows from the description of induced orbits in \cite[Section 7.3]{CM}. 
 \end{proof}
 
 
@@ -5427,7 +5529,17 @@ This follows from the description of induced orbits in \cite[Section 7.3]{CM}.
 Suppose that $\CE\in \CK_{\sfss}(\CO)$ and $0\preceq \CE\preceq \check \vartheta_{\sfss', \CO'}^{\sfss, \CO}(\CE')$ for some $\CE'\in \CK^+_{\sfss'}(\CO')$. If $\CE\neq 0$, then  $\check \vartheta_{\sfss, \CO}^{\sfss'', \CO''}(\CE)\neq 0$.
 \end{lem}
 \begin{proof}
-Jiajun.
+  Without loss of generality we may assume that $\cE'$ is irreducible and
+  supported on a nilpotent orbit $\sO'\in \Nil_{\sfss'}(\cO')$. 
+  We also can assume that $\cE$ is supported on a nilpotent orbit $\sO\in \Nil_\sfss(\cO)$. 
+  By the definition of geometric lift, $\sO'=\DDss(\sO)$. Using \Cref{prop:DDss}, 
+  one can check that there is a nilpotent orbit $\sO''\in \Nil_{\sfss''}(\cO'')$ such that 
+  $\sO = \DD_{\sfss}^{\sfss''}(\sO'')$. 
+  When $\cO = \DDn(\cO'')$, the non-vanishing of $\check \vartheta_{\sfss, \CO}^{\sfss'', \CO''}(\cE)$
+  follows from the inejctivity of $\dlift_{\sO}^{\sO''}$. 
+  When $\abs{\cO} > \abs{\DDn(\cO'')}$, we have $\star \in \set{B,D}$, $\sO'=\DDn(\sO)$
+  and so $\cE = \dlift_{\sO'}^{\sO}(\cE')$.  
+  Now is straightforward to check that $\vartheta_{\sfss,\sO}^{\sfss,\sO''}(\cE) \neq 0$.
 \end{proof}
 
 \subsection{Weak associated cycles}
@@ -5439,20 +5551,21 @@ for the free abelian group generated by the set of $K_{\sfss_1}$-orbits in $\CO_
 \]
 such that if $\CE$ is represented by a $K_{\sfss_1,\C}$-equivariant algebraic vector bundle $\CE_0$ over a $K_{\sfss_1,\C}$-orbit $\sO_1\subset \CO_1\cap \p_{\sfss_1}$, then
 \[
-   \CE^{\mathrm{weak}}=\textrm{(rank of $\CE_0$)}\cdot \sO_1.
+   \CE^{\mathrm{weak}}=\textrm{(rank of $\CE_0$)}\cdot \sO_1. 
 \]
 
-For all $\sfss_1=S_{\star, \abs{\sfss}}$,  $\g_{\sfss_1}$ is identified with $\g_{\sfss}$ and we consider $\CO$ also as an element of $\mathrm{Nil}(\g_{\sfss_1})$.
+For all $\sfss_1\in S_{\star, \abs{\sfss}}$,  $\g_{\sfss_1}$ is identified with $\g_{\sfss}$ and we consider $\CO$ also as an element of $\mathrm{Nil}(\g_{\sfss_1})$. 
 
 
 Note that for every Cassleman-Wallach representation $\pi_1$ of $R_{\sfss'',\sfss_0}=G_{\sfss'}\cdot R_{\sfss_0}$ such that $(\pi_1)|_{G_{\sfss'}}$ is an $\CO'$-bounded Casselman-Wallach representation,   the parabolic induction
-$\Ind_{P_{\sfss'',\sfss_0}}^{G_{\sfss''}} \pi_1$ is an $\CO''$-bounded Casselman-Wallach representation  of $G_{\sfss''}$ (\cite{?}).
+$\Ind_{P_{\sfss'',\sfss_0}}^{G_{\sfss''}} \pi_1$ is an $\CO''$-bounded Casselman-Wallach representation  of $G_{\sfss''}$ (see \cite[Corollary~5.0.10]{B.Orbit}).
+
 
 
 
 \begin{prop}\label{prpaseq}
-Let   $\pi'$ be an $\CO'$-bounded Casselman-Wallach representation of $G_{\sfss'}$, and let $\chi_1: R_{\sfss_0}\rightarrow \C^\times$ be a character.
-Assume that $\pi'$ is genuine when $\star'=\widetilde C$.
+Let   $\pi'$ be an $\CO'$-bounded Casselman-Wallach representation of $G_{\sfss'}$, and let $\chi_1: R_{\sfss_0}\rightarrow \C^\times$ be a character. 
+Assume that $\pi'$ is genuine when $\star'=\widetilde C$. 
 
 \noindent
 (a) If $ \star\in \{B,D\}$,  then
@@ -5461,13 +5574,13 @@ Assume that $\pi'$ is genuine when $\star'=\widetilde C$.
         \]
 
   \smallskip
-
+  
 
     \noindent
 (b) If $\star \in \{C, \widetilde C\}$, then
 \begin{eqnarray*}
    && \left(\check \vartheta^{\sfss'', \CO''}_{\sfss, \CO}(\check \vartheta^{\sfss, \CO}_{\sfss',\CO'}(\mathrm{AC}_{\CO'}(\pi')))\right)^{\mathrm{weak}} +  \left(\check \vartheta^{\sfss'', \CO''}_{\sfss, \CO}(\check \vartheta^{\sfss, \CO}_{\sfss',\CO'}(\mathrm{AC}_{\CO'}(\pi'\otimes \det )))\right)^{\mathrm{weak}}\\
-   & =&\left( \mathrm{AC}_{\CO''}(\Ind_{P_{\sfss'',\sfss_0}}^{G_{\sfss''}} (\pi'\otimes \chi_1))\right)^{\mathrm{weak}}.
+   & =&\left( \mathrm{AC}_{\CO''}(\Ind_{P_{\sfss'',\sfss_0}}^{G_{\sfss''}} (\pi'\otimes \chi_1))\right)^{\mathrm{weak}}. 
 \end{eqnarray*}
   \smallskip
 
@@ -5476,147 +5589,181 @@ Assume that $\pi'$ is genuine when $\star'=\widetilde C$.
 \[
  \left(\check \vartheta^{\sfss'', \CO''}_{\sfss, \CO}(\check \vartheta^{\sfss, \CO}_{\sfss',\CO'}(\mathrm{AC}_{\CO'}(\pi')))\right)^{\mathrm{weak}} = \left( \mathrm{AC}_{\CO''}(\Ind_{P_{\sfss'',\sfss_0}}^{G_{\sfss''}} (\pi'\otimes \chi_1))\right)^{\mathrm{weak}}.
  \]
-
+ 
 \smallskip
 
 \noindent
-(d) If $\star=C^*$, then
+(d) If $\star=C^*$, then 
 \[
   \bigoplus_{\sfss_1\in S_{\star, \abs{\sfss}} } \left(\check \vartheta^{\sfss'', \CO''}_{\sfss_1, \CO}(\check \vartheta^{\sfss_1, \CO}_{\sfss',\CO'}(\mathrm{AC}_{\CO'}(\pi')))\right)^{\mathrm{weak}}=\left( \mathrm{AC}_{\CO'}(\Ind_{P_{\sfss'',\sfss_0}}^{G_{\sfss''}} (\pi'\otimes \chi_1))\right)^{\mathrm{weak}}.
 \]
 \end{prop}
 \begin{proof}
-Jiajun.
+  The proposition follows by comaparing \Cref{lem:ind} with the direct computations of the left hand side of the equations.
 \end{proof}
 
 
-% As in Theorem \ref{thm:GDS.AC},
+% As in Theorem \ref{thm:GDS.AC}, 
 \begin{lem}\label{lem:GDS.AC2}
   Let $\pi'$ be an $\CO'$-bounded Casselman-Wallach representation of $G_{\sfss'}$  that is  $\nu'$-bounded for some
 $
   \nu'>
  -p_0-1.
 $
-Then
+Then 
  \begin{eqnarray*}
-  && \left( \bigoplus_{\sfss_1\in S_{\star, \abs{\sfss}} } \mathrm{AC}_{\cO''}( \Thetab^{\mathsf s''}_{\mathsf s_1}(\Thetab_{\mathsf s'}^{\mathsf s_1}(\pi')))\right)^{\mathrm{weak}}
+  && \left( \bigoplus_{\sfss_1\in S_{\star, \abs{\sfss}} } \mathrm{AC}_{\cO''}( \Thetab^{\mathsf s''}_{\mathsf s_1}(\Thetab_{\mathsf s'}^{\mathsf s_1}(\pi')))\right)^{\mathrm{weak}} 
 \\
-&=& \left( \bigoplus_{\sfss_1\in S_{\star, \abs{\sfss}}}   \vartheta^{\sfss'', \CO''}_{\sfss_1, \CO}(\vartheta^{\sfss_1, \CO}_{\sfss',\CO'}(\mathrm{AC}_{\CO'}(\pi')))\right)^{\mathrm{weak}}.
+&=& \left( \bigoplus_{\sfss_1\in S_{\star, \abs{\sfss}}}   \vartheta^{\sfss'', \CO''}_{\sfss_1, \CO}(\vartheta^{\sfss_1, \CO}_{\sfss',\CO'}(\mathrm{AC}_{\CO'}(\pi')))\right)^{\mathrm{weak}}.        
 \end{eqnarray*}
 
 \end{lem}
 \begin{proof}
-There is no loss of generality to assume that $\pi'$ is genuine when $\star'=\widetilde C$. When $\star\neq C^*$, the lemma is a direct consequence of Theorem \ref{doubtt} and Proposition \ref{prpaseq}.
+There is no loss of generality to assume that $\pi'$ is genuine when $\star'=\widetilde C$. When $\star\neq C^*$, the lemma is a direct consequence of Theorem \ref{doubtt} and Proposition \ref{prpaseq}. 
 
-Now assume that $\star=C^*$.  Let $\CJ$ be as in Theorem \ref{doubtt}. In view of Lemma \ref{comobound}, and using formulas in  \cite[Theorems 5.2 and 5.6]{DKPC}, one checks that $\CJ$ is $\CO_2$-bounded for a certain oribit $\CO_2\in \mathrm{Nil}(\g_{\sfss''})$ that is contained in the boundary $\overline{\CO''}\setminus \CO$ of  $\CO''$. Thus
-$ \mathrm{AC}_{\cO''}(\CJ)=0$. Thus the  lemma in the case when $\star=C^*$  is also a consequence of Theorem \ref{doubtt} and Proposition \ref{prpaseq}.
+Now assume that $\star=C^*$.  Let $\CJ$ be as in Theorem \ref{doubtt}. In view of Lemma \ref{comobound}, and using formulas in  \cite[Theorems 5.2 and 5.6]{DKPC}, one checks that $\CJ$ is $\CO_2$-bounded for a certain oribit $\CO_2\in \mathrm{Nil}(\g_{\sfss''})$ that is contained in the boundary $\overline{\CO''}\setminus \CO''$ of  $\CO''$. Thus 
+$\CJ$ is $\cO''$-bounded, and $ \mathrm{AC}_{\cO''}(\CJ)=0$. Hence  the  lemma in the case when $\star=C^*$  is also a consequence of Theorem \ref{doubtt} and Proposition \ref{prpaseq}. 
 
 \end{proof}
 
 
-\subsection{Proof of Theorem \ref{thm:GDS.AC}}
-%\begin{proof}[Proof of Theorem \ref{thm:GDS.AC}]
+\subsection{A proof of Theorem \ref{thm:GDS.AC}}
+%\begin{proof}[Proof of Theorem \ref{thm:GDS.AC}] 
  We are now ready to prove Theorem \ref{thm:GDS.AC}.
-Let $\pi'$ be as in Theorem \ref{thm:GDS.AC}.
- %First assume that $\star=B$.
- %The proof in the other cases is similar and is omitted.
+Let $\pi'$ be as in Theorem \ref{thm:GDS.AC}. 
+ %First assume that $\star=B$. 
+ %The proof in the other cases is similar and is omitted. 
 % Without loss of generality we assume that $\pi'$ is genuine.
-For every $\sfss_1\in S_{\star, \abs{s}}$ we have
+For every $\sfss_1\in S_{\star, \abs{s}}$ we have 
 surjective $(\g_{\sfss_1}, K_{\sfss_1})$-module homomorphisms
 \[
-\check \Theta_{\mathsf s'}^{\mathsf s_1}(\pi'^{\mathrm{alg}})\rightarrow \left (\check \Theta_{\mathsf s'}^{\mathsf s_1}(\pi')\right )^{\mathrm{alg}}\rightarrow
- \left (\Thetab_{\mathsf s'}^{\mathsf s_1}(\pi')\right )^{\mathrm{alg}}.
+\check \Theta_{\mathsf s'}^{\mathsf s_1}(\pi'^{\mathrm{alg}})\rightarrow \left (\check \Theta_{\mathsf s'}^{\mathsf s_1}(\pi')\right )^{\mathrm{alg}}\rightarrow 
+ \left (\Thetab_{\mathsf s'}^{\mathsf s_1}(\pi')\right )^{\mathrm{alg}}. 
  \]
  Thus Theorem \ref{prop:GDS.AC} implies that  $\check \Theta_{\mathsf s'}^{\mathsf s_1}(\rho')$, $\check \Theta_{\mathsf s'}^{\mathsf s_1}(\pi')$ and $\Thetab_{\mathsf s'}^{\mathsf s_1}(\pi')$ are all $\CO$-bounded,  and
     \be\label{ineq000}
    \mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s_1}(\pi'))\preceq  \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s_1}(\pi'))\preceq  \mathrm{AC}_{\cO}(\check \Theta_{\mathsf s'}^{\mathsf s_1}(\rho'))\preceq \check \vartheta_{\sfss', \cO'}^{\sfss_1, \cO}(\mathrm{AC}_{\cO'}(\pi')).
   \ee
-  Consequently,
+  Consequently, 
    \be\label{acco}
    \mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s_1}(\pi'))\preceq   \check \vartheta_{\sfss', \cO'}^{\sfss_1, \cO}(\mathrm{AC}_{\cO'}(\pi')).
   \ee
+
 By Lemma \ref{doublelift5},  $ \Thetab_{\mathsf s'}^{\mathsf s_1}(\pi')$ is over-convergent for $ \check \Theta_{\mathsf s_1}^{\mathsf s''}$ so that $\Thetab_{\mathsf s_1}^{\mathsf s''}( \Thetab_{\mathsf s'}^{\mathsf s_1}(\pi'))$ is defined.  Similar to \eqref{acco}, we have that
    \be\label{acco2}
-   \mathrm{AC}_{\cO}( \Thetab_{\mathsf s_1}^{\mathsf s''}(\Thetab_{\mathsf s'}^{\mathsf s_1}(\pi')))\preceq   \check \vartheta_{\sfss_1, \cO}^{\sfss'', \cO''}(\mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s_1}(\pi'))).
+   \mathrm{AC}_{\cO''}( \Thetab_{\mathsf s_1}^{\mathsf s''}(\Thetab_{\mathsf s'}^{\mathsf s_1}(\pi')))\preceq   \check \vartheta_{\sfss_1, \cO}^{\sfss'', \cO''}(\mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s_1}(\pi'))).
   \ee
 Combining \eqref{acco} and \eqref{acco2}, we obtain that
 \be\label{acineq}
    \mathrm{AC}_{\cO''}( \Thetab_{\mathsf s_1}^{\mathsf s''}(\Thetab_{\mathsf s'}^{\mathsf s_1}(\pi')))\preceq   \check \vartheta_{\sfss_1, \cO}^{\sfss'', \cO''}(\check \vartheta_{\sfss', \cO'}^{\sfss_1, \cO}(\mathrm{AC}_{\cO'}(\pi'))).
 \ee
-Then Lemma \ref{lem:GDS.AC2} implies that the equality in \eqref{acineq} holds. In particular,
+Then Lemma \ref{lem:GDS.AC2} implies that the equality in \eqref{acineq} holds. In particular, 
 \be\label{acineq2}
    \mathrm{AC}_{\cO''}( \Thetab_{\mathsf s}^{\mathsf s''}(\Thetab_{\mathsf s'}^{\mathsf s}(\pi')))=  \check \vartheta_{\sfss, \cO}^{\sfss'', \cO''}(\check \vartheta_{\sfss', \cO'}^{\sfss, \cO}(\mathrm{AC}_{\cO'}(\pi'))).
 \ee
-Then Theorem \ref{prop:GDS.AC} and  Lemma \ref{lem74} imply that
+
+In view of \eqref{acco}, write 
 \[
-   \mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s}(\pi'))=  \check \vartheta_{\sfss', \cO'}^{\sfss, \cO}(\mathrm{AC}_{\cO'}(\pi')).
+  \check \vartheta_{\sfss', \cO'}^{\sfss, \cO}(\mathrm{AC}_{\cO'}(\pi'))=\mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s}(\pi'))+\CE,\qquad\textrm{where $\ \CE\in \CK^+_\sfss(\CO)$}.
 \]
-In view of \eqref{ineq000}, this proves Theorem \ref{thm:GDS.AC}.
+Then 
+\begin{eqnarray}
+\nonumber \check \vartheta_{\sfss, \cO}^{\sfss'', \cO''}(\check \vartheta_{\sfss', \cO'}^{\sfss, \cO}(\mathrm{AC}_{\cO'}(\pi')))
+\nonumber &=&\mathrm{AC}_{\cO''}( \Thetab_{\mathsf s}^{\mathsf s''}(\Thetab_{\mathsf s'}^{\mathsf s}(\pi')))\\
+\nonumber &\preceq &  \check \vartheta_{\sfss, \cO}^{\sfss'', \cO''}(\mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s}(\pi')))\\
+\label{prece}  &\preceq &  \check \vartheta_{\sfss, \cO}^{\sfss'', \cO''}(\mathrm{AC}_{\cO}( \Thetab_{\mathsf s'}^{\mathsf s}(\pi'))+\CE)\\
+\nonumber &=&\check \vartheta_{\sfss, \cO}^{\sfss'', \cO''}(\check \vartheta_{\sfss', \cO'}^{\sfss, \cO}(\mathrm{AC}_{\cO'}(\pi'))).
+\end{eqnarray}
+In particular,  the equality holds in \eqref{prece}. Therefore  $\check \vartheta_{\sfss, \cO}^{\sfss'', \cO''}(\CE)=0$, and 
+Lemma \ref{lem74} imply that $\CE=0$. This proves Theorem \ref{thm:GDS.AC}. 
 
 
+%Theorem \ref{prop:GDS.AC} and   In view of \eqref{ineq000}, 
+
+ 
  \subsection{A proof of Theorem \ref{thmpitau} }\label{sec:comANDgeo}
-  As in Section \ref{secd}, $\check \CO$ is a Young diagram that has $\star$-good parity, and
-$\uptau=(\tau, \wp)\in \PBPe_\star(\check \CO,\mathsf s)$.  When $\check \CO\neq \emptyset$, we have the dual descent
+  As in Section \ref{secd}, $\check \CO$ is a Young diagram that has $\star$-good parity,   and 
+$\uptau=(\tau, \wp)\in \PBPe_\star(\check \CO,\mathsf s)$.  We have the dual descent 
 \[
-  \check \CO':=\check \nabla(\check \CO),
+  \check \CO':=\check \nabla(\check \CO), 
 \]
-and the descent
+and the descent 
  \[
   \uptau' := (\tau',\wp'):=\nabla(\uptau):= (\DD(\tau), \ckDD(\wp))\in \mathrm{\PBPe}_{\star'}(\check \CO').
  \]
- In general, we set
-\[
-  \mathrm d'_\tau:=\begin{cases}
-    \dim \tau', &\qquad \textrm{if $\check \CO\neq \emptyset$};\\
-    0, &\qquad \textrm{if $\check \CO= \emptyset$}.
-    \end{cases}
+ Set
+ \[
+  \mathrm d'_\tau:=
+    \dim \tau'.
     \]
 
-
-Suppose that $\CO\in \mathrm{Nil}(\g_\sfss)$ equals the Barbasch-Vogan dual of $\check \CO$.   Recall that $\pi_\uptau$ is the Casselman-Wallach representation of $G_{\mathsf s}$, defined in the introductory section.
+Suppose that $\CO\in \mathrm{Nil}(\g_\sfss)$ equals the Barbasch-Vogan dual of $\check \CO$.   Recall that $\pi_\uptau$ is the Casselman-Wallach representation of $G_{\mathsf s}$, defined in the introductory section. 
 Also recall the element $\mathrm{AC}(\uptau)\in \CK_{\mathsf s}(\CO)$ from Section \ref{subsecass}.
 
+Recall the character $\chi(\check \CO): \oU(\g_\sfss)^{G_{\sfss, \C}}\rightarrow \C$  defined in the Introduction.
+\begin{lem}\label{inf1}
+The algebra $\oU(\g_\sfss)^{G_{\sfss, \C}}$ acts on $\pi_\uptau$ through the character $\chi(\check \CO)$.% as defined in the Introduction. 
+\end{lem}
+\begin{proof}
+By induction, this is implied by \cite[Theorem
+1.19]{PrzInf}.
+\end{proof}
 
 
-Wwe will prove in the rest of this subsection the following theorem, which implies  Theorem \ref{thmpitau}.
+
+Recall the ideal $I_{\check \CO}\subset \oU(\g_\sfss)$ from the Introduction. 
+\begin{lem}\label{inf2}
+Let $\pi$ be an $\CO$-bounded irreducible Casselman-Wallach representation of $G_{\sfss}$ such that $\oU(\g_\sfss)^{G_{\sfss, \C}}$ acts on it  through the character $\chi(\check \CO)$. Then $\mathrm{AC}_{\CO}(\pi)\neq 0$, and  $I_{\check \CO}$ annihilated $\pi$. 
+%by   $I_{\check \CO}$ if and only if $\pi$ is $\CO$-bounded.  
+\end{lem}
+\begin{proof}
+This is implied by \cite[Korollar 3.6]{BK} and \cite[Theorem 8.4]{Vo89}. 
+
+\end{proof}
+
+
+We will prove in the rest of this subsection the following theorem, which, together with Lemmas \ref{inf1} and \ref{inf2},  implies  Theorem \ref{thmpitau}. 
 \begin{thm}\label{thmpitau222}
-The representation $\pi_\uptau$ is irreducible, unitarizable, $\CO$-bounded and $(\mathrm d'_\tau-\nu_{\sfss})$-bounded.     Moreover,
+The representation $\pi_\uptau$ is irreducible, unitarizable, $\CO$-bounded and $( \mathrm d'_\tau-\nu_{\sfss})$-bounded.     Moreover,
 \[
 \mathrm{AC}_\CO(\pi_\uptau)=\mathrm{AC}(\uptau)\in \CK_{\mathsf s}(\CO).
 \]
 \end{thm}
 
-We prove Theorem \ref{thmpitau222} by induction on $\mathbf c_1(\check \CO)$ (which equals the number of nonempty rows of $\check \CO$).  Theorem \ref{thmpitau222} is obvious when $\mathbf c_1(\check \CO)=0$. Now we assume $\mathbf c_1(\check \CO)>0$ and Theorem \ref{thmpitau222} holds for  smaller $\mathbf c_1(\check \CO)$.
+We prove Theorem \ref{thmpitau222} by induction on $\mathbf c_1(\check \CO)$ (which equals the number of nonempty rows of $\check \CO$).  Theorem \ref{thmpitau222} is obvious when $\mathbf c_1(\check \CO)=0$. Now we assume $\mathbf c_1(\check \CO)>0$ and Theorem \ref{thmpitau222} holds for  smaller $\mathbf c_1(\check \CO)$. 
 
  \begin{lem}\label{lem78}
- The orbit $\CO$ is good for $\nabla^\sfss_{\sfss_{\tau'}}$, and $\nabla^\sfss_{\sfss_{\tau'}}(\CO)$ equals the Barbasch-Vogan dual  of $\check \CO'$.
+ The orbit $\CO$ is good for $\nabla^\sfss_{\sfss_{\tau'}}$, and $\nabla^\sfss_{\sfss_{\tau'}}(\CO)$ equals the Barbasch-Vogan dual  of $\check \CO'$. 
  \end{lem}
 \begin{proof}
-Similar to Lemma \ref{dualdesc}, this is  elementary to check by using Lemma \ref{bvdual}.
+The first assertion is routine to check, and the second one is Lemma \ref{dualdesc}. %, this is  elementary to check by using Lemma \ref{bvdual}.
 \end{proof}
 
-In view of Lemma \ref{lem78}, we assume that $\sfss'=\sfss_{\tau'}$. Then
+In view of Lemma \ref{lem78}, we assume that $\sfss'=\sfss_{\tau'}$. Then   
 \[
 \CO':= \nabla^\sfss_{\sfss'}(\CO)=\textrm{the Barbasch-Vogan dual  of $\check \CO'$}.
 \]
 
 
 
-By the induction hypothesis, the representation $\pi_{\uptau'}$ is irreducible, unitarizable, $\CO'$-bounded and $(\mathrm d'_{\tau'}-\nu_{\sfss'})$-bounded,     and
+By the induction hypothesis, the representation $\pi_{\uptau'}$ is irreducible, unitarizable, $\CO'$-bounded and $( \mathrm d'_{\tau'}-\nu_{\sfss'})$-bounded,     and
 \[
 \mathrm{AC}_\CO(\pi_{\uptau'})=\mathrm{AC}(\uptau')\in \CK_{\mathsf s'}(\CO').
 \]
 
-It is routine to check case by case  that
+It is routine to check case by case  that 
 \[
-  \mathrm d'_{\tau'}-\nu_{\sfss'}> \begin{cases}
- -\frac{\abs{\sfss_0}}{2}-3,\quad& \textrm{if $\star =C^*$};\\
-   -\frac{\abs{\sfss_0}}{2}-1,\quad& \textrm{otherwise}.
-   \end{cases}.
+\mathrm d'_{\tau'}-\nu_{\sfss'}>\max \left \{\nu^\circ_{\sfss'}-\abs{\sfss}, -p_0-1\right \}=
+  \begin{cases}
+\nu^\circ_{\sfss'}-\abs{\sfss} +1,\quad& \textrm{if $\star =C^*$};\\
+ \nu^\circ_{\sfss'}-\abs{\sfss},\quad& \textrm{otherwise}.
+   \end{cases}
 \]
-In particular, $\pi_{\uptau'}\otimes \chi$ is over-convergent for $\check \Theta_{\sfss'}^{\sfss}$ for every unitary character $\chi$ of $G_\sfss$.
+Thus $\pi_{\uptau'}\otimes \chi$ is over-convergent for $\check \Theta_{\sfss'}^{\sfss}$ for every unitary character $\chi$ of $G_\sfss$. 
 
-Recall from \eqref{eq:def-pi} that
+
+
+Recall from \eqref{eq:def-pi} that 
 \[
     \pi_{\uptau}:=\left\{
      \begin{array}{ll}
@@ -5638,16 +5785,17 @@ Similarly define
             \end{array}
    \right.
 \]
-Theorem \ref{positivity000} implies that
-$\bar \pi_{\uptau}$ is unitarizable.  Theorem \ref{thm:GDS.AC} and Proposition \ref{thmac1} imply that $\bar \pi_{\uptau}$ and $\pi_{\uptau}$ are $\CO$-bounded, and
+Theorem \ref{positivity000} implies that 
+$\bar \pi_{\uptau}$ is unitarizable.  Theorem \ref{thm:GDS.AC} and Proposition \ref{thmac1} imply that $\bar \pi_{\uptau}$ and $\pi_{\uptau}$ are $\CO$-bounded, and 
 \[
-    \mathrm{AC}_{\cO}( \bar \pi_{\uptau})=\mathrm{AC}_{\cO}(\pi_{\uptau})=\mathrm{AC}(\uptau)\neq 0.
+    \mathrm{AC}_{\cO}( \bar \pi_{\uptau})=\mathrm{AC}_{\cO}(\pi_{\uptau})=\mathrm{AC}(\uptau)\neq 0. 
 \]
-Hence $\bar \pi_{\uptau}$ is irreducible, since $\bar \pi_{\uptau}$ is a quotient of $\pi_{\uptau}$ and $\pi_{\uptau}$ has a unique irreducible quotient. Write
-$\CJ_\uptau$ for the kernel of the natural surjective homomorphism $\pi_{\uptau}\rightarrow \bar \pi_{\uptau}$. Then $\oU(\g_\sfss)^{G_{\sfss, \C}}$ acts on $\CJ_{\uptau}$ through the character $\chi(\check \CO)$ as defined in the Introduction. Moreover, $\CJ_\uptau$  is $\CO$-bounded and  $\mathrm{AC}(\CJ_{\uptau})=0$. This implies that $\CJ_{\uptau}=0$.
-Thus $\pi_{\uptau}=\bar \pi_{\uptau}$. Finally, Proposition \ref{boundm} implies that  $\bar \pi_{\uptau}$ is $(\mathrm d'_\tau-\nu_{\sfss})$-bounded. This finishes the proof of Theorem
-\ref{thmpitau222}.
+Since $\bar \pi_{\uptau}$ is a completely reducible quotient of $\pi_{\uptau}$, and $\pi_{\uptau}$ has at most one  irreducible quotient by the fundamental result of Howe (\cite[Theorem 1A]{Howe89}), we conclude that $\bar \pi_{\uptau}$ is irreducible. 
 
+Write 
+$\CJ_\uptau$ for the kernel of the natural surjective homomorphism $\pi_{\uptau}\rightarrow \bar \pi_{\uptau}$. By Lemma \ref{inf1},  $\oU(\g_\sfss)^{G_{\sfss, \C}}$ acts on $\CJ_{\uptau}$ through the character $\chi(\check \CO)$. Moreover, $\CJ_\uptau$  is $\CO$-bounded and  $\mathrm{AC}(\CJ_{\uptau})=0$. This implies that $\CJ_{\uptau}=0$ by Lemma \ref{inf2}. 
+Thus $\pi_{\uptau}=\bar \pi_{\uptau}$. Finally, Proposition \ref{boundm} implies that  $\bar \pi_{\uptau}$ is $(\mathrm d'_\tau-\nu_{\sfss})$-bounded. This finishes the proof of Theorem 
+\ref{thmpitau222}. 
 
 
 
@@ -8324,6 +8472,20 @@ pages = {1--39},
  pages = {1--18},
  title = {Recent advances in enveloping algebras of semisimple Lie-algebras},
  year = {1976/77}
+}
+
+\bib{BK}{article}{
+author={Borho, Walter},
+author={Kraft, Hanspeter},
+title={\"{U}ber die Gelfand-Kirillov-Dimension},
+journal={Math. Ann.},
+volume={220},
+date={1976},
+number={1},
+pages={1--24},
+issn={0025-5831},
+review={\MR{412240}},
+doi={10.1007/BF01354525},
 }
 
 \bib{Carter}{book}{

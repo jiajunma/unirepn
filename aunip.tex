@@ -5529,7 +5529,17 @@ This follows from the description of induced orbits in \cite[Section 7.3]{CM}.
 Suppose that $\CE\in \CK_{\sfss}(\CO)$ and $0\preceq \CE\preceq \check \vartheta_{\sfss', \CO'}^{\sfss, \CO}(\CE')$ for some $\CE'\in \CK^+_{\sfss'}(\CO')$. If $\CE\neq 0$, then  $\check \vartheta_{\sfss, \CO}^{\sfss'', \CO''}(\CE)\neq 0$.
 \end{lem}
 \begin{proof}
-Jiajun.
+  Without loss of generality we may assume that $\cE'$ is irreducible and
+  supported on a nilpotent orbit $\sO'\in \Nil_{\sfss'}(\cO')$. 
+  We also can assume that $\cE$ is supported on a nilpotent orbit $\sO\in \Nil_\sfss(\cO)$. 
+  By the definition of geometric lift, $\sO'=\DDss(\sO)$. Using \Cref{prop:DDss}, 
+  one can check that there is a nilpotent orbit $\sO''\in \Nil_{\sfss''}(\cO'')$ such that 
+  $\sO = \DD_{\sfss}^{\sfss''}(\sO'')$. 
+  When $\cO = \DDn(\cO'')$, the non-vanishing of $\check \vartheta_{\sfss, \CO}^{\sfss'', \CO''}(\cE)$
+  follows from the inejctivity of $\dlift_{\sO}^{\sO''}$. 
+  When $\abs{\cO} > \abs{\DDn(\cO'')}$, we have $\star \in \set{B,D}$, $\sO'=\DDn(\sO)$
+  and so $\cE = \dlift_{\sO'}^{\sO}(\cE')$.  
+  Now is straightforward to check that $\vartheta_{\sfss,\sO}^{\sfss,\sO''}(\cE) \neq 0$.
 \end{proof}
 
 \subsection{Weak associated cycles}
@@ -5589,7 +5599,7 @@ Assume that $\pi'$ is genuine when $\star'=\widetilde C$.
 \]
 \end{prop}
 \begin{proof}
-Jiajun.
+  The proposition follows by comaparing \Cref{lem:ind} with the direct computations of the left hand side of the equations.
 \end{proof}
 
 
