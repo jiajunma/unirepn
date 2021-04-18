@@ -1,0 +1,4633 @@
+\documentclass[12pt,a4paper]{amsart}
+\usepackage[margin=2.5cm,marginpar=2cm]{geometry}
+
+
+
+% \usepackage{showkeys}
+% \makeatletter
+%   \SK@def\Cref#1{\SK@\SK@@ref{#1}\SK@Cref{#1}}
+%   \SK@def\cref#1{\SK@\SK@@ref{#1}\SK@cref{#1}}
+% \makeatother
+\usepackage[bookmarksopen,bookmarksdepth=3]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+%% FONTS
+\usepackage{amssymb}
+%\usepackage{amsmath}
+\usepackage{mathrsfs}
+%\usepackage{amsrefs}
+\usepackage{mathbbol,mathabx}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{braket}
+%\usepackage[pointedenum]{paralist}
+%\usepackage{paralist}
+
+
+\usepackage{amsrefs}
+
+\usepackage[all,cmtip]{xy}
+\usepackage{rotating}
+\usepackage{leftidx}
+%\usepackage{arydshln}
+
+%\DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
+%\DeclareSymbolFontAlphabet{\mathbbold}{bbold}
+
+
+%\usepackage[dvipdfx,rgb,table]{xcolor}
+\usepackage[rgb,table]{xcolor}
+%\usepackage{mathrsfs}
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{3}
+
+%\usepackage[abbrev,shortalphabetic]{amsrefs}
+
+
+\usepackage[normalem]{ulem}
+
+% circled number
+\usepackage{pifont}
+\makeatletter
+\newcommand*{\circnuma}[1]{%
+  \ifnum#1<1 %
+    \@ctrerr
+  \else
+    \ifnum#1>20 %
+      \@ctrerr
+    \else
+      \mbox{\ding{\numexpr 171+(#1)\relax}}%
+     \fi
+  \fi
+}
+\makeatother
+
+\usepackage[centertableaux]{ytableau}
+
+%\usepackage[mathlines,pagewise]{lineno}
+%\linenumbers
+
+\usepackage{enumitem}
+%% Enumitem
+\newlist{enumC}{enumerate}{1} % Conditions in Lemma/Theorem/Prop
+\setlist[enumC,1]{label=(\alph*),wide,ref=(\alph*)}
+\crefname{enumCi}{condition}{conditions}
+\Crefname{enumCi}{Condition}{Conditions}
+\newlist{enumT}{enumerate}{3} % "Theorem"=conclusions in Lemma/Theorem/Prop
+\setlist[enumT]{label=(\roman*),wide}
+\setlist[enumT,1]{label=(\roman*),wide}
+\setlist[enumT,2]{label=(\alph*),ref ={(\roman{enumTi}.\alph*)}}
+\setlist[enumT,3]{label=(\arabic*), ref ={(\roman{enumTi}.\alph{enumTii}.\alph*)}}
+\crefname{enumTi}{}{}
+\Crefname{enumTi}{Item}{Items}
+\crefname{enumTii}{}{}
+\Crefname{enumTii}{Item}{Items}
+\crefname{enumTiii}{}{}
+\Crefname{enumTiii}{Item}{Items}
+\newlist{enumPF}{enumerate}{3}
+\setlist[enumPF]{label=(\alph*),wide}
+\setlist[enumPF,1]{label=(\roman*),wide}
+\setlist[enumPF,2]{label=(\alph*)}
+\setlist[enumPF,3]{label=\arabic*).}
+\newlist{enumS}{enumerate}{3} % Statement outside Lemma/Theorem/Prop
+\setlist[enumS]{label=\roman*)}
+\setlist[enumS,1]{label=\roman*)}
+\setlist[enumS,2]{label=\alph*)}
+\setlist[enumS,3]{label=\arabic*.}
+\newlist{enumI}{enumerate}{3} % items
+\setlist[enumI,1]{label=\roman*),leftmargin=*}
+\setlist[enumI,2]{label=\alph*), leftmargin=*}
+\setlist[enumI,3]{label=\arabic*), leftmargin=*}
+\newlist{enumIL}{enumerate*}{1} % inline enum
+\setlist*[enumIL]{label=\roman*)}
+\newlist{enumR}{enumerate}{1} % remarks
+\setlist[enumR]{label=\arabic*.,wide,labelwidth=!, labelindent=0pt}
+\crefname{enumRi}{remark}{remarks}
+
+\crefname{equation}{}{}
+\Crefname{equation}{Equation}{Equations}
+\Crefname{lem}{Lemma}{Lemma}
+\Crefname{thm}{Theorem}{Theorem}
+
+\newlist{des}{description}{1}
+\setlist[des]{font=\sffamily\bfseries}
+
+% editing macros.
+\blendcolors{!80!black}
+\long\def\okay#1{\ifcsname highlightokay\endcsname
+{\color{red} #1}
+\else
+{#1}
+\fi
+}
+\long\def\editc#1{{\color{red} #1}}
+\long\def\mjj#1{{{\color{blue}#1}}}
+\long\def\mjjr#1{{\color{red} (#1)}}
+\long\def\mjjd#1#2{{\color{blue} #1 \sout{#2}}}
+\def\mjjb{\color{blue}}
+\def\mjje{\color{black}}
+\def\mjjcb{\color{green!50!black}}
+\def\mjjce{\color{black}}
+
+\long\def\sun#1{{{\color{cyan}#1}}}
+\long\def\sund#1#2{{\color{cyan}#1  \sout{#2}}}
+\long\def\mv#1{{{\color{red} {\bf move to a proper place:} #1}}}
+\long\def\delete#1{}
+
+%\reversemarginpar
+\newcommand{\lokec}[1]{\marginpar{\color{blue}\tiny #1 \mbox{--loke}}}
+\newcommand{\mjjc}[1]{\marginpar{\color{green}\tiny #1 \mbox{--ma}}}
+
+\newcommand{\trivial}[2][]{\if\relax\detokenize{#1}\relax
+  {%\hfill\break
+   % \begin{minipage}{\textwidth}
+      \color{orange} \vspace{0em} $[$  #2 $]$
+  %\end{minipage}
+  %\break
+      \color{black}
+  }
+  \else
+\ifx#1h
+\ifcsname showtrivial\endcsname
+{%\hfill\break
+ % \begin{minipage}{\textwidth}
+    \color{orange} \vspace{0em}  $[$ #2 $]$
+%\end{minipage}
+%\break
+    \color{black}
+}
+\fi
+\else {\red Wrong argument!} \fi
+\fi
+}
+
+\newcommand{\byhide}[2][]{\if\relax\detokenize{#1}\relax
+{\color{orange} \vspace{0em} Plan to delete:  #2}
+\else
+\ifx#1h\relax\fi
+\fi
+}
+
+
+
+\newcommand{\Rank}{\mathrm{rk}}
+\newcommand{\cqq}{\mathscr{D}}
+\newcommand{\rsym}{\mathrm{sym}}
+\newcommand{\rskew}{\mathrm{skew}}
+\newcommand{\fraksp}{\mathfrak{sp}}
+\newcommand{\frakso}{\mathfrak{so}}
+\newcommand{\frakm}{\mathfrak{m}}
+\newcommand{\frakp}{\mathfrak{p}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\rhopst}{\rho'^*}
+\newcommand{\Rad}{\mathrm{Rad}}
+\newcommand{\Res}{\mathrm{Res}}
+\newcommand{\Hol}{\mathrm{Hol}}
+\newcommand{\AC}{\mathrm{AC}}
+%\newcommand{\AS}{\mathrm{AS}}
+\newcommand{\WF}{\mathrm{WF}}
+\newcommand{\AV}{\mathrm{AV}}
+\newcommand{\AVC}{\mathrm{AV}_\bC}
+\newcommand{\VC}{\mathrm{V}_\bC}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\depth}{\mathrm{depth}}
+\newcommand{\wtM}{\widetilde{M}}
+\newcommand{\wtMone}{{\widetilde{M}^{(1,1)}}}
+
+\newcommand{\nullpp}{N(\fpp'^*)}
+\newcommand{\nullp}{N(\fpp^*)}
+%\newcommand{\Aut}{\mathrm{Aut}}
+
+\def\mstar{{\medstar}}
+
+
+\newcommand{\bfone}{\mathbf{1}}
+\newcommand{\piSigma}{\pi_\Sigma}
+\newcommand{\piSigmap}{\pi'_\Sigma}
+
+
+\newcommand{\sfVprime}{\mathsf{V}^\prime}
+\newcommand{\sfVdprime}{\mathsf{V}^{\prime \prime}}
+\newcommand{\gminusone}{\mathfrak{g}_{-\frac{1}{m}}}
+
+\newcommand{\eva}{\mathrm{eva}}
+
+% \newcommand\iso{\xrightarrow{
+%    \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+\def\Ueven{{U_{\rm{even}}}}
+\def\Uodd{{U_{\rm{odd}}}}
+\def\ttau{\tilde{\tau}}
+\def\Wcp{W}
+\def\Kur{{K^{\mathrm{u}}}}
+
+\def\Im{\operatorname{Im}}
+
+\providecommand{\bcN}{{\overline{\cN}}}
+
+
+
+\makeatletter
+
+\def\gen#1{\left\langle
+    #1
+      \right\rangle}
+\makeatother
+
+\makeatletter
+\def\inn#1#2{\left\langle
+      \def\ta{#1}\def\tb{#2}
+      \ifx\ta\@empty{\;} \else {\ta}\fi ,
+      \ifx\tb\@empty{\;} \else {\tb}\fi
+      \right\rangle}
+\def\binn#1#2{\left\lAngle
+      \def\ta{#1}\def\tb{#2}
+      \ifx\ta\@empty{\;} \else {\ta}\fi ,
+      \ifx\tb\@empty{\;} \else {\tb}\fi
+      \right\rAngle}
+\makeatother
+
+\makeatletter
+\def\binn#1#2{\overline{\inn{#1}{#2}}}
+\makeatother
+
+
+\def\innwi#1#2{\inn{#1}{#2}_{W_i}}
+\def\innw#1#2{\inn{#1}{#2}_{\bfW}}
+\def\innv#1#2{\inn{#1}{#2}_{\bfV}}
+\def\innbfv#1#2{\inn{#1}{#2}_{\bfV}}
+\def\innvi#1#2{\inn{#1}{#2}_{V_i}}
+\def\innvp#1#2{\inn{#1}{#2}_{\bfV'}}
+\def\innp#1#2{\inn{#1}{#2}'}
+
+% choose one of then
+\def\simrightarrow{\iso}
+\def\surj{\twoheadrightarrow}
+%\def\simrightarrow{\xrightarrow{\sim}}
+
+\newcommand\iso{\xrightarrow{
+   \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+\newcommand\riso{\xleftarrow{
+   \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+
+
+
+
+
+
+
+
+\usepackage{xparse}
+\def\usecsname#1{\csname #1\endcsname}
+\def\useLetter#1{#1}
+\def\usedbletter#1{#1#1}
+
+% \def\useCSf#1{\csname f#1\endcsname}
+
+\ExplSyntaxOn
+
+\def\mydefcirc#1#2#3{\expandafter\def\csname
+  circ#3{#1}\endcsname{{}^\circ {#2{#1}}}}
+\def\mydefvec#1#2#3{\expandafter\def\csname
+  vec#3{#1}\endcsname{\vec{#2{#1}}}}
+\def\mydefdot#1#2#3{\expandafter\def\csname
+  dot#3{#1}\endcsname{\dot{#2{#1}}}}
+
+\def\mydefacute#1#2#3{\expandafter\def\csname a#3{#1}\endcsname{\acute{#2{#1}}}}
+\def\mydefbr#1#2#3{\expandafter\def\csname br#3{#1}\endcsname{\breve{#2{#1}}}}
+\def\mydefbar#1#2#3{\expandafter\def\csname bar#3{#1}\endcsname{\bar{#2{#1}}}}
+\def\mydefhat#1#2#3{\expandafter\def\csname hat#3{#1}\endcsname{\hat{#2{#1}}}}
+\def\mydefwh#1#2#3{\expandafter\def\csname wh#3{#1}\endcsname{\widehat{#2{#1}}}}
+\def\mydeft#1#2#3{\expandafter\def\csname t#3{#1}\endcsname{\tilde{#2{#1}}}}
+\def\mydefu#1#2#3{\expandafter\def\csname u#3{#1}\endcsname{\underline{#2{#1}}}}
+\def\mydefr#1#2#3{\expandafter\def\csname r#3{#1}\endcsname{\mathrm{#2{#1}}}}
+\def\mydefb#1#2#3{\expandafter\def\csname b#3{#1}\endcsname{\mathbb{#2{#1}}}}
+\def\mydefwt#1#2#3{\expandafter\def\csname wt#3{#1}\endcsname{\widetilde{#2{#1}}}}
+%\def\mydeff#1#2#3{\expandafter\def\csname f#3{#1}\endcsname{\mathfrak{#2{#1}}}}
+\def\mydefbf#1#2#3{\expandafter\def\csname bf#3{#1}\endcsname{\mathbf{#2{#1}}}}
+\def\mydefc#1#2#3{\expandafter\def\csname c#3{#1}\endcsname{\mathcal{#2{#1}}}}
+\def\mydefsf#1#2#3{\expandafter\def\csname sf#3{#1}\endcsname{\mathsf{#2{#1}}}}
+\def\mydefs#1#2#3{\expandafter\def\csname s#3{#1}\endcsname{\mathscr{#2{#1}}}}
+\def\mydefcks#1#2#3{\expandafter\def\csname cks#3{#1}\endcsname{{\check{
+        \csname s#2{#1}\endcsname}}}}
+\def\mydefckc#1#2#3{\expandafter\def\csname ckc#3{#1}\endcsname{{\check{
+      \csname c#2{#1}\endcsname}}}}
+\def\mydefck#1#2#3{\expandafter\def\csname ck#3{#1}\endcsname{{\check{#2{#1}}}}}
+
+\cs_new:Npn \mydeff #1#2#3 {\cs_new:cpn {f#3{#1}} {\mathfrak{#2{#1}}}}
+
+\cs_new:Npn \doGreek #1
+{
+  \clist_map_inline:nn {alpha,beta,gamma,Gamma,delta,Delta,epsilon,varepsilon,zeta,eta,theta,vartheta,Theta,iota,kappa,lambda,Lambda,mu,nu,xi,Xi,pi,Pi,rho,sigma,varsigma,Sigma,tau,upsilon,Upsilon,phi,varphi,Phi,chi,psi,Psi,omega,Omega,tG} {#1{##1}{\usecsname}{\useLetter}}
+}
+
+\cs_new:Npn \doSymbols #1
+{
+  \clist_map_inline:nn {otimes,boxtimes} {#1{##1}{\usecsname}{\useLetter}}
+}
+
+\cs_new:Npn \doAtZ #1
+{
+  \clist_map_inline:nn {A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z} {#1{##1}{\useLetter}{\useLetter}}
+}
+
+\cs_new:Npn \doatz #1
+{
+  \clist_map_inline:nn {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z} {#1{##1}{\useLetter}{\usedbletter}}
+}
+
+\cs_new:Npn \doallAtZ
+{
+\clist_map_inline:nn {mydefsf,mydeft,mydefu,mydefwh,mydefhat,mydefr,mydefwt,mydeff,mydefb,mydefbf,mydefc,mydefs,mydefck,mydefcks,mydefckc,mydefbar,mydefvec,mydefcirc,mydefdot,mydefbr,mydefacute} {\doAtZ{\csname ##1\endcsname}}
+}
+
+\cs_new:Npn \doallatz
+{
+\clist_map_inline:nn {mydefsf,mydeft,mydefu,mydefwh,mydefhat,mydefr,mydefwt,mydeff,mydefb,mydefbf,mydefc,mydefs,mydefck,mydefbar,mydefvec,mydefdot,mydefbr,mydefacute} {\doatz{\csname ##1\endcsname}}
+}
+
+\cs_new:Npn \doallGreek
+{
+\clist_map_inline:nn {mydefck,mydefwt,mydeft,mydefwh,mydefbar,mydefu,mydefvec,mydefcirc,mydefdot,mydefbr,mydefacute} {\doGreek{\csname ##1\endcsname}}
+}
+
+\cs_new:Npn \doallSymbols
+{
+\clist_map_inline:nn {mydefck,mydefwt,mydeft,mydefwh,mydefbar,mydefu,mydefvec,mydefcirc,mydefdot} {\doSymbols{\csname ##1\endcsname}}
+}
+
+
+
+\cs_new:Npn \doGroups #1
+{
+  \clist_map_inline:nn {GL,Sp,rO,rU,fgl,fsp,foo,fuu,fkk,fuu,ufkk,uK} {#1{##1}{\usecsname}{\useLetter}}
+}
+
+\cs_new:Npn \doallGroups
+{
+\clist_map_inline:nn {mydeft,mydefu,mydefwh,mydefhat,mydefwt,mydefck,mydefbar} {\doGroups{\csname ##1\endcsname}}
+}
+
+
+\cs_new:Npn \decsyms #1
+{
+\clist_map_inline:nn {#1} {\expandafter\DeclareMathOperator\csname ##1\endcsname{##1}}
+}
+
+\decsyms{Mp,id,SL,Sp,SU,SO,GO,GSO,GU,GSp,PGL,Pic,Lie,Mat,Ker,Hom,Ext,Ind,reg,res,inv,Isom,Det,Tr,Norm,Sym,Span,Stab,Spec,PGSp,PSL,tr,Ad,Br,Ch,Cent,End,Aut,Dvi,Frob,Gal,GL,Gr,DO,ur,vol,ab,Nil,Supp,rank,Sign}
+
+\def\abs#1{\left|{#1}\right|}
+\def\norm#1{{\left\|{#1}\right\|}}
+
+
+% \NewDocumentCommand\inn{m m}{
+% \left\langle
+% \IfValueTF{#1}{#1}{000}
+% ,
+% \IfValueTF{#2}{#2}{000}
+% \right\rangle
+% }
+\NewDocumentCommand\cent{o m }{
+  \IfValueTF{#1}{
+    \mathop{Z}_{#1}{(#2)}}
+  {\mathop{Z}{(#2)}}
+}
+
+
+\def\fsl{\mathfrak{sl}}
+\def\fsp{\mathfrak{sp}}
+
+
+%\def\cent#1#2{{\mathrm{Z}_{#1}({#2})}}
+
+
+\doallAtZ
+\doallatz
+\doallGreek
+\doallGroups
+\doallSymbols
+\ExplSyntaxOff
+
+
+% \usepackage{geometry,amsthm,graphics,tabularx,amssymb,shapepar}
+% \usepackage{amscd}
+% \usepackage{mathrsfs}
+
+
+\usepackage{diagbox}
+% Update the information and uncomment if AMS is not the copyright
+% holder.
+%\copyrightinfo{2006}{American Mathematical Society}
+%\usepackage{nicematrix}
+\usepackage{arydshln}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows,positioning,cd,backgrounds}
+\usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing}
+
+\usepackage{upgreek}
+
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\tiny,
+    keywordstyle=\color{black},
+    commentstyle=\color{white}, % white comments
+    stringstyle=\ttfamily, % typewriter type for strings
+    showstringspaces=false,
+    breaklines=true,
+    emph={Output},emphstyle=\color{blue},
+} 
+
+\newcommand{\BA}{{\mathbb{A}}}
+%\newcommand{\BB}{{\mathbb {B}}}
+\newcommand{\BC}{{\mathbb {C}}}
+\newcommand{\BD}{{\mathbb {D}}}
+\newcommand{\BE}{{\mathbb {E}}}
+\newcommand{\BF}{{\mathbb {F}}}
+\newcommand{\BG}{{\mathbb {G}}}
+\newcommand{\BH}{{\mathbb {H}}}
+\newcommand{\BI}{{\mathbb {I}}}
+\newcommand{\BJ}{{\mathbb {J}}}
+\newcommand{\BK}{{\mathbb {U}}}
+\newcommand{\BL}{{\mathbb {L}}}
+\newcommand{\BM}{{\mathbb {M}}}
+\newcommand{\BN}{{\mathbb {N}}}
+\newcommand{\BO}{{\mathbb {O}}}
+\newcommand{\BP}{{\mathbb {P}}}
+\newcommand{\BQ}{{\mathbb {Q}}}
+\newcommand{\BR}{{\mathbb {R}}}
+\newcommand{\BS}{{\mathbb {S}}}
+\newcommand{\BT}{{\mathbb {T}}}
+\newcommand{\BU}{{\mathbb {U}}}
+\newcommand{\BV}{{\mathbb {V}}}
+\newcommand{\BW}{{\mathbb {W}}}
+\newcommand{\BX}{{\mathbb {X}}}
+\newcommand{\BY}{{\mathbb {Y}}}
+\newcommand{\BZ}{{\mathbb {Z}}}
+\newcommand{\Bk}{{\mathbf {k}}}
+
+\newcommand{\CA}{{\mathcal {A}}}
+\newcommand{\CB}{{\mathcal {B}}}
+\newcommand{\CC}{{\mathcal {C}}}
+
+\newcommand{\CE}{{\mathcal {E}}}
+\newcommand{\CF}{{\mathcal {F}}}
+\newcommand{\CG}{{\mathcal {G}}}
+\newcommand{\CH}{{\mathcal {H}}}
+\newcommand{\CI}{{\mathcal {I}}}
+\newcommand{\CJ}{{\mathcal {J}}}
+\newcommand{\CK}{{\mathcal {K}}}
+\newcommand{\CL}{{\mathcal {L}}}
+\newcommand{\CM}{{\mathcal {M}}}
+\newcommand{\CN}{{\mathcal {N}}}
+\newcommand{\CO}{{\mathcal {O}}}
+\newcommand{\CP}{{\mathcal {P}}}
+\newcommand{\CQ}{{\mathcal {Q}}}
+\newcommand{\CR}{{\mathcal {R}}}
+\newcommand{\CS}{{\mathcal {S}}}
+\newcommand{\CT}{{\mathcal {T}}}
+\newcommand{\CU}{{\mathcal {U}}}
+\newcommand{\CV}{{\mathcal {V}}}
+\newcommand{\CW}{{\mathcal {W}}}
+\newcommand{\CX}{{\mathcal {X}}}
+\newcommand{\CY}{{\mathcal {Y}}}
+\newcommand{\CZ}{{\mathcal {Z}}}
+
+
+\newcommand{\RA}{{\mathrm {A}}}
+\newcommand{\RB}{{\mathrm {B}}}
+\newcommand{\RC}{{\mathrm {C}}}
+\newcommand{\RD}{{\mathrm {D}}}
+\newcommand{\RE}{{\mathrm {E}}}
+\newcommand{\RF}{{\mathrm {F}}}
+\newcommand{\RG}{{\mathrm {G}}}
+\newcommand{\RH}{{\mathrm {H}}}
+\newcommand{\RI}{{\mathrm {I}}}
+\newcommand{\RJ}{{\mathrm {J}}}
+\newcommand{\RK}{{\mathrm {K}}}
+\newcommand{\RL}{{\mathrm {L}}}
+\newcommand{\RM}{{\mathrm {M}}}
+\newcommand{\RN}{{\mathrm {N}}}
+\newcommand{\RO}{{\mathrm {O}}}
+\newcommand{\RP}{{\mathrm {P}}}
+\newcommand{\RQ}{{\mathrm {Q}}}
+%\newcommand{\RR}{{\mathrm {R}}}
+\newcommand{\RS}{{\mathrm {S}}}
+\newcommand{\RT}{{\mathrm {T}}}
+\newcommand{\RU}{{\mathrm {U}}}
+\newcommand{\RV}{{\mathrm {V}}}
+\newcommand{\RW}{{\mathrm {W}}}
+\newcommand{\RX}{{\mathrm {X}}}
+\newcommand{\RY}{{\mathrm {Y}}}
+\newcommand{\RZ}{{\mathrm {Z}}}
+
+\DeclareMathOperator{\absNorm}{\mathfrak{N}}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\LAnn}{L-Ann}
+\DeclareMathOperator{\RAnn}{R-Ann}
+\DeclareMathOperator{\ind}{ind}
+%\DeclareMathOperator{\Ind}{Ind}
+
+
+
+\newcommand{\cod}{{\mathrm{cod}}}
+\newcommand{\cont}{{\mathrm{cont}}}
+\newcommand{\cl}{{\mathrm{cl}}}
+\newcommand{\cusp}{{\mathrm{cusp}}}
+
+\newcommand{\disc}{{\mathrm{disc}}}
+\renewcommand{\div}{{\mathrm{div}}}
+
+
+
+\newcommand{\Gm}{{\mathbb{G}_m}}
+
+
+
+\newcommand{\I}{{\mathrm{I}}}
+
+\newcommand{\Jac}{{\mathrm{Jac}}}
+\newcommand{\PM}{{\mathrm{PM}}}
+
+
+\newcommand{\new}{{\mathrm{new}}}
+\newcommand{\NS}{{\mathrm{NS}}}
+\newcommand{\N}{{\mathrm{N}}}
+
+\newcommand{\ord}{{\mathrm{ord}}}
+
+%\newcommand{\rank}{{\mathrm{rank}}}
+
+\newcommand{\rk}{{\mathrm{k}}}
+\newcommand{\rr}{{\mathrm{r}}}
+\newcommand{\rh}{{\mathrm{h}}}
+
+\newcommand{\Sel}{{\mathrm{Sel}}}
+\newcommand{\Sim}{{\mathrm{Sim}}}
+
+\newcommand{\wt}{\widetilde}
+\newcommand{\wh}{\widehat}
+\newcommand{\pp}{\frac{\partial\bar\partial}{\pi i}}
+\newcommand{\pair}[1]{\langle {#1} \rangle}
+\newcommand{\wpair}[1]{\left\{{#1}\right\}}
+\newcommand{\intn}[1]{\left( {#1} \right)}
+\newcommand{\sfrac}[2]{\left( \frac {#1}{#2}\right)}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ov}{\overline}
+\newcommand{\incl}{\hookrightarrow}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\imp}{\Longrightarrow}
+%\newcommand{\lto}{\longmapsto}
+\newcommand{\bs}{\backslash}
+
+\newcommand{\cover}[1]{\widetilde{#1}}
+
+\renewcommand{\vsp}{{\vspace{0.2in}}}
+
+\newcommand{\Norma}{\operatorname{N}}
+\newcommand{\Ima}{\operatorname{Im}}
+\newcommand{\con}{\textit{C}}
+\newcommand{\gr}{\operatorname{gr}}
+\newcommand{\ad}{\operatorname{ad}}
+\newcommand{\der}{\operatorname{der}}
+\newcommand{\dif}{\operatorname{d}\!}
+\newcommand{\pro}{\operatorname{pro}}
+\newcommand{\Ev}{\operatorname{Ev}}
+% \renewcommand{\span}{\operatorname{span}} \span is an innernal command.
+%\newcommand{\degree}{\operatorname{deg}}
+\newcommand{\Invf}{\operatorname{Invf}}
+\newcommand{\Inv}{\operatorname{Inv}}
+\newcommand{\slt}{\operatorname{SL}_2(\mathbb{R})}
+%\newcommand{\temp}{\operatorname{temp}}
+%\newcommand{\otop}{\operatorname{top}}
+\renewcommand{\small}{\operatorname{small}}
+\newcommand{\HC}{\operatorname{HC}}
+\newcommand{\lef}{\operatorname{left}}
+\newcommand{\righ}{\operatorname{right}}
+\newcommand{\Diff}{\operatorname{DO}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\sh}{\varsigma}
+\newcommand{\sch}{\operatorname{sch}}
+%\newcommand{\oleft}{\operatorname{left}}
+%\newcommand{\oright}{\operatorname{right}}
+\newcommand{\open}{\operatorname{open}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\triv}{\operatorname{triv}}
+\newcommand{\Sh}{\operatorname{Sh}}
+\newcommand{\oN}{\operatorname{N}}
+
+\newcommand{\oc}{\operatorname{c}}
+\newcommand{\od}{\operatorname{d}}
+\newcommand{\os}{\operatorname{s}}
+\newcommand{\ol}{\operatorname{l}}
+\newcommand{\oL}{\operatorname{L}}
+\newcommand{\oJ}{\operatorname{J}}
+\newcommand{\oH}{\operatorname{H}}
+\newcommand{\oO}{\operatorname{O}}
+\newcommand{\oS}{\operatorname{S}}
+\newcommand{\oR}{\operatorname{R}}
+\newcommand{\oT}{\operatorname{T}}
+%\newcommand{\rU}{\operatorname{U}}
+\newcommand{\oZ}{\operatorname{Z}}
+\newcommand{\oD}{\textit{D}}
+\newcommand{\oW}{\textit{W}}
+\newcommand{\oE}{\operatorname{E}}
+\newcommand{\oP}{\operatorname{P}}
+\newcommand{\PD}{\operatorname{PD}}
+\newcommand{\oU}{\operatorname{U}}
+
+\newcommand{\g}{\mathfrak g}
+\newcommand{\gC}{{\mathfrak g}_{\C}}
+\renewcommand{\k}{\mathfrak k}
+\newcommand{\h}{\mathfrak h}
+\newcommand{\p}{\mathfrak p}
+%\newcommand{\q}{\mathfrak q}
+\renewcommand{\a}{\mathfrak a}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\c}{\mathfrak c}
+\newcommand{\n}{\mathfrak n}
+\renewcommand{\u}{\mathfrak u}
+\renewcommand{\v}{\mathfrak v}
+\newcommand{\e}{\mathfrak e}
+\newcommand{\f}{\mathfrak f}
+\renewcommand{\l}{\mathfrak l}
+\renewcommand{\t}{\mathfrak t}
+\newcommand{\s}{\mathfrak s}
+\renewcommand{\r}{\mathfrak r}
+\renewcommand{\o}{\mathfrak o}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\z}{\mathfrak z}
+%\renewcommand{\sl}{\mathfrak s \mathfrak l}
+\newcommand{\gl}{\mathfrak g \mathfrak l}
+
+
+\newcommand{\re}{\mathrm e}
+
+\renewcommand{\rk}{\mathrm k}
+
+\newcommand{\Z}{\mathbb{Z}}
+\DeclareDocumentCommand{\C}{}{\mathbb{C}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\renewcommand{\H}{\mathbb{H}}
+%\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+%\renewcommand{\S}{\mathbf S}
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathbf{B}}
+%\renewcommand{\G}{\mathbf{G}}
+\newcommand{\V}{\mathbf{V}}
+\newcommand{\W}{\mathbf{W}}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\E}{\mathbf{E}}
+%\newcommand{\J}{\mathbf{J}}
+\renewcommand{\H}{\mathbf{H}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Y}{\mathbf{Y}}
+%\newcommand{\RR}{\mathcal R}
+\newcommand{\FF}{\mathcal F}
+%\newcommand{\BB}{\mathcal B}
+\newcommand{\HH}{\mathcal H}
+%\newcommand{\UU}{\mathcal U}
+%\newcommand{\MM}{\mathcal M}
+%\newcommand{\CC}{\mathcal C}
+%\newcommand{\DD}{\mathcal D}
+\def\eDD{\mathrm{d}^{e}}
+\def\DD{\nabla}
+\def\DDc{\boldsymbol{\nabla}}
+\def\gDD{\nabla^{\mathrm{gen}}}
+\def\gDDc{\boldsymbol{\nabla}^{\mathrm{gen}}}
+%\newcommand{\OO}{\mathcal O}
+%\newcommand{\ZZ}{\mathcal Z}
+\newcommand{\ve}{{\vee}}
+\newcommand{\aut}{\mathcal A}
+\newcommand{\ii}{\mathbf{i}}
+\newcommand{\jj}{\mathbf{j}}
+\newcommand{\kk}{\mathbf{k}}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bp}{\bigskip}
+\newcommand{\be}{\begin {equation}}
+\newcommand{\ee}{\end {equation}}
+
+\newcommand{\LRleq}{\stackrel{LR}{\leq}}
+
+\numberwithin{equation}{section}
+
+
+\def\flushl#1{\ifmmode\makebox[0pt][l]{${#1}$}\else\makebox[0pt][l]{#1}\fi}
+\def\flushr#1{\ifmmode\makebox[0pt][r]{${#1}$}\else\makebox[0pt][r]{#1}\fi}
+\def\flushmr#1{\makebox[0pt][r]{${#1}$}}
+
+
+%\theoremstyle{Theorem}
+% \newtheorem*{thmM}{Main Theorem}
+% \crefformat{thmM}{main theorem}
+% \Crefformat{thmM}{Main Theorem}
+\newtheorem*{thm*}{Theorem}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{thml}[thm]{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{lemt}[thm]{Lemma}
+\newtheorem*{lem*}{Lemma}
+\newtheorem{whyp}[thm]{Working Hypothesis}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{prpt}[thm]{Proposition}
+\newtheorem{prpl}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+%\newtheorem*{prop*}{Proposition}
+\newtheorem{claim}{Claim}
+\newtheorem*{claim*}{Claim}
+%\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{dfnl}[thm]{Definition}
+\newtheorem*{IndH}{Induction Hypothesis}
+
+\newtheorem*{eg*}{Example}
+\newtheorem{eg}[thm]{Example}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{remarks}{Remarks}
+
+
+\def\cpc{\sigma}
+\def\ccJ{\epsilon\dotepsilon}
+\def\ccL{c_L}
+
+\def\wtbfK{\widetilde{\bfK}}
+%\def\abfV{\acute{\bfV}}
+\def\AbfV{\acute{\bfV}}
+%\def\afgg{\acute{\fgg}}
+%\def\abfG{\acute{\bfG}}
+\def\abfV{\bfV'}
+\def\afgg{\fgg'}
+\def\abfG{\bfG'}
+
+\def\half{{\tfrac{1}{2}}}
+\def\ihalf{{\tfrac{\mathbf i}{2}}}
+\def\slt{\fsl_2(\bC)}
+\def\sltr{\fsl_2(\bR)}
+
+% \def\Jslt{{J_{\fslt}}}
+% \def\Lslt{{L_{\fslt}}}
+\def\slee{{
+\begin{pmatrix}
+ 0 & 1\\
+ 0 & 0
+\end{pmatrix}
+}}
+\def\slff{{
+\begin{pmatrix}
+ 0 & 0\\
+ 1 & 0
+\end{pmatrix}
+}}\def\slhh{{
+\begin{pmatrix}
+ 1 & 0\\
+ 0 & -1
+\end{pmatrix}
+}}
+\def\sleei{{
+\begin{pmatrix}
+ 0 & i\\
+ 0 & 0
+\end{pmatrix}
+}}
+\def\slxx{{\begin{pmatrix}
+-\ihalf & \half\\
+\phantom{-}\half & \ihalf
+\end{pmatrix}}}
+% \def\slxx{{\begin{pmatrix}
+% -\sqrt{-1}/2 & 1/2\\
+% 1/2 & \sqrt{-1}/2
+% \end{pmatrix}}}
+\def\slyy{{\begin{pmatrix}
+\ihalf & \half\\
+\half & -\ihalf
+\end{pmatrix}}}
+\def\slxxi{{\begin{pmatrix}
++\half & -\ihalf\\
+-\ihalf & -\half
+\end{pmatrix}}}
+\def\slH{{\begin{pmatrix}
+   0   & -\mathbf i\\
+\mathbf i & 0
+\end{pmatrix}}
+}
+
+\ExplSyntaxOn
+\clist_map_inline:nn {J,L,C,X,Y,H,c,e,f,h,}{
+  \expandafter\def\csname #1slt\endcsname{{\mathring{#1}}}}
+\ExplSyntaxOff
+
+
+\def\Mop{\fT}
+
+\def\fggJ{\fgg_J}
+\def\fggJp{\fgg'_{J'}}
+
+\def\NilGC{\Nil_{\bfG}(\fgg)}
+\def\NilGCp{\Nil_{\bfG'}(\fgg')}
+\def\Nilgp{\Nil_{\fgg'_{J'}}}
+\def\Nilg{\Nil_{\fgg_{J}}}
+%\def\NilP'{\Nil_{\fpp'}}
+\def\nNil{\Nil^{\mathrm n}}
+\def\eNil{\Nil^{\mathrm e}}
+
+
+\NewDocumentCommand{\NilP}{t'}{
+\IfBooleanTF{#1}{\Nil_{\fpp'}}{\Nil_\fpp}
+}
+
+\def\KS{\mathsf{KS}}
+\def\MM{\bfM}
+\def\MMP{M}
+
+\NewDocumentCommand{\KTW}{o g}{
+  \IfValueTF{#2}{
+    \left.\varsigma_{\IfValueT{#1}{#1}}\right|_{#2}}{
+    \varsigma_{\IfValueT{#1}{#1}}}
+}
+\def\IST{\rho}
+\def\tIST{\trho}
+
+\NewDocumentCommand{\CHI}{o g}{
+  \IfValueTF{#1}{
+    {\chi}_{\left[#1\right]}}{
+    \IfValueTF{#2}{
+      {\chi}_{\left(#2\right)}}{
+      {\chi}}
+  }
+}
+\NewDocumentCommand{\PR}{g}{
+  \IfValueTF{#1}{
+    \mathop{\pr}_{\left(#1\right)}}{
+    \mathop{\pr}}
+}
+\NewDocumentCommand{\XX}{g}{
+  \IfValueTF{#1}{
+    {\cX}_{\left(#1\right)}}{
+    {\cX}}
+}
+\NewDocumentCommand{\PP}{g}{
+  \IfValueTF{#1}{
+    {\fpp}_{\left(#1\right)}}{
+    {\fpp}}
+}
+\NewDocumentCommand{\LL}{g}{
+  \IfValueTF{#1}{
+    {\bfL}_{\left(#1\right)}}{
+    {\bfL}}
+}
+\NewDocumentCommand{\ZZ}{g}{
+  \IfValueTF{#1}{
+    {\cZ}_{\left(#1\right)}}{
+    {\cZ}}
+}
+
+\NewDocumentCommand{\WW}{g}{
+  \IfValueTF{#1}{
+    {\bfW}_{\left(#1\right)}}{
+    {\bfW}}
+}
+
+
+
+
+\def\gpi{\wp}
+\NewDocumentCommand\KK{g}{
+\IfValueTF{#1}{K_{(#1)}}{K}}
+% \NewDocumentCommand\OO{g}{
+% \IfValueTF{#1}{\cO_{(#1)}}{K}}
+\NewDocumentCommand\XXo{d()}{
+\IfValueTF{#1}{\cX^\circ_{(#1)}}{\cX^\circ}}
+\def\bfWo{\bfW^\circ}
+\def\bfWoo{\bfW^{\circ \circ}}
+\def\bfWg{\bfW^{\mathrm{gen}}}
+\def\Xg{\cX^{\mathrm{gen}}}
+\def\Xo{\cX^\circ}
+\def\Xoo{\cX^{\circ \circ}}
+\def\fppo{\fpp^\circ}
+\def\fggo{\fgg^\circ}
+\NewDocumentCommand\ZZo{g}{
+\IfValueTF{#1}{\cZ^\circ_{(#1)}}{\cZ^\circ}}
+
+% \ExplSyntaxOn
+% \NewDocumentCommand{\bcO}{t' E{^_}{{}{}}}{
+%   \overline{\cO\sb{\use_ii:nn#2}\IfBooleanTF{#1}{^{'\use_i:nn#2}}{^{\use_i:nn#2}}
+%   }
+% }
+% \ExplSyntaxOff
+
+\NewDocumentCommand{\bcO}{t'}{
+  \overline{\cO\IfBooleanT{#1}{'}}}
+
+\NewDocumentCommand{\oliftc}{g}{
+\IfValueTF{#1}{\boldsymbol{\vartheta} (#1)}{\boldsymbol{\vartheta}}
+}
+\NewDocumentCommand{\oliftr}{g}{
+\IfValueTF{#1}{\vartheta_\bR(#1)}{\vartheta_\bR}
+}
+\NewDocumentCommand{\olift}{g}{
+\IfValueTF{#1}{\vartheta(#1)}{\vartheta}
+}
+% \NewDocumentCommand{\dliftv}{g}{
+% \IfValueTF{#1}{\ckvartheta(#1)}{\ckvartheta}
+% }
+\def\dliftv{\vartheta}
+\NewDocumentCommand{\tlift}{g}{
+\IfValueTF{#1}{\wtvartheta(#1)}{\wtvartheta}
+}
+
+\def\slift{\cL}
+
+\def\BB{\bB}
+
+
+\def\thetaO#1{\vartheta\left(#1\right)}
+
+\def\bbThetav{\check{\mathbbold{\Theta}}}
+\def\Thetav{\check{\Theta}}
+\def\thetav{\check{\theta}}
+
+\DeclareDocumentCommand{\NN}{g}{
+\IfValueTF{#1}{\fN(#1)}{\fN}
+}
+\DeclareDocumentCommand{\RR}{m m}{
+\fR({#1},{#2})
+}
+
+%\DeclareMathOperator*{\sign}{Sign}
+
+\NewDocumentCommand{\lsign}{m}{
+{}^l\mathrm{Sign}(#1)
+}
+
+
+
+\NewDocumentCommand\lnn{t+ t- g}{
+  \IfBooleanTF{#1}{{}^l n^+\IfValueT{#3}{(#3)}}{
+    \IfBooleanTF{#2}{{}^l n^-\IfValueT{#3}{(#3)}}{}
+  }
+}
+
+
+% Fancy bcO, support feature \bcO'^a_b = \overline{\cO'^a_b}
+\makeatletter
+\def\bcO{\def\O@@{\cO}\@ifnextchar'\@Op\@Onp}
+\def\@Opnext{\@ifnextchar^\@Opsp\@Opnsp}
+\def\@Op{\afterassignment\@Opnext\let\scratch=}
+\def\@Opnsp{\def\O@@{\cO'}\@Otsb}
+\def\@Onp{\@ifnextchar^\@Onpsp\@Otsb}
+\def\@Opsp^#1{\def\O@@{\cO'^{#1}}\@Otsb}
+\def\@Onpsp^#1{\def\O@@{\cO^{#1}}\@Otsb}
+\def\@Otsb{\@ifnextchar_\@Osb{\@Ofinalnsb}}
+\def\@Osb_#1{\overline{\O@@_{#1}}}
+\def\@Ofinalnsb{\overline{\O@@}}
+
+% Fancy \command: \command`#1 will translate to {}^{#1}\bfV, i.e. superscript on the
+% lift conner.
+
+\def\defpcmd#1{
+  \def\nn@tmp{#1}
+  \def\nn@np@tmp{@np@#1}
+  \expandafter\let\csname\nn@np@tmp\expandafter\endcsname \csname\nn@tmp\endcsname
+  \expandafter\def\csname @pp@#1\endcsname`##1{{}^{##1}{\csname @np@#1\endcsname}}
+  \expandafter\def\csname #1\endcsname{\,\@ifnextchar`{\csname
+      @pp@#1\endcsname}{\csname @np@#1\endcsname}}
+}
+
+% \def\defppcmd#1{
+% \expandafter\NewDocumentCommand{\csname #1\endcsname}{##1 }{}
+% }
+
+
+
+\defpcmd{bfV}
+\def\KK{\bfK}\defpcmd{KK}
+\defpcmd{bfG}
+\def\A{\!A}\defpcmd{A}
+\def\K{\!K}\defpcmd{K}
+\def\G{G}\defpcmd{G}
+\def\J{\!J}\defpcmd{J}
+\def\L{\!L}\defpcmd{L}
+\def\eps{\epsilon}\defpcmd{eps}
+\def\pp{p}\defpcmd{pp}
+\defpcmd{wtK}
+\makeatother
+
+\def\fggR{\fgg_\bR}
+\def\rmtop{{\mathrm{top}}}
+\def\dimo{\dim^\circ}
+
+\NewDocumentCommand\LW{g}{
+\IfValueTF{#1}{L_{W_{#1}}}{L_{W}}}
+%\def\LW#1{L_{W_{#1}}}
+\def\JW#1{J_{W_{#1}}}
+
+\def\floor#1{{\lfloor #1 \rfloor}}
+
+\def\KSP{K}
+\def\UU{\rU}
+\def\UUC{\rU_\bC}
+\def\tUUC{\widetilde{\rU}_\bC}
+\def\OmegabfW{\Omega_{\bfW}}
+
+
+\def\BB{\bB}
+
+
+\def\thetaO#1{\vartheta\left(#1\right)}
+
+\def\Thetav{\check{\Theta}}
+\def\thetav{\check{\theta}}
+
+\def\Thetab{\bar{\Theta}}
+
+\def\cKaod{\cK^{\mathrm{aod}}}
+
+%G_V's or G
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \def\GVr{G_{\bfV}}
+% \def\tGVr{\wtG_{\bfV}}
+% \def\GVpr{G_{\bfV'}}
+% \def\tGVpr{\wtG_{\bfV'}}
+% \def\GVpr{G_{\abfV}}
+% \def\tGVar{\wtG_{\abfV}}
+% \def\GV{\bfG_{\bfV}}
+% \def\GVp{\bfG_{\bfV'}}
+% \def\KVr{K_{\bfV}}
+% \def\tKVr{\wtK_{\bfV}}
+% \def\KV{\bfK_{\bfV}}
+% \def\KaV{\bfK_{\acute{V}}}
+
+% \def\KV{\bfK}
+% \def\KaV{\acute{\bfK}}
+% \def\acO{\acute{\cO}}
+% \def\asO{\acute{\sO}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\GVr{G}
+\def\tGVr{\wtG}
+\def\GVpr{G'}
+\def\tGVpr{\widetilde{G'}}
+\def\GVar{G'}
+\def\tGVar{\wtG'}
+\def\GV{\bfG}
+\def\GVp{\bfG'}
+\def\KVr{K_{\bfV}}
+\def\tKVr{\wtK_{\bfV}}
+\def\KV{\bfK_{\bfV}}
+\def\KaV{\bfK_{\acute{V}}}
+
+\def\KV{\bfK}
+\def\KaV{\acute{\bfK}}
+\def\acO{{\cO'}}
+\def\asO{{\sO'}}
+
+\DeclareMathOperator{\sspan}{span}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\sp{{\mathrm{sp}}}
+
+\def\bfLz{\bfL_0}
+\def\sOpe{\sO^\perp}
+\def\sOpeR{\sO^\perp_\bR}
+\def\sOR{\sO_\bR}
+
+\def\ZX{\cZ_{X}}
+\def\gdliftv{\vartheta}
+\def\gdlift{\vartheta^{\mathrm{gen}}}
+\def\bcOp{\overline{\cO'}}
+\def\bsO{\overline{\sO}}
+\def\bsOp{\overline{\sO'}}
+\def\bfVpe{\bfV^\perp}
+\def\bfEz{\bfE_0}
+\def\bfVn{\bfV^-}
+\def\bfEzp{\bfE'_0}
+
+\def\totimes{\widehat{\otimes}}
+\def\dotbfV{\dot{\bfV}}
+
+\def\aod{\mathrm{aod}}
+\def\unip{\mathrm{unip}}
+
+
+\def\ssP{{\ddot\cP}}
+\def\ssD{\ddot{\bfD}}
+\def\ssdd{\ddot{\bfdd}}
+\def\phik{\phi_{\fkk}}
+\def\phikp{\phi_{\fkk'}}
+%\def\bbfK{\breve{\bfK}}
+\def\bbfK{\wtbfK}
+\def\brrho{\breve{\rho}}
+
+\def\whAX{\widehat{A_X}}
+\def\mktvvp{\varsigma_{{\bf V},{\bf V}'}}
+
+\def\Piunip{\Pi^{\mathrm{unip}}}
+\def\cf{\emph{cf.} }
+\def\Groth{\mathrm{Groth}}
+\def\Irr{\mathrm{Irr}}
+
+\def\edrc{\mathrm{DRC}^{\mathrm e}}
+\def\drc{\mathrm{DRC}}
+\def\LS{\mathrm{LS}}
+\def\Unip{\mathrm{Unip}}
+
+\newcommand{\noticed}{noticed }
+\newcommand{\ess}{essential }
+
+% Ytableau tweak
+\makeatletter
+\pgfkeys{/ytableau/options,
+  noframe/.default = false,
+  noframe/.is choice,
+  noframe/true/.code = {%
+    \global\let\vrule@YT=\vrule@none@YT
+    \global\let\hrule@YT=\hrule@none@YT
+  },
+  noframe/false/.code = {%
+    \global\let\vrule@YT=\vrule@normal@YT
+    \global\let\hrule@YT=\hrule@normal@YT
+  },
+  noframe/on/.style = {noframe/true},
+  noframe/off/.style = {noframe/false},
+}
+\makeatother 
+
+\begin{document}
+
+
+\title[]{Combinatorics for unipotent representations}
+
+\author [D. Barbasch] {Dan M. Barbasch}
+\address{the Department of Mathematics\\
+  310 Malott Hall, Cornell University, Ithaca, New York 14853 }
+\email{dmb14@cornell.edu}
+
+\author [J.-J. Ma] {Jia-jun Ma}
+\address{School of Mathematical Sciences\\
+  Shanghai Jiao Tong University\\
+  800 Dongchuan Road, Shanghai, 200240, China} \email{hoxide@sjtu.edu.cn}
+
+\author [B. Sun] {Binyong Sun}
+% MCM, HCMS, HLM, CEMS, UCAS,
+\address{Academy of Mathematics and Systems Science\\
+  Chinese Academy of Sciences\\
+  Beijing, 100190, China} \email{sun@math.ac.cn}
+
+\author [C.-B. Zhu] {Chen-Bo Zhu}
+\address{Department of Mathematics\\
+  National University of Singapore\\
+  10 Lower Kent Ridge Road, Singapore 119076} \email{matzhucb@nus.edu.sg}
+
+
+
+
+\subjclass[2000]{22E45, 22E46} \keywords{orbit method, unitary dual, unipotent
+  representation, classical group, theta lifting, moment map}
+
+% \thanks{Supported by NSFC Grant 11222101}
+\maketitle
+
+
+\tableofcontents
+\section{Relevent nilpotent orbits}
+
+Let
+\[\cO=(C_{2a},C_{2a-1}, \cdots, C_1,C_0,C_{-1}=0)\]
+be a special orbit.  The dual orbit
+\[ \ckcO = [R_{2a}\geq R_{2a-1}\geq \cdots \geq R_1\geq R_0].\] The $\ckcO$ is
+given by add a box on the longest row of $\cO^T$ and then do $B$-collapse.
+
+
+\begin{defn}
+  Suppose $\bfG$ is type $C$.  An special orbit $\cO$ is called purely even if
+  $\ckcO$ only has odd rows.
+  This is equivalent to the condition on columns of $\cO$ such that (see \Cref{lem:C.even})
+  \begin{enumC}
+  \item $C_{2i} \equiv C_{2i-1} \pmod{2}$; 
+  \item 
+   If $C_{2i-1}$ is even,  $C_{2i-1} > C_{2i-2}$; 
+  \item
+    If $C_{2i}$ is odd, $C_{2i}=C_{2i-1}$. 
+  \end{enumC}
+  We call a purely even orbit $\cO$ is stablelly trivial when only even columns
+  occures. This is equivalent to  
+  \[
+    C_{2i} \equiv C_{2i-1} \equiv 0 \pmod{2}  \text{ and } C_{2i-1}>
+    C_{2i-2} \quad \forall i.
+  \]
+  {\color{red} In this case all LS in the unipotent representations are
+    irreducible. }
+  This is also equivalent to
+  \[
+    R_{2i}>R_{2i-1} \quad \forall i
+  \]
+
+  We call a purely even orbit $\cO$ is theta-admissible when each row columns
+  appears at most $2$-times.
+  {\color{red} All unipotent representations of these orbits are expected to
+    constructed by theta correspondence. Moreover, they are parameterized by the
+    their local systems. 
+  }
+  This is also equivalent to each row lenght appears at most $3$-times in
+  $\ckcO$. 
+\end{defn}
+
+Suppose $\cO$ is purely even. 
+The dual orbit 
+$\ckcO = [R_{2a}\geq R_{2a-1}\geq \cdots \geq R_1\geq R_0]$
+is calculated in the following way: 
+\[
+  [R_{2i},R_{2i-1}] = \begin{cases}
+    [C_0+1, 0] & i=0\\
+    [C_{2i}+1, C_{2i-1}-1] & i>0, C_{2i} \text{ is even} \\
+    [C_{2i},C_{2i-1}] & i>0, C_{2i} \text{ is odd}
+  \end{cases}
+\]
+
+
+\begin{defn}
+  Suppose $\bfG$ is type $D$.  An special orbit
+  \[
+    \cO=(C_{2a-1}\ge\dots \ge C_0\geq C_{-1}=0) \quad C_{2i}\equiv
+    C_{2i-1}\pmod{2}, C_{2a-1} \equiv 0 \pmod{2}
+  \]
+  is called purley even if
+  $\ckcO$ only has odd rows.
+  This is equivalent to the condition on columns of $\cO$ such that (see \Cref{lem:C.even})
+  \begin{enumC}
+  \item $C_{2i} \equiv C_{2i-1} \pmod{2}$; 
+  \item 
+   If $C_{2i-1}$ is even,  $C_{2i-1} > C_{2i-2}$; 
+  \item
+    If $C_{2i}$ is odd, $C_{2i}=C_{2i-1}$. 
+  \end{enumC}
+  Note that this is the same condition as the type C case. 
+\end{defn}
+
+
+Suppose $\cO$ is purely even. 
+The dual orbit 
+$\ckcO = [R_{2a-1}\geq \cdots \geq R_1\geq R_0, R_{-1}=0]$
+is calculated in the following way: 
+\[
+  [R_{2i},R_{2i-1}] = \begin{cases}
+    [C_0+1, 0] & i=0\\
+    [0, C_{2a-1}-1] & i = a \\
+    [C_{2i}+1, C_{2i-1}-1] & a> i>0, C_{2i} \text{ is even} \\
+    [C_{2i},C_{2i-1}] & a>i>0, C_{2i} \text{ is odd}
+  \end{cases}
+\]
+
+\section{Parameterize of Unipotent representations}
+We fix an abstract complex Cartan subgroup $\bfH_a$ and $\fhh_a$ in $\bfG$ and a
+set of simple roots $\Pi_a$.  Let $\cP(\bfG)$ be the set of all Langlands
+parameters of $G$-modules with character $\rho$ (i.e. the infinitesimal
+character of the trivial representation). For $\gamma\in \cP(\bfG)$, let
+$\cL(\gamma)$, $\cS(\gamma)$ and $\Phi_\gamma$ be the corresponding Langlands
+quotient, standard module and coherent family such that
+$\Phi_\gamma(\rho) = \cL(\gamma)$. Let $\cM(\bfG)$ be the span of $\cL(\gamma)$.
+Let $\set{\bB}$ be the set of all blocks. Then $\cP(\bfG) = \bigsqcup_\cB \cB$.
+The Weyl group $W = W(G)$ acts on $\cM(\bfG)$ by coherent continuation.  Let
+$\cM_{\cB}$ be the submodule of $\cM(\bfG)$ spand by $\gamma\in\cB$, then
+\[
+  \cM(\bfG) = \bigoplus_\cB \cM_{\cB}
+\]
+Let $\tau(\gamma)\subset \Pi_a$ be the $\tau$-invariant of $\gamma$.
+
+Let $\ckcO$ be even orbit. $\lambda= \half \ckhh$.  Define
+\[
+  S(\lambda) = \set{\alpha\in \Pi_a| \inn{\alpha}{\lambda}=0}.
+\]
+Let $\cP_{\lambda}(\bfG)$ be the set of all Langlands parameters with
+infinitesimal character $\lambda$. Let $T_{\lambda,\rho}$ be the translation
+functor.  Let
+\[
+  \cB(S) = \set{\gamma\in \cB|S\cap \tau(\gamma)=\emptyset}
+\]
+and
+\[
+  \cP(\bfG,S) = \bigsqcup_{\cB} \cB(S)
+\]
+
+
+Then
+\[
+  \begin{tikzcd}[row sep=0em]
+    \cP(\bfG,S) \ar[r] & \cP_{\lambda}(\bfG)\\
+    \gamma \ar[r, maps to]& T_{\lambda, \rho}(\gamma)
+  \end{tikzcd}
+\]
+
+Let $\cO$ be a complex nilpotent orbit in $\fgg$.  Let
+\[
+  \cB(S,\cO) = \set{\gamma\in \cB(S)|\AVC(\cL(\gamma))\subset \bcO}
+\]
+
+Let
+\[
+  \begin{aligned}
+    m_S(\sigma) &= [\sigma: \Ind_{W(S)}^{W}\bfone]\\
+    m_\cB(\sigma)& = [\sigma: \cM_\cB]
+  \end{aligned}
+\]
+
+Barbasch \cite[Theorem~9.1]{B10} established the following theorem.
+\begin{thm}
+  \[
+    |\cB(S,\cO)| = \sum_{\sigma} m_\cB(\sigma)m_S(\sigma)
+  \]
+  Here $\sigma\times \sigma$ running over the $W\times W$ appears in the double
+  cell $\cC(\cO)$.
+\end{thm}
+\begin{proof}
+  We need to take the graded module of $\cM(\bfG)$ with respect to the
+  $\LRleq$. By abuse of notation, we identify the basis $\cP(\bfG)$ with its
+  image in the graded module.  Note that $S\cap \tau(\lambda)=\emptyset$ if and
+  only if $W(S)$ acts on $\gamma$ trivially by \cite[Lemma~14.7]{V4}.  On the
+  other hand, by \cite[Theorem~14.10, and page 58]{V4},
+  $\AVC(\cL(\gamma))\subset \bcO$ only if $\gamma$ generate a $W$-module in the
+  double cell of $\cO$.
+\end{proof}
+
+Now assume $S=S(\lambda)$. By \cite[Cor~5.30 b) and c)]{BVUni},
+$[\sigma: \Ind_{W(S)}^{W}\bfone]=[\bfone|_{W(S)}:\sigma]\leq 1$.
+
+\section{Combinatorics of Weyl group representations}
+The irreducible representations of $S_n$ are parameterized by Young diagrams.
+We use the notation that the trivial representation corresponds to a row and the
+sign representation corresponds to a column.
+\[
+  triv \leftrightarrow \ytableaushort{n \ b o x e s} \quad \sgn \leftrightarrow
+  \ytableaushort{n,\ ,b,o,x,e,s}
+\]
+\trivial{ This notation coincide with the Springer correspondence, where a row
+  of boxes represents the regular nilpotent orbit and the corresponding
+  representation is the trivial representation.  The trivial orbit yeilds the
+  sign representation.  }
+
+Under the above paramterization, $\tau\mapsto \tau\otimes \sgn$ is described by
+the transpose of Young diagram. The branching rule is given by
+Littlewoods-Richardson.  Let $\cK = \bigoplus_n \Groth(S_n)$ be the graded ring
+of the Grothendieck groups of $S_n$.  This yeilds well defined ring structure on
+the graded algebra
+\[
+  \mu \nu :=\Ind_{S_{|\mu|}\times S_{|\nu|}}^{S_{|\mu|+|\nu|}}\mu\otimes \nu.
+\]
+
+Notation, we will use $[r_1, r_2, \cdots, r_k]$ or $(c_1,c_2, \cdots, c_k)$
+denote the Young diagram, where $\set{r_i}$ denote the lengthes of its rows and
+$\set{c_i}$ denote the lengthes of its columns.
+
+Let $W_n$ denote the Weyl group of type BC: $W_n = S_n \ltimes \set{\pm 1}^n$.
+Now $\Irr(W_n)$ is paramterized by a pair of Young diagram, we use the notation
+$\mu\times \nu$.
+
+As the tensor algebra, $\bigoplus_n \Groth(W_n)\cong \cK\otimes \cK$ via
+$\mu\times \nu \mapsto \mu \otimes \nu$.
+   
+The branching rule is given by:
+$(\mu_1\times \nu_1)(\mu_2\times \nu_2) = (\mu_1\mu_2)\times (\nu_1 \nu_2)$.
+The sgn repersentation of $W_n$ is parameterized by $\emptyset\times (n)$.  From
+the definitioin of the identification of bipartition with $\Irr(W_n)$, we also
+have
+\[
+  (\mu\times \nu) \otimes \sgn = \nu^t\times \mu^t.
+\]
+
+We also will use the following branching formula:
+\[
+  \Ind_{S_n}^{W_n} \triv = \sum_{\substack{a,b,\\ a+b=n}} [a]\times [b],
+\]
+and
+\begin{equation}\label{eq:SW2}
+  \Ind_{S_n}^{W_n} \sgn = \sum_{\substack{a,b,\\ a+b=n}}
+  (a)\times (b).
+\end{equation}
+\trivial{ Sketch of the proof of the first formula, the dimension of LHS is
+  $n!2^n/n! = 2^n$.  On the other hand, by Mackey theory,
+  $[LHS:\Ind_{W_a\times W_b}^{W_n} \triv \otimes \chi ] \geq 1$ since
+  $S_n\cap W_a\times W_b = S_a\times S_b$.  Therefore, $LHS\supset RHS$.  On the
+  other hand, dimension of RHS is $\sum_{a} n!/a!b! = 2^n$.  This finished the
+  proof.  The proof of the second formula is similar. One also can obtain it by
+  tensoring with $\sgn$ of the first formula.  }
+
+ 
+
+\section{Combinatorics for type C}
+
+
+\subsection{The coherent continuation representation of type C}
+The detail of the coherent continuation representation was discussed in
+\cite[p221 (7)]{Mc}.
+
+\trivial{ In McGovern's paper, the coherent continuation representation is
+  described as:
+  \[
+    \sum_{t,s,a,b}\Ind_{W_t\times (W_s\ltimes W(A_1)^s)\times W_a\times
+      W_b}^{W_{t+2s+a+b}} \sgn\otimes (\triv \otimes \sgn)\otimes \triv\otimes
+    \triv
+  \]
+  Now \eqref{eq:CC.C} was obtained by the following branching formula:
+  \cite[p220 (6)]{Mc}
+  \[
+    I_n:= \Ind_{(W_s\ltimes W(A_1)^s)}^{W_{2s}}\triv\otimes \sgn = \sum
+    \lambda\times \lambda
+  \]
+  where $\lambda$ running over all Young diagrams of size $s$.  As McGovern
+  claimed the proof of the above formula is similar to Barbasch's proof of
+  \cite[Lemma~4.1]{B.W}:
+  \[
+    \Ind_{W_n}^{S_{2n}} \triv = \sum \sigma \quad \text{where $\sigma$ has even
+      rows only}.
+  \]
+
+  Sketch of the proof (use branching rule and dimension counting): Note that
+  $\dim I_n = \frac{(2p)! 2^{2p}}{p! 2^{2p}} = (2p)!/p!  =\sum_\lambda \dim
+  \lambda\times \lambda$ (For the last equality:
+  $\dim \lambda\times \lambda = (2p)! (\dim \lambda)^2/(p!)^2$ where
+  $\dim \lambda$ is the dimension of $S_n$ representation determined by
+  $\lambda$; But $\sum (\dim \lambda)^2 = p!$).  On the other hand,
+  $H :=W_s\ltimes W(A_1)^s\cap W_s\times W_s = \Delta W_s \subset W_{2s}$.
+  $\triv \otimes \sgn|_H = \sgn$ of $\Delta W_s$ Therefore,
+  $\lambda\times \lambda$ appears in $I_n$ by Mackey formula. Now by dimension
+  counting, we get the formula.  }
+
+The Cartan subgroups are parametrized by three integers $(a,2s,b)$ where
+$a+2s+b=n.$ For the coherent continuation representation we need four integers
+$(t,2s,p,q),$ satisfying $t+2s+p+q=n.$ The corresponding representation is
+\begin{equation}
+  \sum_{\substack{p,q,t,s,\\
+      \tau\in \widehat{S_s}}} \Ind_{S_t\times W_{2s}\times W_p\times W_q}
+  ^{W_n}[\sgn\otimes(\tau\times \tau)\otimes \triv\otimes \triv].
+  \label{eq:CC.C}
+\end{equation}
+
+The notation is set up to take the duality in \cite{V4} of types $B$ and $C$
+into account.  So we write $r$ for the sign representation of $S_t,$ and $c$ and
+$c'$ for the trivial representation of $W_p$, $W_q$.
+
+Now representations in the coherent continuation are parameterized by the
+labeled diagram $\tau_L\times \tau_R$: dots are filled in both sides forming the
+same shape of Young diagram (coesponding to $\tau\times \tau$ in
+\eqref{eq:CC.C}); a column of totaly $t$ ``$r$''s then added next to dots on the
+both sides (by \eqref{eq:SW2}), i.e. at most one $r$ is added in each row of the
+existing dots diagram (corresponding to $S_t$ in \eqref{eq:CC.C}); then add $p$
+``$c$''s and finally add $q$ ``$c'$''s on the left side of the diagram; each $c$
+or $c'$ is added to at most one column.  Through this procedure, one must make
+sure that the shape of the diagram is a valid Young diagram after each step.
+
+
+{\color{blue} Not in use right now.  We label the rows of $\tau_L$ as
+  $r_0,r_2,\dots ,r_{2m}$ and the rows of $\tau_R$ as $r_1,r_3,\dots ,r_{2m-1}$
+  to conform to the notation of the special symbol }
+
+\subsection{Barbasch-Vogan dual}
+Let $\cO=(C_{2a},C_{2a-1}, \cdots, C_1,C_0,C_{-1}=0)$ be a special orbit.
+
+
+
+The dual orbit $\ckcO = [R_{2a}\geq R_{2a-1}\geq \cdots \geq R_1\geq R_0]$.
+
+{\color{red} The $\ckcO$ is given by add a box on the longest row of $\cO^T$ and
+  then do $B$-collapse.}
+
+\begin{lem}\label{lem:C.even}
+  $\ckcO$ is not even if and only if there is $i$ such that $C_{2i-1}= C_{2i-2}$
+  is an even number $>0$.  In particular, there is no special unipotent
+  representations attached to $\cO$.
+\end{lem}
+\begin{proof}
+  Note that $R_{2a}$ must be an odd number. Let $i$ be the largest number
+  satisfies the condition above, then $R_{2i-1}=C_{2i-1}$ is an even
+  number. Therefore $\ckcO$ is not even.
+
+  If there is on such kind of columns, then all rows in $\ckcO$ have odd
+  lengths.
+\end{proof}
+
+\trivial{ Note that $C_0,C_{-1}=0$ is even,
+  $(C_0,C_{-1})=(C_0,0)\leftrightarrow [C_0+1,0]=:[R_0,0]$. \\
+  Suppose that $C_{2i},C_{2i-1}$ are even and $C_{2i-1}>C_{2i-2}$, then
+  $(C_{2i},C_{2i-1})\leftrightarrow [C_{2i}+1,C_{2i-1}-1]=:[R_{2i},R_{2i-1}]$. \\
+  Suppose that $C_{2i}=C_{2i-1}$ are odd, then
+  $(C_{2i},C_{2i-1})\leftrightarrow [C_{2i},C_{2i-1}]=:[R_{2i},R_{2i-1}]$.  }
+
+\begin{defn}
+  Suppose $\bfG$ is type $C$.  An special orbit $\cO$ is called purley even if
+  $\ckcO$ only has odd rows.
+  
+\end{defn}
+
+\subsection{Nilpotent orbit of type C and Springer correspondence}
+Nilpotent orbits of type C are parameterized by partitions
+\[
+  \bfpp:= (C_{2a},C_{2a-1},\cdots, C_1, C_0, C_{-1}=0) \quad \text{such that
+    $C_{2i}\equiv C_{2i-1}\pmod{2}$}.
+\]
+
+Spacial orbits are those orbits satisfing $C_{2i}=C_{2i-1}$ when $C_{2i}$ is
+odd. \trivial{ This is exactly the condition that the transpose of the Young
+  diagram is also type C.}
+
+The Springer correspondence restricted on the set of special orbit is given as
+the following: Write $C_0=2c_0$, $C_{2i}=2c_{2i}+\epsilon_i$ and
+$C_{2i-1}=2c_{2i-1}-\epsilon_i.$ The (special) Weyl group representation
+associated to the special orbit $\cO$ has columns
+\begin{equation}
+  \label{eq:tableauc}
+  \tau_L\times\tau_R=(c_{2a-1},\dots , c_1)\times (c_{2a},\dots ,c_0).
+\end{equation}
+\trivial{ The above formula could be deduced from Lusztig's interpration of
+  Springer correspondence.  Which is computed as the following: (We follow
+  Lusztig's description of ``generalized'' Springer correspondence in
+  \cite[\S~11, \S~12]{Lu.I}, see also McGovern's description on p80 of his Left
+  cells and domino tableaux paper. Warning: the algorithm of Lusztig and
+  McGovern are different but essentially the same, we use McGovern's version. )
+
+  0. Suppose $\cO^t$ is a Young diagram of type C has rows (later $\cO^t$ will
+  be the dual of a special orbit $\cO$ of type C).
+  \[
+    [C_{2a},\cdots, C_0].
+  \]
+
+  1. Form a string of numbers
+  \[
+    C_0, C_1+1, \cdots, C_i+i, \cdots, C_{2a}+2a.
+  \]
+  
+  Note that if $C_{2i}=C_{2i-1} = 2 c_{2i}+1$ is odd, then
+  $C_{2i} +2i = 2c_{2i}+1+2i = 2 c_{2i-1}+(2i-1)$ and
+  $C_{2i-1} +2i-1 = 2 c_{2i} +2i $; if $C_{2i}=2c_{2i}, C_{2i-1} = 2c_{2i-1}$
+  are both even, then $C_{2i} +2i = 2c_{2i}+2i$,
+  $C_{2i-1}+2i-1 = 2c_{2i-1}+(2i-1)$.
+  
+  Therefore, the even parts of the above sequence is
+  \[2c_0,\cdots, 2c_{2i}+2i, \cdots 2 c_{2a}+2a,\] the odd part of the above
+  sequence is
+  \[
+    2c_1 +1, \cdots, 2 c_{2i-1}+ (2i-1), \cdots, 2 c_{2a-1}+(2a-1).
+  \]
+
+  2. Note that the odd parts is shorter than the even parts, we get the symbol
+  \[
+    \begin{pmatrix}
+      c_0 & & c_{2} +1 & \cdots & c_{2i}+i &\cdots &&\cdots & c_{2a}+a\\
+      & c_1 && c_{3}+1 & \cdots & c_{2i+1}+i &\cdots& c_{2a-1}+a-1
+    \end{pmatrix}
+  \]
+
+  3. This symbol corresponds to the representation
+  \[
+    [c_{2a}, \cdots, c_{2},c_0]\times [c_{2a-1}, \cdots, c_3, c_1].
+  \]
+  
+
+  4. There is one flaw of the above calculation, we use columns instead of the
+  row.  Use duality to fix the problem which yeilds Barbasch's answer: Let
+  $\pi_\cO$ be the Special representation attached to the special orbit $\cO$;
+  then
+  \[
+    \pi_\cO = \pi_{\cO^t} \otimes \sgn = (c_{2a-1}, \cdots, c_3, c_1)\times
+    (c_{2a},\cdots, c_2,c_0).
+  \]
+}
+
+  
+  \subsubsection{Some left cells in type C}
+  Now recall some results about cells of Weyl group representation.  A symbol
+  (of defact 1) is a pair of integer sequence such that $0< a_0< \cdots < a_s$
+  and $b_0< b_1< \cdots <b_{s-1}$
+  \[
+    \sigma :=
+    \begin{pmatrix}
+      a_0 && a_1 && \cdots && a_{s}\\
+      & b_0 & & b_1& \cdots & b_{s-1}
+    \end{pmatrix}.
+  \]
+  Now $\sigma$ correspond to irreducible $W_n$ representation with rows:
+  \[
+    [a_{s}-s,\cdots, a_1-1, a_0]\times [b_{s-1}-(s-1), \cdots, b_1-1, b_0]
+  \]
+  $\sigma$ is called special if
+  $a_0\leq b_0\leq a_1\leq b_1 \cdots \leq b_{s-1}\leq a_{S}$.  Define
+  \[\rank(\sigma) := \sum a_i +\sum b_i - (s(s+1)/2+ s(s-1)/2) = \sum a_i
+    +\sum b_i - s^2.
+  \]
+
+  On the set of symbols, one define the shift operation:
+  \[
+    \begin{pmatrix}
+      a_0 && a_1 && \cdots && a_{s}\\
+      & b_0 & & b_1& \cdots & b_{s-1}
+    \end{pmatrix}\mapsto
+    \begin{pmatrix}
+      0&& a_0+1 && a_1+1  && \cdots && a_{s}+1 \\
+      &0& & b_0+1 & & b_1+1 & \cdots & b_{s-1}+1
+    \end{pmatrix}
+  \]
+  For a symbol $\sigma$, let $[\sigma]$ denote the equivalent class of symbols
+  under the shift operation.  {\color{red} Warning: Lusztig's definition of rank
+    may be different in his different papers.  } \trivial{ In general symbol is
+    a pair of integers $\begin{pmatrix}A \\ B\end{pmatrix}$.
+    $\rank(\begin{pmatrix}A \\ B\end{pmatrix}):= \sum a_i + \sum b_i
+    -(\frac{|A|+|B|-1}{2})^2$ which equals to $\sum a_i +\sum b_i -s^2$ }
+  
+  Double cells of $\whW_n$ are parameterized by the special symbols class of
+  rank $n$.  The dobule cell $\cC_\sigma$ of a given special symbol $\sigma$
+  consists all representations corresponding to symbols with the same set of
+  entries of the special symbol $\sigma$.
+  
+  Now recall the definition of $L$. Fix a special symbol $\sigma$ as above, let
+  $T = \set{t_1, t_2, \cdots, t_p}$ be the set of elements in $\sigma$ only
+  appears in the top row, and $B = \set{b_1, b_2, \cdots, b_{p-1}}$ be the set
+  of elements only appears in the bottom row.  \trivial{ (It is obvious that
+    $|T| = |B|+1$ by the definition of symbol since each number appears at most
+    twice.)  }
+  $L := \set{(t_i,b_i)| i=1,2,\cdots,p-1} \subset \bF_2^T\times \bF_2^B$ (Here
+  $|\bF_2^S|$ is naturally identified with the power set of the set $S$).
+  $R := \set{(t_{i+1},b_i)|i = 1,2,\cdots, p-1}$.
+
+  
+  
+  Left cells are more complicated, they are parameterized by supersmooth
+  subspace of $L$, where $L$ is a $\bF_2$ vector space attached to the spacial
+  symbol $\sigma$.  There are two very important supersmooth subspaces $L$ and
+  $0$.
+
+  The left cell $\cC_L$ consists of all symbols obtained by transfering some
+  $t_i$ to the bottom row and corresponding $b_i$ to the top row.  The left cell
+  $\cC_0$ consists of all symbols obtained by transfering some $t_{i+1}$ to the
+  bottom row and corresponding $b_i$ to the top row.
+
+  Another way to obtain $\cC_L$: it consists of symbols obtained by
+  interchanging some of the entries which only appears in the bottom row to
+  their closest neighbors to the \emph{left} which only appears in the top row.
+
+  Similarly $\cC_0$ consists of symbols obtained by interchanging some of the
+  entries which only appears in the bottom row to their closest neighbors to the
+  \emph{right} which only appears in the top row.
+
+  Note that a symbol is in certain $\cO_L$ if only if its entry satisfies
+  $a_{i-1} \leq b_{i}\leq a_{i+1} \ \forall i$.
+
+  A symbol is in certain $\cO_0$ if only if its entry satisfies
+  $a_i \leq b_{i}\leq a_{i+2} \ \forall i$.
+  
+  {\color{orange} This is equivalent to \cite[p 219 (4)]{Mc}.  Note that a
+    special symbol may have configuration
+    \[
+      \begin{tikzcd}[row sep=1em,column sep=1em]
+        \cdots & & a_i \ar[dr,equal] & & \cdots & & a_{i+s} \ar[dr,equal] & & \cdots\\
+        & \cdots & & b_i & & \cdots & & b_{i+s}&
+      \end{tikzcd}
+    \]
+    This type of segment is irrelavent to the ``interchange'' operation.
+   
+    Suppose we have a segement as the following:
+    \[
+      \begin{tikzcd}[row sep=1em,column sep=1em]
+        \cdots & & top_j \ar[drrrrrrr,dashed,leftrightarrow] &&  a_{i+1} \ar[dl,equal] & & \cdots & & a_{i+s+1} \ar[dl,equal] & & \cdots\\
+        & \cdots & & b_i & & \cdots & & b_{i+s}& & bot_j
+      \end{tikzcd}
+    \]
+    After the interchange, we will have the configuration:
+    \[
+      \begin{tikzcd}[row sep=1em,column sep=1em]
+        \cdots && a_{i+1} \ar[drrr,equal] & & \cdots & & a_{i+s+1}
+        \ar[drrr,equal]
+        & & bot_j & &\cdots\\
+        & \cdots & & top_j&& b_i & & \cdots & & b_{i+s}& &
+      \end{tikzcd}
+    \]
+    By observing the above pictures, a moment though yields the claim.  }
+
+
+ 
+  View $W_n$ as the Weyl group of type C, then $\cC_L$ is called Lusztig and
+  $\cC_0$ is called Springer.
+
+  {\color{red} McGovern claims that: The set of all ``Springer'' symbols
+    coincide with all symbols obtain by Springer correspondence from a nilpotent
+    orbit of type C (with trivial local system).
+
+    I can not varify that. It seem that this dose not agree with Lusztig's
+    results, see Carter's book p420 paragraph-3 on Springer correspondence.  }
+  \trivial{ This is McGovern's claim, haven't checked yet.}
+
+
+  Let
+  $\tau :=[\lambda_1\geq \lambda_2\geq \cdots \lambda_{r+1}\geq 0]\times
+  [\nu_1\geq \nu_2\cdots \geq \nu_r]\in \whW_n$ then $\tau\in \cC_L$ if and only
+  if
+  \begin{equation}\label{eq:rep-Lusztig}
+    \lambda_i+1\geq \mu_i \geq \lambda_{i+2}-1.
+  \end{equation}
+  \trivial{ $\tau$ has symbol
+    \[
+      \begin{pmatrix}
+        \lambda_{r+1} & & \lambda_r +1 & & \cdots && \lambda_{2}+r-1 && \lambda_1+r\\
+        & \nu_r && \nu_{r-1}+1 &&\cdots && \nu_1+r-1 &\\
+      \end{pmatrix}
+    \]
+    Now the condition on symbol reads
+    \[
+      \lambda_{i+1}+r-i-1 =\lambda_{i+2}+r+1-(i+2) \leq \mu_{i}+r-i \leq
+      \lambda_i+r+1-i.
+    \]
+  
+  }
+
+
+  Similarly, $\tau \in \cC_0$ if and only if
+  \[
+    \lambda_{i-1}+2 \geq \nu_i \geq \lambda_{i+1}.
+  \]
+
+  From now on, let $\tau\in \whW_n$ be a irreducible representation occure in
+  \eqref{eq:CC.C}.  Then $\tau$ are Lusztig.  \trivial{ It is to varity the
+    \eqref{eq:rep-Lusztig}.  It follows from the dot-r-c diagram construction.
+    $\nu_i\leq \lambda_{i}+1$ is clear since we will add at most one ``r'' on
+    the right young digram.  The inequality $\lambda_{i+2}-1\leq\mu_i$ follows
+    form the consideration of ``exterme cases'' for the row $i,i+1,i+2$:
+    \[
+      \begin{matrix}
+        \cdots & \bullet & r & c\\
+        \cdots & \bullet & * & c'\\
+        \cdots &  * & *\\
+      \end{matrix}
+      \times
+      \begin{matrix}
+        \cdots & \bullet\\
+        \cdots\\
+        \cdots\\
+      \end{matrix}
+    \]
+    where $*$ could be $\bullet$, $r$,$c$, or $c'$ when ever it is proper.
+    Anyway, for the ``exterme case'', $\lambda_{i+1} -1 = \mu_i+1-1 \leq \mu_i$.
+  } By duality, $\tau\otimes \sgn$ are all Springer (in the sense of type C
+  representation).
+
+  {\color{red} To be check:} Now we reach the conclusion of Barabasch/McGovern
+  that: The other representations in the primitive ideal cell are obtained by
+  interchanging pairs coming from even columns,
+  \begin{equation}
+    \label{eq:wccell}
+    (c_{2i}, c_{2i-1})\longleftrightarrow (c_{2i-1}-1,c_{2i}+1).  
+  \end{equation}
+  \subsection{Reductions in type C}
+  Let $\cO = (C_{2a}, C_{2a-1}, \cdots, C_{1}, C_{0}\geq 0)$ be a special orbit.
+
+  Now we start to count the number of unipotent representations.  In this
+  section, we reduce the counting problem to the certain orbits with restricted
+  shapes.
+
+  \subsubsection{Delete odd rows}
+
+
+\begin{prop}\label{prop:reduction.C}
+  Let $\cO'$ be the special orbit obtained by deleteing all odd rows of $\cO$.
+  There is a bijection from the dot-c-r diagrams attached to $\cO$ to that of
+  $\cO'$.  In particular, $\unip(\cO)$ and $\unip(\cO')$ has the same number of
+  elements.
+\end{prop}
+\begin{proof}
+  Let $\tau_\cO :=\tau_L\times \tau_R$ be the special representation attached to
+  $\cO$.  We refer to \eqref{eq:tableauc} for the shape of
+  $\tau_L\times \tau_R$.  All other representations are obtain from $\tau_\cO$
+  by ``switching columns'' using recipy \eqref{eq:wccell}. We use
+  $\tau' = \tau'_L\times \tau'_R$ denote an arbitary $W$-representation in the
+  cell of $\tau_\cO$.
+
+  \textbf{Delete the longest odd rows: } Suppose the longest rows of $\cO$ have
+  odd size. This is equivalent to $C_0 = 2c_0 >0$. Note that the largest row
+  occur an even number of times.  Now all $\tau'$ has the shape that $\tau'_R$
+  has one more column (the column $c_0$) than $\tau'_L$.  Therefore, the column
+  for $c_0$ must be filled with $r$'s. The remainder of the rows corresponding
+  to the column of size $c_0$ in both $\tau_L$ and $\tau_R$ must be filled with
+  $\bullet'$s.
+
+  % Note that the rows in $\tau'_L$ must be of size one less than those of
+  % $\tau'_R$.
+
+
+  The multiplicity is not affected if the first $c_0$ rows are removed from both
+  $\tau'_L$ and $\tau'_R$. The computation of multiplicities is reduced to the
+  case where the first $C_0$ rows removed $c_0=0$.
+
+  The situation is illustrated below, delete the boxed parts.
+
+    \begin{tikzpicture}
+      \matrix [matrix of math nodes,text width=.7em, text height=.7em,text badly
+      centered] (m) {
+        \cdots  & \bullet & \bullet &        & \cdots & \bullet & \bullet & r      \\
+        \cdots  & \vdots  & \vdots  &        & \cdots & \vdots  & \vdots  & \vdots \\
+        \cdots  & \bullet & \bullet &        & \cdots & \bullet & \bullet & r      \\
+        \cdots  & *       &         & \times & \cdots & *       &         &        \\
+        \cdots & *       &         &        & \cdots & *       &         &        \\
+        \cdots  & \vdots  &         &        & \cdots & \vdots  &         &        \\
+      };
+      % simple rectangle
+      \draw (m-3-1.south west) rectangle (m-1-3.north east); \draw (m-3-5.south
+      west) rectangle (m-1-8.north east);
+      % fancy blue rectangle
+    \end{tikzpicture}
+
+    \textbf{Delete the odd rows of length $2a-1$} Now assume $C_0=0$ but
+    $C_2>C_1$. Note that $\cO$ is a special orbit. So $C_2$ and $C_1$ must be
+    even columns, and $c_2>c_1$.
+
+    First consider $\tau_\cO = \tau_L\times \tau_R$, it must be filled as the
+    following: The first $c_1$ rows in the column for $c_2$ must be filled by
+    $\bullet'$s or $r's$. The remaining rows in $c_2$ are filled with $r'$s. The
+    remainder of rows $c_1+1$ to $c_2$ in both $\tau_L$ and $\tau_R$ (columns
+    $c_3, c_4\dots$) must be filled with $\bullet'$s.  Therefore, delete the
+    boxed part do not affect the multiplicity, see below.
+
+
+\begin{tikzpicture}
+  \matrix [matrix of math nodes,text width=.7em, text height=.7em,text badly
+  centered] (m) {
+    &         & c_1       &        &        &         & c_2       \\
+    \cdots & *       & \bullet/r &        & \cdots & *       & \bullet/r \\
+    \cdots & \vdots  & \vdots    &        & \cdots & \vdots  & \vdots    \\
+    \cdots & *       & \bullet/r &        & \cdots & *       & \bullet/r \\
+    \cdots & \bullet &           &        & \cdots & \bullet & r         \\
+    \cdots & \vdots  &           &        & \cdots & \vdots  & \vdots    \\
+    \cdots & \bullet &           &        & \cdots & \bullet & r         \\
+    \cdots & *       &           & \times & \cdots & *       &           \\
+    \cdots & *       &           &        & \cdots & *       &           \\
+    \cdots & \vdots  &           &        & \cdots & \vdots  &           \\
+  };
+  % simple rectangle
+  \draw (m-7-1.south west) rectangle (m-5-2.north east); \draw (m-7-5.south
+  west) rectangle (m-5-7.north east);
+  % fancy blue rectangle
+\end{tikzpicture}
+
+
+For the other representations obtained from $\tau_\cO$ without switching $c_1$
+and $c_2$, the situation similar.
+
+Now consider the representations switching
+$(c_1,c_2)\leftrightarrow (c_2+1,c_1-1)$. The shape of the dot-r-c diagram must
+be as the following. Now delete the boxed part will not affect the
+multiplicities.
+
+\begin{tikzpicture}
+  \matrix [matrix of math nodes,text width=.7em, text height=.7em,align=flush
+  center ] (m) {
+    &         & c_2+1     &        &        &         & c_1-1     \\
+    \cdots & *       & \bullet/r &        & \cdots & *       & \bullet/r \\
+    \cdots & \vdots  & \vdots    &        & \cdots & \vdots  & \vdots    \\
+    \cdots & *       & \bullet/r &        & \cdots & *       & \bullet/r \\
+    \cdots & \bullet & r         &        & \cdots & \bullet &           \\
+    \cdots & \vdots  & \cdots    &        & \cdots & \vdots  &           \\
+    \cdots & \bullet & r         &        & \cdots & \bullet &           \\
+    \cdots & \bullet & r/c       &        & \cdots & \bullet &           \\
+    \cdots & \bullet & r/c'      &        & \cdots & \bullet &           \\
+    \cdots & *       &           & \times & \cdots & *       &           \\
+    \cdots & *       &           &        & \cdots & *       &           \\
+    \cdots & \vdots  &           &        & \cdots & \vdots  &           \\
+  };
+  % simple rectangle
+  \draw (m-7-1.south west) rectangle (m-5-3.north east); \draw (m-7-5.south
+  west) rectangle (m-5-6.north east);
+  % fancy blue rectangle
+\end{tikzpicture}   
+
+They correspond to the next largest odd rows of $\cO$ and do
+not affect the number of dot-r-c diagrams.
+
+In summary, delete the odd row of length $2a-1$
+do not affect the number of dot-r-c diagrams.
+
+\textbf{The general case} Argue exactly in the same way, we see that delete odd rows of any length in $\cO$ will
+not affect the number of dot-r-c diagrams.
+
+
+\end{proof}
+
+\begin{thm}[{Type C}]\label{t:1}
+The multiplicities of a $\tau_L\times\tau_R$ coincide with the case
+when $C_0=0$ and $c_{2i}=c_{2i-1}$ when $C_{2i},C_{2i-1}$ are both even, and
+{\color{red} $c_{2i}=c_{2i-1}-1$} in case $C_{2i}C_{2i-1}$ are both odd. 
+\end{thm}
+
+\subsection{Some examples}
+For each complex nilpotent orbit $\cO$.
+Let $\drc(\cO)$ be the set of dot-r-c diagrams attached to $\cO$.
+Let $\LS(\cO)$ be the set of local systems obtained by theta correspondence. 
+
+Here is some examples about counting.
+
+
+\section{Parameterization of unipotent representations}
+
+\subsection{Type D}
+Combinatorics of type D. 
+
+\noindent\textbf{Type D.\ } Label the columns $C_{2a-1}\ge\dots \ge
+C_0\ge 0$ satisfying $C_{2i}\equiv C_{2i-1} \pmod{2},$ and
+$C_{2a-1}\equiv C_0\equiv 0 \pmod{2}.$ As before, write $C_{2i}=2c_{2i}+\epsilon_i$,
+$C_{2i-1}=2c_{2i-1}-\epsilon_i$ and $C_0=2c_0,\ C_{2a-1}=2c_{2a-1}.$ Special
+nilpotent orbits satisfy $C_{2i}=C_{2i-1}$ whenever they are odd. We will reduce
+to the case $C_{2i}=C_{2i-1}$ which is the case of $\cO$ having no even sized
+rows.  The special Weyl group representation associated to $\cO$ has columns
+\begin{equation}
+  \label{eq:drep}
+\tau_L\times\tau_R=(c_{2a-1},\dots ,c_1)\times (c_{2a-2},\dots
+,c_0).  
+\end{equation}
+The other representations in the primitive ideal cell are obtained by
+interchanging pairs coming from even columns, 
+$$
+(c_{2i},c_{2i-1})\longleftrightarrow (c_{2i-1}+1,c_{2i}-1).
+$$
+This is again as in  \cite{Mc}.  
+The infinitesimal character $\lambda_{\cO}$ is as in type C, \eqref{eq:inflc}.
+\begin{remark}
+Adding an even sized column of length at least $2c_{2a-1}$ gives a
+nilpotent orbit of type C, and implements the $\Theta-$correspondence. 
+
+In the case when all rows of odd size occur an even number of times,
+the corresponding unipotent representations can be parametrized by the
+local systems on the \textit{real} orbits.
+\end{remark}
+
+
+The unipotent representations of $\SO$ are parameterized by 
+filling $\bullet$, $r'$, $r$, $c$, $c'$ in the relevent representations.
+
+In the must of the cases, induce to the full orthogonal group will yields $2$
+different representations (Lets swich the left and right diagram to mark the
+difference). The only exception is that the diagram only contains ``$\bullet$''
+in which case, the induce yields an irreducible $\rO$-moudle.
+
+To compare with theta correspondence,
+we made the following choice. The theta lift from $\Sp$ always correspondes to
+the case where ``$r'$, $r$, $c$, $c'$'' is filled on the left diagram.
+
+\begin{eg}
+ We make the following choice of parameterization of $\rO(p,q)$
+ representations.
+ The advantage of the following choice is that, the occurance of ``$c'$'' is
+ equalent to 
+ ``spliting/doubling'' of associate varieties. 
+ \[
+   \begin{tikzpicture}[baseline={([yshift=-.8ex]current bounding box.center)}]
+     \matrix [matrix of math nodes,nodes in empty cells] (m)
+     {r'  \\
+       \vdots   \\
+       r'   & \\ 
+       r        \\
+       \vdots \\
+       r\\
+       r\\
+     };
+     \draw [decorate,decoration={brace, amplitude=4pt, raise=5pt}]
+     (m-3-1.west) -- (m-1-1.west) node [black,midway,xshift=-2em]
+     {$s_0$};
+     \draw [decorate,decoration={brace, amplitude=4pt, raise=5pt}]
+     (m-7-1.west) -- (m-4-1.west) node [black,midway,xshift=-2em]
+     {$r_0$};
+   \end{tikzpicture}   
+   \longleftrightarrow    \bfone_{2r_0,2s_0}^{+,-}
+   \qquad
+   \begin{tikzpicture}[baseline={([yshift=-.8ex]current bounding box.center)}]
+     \matrix [matrix of math nodes,nodes in empty cells] (m)
+     {r'  \\
+       \vdots   \\
+       r'   & \\ 
+       r        \\
+       \vdots \\
+       r\\
+       c\\
+     };
+     \draw [decorate,decoration={brace, amplitude=4pt, raise=5pt}]
+     (m-3-1.west) -- (m-1-1.west) node [black,midway,xshift=-2em]
+     {$s_0$};
+     \draw [decorate,decoration={brace, amplitude=4pt, raise=5pt}]
+     (m-6-1.west) -- (m-4-1.west) node [black,midway,xshift=-2em]
+     {$r_0$};
+   \end{tikzpicture}   
+   \longleftrightarrow    \bfone_{2r_0+1,2s_0+1}^{+,-}
+ \]
+
+ \[
+   \begin{tikzpicture}[baseline={([yshift=-.8ex]current bounding box.center)}]
+     \matrix [matrix of math nodes,nodes in empty cells] (m)
+     {r'  \\
+       \vdots   \\
+       r'   & \\ 
+       r        \\
+       \vdots \\
+       r\\
+       c\\
+       c'\\
+     };
+     \draw [decorate,decoration={brace, amplitude=4pt, raise=5pt}]
+     (m-3-1.west) -- (m-1-1.west) node [black,midway,xshift=-2em]
+     {$s_0$};
+     \draw [decorate,decoration={brace, amplitude=4pt, raise=5pt}]
+     (m-6-1.west) -- (m-4-1.west) node [black,midway,xshift=-2em]
+     {$r_0$};
+   \end{tikzpicture}   
+   \longleftrightarrow    \bfone_{2r_0+2,2s_0+2}
+   \qquad
+   \begin{tikzpicture}[baseline={([yshift=-.8ex]current bounding box.center)}]
+     \matrix [matrix of math nodes,nodes in empty cells] (m)
+     {r'  \\
+       \vdots   \\
+       r'   & \\ 
+       r        \\
+       \vdots \\
+       r\\
+       r\\
+       c'\\
+     };
+     \draw [decorate,decoration={brace, amplitude=4pt, raise=5pt}]
+     (m-3-1.west) -- (m-1-1.west) node [black,midway,xshift=-2em]
+     {$s_0$};
+     \draw [decorate,decoration={brace, amplitude=4pt, raise=5pt}]
+     (m-7-1.west) -- (m-4-1.west) node [black,midway,xshift=-2em]
+     {$r_0$};
+   \end{tikzpicture}   
+   \longleftrightarrow    \bfone_{2r_0+1,2s_0+1}
+ \]
+
+ Now the lifting algorithm of diagrams is that
+ \begin{enumerate}
+  \item replace $r'$ by $\bullet$, 
+  \item lifting case: add a colums of lenght $c_{2a-1}$ to make a valid dot-r-c diagram.
+  \item lifting the determinant twist:
+    do the usual lift, then move the left bottom corner ``r'' (if it exists) from the right diagram 
+    to the most left column of the left diagram. 
+    Otherwise, remove the left bottom corner ``$\bullet$'' and replace the most
+    left column of the left diagram by $(\bullet\cdots\bullet c c')^T$.
+  \item generalized lifting case: add a colums of lenght $c_{2a-1}-1$ and
+    make a valid dot-r-c diagram. If there is no valid dot-r-c diagram, this
+    representation dose not lift.
+  \end{enumerate}
+
+  \ytableausetup{noframe=true,centertableaux} 
+ \[
+   \begin{tikzcd}[baseline={([yshift=-.8ex]current bounding box.center)}]
+     \pi & \drc(\pi)& \drc(\theta(\pi)) & \cV(\theta(\pi))\\  
+     \bfone_{2r_0,2s_0}^{+,-}
+     \ar[r, <->]& 
+\ytableaushort{
+  {r'}    ,  
+  \vdots  , 
+  {r'}    , 
+  {r}     , 
+  \vdots  , 
+  {r}      
+}
+     \ar[r] &
+\ytableaushort{
+  {\bullet} \none {\bullet},
+  \vdots \none \vdots,
+  {\bullet} {\none[\times]} {\bullet},
+  {r} \none {r},
+  \vdots \none \vdots,
+  {r} \none {r}
+}
+\ar[r]&   
+\ytableaushort{
+  +-,
+  +-,
+  \vdots\vdots,
+  +-,
+  +-,
+  -+,
+  -+,
+  \vdots\vdots,
+  -+,
+  -+
+}
+\end{tikzcd}   
+ \]
+
+\end{eg}
+
+\subsection{}
+Lift drc diagram $\tau$, corresponding to $\pi$ from type C to type D
+
+A type C special unipotent orbit attach a column of even length $C_{2a+1} = 2
+c_{2a+1}$. 
+
+Now the attach a column of length $c_{2a+1}$ on the left of the $\tau_L$.
+Allow all possible lables and change ``$\bullet$'' into ``$r'$'' to make a valid
+diagram, denote by $\tau' = \tau'_L\times \tau'_R$.
+
+Count number of symbols to determine the signature of the orthogonal group.
+If ``$c'$'' is not presented in the new diagram, attach the diagram to
+the representation $\theta(\pi)\otimes \bfone^{+,-} $.
+If ``$c'$'' is presented, the new diagram is attached to 
+$\theta(\pi)$.
+
+By this choice, it is clear again that if no ``$r$/$c$/$c'$'' occure in the
+longest column of $\tau'_L$ then $\theta(\pi)\otimes \bfone^{+,-}$ will be
+killed 
+by generalized lift.  
+Moreover the appearance of $c'$ implies a ``splitting'' of orbit in the
+generalized lift. 
+
+
+
+\subsection{The strategy of matching}
+Let $G$ and $G'$ form a dual pair.  Suppose a special nilpotent orbit $\cO'$ is
+obtained by lift/generalized lift of $\cO$ (i.e. by adding an even length
+column, or adding an odd length column and then delete a box on the previous
+column when is a symplectic group)
+
+What we have to do is construct maps to form the following commutative diagram:
+\[
+  \begin{tikzcd}
+    \drc(\cO) \ar[r,dashed,"\eta"] \ar[d,"\cL"] & \drc(\cO') \ar[d,"\cL"]  \\
+    \LS(\cO) \ar[r,dashed,"\vartheta"] & \LS(\cO')
+  \end{tikzcd}
+\]
+
+If $G$ is an orthogonal group, and $\cO'$ is a normal lift of $\cO$, the
+following additional diagram on the twisting of determinant also need to be
+establish: ($\cD$ is the operation which change special shape diagram to the
+non-special shape)
+\[
+  \begin{tikzcd}
+    \drc(\cO)\ar[drr,"\eta"] \ar[d,"\cL"]& & \\
+    \LS(\cO) \ar[r,"\vartheta"] \ar[d,"\det\otimes"] & \LS(\cO') \ar[r,<-,"\cL"] &
+    \drc(\cO')
+    \ar[d,<->,"\cD"]\\
+    \LS(\cO) \ar[r,->,"\vartheta"] & \LS(\cO') \ar[r,<-,"\cL"]
+    & \drc(\cO')
+  \end{tikzcd}
+\]
+
+The map $\eta$ and $\vartheta$ are the lifting map (running over all possible
+real forms of the real orthogonal group).
+The map $\cL$ calculates the local system for each dot-r-c diagram. 
+
+The $\eta$ maps is already defined in your notes, i.e. the algorithm of
+changing ``$r'$'' to ``$\bullet$'' (although I prefer a slightly different
+choice for the exceptional cases).
+From the definition of $\eta$, we could see all elements in $\drc(\cO')$ could
+be obtained from $\drc(\cO)$ up to character twisting. 
+
+The key statement we must establish is that $\cL$ is an injection.
+
+
+\delete{
+\subsection{D-module for $\rO(2n)$}
+
+
+Consider $\bfG = \rO(2n,\bC)$.
+
+Now
+\begin{eg}
+  Consider the trivial and sign representations of $\rO(2n)$.  Let $\pi = \bfone$
+  or $\det$.  Then $\bfK = \bfG$. Let $w_c$ be the element in $\bfK$ fixing
+  $\bfB$.  The $\bfK$-sheaf on $\bfG/\bfB$ is determined by the representation
+  of $\Stab_{\bfK}(\bfB) = \gen{w_c}\ltimes \bfT$.  We put the trivial
+  representation on $\bfT$ and the trivial or sign on $\gen{w_c}$.  This
+  realizes the correspondence of $\bfK$-sheaf on $\bfG/\bfB$ with
+  $\rO(2n)$-module $\bfone$ and $\det$.
+\end{eg}
+}
+
+
+\section{Counting}
+In this section,  we use $(c_1,c_2, ..., \star)$ denote the object obtained by adding
+columns $c_1, c_2, ...$ to $\star$ where $\star$ could be a Young diagram or a
+dot-r-c diagram. 
+
+Let $\drc(\tau)$ denote all drc diagrams of shape to
+$\tau = \tau_L\times \tau_R$.  Let
+$\nabla \tau = \nabla \tau_L\times \nabla \tau_R$ be the ``descent'' of
+representation where $\nabla\tau_L$ (resp. $\nabla\tau_R$) is obtained from
+$\tau_L$ (resp. $\tau_R$) by reomoving the first column.
+
+Clearly, $\nabla$ induces a welldefined map
+\begin{tikzcd}
+\nabla \colon \drc(\tau) \ar[r] & \drc(\nabla \tau). 
+\end{tikzcd}
+The map $\nabla$ extends to a map
+\[
+\begin{tikzcd}
+\nabla_\cO \colon \drc(\cO) \ar[r] & \drc(\nabla^2 \cO).
+\end{tikzcd}
+\]
+
+\subsection{Add even columns}
+In this section we consider the process of adding two even length colums. 
+
+  
+\begin{eg}
+  Suppose $\cO=(C_{2a},C_{2a-1}, \cdots, C_1,C_0)$
+  satisfies  $C_{2a},C_{2a-1}$ are even.
+  Attaching a even column $(C_{2a}+2d,C_{2a-1}+2d)$ yields a unipotent orbit
+  \[
+    \cO'' = (C_{2a}+2d,C_{2a-1}+2d)+\cO
+  \]
+  
+  We have
+  \[
+    \# \drc(\cO'') = 8 \#\drc(\cO)
+  \]
+ %# only has even columns. 
+  In particular, when $\cO$ only has even length columns, we have
+  \[
+    \# \drc(\cO) = \#\LS(\cO).
+  \]
+  This is easy by induction. 
+\end{eg}  
+
+\begin{eg}
+  Assume $n$ is odd. Consider $\cO = (n,n)$ of $\Sp(2n)$.
+  We have $\drc(\cO) = 2n+1$.
+  {\color{red} Check: \[ \# \LS(\cO) = 2n+1.\]}
+  In $\LS(\cO)$ there are $n$ reducible local systems (the associated variety has
+  two components). The rest $n+1$ local systems are irreducible.  
+
+  Suppose
+  \[
+    \cO' = (n+2d-1, n+2d-1, n,n)
+  \]
+  Then
+  \[
+    \#\drc(\cO) = 4(2d)n + 4(2d-1)(n+1).
+  \]
+\end{eg}
+
+
+\begin{eg}
+  Assume $n$ is odd. Consider $\cO = (C_{2a},C_{2a}, \cdots )$ of $\Sp(2n)$
+  with $C_{2a}$ even. 
+  Suppose
+  \[
+    \cO' = (c_{2a}+n,c_{2a}+n)+\cO
+  \]
+  Then
+  \[
+    \#\drc(\cO') = (2n+1) \#\drc(\cO).
+  \]
+  In $\LS(\cO')$ there are $n$ doubled local systems (the associated variety has
+  two components). The rest $n+1$ local systems are preserved.  
+\end{eg}
+
+\begin{eg}
+  Assume $n$ is odd. Consider $\cO_0 = (C_{2a},C_{2a}, \cdots )$,
+  $C_{2a}$ 
+  $\cO = (n,n)$ of $\Sp(2n)$.
+  We have $\drc(\cO) = 2n+1$.
+  {\color{red} Check: \[ \# \LS(\cO) = 2n+1.\]}
+  In $\LS(\cO)$ there are $n$ reducible local systems (the associated variety has
+  two components). The rest $n+1$ local systems are irreducible.  
+
+  Suppose
+  \[
+    \cO' = (n+2d-1, n+2d-1, n,n)
+  \]
+  Then
+  \[
+    \#\drc(\cO) = 4(2d)n + 4(2d-1)(n+1).
+  \]
+\end{eg}
+
+\section{Combinatorics for type B }
+In this section $\bfG = \SO(2n+1,\bC)$.
+
+\subsection{Nilpotent orbit in type B}
+Nilpotent orbits of $\bfG$ is parameterized Young diagrams with columns
+\[
+  \cO = (C_{2a}\geq C_{2a-1} \geq\cdots C_{1} \geq C_0 > 0)
+\]
+satisfying
+\begin{enumC}
+\item $C_{2i+1} \equiv C_{2i } \pmod{2}$ (This corresponds to the condition even rows occur
+  even times.) 
+\item $C_{2a} \equiv 1 \pmod{2}$ (This corresponds to the total number of box is odd)  
+\end{enumC}
+
+Note that  $\cO$ is  special if and only if 
+\[
+  C_{2i+1} = C_{2i} \text{ when $C_{2i}$ is even. }
+\]
+
+
+
+This correspond to the condition that the transpose $\cO^t$ is also type B.
+
+Now let $\cO = (C_{2a}, C_{2a-1}, \cdots, C_1, C_0)$ be a special nilpotent
+orbit of type B.
+
+Then the Springer representation attached to $\cO$ is given by
+(see\cite[p~421]{Carter})
+
+\trivial{
+  We follow Carter's notation.
+  Note that $\cO^t$ is also type B, with rows $[C_{2a}, C_{2a-1}, \cdots, C_1,
+  C_0]$.
+  Now $\lambda^* = [C_0, C_1+1, \cdots, C_{2a}+2a]$.
+  Write $C_{2i} = 2 c_{2i}+\epsilon_i$, $C_{2i+1} = 2 c_{2i+1}-\epsilon_i$,
+  $\epsilon_i = 0$ or  $1$.
+  
+  Now the odd parts of $\lambda^*$ are 
+  So
+  \[
+    \begin{split}
+    (2\xi^*_1+1, \cdots, 2\xi^*_{a+1}+1) &= (2c_0 + 1, \cdots ,2 c_{2(a-1)}+1+2(a-1), 2
+    c_{2a} +1 + 2 a)\\
+    (2\eta^*_1, \cdots, 2\eta^*_{a}) &= (2c_1 + 1, \cdots ,2 c_{2(a-1)}+1+2(a-1), 2
+    c_{2a} +1 + 2 a)
+  \end{split}
+\]
+  ( The argument: $C_{2a}$ must be odd. Note that, the parity of
+  $(C_{2i}+2i, C_{2i+1}+2i+1)$ are different. Moreover, $C_{2i}=C_{2i+1}$ when
+  they are even. So sppose $C_{2i}$ is even,
+  $2\xi^*_{i+1}+1 = 2 c_{2i+1}+2i+1 = 2 c_{2i} + 2i+1$,
+  $2\eta^*_{i+1}= 2 c_{2i}+2i = 2 c_{2i+1}+2i$.  Suppose $C_{2i}$ is odd,
+  $2\xi^*_{i+1} +1= (2 c_{2i}+1 )+2i$ and $2\eta^*_{i+1} = 2 c_{2i+1}-1 +2i+1 =
+  2 c_{2i+1}+2i$)
+
+  Therefore, $\xi^*_{i+1} = c_{2i}+i$, $\eta^*{i+1} = c_{2i+i}+ i$.  
+  Hence, $\xi_{i+1} = c_{2i}$, $\eta_{i+1} = c_{2i+1}$.
+  Therefore, the Springer representation of $\cO^t$ is
+  \[
+     [c_0, c_2, \cdots, c_{2a}] \times [c_1, c_3, \cdots, c_{2a-1}] .
+  \]
+  Now tensor $\sgn$ yeilds that
+  $\cO$ corresponds to the special representation
+  \[
+    \tau_L\times \tau_R = (c_{2a-1}, \cdots, c_3, c_1)\times (c_{2a}, \cdots,
+    c_2, c_0).
+  \]
+}
+
+\begin{equation}
+  \label{eq:tableaub}
+\tau_L\times\tau_R=(c_{2a-1},\dots ,c_1)\times (c_{2a},c_{2a-2},\dots ,c_0).  
+\end{equation}
+The other representations in the primitive ideal cell are given by
+interchanging 
+\[
+  (c_{2i+1}, c_{2i})\longleftrightarrow
+(c_{2i},c_{2i+1}).
+\]
+This corresponds to the Springer representation
+(associated to the trivial local system) for another nilpotent orbit.
+
+
+Now assume $\cO = (C_{2a}, C_{2a-1}, \cdots, C_0>0)$ satisfies
+\[
+  C_{2i} >  C_{2i-1} \quad \forall i.
+\]
+Note that $C_{2a}$ is always odd.
+The Barbasch-Vogan duality map is given by (for special orbit)
+the type C-collapse of $\cO^t$ then remove the last box. 
+
+Then $\ckcO = (R_{2a}, \cdots, R_0)$ is given by
+\[
+  \begin{split}
+    R_{2a} &  = C_{2a}-1\\
+    (R_{2i+1}, R_{2i}) & =
+    \begin{cases}
+      (C_{2i+1},C_{2i}) & \text{if } C_{2i} \text{ is even}\\
+      (C_{2i+1}+1,C_{2i}-1) & \text{if } C_{2i} \text{ is odd}\\
+    \end{cases}
+  \end{split} 
+\]
+
+Note that the infinitesimal character of $\bfG$ is given by
+\[
+  \chi_\ckcO = (\rho_{R_{2a}}, \cdots, \rho_{R_0})
+\]
+where
+\[
+  \rho_{R} = (\frac{R-1}{2},\frac{R-3}{2}\cdots, \frac{1}{2})\in \half + \bZ^{R/2}.
+\]
+
+
+\begin{remark}
+  Recall that a type B orbit $\cO$ is called quasi-distinguish if it has columns
+  \[
+    \cO = (C_{2a}, \cdots, C_{0})
+  \]
+  where all $C_k$ are odd integers and $C_{2i} > C_{2i-1}$.  Now
+  $\ckcO = (R_{2a}, \cdots, R_0) = (C_{2a}-1, C_{2a-1}+1, C_{2a-2}-1, \cdots,
+  C_1+1, C_0-1)$ .
+  Clearly, $R_{k}$ are all even integers and $R_{2i+1}>R_{2i}$.
+\end{remark}
+
+\subsection{dot-c-r diagram}
+We fix the embedding $\iota \colon \GL(n,\bC)\rightarrow \SO(2n+1,\bC)$ in the
+standard way (by fixing a polarization).  The strong real form of $\bG$ is given
+by the involution
+\[
+  x_{t} = \iota(\diag(\underbrace{1,\cdots, 1}_{n-t},\underbrace{-1}_{t}))
+\]
+Note that $x_{t}$ corresponds to $\SO(2n-2t+1, 2t)$.
+Therefore, the following counting procedure only counts $\SO(p,q)$ with $q$
+even (or equivalently only counts representations for $\SO(p,q)$ with $p>q$.  
+
+
+The Cartan subgroups are parametrized by
+four integers $(p,q,2s,t),$ satisfying $p+q+2s+t=n.$ The corresponding
+representation is 
+\begin{equation} \label{eq:CC.B}
+\sum_{\tau\in\wtS_s}Ind_{W_p\times W_q\times W_{2s}\times S_t}^{W_n}
+[\sgn\otimes \sgn\otimes(\tau\times \tau)\otimes \triv].
+\end{equation}
+The sum is over the $\tau\times\tau$ where $\tau$ is a partition
+of $S_s$.
+The representation $\tau\times \tau$ is labelled by dots, sign by $r$ or $r',$ and $triv$
+by $c$. Recall also the well known formula
+\begin{equation}
+Ind_{S_n}^{W_n}(\triv)=\sum_{a+b=n} (a)\times(b)
+\label{2.1.1}\end{equation}
+To induce we add $r$ and $r'$ at most one to each row to $\tau_R$, and
+$c$ at most one to each column to both $\tau_L$ and $\tau_R$ the total
+number being $r$.
+
+
+
+\section{Combinatorics for type M }
+In this section $\bfG = \Sp(2n,\bC)$ and $G = \Mp(2n,\bR)$.
+Note that the dual (real) group is $\ckG= \Mp(2n,\bR)$ according to Renard-Trapa.
+
+\subsection{Nilpotent orbit in type M}
+Nilpotent orbits of $\bfG$ is parameterized Young diagrams with columns
+\[
+  \cO = (C_{2a+1} \geq\cdots C_{1} \geq C_0 > 0)
+\]
+satisfying
+\begin{enumC}
+\item [] $C_{2i+1} \equiv C_{2i } \pmod{2}$ (This corresponds to the condition odd rows occur
+  even times.) 
+\end{enumC}
+
+We call $\cO$ \emph{metaplectic special} if 
+\[
+  C_{2i+1} = C_{2i} \text{ when $C_{2i}$ is even. }
+\]
+Note that $\cO$ is not a special orbit in general. 
+The condition is equivalent to that adding a column of size $2n+1$, the orbit
+become special in type B (This operation implements the stable range theta lifting.) 
+
+
+Now let $\cO = (C_{2a+1}, \cdots, C_1, C_0)$ be a special nilpotent
+orbit of type M.
+We define 
+\[
+  \ckcO = (R_{2a+1}, \cdots, R_1, R_0)
+\]
+where
+\[
+    (R_{2i+1}, R_{2i})  =
+    \begin{cases}
+      (C_{2i+1},C_{2i}) & \text{if } C_{2i} \text{ is even}\\
+      (C_{2i+1}+1,C_{2i}-1) & \text{if } C_{2i} \text{ is odd}\\
+    \end{cases}
+\]
+This definition matches the duality of type B.
+
+Then the Springer representation attached to $\cO$ is given by
+\[
+  \tau_L\times \tau_R = (c_{2a+1}, c_{2a-1}, \cdots, c_1)\times (c_{2a},
+  c_{2a-2}, \cdots, c_0)
+\]
+where
+\[
+  \begin{split}
+    C_{2i+1} & = 2 c_{2i+1} - \epsilon_i\\
+    C_{2i} & = 2 c_{2i} + \epsilon_i\\
+    \epsilon_i & = 0 \text{ or } 1
+  \end{split}
+\]
+The non-special representations are given by
+\[
+  (c_{2i+1}, c_{2i}) \leftrightarrow (c_{2i}, c_{2i+1})
+\]
+
+
+\section{Matching doc-r-c diagrams and local systems}
+Let $\bfG = \Sp, \Mp, \rO$, and $\cO\in \Nil(\bfG)$ is a complex nilpotent orbit.
+
+Let $\drc(\bfG,\cO)$ be the set of dot-r-c diagrams parameterizing unipotent
+representations of the real forms of $\bfG$.
+
+
+The following set of orbit are essential to us:
+\begin{defn}
+  A nilpotent orbit $\cO\in \Nil(\bfG)$ is called \noticed if
+  \begin{itemize}
+    \item when $G$ is type C,
+          $\cO$ is special and it has columns
+          \[
+            [C_{2k},C_{2k-1},\cdots, C_{1},C_{0}, C_{-1}=0]
+            \quad \text{such that } C_{2i+1}>C_{2i} \text{ for } i=0, \cdots, k-1.
+          \]
+           Note that, by the
+          definition of special orbit,
+          we have $C_{2i}\equiv C_{2i-1} \pmod{2}$, $C_{2i} = C_{2i-1}$ if
+          $C_{2i}$ is odd for $i = 1, \cdots k$.
+    \item when $G$ is type M,
+          $\cO$ is metaplecitic special and it has columns
+          \[
+            [C_{2k},C_{2k-1},\cdots, C_{1},C_{0}=0]
+            \quad \text{such that } C_{2i+1}>C_{2i} \text{ for } i=0, \cdots, k-1.
+          \]
+          Note that, by the
+          definition of metaplectic special,
+          we have $C_{2i}\equiv C_{2i-1} \pmod{2}$, $C_{2i} = C_{2i-1}$ if
+          $C_{2i}$ is even
+          for $i = 1, \cdots k$.
+    \item when $G$ is type D, $\cO$ is special and it has columns
+          \[
+            [C_{2k+1},C_{2k},C_{2k-1},\cdots, C_{1},C_{0}, C_{-1}=0]
+            \quad \text{such that } C_{2i+1}>C_{2i} \text{ for } i=0, \cdots, k.
+          \]
+          Note that, the
+          condition is equivalent to $\DD(\cO)$ is \noticed of type C, i.e.
+           $C_{2i}\equiv C_{2i-1} \pmod{2}$ and $C_{2i} = C_{2i-1}$ if $C_{2i}$
+           is odd for $i = 1, \cdots k$.
+    \item when $G$ is type B, $\cO$ is special and it has columns
+          \[
+            [C_{2k+1},C_{2k},C_{2k-1},\cdots, C_{1},C_{0}, C_{-1}=0]
+            \quad \text{such that } C_{2i+1}>C_{2i} \text{ for } i=0, \cdots, k.
+          \]
+          Note that, the
+          condition is equivalent to $\DD(\cO)$ is \noticed of type M, i.e.
+           $C_{2i}\equiv C_{2i-1} \pmod{2}$ and $C_{2i} = C_{2i-1}$ if $C_{2i}$
+           is even for $i=1, \cdots, k$.
+  \end{itemize}
+  Under the above notation, $\cO$ is called \ess if it is \noticed and
+  $C_{2i}=C_{2i-1}$ in addition.
+  Let $\nNil(\star)$ and $\eNil(\star)$ be all the sets of \noticed and \ess
+  orbits for type $\star=$ B,C,D,M respectively.
+
+  The \ess descent of orbit $\cO\in \eNil(\star)$ is defined in the following
+  way (under the above notation):
+  \begin{itemize}
+    \item when $\star$ is B or D, $\eDD(\cO):= \DD(\cO)$;
+    \item when $\star$ is C or M,
+          \[
+          \eDD(\cO):= \begin{cases}
+            \DD(\cO) & \text{if $C_{2k}$ is even and $\star=B$},\\
+            \DD(\cO) & \text{if $C_{2k}$ is odd and $\star=M$},\\
+            [C_{2k-1}+1, C_{2k-2},C_{2k-3},\cdots, C_{0}]  & \text{otherwise}.
+          \end{cases}
+          \]
+          Note that $\cO \mapsto \eDD(\cO)$ is a good generalized descent in the last case.
+  \end{itemize}
+\end{defn}
+
+Let $\LS(\cO)$ denote the Grothendieck group of $\wtbfK$-equivariant local
+systems on $\cO$ for various real forms of $\bfG$.
+The following is our main theorem regards of the counting.
+\begin{thm} \label{thm:count}
+  Suppose $\cO$ is \noticed. Then the map
+  \[
+    \begin{tikzcd}
+      \Ch\colon \Unip(\cO) \ar[r] & \LS(\cO)
+    \end{tikzcd}
+  \]
+  is injective.
+  Moreover, every element in $\Unip(\cO)$ can be obtained by iterated theta lifting.
+\end{thm}
+
+By the counting argument above, it is suffice to establish the above theorem for
+\ess orbits.
+
+
+Note that type B dot-r-c diagram is extend by mark with $A$ or $B$.
+Suppose $\bfG$ is of type B or D, we define a map
+\[
+  \begin{tikzcd}[column sep=0em, row sep=0em]
+    \Sign \colon&   \edrc(B)\sqcup \edrc(D) \ar[rr]& \hspace{3em} & \bN\times \bN \\
+    & \uptau \ar[rr, maps to]& & (p,q)
+  \end{tikzcd}
+\]
+Here $(p,q)$ is the signature of the orthogonal group $\rO(p,q)$ corresponding
+to the dot-r-c diagram $\uptau$, which is calculated by the following formula
+\[
+  \begin{split}
+    p &= \# \bullet+ 2 \# r + \# c + \# d + \# A\\
+    q &= \# \bullet+ 2 \# s + \# c + \# d + \# B\\
+  \end{split}
+\]
+
+For $\set{\star,\star'} = \set{C,D}, \set{B,M}$,
+we define maps
+\[
+  \begin{tikzcd}[column sep=0em, row sep=0em]
+    \eDD \colon & \edrc(\star)\sqcup \edrc(\star') \ar[rr] & \hspace{3em} &
+    \left(\edrc(\star')\sqcup \edrc(\star) \right)\times \bZ/2\bZ\\
+    & \uptau \ar[rr, maps to] &  & (\uptau', \upepsilon)
+  \end{tikzcd}
+\]
+such that
+\begin{enumC}
+  \item $\uptau$ is in $\edrc(\cO)$ where $\cO$ is essential;
+  \item $\uptau'\in \eNil(\cO')$ where $\cO': = \eDD(\cO)$;
+  \item $\upepsilon = 0$ if $\cO\mapsto \cO'$.
+\end{enumC}
+
+Using $\eDD$, we now define two maps $\cL$ and $\uppi$ which are fitted into the
+following diagram.
+\[
+  \begin{tikzcd}[column sep=0em, row sep=4em]
+    & & & & \LS \\[-4em]
+    & & &   \cL_{\uptau}& \\
+    &  \uptau \ar[rr,maps to] \ar[rru,maps to]& \hspace{3em} & \pi_{\uptau}  \ar[u,maps to]&  \\[-4em]
+    \edrc \ar[rrrr,"\uppi"] \ar[rrrruuu, "\cL", bend left]  & & & & \Unip \ar[uuu, "\Ch"]
+  \end{tikzcd}
+\]
+Here
+\begin{enumC}
+  \item $\uptau$ is in $\edrc(\cO)$ where $\cO$ is essential;
+  \item $\pi_{\uptau}$ is a unipotent representation of $\wtG$ attached to $\cO$,
+  \item $\wtG$ is $\Mp(2n,\bR)$ or $\Sp(2n,\bR)$ if $\uptau$ is a diagram
+  of type C or M;
+  \item $\wtG$ is $\rO(p,q)$ if $\uptau$ is of type B or C and $(p,q)=\Sign(\uptau)$;
+  \item $\cL_{\uptau} = \Ch(\pi_{\uptau})$.
+\end{enumC}
+The definition of $\cL$ and $\uppi$ are inductive with respect to the number of
+columns of $\cO$:
+\begin{enumS}
+  \item Suppose $\cO=[C_{0}=0]$ is type C or M. Then
+  $\edrc(\cO) = \set{\uptau_{0}}$ is a singleton with $\uptau_{0}=(\emptyset,\emptyset)$.
+  Define $\pi_{\uptau} = \bfone$ the trivial representation of the trivial group
+  $\Sp(0,\bR)=\Mp(0,\bR) = \bfone$. Here we assume the theta lift of $\bfone$ to
+  $\rO(p,q)$ for any signature $p,q$ is the trivial representation $\bfone_{p,q}^{+,+}$ of $\rO(p,q)$.
+  \item We now assume $\uptau \in \edrc(\cO)$ and
+  $(\uptau', \upepsilon) = \eDD(\tau)\in \edrc(\cO')$ where $\cO' = \eDD(\cO)$.
+  \begin{enumS}
+    \item Suppose $\cO$ is type C or M. Then $\wtG = \Sp(2n,\bR)$ or
+    $\Mp(2n,\bR)$, and $\pi_{\uptau'}$ is a unipotent
+    representation of $\rO(p,q)$ attached to $\uptau'$ with $n=\abs{\uptau}$ and $(p,q) = \Sign(\uptau')$.
+    \[
+      \pi_{\uptau} := \Thetab_{\wtG',\wtG}(\pi_{\uptau'}\otimes (\bfone_{p,q}^{-,-})^{\upepsilon}).
+    \]
+    Here $\bfone_{p,q}^{-,-}$ is the determinant character of $\rO(p,q)$.
+    \item  Suppose $\cO$ is type D or B. Then $\wtG = \rO(p,q)$ and $\pi_{\uptau'}$ is a unipotent
+    representation of $\wtG' = \Sp(2n,\bR)$ or $\Mp(2n,\bR)$ attached to
+    $\uptau'$ with $n=\abs{\uptau'}$ and $(p,q) = \Sign(\uptau)$.
+    \[
+      \pi_{\uptau} := \Thetab_{\wtG',\wtG}(\pi_{\uptau'})\otimes (\bfone_{p,q}^{+,-})^{\upepsilon}.
+    \]
+  \end{enumS}
+\end{enumS}
+
+\Cref{thm:count} is a immediate consequence of the following
+\begin{prop}
+  %The map $\cL$ is a well-defined injection. More precisely, we have
+  We have
+  \begin{enumS}
+    \item $\cL_{\uptau}$ is non-zero for each $\uptau\in \edrc$.
+    \item For each \ess orbit $\cO$ of type C or M, the following is an
+    injection
+    \[
+      \begin{tikzcd}[row sep=0em]
+        \edrc(\cO) \ar[r] & \LS(\cO) \\
+        \uptau \ar[r,maps to] & \Ch(\pi_{\uptau}) = \cL_{\uptau}
+      \end{tikzcd}
+    \]
+    \item For each \ess orbit $\cO$ of type D or B, the following is an
+    injection
+    \[
+      \begin{tikzcd}[row sep=0em]
+        \edrc(\cO)\times \bZ/2\bZ \ar[r] & \LS(\cO)\\
+        (\uptau,\upepsilon) \ar[r,maps to] & \Ch(\pi_{\uptau}\otimes (\bfone_{p,q}^{-,-})^{\upepsilon})
+        = \cL_{\uptau}\otimes (\bfone_{p,q}^{-,-})^{\upepsilon}
+      \end{tikzcd}
+    \]
+  \end{enumS}
+\end{prop}
+
+\subsection{The algorithm to define $\eDD$}
+\def\taulf{\uptau_{L,0}}
+\def\tauls{\uptau_{L,1}}
+\def\taurf{\uptau_{R,0}}
+\def\taurs{\uptau_{R,1}}
+
+\def\tauplf{\uptau'_{L,0}}
+\def\taupls{\uptau'_{L,1}}
+\def\tauprf{\uptau'_{R,0}}
+\def\tauprs{\uptau'_{R,1}}
+\def\tail{\mathrm{tail}}
+
+From now on, we assume
+\[
+  \uptau = ([\taulf,\tauls,\cdots],[\taurf,\taurs,\cdots])
+\]
+and $(\uptau', \epsilon) := \eDD(\uptau)$
+\[
+  \uptau' = ([\tauplf,\taupls,\cdots],[\tauprf,\tauprs,\cdots])
+\]
+
+The definition of sign $\upepsilon$
+\begin{enumS}
+  \item Suppose $\uptau$ is type D or B, $\upepsilon=0$ if and only if
+  $\# d (\uptau)> \#d(\uptau')$. This means:
+  \begin{enumS}
+    \item When $\uptau$ is type D,  $\tail(\taulf) = d$.
+    \item When $\uptau$ is type B,   $\tail(\taurf) = d$ or
+    $(\tail(\taulf),\tail(\taurf),\tail(\taurs)) = (c,r,d)$.
+  \end{enumS}
+  \item Suppose $\uptau$ is type C or M, $\upepsilon=0$ if and only if
+  $\abs{\taulf}\geq \abs{\taurf}$.
+\end{enumS}
+
+
+
+\appendix
+\section{The coherent continuation representation}
+We specialize the atlas setting to the classical group case.
+Let $\Gamma = \Gal(\bC/\bR) = \gen{\gamma}$.
+
+\subsection{Type C}
+References \cite[Example~5.11]{AC}.  The complex group is
+$\bfG=\Sp(2n,\bC)$. Use the standard coordiante of characters and cocharacters.
+Fix a Cartan subgroup $\bfH$.  The coweight lattice $X_*=\bZ^n$.  The coroot
+lattice
+\[ P^\vee = \bZ^n \cup (\bZ^n+\half)^n = \set{(a_1, \cdots, a_n)| a_i \text{ are
+      all integers or are all half integers}}
+\]
+
+The outer involution $\gamma=1$. The extended group is
+$\bfG^\Gamma = \bfG\times \Gamma$ ($\Gamma=\gen{\gamma}$).
+
+$Z(\bfG)= \set{\pm 1}$.  The strong real forms are parameterized by
+\[
+  ( (\half [\bZ^n\cup (\bZ^n+\half)])/\bZ^n )/W
+\]
+The representative $\frac{1}{4}(1,\cdots, 1)$ corresponds to the split real form
+$G=\Sp(2n,\bR)$.
+
+The representative
+\[\frac{1}{2}(\underbrace{1, \cdots, 1}_p,\underbrace{0, \cdots, 0}_q)
+\]
+correspondes to $\Sp(p,q)$ \def\tcX{\widetilde{\cX}} Let
+\begin{align*}
+  \bfN^\Gamma &= \Norm_{\bfG^\Gamma}(\bfH)\\
+  \cI  & = \set{\xi \in \bfG^\Gamma\setminus \bfG | \xi^2 \in Z(G)}\\
+  \tcX &= \cI \cap \bfN^\Gamma\\
+  \cX & = \tcX / \bfH \quad \text{\color{red} (The $\bfH$ action is by conjugation.)} \\
+  \cI_W & = \set{\tau\in W^\Gamma - W | \tau^2 =1}\\
+\end{align*}
+
+The set $\cI/G$ parameterized the strong inner forms of $\bfG$ (corresponding to
+the outer automorphism $\gamma$).
+$\Sp(2n,\bR)$ corresponds to $\xi_0=\diag(i,\cdots, i, -i, \cdots, -i)$.
+Let $z_0 = \xi_0^2 = -1$. 
+
+\subsubsection{}
+Note that we have $\gamma$ act on $\bfG$ trivially.  The set $\cI_W$ is
+identified with Cartan involutions of $H$ (for the inner class $\gamma$)\cite[9.13b]{AC}
+\[
+  \begin{tikzcd}
+  \tcX\ar[r]&  \cX\ar[r,"p"] & \cI_W\ar[r,<->,"1-1"] & \set{\theta_{x,H} := \Ad_x}
+  \end{tikzcd}
+\]
+We may identify $\cI_W$ with $\set{\tau \in W| \tau^2=1}$.
+Then $\cI_W/W$ is identified with the $K$-conjugacy class of $\theta$-stable
+Cartan in $G=\Sp(2n,\bR)$. 
+
+Note $W = W_n = S_n\ltimes \set{\pm 1}^n$.
+
+
+Let $s_{i,j} = s_{e_i -e_j}$, $s_i = s_{2e_i}$ in the Weyl group $W$.  Define $w_{i,j}$ and $w_{i}$ (lift of $s_i$) also represent its lift in
+$\bfN = \Norm_{\bfG}(\bfH)$.
+\[
+  w_{i,j}=
+  \left(
+    \begin{array}{cccc;{2pt/2pt}cccc}
+      %& i      & j  &   &  &  &   &    & \\
+      \ddots &    &   &        &        &    &   &        \\
+             & 0  & 1 &        &        &    &   &        \\
+             & -1 & 0 &        &        &    &   &        \\
+             &    &   & \ddots &        &    &   &        \\
+      \hdashline[2pt/2pt]
+             &    &   &        & \ddots &    &   &        \\
+             &    &   &        &        & 0  & -1          \\
+             &    &   &        &        & 1 & 0 &        \\
+             &    &   &        &        &    &   & \ddots \\
+    \end{array} 
+  \right)
+\]
+
+\[
+  w_{i}=
+  \left(
+    \begin{array}{ccc;{2pt/2pt}ccc}
+      %& i      & j  &   &  &  &   &    & \\
+        1   &   &    &    &        &           \\
+            & 0   &  &      &      1  &           \\
+            &   & 1  &    &        &           \\
+      \hdashline[2pt/2pt]
+            &   &    &  1 &        &           \\
+            &  -1  &  &      &      0  &           \\
+            &   &    &    &        & 1         \\
+    \end{array} 
+  \right)
+\]
+
+Therefore, $\cI_W$ has the following types of representatives: For each set of
+numbers $p,t, r$ such that $2p+t+r =n$.
+\[
+  w_{p,t}= w_{1,2}w_{3,4}\cdots w_{2p-1,2p}\ltimes  w_{2p+1}\cdots w_{2p+t}.
+\]
+
+The $\theta$-stable Cartan corresponding to $w_{p,t}$ is isomorphic to
+\[
+  H(\bR):=H^{w_{p,t}, \mathrm{conj}}= (\bC^\times )^p\times (\bR^\times)^t\times \bT^r.
+\]
+Now $H^\vee(\bR) = (\bC^\times)^p \times \bT^t\times (\bR^\times)^r$. 
+
+For $\tau\in \cI_w$, $z\in Z(\bfG)$, let  
+\begin{align*}
+  \cX_0 &= \set{x\in \cX | \text{$x$ is $\bfG$-conjugate to $\xi_0$}} \\
+        & = \cX(-1) = \set{x\in\cX | x^2 = -1}\\
+  \cX_\tau(z) & = \set{x\in \cX | p(x) = \tau, x^2= z}
+\end{align*}
+Note that $\cX_\tau(z)$ has a simply transitive action by $\bfH_{-\tau}/A_\tau$
+\cite[Prop~11.2]{AC}
+\[
+  |\cX_\tau(z)| = 2^r
+\]
+
+Since $\overline{p}\colon \cX_0/W \to \cI_W/W$ is bijective\cite[Prop~12.12]{AC}, we have  
+\[
+  \cX_0 = \bigcup_{\tau \in \cI_W/W} W\cdot \cX_\tau(z_0).
+\]
+
+Let $W^\tau = \Stab_W(\tau)$. 
+Let $h_k = \diag(1, \cdots, 1, \underbrace{i}_{k-th},1,
+\cdot, 1)\in (\bC^\times)^n = \bfH \subset \bfG$, then $h_k^{-1}\in \bfH$ has the same
+shape with $i$ replaced by $-i$.
+Now fix $\tau = w_{p,t}$. We can list elements in $\cX_\tau(z_0)$ as the
+following: Fix $a+b=r$, 
+let
+\[
+  x_{p,t,a,b} = w_{1,2}w_{3,4}\cdots, w_{2p-1,2p} w_{2p+1}\cdots w_{2p+t}
+  h_{2p+t+1}\cdots h_{2p+t+a} h_{2p+t+a+1}^{-1}h_{2p+t+a+b=n}^{-1},
+\]
+then
+\[
+  \cX_\tau(z_0) = \bigcup_{a+b=r} W^\tau \cdot x_{p,t,a,b}
+\]
+
+Fix the strong real form $x = x_{p,t,a,b}$. Then $\bfK= \bfG^\xi$ is the
+complexification of the maximal compact subgroup of $G$.  Now the real Weyl
+group
+\[
+  \begin{split}
+    W(\bfG(\bR), \bfH(\bR)) &\cong  W(K,H) = \Stab_W(x) \\ 
+    &\cong (W_p \ltimes W(A_1)^p)\times S_r\times W_{t}.
+  \end{split}
+\]
+Here $W(A_i)^p = \gen{w_{1,2}, w_{3,4},\cdots, w_{2p-1, 2p}}$
+Here $W_p$ is identified with $\triangle W_p \subset W_p\times W_p$ where
+$W_p\times W_p$ is the subgroup of $W_{2p}$ via embedding
+\[
+  (a_1,a_3, \cdots, a_{2p-1})\times (a_2, a_4, \cdots, a_{2p}) \mapsto (a_1, a_2,
+a_3, a_4, \cdots, a_{2p-1},a_{2p}).
+\]
+
+There is the list of real, imaginary, and complex root systems.
+\begin{des}
+\item [Real roots ] % $\pm (e_1-e_2), \cdots, \pm(e_{2p-1}-e_{2p}), \pm
+  % (e_{2p+1}- e_{2p+2}), \cdots, \pm (e_{2p+t-1}-e_{2p+t})  $
+  \[
+   R^\bR= \set{\pm (e_{2i-1}+e_{2i}) | i=1, \cdots, p}\cup \set{\pm
+      (e_{2p+i}-e_{2p+j}), \pm (e_{2p+i}+e_{2p+j})| i,j =1, \cdots, t}
+  \]
+  It is type $(A_1)^p\times C_t$.
+  \[
+    \ckrho^\bR = \half(\underbrace{1,-1,\cdots, 1,-1}_{2p\text{-terms}},
+   \underbrace{2t-1,2t-3, \cdots, 1}_{t\text{-terms}}, 0,\cdots, 0  )
+  \]
+\item [Imaginary roots]
+  \[
+   R^{i\bR}= \set{\pm (e_{2i-1}-e_{2i}) | i=1, \cdots, p}\cup \set{\pm
+      (e_{2p+t+i}-e_{2p+t+j}), \pm (e_{2p+t+i}+e_{2p+t+j})| i,j =1, \cdots, r}
+  \]
+  It is type $(A_1)^p\times C_r$
+  \[
+    \ckrho^{i\bR} = \half(\underbrace{1,1,\cdots, 1,1}_{2p\text{-terms}} ,
+    0,\cdots, 0, \underbrace{2r-1,2r-3, \cdots, 1}_{r\text{-terms}} )
+  \]
+  Take $x_{p,t,a,b}$,
+  The imaginary compact roots are:
+  \[
+    \begin{split}
+    R_{ic} = & \set{e_{2p+t+i}-e_{2p+t+j}| 1\leq i,j \leq a}
+    \cup \set{e_{2p+t+i}-e_{2p+t+j}| a+1\leq i,j \leq a+b=r}\\
+    & 
+    \cup \set{\pm ( e_{2p+t+i}+e_{2p+t+j})| 1\leq i\leq a, a+1\leq j \leq a+b=r}
+  \end{split}
+\]
+Clearly $R_{ic}$ is of type $A_{r}$.
+$W(R_{ic}) = S_r$
+See \cite[3.13]{V4}
+\[
+  W_2(R_{ic}):= \set{w\in W(R^{i\bR})| w R_{ic}=R_{ic}} = W(A_1)^p\times
+W(R_{ic}).\] 
+\item [Complex root system $R^\bC$]
+  Note that $R^\bC  := \set{\alpha\in R|
+    \inn{\alpha}{\ckrho^\bR}=\inn{\alpha}{\ckrho^{i\bR}}=0}$
+  Then
+  \[
+    R^\bC = \set{\pm \alpha^C_{i,j}:=\pm (e_{2i-1}-e_{2j-1})|1\leq i<j\leq p }
+    \cup \set{\pm \tau\alpha^C_{i,j} = \mp (e_{2i}-e_{2j})|1\leq i<j\leq p }.
+  \]
+   Now $W(R^\bC)^\tau = \gen{s_{\alpha_{i,i+1}}s_{\tau \alpha_{i,i+1}}| i=1,
+     \cdots, p}$ is of type $A_{p-1}$.
+\end{des}
+
+Now the real Weyl group is of the form
+\[
+  W(\bfK,\bfH) = W(R^\bC)^\tau\ltimes (W(R^{\bR})\times W(\bfG^\bfA,\bfH)) 
+\]
+Here $W_{ic} < W(\bfG^\bfA,\bfH)< W(R^{i\bR})$, and
+\[
+  W(\bfG^\bfA,\bfH) = W_{ic}\ltimes A(H). 
+\]
+Note that $G=\Sp(2n,\bR)$ is large, $W(\bfG^\bfA,\bfH) = W_2(R_{ic})$.
+
+In summary, 
+\begin{equation}\label{eq:W_KH.C}
+  W(\bfK,\bfH) =\underbrace {\overbrace{ S_p }^{(W^C)^\tau} \ltimes
+    \overbrace{W(A_1)^p}^{\text{real}}}_{W_p }\ltimes
+  \underbrace{\overbrace{W(A_1)^p}^{im}}_{A(H)}\times
+  \overbrace{S_r}^{ic} \times \overbrace{W_{t}}^{real}
+\end{equation}
+
+\subsection{Coherent continuation representation}
+The full parameter space
+\[
+  \cZ= \set{(x,y)|x\in \cX, y\in \ckcX, \theta_y=-\theta_x^T}.
+\]
+Since we consider the catogery of $G=\Sp(2n,\bR)$-modules at infinitesimal character
+$\rho(G)$, we choose $\ckzz_0 = 1$.  
+Now the full parameter space of $\Pi(G,\rho(G))$ is given by
+\[
+  \begin{split}
+    \cZ_0 = & \set{(x,y)| x\in \cX(-1), y\in \ckcX(1), \theta_y = -\theta_x^T }\\
+    = & \bigcup_{\tau\in \cI_W/W} \set{(x,y)| x \in \cX_\tau(-1), y\in \ckcX(1),
+      \theta_y=-\theta_x^T}\\
+  \end{split}
+\]
+
+We now decompose $\cZ_0$ into $W$-orbits. 
+Note that $\cX_0/W\rightarrow \cI_W/W$ is bijective
+We choose $x_{p,t,r,0}$ as the representative of $\cX_0/W\cong \cI_W/W$. 
+Note that $\Stab_W(x_{p,t,r,0})$ is calculated in \eqref{eq:W_KH.C}.
+
+Let
+\[
+  \ckcX^{x} = \set{y\in \ckcX(1)| \theta_y = -\theta_x^T}= \ckcX_{\cktau}(1).
+\]
+Here that $\cktau\in \cI_\ckW$ is determined by $\theta_y$.
+Therefore, $|\ckcX^{x}| = 2^r$ (here there real
+tori $H(\bR)$ has $t$ copies of $\bR^\times$).  Note that
+$W^{\cktau} = (W^C)^\tau\ltimes(W(R^{i\bR})\times W(R^{\bR})$, and except the
+factor  
+$W(R^{\bR})$ (the dual imaginary root group), other factors has trivial action
+on $\cX_\cktau(1)$. 
+We could choose the following representatives of $\ckcX^x/W(R^{\bR})$ (it has
+$t+1$ members): for $a+b=t$, define 
+\[
+  y_{p,a,b,r} := s_{1,2}\cdots s_{2p-1,2p} \ckhh_{2p+1}\cdots
+  \ckhh_{2p+a}\ckss_{2p+t+1}\cdots \ckss_{n}.    
+\]
+Here $\ckhh_{j} = \diag(1, \cdots,1, \underbrace{-1}_{j},1, \cdots, 1) $.
+Now
+\[
+  \Stab_{W(R^{\bR})}(y_{p,a,b,r}) = W_a\times W_b.
+\]
+Therefore, 
+\[
+  \begin{split}
+  \cZ_0 = & \bigcup_{\tau\in \cI_W/W} W \cdot \set{(x_{p,t,r,0},y)| y \in \ckcX_\cktau(-1), }  \\
+  = & \bigcup_{p,a,b,r} W\cdot (x_{p,t,r,0},y_{p,a,b,r})
+  \end{split}
+\]
+Moreover, the stabilizer of $(x_{p,t,r,0},y_{p,a,b,r})$ is
+\[
+  (W^C)^\tau \ltimes (W(\bfG^\bfA,\bfH)\times \Stab_{W(R^{\bR})}(y_{p,a,b,r}))
+   = W_p\ltimes \underbrace{W(A_1)^p\times S_r}_{W(\bfG^\bfA,\bfH)}\times   W_a\times W_b
+\]
+
+By taking filtration according to the dimension of real root system, the Cayley
+transform could be ignored.  Then the coherent continuation representation is
+essentially given by the cross action.  For the stabilizer, the
+$W(\bfG^\bfA,\bfH)$ factor acts by $-1$ and other factors act trivially.  This
+leads to the formula \eqref{eq:CC.C}. {\color{red} Though, the notations are not
+  matching.}
+
+\section{Type D}
+Now let $\bfG_0=\SO(2n,\bC)$. Let $\bfG = \rO(2n,\bC)$.  Fix a Cartan subgroup
+$\bfH$ and Borel $\bfB$.  Let $w_c$ be the element in $\Norm_{\bfG}(\bfH)$
+fixing $\bfB$.  It is the element sending $e_n$ to $-e_n$. (The upper triangler
+matrices form the Borel.)
+\[
+  \begin{pmatrix}
+    I & & &  \\
+    &0 & 1 & \\
+    &1 &0  & \\
+    & & & I\\
+  \end{pmatrix}
+\]
+
+Now $W := W(\bfG)$ and $W' := W(\bfG_0)$ is the subgroup of $W$ of index $2$.
+
+The cocharacter lattice $X_*=\bZ^n$.  The coweight lattice
+\[ P^\vee = \bZ^n \cup (\bZ^n+\half)^n = \set{(a_1, \cdots, a_n)| a_i \text{ are
+      all integers or are all half integers}}
+\]
+\trivial{ Note that the root lattice of $\SO(2n,\bC)$ and $\Sp(2n,\bC)$ are the
+  same $=\set{(a_i)|\sum a_i \equiv 0 \pmod{2}}$.  }
+
+Note that $Z(\bfG)=Z(\bfG_0)=\set{\pm 1}$
+
+We consider the real forms $\SO(p,q)$.  When $p,q$ are even integers, we take
+the outer involution $\gamma = \bfone$, there group with $\SO^*(2n)$ form an
+inner class.  When $p,q$ are odd integers, the outer involution $\gamma=1$,
+these gives another inner class.
+
+The set elements $\set{\xi|\xi^2\in Z(\bfG)}$ in $\SO(2n,\bC)$ and
+$\SO(2n,\bC)w_c$ could be identified with the set of inolutions in
+$\rO(2n,\bC)$.
+
+When $\xi^2 =1$, the $\bfG_0$-conjugacy class is the same as the
+$\bfG$-conjugacy class.
+
+When $\xi^2=-1$, there is only one $\bfG$-orbit which breaks into two
+$\bfG_0$-orbits.  In fact, for each $\xi$ under the suitable orthonormal basis,
+it has the form
+$\xi_{p,q}=\diag(\underbrace{1, \cdots, 1}_p,\underbrace{-1,\cdots,-1}_q )$
+($p+q=2n$, $\xi_{p,q}^2=1$) or
+$\xi_0 =\diag(\underbrace{i,\cdots, i}_n,\underbrace{-i,\cdots, -i}_n)$ under a
+``hyperbolic'' basis. So there is an element in $\rO(2n,\bC)-\SO(2n,\bC)$ fixing
+$\xi$ under the conjugation ation.
+
+
+Suppose $\gamma=e$.  The representative $\xi_0$ corresponds to the real form
+$G=\SO^*(2n)$. Clearly $z_0 = \xi_0^2 = -1$ in this case.  The representative
+$\xi_{2s,2t}$ correspondes to $\SO(2s,2t)$. Clearly, $z = \xi_{2s,2t}^2=1$ in
+this case.
+
+Define
+\[
+  \cI(\bfG) = \cI(\bfG_0,e)\sqcup \cI(\bfG_0, w_c) = \set{\xi\in \bfG| \xi^2\in
+    Z(\bfG)}
+\]
+By the above discussion, we have
+\[
+  \begin{tikzcd}
+    \cI(\bfG)/\bfG \ar[r,<->,"1-1"]& \Set{\rO(p,q), \rO^*(2n)| p+q=2n}
+  \end{tikzcd}
+\]
+
+Define
+\[
+  \begin{split}
+    \tcX &= \cI(\bfG)\cap \Norm_{\bfG}(\bfH) = \cX(\bfG) = \cX(\bfG_0,e)\sqcup
+    \cI(\bfG_0,w_c)\\
+    & = \set{x\in \Norm_{\bfG}(\bfH)|x^2\in Z(G)}\\
+    \cX &= \tcX/\bfH
+  \end{split}
+\]
+
+Define
+\[
+  \begin{split}
+    \cI_W &= \set{w\in W|w^2 =1} = \cI_{W'}(\gamma=e)\sqcup \cI_{W'}(\gamma=w_c)
+  \end{split}
+\]
+Define $w_{i,j}$ and $w_{i}$ be elements in $\bfN = \Norm_{\bfG}(\bfH)$, let
+$s_{i,j}$ and $s_i$ be their image in $W$:
+\[
+  w_{i,i+1}= \left(
+    \begin{array}{cccc;{2pt/2pt}cccc}
+      % & i & j & & & & & & \\
+      \ddots &    &   &        &        &    &   &        \\
+        & 0  & 1 &        &        &    &   &        \\
+        & 1 & 0 &        &        &    &   &        \\
+        &    &   & \ddots &        &    &   &        \\
+      \hdashline[2pt/2pt]
+        &    &   &        & \ddots &    &   &        \\
+        &    &   &        &        & 0  & 1          \\
+        &    &   &        &        & 1 & 0 &        \\
+        &    &   &        &        &    &   & \ddots \\
+    \end{array} 
+  \right)
+\]
+
+\[
+  w_{i}= \left(
+    \begin{array}{ccc;{2pt/2pt}ccc}
+      % & i & j & & & & & & \\
+      1   &   &    &    &        &           \\
+        & 0   &  &      &      1  &           \\
+        &   & 1  &    &        &           \\
+      \hdashline[2pt/2pt]
+        &   &    &  1 &        &           \\
+        &  1  &  &      &      0  &           \\
+        &   &    &    &        & 1         \\
+    \end{array} 
+  \right)
+\]
+
+Let
+\[
+  w'_{i,i+1}= \left(
+    \begin{array}{cccc;{2pt/2pt}cccc}
+      % & i & j & & & & & & \\
+      \ddots &    &   &        &        &    &   &        \\
+        & 0  & -1 &        &        &    &   &        \\
+        & -1 & 0 &        &        &    &   &        \\
+        &    &   & \ddots &        &    &   &        \\
+      \hdashline[2pt/2pt]
+        &    &   &        & \ddots &    &   &        \\
+        &    &   &        &        & 0  & -1          \\
+        &    &   &        &        & -1 & 0 &        \\
+        &    &   &        &        &    &   & \ddots \\
+    \end{array}.
+  \right)
+\]
+Then $w'_{i,i+1}= w_i w_{i,i+1} w_i^{-1}$.
+
+Under $W$-action, $\cI_W/W$ is parameterized by $s,a,b$ such that $2s+a+b=n$.
+Representatives are given by:
+\[
+  w_{p,a,b}= w_{1,2}w_{3,4}\cdots w_{2s-1,2s}\ltimes w_{2s+1}\cdots w_{2s+a}.
+\]
+
+
+Let $\tau = w_{s,a,b}$.  Then
+\[
+  \begin{split}
+    W^\tau & = S_s \ltimes ( \gen{w_{2k-1}w_{2k}|k=1,\cdots, s}\times
+    \gen{w_{2k-1,2k}|k=1,\cdots, s} )\times W_a\times W_b \\
+    &\cong S_s\times(\bZ_2^s\times \bZ_2^s) \times W_a\times W_b.
+  \end{split}
+\]
+Therefore, the twisted involution orbit $W\cdot \tau$ has size
+\[
+  \frac{2^n n!}{2^{2s} s! 2^a a! 2^b b!} = \frac{n!}{s!a!b!}
+\]
+
+When $a=b=0$, the $W$-orbit $W\cdot w_{p,a,b}$ splits into two $W'$ orbits
+$W' \cdot w_{p,a,b}$ and $W'\cdot w'_{p,a,b}$ where
+\[
+  w'_{p,a,b}= w'_{1,2}w_{3,4}\cdots w_{2s-1,2s}\ltimes w_{2s+1}\cdots w_{2s+a}.
+\]
+
+The $\theta$-stable Cartan corresponding to $w_{s,a,b}$ is isomorphic to
+\[
+  H(\bR):=H^{w_{s,a,b}, \mathrm{conj}}= (\bC^\times )^s\times
+  (\bR^\times)^a\times \bT^b.
+\]
+Now $H^\vee(\bR) = (\bC^\times)^s \times \bT^a\times (\bR^\times)^b$.
+
+Consider the map
+\[
+  \begin{tikzcd}
+    \tcX\ar[r]& \cX := \tcX/\bfH \ar[r, "p"] & \cI_W
+  \end{tikzcd}
+\]
+
+Let
+\[
+  h_i = (1,\dots,1,\underbrace{-1}_i,1,\cdots,1) \in (\bC^\times)^n = \bfH
+\]
+
+
+Now the $W$-orbit on $\cX$ is given by the representatives
+\[
+  x_{s,a,p,q} = w_{1,2}w_{3,4}\cdots w_{2s-1,2s} w_{2s+1}\cdots w_{2s+a}
+  h_{2s+a+1}\cdots h_{2s+a+p}.
+\]
+Now
+\begin{equation}\label{eq:Xtau.D}
+\cX_{\tau} = \bigsqcup_{p+q=b} W^\tau \cdot x_{s,a,p,q}.
+\end{equation}
+Moreover, only $W_b$ factor of $W^\tau$ acts on $\cX_{\tau}$ non-trivially. 
+
+Observe that $x=x_{s,a,p,q}$ gives the realform $\rO(2s+a+2p,2s+a+2q)$.
+
+Here is the list of real, imaginary, and complex root systems.
+\begin{des}
+\item [Real roots ] % $\pm (e_1-e_2), \cdots, \pm(e_{2p-1}-e_{2p}), \pm
+  % (e_{2p+1}- e_{2p+2}), \cdots, \pm (e_{2p+t-1}-e_{2p+t}) $
+  \[
+    R^\bR= \set{\pm (e_{2k-1}-e_{2k}) | k=1, \cdots, s}\cup \set{e_{2s+k}\pm
+      e_{2s+l}| k\neq l =1, \cdots, a}
+  \]
+  It is type $(A_1)^s\times D_a$.
+  \[
+    \ckrho^\bR = \half(\underbrace{1,-1,\cdots, 1,-1}_{2s\text{-terms}},
+    \underbrace{2a-2,2a-4, \cdots, 0}_{a\text{-terms}}, 0,\cdots, 0 )
+  \]
+\item [Imaginary roots]
+  \[
+    R^{i\bR}= \set{\pm (e_{2k-1}+e_{2k}) | k=1, \cdots, s}\cup
+    \set{e_{2s+a+k}\pm e_{2s+a+l}| k\neq l =1, \cdots, b}
+  \]
+  It is type $(A_1)^s\times D_b$
+  \[
+    \ckrho^{i\bR} = \half(\underbrace{1,1,\cdots, 1,1}_{2s\text{-terms}} ,
+    0,\cdots, 0, \underbrace{2b-2,2b-4, \cdots, 0}_{b\text{-terms}} )
+  \]
+  The imaginary compact roots are:
+  \[
+    \begin{split}
+      R_{ic} = & \set{e_{2s+a+i}\pm e_{2s+a+j}| 1\leq i,j \leq p}\\
+      & \cup \set{e_{2s+a+i}\pm e_{2s+a+j}| p+1\leq i,j \leq p+q=b}
+    \end{split}
+  \]
+  Clearly $R_{ic}$ is of type $D_p\times D_q$.  $W(R_{ic}) = W_p\times W_q$
+\item [Complex root system $R^\bC$] Note that
+  $R^\bC := \set{\alpha\in R|
+    \inn{\alpha}{\ckrho^\bR}=\inn{\alpha}{\ckrho^{i\bR}}=0}$ Then
+  \[
+    \begin{split}
+      R^\bC &= \set{\pm \alpha^C_{i,j}:=\pm (e_{2i-1}-e_{2j-1})|1\leq i<j\leq s
+      }
+      \cup \set{\pm \tau\alpha^C_{i,j} =  (e_{2i}-e_{2j})|1\leq i<j\leq s }\\
+      & \cup \set{\alpha_0=\pm (e_{2s+a}-e_{2n}),
+        \tau(\alpha_0)=\mp(e_{2s+a}+e_{2n})}.  \\
+      &  \quad \text{This term only appear when
+        $a,b$ are both non-zero}
+    \end{split}
+  \]
+  Now
+  \[
+    W(R^\bC)^\tau =
+    \begin{cases}
+      \gen{s_{\alpha_{i,i+1}}s_{\tau \alpha_{i,i+1}}| i=1,
+        \cdots, s} & \text{type $A_{s-1}$ if $ab=0$}\\
+      \gen{s_{\alpha_{i,i+1}}s_{\tau \alpha_{i,i+1}}| i=1,
+        \cdots, s} \gen{w_{cx} := w_{2s+a,n}w'_{2s+a,n}}& \text{type $A_{s-1}\cdot A_1$ if $ab\neq 0$}\\
+    \end{cases}
+  \]
+  Here $w_{cx} = w_{2s+a,n}w'_{2s+a,n} = w_{2s+a} w_n$.
+\end{des}
+
+
+In summary,
+\begin{equation}\label{eq:W_KH.C}
+  W(\bfK,\bfH)= W(\bfG(\bR),\bfH(\bR))=\underbrace {\overbrace{ S_s }^{(W^C)^\tau} \ltimes
+    \overbrace{W(A_1)^s}^{\text{real}}}_{W_s }\ltimes
+  \underbrace{\overbrace{W(A_1)^s}^{im}}_{A(H)}\times
+  \overbrace{W_p\times W_q}^{ic} \times \overbrace{W_{a}}^{real}
+\end{equation}
+\begin{equation}\label{eq:W_KH.C'}
+  \begin{split}
+    W(\bfK_0,\bfH) &= W(\bfG_0(\bR),\bfH(\bR)) \\
+    & =\underbrace {\overbrace{ S_s \cdot P_2}^{(W^C)^\tau} \ltimes
+      \overbrace{W(A_1)^s}^{\text{real}}}_{W_s }\ltimes
+    \underbrace{\overbrace{W(A_1)^s}^{im}}_{A(H)}\times \overbrace{(W_p\times
+      W_q)'}^{ic} \times \overbrace{W'_{a}}^{real} \\
+    & = S_s \ltimes ( W(A_1)^s \times W(A_1)^s) \times (W_p\times W_q \times
+    W_{a})'
+  \end{split}
+\end{equation}
+Here $P_2 = \gen{w_{2s+a,n}w'_{2s+a,n}}$ if $ab\neq 0$, and trivial otherwise.
+
+
+\subsection{Coherent continuation representation}
+We consider the catgory of modules with infinitesimal character $\rho(\bfG)$.
+Thefore we choose $\ckzz_0 = 1$.  The set
+$\bigcup_{p+q=2n} \Pi(\SO(p,q),\rho(\bfG))$ is paramterized by
+\[
+  \begin{split}
+    \cZ &= \set{(x,y)\in \cX(1)\times \ckcX(1) |\theta_x = -\theta_y^T}
+  \end{split}
+\]
+Note that we allow $y\in \rO(2n,\bC)$. In fact, if $n$ is even $x,y$ are both in
+$\SO$ or not (i.e. $\gamma=\ckgamma\in \mathrm{Out}(\SO(2n,\bC))$). If $n$ is
+odd, exactly one of $x,y$ is in $\SO$ (i.e. , $\gamma$ and $\ckgamma$ are
+different elemnts in $\mathrm{Out}(\SO(2n,\bC))$).
+
+We now decompose $\cZ$ into $W$-orbits.  Note that $\theta_x$ is determined by
+$\tau_{s,a,b}$ and $-\theta_x^T$ gives the element $\cktau$ which is conjugate
+to $\tau_{s,b,a}$.
+By \eqref{eq:Xtau.D}
+\[
+  \begin{split}
+    \set{(x,y)\in \cZ| x = x_{s,a,p,q}} & = \set{(x_{s,a,p,q},y)|y\in
+    \ckcX(1)_{\cktau}} \\
+  &= \bigsqcup_{t+u=a, w\in W_a} (x_{s,a,p,q},w \cdot y_{s,t,u,b}) 
+\end{split}
+\]
+with
+\[
+  y_{s,t,u,b} = w_{1,2}w_{3,4}\cdots w_{2s-1,2s} w_{2s+a+1}\cdots w_{2s+a+b}
+  h_{2s+1}\cdots h_{2s+t}.
+\]
+Clearly,
+\[
+  \Stab_W((x_{s,a,p,q},y_{s,t,u,b})) = S_s \ltimes ( W(A_1)^s \times W(A_1)^s) \times W_t\times W_u \times
+    W_p\times W_q
+\]
+
+Let $\sgn'$ denote the inflation of the sign character of $S_n$ to $W_n$.  Note
+that $\sgn' = (n)\times \empty$ (Here $(n)$ denote a column of lenght $n$)k. On
+the other hand, the sign charactor of $W_n$ corresponds to bipartition
+$\empty\times (n)$.
+Let $\sgn$ denote the sign charactor of $W(A_1)^s = (\bZ/2\bZ)^s$.
+
+We claim that restrict of the $W_n$-representation to $W'_n$ yeilds the coherent
+continuation representation at the infintesimal character $\rho(G)$:
+\[
+  \bC \cX = \bigoplus_{2s+t+u+p+q=n}\Ind_{W_s\ltimes W(A_1)^s\times W_t\times
+    W_u\times W_p\times W_q}^{W_{n}} \triv \otimes \sgn \otimes \triv \otimes \triv
+  \otimes \sgn'\otimes \sgn'
+\]
+
+Note that $W_s\ltimes W(A_1)^s\subset W'_n$.
+Note that $\sgn'|_{W'_a} =\sgn|_{W'_a}$.
+\begin{des}
+\item [$t=u=p=q=0$] In this case, the generaters of $W(A_1)^s$ are reflections
+  given by a (conjugate) of simple
+  imaginary root. 
+  Therefore, they act by $-1$. 
+\item [$p=q=0$] $W'_n \cap (W_s \ltimes W(A_1)^s \times W_t\times W_u) = W_s \ltimes W(A_1)^s \times (W_t\times W_u)'$  
+  Since the real roots acts by cross action, the stabilizer $(W_t\times
+  W_u)'\subset W_a$
+\item [$r=u=0$] $W'_n \cap (W_s \ltimes W(A_1)^s \times W_p\times W_q) = W_s \ltimes W(A_1)^s \times (W_p\times W_q)'$  
+  Since the imaginary roots acts by $-1$*cross action, the stabilizer $(W_p\times
+  W_q)' = (W'_p\times W'_q) \gen{w_{ic}}$. Here $w_{ic} = w_{2s+p}w_{2s+p+q}$ is
+  a product of two reflections of conjugations of simple imaginary root.
+  Therefore $w_{ic}$ acts trivially.
+  So on $W_p\times W_q$ we must put either $\sgn'\otimes \sgn'$ or
+  $\sgn\otimes \sgn$.
+\item [$p+q$ and $r+u$ are non-zero]
+  In this case, $W'_n \cap (W_s \ltimes W(A_1)^s \times W_t\times W_u \times
+  W_p\times W_q)$ contain the element $w_{cx} = w_{2s+a}w_{2s+a+b}$.
+  Since $w_{cx}$ is in the complex roots group, it must act trivially.
+  This constrain forces us to put $\sgn'\otimes \sgn'$ on $W_p\times w_q$.
+  (In this case $\triv\otimes \triv \otimes \sgn'\otimes\sgn'(w_{2s+a}w_{2s+a+b})=1$.)
+\end{des}
+
+\clearpage
+\section*{\color{blue} Progress reports and questions}
+I have written a program to compute the combinatoric objects
+numerically.
+It can compute the following things:
+\begin{enumerate}
+\item For each special nilpotent orbit of type B (odd special orthogonal group) and type C (symplectic group),
+  it can generate all the ``dot-c-r'' diagrams.
+\item It can compute the theta lift of local systems on the nilpotent orbits
+  for symplectic-even orthogonal groups dual pair and metaplectic-odd orthogonal
+  groups dual pair.   
+\item For each nilpotent orbit of the orthogonal, symplectic and metaplectic group,
+  it can list all local systems obtained via iterated theta lift and
+  twisting of characters.   
+\end{enumerate}
+
+Here are findings of the program. They {\color{red} agree } with Barbasch's notes.
+
+\begin{enumerate}
+\item Using stable range theta lift, we have an injective map from $\Unip(G)$
+  into $\Unip(G')$ where $G$ is the smaller group,  $G'$ is split with 
+  split rank $\geq 2 \rank G$.  Therefore it is enough to understand the
+  counting of unipotent representations for the symplectic groups (type C) and
+  odd special orthogonal groups (type B).
+
+  The countings for type B and C are similar due to Vogan duality. (In my
+  program, the generation of dot-c-r diagram of type B is translated to the case
+  of type C).
+  
+\item {\bfseries Symplectic group} Nilpotent orbits are parameterized by columns
+  $\cO := (C_{2a}\geq C_{2a-1}\cdots C_1\geq C_0 \geq C_{-1}=0)$ satisfying
+  $C_{2i]}\equiv C_{2i-1} \pmod{2}$.  We only consider the special orbits which
+  satisfy $C_{2i}=C_{2i-1}$ when $C_{2i}$ is odd.
+  \begin{enumerate}
+  \item Reduction theorem~\Cref{prop:reduction.C} imples that all odd rows in
+    $\cO$ could be deleted.  Example:
+    \begin{lstlisting}[language={Python}]
+      partO = [16,14,13,13,6,4,1,1]
+      partO1 = remove_odd_rows(partO)
+      print("deleting all odd rows of %s yields %s\n"%(partO, partO1))
+      print_drc_diag_C(partO)
+      print_list_LS(partO, "C")
+      print_drc_diag_C(partO1)
+      print_list_LS(partO1, "C")
+      Output
+      deleting all odd rows of [16, 14, 13, 13, 6, 4, 1, 1] yields [12, 12, 11, 11, 4, 4, 1, 1]
+      Type C partition: [16, 14, 13, 13, 6, 4, 1, 1]
+      Number of drc diagrams: 3520
+      Number of LS: 3520
+      Type C partition: [12, 12, 11, 11, 4, 4, 1, 1]
+      Number of drc diagrams: 3520 Type C
+      Number of LS: 3520
+    \end{lstlisting}
+%    {\color{red} How to put the odd rows back?}
+
+  \item By the assumption of integral infinitesimal character, even length
+    columns are only allowed to appear at most two times. Moreover, there is a
+    reduction to the case that odd columns only appear twice.  {\color{blue}
+      Warning: the reduction is not a one-one correspondence (See Barbasch's
+      notes Theorem~2 on p9). } Moreover, the number of local systems obtained
+    by theta lifting is less than the number of unipotent representations, see
+    example:
+    \begin{lstlisting}[language=Python]
+      partO = [3,3,3,3,1,1,1,1]
+      print_drc_diag_C(partO)
+      print_list_LS(partO,"C")
+      Output
+      Type C partition: [3, 3, 3, 3, 1, 1, 1, 1]
+      Number of drc diagrams: 49
+      Number of LS: 45
+    \end{lstlisting}
+    I guess this phenomenon is due to that double theta lifting only relizes 
+    parabolic inductions(r-induction). (See Barbasch's notes p10)
+  \item {\bfseries Match the local systems.} The following is verified
+    numerically  
+    (its' proof should be contained in Section~5 of
+    Barbasch's notes, which I dose not fully understand.)
+    \begin{thm}\label{thm:count.C}
+      Suppose $\cO$ is a nilpotent orbit of type $C$ such that even
+      columns appear at most twice, and odd columns appear exactly twice.  Then
+      iterated theta lifting yields all unipotent representations attached to
+      $\cO$. Moreover, these representations are characterized by their local
+      systems (note that these local systems could be reducible)
+    \end{thm}
+    An example for a ``big orbit'':
+    \begin{lstlisting}[language=Python]
+      partO = [21,21,18,16,12,12,11,11,6,4,1,1]
+      print_drc_diag_C(partO)
+      print_list_LS(partO, "C")
+      Output
+      Type C partition: [21, 21, 18, 16, 12, 12, 11, 11, 6, 4, 1, 1]
+      Number of drc diagrams: 286720
+      Number of LS: 286720
+    \end{lstlisting}
+  \end{enumerate}
+
+\item {\bfseries Odd orthogonal group} Nilpotent orbits are parameterized by
+  columns
+  \[
+    \cO := (C_{2a}\geq C_{2a-1}\cdots C_1\geq C_0 \geq 0 )
+  \]
+  satisfying $C_{2i+1}\equiv C_{2i} \pmod{2}$ and $C_{2a}$ is odd.  We only
+  consider the special orbits satisfying $C_{2i+1}=C_{2i}$ when $C_{2i}$ is
+  even.  The dot-r-c diagram only counts unipotent representations of
+  $\SO(2n+1 -2k,2k)$ with $k = 0, \cdots, n$ (all strong real forms). So
+  \[
+    \# \bigcup_{p+q=2n+1}\Unip_\cO(\rO(p,q)) = 4 \# \drc(\cO)
+  \]
+  \begin{enumerate}
+  \item {\bfseries Remove even rows} Following operations will not change the
+    number of unipotent representations: (This is also in Barbasch's notes
+    Section~3.2)
+    \begin{itemize}
+    \item If the column $C_{2i+1} = C_{2i}+2r$ is odd, delete the $2r$ rows of
+      length $2(a-i)$.  (This also agrees with the theta correspondence)
+    \item If the column $C_{2i+1} = C_{2i}+2r$ is even, then delete {\color{red}
+        $2r-2$} rows of length $2(a-i)$.  {\color{blue} When $C_{2i+1} =
+        C_{2i}+2$ is even, it can not be
+        treated by theta lifting. Example:}
+\begin{lstlisting}[language=Python]
+partO = [21,8,4,1,1]
+partO1 = [17,4,4,1,1] # deleting all even rows of partO
+partO2 = [19,6,4,1,1] # deleting 2(a-i)-2 even rows of partO
+print_drc_diag_B(partO)
+print_drc_diag_B(partO1)
+print_drc_diag_B(partO2)
+Output
+Type B partition: [21, 8, 4, 1, 1]
+The total number of drc diagrams: 896
+Type B partition: [17, 4, 4, 1, 1]
+The total number of drc diagrams: 376
+Type B partition: [19, 6, 4, 1, 1]
+The total number of drc diagrams: 896
+\end{lstlisting}
+    \end{itemize}
+  \item {\bfseries Repeated columns} When a column occurs more than twice, theta
+    lifting will not yields enough local systems.
+
+  \item The case (a) and (b) seems already discussed in Section~3.2 of Barbasch
+    notes (the reducition in metaplectic case).
+\vspace{5em}  
+  \item {\bfseries Match the local systems.} The following is verified numerically.
+    \begin{thm}\label{thm:count.B}
+      Suppose $\cO$ is a nilpotent orbit of type $B$ such that odd columns
+      appear at most twice, and even columns appear exactly twice.  Then
+      iterated theta lifting yields all unipotent representations attached to
+      $\cO$. Moreover, these representations are characterized by their local
+      systems.
+    \end{thm}
+    An example for a ``big orbit'':
+    \begin{lstlisting}[language=Python]
+      partO = [21,16,16,12,12,11,11,4,4,1,1]
+      print_drc_diag_B(partO)
+      print_list_LS(partO, "B")
+      Output
+      Number of drc diagrams: 131456
+      Unipotent repn. of all forms: 525824
+      Number of LS: 525824
+    \end{lstlisting}
+  \item {\bfseries Metaplectic group to odd orthogonal groups} Let $\cO'$ be a
+    relevent nilpotent orbit of $\Mp(2m,\bC)$.  By stable range theta lifting,
+    the set of unipotent representations $\Unip_{\cO'}(\Mp(2m,\bR))$ is embedded
+    to $\Unip_{\cO}(\SO(2m+3,2m+2))$.  $\cO$ is the orbit of $\SO(4m+5,\bC)$
+    obtained by attaching a column of length
+    $2m+5$.  % When $\cO'$ is ``good'' enough,
+    I expect that the twisting of the strange character of $\SO(2m+3,2m+2)$ is a
+    free action on $\Unip_{\cO}(\SO(2m+3,2m+2))$.  Then we will have:
+    \[
+      2 \# \Unip_{\cO'}(\Mp(2m,\bR)) = \# \Unip_{\cO}(\SO(2m+3,2m+2))
+    \]
+    Note that $\# \Unip_{\cO}(\SO(2m+3,2m+2))$ is counted by the dot-r-c
+    diagram having the same number of $r$ and $r'$.
+  \item {\color{red} A question to Dan: } In p2 of your notes 10\_13\_19, type B
+    paragraph, shall we count the representations obtained from the special ones
+    by interchanging $c_{2i+1}$ and $c_{2i}$?  According to my calculation, we
+    should include these representations to make the numbers to match.
+  \end{enumerate}
+
+\item {\bfseries A remark:} In the formula of theta lifting of local systems,
+  there is a twisting of character according to the signature of the orthogonal
+  group. This twisting is crucial. Only the correct twisting leads to the
+  matching of numbers of dot-c-r diagram and local systems.
+
+\item {\bfseries TODO:}
+  \begin{enumerate}
+  \item There are inductive structures of dot-r-c diagrams and local systems
+    counting.  I will try to prove \Cref{thm:count.B,thm:count.C} by reducing it
+    to small rank cases. (This should be down by the same method in Barbasch's
+    notes)
+  \item Understand the relationship between our construction and
+    Moeglin-Renard's work on Arthur packet.  They have a notion of ``good
+    parity'' which seems relevant.
+  \item Understand the coherent continuation representations of type D and type M
+    (the metaplectic group).  
+  \item Understand the cohomological and parabolic induction that appeared in
+    the drc diagram reduction. {\color{red} To Dan: Are these inductions
+      preserve unitarity?}
+  \item Deduce the Langlands parameter of unipotent representations from the drc
+    diagram (It should not be too difficult, Adams already had an Atlas program
+    to compute the L-parameters of all unipotent representations. But the program
+    was not very efficient for classical groups.)  
+  \item Describe the L-parameter correspondence in our theta lifting construction.  
+    (Induction principle may be the guideline.)
+  \end{enumerate}
+\item {\bfseries The goal of our project.}  Maybe we should write a series of
+  papers on the subject.  I propose only deal with the cases in
+  \Cref{thm:count.B,thm:count.C} in our first paper. Then let us deal with the
+  reductions in the second paper.
+\end{enumerate}
+
+\clearpage
+\delete{
+\section*{Some questions}
+I am trying to understand the computation for the symplectic-even orthogonal
+dual pair right now. I would like to ask some questions.
+
+The following is a list of questions:
+
+\begin{enumerate}
+\item[] {\color{red} The coherent continuation representation of type D.
+    I am confused by  (2.4.1).
+  }
+  \item
+  First the formula is not exactly McGovern's
+  \cite[(11)]{Mc}. 
+  $W_t\times W_u$ corresponds to $W(A_a)\times W(A_b)$. But $W(A_a) =
+  S_a$. I guess this is a typo of McGovern.
+\item 
+  On the other hand, $W_p\times W_q\times W'_{2s}
+  \times W_t \times W_u$ is not a subgroup of the Weyl group $W'_n$ of type $D$. 
+  I guess in the correct group should be $W'_{n}\cap (W_p\times W_q\times W'_{2s}
+  \times W_t \times W_u)$.
+\item What is the meaning of $\sgn$ for $W_p$ and $W_q$ (which are called
+  $W_{p'}$ and $W_{q'}$ in \cite[(11)]{Mc}).
+  If it is the sign representation of $W_p$, it corresponds to the bi-partition
+  $\emptyset\times (1^p)$ ($(1^p)$ represents a column of length $p$).
+  This dose not agree with your  formula for type D but agrees with the type B.  
+
+  Is ``$\sgn$'' in fact the ``determinate'', which corresponds to
+  $(1^p)\times \emptyset$?  This agrees with your notes and also McGovern's
+  claim after \cite[(11)]{Mc}.
+  
+\item Now turn to the branching rule.  In the type D case, the following
+  branching rule is used in the computation: Suppose
+  $\sigma = \sigma_L\times \sigma_R$ with $\sigma_R=\emptyset$ as $W_m$-module
+  (they are obtained by adding $r,r',c,c'$'s), $\tau' = \tau'_L\times \tau'_R$ as
+  $W_{2s}$-module, with $\tau'_L = \tau'_R$.  Let $\tau'_{I/II}$ be the two
+  irreducible components of $\tau'|_{W'_{2s}}$.  Then
+  \[
+    \Ind_{W'_{2s}\times W'_{m}}^{W_{2s+m}} \tau'_{I/II}\otimes \sigma = (\tau'_L\cdot
+    \sigma_L)\times \tau'_R.
+  \]
+  Here
+  $\tau'_L\cdot \sigma_L = \Ind_{S_s\times S_m}^{S_{s+m}}\tau'_L \otimes
+  \sigma_L$ is calculated by Littlewood-Richardson rule.
+  
+  Here are two questions:
+  \begin{enumerate}
+  \item If $m=0$, how to distinguish $I$ and $II$? (This may not be a big problem
+    for us).  
+  \item If $|\sigma_R| = |\sigma_L|$, the branching rule seems more
+    complicated, since a bipartition of the same left and right components may
+    occur.
+    The we should choose the same sign?
+  \end{enumerate}
+\item About the parameterization of type D.
+  On page~8, it is claim that ``this seems to count for $\rO(a,b)$, as well as
+  for $\SO(a,b)$.''
+  But on page~16, Section~4.3 Remark, about the ``embedding''. Since additional
+  non-special representations of type C must be accounted, the parameterization
+  seems only count $\SO(a,b)$. 
+
+  Assuming the description of the coherent continuation representation of type D
+  in the notes is correct, the embedding works perfect. Apart from the
+  combinatoric, is there any representation theory behind? 
+\item A small question, what is ``$A(\pi)$'' in the remark? the associated
+  variety? 
+\item[] {\color{red} The reduction theorem in type C}
+\item Theorem~1 on p9 proved that deleting the odd length rows will not affect
+  the number of unipotent representations.  It corresponds to the
+  ``$\theta$-induction'' (cohomological induction?) on the dual side(Now I fully
+  understand the proof). But what dose it correspond to on the group side? Will
+  this procedure preserve the unitarity?  ( Will Vogan duality preserve
+  unitarity?)
+\item The problem is further reduced to the case that each even/odd length column
+  appears at most two times. (In fact, I think the condition should be
+  $C_{2i-1}\neq C_{2i-2}$ if they are even. Because, in this case, the
+  infinitesimal character is not integral.)
+
+  I have no question about the reduction. Just a comment:
+  if we use theta correspondence to construct unipotent representations,
+  the reduction for odd length seems can be implemented by a double theta lift,
+  with a twisting of a correct character of the orthogonal group. 
+  There are only two possible choices of the character which correspond to
+  $\theta$ and $r$-induction ($r$/$\rho$-induction means the usual parabolic
+  induction?). 
+\end{enumerate}
+}
+
+\begin{bibdiv}
+  \begin{biblist}
+% \bib{AB}{article}{
+%   title={Genuine representations of the metaplectic group},
+%   author={Adams, Jeffrey},
+%   author = {Barbasch, Dan},
+%   journal={Compositio Mathematica},
+%   volume={113},
+%   number={01},
+%   pages={23--66},
+%   year={1998},
+% }
+
+\bib{Ad83}{article}{
+  author = {Adams, J.},
+  title = {Discrete spectrum of the reductive dual pair $(O(p,q),Sp(2m))$ },
+  journal = {Invent. Math.},
+  number = {3},
+ pages = {449--475},
+ volume = {74},
+ year = {1983}
+}
+
+%\bib{Ad07}{article}{
+%  author = {Adams, J.},
+%  title = {The theta correspondence over R},
+%  journal = {Harmonic analysis, group representations, automorphic forms and invariant theory,  Lect. Notes Ser. Inst. Math. Sci. Natl. Univ. Singap., 12},
+% pages = {1--39},
+% year = {2007}
+% publisher={World Sci. Publ.}
+%}
+
+
+\bib{ABV}{book}{
+  title={The Langlands classification and irreducible characters for real reductive groups},
+  author={Adams, J.},
+  author={Barbasch, D.},
+  author={Vogan, D. A.},
+  series={Progress in Math.},
+  volume={104},
+  year={1991},
+  publisher={Birkhauser}
+}
+
+\bib{AC}{article}{
+  title={Algorithms for representation theory of
+    real reductive groups},
+  volume={8},
+  DOI={10.1017/S1474748008000352},
+  number={2},
+  journal={Journal of the Institute of Mathematics of Jussieu},
+  publisher={Cambridge University Press},
+  author={Adams, Jeffrey}
+  author={du Cloux,
+    Fokko},
+  year={2009},
+  pages={209-259}
+}
+
+\bib{ArPro}{article}{
+  author = {Arthur, J.},
+  title = {On some problems suggested by the trace formula},
+  journal = {Lie group representations, II (College Park, Md.), Lecture Notes in Math. 1041},
+ pages = {1--49},
+ year = {1984}
+}
+
+
+\bib{ArUni}{article}{
+  author = {Arthur, J.},
+  title = {Unipotent automorphic representations: conjectures},
+  %booktitle = {Orbites unipotentes et repr\'esentations, II},
+  journal = {Orbites unipotentes et repr\'esentations, II, Ast\'erisque},
+ pages = {13--71},
+ volume = {171-172},
+ year = {1989}
+}
+
+\bib{AK}{article}{
+  author = {Auslander, L.},
+  author = {Kostant, B.},
+  title = {Polarizations and unitary representations of solvable Lie groups},
+  journal = {Invent. Math.},
+ pages = {255--354},
+ volume = {14},
+ year = {1971}
+}
+
+\bib{B.Uni}{article}{
+  author = {Barbasch, D.},
+  title = {Unipotent representations for real reductive groups},
+ %booktitle = {Proceedings of ICM, Kyoto 1990},
+ journal = {Proceedings of ICM (1990), Kyoto},
+   % series = {Proc. Sympos. Pure Math.},
+ %   volume = {68},
+     pages = {769--777},
+ publisher = {Springer-Verlag, The Mathematical Society of Japan},
+      year = {2000},
+}
+
+\bib{B.W}{article}{
+  author={Barbasch, Dan},
+  author={Vogan, David},
+  editor={Trombi, P. C.},
+  title={Weyl Group Representations and Nilpotent Orbits},
+  bookTitle={Representation Theory of Reductive Groups:
+    Proceedings of the University of Utah Conference 1982},
+  year={1983},
+  publisher={Birkh{\"a}user Boston},
+  address={Boston, MA},
+  pages={21--33},
+  %doi={10.1007/978-1-4684-6730-7_2},
+}
+
+
+
+\bib{B.Orbit}{article}{
+  author = {Barbasch, D.},
+  title = {Orbital integrals of nilpotent orbits},
+ %booktitle = {The mathematical legacy of {H}arish-{C}handra ({B}altimore,{MD}, 1998)},
+    journal = {The mathematical legacy of {H}arish-{C}handra, Proc. Sympos. Pure Math.},
+    %series={The mathematical legacy of {H}arish-{C}handra, Proc. Sympos. Pure Math},
+    volume = {68},
+     pages = {97--110},
+ publisher = {Amer. Math. Soc., Providence, RI},
+      year = {2000},
+}
+
+
+
+\bib{B10}{article}{
+  author = {Barbasch, D.},
+  title = {The unitary spherical spectrum for split classical groups},
+  journal = {J. Inst. Math. Jussieu},
+% number = {9},
+ pages = {265--356},
+ volume = {9},
+ year = {2010}
+}
+
+
+
+\bib{B17}{article}{
+  author = {Barbasch, D.},
+  title = {Unipotent representations and the dual pair correspondence},
+  journal = {J. Cogdell et al. (eds.), Representation Theory, Number Theory, and Invariant Theory, In Honor of Roger Howe. Progress in Math.}
+  %series ={Progress in Math.},
+  volume = {323},
+  pages = {47--85},
+  year = {2017},
+}
+
+\bib{BVUni}{article}{
+ author = {Barbasch, D.},
+ author = {Vogan, D. A.},
+ journal = {Annals of Math.},
+ number = {1},
+ pages = {41--110},
+ title = {Unipotent representations of complex semisimple groups},
+ volume = {121},
+ year = {1985}
+}
+
+\bib{Br}{article}{
+  author = {Brylinski, R.},
+  title = {Dixmier algebras for classical complex nilpotent orbits via Kraft-Procesi models. I},
+  journal = {The orbit method in geometry and physics (Marseille, 2000). Progress in Math.}
+  volume = {213},
+  pages = {49--67},
+  year = {2003},
+}
+
+\bib{Carter}{book}{
+   author={Carter, Roger W.},
+   title={Finite groups of Lie type},
+   series={Wiley Classics Library},
+   %note={Conjugacy classes and complex characters;
+   %Reprint of the 1985 original;
+   %A Wiley-Interscience Publication},
+   publisher={John Wiley \& Sons, Ltd., Chichester},
+   date={1993},
+   pages={xii+544},
+   isbn={0-471-94109-3},
+   %review={\MR{1266626}},
+}
+\bib{Ca89}{article}{
+ author = {Casselman, W.},
+ journal = {Canad. J. Math.},
+ pages = {385--438},
+ title = {Canonical extensions of Harish-Chandra modules to representations of $G$},
+ volume = {41},
+ year = {1989}
+}
+
+
+
+\bib{Cl}{article}{
+  author = {Du Cloux, F.},
+  journal = {Ann. Sci. \'Ecole Norm. Sup.},
+  number = {3},
+  pages = {257--318},
+  title = {Sur les repr\'esentations diff\'erentiables des groupes de Lie alg\'ebriques},
+  url = {http://eudml.org/doc/82297},
+  volume = {24},
+  year = {1991},
+}
+
+\bib{CM}{book}{
+  title = {Nilpotent orbits in semisimple Lie algebra: an introduction},
+  author = {Collingwood, D. H.},
+  author = {McGovern, W. M.},
+  year = {1993}
+  publisher = {Van Nostrand Reinhold Co.},
+}
+
+
+% \bib{Dieu}{book}{
+%    title={La g\'{e}om\'{e}trie des groupes classiques},
+%    author={Dieudonn\'{e}, Jean},
+%    year={1963},
+% 	publisher={Springer},
+%  }
+
+\bib{DKPC}{article}{
+title = {Nilpotent orbits and complex dual pairs},
+journal = {J. Algebra},
+volume = {190},
+number = {2},
+pages = {518 - 539},
+year = {1997},
+author = {Daszkiewicz, A.},
+author = {Kra\'skiewicz, W.},
+author = {Przebinda, T.},
+}
+
+\bib{DKP2}{article}{
+  author = {Daszkiewicz, A.},
+  author = {Kra\'skiewicz, W.},
+  author = {Przebinda, T.},
+  title = {Dual pairs and Kostant-Sekiguchi correspondence. II. Classification
+	of nilpotent elements},
+  journal = {Central European J. Math.},
+  year = {2005},
+  volume = {3},
+  pages = {430--474},
+}
+
+
+\bib{DM}{article}{
+  author = {Dixmier, J.},
+  author = {Malliavin, P.},
+  title = {Factorisations de fonctions et de vecteurs ind\'efiniment diff\'erentiables},
+  journal = {Bull. Sci. Math. (2)},
+  year = {1978},
+  volume = {102},
+  pages = {307--330},
+}
+
+%\bibitem[DM]{DM}
+%J. Dixmier and P. Malliavin, \textit{Factorisations de fonctions et de vecteurs ind\'efiniment diff\'erentiables}, Bull. Sci. Math. (2), 102 (4),  307-330 (1978).
+
+
+
+%\bib{Du77}{article}{
+% author = {Duflo, M.},
+% journal = {Annals of Math.},
+% number = {1},
+% pages = {107-120},
+% title = {Sur la Classification des Ideaux Primitifs Dans
+%   L'algebre Enveloppante d'une Algebre de Lie Semi-Simple},
+% volume = {105},
+% year = {1977}
+%}
+
+\bib{Du82}{article}{
+ author = {Duflo, M.},
+ journal = {Acta Math.},
+  volume = {149},
+ number = {3-4},
+ pages = {153--213},
+ title = {Th\'eorie de Mackey pour les groupes de Lie alg\'ebriques},
+ year = {1982}
+}
+
+
+
+\bib{GZ}{article}{
+author={Gomez, R.},
+author={Zhu, C.-B.},
+title={Local theta lifting of generalized Whittaker models associated to nilpotent orbits},
+journal={Geom. Funct. Anal.},
+year={2014},
+volume={24},
+number={3},
+pages={796--853},
+}
+
+\bib{EGAIV2}{article}{
+  title = {\'El\'ements de g\'eom\'etrie alg\'brique IV: \'Etude locale des
+    sch\'emas et des morphismes de sch\'emas. II},
+  author = {Grothendieck, A.},
+  author = {Dieudonn\'e, J.},
+  journal  = {Inst. Hautes \'Etudes Sci. Publ. Math.},
+  volume = {24},
+  year = {1965},
+}
+
+
+\bib{EGAIV3}{article}{
+  title = {\'El\'ements de g\'eom\'etrie alg\'brique IV: \'Etude locale des
+    sch\'emas et des morphismes de sch\'emas. III},
+  author = {Grothendieck, A.},
+  author = {Dieudonn\'e, J.},
+  journal  = {Inst. Hautes \'Etudes Sci. Publ. Math.},
+  volume = {28},
+  year = {1966},
+}
+
+
+\bib{HLS}{article}{
+    author = {Harris, M.},
+    author = {Li, J.-S.},
+    author = {Sun, B.},
+     title = {Theta correspondences for close unitary groups},
+ %booktitle = {Arithmetic Geometry and Automorphic Forms},
+    %series = {Adv. Lect. Math. (ALM)},
+    journal = {Arithmetic Geometry and Automorphic Forms, Adv. Lect. Math. (ALM)},
+    volume = {19},
+     pages = {265--307},
+ publisher = {Int. Press, Somerville, MA},
+      year = {2011},
+}
+
+\bib{HS}{book}{
+ author = {Hartshorne, R.},
+ title = {Algebraic Geometry},
+publisher={Graduate Texts in Mathematics, 52. New York-Heidelberg-Berlin: Springer-Verlag},
+year={1983},
+}
+
+\bib{He}{article}{
+author={He, H.},
+title={Unipotent representations and quantum induction},
+journal={arXiv:math/0210372},
+year = {2002},
+}
+
+\bib{HL}{article}{
+author={Huang, J.-S.},
+author={Li, J.-S.},
+title={Unipotent representations attached to spherical nilpotent orbits},
+journal={Amer. J. Math.},
+volume={121},
+number = {3},
+pages={497--517},
+year={1999},
+}
+
+
+\bib{HZ}{article}{
+author={Huang, J.-S.},
+author={Zhu, C.-B.},
+title={On certain small representations of indefinite orthogonal groups},
+journal={Represent. Theory},
+volume={1},
+pages={190--206},
+year={1997},
+}
+
+
+
+\bib{Howe79}{article}{
+  title={$\theta$-series and invariant theory},
+  author={Howe, R.},
+  book = {
+    title={Automorphic Forms, Representations and $L$-functions},
+    series={Proc. Sympos. Pure Math},
+    volume={33},
+    year={1979},
+  },
+  pages={275-285},
+}
+
+\bib{HoweRank}{article}{
+author={Howe, R.},
+title={On a notion of rank for unitary representations of the classical groups},
+journal={Harmonic analysis and group representations, Liguori, Naples},
+pages={223-331},
+year={1982},
+}
+
+\bib{Howe89}{article}{
+author={Howe, R.},
+title={Transcending classical invariant theory},
+journal={J. Amer. Math. Soc.},
+volume={2},
+pages={535--552},
+year={1989},
+}
+
+\bib{Howe95}{article}{,
+  author = {Howe, R.},
+  title = {Perspectives on invariant theory: Schur duality, multiplicity-free actions and beyond},
+  journal = {Piatetski-Shapiro, I. et al. (eds.), The Schur lectures (1992). Ramat-Gan: Bar-Ilan University, Isr. Math. Conf. Proc. 8,},
+  year = {1995},
+  pages = {1-182},
+}
+
+\bib{JLS}{article}{
+author={Jiang, D.},
+author={Liu, B.},
+author={Savin, G.},
+title={Raising nilpotent orbits in wave-front sets},
+journal={Represent. Theory},
+volume={20},
+pages={419--450},
+year={2016},
+}
+
+\bib{Ki62}{article}{
+author={Kirillov, A. A.},
+title={Unitary representations of nilpotent Lie groups},
+journal={Uspehi Mat. Nauk},
+volume={17},
+issue ={4},
+pages={57--110},
+year={1962},
+}
+
+
+\bib{Ko70}{article}{
+author={Kostant, B.},
+title={Quantization and unitary representations},
+journal={Lectures in Modern Analysis and Applications III, Lecture Notes in Math.},
+volume={170},
+pages={87--208},
+year={1970},
+}
+
+
+\bib{KP}{article}{
+author={Kraft, H.},
+author={Procesi, C.},
+title={On the geometry of conjugacy classes in classical groups},
+journal={Comment. Math. Helv.},
+volume={57},
+pages={539--602},
+year={1982},
+}
+
+\bib{KR}{article}{
+author={Kudla, S. S.},
+author={Rallis, S.},
+title={Degenerate principal series and invariant distributions},
+journal={Israel J. Math.},
+volume={69},
+pages={25--45},
+year={1990},
+}
+
+
+\bib{Ku}{article}{
+author={Kudla, S. S.},
+title={Some extensions of the Siegel-Weil formula},
+journal={In: Gan W., Kudla S., Tschinkel Y. (eds) Eisenstein Series and Applications. Progress in Mathematics, vol 258. Birkh\"auser Boston},
+%volume={69},
+pages={205--237},
+year={2008},
+}
+
+
+
+
+
+\bib{LZ1}{article}{
+author={Lee, S. T.},
+author={Zhu, C.-B.},
+title={Degenerate principal series and local theta correspondence II},
+journal={Israel J. Math.},
+volume={100},
+pages={29--59},
+year={1997},
+}
+
+\bib{LZ2}{article}{
+author={Lee, S. T.},
+author={Zhu, C.-B.},
+title={Degenerate principal series of metaplectic groups and Howe correspondence},
+journal = {D. Prasad at al. (eds.), Automorphic Representations and L-Functions, Tata Institute of Fundamental Research, India,},
+year = {2013},
+pages = {379--408},
+}
+
+\bib{Li89}{article}{
+author={Li, J.-S.},
+title={Singular unitary representations of classical groups},
+journal={Invent. Math.},
+volume={97},
+number = {2},
+pages={237--255},
+year={1989},
+}
+
+\bib{LiuAG}{book}{
+  title={Algebraic Geometry and Arithmetic Curves},
+  author = {Liu, Q.},
+  year = {2006},
+  publisher={Oxford University Press},
+}
+
+\bib{LM}{article}{
+   author = {Loke, H. Y.},
+   author = {Ma, J.},
+    title = {Invariants and $K$-spectrums of local theta lifts},
+    journal = {Compositio Math.},
+    volume = {151},
+    issue = {01},
+    year = {2015},
+    pages ={179--206},
+}
+
+\bib{LS}{article}{
+   author = {Lusztig, G.},
+   author = {Spaltenstein, N.},
+    title = {Induced unipotent classes},
+    journal = {j. London Math. Soc.},
+    volume = {19},
+    year = {1979},
+    pages ={41--52},
+}
+
+\bib{Lu.I}{article}{
+   author={Lusztig, G.},
+   title={Intersection cohomology complexes on a reductive group},
+   journal={Invent. Math.},
+   volume={75},
+   date={1984},
+   number={2},
+   pages={205--272},
+   issn={0020-9910},
+   review={\MR{732546}},
+   doi={10.1007/BF01388564},
+}
+	
+
+\bib{Ma}{article}{
+   author = {Mackey, G. W.},
+    title = {Unitary representations of group extentions},
+    journal = {Acta Math.},
+    volume = {99},
+    year = {1958},
+    pages ={265--311},
+}
+
+
+\bib{Mc}{article}{
+   author = {McGovern, W. M},
+    title = {Cells of Harish-Chandra modules for real classical groups},
+    journal = {Amer. J.  of Math.},
+    volume = {120},
+    issue = {01},
+    year = {1998},
+    pages ={211--228},
+}
+
+\bib{Mo96}{article}{
+ author={M{\oe}glin, C.},
+    title = {Front d'onde des repr\'esentations des groupes classiques $p$-adiques},
+    journal = {Amer. J. Math.},
+    volume = {118},
+    issue = {06},
+    year = {1996},
+    pages ={1313--1346},
+}
+
+\bib{Mo17}{article}{
+  author={M{\oe}glin, C.},
+  title = {Paquets d'Arthur Sp\'eciaux Unipotents aux Places Archim\'ediennes et Correspondance de Howe},
+  journal = {J. Cogdell et al. (eds.), Representation Theory, Number Theory, and Invariant Theory, In Honor of Roger Howe. Progress in Math.}
+  %series ={Progress in Math.},
+  volume = {323},
+  pages = {469--502}
+  year = {2017}
+}
+
+
+\bib{MVW}{book}{
+  volume={1291},
+  title={Correspondances de Howe sur un corps $p$-adique},
+  author={M{\oe}glin, C.},
+  author={Vign\'eras, M.-F.},
+  author={Waldspurger, J.-L.},
+  series={Lecture Notes in Mathematics},
+  publisher={Springer}
+  ISBN={978-3-540-18699-1},
+  date={1987},
+}
+
+\bib{NOTYK}{article}{
+   author = {Nishiyama, K.},
+   author = {Ochiai, H.},
+   author = {Taniguchi, K.},
+   author = {Yamashita, H.},
+   author = {Kato, S.},
+    title = {Nilpotent orbits, associated cycles and Whittaker models for highest weight representations},
+    journal = {Ast\'erisque},
+    volume = {273},
+    year = {2001},
+   pages ={1--163},
+}
+
+\bib{NOZ}{article}{
+  author = {Nishiyama, K.},
+  author = {Ochiai, H.},
+  author = {Zhu, C.-B.},
+  journal = {Trans. Amer. Math. Soc.},
+  title = {Theta lifting of nilpotent orbits for symmetric pairs},
+  volume = {358},
+  year = {2006},
+  pages = {2713--2734},
+}
+
+
+\bib{NZ}{article}{
+   author = {Nishiyama, K.},
+   author = {Zhu, C.-B.},
+    title = {Theta lifting of unitary lowest weight modules and their associated cycles},
+    journal = {Duke Math. J.},
+    volume = {125},
+    issue = {03},
+    year = {2004},
+   pages ={415--465},
+}
+
+
+
+\bib{Ohta}{article}{
+  author = {Ohta, T.},
+  %doi = {10.2748/tmj/1178227492},
+  journal = {Tohoku Math. J.},
+  number = {2},
+  pages = {161--211},
+  publisher = {Tohoku University, Mathematical Institute},
+  title = {The closures of nilpotent orbits in the classical symmetric
+    pairs and their singularities},
+  volume = {43},
+  year = {1991}
+}
+
+\bib{Ohta2}{article}{
+  author = {Ohta, T.},
+  journal = {Hiroshima Math. J.},
+  number = {2},
+  pages = {347--360},
+  title = {Induction of nilpotent orbits for real reductive groups and associated varieties of standard representations},
+  volume = {29},
+  year = {1999}
+}
+
+\bib{Ohta4}{article}{
+  title={Nilpotent orbits of $\mathbb{Z}_4$-graded Lie algebra and geometry of
+    moment maps associated to the dual pair $(\mathrm{U} (p, q), \mathrm{U} (r, s))$},
+  author={Ohta, T.},
+  journal={Publ. RIMS},
+  volume={41},
+  number={3},
+  pages={723--756},
+  year={2005}
+}
+
+\bib{PT}{article}{
+  title={Some small unipotent representations of indefinite orthogonal groups and the theta correspondence},
+  author={Paul, A.},
+  author={Trapa, P.},
+  journal={University of Aarhus Publ. Series},
+  volume={48},
+  pages={103--125},
+  year={2007}
+}
+
+
+\bib{PV}{article}{
+  title={Invariant Theory},
+  author={Popov, V. L.},
+  author={Vinberg, E. B.},
+  book={
+  title={Algebraic Geometry IV: Linear Algebraic Groups, Invariant Theory},
+  series={Encyclopedia of Mathematical Sciences},
+  volume={55},
+  year={1994},
+  publisher={Springer},}
+}
+
+
+
+
+%\bib{PPz}{article}{
+%author={Protsak, V.} ,
+%author={Przebinda, T.},
+%title={On the occurrence of admissible representations in the real Howe
+%    correspondence in stable range},
+%journal={Manuscr. Math.},
+%volume={126},
+%number={2},
+%pages={135--141},
+%year={2008}
+%}
+
+
+\bib{PrzInf}{article}{
+      author={Przebinda, T.},
+       title={The duality correspondence of infinitesimal characters},
+        date={1996},
+     journal={Colloq. Math.},
+      volume={70},
+       pages={93--102},
+}
+
+
+\bib{Pz}{article}{
+author={Przebinda, T.},
+title={Characters, dual pairs, and unitary representations},
+journal={Duke Math. J. },
+volume={69},
+number={3},
+pages={547--592},
+year={1993}
+}
+
+\bib{Ra}{article}{
+author={Rallis, S.},
+title={On the Howe duality conjecture},
+journal={Compositio Math.},
+volume={51},
+pages={333--399},
+year={1984}
+}
+
+\bib{Sa}{article}{
+author={Sahi, S.},
+title={Explicit Hilbert spaces for certain unipotent representations},
+journal={Invent. Math.},
+volume={110},
+number = {2},
+pages={409--418},
+year={1992}
+}
+
+\bib{Se}{article}{
+author={Sekiguchi, J.},
+title={Remarks on real nilpotent orbits of a symmetric pair},
+journal={J. Math. Soc. Japan},
+%publisher={The Mathematical Society of Japan},
+year={1987},
+volume={39},
+number={1},
+pages={127--138},
+}
+
+\bib{SV}{article}{
+  author = {Schmid, W.},
+  author = {Vilonen, K.},
+  journal = {Annals of Math.},
+  number = {3},
+  pages = {1071--1118},
+  %publisher = {Princeton University, Mathematics Department, Princeton, NJ; Mathematical Sciences Publishers, Berkeley},
+  title = {Characteristic cycles and wave front cycles of representations of reductive Lie groups},
+  volume = {151},
+year = {2000},
+}
+
+\bib{So}{article}{
+author = {Sommers, E.},
+title = {Lusztig's canonical quotient and generalized duality},
+journal = {J. Algebra},
+volume = {243},
+number = {2},
+pages = {790--812},
+year = {2001},
+}
+
+\bib{SS}{book}{
+  author = {Springer, T. A.},
+  author = {Steinberg, R.},
+  title = {Seminar on algebraic groups and related finite groups; Conjugate classes},
+  series = {Lecture Notes in Math.}
+  volume = {131}
+publisher={Springer},
+year={1970},
+}
+
+\bib{SZ1}{article}{
+title={A general form of Gelfand-Kazhdan criterion},
+author={Sun, B.},
+author={Zhu, C.-B.},
+journal={Manuscripta Math.},
+pages = {185--197},
+volume = {136},
+year={2011}
+}
+
+
+%\bib{SZ2}{article}{
+%  title={Conservation relations for local theta correspondence},
+%  author={Sun, B.},
+%  author={Zhu, C.-B.},
+%  journal={J. Amer. Math. Soc.},
+%  pages = {939--983},
+%  volume = {28},
+%  year={2015}
+%}
+
+
+
+\bib{Tr}{article}{
+  title={Special unipotent representations and the Howe correspondence},
+  author={Trapa, P.},
+  year = {2004},
+  journal={University of Aarhus Publication Series},
+  volume = {47},
+  pages= {210--230}
+}
+
+% \bib{Wa}{article}{
+%    author = {Waldspurger, J.-L.},
+%     title = {D\'{e}monstration d'une conjecture de dualit\'{e} de Howe dans le cas $p$-adique, $p \neq 2$ in Festschrift in honor of I. I. Piatetski-Shapiro on the occasion of his sixtieth birthday},
+%   journal = {Israel Math. Conf. Proc., 2, Weizmann, Jerusalem},
+%  year = {1990},
+% pages = {267-324},
+% }
+
+\bib{V4}{article}{
+   author={Vogan, D. A. },
+   title={Irreducible characters of semisimple Lie groups. IV.
+   Character-multiplicity duality},
+   journal={Duke Math. J.},
+   volume={49},
+   date={1982},
+   number={4},
+   pages={943--1073},
+   issn={0012-7094},
+   review={\MR{683010}},
+}
+\bib{VoBook}{book}{
+author = {Vogan, D. A. },
+  title={Unitary representations of reductive Lie groups},
+  year={1987},
+  series = {Ann. of Math. Stud.},
+ volume={118},
+  publisher={Princeton University Press}
+}
+
+
+\bib{Vo89}{article}{
+  author = {Vogan, D. A. },
+  title = {Associated varieties and unipotent representations},
+ %booktitle ={Harmonic analysis on reductive groups, Proc. Conf., Brunswick/ME (USA) 1989,},
+  journal = {Harmonic analysis on reductive groups, Proc. Conf., Brunswick/ME
+    (USA) 1989, Prog. Math.},
+ volume={101},
+  publisher = {Birkh\"{a}user, Boston-Basel-Berlin},
+  year = {1991},
+pages={315--388},
+  editor = {W. Barker and P. Sally},
+}
+
+\bib{Vo98}{article}{
+  author = {Vogan, D. A. },
+  title = {The method of coadjoint orbits for real reductive groups},
+ %booktitle ={Representation theory of Lie groups (Park City, UT, 1998)},
+ journal = {Representation theory of Lie groups (Park City, UT, 1998). IAS/Park City Math. Ser.},
+  volume={8},
+  publisher = {Amer. Math. Soc.},
+  year = {2000},
+pages={179--238},
+}
+
+\bib{Vo00}{article}{
+  author = {Vogan, D. A. },
+  title = {Unitary representations of reductive Lie groups},
+ %booktitle ={Mathematics towards the Third Millennium (Rome, 1999)},
+ journal ={Mathematics towards the Third Millennium (Rome, 1999). Accademia Nazionale dei Lincei, (2000)},
+  %series = {Accademia Nazionale dei Lincei, 2000},
+ %volume={9},
+pages={147--167},
+}
+
+
+\bib{Wa1}{book}{
+  title={Real reductive groups I},
+  author={Wallach, N. R.},
+  year={1988},
+  publisher={Academic Press Inc. }
+}
+
+\bib{Wa2}{book}{
+  title={Real reductive groups II},
+  author={Wallach, N. R.},
+  year={1992},
+  publisher={Academic Press Inc. }
+}
+
+
+\bib{Weyl}{book}{
+  title={The classical groups: their invariants and representations},
+  author={Weyl, H.},
+  year={1947},
+  publisher={Princeton University Press}
+}
+
+\bib{Ya}{article}{
+  title={Degenerate principal series representations for quaternionic unitary groups},
+  author={Yamana, S.},
+  year = {2011},
+  journal={Israel J. Math.},
+  volume = {185},
+  pages= {77--124}
+}
+
+
+
+% \bib{EGAIV4}{article}{
+%   title = {\'El\'ements de g\'eom\'etrie alg\'brique IV 4: \'Etude locale des
+%     sch\'emas et des morphismes de sch\'emas},
+%   author = {Grothendieck, Alexandre},
+%   author = {Dieudonn\'e, Jean},
+%   journal  = {Inst. Hautes \'Etudes Sci. Publ. Math.},
+%   volume = {32},
+%   year = {1967},
+%   pages = {5--361}
+% }
+
+
+
+\end{biblist}
+\end{bibdiv}
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% ispell-local-dictionary: "en_US"
+%%% End:
