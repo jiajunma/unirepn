@@ -10,9 +10,6 @@
 %   \SK@def\Cref#1{\SK@\SK@@ref{#1}\SK@Cref{#1}}%
 % \makeatother
 
-
-%\usepackage{refcheck}
-
 \usepackage{array}
 %% FONTS
 \usepackage{amssymb}
@@ -1787,11 +1784,7 @@ We further attach some objects to $\tau$ in what follows:
 
 
 
-  \noindent $(p_{\tau}, q_{\tau})$ : 
-  This is a pair of natural numbers given by the following recipe. 
- \begin{itemize}
-  \item 
-  If $\star_\tau\in \{B, D, C^*\}$, $(p_\tau, q_\tau)$ is given by counting  the various symbols appearing in $(\imath, \CP)$, $(\jmath, \CQ)$ and $\{\alpha\}$ :
+  \noindent $(p_{\tau}, q_{\tau})$ : If $\star_\tau\in \{B, D, C^*\}$, this is a pair of natural numbers given by counting  the various symbols appearing in $(\imath, \CP)$, $(\jmath, \CQ)$ and $\{\alpha\}$ :
   \begin{equation}\label{ptqt}
   \left\{
      \begin{array}{l}
@@ -1805,9 +1798,8 @@ Here
 \#\bullet:=\#(\cP^{-1}(\bullet))+\#(\cQ^{-1}(\bullet))\qquad (\textrm{$\#$ indicates the cardinality of a finite set}),
 \]
 and the other terms are similarly defined.
-\item
 If $\star_\tau\in \{C, \widetilde C, D^*\}$,  $p_\tau:=q_\tau:=\abs{\tau}$.
-\end{itemize}
+
 \smallskip
 
 
@@ -2938,20 +2930,10 @@ and
   \cX_{\mathsf s, \mathsf s'}^\circ:=\cX_{\mathsf s, \mathsf s'}\cap W_{\mathsf s, \mathsf s'}^\circ.
 \]
 
-
-\def\Ms{M_{\sfss}}
-\def\cXsso{\cX_{\sfss,\sfss'}^\circ}
-\def\cXss{\cX_{\sfss,\sfss'}}
-\def\Ksp{K_{\sfss',\bC}}
-\def\Lsp{L_{\sfss'}}
-\def\Ls{L_{\sfss}}
-\def\Vsp{V_{\sfss'}}
-\begin{lem}
- % [{\cf \cite[Lemma 13]{Ohta}, \cite[Lemma 3.4]{Zh}}] 
-  \label{descko}
+\begin{lem}[{\cf \cite[Lemma 13]{Ohta}, \cite[Lemma 3.4]{Zh}}] \label{descko}
 Let $\sO$ be a $K_{\mathsf s, \C}$-orbit in $\p_{\mathsf s}$. Suppose that $\sO$ is contained in the image of the moment map $M_\mathsf s$. Then the set
 \be\label{kkpo}
-  M_{\mathsf s}^{-1}(\sO)\cap \cXsso
+  M_{\mathsf s}^{-1}(\sO)\cap \cX_{\mathsf s, \mathsf s'}^\circ
 \ee
 is a single $K_{\mathsf s,\C}\times K_{\mathsf s', \C}$-orbit. Moreover, for every element $\phi$ in $M_{\mathsf s}^{-1}(\sO)\cap \cX_{\mathsf s, \mathsf s'}^\circ$, there is an exact sequence of algebraic groups:
 \[
@@ -2959,36 +2941,6 @@ is a single $K_{\mathsf s,\C}\times K_{\mathsf s', \C}$-orbit. Moreover, for eve
 \]
 where $\mathbf e:=M_\mathsf s(\phi)\in \sO$,  $(K_{\mathsf s',\C})_\phi$ is the stabilizer of $\phi$ in $K_{\mathsf s',\C}$, $(K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$ is the stabilizer of $\phi$ in $K_{\mathsf s,\C}\times K_{\mathsf s', \C}$, and $(K_{\mathsf s,\C})_{\mathbf e}$ is the stabilizer of $\mathbf e$ in $K_{\mathsf s,\C}$.
 \end{lem}
-\begin{proof}
- % Fix $\bfee\in \sO$, it suffice to show that $\Ms^{-1}(\bfee)\cap \cXsso$ is a single $\Ksp$-orbit.
- Take a $\tphi \in \Ms^{-1}(\bfee)$. Then $\Im(\tphi)$ is a $\Lsp$ invariant subspace of $\Vsp$. 
- Fix any $\Lsp$-invariant decomposition 
- \[
-  \Im(\tphi) = V'' \oplus N'
- \]
- such that the form $\inn{}{}_{\Vsp}$ is non-degenerate on $V''$ and zero on
- $N'$. Let $\phi$ be the composition of $\tphi$ with the projcetion to $V''$
- under the above decomposition. By construction,  
- $\phi$ is an element in  $\Ms^{-1}(\bfee)\cap \cXsso$, 
-  $\Ker(\phi) = \Ker(\bfee)$ is $\Ls$-invariant and 
-  \begin{equation}\label{eq:Imphi}
-  \dim (V'')_{\dot \epsilon \sqrt{-1} \lambda} = \dim \left(\frac{V_\sfss}{\Ker(\bfee)}\right)
-  _\lambda \quad \forall \lambda \in \set{\pm 1, \pm \sqrt{-1}}. 
-  \end{equation}
-  Here $(\_)_{\lambda}$ denote the $\lambda$-eignspace of  $\Ls$ or $\Lsp$. 
-
- When $\rank(\bfee) = \dim V_{\sfss'}$, 
-  the rest parts of the lemma was proved in \cite[Lemma 13]{Ohta}  
-
-  When $\rank(\bfee)< \dim V_{\sfss'}$, the lemma is reduced to the previous
-  case by the observation that the set 
-  \[
-   \Set{V''\subseteq \Vsp| \text{$V''$ is $\Lsp$-invariant, non-degenerate and satisfying \eqref{eq:Imphi} }}
-%    \begin{array}{l}\text{$V''$ is $\Lsp$-invariant, non-degenerate and}\\
-%  \text{\eqref{eq:Imphi} is satisfied} 
-  \]  
- form a single $\Ksp$-orbit. 
-\end{proof}
 
 
 In the notation of Lemma \ref{descko}, write
@@ -5116,10 +5068,10 @@ This proves the theorem.
 \def\Msp{M_{\sfss'}}
 
 
-\def\Ks{{K}_{\sfss,\bC}}
-\def\Ksp{{K}_{\sfss',\bC}}
-\def\Kspo{{K}_{\sfss'_0,\bC}}
-\def\Kspt{{K}_{\sfss'_1,\bC}}
+\def\Ks{{K}_{\sfss}}
+\def\Ksp{{K}_{\sfss'}}
+\def\Kspo{{K}_{\sfss'_0}}
+\def\Kspt{{K}_{\sfss'_1}}
 
 \def\Gs{{G}_{\sfss}}
 \def\Gsp{{G}_{\sfss'}}
@@ -6005,20 +5957,15 @@ $\cO$ as the function
 
 We equip $\St{i}$ with a ``standard'' classical space structure
  $(\St{i},\inn{}{}_{\St{i}},J_{\St{i}},L_{\St{i}})$. % with classical symbol $(\star_{i},p_{i},q_{i})$.
-Specifically,
-\def\Lsti{L_{\St{i}}}
-\def\Jsti{J_{\St{i}}}
-\def\innsti#1#2{\inn{#1}{#2}_{\St{i}}}
-\begin{itemize}
-  \item the classical signature of $\St{i}$ is $(B,(i+1)/2,(i-1)/2)$ if $i$ is odd and
-        $(C,i/2,i/2)$ if $i$ is even,
-  \item $J_{\St{i}}$ is the complex conjugation on $\St{i}=\Sym^{i-1}(\bC^{2})$,
-  \item $L_{\St{i}} = (-1)^{\floor{\frac{i-1}{2}}}\, \Sym^{i-1}(\text{\tiny$\begin{pmatrix}\phantom{-}0 & 1 \\-1 & 0 \end{pmatrix}$})$,
-  \item $\innsti{\varphi_i(x) u}{v}+ \innsti{u}{\varphi_i(x) v} = 0$ for all  $u,v\in \St{i}$ and $x\in \slt$,  
-  \item  the Hermitian form $(u,v)\mapsto \innsti{\Lsti(u)}{\Jsti(v)}$ on $\St{i}$ is positive definite.  
-\end{itemize}
-Note that $\innsti{}{}$ is a uniquely determined by the condition upto a positive scalar. 
-We fix the paring $\innsti{}{}$ for each $i$.
+ Specifically,
+ \begin{itemize}
+   \item the classical signature of $\St{i}$ is $(B,(i+1)/2,(i-1)/2)$ if $i$ is odd and
+         $(C,i/2,i/2)$ if $i$ is even,
+   \item $J_{\St{i}}$ is the complex conjugation on $\St{i}=\Sym^{i-1}(\bC^{2})$,
+   \item $L_{\St{i}} = (-1)^{\floor{\frac{i-1}{2}}}\, \Sym^{i-1}({\tiny\begin{pmatrix}\phantom{-}0 & 1 \\-1 & 0 \end{pmatrix}})$,
+   \item $\inn{}{}_{\St{i}}$ is uniquely determined by $J_{\St{i}}$ and $L_{\St{i}}$ up to
+         a positive scalar. (We fix one for each $i$.)
+          \end{itemize}
 
 \trivial[h]{\color{red} $L_{\St{i}}$ should be the Lie group element action.}
 
