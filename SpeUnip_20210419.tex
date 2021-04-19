@@ -10,9 +10,6 @@
 %   \SK@def\Cref#1{\SK@\SK@@ref{#1}\SK@Cref{#1}}%
 % \makeatother
 
-
-%\usepackage{refcheck}
-
 \usepackage{array}
 %% FONTS
 \usepackage{amssymb}
@@ -1443,7 +1440,7 @@ limit'', and it should have a specified support dictated by the nilpotent
 coadjoint orbit via the Kostant-Sekiguchi correspondence.
 
 Simultaneously but in an entirely different direction, there were significant
-developments in Howe's theory of (local) theta lifting and it was clear by the
+developments in Howe's theory of (local) theta lifting \cite{Howe79} and it was clear by the
 end of 1980's that the theory has much relevance for unitary representations of
 classical groups. The relevant works include the notion of rank by Howe
 \cite{HoweRank}, the description of discrete spectrum by Adams \cite{Ad83} and Li \cite{Li90},
@@ -1595,7 +1592,7 @@ Section \ref{sec:bipGeometry} is devoted to the geometry which we associate to $
 
 In Section \ref{sec:main}, we present our main results, on the classification and the associated cycles of special unipotent representations. There are two main ingredients in the proofs. First we will need to know that the associated cycle of $\pi_{\uptau}$ is equal to the associated cycle of $\uptau$ (Theorem \ref{thmpitau}). Second, the associated cycles (of Section \ref{sec:bipGeometry}) are shown to satisfy some remarkable properties, which enable us to distinguish various $\pi_{\uptau}$'s and to conclude the exhaustion of special unipotent representations from the counting.
 
-In Sections \ref{sec:Integrals} to \ref{sec:equac}, we develop the key representation theory tools of the paper. Section \ref{sec:Integrals} is devoted to the model of theta lifting by matrix coefficient integrals, as well as a general criterion on unitarity in this context. In Section \ref{sec:dtheta}, we investigate double theta lifting and its connection with degenerate principal series representations. In Section \ref{sec:AC}, we prove the bounding of associated cycles, using largely geometric arguments. In Section \ref{sec:equac}, we match the associated cycle of $\pi_{\uptau}$ with the associated cycle of $\uptau$, as a consequence of the bounding of associated cycles in Section \ref{sec:AC} and results of Section \ref{sec:dtheta}. (Heuristically one may view results of Section \ref{sec:dtheta} as providing a bound of associated cycles from below.)
+In Sections \ref{sec:Integrals} to \ref{sec:equac}, we develop the key representation theory tools of the paper. Section \ref{sec:Integrals} is devoted to the model of theta lifting by matrix coefficient integrals, as well as a general criterion on unitarity in this context. In Section \ref{sec:dtheta}, we investigate double theta lifting and its connection with degenerate principal series representations. (Some of the key ideas of Section \ref{sec:dtheta} were due to He \cite{He}, and may be viewed as a variant of the doubling method \cite[Section II]{Ra}.) In Section \ref{sec:AC}, we prove the bounding of associated cycles, using largely geometric arguments. In Section \ref{sec:equac}, we match the associated cycle of $\pi_{\uptau}$ with the associated cycle of $\uptau$, as a consequence of the bounding of associated cycles in Section \ref{sec:AC} and results of Section \ref{sec:dtheta}. (Heuristically one may view results of Section \ref{sec:dtheta} as providing a bound of associated cycles from below.)
 
 The rest of sections (from Section \ref{sec:nilmis} to Section \ref{sec:ACC}) consist of miscellaneous results on nilpotent orbits, painted bipartitions as well as proofs of relevant properties of associated cycles, which we require in the investigations of the earlier sections. We have organized our presentation in this way with the hope that the ideas and results of this paper may be brought out to the readers as clearly and as expeditiously as possible.
 
@@ -1787,10 +1784,10 @@ We further attach some objects to $\tau$ in what follows:
 
 
 
-  \noindent $(p_{\tau}, q_{\tau})$ : 
-  This is a pair of natural numbers given by the following recipe. 
+  \noindent $(p_{\tau}, q_{\tau})$ :
+  This is a pair of natural numbers given by the following recipe.
  \begin{itemize}
-  \item 
+  \item
   If $\star_\tau\in \{B, D, C^*\}$, $(p_\tau, q_\tau)$ is given by counting  the various symbols appearing in $(\imath, \CP)$, $(\jmath, \CQ)$ and $\{\alpha\}$ :
   \begin{equation}\label{ptqt}
   \left\{
@@ -2150,7 +2147,9 @@ We also define the following extended parameter set:
 \mathrm{PBP}_\star(\check \CO)\times \{\emptyset \},\quad& \textrm{if }\star\in \{C^*, D^*\}.
 \end{cases}
 \end{equation}
-We use $\uptau=(\tau,\wp)$ to denote an element in $\PBPes(\ckcO)$.
+Here and in the sequel, $\emptyset$ denotes the empty set (in the usual way), as well as the empty Young diagram or the painted Young diagram whose underlying Young diagram is empty.
+
+In what follows, we will use $\uptau=(\tau,\wp)$ to denote an element in $\PBPes(\ckcO)$.
 
 Put
 \begin{equation}\label{def:unipGc}
@@ -2216,7 +2215,7 @@ We call $\star'$
  \[
   \check \nabla_{\mathrm{naive}}(\check \CO):= \textrm{the Young diagram obtained from $\check \CO$ by removing the first row}.
   \]
-   By convention, $\check \nabla_{\mathrm{naive}}(\emptyset)=\emptyset$. Here and in the sequel, $\emptyset$ denotes the empty set (in the usual way), as well as the empty Young diagram or the painted Young diagram whose underlying Young diagram is empty.
+   By convention, $\check \nabla_{\mathrm{naive}}(\emptyset)=\emptyset$.
 
    The dual descent of $\check \CO$ is defined to be
   \[
@@ -2910,15 +2909,16 @@ Write
    W_{\mathsf s, \mathsf s'}=\cX_{\mathsf s, \mathsf s'}\oplus  \cY_{\mathsf s, \mathsf s'},
 \end{equation}
 where $\cX_{\mathsf s, \mathsf s'}$ and $ \cY_{\mathsf s, \mathsf s'}$ are  the eigenspaces of $L_{\mathsf s, \mathsf s'}$ with eigenvalues $\sqrt{-1}$ and $-\sqrt{-1}$, respectively.
-Then we have the following two well-defined algebraic maps:
+Then we have the following two well-defined algebraic maps: (\cite[Section 1]{KP} and \cite[Section 2]{NOZ})
   \be\label{momentmap}
     \xymatrix@R=0em@C=4em{
       \fpp_\mathsf s &\ar[l]_{M_\mathsf s:=M_\mathsf s^{\sfss, \sfss'}} \cX_{\mathsf s, \mathsf s'}\ar[r]^{M_{\sfss'}:=M_{\mathsf s'}^{\sfss, \sfss'}}& \fpp_{\mathsf s'},\\
      \phi^* \phi & \ar@{|->}[l] \phi \ar@{|->}[r] & \phi \phi^*.
     }
   \ee
+
 \delete{
-Then we have the following two well-defined algebraic maps:
+Then we have the following two well-defined algebraic maps: (\cite[Section 1]{KP} and \cite[Section 2]{NOZ})
   \be\label{momentmap}
     \xymatrix@R=0em@C=3em{
       \fpp_\mathsf s &\ar[l]_{M_\mathsf s} \cX_{\mathsf s, \mathsf s'}\ar[r]^{M_{\mathsf s'}}& \fpp_{\mathsf s'},\\
@@ -2947,7 +2947,7 @@ and
 \def\Ls{L_{\sfss}}
 \def\Vsp{V_{\sfss'}}
 \begin{lem}
- % [{\cf \cite[Lemma 13]{Ohta}, \cite[Lemma 3.4]{Zh}}] 
+ % [{\cf \cite[Lemma 13]{Ohta}, \cite[Lemma 3.4]{Zh}}]
   \label{descko}
 Let $\sO$ be a $K_{\mathsf s, \C}$-orbit in $\p_{\mathsf s}$. Suppose that $\sO$ is contained in the image of the moment map $M_\mathsf s$. Then the set
 \be\label{kkpo}
@@ -2959,35 +2959,39 @@ is a single $K_{\mathsf s,\C}\times K_{\mathsf s', \C}$-orbit. Moreover, for eve
 \]
 where $\mathbf e:=M_\mathsf s(\phi)\in \sO$,  $(K_{\mathsf s',\C})_\phi$ is the stabilizer of $\phi$ in $K_{\mathsf s',\C}$, $(K_{\mathsf s,\C}\times K_{\mathsf s', \C})_\phi$ is the stabilizer of $\phi$ in $K_{\mathsf s,\C}\times K_{\mathsf s', \C}$, and $(K_{\mathsf s,\C})_{\mathbf e}$ is the stabilizer of $\mathbf e$ in $K_{\mathsf s,\C}$.
 \end{lem}
+
+\begin{remark} A version of Lemma \ref{descko} for a nilpotent $G$-orbit in $\g_{\R}$ is in \cite[Lemma 3.4]{Zh}.
+\end{remark}
+
 \begin{proof}
  % Fix $\bfee\in \sO$, it suffice to show that $\Ms^{-1}(\bfee)\cap \cXsso$ is a single $\Ksp$-orbit.
- Take a $\tphi \in \Ms^{-1}(\bfee)$. Then $\Im(\tphi)$ is a $\Lsp$ invariant subspace of $\Vsp$. 
- Fix any $\Lsp$-invariant decomposition 
+ Take a $\tphi \in \Ms^{-1}(\bfee)$. Then $\Im(\tphi)$ is a $\Lsp$-invariant subspace of $\Vsp$.
+ Fix any $\Lsp$-invariant decomposition
  \[
   \Im(\tphi) = V'' \oplus N'
  \]
  such that the form $\inn{}{}_{\Vsp}$ is non-degenerate on $V''$ and zero on
- $N'$. Let $\phi$ be the composition of $\tphi$ with the projcetion to $V''$
- under the above decomposition. By construction,  
- $\phi$ is an element in  $\Ms^{-1}(\bfee)\cap \cXsso$, 
-  $\Ker(\phi) = \Ker(\bfee)$ is $\Ls$-invariant and 
+ $N'$. Let $\phi$ be the composition of $\tphi$ with the projection to $V''$
+ in the above decomposition. By construction,
+ $\phi$ is an element in  $\Ms^{-1}(\bfee)\cap \cXsso$,
+  $\Ker(\phi) = \Ker(\bfee)$ is $\Ls$-invariant and
   \begin{equation}\label{eq:Imphi}
   \dim (V'')_{\dot \epsilon \sqrt{-1} \lambda} = \dim \left(\frac{V_\sfss}{\Ker(\bfee)}\right)
-  _\lambda \quad \forall \lambda \in \set{\pm 1, \pm \sqrt{-1}}. 
+  _\lambda \quad \forall \lambda \in \set{\pm 1, \pm \sqrt{-1}}.
   \end{equation}
-  Here $(\_)_{\lambda}$ denote the $\lambda$-eignspace of  $\Ls$ or $\Lsp$. 
+  Here for a complex number $\lambda $, the subscript $\lambda$ in the $(\_)_{\lambda}$ indicates the $\lambda$-eigenspace of $\Ls$ (or $\Lsp$).
 
- When $\rank(\bfee) = \dim V_{\sfss'}$, 
-  the rest parts of the lemma was proved in \cite[Lemma 13]{Ohta}  
+ When $\rank(\bfee) = \dim V_{\sfss'}$,
+  the rest of the lemma is proved in \cite[Lemma 13]{Ohta}.
 
   When $\rank(\bfee)< \dim V_{\sfss'}$, the lemma is reduced to the previous
-  case by the observation that the set 
+  case by observing that the set
   \[
    \Set{V''\subseteq \Vsp| \text{$V''$ is $\Lsp$-invariant, non-degenerate and satisfying \eqref{eq:Imphi} }}
 %    \begin{array}{l}\text{$V''$ is $\Lsp$-invariant, non-degenerate and}\\
-%  \text{\eqref{eq:Imphi} is satisfied} 
-  \]  
- form a single $\Ksp$-orbit. 
+%  \text{\eqref{eq:Imphi} is satisfied}
+  \]
+ forms a single $\Ksp$-orbit.
 \end{proof}
 
 
@@ -3887,6 +3891,8 @@ We will prove the  following unitarity result in  the rest of this subsection.
 Assume that $\abs{\mathsf s}\geq \nu^\circ_{\mathsf s'}$. Let $\pi'$ be a Casselman-Wallach representation of $G_{\mathsf s'}$ that is overconvergent  for $\check \Theta_{\mathsf s'}^{\mathsf s}$. If $\pi'$ is unitarizable, then so is $\Thetab_{\mathbf s'}^{\mathbf s}(\pi')$.
 \end{thm}
 
+\begin{remark} Another approach to unitarity in the context of theta lifting is due to He, using his notion of strongly semistable range (\cite[Chapter 5]{He} or \cite{He2}).
+\end{remark}
 
 
 Recall the following positivity result of matrix coefficient integrals, which is a special case of \cite[Theorem A. 5]{HLS}.
@@ -4390,7 +4396,8 @@ If  $\dot \star\in \{B,D\}$, there are two characters satisfying \eqref{chid}, a
 
 
 The relationship between the degenerate principle series representation $I(\dot{\chi})$ and
-Rallis quotients is summarized in the following lemma.
+Rallis quotients is summarized in the following lemma. The idea originated in \cite[Section II]{Ra} (see also \cite{KR}).
+
 \begin{lem}\label{degens}%The following statements hold true.
 \noindent
 (a) If $\star\in \{B,D\}$,  then
@@ -6014,10 +6021,10 @@ Specifically,
         $(C,i/2,i/2)$ if $i$ is even,
   \item $J_{\St{i}}$ is the complex conjugation on $\St{i}=\Sym^{i-1}(\bC^{2})$,
   \item $L_{\St{i}} = (-1)^{\floor{\frac{i-1}{2}}}\, \Sym^{i-1}(\text{\tiny$\begin{pmatrix}\phantom{-}0 & 1 \\-1 & 0 \end{pmatrix}$})$,
-  \item $\innsti{\varphi_i(x) u}{v}+ \innsti{u}{\varphi_i(x) v} = 0$ for all  $u,v\in \St{i}$ and $x\in \slt$,  
-  \item  the Hermitian form $(u,v)\mapsto \innsti{\Lsti(u)}{\Jsti(v)}$ on $\St{i}$ is positive definite.  
+  \item $\innsti{\varphi_i(x) u}{v}+ \innsti{u}{\varphi_i(x) v} = 0$ for all  $u,v\in \St{i}$ and $x\in \slt$,
+  \item  the Hermitian form $(u,v)\mapsto \innsti{\Lsti(u)}{\Jsti(v)}$ on $\St{i}$ is positive definite.
 \end{itemize}
-Note that $\innsti{}{}$ is a uniquely determined by the condition upto a positive scalar. 
+Note that $\innsti{}{}$ is a uniquely determined by the above conditions up to a positive scalar.
 We fix the paring $\innsti{}{}$ for each $i$.
 
 \trivial[h]{\color{red} $L_{\St{i}}$ should be the Lie group element action.}
@@ -8398,6 +8405,7 @@ pages = {1--39},
   publisher={Birkhauser}
 }
 
+\delete{
 \bib{AC}{article}{
   title={Algorithms for representation theory of
     real reductive groups},
@@ -8411,6 +8419,7 @@ pages = {1--39},
     Fokko},
   year={2009},
   pages={209-259}
+}
 }
 
 \bib{ArPro}{article}{
@@ -8464,21 +8473,6 @@ pages = {1--39},
       year = {2000},
 }
 
-\bib{B.W}{article}{
-  author={Barbasch, D.},
-  author={Vogan, David},
-  editor={Trombi, P. C.},
-  title={Weyl Group Representations and Nilpotent Orbits},
-  bookTitle={Representation Theory of Reductive Groups:
-    Proceedings of the University of Utah Conference 1982},
-  year={1983},
-  publisher={Birkh{\"a}user Boston},
-  address={Boston, MA},
-  pages={21--33},
-  %doi={10.1007/978-1-4684-6730-7_2},
-}
-
-
 
 \bib{B.Orbit}{article}{
   author = {Barbasch, D.},
@@ -8493,7 +8487,7 @@ pages = {1--39},
 }
 
 
-
+\delete{
 \bib{B10}{article}{
   author = {Barbasch, D.},
   title = {The unitary spherical spectrum for split classical groups},
@@ -8503,7 +8497,7 @@ pages = {1--39},
  volume = {9},
  year = {2010}
 }
-
+}
 
 
 \bib{B17}{article}{
@@ -8534,6 +8528,7 @@ pages = {1--39},
   journal = {in preparation},
 }
 
+\delete{
 \bib{BV83}{article}{
  author = {Barbasch, D.},
  author = {Vogan, D. A.},
@@ -8542,6 +8537,7 @@ pages = {1--39},
  volume = {40},
  pages = {21--33},
  year = {1983}
+}
 }
 
 \bib{BVUni}{article}{
@@ -8573,19 +8569,20 @@ pages = {1--39},
 }
 
 \bib{BK}{article}{
-author={Borho, Walter},
-author={Kraft, Hanspeter},
+author={Borho, W.},
+author={Kraft, H.},
 title={\"{U}ber die Gelfand-Kirillov-Dimension},
 journal={Math. Ann.},
 volume={220},
 date={1976},
 number={1},
 pages={1--24},
-issn={0025-5831},
-review={\MR{412240}},
-doi={10.1007/BF01354525},
+%issn={0025-5831},
+%review={\MR{412240}},
+%doi={10.1007/BF01354525},
 }
 
+\delete{
 \bib{Carter}{book}{
    author={Carter, R. W.},
    title={Finite groups of Lie type},
@@ -8598,6 +8595,7 @@ doi={10.1007/BF01354525},
    pages={xii+544},
    isbn={0-471-94109-3},
    %review={\MR{1266626}},
+}
 }
 
 \bib{Ca89}{article}{
@@ -8619,7 +8617,6 @@ doi={10.1007/BF01354525},
  year = {2021},
 }
 
-%Chen, Yangyang; Sun, Binyong; Schwartz homologies of representations of almost linear Nash groups. J. Funct. Anal. 280 (2021), no. 7, 108817
 
 \bib{Cl89}{article}{
   author = {du Cloux, F.},
@@ -8632,7 +8629,7 @@ doi={10.1007/BF01354525},
   year = {1989},
 }
 
-
+\delete{
 \bib{Cl}{article}{
   author = {du Cloux, F.},
   journal = {Ann. Sci. \'Ecole Norm. Sup.},
@@ -8642,6 +8639,7 @@ doi={10.1007/BF01354525},
   url = {http://eudml.org/doc/82297},
   volume = {24},
   year = {1991},
+}
 }
 
 \bib{CM}{book}{
@@ -8686,6 +8684,7 @@ author = {Kra\'skiewicz, W.},
 author = {Przebinda, T.},
 }
 
+\delete{
 \bib{DKP2}{article}{
   author = {Daszkiewicz, A.},
   author = {Kra\'skiewicz, W.},
@@ -8697,7 +8696,7 @@ author = {Przebinda, T.},
   volume = {3},
   pages = {430--474},
 }
-
+}
 
 \bib{DM}{article}{
   author = {Dixmier, J.},
@@ -8862,6 +8861,7 @@ pages={535--552},
 year={1989},
 }
 
+\delete{
 \bib{Howe95}{article}{,
   author = {Howe, R.},
   title = {Perspectives on invariant theory: Schur duality, multiplicity-free actions and beyond},
@@ -8869,7 +8869,9 @@ year={1989},
   year = {1995},
   pages = {1-182},
 }
+}
 
+\delete{
 \bib{JLS}{article}{
 author={Jiang, D.},
 author={Liu, B.},
@@ -8879,6 +8881,7 @@ journal={Represent. Theory},
 volume={20},
 pages={419--450},
 year={2016},
+}
 }
 
 \bib{Ki62}{article}{
@@ -9003,6 +9006,7 @@ year={1990},
     pages ={41--52},
 }
 
+\delete{
 \bib{Lu.I}{article}{
    author={Lusztig, G.},
    title={Intersection cohomology complexes on a reductive group},
@@ -9015,7 +9019,7 @@ year={1990},
    review={\MR{732546}},
    doi={10.1007/BF01388564},
 }
-
+}
 
 \bib{Ma}{article}{
    author = {Mackey, G. W.},
@@ -9027,6 +9031,7 @@ year={1990},
 }
 
 
+\delete{
 \bib{Mc}{article}{
    author = {McGovern, W. M},
     title = {Cells of Harish-Chandra modules for real classical groups},
@@ -9036,7 +9041,9 @@ year={1990},
     year = {1998},
     pages ={211--228},
 }
+}
 
+\delete{
 \bib{Mo96}{article}{
  author={M{\oe}glin, C.},
     title = {Front d'onde des repr\'esentations des groupes classiques $p$-adiques},
@@ -9045,6 +9052,7 @@ year={1990},
     issue = {06},
     year = {1996},
     pages ={1313--1346},
+}
 }
 
 \bib{Mo17}{article}{
@@ -9070,6 +9078,7 @@ year={1990},
     }
 
 
+\delete{
 \bib{MVW}{book}{
   volume={1291},
   title={Correspondances de Howe sur un corps $p$-adique},
@@ -9080,6 +9089,7 @@ year={1990},
   publisher={Springer}
   ISBN={978-3-540-18699-1},
   date={1987},
+}
 }
 
 \bib{NOTYK}{article}{
@@ -9133,7 +9143,7 @@ year={1990},
   year = {1991}
 }
 
-\bib{Ohta2}{article}{
+\delete{\bib{Ohta2}{article}{
   author = {Ohta, T.},
   journal = {Hiroshima Math. J.},
   number = {2},
@@ -9142,7 +9152,9 @@ year={1990},
   volume = {29},
   year = {1999}
 }
+}
 
+\delete{
 \bib{Ohta4}{article}{
   title={Nilpotent orbits of $\mathbb{Z}_4$-graded Lie algebra and geometry of
     moment maps associated to the dual pair $(\mathrm{U} (p, q), \mathrm{U} (r, s))$},
@@ -9152,6 +9164,7 @@ year={1990},
   number={3},
   pages={723--756},
   year={2005}
+}
 }
 
 \bib{PT}{article}{
@@ -9165,6 +9178,7 @@ year={1990},
 }
 
 
+\delete{
 \bib{PV}{article}{
   title={Invariant Theory},
   author={Popov, V. L.},
@@ -9176,7 +9190,7 @@ year={1990},
   year={1994},
   publisher={Springer},}
 }
-
+}
 
 
 
@@ -9222,6 +9236,7 @@ pages={333--399},
 year={1984}
 }
 
+\delete{
 \bib{RT}{article}{
    author={Renard, D.},
    author={Trapa, P.},
@@ -9233,7 +9248,7 @@ year={1984}
    pages={245--295},
    doi={10.1090/S1088-4165-00-00105-9},
 }
-	
+}	
 
 \bib{Sa}{article}{
 author={Sahi, S.},
@@ -9268,6 +9283,7 @@ pages={127--138},
 year = {2000},
 }
 
+\delete{
 \bib{So}{article}{
 author = {Sommers, E.},
 title = {Lusztig's canonical quotient and generalized duality},
@@ -9277,7 +9293,9 @@ number = {2},
 pages = {790--812},
 year = {2001},
 }
+}
 
+\delete{
 \bib{SS}{book}{
   author = {Springer, T. A.},
   author = {Steinberg, R.},
@@ -9286,6 +9304,7 @@ year = {2001},
   volume = {131}
 publisher={Springer},
 year={1970},
+}
 }
 
 \bib{SZ1}{article}{
@@ -9328,6 +9347,7 @@ year={2011}
 % pages = {267-324},
 % }
 
+\delete{
 \bib{V4}{article}{
    author={Vogan, D. A. },
    title={Irreducible characters of semisimple Lie groups. IV.
@@ -9340,6 +9360,8 @@ year={2011}
    issn={0012-7094},
    review={\MR{683010}},
 }
+}
+
 \bib{VoBook}{book}{
 author = {Vogan, D. A. },
   title={Unitary representations of reductive Lie groups},
@@ -9410,11 +9432,13 @@ pages={147--167},
 }
 
 
+\delete{
 \bib{Weyl}{book}{
   title={The classical groups: their invariants and representations},
   author={Weyl, H.},
   year={1947},
   publisher={Princeton University Press}
+}
 }
 
 \bib{Ya}{article}{
