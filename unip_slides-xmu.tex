@@ -1,5 +1,5 @@
-\documentclass[t,mathserif,11pt,handout,usenames,dvipsnames]{beamer} 
-%\documentclass[t,mathserif,11pt,usenames,dvipsnames]{beamer} 
+%\documentclass[t,mathserif,11pt,handout,usenames,dvipsnames]{beamer} 
+\documentclass[t,mathserif,11pt,usenames,dvipsnames]{beamer} 
 %\documentclass[t,mathserif,11pt]{beamer} 
 %\usetheme{Berlin}
 %\usecolortheme{seahorse}
@@ -138,7 +138,7 @@
 \newcommand{\eva}{\mathrm{eva}}
 
 \newcommand\iso{\xrightarrow{
-   \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+\,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
 
 \def\tmu{\tilde{\mu}}
 
@@ -177,10 +177,10 @@
 
 \makeatletter
 \def\inn#1#2{\left\langle 
-      \def\ta{#1}\def\tb{#2}
-      \ifx\ta\@empty{\;} \else {\ta}\fi ,
-      \ifx\tb\@empty{\;} \else {\tb}\fi
-      \right\rangle} 
+\def\ta{#1}\def\tb{#2}
+\ifx\ta\@empty{\;} \else {\ta}\fi ,
+\ifx\tb\@empty{\;} \else {\tb}\fi
+\right\rangle} 
 \makeatother
 
 \def\innw#1#2{\inn{#1}{#2}_{W}}
@@ -206,9 +206,9 @@
 \def\mydefsf#1{\expandafter\def\csname sf#1\endcsname{\mathsf{#1}}}
 \def\mydefs#1{\expandafter\def\csname s#1\endcsname{\mathscr{#1}}}
 \def\mydefcks#1{\expandafter\def\csname cks#1\endcsname{{\check{
-      \csname s#1\endcsname}}}}
+\csname s#1\endcsname}}}}
 \def\mydefck#1{\expandafter\def\csname ck#1\endcsname{{\check{
-      #1}}}}
+#1}}}}
 
 \def\mydefbfdowncase#1{
 \expandafter\def\csname bf#1#1\endcsname{\mathbf{#1}}
@@ -517,7 +517,7 @@
 
 \def\MM{\sfM}
 \def\MMp{\sfM'}
-\def\Nil{\mathbf{Nil}}
+\def\Nil{\mathrm{Nil}}
 
 \def\barX{\bar{X}}
 
@@ -554,7 +554,7 @@
 
 \def\TTPG{
 \begin{frame}[c]{}
-\tableofcontents[currentsection,hideallsubsections,subsubsectionstyle=hide]
+    \tableofcontents[currentsection,hideallsubsections,subsubsectionstyle=hide]
 \end{frame}
 }
 
@@ -574,8 +574,8 @@
 \usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing}
 
 \title[Uni. Repn.]{Special unipotent representations \\
-  of real classical groups \\
-  and theta correspondence}
+of real classical groups \\
+and theta correspondence}
 
 \author[Ma, Jia-Jun]{Ma, Jia-Jun\\[2em] 
 (joint with Dan Barbasch, Binyong Sun and  Chengbo Zhu)
@@ -605,623 +605,476 @@ Shanghai Jiao Tong University}
 %\includeonlyframes{CG,AC,EX}
 %\includeonlyframes{CT}
 
+%\usefonttheme[onlymath]{serif}
+\usefonttheme{serif}
+
 \begin{document}
 
 \begin{frame}[plain,label=tt]
-
-  \titlepage
+    
+    \titlepage
+    \vspace{-3em}
+\centering{
+    (Xiamen, Tianyuan Mathematical Cernter )
+}
 \end{frame}
 
 
 % \begin{frame}[c]{Outline}
-%   \tableofcontents[hideallsubsections,subsubsectionstyle=hide]
-% \end{frame}
-
-\section{Motivation}
-
-\begin{frame}[label=DU]
-  \frametitle{Classical groups and special unipotent representations}
-  \begin{table}
-    \centering
-    \begin{tabular}{c|c|c|c|c}
-      \hline
-      & $G$ & $\bfG$  & $\bfG^\vee$ & \\
-      \hline
-      \hline
-     $D_n$ & $\rO(p,2n-p)$ & $\rO(2n,\bC)$& $\rO(2n,\bC)$ & $D_n$\\
-      \hline
-     $C_n$ & $\Sp(2n,\bR)$ & $\rSp(2n,\bC)$& $\SO(2n+1,\bC)$ & $B_n$\\
-      \hline
-      \hline
-     $B_n$ & $\rO(p,2n+1-p)$ & $\rO(2n+1,\bC)$& $\Sp(2n,\bC)$ & $C_n$\\
-      \hline
-     ${\widetilde C}_n$ &  $\Mp(2n,\bR)$ & $\Sp(2n,\bC)$ & $\Sp(2n,\bC)$ & $C_n$\\
-      \hline 
-      \hline
-     $D_n$ &  $\rO^*(n)$ & $\SO(2n,\bC)$ & $\SO(2n,\bC)$ & $D_n$\\
-      \hline
-      $C_n$ & $\Sp(p,q)$ & $\Sp(2n,\bC)$ & $\SO(2n+1,\bC)$ & $B_n$\\
-      \hline 
-    \end{tabular}
-  \end{table}
-  
-  \pause
-  \centering{ $\Nil(\bfG^\vee):=\set{\text{nilpotent oribt in }\bfG^\vee }$}
-  \pause 
-
-  \begin{block}{Theorem (Barbasch-M.-Sun-Zhu)}
-    Arthur-Barbasch-Vogan's conjecture on special unipotent repn. holds:
-    \pause
+    %   \tableofcontents[hideallsubsections,subsubsectionstyle=hide]
+    % \end{frame}
     
-    \centering{All elements in  $\Unip_{\ckcO}(G)$ are \emph{unitarizable}.}
-  \end{block}
-\end{frame}
-
-
-\begin{frame}[label=DU]
-  \frametitle{Barbasch-Vogan's definition of unipotent representation}
-  \begin{itemize}[<+->]
-
-  \item[]  nilpotent orbit $\ckcO$ in  
-    $\bfG^\vee$.  
-\item[] \hspace{4em} $\leadsto$ $\phi\colon \SL(2,\bC)\rightarrow \bfG^\vee$
-(Jacobson-Morozov)
-  \item[] \hspace{4em} $\leadsto$ an infinitesimal character $\half d\phi({\tiny\begin{pmatrix} 1 & 0 \\ 0 & -1\\ \end{pmatrix} })\leftrightarrow \chi_{\cO^\vee}$  
- 
-\item[] \hspace{4em} $\leadsto$ the maximal primitive ideal $\cI_\ckcO$ with inf. char.  $\chi_{\ckcO}$
-\item  \emph{Definition} (Barbasch-Vogan):
-\item [] An irreducible admissible $G$-representation is called 
-     \emph{unipotent} if 
-     \[
-      \Ann_{\cU(\fgg)}(\pi) = \cI_{\ckcO}.
-     \]
-\item  \emph{Theorem} (Barbasch-Vogan):
-\item[]
- An irr. $G$-module has inf. char. $\chi_{\ckcO}$ is uninpotent 
-$\Longleftrightarrow$
- \[
- \text{associated variety of } \Ann_{\cU(\fgg)}(\pi) = \overline{\cO}
- \]
-\item[] Here $\cO$ is the  Lusztig-Spaltenstein-Barbasch-Vogan dual of $\ckcO$.
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}[label=DU]
-  \frametitle{Conjecture}
-  \begin{itemize}[<+->]
-  \item \emph{Conjecture}: $\Unip_{\ckcO}(G)$ consists of {\red unitary} representations.
-  %\item []  Proved by Barbasch-Vogan for complex reductive groups.
-  \item Question: How to construct elements in $\Unip_{\ckcO}(G)$?
-  \item Question: How many elements are there in $\Unip_{\ckcO}(G)$?
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[label=CG]
-  \frametitle{Nilpotent orbits with ``good/bad parity''}
-  \begin{itemize}[<+->]
-  \item Bad parity (must occurs with even multiplicity in $\ckcO$):
-  \[
-  \begin{cases}
-   \text{even number,} & \text{when $\bfG^\vee$ is type $B,D$}\\ 
-   \text{odd number,} & \text{when $\bfG^\vee$ is type $C$} 
-  \end{cases}
-  \]
-  \item[]   
-  \item  $\ckcO$ has \emph{``good parity'' } if $\ckcO$ only contains 
-  \[
-  \begin{cases}
-   \text{odd rows} & \text{when $\bfG^\vee$ is type $B,D$}\\ 
-   \text{even rows} & \text{when $\bfG^\vee$ is type $C$} 
-  \end{cases}
-  \]
-  \item Example of good parity:
-  \[
-    \begin{tikzcd}[ampersand replacement=\&,column sep=3em,row sep = -0.2em]     
-       \cO \&  \vcO  \\
-       \ydiagram{4,4,4,2} \& \ydiagram{5,3,3,3,1} \\  
-      \Sp(14,\bC) \& \SO(15,\bC)
-    \end{tikzcd} 
-  \]
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Reduction to the ``good parity''}
-    \begin{itemize}
-    \item Consider $G= \Sp(2n,\bR)$. 
-    \item  $\ckcO$ decompose into two parts $\ckcO_{g}$ (good parity)  and $\ckcO_{b}$ (bad parity).
-    \item Assume $\ckcO_{b} = \{r_1, r_1, \cdots, r_k, r_k\}$,  $\abs{\ckcO_b}=2n_1$ and 
-    $|\ckcO_{g}| = 2n_0$
-    \item[] {\lblue Theorem} (Let $\ckcO'_b = \set{r_1,\cdots, r_k}\in \GL(2n_1,\bR)$.)
-    \[
-    \hspace{-2em}
-    \begin{array}{ccc}
-    {\tiny\Unip_{\ckcO'_b}(\GL(2n_1,\bR))
-    \times \Unip_{\ckcO_g}(\Sp(2n_0,\bR))} &\longrightarrow &
-    {\tiny \Unip_{\ckcO}(\Sp(2n,\bR))} \\[.6em]
-    (\pi_1,\pi_0 ) &\mapsto & \Ind_{\raisebox{-0.5em}{\tiny$\GL(2n_1,\bR)\times \Sp(2n_0,\bR)$}}^{\tiny\raisebox{1em}{$\Sp(2n,\bR)$}}
-    \hspace{-5em}\pi_1\otimes \pi_0
-    \end{array}
-    \]
-    \[
-    \begin{split}
-    {\tiny\Unip_{\ckcO'_b}(\GL(2n_1,\bR))}
-    = 
-    \Set{\Ind_{\raisebox{-0.7em}{\tiny$\GL(r_1)\times\cdots\times \GL(r_k)$}}^{\tiny\raisebox{1em}{$\GL(2n_1,\bR)$}} \hspace{-6.8em}\raisebox{0em}{ $\sgn^{\epsilon_1}\otimes \cdots \otimes\sgn^{\epsilon_k}$}
-    | 
-    \epsilon_1,\cdots, \epsilon_k \in \bZ/2\bZ}
-    \end{split}
-    \]
-    \item We assume  $\ckcO$ has {\red good parity} from now on.
-    \item Use \emph{theta correspondence}  to construct 
-    $ \Unip_{\ckcO_{g}}(G)$.
-    \end{itemize}
-\end{frame}
-
-
-\begin{frame}[label=CG]
-  \frametitle{Construct unipotent representations by theta lifting}
-  \begin{itemize}[<+->]
-  \item $\bfG = \Sp(2n,\bC), \bfG^\vee = \SO(2n+1,\bC)$.
-
-  \item {\lblue Good parity} orbit $\ckcO \in
-    \Nil^{gp}(\fgg^\vee)\subset \Nil(\fgg^\vee)$ is an orbit satisfying
-  \item []
-    \vspace{-1em}
-    \[
-      \ckcO = (R_{2a}\geq R_{2a-1}\geq \cdots\geq R_0>0)\quad \text{all $R_i$
-        are odd}
-    \]
-  \item {\lblue Quasi-distinguished}: 
-   $R_{2i}> R_{2i-1}$ for $i = 1, \cdots, a$.  
-  \item 
-    $\set{\text{good parity}}\supset
-      \set{\text{qusi-distinguished}}\supset \set{\text{distinguished}}$
-  \item $\leadsto$ infinitesimal character
-    $\chi_{ \ckcO}: \cU(\fgg)^{\bfG}\rightarrow \bC$:
-    \[
-      \chi_{\ckcO}:= (\rho(
-      R_{2a}), \rho(R_{2a-1}), \cdots, \rho(R_0), 0,  \cdots, 0 )
-    \]
-    where
-    \[
-      \rho(R):= (1, 2, \cdots, \frac{R-1}{2}).
-    \]
-   \item When $G = \Sp(p,q)$,  $\Unip_{\ckcO}(G) \neq  \emptyset \Longleftrightarrow $ $\ckcO$ is qusi-dist. 
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[label=CG]
-  \frametitle{Descent of nilpotent orbits: $\bfG = \Sp(2n,\bC)$ }
-  \begin{itemize}[<+->]
-  \item 
-    Take $\ckcO\in \Nil^{gp}(\fgg^\vee)$ (nilpotent orbits with good parity).
-  \item
-    {\lblue Descent sequence on the dual side:}  
-    \vspace{-1em}
-    \[
-      \begin{tikzcd}[ampersand replacement=\&,column sep=1em]
-        \vcO =\vcO_{2a} \&  \vcO_{2a-1} \& \cdots \& \vcO_0
-      \end{tikzcd}
-    \]
-    \vspace{-2em}
-  \item[] $\vcO_i =$  removing the first rows of $\vcO_{i+1}$.
-  \item
-    {\lblue 
-      A descent sequence  for $\cO$}
-    is a sequence of real classical groups 
-    \vspace{-1em}
-    \[
-      \begin{tikzcd}[ampersand replacement=\&,column sep=1em]
-        G = G_{2a} \&  G_{2a-1} \& \cdots \& G_{0} 
-      \end{tikzcd}
-    \]
-    \vspace{-2em}
-    \begin{itemize}
-    \item $G_{2k}$ is a symplectic group
-    \item[] allow $G_0 = \Sp(0,\bR)=$ the trivial group.
-    \item $G_{2k-1} = \rO(p_k,q_k)$
-    \item $\vcO_i$ is nilpotent orbit of $\bfG^\vee_{i}$
-    \end{itemize}
-  \item  $(G_i,G_{i-1})$ forms a reductive dual pair.
-  \item $\cO_i = $ delete the first column of $\cO_{i+1}$ 
-    and may add one box back to the remaining longest column making the size correct. 
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}[label=CG]
-  \frametitle{Example of descent sequences}
-  \[
-    \begin{tikzcd}[ampersand replacement=\&,column sep=1em,row sep=.5em]     
-      \bfG_i^\vee \&  \SO(15,\bC) \&  \rO(10,\bC) \&  \SO(7,\bC) \& \rO(4,\bC)\\
-      \vcO_i \& \ydiagram{5,3,3,3,1} \&
-      \ydiagram{0,3,3,3,1} \& \ydiagram{0,0,3,3,1} \& \ydiagram{0,0,0,3,1}    \\
-      \cO_i \& \ydiagram{4,4,4,2}\& \ydiagram{3,3,3,1} \& \ydiagram{2,2,2,0} \&
-      \ydiagram{1,1,1,1}\\
-      \bfG_i \&  \Sp(14,\bC) \&  \rO(10,\bC) \&  \Sp(6,\bC) \& \rO(4,\bC)\\
-    \end{tikzcd} 
-  \]
-\end{frame}
-
-
-\begin{frame}[label=CG]
-  \frametitle{Construction of elements in $\Unip_{\ckcO}(G)$}
-  \begin{itemize}[<+->]
-  \item 
-  Let $\chi=\chi_{2a-1}\otimes\bfone \otimes
-  \chi_{2a-3}\otimes \cdots \otimes \chi_{1}\otimes \bfone$ be an 1-dim repn. 
-  of
-  $G_{2a-1}\times G_{2a-2}\times \cdots \times G_0$.
-  \item $\chi_i \in \{ \bfone, \sgn^{+,-}, \sgn^{-,+},  {\det}\}$
-  \item 
-  Define a smooth representation of $G = G_{2a}$ (the symplectic group). 
-  \[
-    {\lblue \pi_{\chi}}:=(\omega_{G_{2a},G_{2a-1}}\widehat \otimes
-    \omega_{G_{2a-2},G_{2a-3}} \widehat \otimes \cdots \widehat \otimes
-    \omega_{G_1,G_0} \otimes \chi)_{G_{2a-1}\times G_{2a-2}\times \cdots \times G_{0}}
-  \]
-\item[]
-  \begin{thm}[Barbasch-M.-Sun-Zhu]
-    Let $\ckcO^\vee$ be an orbit with good parity.
-    Then
-    \begin{itemize}[<+->]
-    \item $\pi_\chi = 0$ or
-    \item $\pi_{\chi}$ is in {\lblue $\Unip_{\ckcO}(G)$} and   
-    {\lblue unitarizable}.
-    \item Moreover, 
-  \[\lblue
-    \Unip_{\vcO}(G) = \set{\pi_{\chi} | \pi_{\chi}\neq 0}. 
-  \]
-  \end{itemize}
-\end{thm}
-\end{itemize}
-\end{frame}
-
-
-
-\begin{frame}[label=CT]
-    \frametitle{Example: Coincidences of theta lifting}
-    Lift to $G = \Sp(6,\bR)$ from real forms of $\bfG = \rO(4,\bC)$.\\
-    $\ckcO = [3,3,1]$ and  $\cO = (3,3)$.
-    \[
-      \begin{tikzcd}[ampersand replacement=\&,column sep=2em, row sep=1em]
-        \rO(4,0) \& \  \& \theta(\sgn^{+,-}) \ar[dr,equal]\& \   \\
-        \rO(3,1) \& \theta(\bfone) \& \theta(\sgn^{+,-}) \ar[dr,equal] \& \theta(\sgn^{-,+}) \\
-        \rO(2,2) \& \theta(\bfone) \& \theta(\sgn^{+,-}) \ar[dr,equal] \& \theta(\sgn^{-,+}) \\
-        \rO(1,3) \& \theta(\bfone) \& \theta(\sgn^{+,-}) \ar[dr,equal] \& \theta(\sgn^{-,+}) \\
-        \rO(0,4) \& \  \&\  \& \theta(\sgn^{-,+}) \\
-      \end{tikzcd}
-    \]
-  \end{frame}
-
-
-
-
-\begin{frame}[label=CG]
-  \frametitle{Some comments}
-  \begin{itemize}[<+->]
-  \item Many people have studied the problem
-  \item[] Adams, Barbasch,  He, Huang, Li, Loke, M\oe glin, Paul, Przebinda, Trapa,  ....
-  \item {\lblue Unitarity}:
-    \begin{itemize}
-    \item Estimate of matrix coefficients using the explicit realization of the
-      Weil representations.
-    \item[] Work of {\bf Li}, {\bf He}, and an idea of {\bf Harris-Li-Sun} showing
-      the {\lblue nonnegativity} of a matrix coefficient integral.
-    \end{itemize}
-  \item {\lblue non-vanishing}, and compute associated
-    cycle:
-    \begin{itemize}
-    \item {\bf Geometry}: moment maps provide the \underline{upper bound}.
-    \item {\bf Analysis}: degenerate principal series force the \underline{lower
-        bound}.
-    \item {\bf Geometry meets Analysis}: the equality.
-    \end{itemize}
-  \item {\lblue Exhaustion:} Combinatorics  {\red (very recent breakthrough!)} 
-  \item {\lblue Corollary:} (using [Gomez-Zhu])
-    The Whittaker cycle of $\pi_\chi$ equals to its Wavefront cycle. 
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}[label=CT]
-  \frametitle{Counting unipotent representations I}
-  \begin{itemize}[<+->]
-  \item  $\ckcO\in \Nil^{gp}(\bfG^\vee)$ 
-  \item[] $\leadsto$ special representation $\tau \leftrightarrow \cO$ 
-  \item[] Springer/Lusztig left cell $\cC_\cO = \set{\tau_1,
-      \cdots,\tau_{2^l}}$ containing $\tau$
-  \item $\cK_{\rho}(G)$:  the Grothendieck group of finite length
-    Harish-Chandra modules with infinitesimal character $\rho$. 
-  \item[]
-    \vspace{-1em}
-    \[
-      \lblue
-     \#\Unip_{\vcO}(G) = \sum_{\tau_i} [\tau_i:\cK_{\rho}(G)] 
-    \]
-    \vspace{-2em}
-  \item {\lblue Example $G = \Sp(2n,\bR)$}
-    \[
-     \cK_{\rho}(G) = \sum_{\substack{p,q,t,s,\\
-          \sigma\in \widehat{S_s}}} \Ind_{S_t\times W_{2s}\times W_p\times
-        W_q}^{W_n}[\sgn\otimes(\sigma\times \sigma)\otimes \bfone\otimes \bfone].
-    \]
-  \item RHS of blue part can be counted by $\PBP(\ckcO)$.
-  \item $LS(\cO)\subset \cK_\cO(\bfK)$: all local systems could be obtained by
-    theta lifting.
-  \item When $\cO^\vee\in \Nil^{qd}(\fgg^\vee)$,  $\# \PBP(\cO) 
-  = \# \AOD(\cO) = \# \LS(\cO)$ 
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[label=CT]
-  \frametitle{Counting unipotent representations II}
-  \begin{itemize}[<+->]
-  \item $\PBP(\ckcO)$ is complicate.
-  \item $\LS(\ckcO)$ is also complicate.
-  \item {\lblue Proof of Exhaustion}
-  \item[] Define a bijection (inductively)
-    \[
-    \begin{tikzcd}[ampersand replacement=\&]
-      \PBP(\ckcO) \ar[r,<->]\ar[d] \& \Unip_{\ckcO}(G) \ar[d,"\text{associate cycle}"]\\
-      MYD(\ckcO) \ar[r,<->] \& \LS(\ckcO) 
-      \end{tikzcd}
-    \]
-  \item[] {\red compatible with the theta lifting.}
-\item The {\red injectivity} of theta lifting is crucial!
-  \end{itemize}
-\end{frame}
-
-
-
-\begin{frame}[label=DU]
-  \frametitle{Unipotent Arthur packet}
-
-  \begin{itemize}[<+->]
-  \item {\lblue Arthur parameter:}
-    $\psi\colon W_\bR\times \SL_2(\bC)\rightarrow \bfG^\vee \rtimes \Gal(\bC/\bR)$.
+    \section{Motivation}
     
-  \item[]\hspace{4em} Here $W_\bR = \bC\rtimes \langle j\rangle $.
-  \item Arthur's Arthur packet $\Pi_{\psi}^{A}(G)$:
-  \item[] \hspace{2em} \{local components of automorphic
-    representations\}
-  \item[] {\red They are unitary by definition!}
-  \item {\lblue Unipotent Arthur parameter}: $\psi|_{\bC^\times}$ is trivial.
-  \item[]  M\oe glin: $\pi_{\psi, \eta}$ is zero or multiplicity free ($\eta\in\Irr(\pi_1(Z_{\bfG^\vee}(\psi)))$). 
-  \item[] {\lblue Warning:} {\red  $\Pi_{\psi}^A(G) \cap
-      \Pi^A_{\psi'}(G)\neq \emptyset$ } in general.
-  \item {\lblue ``Corollary'':}
-    \[
-      \Pi_{\psi}^{A}(G) = \Pi_{\psi}^{ABV}(G) 
-    \]
-  \item {\lblue Question:} How to  describe $\pi_{\psi,\eta}$ explicitly?  
-  \end{itemize}
-\end{frame}
-
-
-
-\begin{frame}
-\vfill
-%\centering{\bf\Large {\tt{atlas}} is a great teacher!} \\
-%\vspace{2em}
-%\pause
-%\centering{\bf\Large Thanks to the {\tt{atlas}} team!} \\
-%\pause
-%\vspace{2em}
-\centering{\bf\Large Thank you for your attention!}
-\vfill
-\end{frame}
-
-\end{document}
-
-
-
-
-
-\begin{frame}[label=DU]
-  \frametitle{Unipotent supports}
-  \begin{itemize}[<+->]
-  \item[] Fix a Cartan decomposition $\Lie(\bfG)=\fgg = \fkk\oplus \fpp$.  
-  \item The \emph{associated variety}
-    $\AV(\pi)$ is a union of closures of nilpotent $\bfK$-orbits  in $\fpp $. 
-  \item \{nilpotent $\bfK$-orbits in $\fpp$\}
-  \item[] $\longleftrightarrow$\{nilpotent $G$-orbits in $\fgg_0 = \Lie(G)$\}
-  \item[] (Kostant-Sekiguchi)  
-  \item {\lblue Vogan91}:  When $\AV(\pi)_\bC \subset \bcO$,
-  \item[] a well defined $\bfK$-equivariant local system on
-  \item[] $\AV(\pi)\cap \cO \subset \fpp\cap \cO$ is attached.
-    (Quantization)
-
-  \item Wavefront cycle: a cycle of nilpotent $G$-orbits in $\fgg_0$.   
-  \item[] {\lblue Schmid-Vilonen: } Wavefront cycle and associated cycle
-    contain essentially the same information.  
-  \item Whittaker cycle: a cycle of nilpotent $G$-orbits in $\fgg_0$
-    \emph{contained} in $\bcO$.
-  \item[] \hspace{4em}(Matumoto)
-  \end{itemize} 
-\end{frame} 
-
-
-
-\begin{frame}[label=AC]
-  \frametitle{Associated characters}
-  \begin{itemize}[<+->]
-  \item $\cK_\cO(\bfK)$: Grothendieck group of $\bfK$-equiv. local systems
-    on $\fpp\cap \cO$   
+    \begin{frame}[label=DU]
+        \frametitle{Classical groups and special unipotent representations}
+        \begin{table}
+            \centering
+            \begin{tabular}{c|c|c|c|c}
+                \hline
+                & $G$ & $\bfG$  & $\bfG^\vee$ & \\
+                \hline
+                \hline
+                $D_n$ & $\rO(p,2n-p)$ & $\rO(2n,\bC)$& $\rO(2n,\bC)$ & $D_n$\\
+                \hline
+                $C_n$ & $\Sp(2n,\bR)$ & $\rSp(2n,\bC)$& $\SO(2n+1,\bC)$ & $B_n$\\
+                \hline
+                \hline
+                $B_n$ & $\rO(p,2n+1-p)$ & $\rO(2n+1,\bC)$& $\Sp(2n,\bC)$ & $C_n$\\
+                \hline
+                ${\tilde C}_n$ &  $\Mp(2n,\bR)$ & $\Sp(2n,\bC)$ & $\Sp(2n,\bC)$ & $C_n$\\
+                \hline 
+                \hline
+                $D_n$ &  $\rO^*(n)$ & $\SO(2n,\bC)$ & $\SO(2n,\bC)$ & $D_n$\\
+                \hline
+                $C_n$ & $\Sp(p,q)$ & $\Sp(2n,\bC)$ & $\SO(2n+1,\bC)$ & $B_n$\\
+                \hline 
+            \end{tabular}
+        \end{table}
+        
+        \pause
+        \centering{ $\Nil(\bfG^\vee):=\set{\text{nilpotent $\bfG^\vee$-oribt in }\fgg^\vee }$}
+        \pause 
+        
+        \begin{block}{Theorem (Barbasch-M.-Sun-Zhu)}
+            Arthur-Barbasch-Vogan's conj.  on special unipotent repn. holds:
+            \pause
+            
+            \centering{All \emph{specail unipotent representations} of $G$  are \emph{unitarizable}.}
+        \end{block}
+    \end{frame}
     
-  \item Associated character map:
     
-  \item[] \[
-      \Ch\colon \set{\pi| \AV(\pi)\subset
-        \overline{\cO}}\longrightarrow \cK_{\cO}(\bfK).
-      \]
-  \item$\cK^{\rm aod}_\cO(\bfK)$: the set of
-    {\lblue admissible orbit data} on a $\bfK$-orbit
-    $ \subset \fpp\cap \cO$
-  \item [] See Vogan's paper for the definition. 
-  \item $\cK^{\rm aod}_\cO(\bfK)\subset  \cK_\cO(\bfK)$.
-  \end{itemize}
-\end{frame}
+    \begin{frame}[label=DU]
+        \frametitle{Barbasch-Vogan's definition of unipotent representation}
+        \begin{itemize}[<+->]
+            \item[] $G$: a real reductive group.
+            \item[]  Nilpotent orbit $\ckcO$ in  
+            $\bfG^\vee$.  
+            \item[] \hspace{4em} $\leadsto$ $\varphi\colon \SL(2,\bC)\rightarrow \bfG^\vee$
+            (Jacobson-Morozov)
+            \item[] \hspace{4em} $\leadsto$ an infinitesimal character $\rdd\varphi({\half
+            \tiny\begin{pmatrix} 1 & 0 \\ 0 & -1\\ \end{pmatrix} })\leftrightarrow
+            \chi_{\cO^\vee}$  
+            
+            \item[] \hspace{4em} $\leadsto$ the maximal primitive ideal $\cI_\ckcO$ with
+            inf. char.  $\chi_{\ckcO}$
+            \item  \emph{Definition} (Barbasch-Vogan):
+            \item [] An irr. admissible $G$-module is called 
+            \emph{special unipotent} if 
+            \[
+            \Ann_{\cU(\fgg)}(\pi) = \cI_{\ckcO}.
+            \]
+            %\item  \emph{Theorem} (Barbasch-Vogan):
+            \item[]
+            $\Longleftrightarrow$ $\pi$ has inf. char. $\chi_{\ckcO}$ and  
+            $\bfG\cdot \AV(\pi) = \overline{\cO}$
+            \item Here $\cO$ is the  Lusztig-Spaltenstein-Barbasch-Vogan dual of $\ckcO$,
+            \item[] which is a \emph{(metaplectic) specail nilpotent orbit.}
+            \item $\Unip_{\ckcO}(G):=$ \{ special unipotent repn. attached to $\ckcO$\}. 
+        \end{itemize}
+    \end{frame}
+    
+    
+    \begin{frame}[label=DU]
+        \frametitle{Conjecture}
+        \begin{itemize}[<+->]
+            \item[] $\Unip_{\ckcO}(G):=$ \{ special unipotent repn. attached to $\ckcO$\}. 
+            \item \emph{Conjecture}: $\Unip_{\ckcO}(G)$ consists of {\red unitary} representations.
+            %\item []  Proved by Barbasch-Vogan for complex reductive groups.
+            \item Question: How to construct elements in $\Unip_{\ckcO}(G)$?
+            \item Question: How many elements are there in $\Unip_{\ckcO}(G)$?
+        \end{itemize}
+    \end{frame}
+   
+    
+    \begin{frame}[label=CT]
+        \frametitle{Counting $(\fgg,K)$-module with a paticular asso. variety}
+        \begin{itemize}[<+->]
+            \item  Fix regular. inf. char. $\lambda \in \fhh^*/W$ 
+            \item  integral Weyl group
+           \[
+               W(\lambda) := \set{w\in W | \inn{\lambda - w\lambda}{\check\alpha}\in \bZ,
+              \ \forall \alpha \in \Delta(\fgg,\fhh) 
+               }
+           \] 
+           \item[] Double cell $\cD$  in $W(\lambda)$
+            $\longleftrightarrow$ the specail repn. $\tau_0\in \cD$
+           \item[] $\longrightarrow$ truncated induction  $J_{W(\lambda)}^W \tau_0$ 
+           \item[] $\xrightarrow{\text{Springer corr.} }$ $\cO$. 
+           \item Let $\mu \in \lambda + Q$ ($Q$ is the root lattice), 
+            \[
+                W_\mu = \set{w\in W | w\cdot \mu = \mu}.  
+            \]
+            \item $\cK_{\lambda}(\fgg,K)$:  the Groth. gp. of $(\fgg,K)$-modules with inf. char. $\lambda$. 
+            \item {\lblue Lemma: }
+            \[
+                \begin{split}
+             & \#\set{\pi \in \Irr_{\mu}(\fgg,K)(G) | \AV_\bC(\pi) = \overline{\cO}}\\
+            &= \sum_{\substack{\tau\in \cD\\\cD\leadsto \cO}} [\tau:1_{W_\mu}]\cdot [\tau: \cK_{\lambda}(\fgg,K)]
+                \end{split}
+            \]
+        \end{itemize}
+    \end{frame}
+    
 
-
-
-\subsection{More precise results}
-
-
-
-\begin{frame}[label=CT]
-  \frametitle{Main theorem I}
-  \begin{itemize}[<+->]
-  \item[]
-    \begin{thm}
-      For $\vcO\in \Nil^{qd}(\fgg^\vee)$,
-      \begin{itemize}
-      \item the following is a {\lblue bijection:} \vspace{-1em}
+    \begin{frame}[label=CG]
+        \frametitle{Nilpotent orbits with ``good/bad parity''}
+        \begin{itemize}[<+->]
+            \item Bad parity (must occurs with even multiplicity in $\ckcO$):
+            \[
+            \begin{cases}
+                \text{even number,} & \text{when $\bfG^\vee$ is type $B,D$}\\ 
+                \text{odd number,} & \text{when $\bfG^\vee$ is type $C$} 
+            \end{cases}
+            \]
+            \item  $\ckcO$ has \emph{``good parity'' } if $\ckcO$ only contains 
+            \[
+            \begin{cases}
+                \text{odd rows}, & \text{when $\bfG^\vee$ is type $B,D$}\\ 
+                \text{even rows}, & \text{when $\bfG^\vee$ is type $C$} 
+            \end{cases}
+            \]
+            \item $\chi_\ckcO$ is integral.
+            \item  Example of good parity:
+            \[
+            \begin{tikzcd}[ampersand replacement=\&,column sep=3em,row sep = -0.2em]     
+                \cO \&  \vcO  \\
+                \ydiagram{4,4,4,2} \& \ydiagram{5,3,3,3,1} \\  
+                \Sp(14,\bC) \& \SO(15,\bC)
+            \end{tikzcd} 
+            \]
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Reduction to the ``good parity''}
+        \begin{itemize}[<+->]
+            \item Consider $G= \Sp(2n,\bR)$. 
+            \item  $\ckcO$ decompose into two parts $\ckcO_{g}$ (good parity)  and $\ckcO_{b}$ (bad parity).
+            \item Assume $\ckcO_{b} = \{r_1, r_1, \cdots, r_k, r_k\}$.
+            %  ,  $\abs{\ckcO_b}=2n_1$ and 
+            % $|\ckcO_{g}| = 2n_0$
+            \item[] {\lblue Theorem} (Let $\ckcO'_b = \set{r_1,\cdots, r_k}\in \Nil_{\GL}$.)
+            \[
+            \hspace{-2em}
+            \begin{array}{ccc}
+                {\tiny\Unip_{\ckcO'_b}(\GL_\bR)
+                \times \Unip_{\ckcO_g}(\Sp_\bR)} &\xrightarrow{\ \ 1-1\ \ }&
+                {\tiny \Unip_{\ckcO}(\Sp_\bR)} \\[.6em]
+                (\pi_1,\pi_0 ) &\mapsto & \Ind_{\raisebox{-0.5em}{\tiny$\GL(\abs{\ckcO'_b},\bR)\times \Sp(2n_0,\bR)$}}^{\tiny\raisebox{1em}{$\Sp(2n,\bR)$}}
+                \hspace{-5em}\pi_1\otimes \pi_0
+            \end{array}
+            \]
+            \[
+            \begin{split}
+                {\tiny\Unip_{\ckcO'_b}(\GL)}
+                = 
+                \Set{\Ind \mathop{\otimes}_{j=1}^k \sgn^{\epsilon_j}_{\GL(r_j,\bR)}
+                % \Set{\Ind_{\raisebox{-0.7em}{\tiny$\GL(r_1)\times\cdots\times \GL(r_k)$}}^{\tiny\raisebox{1em}{$\GL(2n_1,\bR)$}} \hspace{-6.8em}\raisebox{0em}{ $\sgn^{\epsilon_1}\otimes \cdots \otimes\sgn^{\epsilon_k}$}
+                % | 
+                |\epsilon_j \in \bZ/2\bZ}
+            \end{split}
+            \]
+            \item Use \emph{theta correspondence}  to construct 
+            $ \Unip_{\ckcO_{g}}(G)$.
+            \item We assume  $\ckcO$ has {\red good parity} from now on.
+        \end{itemize}
+    \end{frame}
+    
+   \delete{ 
+    \begin{frame}[label=CG]
+        \frametitle{Construct unipotent representations by theta lifting}
+        \begin{itemize}[<+->]
+            \item $\bfG = \Sp(2n,\bC), \bfG^\vee = \SO(2n+1,\bC)$.
+            
+            \item {\lblue Good parity} orbit $\ckcO \in
+            \Nil^{gp}(\fgg^\vee)\subset \Nil(\fgg^\vee)$ is an orbit satisfying
+            \item []
+            \vspace{-1em}
+            \[
+            \ckcO = (R_{2a}\geq R_{2a-3}\geq \cdots\geq R_0>0)\quad \text{all $R_i$
+            are odd}
+            \]
+            \item {\lblue Quasi-distinguished}: 
+            $R_{2i}> R_{2i-1}$ for $i = 1, \cdots, a$.  
+            \item {\lblue Weakly-distinguished}: 
+            $R_{2i}> R_{2i-1}$ for $i = 1, \cdots, a$.  
+            \item 
+            $\set{\text{good parity}}\supset \set{\text{weakly-dist.}}\supset
+            \set{\text{qusi-dist.}}\supset \set{\text{dist.}}$
+            \item $\leadsto$ inf. char.
+            $\chi_{ \ckcO}: \cU(\fgg)^{\bfG}\rightarrow \bC$:
+            \[
+            \chi_{\ckcO}:= (\rho(
+            R_{2a}), \rho(R_{2a-1}), \cdots, \rho(R_0), 0,  \cdots, 0 )
+            \]
+            where
+            \[
+            \rho(R):= (1, 2, \cdots, \frac{R-1}{2}).
+            \]
+            \item When $G = \Sp(p,q)$,  $\Unip_{\ckcO}(G) \neq  \emptyset \Longleftrightarrow $ $\ckcO$ is qusi-dist. 
+        \end{itemize}
+    \end{frame}
+   }
+    
+    \begin{frame}[label=CG]
+        \frametitle{Descent of nilpotent orbits: $\bfG = \Sp(2n,\bC)$ }
+        \begin{itemize}[<+->]
+            \item 
+            Take $\ckcO\in \Nil^{gp}(\fgg^\vee)$ (nilpotent orbits with good parity).
+            \item
+            {\lblue Descent sequence on the dual side:}  
+            \vspace{-1em}
+            \[
+            \begin{tikzcd}[ampersand replacement=\&,column sep=1em]
+                \vcO =\vcO_{2a} \&  \vcO_{2a-1} \& \cdots \& \vcO_0
+            \end{tikzcd}
+            \]
+            \vspace{-2em}
+            \item[] $\vcO_i =$  removing the first rows of $\vcO_{i+1}$.
+            \item
+            {\lblue 
+            A descent sequence  for $\cO$}
+            is a sequence of real classical groups 
+            \vspace{-1em}
+            \[
+            \begin{tikzcd}[ampersand replacement=\&,column sep=1em]
+                G = G_{2a} \&  G_{2a-1} \& \cdots \& G_{0} 
+            \end{tikzcd}
+            \]
+            \vspace{-2em}
+            \begin{itemize}
+                \item $G_{2k}$ is a symplectic group
+                \item[] allow $G_0 = \Sp(0,\bR)=$ the trivial group.
+                \item $G_{2k-1} = \rO(p_k,q_k)$
+                \item $\vcO_i$ is nilpotent orbit of $\bfG^\vee_{i}$
+            \end{itemize}
+            \item  $(G_i,G_{i-1})$ forms a reductive dual pair.
+            \item $\cO_i = $ delete the first col.  of $\cO_{i+1}$ 
+            and may add one box back. %to the remaining longest column making the size correct. 
+        \end{itemize}
+    \end{frame}
+    
+    
+    \begin{frame}[label=CG]
+        \frametitle{Example of descent sequences}
         \[
-          \begin{tikzcd}[ampersand replacement=\&]
-            \Ch \colon \Unip_{\vcO}(G) \arrow{r} \& \cK^{\rm aod}_\cO(G)\\
-          \end{tikzcd}
+        \begin{tikzcd}[ampersand replacement=\&,column sep=1em,row sep=.5em]     
+            \bfG_i^\vee \&  \SO(15,\bC) \&  \rO(10,\bC) \&  \SO(7,\bC) \& \rO(4,\bC)\\
+            \vcO_i \& \ydiagram{5,3,3,3,1} \&
+            \ydiagram{0,3,3,3,1} \& \ydiagram{0,0,3,3,1} \& \ydiagram{0,0,0,3,1}    \\
+            \cO_i \& \ydiagram{4,4,4,2}\& \ydiagram{3,3,3,1} \& \ydiagram{2,2,2,0} \&
+            \ydiagram{1,1,1,1}\\
+            \bfG_i \&  \Sp(14,\bC) \&  \rO(10,\bC) \&  \Sp(6,\bC) \& \rO(4,\bC)\\
+        \end{tikzcd} 
         \]
-        \vspace{-3em}
-      \item $\Unip_{\vcO}(G) = \set{\pi_{\chi}\neq 0}$ consists of unitary
-        representations
-      \end{itemize}
-    \end{thm}
-  \item $\AV(\pi_{\chi})$ is irreducible. 
-  \item {\bf \blue Conjecture (Vogan): } %Suppose $\pi\in \Unip_\ckcO(G)$,
-    \[
-      \pi|_\bfK \cong \text{ Global section of the vector bundle given by }
-      \Ch(\pi).
-    \]
-  \item[] The conjecture is verified in many cases ...,[Barbasch],
-  \item[] [Loke-M.] when $(G_{i},G_{i-1})$ are all in the stable range.
-  \item[] ...
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}[label=DU]
-  \frametitle{Certain unipotent orbits II}
-  \begin{itemize}[<+->]
-  \item {\lblue Purely even orbit $\Nil^{pe}(\fgg^\vee)$}:
-    \[
-      \vcO = (R_{2a}, R_{2a-1}, \cdots, R_0>0) \quad \text{each row length $R_i$ is odd}
-    \]
-  \item {\lblue ``quasi-distinguished'' $\Nil^{qd}(\fgg^\vee)$}: $R_{2i} > R_{2i-1}$
-  \item[] $\Rightarrow$ only {even columns} can appear in $\cO$ (at most twice). 
-
-  \item {\lblue ``AC-separable'' $\Nil^{AC}(\fgg^\vee)$}: each row length
-    appears at most {\lblue three} times.
-  \item[] $\Rightarrow$ each column in $\cO$ appears at most twice.  
-
-  \item
-    $\set{\text{purely even orbit}}\supset\set{\text{AC-separable}}\supset
-      \set{\text{qusi-distinguished orbit}}\supset \set{\text{distinguished
-          orbit}}$
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[label=CG]
-  \frametitle{Example of ``AC-separable''}
-  \[
-    \begin{tikzcd}[ampersand replacement=\&,column sep=1em]     
-      \bfG_i \&  \Sp(14,\bC) \&  \rO(10,\bC) \&  \Sp(6,\bC) \& \rO(4,\bC)\\
-      \vcO_i \& \ydiagram{5,3,3,3,1} \&
-      \ydiagram{3,3,3,1} \& \ydiagram{3,3,1} \& \ydiagram{3,1}    \\
-      \cO_i \& \ydiagram{4,4,4,2}\& \ydiagram{3,3,3,1} \& \ydiagram{2,2,2} \&
-      \ydiagram{1,1,1,1}
-    \end{tikzcd} 
-  \]
-\end{frame}
-
-
-\begin{frame}[label=CT]
-  \frametitle{``Main theorem'' II}
-  \begin{itemize}[<+->]
-  \item[]
-    \begin{thm}[In progress]
-      For $\vcO\in \Nil^{AC}(\fgg^\vee)$,
-      \begin{itemize}
-      \item the following is {\lblue an injection}: \vspace{-1em}
+    \end{frame}
+    
+    
+    \begin{frame}[label=CG]
+        \frametitle{Construction of elements in $\Unip_{\ckcO}(G)$}
+        \begin{itemize}[<+->]
+            \item 
+            $\chi=\displaystyle\mathop{\otimes}_{j=0}^{2a}\chi_{j}$, a 1-dim repn. 
+            of
+            $\displaystyle\mathop{\textstyle\prod}_{j=0}^{2a}G_{j}$.
+            \item $\chi_j \in \{ \bfone, \sgn^{+,-}, \sgn^{-,+},  {\det}\}$
+            \item 
+            Define a smooth repn. of $G = G_{2a}$ (the symplectic group). 
+            \[
+            {\lblue \pi_{\chi}}:=(\omega_{G_{2a},G_{2a-1}}\widehat \otimes
+            \omega_{G_{2a-2},G_{2a-3}} \widehat \otimes \cdots \widehat \otimes
+            \omega_{G_1,G_0} \otimes \chi)_{G_{2a-1}\times G_{2a-2}\times \cdots \times G_{0}}
+            \]
+            \item[]
+            \begin{thm}[Barbasch-M.-Sun-Zhu]
+                Let  $\ckcO^\vee$ be an orbit with good parity.
+                Then
+                \begin{itemize}[<+->]
+                    \item either $\pi_\chi = 0$ or
+                    \item $\lblue \pi_{\chi}\in  \Unip_{\ckcO}(G)$ and   
+                    {\lblue unitarizable}.
+                    \item Moreover, 
+                    \[\lblue
+                    \Unip_{\vcO}(G) = \set{\pi_{\chi} | \pi_{\chi}\neq 0}. 
+                    \]
+                \end{itemize}
+            \end{thm}
+        \end{itemize}
+    \end{frame}
+    
+    
+    
+    \begin{frame}[label=CT]
+        \frametitle{Example: Coincidences of theta lifting}
+        Lift to $G = \Sp(6,\bR)$ from real forms of $\bfG = \rO(4,\bC)$.\\
+        $\ckcO = 3^2 1^1$ and  $\cO = 2^3$.
         \[
-          \begin{tikzcd}[ampersand replacement=\&]
-            \Ch \colon \Unip_{\vcO}(G) \arrow{r} \& \cK_\cO(\bfK)\\
-          \end{tikzcd}
+        \begin{tikzcd}[ampersand replacement=\&,column sep=2em, row sep=1em]
+            \& \& \Sp(6,\bR)\\
+            %\hline
+            \rO(4,0) \& \  \& \theta(\sgn^{+,-}) \ar[dr,equal]\& \   \\
+            \rO(3,1) \& \theta(\bfone) \& \theta(\sgn^{+,-}) \ar[dr,equal] \& \theta(\sgn^{-,+}) \\
+            \rO(2,2) \& \theta(\bfone) \& \theta(\sgn^{+,-}) \ar[dr,equal] \& \theta(\sgn^{-,+}) \\
+            \rO(1,3) \& \theta(\bfone) \& \theta(\sgn^{+,-}) \ar[dr,equal] \& \theta(\sgn^{-,+}) \\
+            \rO(0,4) \& \  \&\  \& \theta(\sgn^{-,+}) \\
+        \end{tikzcd}
         \]
-        \vspace{-3em}
-      \item $\Unip_{\vcO}(G) = \set{\pi_{\chi}\neq 0}$ consists of unitary
-        representations
-      \end{itemize}
-    \end{thm}
-  \item A unipotent representation could be obtained from different routes of
-    theta lifting. 
-  \item Lifting routes should tells the Arthur packet.
-  \item If $\cO \in \Nil^{pe}(\fgg^\vee) - \Nil^{AC}(\fgg^\vee)$, the above
-    theorem may not be true. 
-  \item[] Smallest example:
-    $\cO =\ydiagram{6}$ (7 repns., only 5 LS)  
-  \item Use irreducible parabolic/cohomological induction to reduce to $\Nil^{AC}$.  
- \end{itemize}
-\end{frame}
+    \end{frame}
+    
+    
+    
+    
+    \begin{frame}[label=CG]
+        \frametitle{Some comments}
+        \begin{itemize}[<+->]
+            \item Many people have studied the problem
+            \item[] Adams, Barbasch,  He, Huang, Li, Loke, M\oe glin, Paul, Przebinda, Trapa,  ....
+            \item {\lblue Unitarity}:
+            \begin{itemize}
+                \item Estimate of matrix coefficients using the explicit realization of the
+                Weil representations.
+                \item[] Work of {\bf Li}, {\bf He}, and an idea of {\bf Harris-Li-Sun} showing
+                the {\lblue nonnegativity} of a matrix coefficient integral.
+            \end{itemize}
+            \item {\lblue non-vanishing} and compute {\lblue associated cycle}:
+            \begin{itemize}
+                \item {\bf Geometry}: moment maps provide the \underline{upper bound}.
+                \item {\bf Analysis}: degenerate principal series force the \underline{lower
+                bound}.
+                \item {\bf Geometry meets Analysis}: the equality.
+            \end{itemize}
+            \item {\lblue Exhaustion:} Combinatorics  {\red (recent breakthrough!)} 
+            \item {\lblue Corollary:} (using [Gomez-Zhu]) For $\pi_\chi$, 
+           \[
+            \text{Whittaker cycle   = Wavefront cycle. }
+           \] 
+            
+        \end{itemize}
+    \end{frame}
+    
+    
+    \begin{frame}[label=CT]
+        \frametitle{Counting unipotent representations I}
+        \begin{itemize}[<+->]
+            \item  $\ckcO\in \Nil^{gp}(\bfG^\vee)$ 
+            \item[] $\leadsto$ special representation $\tau \leftrightarrow \cO$ 
+            % \item[] Springer/Lusztig left cell $\cC_\cO = \set{\tau_1,
+            % \cdots,\tau_{2^l}}$ containing $\tau$
+            \item $\cK_{\rho}(G)$:  the Groth. gp. of $(\fgg,K)$-modules with inf. char. $\rho$. 
+            \item[]
+            \vspace{-1em}
+            \[
+            \lblue
+            \#\Unip_{\vcO}(G) = 2^l \cdot [\tau:\cK_{\rho}(G)] 
+            \]
+            \vspace{-1em}
+            \item[] $W(\Sp(2n)) = S_n \ltimes \set{\pm 1}^n$, 
+            \vspace{-1em}
+            \item[] 
+            \[
+            \cK_{\rho}(\Sp(2n,\bR)) = \sum_{\substack{p,q,t,s,\\
+            \sigma\in \widehat{S_s}}} \Ind_{S_t\times W_{2s}\times W_p\times
+            W_q}^{W_n} \sgn\otimes(\sigma\times \sigma)\otimes \bfone\otimes \bfone .
+            \]
+            \item $[\tau:\cK_{\rho}(G)]$ is counted by painted bi-partitions $\PBP(\ckcO)$.
+            % \item $LS(\cO)\subset \cK_\cO(\bfK)$: all local systems could be obtained by
+            % theta lifting.
+            % \item When $\cO^\vee\in \Nil^{qd}(\fgg^\vee)$,  $\# \PBP(\cO) 
+            % = \# \AOD(\cO) = \# \LS(\cO)$ 
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}[label=CT]
+        \frametitle{Counting unipotent representations II}
+        \begin{itemize}[<+->]
+            \item $\PBP(\ckcO)$ is complicate.
+            \item $\LS(\ckcO) = \set{\AC(\pi_\chi)}$ is also complicate.
+            \item {\lblue Proof of Exhaustion}
+            \item[] Define descent of painted bi-partitions, 
+            \item[] {\red compatible with the theta lifting!}
+            \[
+            \begin{tikzcd}[ampersand replacement=\&]
+               \LS(\ckcO) \& \PBP(\ckcO) \ar[r,<->]\ar[d,"\nabla"'] \ar[l,"\AC"]\& \Unip_{\ckcO}(G)  \\
+               \LS(\ckcO') \ar[u,"\text{geo. lift}"]\& \PBP(\ckcO') \ar[r,<->]\ar[l,"\AC"] \& \Unip_{\ckcO'}(G') \ar[u,"\theta"'] 
+            \end{tikzcd}
+            \]
+            \item The {\red injectivity} of theta lifting is crucial!
+        \end{itemize}
+    \end{frame}
+    
+    % \begin{frame}
+    % \frametitle{More precise statement}
 
-\section{Counting argument}
+    % \end{frame}
+   
+        \begin{frame}{Example: $\cO=$ regular nilpotent orbit}
+           \includegraphics[width=\textwidth]{lifttreeC1_10.pdf} 
+        \end{frame}
 
-\end{document}
+    \begin{frame}[label=DU]
+        \frametitle{Unipotent Arthur packet}
+        
+        \begin{itemize}[<+->]
+            \item {\lblue Arthur parameter:}
+            $\psi\colon W_\bR\times \SL_2(\bC)\rightarrow \bfG^\vee \rtimes \Gal(\bC/\bR)$.
+            
+            \item[]\hspace{4em} Here $W_\bR = \bC\rtimes \langle j\rangle $.
+            \item Arthur's Arthur packet $\Pi_{\psi}^{A}(G)$:
+            \item[] \hspace{2em} \{local components of automorphic
+            cusp. repn. \}
+            \item[] {\red They are unitary by definition!}
+            \item {\lblue Unipotent Arthur parameter}: $\psi|_{\bC^\times}$ is trivial.
+            \item[]  M\oe glin: $\pi_{\psi, \eta}$ is zero or multiplicity free ($\eta\in\Irr(\pi_1(Z_{\bfG^\vee}(\psi)))$). 
+            \item[] {\lblue Warning:} {\red  $\Pi_{\psi}^A(G) \cap
+            \Pi^A_{\psi'}(G)\neq \emptyset$ } in general.
+            \item {\lblue ``Corollary'':}
+            \[
+            \Pi_{\psi}^{A}(G) = \Pi_{\psi}^{ABV}(G) 
+            \]
+            \item {\lblue Question:} How to  describe $\pi_{\psi,\eta}$ explicitly?  
+        \end{itemize}
+    \end{frame}
+    
+    
+    
+    \begin{frame}
+        \vfill
+        %\centering{\bf\Large {\tt{atlas}} is a great teacher!} \\
+        %\vspace{2em}
+        %\pause
+        %\centering{\bf\Large Thanks to the {\tt{atlas}} team!} \\
+        %\pause
+        %\vspace{2em}
+        \centering{\bf\Large Thank you for your attention!}
+        \vfill
+        \includegraphics[width=.5\textwidth]{paper_qr.png}
+    \end{frame}
+    
+    \end{document}
+    
+    
 
-\begin{frame}[label=AC]
-  %\frametitle{Geometry of the \underline{moment maps}}
-  \frametitle{Associated character formula I}
-  \begin{itemize}[<+->]
-  \item Example $(G,G')=(G_{2a},G_{2a-1})=(\Sp(2n,\bR), \rO(p,q))$ 
-    \[
-      \begin{tikzcd}[ampersand replacement=\&,column sep=3em, row sep=1em]
-        \& M_{p,n}\oplus M_{q,n} \ar[rd,"\varphi"]
-        \ar[ld,"\varphi'"'] \& \\
-        M_{p,q}\cong {\mathfrak{p}'} \&  \text{\footnotesize $T=(A,B)$} \ar[rd,mapsto]\ar[ld,mapsto]\& {\mathfrak p}\cong
-        \mathrm{Sym}_n\oplus \mathrm{Sym}_n\\
-       \text{\footnotesize $X'=AB^T$} \& \& \text{\footnotesize $X = (A^T A,B^T B)$} \\
-      \end{tikzcd}
-    \]
-  \item $\bcO \cap \fpp \supset \varphi(\varphi'^{-1}(\fpp'\cap \cO'))$ where
-    $\cO' = \cO_{2a-1}$.
-  \item {\lblue Upper bound} of associated character: we can define 
-  \item[]
-    \[\vartheta\colon
-       \cK_{\cO'}(G') \longrightarrow \cK_{\cO}(G)\]
-   \item[] such that
-    \[
-       \Ch(\Theta(\pi'))\preceq \vartheta (\Ch(\pi')),
-     \]
-     for any $\pi'$ with $\AV(\pi')\subset \overline{\cO'}$
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[label=AC]
-  \frametitle{Associated character formula II}
-  \begin{itemize}[<+->]
-  \item Recall 
-    $(G,G')=(\Sp(2n,\bR), \rO(p,q))$
-  \item For $\sL' \in \cK_{\cO'}(G')$, $\sL = \vartheta(\sL')\in \cK_{\cO}(G)$,
-    \[
-      \sL_X = \vartheta_{T}(\sL_{X'}):= {\red {\det}^{(p-q)/2}|_{\bfK_{X}}} 
-     \otimes (\sL'_{X'})^{\bfK'_{2,X'}} \circ \alpha_T,
-    \]
-  \item[] $\alpha_T\colon \bfK_X \longrightarrow \bfK'_{1,X'}$:
-     a homomorphism between isotropic subgroups.
-  \item The twisting is {\lblue crucial}.
-
-  \item Support of $\vartheta(\sL')$ could be reducible. 
-
-  \item Stable range lifting trick: Suppose $C_{2a} > p+q$. 
-    \[
-      \bigcup_{p,q}\Unip_{\cO^{'\vee}}(\rO(p,q)) \hookrightarrow \Unip_{\vcO}(\Sp(2n,\bR))
-    \]
-  \end{itemize}
-\end{frame} 
-
-
-\end{document}
 
 %%% Local Variables: 
 %%% coding: utf-8
@@ -1229,3 +1082,4 @@ $\Longleftrightarrow$
 %%% TeX-engine: xetex
 %%% TeX-master: t
 %%% End: 
+    
