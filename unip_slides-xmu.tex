@@ -615,7 +615,7 @@ Shanghai Jiao Tong University}
     \titlepage
     \vspace{-3em}
 \centering{
-    (Xiamen, Tianyuan Mathematical Cernter )
+    (Xi'an Jiaotong-Liverpool University)
 }
 \end{frame}
 
@@ -647,17 +647,22 @@ Shanghai Jiao Tong University}
                 \hline
                 $D_n$ &  $\rO^*(n)$ & $\SO(2n,\bC)$ & $\SO(2n,\bC)$ & $D_n$\\
                 \hline
-                $C_n$ & $\Sp(p,q)$ & $\Sp(2n,\bC)$ & $\SO(2n+1,\bC)$ & $B_n$\\
+                $C_n$ & $\Sp(p,n-p)$ & $\Sp(2n,\bC)$ & $\SO(2n+1,\bC)$ & $B_n$\\
                 \hline 
+                \hline
+                $A_n$ & $\rU(p,n-p)$ & $\GL(n,\bC)$ & $\GL(n,\bC)$ & $A_n$\\
+                \hline
+                $A_m$ & $\rU(r,m-r)$ & $\GL(m,\bC)$ & $\GL(m,\bC)$ & $A_m$\\
+                \hline
             \end{tabular}
         \end{table}
         
-        \pause
-        \centering{ $\Nil(\bfG^\vee):=\set{\text{nilpotent $\bfG^\vee$-oribt in }\fgg^\vee }$}
+        % \pause
+        % \centering{ $\Nil(\bfG^\vee):=\set{\text{nilpotent $\bfG^\vee$-oribt in }\fgg^\vee }$}
         \pause 
         
         \begin{block}{Theorem (Barbasch-M.-Sun-Zhu)}
-            Arthur-Barbasch-Vogan's conj.  on special unipotent repn. holds:
+            Arthur-Barbasch-Vogan's conj.  on special unipotent repn. holds for $G$:
             \pause
             
             \centering{All \emph{specail unipotent representations} of $G$  are \emph{unitarizable}.}
@@ -680,7 +685,7 @@ Shanghai Jiao Tong University}
             \item[] \hspace{4em} $\leadsto$ the maximal primitive ideal $\cI_\ckcO$ with
             inf. char.  $\chi_{\ckcO}$
             \item  \emph{Definition} (Barbasch-Vogan):
-            \item [] An irr. admissible $G$-module is called 
+            \item [] An irr. admissible $G$-repn. is called 
             \emph{special unipotent} if 
             \[
             \Ann_{\cU(\fgg)}(\pi) = \cI_{\ckcO}.
@@ -688,22 +693,30 @@ Shanghai Jiao Tong University}
             %\item  \emph{Theorem} (Barbasch-Vogan):
             \item[]
             $\Longleftrightarrow$ $\pi$ has inf. char. $\chi_{\ckcO}$ and  
-            $\bfG\cdot \AV(\pi) = \overline{\cO}$
-            \item Here $\cO$ is the  Lusztig-Spaltenstein-Barbasch-Vogan dual of $\ckcO$,
-            \item[] which is a \emph{(metaplectic) specail nilpotent orbit.}
+            $\AV_\bC(\pi) = \overline{\cO}$
+            \item $\cO$: the  Lusztig-Spaltenstein-Barbasch-Vogan dual of $\ckcO$,
+            \item[] which is a \emph{(metaplectic) special nilpotent orbit.}
             \item $\Unip_{\ckcO}(G):=$ \{ special unipotent repn. attached to $\ckcO$\}. 
         \end{itemize}
     \end{frame}
     
     
     \begin{frame}[label=DU]
-        \frametitle{Conjecture}
+        \frametitle{Conjecture/Open problems}
         \begin{itemize}[<+->]
+            \item \emph{Major open problem:} Classify the {\red unitary dual} of a reductive group:  
+            \[\whG_{\text{unitary}} = \{\text{ irr. unitary repn. of }G \}. 
+            \]
             \item[] $\Unip_{\ckcO}(G):=$ \{ special unipotent repn. attached to $\ckcO$\}. 
+            \item \emph{Philosophy:} $\Unip(G)=$  the {\color{red} building blocks} of the unitary dual.  
             \item \emph{Conjecture}: $\Unip_{\ckcO}(G)$ consists of {\red unitary} representations.
-            %\item []  Proved by Barbasch-Vogan for complex reductive groups.
+            %\item []  Proved by Barbasch-Vogan for complex reductive groups.`'
             \item Question: How to construct elements in $\Unip_{\ckcO}(G)$?
             \item Question: How many elements are there in $\Unip_{\ckcO}(G)$?
+            \item Barbasch-Vogan 1985: Complete classification of unipotent repn. of {\lblue complex reductive groups}. 
+            \item Vogan 1986: Classify the unitary dual of {\lblue $GL(n)$}. 
+            \item Barbasch 1989: Classify the unitary dual of {\lblue complex classical groups}. 
+            \item \emph{Altas of Lie group:} $\leadsto$ complete answer for exceptional groups. 
         \end{itemize}
     \end{frame}
    
@@ -744,14 +757,14 @@ Shanghai Jiao Tong University}
             \item Bad parity (must occurs with even multiplicity in $\ckcO$):
             \[
             \begin{cases}
-                \text{even number,} & \text{when $\bfG^\vee$ is type $B,D$}\\ 
+                \text{even number,} & \text{when $\bfG^\vee$ is type $B$ or $D$}\\ 
                 \text{odd number,} & \text{when $\bfG^\vee$ is type $C$} 
             \end{cases}
             \]
             \item  $\ckcO$ has \emph{``good parity'' } if $\ckcO$ only contains 
             \[
             \begin{cases}
-                \text{odd rows}, & \text{when $\bfG^\vee$ is type $B,D$}\\ 
+                \text{odd rows}, & \text{when $\bfG^\vee$ is type $B$ or $D$}\\ 
                 \text{even rows}, & \text{when $\bfG^\vee$ is type $C$} 
             \end{cases}
             \]
@@ -836,6 +849,25 @@ Shanghai Jiao Tong University}
         \end{itemize}
     \end{frame}
    }
+
+
+
+    \begin{frame}[label=CG]
+        \frametitle{Example of descent sequences}
+        \[
+        \begin{tikzcd}[ampersand replacement=\&,column sep=1em,row sep=.5em]     
+            \bfG_i^\vee \&  \SO(15,\bC) \&  \rO(10,\bC) \&  \SO(7,\bC) \& \rO(4,\bC)\\
+            \vcO_i \& \ydiagram{5,3,3,3,1} \&
+            \ydiagram{0,3,3,3,1} \& \ydiagram{0,0,3,3,1} \& \ydiagram{0,0,0,3,1}    \\
+            \cO_i \& \ydiagram{4,4,4,2}\& \ydiagram{3,3,3,1} \& \ydiagram{2,2,2,0} \&
+            \ydiagram{1,1,1,1}\\
+            \bfG_i \&  \Sp(14,\bC) \&  \rO(10,\bC) \&  \Sp(6,\bC) \& \rO(4,\bC)\\
+        \end{tikzcd} 
+        \]
+        \pause
+
+        Kraft-Procesi's resolution  of singularities of the closure of complex nilpotent orbits. 
+    \end{frame}
     
     \begin{frame}[label=CG]
         \frametitle{Descent of nilpotent orbits: $\bfG = \Sp(2n,\bC)$ }
@@ -854,8 +886,7 @@ Shanghai Jiao Tong University}
             \item[] $\vcO_i =$  removing the first rows of $\vcO_{i+1}$.
             \item
             {\lblue 
-            A descent sequence  for $\cO$}
-            is a sequence of real classical groups 
+            Descent sequence of real classical groups:} 
             \vspace{-1em}
             \[
             \begin{tikzcd}[ampersand replacement=\&,column sep=1em]
@@ -876,6 +907,7 @@ Shanghai Jiao Tong University}
     \end{frame}
     
     
+\let\ytb=\ytableaushort
     \begin{frame}[label=CG]
         \frametitle{Example of descent sequences}
         \[
@@ -883,11 +915,13 @@ Shanghai Jiao Tong University}
             \bfG_i^\vee \&  \SO(15,\bC) \&  \rO(10,\bC) \&  \SO(7,\bC) \& \rO(4,\bC)\\
             \vcO_i \& \ydiagram{5,3,3,3,1} \&
             \ydiagram{0,3,3,3,1} \& \ydiagram{0,0,3,3,1} \& \ydiagram{0,0,0,3,1}    \\
-            \cO_i \& \ydiagram{4,4,4,2}\& \ydiagram{3,3,3,1} \& \ydiagram{2,2,2,0} \&
-            \ydiagram{1,1,1,1}\\
-            \bfG_i \&  \Sp(14,\bC) \&  \rO(10,\bC) \&  \Sp(6,\bC) \& \rO(4,\bC)\\
+            \cO_i \& \ytb{-+-+\none,+-+-,+-+-,+-}\& \ytb{+-+,-+-,-+-,-} \& \ytb{-+\none,+-,+-,\none} \&
+            \ytb{+,+,-,-\none\none}\\
+            \bfG_i \&  \Sp(14,\bR) \&  \rO(4,6) \&  \Sp(6,\bR) \& \rO(2,2)\\
         \end{tikzcd} 
         \]
+        \pause
+        Ohta's resolution  of singularities of a nilpotent orbit closure in symmetric pairs. 
     \end{frame}
     
     
@@ -1066,9 +1100,13 @@ Shanghai Jiao Tong University}
         %\centering{\bf\Large Thanks to the {\tt{atlas}} team!} \\
         %\pause
         %\vspace{2em}
-        \centering{\bf\Large Thank you for your attention!}
+        Dan Barabasch, M. ,  Binyong Sun and Chen-Bo Zhu\\
+        Special unipotent representations: orthogonal and symplectic groups\\
+         ArXiv e-prints: \href{https://arxiv.org/abs/1712.05552v2}{https://arxiv.org/abs/1712.05552v2}
+       \vfill 
+        \centering{\bf\Large\color{blue} Thank you for your attention!}
         \vfill
-        \includegraphics[width=.5\textwidth]{paper_qr.png}
+        \includegraphics[width=.3\textwidth]{arxiv_uni.png}
     \end{frame}
     
     \end{document}
