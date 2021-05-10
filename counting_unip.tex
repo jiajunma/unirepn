@@ -1801,8 +1801,43 @@ obtained by transposeing $\uptau$ and replace $s$ and $r$ by $c$ and $d$
 respectively. See \eqref{eq:u.U} and \eqref{eq:u.GLR} for the definition of
 special unipotent representations on the two sides.  
 
-\section{Counting in type BC}
+\section{Counting in type BCD}
 
+In this section, we count special unipotent representations of real orthogonal
+groups (type $B$,$D$), symplectic groups (type $C$) and metaplectic groups (type
+$\wtC$). 
+
+Recall that 
+\[
+  \text{good pairity} = 
+\begin{cases}
+ \text{odd} & \text{in type $C$ and $D$}\\ 
+ \text{even} & \text{in type $C$ and $D$}\\ 
+\end{cases}  
+\]
+We decompose $\ckcO  = \ckcO_g\cup \ckcO_b$ as before. 
+We also set $(2m+1,2m') = (\abs{\ckcO_g},\abs{\ckcO_n})$ 
+
+\subsection{Counting special unipotent representation of $G = \Sp(2n,\bR)$}
+
+The dual group of $\Gc$ is $\ckGc=\SO(2n+1, \bC)$.
+By Vogan duality, the dual group for class $[\lamck]$ is 
+\[
+ \SO(n_g,\bC)\times \SO(n_b,\bC).   
+\]
+Now we have 
+\[
+  \Cint{\lamck}(G) \otimes \sgn  = \cC_g\otimes \cC_b 
+\]
+with 
+\[
+  \begin{split}
+ \cC_g &= \bigoplus_{p+q=2m+1}\Cint{\rho}(\SO(p,q))  \\
+ &= 
+ \bigoplus_{2b+s+r+c+d=m}\Ind_{W_b\ltimes \set{-1}^b\times W_s\times W_r\times W_c\times W_d}^{W_m} 1 \otimes \det \otimes \det \otimes 1 \otimes 1\\
+ \cC_b &= \Cint{\rho}(\SO^*(2m)) = \bigoplus_{\substack{2s+b=m}}\Ind_{W_s\ltimes \set{-1}^s\times S_b}^{W_m} 1 \otimes\sgn\otimes \sgn   
+  \end{split}
+\]
 
 
 
