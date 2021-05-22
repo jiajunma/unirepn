@@ -1152,10 +1152,61 @@
 }
 \makeatother 
 
+
+\def\wAV{\AV^{\mathrm{weak}}}
+\def\ckG{\check{G}}
+\def\ckGc{\check{G}_{\bC}}
+\def\dBV{d_{\mathrm{BV}}}
+\def\CP{\mathsf{CP}}
+\def\YD{\mathsf{YD}}
+\def\SYD{\mathsf{SYD}}
+\def\DD{\nabla}
+
+\def\lamck{\lambda_\ckcO}
+\def\Wint#1{W_{[#1]}}
+\def\Cint#1{\Coh_{[#1]}}
+\def\PP#1{\mathrm{PP}_{#1}}
+\def\BOX#1{\mathrm{Box}(#1)}
+\DeclareDocumentCommand{\bigtimes}{}{\mathop{\scalebox{1.7}{$\times$}}}
+
+
+\def\Gc{G_\bC}
+\def\hha{{}^a\fhh}
+\def\aX{{}^aX}
+\def\aQ{{}^aQ}
+\def\aP{{}^aP}
+\def\aR{{}^aR}
+\def\aRp{{}^aR^+}
+\def\asRp{{}^a \Delta^+}
+\def\Gfin{\cG(\Gc)}
+\def\PiGfin{\Pi_{\mathrm{fin}}( \Gc )}
+\def\PiGlfin{\Pi_{\Lambda_0}( \Gc )}
+\def\adGfin{\cG_{\mathrm{ad}}(\Gc)}
+\def\Ggk{\cG(\fgg,K)}
+\def\WT#1{\Delta(F)}
+\def\WG{W(\Gc)}
+\def\ch{\mathrm{ch}}
+\def\Wlam{W(\lambda)}
+\def\WLam{W_{\Lambda}}
+\def\Rlam{R(\lambda)}
+\def\RLam{R_\Lambda}
+\def\RLamp{R_\Lambda^+}
+\def\Rplam{R^+(\lambda)}
+\def\Glfin{\cG_{\Lambda}(\Gc)}
+
+\def\Con{\sfC}
+\def\bCon{\overline{\sfC}}
+\def\Re{\mathrm{Re}}
+\def\Im{\mathrm{Im}}
+\def\AND{\quad \text{and} \quad}
+\def\Coh{\mathrm{Coh}}
+\def\Cohlm{\Coh_{\Lambda}(\cM)}
+\def\ev#1{{\mathrm{ev}_{#1}}}
+
 \begin{document}
 
 
-\title[]{Counting unipotent representations of real reudctive groups}
+\title[]{Counting special unipotent representations of real classical groups}
 
 \author [D. Barbasch] {Dan M. Barbasch}
 \address{the Department of Mathematics\\
@@ -1191,34 +1242,6 @@
 \tableofcontents
 
 \section{Counting unipotent representations}
-\def\Gc{G_\bC}
-\def\hha{{}^a\fhh}
-\def\aX{{}^aX}
-\def\aQ{{}^aQ}
-\def\aP{{}^aP}
-\def\aR{{}^aR}
-\def\aRp{{}^aR^+}
-\def\asRp{{}^a \Delta^+}
-\def\Gfin{\cG(\Gc)}
-\def\PiGfin{\Pi_{\mathrm{fin}}( \Gc )}
-\def\PiGlfin{\Pi_{\Lambda_0}( \Gc )}
-\def\adGfin{\cG_{\mathrm{ad}}(\Gc)}
-\def\Ggk{\cG(\fgg,K)}
-\def\WT#1{\Delta(F)}
-\def\WG{W(\Gc)}
-\def\Wlam{W(\lambda)}
-\def\Rlam{R(\lambda)}
-\def\Rplam{R^+(\lambda)}
-\def\Glfin{\cG_{\Lambda}(\Gc)}
-
-\def\Con{\sfC}
-\def\bCon{\overline{\sfC}}
-\def\Re{\mathrm{Re}}
-\def\Im{\mathrm{Im}}
-\def\AND{\quad \text{and} \quad}
-\def\Coh{\mathrm{Coh}}
-\def\Cohlm{\Coh_{\Lambda}(\cM)}
-\def\ev#1{{\mathrm{ev}_{#1}}}
 
 
 In this section,  let $\Gc$ be a connected complex reductive group and $\fgg$ is
@@ -1345,8 +1368,7 @@ to each $\gamma\in \Parm$ such that $s\cdot \cof_\gamma = - \cof_\gamma$;
 $\cM_\gamma$. 
 \end{itemize}
 
-The translation principle assumption 
-implies 
+The translation principle assumption implies 
 \begin{equation}\label{eq:kevmu}
   \Ker\ev{\mu} = \sspan\set{{\cof}_{\gamma}|\tau(\gamma)\cap R_\mu \neq \emptyset } %= \Ker \ev{\mu}.  
 \end{equation}
@@ -1357,7 +1379,7 @@ Now we have the following counting lemma.
 \begin{lem}
  For each $\mu$, we have
  \[
-    \dim \cM_[\mu]  = \dim (\cohm)_{W_\mu} = [\cohm, 1_{W_\mu}]. 
+    \dim \cM_{[\mu]}  = \dim (\cohm)_{W_\mu} = [\cohm, 1_{W_\mu}]. 
  \]  
 \end{lem}
 \begin{proof}
@@ -1466,25 +1488,68 @@ Barbasch \cite{B10}*{Theorem~9.1} established the following theorem.
 Now assume $S=S(\lambda)$. By \cite[Cor~5.30 b) and c)]{BVUni},
 $[\sigma: \Ind_{W(S)}^{W}\bfone]=[\bfone|_{W(S)}:\sigma]\leq 1$.
 
+\section{Primitive ideals}
+In this section, we recall some results about the primitive ideals and cells developed by Barbasch Vogan, Joseph and Lusztig etc. 
+
+\subsection{Heighest weight module}
+Let $\fgg$ be a reductive Lie algebra, $\fbb = \fhh \oplus \fnn$ is a fixed Borel. 
+%Fix $\lambda \in \fhh^*$ dominant i.e. $\inn{\lambda}{\ckalpha} \geq 0 $  
+Let 
+\[
+  M(\lambda)  := \cU(\fgg)\otimes_{\cU(\fbb)} \bC_{\lambda-\rho}
+\]
+and $L(\lambda) $ be the unique irreducible quotient of $M(\lambda)$. 
+
+In the rest of this section, we fix a lattice $\Lambda  \in   \fhh^*/ X^*$. 
+Let $\RLam$ and $\RLamp$ be the set of integral root system and the set of positive integral roots.  
+Write $\WLam$ for the integral Weyl group.  
+
+
+For $\mu\in \Lambda$, % is called if 
+\[
+  \begin{array}{ccccc}
+  \mu \succeq 0&\Leftrightarrow &\mu \text{ is dominant} &\Leftrightarrow&  \inn{\lambda}{\ckalpha}\geq 0 \quad \forall \alpha \in \RLamp \\
+  \mu \not\sim 0&\Leftrightarrow& \mu \text{ is regular} &\Leftrightarrow&   \inn{\lambda}{\ckalpha}\neq 0 \quad \forall \alpha \in \RLamp 
+  \end{array}
+\] %for all $\alpha \in R^+_{\Lambda}$and is called 
+regular if $\inn{\lambda}{\ckalpha}\neq 0$.  
+
+For each $w\in \WLam$, it give a coherent family such that  
+\[
+M_w(\mu) = M(w\mu) \quad \forall \mu \in \Lambda\text{ dominant} 
+\] 
+\trivial{
+Note that the Gorthendieck group $\cK(\cO)$ of category $\cO$ is naturally embedded in the space of formule character.  
+$M_w$ is a coherent family: the formal character $\ch M_w (\mu)$ of $M_w(\mu)$ is $e^{w\mu}/\prod_{\alpha\in R^+} (1-e^{-\alpha})$. 
+It is clear that $\ch M_w$ satisfies the condition for coherent continuation.  
+}
+
+For each $w\in \WLam$, the function 
+\[
+  \wtpp_w(\mu) := \rank (\cU(\fgg)/\Ann (L(w \mu))) \qquad \forall \mu \in \Lambda \text{ dominant}.  
+\] 
+extends to a Harmonic polynomial on $\fhh^*$. 
+\trivial[]{
+  Let $\Lambda^+$ be the set of dominant weights in $\Lambda$. 
+Assume $\lambda \succ 0$, i.e. dominant regular. Then 
+$\R^0_\lambda = \empty$, $w^{w\lambda} = w^{-1}$. The set 
+\[
+ \hat F_{w\lambda} = \set{\mu \in \Lambda |w^{-1}\mu \succeq 0 }
+=  w \Lambda^+. 
+\]
+Joseph's $p_w(\mu) = \rank \cU(\fgg)/(\Ann L(w\mu))$ is defined on $\hat F_{w\lambda} = w\Lambda^+$. 
+Now his $\wtpp_w(\mu) = w^{-1} p_w$ is defined on $\Lambda^+$ and given by 
+$\wtpp_w(\mu) = \rank \cU(\fgg)/(\Ann L(w\mu))$. 
+}
+
+
+Let $\Cint{\Lambda}$  
+
 \section{Counting in type A}
 
-\def\wAV{\AV^{\mathrm{weak}}}
-\def\ckG{\check{G}}
-\def\ckGc{\check{G}_{\bC}}
-\def\dBV{d_{\mathrm{BV}}}
-\def\CP{\mathsf{CP}}
-\def\YD{\mathsf{YD}}
-\def\SYD{\mathsf{SYD}}
-\def\DD{\nabla}
-
-\def\lamck{\lambda_\ckcO}
-\def\Wint#1{W_{[#1]}}
-\def\Cint#1{\Coh_{[#1]}}
-\def\PP#1{\mathrm{PP}_{#1}}
-\def\BOX#1{\mathrm{Box}(#1)}
-\DeclareDocumentCommand{\bigtimes}{}{\mathop{\scalebox{1.7}{$\times$}}}
 
 The results in this section are well known to the experts. 
+
 
 Let $\YD$ be the set of Young diagrams viewed as a finite multiset of positive integers. 
 The set of nilpotent orbits in $\GL_n(\bC)$ is identified with Young diagram of $n$ boxs. 
@@ -1768,7 +1833,8 @@ is irreducible. Moreover, the following map  is a bijection.
 \qed
 \end{lem}
 \begin{remark}
-  When $\ckcO_b\neq \emptyset$, the special unipotent representations can have
+  Note that the parabolic induction of an rational nilpotent orbit can be reducible. 
+  Therefore, when $\ckcO_b\neq \emptyset$, the special unipotent representations can have
   reducible associated variety. Meanwhile, it is easy to see that the map
   $\Unip_{\ckcO}(\rU) \ni \pi \mapsto\wAV(\pi)$ is still injective. 
 \end{remark}
@@ -1802,6 +1868,8 @@ respectively. See \eqref{eq:u.U} and \eqref{eq:u.GLR} for the definition of
 special unipotent representations on the two sides.  
 
 \section{Counting in type BCD}
+\def\tsgn{\widetilde{\sgn}}
+\def\PBP{\mathsf{PBP}}
 
 In this section, we count special unipotent representations of real orthogonal
 groups (type $B$,$D$), symplectic groups (type $C$) and metaplectic groups (type
@@ -1816,15 +1884,137 @@ Recall that
 \end{cases}  
 \]
 We decompose $\ckcO  = \ckcO_g\cup \ckcO_b$ as before. 
-We also set $(2m+1,2m') = (\abs{\ckcO_g},\abs{\ckcO_n})$ 
+
+Let $\tsgn$ be the character of $W_n$ inflated from the sign character of $S_n$ via the 
+natural map $W_n \rightarrow S_n$.  
+Recall the following formula
+\[
+  \Ind_{W_b\ltimes \set{\pm 1}^b}^{W_2b} 1 \otimes \sgn = \sum_{\sigma} (\sigma,\sigma) 
+\]
+where $\sigma$ running over all Young diagrams of size $b$. 
+
+
+%\subsection{Type C}
+
+\subsection{Counting special unipotent representation of $G=\Sp(p,q)$}. 
+The dual group of $\Gc = \Sp(2n,\bC)$ is $\ckGc = \SO(2n+1,\bC)$. 
+We set $(2m+1,2m') = (\abs{\ckcO_g},\abs{\ckcO_n})$.
+By Vogan duality, the dual group for class $[\lamck]$ is 
+\[
+ \SO(2m+1,\bC)\times \rO(2m',\bC).   
+\]
+
+
+Now we have 
+\[
+  \Cint{\lamck}(G) \otimes \sgn  = \cC_g\otimes \cC_b 
+\]
+with 
+\[
+  \begin{split}
+ \cC_g &  = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\ 
+ &=\bigoplus_{\substack{b,s,r\in\bN\\2b+s+r=m}}
+ \Ind_{W_b\ltimes \set{\pm 1}^b \times W_s\times W_b}^{W_{m}} 
+ 1\otimes \sgn \otimes \sgn \otimes \sgn \\
+& =\bigoplus_{\substack{b,s,r\in\bN\\2b+s+r=m}}
+ \Ind_{W_{2b}\times W_s\times W_b}^{W_{m}} 
+ (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
+ \cC_b &  = \Ind_{W_{\frac{m'}{2}}\ltimes \set{\pm 1}^{\frac{m'}{2}}}^{W_{m'}} \sgn 
+ \\
+  \end{split}
+\]
+
+
+In $\SO(2m',\bC)$, the dobule cell corresponds to $\ckcO_b$ consists of 
+a single  representation  
+\[
+  \cktau_b = (\cksigma_b,\cksigma_b) \text{ such that } 
+  \bfrr_i(\cksigma_b) = \bfrr_{2i}(\ckcO_b)/2
+\]
+Let $\ckcO'_b$ be the Young diagram such  that $\bfrr_i(\ckcO'_b) = \bfrr_{2i}(\ckcO_b)$ 
+and $\pi'_b$ be the unique special unipotent representation attached to $\GL_p(\bH)$
+\begin{lem}
+The set $\Unip_{\ckcO_b}(\Sp(p,q))\neq \emptyset$ only if $p=q = \abs{\cksigma_b}$ and in this case it consists a single element
+\[
+  \pi_b := \Ind_P^{\Sp(p,p)} \pi'_{\cksigma_b} %^{\GL_p(\bH)} 
+\]
+where $P$ has the Levi subgroup $\GL_p(\bH)$.  
+\end{lem}
+
+
+The special reprsentation corresponds to $\ckcO_b$ is 
+\[
+ aa 
+\]
+Let 
+\[
+\PBP_{\ckcO_g}(C^*):= \Set{(\imath,\jmath,\cP,\cQ)| \begin{array}{l}
+  (\imath,\jmath) = \cktau_g\\
+  \Im \cP \subset \set{\bullet}, \Im \cQ \subset\set{\bullet, s,r}\\
+\end{array} 
+  }.  
+\]
+
+\begin{lem}
+  The set of $\Unip_{\ckcO}(\Sp(p,q))$
+  is paramterized by the set  such that 
+  \[
+    ss
+  \]
+\end{lem}
+
+
+\trivial{Let $W = W(\Gc)$ where $\Gc$ is natrualy embeded in $\GL(n,\bC)$. Let
+  $s_{\varepsilon_i i,\varepsilon_j j}$ be the permutation matrix of index
+  $i,j$, where the $(i,j)$-th entry is $\varepsilon_i$, the $(j,i)$-th entry is
+  $\varepsilon_j$ and the other place is the identity matrix. Let $w_{i,\pm j}^{\epsilon}$
+  be the element such that 
+  \begin{itemize}
+   \item  it is in $\Gc$ and entries in $\set{0}\cup \mu_4$
+   \item  it lifts the
+  element $e_i \leftrightarrow \pm e_j$ in the Weyl group.
+  \item $(w_{i,\pm j}^{\epsilon})^2 = \epsilon 1\in \set{\pm 1}$.  
+  \end{itemize}
+  Let \[h_{\pm i}^+  = \diag(1,\cdots, 1, \pm 1, 1, \cdots, 1)\] where $\pm 1$
+    is the $i$-th place.  
+    Let 
+\[h_{\pm i}^-  = \diag(1,\cdots, 1, \pm \sqrt{-1}, 1, \cdots, 1)\] 
+  where $\pm \sqrt{-1}$ is the $i$-th place.  
+  Let $e_{\pm i} = s_{\pm i,\pm (n-i+1)}$.  
+
+  Let $\ckww_{i,\pm j}^\pm$ be the lift of $e_i \leftrightarrow \pm e_j$ such that 
+  \begin{itemize}
+   \item  it is in $\Gc$ and entries in $\set{0}\cup \mu_4$
+   \item  it lifts the
+  element $e_i \leftrightarrow \pm e_j$ in the Weyl group.
+  \item $(w_{i,\pm j}^{\epsilon})^2|_{[i,j]} = \epsilon 1\in \set{\pm 1}$ here
+  ``$|_{[i,j]}$'' means restricts on the $e_i,e_j,-e_i,-e_j$-weights space.  
+  \end{itemize}
+
+Let 
+\[
+  \begin{split}
+  x_{b,s,r} &= w_{1,2}^+\cdots w_{2b-1,2b}^+\, h_{2b+1}^+\cdots h_{2b+s}^+ \\
+  y_{b,s,r}^+ &= \ckww_{1,-2}^+\cdots \ckww_{2b-1,-2b}^+\,
+   e_{2b+1}\cdots e_{2b+s+r} \\
+  y_{b,s,r}^- &= \ckww_{1,-2}^-\cdots \ckww_{2b-1,-2b}^- 
+  \end{split}
+\]
+
+
+We compute the parameter space 
+\[
+  \begin{split}
+\cZ_g &=  \bigcup_{2b+s+r=m} W_m\cdot (x_{b,s,r}^+, y_{b,s,r}^+)\\  
+\cZ_b &=  \bigcup_{2b=m} W_m\cdot (x_{b,0,0}^+, y_{b,0,0}^-)\\  
+  \end{split}
+\]
+
+}
+
 
 \subsection{Counting special unipotent representation of $G = \Sp(2n,\bR)$}
 
-The dual group of $\Gc$ is $\ckGc=\SO(2n+1, \bC)$.
-By Vogan duality, the dual group for class $[\lamck]$ is 
-\[
- \SO(n_g,\bC)\times \SO(n_b,\bC).   
-\]
 Now we have 
 \[
   \Cint{\lamck}(G) \otimes \sgn  = \cC_g\otimes \cC_b 

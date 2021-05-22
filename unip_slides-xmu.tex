@@ -550,6 +550,8 @@
 
 \allowdisplaybreaks
 
+\let\ytb=\ytableaushort
+
 \setbeamertemplate{section in toc}[sections numbered]
 
 \def\TTPG{
@@ -615,7 +617,7 @@ Shanghai Jiao Tong University}
     \titlepage
     \vspace{-3em}
 \centering{
-    (Xi'an Jiaotong-Liverpool University)
+    (Zhejiang University)
 }
 \end{frame}
 
@@ -680,10 +682,10 @@ Shanghai Jiao Tong University}
             (Jacobson-Morozov)
             \item[] \hspace{4em} $\leadsto$ an infinitesimal character $\rdd\varphi({\half
             \tiny\begin{pmatrix} 1 & 0 \\ 0 & -1\\ \end{pmatrix} })\leftrightarrow
-            \chi_{\cO^\vee}$  
+            \lambda_{\cO^\vee}$  
             
             \item[] \hspace{4em} $\leadsto$ the maximal primitive ideal $\cI_\ckcO$ with
-            inf. char.  $\chi_{\ckcO}$
+            inf. char.  $\lambda_{\ckcO}$
             \item  \emph{Definition} (Barbasch-Vogan):
             \item [] An irr. admissible $G$-repn. is called 
             \emph{special unipotent} if 
@@ -692,7 +694,7 @@ Shanghai Jiao Tong University}
             \]
             %\item  \emph{Theorem} (Barbasch-Vogan):
             \item[]
-            $\Longleftrightarrow$ $\pi$ has inf. char. $\chi_{\ckcO}$ and  
+            $\Longleftrightarrow$ $\pi$ has inf. char. $\lambda_{\ckcO}$ and  
             $\AV_\bC(\pi) = \overline{\cO}$
             \item $\cO$: the  Lusztig-Spaltenstein-Barbasch-Vogan dual of $\ckcO$,
             \item[] which is a \emph{(metaplectic) special nilpotent orbit.}
@@ -707,49 +709,117 @@ Shanghai Jiao Tong University}
             \item \emph{Major open problem:} Classify the {\red unitary dual} of a reductive group:  
             \[\whG_{\text{unitary}} = \{\text{ irr. unitary repn. of }G \}. 
             \]
-            \item[] $\Unip_{\ckcO}(G):=$ \{ special unipotent repn. attached to $\ckcO$\}. 
+            %\item[] $\Unip_{\ckcO}(G):=$ \{ special unip. repn. attached to $\ckcO$\}. 
             \item \emph{Philosophy:} $\Unip(G)=$  the {\color{red} building blocks} of the unitary dual.  
             \item \emph{Conjecture}: $\Unip_{\ckcO}(G)$ consists of {\red unitary} representations.
             %\item []  Proved by Barbasch-Vogan for complex reductive groups.`'
-            \item Question: How to construct elements in $\Unip_{\ckcO}(G)$?
-            \item Question: How many elements are there in $\Unip_{\ckcO}(G)$?
-            \item Barbasch-Vogan 1985: Complete classification of unipotent repn. of {\lblue complex reductive groups}. 
+            \item {\red Question:} How many elements are there in $\Unip_{\ckcO}(G)$?
+            \item {\red Question:} How to construct elements in $\Unip_{\ckcO}(G)$?
+            \item \emph{Barbasch-Vogan} 1985: Complete classification of unipotent repn. of {\lblue complex reductive groups}. 
             \item Vogan 1986: Classify the unitary dual of {\lblue $GL(n)$}. 
             \item Barbasch 1989: Classify the unitary dual of {\lblue complex classical groups}. 
             \item \emph{Altas of Lie group:} $\leadsto$ complete answer for exceptional groups. 
         \end{itemize}
     \end{frame}
-   
+  
+    \begin{frame}{Example of Atlas' computation $G = \Sp(2,2)$}
+        \centering{
+        \includegraphics[width=0.8\textwidth]{atlas_Sp22.png}
+        }
+    \end{frame}
     
     \begin{frame}[label=CT]
         \frametitle{Counting $(\fgg,K)$-module with a paticular asso. variety}
         \begin{itemize}[<+->]
-            \item  Fix regular. inf. char. $\lambda \in \fhh^*/W$ 
+            \item  Fix regular inf. char. $\lambda \in \fhh^*/W$ 
             \item  integral Weyl group
            \[
                W(\lambda) := \set{w\in W | \inn{\lambda - w\lambda}{\check\alpha}\in \bZ,
               \ \forall \alpha \in \Delta(\fgg,\fhh) 
                }
            \] 
-           \item[] Double cell $\cD$  in $W(\lambda)$
+           \item[] Double cell $\cD$  in $\widehat{W(\lambda)}$
             $\longleftrightarrow$ the specail repn. $\tau_0\in \cD$
            \item[] $\longrightarrow$ truncated induction  $J_{W(\lambda)}^W \tau_0$ 
            \item[] $\xrightarrow{\text{Springer corr.} }$ $\cO$. 
-           \item Let $\mu \in \lambda + Q$ ($Q$ is the root lattice), 
+           \item Let $\mu \in \lambda + X^*$ ($X^*$ is the weight lattice), 
             \[
                 W_\mu = \set{w\in W | w\cdot \mu = \mu}.  
             \]
-            \item $\cK_{\lambda}(\fgg,K)$:  the Groth. gp. of $(\fgg,K)$-modules with inf. char. $\lambda$. 
+            \item $\sG_{\lambda}(\fgg,K)$:  the Groth. gp. of $(\fgg,K)$-modules with inf. char. $\lambda$. 
             \item {\lblue Lemma: }
             \[
                 \begin{split}
              & \#\set{\pi \in \Irr_{\mu}(\fgg,K)(G) | \AV_\bC(\pi) = \overline{\cO}}\\
-            &= \sum_{\substack{\tau\in \cD\\\cD\leadsto \cO}} [\tau:1_{W_\mu}]\cdot [\tau: \cK_{\lambda}(\fgg,K)]
+            &= \sum_{\substack{\tau\in \cD\\\cD\leadsto \cO}} [\tau:1_{W_\mu}]\cdot [\tau: \sG_{\lambda}(\fgg,K)]
                 \end{split}
             \]
         \end{itemize}
     \end{frame}
+
     
+    \begin{frame}[label=CT]
+        \frametitle{Counting unipotent representations I}
+        \begin{itemize}[<+->]
+            \item Example: $G = \Sp(2n,\bR)$
+            \item  $\lambda_{\ckcO}\in \rho(G) + X^*$ %$\ckcO\in \Nil^{gp}(\bfG^\vee)$, i.e. $\ckcO$ only has odd length rows.  
+            \item[] $\leadsto$ special representation $\tau \leftrightarrow \cO$ 
+            % \item[] Springer/Lusztig left cell $\cC_\cO = \set{\tau_1,
+            % \cdots,\tau_{2^l}}$ containing $\tau$
+            \item $\sG_{\rho}(G)$:  the Groth. gp. of $(\fgg,K)$-modules with inf. char. $\rho$. 
+            \item[]
+            \vspace{-1em}
+            \[
+            \lblue
+            \#\Unip_{\vcO}(G) = 2^l \cdot [\tau:\sG_{\rho}(G)] 
+            \]
+            \vspace{-1em}
+            \item[] $W(\Sp(2n)) = S_n \ltimes \set{\pm 1}^n$, 
+            \vspace{-1em}
+            \item[] 
+            \[
+            \sG_{\rho}(\Sp(2n,\bR)) = \sum_{\substack{p,q,t,s,\\
+            \sigma\in \widehat{S_s}}} \Ind_{S_t\times W_{2s}\times W_p\times
+            W_q}^{W_n} \sgn\otimes(\sigma\times \sigma)\otimes \bfone\otimes \bfone .
+            \]
+            \item $[\tau:1_{W_{\lambda_{\ckcO}}}]=1$. %is counted by painted bi-partitions $\PBP(\ckcO)$.
+            \item $[\tau:\sG_{\rho}(G)]$ is counted by painted bi-partitions $\PBP(\ckcO)$.
+            % \item $LS(\cO)\subset \cK_\cO(\bfK)$: all local systems could be obtained by
+            % theta lifting.
+            % \item When $\cO^\vee\in \Nil^{qd}(\fgg^\vee)$,  $\# \PBP(\cO) 
+            % = \# \AOD(\cO) = \# \LS(\cO)$ 
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Example of $\PBP$} 
+        \[
+        % \lblue \ckcO = [6,6,5,5,2,2] =  \ydiagram{6,6,5,5,2,2}   
+         \lblue \ckcO = [7,5,5,5,3,1,1] =  \ydiagram{7,5,5,5,3,1,1}   
+        \]
+        \[
+        \begin{array}{ccc}
+            \PBP_\ckcO(\Sp(2n,\bR)) & & \text{Associated cycle}\\
+         \ytb{\bullet\bullet\bullet, \bullet c, r d, d}   
+         \times 
+         \ytb{\bullet\bullet\bullet, \bullet s, \none,\none}   
+         & 
+         \mapsto &
+         \ytb{\ast=\ast=\ast=,
+             \ast=\ast=\ast=,
+            =\ast=\ast,
+        \ast=\ast=, \ast=\ast=, -+
+         }   
+           \cup 
+         \ytb{\ast=\ast=\ast=,
+             \ast=\ast=\ast=,
+            =\ast=\ast,
+        =\ast=\ast, \ast=\ast=, +-
+         }  \\ 
+         \vdots & &\vdots 
+        \end{array}
+        \]
+    \end{frame}
+
 
     \begin{frame}[label=CG]
         \frametitle{Nilpotent orbits with ``good/bad parity''}
@@ -768,7 +838,7 @@ Shanghai Jiao Tong University}
                 \text{even rows}, & \text{when $\bfG^\vee$ is type $C$} 
             \end{cases}
             \]
-            \item $\chi_\ckcO$ is integral.
+            \item $\lambda_\ckcO$ is integral.
             \item  Example of good parity:
             \[
             \begin{tikzcd}[ampersand replacement=\&,column sep=3em,row sep = -0.2em]     
@@ -794,8 +864,9 @@ Shanghai Jiao Tong University}
                 {\tiny\Unip_{\ckcO'_b}(\GL_\bR)
                 \times \Unip_{\ckcO_g}(\Sp_\bR)} &\xrightarrow{\ \ 1-1\ \ }&
                 {\tiny \Unip_{\ckcO}(\Sp_\bR)} \\[.6em]
-                (\pi_1,\pi_0 ) &\mapsto & \Ind_{\raisebox{-0.5em}{\tiny$\GL(\abs{\ckcO'_b},\bR)\times \Sp(2n_0,\bR)$}}^{\tiny\raisebox{1em}{$\Sp(2n,\bR)$}}
-                \hspace{-5em}\pi_1\otimes \pi_0
+                (\pi',\pi_0 ) &\mapsto & 
+                \Ind_{\raisebox{-0.5em}{\tiny$\GL(\abs{\ckcO'_b},\bR)\times \Sp(2n_0,\bR)\ltimes U$}}^{\tiny\raisebox{1em}{$\Sp(2n,\bR)$}}
+                \hspace{-5em}\pi'\otimes \pi_0
             \end{array}
             \]
             \[
@@ -866,11 +937,11 @@ Shanghai Jiao Tong University}
         \]
         \pause
 
-        Kraft-Procesi's resolution  of singularities of the closure of complex nilpotent orbits. 
+        {\lblue Kraft-Procesi's} resolution  of singularities of the closure of complex nilpotent orbits. 
     \end{frame}
     
     \begin{frame}[label=CG]
-        \frametitle{Descent of nilpotent orbits: $\bfG = \Sp(2n,\bC)$ }
+        \frametitle{Descent of nilpotent orbits: $G = \Sp(2n,\bR)$ }
         \begin{itemize}[<+->]
             \item 
             Take $\ckcO\in \Nil^{gp}(\fgg^\vee)$ (nilpotent orbits with good parity).
@@ -907,7 +978,6 @@ Shanghai Jiao Tong University}
     \end{frame}
     
     
-\let\ytb=\ytableaushort
     \begin{frame}[label=CG]
         \frametitle{Example of descent sequences}
         \[
@@ -917,11 +987,11 @@ Shanghai Jiao Tong University}
             \ydiagram{0,3,3,3,1} \& \ydiagram{0,0,3,3,1} \& \ydiagram{0,0,0,3,1}    \\
             \cO_i \& \ytb{-+-+\none,+-+-,+-+-,+-}\& \ytb{+-+,-+-,-+-,-} \& \ytb{-+\none,+-,+-,\none} \&
             \ytb{+,+,-,-\none\none}\\
-            \bfG_i \&  \Sp(14,\bR) \&  \rO(4,6) \&  \Sp(6,\bR) \& \rO(2,2)\\
+            G_i \&  \Sp(14,\bR) \&  \rO(4,6) \&  \Sp(6,\bR) \& \rO(2,2)\\
         \end{tikzcd} 
         \]
         \pause
-        Ohta's resolution  of singularities of a nilpotent orbit closure in symmetric pairs. 
+        {\lblue Ohta's} resolution  of singularities of a nilpotent orbit closure in symmetric pairs. 
     \end{frame}
     
     
@@ -937,7 +1007,7 @@ Shanghai Jiao Tong University}
             Define a smooth repn. of $G = G_{2a}$ (the symplectic group). 
             \[
             {\lblue \pi_{\chi}}:=(\omega_{G_{2a},G_{2a-1}}\widehat \otimes
-            \omega_{G_{2a-2},G_{2a-3}} \widehat \otimes \cdots \widehat \otimes
+            \omega_{G_{2a-1},G_{2a-2}} \widehat \otimes \cdots \widehat \otimes
             \omega_{G_1,G_0} \otimes \chi)_{G_{2a-1}\times G_{2a-2}\times \cdots \times G_{0}}
             \]
             \item[]
@@ -1007,40 +1077,99 @@ Shanghai Jiao Tong University}
         \end{itemize}
     \end{frame}
     
+
+
+
+\begin{frame}[label=AC]
+  %\frametitle{Geometry of the \underline{moment maps}}
+  \frametitle{Associated cycle formula I}
+  \begin{itemize}[<+->]
+  \item Example $(G,G')=(\Sp(2n,\bR), \rO(p,q))$ 
+    \[
+      \begin{tikzcd}[ampersand replacement=\&,column sep=3em, row sep=1em]
+        \& M_{p,n}\oplus M_{q,n} \ar[rd,"\varphi"]
+        \ar[ld,"\varphi'"'] \& \\
+        M_{p,q}\cong {\mathfrak{p}'} \&  \text{\footnotesize $(A,B)$} \ar[rd,mapsto]\ar[ld,mapsto]\& {\mathfrak p}\cong
+        \mathrm{Sym}_n\oplus \mathrm{Sym}_n\\
+       \text{\footnotesize $X'=AB^T$} \& \& \text{\footnotesize $X = (A^T A,B^T B)$} \\
+      \end{tikzcd}
+    \]
+  \item $\bcO \cap \fpp \supset \varphi(\varphi'^{-1}(\fpp'\cap \cO'))$ where
+    $\cO$ is a cplx. nil. $\bfG$-orbit. 
+  \item {\lblue Upper bound} of associated cycle: we can define 
+  \item[]
+    \[\vartheta^{\text{geo}}\colon
+       \cK_{\cO'}(G') \longrightarrow \cK_{\cO}(G)\]
+   \item[] such that
+    \[
+       \AC(\Theta(\pi'))\preceq \vartheta^{\text{geo}} (\AC(\pi')),
+     \]
+     for any $\pi'$ with $\AV(\pi')\subset \overline{\cO'}$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[label=AC]
+  \frametitle{Associated cycle formula II}
+  \begin{itemize}[<+->]
+  \item Recall 
+    $(G,G')=(\Sp(2n,\bR), \rO(p,q))$
+  \item For $\sL' \in \cK_{\cO'}(G')$, $\sL = \vartheta(\sL')\in \cK_{\cO}(G)$,
+    \[
+      \sL_X = \vartheta_{T}(\sL_{X'}):= {\red {\det}^{(p-q)/2}|_{K_{X}}} 
+     \otimes (\sL'_{X'})^{K'_{2,X'}} \circ \alpha,
+    \]
+  \item[] $\alpha\colon K_X \longrightarrow K'_{1,X'}$:
+     a homomorphism between isotropic subgroups.
+  \item The twisting is {\lblue crucial}. 
+  \item[] $\Rightarrow$ {\lblue admissible orbit data $\leadsto$ admissible orbit data. }
+
+  \item Support of $\vartheta(\sL')$ could be reducible. 
+
+  \item Stable range lifting trick: Suppose $n > p+q$. 
+    \[
+      \bigcup_{p,q}\Unip_{\cO^{'\vee}}(\rO(p,q)) \hookrightarrow \Unip_{\vcO}(\Sp(2n,\bR))
+    \]
+  \end{itemize}
+\end{frame} 
+
+
     
+    % \begin{frame}[label=CT]
+    %     \frametitle{Counting unipotent representations I}
+    %     \begin{itemize}[<+->]
+    %         \item  $\ckcO\in \Nil^{gp}(\bfG^\vee)$ 
+    %         \item[] $\leadsto$ special representation $\tau \leftrightarrow \cO$
+            
+    %         % \item[] Springer/Lusztig left cell $\cC_\cO = \set{\tau_1,
+    %         % \cdots,\tau_{2^l}}$ containing $\tau$
+    %         \item $\sG_{\rho}(G)$:  the Groth. gp. of $(\fgg,K)$-modules with
+    %         inf. char. $\rho$. 
+    %         \item[]
+    %         \vspace{-1em}
+    %         \[
+    %         \lblue
+    %         \#\Unip_{\vcO}(G) = 2^l \cdot [\tau:\cK_{\rho}(G)] 
+    %         \]
+    %         \vspace{-1em}
+    %         \item[] $W(\Sp(2n)) = S_n \ltimes \set{\pm 1}^n$, 
+    %         \vspace{-1em}
+    %         \item[] 
+    %         \[
+    %         \sG_{\rho}(\Sp(2n,\bR)) = \sum_{\substack{p,q,t,s,\\
+    %         \sigma\in \widehat{S_s}}} \Ind_{S_t\times W_{2s}\times W_p\times
+    %         W_q}^{W_n} \sgn\otimes(\sigma\times \sigma)\otimes \bfone\otimes \bfone .
+    %         \]
+    %         \item $[\tau:\sG_{\rho}(G)]$ is counted by painted bi-partitions
+    %         $\PBP(\ckcO)$.
+    %         % \item $LS(\cO)\subset \cK_\cO(\bfK)$: all local systems could be
+    %         % obtained by theta lifting. \item When $\cO^\vee\in
+    %         % \Nil^{qd}(\fgg^\vee)$,  $\# \PBP(\cO) = \# \AOD(\cO) = \#
+    %         % \LS(\cO)$ 
+    %     \end{itemize}
+    % \end{frame}
+
     \begin{frame}[label=CT]
-        \frametitle{Counting unipotent representations I}
-        \begin{itemize}[<+->]
-            \item  $\ckcO\in \Nil^{gp}(\bfG^\vee)$ 
-            \item[] $\leadsto$ special representation $\tau \leftrightarrow \cO$ 
-            % \item[] Springer/Lusztig left cell $\cC_\cO = \set{\tau_1,
-            % \cdots,\tau_{2^l}}$ containing $\tau$
-            \item $\cK_{\rho}(G)$:  the Groth. gp. of $(\fgg,K)$-modules with inf. char. $\rho$. 
-            \item[]
-            \vspace{-1em}
-            \[
-            \lblue
-            \#\Unip_{\vcO}(G) = 2^l \cdot [\tau:\cK_{\rho}(G)] 
-            \]
-            \vspace{-1em}
-            \item[] $W(\Sp(2n)) = S_n \ltimes \set{\pm 1}^n$, 
-            \vspace{-1em}
-            \item[] 
-            \[
-            \cK_{\rho}(\Sp(2n,\bR)) = \sum_{\substack{p,q,t,s,\\
-            \sigma\in \widehat{S_s}}} \Ind_{S_t\times W_{2s}\times W_p\times
-            W_q}^{W_n} \sgn\otimes(\sigma\times \sigma)\otimes \bfone\otimes \bfone .
-            \]
-            \item $[\tau:\cK_{\rho}(G)]$ is counted by painted bi-partitions $\PBP(\ckcO)$.
-            % \item $LS(\cO)\subset \cK_\cO(\bfK)$: all local systems could be obtained by
-            % theta lifting.
-            % \item When $\cO^\vee\in \Nil^{qd}(\fgg^\vee)$,  $\# \PBP(\cO) 
-            % = \# \AOD(\cO) = \# \LS(\cO)$ 
-        \end{itemize}
-    \end{frame}
-    
-    \begin{frame}[label=CT]
-        \frametitle{Counting unipotent representations II}
+        \frametitle{Matching unipotent representations with PBP}
         \begin{itemize}[<+->]
             \item $\PBP(\ckcO)$ is complicate.
             \item $\LS(\ckcO) = \set{\AC(\pi_\chi)}$ is also complicate.
@@ -1050,13 +1179,19 @@ Shanghai Jiao Tong University}
             \[
             \begin{tikzcd}[ampersand replacement=\&]
                \LS(\ckcO) \& \PBP(\ckcO) \ar[r,<->]\ar[d,"\nabla"'] \ar[l,"\AC"]\& \Unip_{\ckcO}(G)  \\
-               \LS(\ckcO') \ar[u,"\text{geo. lift}"]\& \PBP(\ckcO') \ar[r,<->]\ar[l,"\AC"] \& \Unip_{\ckcO'}(G') \ar[u,"\theta"'] 
+               \LS(\ckcO') \ar[u,"\vartheta^{\text{geo}}"]\& \PBP(\ckcO') \ar[r,<->]\ar[l,"\AC"] \& \Unip_{\ckcO'}(G') \ar[u,"\theta"'] 
             \end{tikzcd}
+            \]
+            \item[] 
+            \[
+                \pi_{\tau} := \Theta(\pi_{\nabla(\tau)}\otimes \chi'_{\tau})\otimes \chi_{\tau}
             \]
             \item The {\red injectivity} of theta lifting is crucial!
         \end{itemize}
     \end{frame}
     
+
+
     % \begin{frame}
     % \frametitle{More precise statement}
 
