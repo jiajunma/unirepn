@@ -1,8 +1,9 @@
-%\documentclass[t,mathserif,11pt,handout,usenames,dvipsnames]{beamer} 
-\documentclass[t,mathserif,11pt,usenames,dvipsnames]{beamer} 
+%\documentclass[t,11pt,handout,usenames,dvipsnames]{beamer}
+\documentclass[t,11pt,usenames,dvipsnames]{beamer}
 %\documentclass[t,mathserif,11pt]{beamer} 
 %\usetheme{Berlin}
 %\usecolortheme{seahorse}
+\usefonttheme{serif}
 \usetheme{CambridgeUS}
 \usecolortheme{rose}
 \usecolortheme{dolphin}
@@ -575,9 +576,8 @@
 \usetikzlibrary{matrix,arrows,positioning,cd,backgrounds}
 \usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing}
 
-\title[Uni. Repn.]{Special unipotent representations \\
-of real classical groups \\
-and theta correspondence}
+\title[Uni. Repn.]{Unipotent representations \\
+of real classical groups}
 
 \author[Ma, Jia-Jun]{Ma, Jia-Jun\\[2em] 
 (joint with Dan Barbasch, Binyong Sun and  Chengbo Zhu)
@@ -616,18 +616,202 @@ Shanghai Jiao Tong University}
     
     \titlepage
     \vspace{-3em}
-\centering{
-    (Zhejiang University)
-}
+% \centering{
+%     (Zhejiang University)
+% }
 \end{frame}
 
 
 % \begin{frame}[c]{Outline}
     %   \tableofcontents[hideallsubsections,subsubsectionstyle=hide]
     % \end{frame}
-    
+
+\def\vgraph#1#2{\ensuremath{\vcenter{\hbox{\includegraphics[width=#1]{#2}}}}}
+\def\hgraph#1#2{\ensuremath{\vcenter{\hbox{\includegraphics[height=#1]{#2}}}}}
+\def\hhgraph#1#2#3{\ensuremath{\begin{array}{c}\text{#3}\\
+        \hbox{\includegraphics[height=#1]{#2}}
+        \end{array}}}
     \section{Motivation}
-    
+
+    \begin{frame}
+      \frametitle{Reductive groups and its representation}
+      \begin{itemize}[<+->]
+        \item $\bfG$: a linear algebraic group: $\SL_{n}$, $\Sp_{2n}$, $\rO_{n}$,
+              $G_{2}$, $F_{4}$, $E_{6}$, $E_{7}$, $E_{8}\cdots$.
+        \item \emph{Question:} How to classify \emph{$\Irr(G)$} where $G= \bfG(k)$?
+        \item The structure of $\Irr(G)$?
+        \item Deligne-Lusztig: \emph{Jordan decomposition} (finite group, 1970s)
+        \item[] Define dual group $\bfG^{*}$.
+            E.g. $\Sp_{2n} = \bfG\leftrightsquigarrow \bfG^{*} = \SO_{2n+1}$\\
+        \[
+             \hhgraph{0.13\textwidth}{Lusztig}{Lusztig} \hspace{2em}
+             \Irr(G) = \displaystyle \bigsqcup_{\text{s.s. class in } G^{*}} \cE(G, s).
+             \hspace{2em}
+             \hhgraph{0.13\textwidth}{Deligne}{Deligne}
+            \]
+        \item[] Lusztig's map to the unipotent packet.
+        \[
+          \cE(G,s)\xrightarrow{ 1-1 } \cE(G^{*}_{s},1)
+        \]
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      \frametitle{Representations of Real Lie groups}
+      \begin{itemize}[<+->]
+        \item Examples $G=\GL_{n}(\bR),\rU(p,q), \rO(p,q), \Sp(2n,\bR), \Mp(2n,\bR), \cdots$\\[-1em]
+        \item[]\
+              \vspace{-1em}
+        \[
+          \set{\text{discrete series}}\subset\set{\text{tempered}}
+          \subset\set{\text{unitary}}\subset\Irr(G)
+        \]
+        \item Unitary dual of $\SL_{2}(\bR)$:
+        \[
+          \vgraph{0.6\textwidth}{unitary_sl2.png}
+        \]
+        \item \emph{Open problem:} Classify the unitary dual!
+      \end{itemize}
+    \end{frame}
+
+    \def\vG{G^\vee}
+    \begin{frame}
+      \frametitle{Langlands and Arthur}
+      \begin{itemize}[<+->]
+        \item $W_{\bR} = \bC^{\times} \cup j\, \bC^{\times}$
+        such that $jzj^{\, -1} = \overline{z}, j^{\, 2}=-1\in \bC^{\times}$.
+        \item Langlands dual group ${}^{L}G = \vG \rtimes \braket{j}$. Eg:
+        \[
+          \Sp_{2n}(\bR)=G\longleftrightarrow \vG=\SO_{2n+1}(\bC)
+        \]
+        \item \emph{Langlands}
+        \[
+          \vgraph{0.12\textwidth}{Langlands.jpeg}
+          \hspace{4em}
+          \Irr(G)\xrightarrow{\text{\ finite to one\
+            }} \set{\phi\colon W_{\bR}\rightarrow {}^{L}G}/\vG.
+          \hspace{4em}
+        \]
+        \item \emph{Arthur: (Classical group, 2013)} $\Irr_{\text{temp}}(G) \subset \Irr_{A}(G)\subset
+        \Irr_{\text{unit}}(G)$
+        \[
+          \vgraph{0.15\textwidth}{Arthur.jpg}
+          \hspace{2em}
+          \Irr_{A}(G)\xrightarrow{\text{\ finite to finite\
+            }} \set{\psi\colon W_{\bR}\times \SL_{2}(\bC)\rightarrow {}^{L}G}/\vG.
+        \]
+      \end{itemize}
+    \end{frame}
+
+
+    \begin{frame}
+      \frametitle{Arthur's unipotent representations}
+      \begin{itemize}[<+->]
+        \item $\psi:W_{\bR}\times \SL_{2}(\bC)\rightarrow {}^{L} G $
+        \item Unipotent parameter $\Leftrightarrow$ $\psi|_{\bC^{\times}}=$ trivial
+        \item[] $\Leftrightarrow$ nilpotent orbit of a real from of $\vG$.
+        \item \vgraph{0.15\textwidth}{Arthur2.jpg}  \emph{Conjecture:} $\exists$ unipotent Arthur
+        packets
+        \item[] ``On some problems suggested
+        by the trace formula'' 1980's
+        \item \hhgraph{0.15\textwidth}{Moeglin.jpg}{M\oe glin}
+        \hhgraph{0.15\textwidth}{Renard.jpg}{Renard}
+        \item[] \emph{Reduction to unipotent Arthur packet}
+        \item[] ``Sur Les paquets d'Arthur des groupes classiques r\'eels''\\
+        (2020 JEMS)
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      \frametitle{Barbasch-Vogan's definition of  special unip. repn. }
+      \begin{itemize}[<+->]
+        \item
+          \hhgraph{0.12\textwidth}{Barbasch.jpg}{Barbasch}
+          \hhgraph{0.12\textwidth}{Vogan.jpg}{Vogan}
+          \[
+            \Unip(G) \approx \text{repn. with smallest ``size''}
+          \]
+        \item Wavefront cycle/Associated cycle:
+        \[
+          \Irr(G) \longrightarrow \cK(\text{equiv. sheaves on
+              nil-cone})
+        \]
+       \item E.g.: $\Lie(\SL_{2}(\bR))\cong \bR^{3}$.
+       \[
+         \vgraph{0.3\textwidth}{DoubleCone.png}
+       \]
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      \frametitle{Barbasch-Vogan's definition of  special unip. repn. II}
+      \begin{itemize}[<+->]
+            \item[] $G$: a real reductive group.
+            \item  $\ckcO$ : a nilpotent orbit in $\check G$.
+            \item[] \hspace{3em} $\leadsto$  the maximal primitive ideal
+            $\cI_\ckcO\subset \cU(\fgg)$. %attached to $\ckcO$.
+            \item  \emph{Definition} (Barbasch-Vogan):
+            \item [] An irr. admissible $G$-repn. is called
+            \emph{special unipotent} if
+            \[
+            \Ann_{\cU(\fgg)}(\pi) = \cI_{\ckcO}.
+            \]
+            %\item  \emph{Theorem} (Barbasch-Vogan):
+            \item[]
+            $\Longleftrightarrow$ $\pi$ has inf. char. $\chi_{\ckcO}$ and
+            $\AV_\bC(\pi) = \overline{\cO}$
+            \item $\cO\in \Nil^{\text{special}}(\bfG)$:\\
+            the \hhgraph{0.1\textwidth}{Lusztig2}{\ }
+            \hhgraph{0.1\textwidth}{Spaltenstein1}{\tiny Spaltenstein}
+            \hhgraph{0.1\textwidth}{Barbasch2}{\ }
+            \hhgraph{0.1\textwidth}{Vogan2}{\ }
+            dual of $\ckcO$.
+            \item $\Unip_{\ckcO}(G):=$ \{ special unipotent repn. attached to $\ckcO$\}.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[label=DU]
+        \frametitle{Conjecture/Open problems}
+        \begin{itemize}[<+->]
+            \item \emph{Major open problem:} Classify the {\red unitary dual}:
+            \[\Irr_{\text{unit}}(G) = \{\text{ irr. unitary repn. of }G \}.
+            \]
+            \item \emph{Philosophy:}
+            $\Unip_{\ckcO}(G)$
+             $=$  the {\color{red} building blocks} of the unitary dual.
+             \item \emph{Conjecture (1980s)}:
+             $\Unip_{\ckcO}(G)$ consists of {\red unitary} repn.
+            \item {\red Question 1:} size of $\Unip_{\ckcO}(G)$?
+            \item {\red Question 2:} Construction of unip. repn.
+            \item {\red Question 3:} Character formula? % of $\Unip_{\ckcO}(G)$?
+            % of elements in $\Unip_{\ckcO}(G)$?
+            \item \emph{Barbasch-Vogan} 1985: Complete answers for {\lblue
+              complex groups}.
+            %\item Vogan 1986: Classify the unitary dual of {\lblue $GL(n)$}.
+            \item \emph{Barbasch} 1989: Proved the conj. for {\lblue complex classical groups}.
+        \end{itemize}
+    \end{frame}
+
+   \begin{frame}
+     \frametitle{Atlas of Lie groups}
+     \begin{itemize}[<+->]
+     \item \hhgraph{0.11\textwidth}{decloux-adams}{De Cloux, Adams}
+    \hhgraph{0.11\textwidth}{Leeuwen}{Leeuwen}
+    \hhgraph{0.11\textwidth}{Paul}{Paul}
+    \hhgraph{0.11\textwidth}{Trapa}{Trapa}
+    \hhgraph{0.11\textwidth}{Vogan3}{Vogan}
+    \hhgraph{0.11\textwidth}{Yee}{Yee}
+     \item[]
+     \[
+       \hgraph{0.3\textwidth}{atlas}
+       \quad
+       \hgraph{0.15\textwidth}{atlas_Sp22}
+     \]
+    \item[]
+     $\leadsto$ complete answer for \emph{exceptional groups}.
+     \end{itemize}
+   \end{frame}
+
     \begin{frame}[label=DU]
         \frametitle{Classical groups and special unipotent representations}
         \begin{table}
@@ -663,15 +847,122 @@ Shanghai Jiao Tong University}
         % \centering{ $\Nil(\bfG^\vee):=\set{\text{nilpotent $\bfG^\vee$-oribt in }\fgg^\vee }$}
         \pause 
         
-        \begin{block}{Theorem (Barbasch-M.-Sun-Zhu)}
+        \begin{block}{Theorem (Barbasch-M.-Sun-Zhu 2021)}
             Arthur-Barbasch-Vogan's conj.  on special unipotent repn. holds for $G$:
             \pause
             
-            \centering{All \emph{specail unipotent representations} of $G$  are \emph{unitarizable}.}
+            \centering{All \emph{specail unipotent repn.} of $G$  are \emph{unitarizable}.}
         \end{block}
     \end{frame}
-    
-    
+
+
+    \begin{frame}
+      \frametitle{Theta lifting}
+      \begin{itemize}[<+->]
+        \item \hhgraph{0.12\textwidth}{Howe}{Howe}
+              $\exists \theta$-correspondence.
+              (1970s)
+        \[
+          \text{\emph{E.g.}}\quad
+          \text{a subset of } \Irr(\rO(p,q))\xrightarrow{1-1} \text{a subset of } \Irr(\Sp(2n,\bR))
+        \]
+        \item $\theta$-lifting $\approx$ a effective tool to construct
+        ``small'' repn.% and auto. forms.
+        \item Towards the construction of unipotent repn.:
+        \item[]
+        \hhgraph{0.1\textwidth}{Adams2}{Adams}
+        \hhgraph{0.1\textwidth}{Barbasch3}{Barbasch}
+        \hhgraph{0.1\textwidth}{He}{He}
+        \hhgraph{0.1\textwidth}{Huang}{Huang}
+        \hhgraph{0.1\textwidth}{Li}{Li}
+        \hhgraph{0.1\textwidth}{Loke}{Loke}
+        \hhgraph{0.1\textwidth}{Nishiyama}{Nishiyama}
+        \hhgraph{0.1\textwidth}{Moeglin2}{M\oe glin}
+        \hhgraph{0.1\textwidth}{Paul2}{Paul}
+        \hhgraph{0.1\textwidth}{Przebinda}{Przebinda}
+        \hhgraph{0.1\textwidth}{Trapa2}{Trapa} $\cdots$
+      \end{itemize}
+    \end{frame}
+
+
+    \begin{frame}[label=CG]
+      \frametitle{Inductive structure of nilpotent orbits}
+        \[
+      \small
+        \begin{tikzcd}[ampersand replacement=\&,column sep=1em,row sep=.5em]
+            \bfG_i^\vee \&  \SO(15,\bC) \&  \rO(10,\bC) \&  \SO(7,\bC) \& \rO(4,\bC)\\
+            \vcO_i \& \ydiagram{5,3,3,3,1} \&
+            \ydiagram{0,3,3,3,1} \& \ydiagram{0,0,3,3,1} \& \ydiagram{0,0,0,3,1}    \\
+            \cO_i \& \ydiagram{4,4,4,2}\& \ydiagram{3,3,3,1} \& \ydiagram{2,2,2,0} \&
+            \ydiagram{1,1,1,1}\\
+            \bfG_i \&  \Sp(14,\bC) \&  \rO(10,\bC) \&  \Sp(6,\bC) \& \rO(4,\bC)\\
+        \end{tikzcd}
+      \]
+      \\[-1em]
+        \pause
+        \emph{Relate to}\\
+        \hhgraph{0.2\textwidth}{Procesi-Kraft}{Procesi, Kraft} \begin{minipage}{0.6\textwidth}
+         \hhgraph{0.05\textwidth}{Ohta}{Takuya Ohta}'s
+          study of singularities of\\
+          a nilpotent orbit closure.
+          % $\overline{\text{nilpotent orbit}}$.
+        \end{minipage}
+    \end{frame}
+
+    \begin{frame}
+      \frametitle{About the proof}
+      \begin{itemize}[<+->]
+        \item $\theta$-lifting $\approx \sqrt{\text{parabolic induction}}$
+        \item \emph{Algebra: } Structure of degenerate principle series.
+        \item \emph{Analysis:} Estimation of matrix coefficient integrals
+        \item[] $\leadsto$ unitarity
+        \item \emph{Algebra+Analysis: } $\leadsto$ lower bound of Associated Cycle.
+        \item \emph{Algebraic Geometry:} double fibration of moment maps
+        \item[] $\leadsto$ upper bound of Associated Cycle.
+        \item \emph{lower bound=upper bound}: $\leadsto$ sharp formula of AC.
+        \item \emph{+ Combinatorics: } descent/lift of painted Young diagrams
+        \item[] $\leadsto$ Exhaustion of the construction.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      %\frametitle{Related papers (Dan Barabasch, M. ,  Binyong Sun and Chen-Bo Zhu)}
+      \frametitle{Related papers (Barabasch, M. ,  Sun and  Zhu)}
+        \vfill
+        %\centering{\bf\Large {\tt{atlas}} is a great teacher!} \\
+        %\vspace{2em}
+        %\pause
+        %\centering{\bf\Large Thanks to the {\tt{atlas}} team!} \\
+        %\pause
+        %\vspace{2em}
+        \begin{itemize}
+          \item \emph{Definition for metaplectic groups}
+          \item[]
+   	On the notion of metaplectic Barbasch-Vogan duality
+        \href{https://arxiv.org/abs/2010.16089}{https://arxiv.org/abs/2010.16089}
+          \item \emph{Main paper}
+          \item[]
+        Special unipotent representations: orthogonal and symplectic groups\\
+        \href{https://arxiv.org/abs/1712.05552v2}{https://arxiv.org/abs/1712.05552v2}
+          \item \emph{Counting unipotent representations (in preparation)}
+        \vfill
+        \hhgraph{.2\textwidth}{arxiv_uni.png}{\ }
+        \hhgraph{.2\textwidth}{Barbasch4}{Barbasch}
+        \hhgraph{.2\textwidth}{Sun}{Sun}
+        \hhgraph{.2\textwidth}{Zhu}{Zhu}
+         \end{itemize}
+    \end{frame}
+
+    \begin{frame}{}
+
+       \vfill
+        \centering{\bf\Large\color{blue} Thank you for your attention!}
+        \vfill
+        \includegraphics[width=\textwidth]{lifttreeC1_10.pdf}
+      \end{frame}
+
+  \end{document}
+
     \begin{frame}[label=DU]
         \frametitle{Barbasch-Vogan's definition of unipotent representation}
         \begin{itemize}[<+->]
@@ -701,7 +992,8 @@ Shanghai Jiao Tong University}
             \item $\Unip_{\ckcO}(G):=$ \{ special unipotent repn. attached to $\ckcO$\}. 
         \end{itemize}
     \end{frame}
-    
+
+
     
     \begin{frame}[label=DU]
         \frametitle{Conjecture/Open problems}
@@ -1241,7 +1533,7 @@ Shanghai Jiao Tong University}
        \vfill 
         \centering{\bf\Large\color{blue} Thank you for your attention!}
         \vfill
-        % \includegraphics[width=.3\textwidth]{arxiv_uni.png}
+         \includegraphics[width=.3\textwidth]{arxiv_uni.png}
     \end{frame}
     
     \end{document}
