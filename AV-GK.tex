@@ -88,6 +88,30 @@
 \newcommand{\ves}{\varepsilon}
 \newcommand{\dg}{\dagger}
 
+\newcommand{\fra}{\mathfrak{a}}
+\newcommand{\frb}{\mathfrak{b}}
+\newcommand{\fre}{\mathfrak{e}}
+\newcommand{\frf}{\mathfrak{f}}
+\newcommand{\frg}{\mathfrak{g}}
+\newcommand{\frh}{\mathfrak{h}}
+\newcommand{\frkk}{\mathfrak{k}}
+\newcommand{\frl}{\mathfrak{l}}
+\newcommand{\frm}{\mathfrak{m}}
+\newcommand{\frn}{\mathfrak{n}}
+\newcommand{\fro}{\mathfrak{o}}
+\newcommand{\frp}{\mathfrak{p}}
+\newcommand{\frq}{\mathfrak{q}}
+\newcommand{\frr}{\mathfrak{r}}
+\newcommand{\frs}{\mathfrak{s}}
+\newcommand{\frt}{\mathfrak{t}}
+\newcommand{\fru}{\mathfrak{u}}
+\newcommand{\frv}{\mathfrak{v}}
+\newcommand{\frgl}{\mathfrak{gl}}
+\newcommand{\frsl}{\mathfrak{sl}}
+\newcommand{\frsu}{\mathfrak{su}}
+\newcommand{\frso}{\mathfrak{so}}
+\newcommand{\frsp}{\mathfrak{sp}}
+
 \newcommand{\gk}{Gelfand-Kirillov dimension }
 \newcommand{\gks}{Gelfand-Kirillov dimensions }
 \newcommand{\aff}{$ \mathbf{a} $}
@@ -133,7 +157,7 @@
 }}
 \begin{document}
 
-\title[Minimal highest weight modules]{A classification of minimal  highest weight modules for classical Lie algebras}
+\title[Minimal highest weight modules]{Minimal highest weight modules for classical Lie algebras}
 
 \author{ Zhanqiang Bai, Jia-Jun Ma, Wei Xiao and Xun Xie*}
 
@@ -173,9 +197,7 @@ Institute of Technology, Beijing 100081, P. R. China}
 
 
 \begin{abstract}
-Let $\mathfrak{g}$ be a complex simple Lie algebra.
-Let $L(\lambda)$ be a simple highest weight module with highest weight $\lambda-\rho$ where $\rho$ is half the sum of positive roots.
-The highest weight modules with minimal Gelfand-Kirillov dimension play an important role in the study of representations of Lie groups and Lie algebras. In this paper, we will give a characterization for these modules for all classical type Lie algebras. Our characterization is given by Young tableaux and the information of highest weights of these modules. We also describe the associated varieties of these modules. This work is a generalization of Joseph's work on quantization of minimal orbital varieties.
+The highest weight modules with minimal Gelfand-Kirillov dimension play important roles in the study of representations of Lie groups and Lie algebras. In this paper, we will give a classification of these modules for all classical type Lie algebras. Our characterization is given by Young tableaux and the information of highest weights of these modules. We also describe the associated varieties of these modules. This work is a generalization of Joseph's work on quantization of minimal orbital varieties.
 % When $L(\lambda)$ is an integral highest weight module in a given parabolic category $\mathscr{O}^{\mathfrak{p}}$ with maximal Gelfand-Kirillov dimension, we will show that its associated variety is the nilradical of $\mathfrak{p}$.
 
 
@@ -188,11 +210,10 @@ The highest weight modules with minimal Gelfand-Kirillov dimension play an impor
 
 \section{ Introduction}
 
-Let $\mathfrak{g}$ be a complex simple Lie algebra with adjoint group $G$. We fix a triangular decomposition $\mathfrak{g}=\mathfrak{n}\oplus \mathfrak{h} \oplus \mathfrak{n}^-$ so that $\mathfrak{b}=\mathfrak{h}+\mathfrak{n}$ is a Borel subalgebra and $\mathfrak{h}$ is a Cartan subalgebra of $\mathfrak{g}$. Let $B$ denote the Borel subgroup of $G$ corresponding to $\mathfrak{b}$. Let $\Phi\subseteq \mathfrak{h}^*$ be the set of roots and $\Phi^+$ be the set of positive roots defining $\mathfrak{n}$. We have  a simple system $\Delta=\{\alpha_i|1\leq i\leq n\}\subset\Phi^+$. We use $e_{\alpha}$ to denote a root vector for a given root $\alpha \in \Phi$. Let $\rho$ be half the  sum of roots in $\Phi^+$. We  choose a subset $I\subset \{1,2,...,n\}$. Then $\Delta_I=\{\alpha_i|i\in I\}$ generates a subsystem
-$\Phi_I\subset\Phi$.
-Let $\mathfrak{p}_I$ be the standard parabolic subalgebra corresponding to $I$ with Levi decomposition $\mathfrak{p}_I=\mathfrak{l}_I\oplus \mathfrak{u}_I$.  We will drop the
+Let $\mathfrak{g}$ be a complex simple Lie algebra with adjoint group $G$. Fix a triangular decomposition $\mathfrak{g}=\mathfrak{n}\oplus \mathfrak{h} \oplus \bar{\mathfrak{n}}$ so that $\mathfrak{b}=\mathfrak{h}+\mathfrak{n}$ is a Borel subalgebra and $\mathfrak{h}$ is a Cartan subalgebra of $\mathfrak{g}$. Let $B$ be the Borel subgroup of $G$ corresponding to $\mathfrak{b}$. Let $\Phi$ be the root system of $(\frg, \frh)$ with the positive system $\Phi^+$ and simple system $\Delta$ determined by $\mathfrak{b}$. Denote by $W$ the Weyl group of $\Phi$. Note that any subset $I\subset\Delta$ generates a subsystem $\Phi_I\subset\Phi$. Let $\mathfrak{p}_I$ be the standard parabolic subalgebra corresponding to $I$ with Levi decomposition $\mathfrak{p}_I=\mathfrak{l}_I\oplus \mathfrak{u}_I$.  We will drop the
 subscript $I$ if there is no confusion.
 
+%We have  a simple system $\Delta=\{\alpha_i|1\leq i\leq n\}\subset\Phi^+$. We use $e_{\alpha}$ to denote a root vector for a given root $\alpha \in \Phi$. Let $\rho$ be half the  sum of roots in $\Phi^+$.
 %Let $F(\lambda)$ be a finite-dimensional irreducible $\mathfrak{l}$-module with highest weight $\lambda\in  \mathfrak{h}^*$. It can also be viewed as a
 %$\mathfrak{p}$-module with trivial $\mathfrak{u}$-action. The {\it generalized Verma module} $M_I(\lambda)$ is defined by
 %\[
@@ -200,12 +221,7 @@ subscript $I$ if there is no confusion.
 %\]
 %The simple quotient of $M_I(\lambda)$ is denoted by $L(\lambda)$. We use $\mathscr{O}^{\mathfrak{p}}$ to denote the corresponding parabolic  category.
 
-Let $L(\lambda)$ be a simple highest weight $\mathfrak{g}$-module with highest weight $\lambda-\rho$.
- We use $L_w$ to denote the simple highest weight $\mathfrak{g}$-module with highest weight $-w\rho-\rho$, where  $w$ is an element in the Weyl group $W$. Actually all of the simple highest weight modules of infinitesimal character $\rho$ are like this form. Let $\mathcal{O}\subseteq \mathfrak{g}$ be a nilpotent $G$-orbit. The irreducible components of $\overline{\mathcal{O}}\cap \mathfrak{n}$ are called {\it orbital varieties} of  $\mathcal{O}$. They all take the form $\mathcal{V}(w)=\overline{B(\mathfrak{n}\cap w\mathfrak{n})}$ for some $w\in W$. In Joseph \cite{Jo84}, his definition for the orbital variety means one irreducible component of $\mathcal{O}\cap \mathfrak{n}$. So our orbital variety is the closure of Joseph's orbital variety.  For a finitely generated $U(\mathfrak{g})$-module $M$, Bernstein \cite{Be} constructed a variety $V(M)$ in $\mathfrak{g}^{\ast}$, which is called the associated variety of $M$ and whose dimenison is equal to the Gelfand-Kirillov dimension of $M$.
-  From Joseph \cite{Jo84} we know the associated variety $V(L_w) $ of $L_w$ is a union of some orbital varieties $\mathcal{V}(y)$.
- Tanisaki \cite{Ta} showed that there exist examples with reducible associated vaieties in type $B$ and $C$.
-For a long time, people conjectured that $V(L_w) $ is irreducible for  type  $A$, see for example \cite{BoB3, Mel}. But in 2014,
-Williamson \cite{Wi} showed that there exist counter examples in type $A$. So the structure of $V(L_w) $ or $V(L(\lambda)) $  is still mysterious. For example, the following questions are still  unknown:
+For $\lambda\in\frh^*$, let $L(\lambda)$ be the simple highest weight $\mathfrak{g}$-module with highest weight $\lambda-\rho$, where $\rho$ is half sum of all the positive roots. For convenience, we put $L_w:=L(w\lambda)$ for $w\in W$. They form all of the simple highest weight modules of infinitesimal character $\rho$. Suppose that $\mathcal{O}\subseteq \mathfrak{g}$ is a nilpotent $G$-orbit with closure $\overline{\mathcal{O}}$ \cite{CM}. Each irreducible component of $\overline{\mathcal{O}}\cap \mathfrak{n}$ is called an {\it orbital varieties} of  $\mathcal{O}$. It can be written as $\mathcal{V}(w):=\overline{B(\mathfrak{n}\cap w\mathfrak{n})}$ for some $w\in W$ \cite{Ta}. Although this definition is widely used, one should be aware that an orbital variety could mean an irreducible component of $\mathcal{O}\cap \mathfrak{n}$ in some paper (see for example \cite{Jo84}). For every finitely generated $U(\mathfrak{g})$-module $M$, Bernstein  constructed a variety $V(M)$ in $\mathfrak{g}^{\ast}$ \cite{Be}, which is called the associated variety of $M$ and whose dimenison is equal to the Gelfand-Kirillov dimension of $M$. Since we can identify $\frg^*$ with $\frg$ via the Killing form on $\frg$, $V(M)$ can also be viewed as a variety of $\frg$. From Joseph \cite{Jo84} we know that $V(L_w)$ is a union of some orbital varieties. Tanisaki \cite{Ta} showed that there exist examples with reducible associated varieties in type $B$ and $C$. For a long time, people believed that $V(L_w)$ is irreducible for type $A$ \cite{BoB3, Mel}. However, counter examples of type $A$ were found by Williamson in 2014\cite{Wi}. So the structure of $V(L_w)$ or $V(L(\lambda))$ is still mysterious. For example, the following questions are unknown:
 \begin{itemize}
   \item [(Q1)] Can we determine the relationship between $\lambda$ and $\mu$ when $V(L(\lambda))=V(L(\mu)) $?
   \item [(Q2)] Can we find out all those $\lambda$ such that $V(L(\lambda)) $ is irreducible? In particular, can we find out all those $w$ such that $V(L_w) $ is irreducible?
@@ -302,7 +318,7 @@ $\lambda=(\lambda_1,...,\lambda_n)$ is integral and $V(L(\lambda))=V(L(w_{\lambd
 
 The paper is organized as follows. In section 2 we recall the definitions of Gelfand-Kirillov dimension and associated variety of modules and ideals. In section 3 we prove two lemmas about some properties of associated varieties of highest weight modules.
 In section 4 we prove theorem \ref{m2} by using the algorithm found by Bai-Xie \cite{BX}.
-In section 5, we prove theorem \ref{m21}, \ref{m22} and \ref{m23} by using the algorithm found by Bai-Xie \cite{BX-2}. 
+In section 5, we prove theorem \ref{m21}, \ref{m22} and \ref{m23} by using the algorithm found by Bai-Xie \cite{BX-2}.
 %In section 6, we prove theorem \ref{m3}.
 
 
@@ -343,7 +359,7 @@ $L(\lambda)$ is equivalent to the $\mathfrak{g}$-module of $\mathfrak{k}$-finite
 \begin{equation}\label{eq:chain}
 \{0\}={\bar{\mathcal{O}}}_0\subset \bar{\mathcal{O}}_1\subset ...\subset\bar{\mathcal{O}}_{r-1}\subset \bar{\mathcal{O}}_r=\mathfrak{p}^+,
 \end{equation}
-where $r$ is the real rank of $G$. So we have 
+where $r$ is the real rank of $G$. So we have
 $V(L(\lambda))=\bar{\mathcal{O}}_{k(\lambda)}$ for some integer $k(\lambda)\geq 0$.
 Bai-Hunziker \cite{BH} found a simple and uniform formula for the value of $k(\lambda)$ in the case of unitary highest weight Harish-Chandra modules for all types of Hermitian symmetric pairs.
 
@@ -370,6 +386,8 @@ In this section, we will prove two key lemmas and some corollaries which will be
 Let $\mathfrak{g}$ be a complex simple Lie algebra with a triangular decomposition $\mathfrak{g}=\mathfrak{n}\oplus \mathfrak{h} \oplus \mathfrak{n}^-$. Let $\mathfrak{p} = \fll\oplus \fuu$ be a parabolic subalgebra containing $\fnn$.
 Let $\mathscr{O}^{\mathfrak{p}}$ be the parabolic subcategory of the category-$\mathscr{O}$. More details about the properties of $\mathscr{O}^{\mathfrak{p}}$ can be found in Humphreys \cite{Hum}.
 
+
+
 The following is a generalization of Joseph's result \cite[Lemma 6.1]{Jo84}.
 \begin{Lem}\label{ma}
 	Let $M\in \mathscr{O}$ be an (irreducible/finite length) highest weight module.
@@ -380,36 +398,82 @@ The following is a generalization of Joseph's result \cite[Lemma 6.1]{Jo84}.
 	(Note that we identify $(\fnn^-)^*$ with $\fnn$.)
 \end{Lem}
 \begin{proof}
-	Note that $\fnn^- = \fuu^- \oplus \fnn_\fll^-$ where
-	$\fnn_\fll^- := \fnn^- \cap \fll$.  Take a good filtration $M_i$ of $M$ so
-	that $M_i = \cU^i(\fnn^-) M_0 = \cU^i(\fgg)M_0$ are $\fbb$-stable and finite
-	dimensional for big enough $i$.  The subvariety $\fuu = (\fuu^-)^*$ is defined
-	by the ideal $\fnn_\fll^- S(\fnn^-)$.  The condition $V(M)\subset \fuu$
-	implies the $\fnn_\fll^-$ action on $\Gr M_i$ is nilpotent.  Therefore, there
-	is $j$ such that $\cU^j(\fnn_\fll^-) M_i \subset M_{i+j-1}$.  Let $j(M_i)$ be
-	the minimal integer satisfying the above condition.
+	\def\fnlm{\fnn_\fll^-}
+	\def\fnm{\fnn^-}
+	\def\Supp{\mathrm{Supp}}
+	\def\bN{\mathbb{N}}
+	\def\sO{\mathscr{O}}
+	%Fix the Levi decomposition $\fpp  = \fll \oplus \fuu$ where $\fll$ is the Levi subalgebra. 
+	%Let $\fnn^-$ and $\fuu^-$ be the nilpotent subalgebras opposite to $\fnn$ and $\fuu$ respectively. 
+	Let $\fuu^-$ be the nilpotent subalgebra opposite to $\fuu$. 
+	Then $\fnn^- = \fuu^- \oplus \fnn_\fll^-$ and $\fpp = \fnlm \oplus \fbb$ where
+	$\fnn_\fll^- := \fnn^- \cap \fll$. 
+	% In the proof, we identify $\fnn^-$ and $\fuu^-$ with 
+	% $\fnn^*$ and $\fuu^*$. % via a fixed  $\fgg$-invariant non-degenerate bilinear form on $\fgg$.  
+
+	Recall that a sequence $\{M_i\}_{i\in \bN}$ %\subseteq M_1 \subseteq \cdots \subseteq M_i \subseteq \cdots$ of 
+	of finite dimensional subspaces of $M$ is called a  good filtration of $M$ if  
+	\begin{itemize}
+	\item  $M_i\subset M_{i+1}$, 
+	\item $M_i$ is $\fbb$-invariant, and %for every $i \in \bN$;  
+	\item there is a $i_0\in \bN$ such that 
+	\[
+	M_{i+i_0} = \cU^i(\fgg)M_{i_0}. %   = \cU^i(\fnn^-) M_{i_0}. 
+	\]
+	\end{itemize}
+	for all $i\in \bN$. 
+	% Let $M_0$ be a finite dimensional $\fbb$-stable subspace of $M$ such that $M = \cU(\fgg)M_0$. 
+	% Then 
+	% \[
+	% M_i := \cU^i(\fgg)M_0 = \cU^i(\fnn^-) M_0 
+	% \]
+	% is a good filtration of $M$ and $\Supp\, \Gr M_i \subset \fnn $. 
+
+	Let $\{M_i\}$ be a good filtration of $M$. 
+	Since the subvariety $\fuu = (\fuu^-)^*$ is defined
+	by the ideal $\fnn_\fll^- S(\fnn^-)$,  
+	the condition $V(M) = \Supp\, \Gr M_i   \subset \fuu$
+	implies that the $\fnn_\fll^-$ action on $\Gr M_i$ is nilpotent. 
+	In other words, there
+	is a positive integer $j$ such that 
+	\[
+		\cU^j(\fnn_\fll^-) M_i \subset M_{i+j-1} \qquad \forall i\in \bN. 
+	\] 
+	For each good filtration $\{M_i\}$,  
+	let $j(\{M_i\})$ be the minimal positive integer satisfying the above condition.
+
 	
-	Clearly when $j(M_i)=1$, every $M_i$ is $\fnn_\fll^-$-stable. In particular,
-	$M_i$ is $\mathfrak{p}$-stable, which implies $M\in \mathscr{O}^{\mathfrak{p}}$ (since $M$ is a quotient
-	of $\cU(\fgg)\otimes_{\cU(\mathfrak{p})} M_i$).
-	
-	Now we do induction on $j(M_i)$ to prove the existence of $\fnn_\fll^-$-stable
-	filtration.
-	
-	When $j(M_i)=1$, there is nothing to prove.
-	
-	Suppose $j(M_i)>1$.  Define $\tM_i = \fnn_\fll^- M_{i-1} + M_{i-1}$.  Note
-	that $\tM_i$ is a good filtration. In fact,
+    Note that $M\in \sO^\fpp$ is equivalent to the existence of a good filtration $\{M_i\}$ such 
+	that each term $M_i$ is $\fpp$-invariant, i.e. $j(\{M_i\}) = 1$. 
+	Now the lemma follows by induction using the following claim. 
+
+	\noindent {\bf \underline{Claim.} } Suppose $M_i$ is a good filtration such that 
+	$j:=j(\{M_i\})>1$. Then here is a good filtration $\tM_i$ such that $j(\{\tM_i\}) < j(\{M_i\})$.
+
+	\proof
+	Define 
+	\[
+		\tM_i := \fnn_\fll^- M_{i-1} + M_{i-1}.
+	\]	
+
+	For sufficiently large $i$, we have 
 	\[
 	\begin{split}
-	\tM_{i+1} & = \fnn_\fll^- M_i + M_i \subset \fnn_\fll^- \fnn^- M_{i-1} +
-	\fnn^- M_{i-1}\\
+		\fnn^- \tM_i & = \fnm \fnlm M_{i-1} + \fnm M_{i-1}\\
+		 &\subset  \fnlm \fnm M_{i-1} + [\fnm,\fnlm] M_{i-1} + \fnm M_{i-1} \\
+		 &\subset \fnlm  M_i + M_i = \tM_{i+1} \\
+		 & \text{and}\\
+	\tM_{i+1} 	& = \fnn_\fll^- M_i + M_i \subset \fnlm \cU^1(\fnm) M_{i-1} +
+	\cU^1(\fnm) M_{i-1} \\
 	& \subset \fnn^- \fnn_\fll^- M_{i-1} + [\fnn^-, \fnn^-_\fll] M_{i-1}
-	+ \fnn^- M_{i-1} \\
-	& \subset \fnn^- (\fnn_\fll^- M_{i-1}+ M_{i-1}) = \fnn^- \tM_{i}
+	+ \fnn^- M_{i-1} + M_{i-1}\\
+	& \subset \fnn^- (\fnn_\fll^- M_{i-1}+ M_{i-1}) + M_{i-1} \subset  \cU^1(\fnn^-) \tM_{i}.
 	\end{split}
 	\]
-	and $\tM_i$ is $\fbb$-stable (note that $M_{i-1}$ is $\fbb$-stable), so we have
+	Therefore $\tM_i$ is a good filtration. %, since %$. In fact,
+
+	Note that $M_{i-1}$ is $\fbb$-invariant. We conclude that  
+	$\tM_i$ is $\fbb$-stable since % (note that ), so we have
 	\[
 	\begin{split}
 	\fbb\tM_i &= \fbb\fnn_{\fll}^- M_{i-1}   + \fbb M_{i-1}\\
@@ -421,17 +485,19 @@ The following is a generalization of Joseph's result \cite[Lemma 6.1]{Jo84}.
 		+ \fbb$ and $[\fuu, \fnn_{\fll}^-]\subset[\fuu, \fll] \subset \fuu\subset \fbb$ )}.
 	\end{split}
 	\]
-	
-	On the other hand,
+	In summary, $\tM_i$ is a good filtration. 
+
+	By the definition of $\tM_i$, we have 
 	\[
 	\begin{split}
 	\cU^{j-1}(\fnn_{\fll}^-)\tM_i \subset \cU^j(\fnn_\fll^-)M_{i-1} +
 	\cU^{j-1}(\fnn_\fll^-)M_{i-1} \subset M_{i+j-2}\subset \tM_{i+j-1}.
 	\end{split}
 	\]
-	Therefore $j(\tM_i)< j-1$ and we get the existence of
-$\fnn_\fll^-$-stable good filtration by induction. This filtration is also $\mathfrak{p}$-stable since we have $\mathfrak{p} = \fll\oplus \fuu= \fnn_\fll^-\oplus \mathfrak{b}$ , which implies $M\in \mathscr{O}^{\mathfrak{p}}$.
+	Therefore $j(\tM_i)\leq  j-1$ and the claim is proved.    
 \end{proof}
+
+
 
 \begin{Rem}
 	The condition for $L(\lambda)$  to be in $\mathscr{O}^\fpp$ is equivalent to that $\lambda-\rho$ is dominant integral with respect to $\fll$ or $\Delta_I$.
@@ -792,7 +858,7 @@ $\overline{Be_{\alpha_{i_0-1}}}$ and $\overline{Be_{\alpha_{i_0}}}$ are containe
 0 & 0&c_3 \\
 0&0&0
 \end{array}
-\right)|c_1\in M_{(i_0-1)\times 1}(\mathbb{C}), c_2\in M_{(i_0-1)\times (n-i_0)}(\mathbb{C}), c_3\in M_{1\times (n-i_0)}(\mathbb{C})\}.$$ 
+\right)|c_1\in M_{(i_0-1)\times 1}(\mathbb{C}), c_2\in M_{(i_0-1)\times (n-i_0)}(\mathbb{C}), c_3\in M_{1\times (n-i_0)}(\mathbb{C})\}.$$
 So we must have $V(L(\lambda))=\overline{Be_{\alpha_{i_0-1}}}\cup \overline{Be_{\alpha_{i_0}}}$.
                                                      \qed
 %\begin{Rem}Joseph \cite {Jo98} had shown that there is one ,iunique minimal orbital variety $\mathcal{V}$ in types $C_n$ and $G_2$. Suppose $\mathfrak{g}$ is a simple Lie algebra of type $C_n$ or $G_2$. Let $L(\lambda)$ be a simple $\mathfrak{g}$-module. Then $GKdim(L(\lambda))$ is minimal  if and only if  $V(L(\lambda))=\mathcal{V}$ is irreducible. Tanisaki \cite{Ta}  found some highest weight modules $L_w$ with reducible associated varieties in type $B_3$ and $C_3$. So we can see that the Gelfand-Kirillov dimension of such unique  highest weight module in type  $C_3$ is not minimal.
@@ -1061,7 +1127,7 @@ It is easy to check that $F_D(\lambda)$  will take the maximal value $n^2-3n+3$ 
 \gkd L(\lambda)=n^2-n-F_D(\lambda)=2n-3.
 \]
 From the construction of Young tableau $Y(\lambda) $ (or $ Y(\lambda') $), we can see that there is only one simple root $\alpha$ such that $(\lambda,\alpha)\in \mathbb{Z}_{\leq 0}$ (otherwise we will have $c_2(Y(\lambda))\geq 4$ or $c_3(Y(\lambda))\geq 1$ (or $c_2(Y(\lambda'))\geq 4$ or $c_3(Y(\lambda'))\geq 1$)).  So $L(\lambda)\in \mathscr{O}^{\mathfrak{p}}$ for some maximal parabolic subalgebra $\mathfrak{p}$. We denote $I_i=\{1,2,...,i-1,i+1,i+2,...,n\}$. The corresponding parabolic subalgebra is $\mathfrak{p}_{I_i}=\mathfrak{l}_{I_i}\oplus \mathfrak{u}_{I_i}$ and the parabolic category is  $\mathscr{O}^{\mathfrak{p}_{I_i}}$.
-From Joseph \cite[Proposition 2.4]{Jo98}, we also note that the nilradical $\mathfrak{u}_{I_i}$ of the maximal parabolic subalgebra $\mathfrak{p}_{I_i}$  contains only one minimal orbital variety $\overline{Be_{\alpha_i}}=\mathcal{V}(s_{\alpha_i}w_0)$. 
+From Joseph \cite[Proposition 2.4]{Jo98}, we also note that the nilradical $\mathfrak{u}_{I_i}$ of the maximal parabolic subalgebra $\mathfrak{p}_{I_i}$  contains only one minimal orbital variety $\overline{Be_{\alpha_i}}=\mathcal{V}(s_{\alpha_i}w_0)$.
 
 Therefore when $\gkd L(\lambda)=2n-3$ and $L(\lambda)\in \mathscr{O}^{\mathfrak{p}_{I_i}}$ for some $1\leq i\leq n$, we will have $V(L(\lambda))=V(L(w_{\lambda}))=\overline{Be_{\alpha_i}}=\mathcal{V}(s_{\alpha_i}w_0)$. On the other hand we also have $\gkd L(s_{\alpha_{i}}w_0)=2n-3$ and $L(s_{\alpha_{i}}w_0)\in \mathscr{O}^{\mathfrak{p}_{I_i}}$, so $V(L(s_{\alpha_{i}}w_0))=\overline{Be_{\alpha_i}}=\mathcal{V}(s_{\alpha_i}w_0)$. By lemma \ref{m1}, we have $w_{\lambda}\stackrel{R}{\sim}s_{\alpha_{i}}w_0$.
 
@@ -1188,7 +1254,7 @@ NSFC Grant No. 11801031 and 11601116.
 
 
 \begin{thebibliography}{99}
-%\bibitem{Ar} S. Ariki, Robinson¨CSchensted correspondence and left cells, in: Combinatorial Methods in Representation Theory, Kyoto, 1998, in: Adv. Stud. Pure Math., vol. 28, Kinokuniya, Tokyo, 2000, pp. 1-20.
+%\bibitem{Ar} S. Ariki, Robinsonï¿½CSchensted correspondence and left cells, in: Combinatorial Methods in Representation Theory, Kyoto, 1998, in: Adv. Stud. Pure Math., vol. 28, Kinokuniya, Tokyo, 2000, pp. 1-20.
 
 \bibitem{Ar} S. Ariki, Robinson-Schensted correspondence and left cells, in: Combinatorial Methods in Representation Theory, Kyoto, 1998, in: Adv. Stud. Pure Math., vol. 28, Kinokuniya, Tokyo, 2000, pp. 1-20.
 
@@ -1283,7 +1349,7 @@ D. Garfinkle, On the classification of primitive ideals for complex classical Li
 
 
 \bibitem{Hum} J. E. Humphreys, {Representations of Semisimple Lie Algebras in the BGG Category $\mathscr{O}$}, Graduate Studies in Mathematics, Volume 94, American Mathematical Society, Providence, Rhode Island, 2008.
-%\bibitem{Hum} J. E. Humphreys,  Representations of semisimple Lie algebras in the BGG category {$\mathscr{O}$. Graduate Studies in Mathematics, 94. American Mathematical Society, Providence, RI, 2008. xvi+289 pp. 
+%\bibitem{Hum} J. E. Humphreys,  Representations of semisimple Lie algebras in the BGG category {$\mathscr{O}$. Graduate Studies in Mathematics, 94. American Mathematical Society, Providence, RI, 2008. xvi+289 pp.
 
 
 \bibitem {Ir} R. S.  Irving, Projective modules in the category $\mathscr{O}_S$: self-duality,
