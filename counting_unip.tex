@@ -1164,6 +1164,8 @@
 \def\DD{\nabla}
 
 \def\lamck{\lambda_\ckcO}
+\def\lamckb{\lambda_{\ckcO_b}}
+\def\lamckg{\lambda_{\ckcO_g}}
 \def\Wint#1{W_{[#1]}}
 \def\CLam{\Coh_{\Lambda}}
 \def\Cint#1{\Coh_{[#1]}}
@@ -1191,13 +1193,14 @@
 \def\Wlam{W_{[\lambda]}}
 \def\aLam{a_{\Lambda}}
 \def\WLam{W_{\Lambda}}
-\def\WLamck{W_{[{\lamck}]}}
+\def\WLamck{W_{[\lambda_{\ckcO}]}}
 \def\Wlamck{W_{\lamck}}
 \def\Rlam{R_{[\lambda]}}
 \def\RLam{R_\Lambda}
 \def\RLamp{R_\Lambda^+}
 \def\Rplam{R^+(\lambda)}
 \def\Glfin{\cG_{\Lambda}(\Gc)}
+\def\LC{{}^L\sC}
 
 \def\Con{\sfC}
 \def\bCon{\overline{\sfC}}
@@ -1214,6 +1217,15 @@
 
 \def\cuprow{{\stackrel{r}{\sqcup}}}
 \def\cupcol{{\stackrel{c}{\sqcup}}}
+
+\def\Spr{\mathrm{Springer}}
+\def\Prim{\mathrm{Prim}}
+
+
+
+\def\ceil#1{\lceil #1 \rceil}
+\def\symb#1#2{{\left(\substack{{#1}\\{#2}}\right)}}
+\def\cboxs#1{\mbox{\scalebox{0.25}{\ytb{\ ,\vdots,\vdots,\ }}}_{#1}}
 
 \begin{document}
 
@@ -1281,7 +1293,7 @@ $\mathrm{Coh}_{[\mu]}(G)$ the space of coherent families based on $[\mu]$ which 
   define
   \[
     S_{\cO} = \left\{\sigma \in \widehat{W_{[\mu]}}|
-      \rmathrm{Springer}(j_{W_{[\mu]}}^{W} \sigma_{s}) = \cO
+      \Spr(j_{W_{[\mu]}}^{W} \sigma_{s}) = \cO
     \right\}
   \]
   where $\sigma_{s}$ is the special representation in the double cell containing
@@ -1314,8 +1326,8 @@ Harish-Chandra modules with minimal GK-dimension.
 
 Let $a(\sigma)$ be the generic degree of a Weyl group representation $\sigma$.
 
-In view of \Cref{thm:count}, we need the following lemma in \cite{BVUni}.
-\begin{lem}
+In view of \Cref{thm:count}, we need the following lemma by Barabsch-Vogan. %in \cite{BVUni}.
+\begin{lem}[{\cite{BVUni}*{(5.26)}}]
   Let
   \[
     a_{\ckcO} = \max\set{a(\sigma)| \sigma \in \Irr(\WLamck) \text{ and }
@@ -1323,8 +1335,8 @@ In view of \Cref{thm:count}, we need the following lemma in \cite{BVUni}.
   \]
   Let
   \[
-    \cC_{\ckcO} =
-    \set{\sigma \in \widehat{\WLamck} | a(\sigma) = a_{\ckcO}
+    \LC_{\ckcO} =
+    \set{\sigma \in \Irr(\WLamck) | a(\sigma) = a_{\ckcO}
       \text{ and } [1_{\Wlamck}: \sigma]\neq   0
     }.
   \]
@@ -1336,8 +1348,63 @@ In view of \Cref{thm:count}, we need the following lemma in \cite{BVUni}.
   \[
     (J_{\Wlamck}^{\WLamck} \sgn )\otimes \sgn
   \]
+  which contains a unique special representation
+  \[
+    (j_{\Wlamck}^{\WLamck} \sgn )\otimes \sgn.
+  \]
+  \end{itemize}
+  \qed
 \end{lem}
+\trivial{
+  WLOG, we can assume $\lamck$ is integral.
+  Now this is essentially contained in \cite{BVUni}.
 
+  We adapt the notation in \cite{BVUni}: two special representations
+  $\sigma \LRleq \sigma'$ if and only if $\cO_{\sigma}\supseteq \cO_{\sigma'}$
+  where $\cO_{\sigma}:=\Spr(\sigma)$. The generic degree of $\sigma$ is denoted
+  by $a(\sigma)$.
+  Note that the ordering of double cells/special representation is the same as
+  the closure relation on special nilpotent orbits, see \cite{BVUni}*{Prop
+    3.23}.
+
+  Note that induction maps left cone representation to a left cone
+  representation \cite{BVUni}*{Prop~4.14~(a)}. Therefore
+  $\Ind_{\Wlamck}^{\WLamck}\sgn$ is a left cone representation.
+  $J_{\Wlamck}^{\WLamck}\sgn$ consists the constituents in the induced
+  representation with the minimal generic degree. In particular,
+  $J_{\Wlamck}^{\WLamck}\sgn$ is the set of minimal representations under the
+  $LR$-order and it is contained in a unique double cell $\cD$.
+
+
+  Recall that tensoring with sign (or rather twisting $w_{0}$) is an order
+  reversing bijection of left cells in $\WLamck$ and induces a $LR$-order
+  reversing bijection on $\Irr(\Wlamck)$, see \cite{BV2}*{Prop.~2.25}. Therefore
+  $\Ind_{\Wlamck}^{\WLamck} 1 = \left(\Ind_{\Wlamck}^{\WLamck} \sgn\right)\otimes \sgn$
+  has a set of constituents which is maximal under the $LR$-order, in particular
+  the generic degree takes maximal value on these representations.
+
+  Hence we conclude that $\cC_{\ckcO}\otimes \sgn = J_{\Wlamck}^{\WLamck} \sgn$.
+  % Therefore we conclude that $\cC_{\ckcO}\otimes \sgn$ consists the
+  % representations minimal under $LR$-order in $\Ind_{\Wlamck}^{\WLamck}\sgn$.
+  % In particular, $\cC_{\ckcO}\otimes \sgn$ consists of representations having
+  % minimal generic degree, which is exactly $J_{\Wlamck}^{\WLamck} \sgn$.
+  % By our counting theorem, the block of highest weight modules with
+  % infinitesimal character $\lamck$ is in one-one correspondence with
+  % $\WLamck/\Wlamck$. As a set of representations, it is a union of left cells
+  % since the trivial representation is a left cell of $\Wlam$ and parabolic induction
+  % preserves left cone representation \cite{BVUni}*{Prop~4.14~(a)}. By
+  % Joseph-Vogan, there is a maximal primitive ideal in the set of primitive
+  % ideals with infinitesimal character $\lambda$. In particular, the associated
+  % variety of the maximal primitive ideal is the unique one with minimal
+  % dimension. By the relation between generic degree and dimension of the associated
+  % varieties of primitive ideals, we conclude that the set of representations in
+  % $\Ind_{\Wlamck}^{\WLamck}1_{\Wlamck}$ which have the maximal generic degree
+  % is contained in a unique left cell. These representations are
+  % maximal in the $LR$-order. (Warning: induction or truncated induction does
+  % not maps double cell onto a double cell in general. The notion of smoothly
+  % induction means double cell maps to double cell, see
+  % \cite{BVUni}*{Prop~4.14~last paragraph})
+}
 
 \section{Counting in type A}
 The results in this section are well known to the experts.
@@ -1678,6 +1745,107 @@ Recall that
 \]
 
 
+\subsection{The left cell $\LC_{\ckcO}$}
+We compute the left cell $\LC_{\ckcO}$ case by case.
+
+
+\begin{lem}
+  Suppose $\ckstar = C$
+  Let $\ckcO = \ckcO_{b}\cupcol \ckcO_{g}$.
+  Then $\WLamck = W_{b}\times W_{g}$ where $b= \frac{\abs{\ckcO_{b}}}{2}$
+  and
+  $g = \floor{\frac{\abs{\ckcO_{g}}}{2}}$
+
+\end{lem}
+\trivial{
+  In this case, bad parity is odd and every odd row occurs with with even times.
+  We take the convention that
+  % $2\cO = [2r_{i}]$ if $\cO = [r_{i}]$.
+  % We also write $[r_{i}]\cup [r_{j}] = [r_{i},r_{j}]$.
+  $\dagger \cO = [r_{i}+1]$.
+  By abuse of notation, let $\dagger_{n} \sigma$  denote the
+  $j_{S_{n} \times W_{\abs{\sigma}}}^{W_{n+\abs{\sigma}}} \sgn\otimes \sigma$.
+  We can write
+  \[
+    \ckcO_{b} = [2r_{1}+1, 2r_{1}+1, \cdots, 2r_{k}+1,2r_{k}+1]
+    = (2c_{0},2c_{1},2c_{1}, \cdots, 2c_{l}, 2c_{l})
+  \]
+  with $k = c_{0}$ and $l = r_{1}$.
+
+\[
+\begin{split}
+  W_{\lamckb} &= W_{c_{0}} \times S_{2c_{1}} \times S_{2c_{2}}\times \cdots \times S_{2c_{l}}\\
+  \cksigma_{b} &:= \sigma_{b}\otimes \sgn = j_{W_{\lamckb}}^{W_{b}} \sgn \\
+  & = \dagger_{2c_{l}}\cdots \dagger_{2c_{1}}
+  \binom{0, 1, \cdots, c_{0}}{1, \cdots, c_{0}}\\
+  & =
+  \binom{0, 1+r_{k}, 2+r_{k-1}\cdots, c_{0}+r_{1}}{1+r_{k},2+r_{k-1}, \cdots, c_{0}+r_{1}}\\
+  & = ([r_{1},r_{2},\cdots, r_{k}],[r_{1}+1,r_{2}+1,\cdots,r_{k}+1])\\
+  &= ((c_{1},c_{2},\cdots, c_{k}),(c_{0},c_{1}, \cdots, c_{l}))\\
+\end{split}
+\]
+
+Therefore
+\[
+  \begin{split}
+    \sigma_{b} &= \cksigma_{b}\otimes \sgn = ((r_{1}+1,r_{2}+1,\cdots,r_{k}+1),(r_{1},r_{2},\cdots, r_{k})) \\
+    & = j_{S_{2r_{1}+1}\times \cdots S_{2r_{k}+1}}^{W_{b}} \sgn\\
+    & = j_{S_{b}}^{W_{b}} (2r_{1}+1, 2r_{2}+1, \cdots, 2r_{k}+1)
+  \end{split}
+\]
+which corresponds to the orbit
+\[
+  \cO_{b} = (2r_{1}+1, 2r_{1}+1,2r_{2}+1, 2r_{2}+1,  \cdots,2r_{k}+1, 2r_{k}+1 ) = \ckcO_{b}^{t}.
+\]
+(Note that $\cO'_{b} = (2r_{1}+1,2r_{2}+1, \cdots, 2r_{k}+1)$ which corresponds
+to $j_{W_{L_{b}}}^{S_{b}}\sgn$ and $\ind_{L}^{G} \cO'_{b} = \cO_{b}$.
+)
+% This implies the unique special representation is
+% \[
+%   \sigma_{b} = (j_{W_{\lamckb}}^{W_{b}}\sgn), \quad \text{where } W_{L,b} = \prod_{i=1}^{k} S_{2r_{i}+1}.
+% \]
+The $J$-induction is calculated by \cite{Lu}*{(4.5.4)}.
+It is easy to see that in our case $J_{W_{\lamckb}}^{W_{b}} \sgn$ consists of
+the single special representation by induction.
+
+
+Now we consider the good parity parts.
+
+
+First assume that there is even number of rows.
+Consider
+\[
+\cO_{g} = [2r_{1},2r_{2}, \cdots, 2r_{2k-1},2r_{2k}]
+= (C_{1},C_{1}, C_{2},C_{2},\cdots, C_{l}, C_{l}).
+\]
+with $l = r_{1}$ and $k = C_{1}/2$.
+
+Note that
+$\cksigma_{[\underbrace{2r,2r, \cdots, 2r}_{2k}]}
+= ([\underbrace{r,r, \cdots, r}_{k}], [\underbrace{r,r, \cdots, r}_{k}])$
+and
+$\cksigma_{[\underbrace{2r,2r, \cdots, 2r}_{2k+1}]}
+= ([\underbrace{r,r, \cdots, r}_{k+1}], [\underbrace{r,r, \cdots, r}_{k}])$
+
+Now
+\[
+  \begin{split}
+  \cksigma_{\ckcO_{g}} & =
+  j_{S_{C_{1}}\times \cdots \times S_{C_{l}}}^{W_{a}} \sgn\\
+  & = ((\ceil{C_{1}/2},\ceil{C_{2}/2}, \ceil{C_{1}/2}),
+  (\floor{C_{1}/2},\floor{C_{2}/2}, \floor{C_{1}/2}))\\
+  & = ([r_{2k-1},],[r_{2k},])
+  \end{split}
+\]
+
+
+We do induction on the number columns.
+
+If there is only two columns
+}
+
+
+\subsection{}
 In this section, we count special unipotent representations of real orthogonal
 groups (type $B$,$D$), symplectic groups (type $C$) and metaplectic groups (type
 $\wtC$). 
@@ -2058,9 +2226,6 @@ j^{S_{\abs{\mu}+\abs{\nu}}}_{\prod_{i}S_{\bfcc_{i}(\mu\cup \nu)}}\sgn\\
 \]
 }
 
-\def\ceil#1{\lceil #1 \rceil}
-\def\symb#1#2{{\left(\substack{{#1}\\{#2}}\right)}}
-\def\cboxs#1{\mbox{\scalebox{0.25}{\ytb{\ ,\vdots,\vdots,\ }}}_{#1}}
 
 
 We have
