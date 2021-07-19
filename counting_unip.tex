@@ -1201,6 +1201,7 @@
 \def\Rplam{R^+(\lambda)}
 \def\Glfin{\cG_{\Lambda}(\Gc)}
 \def\LC{{}^L\sC}
+\def\ckLC{{}^L\check{\sC}}
 
 \def\Con{\sfC}
 \def\bCon{\overline{\sfC}}
@@ -1221,6 +1222,9 @@
 \def\Spr{\mathrm{Springer}}
 \def\Prim{\mathrm{Prim}}
 
+
+\def\CQ{\overline{\sfA}}% Lusztig's canonical quotient
+\def\CPP{\mathfrak{P}}
 
 
 \def\ceil#1{\lceil #1 \rceil}
@@ -1747,16 +1751,54 @@ Recall that
 
 \subsection{The left cell $\LC_{\ckcO}$}
 We compute the left cell $\LC_{\ckcO}$ case by case.
-
+Let $\ckcO = \ckcO_{b}\cupcol \ckcO_{g}$.
 
 \begin{lem}
-  Suppose $\ckstar = C$
-  Let $\ckcO = \ckcO_{b}\cupcol \ckcO_{g}$.
-  Then $\WLamck = W_{b}\times W_{g}$ where $b= \frac{\abs{\ckcO_{b}}}{2}$
-  and
-  $g = \floor{\frac{\abs{\ckcO_{g}}}{2}}$
+  Suppose $\star = B$, $\ckcO_{b}$ has $2k$ rows. Here each row in $\ckcO_{b}$ has
+  odd length and each row in $\ckcO_{g}$ has even length, and
+  $\WLamck = W_{b}\times W_{g}$ where $b= \frac{\abs{\ckcO_{b}}}{2}$ and
+  $g = \floor{\frac{\abs{\ckcO_{g}}}{2}}$.
+  Let
+  \[
+    \begin{split}
+      \tau_{b} =  & \left( (\frac{\bfrr_{2}(\ckcO_{b})+1}{2}, \frac{\bfrr_{4}(\ckcO_{b})+1}{2}, \cdots, \frac{\bfrr_{2k}(\ckcO_{b})+1}{2}),\right.\\
+        &\ \ \left. (\frac{\bfrr_{2}(\ckcO_{b})-1}{2}, \frac{\bfrr_{4}(\ckcO_{b})-1}{2}, \cdots, \frac{\bfrr_{2k}(\ckcO_{b})-1}{2})\right) \in \Irr(W_{b}).
+    \end{split}
+  \]
+  Set
+  \[
+    \CPP(\ckcO_{g}) = \set{(2i,2i+1)| \bfrr_{2i+1}(\ckcO_{g})> \bfrr_{2i}(\ckcO_{g}), \text{
+        and } i\in \bN^{+}}
+  \]
+  and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
 
+  For $\sP \in \CQ(\ckcO)$, let
+  \[
+    \tau_{\sP} := (\imath,\jmath) \in \Irr(W_{b})
+  \]
+  such that
+  \[
+    \bfcc_{1}(\jmath)  := \half\bfrr_{1}(\ckcO_{g})
+  \]
+  and for all $l\geq 1$
+  \[
+  (\bfcc_{l}(\imath), \bfcc_{l+1}(\jmath)):=
+  \begin{cases}
+    (\half \bfrr_{2l}(\ckcO_{g}), \half \bfrr_{2l+1}(\ckcO_{g}))
+    & \text{if } (2l,2l+1)\notin \sP,\\
+    (\half \bfrr_{2l+1}(\ckcO_{g}),\half \bfrr_{2l}(\ckcO_{g})) & \text{otherwise.}
+  \end{cases}
+  \]
+
+  Then we have the following bijection
+  \[
+    \begin{array}{ccc}
+      \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
+      \sP & \mapsto & \tau_{b}\otimes \tau_{\sP}.
+    \end{array}
+  \]
 \end{lem}
+
 \trivial{
   In this case, bad parity is odd and every odd row occurs with with even times.
   We take the convention that
@@ -1812,38 +1854,187 @@ the single special representation by induction.
 Now we consider the good parity parts.
 
 
-First assume that there is even number of rows.
+%First assume that there is even number of rows.
 Consider
 \[
 \cO_{g} = [2r_{1},2r_{2}, \cdots, 2r_{2k-1},2r_{2k}]
 = (C_{1},C_{1}, C_{2},C_{2},\cdots, C_{l}, C_{l}).
 \]
-with $l = r_{1}$ and $k = C_{1}/2$.
+with $l = r_{1}$ and $k = \ceil{C_{1}/2}$.
+Write  $\ckLC_{\ckcO} = J_{W_{\lamck}}^{W_{[\lamck]}}\sgn$.
 
-Note that
-$\cksigma_{[\underbrace{2r,2r, \cdots, 2r}_{2k}]}
-= ([\underbrace{r,r, \cdots, r}_{k}], [\underbrace{r,r, \cdots, r}_{k}])$
-and
-$\cksigma_{[\underbrace{2r,2r, \cdots, 2r}_{2k+1}]}
-= ([\underbrace{r,r, \cdots, r}_{k+1}], [\underbrace{r,r, \cdots, r}_{k}])$
+
+
+Note that the trivial representation of the trivial group has symbol
+\[
+\binom{0,1, 2, \cdots, k\phantom{-1}}{0,1, \cdots, k-1}.
+\]
+Now it easy to deduce that
+\[
+\begin{split}
+\cksigma_{[\underbrace{2r,2r, \cdots, 2r}_{2k+1}]}
+=& ([\underbrace{r,r, \cdots, r}_{k+1}], [\underbrace{r,r, \cdots, r}_{k}]),
+% \cksigma_{[\underbrace{2r,2r, \cdots, 2r}_{2k+1}]}
+% =& ([\underbrace{r,r, \cdots, r}_{k+1}], [\underbrace{r,r, \cdots, r}_{k}])\quad
+\text{and}\\
+\ckLC_{[\underbrace{2r',2r', \cdots, 2r',2r}_{2k+1\text{ terms}}]}
+=&
+\begin{cases}
+  ([\underbrace{r',r', \cdots, r',r'}_{k+1}], [\underbrace{r',r', \cdots, r',r'}_{k+1}]) &
+  \text{if } r'=r\geq 0 \\
+  ([\underbrace{r',r', \cdots, r',r}_{k+1}], [\underbrace{r',r', \cdots, r',r'}_{k}]) &\\
+ +([\underbrace{r',r', \cdots, r',r'}_{k+1}], [\underbrace{r',r', \cdots, r',r}_{k}]) &
+  \text{if } r'>r \geq 0\\
+ \text{(the first term is special)}& \\
+\end{cases}
+\end{split}
+\]
+%where the first term is the special representation.
 
 Now
 \[
   \begin{split}
-  \cksigma_{\ckcO_{g}} & =
-  j_{S_{C_{1}}\times \cdots \times S_{C_{l}}}^{W_{a}} \sgn\\
-  & = ((\ceil{C_{1}/2},\ceil{C_{2}/2}, \ceil{C_{1}/2}),
-  (\floor{C_{1}/2},\floor{C_{2}/2}, \floor{C_{1}/2}))\\
-  & = ([r_{2k-1},],[r_{2k},])
+    \cksigma_{\ckcO_{g}} & =
+    J_{S_{C_{1}}\times \cdots \times S_{C_{l}}}^{W_{a}} \sgn\\
+    % =& ((\ceil{C_{1}/2},\ceil{C_{2}/2}, \ceil{C_{1}/2}),
+    % (\floor{C_{1}/2},\floor{C_{2}/2}, \floor{C_{1}/2}))\\
+    =& \ckLC_{[\underbrace{2r_{2k},2r_{2k}, \cdots,2r_{2k},2r_{2k+1}}_{2k+1\text{terms}}]}\\
+    & \cuprow \LC_{[2(r_{1}-r_{2k}), 2(r_{2}-r_{2k}), \cdots, 2(r_{2k-1}-r_{2k})]}.
   \end{split}
 \]
+By induction on the number of columns, we conclude that $\ckLC_{\ckcO_{g}}$ is in one-one corresponds to
+the subsets of
+\[
+\CPP(\ckcO_{g}) = \set{(2i,2i+1)| \bfrr_{2i+1}(\ckcO_{g})> \bfrr_{2i}(\ckcO_{g}), \text{ and
+  } i\in \bN^{+}}.
+\]
+For $\sP\in \CQ(\ckcO_{g})$, let $\sigma_{\sP} = (\imath,\jmath)$
+such that
+\[
+\begin{split}
+  \bfrr_{1}(\imath) &:= \half \bfrr_{1}(\ckcO_{g})\\
+  (\bfrr_{l+1}(\imath), \bfrr_{l}(\jmath))&:=
+  \begin{cases}
+    (\half \bfrr_{2l+1}(\ckcO_{g}), \half \bfrr_{2l}(\ckcO_{g}))
+    & \text{if } (2l,2l+1)\notin \sP\\
+    (\half \bfrr_{2l}(\ckcO_{g}), \half \bfrr_{2l+1}(\ckcO_{g}))
+    & \text{otherwise}
+  \end{cases}
+\end{split}
+\]
 
+
+Note that according to Lusztig and BV, the subsets of $\CPP(\ckcO)$ is in
+one-one correspondence to the canonical quotient $\CQ(\ckcO) = \bF_{2}[\CPP(\ckcO)]$.
+
+
+}
+
+
+\begin{lem}
+  Suppose $\star = C$, $\ckcO_{b}$ has $2k$ rows. Here each row in $\ckcO_{b}$ has
+  even length and each row in $\ckcO_{g}$ has odd length, and
+  $\WLamck = W_{b}\times W_{g}$ where $b= \frac{\abs{\ckcO_{b}}}{2}$ and
+  $g = \floor{\frac{\abs{\ckcO_{g}}}{2}}$.
+  Let
+  \[
+    \begin{split}
+      \tau_{b} =  & \left( (\frac{\bfrr_{2}(\ckcO_{b})+1}{2}, \frac{\bfrr_{4}(\ckcO_{b})+1}{2}, \cdots, \frac{\bfrr_{2k}(\ckcO_{b})+1}{2}),\right.\\
+        &\ \ \left. (\frac{\bfrr_{2}(\ckcO_{b})-1}{2}, \frac{\bfrr_{4}(\ckcO_{b})-1}{2}, \cdots, \frac{\bfrr_{2k}(\ckcO_{b})-1}{2})\right) \in \Irr(W_{b}).
+    \end{split}
+  \]
+  Set
+  \[
+    \CPP(\ckcO_{g}) = \set{(2i,2i+1)| \bfrr_{2i+1}(\ckcO_{g})> \bfrr_{2i}(\ckcO_{g}), \text{
+        and } i\in \bN^{+}}
+  \]
+  and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
+
+  For $\sP \in \CQ(\ckcO)$, let
+  \[
+    \tau_{\sP} := (\imath,\jmath) \in \Irr(W_{b})
+  \]
+  such that
+  \[
+    \bfcc_{1}(\jmath)  := \half\bfrr_{1}(\ckcO_{g})
+  \]
+  and for all $l\geq 1$
+  \[
+  (\bfcc_{l}(\imath), \bfcc_{l+1}(\jmath)):=
+  \begin{cases}
+    (\half \bfrr_{2l}(\ckcO_{g}), \half \bfrr_{2l+1}(\ckcO_{g}))
+    & \text{if } (2l,2l+1)\notin \sP,\\
+    (\half \bfrr_{2l+1}(\ckcO_{g}),\half \bfrr_{2l}(\ckcO_{g})) & \text{otherwise.}
+  \end{cases}
+  \]
+
+  Then we have the following bijection
+  \[
+    \begin{array}{ccc}
+      \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
+      \sP & \mapsto & \tau_{b}\otimes \tau_{\sP}.
+    \end{array}
+  \]
+\end{lem}
+
+
+
+
+\trivial{
+Note that the trivial representation of the trivial group has symbol
+\[
+\binom{0,1, \cdots, k}{0,1, \cdots, k-1}.
+\]
+Now it easy to deduce that
+\[
+\begin{split}
+\cksigma_{[\underbrace{2r,2r, \cdots, 2r}_{2k}]}
+=& ([\underbrace{r,r, \cdots, r}_{k}], [\underbrace{r,r, \cdots, r}_{k}]),\\
+\cksigma_{[\underbrace{2r,2r, \cdots, 2r}_{2k+1}]}
+=& ([\underbrace{r,r, \cdots, r}_{k+1}], [\underbrace{r,r, \cdots, r}_{k}])\quad
+\text{and}\\
+\ckLC_{[\underbrace{2r',2r', \cdots, 2r',2r}_{2k-\text{terms}}]}
+=&
+\begin{cases}
+  ([\underbrace{r',r', \cdots, r',r'}_{k}], [\underbrace{r',r', \cdots, r',r}_{k}]) &
+  \text{if } r'=r\geq 0 \\
+  ([\underbrace{r',r', \cdots, r',r'}_{k}], [\underbrace{r',r', \cdots, r',r}_{k}]) &\\
+ +([\underbrace{r',r', \cdots, r',r}_{k}], [\underbrace{r',r', \cdots, r',r'}_{k}])
+  \text{if } r'>r \geq 0\\
+ \text{(the first term is special)}& \\
+\end{cases}
+\end{split}
+\]
+%where the first term is the special representation.
+
+Now
+\[
+  \begin{split}
+    \cksigma_{\ckcO_{g}} & =
+    J_{S_{C_{1}}\times \cdots \times S_{C_{l}}}^{W_{a}} \sgn\\
+    =& ((\ceil{C_{1}/2},\ceil{C_{2}/2}, \ceil{C_{1}/2}),
+    (\floor{C_{1}/2},\floor{C_{2}/2}, \floor{C_{1}/2}))\\
+    =& \ckLC_{[\underbrace{2r_{2k-1},2r_{2k-1}, \cdots,2r_{2k-1},2r_{2k-1},2r_{2k}}_{2k-\text{terms}}]}\\
+  % \left(([\underbrace{r_{2k-1},r_{2k-1},\cdots,r_{2k-1},r_{2k-1}}_{2k-\text{terms}}],
+   %  [\underbrace{r_{2k-1},r_{2k-1},\cdots,r_{2k-1},r_{2k}}_{2k-\text{terms}}]))\right.\\
+   % & \left. + ([\underbrace{r_{2k-1},r_{2k-1},\cdots,r_{2k-1},r_{2k}}_{2k-\text{terms}}],
+   %  [\underbrace{r_{2k-1},r_{2k-1},\cdots,r_{2k-1},r_{2k-1}}_{2k-\text{terms}}])\right)\\
+  & \cuprow \LC_{[2(r_{1}-r_{2k-1}), 2(r_{2}-r_{2k-2}), \cdots, 2(r_{2k-2}-r_{2k-1})]}.
+  \end{split}
+\]
+By induction, we conclude that $\ckLC_{\ckcO}$ is in one-one corresponds to
+the subsets of
+\[
+\CPP(\ckcO) = \set{(2i-1,2i)\in \bN\times \bN| \bfrr_{2i-1}(\ckcO)> \bfrr_{2i}(\ckcO)}.
+\]
+
+Note that according to Lusztig and BV, the subsets of $\CPP(\ckcO)$ is in
+one-one correspondence to the canonical quotient $\CQ(\ckcO) = \bF_{2}[\CPP(\ckcO)]$.
 
 We do induction on the number columns.
 
 If there is only two columns
 }
-
 
 \subsection{}
 In this section, we count special unipotent representations of real orthogonal
