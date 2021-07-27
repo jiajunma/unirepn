@@ -1797,93 +1797,112 @@ special unipotent representations on the two sides.
 In this section, we consider the case when $\ckstar \in \set{B,C,D}$, i.e
 $\star \in \set{B,\wtC, C,D,C^{*}, D^{*}}$.
 
+We identify $\fhh^{*}$ with $\bZ^{n}$ where $n = \rank(\Gc)$
+and let $\rho$ be the half sum of all positive roots.
+
 Recall that
 \[
   \text{good pairity} =
 \begin{cases}
- \text{odd} & \text{when} \ckstar\in \set{B,D}\\
- \text{even} & \text{when} \ckstar = C\\
+ %\text{odd} & \text{when } \ckstar\in \set{B,D}\\
+ %\text{even} & \text{when } \ckstar = C\\
+ \text{odd} & \text{when } \star \in \set{C,C^{*},D,D^{*}}\\
+ \text{even} & \text{when } \star \in \set{B,\wtC}\\
 \end{cases}
 \]
 
+\def\Wb{W_{b}}
+\def\Wg{W_{g}}
 
-\subsection{The left cell $\LC_{\ckcO}$}
-We compute the left cell $\LC_{\ckcO}$ case by case.
-Let $\ckcO = \ckcO_{b}\cupcol \ckcO_{g}$.
-
-
-\begin{lem}
-  Suppose $\star \in \set{D, D^{*}}$, $\ckcO_{b}$ has $2k$ rows and $\ckcO_{g}$
-  has $2l$-rows. Here each row in $\ckcO_{b}$ has even length and each row in
-  $\ckcO_{g}$ has odd length, and $\WLamck = W'_{b}\times W'_{g}$ where
-  $b= \frac{\abs{\ckcO_{b}}}{2}$ and $g = \frac{\abs{\ckcO_{g}}}{2}$. Let
+  Suppose $\ckcO\in \Nil(\ckcG)$ with decomposition
+  $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$.
+  Then $\ckcG_{\lamck} = \ckcG_{b}\times \ckcG_{g}$.
+  Let $n_{b}$ and $n_{g}$ be the rank of $\ckcG_{b}$ and $\ckcG_{g}$
+  respectively. We have
   \[
-    \tau_{b} = \left( (\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}), (\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}) \right) \in \Irr(W'_{b}).
+    (n_{b}, n_{g}) =
+    \begin{cases}
+      (\half \abs{\ckcO_{b}}, \half(\abs{\ckcO_{g}}-1)) & \text{when
+      } \star \in \set{C,C^{*}}\\
+      (\half \abs{\ckcO_{b}}, \half\abs{\ckcO_{g}}) & \text{when
+      } \star \in \set{B,\wtC,D,D^{*}}\\
+    \end{cases}
   \]
-  Set
+  and integral Weyl group is a product of two factors
   \[
-    \CPP(\ckcO_{g}) = \set{(2i,2i+1)| \bfrr_{2i}(\ckcO_{g})> \bfrr_{2i+1}(\ckcO_{g})>0, \text{
-        and } i\in \bN^{+}}
+    W_{[\lamck]} =\Wb\times \Wg
   \]
-  and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
-
-  For $\sP \in \CQ(\ckcO)$, let
-  \[
-    \tau_{\sP} := (\imath,\jmath) \in \Irr(W'_{g})
-  \]
-  such that
+  where
   \[
     \begin{split}
-      \bfcc_{1}(\imath)  &:= \half(\bfrr_{1}(\ckcO_{g})+1)\\
-      (\bfcc_{l+1}(\imath), \bfcc_{l}(\jmath))  &:= (0,\half(\bfrr_{2l}(\ckcO_{g})-1))
+    \Wb & := \begin{cases}
+      \sfW_{n_{b}}  & \text{when } \star \in \set{B, \wtC} \\
+      \sfW'_{n_{b}} & \text{when } \star \in \set{C,C^{*},D,D^{*}}
+      \end{cases}\\
+    \Wg & := \begin{cases}
+      \sfW_{n_{g}}  & \text{when } \star \in \set{B,C, C^{*} } \\
+      \sfW'_{n_{g}} & \text{when } \star \in \set{\wtC,D,D^{*}}
+      \end{cases}
     \end{split}
   \]
-  and for all $1\leq i< l$
-  \[
-  (\bfcc_{i+1}(\imath), \bfcc_{i}(\jmath)):=
-  \begin{cases}
-    (\half (\bfrr_{2i+1}(\ckcO_{g})+1),
-    \half (\bfrr_{2i}(\ckcO_{g})-1))
-    & \text{if } (2i,2i+1)\notin \sP,\\
-    (\half (\bfrr_{2i}(\ckcO_{g})+1),\half (\bfrr_{2i+1}(\ckcO_{g})-1)) & \text{otherwise.}
-  \end{cases}
-  \]
 
-  Then we have the following bijection
+
+  \subsection{The left cell}
+
+\begin{lem}\label{lem:Lcell}
+  % Suppose $\star \in \set{C, C^{*}}$, $\ckcO_{b}$ has $2k$ rows and $\ckcO_{g}$
+  % has $2l+1$-rows. Here each row in $\ckcO_{b}$ has even length and each row in
+  % $\ckcO_{g}$ has odd length, and $\WLamck = W'_{b}\times W_{g}$ where
+  % $b= \frac{\abs{\ckcO_{b}}}{2}$ and $g = \frac{\abs{\ckcO_{g}}-1}{2}$. Let
+  %
+  In all the cases there is a irreducible $\Wb$-representation $\tau_{b}$
+  such that
   \[
     \begin{array}{ccc}
-      \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
-      \sP & \mapsto & \tau_{b}\otimes \tau_{\sP}.
+      \LC(\ckcO_{g}) & \longrightarrow & \LC(\ckcO)\\
+      \tau_g & \mapsto & \tau_{b}\otimes \tau_{g}
     \end{array}
   \]
-  such that $\tau_{b}\otimes \tau_{\sP}$ is the special representation in
-  $\LC(\ckcO)$.
+  is a bijection.
+  Here
+  \[
+    \tau_{b} = \begin{cases}
+      \Big( \big(\frac{\bfrr_{2}(\ckcO_{b})+1}{2}, \frac{\bfrr_{4}(\ckcO_{b})+1}{2}, \cdots, \frac{\bfrr_{2k}(\ckcO_{b})+1}{2}\big),\\
+       \hspace{1em} \big(\frac{\bfrr_{2}(\ckcO_{b})-1}{2}, \frac{\bfrr_{4}(\ckcO_{b})-1}{2}, \cdots, \frac{\bfrr_{2k}(\ckcO_{b})-1}{2}\big)\Big)
+      & \text{if } \star \in \set{B,\wtC},\\
+      \Big( \big(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b})\big), \\
+      \hspace{1em} \big(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}) \big)\Big)_{I}
+      & \text{if } \star \in \set{C,C^{*}, D,D^{*}}\\
+    \end{cases}
+  \]
+
+
 \end{lem}
-\trivial{
-  The bad parity part is the same as that of the case when $\star = C$.
 
-  For the good parity part.
-  Suppose
-  $\ckcO_{g} = (2c_{1}, C_{2}, C_{2},C_{3},C_{3},\cdots, C_{k'},C_{k'},C_{k'+1})$ with
-  $2c_{1}=2l$ and $2k'+2 = \bfrr_{1}(\ckcO_{g})$.
+\subsection{The left cell}
 
-  We use the two facts:
-  \[
-    W_{\lamckg} = W_{c_{1}}\times S_{C_{2}}\times \cdots
-    \times S_{C_{k'}}.
-  \]
 
-  The symbol of sign representation of $W'_{c_{1}}$ is
-  \[
-    \binom{0,1, \cdots, c_{1}-1}{1,2, \cdots, c_{1}\phantom{-1}}.
-  \]
-  The bifurcation happens for even length columns.
-  % Eg: 0,1,2,
-  %     1,2,3,
 
-}
+\subsection{Coherent continuation representations}
 
-  \section{Type C}
+Let $Q$ be the root lattice in $\fhh^{*}$
+which is
+\[
+Q = \begin{cases}
+  \bZ^{n} & \text{if  $\star = B$}\\
+  %\set{(a_{1},a_{2},\cdots, a_{n})\in \bZ^{n}|\sum_{i=1}^{n}a_{i} \in 2\bZ}
+  \Set{(a_{i})\in \bZ^{n}|\sum_{i=1}^{n}a_{i} \text{ is even}}
+    & \text{if  $\star \in \set{C,\wtC,C^{*},D,D^{*}}$}\\
+\end{cases}
+\]
+We consider the lattice
+\[
+  \Lambda_{n_{b},n_{g}} =
+  (\underbrace{\half, \cdots, \half}_{n_{b}\text{-terms}}, \underbrace{0, \cdots, 0}_{n_{g}\text{-terms}}) + Q.
+  =
+\]
+
+\section{Type C}
 
   The dual group of $\Gc = \Sp(2n,\bC)$ is $\ckGc = \SO(2n+1,\bC)$. The even is
   the bad parity, and odd is the good parity.
@@ -1901,7 +1920,49 @@ Let $\ckcO = \ckcO_{b}\cupcol \ckcO_{g}$.
   $\bfrr_i(\ckcO'_b) = \bfrr_{2i}(\ckcO_b)$ and $\cO'_{b}$ be the transpose of
   $\ckcO'_{b}$.
 
-  \subsection{The left cell}
+
+  \[
+    \tau_{b} = \Big( \left(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b})\right), \left(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}) \right)\Big)_{I} \in \Irr(W'_{b}).
+  \]
+  Set
+  \[
+    \CPP(\ckcO_{g}) = \set{(2i-1,2i)| \bfrr_{2i-1}(\ckcO_{g})> \bfrr_{2i}(\ckcO_{g})>0, \text{
+        and } i\in \bN^{+}}
+  \]
+  and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
+
+  For $\sP \in \CQ(\ckcO)$, let
+  \[
+    \tau_{\sP} := (\imath,\jmath) \in \Irr(W_{g})
+  \]
+  such that
+  \[
+    (\bfcc_{l+1}(\imath), \bfcc_{l+1}(\jmath)) := (0,\half(\bfrr_{2l+1}(\ckcO_{g})-1))
+  \]
+  and for all $1\leq i\leq l$
+  \[
+    (\bfcc_{i}(\imath), \bfcc_{i}(\jmath)):=
+    \begin{cases}
+      (\half (\bfrr_{2i}(\ckcO_{g})+1), \half (\bfrr_{2i-1}(\ckcO_{g})-1))
+      & \text{if } (2i-1,2i)\notin \sP,\\
+      (\half (\bfrr_{2i-1}(\ckcO_{g})+1),\half (\bfrr_{2i}(\ckcO_{g})-1)) & \text{otherwise.}
+    \end{cases}
+  \]
+
+  Then we have the following bijection
+  \[
+    \begin{array}{ccc}
+      \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
+      \sP & \mapsto & \tau_{b}\otimes \tau_{\sP}.
+    \end{array}
+  \]
+  such that $\tau_{b}\otimes \tau_{\emptyset}$ is the special representation in
+  $\LC(\ckcO)$.
+
+  Moreover
+  $\Spr(j_{W'_{b}\times W_{g}}^{W_{n}} \tau_{b}\otimes \tau_{\emptyset}) = \cO_{b}\cupcol \cO_{g}$
+  where $\cO_{g} = \dBV(\ckcO_{g})$ and $\cO_{b} = \ckcO_{b}^{t}$.
+
 
 \begin{lem}\label{lem:cell.C}
   Suppose $\star \in \set{C, C^{*}}$, $\ckcO_{b}$ has $2k$ rows and $\ckcO_{g}$
@@ -2325,7 +2386,7 @@ $\Lambda_{n_{b},n_{g}}$.
     \begin{split}
       \cC_g &=
       \bigoplus_{2t+a+c+d=n_{g}}\Ind_{H_{t} \times S_{a} \times W_c\times W_d}^{W_{n_{g}}} 1 \otimes \sgn \otimes 1 \otimes 1\\
-      \cC_b &= \bigoplus_{\substack{2t+a=n_{b}}} \Ind_{H_{t} \times S_a}^{W'_{n_{b}}} \hsgn\otimes 1
+      \cC_b &= \Res_{W_{n_{b}}}^{W'_{n_{b}}}\left( \bigoplus_{\substack{2t+a=n_{b}}} \Ind_{H_{t} \times S_a}^{W_{n_{b}}} \hsgn\otimes 1\right) \\
     \end{split}
   \]
   \qed
@@ -2381,7 +2442,7 @@ Recall the definition of $\PP_{A^{\bR}}(\ckcO'_{b})$ in  \eqref{eq:PP.AR}.
     \cP_{\uptau'}(i,j) = d \quad % \text{if and only if}
     \Leftrightarrow
     \quad
-    \cQ_{\uptau}(i,j) = d \quad \forall (i,j)\in \BOX(\imath)\\
+    \cQ_{\uptau}(i,j) = d \quad \forall (i,j)\in \BOX{\imath}\\
   \]
   The map gives a bijection
   \[
@@ -2441,6 +2502,7 @@ in the \Cref{app:comb}
 
 \section{Type $\wtC$}
 
+
 The left cell.
 \begin{lem}
   Suppose $\star = \wtC$, $\ckcO_{b}$ has $2k$ rows. Here each row in $\ckcO_{b}$ has
@@ -2484,6 +2546,9 @@ The left cell.
   \]
   such that $\tau_{b}\otimes \tau_{\sP}$ is the special representation in
   $\LC(\ckcO)$.
+
+  We remark that if $\CPP(\ckcO_{g})=\emptyset$ the the
+  representation $\tau_{\emptyset}$ has label $I$.
 \end{lem}
 
 \trivial{
@@ -2502,6 +2567,63 @@ The left cell.
 
 
   The coherent continuation representation.
+
+
+  Fix $n_{b},n_{g}$ such that $n_{b}+ n_{g} = n$. Let
+  \begin{equation} \label{eq:Lam.C}
+    \Lambda_{n_{b},n_{g}} = (\underbrace{0, \cdots, 0}_{n_{b}\text{-terms}}, \underbrace{\half, \cdots, \half}_{n_{g}\text{-terms}}) + Q.
+  \end{equation}
+
+  We use Renard-Trapa's result.
+
+\begin{lem}
+  We have the following formula on the coherent continuation
+  representations based on $\Lambda_{n_{b},n_{g}}$:
+  \[
+    \bigoplus_{p+q=n} \Coh_{\Lambda_{n_b, n_g}}(\Mp(2n,\bR)) \cong \cC_{b}\otimes \cC_{g}.
+  \]
+  with
+  \[
+    \begin{split}
+      \cC_g %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
+      &  = \Res_{W_{n_{g}}}^{W'_{n_{g}}}
+      \left( \bigoplus_{\substack{t,a,a'\in \bN\\2t+a+a'=n_{g}}}
+        \Ind_{H_{t}\times S_{a}\times S_{a'}}^{W_{n_{b}}}
+        \hsgn\otimes 1 \otimes\sgn \right)\\
+      % & =\bigoplus_{\substack{t,s,r\in\bN\\2t+s+r=n_{g}}} \Ind_{W_{2t}\times W_s\times W_r}^{W_{n_{g}}}
+      % (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
+      \cC_b & =
+      \bigoplus_{\substack{t,c,d\in \bN\\2t+c+d=n_{b}}}
+      \Ind_{H_{t}\times W_{c}\times W_{d}}^{W_{n_{b}}} \hsgn\otimes 1\otimes 1
+    \end{split}
+  \]
+\end{lem}
+\begin{proof}
+  This is contained in \cite{RT1,RT2}.
+  By \cite{RT2}*{Theorem~5.2} and \cite{RT2}*{Corollary~4.5~(2)},
+  $ \Coh_{\Lambda_{n_{b},n_{g}}}(\Mp(2n,\bR)) $
+  is dual to $\cC_{g}\otimes \ckcC_{b}$ where
+  $\cC_{g}$ is the coherent continuation representation based on the
+  lattice $\Lambda_{0,n_{g}}$
+  and
+  \[
+    \begin{split}
+      \ckcC_{2n_{b},\bR} &\cong \bigoplus_{\substack{p,q\in \bN\\p+q=n_{b}}}
+      \Coh_{\Lambda_{n_{b},0}}(\Sp(p,q))\\
+      & = \bigoplus_{\substack{t,c,d\in \bN\\2t+c+d=n_{b}}} \Ind_{H_{t}\times W_{c}\times W_{d}}^{W_{n_{b}}} \hsgn\otimes \sgn \otimes\sgn
+    \end{split}
+  \]
+
+  The main result in \cite{RT1} implies that
+  \[
+    \cC_{g} = \Res_{W_{n_{g}}}^{W'_{n_{g}}} \left(
+  \bigoplus_{\substack{t,a,a'\in \bN\\2t+a+a'=n_{g}}} \Ind_{H_{t}\times S_{a}\times S_{a'}}^{W_{n_{b}}} \hsgn\otimes 1 \otimes\sgn
+  \right)
+  \]
+  is self-dual.
+
+  Tensor with the sign representation yields the lemma.
+\end{proof}
 
 % \subsection{}
 % In this section, we count special unipotent representations of real orthogonal
@@ -2727,12 +2849,284 @@ Note that according to Lusztig and BV, the subsets of $\CPP(\ckcO)$ is in
 one-one correspondence to the canonical quotient $\CQ(\ckcO) = \bF_{2}[\CPP(\ckcO)]$.
 }
 
-\subsection{Counting special unipotent representation of $G=\SO(p,q)$ with
-$p+q=2n+1$ }.
+\subsection{Counting special unipotent representation of $G=\SO(2p+1,2q)$ with
+$p+q=n$}.
 
 The dual group of $\Gc = \SO(2n,\bC)$ is $\ckGc = \SO(2n+1,\bC)$.
 
-We set $(2n,2n') = (\abs{\ckcO_g},\abs{\ckcO_b})$.
+Let \[
+  \Lambda_{n_{1}, n_{2}} = (\underbrace{0,\cdots,0}_{n_{1}\text{-terms}}, \underbrace{\half,\cdots,\half}_{n_{2}\text{-terms}}, )
+\]
+
+We set $(2n_{g},2n_{b}) = (\abs{\ckcO_g},\abs{\ckcO_b})$.
+
+\begin{lem}
+  We have the following formula on the coherent continuation
+  representations based on $\Lambda_{n_{1},n_{2}}$:
+  \[
+    \bigoplus_{p+q=n} \Coh_{\Lambda_{n_1, n_2}}(\SO(2p+1,2q)) \cong \cC_{b}\otimes \cC_{g}.
+  \]
+  with
+  \[
+    \begin{split}
+      \cC_g %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
+      &=\bigoplus_{\substack{t,s,r\in\bN\\2t+s+r=n_{g}}} \Ind_{H_{t} \times S_{a}\times W_s\times W_r}^{W_{n_{g}}}
+      \hsgn \otimes 1 \otimes \sgn \otimes \sgn \\
+      % & =\bigoplus_{\substack{t,s,r\in\bN\\2t+s+r=n_{g}}} \Ind_{W_{2t}\times
+      % W_s\times W_r}^{W_{n_{g}}}
+      % (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
+      \cC_b & =
+      \bigoplus_{\substack{t,c,d\in \bN\\2t+c+d=n_{b}}}
+      \Ind_{H_{t}\times W_{c}\times W_{d}}^{W_{n_{b}}} \hsgn\otimes 1\otimes 1
+    \end{split}
+  \]
+\end{lem}
+
+
+From now on, we set $ (2n_{1},2n_{2}) := (2g,2b) :=(\abs{\ckcO_g},\abs{\ckcO_b})$.
+
+Clearly $[\tau_{b}:\cC_{b}]$ is counted by the size of the following set
+\[
+  \PBP_{\star}(\ckcO_b) := \Set{(\imath,\jmath,\cP,\cQ)| %
+    \begin{array}{l}
+      (\imath,\jmath) = \tau_{b}\\
+      \Im \cP \subset \set{\bullet,c,d}, \Im \cQ \subset\set{\bullet}\\
+    \end{array}
+  }
+\]
+and for each $\sP\subset \CPP(\ckcO_{g})$, the multiplicity
+$[\tau_{\sP}: \cC_{g}]$ is counted by the size of
+\[
+  \PBP_{\star}(\ckcO_g,\sP):= \Set{(\imath,\jmath,\cP,\cQ)| %
+    \begin{array}{l}
+      (\imath,\jmath) = \tau_{\sP}\\
+      \Im \cP \subset \set{\bullet,c}, \Im \cQ \subset\set{\bullet, s,r,d}\\
+    \end{array}
+  }
+\]
+and for each $\sP$.
+
+Recall the definition of $\PP_{A^{\bR}}(\ckcO'_{b})$ in  \eqref{eq:PP.AR}.
+
+\begin{lem}
+  For each $\uptau' \in \PP_{A^{\bR}}(\ckcO'_{b})$, there is a unique painted
+  bipartition $\uptau\in \PBP_{\star}(\ckcO_{b})$ such that
+  \[
+    \cP_{\uptau'}(i,j) = d \quad % \text{if and only if}
+    \Leftrightarrow
+    \quad
+    \cP_{\uptau}(i,j) = d \quad \forall (i,j)\in \BOX{\imath}\\
+  \]
+  The map gives a bijection
+  \[
+    \begin{array}{ccccccc}
+      \Unip_{\ckcO'_{b}}(\GL_{b}(\bR))&\longleftarrow
+      &\PP_{A^{\bR}}(\ckcO'_{b}) & \longleftrightarrow
+      & \PBP_{\star}(\ckcO_{b}) & \longrightarrow
+      & \Unip_{\ckcO_{b}}(\SO(2b+1,2b))\\
+      \pi_{\uptau'} & \mapsfrom & \uptau' & \mapsto
+      & \uptau & \mapsto & \pi_{\uptau}.
+    \end{array}
+  \]
+  Here $\pi_{\uptau'}$ is defined in \eqref{eq:u.GLR} and
+  \[
+    \pi_{\uptau} := \Ind_{\GL_{b}(\bR)\times \SO(1,0)}^{\SO(2b+1,2b)} \pi_{\uptau'}.
+  \]
+\end{lem}
+\begin{proof}
+  The claims about painted bipartitions are clear.
+  The irreduciblity of $\pi_{\uptau}$ follows from the multiplicity one
+  of its wavefront cycle.
+
+  The representations $\pi_{\uptau_{1}}\neq \pi_{\uptau_{2}}$ if
+  $\uptau_{1}\neq \uptau_{2}$ since they have different cuspidal data by the
+  construction.
+\end{proof}
+
+Now we consider the good parity part. We defer the proof of the following lemma
+in the \Cref{app:comb}
+
+\begin{lem}
+  For each $\sP\in \subset \CPP(\ckcO_{g})$,
+  we have
+  \[
+    \abs{\PBP_{\star}(\ckcO_{g},\sP)} =
+    \abs{\PBP_{\star}(\ckcO_{g},\emptyset)}.
+  \]
+  In particular, we have
+  \[
+    \Unip_{\star}(\ckcO_{g}) = \abs{\PBPes(\ckcO_{g})}.
+  \]
+  Here $\Unip_{\star}(\ckcO_{g})$ denote the set of all unipotent
+  representations attached to the inner class $\SO(2p+1,2q)$.
+\end{lem}
+
+
+\section{Type D}
+
+
+Let $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$.
+
+\subsection{The left cell $\LC_{\ckcO}$}
+%We compute the left cell $\LC_{\ckcO}$ case by case.
+
+\begin{lem}
+  Suppose $\star \in \set{D, D^{*}}$, $\ckcO_{b}$ has $2k$ rows and $\ckcO_{g}$
+  has $2l$-rows. Here each row in $\ckcO_{b}$ has even length and each row in
+  $\ckcO_{g}$ has odd length, and $\WLamck = W'_{b}\times W'_{g}$ where
+  $b= \frac{\abs{\ckcO_{b}}}{2}$ and $g = \frac{\abs{\ckcO_{g}}}{2}$. Let
+  \[
+    \tau_{b} = \left( (\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}), (\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}) \right)_{I}\in \Irr(W'_{b}).
+  \]
+  Set
+  \[
+    \CPP(\ckcO_{g}) = \set{(2i,2i+1)| \bfrr_{2i}(\ckcO_{g})> \bfrr_{2i+1}(\ckcO_{g})>0, \text{
+        and } i\in \bN^{+}}
+  \]
+  and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
+
+  For $\sP \in \CQ(\ckcO)$, let
+  \[
+    \tau_{\sP} := (\imath,\jmath) \in \Irr(W'_{g})
+  \]
+  such that
+  \[
+    \begin{split}
+      \bfcc_{1}(\imath)  &:= \half(\bfrr_{1}(\ckcO_{g})+1)\\
+      (\bfcc_{l+1}(\imath), \bfcc_{l}(\jmath))  &:= (0,\half(\bfrr_{2l}(\ckcO_{g})-1))
+    \end{split}
+  \]
+  and for all $1\leq i< l$
+  \[
+  (\bfcc_{i+1}(\imath), \bfcc_{i}(\jmath)):=
+  \begin{cases}
+    (\half (\bfrr_{2i+1}(\ckcO_{g})+1),
+    \half (\bfrr_{2i}(\ckcO_{g})-1))
+    & \text{if } (2i,2i+1)\notin \sP,\\
+    (\half (\bfrr_{2i}(\ckcO_{g})+1),\half (\bfrr_{2i+1}(\ckcO_{g})-1)) & \text{otherwise.}
+  \end{cases}
+  \]
+
+  Then we have the following bijection
+  \[
+    \begin{array}{ccc}
+      \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
+      \sP & \mapsto & \tau_{b}\otimes \tau_{\sP}.
+    \end{array}
+  \]
+  such that $\tau_{b}\otimes \tau_{\sP}$ is the special representation in
+  $\LC(\ckcO)$.
+\end{lem}
+\trivial{
+  The bad parity part is the same as that of the case when $\star = C$.
+
+  For the good parity part.
+  Suppose
+  $\ckcO_{g} = (2c_{1}, C_{2}, C_{2},C_{3},C_{3},\cdots, C_{k'},C_{k'},C_{k'+1})$ with
+  $2c_{1}=2l$ and $2k'+2 = \bfrr_{1}(\ckcO_{g})$.
+
+  We use the two facts:
+  \[
+    W_{\lamckg} = W_{c_{1}}\times S_{C_{2}}\times \cdots
+    \times S_{C_{k'}}.
+  \]
+
+  The symbol of sign representation of $W'_{c_{1}}$ is
+  \[
+    \binom{0,1, \cdots, c_{1}-1}{1,2, \cdots, c_{1}\phantom{-1}}.
+  \]
+  The bifurcation happens for even length columns.
+  % Eg: 0,1,2,
+  %     1,2,3,
+
+}
+
+
+Let \[
+  \Lambda_{n_{1}, n_{2}} = (\underbrace{\half,\cdots,\half}_{n_{1}\text{-terms}}, \underbrace{0,\cdots,0}_{n_{2}\text{-terms}}, )
+\]
+
+We set $(2n_{g},2n_{b}) = (\abs{\ckcO_g},\abs{\ckcO_b})$.
+
+\begin{lem}
+  We have the following formula on the coherent continuation
+  representations based on $\Lambda_{n_{1},n_{2}}$:
+  \[
+    \bigoplus_{p+q=2n} \Coh_{\Lambda_{n_1, n_2}}(\SO(p,q)) \cong \cC_{b}\otimes \cC_{g}.
+  \]
+  with
+  \[
+    \begin{split}
+      \cC_g %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
+      &=\bigoplus_{\substack{t,c,d,s,r\in\bN\\2t+c+d+s+r=n_{g}}} \Ind_{H_{t} \times \times W_s\times W_r\times W_{c}\times W_{d} }^{W_{n_{g}}}
+      \hsgn \otimes \sgn \otimes \sgn \otimes 1\otimes 1\\
+      % & =\bigoplus_{\substack{t,s,r\in\bN\\2t+s+r=n_{g}}} \Ind_{W_{2t}\times
+      % W_s\times W_r}^{W_{n_{g}}}
+      % (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
+      \cC_b & =
+      \bigoplus_{\substack{t,a\in \bN\\2t+a=n_{1}}}
+      \Ind_{H_{t}\times S_{a}}^{W_{n_{1}}} \hsgn\otimes 1
+    \end{split}
+  \]
+\end{lem}
+
+
+Clearly $[\tau_{b}:\cC_{b}]$ is counted by the size of the following set
+\[
+  \PBP_{\star}(\ckcO_b) := \Set{(\imath,\jmath,\cP,\cQ)| %
+    \begin{array}{l}
+      (\imath,\jmath) = \tau_{b}\\
+      \Im \cP \subset \set{\bullet,c,d}, \Im \cQ \subset\set{\bullet}\\
+    \end{array}
+  }
+\]
+and for each $\sP\subset \CPP(\ckcO_{g})$, the multiplicity
+$[\tau_{\sP}: \cC_{g}]$ is counted by the size of
+\[
+  \PBP_{\star}(\ckcO_g,\sP):= \Set{(\imath,\jmath,\cP,\cQ)| %
+    \begin{array}{l}
+      (\imath,\jmath) = \tau_{\sP}\\
+      \Im \cP \subset \set{\bullet,s,r,c,d}, \Im \cQ \subset\set{\bullet}\\
+    \end{array}
+  }
+\]
+and for each $\sP$.
+
+
+\begin{lem}
+  For each $\uptau' \in \PP_{A^{\bR}}(\ckcO'_{b})$, there is a unique painted
+  bipartition $\uptau\in \PBP_{\star}(\ckcO_{b})$ such that
+  \[
+    \cP_{\uptau'}(i,j) = d \quad % \text{if and only if}
+    \Leftrightarrow
+    \quad
+    \cP_{\uptau}(i,j) = d \quad \forall (i,j)\in \BOX{\imath}\\
+  \]
+  The map gives a bijection
+  \[
+    \begin{array}{ccccccc}
+      \Unip_{\ckcO'_{b}}(\GL_{b}(\bR))&\longleftarrow
+      &\PP_{A^{\bR}}(\ckcO'_{b}) & \longleftrightarrow
+      & \PBP_{\star}(\ckcO_{b}) & \longrightarrow
+      & \Unip_{\ckcO_{b}}(\SO(2b+1,2b))\\
+      \pi_{\uptau'} & \mapsfrom & \uptau' & \mapsto
+      & \uptau & \mapsto & \pi_{\uptau}.
+    \end{array}
+  \]
+  Here $\pi_{\uptau'}$ is defined in \eqref{eq:u.GLR} and
+  \[
+    \pi_{\uptau} := \Ind_{\GL_{b}(\bR)}^{\SO(2b,2b)} \pi_{\uptau'}.
+  \]
+\end{lem}
+\begin{proof}
+  The claims about painted bipartitions are clear.
+  The irreduciblity of $\pi_{\uptau}$ follows from the multiplicity one
+  of its wavefront cycle.
+
+  The representations $\pi_{\uptau_{1}}\neq \pi_{\uptau_{2}}$ if
+  $\uptau_{1}\neq \uptau_{2}$ since they have different cuspidal data by the
+  construction.
+\end{proof}
 
 
 \appendix
@@ -4903,6 +5297,33 @@ journal={Compositio Math.},
 volume={51},
 pages={333--399},
 year={1984}
+}
+
+\bib{RT1}{article}{
+   author={Renard, David A.},
+   author={Trapa, Peter E.},
+   title={Irreducible genuine characters of the metaplectic group:
+   Kazhdan-Lusztig algorithm and Vogan duality},
+   journal={Represent. Theory},
+   volume={4},
+   date={2000},
+   pages={245--295},
+   review={\MR{1795754}},
+   doi={10.1090/S1088-4165-00-00105-9},
+}
+
+\bib{RT2}{article}{
+   author={Renard, David A.},
+   author={Trapa, Peter E.},
+   title={Irreducible characters of the metaplectic group. II.
+   Functoriality},
+   journal={J. Reine Angew. Math.},
+   volume={557},
+   date={2003},
+   pages={121--158},
+   issn={0075-4102},
+   review={\MR{1978405}},
+   doi={10.1515/crll.2003.028},
 }
 
 \bib{Sa}{article}{
