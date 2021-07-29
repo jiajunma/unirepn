@@ -1123,7 +1123,9 @@
 
 \def\aod{\mathrm{aod}}
 \def\unip{\mathrm{unip}}
+\def\IC{\mathfrak{I}}
 
+\def\PI#1{\Pi_{\cI_{#1}}}
 \def\Piunip{\Pi^{\mathrm{unip}}}
 \def\cf{\emph{cf.} }
 \def\Groth{\mathrm{Groth}}
@@ -1225,6 +1227,7 @@
 
 \def\CQ{\overline{\sfA}}% Lusztig's canonical quotient
 \def\CPP{\mathfrak{P}}
+\def\CPPs{\mathfrak{P}_{\star}}
 
 
 \def\ceil#1{\lceil #1 \rceil}
@@ -1235,6 +1238,8 @@
 
 \def\PBPe{\mathrm{PBP}^{\mathrm{ext}}}
 \def\PBPes{\mathrm{PBP}^{\mathrm{ext}}_{\star}}
+\def\bev#1{\overline{\mathrm{ev}}_{#1}}
+
 
 \begin{document}
 
@@ -1290,14 +1295,72 @@ for real classical groups explicitly.
 \subsection{Counting theorem for the real classical groups of type BCD}
 In this section, we assume $\star  \in \set{B,\wtC,C,C^{*}, D, D^{*}}$.
 
+Let
+\[
+  \Gc =
+  \begin{cases}
+    \SO(2n+1,\bC) & \text{if } \star \in \set{B},\\
+    \Sp(2n,\bC) & \text{if } \star \in \set{\wtC, C, C^{*}},\\
+    \SO(2n,\bC) & \text{if } \star \in \set{D,D^{*}}.\\
+  \end{cases}
+\]
+and the dual group of $\Gc$ is defined to be
+\[
+  \ckGc =
+  \begin{cases}
+    \Sp(2n,\bC) & \text{if } \star \in \set{B,\wtC},\\
+    \SO(2n+1,\bC) & \text{if } \star \in \set{C, C^{*}},\\
+    \SO(2n,\bC) & \text{if } \star \in \set{D,D^{*}}.\\
+  \end{cases}
+\]
 
 Suppose $\ckcO\in \Nil(\ckG_{\bC})$.
+Let $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$ be
+the decomposition of $\ckcO$ into good and bad parity parts.
+
+Let $\IC_{\star}(n)$ be the set of real groups given by
+\[
+  \IC_{\star}(n)
+  :=
+  \begin{cases}
+    \Set{\SO(2p+1,2q)| p,q\in \bN \text{ and } p+q = n}
+    & \text{if } \star = B\\
+    \set{\Sp(2n,\bR)}
+    & \text{if } \star = C\\
+    \set{\Mp(2n,\bR)}
+    & \text{if } \star = \wtC\\
+    \Set{\Sp(p,q)| p,q\in \bN \text{ and } p+q = n}
+    & \text{if } \star = C^{*}\\
+    \Set{\SO(p,q)| p,q\in \bN \text{ and } p+q = 2n}
+    & \text{if } \star = D\\
+    \Set{\rO^{*}(2n)}
+    & \text{if } \star = D^{*}\\
+  \end{cases}
+\]
+and $\IC_{\star} = \bigcup_{n\in \bN} \IC_{\star}(n)$.
+
+Let $ \unip_{\star}(\ckcO)$ be the set of special unipotent representations
+of groups in $\IC_{\star}$ attached to $\ckcO$.
+
 
 \begin{thm}
-  Let
-  $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$ be the decomposition of $\ckcO$ into
-  good and bad parity parts.
-  Let $\ckcO'_{b} = \left(\dBV(\ckcO_{b})\right)^{t}$ and
+  Suppose $\ckcO = \ckcO_{g}$. Then
+  \[
+    \abs{\unip_{\star}(\ckcO)} \leq \abs{\PBPes(\ckcO)}.
+  \]
+  % \[
+  %   \abs{\unip_{\star}(\ckcO)} = \begin{cases}
+  %     2 \abs{\PBPes(\ckcO)} & \text{if } \star \in \set{B,D}\\
+  %     \abs{\PBPes(\ckcO)} & \text{if } \star \in \set{\wtC,C,C^{*}, D^{*}}
+  %     \end{cases}
+  % \]
+\end{thm}
+
+
+\begin{thm}
+  Let $\ckcO'_{b}$ be the partition such that $\ckcO'_{b}\cuprow \ckcO'_{b}
+  = \ckcO_{b}$    % $ such that $ = \left(\dBV(\ckcO_{b})\right)^{t}$
+  and
   \[\star' =
   \begin{cases}
      A^{\bR} & \star \in \set{B,\wtC,C,D}\\
@@ -1329,38 +1392,335 @@ Suppose $\ckcO\in \Nil(\ckG_{\bC})$.
 \section{Counting formula}
 
 Let $G$ be a real reductive group in the Harish-Chandra class.
-Fixing a Cartan subalgebra $\mathfrak h$ in $\mathfrak g$,
-we identify the set of infinitesimal character with $\mathfrak h^{*}/W$
-where $W$ is the Weyl group acting on $\mathfrak h$.
-Let $Q$ be the root lattice and write $[\mu]:= \mu+Q$ for the coset
-$\mathfrak h^{*}/Q$ containing $\mu$.
+Here $G$ can be a non-linear group.
+
+Fixing a Cartan subalgebra $\fhh$ in $\fgg$,
+we identify the set of infinitesimal character with $\fhh^{*}/W$
+where $W$ is the Weyl group acting on $\fhh$.
+
+
+
+Let $\cI_{\mu}$ be the maximal primitive ideal with infinitesimal character
+$W\cdot \mu$. Then there is a unique double cell $\cD_{\mu}$
+of $\Irr(W_{[\mu]})$ attached to
+$\cI_{\mu}$ having associated variety $\cO_{\mu}$.
+
+Let
+\[
+  \PI{\mu}(G):= \Set{\pi \in \Irr(G)| \cI_{\mu}
+    \subseteq \Ann_{\cU(\fgg)}(\pi)}.
+\]
+
+Let $Q\subset \fhh^{*}$ be the root lattice and write $[\mu]:= \mu+Q$ for the coset
+$\fhh^{*}/Q$ containing $\mu$.
 Denote
-$\mathrm{Coh}_{[\mu]}(G)$ the space of coherent families based on $[\mu]$ which has a $W_{[\mu]}$-action.
+$\Coh_{[\mu]}(G)$ the space of coherent families based on $[\mu]$ which has a $W_{[\mu]}$-action.
+
+For each $\Gc$-invariant closed subset $S$ in the nilpotent
+cone of $\fgg$, let
+\[
+  \Coh_{[\mu], S}(G):= \Set{
+    \Theta \in \Coh_{[\mu]}|\AVC(\Theta(\mu')) \subset S \text{ for }\mu'\in [\mu]}.
+\]
+
+The following theorem gives an upper bound of $\abs{\PI{mu}(G)}$.
 
 \begin{thm}[Barbasch-Vogan]\label{thm:count}
-  For a complex nilpotent orbit $\cO$,
-  define
-  \[
-    S_{\cO} = \left\{\sigma \in \widehat{W_{[\mu]}}|
-      \Spr(j_{W_{[\mu]}}^{W} \sigma_{s}) = \cO
-    \right\}
-  \]
-  where $\sigma_{s}$ is the special representation in the double cell containing
-  $\sigma$.
-
   Let $\Pi_{\cO,\mu}(G)$ denote the set of irreducible admissible $G$-module with
   complex associated variety $\overline{\cO}$.
   % Let $W_{\mu}$ be the stabilizer of $\mu$ and $W_{[\mu]}$ be the stabilizer of
   % the lattice
   Then
   \[
-    \# \Pi_{\cO,\mu}(G) =
-    \sum_{\sigma\in S_{\cO}} [\sigma: \mathrm{Coh}_{[\mu]}(G)] \cdot
-    [1_{W_{\mu}}, \sigma|_{W_{\mu}}].
+    \begin{split}
+      \abs{\PI{\mu}(G)} &= \sum_{\sigma\in \cD_{\mu}} [\sigma: \Coh_{[\mu],\bcO_{\mu}}(G)] \cdot
+      [1_{W_{\mu}}, \sigma|_{W_{\mu}}]\\
+      & \leq \sum_{\sigma\in \cD_{\mu}} [\sigma: \Coh_{[\mu]}(G)] \cdot [1_{W_{\mu}}, \sigma|_{W_{\mu}}].
+    \end{split}
   \]
   % Here $[\sgima : \ ]$ denote the multiplicity of $\sigma$
   % and  $W_{\mu}$ is the stabilizer of $\mu$.
 \end{thm}
+
+
+
+ \begin{lem}[{\cite{BVUni}*{(5.26), Proposition~5.28}}]\label{lem:cell.BV}
+  Let $\ckcO$ be a nilpotent orbit in $\ckGc$ and $\lamck$ be the infinitesimal
+  character attached to $\ckcO$.
+  Then the set
+  \[
+    \LC(\ckcO) := \Set{ \sigma \in \cD_{\lamck}| [1_{W_{\mu}}:\sigma]\neq 0}
+  \]
+  is a left cell in $\cD_{\lamck}$ given by
+  \[
+    (J_{\Wlamck}^{\WLamck} \sgn )\otimes \sgn.
+  \]
+  Moreover, the multiplicity $[1_{W_{\mu}}:\sigma]$ is one
+  when $\sigma\in \LC(\ckcO)$.
+\end{lem}
+
+\begin{cor}
+  Under the notation of \Cref{lem:cell.BV}, we have
+  \[
+    \abs{\PI{\mu}(G)} \leq \sum_{\sigma\in \LC(\ckcO)} [\sigma: \Coh_{[\mu]}(G)]
+  \]
+\end{cor}
+
+\subsection{Coherent family}
+
+Let $Q$ be the $\fhh$ root lattice of $\fgg$.
+Let $\cG$ be the Grothendieck group of finite dimensional $\fgg$-modules
+occur in $S(\fgg)$. Note that $\cG$ is also an algebra under tensor product.
+% Via highest weight theory, there is a unique irreducib
+% Via highest weight theory, $Q$ is identified with the set of irreducible
+% $\fgg$-modules occur in $S(\fgg)$.
+For each finite dimensional $\fhh$-module $F$, let
+$\WT{F}$ denote the multi-set of $\fhh$-weights in $F$.
+
+
+Via the highest weight theory,
+every $W$-orbit $W\cdot \mu$ in $\aQ$ corresponds with the irreducible finite dimensional representation
+$F_{\mu}$ with extremal weight $\mu$.
+
+
+% Now the Grothendieck group $\Gfin$ of finite dimensional representation of $\Gc$
+% is identified with $\bZ[\aP/W]$. In fact $\Gfin$ is a $\bZ$-algebra under the
+% tensor product and equipped with the involution $F\mapsto F^*$.
+
+% Fix a $W$-invariant sub-lattice $\Lambda_0\subset \aX$ containing $\aQ$.
+
+%  Let $\Pi$
+% $\Glfin$ be the $\star$-invariant subalgebra of $\Gfin$ generated by irreducible
+% representations corresponds to $\Lambda_0/W$.
+
+
+For any $\lambda\in \hha^{*}$, we define
+the lattice
+\[
+  \Lambda := [\lambda ] := \lambda + Q \subset \fhh^{*}
+\]
+and define
+\begin{equation}
+  \label{eq:wlam}
+  \begin{split}
+  R_{[\lambda]} &:= \Set{\alpha\in R| \inn{\lambda}{\ckalpha}\in \bZ},\\
+  W_{[\lambda]} &:=
+    \set{w\in W | w\cdot \lambda  - \lambda \in Q}\\
+  R_{\lambda} &:= \Set{\alpha\in \aR| \inn{\lambda}{\ckalpha}=0}, \AND\\
+  W_{\lambda} &:= \braket{s_\alpha|\alpha\in R_{\lambda}} = \braket{w\in W|w\cdot \lambda = \lambda} \subseteq W.
+  \end{split}
+\end{equation}
+It is known that
+\[
+\begin{split}
+  W_{[\lambda]} &= \Stab_{W}([\lambda]) =   \braket{s_\alpha|\alpha\in R_{[\lambda]}} \subseteq W\quad
+  \text{and}\\
+W_{ \lambda } &=   \braket{s_\alpha|\alpha\in R_{\lambda}} \subseteq W.\\
+\end{split}
+\]
+
+In the following we define the notion of coherent family based on
+the lattice $[\lambda]$ in a quite general setting.
+
+\begin{defn}
+  Suppose that $\cM$ is be an abelian group with $\cG$-action:
+\[
+  \cG\times \cM \ni(F,m)\mapsto F\otimes m.
+\]
+In addition, a subgroup $\cM_{\mu}$ of $\cM$ is fixed for each
+$\mu \in [\lambda]$ such that $\cM_{\mu} = \cM_{w\cdot \mu}$ for any
+$\mu\in [\lambda]$ and $w\in W_{[\lambda]}$.
+ % for each $W_{[\lambda]}$-orbit $\barmu := W_{\Lambda} \cdot \mu\in \Lambda/W_{\Lambda}$.
+
+A function $f\colon \Lambda \rightarrow \cM$ is called
+  a coherent family based on $\Lambda$ if it satisfies
+  $f(\mu)\in \cM_\mu$ and
+  \[
+  F\otimes f(\mu)  = \sum_{\nu \in \WT{F}} f(\mu+\nu) \qquad \forall \mu\in \Lambda, F\in \cG.
+  \]
+Let $\Coh_{\Lambda}(\cM)$ be the abelian group of all coherent families based on
+$\Lambda$ and taking value in $\cM$.
+We can define $W_{[\lambda]}$ action on $\Coh_[\lambda](\cM)$ by
+\[
+   w\cdot f(\mu) =  f(w^{-1}\cdot \mu) \qquad \forall \mu\in \Lambda, w\in \WLam.
+\]
+\end{defn}
+
+
+
+\def\Grt{\cG}
+
+In this paper, we will consider the following cases.
+
+\begin{eg}
+  Suppose $\cM$ is a field of characteristic zero and
+  \[
+    F\otimes m := \dim(F)\cdot m
+    \quad
+    \text{for all } F\in \cG \text{ and } m\in \cM.
+   \]
+   We let $\cM_{\mu} = \cM$ for every $\mu\in \Lambda$. Then the set of
+   $W$-harmonic polynomials on $\fhh$ is naturally identified with
+   $\Coh_{[\lambda]}(\cM)$ via the restriction on $[\lambda]$ by Vogan
+   \cite{VGK}*{Lemma~4.3}. \trivial{ Note that the polynomials are $W$-harmonic
+     not necessary $W_{[\lambda]}$-harmonic. ($W_{[\lambda]}$-invariant
+     differential operators are more than $W$-invariant differential operators.)
+   }
+\end{eg}
+
+
+\begin{eg}
+  Fix a Borel subalgebra $\fbb = \fhh\oplus \fnn \subset \fgg$, let
+  $\Grt(\fgg,\fhh,\fnn)$ be the Grothendieck group of the category $\cO$ with
+  coefficients in $\bC$, i.e.
+  the category of finitely generated $\cU(\fgg)$-modules with semisimple
+  $\fhh$-action and locally finite $\fnn$-action. For $\lambda\in \fhh^{*}$, let
+  $\Grt_{\lambda}(\fgg,\fhh,\fnn)$ be the subgroup spanned by $\fgg$-modules
+  with infinitesimal character $W\cdot \lambda$.
+  Here $\cG$ acts on $\Grt(\fgg,\fhh,\fnn)$ via the tensor product of $\fgg$-modules.
+
+  To ease the notation, we write
+  \[
+    \Coh_{[\lambda]}(\fgg,\fhh,\fnn) := \Coh_{[\lambda]}(\Grt(\fgg,\fhh,\fnn)).
+  \]
+
+  %Verma modules gives a basis of
+ % We now review the well understood structure of $\Coh_{[\lambda]}$.
+  % is well understood.
+  For $\lambda\in \fhh^{*}$, let $\rho := \sum_{\alpha\in \WT(\fnn)} \alpha$,
+  \[
+    M(\lambda) := \cU(\fgg)\otimes_{\cU(\fbb)} \bC_{\lambda-\rho}
+  \]
+  be the Verma module with highest weight $\lambda-\rho$ and $L(\lambda) $ be
+  the unique irreducible quotient of $M(\lambda)$.
+
+  Each $w\in W$ defines a coherent family %such that
+  \[
+    M_w(\mu) := M(w\mu) \quad \forall \mu \in [\lambda]. %\text{ dominant}
+  \]
+  The map
+  \[
+    \begin{array}{ccc}
+      \bC[W] & \longrightarrow & \Coh_{[\lambda]}(\fgg,\fhh,\fnn)  \\
+      w& \mapsto &M_{w}
+    \end{array}
+  \]
+  is $W_{[\lambda]}$-equivariant where $W_{[\lambda]}$ acts on $\bC[W]$
+  by right translation.
+
+  One of the crucial property is that each irreducible module
+  can be fitted into a coherent family. %in other words.
+  More precisely, the evaluation map descents to yields an isomorphism
+  $\bev{\mu}$ in the following diagram.
+  \[
+    \begin{tikzcd}
+      \Coh_{[\lambda]}(\fgg,\fhh,\fnn)\ar[r,"\Theta\mapsto \Theta(\mu)"] \ar[d]&
+      \Grt_{\mu}(\fgg,\fhh,\fnn)\\
+      \left(\Coh_{[\lambda]}(\fgg,\fhh,\fnn)\right)_{W_{\mu}} \ar[ru,hook,two heads,"\bev{\mu}"']
+    \end{tikzcd}
+  \]
+
+  \trivial[]{
+    The subjectivity is because of Verma modules form a basis of the category
+    $\cO$.
+    The LHS of $\bev{\mu}$ has dimension $\abs{W/W_{\mu}}$, the RHS
+    has dimension $W\cdot \mu$.
+    Now the isomorphism follows by dimension counting.
+  }
+  % the The space
+  % $\Coh_\Lambda(\cG(\fgg,\fhh,\fnn))$ and $\Coh_{\Lambda(\cG)}$defined
+  % similarly.
+
+  % Note that the lattice $\Lambda$ is stable under the $\Wlam$ action.
+\end{eg}
+
+\begin{eg}
+  Suppose $G$ is a reductive Lie group in the Harish-Chandra class.
+Let $\Grt(G)$ be the Grothendieck group of finite length admissible $G$-modules
+and $\Grt_{\mu}(G)$ be the subgroup of $\Grt(\fgg,K)$ generated by the
+set of irreducible $G$-modules with infinitesimal character $\mu$.
+
+By \cite{Vg}*{0.4.6}, we can naturally identify $Q$ with the set of
+$H^{s}$-weights consisting the characters occurs in $S(\fgg)$
+where $H^{s}$ is a maximally split Cartan in $G$.
+Therefore, the set of irreducible $G$-submodules occur in $S(\fgg)$ is also
+naturally identified with $Q/W=\cG$.
+We let $\cG$ acts on $\Grt(G)$ by the tensor product of $G$-modules.
+
+\trivial[]{
+  Note that by the assumption that $G$ is in the Harish-Chandra class,
+  each irreducible $\fgg$-submodule $F$ embeds in $S(\fgg)$ is automatically
+  globalized to a $G$-module.
+  The point is that the globalization is independent of the embedding
+  of $F$ in $S(\fgg)$!
+}
+
+We write
+\[
+\Coh_{[\lambda]}(G) := \Coh_{[\lambda]}(\Grt(G))
+\]
+for the space of coherent family of $G$-modules.
+% Then $\Coh_\Lambda(\cG(\fgg,K))$ is the group of coherent families of Harish-Chandra modules.
+% The space $\Coh_\Lambda(\cG(\fgg,K))$ is equipped with a $\WLam$-action by
+%   \[
+%     w\cdot f(\mu) =  f(w^{-1} \mu) \qquad \forall \mu\in \Lambda, w\in \WLam,
+%     f \in \Coh_{\Lambda}(\Grt(\fgg,K)).
+%   \]
+\end{eg}
+
+\begin{eg}
+  Fix a $\Gc$-invariant closed subset $\cZ$ in the nilpotent cone of $\fgg$. Let
+  $\Grt_{\cZ}(\fgg,K)$ be the Grothendieck group of $(\fgg,K)$-modules
+  whose complex associated varieties are contained in $\cZ$.
+  We define
+  \[
+    \Grt_{\chi,\cZ}(\fgg,K) := \Grt_{\chi}(\fgg,K)\cap \Grt_{\cZ}(\fgg,k).
+  \]
+
+  Now $\Coh_{\Lambda}(\Grt_{\cZ}(\fgg,K))$ is also a $\WLam$-submodule of
+  $\Coh_\Lambda(\cG(\fgg,K))$.
+\end{eg}
+
+
+\begin{eg}
+For each infinitesimal character $\chi$ and
+a close $G$-invariant set $\cZ\in \cN_{\fgg}$.
+Let $\Grt_{\chi,\cZ}(\fgg,K)$ be the Grothendieck group of $(\fgg,K)$-module
+with infinitesimal character $\chi$ and complex associated variety contained
+$\cZ$.
+Similarly, let $\Grt_{\chi,\cZ}()$
+\end{eg}
+
+
+
+\subsection{Weyl group representations and Primitive ideals}
+
+\subsection{Harish-Chandra cells}
+
+% \begin{thm}[Barbasch-Vogan]\label{thm:count}
+%   For a complex nilpotent orbit $\cO$,
+%   define
+%   \[
+%     S_{\cO} = \left\{\sigma \in \widehat{W_{[\mu]}}|
+%       \Spr(j_{W_{[\mu]}}^{W} \sigma_{s}) = \cO
+%     \right\}
+%   \]
+%   where $\sigma_{s}$ is the special representation in the double cell containing
+%   $\sigma$.
+
+%   Let $\Pi_{\cO,\mu}(G)$ denote the set of irreducible admissible $G$-module with
+%   complex associated variety $\overline{\cO}$.
+%   % Let $W_{\mu}$ be the stabilizer of $\mu$ and $W_{[\mu]}$ be the stabilizer of
+%   % the lattice
+%   Then
+%   \[
+%     \# \Pi_{\cO,\mu}(G) =
+%     \sum_{\sigma\in S_{\cO}} [\sigma: \mathrm{Coh}_{[\mu]}(G)] \cdot
+%     [1_{W_{\mu}}, \sigma|_{W_{\mu}}].
+%   \]
+%   % Here $[\sgima : \ ]$ denote the multiplicity of $\sigma$
+%   % and  $W_{\mu}$ is the stabilizer of $\mu$.
+% \end{thm}
 
 \subsection{Counting special unipotent representations}
 
@@ -1872,9 +2232,20 @@ Recall that
       & \text{if } \star \in \set{B,\wtC},\\
       \Big( \big(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b})\big), \\
       \hspace{1em} \big(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}) \big)\Big)_{I}
-      & \text{if } \star \in \set{C,C^{*}, D,D^{*}}\\
+      & \text{if } \star \in \set{C,C^{*}, D,D^{*}}.\\
     \end{cases}
   \]
+
+
+  Set
+  \[
+    \CPPs(\ckcO_{g}) =
+    \begin{cases}
+    \set{(2i-1,2i)| \bfrr_{2i-1}(\ckcO_{g})> \bfrr_{2i}(\ckcO_{g})>0, \text{
+        and } i\in \bN^{+}}
+    \end{cases}
+  \]
+  and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
 
 
 \end{lem}
@@ -3286,27 +3657,6 @@ $[\sigma: \Ind_{W(S)}^{W}\bfone]=[\bfone|_{W(S)}:\sigma]\leq 1$.
 \section{Remarks on the Counting theorem of unipotent representations}
 
 
-In this section,  let $\Gc$ be a connected complex reductive group and $\fgg$ is
-its Lie algebra. Fix a antiholomorphic involution $\sigma$ on $\Gc$ and a
-corresponding Cartan involution $\theta$ of $\Gc$. Let $G$ be a finite central
-extension of a open subgroup os $\Gc^\sigma$ and
-\[
-\pr \colon G \rightarrow \Gc^\sigma
-\]
-be the canonical projection.
-Let $K = \pr^{-1}(\Gc^\sigma)$ and $W = W(\Gc)$.
-
-Let $\hha$ be the abstract Cartan subalgebra of $\fgg$ and $\aX$ be the lattice
-of abstract weight spaces. Let $\aR\subseteq \aX$, $\aRp$ and $\aQ$ be the
-abstract root system, the set of positive roots and the root lattice. Let
-\[
-  \Con = \Set{\mu\in \hha^*| \begin{array}{l}\text{either $\inn{\Re(\mu)}{\ckalpha}>0$ or }\\
-    \text{ $\inn{\Re(\mu)}{\ckalpha}=0$  and $\sqrt{-1}\inn{\Im(\mu)}{\ckalpha}>0$}
-  \end{array}}
-\]
-and $\bCon$ be the closure of $\Con$ in  $\hha$.
-
-We identify the set of infinitesimal characters with $\hha^*/W$.
 
 \subsection{Coherent family}
 For each finite dimensional $\fgg$-module or $\Gc$-module $F$, let
@@ -3869,8 +4219,6 @@ Q:= \bZ[\Delta(\fgg,\fhh)]\subset \fhh^{*}
 \]
 be the root lattice of $\fgg$, which is exactly the set of $\fhh$-weights occur in $S(\fgg)$.
 
-By \cite{Vg}*{0.4.6}, we can naturally identify $Q$ with the subset of $\whH$
-consisting the characters occurs in $S(\fgg)$.
 
 For each $\lambda\in \fhh^{*}$, let
 $\braket{\lambda} := W_{[\lambda]}\cdot \lambda$.
@@ -5418,6 +5766,19 @@ year={2011}
 %  year = {1990},
 % pages = {267-324},
 % }
+
+\bib{VGK}{article}{
+   author={Vogan, David A., Jr.},
+   title={Gel\cprime fand-Kirillov dimension for Harish-Chandra modules},
+   journal={Invent. Math.},
+   volume={48},
+   date={1978},
+   number={1},
+   pages={75--98},
+   issn={0020-9910},
+   review={\MR{506503}},
+   doi={10.1007/BF01390063},
+}
 
 \bib{Vg}{book}{
    author={Vogan, David A.},
