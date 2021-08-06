@@ -1070,7 +1070,6 @@
 \def\fggR{\fgg_\bR}
 \def\rmtop{{\mathrm{top}}}
 \def\dimo{\dim^\circ}
-\def\GKdim{\text{GK-}\dim}
 
 \NewDocumentCommand\LW{g}{
 \IfValueTF{#1}{L_{W_{#1}}}{L_{W}}}
@@ -1124,14 +1123,11 @@
 
 \def\aod{\mathrm{aod}}
 \def\unip{\mathrm{unip}}
-\def\IC{\mathfrak{I}}
 
-\def\PI#1{\Pi_{\cI_{#1}}}
 \def\Piunip{\Pi^{\mathrm{unip}}}
 \def\cf{\emph{cf.} }
 \def\Groth{\mathrm{Groth}}
 \def\Irr{\mathrm{Irr}}
-\def\Irrsp{\mathrm{Irr}^{\text{sp}}}
 
 \def\edrc{\mathrm{DRC}^{\mathrm e}}
 \def\drc{\mathrm{DRC}}
@@ -1173,13 +1169,12 @@
 \def\Wint#1{W_{[#1]}}
 \def\CLam{\Coh_{\Lambda}}
 \def\Cint#1{\Coh_{[#1]}}
-\def\PP{\mathrm{PP}}
+\def\PP#1{\mathrm{PP}_{#1}}
 \def\BOX#1{\mathrm{Box}(#1)}
 \DeclareDocumentCommand{\bigtimes}{}{\mathop{\scalebox{1.7}{$\times$}}}
-\providecommand\mapsfrom{\scalebox{-1}[1]{$\mapsto$}}
+
 
 \def\Gc{G_\bC}
-\def\Gcad{G_\bC^{\text{ad}}}
 \def\hha{{}^a\fhh}
 \def\aX{{}^aX}
 \def\aQ{{}^aQ}
@@ -1192,7 +1187,7 @@
 \def\PiGlfin{\Pi_{\Lambda_0}( \Gc )}
 \def\adGfin{\cG_{\mathrm{ad}}(\Gc)}
 \def\Ggk{\cG(\fgg,K)}
-\def\WT#1{\Delta(#1)}
+\def\WT#1{\Delta(F)}
 \def\WG{W(\Gc)}
 \def\ch{\mathrm{ch}\,}
 \def\Wlam{W_{[\lambda]}}
@@ -1205,21 +1200,8 @@
 \def\RLamp{R_\Lambda^+}
 \def\Rplam{R^+(\lambda)}
 \def\Glfin{\cG_{\Lambda}(\Gc)}
-\def\CL{{\sC}^{\scriptscriptstyle L}}
-\def\CR{{\sC}^{\scriptscriptstyle R}}
-\def\CLR{{\sC}^{\scriptscriptstyle LR}}
-\def\LC{{}^{\scriptscriptstyle L}\sC}
-\def\RC{{}^{\scriptscriptstyle R}\sC}
-\def\LRC{{}^{\scriptscriptstyle LR}\sC}
-\def\ckLC{{}^{\scriptscriptstyle L}\check{\sC}}
-
-
-\def\bVL{{\overline{\sV}}^{\scriptscriptstyle L}}
-\def\bVR{{\overline{\sV}}^{\scriptscriptstyle R}}
-\def\bVLR{{\overline{\sV}}^{\scriptscriptstyle LR}}
-\def\VL{{\sV}^{\scriptscriptstyle L}}
-\def\VR{{\sV}^{\scriptscriptstyle R}}
-\def\VLR{{\sV}^{\scriptscriptstyle LR}}
+\def\LC{{}^L\sC}
+\def\ckLC{{}^L\check{\sC}}
 
 \def\Con{\sfC}
 \def\bCon{\overline{\sfC}}
@@ -1243,41 +1225,11 @@
 
 \def\CQ{\overline{\sfA}}% Lusztig's canonical quotient
 \def\CPP{\mathfrak{P}}
-\def\CPPs{\mathfrak{P}_{\star}}
 
 
 \def\ceil#1{\lceil #1 \rceil}
 \def\symb#1#2{{\left(\substack{{#1}\\{#2}}\right)}}
 \def\cboxs#1{\mbox{\scalebox{0.25}{\ytb{\ ,\vdots,\vdots,\ }}}_{#1}}
-
-\def\hsgn{\widetilde{\mathrm{sgn}}}
-
-\def\PBPe{\mathrm{PBP}^{\mathrm{ext}}}
-\def\PBPes{\mathrm{PBP}^{\mathrm{ext}}_{\star}}
-\def\bev#1{\overline{\mathrm{ev}}_{#1}}
-
-\def\Prim{\mathrm{Prim}}
-% \def\leqL{\stackrel{L}{\leq}}
-% \def\leqR{\stackrel{R}{\leq}}
-% \def\leqLR{\stackrel{LR}{\leq}}
-
-% \def\leqL{{\leq_L}}
-% \def\leqR{{\leq_R}}
-% \def\leqLR{{\leq_{LR}}}
-
-
-\def\lneqL{\mathrel{\mathop{<}\limits_{\scriptscriptstyle L}}}
-\def\lneqR{\mathrel{\mathop{<}\limits_{\scriptscriptstyle R}}}
-\def\lneqLR{\mathrel{\mathop{<}\limits_{\scriptscriptstyle LR}}}
-
-\def\leqL{\mathrel{\mathop{\leq}\limits_{\scriptscriptstyle L}}}
-\def\leqR{\mathrel{\mathop{\leq}\limits_{\scriptscriptstyle R}}}
-\def\leqLR{\mathrel{\mathop{\leq}\limits_{\scriptscriptstyle LR}}}
-
-
-\def\approxL{\mathrel{\mathop{\approx}\limits_{\scriptscriptstyle L}}}
-\def\approxR{\mathrel{\mathop{\approx}\limits_{\scriptscriptstyle R}}}
-\def\approxLR{\mathrel{\mathop{\approx}\limits_{\scriptscriptstyle LR}}}
 
 \begin{document}
 
@@ -1318,1057 +1270,52 @@
 \tableofcontents
 \section{Introduction}
 
-% and $\mathfrak h$ be the abstract Cartan subalgebra of $\mathfrak g$.
+% and $\mathfrak h$
+% be the abstract Cartan subalgebra of $\mathfrak g$.
 %
 
-Barbasch-Vogan \cite{BVUni,BV.W} developed a formula counting the number of
+Barbasch-Vogan \cite{BVUni,BV.W} developed a formula  counting the number of
 special unipotent representations.
 
 In this paper, we will calculate the number of special unipotent representations
 for real classical groups explicitly.
 
 
-
-\subsection{Counting theorem for the real classical groups of type BCD}
-In this section, we assume $\star \in \set{B,\wtC,C,C^{*}, D, D^{*}}$.
-
-Let
-\[
-  \Gc =
-  \begin{cases}
-    \SO(2n+1,\bC) & \text{if } \star \in \set{B},\\
-    \Sp(2n,\bC) & \text{if } \star \in \set{\wtC, C, C^{*}},\\
-    \SO(2n,\bC) & \text{if } \star \in \set{D,D^{*}}.\\
-  \end{cases}
-\]
-and the dual group of $\Gc$ is defined to be
-\[
-  \ckGc =
-  \begin{cases}
-    \Sp(2n,\bC) & \text{if } \star \in \set{B,\wtC},\\
-    \SO(2n+1,\bC) & \text{if } \star \in \set{C, C^{*}},\\
-    \SO(2n,\bC) & \text{if } \star \in \set{D,D^{*}}.\\
-  \end{cases}
-\]
-
-Suppose $\ckcO\in \Nil(\ckG_{\bC})$.
-Let $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$ be
-the decomposition of $\ckcO$ into good and bad parity parts.
-
-Let $\IC_{\star}(n)$ be the set of real groups given by
-\[
-  \IC_{\star}(n)
-  :=
-  \begin{cases}
-    \Set{\SO(2p+1,2q)| p,q\in \bN \text{ and } p+q = n}
-    & \text{if } \star = B\\
-    \set{\Sp(2n,\bR)}
-    & \text{if } \star = C\\
-    \set{\Mp(2n,\bR)}
-    & \text{if } \star = \wtC\\
-    \Set{\Sp(p,q)| p,q\in \bN \text{ and } p+q = n}
-    & \text{if } \star = C^{*}\\
-    \Set{\SO(p,q)| p,q\in \bN \text{ and } p+q = 2n}
-    & \text{if } \star = D\\
-    \Set{\rO^{*}(2n)}
-    & \text{if } \star = D^{*}\\
-  \end{cases}
-\]
-and $\IC_{\star} = \bigcup_{n\in \bN} \IC_{\star}(n)$.
-
-Let $ \unip_{\star}(\ckcO)$ be the set of special unipotent representations
-of groups in $\IC_{\star}$ attached to $\ckcO$.
-
-
-\begin{thm}
-  Suppose $\ckcO = \ckcO_{g}$. Then
-  \[
-    \abs{\unip_{\star}(\ckcO)} \leq \abs{\PBPes(\ckcO)}.
-  \]
-  % \[
-  %   \abs{\unip_{\star}(\ckcO)} = \begin{cases}
-  %     2 \abs{\PBPes(\ckcO)} & \text{if } \star \in \set{B,D}\\
-  %     \abs{\PBPes(\ckcO)} & \text{if } \star \in \set{\wtC,C,C^{*}, D^{*}}
-  %     \end{cases}
-  % \]
-\end{thm}
-
-
-\begin{thm}
-  Let $\ckcO'_{b}$ be the partition such that $\ckcO'_{b}\cuprow \ckcO'_{b}
-  = \ckcO_{b}$    % $ such that $ = \left(\dBV(\ckcO_{b})\right)^{t}$
-  and
-  \[\star' =
-  \begin{cases}
-     A^{\bR} & \star \in \set{B,\wtC,C,D}\\
-     A^{\bH} & \star \in \set{C^{*},D^{*}}\\
-    \end{cases}
-  \]
-
-  Then we have the following bijection
-  \[
-    \begin{array}{ccc}
-    \Unip_{\star'}(\ckcO'_{b}) \times \Unip_{\star}(\ckcO_{g})
-      & \longrightarrow & \Unip_{\star}(\ckcO)\\
-      (\pi',\pi_{0})& \mapsto & \pi'\rtimes \pi_{0}.
-    \end{array}
-  \]
-\end{thm}
-
-% \begin{thm}
-%   Suppose $\ckcO = \ckcO_{g}$. Then
-%   \[
-%     \abs{\unip_{\star}(\ckcO)}\leq
-%     \abs{\PBPes(\ckcO)}.
-%     %& \text{if } \star \in \set{\wtC,C,C^{*}, D^{*}}
-%     % \begin{cases}
-%     %   2 \abs{\PBPes(\ckcO)} & \text{if } \star \in \set{B,D}\\
-%     %   \abs{\PBPes(\ckcO)} & \text{if } \star \in \set{\wtC,C,C^{*}, D^{*}}
-%     %   \end{cases}
-%   \]
-% \end{thm}
-
-
 \section{Counting formula}
 
 Let $G$ be a real reductive group in the Harish-Chandra class.
-Here $G$ can be a non-linear group.
-
-Fixing a Cartan subalgebra $\fhh$ in $\fgg$,
-we identify the set of infinitesimal character with $\fhh^{*}/W$
-where $W$ is the Weyl group acting on $\fhh$.
-
-
-
-Let $\cI_{\mu}$ be the maximal primitive ideal with infinitesimal character
-$W\cdot \mu$. Then there is a unique double cell $\cD_{\mu}$
-of $\Irr(W_{[\mu]})$ attached to
-$\cI_{\mu}$ having associated variety $\cO_{\mu}$.
-
-Let
-\[
-  \PI{\mu}(G):= \Set{\pi \in \Irr(G)| \cI_{\mu}
-    \subseteq \Ann_{\cU(\fgg)}(\pi)}.
-\]
-
-Let $Q\subset \fhh^{*}$ be the root lattice and write $[\mu]:= \mu+Q$ for the coset
-$\fhh^{*}/Q$ containing $\mu$.
+Fixing a Cartan subalgebra $\mathfrak h$ in $\mathfrak g$,
+we identify the set of infinitesimal character with $\mathfrak h^{*}/W$
+where $W$ is the Weyl group acting on $\mathfrak h$.
+Let $Q$ be the root lattice and write $[\mu]:= \mu+Q$ for the coset
+$\mathfrak h^{*}/Q$ containing $\mu$.
 Denote
-$\Coh_{[\mu]}(G)$ the space of coherent families based on $[\mu]$ which has a $W_{[\mu]}$-action.
-
-For each $\Gc$-invariant closed subset $\sfS$ in the nilpotent
-cone of $\fgg$, let
-\[
-  \Coh_{[\mu], \sfS}(G):= \Set{
-    \Theta \in \Coh_{[\mu]}|\AVC(\Theta(\mu')) \subset \sfS \text{ for }\mu'\in [\mu]}.
-\]
-
-The following theorem gives an upper bound of $\abs{\PI{mu}(G)}$.
+$\mathrm{Coh}_{[\mu]}(G)$ the space of coherent families based on $[\mu]$ which has a $W_{[\mu]}$-action.
 
 \begin{thm}[Barbasch-Vogan]\label{thm:count}
+  For a complex nilpotent orbit $\cO$,
+  define
+  \[
+    S_{\cO} = \left\{\sigma \in \widehat{W_{[\mu]}}|
+      \Spr(j_{W_{[\mu]}}^{W} \sigma_{s}) = \cO
+    \right\}
+  \]
+  where $\sigma_{s}$ is the special representation in the double cell containing
+  $\sigma$.
+
   Let $\Pi_{\cO,\mu}(G)$ denote the set of irreducible admissible $G$-module with
   complex associated variety $\overline{\cO}$.
   % Let $W_{\mu}$ be the stabilizer of $\mu$ and $W_{[\mu]}$ be the stabilizer of
   % the lattice
   Then
   \[
-    \begin{split}
-      \abs{\PI{\mu}(G)} &= \sum_{\sigma\in \cD_{\mu}} [\sigma: \Coh_{[\mu],\bcO_{\mu}}(G)] \cdot
-      [1_{W_{\mu}}, \sigma|_{W_{\mu}}]\\
-      & \leq \sum_{\sigma\in \cD_{\mu}} [\sigma: \Coh_{[\mu]}(G)] \cdot [1_{W_{\mu}}, \sigma|_{W_{\mu}}].
-    \end{split}
+    \# \Pi_{\cO,\mu}(G) =
+    \sum_{\sigma\in S_{\cO}} [\sigma: \mathrm{Coh}_{[\mu]}(G)] \cdot
+    [1_{W_{\mu}}, \sigma|_{W_{\mu}}].
   \]
   % Here $[\sgima : \ ]$ denote the multiplicity of $\sigma$
   % and  $W_{\mu}$ is the stabilizer of $\mu$.
 \end{thm}
-
-
-
- \begin{lem}[{\cite{BVUni}*{(5.26), Proposition~5.28}}]\label{lem:lcell.BV}
-  Let $\ckcO$ be a nilpotent orbit in $\ckGc$ and $\lamck$ be the infinitesimal
-  character attached to $\ckcO$.
-  Then the set
-  \[
-    \LC(\ckcO) := \Set{ \sigma \in \cD_{\lamck}| [1_{W_{\mu}}:\sigma]\neq 0}
-  \]
-  is a left cell in $\cD_{\lamck}$ given by
-  \[
-    (J_{\Wlamck}^{\WLamck} \sgn )\otimes \sgn.
-  \]
-  Moreover, the multiplicity $[1_{W_{\mu}}:\sigma]$ is one
-  when $\sigma\in \LC(\ckcO)$.
-\end{lem}
-
-\begin{cor}
-  Under the notation of \Cref{lem:lcell.BV}, we have
-  \[
-    \abs{\PI{\mu}(G)} \leq \sum_{\sigma\in \LC(\ckcO)} [\sigma: \Coh_{[\mu]}(G)]
-  \]
-\end{cor}
-
-\subsection{Coherent family}
-
-Let $Q$ be the $\fhh$ root lattice of $\fgg$. Let $\cG$ be the Grothendieck
-group of finite dimensional $\fgg$-modules occur in $S(\fgg)$. Note that $\cG$
-is also an algebra under tensor product.
-% Via highest weight theory, there is a unique irreducib Via highest weight
-% theory, $Q$ is identified with the set of irreducible $\fgg$-modules occur in
-% $S(\fgg)$.
-For each finite dimensional $\fhh$-module $F$, let $\WT{F}$ denote the multi-set
-of $\fhh$-weights in $F$.
-
-
-Via the highest weight theory, every $W$-orbit $W\cdot \mu$ in $\aQ$ corresponds
-with the irreducible finite dimensional representation $F_{\mu}$ with extremal
-weight $\mu$.
-
-
-% Now the Grothendieck group $\Gfin$ of finite dimensional representation of
-% $\Gc$ is identified with $\bZ[\aP/W]$. In fact $\Gfin$ is a $\bZ$-algebra
-% under the tensor product and equipped with the involution $F\mapsto F^*$.
-
-% Fix a $W$-invariant sub-lattice $\Lambda_0\subset \aX$ containing $\aQ$.
-
-% Let $\Pi$ $\Glfin$ be the $\star$-invariant subalgebra of $\Gfin$ generated by
-% irreducible representations corresponds to $\Lambda_0/W$.
-
-
-For any $\lambda\in \hha^{*}$, we define the lattice
-\[
-  \Lambda := [\lambda ] := \lambda + Q \subset \fhh^{*}
-\]
-and define
-\begin{equation}
-  \label{eq:wlam}
-  \begin{split}
-    R_{[\lambda]} &:= \Set{\alpha\in R| \inn{\lambda}{\ckalpha}\in \bZ},\\
-    W_{[\lambda]} &:=
-    \set{w\in W | w\cdot \lambda  - \lambda \in Q}\\
-    R_{\lambda} &:= \Set{\alpha\in \aR| \inn{\lambda}{\ckalpha}=0}, \AND\\
-    W_{\lambda} &:= \braket{s_\alpha|\alpha\in R_{\lambda}} = \braket{w\in W|w\cdot \lambda = \lambda} \subseteq W.
-  \end{split}
-\end{equation}
-It is known that $R_{[\lambda]}$ is a root system and
-\[
-  \begin{split}
-    W_{[\lambda]} &= \Stab_{W}([\lambda]) = \braket{s_\alpha|\alpha\in R_{[\lambda]}} \subseteq W\quad
-    \text{and}\\
-    W_{ \lambda } &=   \braket{s_\alpha|\alpha \in R_{\lambda}} \subseteq W_{[\lambda]}.\\
-  \end{split}
-\]
-In fact $W_{\lambda}$ is a parabolic subgroup of $W_{[\lambda]}$ by
-Chevalley's theorem \cite{Vg}*{Lemma~6.3.28}.
-
-When $\lambda$ is regular, let
-\[
-  R^{+}_{[\lambda]} := \Set{\alpha\in R_{[\lambda]}| \inn{\ckalpha}{\lambda}>0}
-\]
-be the fixed positive root system.
-
-In the following we define the notion of coherent family based on the lattice
-$[\lambda]$ in a quite general setting.
-
-\begin{defn}
-  Suppose that $\cM$ is be an abelian group with $\cG$-action:
-  \[
-    \cG\times \cM \ni(F,m)\mapsto F\otimes m.
-  \]
-  In addition, a subgroup $\cM_{\mu}$ of $\cM$ is fixed for each
-  $\mu \in [\lambda]$ such that $\cM_{\mu} = \cM_{w\cdot \mu}$ for any
-  $\mu\in [\lambda]$ and $w\in W_{[\lambda]}$.
-  % for each $W_{[\lambda]}$-orbit
-  % $\barmu := W_{\Lambda} \cdot \mu\in \Lambda/W_{\Lambda}$.
-
-  A function $f\colon \Lambda \rightarrow \cM$ is called a coherent family based
-  on $\Lambda$ if it satisfies $f(\mu)\in \cM_\mu$ and
-  \[
-    F\otimes f(\mu) = \sum_{\nu \in \WT{F}} f(\mu+\nu) \qquad \forall \mu\in \Lambda, F\in \cG.
-  \]
-  Let $\Coh_{\Lambda}(\cM)$ be the abelian group of all coherent families based
-  on $\Lambda$ and taking value in $\cM$. We can define $W_{[\lambda]}$ action
-  on $\Coh_[\lambda](\cM)$ by
-  \[
-    w\cdot f(\mu) = f(w^{-1}\cdot \mu) \qquad \forall \mu\in \Lambda, w\in \WLam.
-  \]
-\end{defn}
-
-
-
-\def\Grt{\cG}
-
-In this paper, we will consider the following cases.
-
-\begin{eg}
-  Suppose $\cM$ is a field of characteristic zero and
-  \[
-    F\otimes m := \dim(F)\cdot m \quad \text{for all } F\in \cG \text{ and
-    } m\in \cM.
-  \]
-  We let $\cM_{\mu} = \cM$ for every $\mu\in \Lambda$. Then the set of
-  $W$-harmonic polynomials on $\fhh$ is naturally identified with
-  $\Coh_{[\lambda]}(\cM)$ via the restriction on $[\lambda]$ by Vogan
-  \cite{VGK}*{Lemma~4.3}. \trivial{ Note that the polynomials are $W$-harmonic
-    not necessary $W_{[\lambda]}$-harmonic. ($W_{[\lambda]}$-invariant
-    differential operators are more than $W$-invariant differential operators.)
-  }
-\end{eg}
-
-
-\begin{eg}\label{eg:hw}
-  Fix a Borel subalgebra $\fbb = \fhh\oplus \fnn \subset \fgg$, let
-  $\Grt(\fgg,\fhh,\fnn)$ be the Grothendieck group of the category $\cO$ with
-  coefficients in $\bC$, i.e. the category of finitely generated
-  $\cU(\fgg)$-modules with semisimple $\fhh$-action and locally finite
-  $\fnn$-action. For $\lambda\in \fhh^{*}$, let $\Grt_{W\cdot \lambda}(\fgg,\fhh,\fnn)$
-  be the subgroup spanned by $\fgg$-modules with infinitesimal character
-  $W\cdot \lambda$. Here $\cG$ acts on $\Grt(\fgg,\fhh,\fnn)$ via the tensor
-  product of $\fgg$-modules.
-
-  To ease the notation, we write
-  \[
-    \Coh_{[\lambda]}(\fgg,\fhh,\fnn) := \Coh_{[\lambda]}(\Grt(\fgg,\fhh,\fnn)).
-  \]
-
-  % Verma modules gives a basis of We now review the well understood structure
-  % of $\Coh_{[\lambda]}$. is well understood.
-  For $\lambda\in \fhh^{*}$, let $\rho := \sum_{\alpha\in \WT{\fnn}} \alpha$,
-  \[
-    M(\lambda) := \cU(\fgg)\otimes_{\cU(\fbb)} \bC_{\lambda-\rho}
-  \]
-  be the Verma module with highest weight $\lambda-\rho$ and $L(\lambda) $ be
-  the unique irreducible quotient of $M(\lambda)$.
-
-  Each $w\in W$ defines a coherent family %such that
-  \[
-    M_w(\mu) := M(w\cdot \mu) \quad \forall \mu \in [\lambda].
-    % M_w(\mu) := M(w \cdot \mu) \quad \forall \mu \in [\lambda].
-  \]
-  % where $w_{0}$ is the longest element in $W$.
-
-  The map
-  \[
-    \begin{array}{ccc}
-      \bC[W] & \longrightarrow & \Coh_{[\lambda]}(\fgg,\fhh,\fnn)  \\
-      w& \mapsto &M_{w}
-    \end{array}
-  \]
-  is $W_{[\lambda]}$-equivariant isomorphism where $W_{[\lambda]}$ acts on $\bC[W]$ by right
-  translation.
-
-  One of the crucial property is that each irreducible module can be fitted into
-  a coherent family. %in other words.
-  More precisely, the evaluation map descents to yields an isomorphism
-  $\bev{\mu}$ in the following diagram.
-  \begin{equation}\label{eq:bev.catO}
-    \begin{tikzcd}
-      \Coh_{[\lambda]}(\fgg,\fhh,\fnn)\ar[r,"\Theta\mapsto \Theta(\mu)"] \ar[d]&
-      \Grt_{W\cdot \mu}(\fgg,\fhh,\fnn)\\
-      \left(\Coh_{[\lambda]}(\fgg,\fhh,\fnn)\right)_{W_{\mu}} \ar[ru,hook,two heads,"\bev{\mu}"']
-    \end{tikzcd}
-  \end{equation}
-
-  \trivial[]{ The subjectivity is because of Verma modules form a basis of the
-    category $\cO$. The LHS of $\bev{\mu}$ has dimension $\abs{W/W_{\mu}}$, the
-    RHS has dimension $W\cdot \mu$. Now the isomorphism follows by dimension
-    counting. }
-  % the The space $\Coh_\Lambda(\cG(\fgg,\fhh,\fnn))$ and
-  % $\Coh_{\Lambda(\cG)}$defined similarly.
-
-  % Note that the lattice $\Lambda$ is stable under the $\Wlam$ action.
-\end{eg}
-
-\begin{eg}
-  Suppose $G$ is a reductive Lie group in the Harish-Chandra class. Let
-  $\Grt(G)$ be the Grothendieck group of finite length admissible $G$-modules
-  and $\Grt_{\mu}(G)$ be the subgroup of $\Grt(\fgg,K)$ generated by the set of
-  irreducible $G$-modules with infinitesimal character $\mu$.
-
-  By \cite{Vg}*{0.4.6}, we can naturally identify $Q$ with the set of
-  $H^{s}$-weights consisting the characters occurs in $S(\fgg)$ where $H^{s}$ is
-  a maximally split Cartan in $G$. Therefore, the set of irreducible
-  $G$-submodules occur in $S(\fgg)$ is also naturally identified with $Q/W=\cG$.
-  We let $\cG$ acts on $\Grt(G)$ by the tensor product of $G$-modules.
-
-  \trivial[]{ Note that by the assumption that $G$ is in the Harish-Chandra
-    class, each irreducible $\fgg$-submodule $F$ embeds in $S(\fgg)$ is
-    automatically globalized to a $G$-module. The point is that the
-    globalization is independent of the embedding of $F$ in $S(\fgg)$! }
-
-  We write
-  \[
-    \Coh_{[\lambda]}(G) := \Coh_{[\lambda]}(\Grt(G))
-  \]
-  for the space of coherent family of $G$-modules.
-  % Then $\Coh_\Lambda(\cG(\fgg,K))$ is the group of coherent families of
-  % Harish-Chandra modules. The space $\Coh_\Lambda(\cG(\fgg,K))$ is equipped
-  % with a $\WLam$-action by
-  % \[
-  %   w\cdot f(\mu) = f(w^{-1} \mu) \qquad \forall \mu\in \Lambda, w\in \WLam, f \in \Coh_{\Lambda}(\Grt(\fgg,K)).
-  % \]
-\end{eg}
-
-\begin{eg}
-  Fix a $\Gc$-invariant closed subset $\sfS$ in the nilpotent cone of $\fgg$.
-  Let $\Grt_{\sfS}(G)$ be the Grothendieck group of finite length admissible
-  $G$-modules whose complex associated varieties are contained in $\sfS$. Define
-  \[
-    \Grt_{\mu,\sfS}(G) := \Grt_{\mu}(G)\cap \Grt_{\sfS}(G).
-  \]
-  and write
-  \[
-    \Coh_{[\lambda],\sfS}(G):= \Coh_{[\lambda]}(\Grt_{\sfS}(\fgg,K)).
-  \]
-
-  Note that
-  \[
-    \AVC(\pi\otimes F) = \AVC(\pi).
-  \]
-  for each finite length $G$-module $\pi$ and finite dimensional $G$-module $F$.
-  Therefore the $W_{[\lambda]}$-module
-  \[
-    \Coh_{[\lambda],\sfS}(G) = (\ev{\mu})^{-1}(\Grt_{\mu,\sfS}(G))
-  \]
-  for any regular $\mu\in [\lambda]$.
-
-  Similarly, we define the space $\Coh_{[\lambda],\sfS}(\fgg,\fhh,\fnn)$ of
-  coherent families in category $\cO$ whose associated variety are contained in
-  $\sfS$. In particular,
-  \[
-    \Coh_{[\lambda],\sfS}(\fgg,\fhh,\fnn) = (\ev{\mu})^{-1}(\Grt_{\mu,\sfS}(\fgg,\fhh,\fnn)).
-  \]
-  % now is also a $\WLam$-submodule of $\Coh_\Lambda(\cG(\fgg,K))$.
-\end{eg}
-
-
-% \begin{eg}
-%   For each infinitesimal character $\chi$ and a close $G$-invariant set
-%   $\cZ\in \cN_{\fgg}$. Let $\Grt_{\,\cZ}(\fgg,K)$ be the Grothendieck group of
-%   $(\fgg,K)$-module with infinitesimal character $\chi$ and complex associated
-%   variety contained $\cZ$. Similarly, let $\Grt_{\chi,\cZ}()$
-% \end{eg}
-
-A remarkable fact that the diagram \Cref{eq:bev.catO} still holds for
-$\Coh_{[\lambda],\sfS}(G)$. This is one of the first step towards the counting
-of the set
-\[
-  \Irr_{\mu,\sfS}(G):=\Set{\pi \in \Irr_{\mu}(G)| \text{$\AVC(\pi)\subset \sfS$} }.
-\]
-where
-\[
-  \Irr_{\mu}(G):=\Set{\pi \in \Irr(G)| \pi \text{ has infinitesimal character
-    }\mu}.
-\]
-
-
-\begin{lem}
-  For each $\mu$ and closed $\Gc$-invariant subset $\sfS$ in the nilpotent cone
-  of $\fgg$, we have an isomorphism
-  \[
-    \bev{\mu}\colon \left(\Coh_{[\mu],\sfS}(G)\right)_{W_{\mu}} \longrightarrow \Grt_{\mu,\sfS}(G).
-  \]
-  In particular,
-  \[
-    \abs{\Irr_{\mu,\sfS}(G)} = [1_{W_{\mu}}:\Coh_{[\mu],\sfS}(G)]
-  \]
-  % \[
-  %   \dim {\barmu} = \dim (\cohm)_{W_\mu} = [\cohm, 1_{W_\mu}].
-  % \]
-\end{lem}
-\begin{proof}
-  This is a consequence of the formal properties of the translation functor,
-  especially the theory of $\tau$-invariant.
-
-  \def\Parm{\mathrm{Parm}} \def\cof{\Theta}
-
-
-  {\bf The properties of the coherent family and translation principal:} (We
-  refers to \cite{Vg}*{Section~7} for the proofs which also work in our
-  (possibly non-linear) setting.)
-
-  \begin{enumerate}[label=(\alph*)]
-    \item \label{it:t1} The evaluation map
-          \[
-          \ev{\mu}\colon \Coh_{[\mu]}(G)\rightarrow \Grt_{\mu}(G)
-          \]
-          is surjective for any $\mu \in [\mu]$, see \cite{Vg}*{Theorem~7.2.7}.
-  \end{enumerate}
-  From now on we fix a regular element $\lambda \in [\mu]$ such that $\mu$ is
-  dominant with respect to $R^{+}_{[\lambda]}$
-  \begin{enumerate}[resume*]
-    \item \label{it:t2} The evaluation map $\ev{\lambda}$ at $\lambda$ is an
-          isomorphism \cite{Vg}*{Proposition~7.2.27}.
-  \end{enumerate}
-  For each $\pi\in \Grt_{\lambda}(G)$, let
-  \[
-    \Theta_{\pi}:= (\ev{\lambda})^{-1}(\pi)
-  \]
-  be the unique coherent family such that $\Theta_{\pi}(\lambda) = \pi$,
-  \begin{enumerate}[resume*]
-    \item \label{it:t3} If $\pi\in \Irr_{\lambda}(G)$, then $\Theta_{\pi}(\mu)$
-          is either zero or an irreducible $G$-module
-          \cite{Vg}*{Proposition~7.3.10, Corollary~7.3.23}.
-    \item \label{it:t4} For $\pi\in \Irr_{\lambda}(G)$,
-          \[
-          \AV(\Theta_{\pi}(\mu)) = \AV(\pi)
-          \]
-          whenever $\mu$ is dominant and $\Theta_{\pi}(\mu)$ non-zero.
-          \trivial[]{ This because
-          $\pi = \psi_{\mu}^{\lambda}(\Theta_{\pi}(\mu))$ and
-          $\Theta_{\pi}(\mu) = \psi_{\lambda}^{\mu}(\pi)$. Here is the
-          translation functor from $\lambda$ to $\mu$ see
-          \cite{Vg}*{Definition~4.5.7}. Translation dose not increase the
-          associated variety. }
-    \item \label{it:t5} If $\pi$ and $\pi'$ are in $\Irr_{\lambda}(G)$ such that
-          $\Theta_{\pi}(\mu) = \Theta_{\pi'}(\mu)$ is non-zero, then $\pi=\pi'$.
-  \end{enumerate}
-  For $\pi\in \Irr_{\lambda}(G)$, define the $\tau$-invariant of $\pi$ to be
-  \begin{equation}\label{eq:taupi}
-    \tau(\pi) := \Set{\alpha\in R^{+}_{[\lambda]}|
-      \begin{array}{l}
-        \text{$\alpha$ is simple and }\\
-        s_{\alpha}\cdot \Theta_{\pi}(\lambda) = -\Theta_{\pi}(\lambda)
-      \end{array}
-    }
-  \end{equation}
-  \begin{enumerate}[resume*]
-    \item
-          \label{it:t6}
-          $\Theta_{\pi}(\mu) =0$ if and only if
-          $\tau(\gamma)\cap R_\mu \neq \emptyset$
-          \cite{Vg}*{Corollary~7.3.23~(c)}.
-  \end{enumerate}
-
-  Now we start to prove the lemma. By the translation principle,
-  \[
-    \begin{split}
-      & \Set{\Theta_{\pi}(\mu)| \pi\in \Irr_{\lambda, \sfS}(G)
-        \text{ s.t. } \Theta_{\pi}(\mu)\neq 0} \\
-      = & \Set{\Theta_{\pi}(\mu)| \pi\in \Irr_{\lambda, \sfS}(G) \text{ s.t.
-        } \tau(\pi)\cap R_{\mu}= \emptyset}.
-    \end{split}
-  \]
-  forms a basis of $\Grt_{\mu,\sfS}(G)$. \trivial{ The set consists of distinct
-    (so linearly independent) irreducible $G$-modules by \ref{it:t3} and
-    \ref{it:t5}. They are spanning set by \ref{it:t1}. For the support
-    condition, see \ref{it:t4}. The $\tau$-invariant condition is by
-    \ref{it:t6}.
-    % by \ref{it:t6} and
-  } Hence
-  \[
-    \begin{split}
-      \ker \ev{\mu} = & \Span \Set{\Theta_{\pi}| \pi\in \Irr_{\lambda, \sfS}(G) \text{
-          s.t. }
-        \tau(\pi)\cap R_{\mu}\neq \emptyset}\\
-      \subseteq & \Span \Set{\half(\Theta_\pi - s_{\alpha}\cdot \Theta_{\pi}) | \pi\in \Irr_{\lambda, \sfS}(G) \text{
-          and } \alpha \in
-        \tau(\pi)\cap R_{\mu}}\\
-      & \ \ \ \  \text{(by the definition of $\tau(\pi)$ in \eqref{eq:taupi}.)} \\
-      \subseteq &\Span\Set{\Theta- w\cdot \Theta |\Theta\in \Coh_{[\mu],\sfS}(G)} \\
-      \subseteq & \ker \ev{\mu}. \\
-      &\ \ \ \ \text{(by
-        $w\cdot \Theta(\mu) = \Theta(w^{-1}\cdot \mu)=\Theta_\pi(\mu)$)}
-    \end{split}
-  \]
-  Since
-  $\left(\Coh_{[\mu],\sfS}(G)\right)_{W_{\mu}} =\Coh_{[\mu],\sfS}(G)\slash \Span\set{\Theta- w\cdot \Theta |\Theta\in \Coh_{[\mu],\sfS}(G)} $,
-  the lemma follows.
-\end{proof}
-
-\section{Primitive ideals and Weyl group representations}
-
-\subsection{Associated varieties of a primitive ideals and double cells in
-  $W_{[\lambda]}$}
-In this section, we review the notion of double cells and its relation with the
-associated varieties of primitive ideals, see \cite{BV2,J.av}.
-We retain the notation in \Cref{eg:hw}.
-
-Let $\Prim_{\lambda}(\fgg)$ be the set of primitive ideals in $\cU(\fgg)$ with
-infinitesimal character $\lambda$. Let $\lambda \in \fhh^{*}$, each primitive ideal is
-the annihilator of a highest weight module by Duflo \cite{Du77}.  In other
-words, the following map is
-surjective
-\[
-  \begin{array}{ccl}
-    W_{[\lambda]} &\longrightarrow &  \Prim_{\lambda}(\fgg)\\
-    w & \mapsto & I(w\cdot \lambda) := \Ann L(w\cdot \lambda).
-  \end{array}
-\]
-
-
-
-%We now recall some results about the blocks in category $\cO$.
-
-By the translation principal, we
-concentrate the discussion in the regular infinitesimal character case. From now on, we follows the convention in \cite{BV2}.
-Let $\lambda$ be a regular element in $\fhh^{*}$ such that
-$R^{+}_{[\lambda]}\subset - \WT{\fnn}$.
-\trivial{
-  Here $\lambda$ is regular anti-dominant ($\inn{\lambda}{\ckalpha}\notin \bN$ for
-  each $\alpha\in \WT{\fnn}$) with respect to the root system defining highest
-  weight modules, but it is dominant with respect to $R^{+}_{[\lambda]}$.
-}
-For each $w\in W_{[\lambda]}$, define
-\[
-a(w) := \abs{\WT{\fnn}} - \GKdim(L(w\lambda)).
-\]
-\trivial{
-  Suppose $\lambda$ is integral, then
-  Under this definition, $a_{w_{0}} = \abs{\WT{\fnn}}$ and
-  $a_{e} =0$.
-}
-For each $w$ one can attach a polynomial $\wtpp_{w}$ such that
-$\wtpp_{w}(\mu) = \rank(\cU(\fgg)/\Ann(L(w\mu)))$ when $\mu\in [\lambda]$ is
-dominant (i.e. $-\inn{\mu}{\ckalpha}\notin \bN^{+}$ for all
-$\alpha\in R^{+}_{[\lambda]}$).
-$\wtpp_{w}$ is called the Goldie-rank
-polynomial attached to the primitive ideal $\Ann(L(w\lambda))$.
-Fix a dominant regular element $\delta$ in $\fhh$ (i.e.
-$\inn{\delta}{\alpha}>0$ for each $\alpha\in \WT{\fnn}$).
-Let
-\[
-r_{w} = \sum_{y\in W_{[\lambda]}} a_{y,w} (y^{-1}\delta)^{a(w)} \in S(\fhh)
-\]
-where $a_{y,w}$ is determined by the equation
-\[
-  L(w\lambda) = \sum_{y\in W_{[\lambda]}} a_{y,w} M(w\lambda)
-\]
-in $\Grt(\fgg,\fhh,\fnn)$.
-Then $r_{w}$ is a positive multiple of $\wtpp_{w}$ \cite{J2}*{Section~1.4}.
-
-% Let $w_{0}$ (resp. $w_{[\lambda]}$)be the longest element in $W$ (resp.
-% $\Wlam$).
-A partial order $\leqL$ can be define on $W_{[\lambda]}$ by the following condition
-\cite{BV2}*{Proposition~2.9}
-\begin{equation}\label{eq:leqL}
-  \begin{split}
-    w_{1} \leqL w_{2} & \Leftrightarrow
-    I(w_{1}\lambda)\subseteq I(w_{2}\lambda)\\
-    & \Leftrightarrow
-    %[L(w_{2}^{-1}\lambda), L(w_{1}^{-1}\lambda)\otimes S(\fgg)] \neq 0.
-    L(w_{2}^{-1}\lambda) \text{ is a subquotient of } L(w_{1}^{-1}\lambda)\otimes S(\fgg).
-  \end{split}
-\end{equation}
-
-We say $w_{1} \approxL w_{2}$ if and only if $w_{1}\leqL w_{2}\leqL w_{1}$.
-For $w\in W_{[\lambda]}$, we call
-\[
-  \CL_{w} := \Set{ w' \in W_{[\lambda]}| w\approxL w'}
-\]
-the left cell in $W_{[\lambda]}$ containing $w$.
-
-In summary, we have a bijection
-\[
-  \begin{array}{ccc}
-    W_{[\lambda]}/ \approxL &\longrightarrow & \Prim_{\lambda}(\fgg)\\
-    \CL_{w} & \mapsto & \Ann L(w\lambda).
-  \end{array}
-\]
-% here $w$ is a arbitrary element in $\LC$.
-% Moreover, for each left cell $\LC_{w}$
-
-The partial order $\leqR$ is defined by
-\[
-  w_{1}\leqR w_{2} \Leftrightarrow w_{1}^{-1} \leqL w_{2}^{-1}.
-\]
-The partial order $\leqLR$ is defined to be the minimal partial order
-containing $\leqL$ and $\leqR$.
-The relation $\approxR$, $\approxLR$, right cell $\CR_{
-  w}$ and double cells
-$\CLR_{w}$ are defined similarly.
-
-Since the Kazhdan-Lusztig conjecture has been proven (for the integral
-infinitesimal character case by \cite{BB,BK} and reduced to the integral
-infinitesimal character case by \cite{Soergel} (see \cite{H}*{Section~13.13})),
-the definition of the order $\leqL$ is the same as the partial order defined by
-Kazhdan-Lusztig  \cite{KL} which only depends on the Coxeter group structure of
-$W_{[\lambda]}$, see \cite{BV2}*{Corollary~2.3}.
-\trivial[]{
-  Note that $x\lneqL y$ implies $a(x)<a(y)$
-  and $x\approxLR y$ implies $a(x)=a(y)$.
-}
-
-Note that the left cells are exactly the fibers of the map $w\mapsto \wtpp_{w}$.
-Take a double cell $\CLR_{w}$ in $W_{[\lambda]}$ and a set of representatives
-$\set{w_{1}, w_{2}, \cdots, w_{k}}$ of the left cells in $\CLR_{w}$.
-% and decompose it into disjoint union of left-cells
-% \[
-%   \LRC_{w} = \bigsqcup_{i=1}^{k} \LC_{w_{i}}.
-% \]
-% Due to Joseph\cite{J2} and Barbasch-Vogan\cite{BV1,BV2}, we have the following
-% statements:
-%
-Due to Barbasch-Vogan\cite{BV1,BV2} and Joseph\cite{J1,J2,J3,J.av},  the following
-statements holds:
-\begin{itemize}
-  \item the set of Goldie rank polynomials
-  $\set{\wtpp_{w_{i}}|i = 1,2,\cdots,k}$ form a basis of a special
-  representation $\sigma_{w}$ of $W_{[\lambda]}$ realized in
-  $S^{a(w)}(\fhh)$;
-  \item the multiplicity of $\sigma_{w}$ in $S^{a(w)}(\fhh)$ is one,
-  \item $a(w)$ is the minimal degree $m$ such that $\sigma_{w}$ occurs in
-  $S^{m}(\fhh)$ which is the fake degree of $\sigma_{w}$; \trivial[]{ When
-    $W_{[\lambda]} = W$, this is the definition of the fake degree.
-    Otherwise, $\fhh = \fhh_{0}\oplus \fhh^{W_{\lambda}}$ where $\fhh_{0}$
-    is the span of coroots of $W_{[\lambda]}$. Then $S(\fhh_{0})$ is embeds
-    in $S(\fhh)$. }
-  \item the map
-  $W_{[\lambda]}/\approxLR \; \ni \CLR_{w}\mapsto \sigma_{w}\in \Irr(W_{[\lambda]})$
-  yields a bijection between the set of double cells and the set
-  $\Irrsp(W_{[\lambda]})$ of special representations of $W_{[\lambda]}$.
-  \item Under the $W$ action, the $W_{[\lambda]}$-module
-  $\sigma_{w}\subset S^{a(w)}(\fhh)$ generates an irreducible $W$-module
-  $\wtsigma_{w}:=j_{W_{[\lambda]}}^{W}\sigma_{w}$. The $W$-module
-  $\wtsigma_{w}$ corresponds to the a nilpotent orbit $\cO_{\wtsigma_{w}}$
-  with trivial local system. Now the complex associated variety
-  \[
-    \Gc^{ad}\AV(L(w\lambda)) = \AV(\Ann(L(w\lambda))) =\overline{\cO_{\wtsigma_{w}}},
-  \]
-  where $\Gc^{ad}$ is the adjoint group of $\fgg$, see
-  \cite{J.av}*{Section~2.10}.
-\end{itemize}
-\trivial[]{
-  Note that the $j$-induction is not injective in general.
-  For example,
-  $j_{S_{a}\times S_{b}}^{S_{a+b}} \tau_{a}\otimes \tau_{b} = \tau_{a}\cupcol \tau_{b}$
-  where $\tau_{a}$, $\tau_{b}$ are partitions.
-}
-
-
-Now we recall
-the relationships between cells and the coherent continuation
-representations.
-
-For each $w\in W$, we define a coherent family $L_{w}$ by the condition
-  $L_{w}(\lambda) = L(w\lambda)$.
-
-For each $\mu\in \fhh^{*}$, let
-$\cO_{[\mu]}(\fgg,\fhh,\fnn)$ be the subcategory of the category $\cO(\fgg,\fhh,\fnn)$
-consists of modules whose $\fhh$-weights are contained in $[\mu]$,
-\[
-\Grt_{W\cdot\lambda,[\mu]}(\fgg,\fhh,\fnn) = \Grt_{[\mu]}(\fgg,\fhh,\fnn)\cap \Grt_{W\cdot \lambda}(\fgg,\fhh,\fnn)
-\]
-which is spanned by a block in the category $\cO$ if
-$W\cdot \lambda \cap [\mu]\neq \emptyset$.
-
-Consider the following subgroup of coherent continuation
-\[
- \Coh_{[\lambda]}(\fgg,\fhh,\fnn; [\mu]) =
- \Set{\Theta\in \Coh_{[\lambda]}(\fgg,\fhh,\fnn)| \Theta(\lambda) \in
-   \Grt_{W\cdot \lambda, [\mu]}(\fgg,\fhh,\fnn)
- }.
-\]
-
-We identify $\bC[W_{[\lambda]}]$ with
-$\Coh_{[\lambda]}(\fgg,\fhh,\fnn,[\lambda])$ via $w \mapsto M_{w}$.
-
-For each $w\in W_{[\lambda]}$,
-let
-\[
-  \begin{split}
-\bVR_{w}& :=\Span\Set{L_{w'}|w\leqR w'} \\
-\VR_{w}&= \bVR _{w}\left/ \sum_{w\lneqL w'} \bVR_{w'} \right.
-\end{split}
-\]
-By \eqref{eq:leqL},
-$\bVR_{w}$ and $\VR_{w}$ are $W_{[\lambda]}$-modules under right
-translation/coherent continuation action.
-
-We define left $W_{[\lambda]}$-module $\bVL_{w}$ and $\VL_{w}$ using $\leqL$ and
-$W_{[\lambda]}\times W_{[\lambda]}$-module $\bVLR_{w}$ and $\VLR_{w}$ using
-$\leqLR$ similarly.
-
-Suppose $\sigma_{1}, \sigma_{2}\in \Irr(W_{[\lambda]})$. We define
-\[
-  \sigma_{1}\leqLR \sigma_{2} \Leftrightarrow
-  \exists w\in W_{[\lambda]} \text{ such that }
-  \begin{cases}
-  \sigma_{1} \otimes \sigma_{1} \text{ occurs in } \VLR_{w}
-  \text{ and } \\
-  \sigma_{2} \otimes \sigma_{2} \text{ occurs in } \bVLR_{w}.
-\end{cases}
-\]
-Now $\sigma_{1}\approxLR \sigma_{2}$ if and only if there exists a
-$w\in W_{[\lambda]}$ such that $\sigma_{1} \otimes \sigma_{1}$ and
-$\sigma_{2} \otimes \sigma_{2}$ both occur in $\VLR_{w}$.
-Now $\leqLR$ is a well
-defined partial order and  $\approxLR$ is an equivalent
-relation on $\Irr(W_{[\lambda]})$ respectively.
-We write $\LRC_{\sigma}\subseteq \Irr(\Wlam)$ for the double cell containing
-$\sigma$.
-\trivial[]{
-  A priori $\sigma_{1}\approxLR \sigma_{2}\Leftrightarrow
-  \sigma_{1}\leqLR \sigma_{2}\leqLR \sigma_{1}$.
-
-  But note that $\bigoplus_{w\in \Wlam/\approxLR} \VLR_{w} \cong \bC[\Wlam]$
-  and $\sigma\otimes \sigma$ has multiplicity one in $\bC[\Wlam]$
-  which implies the claim.
-}
-
-A left (resp. right cell) in $\Irr(\Wlam)$ is the multiset of the irreducible
-constituents in $\VL_{w}$  (resp. left cell) for some $w\in \Wlam$.
-
-The equivalence of Barbasch-Vogan's definition  and
-  Lusztig's definition of cells in $\Irr(\Wlam)$ is a consequence of
-  Kazadan-Lusztig conjecture, see \cite{BV2}*{remarks after Corollary~2.16}.
-
-The structure of double and left cells are explicitly described in
-\cite{Lu}*{Section~4}.
-In particular, $\sigma_{w}$ is the unique special representation occurs
-in the double cell
-\[
-  \LRC_{w}:= \Set{\sigma| \sigma\otimes \sigma \text{ occurs in } \VLR_{w}}
-  \subseteq \Irr(\Wlam).
-\]
-For this reason, we also write
-\[
-  \LRC_{\sigma}:=\LRC_{w}
-\]
-where $\sigma=\sigma_{w}$ is the unique special representation in $\LRC_{w}$.
-
-In summary, we have bijections
-\[
-  \Wlam/\approxLR \longleftrightarrow\Irrsp(\Wlam)\longleftrightarrow \Irr(\Wlam)/\approxLR.
-\]
-We write $\VLR_{\sigma}$ to be the unique double cell representation
-containing $\sigma$ and $\bVLR_{\sigma}$ to be the unique upper cone
-representation which is isomorphic to
-$\bigoplus_{\sigma\leqLR \sigma'}\sigma'\otimes \sigma'$.
-
-
-\subsection{Compare blocks}
-Now we compare different blocks. Without of loss of generality, we assume
-$\lambda$ is in the anti-dominant cone of $\WT{\fnn}$, i.e
-$\inn{\lambda}{\ckalpha}<0$ for all $\alpha\in \WT{\fnn}$.
-
-Let $\set{r_{i}\Wlam|i =1, 2, \cdots, k}$ be the list of right cosets
-of $W/\Wlam$Michael Kovrig.
-We can choose $r_{i}$ to be the unique element in the coset $r_{i}\Wlam$
-such that $r_{i}\lambda$ is anti-dominant, i.e.   $R^{+}_{[r_{i}\lambda]}\subseteq -\WT{\fnn}$.
-
-%Let $S_{[\lambda]}$ be the set of simple roots in $R^{+}_{[\lambda]}$.
-%Apply Soergel's theorem \cite{H}*{13.13}, we have
-% Then
-% \begin{itemize}
-%   \item The map $L(w\lambda) \mapsto
-%   L(r_{i} w\lambda)$ with $w$ running over $w\in W_{[\lambda]}$ induces an equivalence of
-%   category from $\cO_{W\cdot \lambda, [\lambda]}(\fgg,\fhh,\fnn)\cap$ to
-%   $\cO_{W\cdot\lambda, [r_{i}\lambda]}$ by Soegel's theorem \cite{H}*{13.13}.
-%   \item $w\mapsto r_{i} w r_{i}^{-1}$ induces isomorphism
-%   $W_{[\lambda]}\rightarrow W_{[r_{i}\lambda]}$ and preserves the cell
-%   structures.
-%   \item The following $\Wlam$-module isomorphism
-%   \[
-%     \begin{tikzcd}
-%       & \bC[W_{}]& \\
-%     \end{tikzcd}
-%   \]
-% \end{itemize}
-
-Now  the map $L(w\lambda) \mapsto
-  L(r_{i} w\lambda)$ with $w$ running over $w\in W_{[\lambda]}$ induces an equivalence of
-  category from $\cO_{W\cdot \lambda, [\lambda]}(\fgg,\fhh,\fnn)\cap$ to
-  $\cO_{W\cdot\lambda, [r_{i}\lambda]}$ by Soegel's theorem \cite{H}*{13.13}.
-In particular $w\mapsto r_{i} w r_{i}^{-1}$ induces isomorphism
-  $W_{[\lambda]}\rightarrow W_{[r_{i}\lambda]}$ and preserves the cell
-  structures.
-  In other words, the following $\Wlam$-module isomorphism
-  \[
-    \begin{tikzcd}
-      & \bC[W_{}]\ar[dl, "w\mapsto M_{w}"'] \ar[dr,"w\mapsto M_{r_{i}w}"]& \\
-      \Coh_{[\lambda]}(\fgg,\fhh,\fnn;[\lambda])\ar[rr]
-      & &
-      \Coh_{[\lambda]}(\fgg,\fhh,\fnn;[r_{i}\lambda])
-    \end{tikzcd}
-  \]
-  maps cell representations to cell representations.
-
-\trivial{
-  Let $C = \set{x\in \fhh| \inn{x}{\alpha} >0  \ \forall \alpha\in \WT{\fnn})}$
-    and
-$D_{\lambda} = \set{x\in \fhh| -\inn{x}{\beta} >0 \ \forall \beta\in R^+_{[\lambda]}}$.
-$C$ and $D_{\lambda}$ are fundamental domains of $\fhh$ under $W$ and
-$W_{[\lambda]}$-actions.
-Clearly, $D_{w\lambda} = w D_{\lambda}$.
-The condition that $R^{+}_{[\mu]}\subset - \WT{\fnn}$ is equivalent to $D_{\mu}\supset C$.
-
-Now it is clear $D_{\lambda}$ is the union of $r_{i}^{-1} C$
-when $r_{i}$ running over the preferred  coset representatives
-of $W/W_{[\lambda]}$.
-}
-
-
-\def\Dsp{\cD^{\text{sp}}}
-\def\Csp{\sfC^{\text{sp}}}
-The above discussion yields the following.
-\begin{lem}
-  Fix a $\Gcad$-invariant subset $\sfS$ in the nilpotent cone of $\fgg$.
-
-  Let
-  \[
-    \begin{split}
-  \Csp_{\sfS} &:= \Set{\sigma \in \Irrsp(\Wlam)| \Spr(j_{\Wlam}^{W}\sigma)\subseteq \sfS}, \\
-  \sfC_{\sfS} &:=
-  \Set{\sigma'\in \Irr(\Wlam)| \exists \sigma \in \Dsp_{\sfS} \text{ s. t.
-    } \sigma \leqLR \sigma'}
-  % \bigcup_{\sigma\in \Dsp_{\sfS}}
-  \end{split}
-  \]
-  %Let $\VLR_{\sigma}$ be the unique
-  Then, as an $W_{[\lambda]}$-module
-  \[
-    \begin{split}
-      \Coh_{[\lambda],\sfS}(\fgg,\fhh,\fnn) &= \bigoplus_{i=1}^{k}
-      \Coh_{[\lambda], \sfS}(\fgg,\fhh,\fnn;[r_{i}\lambda])\\
-      & \cong \bigoplus_{i=1}^{k} \sum_{\sigma\in \Csp_{\sfS}} \VLR_{\sigma}\\
-      & \cong \bigoplus_{i=1}^{k} \bigoplus_{\sigma\in \sfC_{\sfS}}
-      (\dim \sigma) \sigma
-    \end{split}
-\]
-\end{lem}
-
-As a baby case of the counting theorem for special unipotent representation
-of real reductive groups, we have the following counting theorem in the category
-$\cO$.
-
-We fix an regular element $\lambda\in [\mu]$ such that $\mu$ is dominant with
-respect to $R^{+}_{[\lambda]}$. Let $S_{[\lambda]}$ be the set of simple roots
-in $R^{+}_{[\lambda]}$. Let $\sfS_{\mu}$ be the subset of simple roots in
-$R^{+}_{[\lambda]}$ orthogonal to $\mu$. Observe that $W_{\mu}$ is always a
-parabolic subgroup attached to $\sfS_{\mu}$ in $W_{[\lambda]} = W_{[\mu]}$. Let
-$\sfD_{\sfS_{\mu}}$ be the set of distinguished right coset representatives of
-$W_{[\lambda]}/W_{\mu}$.
-\trivial[]{
-  $r\in \sfD_{\sfS_{\mu}}$ is the element with minimal lenght in $rW_{\mu}$.
-  Recall that $\tau(w) = \set{\alpha\in S_{[\lambda]}|w\alpha\notin R^{+}_{[\lambda]} }$
-  Note that
-  $\tau(w)\cap R_{\mu}\emptyset$ is equivalent to require that
-  $w \sfS_{\mu}\subseteq R^{+}_{[\lambda]}$, i.e. $w$ is a minimal length
-  element. See for example, Carter, Simple groups of Lie type, Theorem~2.5.8.
-}
-
-\begin{thm}
-  Let $\cO$ be an nilpotent orbit in $\fgg$ and $\mu\in \fhh$.
-  Let $\Pi_{W\cdot \mu, \cO}$ be the set of irreducible highest
-  weight modules $\pi$ such that  $\AVC(\pi) = \cO$.
-  Let $\Dsp_{\cO}$ be the set of set of special representations such that
-  $\Spr(j_{W_{[\mu]}}^{W}\sigma) = \cO$ and
-  $\sfD_{\cO} = \bigcup_{\sigma\in \Dsp_{\cO}} \LRC_{\sigma}$.
-  Then
-  \[
-    \abs{\Pi_{W\cdot\mu,\cO}} = \abs{W/W_{[\mu]}}\cdot \sum_{\sigma\in \sfD_{\cO}} \left(\dim \sigma \cdot [1_{W_{\mu}}:\sigma]\right).
-  \]
-
-
-  Let
-  \[
-  \CLR_{\sigma,\mu} = \CLR_{\sigma}\cap \sfD_{\sfS_{\mu}}
-  \]
-  % \[
-  % \CLR_{\sigma,\mu} = \Set{w\in \CLR_{\sigma}|\tau(w)\cap R_{\mu}= \emptyset}
-  % \]
-  and $\CLR_{\cO,\mu} = \bigcup_{\sigma\in \Dsp_{\cO}} \CLR_{\sigma,\mu}$.
-  Then
-  \[
-  \Pi_{W\cdot\mu,\cO} = \Set{L(r_{i}w)|w\in \CLR_{\cO,\mu} \text{ and } i=1,2,\cdots,k}
-  .
-  \]
-  Here $\VLR_{\sigma}$ is understood as a submodule of $\bC[\Wlam]$.
-\end{thm}
-
-
-Fix $\mu\in \fhh$ and let $\cI_{\mu}$ be the maximal primitive ideal with
-infinitesimal character $\mu$.
-Let $\Pi_{W\cdot \mu}$ be the set of irreducible highest
-weight modules $\pi$ such that  $\Ann(\pi) = \cI_{\mu}$.
-
-
-Combine the above theorem with \Cref{lem:lcell.BV}, we have the following
-counting theorem.
-\begin{thm}
-  %Suppose $\mu = \lambda_{\ckcO}$.
-  Let
-  \[
-  \LC_{\mu} = \left(J_{W_{\mu}}^{W_{[\mu]}} \sgn\right)\otimes \sgn
-  \]
-  be the left cell attached to $\mu$ and
-  \[
-    \sigma_{\mu} = \left(j_{W_{\mu}}^{W_{[\mu]}} \sgn\right)\otimes \sgn.
-  \]
-  Then $\simga_{\mu}$ is the unique special representation containing in
-  $\LC_{\mu}$ and
-  \[
-    \abs{\Pi_{W\cdot \mu}} = \abs{W/W_{[\mu]}}\cdot
-    \dim \LC_{\mu}.
-  \]
-  Moreover,
-  \[
-  \Pi_{W\cdot\mu,\cO} = \Set{L(r_{i}w)|w\in \CLR_{\sigma_{\mu}}\cap \sfD_{\sfS_{\mu}} \text{ and } i=1,2,\cdots,k}
-  \]
-  \qed
-\end{thm}
-
-% A double cell in $\Irr(W_{[\lambda]})$ is an equivalent class under
-% the relation $\approxLR$
-
-
-% \[
-%   \begin{array}{ccc}
-%     \bC[W_{[\lambda]}]& \longrightarrow  &\Coh_{[\lambda]}(\fgg,\fhh,\fnn,[\lambda]).\\
-%     w & \mapsto M_{w}
-%   \end{array}
-% \]
-
-
-% we define the category $\cO'_{S}$ to be the category of $\fgg$-modules
-% such that $M\in \cO'_{S}$ if and only if
-% \begin{itemize}
-%   \item the $\fbb$-action on $M$ is locally finite;
-%   \item $M$ is finitely generated $\cU(\fgg)$-module,
-%   \item $M = \sum_{\mu \in S} M_{\mu}$
-%         where $M_{\mu}$ is the $\mu$-isotypic component of $M$.
-% \end{itemize}
-
-% Therefore, the last condition implies that
-% \[
-%   \begin{split}
-%     \sV^{R}(w) &:=
-%     \sspan\set{L(w'\lambda) | w'\leqR w}\\
-%     & =\sspan\set{L(w' \lambda) | w^{-1}\leqL w'^{-1}}
-%   \end{split}
-% \]
-
-
-
-% Let $\sfN_{d}$ be the union of all nilpotent orbits in $\fgg$ of dimension
-% less than equal to $d$.
-
-
-\section{Harish-Chandra cells}
-
-% \begin{thm}[Barbasch-Vogan]\label{thm:count}
-%   For a complex nilpotent orbit $\cO$,
-%   define
-%   \[
-%     S_{\cO} = \left\{\sigma \in \widehat{W_{[\mu]}}|
-%       \Spr(j_{W_{[\mu]}}^{W} \sigma_{s}) = \cO
-%     \right\}
-%   \]
-%   where $\sigma_{s}$ is the special representation in the double cell containing
-%   $\sigma$.
-
-%   Let $\Pi_{\cO,\mu}(G)$ denote the set of irreducible admissible $G$-module with
-%   complex associated variety $\overline{\cO}$.
-%   % Let $W_{\mu}$ be the stabilizer of $\mu$ and $W_{[\mu]}$ be the stabilizer of
-%   % the lattice
-%   Then
-%   \[
-%     \# \Pi_{\cO,\mu}(G) =
-%     \sum_{\sigma\in S_{\cO}} [\sigma: \mathrm{Coh}_{[\mu]}(G)] \cdot
-%     [1_{W_{\mu}}, \sigma|_{W_{\mu}}].
-%   \]
-%   % Here $[\sgima : \ ]$ denote the multiplicity of $\sigma$
-%   % and  $W_{\mu}$ is the stabilizer of $\mu$.
-% \end{thm}
 
 \subsection{Counting special unipotent representations}
 
@@ -2387,31 +1334,31 @@ In view of \Cref{thm:count}, we need the following lemma by Barabsch-Vogan. %in 
 \begin{lem}[{\cite{BVUni}*{(5.26)}}]
   Let
   \[
-    a_{\mu} = \max\set{a(\sigma)| \sigma \in \Irr(W_{[\mu]}) \text{ and }
-    [1_{W_{\mu}}: \sigma]\neq 0}.
+    a_{\ckcO} = \max\set{a(\sigma)| \sigma \in \Irr(\WLamck) \text{ and }
+    [1_{\Wlamck}: \sigma]\neq 0}.
   \]
   Let
   \[
-    \LC_{\mu} =
-    \set{\sigma \in \Irr(W_{[\mu]}) | a(\sigma) = a_{\mu}
-      \text{ and } [1_{W_{\mu}}: \sigma]\neq   0
+    \LC_{\ckcO} =
+    \set{\sigma \in \Irr(\WLamck) | a(\sigma) = a_{\ckcO}
+      \text{ and } [1_{\Wlamck}: \sigma]\neq   0
     }.
   \]
   Then
- %  \begin{itemize}
- %   \item $\Wlamck$ is a Levi subgroup of $\WLamck$, and
- % \item
-  $\LC_{\mu}$ is a left cell of $W_{[\mu]}$ given by
+  \begin{itemize}
+   \item $\Wlamck$ is a Levi subgroup of $\WLamck$, and
+ \item
+  $\cC_{\ckcO}$ is a left cell of $\WLamck$ given by
   \[
-    (J_{W_{\mu}}^{W_{[\mu]}} \sgn )\otimes \sgn
+    (J_{\Wlamck}^{\WLamck} \sgn )\otimes \sgn
   \]
   which contains a unique special representation
   \[
-    \sigma=(j_{W_{\mu}}^{W_{[\mu]}} \sgn )\otimes \sgn
+    (j_{\Wlamck}^{\WLamck} \sgn )\otimes \sgn.
   \]
-  % \e
+  \end{itemize}
+  \qed
 \end{lem}
-
 \trivial{
   WLOG, we can assume $\lamck$ is integral.
   Now this is essentially contained in \cite{BVUni}.
@@ -2529,21 +1476,15 @@ Let $n_e = \abs{\ckcO_e}, n_o = \abs{\ckcO_o}$ and $\lambda_\ckcO = \half \ckhh$
 
 Then 
 \[
-  W_{\lamck} \cong S_{\abs{\ckcO_e}}\times S_{\abs{\ckcO_o}}.
+  W(\lambda_\ckcO)  \cong S_{\abs{\ckcO_e}}\times S_{\abs{\ckcO_o}}. 
 \]
 \[
  W_{\lambda_\ckcO} = \prod_j S_{\bfcc_j(\ckcO_e)}\times \prod_j S_{\bfcc_j(\ckcO_o)} 
 \]
 By the formula of $a$-function, one can easily see that 
 The cell in $W(\lamck)$ consists of the unique representation $J_{W_{\lamck}}^{\Wint{\lamck}} (1)$.
-Now the $W$-cell $(J_{W_{\lamck}}^W \sgn)\otimes \sgn$ consists a single
-representation
-\[
-\tau_{\ckcO} = \ckcO_{e}^{t}\boxtimes \ckcO_{o}^{t}.
-\]
-The representation $j_{W_{\lamck}}^{S_{n}} \tau_{\ckcO}$
-corresponds to the orbit $\cO= \ckcO^t $ under the Springer
-correspondence.
+Now the $W$-cell is $J_{W_{\lamck}}^W 1$ corresponds to the orbit $\cO= \ckcO^t $ under the Springer
+correspondence. 
 \trivial{
 WLOG, we assume $\ckcO =  \ckcO_o$.
 
@@ -2597,19 +1538,12 @@ on the forumla of the unitary groups in \cite{BV.W}*{Section~4}.
 
 By branching rules of the symmetric groups,  $\Unip_{\ckcO}(G)$ can be parameterized by painted partition. 
 
-\begin{equation}\label{eq:PP.AR}
-\PP_{A^{\bR}}(\ckcO) = \Set{\uptau:=(\tau, \cP)|
-  \begin{array}{l}
-    \text{$\tau = \ckcO^{t}$}\\
-    \text{$\Im(\cP)\subset \set{\bullet,c,d}$}\\
-    \text{$\#\set{i|\cP(i,j)=\bullet}$ is even}
-    % \text{``$\bullet$'' occures with even}\\
-    % \text{mulitplicity in each column}
-  \end{array}
-}.
-\end{equation}
-For $\uptau:=(\tau,\cP)\in \PP_{A^{\bR}}(\ckcO)$, we write $\cP_{\uptau}:= \cP$.
-
+\[
+\PP{\ckcO} = \set{\uptau\colon \BOX{\ckcO^t}\rightarrow \set{\bullet,c,d}|
+  \begin{minipage}{12em} ``$\bullet$'' occures with even\\ mulitplicity in each column
+  \end{minipage}
+}.  
+\]
 \trivial{
 The typical diagram of all columns with even length $2c$ are
 \[
@@ -2665,20 +1599,20 @@ For each partition $\tau$ only having even columns, we define
 
 \subsection{Counting special unipotent repesentations of $\rU(p,q)$}
 We call the parity of $\abs{\ckcO}$ the ``good pairity''.  The other pairity is called the ``bad parity''. 
-We write $\ckcO = \ckcO_g\cup \ckcO_b$ where $\ckcO_g$ and $\ckcO_b$ consist of good parity length rows
-and bad parity rows respectively.
+We write $\ckcO = \ckcO_g\cup \ckcO_b$ where $\ckcO_g$ and $\ckcO_b$ consist of good pairity length rows 
+and bad pairity rows respectively.  
 
 Let $(n_g,n_b) = (\abs{\ckcO_g},\abs{\ckcO_b})$.
 Now as the $S_{n_g}\times S_{n_b}$ 
 \[
-\bigoplus_{\substack{p,q\in \bN\\p+q=n}} \Cint{\lamck}(\rU(p,q)) = \cC_{g}\otimes \cC_{b}
+\bigoplus_{\substack{p,q\in \bN\\p+q=n}} \Cint{\lamck}(\rU(p,q)) = \cC_{gd}\otimes \cC_{bd}
 \]
 where 
 \[
   \begin{split}
- \cC_{g} &= \bigoplus_{\substack{s,a,b\in \bN\\2s+a+b=n_g}} \Ind_{W_{s}\times S_a\times S_b}^{S_{n_g}}
+ \cC_{gd} &= \bigoplus_{\substack{s,a,b\in \bN\\2s+a+b=n_g}} \Ind_{W_{s}\times S_a\times S_b}^{S_{n_g}}
  1\otimes \sgn\otimes \sgn \\
- \cC_{b} &= \begin{cases}
+ \cC_{bd} &= \begin{cases}
   \Ind_{W_{\frac{n_b}{2}}}^{S_{n_b}} 1 & \text{if $n_b$ is even}\\
   0 & \text{otherwise}. 
  \end{cases}
@@ -2805,891 +1739,19 @@ special unipotent representations on the two sides.
 In this section, we consider the case when $\ckstar \in \set{B,C,D}$, i.e
 $\star \in \set{B,\wtC, C,D,C^{*}, D^{*}}$.
 
-We identify $\fhh^{*}$ with $\bZ^{n}$ where $n = \rank(\Gc)$
-and let $\rho$ be the half sum of all positive roots.
-
 Recall that
 \[
   \text{good pairity} =
 \begin{cases}
- %\text{odd} & \text{when } \ckstar\in \set{B,D}\\
- %\text{even} & \text{when } \ckstar = C\\
- \text{odd} & \text{when } \star \in \set{C,C^{*},D,D^{*}}\\
- \text{even} & \text{when } \star \in \set{B,\wtC}\\
+ \text{odd} & \text{when} \ckstar\in \set{B,D}\\
+ \text{even} & \text{when} \ckstar = C\\
 \end{cases}
 \]
 
-\def\Wb{W_{b}}
-\def\Wg{W_{g}}
 
-  Suppose $\ckcO\in \Nil(\ckcG)$ with decomposition
-  $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$.
-  Then $\ckcG_{\lamck} = \ckcG_{b}\times \ckcG_{g}$.
-  Let $n_{b}$ and $n_{g}$ be the rank of $\ckcG_{b}$ and $\ckcG_{g}$
-  respectively. We have
-  \[
-    (n_{b}, n_{g}) =
-    \begin{cases}
-      (\half \abs{\ckcO_{b}}, \half(\abs{\ckcO_{g}}-1)) & \text{when
-      } \star \in \set{C,C^{*}}\\
-      (\half \abs{\ckcO_{b}}, \half\abs{\ckcO_{g}}) & \text{when
-      } \star \in \set{B,\wtC,D,D^{*}}\\
-    \end{cases}
-  \]
-  and integral Weyl group is a product of two factors
-  \[
-    W_{[\lamck]} =\Wb\times \Wg
-  \]
-  where
-  \[
-    \begin{split}
-    \Wb & := \begin{cases}
-      \sfW_{n_{b}}  & \text{when } \star \in \set{B, \wtC} \\
-      \sfW'_{n_{b}} & \text{when } \star \in \set{C,C^{*},D,D^{*}}
-      \end{cases}\\
-    \Wg & := \begin{cases}
-      \sfW_{n_{g}}  & \text{when } \star \in \set{B,C, C^{*} } \\
-      \sfW'_{n_{g}} & \text{when } \star \in \set{\wtC,D,D^{*}}
-      \end{cases}
-    \end{split}
-  \]
-
-
-  \subsection{The left cell}
-
-\begin{lem}\label{lem:Lcell}
-  % Suppose $\star \in \set{C, C^{*}}$, $\ckcO_{b}$ has $2k$ rows and $\ckcO_{g}$
-  % has $2l+1$-rows. Here each row in $\ckcO_{b}$ has even length and each row in
-  % $\ckcO_{g}$ has odd length, and $\WLamck = W'_{b}\times W_{g}$ where
-  % $b= \frac{\abs{\ckcO_{b}}}{2}$ and $g = \frac{\abs{\ckcO_{g}}-1}{2}$. Let
-  %
-  In all the cases there is a irreducible $\Wb$-representation $\tau_{b}$
-  such that
-  \[
-    \begin{array}{ccc}
-      \LC(\ckcO_{g}) & \longrightarrow & \LC(\ckcO)\\
-      \tau_g & \mapsto & \tau_{b}\otimes \tau_{g}
-    \end{array}
-  \]
-  is a bijection.
-  Here
-  \[
-    \tau_{b} = \begin{cases}
-      \Big( \big(\frac{\bfrr_{2}(\ckcO_{b})+1}{2}, \frac{\bfrr_{4}(\ckcO_{b})+1}{2}, \cdots, \frac{\bfrr_{2k}(\ckcO_{b})+1}{2}\big),\\
-       \hspace{1em} \big(\frac{\bfrr_{2}(\ckcO_{b})-1}{2}, \frac{\bfrr_{4}(\ckcO_{b})-1}{2}, \cdots, \frac{\bfrr_{2k}(\ckcO_{b})-1}{2}\big)\Big)
-      & \text{if } \star \in \set{B,\wtC},\\
-      \Big( \big(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b})\big), \\
-      \hspace{1em} \big(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}) \big)\Big)_{I}
-      & \text{if } \star \in \set{C,C^{*}, D,D^{*}}.\\
-    \end{cases}
-  \]
-
-
-  Set
-  \[
-    \CPPs(\ckcO_{g}) =
-    \begin{cases}
-    \set{(2i-1,2i)| \bfrr_{2i-1}(\ckcO_{g})> \bfrr_{2i}(\ckcO_{g})>0, \text{
-        and } i\in \bN^{+}}
-    \end{cases}
-  \]
-  and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
-
-
-\end{lem}
-
-\subsection{The left cell}
-
-
-
-\subsection{Coherent continuation representations}
-
-Let $Q$ be the root lattice in $\fhh^{*}$
-which is
-\[
-Q = \begin{cases}
-  \bZ^{n} & \text{if  $\star = B$}\\
-  %\set{(a_{1},a_{2},\cdots, a_{n})\in \bZ^{n}|\sum_{i=1}^{n}a_{i} \in 2\bZ}
-  \Set{(a_{i})\in \bZ^{n}|\sum_{i=1}^{n}a_{i} \text{ is even}}
-    & \text{if  $\star \in \set{C,\wtC,C^{*},D,D^{*}}$}\\
-\end{cases}
-\]
-We consider the lattice
-\[
-  \Lambda_{n_{b},n_{g}} =
-  (\underbrace{\half, \cdots, \half}_{n_{b}\text{-terms}}, \underbrace{0, \cdots, 0}_{n_{g}\text{-terms}}) + Q.
-  =
-\]
-
-\section{Type C}
-
-  The dual group of $\Gc = \Sp(2n,\bC)$ is $\ckGc = \SO(2n+1,\bC)$. The even is
-  the bad parity, and odd is the good parity.
-
-
-  Fix $n_{b},n_{g}$ such that $n_{b}+ n_{g} = n$. Let
-  \begin{equation} \label{eq:Lam.C}
-    \Lambda_{n_{b},n_{g}} = (\underbrace{\half, \cdots, \half}_{n_{b}\text{-terms}}, \underbrace{0, \cdots, 0}_{n_{g}\text{-terms}}) + Q.
-  \end{equation}
-
-  Suppose $\ckcO\in \Nil(\SO(2n+1,\bC))$ with decomposition
-  $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$.
-
-  Let $\ckcO'_b$ be the Young diagram such that
-  $\bfrr_i(\ckcO'_b) = \bfrr_{2i}(\ckcO_b)$ and $\cO'_{b}$ be the transpose of
-  $\ckcO'_{b}$.
-
-
-  \[
-    \tau_{b} = \Big( \left(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b})\right), \left(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}) \right)\Big)_{I} \in \Irr(W'_{b}).
-  \]
-  Set
-  \[
-    \CPP(\ckcO_{g}) = \set{(2i-1,2i)| \bfrr_{2i-1}(\ckcO_{g})> \bfrr_{2i}(\ckcO_{g})>0, \text{
-        and } i\in \bN^{+}}
-  \]
-  and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
-
-  For $\sP \in \CQ(\ckcO)$, let
-  \[
-    \tau_{\sP} := (\imath,\jmath) \in \Irr(W_{g})
-  \]
-  such that
-  \[
-    (\bfcc_{l+1}(\imath), \bfcc_{l+1}(\jmath)) := (0,\half(\bfrr_{2l+1}(\ckcO_{g})-1))
-  \]
-  and for all $1\leq i\leq l$
-  \[
-    (\bfcc_{i}(\imath), \bfcc_{i}(\jmath)):=
-    \begin{cases}
-      (\half (\bfrr_{2i}(\ckcO_{g})+1), \half (\bfrr_{2i-1}(\ckcO_{g})-1))
-      & \text{if } (2i-1,2i)\notin \sP,\\
-      (\half (\bfrr_{2i-1}(\ckcO_{g})+1),\half (\bfrr_{2i}(\ckcO_{g})-1)) & \text{otherwise.}
-    \end{cases}
-  \]
-
-  Then we have the following bijection
-  \[
-    \begin{array}{ccc}
-      \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
-      \sP & \mapsto & \tau_{b}\otimes \tau_{\sP}.
-    \end{array}
-  \]
-  such that $\tau_{b}\otimes \tau_{\emptyset}$ is the special representation in
-  $\LC(\ckcO)$.
-
-  Moreover
-  $\Spr(j_{W'_{b}\times W_{g}}^{W_{n}} \tau_{b}\otimes \tau_{\emptyset}) = \cO_{b}\cupcol \cO_{g}$
-  where $\cO_{g} = \dBV(\ckcO_{g})$ and $\cO_{b} = \ckcO_{b}^{t}$.
-
-
-\begin{lem}\label{lem:cell.C}
-  Suppose $\star \in \set{C, C^{*}}$, $\ckcO_{b}$ has $2k$ rows and $\ckcO_{g}$
-  has $2l+1$-rows. Here each row in $\ckcO_{b}$ has even length and each row in
-  $\ckcO_{g}$ has odd length, and $\WLamck = W'_{b}\times W_{g}$ where
-  $b= \frac{\abs{\ckcO_{b}}}{2}$ and $g = \frac{\abs{\ckcO_{g}}-1}{2}$. Let
-  \[
-    \tau_{b} = \Big( \left(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b})\right), \left(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}) \right)\Big)_{I} \in \Irr(W'_{b}).
-  \]
-  Set
-  \[
-    \CPP(\ckcO_{g}) = \set{(2i-1,2i)| \bfrr_{2i-1}(\ckcO_{g})> \bfrr_{2i}(\ckcO_{g})>0, \text{
-        and } i\in \bN^{+}}
-  \]
-  and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
-
-  For $\sP \in \CQ(\ckcO)$, let
-  \[
-    \tau_{\sP} := (\imath,\jmath) \in \Irr(W_{g})
-  \]
-  such that
-  \[
-    (\bfcc_{l+1}(\imath), \bfcc_{l+1}(\jmath)) := (0,\half(\bfrr_{2l+1}(\ckcO_{g})-1))
-  \]
-  and for all $1\leq i\leq l$
-  \[
-    (\bfcc_{i}(\imath), \bfcc_{i}(\jmath)):=
-    \begin{cases}
-      (\half (\bfrr_{2i}(\ckcO_{g})+1), \half (\bfrr_{2i-1}(\ckcO_{g})-1))
-      & \text{if } (2i-1,2i)\notin \sP,\\
-      (\half (\bfrr_{2i-1}(\ckcO_{g})+1),\half (\bfrr_{2i}(\ckcO_{g})-1)) & \text{otherwise.}
-    \end{cases}
-  \]
-
-  Then we have the following bijection
-  \[
-    \begin{array}{ccc}
-      \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
-      \sP & \mapsto & \tau_{b}\otimes \tau_{\sP}.
-    \end{array}
-  \]
-  such that $\tau_{b}\otimes \tau_{\emptyset}$ is the special representation in
-  $\LC(\ckcO)$.
-
-  Moreover
-  $\Spr(j_{W'_{b}\times W_{g}}^{W_{n}} \tau_{b}\otimes \tau_{\emptyset}) = \cO_{b}\cupcol \cO_{g}$
-  where $\cO_{g} = \dBV(\ckcO_{g})$ and $\cO_{b} = \ckcO_{b}^{t}$.
-\end{lem}
-
-% In that follows, we write
-% \[
-% \tau_{\ckcO_{g}} := \tau_{\emptyset}
-% \]
-% in \Cref{lem:cell.C}.
-
-\trivial{ In this case, bad parity is even and each row length occur with even
-  multiplicity. Suppose
-  $\ckcO_{b} = (C_{1}, C_{1}, C_{2},C_{2}, \cdots, C_{k'},C_{k'})$ with
-  $c_{1}=2k$ and $k' = \bfrr_{1}(\ckcO_{b})$.
-  \[
-    W_{\lamckb} = S_{C_{1}}\times S_{C_{2}}\times \cdots S_{C_{k'}}.
-  \]
-  The symbol of trivial representation of trivial group of type D is
-  \[
-    \binom{0,1, \cdots, k-1}{0,1, \cdots, k-1}.
-  \]
-  Now it is easy to see that
-  \[
-    J_{W_{\lamckb}}^{W_{b}}\sgn = ((\half C_{1}, \half C_{2},\cdots, \half C_{k'}),(\half C_{1}, \half C_{2},\cdots, \half C_{k'})).
-  \]
-
-  For the good parity part. Suppose
-  $\ckcO_{g} = (2c_{1}+1, C_{2}, C_{2},C_{3},C_{3},\cdots, C_{k'},C_{k'})$ with
-  $2c_{1}+1=2l+1$ and $2k'+1 = \bfrr_{1}(\ckcO_{g})$.
-  \[
-    W_{\lamckg} = W_{c_{1}}\times S_{C_{2}}\times \cdots \times S_{C_{k'}}.
-  \]
-
-  The symbol of sign representation of $W_{c_{1}}$ is
-  \[
-    \binom{0,1,2, \cdots, c_{1}}{1,2, \cdots, c_{1}}.
-  \]
-
-  By induction on number of columns, we see that when even column of length $2c$
-  occurs, it adds length $c$ columns on the both sides of the bipartition; when
-  odd column $C_{i}=2c_{i}+1$ with $i>1$ and multiplicity $2r'$ occur, the
-  bifurcation happens: one can attach $r'$ columns of length $c_{i}+1$ on the
-  right and $r'$ columns of length $c_{i}$ on the left (special representations)
-  or attach $r'$ columns of length $c_{i}+1$ on the left and $r'$ columns of
-  length $c_{i}$ on the right.
-
-  Therefore,
-  \[
-    \begin{array}{ccc}
-      J_{W_{\lamckg}}^{W_{g}} \sgn
-      &\leftrightarrow&  \bF_{2}(\CPP(\ckcO_{g}))\\
-      \cktau_{\sP}&\leftrightarrow & \sP
-    \end{array}
-  \]
-  where
-  \[
-    \begin{split}
-      \bfrr_{l+1}(\cktau_{L}) & =\half (\bfrr_{2l+1}(\ckcO_{g})-1)\\
-      (\bfrr_{i}(\cktau_{L}), \bfrr_{i}(\cktau_{R})) & =
-      \begin{cases}
-        (\half(\bfrr_{2i-1}(\ckcO_{g})-1), \half(\bfrr_{2i}(\ckcO_{g})+1)) & (2i-1,2i)\notin \sP\\
-        (\half(\bfrr_{2i}(\ckcO_{g})-1), \half(\bfrr_{2i-1}(\ckcO_{g})+1)) & (2i-1,2i)\in \sP
-      \end{cases}
-    \end{split}
-  \]
-
-  Now tensor with sign yields the result.
-
-  We adopt the convention that
-  \[
-    S_{\cO} := \prod_{i\in \bN^{+}}S_{\bfrr_{i}(\cO)}
-  \]
-  so that $j_{S_{\cO}}\sgn = \cO$ for each partition $\cO$.
-
-  Consider the orbit under the Springer correspondence. Let
-  $\cO'_{b} = (r_{2}(\ckcO_{b}), r_{4}(\ckcO_{b}),\cdots, r_{2k}(\ckcO_{b}))$.
-  Note that $\tau_{b} = j_{S_{\cO'_{b}}}^{W'_{b}} \sgn$. So
-  \[
-    \wttau:= j_{W'_{b}\times W_{g}}^{W_{n}} \tau_{b}\otimes \tau_{\emptyset}) = j_{S_{\cO'_{b}}\times W_{g}}^{W_{n}} \sgn\otimes \tau_{\sP}.
-  \]
-  Since the Springer correspondence commutes with parabolic induction, we get
-  $\Spr(\wttau) = \Ind_{\GL_{\cO'_{b}}\times \Sp(2g)}^{\Sp(2n)} 0\times \cO_{g} = \cO_{b}\cupcol \cO_{g}$
-}
-
-
-\subsection{Counting special unipotent representation of $G=\Sp(p,q)$}.
-
-The dual group of $\Gc = \Sp(2n,\bC)$ is $\ckGc = \SO(2n+1,\bC)$.
-
-We set $(2m+1,2m') = (\abs{\ckcO_g},\abs{\ckcO_b})$.
-
-We view $W_{2t}$ as the reflection group acts on $\bC^{t}$ as usual. Let
-$H_{t}\cong W_t\ltimes \set{\pm 1}^t$ be the subgroup in $W_{2t}$ such that
-\begin{itemize}
-  \item the first factor $W_{t}$ sits in $S_{2t}$ commuting with the involution
-        $(12)(34)\cdots ((2t-1)(2t))$.
-  \item The element $(1,\cdots,1, \underbrace{-1}_{i\text{-th
-        term}}, 1, \cdots, 1)\in \set{\pm 1}^{t}$ acts on $\bC^{2t}$ by
-        \[
-          % (x_{1},\cdots, x_{2i-2}, x_{2i-1}, x_{2i},x_{2i+1},\cdots, x_{2t} )
-        (x_{1},x_{2},\cdots, x_{2t} ) \mapsto (x_{1},\cdots, x_{2i-2}, -x_{2i},-x_{2i-1},x_{2i+1},\cdots, x_{2t}).
-        \]
-\end{itemize}
-Note that $H_{t}$ is also a subgroup of $W'_{2t}$.
-Define the quadratic character
-\[
-  \begin{array}{rccc}
-    \hsgn := q\otimes \sgn\colon & H_{t}=  W_{t}\ltimes \set{\pm 1}^{t}& \longrightarrow & \set{\pm 1}\\
-    & (g,(a_{1},a_{2},\cdots, a_{t})) & \mapsto & a_{1}a_{2}\cdots a_{t}.
-  \end{array}
-\]
-The most important formula is
-\begin{equation}\label{eq:CC.C}
-  \Ind_{H_{t}}^{W_{2t}} \hsgn = \sum_{\sigma\in \Irr(S_{t})} (\sigma,\sigma).
-\end{equation}
-Note that we have chosen the embedding $W_{t}\subset S_{2t}$ in $W_{2t}$. We have
-\[
-  \Ind_{H_{t}}^{W'_{2t}} \hsgn = \sum_{\sigma\in \Irr(S_{t})} (\sigma,\sigma)_{I}.
-\]
-
-\trivial{ In McGovern's paper, the coherent continuation representation is
-  described as:
-  \[
-    \sum_{t,s,a,b}\Ind_{W_t\times (W_s\ltimes W(A_1)^s)\times W_a\times W_b}^{W_{t+2s+a+b}} \sgn\otimes (\triv \otimes \sgn)\otimes \triv\otimes \triv
-  \]
-  Now \eqref{eq:CC.C} was obtained by the following branching formula:
-  \cite[p220 (6)]{Mc}
-  \[
-    I_n:= \Ind_{(W_s\ltimes W(A_1)^s)}^{W_{2s}}\triv\otimes \sgn = \sum \lambda\times \lambda
-  \]
-  where $\lambda$ running over all Young diagrams of size $s$. As McGovern
-  claimed the proof of the above formula is similar to Barbasch's proof of
-  \cite[Lemma~4.1]{B.W}:
-  \[
-    \Ind_{W_n}^{S_{2n}} \triv = \sum \sigma \quad \text{where $\sigma$ has even
-      rows only}.
-  \]
-
-  Sketch of the proof (use branching rule and dimension counting): Note that
-  $\dim I_n = \frac{(2p)! 2^{2p}}{p! 2^{2p}} = (2p)!/p! =\sum_\lambda \dim \lambda\times \lambda$
-  (For the last equality:
-  $\dim \lambda\times \lambda = (2p)! (\dim \lambda)^2/(p!)^2$ where
-  $\dim \lambda$ is the dimension of $S_n$ representation determined by
-  $\lambda$; But $\sum (\dim \lambda)^2 = p!$). On the other hand,
-  $H :=W_s\ltimes W(A_1)^s\cap W_s\times W_s = \Delta W_s \subset W_{2s}$.
-  $\triv \otimes \sgn|_H = \sgn$ of $\Delta W_s$ Therefore,
-  $\lambda\times \lambda$ appears in $I_n$ by Mackey formula. Now by dimension
-  counting, we get the formula. }
-
-% By Vogan duality, the dual group for class $[\lamck]$ is
-% \[
-%   \SO(2m+1,\bC)\times \rO(2m',\bC).
-% \]
-
-
-\begin{lem}
-  Recall \eqref{eq:Lam.C} for the definition of lattice $\Lambda_{n_{b},n_{g}}$.
-  We have the following formula on the coherent continuation
-  representations based on $\Lambda_{n_{b},n_{g}}$:
-  \[
-    \bigoplus_{p+q=n} \Coh_{\Lambda_{n_{b}, n_{g}}}(\Sp(p,q)) \cong \cC_{b}\times \cC_{g}.
-  \]
-  with
-  \[
-    \begin{split}
-      \cC_g %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
-      &=\bigoplus_{\substack{t,s,r\in\bN\\2t+s+r=n_{g}}} \Ind_{H_{t} \times W_s\times W_t}^{W_{n_{g}}}
-       \hsgn \otimes \sgn \otimes \sgn \\
-      & =\bigoplus_{\substack{t,s,r\in\bN\\2t+s+r=n_{g}}} \Ind_{W_{2t}\times W_s\times W_r}^{W_{n_{g}}}
-      (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
-      \cC_b & =
-      \begin{cases}
-        \Ind_{H_{t}}^{W'_{n_{b}}} \sgn &
-        \text{if $n_{b}=2t'$ is even} \\
-        0 & \text{otherwise}\\
-      \end{cases}\\
-    \end{split}
-  \]
-\end{lem}
-
-Let
-\[
-  \PBP_{\star}(\ckcO_{b}) = \Set{(\imath,\jmath, \cP,\cQ) | %
-    \begin{array}{l}
-      (\imath,\jmath) = \tau_{b}\\
-      \Im \cP \subset \set{\bullet}, \Im \cQ \subset\set{\bullet
-      }\\
-    \end{array}
-  }
-\]
-
-\begin{lem}\label{lem:bp.C*}
-  The set $\PBP_{\star}(\ckcO_{b})$ is a singleton.
-  Let $\ckcO_{1}$ be the partition with only one box.
-  Then  there only one special unipotent representation
-  attached to $\ckcO_{b}\cuprow \ckcO_{1}$ which is given by
-  \[
-    \pi_{\star,\ckcO_{b}}:=
-    \Ind_{\GL_{b}(\bH)}^{\Sp(b,b)}\pi_{\ckcO'_{b}}
-  \]
-  where $\pi_{\ckcO'_{b}}$ is the unique special unipotent representation
-  attached
-  to $\ckcO'_{b}$.
-  % the parabolic induction from
-  % the unique special unipotent representation of $\GL_{b}(\bH)$ to
-  % $\Sp(b,b)$.
-\end{lem}
-\begin{proof}
-  The claim of the size of $\PBP_{\star}$ is clear, i.e. there is only one
-  special unipotent representation attached to $\ckcO'_{b}$. A prior,
-  $\Ind_{\GL_{b}(\bH)}^{\Sp(b,b)}\pi_{\ckcO'_{b}}$ maybe a finite copies of the
-  unique special unipotent representation. Meanwhile its associated variety is
-  multiplicity free. hence $\pi_{\star,\ckcO_{b}}$ must be irreducible.
-\end{proof}
-
-For each $\sP\subset \CPP(\ckcO_{g})$, let
-\[
-  \PBP_{\star,\sP}(\ckcO_g)= \Set{(\imath,\jmath,\cP,\cQ)| %
-    \begin{array}{l}
-      (\imath,\jmath) = \tau_{\sP}\\
-      \Im \cP \subset \set{\bullet}, \Im \cQ \subset\set{\bullet, s,r}\\
-    \end{array}
-  }
-\]
-where $\tau_{\sP}$ is defined in \Cref{lem:cell.C}.
-By abuse of notation, we write
-\[
-\PBP_{\star}(\ckcO_g) :=\PBP_{\star,\emptyset}(\ckcO_g)
-\]
-
-
-\begin{prop}
-  Suppose $\ckcO\in \Nil(\SO(2n+1,\bC))$ with decomposition
-  $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$.
-  \begin{enumT}
-    \item The size of $\Unip_{\star}(\ckcO)$ is counted by
-    $\PBP_{\star}(\ckcO_{g})$.
-    \item The set $\PBP_{\star}(\ckcO_{g})$ is non-empty only if
-    \[
-      \bfrr_{2i-1}(\ckcO)> \bfrr_{2i}(\ckcO)
-    \]
-    for each $i\in \bN^{^{+}}$ with $\bfrr_{2i}(\ckcO)>0$.
-    \item We have
-    \[
-      \abs{\PBP_{\star}(\ckcO_{g})} = \abs{\Nil_{C^{*}}(\cO_{g})}
-    \]
-    with $\cO_{g} := \dBV(\ckcO_{g})$.
-    \item When $\Unip_{C^{*}}(\ckcO)\neq \emptyset$, there is a bijection
-    \[
-      \begin{array}{ccccc}
-        \Nil_{C^{*}}(\cO_{g})& \longrightarrow & \Unip_{C^{*}}(\ckcO_{g})
-        &\longrightarrow &\Unip_{C^{*}}(\ckcO) \\
-        \sO_{g} & \mapsto & \pi_{\sO_{g}} & \mapsto
-                         & \pi'\rtimes \pi_{\sO_{g}}.
-      \end{array}
-    \]
-    Here $\pi'$ is the unique special unipotent representation of $\GL_p(\bH)$
-    with associated variety $\cO_{b}$, $\pi_{\sO_{g}}$ is the unique special
-    unipotent representation of $\Sp(p,q)$ with associated variety $\sO_{g}$
-    such that $\Sign(\sO_{g}) = (2p,2q)$, and $\pi'\rtimes \pi_{\sO_{g}}$ denote
-    the parabolic induction.
-  \end{enumT}
-\end{prop}
-\begin{proof}
-  \begin{enumPF}
-    \item
-    Suppose $(2i-1,2i)\in \sP\subset \CPP(\ckcO_{g})$.
-    Let $(\imath,\jmath) :=\tau_{\sP}$. Then
-    $\bfcc_{i}(\imath)>\bfcc_{i}(\jmath)$ which implies that
-    $\PBP_{\star,\sP}(\ckcO_{g}) = \emptyset$.
-    \item
-    The first claim is similar to part (i), see \cite{BMSZ2}*{Proposition~10.1}.
-    \item This is \cite{Mc}*{Theorem 6}, also see \cite{BMSZ2}.
-    \item
-    It follows from \Cref{lem:bp.C*} and the Vogan duality.
-    See appendix.
-    % One probably can prove the claim similar to that in
-    % \cite{MR19}*{Proposition~5.5}.
-    % We use Vogan duality, see Appendix.
-  \end{enumPF}
-\end{proof}
-
-% In $\SO(2m',\bC)$, the double cell corresponds to $\ckcO_b$ consists of a single
-% representation
-% \[
-%   \cktau_b = (\cksigma_b,\cksigma_b) \text{ such that
-%   } \bfrr_i(\cksigma_b) = \bfrr_{2i}(\ckcO_b)/2
-% \]
-% Let $\ckcO'_b$ be the Young diagram such that
-% $\bfrr_i(\ckcO'_b) = \bfrr_{2i}(\ckcO_b)$ and $\pi'_b$ be the unique special
-% unipotent representation attached to $\GL_p(\bH)$
-% \begin{lem}
-%   The set $\Unip_{\ckcO_b}(\Sp(p,q))\neq \emptyset$ only if
-%   $p=q = \abs{\cksigma_b}$ and in this case it consists a single element
-%   \[
-%     \pi_b := \Ind_P^{\Sp(p,p)} \pi'_{\cksigma_b} %^{\GL_p(\bH)}
-%   \]
-%   where $P$ has the Levi subgroup $\GL_p(\bH)$.
-% \end{lem}
-
-
-% The special reprsentation corresponds to $\ckcO_b$ is
-% \[
-%   aa
-% \]
-
-% \begin{lem}
-%   The set of $\Unip_{\ckcO}(\Sp(p,q))$ is paramterized by the set such that
-%   \[
-%     ss
-%   \]
-% \end{lem}
-
-
-\trivial{Let $W = W(\Gc)$ where $\Gc$ is natrualy embeded in $\GL(n,\bC)$. Let
-  $s_{\varepsilon_i i,\varepsilon_j j}$ be the permutation matrix of index
-  $i,j$, where the $(i,j)$-th entry is $\varepsilon_i$, the $(j,i)$-th entry is
-  $\varepsilon_j$ and the other place is the identity matrix. Let
-  $w_{i,\pm j}^{\epsilon}$ be the element such that
-  \begin{itemize}
-    \item it is in $\Gc$ and entries in $\set{0}\cup \mu_4$
-    \item it lifts the element $e_i \leftrightarrow \pm e_j$ in the Weyl group.
-    \item $(w_{i,\pm j}^{\epsilon})^2 = \epsilon 1\in \set{\pm 1}$.
-  \end{itemize}
-  Let \[h_{\pm i}^+ = \diag(1,\cdots, 1, \pm 1, 1, \cdots, 1)\] where $\pm 1$ is
-  the $i$-th place. Let
-  \[h_{\pm i}^- = \diag(1,\cdots, 1, \pm \sqrt{-1}, 1, \cdots, 1)\] where
-  $\pm \sqrt{-1}$ is the $i$-th place. Let $e_{\pm i} = s_{\pm i,\pm (n-i+1)}$.
-
-  Let $\ckww_{i,\pm j}^\pm$ be the lift of $e_i \leftrightarrow \pm e_j$ such
-  that
-  \begin{itemize}
-    \item it is in $\Gc$ and entries in $\set{0}\cup \mu_4$
-    \item it lifts the element $e_i \leftrightarrow \pm e_j$ in the Weyl group.
-    \item $(w_{i,\pm j}^{\epsilon})^2|_{[i,j]} = \epsilon 1\in \set{\pm 1}$ here
-          ``$|_{[i,j]}$'' means restricts on the $e_i,e_j,-e_i,-e_j$-weights
-          space.
-  \end{itemize}
-
-  Let
-  \[
-    \begin{split}
-      x_{b,s,r} &= w_{1,2}^+\cdots w_{2b-1,2b}^+\, h_{2b+1}^+\cdots h_{2b+s}^+ \\
-      y_{b,s,r}^+ &= \ckww_{1,-2}^+\cdots \ckww_{2b-1,-2b}^+\,
-      e_{2b+1}\cdots e_{2b+s+r} \\
-      y_{b,s,r}^- &= \ckww_{1,-2}^-\cdots \ckww_{2b-1,-2b}^-
-    \end{split}
-  \]
-
-  We compute the parameter space
-  \[
-    \begin{split}
-      \cZ_g &=  \bigcup_{2b+s+r=m} W_m\cdot (x_{b,s,r}^+, y_{b,s,r}^+)\\
-      \cZ_b &=  \bigcup_{2b=m} W_m\cdot (x_{b,0,0}^+, y_{b,0,0}^-)\\
-    \end{split}
-  \]
-
-}
-
-
-\subsection{Counting special unipotent representation of $G = \Sp(2n,\bR)$}
-
-In this section, we consider the case where $\star = C$.
-
-Recall \eqref{eq:Lam.C} for the definition of the lattice
-$\Lambda_{n_{b},n_{g}}$.
-
-\begin{lem}
-  We have the following formula on the coherent continuation representations
-  based on $\Lambda_{n_{b},n_{g}}$:
-  \[
-    \Coh_{\Lambda_{n_{b},n_{g}}}(\Sp(2n,\bR)) = \cC_g\otimes \cC_b
-  \]
-  with
-  \[
-    \begin{split}
-      \cC_g &=
-      \bigoplus_{2t+a+c+d=n_{g}}\Ind_{H_{t} \times S_{a} \times W_c\times W_d}^{W_{n_{g}}} 1 \otimes \sgn \otimes 1 \otimes 1\\
-      \cC_b &= \Res_{W_{n_{b}}}^{W'_{n_{b}}}\left( \bigoplus_{\substack{2t+a=n_{b}}} \Ind_{H_{t} \times S_a}^{W_{n_{b}}} \hsgn\otimes 1\right) \\
-    \end{split}
-  \]
-  \qed
-\end{lem}
-
-\trivial{ Consider $\cC_{b}$. The real Cartan must be
-  ${\bC^{\times}}^{t} \times {\bR^{\times}}^{t}$ In real Weyl group is
-  $H_{t}\times W_{a}$ generated by The $H_{t}$ action is known. $W_{a}$ is
-  generated by the reflections of $e_{i}\pm e_{j}$ $n-2t<i\neq j\leq n$. We
-  consider the regular character
-  $\gamma = *\otimes \underbrace{\abs{}^{\half}\otimes \cdots \otimes \abs{}^{\half}}_{a\text{-terms}}$.
-  The cross action of $s_{e_{n-1}+e_{n}}$ is given by
-  \[
-    \begin{split}
-      s_{e_{n-1}+e_{n}}\times \gamma & = *\otimes \underbrace{\abs{}^{\half}\otimes \cdots \otimes \abs{}^{\half} \otimes \sgn \abs{}^{-\half}
-        \otimes \sgn \abs{}^{-\half}}_{a\text{-terms}} \\
-      &\neq
-      s_{e_{n-1}+e_{n}}\cdot \gamma \\
-      &= *\otimes \underbrace{\abs{}^{\half}\otimes \cdots \otimes \abs{}^{\half} \otimes \abs{}^{-\half} \otimes \abs{}^{-\half}}_{a\text{-terms}}.
-    \end{split}
-  \]
-  Now we see that the cross stabilizer should be
-  $H_{t}\times S_{a}$.
-}
-
-Now $[\tau_{b}:\cC_{b}]$ is counted by the size of the following set
-\[
-  \PBP_{\star}(\ckcO_b) := \Set{(\imath,\jmath,\cP,\cQ)| %
-    \begin{array}{l}
-      (\imath,\jmath) = \tau_{b}\\
-      \Im \cP \subset \set{\bullet,c}, \Im \cQ \subset\set{\bullet,d}\\
-    \end{array}
-  }
-\]
-and for each $\sP\subset \CPP(\ckcO_{g})$, the multiplicity
-$[\tau_{\sP}: \cC_{g}]$ is counted by the size of
-\[
-  \PBP_{\star}(\ckcO_g,\sP):= \Set{(\imath,\jmath,\cP,\cQ)| %
-    \begin{array}{l}
-      (\imath,\jmath) = \tau_{\sP}\\
-      \Im \cP \subset \set{\bullet,r,c,d}, \Im \cQ \subset\set{\bullet, s}\\
-    \end{array}
-  }
-\]
-and for each $\sP$
-
-Recall the definition of $\PP_{A^{\bR}}(\ckcO'_{b})$ in  \eqref{eq:PP.AR}.
-
-\begin{lem}
-  For each $\uptau' \in \PP_{A^{\bR}}(\ckcO'_{b})$, there is a unique painted
-  bipartition $\uptau\in \PBP_{\star}(\ckcO_{b})$ such that
-  \[
-    \cP_{\uptau'}(i,j) = d \quad % \text{if and only if}
-    \Leftrightarrow
-    \quad
-    \cQ_{\uptau}(i,j) = d \quad \forall (i,j)\in \BOX{\imath}\\
-  \]
-  The map gives a bijection
-  \[
-    \begin{array}{ccccccc}
-      \Unip_{\ckcO'_{b}}(\GL_{b}(\bR))&\longleftarrow
-      &\PP_{A^{\bR}}(\ckcO'_{b}) & \longleftrightarrow
-      & \PBP_{\star}(\ckcO_{b}) & \longrightarrow
-      & \Unip_{\ckcO_{b}\cuprow \ckcO_{1}}(\Sp(2b,\bR))\\
-      \pi_{\uptau'} & \mapsfrom & \uptau' & \mapsto
-      & \uptau & \mapsto & \pi_{\uptau}.
-    \end{array}
-  \]
-  Here $\pi_{\uptau'}$ is defined in \eqref{eq:u.GLR} and
-  \[
-    \pi_{\uptau} := \Ind_{\GL_{b}(\bR)}^{\Sp_{2b}(\bR)} \pi_{\uptau'}.
-  \]
-\end{lem}
-\begin{proof}
-  The claims about painted bipartitions are clear.
-  The irreduciblity of $\pi_{\uptau}$ follows from the multiplicity one
-  of its wavefront cycle.
-
-  The representations $\pi_{\uptau_{1}}\neq \pi_{\uptau_{2}}$ if
-  $\uptau_{1}\neq \uptau_{2}$ since they have different cuspidal data by the
-  construction.
-\end{proof}
-
-% \[
-%   \begin{split}
-%     \cC_g &= \bigoplus_{p+q=2m+1}\Cint{\rho}(\SO(p,q))  \\
-%     &=
-%     \bigoplus_{2b+s+r+c+d=m}\Ind_{W_b\ltimes \set{-1}^b\times W_s\times W_r\times W_c\times W_d}^{W_m} 1 \otimes \det \otimes \det \otimes 1 \otimes 1\\
-%     \cC_b &= \Cint{\rho}(\SO^*(2m)) = \bigoplus_{\substack{2s+b=m}}\Ind_{W_s\ltimes \set{-1}^s\times S_b}^{W_m} 1 \otimes\sgn\otimes \sgn
-%   \end{split}
-% \]
-
-We define
-\[
- \PBPes(\ckcO_{g}) := \PBP_{\star}(\ckcO_{g})\times \CQ(\ckcO_{g}).
-\]
-
-Now we consider the good parity part. We defer the proof of the following lemma
-in the \Cref{app:comb}
-
-\begin{lem}
-  For each $\sP\in \subset \CPP(\ckcO_{g})$,
-  we have
-  \[
-    \abs{\PBP_{\star}(\ckcO_{g},\sP)} =
-    \abs{\PBP_{\star}(\ckcO_{g},\emptyset)}.
-  \]
-  In particular, we have
-  \[
-    \Unip_{\star}(\ckcO_{g}) = \abs{\PBPes(\ckcO_{g})}.
-  \]
-\end{lem}
-
-\section{Type $\wtC$}
-
-
-The left cell.
-\begin{lem}
-  Suppose $\star = \wtC$, $\ckcO_{b}$ has $2k$ rows. Here each row in $\ckcO_{b}$ has
-  odd length and each row in $\ckcO_{g}$ has even length, and
-  $\WLamck = W_{b}\times W'_{g}$ where $b=\half \abs{\ckcO_{b}}$ and
-  $g = \half\abs{\ckcO_{g}}$.
-  Let
-  \[
-    \begin{split}
-      \tau_{b} =  & \left( (\frac{\bfrr_{2}(\ckcO_{b})+1}{2}, \frac{\bfrr_{4}(\ckcO_{b})+1}{2}, \cdots, \frac{\bfrr_{2k}(\ckcO_{b})+1}{2}),\right.\\
-        &\ \ \left. (\frac{\bfrr_{2}(\ckcO_{b})-1}{2}, \frac{\bfrr_{4}(\ckcO_{b})-1}{2}, \cdots, \frac{\bfrr_{2k}(\ckcO_{b})-1}{2})\right) \in \Irr(W_{b}).
-    \end{split}
-  \]
-  Set
-  \[
-    \CPP(\ckcO_{g}) = \set{(2i-1,2i)| \bfrr_{2i-1}(\ckcO_{g})> \bfrr_{2i}(\ckcO_{g}), \text{
-        and } i\in \bN^{+}}
-  \]
-  and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
-
-  For $\sP \in \CQ(\ckcO)$, let
-  \[
-    \tau_{\sP} := (\imath,\jmath) \in \Irr(W'_{g})
-  \]
-  such that for all $i\geq 1$
-  \[
-  (\bfcc_{i}(\imath), \bfcc_{i}(\jmath)):=
-  \begin{cases}
-    (\half \bfrr_{2i-1}(\ckcO_{g}), \half \bfrr_{2i}(\ckcO_{g}))
-    & \text{if } (2i-1,2i)\notin \sP,\\
-    (\half \bfrr_{2i}(\ckcO_{g}),\half \bfrr_{2i-1}(\ckcO_{g})) & \text{otherwise.}
-  \end{cases}
-  \]
-
-  Then we have the following bijection
-  \[
-    \begin{array}{ccc}
-      \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
-      \sP & \mapsto & \tau_{b}\otimes \tau_{\sP},
-    \end{array}
-  \]
-  such that $\tau_{b}\otimes \tau_{\sP}$ is the special representation in
-  $\LC(\ckcO)$.
-
-  We remark that if $\CPP(\ckcO_{g})=\emptyset$ the the
-  representation $\tau_{\emptyset}$ has label $I$.
-\end{lem}
-
-\trivial{
-  The bad parity part is the same as the case when $\star= B$.
-
-
-  For the good parity part, note that the trivial representation of
-  the trivial group has symbol
-  \[
-    \binom{0,1,\cdots, r}{0,1,\cdots, r}.
-  \]
-  Here we assume $\ckcO_{g}$ has at most $2r$ rows.
-
-  Now the bifurcation happens for the odd length column.
-  }
-
-
-  The coherent continuation representation.
-
-
-  Fix $n_{b},n_{g}$ such that $n_{b}+ n_{g} = n$. Let
-  \begin{equation} \label{eq:Lam.C}
-    \Lambda_{n_{b},n_{g}} = (\underbrace{0, \cdots, 0}_{n_{b}\text{-terms}}, \underbrace{\half, \cdots, \half}_{n_{g}\text{-terms}}) + Q.
-  \end{equation}
-
-  We use Renard-Trapa's result.
-
-\begin{lem}
-  We have the following formula on the coherent continuation
-  representations based on $\Lambda_{n_{b},n_{g}}$:
-  \[
-    \bigoplus_{p+q=n} \Coh_{\Lambda_{n_b, n_g}}(\Mp(2n,\bR)) \cong \cC_{b}\otimes \cC_{g}.
-  \]
-  with
-  \[
-    \begin{split}
-      \cC_g %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
-      &  = \Res_{W_{n_{g}}}^{W'_{n_{g}}}
-      \left( \bigoplus_{\substack{t,a,a'\in \bN\\2t+a+a'=n_{g}}}
-        \Ind_{H_{t}\times S_{a}\times S_{a'}}^{W_{n_{b}}}
-        \hsgn\otimes 1 \otimes\sgn \right)\\
-      % & =\bigoplus_{\substack{t,s,r\in\bN\\2t+s+r=n_{g}}} \Ind_{W_{2t}\times W_s\times W_r}^{W_{n_{g}}}
-      % (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
-      \cC_b & =
-      \bigoplus_{\substack{t,c,d\in \bN\\2t+c+d=n_{b}}}
-      \Ind_{H_{t}\times W_{c}\times W_{d}}^{W_{n_{b}}} \hsgn\otimes 1\otimes 1
-    \end{split}
-  \]
-\end{lem}
-\begin{proof}
-  This is contained in \cite{RT1,RT2}.
-  By \cite{RT2}*{Theorem~5.2} and \cite{RT2}*{Corollary~4.5~(2)},
-  $ \Coh_{\Lambda_{n_{b},n_{g}}}(\Mp(2n,\bR)) $
-  is dual to $\cC_{g}\otimes \ckcC_{b}$ where
-  $\cC_{g}$ is the coherent continuation representation based on the
-  lattice $\Lambda_{0,n_{g}}$
-  and
-  \[
-    \begin{split}
-      \ckcC_{2n_{b},\bR} &\cong \bigoplus_{\substack{p,q\in \bN\\p+q=n_{b}}}
-      \Coh_{\Lambda_{n_{b},0}}(\Sp(p,q))\\
-      & = \bigoplus_{\substack{t,c,d\in \bN\\2t+c+d=n_{b}}} \Ind_{H_{t}\times W_{c}\times W_{d}}^{W_{n_{b}}} \hsgn\otimes \sgn \otimes\sgn
-    \end{split}
-  \]
-
-  The main result in \cite{RT1} implies that
-  \[
-    \cC_{g} = \Res_{W_{n_{g}}}^{W'_{n_{g}}} \left(
-  \bigoplus_{\substack{t,a,a'\in \bN\\2t+a+a'=n_{g}}} \Ind_{H_{t}\times S_{a}\times S_{a'}}^{W_{n_{b}}} \hsgn\otimes 1 \otimes\sgn
-  \right)
-  \]
-  is self-dual.
-
-  Tensor with the sign representation yields the lemma.
-\end{proof}
-
-% \subsection{}
-% In this section, we count special unipotent representations of real orthogonal
-% groups (type $B$,$D$), symplectic groups (type $C$) and metaplectic groups (type
-% $\wtC$).
-
-% Recall that
-% \[
-%   \text{good pairity} =
-% \begin{cases}
-%  \text{odd} & \text{in type $C$ and $D$}\\
-%  \text{even} & \text{in type $C$ and $D$}\\
-% \end{cases}
-% \]
-% We decompose $\ckcO  = \ckcO_g\cup \ckcO_b$ as before.
-
-% Let $\tsgn$ be the character of $W_n$ inflated from the sign character of $S_n$ via the
-% natural map $W_n \rightarrow S_n$.
-% Recall the following formula
-% \[
-%   \Ind_{W_b\ltimes \set{\pm 1}^b}^{W_2b} 1 \otimes \sgn = \sum_{\sigma} (\sigma,\sigma)
-% \]
-% where $\sigma$ running over all Young diagrams of size $b$.
-
-
-%\subsection{Type C}
-
-
-\section{Type $B$}
-
-  The dual group of $\Gc = \SO(2n+1,\bC)$ is $\ckGc = \Sp(2n,\bC)$. The odd is
-  the bad parity, and even is the good parity.
-
-
-  Fix $n_{b},n_{g}$ such that $n_{b}+ n_{g} = n$. Let
-  \begin{equation} \label{eq:Lam.C}
-    \Lambda_{n_{b},n_{g}} = (\underbrace{\half, \cdots, \half}_{n_{b}\text{-terms}}, \underbrace{0, \cdots, 0}_{n_{g}\text{-terms}}) + Q.
-  \end{equation}
-
-  Suppose $\ckcO\in \Nil(\SO(2n+1,\bC))$ with decomposition
-  $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$.
-
-  Let $\ckcO'_b$ be the Young diagram such that
-  $\bfrr_i(\ckcO'_b) = \bfrr_{2i}(\ckcO_b)$ and $\cO'_{b}$ be the transpose of
-  $\ckcO'_{b}$.
-
-  \subsection{The left cell}
+\subsection{The left cell $\LC_{\ckcO}$}
+We compute the left cell $\LC_{\ckcO}$ case by case.
+Let $\ckcO = \ckcO_{b}\cupcol \ckcO_{g}$.
 
 \begin{lem}
   Suppose $\star = B$, $\ckcO_{b}$ has $2k$ rows. Here each row in $\ckcO_{b}$ has
@@ -3866,128 +1928,126 @@ such that
 
 Note that according to Lusztig and BV, the subsets of $\CPP(\ckcO)$ is in
 one-one correspondence to the canonical quotient $\CQ(\ckcO) = \bF_{2}[\CPP(\ckcO)]$.
+
+
 }
 
-\subsection{Counting special unipotent representation of $G=\SO(2p+1,2q)$ with
-$p+q=n$}.
-
-The dual group of $\Gc = \SO(2n,\bC)$ is $\ckGc = \SO(2n+1,\bC)$.
-
-Let \[
-  \Lambda_{n_{1}, n_{2}} = (\underbrace{0,\cdots,0}_{n_{1}\text{-terms}}, \underbrace{\half,\cdots,\half}_{n_{2}\text{-terms}}, )
-\]
-
-We set $(2n_{g},2n_{b}) = (\abs{\ckcO_g},\abs{\ckcO_b})$.
 
 \begin{lem}
-  We have the following formula on the coherent continuation
-  representations based on $\Lambda_{n_{1},n_{2}}$:
+  Suppose $\star = C$, $\ckcO_{b}$ has $2k$ rows and $\ckcO_{g}$
+  has $2l+1$-rows. Here each row in $\ckcO_{b}$ has
+  even length and each row in $\ckcO_{g}$ has odd length, and
+  $\WLamck = W'_{b}\times W_{g}$ where $b= \frac{\abs{\ckcO_{b}}}{2}$ and
+  $g = \frac{\abs{\ckcO_{g}}-1}{2}$.
+  Let
   \[
-    \bigoplus_{p+q=n} \Coh_{\Lambda_{n_1, n_2}}(\SO(2p+1,2q)) \cong \cC_{b}\otimes \cC_{g}.
+    \tau_{b} = \left( (\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}), (\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}) \right) \in \Irr(W_{b}).
   \]
-  with
+  Set
+  \[
+    \CPP(\ckcO_{g}) = \set{(2i-1,2i)| \bfrr_{2i-1}(\ckcO_{g})> \bfrr_{2i}(\ckcO_{g})>0, \text{
+        and } i\in \bN^{+}}
+  \]
+  and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
+
+  For $\sP \in \CQ(\ckcO)$, let
+  \[
+    \tau_{\sP} := (\imath,\jmath) \in \Irr(W_{g})
+  \]
+  such that
+  \[
+    (\bfcc_{l+1}(\imath), \bfcc_{l+1}(\jmath))  := (\half(\bfrr_{2l+1}(\ckcO_{g})-1),0)
+  \]
+  and for all $1\leq i\leq l$
+  \[
+  (\bfcc_{i}(\imath), \bfcc_{i}(\jmath)):=
+  \begin{cases}
+    (\half (\bfrr_{2i-1}(\ckcO_{g})+1),
+    \half (\bfrr_{2i}(\ckcO_{g})-1))
+    & \text{if } (2i-1,2i)\notin \sP,\\
+    (\half (\bfrr_{2i}(\ckcO_{g})+1),\half (\bfrr_{2i-1}(\ckcO_{g})-1)) & \text{otherwise.}
+  \end{cases}
+  \]
+
+  Then we have the following bijection
+  \[
+    \begin{array}{ccc}
+      \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
+      \sP & \mapsto & \tau_{b}\otimes \tau_{\sP}.
+    \end{array}
+  \]
+  such that $\tau_{b}\otimes \tau_{\sP}$ is the special representation in
+  $\LC(\ckcO)$.
+\end{lem}
+
+
+
+
+\trivial{
+  In this case, bad parity is even and each row length occur with even
+  multiplicity. Suppose
+  $\ckcO_{b} = (C_{1}, C_{1}, C_{2},C_{2}, \cdots, C_{k'},C_{k'})$ with
+  $c_{1}=2k$ and $k' = \bfrr_{1}(\ckcO_{b})$.
+  \[
+    W_{\lamckb} = S_{C_{1}}\times S_{C_{2}}\times \cdots S_{C_{k'}}.
+  \]
+  The symbol of trivial representation of trivial group of type D is
+  \[
+    \binom{0,1, \cdots, k-1}{0,1, \cdots, k-1}.
+  \]
+  Now it is easy to see that
+  \[
+    J_{W_{\lamckb}}^{W_{b}}\sgn = ((\half C_{1}, \half C_{2},\cdots,
+    \half C_{k'}),(\half C_{1}, \half C_{2},\cdots,
+    \half C_{k'})).
+  \]
+
+  For the good parity part.
+  Suppose
+  $\ckcO_{g} = (2c_{1}+1, C_{2}, C_{2},C_{3},C_{3},\cdots, C_{k'},C_{k'})$ with
+  $2c_{1}+1=2l+1$ and $2k'+1 = \bfrr_{1}(\ckcO_{g})$.
+  \[
+    W_{\lamckg} = W_{c_{1}}\times S_{C_{2}}\times \cdots
+    \times S_{C_{k'}}.
+  \]
+
+  The symbol of sign representation of $W_{c_{1}}$ is
+  \[
+    \binom{0,1,2, \cdots, c_{1}}{1,2, \cdots, c_{1}}.
+  \]
+
+  By induction on number of columns,
+  we see that when even column of length $2c$ occurs, it adds
+  length $c$ columns on the both sides of the bipartition;
+  when odd column $C_{i}=2c_{i}+1$ with $i>1$ and multiplicity $2r'$ occur,  the bifurcation happens:
+  one can attach $r'$ columns of length $c_{i}+1$ on the right and $r'$ columns
+  of length $c_{i}$ on the left (special representations) or
+  attach $r'$ columns of length $c_{i}+1$ on the left and $r'$ columns
+  of length $c_{i}$ on the right.
+
+  Therefore,
+  \[
+    \begin{array}{ccc}
+    J_{W_{\lamckg}}^{W_{g}} \sgn
+    &\leftrightarrow&  \bF_{2}(\CPP(\ckcO_{g}))\\
+    \cktau_{\sP}&\leftrightarrow & \sP
+    \end{array}
+  \]
+  where
   \[
     \begin{split}
-      \cC_g %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
-      &=\bigoplus_{\substack{t,s,r\in\bN\\2t+s+r=n_{g}}} \Ind_{H_{t} \times S_{a}\times W_s\times W_r}^{W_{n_{g}}}
-      \hsgn \otimes 1 \otimes \sgn \otimes \sgn \\
-      % & =\bigoplus_{\substack{t,s,r\in\bN\\2t+s+r=n_{g}}} \Ind_{W_{2t}\times
-      % W_s\times W_r}^{W_{n_{g}}}
-      % (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
-      \cC_b & =
-      \bigoplus_{\substack{t,c,d\in \bN\\2t+c+d=n_{b}}}
-      \Ind_{H_{t}\times W_{c}\times W_{d}}^{W_{n_{b}}} \hsgn\otimes 1\otimes 1
+    \bfrr_{l+1}(\cktau_{R}) & =\half (\bfrr_{2l+1}(\ckcO_{g})-1)\\
+    (\bfrr_{i}(\cktau_{L}), \bfrr_{i}(\cktau_{R})) & =
+    \begin{cases}
+     (\half(\bfrr_{2i}(\ckcO_{g})-1), \half(\bfrr_{2i-1}(\ckcO_{g})+1)) & (2i-1,2i)\notin \sP\\
+     (\half(\bfrr_{2i-1}(\ckcO_{g})-1), \half(\bfrr_{2i}(\ckcO_{g})+1)) & (2i-1,2i)\in \sP
+    \end{cases}
     \end{split}
   \]
-\end{lem}
 
+  Now tensor with sign yields the result.
+}
 
-From now on, we set $ (2n_{1},2n_{2}) := (2g,2b) :=(\abs{\ckcO_g},\abs{\ckcO_b})$.
-
-Clearly $[\tau_{b}:\cC_{b}]$ is counted by the size of the following set
-\[
-  \PBP_{\star}(\ckcO_b) := \Set{(\imath,\jmath,\cP,\cQ)| %
-    \begin{array}{l}
-      (\imath,\jmath) = \tau_{b}\\
-      \Im \cP \subset \set{\bullet,c,d}, \Im \cQ \subset\set{\bullet}\\
-    \end{array}
-  }
-\]
-and for each $\sP\subset \CPP(\ckcO_{g})$, the multiplicity
-$[\tau_{\sP}: \cC_{g}]$ is counted by the size of
-\[
-  \PBP_{\star}(\ckcO_g,\sP):= \Set{(\imath,\jmath,\cP,\cQ)| %
-    \begin{array}{l}
-      (\imath,\jmath) = \tau_{\sP}\\
-      \Im \cP \subset \set{\bullet,c}, \Im \cQ \subset\set{\bullet, s,r,d}\\
-    \end{array}
-  }
-\]
-and for each $\sP$.
-
-Recall the definition of $\PP_{A^{\bR}}(\ckcO'_{b})$ in  \eqref{eq:PP.AR}.
-
-\begin{lem}
-  For each $\uptau' \in \PP_{A^{\bR}}(\ckcO'_{b})$, there is a unique painted
-  bipartition $\uptau\in \PBP_{\star}(\ckcO_{b})$ such that
-  \[
-    \cP_{\uptau'}(i,j) = d \quad % \text{if and only if}
-    \Leftrightarrow
-    \quad
-    \cP_{\uptau}(i,j) = d \quad \forall (i,j)\in \BOX{\imath}\\
-  \]
-  The map gives a bijection
-  \[
-    \begin{array}{ccccccc}
-      \Unip_{\ckcO'_{b}}(\GL_{b}(\bR))&\longleftarrow
-      &\PP_{A^{\bR}}(\ckcO'_{b}) & \longleftrightarrow
-      & \PBP_{\star}(\ckcO_{b}) & \longrightarrow
-      & \Unip_{\ckcO_{b}}(\SO(2b+1,2b))\\
-      \pi_{\uptau'} & \mapsfrom & \uptau' & \mapsto
-      & \uptau & \mapsto & \pi_{\uptau}.
-    \end{array}
-  \]
-  Here $\pi_{\uptau'}$ is defined in \eqref{eq:u.GLR} and
-  \[
-    \pi_{\uptau} := \Ind_{\GL_{b}(\bR)\times \SO(1,0)}^{\SO(2b+1,2b)} \pi_{\uptau'}.
-  \]
-\end{lem}
-\begin{proof}
-  The claims about painted bipartitions are clear.
-  The irreduciblity of $\pi_{\uptau}$ follows from the multiplicity one
-  of its wavefront cycle.
-
-  The representations $\pi_{\uptau_{1}}\neq \pi_{\uptau_{2}}$ if
-  $\uptau_{1}\neq \uptau_{2}$ since they have different cuspidal data by the
-  construction.
-\end{proof}
-
-Now we consider the good parity part. We defer the proof of the following lemma
-in the \Cref{app:comb}
-
-\begin{lem}
-  For each $\sP\in \subset \CPP(\ckcO_{g})$,
-  we have
-  \[
-    \abs{\PBP_{\star}(\ckcO_{g},\sP)} =
-    \abs{\PBP_{\star}(\ckcO_{g},\emptyset)}.
-  \]
-  In particular, we have
-  \[
-    \Unip_{\star}(\ckcO_{g}) = \abs{\PBPes(\ckcO_{g})}.
-  \]
-  Here $\Unip_{\star}(\ckcO_{g})$ denote the set of all unipotent
-  representations attached to the inner class $\SO(2p+1,2q)$.
-\end{lem}
-
-
-\section{Type D}
-
-
-Let $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$.
-
-\subsection{The left cell $\LC_{\ckcO}$}
-%We compute the left cell $\LC_{\ckcO}$ case by case.
 
 \begin{lem}
   Suppose $\star \in \set{D, D^{*}}$, $\ckcO_{b}$ has $2k$ rows and $\ckcO_{g}$
@@ -3995,7 +2055,7 @@ Let $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$.
   $\ckcO_{g}$ has odd length, and $\WLamck = W'_{b}\times W'_{g}$ where
   $b= \frac{\abs{\ckcO_{b}}}{2}$ and $g = \frac{\abs{\ckcO_{g}}}{2}$. Let
   \[
-    \tau_{b} = \left( (\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}), (\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}) \right)_{I}\in \Irr(W'_{b}).
+    \tau_{b} = \left( (\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}), (\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}) \right) \in \Irr(W'_{b}).
   \]
   Set
   \[
@@ -4061,92 +2121,406 @@ Let $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$.
 }
 
 
-Let \[
-  \Lambda_{n_{1}, n_{2}} = (\underbrace{\half,\cdots,\half}_{n_{1}\text{-terms}}, \underbrace{0,\cdots,0}_{n_{2}\text{-terms}}, )
-\]
-
-We set $(2n_{g},2n_{b}) = (\abs{\ckcO_g},\abs{\ckcO_b})$.
-
 \begin{lem}
-  We have the following formula on the coherent continuation
-  representations based on $\Lambda_{n_{1},n_{2}}$:
-  \[
-    \bigoplus_{p+q=2n} \Coh_{\Lambda_{n_1, n_2}}(\SO(p,q)) \cong \cC_{b}\otimes \cC_{g}.
-  \]
-  with
+  Suppose $\star = \wtC$, $\ckcO_{b}$ has $2k$ rows. Here each row in $\ckcO_{b}$ has
+  odd length and each row in $\ckcO_{g}$ has even length, and
+  $\WLamck = W_{b}\times W'_{g}$ where $b=\half \abs{\ckcO_{b}}$ and
+  $g = \half\abs{\ckcO_{g}}$.
+  Let
   \[
     \begin{split}
-      \cC_g %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
-      &=\bigoplus_{\substack{t,c,d,s,r\in\bN\\2t+c+d+s+r=n_{g}}} \Ind_{H_{t} \times \times W_s\times W_r\times W_{c}\times W_{d} }^{W_{n_{g}}}
-      \hsgn \otimes \sgn \otimes \sgn \otimes 1\otimes 1\\
-      % & =\bigoplus_{\substack{t,s,r\in\bN\\2t+s+r=n_{g}}} \Ind_{W_{2t}\times
-      % W_s\times W_r}^{W_{n_{g}}}
-      % (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
-      \cC_b & =
-      \bigoplus_{\substack{t,a\in \bN\\2t+a=n_{1}}}
-      \Ind_{H_{t}\times S_{a}}^{W_{n_{1}}} \hsgn\otimes 1
+      \tau_{b} =  & \left( (\frac{\bfrr_{2}(\ckcO_{b})+1}{2}, \frac{\bfrr_{4}(\ckcO_{b})+1}{2}, \cdots, \frac{\bfrr_{2k}(\ckcO_{b})+1}{2}),\right.\\
+        &\ \ \left. (\frac{\bfrr_{2}(\ckcO_{b})-1}{2}, \frac{\bfrr_{4}(\ckcO_{b})-1}{2}, \cdots, \frac{\bfrr_{2k}(\ckcO_{b})-1}{2})\right) \in \Irr(W_{b}).
     \end{split}
   \]
+  Set
+  \[
+    \CPP(\ckcO_{g}) = \set{(2i-1,2i)| \bfrr_{2i-1}(\ckcO_{g})> \bfrr_{2i}(\ckcO_{g}), \text{
+        and } i\in \bN^{+}}
+  \]
+  and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
+
+  For $\sP \in \CQ(\ckcO)$, let
+  \[
+    \tau_{\sP} := (\imath,\jmath) \in \Irr(W'_{g})
+  \]
+  such that for all $i\geq 1$
+  \[
+  (\bfcc_{i}(\imath), \bfcc_{i}(\jmath)):=
+  \begin{cases}
+    (\half \bfrr_{2i-1}(\ckcO_{g}), \half \bfrr_{2i}(\ckcO_{g}))
+    & \text{if } (2i-1,2i)\notin \sP,\\
+    (\half \bfrr_{2i}(\ckcO_{g}),\half \bfrr_{2i-1}(\ckcO_{g})) & \text{otherwise.}
+  \end{cases}
+  \]
+
+  Then we have the following bijection
+  \[
+    \begin{array}{ccc}
+      \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
+      \sP & \mapsto & \tau_{b}\otimes \tau_{\sP},
+    \end{array}
+  \]
+  such that $\tau_{b}\otimes \tau_{\sP}$ is the special representation in
+  $\LC(\ckcO)$.
+\end{lem}
+
+\trivial{
+  The bad parity part is the same as the case when $\star= B$.
+
+
+  For the good parity part, note that the trivial representation of
+  the trivial group has symbol
+  \[
+    \binom{0,1,\cdots, r}{0,1,\cdots, r}.
+  \]
+  Here we assume $\ckcO_{g}$ has at most $2r$ rows.
+
+  Now the bifurcation happens for the odd length column.
+  }
+
+% \subsection{}
+% In this section, we count special unipotent representations of real orthogonal
+% groups (type $B$,$D$), symplectic groups (type $C$) and metaplectic groups (type
+% $\wtC$).
+
+% Recall that
+% \[
+%   \text{good pairity} =
+% \begin{cases}
+%  \text{odd} & \text{in type $C$ and $D$}\\
+%  \text{even} & \text{in type $C$ and $D$}\\
+% \end{cases}
+% \]
+% We decompose $\ckcO  = \ckcO_g\cup \ckcO_b$ as before.
+
+% Let $\tsgn$ be the character of $W_n$ inflated from the sign character of $S_n$ via the
+% natural map $W_n \rightarrow S_n$.
+% Recall the following formula
+% \[
+%   \Ind_{W_b\ltimes \set{\pm 1}^b}^{W_2b} 1 \otimes \sgn = \sum_{\sigma} (\sigma,\sigma)
+% \]
+% where $\sigma$ running over all Young diagrams of size $b$.
+
+
+%\subsection{Type C}
+
+\subsection{Counting special unipotent representation of $G=\Sp(p,q)$}. 
+The dual group of $\Gc = \Sp(2n,\bC)$ is $\ckGc = \SO(2n+1,\bC)$. 
+We set $(2m+1,2m') = (\abs{\ckcO_g},\abs{\ckcO_n})$.
+By Vogan duality, the dual group for class $[\lamck]$ is 
+\[
+ \SO(2m+1,\bC)\times \rO(2m',\bC).   
+\]
+
+
+Now we have 
+\[
+  \Cint{\lamck}(G) \otimes \sgn  = \cC_g\otimes \cC_b 
+\]
+with 
+\[
+  \begin{split}
+ \cC_g &  = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\ 
+ &=\bigoplus_{\substack{b,s,r\in\bN\\2b+s+r=m}}
+ \Ind_{W_b\ltimes \set{\pm 1}^b \times W_s\times W_b}^{W_{m}} 
+ 1\otimes \sgn \otimes \sgn \otimes \sgn \\
+& =\bigoplus_{\substack{b,s,r\in\bN\\2b+s+r=m}}
+ \Ind_{W_{2b}\times W_s\times W_b}^{W_{m}} 
+ (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
+ \cC_b &  = \Ind_{W_{\frac{m'}{2}}\ltimes \set{\pm 1}^{\frac{m'}{2}}}^{W_{m'}} \sgn 
+ \\
+  \end{split}
+\]
+
+
+In $\SO(2m',\bC)$, the dobule cell corresponds to $\ckcO_b$ consists of 
+a single  representation  
+\[
+  \cktau_b = (\cksigma_b,\cksigma_b) \text{ such that } 
+  \bfrr_i(\cksigma_b) = \bfrr_{2i}(\ckcO_b)/2
+\]
+Let $\ckcO'_b$ be the Young diagram such  that $\bfrr_i(\ckcO'_b) = \bfrr_{2i}(\ckcO_b)$ 
+and $\pi'_b$ be the unique special unipotent representation attached to $\GL_p(\bH)$
+\begin{lem}
+The set $\Unip_{\ckcO_b}(\Sp(p,q))\neq \emptyset$ only if $p=q = \abs{\cksigma_b}$ and in this case it consists a single element
+\[
+  \pi_b := \Ind_P^{\Sp(p,p)} \pi'_{\cksigma_b} %^{\GL_p(\bH)} 
+\]
+where $P$ has the Levi subgroup $\GL_p(\bH)$.  
 \end{lem}
 
 
-Clearly $[\tau_{b}:\cC_{b}]$ is counted by the size of the following set
+The special reprsentation corresponds to $\ckcO_b$ is 
 \[
-  \PBP_{\star}(\ckcO_b) := \Set{(\imath,\jmath,\cP,\cQ)| %
-    \begin{array}{l}
-      (\imath,\jmath) = \tau_{b}\\
-      \Im \cP \subset \set{\bullet,c,d}, \Im \cQ \subset\set{\bullet}\\
-    \end{array}
-  }
+ aa 
 \]
-and for each $\sP\subset \CPP(\ckcO_{g})$, the multiplicity
-$[\tau_{\sP}: \cC_{g}]$ is counted by the size of
+Let 
 \[
-  \PBP_{\star}(\ckcO_g,\sP):= \Set{(\imath,\jmath,\cP,\cQ)| %
-    \begin{array}{l}
-      (\imath,\jmath) = \tau_{\sP}\\
-      \Im \cP \subset \set{\bullet,s,r,c,d}, \Im \cQ \subset\set{\bullet}\\
-    \end{array}
-  }
+\PBP_{\ckcO_g}(C^*):= \Set{(\imath,\jmath,\cP,\cQ)| \begin{array}{l}
+  (\imath,\jmath) = \cktau_g\\
+  \Im \cP \subset \set{\bullet}, \Im \cQ \subset\set{\bullet, s,r}\\
+\end{array} 
+  }.  
 \]
-and for each $\sP$.
-
 
 \begin{lem}
-  For each $\uptau' \in \PP_{A^{\bR}}(\ckcO'_{b})$, there is a unique painted
-  bipartition $\uptau\in \PBP_{\star}(\ckcO_{b})$ such that
+  The set of $\Unip_{\ckcO}(\Sp(p,q))$
+  is paramterized by the set  such that 
   \[
-    \cP_{\uptau'}(i,j) = d \quad % \text{if and only if}
-    \Leftrightarrow
-    \quad
-    \cP_{\uptau}(i,j) = d \quad \forall (i,j)\in \BOX{\imath}\\
-  \]
-  The map gives a bijection
-  \[
-    \begin{array}{ccccccc}
-      \Unip_{\ckcO'_{b}}(\GL_{b}(\bR))&\longleftarrow
-      &\PP_{A^{\bR}}(\ckcO'_{b}) & \longleftrightarrow
-      & \PBP_{\star}(\ckcO_{b}) & \longrightarrow
-      & \Unip_{\ckcO_{b}}(\SO(2b+1,2b))\\
-      \pi_{\uptau'} & \mapsfrom & \uptau' & \mapsto
-      & \uptau & \mapsto & \pi_{\uptau}.
-    \end{array}
-  \]
-  Here $\pi_{\uptau'}$ is defined in \eqref{eq:u.GLR} and
-  \[
-    \pi_{\uptau} := \Ind_{\GL_{b}(\bR)}^{\SO(2b,2b)} \pi_{\uptau'}.
+    ss
   \]
 \end{lem}
-\begin{proof}
-  The claims about painted bipartitions are clear.
-  The irreduciblity of $\pi_{\uptau}$ follows from the multiplicity one
-  of its wavefront cycle.
 
-  The representations $\pi_{\uptau_{1}}\neq \pi_{\uptau_{2}}$ if
-  $\uptau_{1}\neq \uptau_{2}$ since they have different cuspidal data by the
-  construction.
-\end{proof}
 
+\trivial{Let $W = W(\Gc)$ where $\Gc$ is natrualy embeded in $\GL(n,\bC)$. Let
+  $s_{\varepsilon_i i,\varepsilon_j j}$ be the permutation matrix of index
+  $i,j$, where the $(i,j)$-th entry is $\varepsilon_i$, the $(j,i)$-th entry is
+  $\varepsilon_j$ and the other place is the identity matrix. Let $w_{i,\pm j}^{\epsilon}$
+  be the element such that 
+  \begin{itemize}
+   \item  it is in $\Gc$ and entries in $\set{0}\cup \mu_4$
+   \item  it lifts the
+  element $e_i \leftrightarrow \pm e_j$ in the Weyl group.
+  \item $(w_{i,\pm j}^{\epsilon})^2 = \epsilon 1\in \set{\pm 1}$.  
+  \end{itemize}
+  Let \[h_{\pm i}^+  = \diag(1,\cdots, 1, \pm 1, 1, \cdots, 1)\] where $\pm 1$
+    is the $i$-th place.  
+    Let 
+\[h_{\pm i}^-  = \diag(1,\cdots, 1, \pm \sqrt{-1}, 1, \cdots, 1)\] 
+  where $\pm \sqrt{-1}$ is the $i$-th place.  
+  Let $e_{\pm i} = s_{\pm i,\pm (n-i+1)}$.  
+
+  Let $\ckww_{i,\pm j}^\pm$ be the lift of $e_i \leftrightarrow \pm e_j$ such that 
+  \begin{itemize}
+   \item  it is in $\Gc$ and entries in $\set{0}\cup \mu_4$
+   \item  it lifts the
+  element $e_i \leftrightarrow \pm e_j$ in the Weyl group.
+  \item $(w_{i,\pm j}^{\epsilon})^2|_{[i,j]} = \epsilon 1\in \set{\pm 1}$ here
+  ``$|_{[i,j]}$'' means restricts on the $e_i,e_j,-e_i,-e_j$-weights space.  
+  \end{itemize}
+
+Let 
+\[
+  \begin{split}
+  x_{b,s,r} &= w_{1,2}^+\cdots w_{2b-1,2b}^+\, h_{2b+1}^+\cdots h_{2b+s}^+ \\
+  y_{b,s,r}^+ &= \ckww_{1,-2}^+\cdots \ckww_{2b-1,-2b}^+\,
+   e_{2b+1}\cdots e_{2b+s+r} \\
+  y_{b,s,r}^- &= \ckww_{1,-2}^-\cdots \ckww_{2b-1,-2b}^- 
+  \end{split}
+\]
+
+
+We compute the parameter space 
+\[
+  \begin{split}
+\cZ_g &=  \bigcup_{2b+s+r=m} W_m\cdot (x_{b,s,r}^+, y_{b,s,r}^+)\\  
+\cZ_b &=  \bigcup_{2b=m} W_m\cdot (x_{b,0,0}^+, y_{b,0,0}^-)\\  
+  \end{split}
+\]
+
+}
+
+
+\subsection{Counting special unipotent representation of $G = \Sp(2n,\bR)$}
+
+Now we have 
+\[
+  \Cint{\lamck}(G) \otimes \sgn  = \cC_g\otimes \cC_b 
+\]
+with 
+\[
+  \begin{split}
+ \cC_g &= \bigoplus_{p+q=2m+1}\Cint{\rho}(\SO(p,q))  \\
+ &= 
+ \bigoplus_{2b+s+r+c+d=m}\Ind_{W_b\ltimes \set{-1}^b\times W_s\times W_r\times W_c\times W_d}^{W_m} 1 \otimes \det \otimes \det \otimes 1 \otimes 1\\
+ \cC_b &= \Cint{\rho}(\SO^*(2m)) = \bigoplus_{\substack{2s+b=m}}\Ind_{W_s\ltimes \set{-1}^s\times S_b}^{W_m} 1 \otimes\sgn\otimes \sgn   
+  \end{split}
+\]
+
+
+
+\section{Examples}
+\subsection{Symplectic group}
+Let $G = \Sp(4,\bR)$. Then $\ckG_{\bC}= \SO(5,\bC)$.
+Then $\ckcO$ has the following possibilities
+\[
+  \ckcO_{1}:= \ydiagram{5},\quad \ckcO_{2}:=\ydiagram{3,1,1}, \quad
+  \ckcO_{3}:=\ydiagram{2,2,1}, \quad \ckcO_{4}:=\ydiagram{1,1,1,1,1}
+\]
+Here the orbit $\ckcO_{3}$ is non-special.
+\[
+  \cO_{1}:= \ydiagram{1,1,1,1},\quad \cO_{2}:=\ydiagram{2,2}, \quad
+  \cO_{3}:=\ydiagram{2,2}, \quad \cO_{4}:=\ydiagram{4}
+\]
+
+For the real form of $\ckG_{\bC}$, we always consider the inner class
+$\set{\SO(p,q)| q \text{ is even}}$.
+Therefore, we have $3$ groups $\SO(1,4)$, $\SO(3,2)$ and $\SO(5,0)$.
+
+\noindent{\bf When $\ckcO = \ckcO_1$}
+
+Now
+\[
+  \Unip_{\ckcO_{1}}(\Sp_{4}(\bR) = \set{\triv}.
+\]
+and
+\[
+  \PBP_{C}(\ckcO) = \Set{\emptyset \times \ytb{s,s}}.
+\]
+
+
+The orbit $\cO_{1}$ has bad parity for $\SO_{5}$.
+Now
+\[
+  \Unip_{\cO_{1}}(\SO_{5}) = \set{\Ind_{\GL_{1}\times \GL_{1}}^{\SO(3,2)} \sgn^{\epsilon_{1}}\otimes \sgn^{\epsilon_{2}}|
+  \epsilon_{1},\epsilon_{2}\in \set{0,1}}
+\]
+which has $3$ elements.
+
+\noindent{\bf When  $\ckcO = \ckcO_2$}
+
+There are three unipotent Arthur parameters $\psi_{++}, \psi_{+-},\psi_{--}$.
+These parameters corresponds to the three rational forms of $\ckcO$ respectively
+\[
+\ytb{-+-,+,+}, \ytb{+-+,+,-},\ytb{-+-,-,-}.
+\]
+Here we fix the inner class of $\SO(p,q)$ such that $q$ is even.
+
+Now $\PBP_{C}(\ckcO)$  has $8$ elements.
+The set $\PBP_{C}(\ckcO)$ one-one corresponds to the associated cycles.
+
+The Arthur packet $\Pi_{\psi_{++}}$ contains two elements.
+We expect that they consists of $\Sp(4,\bR)$ modules with associated variety
+\[
+  \ytb{-+,-+}.
+\]
+Similarly,
+the Arthur packet $\Pi_{\psi_{--}}$ contains two elements and
+they consists of $\Sp(4,\bR)$ modules with associated variety
+\[
+  \ytb{+-,+-}.
+\]
+
+The Arthur packet $\Pi_{\psi_{+-}}$ has 4-elements, we expect that
+they consists of modules with associated variety
+\[
+  \ytb{-+,+-}.
+\]
+
+The explicit matching of the packet can be down by compare the K-types
+in ABV's (27.17) with theta lifts.
+
+
+\noindent{\bf When  $\ckcO = \ckcO_3$}
+The orbit has bad parity part. There are two special unipotent representations given
+by %parabolic induction
+\[
+\Ind_{\GL_{2}(\bR)}^{\Sp_{4}(\bR)} \sgn^{\epsilon} \qquad \epsilon \in \set{0,1}.
+\]
+
+
+\noindent{\bf When  $\ckcO = \ckcO_4$}
+In this case $\Unip_{\Sp(2n,\bR)}(\ckcO)$ has $5$ elements which are
+distinguished by  their associated cycles listed below.
+\[
+  \begin{split}
+  \ytb{-+-+},& \quad
+  \ytb{+-+-},\quad
+  \ytb{\ppp\mmm\ppp\mmm},\quad
+  \ytb{\mmm\ppp\mmm\ppp}, \\
+  & \ytb{-+-+}\cup
+  \ytb{-+-+},\quad
+  \end{split}
+\]
+
+Totally there are $3$ Arthur parameters corresponds to
+the trivial orbits of $\SO(1,4)$, $\SO(3,2)$ and $\SO(5,0)$.
+We expect the Arthur packets are disjoint with each other.
+
+
+The orbit $\cO_{4}$ has good parity for $\SO_{5}$.
+So there must be a one-one correspondence between $\Unip_{\Sp_{2n}(\bR)}(\ckcO)$
+In fact, there are totally $5$ special
+unipotent representations of real forms in a inner class of $\SO_{5}$,
+$2$ for $\SO(1,4)$, $2$ for $\SO(3,2)$ and $1$ for $\SO(5,0)$.
+Theses representations are trivial when restricted on the connected component.
+
+
+
+
+% \[
+%   \PBP_{C}(\ckcO) =
+%   \Set{
+%     \begin{array}{c}
+%     \ytb{c,d}\times \emptyset,
+%     \ytb{r,d}\times \emptyset,
+%     \ytb{r,c}\times \emptyset,
+%       \ytb{r,r}\times \emptyset,
+%       \vspace{.5em}
+%       \\
+%     \ytb{\bullet}\times \ytb{\bullet},
+%     \ytb{r}\times \ytb{s},
+%     \ytb{c}\times \ytb{s},
+%     \ytb{d}\times \ytb{s},
+%     \end{array}
+%   }
+% \]
+
+
+% The orbit $\cO_{4}$ has good parity for $\SO_{5}$.
+% So there is a one-one correspondence between $\Unip_{\Sp_{2n}(\bR)}(\ckcO)$
+% and $\Unip_{\SO_{2n+1}}(\cO)$.
+
+% We list the correspondence and associated variety
+% below:
+% \[
+%   \ytb{\ppp\mmm,\ppp\mmm} \leftrightarrow  \ytb{c,d}\times \emptyset
+%   \leftrightarrow \emptyset \times \ytb{sr} \leftrightarrow
+%   \ytb{\ppp\mmm\ppp,+,\mmm}
+% \]
+
+
+% \[
+%   \ytb{\mmm\ppp, \ppp\mmm} \leftrightarrow  \ytb{r,d}\times \emptyset
+%   \leftrightarrow \emptyset \times \ytb{rd} \leftrightarrow
+%   \ytb{+-+,+,+}
+% \]
+
+
+% \[
+%   \ytb{\mmm\ppp, +-}\leftrightarrow  \ytb{r,c}\times \emptyset
+%   \leftrightarrow \emptyset \times \ytb{sd} \leftrightarrow
+%   \ytb{\mmm\ppp\mmm,+,\mmm}
+% \]
+
+% \[
+%   \ytb{-+,-+} \leftrightarrow  \ytb{r,r}\times \emptyset
+%   \leftrightarrow \emptyset \times \ytb{dd} \leftrightarrow
+%   \ytb{-+-,+,+}
+% \]
+
+
+
+% \[
+% \begin{array}{cccccccc}
+%    & \AV(\pi)\subset \cO & \pi & \PBP_C & \PBP_{B} &\ckpi &  \AV(\ckpi)\subset \ckcO & \text{remark}\\
+%   \hline
+%   &
+%     \vspace{.5em}
+%     \ytb{+,+,-,-}
+%     \vspace{.5em}
+%                          & \triv &  \emptyset \times \ytb{s,s}
+%       & na  & \Ind_{\GL(2,\bR)} 1 & \ytb{+-+-+}&   \text{$\cO$ has bad parity for $\SO(3,2)$}\\
+%   \hline
+%   &
+%     \ytb{+,+,-,-} & \triv &  \emptyset \times \ytb{s,s}
+%       & na  & \Ind_{\GL(2,\bR)} 1 & \ytb{+-+-+}&   \text{$\cO$ has bad parity for $\SO(3,2)$}\\
+%     \ytb{+,+,-,-} & \Ind_{\GL(1,\bR)\times \Sp(2,\bR)}\triv &  \emptyset \times \ytb{s,s}
+%       & na  & \Ind_{\GL(2,\bR)} 1 & \ytb{+-+-+}&   \text{$\cO$ has bad parity for $\SO(3,2)$}\\
+%   \end{array}
+% \]
+%
 
 \appendix
 \section{Combinatorics of Weyl group representations in the classical types}
@@ -4305,6 +2679,27 @@ $[\sigma: \Ind_{W(S)}^{W}\bfone]=[\bfone|_{W(S)}:\sigma]\leq 1$.
 \section{Remarks on the Counting theorem of unipotent representations}
 
 
+In this section,  let $\Gc$ be a connected complex reductive group and $\fgg$ is
+its Lie algebra. Fix a antiholomorphic involution $\sigma$ on $\Gc$ and a
+corresponding Cartan involution $\theta$ of $\Gc$. Let $G$ be a finite central
+extension of a open subgroup os $\Gc^\sigma$ and
+\[
+\pr \colon G \rightarrow \Gc^\sigma
+\]
+be the canonical projection.
+Let $K = \pr^{-1}(\Gc^\sigma)$ and $W = W(\Gc)$.
+
+Let $\hha$ be the abstract Cartan subalgebra of $\fgg$ and $\aX$ be the lattice
+of abstract weight spaces. Let $\aR\subseteq \aX$, $\aRp$ and $\aQ$ be the
+abstract root system, the set of positive roots and the root lattice. Let
+\[
+  \Con = \Set{\mu\in \hha^*| \begin{array}{l}\text{either $\inn{\Re(\mu)}{\ckalpha}>0$ or }\\
+    \text{ $\inn{\Re(\mu)}{\ckalpha}=0$  and $\sqrt{-1}\inn{\Im(\mu)}{\ckalpha}>0$}
+  \end{array}}
+\]
+and $\bCon$ be the closure of $\Con$ in  $\hha$.
+
+We identify the set of infinitesimal characters with $\hha^*/W$.
 
 \subsection{Coherent family}
 For each finite dimensional $\fgg$-module or $\Gc$-module $F$, let
@@ -4642,7 +3037,7 @@ parameterized by Goldie rank polynomials.
 \begin{thm}[Joseph] %, Barbasch-Vogan]
   \label{thm:GR}
   {\color{red} correct formulation?}
-  For $\mu$ dominant, the primitive ideal $\Ann L(w\mu) = \Ann L(w'\mu)$ if and only if $p_w = p_w'$. (\cite[ref?]{J1})
+  For $\mu$ dominant, the primitive ideal $\Ann L(w\mu) = \Ann L(w'\mu)$ if and only if $p_w = p_w'$. (\cite[ref?]{J12})
 %   Let $r = \dim \fnn$.
 %   The following holds:
 %  \begin{enumT}
@@ -4802,6 +3197,10 @@ Then $\whH$ is a $\whCPH$-torsor over $\fhh^{*}$.
   $\whCPH$-action (the tensor product action).
 }
 
+\def\Prim{\mathrm{Prim}}
+\def\leqL{\stackrel{L}{\leq}}
+\def\leqR{\stackrel{R}{\leq}}
+\def\leqLR{\stackrel{LR}{\leq}}
 \trivial{
   The classification of Primitive ideals.
   \[
@@ -4863,6 +3262,8 @@ Q:= \bZ[\Delta(\fgg,\fhh)]\subset \fhh^{*}
 \]
 be the root lattice of $\fgg$, which is exactly the set of $\fhh$-weights occur in $S(\fgg)$.
 
+By \cite{Vg}*{0.4.6}, we can naturally identify $Q$ with the subset of $\whH$
+consisting the characters occurs in $S(\fgg)$.
 
 For each $\lambda\in \fhh^{*}$, let
 $\braket{\lambda} := W_{[\lambda]}\cdot \lambda$.
@@ -4973,6 +3374,7 @@ $W_{[\lambda]}\times \whCPH$-module isomorphism.
 \medskip
 \def\Grt{\cG}
 \def\DeltaRp{\Delta^{+}_{\bR}}
+\def\approxLR{\substack{LR}{\approx}}
 Let $K = G^{\theta}$.
 
 
@@ -5348,18 +3750,7 @@ rows are multiplicity free) (i.e. $\ckcO$ is distinguished).
 This is clear by the explicit formula for the both sides.
 }
 
-\section{Matching specail shape and non-special shape painted bipartitions}
-\label{app:comb}
 
-\subsection{Proof of ...}
-\begin{proof}
-  Let $i$ be the minimal integer such that $(2i-1, 2i)\in \sP$.
-  We define $\sP' = \sP - \set{(2i-1,2i)}$.
-  We will establish a bijection
-  \[
-    \PBP_{\star}(\ckcO_{g}, \sP')\longrightarrow \PBP_{\star}(\ckcO_{g},\sP).
-  \]
-\end{proof}
 
 % \subsection{Embedding Harish-Chandra cells to cells in $\sO$}
 % Let $H$ be a Cartan subgroup of $G$ and $T$ is the maximal compact subgroup of
@@ -5467,31 +3858,6 @@ This is clear by the explicit formula for the both sides.
       year = {2000},
 }
 
-
-\bib{BMSZ1}{article}{
-      title={On the notion of metaplectic Barbasch-Vogan duality},
-      year={2020},
-      author={Barbasch, Dan M.},
-      author = {Ma, Jia-jun},
-      author = {Sun, Binyong},
-      author = {Zhu, Chen-Bo},
-      eprint={2010.16089},
-      archivePrefix={arXiv},
-      primaryClass={math.RT}
-}
-
-\bib{BMSZ2}{article}{
-      title={Special unipotent representations: orthogonal and symplectic groups},
-      author={Barbasch, Dan M.},
-      author = {Ma, Jia-jun},
-      author = {Sun, Binyong},
-      author = {Zhu, Chen-Bo},
-      year={2021},
-      eprint={1712.05552},
-      archivePrefix={arXiv},
-      primaryClass={math.RT}
-}
-
 \bib{BV1}{article}{
    author={Barbasch, Dan},
    author={Vogan, David},
@@ -5585,20 +3951,6 @@ This is clear by the explicit formula for the both sides.
  year = {1985}
 }
 
-\bib{BB}{article}{
-   author={Beilinson, Alexandre},
-   author={Bernstein, Joseph},
-   title={Localisation de $\mathfrak g$-modules},
-   language={French, with English summary},
-   journal={C. R. Acad. Sci. Paris S\'{e}r. I Math.},
-   volume={292},
-   date={1981},
-   number={1},
-   pages={15--18},
-   issn={0249-6291},
-   review={\MR{610137}},
-}
-
 \bib{Br}{article}{
   author = {Brylinski, R.},
   title = {Dixmier algebras for classical complex nilpotent orbits via Kraft-Procesi models. I},
@@ -5606,20 +3958,6 @@ This is clear by the explicit formula for the both sides.
   volume = {213},
   pages = {49--67},
   year = {2003},
-}
-
-\bib{BK}{article}{
-   author={Brylinski, J.-L.},
-   author={Kashiwara, M.},
-   title={Kazhdan-Lusztig conjecture and holonomic systems},
-   journal={Invent. Math.},
-   volume={64},
-   date={1981},
-   number={3},
-   pages={387--410},
-   issn={0020-9910},
-   review={\MR{632980}},
-   doi={10.1007/BF01389272},
 }
 
 \bib{Carter}{book}{
@@ -5727,16 +4065,16 @@ author = {Przebinda, T.},
 
 
 
-\bib{Du77}{article}{
-  author = {Duflo, M.},
-  journal = {Annals of Math.},
-  number = {1},
-  pages = {107-120},
-  title = {Sur la Classification des Ideaux Primitifs Dans
-    L'algebre Enveloppante d'une Algebre de Lie Semi-Simple},
-  volume = {105},
-  year = {1977}
-}
+%\bib{Du77}{article}{
+% author = {Duflo, M.},
+% journal = {Annals of Math.},
+% number = {1},
+% pages = {107-120},
+% title = {Sur la Classification des Ideaux Primitifs Dans
+%   L'algebre Enveloppante d'une Algebre de Lie Semi-Simple},
+% volume = {105},
+% year = {1977}
+%}
 
 \bib{Du82}{article}{
  author = {Duflo, M.},
@@ -5872,43 +4210,16 @@ year={1989},
   pages = {1-182},
 }
 
-\bib{H}{book}{
-   author={Humphreys, James E.},
-   title={Representations of semisimple Lie algebras in the BGG category
-   $\scr{O}$},
-   series={Graduate Studies in Mathematics},
-   volume={94},
-   publisher={American Mathematical Society, Providence, RI},
-   date={2008},
-   pages={xvi+289},
-   isbn={978-0-8218-4678-0},
-   review={\MR{2428237}},
-   doi={10.1090/gsm/094},
-}
 
-\bib{J1}{article}{
+\bib{J12}{article}{
    author={Joseph, A.},
    title={Goldie rank in the enveloping algebra of a semisimple Lie algebra.
-   I},
+   I, II},
    journal={J. Algebra},
    volume={65},
    date={1980},
    number={2},
-   pages={269--283},
-   issn={0021-8693},
-   review={\MR{585721}},
-   doi={10.1016/0021-8693(80)90217-3},
-}
-
-\bib{J2}{article}{
-   author={Joseph, A.},
-   title={Goldie rank in the enveloping algebra of a semisimple Lie algebra.
-   II},
-   journal={J. Algebra},
-   volume={65},
-   date={1980},
-   number={2},
-   pages={284--306},
+   pages={269--283, 284--306},
    issn={0021-8693},
    review={\MR{585721}},
    doi={10.1016/0021-8693(80)90217-3},
@@ -6097,20 +4408,6 @@ year={1989},
    doi={10.2307/1971021},
 }
 
-\bib{KL}{article}{
-   author={Kazhdan, David},
-   author={Lusztig, George},
-   title={Representations of Coxeter groups and Hecke algebras},
-   journal={Invent. Math.},
-   volume={53},
-   date={1979},
-   number={2},
-   pages={165--184},
-   issn={0020-9910},
-   review={\MR{560412}},
-   doi={10.1007/BF01390031},
-}
-
 \bib{Lu}{book}{
    author={Lusztig, George},
    title={Characters of reductive groups over a finite field},
@@ -6188,22 +4485,6 @@ year={1989},
   volume = {323},
   pages = {469--502}
   year = {2017}
-}
-
-\bib{MR19}{article}{
-   author={M\oe glin, Colette},
-   author={Renard, David},
-   title={Sur les paquets d'Arthur des groupes unitaires et quelques
-   cons\'{e}quences pour les groupes classiques},
-   language={French, with English and French summaries},
-   journal={Pacific J. Math.},
-   volume={299},
-   date={2019},
-   number={1},
-   pages={53--88},
-   issn={0030-8730},
-   review={\MR{3947270}},
-   doi={10.2140/pjm.2019.299.53},
 }
 
 
@@ -6359,33 +4640,6 @@ pages={333--399},
 year={1984}
 }
 
-\bib{RT1}{article}{
-   author={Renard, David A.},
-   author={Trapa, Peter E.},
-   title={Irreducible genuine characters of the metaplectic group:
-   Kazhdan-Lusztig algorithm and Vogan duality},
-   journal={Represent. Theory},
-   volume={4},
-   date={2000},
-   pages={245--295},
-   review={\MR{1795754}},
-   doi={10.1090/S1088-4165-00-00105-9},
-}
-
-\bib{RT2}{article}{
-   author={Renard, David A.},
-   author={Trapa, Peter E.},
-   title={Irreducible characters of the metaplectic group. II.
-   Functoriality},
-   journal={J. Reine Angew. Math.},
-   volume={557},
-   date={2003},
-   pages={121--158},
-   issn={0075-4102},
-   review={\MR{1978405}},
-   doi={10.1515/crll.2003.028},
-}
-
 \bib{Sa}{article}{
 author={Sahi, S.},
 title={Explicit Hilbert spaces for certain unipotent representations},
@@ -6418,23 +4672,6 @@ pages={127--138},
   volume = {151},
 year = {2000},
 }
-
-
-\bib{Soergel}{article}{
-   author={Soergel, Wolfgang},
-   title={Kategorie $\scr O$, perverse Garben und Moduln \"{u}ber den
-   Koinvarianten zur Weylgruppe},
-   language={German, with English summary},
-   journal={J. Amer. Math. Soc.},
-   volume={3},
-   date={1990},
-   number={2},
-   pages={421--445},
-   issn={0894-0347},
-   review={\MR{1029692}},
-   doi={10.2307/1990960},
-}
-
 
 \bib{So}{article}{
 author = {Sommers, E.},
@@ -6495,19 +4732,6 @@ year={2011}
 %  year = {1990},
 % pages = {267-324},
 % }
-
-\bib{VGK}{article}{
-   author={Vogan, David A., Jr.},
-   title={Gel\cprime fand-Kirillov dimension for Harish-Chandra modules},
-   journal={Invent. Math.},
-   volume={48},
-   date={1978},
-   number={1},
-   pages={75--98},
-   issn={0020-9910},
-   review={\MR{506503}},
-   doi={10.1007/BF01390063},
-}
 
 \bib{Vg}{book}{
    author={Vogan, David A.},
