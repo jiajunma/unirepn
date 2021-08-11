@@ -1023,30 +1023,30 @@
 }
 
 
-% Fancy bcO, support feature \bcO'^a_b = \overline{\cO'^a_b}
-\makeatletter
-\def\bcO{\def\O@@{\cO}\@ifnextchar'\@Op\@Onp}
-\def\@Opnext{\@ifnextchar^\@Opsp\@Opnsp}
-\def\@Op{\afterassignment\@Opnext\let\scratch=}
-\def\@Opnsp{\def\O@@{\cO'}\@Otsb}
-\def\@Onp{\@ifnextchar^\@Onpsp\@Otsb}
-\def\@Opsp^#1{\def\O@@{\cO'^{#1}}\@Otsb}
-\def\@Onpsp^#1{\def\O@@{\cO^{#1}}\@Otsb}
-\def\@Otsb{\@ifnextchar_\@Osb{\@Ofinalnsb}}
-\def\@Osb_#1{\overline{\O@@_{#1}}}
-\def\@Ofinalnsb{\overline{\O@@}}
+% % Fancy bcO, support feature \bcO'^a_b = \overline{\cO'^a_b}
+% \makeatletter
+% \def\bcO{\def\O@@{\cO}\@ifnextchar'\@Op\@Onp}
+% \def\@Opnext{\@ifnextchar^\@Opsp\@Opnsp}
+% \def\@Op{\afterassignment\@Opnext\let\scratch=}
+% \def\@Opnsp{\def\O@@{\cO'}\@Otsb}
+% \def\@Onp{\@ifnextchar^\@Onpsp\@Otsb}
+% \def\@Opsp^#1{\def\O@@{\cO'^{#1}}\@Otsb}
+% \def\@Onpsp^#1{\def\O@@{\cO^{#1}}\@Otsb}
+% \def\@Otsb{\@ifnextchar_\@Osb{\@Ofinalnsb}}
+% \def\@Osb_#1{\overline{\O@@_{#1}}}
+% \def\@Ofinalnsb{\overline{\O@@}}
 
 % Fancy \command: \command`#1 will translate to {}^{#1}\bfV, i.e. superscript on the
 % lift conner.
 
-\def\defpcmd#1{
-  \def\nn@tmp{#1}
-  \def\nn@np@tmp{@np@#1}
-  \expandafter\let\csname\nn@np@tmp\expandafter\endcsname \csname\nn@tmp\endcsname
-  \expandafter\def\csname @pp@#1\endcsname`##1{{}^{##1}{\csname @np@#1\endcsname}}
-  \expandafter\def\csname #1\endcsname{\,\@ifnextchar`{\csname
-      @pp@#1\endcsname}{\csname @np@#1\endcsname}}
-}
+% \def\defpcmd#1{
+%   \def\nn@tmp{#1}
+%   \def\nn@np@tmp{@np@#1}
+%   \expandafter\let\csname\nn@np@tmp\expandafter\endcsname \csname\nn@tmp\endcsname
+%   \expandafter\def\csname @pp@#1\endcsname`##1{{}^{##1}{\csname @np@#1\endcsname}}
+%   \expandafter\def\csname #1\endcsname{\,\@ifnextchar`{\csname
+%       @pp@#1\endcsname}{\csname @np@#1\endcsname}}
+% }
 
 % \def\defppcmd#1{
 % \expandafter\NewDocumentCommand{\csname #1\endcsname}{##1 }{}
@@ -1054,18 +1054,18 @@
 
 
 
-\defpcmd{bfV}
-\def\KK{\bfK}\defpcmd{KK}
-\defpcmd{bfG}
-\def\A{\!A}\defpcmd{A}
-\def\K{\!K}\defpcmd{K}
-\def\G{G}\defpcmd{G}
-\def\J{\!J}\defpcmd{J}
-\def\L{\!L}\defpcmd{L}
-\def\eps{\epsilon}\defpcmd{eps}
-\def\pp{p}\defpcmd{pp}
-\defpcmd{wtK}
-\makeatother
+% \defpcmd{bfV}
+% \def\KK{\bfK}\defpcmd{KK}
+% \defpcmd{bfG}
+% \def\A{\!A}\defpcmd{A}
+% \def\K{\!K}\defpcmd{K}
+% \def\G{G}\defpcmd{G}
+% \def\J{\!J}\defpcmd{J}
+% \def\L{\!L}\defpcmd{L}
+% \def\eps{\epsilon}\defpcmd{eps}
+% \def\pp{p}\defpcmd{pp}
+% \defpcmd{wtK}
+% \makeatother
 
 \def\fggR{\fgg_\bR}
 \def\rmtop{{\mathrm{top}}}
@@ -1279,6 +1279,11 @@
 \def\approxR{\mathrel{\mathop{\approx}\limits_{\scriptscriptstyle R}}}
 \def\approxLR{\mathrel{\mathop{\approx}\limits_{\scriptscriptstyle LR}}}
 
+
+\def\dphi{\rdd \phi}
+\def\CPH{C(H)}
+\def\whCPH{\widehat{C(H)}}
+
 \begin{document}
 
 
@@ -1473,9 +1478,9 @@ The following theorem gives an upper bound of $\abs{\PI{mu}(G)}$.
   Then
   \[
     \begin{split}
-      \abs{\PI{\mu}(G)} &= \sum_{\sigma\in \cD_{\mu}} [\sigma: \Coh_{[\mu],\bcO_{\mu}}(G)] \cdot
+      \abs{\PI{\mu}(G)} &= \sum_{\sigma\in \cD_{\mu}} [\sigma: \Coh_{[\mu]:\bcO_{\mu}}(G)] \cdot
       [1_{W_{\mu}}, \sigma|_{W_{\mu}}]\\
-      & \leq \sum_{\sigma\in \cD_{\mu}} [\sigma: \Coh_{[\mu]}(G)] \cdot [1_{W_{\mu}}, \sigma|_{W_{\mu}}].
+      & \leq \sum_{\sigma\in \cD_{\mu}} [\sigma: \Coh_{[\mu]}(G)] \cdot [1_{W_{\mu}}: \sigma|_{W_{\mu}}].
     \end{split}
   \]
   % Here $[\sgima : \ ]$ denote the multiplicity of $\sigma$
@@ -1966,6 +1971,8 @@ In summary, we have a bijection
 % here $w$ is a arbitrary element in $\LC$.
 % Moreover, for each left cell $\LC_{w}$
 
+
+
 The partial order $\leqR$ is defined by
 \[
   w_{1}\leqR w_{2} \Leftrightarrow w_{1}^{-1} \leqL w_{2}^{-1}.
@@ -2006,7 +2013,8 @@ statements holds:
   $S^{a(w)}(\fhh)$;
   \item the multiplicity of $\sigma_{w}$ in $S^{a(w)}(\fhh)$ is one,
   \item $a(w)$ is the minimal degree $m$ such that $\sigma_{w}$ occurs in
-  $S^{m}(\fhh)$ which is the fake degree of $\sigma_{w}$; \trivial[]{ When
+  $S^{m}(\fhh)$ which is the fake degree and the generic degree of the special
+        representation $\sigma_{w}$. \trivial[]{ When
     $W_{[\lambda]} = W$, this is the definition of the fake degree.
     Otherwise, $\fhh = \fhh_{0}\oplus \fhh^{W_{\lambda}}$ where $\fhh_{0}$
     is the span of coroots of $W_{[\lambda]}$. Then $S(\fhh_{0})$ is embeds
@@ -2033,7 +2041,18 @@ statements holds:
   where $\tau_{a}$, $\tau_{b}$ are partitions.
 }
 
+% \subsubsection*{Clan of primitive ideals}
+% Under the above notation,
+% we say two
+Following Joseph, we say two primitive ideals $I(w\lambda)$ and  $I(w'\lambda)$
+with $w, w'\in W_{[\lambda]}$are in the same
+\emph{clan} if and only if $w\approxLR w'$ or equivalently $\sigma_{w}=\sigma_{w'}$.
 
+Obvious, the associated varieties of two primitive ideals in the
+same clan has the same associated variety. However the reverse dose not holds in
+the non-integral infinitesimal character case in general.
+
+\subsubsection*{Coherent continuations}
 Now we recall
 the relationships between cells and the coherent continuation
 representations.
@@ -2048,7 +2067,7 @@ consists of modules whose $\fhh$-weights are contained in $[\mu]$,
 \Grt_{W\cdot\lambda,[\mu]}(\fgg,\fhh,\fnn) = \Grt_{[\mu]}(\fgg,\fhh,\fnn)\cap \Grt_{W\cdot \lambda}(\fgg,\fhh,\fnn)
 \]
 which is spanned by a block in the category $\cO$ if
-$W\cdot \lambda \cap [\mu]\neq \emptyset$.
+$W\cdot \lambda \cap [\mu+\rho]\neq \emptyset$.
 
 Consider the following subgroup of coherent continuation
 \[
@@ -2059,7 +2078,7 @@ Consider the following subgroup of coherent continuation
 \]
 
 We identify $\bC[W_{[\lambda]}]$ with
-$\Coh_{[\lambda]}(\fgg,\fhh,\fnn,[\lambda])$ via $w \mapsto M_{w}$.
+$\Coh_{[\lambda]}(\fgg,\fhh,\fnn,[\lambda-\rho])$ via $w \mapsto M_{w}$.
 
 For each $w\in W_{[\lambda]}$,
 let
@@ -2124,6 +2143,10 @@ For this reason, we also write
   \LRC_{\sigma}:=\LRC_{w}
 \]
 where $\sigma=\sigma_{w}$ is the unique special representation in $\LRC_{w}$.
+The generic degree ``a''-function is constant on the double cells and order
+preserving: for each $\sigma'\in
+\LRC_{\sigma}$, the generic degree $a(\sigma')=a(\sigma)$;
+$a(\sigma')<a(\sigma'')$ if $\sigma'\lneqLR \sigma''$.
 
 In summary, we have bijections
 \[
@@ -2196,15 +2219,23 @@ when $r_{i}$ running over the preferred  coset representatives
 of $W/W_{[\lambda]}$.
 }
 
+Recall the definition of clan of the primitive ideals.
+By the comparing the definition of Goldie rank polynomials, we see that
+$I(r_{i}w)$ and $I(r_{j}w')$ in the same clan if and only if
+$w\approxLR w'$.
+In other word, the clan is only depends on the $W_{[\lambda]}$-type of the
+double cell containing $L(w\lambda)$ where $w\in W$.
+
+\medskip
 
 \def\Dsp{\cD^{\text{sp}}}
 \def\Csp{\sfC^{\text{sp}}}
 The above discussion yields the following.
-\begin{lem}
+\begin{lem}\label{lem:C.S}
   Fix a $\Gcad$-invariant subset $\sfS$ in the nilpotent cone of $\fgg$.
 
   Let
-  \[
+  \begin{equation}\label{eq:C.S}
     \begin{split}
   \Csp_{\sfS} &:= \Set{\sigma \in \Irrsp(\Wlam)| \Spr(j_{\Wlam}^{W}\sigma)\subseteq \sfS}, \\
   \sfC_{\sfS} &:=
@@ -2212,13 +2243,13 @@ The above discussion yields the following.
     } \sigma \leqLR \sigma'}
   % \bigcup_{\sigma\in \Dsp_{\sfS}}
   \end{split}
-  \]
-  %Let $\VLR_{\sigma}$ be the unique
+\end{equation}
+% Let $\VLR_{\sigma}$ be the unique
   Then, as an $W_{[\lambda]}$-module
   \[
     \begin{split}
       \Coh_{[\lambda],\sfS}(\fgg,\fhh,\fnn) &= \bigoplus_{i=1}^{k}
-      \Coh_{[\lambda], \sfS}(\fgg,\fhh,\fnn;[r_{i}\lambda])\\
+      \Coh_{[\lambda], \sfS}(\fgg,\fhh,\fnn;[r_{i}\lambda-\rho])\\
       & \cong \bigoplus_{i=1}^{k} \sum_{\sigma\in \Csp_{\sfS}} \VLR_{\sigma}\\
       & \cong \bigoplus_{i=1}^{k} \bigoplus_{\sigma\in \sfC_{\sfS}}
       (\dim \sigma) \sigma
@@ -2241,7 +2272,7 @@ $W_{[\lambda]}/W_{\mu}$.
   $r\in \sfD_{\sfS_{\mu}}$ is the element with minimal lenght in $rW_{\mu}$.
   Recall that $\tau(w) = \set{\alpha\in S_{[\lambda]}|w\alpha\notin R^{+}_{[\lambda]} }$
   Note that
-  $\tau(w)\cap R_{\mu}\emptyset$ is equivalent to require that
+  $\tau(w)\cap R_{\mu}\neq \emptyset$ is equivalent to require that
   $w \sfS_{\mu}\subseteq R^{+}_{[\lambda]}$, i.e. $w$ is a minimal length
   element. See for example, Carter, Simple groups of Lie type, Theorem~2.5.8.
 }
@@ -2249,19 +2280,26 @@ $W_{[\lambda]}/W_{\mu}$.
 \begin{thm}
   Let $\cO$ be an nilpotent orbit in $\fgg$ and $\mu\in \fhh$.
   Let $\Pi_{W\cdot \mu, \cO}$ be the set of irreducible highest
-  weight modules $\pi$ such that  $\AVC(\pi) = \cO$.
-  Let $\Dsp_{\cO}$ be the set of set of special representations such that
-  $\Spr(j_{W_{[\mu]}}^{W}\sigma) = \cO$ and
-  $\sfD_{\cO} = \bigcup_{\sigma\in \Dsp_{\cO}} \LRC_{\sigma}$.
+  weight modules $\pi$ such that  $\AVC(\pi) = \bcO$.
+  Let
+  \begin{equation}\label{eq:DC.O.mu}
+    \begin{split}
+      \Dsp_{\cO,\mu} &:= \Set{\sigma\in \Irrsp(W_{[\mu]})|\Spr(j_{W_{[\mu]}}^{W}\sigma) = \cO}\quad \text{
+        and }\\
+      \cD_{\cO,\mu} &= \bigcup_{\sigma\in \Dsp_{\cO,\mu}} \LRC_{\sigma}.
+    \end{split}
+  \end{equation}
+  % $ be the set of special representations such that
   Then
   \[
-    \abs{\Pi_{W\cdot\mu,\cO}} = \abs{W/W_{[\mu]}}\cdot \sum_{\sigma\in \sfD_{\cO}} \left(\dim \sigma \cdot [1_{W_{\mu}}:\sigma]\right).
+    \abs{\Pi_{W\cdot\mu,\cO}} = \abs{W/W_{[\mu]}}\cdot \sum_{\sigma\in \cD_{\cO,\mu}}
+    \left(\dim \sigma \cdot [1_{W_{\mu}}:\sigma]\right).
   \]
 
 
   Let
   \[
-  \CLR_{\sigma,\mu} = \CLR_{\sigma}\cap \sfD_{\sfS_{\mu}}
+  \CLR_{\sigma,\mu} = \CLR_{\sigma,\mu}\cap \sfD_{\sfS_{\mu}}
   \]
   % \[
   % \CLR_{\sigma,\mu} = \Set{w\in \CLR_{\sigma}|\tau(w)\cap R_{\mu}= \emptyset}
@@ -2281,6 +2319,76 @@ infinitesimal character $\mu$.
 Let $\Pi_{W\cdot \mu}$ be the set of irreducible highest
 weight modules $\pi$ such that  $\Ann(\pi) = \cI_{\mu}$.
 
+Let $a(\sigma)$ be the generic degree of a Weyl group representation $\sigma$.
+
+In view of \Cref{thm:count}, we need the following lemma by Barbasch-Vogan. %in \cite{BVUni}.
+\begin{lem}[{\cite{BVUni}*{(5.26), Proposition~5.28}}]
+  Let
+  \[
+    a_{\mu} = \max\set{a(\sigma)| \sigma \in \Irr(W_{[\mu]}) \text{ and }
+    [1_{W_{\mu}}: \sigma]\neq 0}.
+  \]
+  Let
+  \[
+    \LC_{\mu} =
+    \set{\sigma \in \Irr(W_{[\mu]}) | a(\sigma) = a_{\mu}
+      \text{ and } [1_{W_{\mu}}: \sigma]\neq   0
+    }.
+  \]
+  Then
+ %  \begin{itemize}
+ %   \item $\Wlamck$ is a Levi subgroup of $\WLamck$, and
+ % \item
+  $\LC_{\mu}$ is a left cell of $W_{[\mu]}$ given by
+  \[
+    (J_{W_{\mu}}^{W_{[\mu]}} \sgn )\otimes \sgn
+  \]
+  which contains a unique special representation
+  \[
+    \sigma_{\mu}=(j_{W_{\mu}}^{W_{[\mu]}} \sgn )\otimes \sgn.
+  \]
+  Moreover, $\LC_{\mu}$ is multiplicity free, which is equivalent to
+  \[
+  [1_{W_{\mu}}:\sigma]=1 \quad \text{for each } \sigma\in \LC_{\mu}.
+  \]
+
+  Let $\cO_{\mu} = \Spr(j_{W_{[\mu]}}^{W}\sigma_{\mu})$.
+  Then
+  \[
+    \LC_{\mu} = \Set{\sigma\in \sfC_{\bcO_{\mu}}| [1_{W_{\mu}}:\sigma]\neq 0}.
+  \]
+  \qed
+  % \e
+\end{lem}
+
+\trivial{
+  This is essentially contained in \cite{BVUni}.
+
+  We adapt the notation in \cite{BVUni}: two special representations
+  $\sigma \LRleq \sigma'$ if and only if $\cO_{\sigma}\supseteq \cO_{\sigma'}$
+  where $\cO_{\sigma}:=\Spr(\sigma)$. The generic degree of $\sigma$ is denoted by $a(\sigma)$.
+  Note that the ordering of double cells/special representation is the same as the closure relation on special nilpotent orbits, see \cite{BVUni}*{Prop
+    3.23}.
+
+  Note that induction maps left cone representation to a left cone
+  representation \cite{BVUni}*{Prop~4.14~(a)}. Therefore
+  $\Ind_{W_{\mu}}^{W_{[\mu]}}\sgn$ is a left cone representation.
+  $J_{W_{\mu}}^{W_{[\mu]}}\sgn$ is a left cell (since $J$-induction preserves
+  left cell \cite{BVUni}*{Prop~4.14~(b)}), it consists of the constituents in the induced
+  representation with the minimal generic degree (by the definition of
+  $J$-induction), it is also the set of constituents in
+  $\Ind_{W_{\mu}}^{W_{[\mu]}}\sgn$ sit in the same $\approxLR$ equivalence class (a unique double cell $\cD$).
+
+
+  Recall that tensoring with sign (or rather twisting $w_{0}$) is an order
+  reversing bijection of left cells in $\WLamck$ and induces a $LR$-order
+  reversing bijection on $\Irr(\Wlamck)$, see \cite{BV2}*{Prop.~2.25}. Therefore
+  $\Ind_{\Wlamck}^{\WLamck} 1 = \left(\Ind_{\Wlamck}^{\WLamck} \sgn\right)\otimes \sgn$
+  has a set of constituents which is maximal under the $LR$-order, in particular
+  the generic degree takes maximal value on these representations.
+
+  Hence we get the conclusion.
+}
 
 Combine the above theorem with \Cref{lem:lcell.BV}, we have the following
 counting theorem.
@@ -2294,7 +2402,7 @@ counting theorem.
   \[
     \sigma_{\mu} = \left(j_{W_{\mu}}^{W_{[\mu]}} \sgn\right)\otimes \sgn.
   \]
-  Then $\simga_{\mu}$ is the unique special representation containing in
+  Then $\sigma_{\mu}$ is the unique special representation containing in
   $\LC_{\mu}$ and
   \[
     \abs{\Pi_{W\cdot \mu}} = \abs{W/W_{[\mu]}}\cdot
@@ -2341,6 +2449,113 @@ counting theorem.
 
 % Let $\sfN_{d}$ be the union of all nilpotent orbits in $\fgg$ of dimension
 % less than equal to $d$.
+%
+
+
+
+\subsection{A variation}
+In this section, let
+$(\fgg, H,\fnn)$ be a triple that
+\begin{itemize}
+  \item $\fgg$ is a complex reductive Lie algebra,
+  \item $H$ is a Lie group such that
+        $\fhh_{0}:= \Lie(H)$ is a real form of
+       a Cartan subalgebra  $\fhh$ of $\fgg$,
+  \item $\fnn$ is a maximal nilpotent subalgebra
+        stable under the $\fhh$-action.
+\end{itemize}
+Let $\cO'(\fgg, H,\fnn)$ be the category of $(\fgg, H)$-module such that
+$M\in \cO'(\fgg,H,\fnn)$
+if and only if
+\begin{itemize}
+  \item $M$ is finitely generated as $\cU(\fgg)$-module,
+  \item $\fnn$ acts on $M$ locally nilpotently, and
+  \item $M$ decomposes in to a direct sum of finite dimension $H$-modules.
+\end{itemize}
+Let $\Grt(\fgg,H,\fnn)$ be the Grothendieck group of $\cO(\fgg,H,\fnn)$.
+
+We write $H_{0}$ for the connected component of $H$ which is abelian.
+Since $H_{0} = \exp(\fhh_{0})$ is central in $H$, for each $\phi\in \Irr(H)$
+$\phi|_{H_{0}}$ is a multiple of character.
+Hence taking the derivative yields a
+well defined map
+\[
+\rdd \colon \Irr(H)\longrightarrow \fhh^{*}
+\]
+sending $\phi$ to $\dphi$.
+
+
+Since $\rdd$ restricted on the lattice
+\[
+\tQ:=\Set{\phi\in \Irr(H)|\phi \text{
+    occurs in } S(\fgg)}
+\]
+ is a bijection onto the root lattice $Q$ \cite{Vg}*{0.4.6}, we identify the root lattice $Q$ with the $\tQ$ in $\Irr(H)$.
+
+
+Now assume $\phi\in \Irr(H)$ and let
+\[
+  [\phi] := \Set{\phi+\alpha| \alpha\in \tQ}
+\]
+and
+$\cO'(\fgg,H,\fnn;[\phi])$ be the subcategory of $\cO'(\fgg,H,\fnn)$
+consists of modules whose $H$ irreducible components are contained in $[\phi]$.
+Define $\Coh_{[\lambda]}(\fgg,H,\fnn;[\phi])$ to be the space of coherent
+families taking value in $\cO'(\fgg,H,\fnn;[\phi])$ and
+$\Coh_{[\lambda]}(\fgg,H,\fnn;[\phi])$ to be its subspace whose complex
+associated variety is contained in $\sfS$ for a $\Ad(\fgg)$-invariant closed subset $\sfS$ in the nilpotent cone of
+$\fgg$.
+
+
+We have the following lemma.
+\begin{lem}
+  Let $\phi\in \Irr(H)$ and fix a $\lambda\in \fhh^{*}$ such that
+  $[\rdd \phi + \rho ]\cap W\cdot \lambda\neq \emptyset$.
+  Then the forgetful functor
+  \[
+    \cF\colon \cO'(\fgg,H,\fnn)\longrightarrow \cO'(\fgg,\fhh,\fnn)
+  \]
+  induces a $W_{[\lambda]}$-module isomorphism
+  \[
+    \cF\colon \Coh_{[\lambda],\sfS}(\fgg,H,\fnn;[\phi])\longrightarrow
+    \Coh_{[\lambda],\sfS}(\fgg,\fhh,\fnn;[\rdd\phi])
+  \]
+\end{lem}
+\begin{proof}
+  When $\sfS$ is the whole nilpotent cone, the isomorphism is
+  given by identifying both sides with $\bC[W_{[\lambda]}]$ via Verma modules
+  such that
+  \[
+  \wtM_{1}(\rdd \phi+\rho):=\cU(\fgg)\otimes_{\cU(\fhh\oplus\fnn),H}\phi
+  \mapsto (\dim\phi)\cdot M_{1}(\rdd\phi+\rho):= \cU(\fgg)\otimes_{\cU(\fhh\oplus\fnn)}\rdd\phi.
+  \]
+  For $\phi'\in \Irr(H)$, $M(\phi'+\rho)$ has a unique irreducible quotient
+  $L(\phi')$ by the same argument of the same argument for the highest weight module.   Now we have, $L(\phi'+\rho) = \dim(\phi')\cdot L(\rdd\phi'+\rho)$.
+  \trivial{
+    These claims should be also much more clear from the D-module point of view.
+    The middle extension functor only see the $\cD_{\lambda}$-module structure
+    and keeps the $T$-module structure automatically. Here $T$ is the maximal
+    compact subgroup of $H$.
+  }
+  Since the associated variety only depends on the $\cU(\fgg)$-module structure,
+  the rest part of the lemma follows.   {\color{red} Check!!}
+\end{proof}
+
+\trivial{
+  Note that $H_{0}$ is abelian and $H = H_{0}$.
+  By the assumption of Harish-Chandra class,
+  $H = H_{0}\times H/H_{0}$. Here $H/H_{0}$ is a finite group maybe non-abelian.
+}
+
+The above lemma have the following immediate consequence.
+\begin{cor}
+  Retain the notation in \Cref{lem:C.S}. Then, for $\sigma\in \Irr(W_{[\lambda]})$
+  \[
+[\sigma:\Coh_{[\lambda],\sfS}(\fgg,H,\fnn)] \neq 0 \Leftrightarrow
+  \sigma\in \sfC_{\sfS}.
+  \]   \qe  d
+\end{cor}
+
 
 
 \section{Harish-Chandra cells}
@@ -2370,7 +2585,7 @@ counting theorem.
 %   % and  $W_{\mu}$ is the stabilizer of $\mu$.
 % \end{thm}
 
-\subsection{Counting special unipotent representations}
+\subsection{Counting special unipotent representations of reductive groups}
 
 Now let $\ckcO$ be a nilpotent orbit in $\ckcG$.
 It determine an infinitesimal character $\lamck$.
@@ -2380,88 +2595,6 @@ $\lamck$.
 
 Special unipotent representations are defined to be the set of
 Harish-Chandra modules with minimal GK-dimension.
-
-Let $a(\sigma)$ be the generic degree of a Weyl group representation $\sigma$.
-
-In view of \Cref{thm:count}, we need the following lemma by Barabsch-Vogan. %in \cite{BVUni}.
-\begin{lem}[{\cite{BVUni}*{(5.26)}}]
-  Let
-  \[
-    a_{\mu} = \max\set{a(\sigma)| \sigma \in \Irr(W_{[\mu]}) \text{ and }
-    [1_{W_{\mu}}: \sigma]\neq 0}.
-  \]
-  Let
-  \[
-    \LC_{\mu} =
-    \set{\sigma \in \Irr(W_{[\mu]}) | a(\sigma) = a_{\mu}
-      \text{ and } [1_{W_{\mu}}: \sigma]\neq   0
-    }.
-  \]
-  Then
- %  \begin{itemize}
- %   \item $\Wlamck$ is a Levi subgroup of $\WLamck$, and
- % \item
-  $\LC_{\mu}$ is a left cell of $W_{[\mu]}$ given by
-  \[
-    (J_{W_{\mu}}^{W_{[\mu]}} \sgn )\otimes \sgn
-  \]
-  which contains a unique special representation
-  \[
-    \sigma=(j_{W_{\mu}}^{W_{[\mu]}} \sgn )\otimes \sgn
-  \]
-  % \e
-\end{lem}
-
-\trivial{
-  WLOG, we can assume $\lamck$ is integral.
-  Now this is essentially contained in \cite{BVUni}.
-
-  We adapt the notation in \cite{BVUni}: two special representations
-  $\sigma \LRleq \sigma'$ if and only if $\cO_{\sigma}\supseteq \cO_{\sigma'}$
-  where $\cO_{\sigma}:=\Spr(\sigma)$. The generic degree of $\sigma$ is denoted
-  by $a(\sigma)$.
-  Note that the ordering of double cells/special representation is the same as
-  the closure relation on special nilpotent orbits, see \cite{BVUni}*{Prop
-    3.23}.
-
-  Note that induction maps left cone representation to a left cone
-  representation \cite{BVUni}*{Prop~4.14~(a)}. Therefore
-  $\Ind_{\Wlamck}^{\WLamck}\sgn$ is a left cone representation.
-  $J_{\Wlamck}^{\WLamck}\sgn$ consists the constituents in the induced
-  representation with the minimal generic degree. In particular,
-  $J_{\Wlamck}^{\WLamck}\sgn$ is the set of minimal representations under the
-  $LR$-order and it is contained in a unique double cell $\cD$.
-
-
-  Recall that tensoring with sign (or rather twisting $w_{0}$) is an order
-  reversing bijection of left cells in $\WLamck$ and induces a $LR$-order
-  reversing bijection on $\Irr(\Wlamck)$, see \cite{BV2}*{Prop.~2.25}. Therefore
-  $\Ind_{\Wlamck}^{\WLamck} 1 = \left(\Ind_{\Wlamck}^{\WLamck} \sgn\right)\otimes \sgn$
-  has a set of constituents which is maximal under the $LR$-order, in particular
-  the generic degree takes maximal value on these representations.
-
-  Hence we conclude that $\cC_{\ckcO}\otimes \sgn = J_{\Wlamck}^{\WLamck} \sgn$.
-  % Therefore we conclude that $\cC_{\ckcO}\otimes \sgn$ consists the
-  % representations minimal under $LR$-order in $\Ind_{\Wlamck}^{\WLamck}\sgn$.
-  % In particular, $\cC_{\ckcO}\otimes \sgn$ consists of representations having
-  % minimal generic degree, which is exactly $J_{\Wlamck}^{\WLamck} \sgn$.
-  % By our counting theorem, the block of highest weight modules with
-  % infinitesimal character $\lamck$ is in one-one correspondence with
-  % $\WLamck/\Wlamck$. As a set of representations, it is a union of left cells
-  % since the trivial representation is a left cell of $\Wlam$ and parabolic induction
-  % preserves left cone representation \cite{BVUni}*{Prop~4.14~(a)}. By
-  % Joseph-Vogan, there is a maximal primitive ideal in the set of primitive
-  % ideals with infinitesimal character $\lambda$. In particular, the associated
-  % variety of the maximal primitive ideal is the unique one with minimal
-  % dimension. By the relation between generic degree and dimension of the associated
-  % varieties of primitive ideals, we conclude that the set of representations in
-  % $\Ind_{\Wlamck}^{\WLamck}1_{\Wlamck}$ which have the maximal generic degree
-  % is contained in a unique left cell. These representations are
-  % maximal in the $LR$-order. (Warning: induction or truncated induction does
-  % not maps double cell onto a double cell in general. The notion of smoothly
-  % induction means double cell maps to double cell, see
-  % \cite{BVUni}*{Prop~4.14~last paragraph})
-}
 
 \section{Counting in type A}
 The results in this section are well known to the experts.
@@ -4777,9 +4910,6 @@ Moreover $\cO$ corresponds to the representation
 
 \subsection{Harish-Chandra cells and primitive ideals}
 
-\def\dphi{\rdd \phi}
-\def\CPH{C(H)}
-\def\whCPH{\widehat{C(H)}}
 
 For simplicity we assume $G$ is connected in this section.
 
