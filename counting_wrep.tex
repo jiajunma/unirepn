@@ -1,0 +1,628 @@
+\documentclass[counting_main.tex]{subfiles}
+\begin{document}
+
+\section{Combinatorics of Weyl group representations in the classical types}
+
+\subsection{The $j$-induction}
+If $\mu$ and $\nu$ are two partitions representing two symmetric groups
+representations.
+Then
+\[
+  j_{S_{\abs{\mu}}\times S_{\abs{\nu}}}^{S_{\abs{\mu}+\abs{\nu}}}
+  \mu\boxtimes \nu
+  = \mu\cup \nu,
+\]
+where $\mu\cup \nu$ is the partition such that
+\[
+  \set{\bfcc_{i}(\mu\cup\nu) | i\in \bN^{+}} =
+  \set{\bfcc_{i}(\mu) | i\in \bN^{+}}
+  \cup
+  \set{\bfcc_{i}(\nu) | i\in \bN^{+}}
+\]
+as multisets.
+
+\trivial{
+Use the inductive by stage of $j$-induction
+\[
+  \begin{split}
+  &j_{S_{\abs{\mu}}\times S_{\abs{\nu}}}^{S_{\abs{\mu}+\abs{\nu}}}
+  \mu\boxtimes \nu\\
+  &=
+j_{S_{\abs{\mu}}\times S_{\abs{\nu}}}^{S_{\abs{\mu}+\abs{\nu}}}
+j^{S_{\abs{\mu}}\times S_{\abs{\nu}}}_{\prod_{i}S_{\bfcc_{i}(\mu)}\times
+  \prod_{j} S_{\bfcc_{j}(\nu)}}\sgn\\
+ &=
+j^{S_{\abs{\mu}+\abs{\nu}}}_{\prod_{i}S_{\bfcc_{i}(\mu\cup \nu)}}\sgn\\
+  &= \mu\cup \nu.
+  \end{split}
+\]
+}
+
+
+We have
+\[
+  j_{S_{n}}^{W_{n}} \sgn = \begin{cases}
+    (\cboxs{k},\cboxs{k}) & \text{if $n=2k$ is even,}\\
+    (\cboxs{k+1},\cboxs{k}) & \text{if $n=2k+1$ is odd.}\\
+    \end{cases}
+\]
+\trivial{
+  The symbol of trivial of trivial group is
+  \[
+    \symb{0, 1, \cdots, k}{0,\cdots, k-1} .
+  \]
+  Apply the formula \cite{Lu}*{4.5.4},
+  When $n$ is even, the symbol of the induce is
+  \[
+    \symb{0,2, \cdots, k+1}{1,\cdots, k}.
+  \]
+  corresponds to $(\cboxs{k}, \cboxs{k})$.
+
+  When $n$ is even, the symbol of the induce is
+  \[
+    \symb{1,2, \cdots, k+1}{1,\cdots, k}.
+  \]
+  corresponds to $(\cboxs{k+1}, \cboxs{k})$.
+}
+
+If $\tau = (\tau_{L}, \tau_{R})$ and $\sigma = (\sigma_{L}, \sigma_{R})$
+be two bipartition. Then
+\[
+  j_{W_{\abs{\tau}}\times W_{\abs{\sigma}}}^{W_{\abs{\tau}+\abs{\sigma}}}
+  \tau \boxtimes \sigma = (\tau_{L}\cup \sigma_{L}, \tau_{R}\cup \sigma_{R})
+\]
+
+
+\delete{
+\subsection{Parameterize of Unipotent representations}
+We fix an abstract complex Cartan subgroup $\bfH_a$ and $\fhh_a$ in $\bfG$ and a
+set of simple roots $\Pi_a$.  Let $\cP(\bfG)$ be the set of all Langlands
+parameters of $G$-modules with character $\rho$ (i.e. the infinitesimal
+character of the trivial representation). For $\gamma\in \cP(\bfG)$, let
+$\cL(\gamma)$, $\cS(\gamma)$ and $\Phi_\gamma$ be the corresponding Langlands
+quotient, standard module and coherent family such that
+$\Phi_\gamma(\rho) = \cL(\gamma)$. Let $\cM(\bfG)$ be the span of $\cL(\gamma)$.
+Let $\set{\bB}$ be the set of all blocks. Then $\cP(\bfG) = \bigsqcup_\cB \cB$.
+The Weyl group $W = W(G)$ acts on $\cM(\bfG)$ by coherent continuation.  Let
+$\cM_{\cB}$ be the submodule of $\cM(\bfG)$ spanned by $\gamma\in\cB$, then
+\[
+  \cM(\bfG) = \bigoplus_\cB \cM_{\cB}
+\]
+Let $\tau(\gamma)\subset \Pi_a$ be the $\tau$-invariant of $\gamma$.
+
+Let $\ckcO$ be even orbit. $\lambda= \half \ckhh$.  Define
+\[
+  S(\lambda) = \set{\alpha\in \Pi_a| \inn{\alpha}{\lambda}=0}.
+\]
+Let $\cP_{\lambda}(\bfG)$ be the set of all Langlands parameters with
+infinitesimal character $\lambda$. Let $T_{\lambda,\rho}$ be the translation
+functor.  Let
+\[
+  \cB(S) = \set{\gamma\in \cB|S\cap \tau(\gamma)=\emptyset}
+\]
+and
+\[
+  \cP(\bfG,S) = \bigsqcup_{\cB} \cB(S)
+\]
+
+
+Then
+\[
+  \begin{tikzcd}[row sep=0em]
+    \cP(\bfG,S) \ar[r] & \cP_{\lambda}(\bfG)\\
+    \gamma \ar[r, maps to]& T_{\lambda, \rho}(\gamma)
+  \end{tikzcd}
+\]
+
+Let $\cO$ be a complex nilpotent orbit in $\fgg$.  Let
+\[
+  \cB(S,\cO) = \set{\gamma\in \cB(S)|\AVC(\cL(\gamma))\subset \bcO}
+\]
+
+Let
+\[
+  \begin{aligned}
+    m_S(\sigma) &= [\sigma: \Ind_{W(S)}^{W}\bfone]\\
+    m_\cB(\sigma)& = [\sigma: \cM_\cB]
+  \end{aligned}
+\]
+
+
+Barbasch \cite{B10}*{Theorem~9.1} established the following theorem.
+\begin{thm}
+  \[
+    |\cB(S,\cO)| = \sum_{\sigma} m_\cB(\sigma)m_S(\sigma)
+  \]
+  Here $\sigma\times \sigma$ running over the $W\times W$ appears in the double
+  cell $\cC(\cO)$.
+\end{thm}
+\begin{proof}
+  We need to take the graded module of $\cM(\bfG)$ with respect to the
+  $\LRleq$. By abuse of notation, we identify the basis $\cP(\bfG)$ with its
+  image in the graded module.  Note that $S\cap \tau(\lambda)=\emptyset$ if and
+  only if $W(S)$ acts on $\gamma$ trivially by \cite[Lemma~14.7]{V4}.  On the
+  other hand, by \cite[Theorem~14.10, and page 58]{V4},
+  $\AVC(\cL(\gamma))\subset \bcO$ only if $\gamma$ generate a $W$-module in the
+  double cell of $\cO$.
+\end{proof}
+
+Now assume $S=S(\lambda)$. By \cite[Cor~5.30 b) and c)]{BVUni},
+$[\sigma: \Ind_{W(S)}^{W}\bfone]=[\bfone|_{W(S)}:\sigma]\leq 1$.
+
+}
+
+
+
+% \section{Remarks on the Counting theorem of unipotent representations}
+
+
+
+% \subsection{Coherent family}
+% For each finite dimensional $\fgg$-module or $\Gc$-module $F$, let
+% $F^*$ be its contragredient representation and let
+% $\WT{F}\subseteq \aX$ denote the multi-set of weights in $F$.
+
+% Let $\PiGlfin$ be the set of irreducible finite dimensional representations of $\Gc$
+% with extreme weight in $\Lambda_0$ and $\Glfin$ be the subgroup generated by $\PiGlfin$.
+% Let
+% \[
+% \aP  := \set{\mu \in \aX| \text{$\mu$ is a $\hha$-weight of an $F\in \PiGfin$}}.
+% \]
+% Via the highest weight theory,
+% every $W$-orbit $W\cdot \mu$ in $\aP$ corresponds with the irreducible finite dimensional representation
+% $F\in \PiGfin$ with extremal weight $\mu$.
+
+% Now the Grothendieck group $\Gfin$ of finite dimensional representation of $\Gc$
+% is identified with $\bZ[\aP/W]$. In fact $\Gfin$ is a $\bZ$-algebra under the
+% tensor product and equipped with the involution $F\mapsto F^*$.
+
+% Fix a $W$-invariant sub-lattice $\Lambda_0\subset \aX$ containing $\aQ$.
+
+% %  Let $\Pi$
+% % $\Glfin$ be the $\star$-invariant subalgebra of $\Gfin$ generated by irreducible
+% % representations corresponds to $\Lambda_0/W$.
+
+
+% For any $\lambda\in \hha^{*}$, we define
+% \begin{equation}
+%   \label{eq:wlam}
+%   \begin{split}
+%   [\lambda ]  &:= \lambda  +  \aQ,\\
+%   R_{[\lambda]} &:= \Set{\alpha\in \aR| \inn{\lambda}{\ckalpha}\in \bZ},\\
+%   W_{[\lambda]} &:= \braket{s_\alpha|\alpha\in \Rlam} \subseteq W,\\
+%   R_{\lambda} &:= \Set{\alpha\in \aR| \inn{\lambda}{\ckalpha}=0}, \AND\\
+%   W_{\lambda} &:= \braket{s_\alpha|\alpha\in R_{\lambda}} = \braket{w\in W|w\cdot \lambda = \lambda} \subseteq W.
+%   \end{split}
+% \end{equation}
+
+% For any  lattice  $\Lambda = \lambda + \Lambda_0 \in \fhh^*/\Lambda_{0}$ with $\lambda \in \bCon$,
+% we define
+% \[
+%   W_{\Lambda} := \set{w\in W | w\cdot \Lambda  = \Lambda}.
+% \]
+% Clearly, we have
+% \[
+%   W_{[\lambda]} < W_{\Lambda}, \quad \forall \ \lambda \in \Lambda.
+% \]
+
+
+
+% \begin{defn}
+% Suppose $\cM$ is an abelian group with $\Glfin$-action
+% \[
+%   \Glfin\times \cM \ni(F,m)\mapsto F\otimes m.
+% \]
+% In addition,  we fix a subgroup $\cM_{\barmu}$ of $\cM$ for each
+%  for each $W_{\Lambda}$-orbit $\barmu = W_{\Lambda} \cdot \mu\in \Lambda/W_{\Lambda}$.
+
+% A function $f\colon \Lambda \rightarrow \cM$ is called
+%   a coherent family based on $\Lambda$ if it satisfies
+%   $f(\mu)\in \cM_\mu$ and
+%   \[
+%   F\otimes f(\mu)  = \sum_{\nu \in \WT{F}} f(\mu+\nu) \qquad \forall \mu\in \Lambda, F\in \PiGlfin.
+%   \]
+% Let $\Cohlm$ be the abelian group of all coherent families based on $\Lambda$ and value in $\cM$.
+% \end{defn}
+
+% \def\Grt{\cG}
+
+% In this paper, we will consider the following cases.
+
+% \begin{eg}
+% Suppose $\cM = \bQ$ and $F\otimes m = \dim(F)\cdot m$ for $F\in \PiGlfin$ and $m\in \cM$.
+% We let $\cM_{\barmu} = \cM$ for every $\mu\in \Lambda$.
+% When $\Lambda = \Lambda_0$, the set of $W$-harmonic polynomials on $\hha^*$ is naturally
+% identified with $\Cohlm$ via restriction (Vogan's result)
+
+% \end{eg}
+
+% \begin{eg}
+% Let $\Grt(\fgg,K)$ be the Grothendieck group of finite length $(\fgg,K)$-modules
+% and $\Grt_{\chi}(\fgg,K)$ be the subgroup of $\Grt(\fgg,K)$ generated by the
+% set of irreducible $(\fgg,K)$-modules with infinitesimal character $\chi$.
+
+% Then $\Coh_\Lambda(\cG(\fgg,K))$ is the group of coherent families of Harish-Chandra modules.
+% The space $\Coh_\Lambda(\cG(\fgg,K))$ is equipped with a $\WLam$-action by
+%   \[
+%     w\cdot f(\mu) =  f(w^{-1} \mu) \qquad \forall \mu\in \Lambda, w\in \WLam,
+%     f \in \Coh_{\Lambda}(\Grt(\fgg,K)).
+%   \]
+% \end{eg}
+
+% \begin{eg}
+%   Fix a $\Gc$-invariant closed subset $\cZ$ in the nilpotent cone of $\fgg$. Let
+%   $\Grt_{\cZ}(\fgg,K)$ be the Grothendieck group of $(\fgg,K)$-modules
+%   whose complex associated varieties are contained in $\cZ$.
+%   We define
+%   \[
+%     \Grt_{\chi,\cZ}(\fgg,K) := \Grt_{\chi}(\fgg,K)\cap \Grt_{\cZ}(\fgg,k).
+%   \]
+
+%   Now $\Coh_{\Lambda}(\Grt_{\cZ}(\fgg,K))$ is also a $\WLam$-submodule of
+%   $\Coh_\Lambda(\cG(\fgg,K))$.
+% \end{eg}
+
+% \begin{eg}
+%   Fixing a Borel subalgebra $\fbb = \fhh\oplus \fnn \subset \fgg$, let
+%   $\cG(\fgg,\fhh,\fnn)$ be the Grothendieck group of the category $\cO$.
+%   The space $\cG_{\cZ}(\fgg,\fhh,\fnn)$ is defined similarly.
+%   The
+%   space $\Coh_\Lambda(\cG(\fgg,\fhh,\fnn))$ and $\Coh_{\Lambda(\cG)}$defined
+%   similarly.
+
+% %Note that the lattice $\Lambda$ is stable under the $\Wlam$ action.
+% We can define $W_{\Lambda}$ action on $\Coh_\Lambda(\cM)$ by
+% \[
+%    w\cdot f(\mu) =  f(w^{-1} \mu) \qquad \forall \mu\in \Lambda, w\in \WLam.
+% \]
+% \end{eg}
+
+% \begin{eg}
+% For each infinitesimal character $\chi$ and
+% a close $G$-invariant set $\cZ\in \cN_{\fgg}$.
+% Let $\Grt_{\chi,\cZ}(\fgg,K)$ be the Grothendieck group of $(\fgg,K)$-module
+% with infinitesimal character $\chi$ and complex associated variety contained
+% $\cZ$.
+% Similarly, let $\Grt_{\chi,\cZ}()$
+% \end{eg}
+
+
+% \def\Parm{\mathrm{Parm}}
+% \def\cof{\Theta}
+% \subsection*{Translation principal assumption}
+% Recall that we have fixed a set of simple roots of $W_\Lambda$.
+
+% We make the following assumption for $\Coh_\Lambda(\cM)$.
+% \begin{itemize}
+% \item There is a basis $\set{\cof_\gamma|\gamma\in \Parm}$ of
+% $\Coh_\Lambda(\cM)$ where $\Parm$ is a parameter set;
+% \item For every $\mu\in \Lambda$, the evaluation at $\mu$ is surjective;
+%   \[
+%     \ev{\mu}\colon \Coh_\Lambda(\cM)\rightarrow \cM_{\barmu} \qquad f\mapsto f(\mu)
+%   \]
+%   is surjective;
+% \item a subset $\tau(\gamma)$ of the simple roots of $W_\Lambda$ is attached
+% to each $\gamma\in \Parm$ such that $s\cdot \cof_\gamma = - \cof_\gamma$;
+% \item $\cof_\gamma(\mu) =0$ if and only if $\tau(\gamma)\cap R_\mu \neq \emptyset$.
+% \item $\set{\cof_\gamma(\mu)| \tau(\gamma)\cap R_\mu = \emptyset}$ form a basis of
+% $\cM_{\bargamma}$.
+% \end{itemize}
+
+% The translation principle assumption implies
+% \begin{equation}\label{eq:kevmu}
+%   \Ker\ev{\mu} = \sspan\set{{\cof}_{\gamma}|\tau(\gamma)\cap R_\mu \neq \emptyset } %= \Ker \ev{\mu}.
+% \end{equation}
+
+
+% \def\cohm{\Coh_\Lambda(\cM)}
+% Now we have the following counting lemma.
+% \begin{lem}
+%  For each $\mu$, we have
+%  \[
+%     \dim \cM_{\barmu}  = \dim (\cohm)_{W_\mu} = [\cohm, 1_{W_\mu}].
+%  \]
+% \end{lem}
+% \begin{proof}
+%   Clearly
+%   \[
+%   \sspan\set{\cof_\gamma - w\cof_\gamma | \gamma\in \Parm, w\in W_\Lambda} \subseteq \ker \ev{\mu}
+%   \]
+%   since $w\cdot \cof_\gamma(\mu) = \cof_\gamma(w^{-1}\cdot \mu)=\cof_\gamma(\mu)$ for $w\in W_\mu$.
+%   Combine this with \eqref{eq:kevmu}, we conclude that
+%   \[
+%    \sspan\set{\cof_\gamma - w\cof_\gamma | \gamma\in \Parm, w\in W_\Lambda} = \ker \ev{\mu}.
+%   \]
+%   Therefore, $\ev{\mu}$ induces an isomorphism $(\cohm)_{W_\mu}\rightarrow \cM_{\barmu}$.
+%   Now the dimension equality follows.
+% \end{proof}
+
+% \begin{eg}
+%   For the case of category $\cO$. We can take $\Parm  = W$.
+%   Let $\cof_w(\mu) = L(w\mu)$ for each $w\in W_\Lambda$ with
+%   $\tau(w) = \set{s_\alpha |\alpha\in \Delta^+, w\alpha \not\in R^+ }$.
+% \end{eg}
+
+% \begin{eg}
+%  In the Harish-Chandra module case,
+%  $\Parm$ consists of certain irreducible $K$-equivariant local systems on a $K$-orbit of the flag variety of $G$.
+%  $\tau(\gamma)$ is the $\tau$-invariants of the parameter $\gamma$.
+% \end{eg}
+%   % Clearly the evaluation map factor through
+%   % \[
+%   % (\cohm)_{W_\mu}  = \cohm / \braket{\cof_\gamma - w\cof_\gamma | \gamma\in \Parm, w\in W_\Lambda}.
+%   % \]
+%   %
+
+
+
+% \subsection{Primitive ideals and left cells}
+% In this section, we recall some results about the primitive ideals and cells developed by Barbasch Vogan, Joseph and Lusztig etc.
+
+% \subsection{Highest weight module}
+% Let $\fgg$ be a reductive Lie algebra, $\fbb = \fhh \oplus \fnn$ is a fixed Borel.
+% %Fix $\lambda \in \fhh^*$ dominant i.e. $\inn{\lambda}{\ckalpha} \geq 0 $
+% Let
+% \[
+%   M(\lambda)  := \cU(\fgg)\otimes_{\cU(\fbb)} \bC_{\lambda-\rho}
+% \]
+% and $L(\lambda) $ be the unique irreducible quotient of $M(\lambda)$.
+
+% In the rest of this section, we fix a lattice $\Lambda  \in   \fhh^*/ X^*$.
+% Let $\RLam$ and $\RLamp$ be the set of integral root system and the set of positive integral roots.
+% Write $\WLam$ for the integral Weyl group.
+
+
+% For $\mu\in \Lambda$, % is called if
+% \[
+%   \begin{array}{ccccc}
+%   \mu \succeq 0&\Leftrightarrow &\mu \text{ is dominant} &\Leftrightarrow&  \inn{\lambda}{\ckalpha}\geq 0 \quad \forall \alpha \in \RLamp \\
+%   \mu \not\sim 0&\Leftrightarrow& \mu \text{ is regular} &\Leftrightarrow&   \inn{\lambda}{\ckalpha}\neq 0 \quad \forall \alpha \in \RLamp
+%   \end{array}
+% \] %for all $\alpha \in R^+_{\Lambda}$and is called
+% regular if $\inn{\lambda}{\ckalpha}\neq 0$.
+
+% For each $w\in W$, it give a coherent family such that
+% \[
+% M_w(\mu) = M(w\mu) \quad \forall \mu \in \Lambda %\text{ dominant}
+% \]
+% Let $L_w$ be the unique coherent family such that $L_w(\mu) = L(w\mu)$ for any
+% regular dominant $\mu$ in $\Lambda$.
+% \trivial{Note that the Grothendieck group
+%   $\cK(\cO)$ of category $\cO$ is naturally embedded in the space of formal
+%   character. $M_w$ is a coherent family: the formal character $\ch M_w (\mu)$ of
+%   $M_w(\mu)$ is
+%   \[
+%     \ch M_{w}(\mu)=\frac{e^{w\mu-\rho}}{\prod_{\alpha\in R^+} (1-e^{-\alpha})}
+%     =\frac{e^{w\mu}}{\prod_{\alpha\in R^+} (e^{\alpha/2}-e^{-\alpha/2})}
+%   \]
+%   It is clear
+%   that $\ch M_w$ satisfies the condition for coherent continuation.
+
+%   From now on, we fix a regular dominant weight $\lambda \in \fhh^{*}$.
+%   Then $w[\lambda] = [w\cdot \lambda]$ for any $w\in W$.
+
+%  Now $W_{w[\lambda]} = w\, W_{[\lambda]}\, w^{-1}$.
+
+%  As $W_{[\lambda]}$-module, we have the following decomposition
+%  \[
+%    \begin{split}
+%      \Coh_{[\lambda]} &= \bigoplus_{r\in W/W_{[\lambda]}}
+%      \Coh_{r}\quad \text{with}\\
+%      \Coh_{r} &=\Coh_{r\lambda} := \set{\cof\in \Coh_{[\lambda]}| \cof(\lambda)\in \cO'_{[r\cdot \lambda]}}
+%    \end{split}
+%  \]
+
+%  Here $\cO'_{S}$ is the set of highest weight module whose $\fhh$-weights are in
+%  $S\subset \fhh^{*}$.
+
+%  % Here
+%  % \[
+%  %   \begin{split}
+%  %     \Coh_{r}
+%  %    % &:= \sspan_{\bZ}\set{M_{w}| w \in r\, W_{[\lambda]}}\\
+%  %     &= \set{\cof\in \Coh_{[\lambda]}| \cof(\lambda)\in \cO'_{[r\cdot \lambda]}}
+%  %   \end{split}
+%  % \]
+
+%  Note that the following map
+%  \[
+%    \begin{array}{ccccc}
+%      \bC[W] & \longrightarrow & \Coh_{[\lambda]} &\longrightarrow & \bC[S]\\
+%      w & \mapsto & (\mu\mapsto M_{w}(\mu)) & \mapsto & w\cdot \lambda
+%    \end{array}
+%  \]
+%  is $W_{[\lambda]}$-equivariant
+%  where $W_{[\lambda]}$ acts by right translation on $\bC[W]$ and $S = W\cdot \lambda$.
+%  The action of $W_{[\lambda]}$ on $S$ is by transport of structure and so
+%  $(a, w\,\lambda)\mapsto wa^{-1}\,  \lambda$.
+
+%  Now $\bC[r W_{[\lambda]}] \subset \bC[W]$ and
+%  $\bC[r W_{[\lambda]}\cdot \lambda]$
+%  are identified with $\Coh_{r}$.
+
+
+% }
+
+
+
+% % Fix $\lambda \in \fhh^{*}$ and regular dominant.
+
+% % As $W_{\lambda}$ module, $\Coh_{[\lambda]}$ can be
+
+
+% For each $w\in \WLam$, the function
+% \[
+%   \wtpp_w(\mu) := \rank (\cU(\fgg)/\Ann (L(w \mu))) \qquad \forall \mu \in \Lambda \text{ dominant}.
+% \]
+% extends to a Harmonic polynomial on $\fhh^*$.
+% In particular, $\wtpp_w\in P(\fhh^*) = S(\fhh)$.
+% \trivial[]{
+%   Let $\Lambda^+$ be the set of dominant weights in $\Lambda$.
+% Assume $\lambda \succ 0$, i.e. dominant regular. Then
+% $\R^0_\lambda = \empty$, $w^{w\lambda} = w^{-1}$. The set
+% \[
+%  \hat F_{w\lambda} = \set{\mu \in \Lambda |w^{-1}\mu \succeq 0 }
+% =  w \Lambda^+.
+% \]
+% Joseph's $p_w(\mu) = \rank \cU(\fgg)/(\Ann L(w\mu))$ is defined on $\hat F_{w\lambda} = w\Lambda^+$.
+% Now his $\wtpp_w(\mu) = w^{-1} p_w$ is defined on $\Lambda^+$ and given by
+% $\wtpp_w(\mu) = \rank \cU(\fgg)/(\Ann L(w\mu))$.
+% }
+% \def\PIP#1{\cP^{#1}}
+
+% There is a unique function $\aLam \colon \WLam \times \WLam\rightarrow \bQ$ such that
+% \[
+% L_w  = \sum_{w'\in \WLam} \aLam (w,w') M_{w'}
+% \]
+% \trivial[h]{
+% In fact, we have, for any $\mu \succ 0$,
+% \[
+% L(w\mu) = \sum_{} \aLam(w,w') M(w'\mu)  %\qquad \forall \mu \succ 0.
+% \]
+% The coefficient is independent of $\mu$. } Suppose $V$ is a module in $\cO$ whose
+% Gelfand-Kirillov dimension $\leq d$ Let $c(V)$ be the Bernstein degree. Let
+% $\Cint{\Lambda}^d$ be the submodule of $\Cint{\Lambda}$ generated by $L_w$ such
+% that the $\dim L(w\mu)\leq d$. Then the map
+% \[
+% \PIP{d}: \CLam^d\rightarrow S(\fhh) \qquad \Theta \mapsto (\mu \mapsto c(\Theta(\mu)) )
+% \]
+% is $\WLam$-equivariant. Let $c_w := c\circ (L_w(\mu))\in S(\fhh)$.
+
+% The following result of Joseph implies that the set of primitive ideals can be
+% parameterized by Goldie rank polynomials.
+% \begin{thm}[Joseph] %, Barbasch-Vogan]
+%   \label{thm:GR}
+%   {\color{red} correct formulation?}
+%   For $\mu$ dominant, the primitive ideal $\Ann L(w\mu) = \Ann L(w'\mu)$ if and only if $p_w = p_w'$. (\cite[ref?]{J1})
+% %   Let $r = \dim \fnn$.
+% %   The following holds:
+% %  \begin{enumT}
+% %   \item \label{it:j.1}
+% %   For $\mu$ dominant, the primitive ideal $\Ann L(w\mu) = \Ann L(w'\mu)$ if and only if $p_w = p_w'$. (\cite[ref?]{J12})
+% %  \end{enumT}
+% \end{thm}
+
+% \begin{thm}
+%  Let $r = \dim \fnn$.  Suppose $\dim L(w\nu) = d$.
+%  \begin{enumT}
+%   \item Let $x\in \fhh$ such that $\alpha(x) = 1$ for every simple roots $\alpha$.
+%   Then there are non-zero rational numbers $a,a'$ such that  \cite{J12}*{Theorem~5.1 and 5.7}
+%   \[
+%    a \, \wtpp_w(\mu)  = a' \, c_w(\mu) = \sum_{w'\in \WLam} \aLam (w,w') \inn{\mu}{w'^{-1} x}^{r-d}.
+%   \]
+%   \item The submodule $\bC \WLam \wtpp_w$ in $S(\fhh)$ is
+%   a special  irreducible $\WLam$-representation.
+%   Moreover all special representations of $\WLam$ occurs as a certain
+%   $\sigma(w)$.
+%   See \cite{BV1}*{Theorem~D}, \cite{BV2}*{Theorem~1.1}.
+%   \item Let $\sigma(w)$ be the submodule of $S(\fhh)$ generated by
+%   $\wtpp_w$. Then
+%   $\sigma(w)$ is irreducible and it
+%   occurs in $S^{r-d}(\fhh)$ with multiplicity $1$, see \cite{J.hw}*{5.3},
+%   % occurs in
+%   % $\wtpp_{w^{-1}}$ also generate $\sigma(w)$ and the module
+%  \end{enumT}
+% \end{thm}
+% By \Cref{thm:GR}, the module $\sigma(w)$ only depends on the primitive ideal $\cJ :=\Ann L(w\mu)$. So we can also write
+% $\sigma(\cJ):= \sigma(w)$.
+
+% \trivial[h]{
+% A representation $\sigma \in \widehat{W}$ is called univalent, if $\sigma$ occur in
+% $S^{n(\sigma)}(\fhh)$ with multiplicity one. Here $n(\sigma)$ is the minimal degree such that $\sigma$ occur in $S(\fhh)$.
+% }
+
+% From the above theorem, we see that the map $\PIP{d}$ factor through
+% $\CLam^{d}/\CLam^{d-1}$ and its image is contained in the space $\cH^{d}$ of degree $d$-Harmonic
+% polynomials.
+
+% Note that the associated variety of a primitive ideal $\cJ$ is the closure of
+% a nilpotent orbit in $\fgg$.
+% %$\Ann L_w (\mu)$ for $\mu\succ 0$
+% Now the associated variety of $\cJ$  is computed by the following result of Joseph (and include Hotta ?).
+% \begin{thm}
+%   %Suppose $J = \Ann L(w\mu)$
+%   Let $\cJ$ be a primitive ideal in $\cU(\fgg)$.
+%   Then $\sigma(\cJ)$ is in the image of Springer correspondence.
+%   Moreover, the associated variety of $\cJ$ is the orbit $\cO$
+%   corresponding to $\sigma(\cJ)$.
+% See \cite{J.av}*{Proposition~2.10}.
+% \end{thm}
+
+
+% \begin{lem}
+%   Let $\mu\in \Lambda$, $W_{\mu} = \set{w\in W_{\Lambda}| w\cdot \mu = \mu}$ and
+%   \[
+%   a_{\mu} = \max\set{a(\sigma)|  \widehat{\WLam} \ni\sigma \text{ occurs in } \Ind_{W_{\mu}}^{\WLam} 1}.
+%   \]
+%   Suppose $W_{\mu}$ is a parabolic subgroup of $\WLam$.
+%   % Then there is a unique special representation $\sigma_{\mu}$ such that
+%   % $a(\sigma_{\mu}) = a_{\mu}$.
+%   Then the set of all irreducible representations $\sigma$ occurs in
+%   $\Ind_{W_{\mu}}^{\WLam} 1$ such that $a(\sigma) = a_{\mu}$ forms a left cell
+%   given by
+%   \[
+%   \left(J_{W_{\mu}}^{\WLam} \sgn\right) \otimes \sgn.
+%   \]
+% \end{lem}
+
+
+% Now the maximal primitive ideal having infinitesimal character $\mu$
+% has the associated variety $\cO$.
+
+% \def\Wb{W_{b}}
+% \def\Wg{W_{g}}
+% \def\WcOb{W_{\ckcO_b}}
+% \def\WcOg{W_{\ckcO_g}}
+
+% Recall that $\WLam = \Wb\times \Wg$.
+% Let
+% \[
+% \begin{split}
+%   \sigma_{b} &= (j_{\WcOb}^{\Wb}\sgn)\otimes \sgn\\
+%   \sigma_{g} &= (j_{\WcOg}^{\Wg}\sgn)\otimes \sgn\\
+% \end{split}
+% \]
+% Then $\sigma_{b}\otimes \sigma_{g}$ is a special representation of $\WLam$.
+% Moreover $\cO$ corresponds to the representation
+% \[
+%  \sigma := j_{\Wb\times \Wg}^{W} \sigma_{b}\otimes \sigma_{g}
+% \]
+
+% % Then $W_{[\lambda_{\ckcO}]} = W'_n$ and the left cell is given by
+% % \[
+% % (J_{W_\ckcO}^{W'_n} \sgn) \otimes \sgn \quad \text{ with } \quad W_\ckcO = \prod_{i\in \bN^+} S_{\bfcc_{2i}(\ckcO)}.
+% % \]
+% % Here $W_\ckcO$ is an subgroup of $S_n$ and the embedding of $S_n$ in $W'_n$ is fixed.
+% % When $n$ is even,we the symbol of $J_{S_n}^{W'_n} \sgn$ is degenerate and we label it by ``$I$''.
+
+% \trivial{
+%   We recall some facts about the $j$-induction and $J$-induction.
+%   If $W'$ is a parabolic subgroup in $W$ then $j_{W'}^{W}$ maps special
+%   representation to special representation.
+%   It maps irreducible representation to irreducible ones.
+%   The $j$ induction has induction by stage \cite{Carter}*{11.2.4}.
+
+%   For classical group, the representations satisfies property B.
+%   When $W'$ is parabolic, the orbit $\cO$ corresponds to $j_{W'}^{W}$ is the orbit
+%   $\Ind_{L}^{G} \cO$.
+
+%   The $J$-induction maps left cell to left cell, which is only defined for
+%   parabolic subgroups.
+
+
+%   The $j$-induction for classical group is in \cite{Carter}*{Section 11.4}.
+%   Basically, $W_{n}$ has $D_{c_{i}}$, $B/C_{c_{i}}$ factors,
+%   \[
+%     j_{\prod_{i}D_{c_{i}}\times \prod_{j} B/C_{c_{j}}} \sgn  =
+%       ((c_{i}), (c_{j})).
+%   \]
+%   Here $(c_{i})$ denote the Young diagram with columns $c_{i}$ etc.
+
+%   Moreover, we have the following formula for $j$-induction.
+%   \[
+%     \ind_{A_{2m}}^{W_{2m}} = ((m),(m)) \qquad
+%     \ind_{A_{2m+1}}^{W_{2m+1}} = ((m),(m+1)).
+%   \]
+% }
+
+\end{document}

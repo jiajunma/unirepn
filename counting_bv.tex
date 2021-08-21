@@ -1,0 +1,316 @@
+\documentclass[counting_main.tex]{subfiles}
+\begin{document}
+
+\section{Metaplectic Barbasch-Vogan duality and Weyl group representations}
+
+In this section, we exam primitive ideals for $\fgg=\fsp(2n,\bC)$ at half
+integral infinitesimal character and explain the metaplectic Barbasch-Vogan dual
+in terms of the cells of $\sfW'_{n}$.
+
+Let $\ckcO$ be a metaplectic ``good'' nilpotent orbit in $\fsp(2n,\bC)$, i.e.
+$\bfrr_i(\ckcO)$ is even for each $i\in \bN^+$.
+
+%We write $ \bfcc_{2i} (\ckcO)  =: 2 c_i + \epsilon_i =: C_i$ such that $\epsilon_i \in \set{0,1}$.
+Then $W_{[\lambda_{\ckcO}]} = W'_n$ and the left cell is given by
+\[
+(J_{W_\ckcO}^{W'_n} \sgn) \otimes \sgn \quad \text{ with } \quad W_\ckcO = \prod_{i\in \bN^+} S_{\bfcc_{2i}(\ckcO)}.
+\]
+Here $W_\ckcO$ is an subgroup of $S_n$ and the embedding of $S_n$ in $W'_n$ is fixed.
+When $n$ is even,we the symbol of $J_{S_n}^{W'_n} \sgn$ is degenerate and we label it by ``$I$''.
+
+\def\PPtC{\PP{\tC}}
+ Let
+ \[
+  \PPtC(\ckcO) = \set{(2i-1,2i+2)|i\in \bN^+, \bfrr_{2i-1}(\ckcO)\neq \bfrr_{2i}(\ckcO)}.
+ \]
+  For each $\wp\subset \PPtC(\ckcO)$, let $\tau_\wp := (\imath_\wp,\jmath_\wp)$ be the bipartition
+  given by
+  \[
+    (\bfrr_i(\imath_\wp),\bfrr_i(\jmath_\wp)) =\begin{cases}
+      (\frac{\bfrr_{2i-1}(\ckcO)}{2}, \frac{\bfrr_{2i}(\ckcO)}{2}),   & \text{if } (2i-1,2i)\notin \wp, \\
+      (\frac{\bfrr_{2i}(\ckcO)}{2}, \frac{\bfrr_{2i-1}(\ckcO)}{2}), & \text{otherwise.}
+    \end{cases}
+  \]
+  If $\tau_\wp$ is degenerate, it represent the element in $\widehat{W'_n}$
+  with label $I$.
+  Let $\wp^c$ be the complement of $\wp$ in $\PPtC(\ckcO)$.
+  Then $\tau_\wp$ and $\tau_{\wp^c}$ represent the same irreducible $W'_n$-module.
+
+  \def\LCC{{}^L\sC'}
+Using the induction formula in \cite{L}*{(4.6.6) (4.6.7)}, we have the following lemma.
+\begin{lem}
+The representation
+\[
+  \LCC(\ckcO) :=J_{W_\ckcO}^{W'_n} \sgn
+\]
+is multiplicity free.
+The map
+\[
+  \bZ[\PPtC(\ckcO)]/\sim \longrightarrow \set{\tau\in \widehat{W'_n}| \tau\subset \LCC(\ckcO)}
+  \qquad \wp \mapsto \tau_\wp
+\]
+is a bijection where $\sim$ is the equivalent relation identifying $\wp$ with $\wp^c$.
+% irreducible components in $\LCC(\ckcO)$ are in one-one correspond
+% to the quotient of  by the equivalent relation $\wp\sim \wp^c$
+Moreover, the special representation in $\LCC(\ckcO)$ is $\tau_\emptyset$.
+\qed
+\end{lem}
+
+In the following, we write
+\[
+\tau_{\ckcO}:=\tau_\emptyset
+\]
+for the unique special
+representation in $\LCC(\ckcO)$.
+
+\trivial[h]{
+ Use the formula, if $\ckcO$ has only two rows $[2r_1,r_2]$.
+ Then $W_{\ckcO} = \underbrace{S_2\times \cdots \times S_2}_{r_2} \times
+ \underbrace{ S_1 \times \cdots \times S_1}_{r_1-r_2}$ and the claim is clear.
+
+ The corresponding symbol is
+ \[
+  \binom{r_1}{r_2}
+ \]
+
+ We prove by induction on the number of rows.
+ Suppose $\ckcO  = [2k+2r_1, 2r+2r_2, \ckcO'] $ where $2k$ is the number of columns in $\ckcO'$.
+ If $r_1=r_2 =0$, then
+ the symbol of $\ckcO$ are given by
+ \[
+  \binom{a_1,a_2, \cdots, a_k, 2k+r_1}{b_1, b_2, \cdots, b_k, 2k+r_2 }
+  \text{ or }
+  \binom{a_1,a_2, \cdots, a_k, 2k+r_2}{b_1, b_2, \cdots, b_k, 2k+r_1 }.
+ \]
+where
+\[
+  \binom{a_1,a_2, \cdots, a_k}{b_1, b_2, \cdots, b_k}
+\]
+is the symbol attached to $\ckcO'$.
+
+This gives the claim.
+}
+
+
+Let $\tau_\ckcO  = (\imath,\jmath)$ such that $\bfrr_i(\imath)\leq \bfrr_i(\jmath)$ for all $i\in \bN^+$.
+Then the unique special representation
+in $\Ind_{W_\ckcO}^{W'_n} 1$ where the $a$ function take maximal value is given
+by the bipartition
+\[
+  \tau_{\cO}:=(\jmath^t,\imath^t).
+\]
+Let $\sigma'(\cO)$ denote the $\tau_{\cO}$-isotypic component of $W'_n$-harmonic polynomials in $S(\fhh)$.
+Comparing the  fake degree formulas of type $C$ and $D$ (see \cite{Carter}*{Proposition 11.4.3, 11.4.4}), we conclude that
+the $W_n$-representation
+\begin{equation}\label{eq:sigma.tC}
+\sigma(\cO):= \bC[W_n]\cdot \sigma'(\cO)
+\end{equation}
+is irreducible whose type is also given by the
+bipartition $\tau_{\cO}$. The type of $\sigma(\cO)$ is $j_{W'}^{W} \sigma'(\cO)$.
+
+\begin{lem}\label{lem:MD1}
+  Suppose $\sigma'$ is a $W'_n$-special representation.% and $\sigma = j_{W'_n}^{W_n}$.
+  Let $\ckcO'$ be the partition of type $D$ corresponds to the $W'_n$-special representation
+  $\sigma'\otimes \sgn_D$. Then $\sigma:=j_{W'_n}^{W_n} \sigma'$ corresponds to the partition $\ckcO'^t$ under the Springer correspondence of
+  type C.
+\end{lem}
+\begin{proof}
+  %By the algorithm computing the Springer correspondence, it is clear that
+  First note that $\ckcO'$ is a specail nilpotent orbit of type $D_n$,
+  therefore $\ckcO'^t$ is a partition of type $C_n$ (see \cite{CM}*{Proposition~6.3.7}).
+
+  By the explicitly formula of the Lusztig-Spaltenstein duality, we known that the D-collapsing
+  $(\ckcO'^t)_D$ of $\ckcO'^t$ corresponds to the special representation
+  $\sigma'$ of type $D$.
+
+  The Springer correspondence algorithm for classical groups can be naturally extends to all partitions.
+  Sommers showed that two partitions are mapped to the same Weyl group representations
+  if and only if they has the same $D$-collapsing \cite{So}*{Lemma~9}.
+  Note that the algorithms computing the Springer correspondence for type C and D are essentially the same
+  (see \cite{Carter}*{Section~13.3} or \cite{So}*{Section~7}).
+  By the injectivity of the Springer correspondence, we conclude that the type $C$ partition $\ckcO'^t$
+  must corresponds to $\sigma$.
+  \trivial[h]{
+    Two partition $\lambda\sim_X \mu$ if they have the same $X$-collapsing.
+  Sommers showed that two partition $\lambda$ and $\mu$ maps to the same module $E_\lambda = E_\mu$
+  if they have the same X-collapse. But the Springer correspondence is injective,
+  so we have the map $\sP/\sim_X \xrightarrow{1-1} \sP_X \hookrightarrow \widehat{W}$
+  which gives the claim.
+  }
+\end{proof}
+
+
+
+%As a corrollary, we can obtain the following simple formule for
+The following lemma is a direct consequence of \Cref{lem:MD1}.
+\begin{lem}
+  Suppose $\ckcO$ has good parity of type $\tC$. Under the Springer
+  correspondence of type $C$, the representation $\sigma(\ckcO)$ (see
+  \eqref{eq:sigma.tC}) corresponds to the nilpotent orbit $\cO$ defined by
+  \[
+    (\bfcc_{2i-1}(\cO),\bfcc_{2i}(\cO)) =\begin{cases}
+      (\bfrr_{2i-1}(\ckcO),\bfrr_{2i}(\ckcO)), & \text{if } \bfrr_{2i-1}(\ckcO),\bfrr_{2i}(\ckcO)\\
+      (\bfrr_{2i-1}(\ckcO)-1,\bfrr_{2i}(\ckcO)+1), & \text{otherwise} \\
+    \end{cases}
+  \]
+  for all $i\in \bN^+$.
+\end{lem}
+\begin{proof}
+  Apply the algorithm of Springer correspondence of type D to the representation $\sigma'(\ckcO)$ gives the above formula.
+\end{proof}
+\trivial{
+A technical point, the representation of $W'_n$ is given by symbol $\binom{\xi}{\mu}$ or
+$\binom{\mu}{\xi}$. However, using the Springer correspondence formula, only one of the arrangement
+can give a valid type D partition.
+
+It is a interesting fact that a type D orbit $\cO$ is special if and only if $\cO^t$ is of type C.
+
+
+
+}
+
+
+
+\def\tdBV{\tdd_{\text{BV}}}
+\begin{lem}
+Suppose $\ckcO = \ckcO_{b}\cup \ckcO_{g}$.
+Then $\cO = \cO_{b} \cup \cO_{g}$ where $\cO_{b} = \ckcO_{b}^{t}$ and
+$\cO_{g}=\tdBV(\ckcO_{g})$.
+\end{lem}
+
+% Let $\ckcO'_{g} = (\ckcO_{g})_{D}$. Then $\sigma_{D}(\ckcO_{g}) = \sigma_{D}(\ckcO'_{g})$.
+% Let $\sigma_{\ckcO_{g}} = \sigma_{\ckcO'_{g}}$
+% Let $\ckcO' = \ckcO_{b}\cup \ckcO'_{g}$.
+
+\trivial[]{
+  We take the convention that $2\cO = [2r_{i}]$ if $\cO = [r_{i}]$.
+  We also write $[r_{i}]\cup [r_{j}] = [r_{i},r_{j}]$.
+  $\dagger \cO = [r_{i}+1]$.
+
+We suppose
+\[
+\ckcO_{b} = [2r_{1}+1, 2r_{1}+1, \cdots, 2r_{k}+1,2r_{k}+1]
+= (2c_{0},2c_{1},2c_{1}, \cdots, 2c_{l}, 2c_{l})
+\]
+where $l = r_{1}$.
+
+Now
+\[
+\begin{split}
+  W_{\ckcO_{b}} &= W_{c_{0}} \times S_{2c_{1}} \times S_{2c_{2}}\times \cdots \times S_{2c_{l}}\\
+  \cksigma_{b} &:= j_{W_{\ckcO_{b}}}^{W_{b}} \sgn = ((c_{1},c_{2},\cdots, c_{k}),(c_{0},c_{1}, \cdots, c_{l}))\\
+  & = ([r_{1},r_{2},\cdots, r_{k}],[r_{1}+1,r_{2}+1,\cdots,r_{k}+1])
+\end{split}
+\]
+Therefore
+\[
+\sigma_{b} = \cksigma_{b}\otimes \sgn = ((r_{1}+1,r_{2}+1,\cdots,r_{k}+1),(r_{1},r_{2},\cdots, r_{k}))
+\]
+which corresponds to the orbit
+\[
+  \cO_{b} = (2r_{1}+1, 2r_{1}+1,2r_{2}+1, 2r_{2}+1,  \cdots,2r_{k}+1, 2r_{k}+1 ) = \ckcO_{b}^{t}.
+\]
+This implies
+\[
+  \sigma_{b} = j_{W_{L_{b}}}^{W_{b}}\sgn, \quad \text{where } W_{L,b} = \prod_{i=1}^{k} S_{2r_{i}+1}.
+\]
+(Note that $\cO'_{b} = (2r_{1}+1,2r_{2}+1, \cdots, 2r_{k}+1)$ which corresponds
+to $j_{W_{L_{b}}}^{S_{b}}\sgn$ and $\ind_{L}^{G} \cO'_{b} = \cO_{b}$.
+)
+
+Now we deduce that
+\[
+  \begin{split}
+    \sigma &:= j_{W_{b}\times W_{g}}^{W_{n}} \sigma_{b}\otimes \sigma_{g}\\
+    & = j_{W_{L_{b}}\times W_{g}}^{W_{n}} \sgn \otimes \sigma_{g}
+  \end{split}
+\]
+where $W_{L_{b}}\times W_{g}$ is a parabolic subgroup of $W_{n}$
+corresponds to the Levi factor $L$ of type
+\[
+A_{2r_{1}+1}\times A_{2r_{2}+1}\times \cdots \times A_{2r_{k}+1} \times W_{g}.
+\]
+Therefore
+\[
+\cO = \ind_{L}^{G} \triv\times \cO_{g} = \cO_{b}\cup \cO_{g}.
+\]
+
+
+% Note that
+% \[
+%   j_{S_{b}}^{W_{b}} 1
+%   = (j_{S_{b}}^{W_{b}}\sgn)\otimes \sgn
+%   = (J_{W_{\ckcO_{b}}}^{W_{b}} \sgn)\otimes
+%   \sgn
+% \]
+
+% It suffice to compute
+% \[
+%   (J_{W_{\ckcO_{b}}\times W_{\ckcO_{g}}}^{\WLam} \sgn)\otimes \sgn
+%   = (J_{W_{b}\times W_{g}}^{W} \sigma_{b} \otimes \sigma_{g}) \otimes \sgn
+% \]
+%
+\def\ckfll{\check\fll}
+\def\ckfgg{\check\fgg}
+
+We claim that the map $\tdd\colon \ckcO \mapsto \cO$ defined here
+coincide with our Metaplectic BV duality paper.
+
+Note that $\tdBV$ is compatible with parabolic induction.
+Suppose $\ckfll$ is a Levi subgroup of $\ckfgg$ and
+$\ckcO_{\ckfll}:=\ckcO\cap \ckfll\neq \emptyset$.
+Then
+\[
+\tdBV(\ckcO) = \ind_{\fll}^{\fgg} \tdBV(\ckcO_{\ckfll}).
+\]
+(Since $\tdBV$ commute with the descent map, the claim follows from the
+prosperity of $\dBV$)
+
+The map $\tdd$ also compatible with parabolic induction.
+It suffice to consider the case where $\ckfll$ is a maximal parabolic of type
+$A_{l}\times C_{n}$ and
+the orbit is trivial on the $A_{l}$ factor.
+Suppose $l$ is the bad parity, the claim is clear by our computation for the bad
+parity case.
+
+Now suppose $l=2m$ has good parity. If there is a $i$ such that
+$\bfrr_{2i+1}(\ckcO)=\bfrr_{2i+2}(\ckcO)=2m$. Then
+$\bfcc_{2i+1}(\cO)=\bfcc_{2i+2}(\cO)=2m$ and the claim follows.
+
+Otherwise, we can assume
+\[
+R_{2i-1}:=\bfrr_{2i-1}(\ckcO)> \bfrr_{2i}(\ckcO)=\bfrr_{2i+1}(\ckcO) > \bfrr_{2i+2}(\ckcO)=:R_{2i+2}.
+\]
+and then
+\[
+\cO = (\cdots, R_{2i-1}-1, 2m+1, 2m-1, R_{2i+2}, \cdots)
+\]
+One check again that $\cO = \ind_{\fll}^{\fgg}\cO_{\fll}$.
+(Note that the induction operation is add two length $2m$ columns and then apply
+C-collapsing.)
+
+Now it suffice to check that
+$\tdd(\ckcO) = \tdBV(\ckcO)$ for every orbits $\ckcO$ whose
+rows are multiplicity free) (i.e. $\ckcO$ is distinguished).
+This is clear by the explicit formula for the both sides.
+}
+
+\section{Matching specail shape and non-special shape painted bipartitions}
+\label{app:comb}
+
+\subsection{Proof of ...}
+\begin{proof}
+  Let $i$ be the minimal integer such that $(2i-1, 2i)\in \sP$.
+  We define $\sP' = \sP - \set{(2i-1,2i)}$.
+  We will establish a bijection
+  \[
+    \PBP_{\star}(\ckcO_{g}, \sP')\longrightarrow \PBP_{\star}(\ckcO_{g},\sP).
+  \]
+\end{proof}
+
+% \subsection{Embedding Harish-Chandra cells to cells in $\sO$}
+% Let $H$ be a Cartan subgroup of $G$ and $T$ is the maximal compact subgroup of
+% $H$. %Let $(\fgg, T)$-module.
+% Let $\cO_{H}$ be the category
+
+\end{document}

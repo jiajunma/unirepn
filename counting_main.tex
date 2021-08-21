@@ -1,0 +1,2640 @@
+% !TeX program = xelatex
+\documentclass[12pt,a4paper]{amsart}
+\usepackage[margin=2.5cm,marginpar=2cm]{geometry}
+
+\usepackage[bookmarksopen,bookmarksdepth=2,hidelinks,colorlinks=false]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+% \usepackage[color]{showkeys}
+% \makeatletter
+%   \SK@def\Cref#1{\SK@\SK@@ref{#1}\SK@Cref{#1}}%
+% \makeatother
+%% FONTS
+
+\usepackage{amssymb}
+%\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+%\usepackage{amsrefs}
+\usepackage{mathbbol,mathabx}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{braket}
+%\usepackage[pointedenum]{paralist}
+%\usepackage{paralist}
+
+
+\usepackage{amsrefs}
+
+\usepackage[all,cmtip]{xy}
+\usepackage{rotating}
+\usepackage{leftidx}
+%\usepackage{arydshln}
+
+%\DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
+%\DeclareSymbolFontAlphabet{\mathbbold}{bbold}
+
+
+%\usepackage[dvipdfx,rgb,table]{xcolor}
+\usepackage[rgb,table]{xcolor}
+%\usepackage{mathrsfs}
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+
+%\usepackage[abbrev,shortalphabetic]{amsrefs}
+
+
+\usepackage[normalem]{ulem}
+
+% circled number
+\usepackage{pifont}
+\makeatletter
+\newcommand*{\circnuma}[1]{%
+  \ifnum#1<1 %
+    \@ctrerr
+  \else
+    \ifnum#1>20 %
+      \@ctrerr
+    \else
+      \mbox{\ding{\numexpr 171+(#1)\relax}}%
+     \fi
+  \fi
+}
+\makeatother
+
+\usepackage[centertableaux]{ytableau}
+
+
+% Ytableau tweak
+\makeatletter
+\pgfkeys{/ytableau/options,
+  noframe/.default = false,
+  noframe/.is choice,
+  noframe/true/.code = {%
+    \global\let\vrule@YT=\vrule@none@YT
+    \global\let\hrule@YT=\hrule@none@YT
+  },
+  noframe/false/.code = {%
+    \global\let\vrule@YT=\vrule@normal@YT
+    \global\let\hrule@YT=\hrule@normal@YT
+  },
+  noframe/on/.style = {noframe/true},
+  noframe/off/.style = {noframe/false},
+}
+
+\def\hrule@enon@YT{%
+  \hrule width  \dimexpr \boxdim@YT + \fboxrule *2 \relax
+  height 0pt
+}
+\def\vrule@enon@YT{%
+  \vrule height \dimexpr  \boxdim@YT + \fboxrule\relax
+     width \fboxrule
+}
+
+\def\enon{\omit\enon@YT}
+\newcommand{\enon@YT}[2][clear]{%
+  \def\thisboxcolor@YT{#1}%
+  \let\hrule@YT=\hrule@enon@YT
+  \let\vrule@YT=\vrule@enon@YT
+  \startbox@@YT#2\endbox@YT
+  \nullfont
+}
+
+\makeatother
+%\ytableausetup{noframe=on,smalltableaux}
+\ytableausetup{noframe=off,boxsize=1.3em}
+\let\ytb=\ytableaushort
+
+\newcommand{\tytb}[1]{{\tiny\ytb{#1}}}
+
+
+%\usepackage[mathlines,pagewise]{lineno}
+%\linenumbers
+
+\usepackage{enumitem}
+%% Enumitem
+\newlist{enumC}{enumerate}{1} % Conditions in Lemma/Theorem/Prop
+\setlist[enumC,1]{label=(\alph*),wide,ref=(\alph*)}
+\crefname{enumCi}{condition}{conditions}
+\Crefname{enumCi}{Condition}{Conditions}
+\newlist{enumT}{enumerate}{3} % "Theorem"=conclusions in Lemma/Theorem/Prop
+\setlist[enumT]{label=(\roman*),wide}
+\setlist[enumT,1]{label=(\roman*),wide}
+\setlist[enumT,2]{label=(\alph*),ref ={(\roman{enumTi}.\alph*)}}
+\setlist[enumT,3]{label=(\arabic*), ref ={(\roman{enumTi}.\alph{enumTii}.\alph*)}}
+\crefname{enumTi}{}{}
+\Crefname{enumTi}{Item}{Items}
+\crefname{enumTii}{}{}
+\Crefname{enumTii}{Item}{Items}
+\crefname{enumTiii}{}{}
+\Crefname{enumTiii}{Item}{Items}
+\newlist{enumPF}{enumerate}{3}
+\setlist[enumPF]{label=(\alph*),wide}
+\setlist[enumPF,1]{label=(\roman*),wide}
+\setlist[enumPF,2]{label=(\alph*)}
+\setlist[enumPF,3]{label=\arabic*).}
+\newlist{enumS}{enumerate}{3} % Statement outside Lemma/Theorem/Prop
+\setlist[enumS]{label=\roman*)}
+\setlist[enumS,1]{label=\roman*)}
+\setlist[enumS,2]{label=\alph*)}
+\setlist[enumS,3]{label=\arabic*.}
+\newlist{enumI}{enumerate}{3} % items
+\setlist[enumI,1]{label=\roman*),leftmargin=*}
+\setlist[enumI,2]{label=\alph*), leftmargin=*}
+\setlist[enumI,3]{label=\arabic*), leftmargin=*}
+\newlist{enumIL}{enumerate*}{1} % inline enum
+\setlist*[enumIL]{label=\roman*)}
+\newlist{enumR}{enumerate}{1} % remarks
+\setlist[enumR]{label=\arabic*.,wide,labelwidth=!, labelindent=0pt}
+\crefname{enumRi}{remark}{remarks}
+
+\crefname{equation}{}{}
+\Crefname{equation}{Equation}{Equations}
+\Crefname{lem}{Lemma}{Lemma}
+\Crefname{thm}{Theorem}{Theorem}
+
+\newlist{des}{description}{1}
+\setlist[des]{font=\sffamily\bfseries}
+
+% editing macros.
+\blendcolors{!80!black}
+\long\def\okay#1{\ifcsname highlightokay\endcsname
+{\color{red} #1}
+\else
+{#1}
+\fi
+}
+\long\def\editc#1{{\color{red} #1}}
+\long\def\mjj#1{{{\color{blue}#1}}}
+\long\def\mjjr#1{{\color{red} (#1)}}
+\long\def\mjjd#1#2{{\color{blue} #1 \sout{#2}}}
+\def\mjjb{\color{blue}}
+\def\mjje{\color{black}}
+\def\mjjcb{\color{green!50!black}}
+\def\mjjce{\color{black}}
+
+\long\def\sun#1{{{\color{cyan}#1}}}
+\long\def\sund#1#2{{\color{cyan}#1  \sout{#2}}}
+\long\def\mv#1{{{\color{red} {\bf move to a proper place:} #1}}}
+\long\def\delete#1{}
+
+%\reversemarginpar
+\newcommand{\lokec}[1]{\marginpar{\color{blue}\tiny #1 \mbox{--loke}}}
+\newcommand{\mjjc}[1]{\marginpar{\color{green}\tiny #1 \mbox{--ma}}}
+
+\newcommand{\trivial}[2][]{\if\relax\detokenize{#1}\relax
+  {%\hfill\break
+   % \begin{minipage}{\textwidth}
+      \color{orange} \vspace{0em} $[$  #2 $]$
+  %\end{minipage}
+  %\break
+      \color{black}
+  }
+  \else
+\ifx#1h
+\ifcsname showtrivial\endcsname
+{%\hfill\break
+ % \begin{minipage}{\textwidth}
+    \color{orange} \vspace{0em}  $[$ #2 $]$
+%\end{minipage}
+%\break
+    \color{black}
+}
+\fi
+\else {\red Wrong argument!} \fi
+\fi
+}
+
+\newcommand{\byhide}[2][]{\if\relax\detokenize{#1}\relax
+{\color{orange} \vspace{0em} Plan to delete:  #2}
+\else
+\ifx#1h\relax\fi
+\fi
+}
+
+
+
+\newcommand{\Rank}{\mathrm{rk}}
+\newcommand{\cqq}{\mathscr{D}}
+\newcommand{\rsym}{\mathrm{sym}}
+\newcommand{\rskew}{\mathrm{skew}}
+\newcommand{\fraksp}{\mathfrak{sp}}
+\newcommand{\frakso}{\mathfrak{so}}
+\newcommand{\frakm}{\mathfrak{m}}
+\newcommand{\frakp}{\mathfrak{p}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\rhopst}{\rho'^*}
+\newcommand{\Rad}{\mathrm{Rad}}
+\newcommand{\Res}{\mathrm{Res}}
+\newcommand{\Hol}{\mathrm{Hol}}
+\newcommand{\AC}{\mathrm{AC}}
+%\newcommand{\AS}{\mathrm{AS}}
+\newcommand{\WF}{\mathrm{WF}}
+\newcommand{\AV}{\mathrm{AV}}
+\newcommand{\AVC}{\mathrm{AV}_\bC}
+\newcommand{\VC}{\mathrm{V}_\bC}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\depth}{\mathrm{depth}}
+\newcommand{\wtM}{\widetilde{M}}
+\newcommand{\wtMone}{{\widetilde{M}^{(1,1)}}}
+
+\newcommand{\nullpp}{N(\fpp'^*)}
+\newcommand{\nullp}{N(\fpp^*)}
+%\newcommand{\Aut}{\mathrm{Aut}}
+
+\def\mstar{{\medstar}}
+
+
+\newcommand{\bfone}{\mathbf{1}}
+\newcommand{\piSigma}{\pi_\Sigma}
+\newcommand{\piSigmap}{\pi'_\Sigma}
+
+
+\newcommand{\sfVprime}{\mathsf{V}^\prime}
+\newcommand{\sfVdprime}{\mathsf{V}^{\prime \prime}}
+\newcommand{\gminusone}{\mathfrak{g}_{-\frac{1}{m}}}
+
+\newcommand{\eva}{\mathrm{eva}}
+
+% \newcommand\iso{\xrightarrow{
+%    \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+\def\Ueven{{U_{\rm{even}}}}
+\def\Uodd{{U_{\rm{odd}}}}
+\def\ttau{\tilde{\tau}}
+\def\Wcp{W}
+\def\Kur{{K^{\mathrm{u}}}}
+
+\def\Im{\operatorname{Im}}
+
+\providecommand{\bcN}{{\overline{\cN}}}
+
+
+
+\makeatletter
+
+\def\gen#1{\left\langle
+    #1
+      \right\rangle}
+\makeatother
+
+\makeatletter
+\def\inn#1#2{\left\langle
+      \def\ta{#1}\def\tb{#2}
+      \ifx\ta\@empty{\;} \else {\ta}\fi ,
+      \ifx\tb\@empty{\;} \else {\tb}\fi
+      \right\rangle}
+\def\binn#1#2{\left\lAngle
+      \def\ta{#1}\def\tb{#2}
+      \ifx\ta\@empty{\;} \else {\ta}\fi ,
+      \ifx\tb\@empty{\;} \else {\tb}\fi
+      \right\rAngle}
+\makeatother
+
+\makeatletter
+\def\binn#1#2{\overline{\inn{#1}{#2}}}
+\makeatother
+
+
+\def\innwi#1#2{\inn{#1}{#2}_{W_i}}
+\def\innw#1#2{\inn{#1}{#2}_{\bfW}}
+\def\innv#1#2{\inn{#1}{#2}_{\bfV}}
+\def\innbfv#1#2{\inn{#1}{#2}_{\bfV}}
+\def\innvi#1#2{\inn{#1}{#2}_{V_i}}
+\def\innvp#1#2{\inn{#1}{#2}_{\bfV'}}
+\def\innp#1#2{\inn{#1}{#2}'}
+
+% choose one of then
+\def\simrightarrow{\iso}
+\def\surj{\twoheadrightarrow}
+%\def\simrightarrow{\xrightarrow{\sim}}
+
+\newcommand\iso{\xrightarrow{
+   \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+\newcommand\riso{\xleftarrow{
+   \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+
+
+
+
+
+
+
+
+\usepackage{xparse}
+\def\usecsname#1{\csname #1\endcsname}
+\def\useLetter#1{#1}
+\def\usedbletter#1{#1#1}
+
+% \def\useCSf#1{\csname f#1\endcsname}
+
+\ExplSyntaxOn
+
+\def\mydefcirc#1#2#3{\expandafter\def\csname
+  circ#3{#1}\endcsname{{}^\circ {#2{#1}}}}
+\def\mydefvec#1#2#3{\expandafter\def\csname
+  vec#3{#1}\endcsname{\vec{#2{#1}}}}
+\def\mydefdot#1#2#3{\expandafter\def\csname
+  dot#3{#1}\endcsname{\dot{#2{#1}}}}
+
+\def\mydefacute#1#2#3{\expandafter\def\csname a#3{#1}\endcsname{\acute{#2{#1}}}}
+\def\mydefbr#1#2#3{\expandafter\def\csname br#3{#1}\endcsname{\breve{#2{#1}}}}
+\def\mydefbar#1#2#3{\expandafter\def\csname bar#3{#1}\endcsname{\bar{#2{#1}}}}
+\def\mydefhat#1#2#3{\expandafter\def\csname hat#3{#1}\endcsname{\hat{#2{#1}}}}
+\def\mydefwh#1#2#3{\expandafter\def\csname wh#3{#1}\endcsname{\widehat{#2{#1}}}}
+\def\mydeft#1#2#3{\expandafter\def\csname t#3{#1}\endcsname{\tilde{#2{#1}}}}
+\def\mydefu#1#2#3{\expandafter\def\csname u#3{#1}\endcsname{\underline{#2{#1}}}}
+\def\mydefr#1#2#3{\expandafter\def\csname r#3{#1}\endcsname{\mathrm{#2{#1}}}}
+\def\mydefb#1#2#3{\expandafter\def\csname b#3{#1}\endcsname{\mathbb{#2{#1}}}}
+\def\mydefwt#1#2#3{\expandafter\def\csname wt#3{#1}\endcsname{\widetilde{#2{#1}}}}
+%\def\mydeff#1#2#3{\expandafter\def\csname f#3{#1}\endcsname{\mathfrak{#2{#1}}}}
+\def\mydefbf#1#2#3{\expandafter\def\csname bf#3{#1}\endcsname{\mathbf{#2{#1}}}}
+\def\mydefc#1#2#3{\expandafter\def\csname c#3{#1}\endcsname{\mathcal{#2{#1}}}}
+\def\mydefsf#1#2#3{\expandafter\def\csname sf#3{#1}\endcsname{\mathsf{#2{#1}}}}
+\def\mydefs#1#2#3{\expandafter\def\csname s#3{#1}\endcsname{\mathscr{#2{#1}}}}
+\def\mydefcks#1#2#3{\expandafter\def\csname cks#3{#1}\endcsname{{\check{
+        \csname s#2{#1}\endcsname}}}}
+\def\mydefckc#1#2#3{\expandafter\def\csname ckc#3{#1}\endcsname{{\check{
+      \csname c#2{#1}\endcsname}}}}
+\def\mydefck#1#2#3{\expandafter\def\csname ck#3{#1}\endcsname{{\check{#2{#1}}}}}
+
+\cs_new:Npn \mydeff #1#2#3 {\cs_new:cpn {f#3{#1}} {\mathfrak{#2{#1}}}}
+
+\cs_new:Npn \doGreek #1
+{
+  \clist_map_inline:nn {alpha,beta,gamma,Gamma,delta,Delta,epsilon,varepsilon,zeta,eta,theta,vartheta,Theta,iota,kappa,lambda,Lambda,mu,nu,xi,Xi,pi,Pi,rho,sigma,varsigma,Sigma,tau,upsilon,Upsilon,phi,varphi,Phi,chi,psi,Psi,omega,Omega,tG} {#1{##1}{\usecsname}{\useLetter}}
+}
+
+\cs_new:Npn \doSymbols #1
+{
+  \clist_map_inline:nn {otimes,boxtimes} {#1{##1}{\usecsname}{\useLetter}}
+}
+
+\cs_new:Npn \doAtZ #1
+{
+  \clist_map_inline:nn {A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z} {#1{##1}{\useLetter}{\useLetter}}
+}
+
+\cs_new:Npn \doatz #1
+{
+  \clist_map_inline:nn {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z} {#1{##1}{\useLetter}{\usedbletter}}
+}
+
+\cs_new:Npn \doallAtZ
+{
+\clist_map_inline:nn {mydefsf,mydeft,mydefu,mydefwh,mydefhat,mydefr,mydefwt,mydeff,mydefb,mydefbf,mydefc,mydefs,mydefck,mydefcks,mydefckc,mydefbar,mydefvec,mydefcirc,mydefdot,mydefbr,mydefacute} {\doAtZ{\csname ##1\endcsname}}
+}
+
+\cs_new:Npn \doallatz
+{
+\clist_map_inline:nn {mydefsf,mydeft,mydefu,mydefwh,mydefhat,mydefr,mydefwt,mydeff,mydefb,mydefbf,mydefc,mydefs,mydefck,mydefbar,mydefvec,mydefdot,mydefbr,mydefacute} {\doatz{\csname ##1\endcsname}}
+}
+
+\cs_new:Npn \doallGreek
+{
+\clist_map_inline:nn {mydefck,mydefwt,mydeft,mydefwh,mydefbar,mydefu,mydefvec,mydefcirc,mydefdot,mydefbr,mydefacute} {\doGreek{\csname ##1\endcsname}}
+}
+
+\cs_new:Npn \doallSymbols
+{
+\clist_map_inline:nn {mydefck,mydefwt,mydeft,mydefwh,mydefbar,mydefu,mydefvec,mydefcirc,mydefdot} {\doSymbols{\csname ##1\endcsname}}
+}
+
+
+
+\cs_new:Npn \doGroups #1
+{
+  \clist_map_inline:nn {GL,Sp,rO,rU,fgl,fsp,foo,fuu,fkk,fuu,ufkk,uK} {#1{##1}{\usecsname}{\useLetter}}
+}
+
+\cs_new:Npn \doallGroups
+{
+\clist_map_inline:nn {mydeft,mydefu,mydefwh,mydefhat,mydefwt,mydefck,mydefbar} {\doGroups{\csname ##1\endcsname}}
+}
+
+
+\cs_new:Npn \decsyms #1
+{
+\clist_map_inline:nn {#1} {\expandafter\DeclareMathOperator\csname ##1\endcsname{##1}}
+}
+
+\decsyms{Mp,id,SL,Sp,SU,SO,GO,GSO,GU,GSp,PGL,Pic,Lie,Mat,Ker,Hom,Ext,Ind,reg,res,inv,Isom,Det,Tr,Norm,Sym,Span,Stab,Spec,PGSp,PSL,tr,Ad,Br,Ch,Cent,End,Aut,Dvi,Frob,Gal,GL,Gr,DO,ur,vol,ab,Nil,Supp,rank,Sign}
+
+\def\abs#1{\left|{#1}\right|}
+\def\norm#1{{\left\|{#1}\right\|}}
+
+
+% \NewDocumentCommand\inn{m m}{
+% \left\langle
+% \IfValueTF{#1}{#1}{000}
+% ,
+% \IfValueTF{#2}{#2}{000}
+% \right\rangle
+% }
+\NewDocumentCommand\cent{o m }{
+  \IfValueTF{#1}{
+    \mathop{Z}_{#1}{(#2)}}
+  {\mathop{Z}{(#2)}}
+}
+
+
+\def\fsl{\mathfrak{sl}}
+\def\fsp{\mathfrak{sp}}
+
+
+%\def\cent#1#2{{\mathrm{Z}_{#1}({#2})}}
+
+
+\doallAtZ
+\doallatz
+\doallGreek
+\doallGroups
+\doallSymbols
+\ExplSyntaxOff
+
+
+% \usepackage{geometry,amsthm,graphics,tabularx,amssymb,shapepar}
+% \usepackage{amscd}
+% \usepackage{mathrsfs}
+
+
+\usepackage{diagbox}
+% Update the information and uncomment if AMS is not the copyright
+% holder.
+%\copyrightinfo{2006}{American Mathematical Society}
+%\usepackage{nicematrix}
+\usepackage{arydshln}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows,positioning,cd,backgrounds}
+\usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing}
+
+\usepackage{upgreek}
+
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\tiny,
+    keywordstyle=\color{black},
+    commentstyle=\color{white}, % white comments
+    stringstyle=\ttfamily, % typewriter type for strings
+    showstringspaces=false,
+    breaklines=true,
+    emph={Output},emphstyle=\color{blue},
+} 
+
+\newcommand{\BA}{{\mathbb{A}}}
+%\newcommand{\BB}{{\mathbb {B}}}
+\newcommand{\BC}{{\mathbb {C}}}
+\newcommand{\BD}{{\mathbb {D}}}
+\newcommand{\BE}{{\mathbb {E}}}
+\newcommand{\BF}{{\mathbb {F}}}
+\newcommand{\BG}{{\mathbb {G}}}
+\newcommand{\BH}{{\mathbb {H}}}
+\newcommand{\BI}{{\mathbb {I}}}
+\newcommand{\BJ}{{\mathbb {J}}}
+\newcommand{\BK}{{\mathbb {U}}}
+\newcommand{\BL}{{\mathbb {L}}}
+\newcommand{\BM}{{\mathbb {M}}}
+\newcommand{\BN}{{\mathbb {N}}}
+\newcommand{\BO}{{\mathbb {O}}}
+\newcommand{\BP}{{\mathbb {P}}}
+\newcommand{\BQ}{{\mathbb {Q}}}
+\newcommand{\BR}{{\mathbb {R}}}
+\newcommand{\BS}{{\mathbb {S}}}
+\newcommand{\BT}{{\mathbb {T}}}
+\newcommand{\BU}{{\mathbb {U}}}
+\newcommand{\BV}{{\mathbb {V}}}
+\newcommand{\BW}{{\mathbb {W}}}
+\newcommand{\BX}{{\mathbb {X}}}
+\newcommand{\BY}{{\mathbb {Y}}}
+\newcommand{\BZ}{{\mathbb {Z}}}
+\newcommand{\Bk}{{\mathbf {k}}}
+
+\newcommand{\CA}{{\mathcal {A}}}
+\newcommand{\CB}{{\mathcal {B}}}
+\newcommand{\CC}{{\mathcal {C}}}
+
+\newcommand{\CE}{{\mathcal {E}}}
+\newcommand{\CF}{{\mathcal {F}}}
+\newcommand{\CG}{{\mathcal {G}}}
+\newcommand{\CH}{{\mathcal {H}}}
+\newcommand{\CI}{{\mathcal {I}}}
+\newcommand{\CJ}{{\mathcal {J}}}
+\newcommand{\CK}{{\mathcal {K}}}
+\newcommand{\CL}{{\mathcal {L}}}
+\newcommand{\CM}{{\mathcal {M}}}
+\newcommand{\CN}{{\mathcal {N}}}
+\newcommand{\CO}{{\mathcal {O}}}
+\newcommand{\CP}{{\mathcal {P}}}
+\newcommand{\CQ}{{\mathcal {Q}}}
+\newcommand{\CR}{{\mathcal {R}}}
+\newcommand{\CS}{{\mathcal {S}}}
+\newcommand{\CT}{{\mathcal {T}}}
+\newcommand{\CU}{{\mathcal {U}}}
+\newcommand{\CV}{{\mathcal {V}}}
+\newcommand{\CW}{{\mathcal {W}}}
+\newcommand{\CX}{{\mathcal {X}}}
+\newcommand{\CY}{{\mathcal {Y}}}
+\newcommand{\CZ}{{\mathcal {Z}}}
+
+
+\newcommand{\RA}{{\mathrm {A}}}
+\newcommand{\RB}{{\mathrm {B}}}
+\newcommand{\RC}{{\mathrm {C}}}
+\newcommand{\RD}{{\mathrm {D}}}
+\newcommand{\RE}{{\mathrm {E}}}
+\newcommand{\RF}{{\mathrm {F}}}
+\newcommand{\RG}{{\mathrm {G}}}
+\newcommand{\RH}{{\mathrm {H}}}
+\newcommand{\RI}{{\mathrm {I}}}
+\newcommand{\RJ}{{\mathrm {J}}}
+\newcommand{\RK}{{\mathrm {K}}}
+\newcommand{\RL}{{\mathrm {L}}}
+\newcommand{\RM}{{\mathrm {M}}}
+\newcommand{\RN}{{\mathrm {N}}}
+\newcommand{\RO}{{\mathrm {O}}}
+\newcommand{\RP}{{\mathrm {P}}}
+\newcommand{\RQ}{{\mathrm {Q}}}
+%\newcommand{\RR}{{\mathrm {R}}}
+\newcommand{\RS}{{\mathrm {S}}}
+\newcommand{\RT}{{\mathrm {T}}}
+\newcommand{\RU}{{\mathrm {U}}}
+\newcommand{\RV}{{\mathrm {V}}}
+\newcommand{\RW}{{\mathrm {W}}}
+\newcommand{\RX}{{\mathrm {X}}}
+\newcommand{\RY}{{\mathrm {Y}}}
+\newcommand{\RZ}{{\mathrm {Z}}}
+
+\DeclareMathOperator{\absNorm}{\mathfrak{N}}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\LAnn}{L-Ann}
+\DeclareMathOperator{\RAnn}{R-Ann}
+\DeclareMathOperator{\ind}{ind}
+%\DeclareMathOperator{\Ind}{Ind}
+
+
+
+\newcommand{\cod}{{\mathrm{cod}}}
+\newcommand{\cont}{{\mathrm{cont}}}
+\newcommand{\cl}{{\mathrm{cl}}}
+\newcommand{\cusp}{{\mathrm{cusp}}}
+
+\newcommand{\disc}{{\mathrm{disc}}}
+\renewcommand{\div}{{\mathrm{div}}}
+
+
+
+\newcommand{\Gm}{{\mathbb{G}_m}}
+
+
+
+\newcommand{\I}{{\mathrm{I}}}
+
+\newcommand{\Jac}{{\mathrm{Jac}}}
+\newcommand{\PM}{{\mathrm{PM}}}
+
+
+\newcommand{\new}{{\mathrm{new}}}
+\newcommand{\NS}{{\mathrm{NS}}}
+\newcommand{\N}{{\mathrm{N}}}
+
+\newcommand{\ord}{{\mathrm{ord}}}
+
+%\newcommand{\rank}{{\mathrm{rank}}}
+
+\newcommand{\rk}{{\mathrm{k}}}
+\newcommand{\rr}{{\mathrm{r}}}
+\newcommand{\rh}{{\mathrm{h}}}
+
+\newcommand{\Sel}{{\mathrm{Sel}}}
+\newcommand{\Sim}{{\mathrm{Sim}}}
+
+\newcommand{\wt}{\widetilde}
+\newcommand{\wh}{\widehat}
+\newcommand{\pp}{\frac{\partial\bar\partial}{\pi i}}
+\newcommand{\pair}[1]{\langle {#1} \rangle}
+\newcommand{\wpair}[1]{\left\{{#1}\right\}}
+\newcommand{\intn}[1]{\left( {#1} \right)}
+\newcommand{\sfrac}[2]{\left( \frac {#1}{#2}\right)}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ov}{\overline}
+\newcommand{\incl}{\hookrightarrow}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\imp}{\Longrightarrow}
+%\newcommand{\lto}{\longmapsto}
+\newcommand{\bs}{\backslash}
+
+\newcommand{\cover}[1]{\widetilde{#1}}
+
+\renewcommand{\vsp}{{\vspace{0.2in}}}
+
+\newcommand{\Norma}{\operatorname{N}}
+\newcommand{\Ima}{\operatorname{Im}}
+\newcommand{\con}{\textit{C}}
+\newcommand{\gr}{\operatorname{gr}}
+\newcommand{\ad}{\operatorname{ad}}
+\newcommand{\der}{\operatorname{der}}
+\newcommand{\dif}{\operatorname{d}\!}
+\newcommand{\pro}{\operatorname{pro}}
+\newcommand{\Ev}{\operatorname{Ev}}
+% \renewcommand{\span}{\operatorname{span}} \span is an innernal command.
+%\newcommand{\degree}{\operatorname{deg}}
+\newcommand{\Invf}{\operatorname{Invf}}
+\newcommand{\Inv}{\operatorname{Inv}}
+\newcommand{\slt}{\operatorname{SL}_2(\mathbb{R})}
+%\newcommand{\temp}{\operatorname{temp}}
+%\newcommand{\otop}{\operatorname{top}}
+\renewcommand{\small}{\operatorname{small}}
+\newcommand{\HC}{\operatorname{HC}}
+\newcommand{\lef}{\operatorname{left}}
+\newcommand{\righ}{\operatorname{right}}
+\newcommand{\Diff}{\operatorname{DO}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\sh}{\varsigma}
+\newcommand{\sch}{\operatorname{sch}}
+%\newcommand{\oleft}{\operatorname{left}}
+%\newcommand{\oright}{\operatorname{right}}
+\newcommand{\open}{\operatorname{open}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\triv}{\operatorname{triv}}
+\newcommand{\Sh}{\operatorname{Sh}}
+\newcommand{\oN}{\operatorname{N}}
+
+\newcommand{\oc}{\operatorname{c}}
+\newcommand{\od}{\operatorname{d}}
+\newcommand{\os}{\operatorname{s}}
+\newcommand{\ol}{\operatorname{l}}
+\newcommand{\oL}{\operatorname{L}}
+\newcommand{\oJ}{\operatorname{J}}
+\newcommand{\oH}{\operatorname{H}}
+\newcommand{\oO}{\operatorname{O}}
+\newcommand{\oS}{\operatorname{S}}
+\newcommand{\oR}{\operatorname{R}}
+\newcommand{\oT}{\operatorname{T}}
+%\newcommand{\rU}{\operatorname{U}}
+\newcommand{\oZ}{\operatorname{Z}}
+\newcommand{\oD}{\textit{D}}
+\newcommand{\oW}{\textit{W}}
+\newcommand{\oE}{\operatorname{E}}
+\newcommand{\oP}{\operatorname{P}}
+\newcommand{\PD}{\operatorname{PD}}
+\newcommand{\oU}{\operatorname{U}}
+
+\newcommand{\g}{\mathfrak g}
+\newcommand{\gC}{{\mathfrak g}_{\C}}
+\renewcommand{\k}{\mathfrak k}
+\newcommand{\h}{\mathfrak h}
+\newcommand{\p}{\mathfrak p}
+%\newcommand{\q}{\mathfrak q}
+\renewcommand{\a}{\mathfrak a}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\c}{\mathfrak c}
+\newcommand{\n}{\mathfrak n}
+\renewcommand{\u}{\mathfrak u}
+\renewcommand{\v}{\mathfrak v}
+\newcommand{\e}{\mathfrak e}
+\newcommand{\f}{\mathfrak f}
+\renewcommand{\l}{\mathfrak l}
+\renewcommand{\t}{\mathfrak t}
+\newcommand{\s}{\mathfrak s}
+\renewcommand{\r}{\mathfrak r}
+\renewcommand{\o}{\mathfrak o}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\z}{\mathfrak z}
+%\renewcommand{\sl}{\mathfrak s \mathfrak l}
+\newcommand{\gl}{\mathfrak g \mathfrak l}
+
+
+\newcommand{\re}{\mathrm e}
+
+\renewcommand{\rk}{\mathrm k}
+
+\newcommand{\Z}{\mathbb{Z}}
+\DeclareDocumentCommand{\C}{}{\mathbb{C}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\renewcommand{\H}{\mathbb{H}}
+%\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+%\renewcommand{\S}{\mathbf S}
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathbf{B}}
+%\renewcommand{\G}{\mathbf{G}}
+\newcommand{\V}{\mathbf{V}}
+\newcommand{\W}{\mathbf{W}}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\E}{\mathbf{E}}
+%\newcommand{\J}{\mathbf{J}}
+\renewcommand{\H}{\mathbf{H}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Y}{\mathbf{Y}}
+%\newcommand{\RR}{\mathcal R}
+\newcommand{\FF}{\mathcal F}
+%\newcommand{\BB}{\mathcal B}
+\newcommand{\HH}{\mathcal H}
+%\newcommand{\UU}{\mathcal U}
+%\newcommand{\MM}{\mathcal M}
+%\newcommand{\CC}{\mathcal C}
+%\newcommand{\DD}{\mathcal D}
+\def\eDD{\mathrm{d}^{e}}
+\def\DD{\nabla}
+\def\DDc{\boldsymbol{\nabla}}
+\def\gDD{\nabla^{\mathrm{gen}}}
+\def\gDDc{\boldsymbol{\nabla}^{\mathrm{gen}}}
+%\newcommand{\OO}{\mathcal O}
+%\newcommand{\ZZ}{\mathcal Z}
+\newcommand{\ve}{{\vee}}
+\newcommand{\aut}{\mathcal A}
+\newcommand{\ii}{\mathbf{i}}
+\newcommand{\jj}{\mathbf{j}}
+\newcommand{\kk}{\mathbf{k}}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bp}{\bigskip}
+\newcommand{\be}{\begin {equation}}
+\newcommand{\ee}{\end {equation}}
+
+\newcommand{\LRleq}{\stackrel{LR}{\leq}}
+
+\numberwithin{equation}{section}
+
+
+\def\flushl#1{\ifmmode\makebox[0pt][l]{${#1}$}\else\makebox[0pt][l]{#1}\fi}
+\def\flushr#1{\ifmmode\makebox[0pt][r]{${#1}$}\else\makebox[0pt][r]{#1}\fi}
+\def\flushmr#1{\makebox[0pt][r]{${#1}$}}
+
+
+%\theoremstyle{Theorem}
+% \newtheorem*{thmM}{Main Theorem}
+% \crefformat{thmM}{main theorem}
+% \Crefformat{thmM}{Main Theorem}
+\newtheorem*{thm*}{Theorem}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{thml}[thm]{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{lemt}[thm]{Lemma}
+\newtheorem*{lem*}{Lemma}
+\newtheorem{whyp}[thm]{Working Hypothesis}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{prpt}[thm]{Proposition}
+\newtheorem{prpl}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+%\newtheorem*{prop*}{Proposition}
+\newtheorem{claim}{Claim}
+\newtheorem*{claim*}{Claim}
+%\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{dfnl}[thm]{Definition}
+\newtheorem*{IndH}{Induction Hypothesis}
+
+\newtheorem*{eg*}{Example}
+\newtheorem{eg}[thm]{Example}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{remarks}{Remarks}
+
+
+\def\cpc{\sigma}
+\def\ccJ{\epsilon\dotepsilon}
+\def\ccL{c_L}
+
+\def\wtbfK{\widetilde{\bfK}}
+%\def\abfV{\acute{\bfV}}
+\def\AbfV{\acute{\bfV}}
+%\def\afgg{\acute{\fgg}}
+%\def\abfG{\acute{\bfG}}
+\def\abfV{\bfV'}
+\def\afgg{\fgg'}
+\def\abfG{\bfG'}
+
+\def\half{{\tfrac{1}{2}}}
+\def\ihalf{{\tfrac{\mathbf i}{2}}}
+\def\slt{\fsl_2(\bC)}
+\def\sltr{\fsl_2(\bR)}
+
+% \def\Jslt{{J_{\fslt}}}
+% \def\Lslt{{L_{\fslt}}}
+\def\slee{{
+\begin{pmatrix}
+ 0 & 1\\
+ 0 & 0
+\end{pmatrix}
+}}
+\def\slff{{
+\begin{pmatrix}
+ 0 & 0\\
+ 1 & 0
+\end{pmatrix}
+}}\def\slhh{{
+\begin{pmatrix}
+ 1 & 0\\
+ 0 & -1
+\end{pmatrix}
+}}
+\def\sleei{{
+\begin{pmatrix}
+ 0 & i\\
+ 0 & 0
+\end{pmatrix}
+}}
+\def\slxx{{\begin{pmatrix}
+-\ihalf & \half\\
+\phantom{-}\half & \ihalf
+\end{pmatrix}}}
+% \def\slxx{{\begin{pmatrix}
+% -\sqrt{-1}/2 & 1/2\\
+% 1/2 & \sqrt{-1}/2
+% \end{pmatrix}}}
+\def\slyy{{\begin{pmatrix}
+\ihalf & \half\\
+\half & -\ihalf
+\end{pmatrix}}}
+\def\slxxi{{\begin{pmatrix}
++\half & -\ihalf\\
+-\ihalf & -\half
+\end{pmatrix}}}
+\def\slH{{\begin{pmatrix}
+   0   & -\mathbf i\\
+\mathbf i & 0
+\end{pmatrix}}
+}
+
+\ExplSyntaxOn
+\clist_map_inline:nn {J,L,C,X,Y,H,c,e,f,h,}{
+  \expandafter\def\csname #1slt\endcsname{{\mathring{#1}}}}
+\ExplSyntaxOff
+
+
+\def\Mop{\fT}
+
+\def\fggJ{\fgg_J}
+\def\fggJp{\fgg'_{J'}}
+
+\def\NilGC{\Nil_{\bfG}(\fgg)}
+\def\NilGCp{\Nil_{\bfG'}(\fgg')}
+\def\Nilgp{\Nil_{\fgg'_{J'}}}
+\def\Nilg{\Nil_{\fgg_{J}}}
+%\def\NilP'{\Nil_{\fpp'}}
+\def\nNil{\Nil^{\mathrm n}}
+\def\eNil{\Nil^{\mathrm e}}
+
+
+\NewDocumentCommand{\NilP}{t'}{
+\IfBooleanTF{#1}{\Nil_{\fpp'}}{\Nil_\fpp}
+}
+
+\def\KS{\mathsf{KS}}
+\def\MM{\bfM}
+\def\MMP{M}
+
+\NewDocumentCommand{\KTW}{o g}{
+  \IfValueTF{#2}{
+    \left.\varsigma_{\IfValueT{#1}{#1}}\right|_{#2}}{
+    \varsigma_{\IfValueT{#1}{#1}}}
+}
+\def\IST{\rho}
+\def\tIST{\trho}
+
+\NewDocumentCommand{\CHI}{o g}{
+  \IfValueTF{#1}{
+    {\chi}_{\left[#1\right]}}{
+    \IfValueTF{#2}{
+      {\chi}_{\left(#2\right)}}{
+      {\chi}}
+  }
+}
+\NewDocumentCommand{\PR}{g}{
+  \IfValueTF{#1}{
+    \mathop{\pr}_{\left(#1\right)}}{
+    \mathop{\pr}}
+}
+\NewDocumentCommand{\XX}{g}{
+  \IfValueTF{#1}{
+    {\cX}_{\left(#1\right)}}{
+    {\cX}}
+}
+\NewDocumentCommand{\PP}{g}{
+  \IfValueTF{#1}{
+    {\fpp}_{\left(#1\right)}}{
+    {\fpp}}
+}
+\NewDocumentCommand{\LL}{g}{
+  \IfValueTF{#1}{
+    {\bfL}_{\left(#1\right)}}{
+    {\bfL}}
+}
+\NewDocumentCommand{\ZZ}{g}{
+  \IfValueTF{#1}{
+    {\cZ}_{\left(#1\right)}}{
+    {\cZ}}
+}
+
+\NewDocumentCommand{\WW}{g}{
+  \IfValueTF{#1}{
+    {\bfW}_{\left(#1\right)}}{
+    {\bfW}}
+}
+
+
+
+
+\def\gpi{\wp}
+\NewDocumentCommand\KK{g}{
+\IfValueTF{#1}{K_{(#1)}}{K}}
+% \NewDocumentCommand\OO{g}{
+% \IfValueTF{#1}{\cO_{(#1)}}{K}}
+\NewDocumentCommand\XXo{d()}{
+\IfValueTF{#1}{\cX^\circ_{(#1)}}{\cX^\circ}}
+\def\bfWo{\bfW^\circ}
+\def\bfWoo{\bfW^{\circ \circ}}
+\def\bfWg{\bfW^{\mathrm{gen}}}
+\def\Xg{\cX^{\mathrm{gen}}}
+\def\Xo{\cX^\circ}
+\def\Xoo{\cX^{\circ \circ}}
+\def\fppo{\fpp^\circ}
+\def\fggo{\fgg^\circ}
+\NewDocumentCommand\ZZo{g}{
+\IfValueTF{#1}{\cZ^\circ_{(#1)}}{\cZ^\circ}}
+
+% \ExplSyntaxOn
+% \NewDocumentCommand{\bcO}{t' E{^_}{{}{}}}{
+%   \overline{\cO\sb{\use_ii:nn#2}\IfBooleanTF{#1}{^{'\use_i:nn#2}}{^{\use_i:nn#2}}
+%   }
+% }
+% \ExplSyntaxOff
+
+\NewDocumentCommand{\bcO}{t'}{
+  \overline{\cO\IfBooleanT{#1}{'}}}
+
+\NewDocumentCommand{\oliftc}{g}{
+\IfValueTF{#1}{\boldsymbol{\vartheta} (#1)}{\boldsymbol{\vartheta}}
+}
+\NewDocumentCommand{\oliftr}{g}{
+\IfValueTF{#1}{\vartheta_\bR(#1)}{\vartheta_\bR}
+}
+\NewDocumentCommand{\olift}{g}{
+\IfValueTF{#1}{\vartheta(#1)}{\vartheta}
+}
+% \NewDocumentCommand{\dliftv}{g}{
+% \IfValueTF{#1}{\ckvartheta(#1)}{\ckvartheta}
+% }
+\def\dliftv{\vartheta}
+\NewDocumentCommand{\tlift}{g}{
+\IfValueTF{#1}{\wtvartheta(#1)}{\wtvartheta}
+}
+
+\def\slift{\cL}
+
+\def\BB{\bB}
+
+
+\def\thetaO#1{\vartheta\left(#1\right)}
+
+\def\bbThetav{\check{\mathbbold{\Theta}}}
+\def\Thetav{\check{\Theta}}
+\def\thetav{\check{\theta}}
+
+\DeclareDocumentCommand{\NN}{g}{
+\IfValueTF{#1}{\fN(#1)}{\fN}
+}
+\DeclareDocumentCommand{\RR}{m m}{
+\fR({#1},{#2})
+}
+
+%\DeclareMathOperator*{\sign}{Sign}
+
+\NewDocumentCommand{\lsign}{m}{
+{}^l\mathrm{Sign}(#1)
+}
+
+
+
+\NewDocumentCommand\lnn{t+ t- g}{
+  \IfBooleanTF{#1}{{}^l n^+\IfValueT{#3}{(#3)}}{
+    \IfBooleanTF{#2}{{}^l n^-\IfValueT{#3}{(#3)}}{}
+  }
+}
+
+
+% % Fancy bcO, support feature \bcO'^a_b = \overline{\cO'^a_b}
+% \makeatletter
+% \def\bcO{\def\O@@{\cO}\@ifnextchar'\@Op\@Onp}
+% \def\@Opnext{\@ifnextchar^\@Opsp\@Opnsp}
+% \def\@Op{\afterassignment\@Opnext\let\scratch=}
+% \def\@Opnsp{\def\O@@{\cO'}\@Otsb}
+% \def\@Onp{\@ifnextchar^\@Onpsp\@Otsb}
+% \def\@Opsp^#1{\def\O@@{\cO'^{#1}}\@Otsb}
+% \def\@Onpsp^#1{\def\O@@{\cO^{#1}}\@Otsb}
+% \def\@Otsb{\@ifnextchar_\@Osb{\@Ofinalnsb}}
+% \def\@Osb_#1{\overline{\O@@_{#1}}}
+% \def\@Ofinalnsb{\overline{\O@@}}
+
+% Fancy \command: \command`#1 will translate to {}^{#1}\bfV, i.e. superscript on the
+% lift conner.
+
+% \def\defpcmd#1{
+%   \def\nn@tmp{#1}
+%   \def\nn@np@tmp{@np@#1}
+%   \expandafter\let\csname\nn@np@tmp\expandafter\endcsname \csname\nn@tmp\endcsname
+%   \expandafter\def\csname @pp@#1\endcsname`##1{{}^{##1}{\csname @np@#1\endcsname}}
+%   \expandafter\def\csname #1\endcsname{\,\@ifnextchar`{\csname
+%       @pp@#1\endcsname}{\csname @np@#1\endcsname}}
+% }
+
+% \def\defppcmd#1{
+% \expandafter\NewDocumentCommand{\csname #1\endcsname}{##1 }{}
+% }
+
+
+
+% \defpcmd{bfV}
+% \def\KK{\bfK}\defpcmd{KK}
+% \defpcmd{bfG}
+% \def\A{\!A}\defpcmd{A}
+% \def\K{\!K}\defpcmd{K}
+% \def\G{G}\defpcmd{G}
+% \def\J{\!J}\defpcmd{J}
+% \def\L{\!L}\defpcmd{L}
+% \def\eps{\epsilon}\defpcmd{eps}
+% \def\pp{p}\defpcmd{pp}
+% \defpcmd{wtK}
+% \makeatother
+
+\def\fggR{\fgg_\bR}
+\def\rmtop{{\mathrm{top}}}
+\def\dimo{\dim^\circ}
+\def\GKdim{\text{GK-}\dim}
+
+\NewDocumentCommand\LW{g}{
+\IfValueTF{#1}{L_{W_{#1}}}{L_{W}}}
+%\def\LW#1{L_{W_{#1}}}
+\def\JW#1{J_{W_{#1}}}
+
+\def\floor#1{{\lfloor #1 \rfloor}}
+
+\def\KSP{K}
+\def\UU{\rU}
+\def\UUC{\rU_\bC}
+\def\tUUC{\widetilde{\rU}_\bC}
+\def\OmegabfW{\Omega_{\bfW}}
+
+
+\def\BB{\bB}
+
+
+\def\thetaO#1{\vartheta\left(#1\right)}
+
+\def\Thetav{\check{\Theta}}
+\def\thetav{\check{\theta}}
+
+\def\Thetab{\bar{\Theta}}
+
+\def\cKaod{\cK^{\mathrm{aod}}}
+
+\DeclareMathOperator{\sspan}{span}
+
+
+\def\sp{{\mathrm{sp}}}
+
+\def\bfLz{\bfL_0}
+\def\sOpe{\sO^\perp}
+\def\sOpeR{\sO^\perp_\bR}
+\def\sOR{\sO_\bR}
+
+\def\ZX{\cZ_{X}}
+\def\gdliftv{\vartheta}
+\def\gdlift{\vartheta^{\mathrm{gen}}}
+\def\bcOp{\overline{\cO'}}
+\def\bsO{\overline{\sO}}
+\def\bsOp{\overline{\sO'}}
+\def\bfVpe{\bfV^\perp}
+\def\bfEz{\bfE_0}
+\def\bfVn{\bfV^-}
+\def\bfEzp{\bfE'_0}
+
+\def\totimes{\widehat{\otimes}}
+\def\dotbfV{\dot{\bfV}}
+
+\def\aod{\mathrm{aod}}
+\def\unip{\mathrm{unip}}
+\def\IC{\mathfrak{I}}
+
+\def\PI#1{\Pi_{\cI_{#1}}}
+\def\Piunip{\Pi^{\mathrm{unip}}}
+\def\cf{\emph{cf.} }
+\def\Groth{\mathrm{Groth}}
+\def\Irr{\mathrm{Irr}}
+\def\Irrsp{\mathrm{Irr}^{\text{sp}}}
+
+\def\edrc{\mathrm{DRC}^{\mathrm e}}
+\def\drc{\mathrm{DRC}}
+\def\LS{\mathrm{LS}}
+\def\Unip{\mathrm{Unip}}
+
+
+% Ytableau tweak
+\makeatletter
+\pgfkeys{/ytableau/options,
+  noframe/.default = false,
+  noframe/.is choice,
+  noframe/true/.code = {%
+    \global\let\vrule@YT=\vrule@none@YT
+    \global\let\hrule@YT=\hrule@none@YT
+  },
+  noframe/false/.code = {%
+    \global\let\vrule@YT=\vrule@normal@YT
+    \global\let\hrule@YT=\hrule@normal@YT
+  },
+  noframe/on/.style = {noframe/true},
+  noframe/off/.style = {noframe/false},
+}
+\makeatother 
+
+
+\def\wAV{\AV^{\mathrm{weak}}}
+\def\ckG{\check{G}}
+\def\ckGc{\check{G}_{\bC}}
+\def\dBV{d_{\mathrm{BV}}}
+\def\CP{\mathsf{CP}}
+\def\YD{\mathsf{YD}}
+\def\SYD{\mathsf{SYD}}
+\def\DD{\nabla}
+
+\def\lamck{\lambda_\ckcO}
+\def\lamckb{\lambda_{\ckcO_b}}
+\def\lamckg{\lambda_{\ckcO_g}}
+\def\Wint#1{W_{[#1]}}
+\def\CLam{\Coh_{\Lambda}}
+\def\Cint#1{\Coh_{[#1]}}
+\def\PP{\mathrm{PP}}
+\def\BOX#1{\mathrm{Box}(#1)}
+\DeclareDocumentCommand{\bigtimes}{}{\mathop{\scalebox{1.7}{$\times$}}}
+\providecommand\mapsfrom{\scalebox{-1}[1]{$\mapsto$}}
+
+\def\Gc{G_\bC}
+\def\Gcad{G_\bC^{\text{ad}}}
+\def\hha{{}^a\fhh}
+\def\aX{{}^aX}
+\def\aQ{{}^aQ}
+\def\aP{{}^aP}
+\def\aR{{}^aR}
+\def\aRp{{}^aR^+}
+\def\asRp{{}^a \Delta^+}
+\def\Gfin{\cG(\Gc)}
+\def\PiGfin{\Pi_{\mathrm{fin}}( \Gc )}
+\def\PiGlfin{\Pi_{\Lambda_0}( \Gc )}
+\def\adGfin{\cG_{\mathrm{ad}}(\Gc)}
+\def\Ggk{\cG(\fgg,K)}
+\def\WT#1{\Delta(#1)}
+\def\WG{W(\Gc)}
+\def\ch{\mathrm{ch}\,}
+\def\Wlam{W_{[\lambda]}}
+\def\aLam{a_{\Lambda}}
+\def\WLam{W_{\Lambda}}
+\def\WLamck{W_{[\lambda_{\ckcO}]}}
+\def\Wlamck{W_{\lamck}}
+\def\Rlam{R_{[\lambda]}}
+\def\RLam{R_\Lambda}
+\def\RLamp{R_\Lambda^+}
+\def\Rplam{R^+(\lambda)}
+\def\Glfin{\cG_{\Lambda}(\Gc)}
+\def\CL{{\sC}^{\scriptscriptstyle L}}
+\def\CR{{\sC}^{\scriptscriptstyle R}}
+\def\CLR{{\sC}^{\scriptscriptstyle LR}}
+\def\LC{{}^{\scriptscriptstyle L}\sC}
+\def\RC{{}^{\scriptscriptstyle R}\sC}
+\def\LRC{{}^{\scriptscriptstyle LR}\sC}
+\def\ckLC{{}^{\scriptscriptstyle L}\check{\sC}}
+
+
+\def\bVL{{\overline{\sV}}^{\scriptscriptstyle L}}
+\def\bVR{{\overline{\sV}}^{\scriptscriptstyle R}}
+\def\bVLR{{\overline{\sV}}^{\scriptscriptstyle LR}}
+\def\VL{{\sV}^{\scriptscriptstyle L}}
+\def\VR{{\sV}^{\scriptscriptstyle R}}
+\def\VLR{{\sV}^{\scriptscriptstyle LR}}
+
+\def\Con{\sfC}
+\def\bCon{\overline{\sfC}}
+\def\Re{\mathrm{Re}}
+\def\Im{\mathrm{Im}}
+\def\AND{\quad \text{and} \quad}
+\def\Coh{\mathrm{Coh}}
+\def\Cohlm{\Coh_{\Lambda}(\cM)}
+\def\ev#1{{\mathrm{ev}_{#1}}}
+
+\def\ppp{\times}
+\def\mmm{\slash}
+
+
+\def\cuprow{{\stackrel{r}{\sqcup}}}
+\def\cupcol{{\stackrel{c}{\sqcup}}}
+
+\def\Spr{\mathrm{Springer}}
+\def\Prim{\mathrm{Prim}}
+
+
+\def\CQ{\overline{\sfA}}% Lusztig's canonical quotient
+\def\CPP{\mathfrak{P}}
+\def\CPPs{\mathfrak{P}_{\star}}
+
+
+\def\ceil#1{\lceil #1 \rceil}
+\def\symb#1#2{{\left(\substack{{#1}\\{#2}}\right)}}
+\def\cboxs#1{\mbox{\scalebox{0.25}{\ytb{\ ,\vdots,\vdots,\ }}}_{#1}}
+
+\def\hsgn{\widetilde{\mathrm{sgn}}}
+
+\def\PBPe{\mathrm{PBP}^{\mathrm{ext}}}
+\def\PBPes{\mathrm{PBP}^{\mathrm{ext}}_{\star}}
+\def\bev#1{\overline{\mathrm{ev}}_{#1}}
+
+\def\Prim{\mathrm{Prim}}
+% \def\leqL{\stackrel{L}{\leq}}
+% \def\leqR{\stackrel{R}{\leq}}
+% \def\leqLR{\stackrel{LR}{\leq}}
+
+% \def\leqL{{\leq_L}}
+% \def\leqR{{\leq_R}}
+% \def\leqLR{{\leq_{LR}}}
+
+
+\def\lneqL{\mathrel{\mathop{<}\limits_{\scriptscriptstyle L}}}
+\def\lneqR{\mathrel{\mathop{<}\limits_{\scriptscriptstyle R}}}
+\def\lneqLR{\mathrel{\mathop{<}\limits_{\scriptscriptstyle LR}}}
+
+\def\leqL{\mathrel{\mathop{\leq}\limits_{\scriptscriptstyle L}}}
+\def\leqR{\mathrel{\mathop{\leq}\limits_{\scriptscriptstyle R}}}
+\def\leqLR{\mathrel{\mathop{\leq}\limits_{\scriptscriptstyle LR}}}
+
+
+\def\approxL{\mathrel{\mathop{\approx}\limits_{\scriptscriptstyle L}}}
+\def\approxR{\mathrel{\mathop{\approx}\limits_{\scriptscriptstyle R}}}
+\def\approxLR{\mathrel{\mathop{\approx}\limits_{\scriptscriptstyle LR}}}
+
+
+\def\dphi{\rdd \phi}
+\def\CPH{C(H)}
+\def\whCPH{\widehat{C(H)}}
+
+\def\Greg{G_{\text{reg}}}
+\def\Hnreg{H^-_{\text{reg}}}
+\def\Hireg{H_{i,\text{reg}}}
+\def\Hnireg{H^-_{i,\text{reg}}}
+
+
+\def\tsgn{\widetilde{\sgn}}
+\def\PBP{\mathsf{PBP}}
+
+\def\ckstar{{\check \star}}
+\def\ckfgg{{\check \fgg}}
+
+\usepackage{xr}
+\usepackage{subfiles} % Best loaded last in the preamble
+
+\begin{document}
+
+
+\title[]{Counting special unipotent representations of real classical groups}
+
+\author [D. Barbasch] {Dan M. Barbasch}
+\address{the Department of Mathematics\\
+  310 Malott Hall, Cornell University, Ithaca, New York 14853 }
+\email{dmb14@cornell.edu}
+
+\author [J.-J. Ma] {Jia-jun Ma}
+\address{School of Mathematical Sciences\\
+  Shanghai Jiao Tong University\\
+  800 Dongchuan Road, Shanghai, 200240, China} \email{hoxide@sjtu.edu.cn}
+
+\author [B. Sun] {Binyong Sun}
+% MCM, HCMS, HLM, CEMS, UCAS,
+\address{Academy of Mathematics and Systems Science\\
+  Chinese Academy of Sciences\\
+  Beijing, 100190, China} \email{sun@math.ac.cn}
+
+\author [C.-B. Zhu] {Chen-Bo Zhu}
+\address{Department of Mathematics\\
+  National University of Singapore\\
+  10 Lower Kent Ridge Road, Singapore 119076} \email{matzhucb@nus.edu.sg}
+
+
+
+
+\subjclass[2000]{22E45, 22E46} \keywords{orbit method, unitary dual, unipotent
+  representation, classical group, theta lifting, moment map}
+
+% \thanks{Supported by NSFC Grant 11222101}
+\maketitle
+
+
+\tableofcontents
+
+\subfile{counting_intro}
+
+\subfile{counting_abs}
+
+\subfile{counting_A}
+
+\subfile{counting_cl}
+
+\appendix
+
+\subfile{counting_wrep}
+
+\subfile{counting_bv}
+
+
+\begin{bibdiv}
+  \begin{biblist}
+% \bib{AB}{article}{
+%   title={Genuine representations of the metaplectic group},
+%   author={Adams, Jeffrey},
+%   author = {Barbasch, Dan},
+%   journal={Compositio Mathematica},
+%   volume={113},
+%   number={01},
+%   pages={23--66},
+%   year={1998},
+% }
+
+\bib{Ad83}{article}{
+  author = {Adams, J.},
+  title = {Discrete spectrum of the reductive dual pair $(O(p,q),Sp(2m))$ },
+  journal = {Invent. Math.},
+  number = {3},
+ pages = {449--475},
+ volume = {74},
+ year = {1983}
+}
+
+%\bib{Ad07}{article}{
+%  author = {Adams, J.},
+%  title = {The theta correspondence over R},
+%  journal = {Harmonic analysis, group representations, automorphic forms and invariant theory,  Lect. Notes Ser. Inst. Math. Sci. Natl. Univ. Singap., 12},
+% pages = {1--39},
+% year = {2007}
+% publisher={World Sci. Publ.}
+%}
+
+
+\bib{ABV}{book}{
+  title={The Langlands classification and irreducible characters for real reductive groups},
+  author={Adams, J.},
+  author={Barbasch, D.},
+  author={Vogan, D. A.},
+  series={Progress in Math.},
+  volume={104},
+  year={1991},
+  publisher={Birkhauser}
+}
+
+\bib{AC}{article}{
+  title={Algorithms for representation theory of
+    real reductive groups},
+  volume={8},
+  DOI={10.1017/S1474748008000352},
+  number={2},
+  journal={Journal of the Institute of Mathematics of Jussieu},
+  publisher={Cambridge University Press},
+  author={Adams, Jeffrey},
+  author={du Cloux, Fokko},
+  year={2009},
+  pages={209-259}
+}
+
+\bib{ArPro}{article}{
+  author = {Arthur, J.},
+  title = {On some problems suggested by the trace formula},
+  journal = {Lie group representations, II (College Park, Md.), Lecture Notes in Math. 1041},
+ pages = {1--49},
+ year = {1984}
+}
+
+
+\bib{ArUni}{article}{
+  author = {Arthur, J.},
+  title = {Unipotent automorphic representations: conjectures},
+  %booktitle = {Orbites unipotentes et repr\'esentations, II},
+  journal = {Orbites unipotentes et repr\'esentations, II, Ast\'erisque},
+ pages = {13--71},
+ volume = {171-172},
+ year = {1989}
+}
+
+\bib{AK}{article}{
+  author = {Auslander, L.},
+  author = {Kostant, B.},
+  title = {Polarizations and unitary representations of solvable Lie groups},
+  journal = {Invent. Math.},
+ pages = {255--354},
+ volume = {14},
+ year = {1971}
+}
+
+
+\bib{B.Uni}{article}{
+  author = {Barbasch, D.},
+  title = {Unipotent representations for real reductive groups},
+ %booktitle = {Proceedings of ICM, Kyoto 1990},
+ journal = {Proceedings of ICM (1990), Kyoto},
+   % series = {Proc. Sympos. Pure Math.},
+ %   volume = {68},
+     pages = {769--777},
+ publisher = {Springer-Verlag, The Mathematical Society of Japan},
+      year = {2000},
+}
+
+
+\bib{BMSZ1}{article}{
+      title={On the notion of metaplectic Barbasch-Vogan duality},
+      year={2020},
+      author={Barbasch, Dan M.},
+      author = {Ma, Jia-jun},
+      author = {Sun, Binyong},
+      author = {Zhu, Chen-Bo},
+      eprint={2010.16089},
+      archivePrefix={arXiv},
+      primaryClass={math.RT}
+}
+
+\bib{BMSZ2}{article}{
+      title={Special unipotent representations: orthogonal and symplectic groups},
+      author={Barbasch, Dan M.},
+      author = {Ma, Jia-jun},
+      author = {Sun, Binyong},
+      author = {Zhu, Chen-Bo},
+      year={2021},
+      eprint={1712.05552},
+      archivePrefix={arXiv},
+      primaryClass={math.RT}
+}
+
+\bib{BV1}{article}{
+   author={Barbasch, Dan},
+   author={Vogan, David},
+   title={Primitive ideals and orbital integrals in complex classical
+   groups},
+   journal={Math. Ann.},
+   volume={259},
+   date={1982},
+   number={2},
+   pages={153--199},
+   issn={0025-5831},
+   review={\MR{656661}},
+   doi={10.1007/BF01457308},
+}
+
+\bib{BV2}{article}{
+   author={Barbasch, Dan},
+   author={Vogan, David},
+   title={Primitive ideals and orbital integrals in complex exceptional
+   groups},
+   journal={J. Algebra},
+   volume={80},
+   date={1983},
+   number={2},
+   pages={350--382},
+   issn={0021-8693},
+   review={\MR{691809}},
+   doi={10.1016/0021-8693(83)90006-6},
+}
+
+\bib{BV.W}{article}{
+  author={Barbasch, Dan},
+  author={Vogan, David},
+  editor={Trombi, P. C.},
+  title={Weyl Group Representations and Nilpotent Orbits},
+  bookTitle={Representation Theory of Reductive Groups:
+    Proceedings of the University of Utah Conference 1982},
+  year={1983},
+  publisher={Birkh{\"a}user Boston},
+  address={Boston, MA},
+  pages={21--33},
+  %doi={10.1007/978-1-4684-6730-7_2},
+}
+
+
+
+\bib{B.Orbit}{article}{
+  author = {Barbasch, D.},
+  title = {Orbital integrals of nilpotent orbits},
+ %booktitle = {The mathematical legacy of {H}arish-{C}handra ({B}altimore,{MD}, 1998)},
+    journal = {The mathematical legacy of {H}arish-{C}handra, Proc. Sympos. Pure Math.},
+    %series={The mathematical legacy of {H}arish-{C}handra, Proc. Sympos. Pure Math},
+    volume = {68},
+     pages = {97--110},
+ publisher = {Amer. Math. Soc., Providence, RI},
+      year = {2000},
+}
+
+
+
+\bib{B10}{article}{
+  author = {Barbasch, D.},
+  title = {The unitary spherical spectrum for split classical groups},
+  journal = {J. Inst. Math. Jussieu},
+% number = {9},
+ pages = {265--356},
+ volume = {9},
+ year = {2010}
+}
+
+
+
+\bib{B17}{article}{
+  author = {Barbasch, D.},
+  title = {Unipotent representations and the dual pair correspondence},
+  journal = {J. Cogdell et al. (eds.), Representation Theory, Number Theory, and Invariant Theory, In Honor of Roger Howe. Progress in Math.},
+  %series ={Progress in Math.},
+  volume = {323},
+  pages = {47--85},
+  year = {2017},
+}
+
+\bib{BVUni}{article}{
+ author = {Barbasch, D.},
+ author = {Vogan, D. A.},
+ journal = {Annals of Math.},
+ number = {1},
+ pages = {41--110},
+ title = {Unipotent representations of complex semisimple groups},
+ volume = {121},
+ year = {1985}
+}
+
+\bib{BB}{article}{
+   author={Beilinson, Alexandre},
+   author={Bernstein, Joseph},
+   title={Localisation de $\mathfrak g$-modules},
+   language={French, with English summary},
+   journal={C. R. Acad. Sci. Paris S\'{e}r. I Math.},
+   volume={292},
+   date={1981},
+   number={1},
+   pages={15--18},
+   issn={0249-6291},
+   review={\MR{610137}},
+}
+
+\bib{Br}{article}{
+  author = {Brylinski, R.},
+  title = {Dixmier algebras for classical complex nilpotent orbits via Kraft-Procesi models. I},
+  journal = {The orbit method in geometry and physics (Marseille, 2000). Progress in Math.}
+  volume = {213},
+  pages = {49--67},
+  year = {2003},
+}
+
+\bib{BK}{article}{
+   author={Brylinski, J.-L.},
+   author={Kashiwara, M.},
+   title={Kazhdan-Lusztig conjecture and holonomic systems},
+   journal={Invent. Math.},
+   volume={64},
+   date={1981},
+   number={3},
+   pages={387--410},
+   issn={0020-9910},
+   review={\MR{632980}},
+   doi={10.1007/BF01389272},
+}
+
+\bib{Carter}{book}{
+   author={Carter, Roger W.},
+   title={Finite groups of Lie type},
+   series={Wiley Classics Library},
+   %note={Conjugacy classes and complex characters;
+   %Reprint of the 1985 original;
+   %A Wiley-Interscience Publication},
+   publisher={John Wiley \& Sons, Ltd., Chichester},
+   date={1993},
+   pages={xii+544},
+   isbn={0-471-94109-3},
+   %review={\MR{1266626}},
+}
+
+\bib{Cas}{article}{
+   author={Casian, Luis G.},
+   title={Primitive ideals and representations},
+   journal={J. Algebra},
+   volume={101},
+   date={1986},
+   number={2},
+   pages={497--515},
+   issn={0021-8693},
+   review={\MR{847174}},
+   doi={10.1016/0021-8693(86)90208-5},
+}
+
+\bib{Ca89}{article}{
+ author = {Casselman, W.},
+ journal = {Canad. J. Math.},
+ pages = {385--438},
+ title = {Canonical extensions of Harish-Chandra modules to representations of $G$},
+ volume = {41},
+ year = {1989}
+}
+
+
+
+\bib{Cl}{article}{
+  author = {Du Cloux, F.},
+  journal = {Ann. Sci. \'Ecole Norm. Sup.},
+  number = {3},
+  pages = {257--318},
+  title = {Sur les repr\'esentations diff\'erentiables des groupes de Lie alg\'ebriques},
+  url = {http://eudml.org/doc/82297},
+  volume = {24},
+  year = {1991},
+}
+
+\bib{CM}{book}{
+  title = {Nilpotent orbits in semisimple Lie algebra: an introduction},
+  author = {Collingwood, D. H.},
+  author = {McGovern, W. M.},
+  year = {1993},
+  publisher = {Van Nostrand Reinhold Co.},
+}
+
+
+% \bib{Dieu}{book}{
+%    title={La g\'{e}om\'{e}trie des groupes classiques},
+%    author={Dieudonn\'{e}, Jean},
+%    year={1963},
+% 	publisher={Springer},
+%  }
+
+\bib{DKPC}{article}{
+title = {Nilpotent orbits and complex dual pairs},
+journal = {J. Algebra},
+volume = {190},
+number = {2},
+pages = {518 - 539},
+year = {1997},
+author = {Daszkiewicz, A.},
+author = {Kra\'skiewicz, W.},
+author = {Przebinda, T.},
+}
+
+\bib{DKP2}{article}{
+  author = {Daszkiewicz, A.},
+  author = {Kra\'skiewicz, W.},
+  author = {Przebinda, T.},
+  title = {Dual pairs and Kostant-Sekiguchi correspondence. II. Classification
+	of nilpotent elements},
+  journal = {Central European J. Math.},
+  year = {2005},
+  volume = {3},
+  pages = {430--474},
+}
+
+
+\bib{DM}{article}{
+  author = {Dixmier, J.},
+  author = {Malliavin, P.},
+  title = {Factorisations de fonctions et de vecteurs ind\'efiniment diff\'erentiables},
+  journal = {Bull. Sci. Math. (2)},
+  year = {1978},
+  volume = {102},
+  pages = {307--330},
+}
+
+%\bibitem[DM]{DM}
+%J. Dixmier and P. Malliavin, \textit{Factorisations de fonctions et de vecteurs ind\'efiniment diff\'erentiables}, Bull. Sci. Math. (2), 102 (4),  307-330 (1978).
+
+
+
+\bib{Du77}{article}{
+  author = {Duflo, M.},
+  journal = {Annals of Math.},
+  number = {1},
+  pages = {107-120},
+  title = {Sur la Classification des Ideaux Primitifs Dans
+    L'algebre Enveloppante d'une Algebre de Lie Semi-Simple},
+  volume = {105},
+  year = {1977}
+}
+
+\bib{Du82}{article}{
+ author = {Duflo, M.},
+ journal = {Acta Math.},
+  volume = {149},
+ number = {3-4},
+ pages = {153--213},
+ title = {Th\'eorie de Mackey pour les groupes de Lie alg\'ebriques},
+ year = {1982}
+}
+
+
+
+\bib{GZ}{article}{
+author={Gomez, R.},
+author={Zhu, C.-B.},
+title={Local theta lifting of generalized Whittaker models associated to nilpotent orbits},
+journal={Geom. Funct. Anal.},
+year={2014},
+volume={24},
+number={3},
+pages={796--853},
+}
+
+\bib{EGAIV2}{article}{
+  title = {\'El\'ements de g\'eom\'etrie alg\'brique IV: \'Etude locale des
+    sch\'emas et des morphismes de sch\'emas. II},
+  author = {Grothendieck, A.},
+  author = {Dieudonn\'e, J.},
+  journal  = {Inst. Hautes \'Etudes Sci. Publ. Math.},
+  volume = {24},
+  year = {1965},
+}
+
+
+\bib{EGAIV3}{article}{
+  title = {\'El\'ements de g\'eom\'etrie alg\'brique IV: \'Etude locale des
+    sch\'emas et des morphismes de sch\'emas. III},
+  author = {Grothendieck, A.},
+  author = {Dieudonn\'e, J.},
+  journal  = {Inst. Hautes \'Etudes Sci. Publ. Math.},
+  volume = {28},
+  year = {1966},
+}
+
+
+\bib{HLS}{article}{
+    author = {Harris, M.},
+    author = {Li, J.-S.},
+    author = {Sun, B.},
+     title = {Theta correspondences for close unitary groups},
+ %booktitle = {Arithmetic Geometry and Automorphic Forms},
+    %series = {Adv. Lect. Math. (ALM)},
+    journal = {Arithmetic Geometry and Automorphic Forms, Adv. Lect. Math. (ALM)},
+    volume = {19},
+     pages = {265--307},
+ publisher = {Int. Press, Somerville, MA},
+      year = {2011},
+}
+
+\bib{HS}{book}{
+ author = {Hartshorne, R.},
+ title = {Algebraic Geometry},
+publisher={Graduate Texts in Mathematics, 52. New York-Heidelberg-Berlin: Springer-Verlag},
+year={1983},
+}
+
+\bib{He}{article}{
+author={He, H.},
+title={Unipotent representations and quantum induction},
+journal={arXiv:math/0210372},
+year = {2002},
+}
+
+\bib{HL}{article}{
+author={Huang, J.-S.},
+author={Li, J.-S.},
+title={Unipotent representations attached to spherical nilpotent orbits},
+journal={Amer. J. Math.},
+volume={121},
+number = {3},
+pages={497--517},
+year={1999},
+}
+
+
+\bib{HZ}{article}{
+author={Huang, J.-S.},
+author={Zhu, C.-B.},
+title={On certain small representations of indefinite orthogonal groups},
+journal={Represent. Theory},
+volume={1},
+pages={190--206},
+year={1997},
+}
+
+
+
+\bib{Howe79}{article}{
+  title={$\theta$-series and invariant theory},
+  author={Howe, R.},
+  book = {
+    title={Automorphic Forms, Representations and $L$-functions},
+    series={Proc. Sympos. Pure Math},
+    volume={33},
+    year={1979},
+  },
+  pages={275-285},
+}
+
+\bib{HoweRank}{article}{
+author={Howe, R.},
+title={On a notion of rank for unitary representations of the classical groups},
+journal={Harmonic analysis and group representations, Liguori, Naples},
+pages={223-331},
+year={1982},
+}
+
+\bib{Howe89}{article}{
+author={Howe, R.},
+title={Transcending classical invariant theory},
+journal={J. Amer. Math. Soc.},
+volume={2},
+pages={535--552},
+year={1989},
+}
+
+\bib{Howe95}{article}{,
+  author = {Howe, R.},
+  title = {Perspectives on invariant theory: Schur duality, multiplicity-free actions and beyond},
+  journal = {Piatetski-Shapiro, I. et al. (eds.), The Schur lectures (1992). Ramat-Gan: Bar-Ilan University, Isr. Math. Conf. Proc. 8,},
+  year = {1995},
+  pages = {1-182},
+}
+
+\bib{H}{book}{
+   author={Humphreys, James E.},
+   title={Representations of semisimple Lie algebras in the BGG category
+   $\scr{O}$},
+   series={Graduate Studies in Mathematics},
+   volume={94},
+   publisher={American Mathematical Society, Providence, RI},
+   date={2008},
+   pages={xvi+289},
+   isbn={978-0-8218-4678-0},
+   review={\MR{2428237}},
+   doi={10.1090/gsm/094},
+}
+
+\bib{J1}{article}{
+   author={Joseph, A.},
+   title={Goldie rank in the enveloping algebra of a semisimple Lie algebra.
+   I},
+   journal={J. Algebra},
+   volume={65},
+   date={1980},
+   number={2},
+   pages={269--283},
+   issn={0021-8693},
+   review={\MR{585721}},
+   doi={10.1016/0021-8693(80)90217-3},
+}
+
+\bib{J2}{article}{
+   author={Joseph, A.},
+   title={Goldie rank in the enveloping algebra of a semisimple Lie algebra.
+   II},
+   journal={J. Algebra},
+   volume={65},
+   date={1980},
+   number={2},
+   pages={284--306},
+   issn={0021-8693},
+   review={\MR{585721}},
+   doi={10.1016/0021-8693(80)90217-3},
+}
+
+\bib{J3}{article}{
+   author={Joseph, A.},
+   title={Goldie rank in the enveloping algebra of a semisimple Lie algebra.
+   III},
+   journal={J. Algebra},
+   volume={73},
+   date={1981},
+   number={2},
+   pages={295--326},
+   issn={0021-8693},
+   review={\MR{640039}},
+   doi={10.1016/0021-8693(81)90324-0},
+}
+	
+
+
+\bib{J.av}{article}{
+   author={Joseph, Anthony},
+   title={On the associated variety of a primitive ideal},
+   journal={J. Algebra},
+   volume={93},
+   date={1985},
+   number={2},
+   pages={509--523},
+   issn={0021-8693},
+   review={\MR{786766}},
+   doi={10.1016/0021-8693(85)90172-3},
+}
+
+\bib{J.ann}{article}{
+   author={Joseph, Anthony},
+   title={Annihilators and associated varieties of unitary highest weight
+   modules},
+   journal={Ann. Sci. \'{E}cole Norm. Sup. (4)},
+   volume={25},
+   date={1992},
+   number={1},
+   pages={1--45},
+   issn={0012-9593},
+   review={\MR{1152612}},
+}
+
+\bib{J.hw}{article}{
+   author={Joseph, Anthony},
+   title={On the variety of a highest weight module},
+   journal={J. Algebra},
+   volume={88},
+   date={1984},
+   number={1},
+   pages={238--278},
+   issn={0021-8693},
+   review={\MR{741942}},
+   doi={10.1016/0021-8693(84)90100-5},
+}
+	
+
+\bib{JLS}{article}{
+author={Jiang, D.},
+author={Liu, B.},
+author={Savin, G.},
+title={Raising nilpotent orbits in wave-front sets},
+journal={Represent. Theory},
+volume={20},
+pages={419--450},
+year={2016},
+}
+
+\bib{Ki62}{article}{
+author={Kirillov, A. A.},
+title={Unitary representations of nilpotent Lie groups},
+journal={Uspehi Mat. Nauk},
+volume={17},
+issue ={4},
+pages={57--110},
+year={1962},
+}
+
+
+\bib{Ko70}{article}{
+author={Kostant, B.},
+title={Quantization and unitary representations},
+journal={Lectures in Modern Analysis and Applications III, Lecture Notes in Math.},
+volume={170},
+pages={87--208},
+year={1970},
+}
+
+
+\bib{KP}{article}{
+author={Kraft, H.},
+author={Procesi, C.},
+title={On the geometry of conjugacy classes in classical groups},
+journal={Comment. Math. Helv.},
+volume={57},
+pages={539--602},
+year={1982},
+}
+
+\bib{KR}{article}{
+author={Kudla, S. S.},
+author={Rallis, S.},
+title={Degenerate principal series and invariant distributions},
+journal={Israel J. Math.},
+volume={69},
+pages={25--45},
+year={1990},
+}
+
+
+\bib{Ku}{article}{
+author={Kudla, S. S.},
+title={Some extensions of the Siegel-Weil formula},
+journal={In: Gan W., Kudla S., Tschinkel Y. (eds) Eisenstein Series and Applications. Progress in Mathematics, vol 258. Birkh\"auser Boston},
+%volume={69},
+pages={205--237},
+year={2008},
+}
+
+
+
+
+
+\bib{LZ1}{article}{
+author={Lee, S. T.},
+author={Zhu, C.-B.},
+title={Degenerate principal series and local theta correspondence II},
+journal={Israel J. Math.},
+volume={100},
+pages={29--59},
+year={1997},
+}
+
+\bib{LZ2}{article}{
+author={Lee, S. T.},
+author={Zhu, C.-B.},
+title={Degenerate principal series of metaplectic groups and Howe correspondence},
+journal = {D. Prasad at al. (eds.), Automorphic Representations and L-Functions, Tata Institute of Fundamental Research, India,},
+year = {2013},
+pages = {379--408},
+}
+
+\bib{Li89}{article}{
+author={Li, J.-S.},
+title={Singular unitary representations of classical groups},
+journal={Invent. Math.},
+volume={97},
+number = {2},
+pages={237--255},
+year={1989},
+}
+
+\bib{LiuAG}{book}{
+  title={Algebraic Geometry and Arithmetic Curves},
+  author = {Liu, Q.},
+  year = {2006},
+  publisher={Oxford University Press},
+}
+
+\bib{LM}{article}{
+   author = {Loke, H. Y.},
+   author = {Ma, J.},
+    title = {Invariants and $K$-spectrums of local theta lifts},
+    journal = {Compositio Math.},
+    volume = {151},
+    issue = {01},
+    year = {2015},
+    pages ={179--206},
+}
+
+\bib{DL}{article}{
+   author={Deligne, P.},
+   author={Lusztig, G.},
+   title={Representations of reductive groups over finite fields},
+   journal={Ann. of Math. (2)},
+   volume={103},
+   date={1976},
+   number={1},
+   pages={103--161},
+   issn={0003-486X},
+   review={\MR{393266}},
+   doi={10.2307/1971021},
+}
+
+\bib{KL}{article}{
+   author={Kazhdan, David},
+   author={Lusztig, George},
+   title={Representations of Coxeter groups and Hecke algebras},
+   journal={Invent. Math.},
+   volume={53},
+   date={1979},
+   number={2},
+   pages={165--184},
+   issn={0020-9910},
+   review={\MR{560412}},
+   doi={10.1007/BF01390031},
+}
+
+\bib{Lu}{book}{
+   author={Lusztig, George},
+   title={Characters of reductive groups over a finite field},
+   series={Annals of Mathematics Studies},
+   volume={107},
+   publisher={Princeton University Press, Princeton, NJ},
+   date={1984},
+   pages={xxi+384},
+   isbn={0-691-08350-9},
+   isbn={0-691-08351-7},
+   review={\MR{742472}},
+   doi={10.1515/9781400881772},
+}
+
+
+\bib{LS}{article}{
+   author = {Lusztig, G.},
+   author = {Spaltenstein, N.},
+    title = {Induced unipotent classes},
+    journal = {j. London Math. Soc.},
+    volume = {19},
+    year = {1979},
+    pages ={41--52},
+}
+
+\bib{Lu.I}{article}{
+   author={Lusztig, G.},
+   title={Intersection cohomology complexes on a reductive group},
+   journal={Invent. Math.},
+   volume={75},
+   date={1984},
+   number={2},
+   pages={205--272},
+   issn={0020-9910},
+   review={\MR{732546}},
+   doi={10.1007/BF01388564},
+}
+	
+
+\bib{Ma}{article}{
+   author = {Mackey, G. W.},
+    title = {Unitary representations of group extentions},
+    journal = {Acta Math.},
+    volume = {99},
+    year = {1958},
+    pages ={265--311},
+}
+
+
+\bib{Mc}{article}{
+   author = {McGovern, W. M},
+    title = {Cells of Harish-Chandra modules for real classical groups},
+    journal = {Amer. J.  of Math.},
+    volume = {120},
+    issue = {01},
+    year = {1998},
+    pages ={211--228},
+}
+
+\bib{Mo96}{article}{
+ author={M{\oe}glin, C.},
+    title = {Front d'onde des repr\'esentations des groupes classiques $p$-adiques},
+    journal = {Amer. J. Math.},
+    volume = {118},
+    issue = {06},
+    year = {1996},
+    pages ={1313--1346},
+}
+
+\bib{Mo17}{article}{
+  author={M{\oe}glin, C.},
+  title = {Paquets d'Arthur Sp\'eciaux Unipotents aux Places Archim\'ediennes et Correspondance de Howe},
+  journal = {J. Cogdell et al. (eds.), Representation Theory, Number Theory, and Invariant Theory, In Honor of Roger Howe. Progress in Math.}
+  %series ={Progress in Math.},
+  volume = {323},
+  pages = {469--502}
+  year = {2017}
+}
+
+\bib{MR19}{article}{
+   author={M\oe glin, Colette},
+   author={Renard, David},
+   title={Sur les paquets d'Arthur des groupes unitaires et quelques
+   cons\'{e}quences pour les groupes classiques},
+   language={French, with English and French summaries},
+   journal={Pacific J. Math.},
+   volume={299},
+   date={2019},
+   number={1},
+   pages={53--88},
+   issn={0030-8730},
+   review={\MR{3947270}},
+   doi={10.2140/pjm.2019.299.53},
+}
+
+
+\bib{MVW}{book}{
+  volume={1291},
+  title={Correspondances de Howe sur un corps $p$-adique},
+  author={M{\oe}glin, C.},
+  author={Vign\'eras, M.-F.},
+  author={Waldspurger, J.-L.},
+  series={Lecture Notes in Mathematics},
+  publisher={Springer}
+  ISBN={978-3-540-18699-1},
+  date={1987},
+}
+
+\bib{NOTYK}{article}{
+   author = {Nishiyama, K.},
+   author = {Ochiai, H.},
+   author = {Taniguchi, K.},
+   author = {Yamashita, H.},
+   author = {Kato, S.},
+    title = {Nilpotent orbits, associated cycles and Whittaker models for highest weight representations},
+    journal = {Ast\'erisque},
+    volume = {273},
+    year = {2001},
+   pages ={1--163},
+}
+
+\bib{NOZ}{article}{
+  author = {Nishiyama, K.},
+  author = {Ochiai, H.},
+  author = {Zhu, C.-B.},
+  journal = {Trans. Amer. Math. Soc.},
+  title = {Theta lifting of nilpotent orbits for symmetric pairs},
+  volume = {358},
+  year = {2006},
+  pages = {2713--2734},
+}
+
+
+\bib{NZ}{article}{
+   author = {Nishiyama, K.},
+   author = {Zhu, C.-B.},
+    title = {Theta lifting of unitary lowest weight modules and their associated cycles},
+    journal = {Duke Math. J.},
+    volume = {125},
+    number= {03},
+    year = {2004},
+   pages ={415--465},
+}
+
+
+
+\bib{Ohta}{article}{
+  author = {Ohta, T.},
+  %doi = {10.2748/tmj/1178227492},
+  journal = {Tohoku Math. J.},
+  number = {2},
+  pages = {161--211},
+  publisher = {Tohoku University, Mathematical Institute},
+  title = {The closures of nilpotent orbits in the classical symmetric
+    pairs and their singularities},
+  volume = {43},
+  year = {1991}
+}
+
+\bib{Ohta2}{article}{
+  author = {Ohta, T.},
+  journal = {Hiroshima Math. J.},
+  number = {2},
+  pages = {347--360},
+  title = {Induction of nilpotent orbits for real reductive groups and associated varieties of standard representations},
+  volume = {29},
+  year = {1999}
+}
+
+\bib{Ohta4}{article}{
+  title={Nilpotent orbits of $\mathbb{Z}_4$-graded Lie algebra and geometry of
+    moment maps associated to the dual pair $(\mathrm{U} (p, q), \mathrm{U} (r, s))$},
+  author={Ohta, T.},
+  journal={Publ. RIMS},
+  volume={41},
+  number={3},
+  pages={723--756},
+  year={2005}
+}
+
+\bib{PT}{article}{
+  title={Some small unipotent representations of indefinite orthogonal groups and the theta correspondence},
+  author={Paul, A.},
+  author={Trapa, P.},
+  journal={University of Aarhus Publ. Series},
+  volume={48},
+  pages={103--125},
+  year={2007}
+}
+
+
+\bib{PV}{article}{
+  title={Invariant Theory},
+  author={Popov, V. L.},
+  author={Vinberg, E. B.},
+  book={
+  title={Algebraic Geometry IV: Linear Algebraic Groups, Invariant Theory},
+  series={Encyclopedia of Mathematical Sciences},
+  volume={55},
+  year={1994},
+  publisher={Springer},}
+}
+
+
+
+
+%\bib{PPz}{article}{
+%author={Protsak, V.} ,
+%author={Przebinda, T.},
+%title={On the occurrence of admissible representations in the real Howe
+%    correspondence in stable range},
+%journal={Manuscr. Math.},
+%volume={126},
+%number={2},
+%pages={135--141},
+%year={2008}
+%}
+
+
+\bib{PrzInf}{article}{
+      author={Przebinda, T.},
+       title={The duality correspondence of infinitesimal characters},
+        date={1996},
+     journal={Colloq. Math.},
+      volume={70},
+       pages={93--102},
+}
+
+
+\bib{Pz}{article}{
+author={Przebinda, T.},
+title={Characters, dual pairs, and unitary representations},
+journal={Duke Math. J. },
+volume={69},
+number={3},
+pages={547--592},
+year={1993}
+}
+
+\bib{Ra}{article}{
+author={Rallis, S.},
+title={On the Howe duality conjecture},
+journal={Compositio Math.},
+volume={51},
+pages={333--399},
+year={1984}
+}
+
+\bib{RT1}{article}{
+   author={Renard, David A.},
+   author={Trapa, Peter E.},
+   title={Irreducible genuine characters of the metaplectic group:
+   Kazhdan-Lusztig algorithm and Vogan duality},
+   journal={Represent. Theory},
+   volume={4},
+   date={2000},
+   pages={245--295},
+   review={\MR{1795754}},
+   doi={10.1090/S1088-4165-00-00105-9},
+}
+
+\bib{RT2}{article}{
+   author={Renard, David A.},
+   author={Trapa, Peter E.},
+   title={Irreducible characters of the metaplectic group. II.
+   Functoriality},
+   journal={J. Reine Angew. Math.},
+   volume={557},
+   date={2003},
+   pages={121--158},
+   issn={0075-4102},
+   review={\MR{1978405}},
+   doi={10.1515/crll.2003.028},
+}
+
+\bib{RT3}{article}{
+   author={Renard, David A.},
+   author={Trapa, Peter E.},
+   title={Kazhdan-Lusztig algorithms for nonlinear groups and applications
+   to Kazhdan-Patterson lifting},
+   journal={Amer. J. Math.},
+   volume={127},
+   date={2005},
+   number={5},
+   pages={911--971},
+   issn={0002-9327},
+   review={\MR{2170136}},
+}
+
+
+\bib{Sa}{article}{
+author={Sahi, S.},
+title={Explicit Hilbert spaces for certain unipotent representations},
+journal={Invent. Math.},
+volume={110},
+number = {2},
+pages={409--418},
+year={1992}
+}
+
+\bib{Se}{article}{
+author={Sekiguchi, J.},
+title={Remarks on real nilpotent orbits of a symmetric pair},
+journal={J. Math. Soc. Japan},
+%publisher={The Mathematical Society of Japan},
+year={1987},
+volume={39},
+number={1},
+pages={127--138},
+}
+
+\bib{SV}{article}{
+  author = {Schmid, W.},
+  author = {Vilonen, K.},
+  journal = {Annals of Math.},
+  number = {3},
+  pages = {1071--1118},
+  %publisher = {Princeton University, Mathematics Department, Princeton, NJ; Mathematical Sciences Publishers, Berkeley},
+  title = {Characteristic cycles and wave front cycles of representations of reductive Lie groups},
+  volume = {151},
+year = {2000},
+}
+
+
+\bib{Soergel}{article}{
+   author={Soergel, Wolfgang},
+   title={Kategorie $\scr O$, perverse Garben und Moduln \"{u}ber den
+   Koinvarianten zur Weylgruppe},
+   language={German, with English summary},
+   journal={J. Amer. Math. Soc.},
+   volume={3},
+   date={1990},
+   number={2},
+   pages={421--445},
+   issn={0894-0347},
+   review={\MR{1029692}},
+   doi={10.2307/1990960},
+}
+
+
+\bib{So}{article}{
+author = {Sommers, E.},
+title = {Lusztig's canonical quotient and generalized duality},
+journal = {J. Algebra},
+volume = {243},
+number = {2},
+pages = {790--812},
+year = {2001},
+}
+
+\bib{SS}{book}{
+  author = {Springer, T. A.},
+  author = {Steinberg, R.},
+  title = {Seminar on algebraic groups and related finite groups; Conjugate classes},
+  series = {Lecture Notes in Math.},
+  volume = {131},
+publisher={Springer},
+year={1970},
+}
+
+\bib{SZ1}{article}{
+title={A general form of Gelfand-Kazhdan criterion},
+author={Sun, B.},
+author={Zhu, C.-B.},
+journal={Manuscripta Math.},
+pages = {185--197},
+volume = {136},
+year={2011}
+}
+
+
+%\bib{SZ2}{article}{
+%  title={Conservation relations for local theta correspondence},
+%  author={Sun, B.},
+%  author={Zhu, C.-B.},
+%  journal={J. Amer. Math. Soc.},
+%  pages = {939--983},
+%  volume = {28},
+%  year={2015}
+%}
+
+
+
+\bib{Tr}{article}{
+  title={Special unipotent representations and the Howe correspondence},
+  author={Trapa, P.},
+  year = {2004},
+  journal={University of Aarhus Publication Series},
+  volume = {47},
+  pages= {210--230}
+}
+
+% \bib{Wa}{article}{
+%    author = {Waldspurger, J.-L.},
+%     title = {D\'{e}monstration d'une conjecture de dualit\'{e} de Howe dans le cas $p$-adique, $p \neq 2$ in Festschrift in honor of I. I. Piatetski-Shapiro on the occasion of his sixtieth birthday},
+%   journal = {Israel Math. Conf. Proc., 2, Weizmann, Jerusalem},
+%  year = {1990},
+% pages = {267-324},
+% }
+
+\bib{VGK}{article}{
+   author={Vogan, David A., Jr.},
+   title={Gel\cprime fand-Kirillov dimension for Harish-Chandra modules},
+   journal={Invent. Math.},
+   volume={48},
+   date={1978},
+   number={1},
+   pages={75--98},
+   issn={0020-9910},
+   review={\MR{506503}},
+   doi={10.1007/BF01390063},
+}
+
+\bib{Vg}{book}{
+   author={Vogan, David A.},
+   title={Representations of real reductive Lie groups},
+   series={Progress in Mathematics},
+   volume={15},
+   publisher={Birkh\"{a}user, Boston, Mass.},
+   date={1981},
+   pages={xvii+754},
+   isbn={3-7643-3037-6},
+   review={\MR{632407}},
+}
+
+\bib{V4}{article}{
+   author={Vogan, D. A. },
+   title={Irreducible characters of semisimple Lie groups. IV.
+   Character-multiplicity duality},
+   journal={Duke Math. J.},
+   volume={49},
+   date={1982},
+   number={4},
+   pages={943--1073},
+   issn={0012-7094},
+   review={\MR{683010}},
+}
+
+\bib{VoBook}{book}{
+author = {Vogan, D. A. },
+  title={Unitary representations of reductive Lie groups},
+  year={1987},
+  series = {Ann. of Math. Stud.},
+ volume={118},
+  publisher={Princeton University Press}
+}
+
+
+\bib{Vo89}{article}{
+  author = {Vogan, D. A. },
+  title = {Associated varieties and unipotent representations},
+ %booktitle ={Harmonic analysis on reductive groups, Proc. Conf., Brunswick/ME (USA) 1989,},
+  journal = {Harmonic analysis on reductive groups, Proc. Conf., Brunswick/ME
+    (USA) 1989, Prog. Math.},
+ volume={101},
+  publisher = {Birkh\"{a}user, Boston-Basel-Berlin},
+  year = {1991},
+pages={315--388},
+  editor = {W. Barker and P. Sally},
+}
+
+\bib{Vo98}{article}{
+  author = {Vogan, D. A. },
+  title = {The method of coadjoint orbits for real reductive groups},
+ %booktitle ={Representation theory of Lie groups (Park City, UT, 1998)},
+ journal = {Representation theory of Lie groups (Park City, UT, 1998). IAS/Park City Math. Ser.},
+  volume={8},
+  publisher = {Amer. Math. Soc.},
+  year = {2000},
+pages={179--238},
+}
+
+\bib{Vo00}{article}{
+  author = {Vogan, D. A. },
+  title = {Unitary representations of reductive Lie groups},
+ %booktitle ={Mathematics towards the Third Millennium (Rome, 1999)},
+ journal ={Mathematics towards the Third Millennium (Rome, 1999). Accademia Nazionale dei Lincei, (2000)},
+  %series = {Accademia Nazionale dei Lincei, 2000},
+ %volume={9},
+pages={147--167},
+}
+
+
+\bib{Wa1}{book}{
+  title={Real reductive groups I},
+  author={Wallach, N. R.},
+  year={1988},
+  publisher={Academic Press Inc. }
+}
+
+\bib{Wa2}{book}{
+  title={Real reductive groups II},
+  author={Wallach, N. R.},
+  year={1992},
+  publisher={Academic Press Inc. }
+}
+
+
+\bib{Weyl}{book}{
+  title={The classical groups: their invariants and representations},
+  author={Weyl, H.},
+  year={1947},
+  publisher={Princeton University Press}
+}
+
+\bib{Ya}{article}{
+  title={Degenerate principal series representations for quaternionic unitary groups},
+  author={Yamana, S.},
+  year = {2011},
+  journal={Israel J. Math.},
+  volume = {185},
+  pages= {77--124}
+}
+
+
+
+% \bib{EGAIV4}{article}{
+%   title = {\'El\'ements de g\'eom\'etrie alg\'brique IV 4: \'Etude locale des
+%     sch\'emas et des morphismes de sch\'emas},
+%   author = {Grothendieck, Alexandre},
+%   author = {Dieudonn\'e, Jean},
+%   journal  = {Inst. Hautes \'Etudes Sci. Publ. Math.},
+%   volume = {32},
+%   year = {1967},
+%   pages = {5--361}
+% }
+
+
+
+\end{biblist}
+\end{bibdiv}
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: tex
+%%% ispell-local-dictionary: "en_US"
+%%% End:

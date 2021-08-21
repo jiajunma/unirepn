@@ -1,0 +1,118 @@
+\documentclass[counting_main.tex]{subfiles}
+
+\begin{document}
+
+\section{Introduction}
+
+% and $\mathfrak h$ be the abstract Cartan subalgebra of $\mathfrak g$.
+%
+
+Barbasch-Vogan \cite{BVUni,BV.W} developed a formula counting the number of
+special unipotent representations.
+
+In this paper, we will calculate the number of special unipotent representations
+for real classical groups explicitly.
+
+
+
+\subsection{Counting theorem for the real classical groups of type BCD}
+In this section, we assume $\star \in \set{B,\wtC,C,C^{*}, D, D^{*}}$.
+
+Let
+\[
+  \Gc =
+  \begin{cases}
+    \SO(2n+1,\bC) & \text{if } \star \in \set{B},\\
+    \Sp(2n,\bC) & \text{if } \star \in \set{\wtC, C, C^{*}},\\
+    \SO(2n,\bC) & \text{if } \star \in \set{D,D^{*}}.\\
+  \end{cases}
+\]
+and the dual group of $\Gc$ is defined to be
+\[
+  \ckGc =
+  \begin{cases}
+    \Sp(2n,\bC) & \text{if } \star \in \set{B,\wtC},\\
+    \SO(2n+1,\bC) & \text{if } \star \in \set{C, C^{*}},\\
+    \SO(2n,\bC) & \text{if } \star \in \set{D,D^{*}}.\\
+  \end{cases}
+\]
+
+Suppose $\ckcO\in \Nil(\ckG_{\bC})$.
+Let $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$ be
+the decomposition of $\ckcO$ into good and bad parity parts.
+
+Let $\IC_{\star}(n)$ be the set of real groups given by
+\[
+  \IC_{\star}(n)
+  :=
+  \begin{cases}
+    \Set{\SO(2p+1,2q)| p,q\in \bN \text{ and } p+q = n}
+    & \text{if } \star = B\\
+    \set{\Sp(2n,\bR)}
+    & \text{if } \star = C\\
+    \set{\Mp(2n,\bR)}
+    & \text{if } \star = \wtC\\
+    \Set{\Sp(p,q)| p,q\in \bN \text{ and } p+q = n}
+    & \text{if } \star = C^{*}\\
+    \Set{\SO(p,q)| p,q\in \bN \text{ and } p+q = 2n}
+    & \text{if } \star = D\\
+    \Set{\rO^{*}(2n)}
+    & \text{if } \star = D^{*}\\
+  \end{cases}
+\]
+and $\IC_{\star} = \bigcup_{n\in \bN} \IC_{\star}(n)$.
+
+Let $ \unip_{\star}(\ckcO)$ be the set of special unipotent representations
+of groups in $\IC_{\star}$ attached to $\ckcO$.
+
+
+\begin{thm}
+  Suppose $\ckcO = \ckcO_{g}$. Then
+  \[
+    \abs{\unip_{\star}(\ckcO)} \leq \abs{\PBPes(\ckcO)}.
+  \]
+  % \[
+  %   \abs{\unip_{\star}(\ckcO)} = \begin{cases}
+  %     2 \abs{\PBPes(\ckcO)} & \text{if } \star \in \set{B,D}\\
+  %     \abs{\PBPes(\ckcO)} & \text{if } \star \in \set{\wtC,C,C^{*}, D^{*}}
+  %     \end{cases}
+  % \]
+\end{thm}
+
+
+\begin{thm}
+  Let $\ckcO'_{b}$ be the partition such that $\ckcO'_{b}\cuprow \ckcO'_{b}
+  = \ckcO_{b}$    % $ such that $ = \left(\dBV(\ckcO_{b})\right)^{t}$
+  and
+  \[\star' =
+  \begin{cases}
+     A^{\bR} & \star \in \set{B,\wtC,C,D}\\
+     A^{\bH} & \star \in \set{C^{*},D^{*}}\\
+    \end{cases}
+  \]
+
+  Then we have the following bijection
+  \[
+    \begin{array}{ccc}
+    \Unip_{\star'}(\ckcO'_{b}) \times \Unip_{\star}(\ckcO_{g})
+      & \longrightarrow & \Unip_{\star}(\ckcO)\\
+      (\pi',\pi_{0})& \mapsto & \pi'\rtimes \pi_{0}.
+    \end{array}
+  \]
+\end{thm}
+
+% \begin{thm}
+%   Suppose $\ckcO = \ckcO_{g}$. Then
+%   \[
+%     \abs{\unip_{\star}(\ckcO)}\leq
+%     \abs{\PBPes(\ckcO)}.
+%     %& \text{if } \star \in \set{\wtC,C,C^{*}, D^{*}}
+%     % \begin{cases}
+%     %   2 \abs{\PBPes(\ckcO)} & \text{if } \star \in \set{B,D}\\
+%     %   \abs{\PBPes(\ckcO)} & \text{if } \star \in \set{\wtC,C,C^{*}, D^{*}}
+%     %   \end{cases}
+%   \]
+% \end{thm}
+
+
+\end{document}
