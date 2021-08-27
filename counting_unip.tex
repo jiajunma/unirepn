@@ -1305,6 +1305,8 @@
 \def\sP{\wp}
 \def\bsgn{\overline{\sgn}}
 
+\def\brsgn{\breve{\sgn}}
+
 \begin{document}
 
 
@@ -3535,7 +3537,7 @@ Recall that
     W_{[\lamck]} =\Wb\times \Wg
   \]
   where
-  \[
+  \begin{equation}\label{eq:Wbg}
     \begin{split}
     \Wb & := \begin{cases}
       \sfW_{n_{b}}  & \text{when } \star \in \set{B, \wtC} \\
@@ -3546,7 +3548,7 @@ Recall that
       \sfW'_{n_{g}} & \text{when } \star \in \set{\wtC,D,D^{*}}
       \end{cases}
     \end{split}
-  \]
+  \end{equation}
 
   When $\Wb$ or $\Wg$ is a Weyl group of type $D_{n}$, we always have the
   preferred embedding of $\sfS_{n}$ into $\sfW'_{n}$ given by the root system of
@@ -3707,15 +3709,20 @@ Recall that
 
   For $\sP\subset\CPPs(\ckcO_{g})$, let $\sP^{c}$ be the complement of $\sP$ in
   $\CPPs(\ckcO_{g})$ and we have $\tau_{\sP} = \tau_{\sP^{c}}$ if
-  $\star \in \Set{\wtC,D,D^{*}}$.
+  %$\star \in \Set{\wtC,D,D^{*}}$. ### This is not correct!
+  $\star = \wtC$.
 
   We define
   \[
     \barA(\ckcO)=
     \begin{cases}
-      \wtA(\ckcO) & \text{when } \star \in \set{B,C,C^{*}},\\
-      \wtA(\ckcO)/\wp\sim\wp^{c} & \text{when } \star \in \set{\wtC,D,D^{*}}.\\
+      \wtA(\ckcO)/\wp\sim\wp^{c} & \text{when } \star =\wtC,\\
+      \wtA(\ckcO) & \text{otherwise.}\\
     \end{cases}
+    % \begin{cases}
+    %   \wtA(\ckcO)/\wp\sim\wp^{c} & \text{when } \star \in \set{\wtC,D,D^{*}}.\\
+    %   \wtA(\ckcO) & \text{when } \star \in \set{B,C,C^{*}},\\
+    % \end{cases}
   \]
   Here $\wtA(\ckcO)/\sP\sim\sP^{c}$ denote the quotient of $\wtA(\ckcO)$ by
   identifying $\sP$ with its complement $\sP^{c}$.
@@ -4453,7 +4460,9 @@ We view $\sfW_{2t}$ and $\sfS_{2t}$ as the reflection group acts on $\bC^{t}$ as
 $\sfH_{t} := \sfW_t\ltimes \set{\pm 1}^t$ be the subgroup in $\sfW_{2t}$ such that
 \begin{itemize}
   \item the first factor $\sfW_{t}$ sits in $\sfS_{2t}$ commuting with the involution
-        $(12)(34)\cdots ((2t-1)(2t))$.
+  \[
+    (12)(34)\cdots ((2t-1)(2t)).
+  \]
   \item The element $(1,\cdots,1, \underbrace{-1}_{i\text{-th
         term}}, 1, \cdots, 1)\in \set{\pm 1}^{t}$ acts on $\bC^{2t}$ by
         \[
@@ -4482,10 +4491,25 @@ representation of $\sfS_{n}$ to $\sfW_{n}$.
 Then
 \[
   \Ind_{\sfS_{n}}^{\sfW_{n}}\sgn
-  = \bigoplus_{a+b=n}\Ind_{W_{a}\times W_{b}}^{W_{n}} \bsgn\otimes \sgn
+  = \bigoplus_{a+b=n}\Ind_{W_{a}\times W_{b}}^{W_{n}} \bsgn\boxtimes \sgn
   =\bigoplus_{a+b=n} ((a,),(b,)) .
 \]
-
+Let $\brsgn := \sgn \otimes \bsgn$ which is the quadratic character of
+$\sfW_{n}=\sfS_{n}\ltimes \set{\pm 1}^{n}$
+given by
+\[
+(s,(x_{1}, x_{2}, \cdots, x_{n}))\mapsto x_{1}x_{2}\cdots x_{n}.
+\]
+\trivial{In fact, $\brsgn$ is the
+unique non-trivial quadratic character
+of $\sfW_{n}=\sfS_{n}\ltimes \set{\pm 1}^{n}$ which is trivial on $\sfS_{n}$.
+}
+Then
+\[
+  \Ind_{\sfS_{n}}^{\sfW_{n}} 1
+  = \bigoplus_{a+b=n}\Ind_{W_{a}\times W_{b}}^{W_{n}} 1 \boxtimes \brsgn
+  =\bigoplus_{a+b=n} ([a,],[b,]) .
+\]
 % Note that we have chosen the embedding $W_{t}\subset S_{2t}$ in $W_{2t}$. We have
 % \[
 %   \Ind_{H_{t}}^{W'_{2t}} \hsgn = \sum_{\sigma\in \Irr(S_{t})} (\sigma,\sigma)_{I}.
@@ -4524,64 +4548,86 @@ Then
 
 We now define various Weyl representations case by case.
 They will be used to state the formula of coherent continuation representations.
+In the following $\sigma$ is running over all irreducible representations of
+$\sfS_{t}$.
 \begin{itemize}
-  \item Suppose $\star= B$. Define
-  \[
-    \begin{split}
-      \cC_b^{n} & :=\bigoplus_{\substack{2t+c+d=n}}
-        \Ind_{\sfH_{t} \times \sfW_{c}\times \sfW_{d}}^{\sfW_{n}}
-        \hsgn\otimes 1\otimes 1 \\
-      \cC_g^{p,q} &:=
-      &=\bigoplus_{\substack{}} \Ind_{H_{t} \times S_{a}\times W_s\times W_r}^{W_{n_{g}}}
-      \hsgn \otimes 1 \otimes \sgn \otimes \sgn \\
-    \end{split}
-  \]
+  \item Suppose $\star= B$, $p+q=2m+1$ is odd. Define
+        \[
+        \begin{split}
+          \cC_b^{n} & :=\bigoplus_{\substack{2t+c+d=n}} \Ind_{\sfH_{t} \times \sfW_{c}\times \sfW_{d}}^{\sfW_{n}}
+          \hsgn\boxtimes 1\boxtimes 1 \\
+          \cC_g^{p,q} &:=\bigoplus_{\substack{0\leq p-(2t+a+r)\leq 1\\0\leq q - (2t+a+s)\leq 1}} \Ind_{\sfH_{t} \times \sfS_{a}\times \sfW_s\times \sfW_r}^{\sfW_{n}}
+          \hsgn \boxtimes 1 \boxtimes \sgn \boxtimes \sgn \\
+          &\cong \bigoplus_{\substack{0\leq p-(2t+c+d+r)\leq 1\\0\leq q - (2t+c+d+s)\leq 1}} \bigoplus_{\sigma} \Ind_{\sfW_{2t} \times \sfW_{c}\times \sfW_{d}\times \sfW_s\times \sfW_r}^{\sfW_{n}}
+          (\sigma,\sigma) \boxtimes 1 \boxtimes \brsgn \boxtimes \sgn \boxtimes \sgn \\
+        \end{split}
+        \]
+        \trivial[]{ Here is a point which could cases confusion: Although the
+        real Weyl group is
+        $\sfH_{t}\times \sfW_{a}\times \sfW_{s}\times \sfW_{r}$, the cross
+        stabilizer is much smaller
+        $=\sfH_{t}\times \sfS_{a}\times \sfW_{s}\times \sfW_{r}$! This is dual
+        to the fact that, for the split Cartan and real root $e_{i}$,
+        $\sgn\circ e_{i}\colon H\rightarrow \bR^{\times}\rightarrow \set{\pm 1}$
+        is non-trivial! The good infinitesimal character takes half-integer
+        values. So $s_{e_{i}}$ never cross stabilizing a regular character at
+        these infinitesimal characters }
   \item Suppose $\star=C^{*}$. Define
-  \[
-    \begin{split}
-      \cC_b^{n} & =
-      \begin{cases}
-        \Ind_{\sfH_{t}}^{\sfW'_{n}} \hsgn &
-        \text{if $n=2t$ is even} \\
-        0 & \text{otherwise}\\
-      \end{cases}\\
-      \cC_g^{p,q} %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
-      &:=\bigoplus_{\substack{(t+s,t+r)=(p,q)}} \Ind_{\sfH_{t} \times \sfW_s\times \sfW_t}^{\sfW_{p+q}}
-      \hsgn \otimes \sgn \otimes \sgn \\
-      & =\bigoplus_{\substack{(t+s,t+r)=(p,q)}} \bigoplus_{\sigma\in \Irr(\sfS_{t})} \Ind_{\sfW_{2t}\times \sfW_s\times \sfW_r}^{\sfW_{n_{g}}}
-      (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
-    \end{split}
-  \]
+        \[
+        \begin{split}
+          \cC_b^{n} & =
+          \begin{cases}
+           \Res_{\sfW_{n}}^{\sfW'_{n}} \Ind_{\sfH_{t}}^{\sfW_{n}} \hsgn &
+            \text{if $n=2t$ is even} \\
+            0 & \text{otherwise}\\
+          \end{cases}\\
+          \cC_g^{2p,2q} %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
+          &:=\bigoplus_{\substack{(t+s,t+r)=(p,q)}} \Ind_{\sfH_{t} \times \sfW_s\times \sfW_t}^{\sfW_{p+q}}
+          \hsgn \otimes \sgn \otimes \sgn \\
+          & =\bigoplus_{\substack{(t+s,t+r)=(p,q)}} \bigoplus_{\sigma\in \Irr(\sfS_{t})} \Ind_{\sfW_{2t}\times \sfW_s\times \sfW_r}^{\sfW_{p+q}}
+          (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
+        \end{split}
+        \]
   \item Suppose $\star=C$. Define
-  \[
-    \begin{split}
-      \cC_b^{n} & :=\bigoplus_{\substack{2t+a=n}}
-      \Res_{\sfW_{n}}^{\sfW'_{n}}
-      \left(
-        \Ind_{\sfH_{t} \times \sfS_a}^{\sfW_{n}}
-        \hsgn\otimes 1\right) \\
-      \cC_g^{n,n} &:=
-      \bigoplus_{2t+a+c+d=n}\Ind_{\sfH_{t} \times \sfS_{a}
-        \times \sfW_c\times \sfW_d}^{W_{n}} \hsgn \otimes
-      \sgn \otimes 1 \otimes 1\\
-      & =\bigoplus_{\substack{t+r+s+c+d=n}} \bigoplus_{\sigma\in \Irr(\sfS_{t})} \Ind_{\sfW_{2t}\times \sfW_s\times \sfW_r\times \sfW_{c}\times \sfW_{d}}^{\sfW_{n_{g}}}
-      (\sigma,\sigma)\otimes \sgn \otimes \bsgn \otimes 1\otimes 1 \\
-    \end{split}
-  \]
-  \item Suppose $\star=D$ and $p+q$ is even. Define
-  \[
-    \begin{split}
-    \cC_b^{n} & =
-      \bigoplus_{\substack{2t+a=n_{1}}}
-      \Ind_{\sfH_{t}\times \sfS_{a}}^{W_{n}} \hsgn\otimes 1\\
-      \cC_g^{p,q} %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
-      &=\bigoplus_{\substack{2t+c+d+2r=p\\2t+c+d+2s=q}} \Ind_{\sfH_{t} \times \times W_s\times W_r\times W_{c}\times W_{d} }^{\sfW_{}}
-      \hsgn \otimes \bsgn \otimes \bsgn \otimes 1\otimes 1\\
-    \end{split}
-  \]
+        \[
+        \begin{split}
+          \cC_b^{n} & :=\bigoplus_{\substack{2t+a=n}} \Res_{\sfW_{n}}^{\sfW'_{n}} \left( \Ind_{\sfH_{t} \times \sfS_a}^{\sfW_{n}}
+            \hsgn\otimes 1\right) \\
+          \cC_g^{n,n} &:= \bigoplus_{2t+a+c+d=n}\Ind_{\sfH_{t} \times \sfS_{a} \times \sfW_c\times \sfW_d}^{W_{n}} \hsgn \otimes
+          \sgn \otimes 1 \otimes 1\\
+          & =\bigoplus_{\substack{t+r+s+c+d=n}} \bigoplus_{\sigma } \Ind_{\sfW_{2t}\times \sfW_s\times \sfW_r\times \sfW_{c}\times \sfW_{d}}^{\sfW_{n_{g}}}
+          (\sigma,\sigma)\otimes \sgn \otimes \bsgn \otimes 1\otimes 1 \\
+        \end{split}
+        \]
+  \item Suppose $\star=D$ and $p+q=2m$ is even. Define
+        \[
+        \begin{split}
+          \cC_b^{n} & = \bigoplus_{\substack{2t+a=n_{1}}}
+          \Ind_{\sfH_{t}\times \sfS_{a}}^{\sfW'_{n}} \hsgn\otimes 1\\
+          \cC_g^{p,q} %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
+          &= \bigoplus_{\substack{2t+c+d+2r=p\\2t+c+d+2s=q}} \Res_{\sfW_{m}}^{\sfW'_{m}}\left(\Ind_{\sfH_{t} \times \sfW_s\times \sfW_r\times \sfW'_{c}\times \sfW'_{d} }^{\sfW'_{}} \hsgn \otimes \bsgn \otimes \bsgn \otimes 1\otimes 1 \right)
+          \\
+        \end{split}
+        \]
+  \item Suppose $\star=D^{*}$. Define
+        \[
+        \begin{split}
+          \cC_b^{n} & =
+          \begin{cases}
+            \Res_{\sfW_{n}}^{\sfW'_{n}} \Ind_{\sfH_{t}}^{\sfW'_{n}} \hsgn &
+            \text{if $n=2t$ is even} \\
+            0 & \text{otherwise}\\
+          \end{cases}\\
+          \cC_g^{n,n} %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
+          &:=\bigoplus_{\substack{2t+a=n}} \Ind_{\sfH_{t} \times \sfS_{a}}^{\sfW'_{n}}
+          \hsgn \otimes \sgn \\
+          & =\bigoplus_{\substack{2t+r+s=n}} \bigoplus_{\sigma} \Ind_{\sfW'_{2t}\times \sfW_r\times \sfW_s}^{\sfW_{n}}
+          (\sigma,\sigma)_{1}\otimes \sgn \otimes \bsgn \\
+        \end{split}
+        \]
 \end{itemize}
 
-
+Now assume $\rank_{\bC} \Gc = n$.
 We identify $\fhh^{*}$ with $\bC^{n}$.
 Let $Q$ be the root lattice in $\fhh^{*}$
 which is
@@ -4596,9 +4642,113 @@ Q = \begin{cases}
 For $n_{b}, n_{g}\in \bN$ such that $n_{b}+n_{g}=n$, we consider the lattice
 \[
   \Lambda_{n_{b},n_{g}} =
-  (\underbrace{\half, \cdots, \half}_{n_{b}\text{-terms}}, \underbrace{0, \cdots, 0}_{n_{g}\text{-terms}}) + Q \subset \fhh^{*}.
+  \begin{cases}
+  (\underbrace{\half, \cdots, \half}_{n_{b}\text{-terms}}, \underbrace{0, \cdots, 0}_{n_{g}\text{-terms}}) + Q & \text{when
+  } \star\in \set{C,C^{*}, D,D^{*}}\\%\subset \fhh^{*}.
+  (\underbrace{0, \cdots, 0}_{n_{b}\text{-terms}}, \underbrace{\half, \cdots, \half}_{n_{g}\text{-terms}}) + Q & \text{when
+  } \star\in \set{B,\wtC}. %\subset \fhh^{*}.
+\end{cases}
+\]
+Clearly,
+\[
+  W_{\Lambda_{n_{b},n_{g}}}= W_{b}\times W_{g}
+\]
+with $W_{b}$ and $W_{g}$ defined by \eqref{eq:Wbg}.
+
+We define
+\[
+\Sign(G):= \begin{cases}
+  (p,q) & \text{if } G = \SO(p,q)\\
+  (n,n) & \text{if } G = \Sp(2n,\bR) \text{ or } \Mp(2n,\bR)\\
+  (2p,2q) & \text{if } G = \Sp(p,q) \\
+  (n,n) & \text{if } G = \rO^{*}(2n) \\
+\end{cases}
 \]
 
+\begin{prop}
+  As $W_{\Lambda_{n_{b},n_{g}}}:= W_{b}\times W_{g}$-module, the coherent
+  continuation representation
+  \[
+    \Coh_{\Lambda_{n_{b},n_{g}}}(G)\cong \cC_{b}^{n_{b}}\otimes\cC_{g}^{p,q}
+  \]
+  with $(p,q) = \Sign(G) - (n_{b},n_{b})$.
+\end{prop}
+\begin{remark}
+  When $\star \in \set{C^{*},D^{*}}$ and $n_{b}$ is odd,
+  $\Coh_{\Lambda_{n_{b},n_{g}}}(G)=0$ by the proposition.
+\end{remark}
+\begin{proof}[Sketch of the proof]
+  When $G$ is linear, this can be calculated using \cite{AC}, see also \cite{Mc}*{Applications}.
+  When $G$ is the metaplectic group, this is a direct consequence of
+  \cite{RT1,RT2}.
+  We give a sketch of the argument.
+\end{proof}
+
+We define
+\[
+G'_{n} := \begin{cases}
+  \GL(n,\bR) & \text{when } \star \in \set{B,C,\wtC,D}, \\
+  \GL(\half n,\bH) & \text{when } \star \in \set{C^{*},D^{*}}. \\
+\end{cases}
+\]
+
+\begin{prop}
+  In all the cases
+  \[
+    [\tau_{b}: \cC_{b}] = \PBP_{\star,b}(\ckcO_{b}) = \PBP_{G'}(\ckcO'_{n_{b}})
+    = \Unip_{\ckcO'_{b}}(G'_{n_{b}})
+  \]
+  and
+  \[
+   \sum_{\tau\in \LC_{\ckcO_{g}}} [\tau:\cC_{g}] = \PBP_{G}(\ckcO_{g}).
+  \]
+\end{prop}
+\begin{proof}
+  Suppose $\star = C^{*}$.
+  For the bad parity, $n_{b}=2n'_{b}$ must be even.
+  \[
+    \begin{split}
+      \cC_b^{n_{b}} &=
+      \Res_{\sfW_{n_{b}}}^{\sfW'_{n_{b}}} \Ind_{\sfH_{n'_{b}}}^{\sfW_{n_{b}}} \hsgn \\
+      &= \bigoplus_{\sigma\in \Irr(\sfS_{n'_{b}})}
+      \left((\sigma,\sigma)_{I} \oplus (\sigma,\sigma)_{II}\right).
+    \end{split}
+  \]
+  Therefore,
+  \[
+    \begin{split}
+    [\tau_{b}: \cC_{b}] =\# \PBP_{\star,b}(\ckcO_{b}) =\# \PBP_{G'}(\ckcO'_{b})
+    = \# \Unip_{\ckcO'_{b}}(G'_{n_{b}}) = 1.
+    \end{split}
+  \]
+  For the good parity,
+  \[
+    \begin{split}
+          \cC_g^{2p,2q} %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
+          & =\bigoplus_{\substack{(t+s,t+r)=(p,q)}} \bigoplus_{\sigma} \Ind_{\sfW_{2t}\times \sfW_s\times \sfW_r}^{\sfW_{p+q}}
+          (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
+    \end{split}
+  \]
+  Now the branching rule implies the irreducible components of $\cC_{g}^{2p,2q}$
+  are given by the dot-diagram attaching two columns on the right, which we mark
+  them by $s$ and $r$ respectively.
+
+
+  Suppose $\star = D^{*}$.
+  The bad part is the same as that of type $C^{*}$. For the good part,
+  there is only one block of representations.
+  Note that, the left and right parts in $\tau_{\sP}$ are never the same.
+  By abuse of notation, let $\tau_{\sP}$ denote also the $\sfW$-representation.
+  Then
+  $[\tau_{\sP}|_{\sfW'}:\Ind_{\sfH_{t}\times \sfS_{a}}^{\sfW'}\hsgn\boxtimes \sgn] =
+[\tau_{\sP}|_{\sfH_{t}\times \sfS_{a}}:\hsgn\boxtimes \sgn] =
+[\tau_{\sP}:\Ind_{\sfH_{t}\times \sfS_{a}}^{\sfW}\hsgn\boxtimes \sgn] = \#\PBP.
+  $
+  
+
+  This follows from the branching rules of the Weyl group representations.
+
+\end{proof}
 
 \subsection{Counting special unipotent representation of $G=\Sp(p,q)$}.
 
