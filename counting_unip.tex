@@ -1,5 +1,9 @@
 % !TeX program = xelatex
-                                      \documentclass[12pt,a4paper]{amsart}
+%
+\RequirePackage{reportmacrodefn}
+\reportmacrodefn\boxtimes
+
+\documentclass[12pt,a4paper]{amsart}
 \usepackage[margin=2.5cm,marginpar=2cm]{geometry}
 
 \usepackage[bookmarksopen,bookmarksdepth=2,hidelinks,colorlinks=false]{hyperref}
@@ -11,17 +15,15 @@
 % \makeatother
 %% FONTS
 
-\usepackage{amssymb}
-%\usepackage{amsmath}
 \usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
 \usepackage{mathtools}
 %\usepackage{amsrefs}
-\usepackage{mathbbol,mathabx}
+%\usepackage{mathbbol,mathabx}
 \usepackage{amsthm}
 \usepackage{graphicx}
 \usepackage{braket}
-%\usepackage[pointedenum]{paralist}
-%\usepackage{paralist}
 
 
 \usepackage{amsrefs}
@@ -46,22 +48,6 @@
 
 
 \usepackage[normalem]{ulem}
-
-% circled number
-\usepackage{pifont}
-\makeatletter
-\newcommand*{\circnuma}[1]{%
-  \ifnum#1<1 %
-    \@ctrerr
-  \else
-    \ifnum#1>20 %
-      \@ctrerr
-    \else
-      \mbox{\ding{\numexpr 171+(#1)\relax}}%
-     \fi
-  \fi
-}
-\makeatother
 
 \usepackage[centertableaux]{ytableau}
 
@@ -461,12 +447,12 @@
 % \usepackage{mathrsfs}
 
 
-\usepackage{diagbox}
+% \usepackage{diagbox}
 % Update the information and uncomment if AMS is not the copyright
 % holder.
-%\copyrightinfo{2006}{American Mathematical Society}
-%\usepackage{nicematrix}
-\usepackage{arydshln}
+% \copyrightinfo{2006}{American Mathematical Society}
+% \usepackage{nicematrix}
+
 
 \usepackage{tikz}
 \usetikzlibrary{matrix,arrows,positioning,cd,backgrounds}
@@ -474,16 +460,16 @@
 
 \usepackage{upgreek}
 
-\usepackage{listings}
-\lstset{
-    basicstyle=\ttfamily\tiny,
-    keywordstyle=\color{black},
-    commentstyle=\color{white}, % white comments
-    stringstyle=\ttfamily, % typewriter type for strings
-    showstringspaces=false,
-    breaklines=true,
-    emph={Output},emphstyle=\color{blue},
-} 
+% \usepackage{listings}
+% \lstset{
+%     basicstyle=\ttfamily\tiny,
+%     keywordstyle=\color{black},
+%     commentstyle=\color{white}, % white comments
+%     stringstyle=\ttfamily, % typewriter type for strings
+%     showstringspaces=false,
+%     breaklines=true,
+%     emph={Output},emphstyle=\color{blue},
+% }
 
 \newcommand{\BA}{{\mathbb{A}}}
 %\newcommand{\BB}{{\mathbb {B}}}
@@ -1214,6 +1200,9 @@
 \def\ckLC{{}^{\scriptscriptstyle L}\check{\sC}}
 \def\LV{{}^{\scriptscriptstyle L}\sV}
 \def\ckLV{{}^{\scriptscriptstyle L}\check\sV}
+
+\def\tLV{{}^{\scriptscriptstyle L}\widetilde{\sV}}
+\def\tLC{{}^{\scriptscriptstyle L}\widetilde{\sC}}
 
 \def\bVL{{\overline{\sV}}^{\scriptscriptstyle L}}
 \def\bVR{{\overline{\sV}}^{\scriptscriptstyle R}}
@@ -3575,23 +3564,23 @@ Recall that
 
   \subsection{The left cell}
   In this subsection, we described the Lusztig left cell attached to
-  $\lambda_{\ckcO}$ in each cases, where $\star \in \set{B,C,\wtC,C^{*},D,D^{*}}$.
+  $\lambda_{\ckcO}$ in each cases, where
+  $\star \in \set{B,C,\wtC,C^{*},D,D^{*}}$.
 
 
-  To state the results, we made some definitions first.
-  Define the irreducible  $W_{b}$-representation attached to $\ckcO_{b}$ by the following formula
+  To state the results, we made some definitions first. Define the irreducible
+  $W_{b}$-representation attached to $\ckcO_{b}$ by the following formula
   \[
     \tau_{b} := \begin{cases}
       \Big(\big(\half(\bfrr_{2}(\ckcO_{b})+1), \half(\bfrr_{4}(\ckcO_{b})+1), \cdots, \half(\bfrr_{2c}(\ckcO_{b})+1)\big),\\
-       \hspace{1em}\big(\half(\bfrr_{2}(\ckcO_{b})-1), \half(\bfrr_{4}(\ckcO_{b})-1), \cdots, \half(\bfrr_{2c}(\ckcO_{b})-1) \big)\Big)
+      \hspace{1em}\big(\half(\bfrr_{2}(\ckcO_{b})-1), \half(\bfrr_{4}(\ckcO_{b})-1), \cdots, \half(\bfrr_{2c}(\ckcO_{b})-1) \big)\Big)
       & \text{if } \star \in \set{B,\wtC},\\
       \Big( \big(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2c}(\ckcO_{b})\big), \\
       \hspace{1em} \big(\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2c}(\ckcO_{b}) \big)\Big)_{I}
       & \text{if } \star \in \set{C,C^{*}, D,D^{*}},\\
     \end{cases}
   \]
-  with $2c = \bfcc_{1}(\ckcO_{b})$.
-  Define partitions
+  with $2c = \bfcc_{1}(\ckcO_{b})$. Define partitions
   \begin{itemize}
     \item $\ckcO'_{b}$ such that $\bfrr_{i}(\ckcO'_{b}):= \bfrr_{2i}(\ckcO_{b})$
           for all $i\in \bN^{+}$,
@@ -3603,11 +3592,12 @@ Recall that
   \[
     \CPPs(\ckcO_{g}) =
     \begin{cases}
-      \set{(2i-1,2i)| \bfrr_{2i-1}(\ckcO_{g})-
-        \bfrr_{2i}(\ckcO_{g})\geq 2, %\text{and}
+      \set{(2i-1,2i)| \bfrr_{2i-1}(\ckcO_{g})- \bfrr_{2i}(\ckcO_{g})\geq
+        2, %\text{and}
         i\in \bN^{+}} & \text{if $\star\in \Set{C,\wtC,C^{*}}$}\\
-    \set{(2i,2i+1)| \bfrr_{2i}(\ckcO_{g})- \bfrr_{2i+1}(\ckcO_{g})\geq 2, %\text{and }
-      i\in \bN^{+}} & \text{if $\star\in \Set{B,D,D^{*}}$}.
+      \set{(2i,2i+1)| \bfrr_{2i}(\ckcO_{g})- \bfrr_{2i+1}(\ckcO_{g})\geq
+        2, %\text{and }
+        i\in \bN^{+}} & \text{if $\star\in \Set{B,D,D^{*}}$}.
     \end{cases}
   \]
   Let
@@ -3615,10 +3605,10 @@ Recall that
     \wtA(\ckcO) := \bF_{2}[\CPP(\ckcO_{g})]
   \] be the power set of $\CPPs(\ckcO_{g})$.
 
-  For each $\sP\in \wtA(\ckcO)$ we define an element $\tau_{\sP}$ in $\Irr(\Wg)$.
-  Here
+  For each $\wp\in \wtA(\ckcO)$ we define an element $\tau_{\wp}$ in
+  $\Irr(\Wg)$. Here
   \[
-    \tau_{\sP} :=
+    \tau_{\wp} :=
     \begin{cases}
       (\imathp,\jmathp) & \text{when } \star \in \set{B,C, C^{*} } \\
       (\imathp,\jmathp)_{I} & \text{when } \star \in \set{\wtC,D,D^{*}}
@@ -3627,89 +3617,82 @@ Recall that
   and $(\imathp, \jmathp)$ are given by the following formulas:
   \begin{itemize}
     \item Suppose $\star\in \set{C,C^{*}}$ and let
-    $l=\min\set{i| \bfrr_{2i}(\ckcO_{g})=0}$.
-    Then
-    \[
-      (\bfcc_{l}(\imathp), \bfcc_{l}(\jmathp)) :=
-      (0,\half(\bfrr_{2l+1}(\ckcO_{g})-1))
-    \]
-    and, for all $1\leq i< l$
-    \[
-      (\bfcc_{i}(\imathp), \bfcc_{i}(\jmathp)):=
-      \begin{cases}
-        (\half (\bfrr_{2i}(\ckcO_{g})+1),
-        \half (\bfrr_{2i-1}(\ckcO_{g})-1))
-        & \text{if } (2i-1,2i)\notin \sP,\\
-        (\half (\bfrr_{2i-1}(\ckcO_{g})+1),\half (\bfrr_{2i}(\ckcO_{g})-1)) & \text{otherwise.}
-      \end{cases}
-    \]
+          $l=\min\set{i| \bfrr_{2i}(\ckcO_{g})=0}$. Then
+          \[
+          (\bfcc_{l}(\imathp), \bfcc_{l}(\jmathp)) := (0,\half(\bfrr_{2l+1}(\ckcO_{g})-1))
+          \]
+          and, for all $1\leq i< l$
+          \[
+          (\bfcc_{i}(\imathp), \bfcc_{i}(\jmathp)):=
+          \begin{cases}
+            (\half (\bfrr_{2i}(\ckcO_{g})+1), \half (\bfrr_{2i-1}(\ckcO_{g})-1))
+            & \text{if } (2i-1,2i)\notin \wp,\\
+            (\half (\bfrr_{2i-1}(\ckcO_{g})+1),\half (\bfrr_{2i}(\ckcO_{g})-1)) & \text{otherwise.}
+          \end{cases}
+          \]
     \item Suppose $\star\in \set{D,D^{*}}$ and let
-    $l=\min\set{i| \bfrr_{2i+1}(\ckcO_{g})=0}$.
-    Then
-    \[
-      \begin{split}
-        \bfcc_{1}(\imathp) &:=
-        \half(\bfrr_{1}(\ckcO_{g})+1)\\
-        (\bfcc_{l+1}(\imathp), \bfcc_{l}(\jmathp)) &:= (0,\half(\bfrr_{2l}(\ckcO_{g})-1))
-      \end{split}
-    \]
-    and, for all $1\leq i<l$
-    \[
-      (\bfcc_{i+1}(\imathp), \bfcc_{i}(\jmathp)):=
-      \begin{cases}
-        \left(\half (\bfrr_{2i+1}(\ckcO_{g})+1),
-        \half (\bfrr_{2i}(\ckcO_{g})-1)\right)
-        & \text{if } (2i,2i+1)\notin \sP,\\
-        (\half (\bfrr_{2i}(\ckcO_{g})+1),\half (\bfrr_{2i+1}(\ckcO_{g})-1)) & \text{otherwise.}
-      \end{cases}
-    \]
-    % \[
-    %   (\bfcc_{i}(\imathp), \bfcc_{i}(\jmathp)):=
-    %   \begin{cases}
-    %     (\half (\bfrr_{2i-1}(\ckcO_{g})+1),\half (\bfrr_{2i}(\ckcO_{g})-1)) &\text{if } (2i-1,2i)\in \sP, \\
-    %     (\half (\bfrr_{2i}(\ckcO_{g})+1), \half (\bfrr_{2i-1}(\ckcO_{g})-1))
-    %     & \text{if } (2i-1,2i)\notin \sP\\
-    %     & \text{ and }\bfrr_{2i}(\ckcO_{g})\neq 0,
-    %     \\
-    %     (0,0)
-    %     & \text{if } \bfrr_{2i-1}(\ckcO_{g})=0,\\
-    %     (0, \half (\bfrr_{2i-1}(\ckcO_{g})-1)) & \text{otherwise}
-    %   \end{cases}
-    % \]
+          $l=\min\set{i| \bfrr_{2i+1}(\ckcO_{g})=0}$. Then
+          \[
+          \begin{split}
+            \bfcc_{1}(\imathp) &:=
+            \half(\bfrr_{1}(\ckcO_{g})+1)\\
+            (\bfcc_{l+1}(\imathp), \bfcc_{l}(\jmathp)) &:= (0,\half(\bfrr_{2l}(\ckcO_{g})-1))
+          \end{split}
+          \]
+          and, for all $1\leq i<l$
+          \[
+          (\bfcc_{i+1}(\imathp), \bfcc_{i}(\jmathp)):=
+          \begin{cases}
+            \left(\half (\bfrr_{2i+1}(\ckcO_{g})+1), \half (\bfrr_{2i}(\ckcO_{g})-1)\right)
+            & \text{if } (2i,2i+1)\notin \wp,\\
+            (\half (\bfrr_{2i}(\ckcO_{g})+1),\half (\bfrr_{2i+1}(\ckcO_{g})-1)) & \text{otherwise.}
+          \end{cases}
+          \]
+          % \[
+          %   (\bfcc_{i}(\imathp), \bfcc_{i}(\jmathp)):=
+          %   \begin{cases}
+          %     (\half (\bfrr_{2i-1}(\ckcO_{g})+1),\half (\bfrr_{2i}(\ckcO_{g})-1)) &\text{if } (2i-1,2i)\in \wp, \\
+          %     (\half (\bfrr_{2i}(\ckcO_{g})+1), \half (\bfrr_{2i-1}(\ckcO_{g})-1))
+          %     & \text{if } (2i-1,2i)\notin \wp\\
+          %     & \text{ and }\bfrr_{2i}(\ckcO_{g})\neq 0,
+          %     \\
+          %     (0,0)
+          %     & \text{if } \bfrr_{2i-1}(\ckcO_{g})=0,\\
+          %     (0, \half (\bfrr_{2i-1}(\ckcO_{g})-1)) & \text{otherwise}
+          %   \end{cases}
+          % \]
 
-    % \[
-    %   (\bfcc_{l+1}(\imathp), \bfcc_{l+1}(\jmathp)) := (0,\half(\bfrr_{2l+1}(\ckcO_{g})-1))
-    % \]
-    % and for all $1\leq i\leq l$
-    \item Suppose $\star=B$.
-    Then
-    \[
-      \bfcc_{1}(\jmathp)  := \half\bfrr_{1}(\ckcO_{g})
-    \]
-    and for all $i\geq 1$
-    \[
-      (\bfcc_{i}(\imathp), \bfcc_{i+1}(\jmathp)):=
-      \begin{cases}
-        (\half \bfrr_{2i}(\ckcO_{g}), \half \bfrr_{2i+1}(\ckcO_{g}))
-        & \text{if } (2i,2i+1)\notin \sP,\\
-        (\half \bfrr_{2i+1}(\ckcO_{g}),\half \bfrr_{2i}(\ckcO_{g})) & \text{otherwise.}
-      \end{cases}
-    \]
-    \item Suppose $\star = \wtC$.
-    Then for all  $i\geq 1$
-    \[
-      (\bfcc_{i}(\imathp), \bfcc_{i}(\jmathp)):=
-      \begin{cases}
-        (\half \bfrr_{2i-1}(\ckcO_{g}), \half \bfrr_{2i}(\ckcO_{g}))
-        & \text{if } (2i-1,2i)\notin \sP,\\
-        (\half \bfrr_{2i}(\ckcO_{g}),\half \bfrr_{2i-1}(\ckcO_{g})) & \text{otherwise.}
-      \end{cases}
-    \]
+          % \[
+          %   (\bfcc_{l+1}(\imathp), \bfcc_{l+1}(\jmathp)) := (0,\half(\bfrr_{2l+1}(\ckcO_{g})-1))
+          % \]
+          % and for all $1\leq i\leq l$
+    \item Suppose $\star=B$. Then
+          \[
+          \bfcc_{1}(\jmathp) := \half\bfrr_{1}(\ckcO_{g})
+          \]
+          and for all $i\geq 1$
+          \[
+          (\bfcc_{i}(\imathp), \bfcc_{i+1}(\jmathp)):=
+          \begin{cases}
+            (\half \bfrr_{2i}(\ckcO_{g}), \half \bfrr_{2i+1}(\ckcO_{g}))
+            & \text{if } (2i,2i+1)\notin \wp,\\
+            (\half \bfrr_{2i+1}(\ckcO_{g}),\half \bfrr_{2i}(\ckcO_{g})) & \text{otherwise.}
+          \end{cases}
+          \]
+    \item Suppose $\star = \wtC$. Then for all $i\geq 1$
+          \[
+          (\bfcc_{i}(\imathp), \bfcc_{i}(\jmathp)):=
+          \begin{cases}
+            (\half \bfrr_{2i-1}(\ckcO_{g}), \half \bfrr_{2i}(\ckcO_{g}))
+            & \text{if } (2i-1,2i)\notin \wp,\\
+            (\half \bfrr_{2i}(\ckcO_{g}),\half \bfrr_{2i-1}(\ckcO_{g})) & \text{otherwise.}
+          \end{cases}
+          \]
   \end{itemize}
 
-  For $\sP\subset\CPPs(\ckcO_{g})$, let $\sP^{c}$ be the complement of $\sP$ in
-  $\CPPs(\ckcO_{g})$ and we have $\tau_{\sP} = \tau_{\sP^{c}}$ if
-  %$\star \in \Set{\wtC,D,D^{*}}$. ### This is not correct!
+  For $\wp\subset\CPPs(\ckcO_{g})$, let $\wp^{c}$ be the complement of $\wp$ in
+  $\CPPs(\ckcO_{g})$ and we have $\tau_{\wp} = \tau_{\wp^{c}}$ if
+  % $\star \in \Set{\wtC,D,D^{*}}$. ### This is not correct!
   $\star = \wtC$.
 
   We define
@@ -3724,728 +3707,711 @@ Recall that
     %   \wtA(\ckcO) & \text{when } \star \in \set{B,C,C^{*}},\\
     % \end{cases}
   \]
-  Here $\wtA(\ckcO)/\sP\sim\sP^{c}$ denote the quotient of $\wtA(\ckcO)$ by
-  identifying $\sP$ with its complement $\sP^{c}$.
+  Here $\wtA(\ckcO)/\wp\sim\wp^{c}$ denote the quotient of $\wtA(\ckcO)$ by
+  identifying $\wp$ with its complement $\wp^{c}$.
 
   When $\star\neq \wtC$, $\barA(\ckcO)$ is nothing but the Lusztig canonical
-  quotient attached to $\ckcO$.
-  \trivial{
-    This can be seem from the following lemma, c.f.
-    \cite{BVUni}*{Proposition~5.28}.
-  }
+  quotient attached to $\ckcO$. \trivial{ This can be seem from the following
+    lemma, c.f. \cite{BVUni}*{Proposition~5.28}. }
 
-  Note that by definition, we have
-  $\wtA(\ckcO)=\wtA(\ckcO_{g})$ and
+  Note that by definition, we have $\wtA(\ckcO)=\wtA(\ckcO_{g})$ and
   $\barA(\ckcO)=\barA(\ckcO_{g})$.
 
   Recall that
   \[
-    \LV_{\ckcO}:= \left(J_{\Wlamck}^{\WLamck} \sgn\right)
-    \otimes \sgn.
+    \LV_{\ckcO}:= \left(J_{\Wlamck}^{\WLamck} \sgn\right) \otimes \sgn.
   \]
   and $\LC_{\ckcO}$ is the multiset of irreducible components
 
   \begin{lem}[c.f. Barbasch-Vogan{\cite{BVUni}*{Proposition~5.28}}]
     \label{lem:Lcell}
-    In all the cases, $\LC_{\ckcO}$ is multiplicity free and
-    we have the following bijections
+    In all the cases, $\LC_{\ckcO}$ is multiplicity free and we have the
+    following bijections
     \[
       \begin{array}{lccccccc}
         \barA(\ckcO)&=&\barA(\ckcO_{g}) & \longrightarrow & \LC(\ckcO_{g})
         & \longrightarrow & \LC(\ckcO)\\
-       &  &\sP & \mapsto & \tau_{\sP} &
-         \mapsto & \tau_{b}\otimes \tau_{\sP}.
+                    &  &\wp & \mapsto & \tau_{\wp} &
+                                                     \mapsto & \tau_{b}\otimes \tau_{\wp}.
       \end{array}
     \]
     Moreover,
     \[
       \tau_{\ckcO}=\tau_{b}\otimes \tau_{\emptyset}
-    \] is the unique special
-    representation in $\LC_{\ckcO}$ and
+    \] is the unique special representation in $\LC_{\ckcO}$ and
     \begin{equation}\label{eq:dBV.W}
       \Spr(j_{\WLamck}^{W}(\tau_{\ckcO})) = \dBV(\ckcO) = \cO_{b}\cupcol \dBV(\ckcO_{g}).
     \end{equation}
-    \trivial[]{
-      The last equality could be checked using Sommer's formula on Springer
-      correspondence directly:
-      double columns $(2c+1,2c+1)$ corresponds to
-      $ B_{c=\alpha_{2i-1}}\times D_{c+1=\alpha_{2i}+1}=D_{c+1=\alpha_{2i-1}+1}\times C_{c=\alpha_{2i}}$ factor in type $B,\wtC$.
-      double columns $(2c,2c)$ corresponds to factor
+    \trivial[]{ The last equality could be checked using Sommer's formula on
+      Springer correspondence directly: double columns $(2c+1,2c+1)$ corresponds
+      to
+      $ B_{c=\alpha_{2i-1}}\times D_{c+1=\alpha_{2i}+1}=D_{c+1=\alpha_{2i-1}+1}\times C_{c=\alpha_{2i}}$
+      factor in type $B,\wtC$. double columns $(2c,2c)$ corresponds to factor
       $D_{c=\beta_{2i-1}}\times C_{c=\beta_{2i}}=D_{c=\beta_{2i-1}}\times B_{c=\beta_{2i}}$
-      in type $C,C^{*},D,D^{*}$.
-    }
-    Here $\dBV$ is the metaplectic dual if $\star=\wtC$ and
-    is the Barbasch-Vogan dual otherwise.
+      in type $C,C^{*},D,D^{*}$. } Here $\dBV$ is the metaplectic dual if
+    $\star=\wtC$ and is the Barbasch-Vogan dual otherwise.
   \end{lem}
   \begin{proof}
-    For $\ckcO_{g}$, the lemma is given by \cite{BVUni}*{Proposition~5.28}.
-    For all the cases, the lemma follow from an induction on number of columns using
-    Lusztig's formula of $J$-induction in \cite{Lu}*{\S 4.4-4.6}.
-    The equality \eqref{eq:dBV.W} is due to Barbasch-Vogan for linear groups
+    For $\ckcO_{g}$, the lemma is given by \cite{BVUni}*{Proposition~5.28}. For
+    all the cases, the lemma follow from an induction on number of columns using
+    Lusztig's formula of $J$-induction in \cite{Lu}*{\S 4.4-4.6}. The equality
+    \eqref{eq:dBV.W} is due to Barbasch-Vogan for linear groups
     \cite{BVUni}*{Proposition~A2}.
 
-   \trivial[]{
-  {\bf Suppose $\star=C$.}
+    \trivial[]{ {\bf Suppose $\star=C$.}
 
       In this case, bad parity is even and each row length occur with even
-  multiplicity. Suppose
-  $\ckcO_{b} = (C_{1}, C_{1}, C_{2},C_{2}, \cdots, C_{k'},C_{k'})$ with
-  $c_{1}=2k$ and $k' = \bfrr_{1}(\ckcO_{b})$.
-  \[
-    W_{\lamckb} = S_{C_{1}}\times S_{C_{2}}\times \cdots S_{C_{k'}}.
-  \]
-  The symbol of trivial representation of trivial group of type D is
-  \[
-    \binom{0,1, \cdots, k-1}{0,1, \cdots, k-1}.
-  \]
-  Now it is easy to see that (use the similar computation as below)
-  \[
-    J_{W_{\lamckb}}^{W_{b}}\sgn = ((\half C_{1}, \half C_{2},\cdots, \half C_{k'}),(\half C_{1}, \half C_{2},\cdots, \half C_{k'})).
-  \]
+      multiplicity. Suppose
+      $\ckcO_{b} = (C_{1}, C_{1}, C_{2},C_{2}, \cdots, C_{k'},C_{k'})$ with
+      $c_{1}=2k$ and $k' = \bfrr_{1}(\ckcO_{b})$.
+      \[
+        W_{\lamckb} = S_{C_{1}}\times S_{C_{2}}\times \cdots S_{C_{k'}}.
+      \]
+      The symbol of trivial representation of trivial group of type D is
+      \[
+        \binom{0,1, \cdots, k-1}{0,1, \cdots, k-1}.
+      \]
+      Now it is easy to see that (use the similar computation as below)
+      \[
+        J_{W_{\lamckb}}^{W_{b}}\sgn = ((\half C_{1}, \half C_{2},\cdots, \half C_{k'}),(\half C_{1}, \half C_{2},\cdots, \half C_{k'})).
+      \]
 
 
-  For the good parity part.
-  Let $r'_{i}  = \floor{\half(\bfrr_{i}(\ckcO_{g})-\bfrr_{i+1}(\ckcO_{g}))}$.
-  Suppose $\ckcO_{g}$ has $2l+1$ columns (superscripts denote the multiplicity)
-  \[
-    \ckcO_{g} = ((2l+1)^{2r'_{2l+1}+1}, 2l^{2r'_{2l}}, (2l-1)^{2r'_{2l-1}},
-    \cdots, 2^{2r'_{2}}, 1^{2r'_{1}}  )
-  \]
-  and
-  % $\ckcO_{g} = (2c_{1}+1, C_{2}, C_{2},C_{3},C_{3},\cdots, C_{k'},C_{k'})$ with
-  % $2c_{1}+1=2l+1$ and $2k'+1 = \bfrr_{1}(\ckcO_{g})$.
-  \[
-    W_{\lamckg} = W_{l}\times
-    \underbrace{S_{2l+1}\times \cdots \times S_{2l+1}}_{2r'_{2l+1}\text{-terms}}
-    \times \prod_{i<2l+1}
-    \underbrace{S_{i}\times \cdots\times S_{i}}_{r'_{i}\text{-terms}}
-  \]
+      For the good parity part. Let
+      $r'_{i} = \floor{\half(\bfrr_{i}(\ckcO_{g})-\bfrr_{i+1}(\ckcO_{g}))}$.
+      Suppose $\ckcO_{g}$ has $2l+1$ columns (superscripts denote the
+      multiplicity)
+      \[
+        \ckcO_{g} = ((2l+1)^{2r'_{2l+1}+1}, 2l^{2r'_{2l}}, (2l-1)^{2r'_{2l-1}}, \cdots, 2^{2r'_{2}}, 1^{2r'_{1}} )
+      \]
+      and
+      % $\ckcO_{g} = (2c_{1}+1, C_{2}, C_{2},C_{3},C_{3},\cdots, C_{k'},C_{k'})$
+      % with $2c_{1}+1=2l+1$ and $2k'+1 = \bfrr_{1}(\ckcO_{g})$.
+      \[
+        W_{\lamckg} = W_{l}\times \underbrace{S_{2l+1}\times \cdots \times S_{2l+1}}_{2r'_{2l+1}\text{-terms}} \times \prod_{i<2l+1} \underbrace{S_{i}\times \cdots\times S_{i}}_{r'_{i}\text{-terms}}
+      \]
 
-  The symbol of sign representation of $W_{l}$ is
-  \[
-    \binom{0,1,2, \cdots, l}{1,2, \cdots, l}.
-  \]
-  The induction begins with the longest columns to the shorter columns
+      The symbol of sign representation of $W_{l}$ is
+      \[
+        \binom{0,1,2, \cdots, l}{1,2, \cdots, l}.
+      \]
+      The induction begins with the longest columns to the shorter columns
 
-  Induce to include all $2l+1$-length columns yields
-  \[
-    \binom{r'_{2l+1}+0,r'_{2l+1}+1,r'_{2l+1}+2, \cdots, r'_{2l+1}+l}{
-r'_{2l+1}+1,r'_{2l+1}+2, \cdots, r'_{2l+1}+l}.
-  \]
-  Now move the the shorter columns, we see that when even columns
-  $(2i)^{2r'_{2i}}$ occurs, it adds $(i)^{r'_{2i}}$ columns on the both sides of
-  the bipartition; when odd columns $(2i+1)^{r'_{2i+1}}$ occur,  the bifurcation
-  happens: one can
-  \begin{itemize}
-    \item attach columns $(i+1)^{r'_{2i+1}}$ on the left and
-    columns $(i)^{r'_{2i+1}}$ on the right, which corresponds to
-    $(2i+1,2i+2)\neq \sP$, or
-    \item
-    attach columns $(i)^{r'_{2i+1}}$ on the left and
-    columns $(i+1)^{r'_{2i+1}}$ on the right, which corresponds to
-    $(2i+1,2i+2)\in \sP$,
-  \end{itemize}
+      Induce to include all $2l+1$-length columns yields
+      \[
+        \binom{r'_{2l+1}+0,r'_{2l+1}+1,r'_{2l+1}+2, \cdots, r'_{2l+1}+l}{ r'_{2l+1}+1,r'_{2l+1}+2, \cdots, r'_{2l+1}+l}.
+      \]
+      Now move the the shorter columns, we see that when even columns
+      $(2i)^{2r'_{2i}}$ occurs, it adds $(i)^{r'_{2i}}$ columns on the both
+      sides of the bipartition; when odd columns $(2i+1)^{r'_{2i+1}}$ occur, the
+      bifurcation happens: one can
+      \begin{itemize}
+        \item attach columns $(i+1)^{r'_{2i+1}}$ on the left and columns
+              $(i)^{r'_{2i+1}}$ on the right, which corresponds to
+              $(2i+1,2i+2)\neq \wp$, or
+        \item attach columns $(i)^{r'_{2i+1}}$ on the left and columns
+              $(i+1)^{r'_{2i+1}}$ on the right, which corresponds to
+              $(2i+1,2i+2)\in \wp$,
+      \end{itemize}
 
-  Therefore,
-  \[
-    \begin{array}{ccc}
-      J_{W_{\lamckg}}^{W_{g}} \sgn
-      &\leftrightarrow&  \bF_{2}(\CPP(\ckcO_{g}))\\
-     (\cktau_{L},\cktau_{R}) =:\cktau_{\sP}&\leftrightarrow & \sP
-    \end{array}
-  \]
-  where
-  \[
-  \bfrr_{l+1}(\cktau_{L})  =
-      r'_{2l+1} =
-      \half (\bfrr_{2l+1}(\ckcO_{g})-1)
-  \]
-  and, if $(2i-1,2i)\notin \sP$,
-  \[
-    \begin{split}
-      \bfrr_{i}(\cktau_{L}) & = \sum_{l\geq 2i-1} r'_{l}
-      = \half(\bfrr_{2i-1}(\ckcO)-1)\\
-      \bfrr_{i}(\cktau_{R}) & = 1 + \sum_{l\geq 2i} r'_{l}
-      = \half(\bfrr_{2i}(\ckcO)+1)
-    \end{split}
-  \]
-  if $(2i-1,2i)\in \sP$,
-  \[
-    \begin{split}
-      \bfrr_{i}(\cktau_{L}) & = \sum_{l\geq 2i} r'_{l}
-      = \half(\bfrr_{2i}(\ckcO)-1)\\
-      \bfrr_{i}(\cktau_{R}) & = 1 + \sum_{l\geq 2i-1} r'_{l}
-      = \half(\bfrr_{2i-1}(\ckcO)+1)
-    \end{split}
-  \]
+      Therefore,
+      \[
+        \begin{array}{ccc}
+          J_{W_{\lamckg}}^{W_{g}} \sgn
+          &\leftrightarrow&  \bF_{2}(\CPP(\ckcO_{g}))\\
+          (\cktau_{L},\cktau_{R}) =:\cktau_{\wp}&\leftrightarrow & \wp
+        \end{array}
+      \]
+      where
+      \[
+        \bfrr_{l+1}(\cktau_{L}) = r'_{2l+1} = \half (\bfrr_{2l+1}(\ckcO_{g})-1)
+      \]
+      and, if $(2i-1,2i)\notin \wp$,
+      \[
+        \begin{split}
+          \bfrr_{i}(\cktau_{L}) & = \sum_{l\geq 2i-1} r'_{l}
+          = \half(\bfrr_{2i-1}(\ckcO)-1)\\
+          \bfrr_{i}(\cktau_{R}) & = 1 + \sum_{l\geq 2i} r'_{l} = \half(\bfrr_{2i}(\ckcO)+1)
+        \end{split}
+      \]
+      if $(2i-1,2i)\in \wp$,
+      \[
+        \begin{split}
+          \bfrr_{i}(\cktau_{L}) & = \sum_{l\geq 2i} r'_{l}
+          = \half(\bfrr_{2i}(\ckcO)-1)\\
+          \bfrr_{i}(\cktau_{R}) & = 1 + \sum_{l\geq 2i-1} r'_{l} = \half(\bfrr_{2i-1}(\ckcO)+1)
+        \end{split}
+      \]
 
-  % \[
-  %   \begin{split}
-  %     \bfrr_{l+1}(\cktau_{L}) & =
-  %     r'_{2l+1} =
-  %     \half (\bfrr_{2l+1}(\ckcO_{g})-1)\\
-  %     (\bfrr_{i}(\cktau_{L}), \bfrr_{i}(\cktau_{R})) & =
-  %     \begin{cases}
-  %       (\half(\bfrr_{2i-1}(\ckcO_{g})-1), \half(\bfrr_{2i}(\ckcO_{g})+1)) & (2i-1,2i)\notin \sP\\
-  %       (\half(\bfrr_{2i}(\ckcO_{g})-1), \half(\bfrr_{2i-1}(\ckcO_{g})+1)) & (2i-1,2i)\in \sP
-  %     \end{cases}
-  %   \end{split}
-  % \]
+      % \[
+      %   \begin{split}
+      %     \bfrr_{l+1}(\cktau_{L}) & = r'_{2l+1} =
+      %     \half (\bfrr_{2l+1}(\ckcO_{g})-1)\\
+      %     (\bfrr_{i}(\cktau_{L}), \bfrr_{i}(\cktau_{R})) & =
+      %     \begin{cases}
+      %       (\half(\bfrr_{2i-1}(\ckcO_{g})-1), \half(\bfrr_{2i}(\ckcO_{g})+1)) & (2i-1,2i)\notin \wp\\
+      %       (\half(\bfrr_{2i}(\ckcO_{g})-1), \half(\bfrr_{2i-1}(\ckcO_{g})+1)) & (2i-1,2i)\in \wp
+      %     \end{cases}
+      %   \end{split}
+      % \]
 
-  Since $\tau_{\sP} = \cktau_{\sP}\otimes \sgn$, we get the claim.
+      Since $\tau_{\wp} = \cktau_{\wp}\otimes \sgn$, we get the claim.
 
-  We adopt the convention that
-  \[
-    \sfS_{\cO} := \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\cO)}
-  \]
-  so that $j_{\sfS_{\cO}}^{\sfS_{\abs{\cO}}}\sgn = \cO$ for each partition $\cO$.
+      We adopt the convention that
+      \[
+        \sfS_{\cO} := \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\cO)}
+      \]
+      so that $j_{\sfS_{\cO}}^{\sfS_{\abs{\cO}}}\sgn = \cO$ for each partition
+      $\cO$.
 
-  Now consider the orbit under the Springer correspondence.
+      Now consider the orbit under the Springer correspondence.
 
-  Let
-  $\ckcO'_{b}: = [\bfrr_{2}(\ckcO_{b}), \bfrr_{4}(\ckcO_{b}),\cdots, \bfrr_{2k}(\ckcO_{b})]$,
-  $\cO'_{b}:=(\ckcO'_{b})^{t}$ and $\cO_{b}:=\cO'_{b}\cupcol \cO'_{b}$.
-  Clearly, $\ckcO_{b} = \ckcO'_{b}\cuprow \ckcO'_{b}$.
-  Note that $\tau_{b} = j_{S_{\cO'_{b}}}^{W'_{b}} \sgn$ (by the formula of fake
-  degree see Lusztig or Carter's book). So, by induction by stage of
-  $j$-induction, we have
-  \[
-    \wttau_{\cO}:= j_{W'_{b}\times W_{g}}^{W_{n}} (\tau_{b}\otimes \tau_{\emptyset}) = j_{S_{\cO'_{b}}\times W_{g}}^{W_{n}} \sgn\otimes \tau_{\sP}.
-  \]
-  By Barbasch-Vogan, $\cO_{g}:=\Spr(\tau_{\emptyset}) = d_{BV}(\ckcO_{g})$,
-  which is well know how to calculate. (In fact, one can deduce the result by
-  our computation. )
+      Let
+      $\ckcO'_{b}: = [\bfrr_{2}(\ckcO_{b}), \bfrr_{4}(\ckcO_{b}),\cdots, \bfrr_{2k}(\ckcO_{b})]$,
+      $\cO'_{b}:=(\ckcO'_{b})^{t}$ and $\cO_{b}:=\cO'_{b}\cupcol \cO'_{b}$.
+      Clearly, $\ckcO_{b} = \ckcO'_{b}\cuprow \ckcO'_{b}$. Note that
+      $\tau_{b} = j_{S_{\cO'_{b}}}^{W'_{b}} \sgn$ (by the formula of fake degree
+      see Lusztig or Carter's book). So, by induction by stage of $j$-induction,
+      we have
+      \[
+        \wttau_{\cO}:= j_{W'_{b}\times W_{g}}^{W_{n}} (\tau_{b}\otimes \tau_{\emptyset}) = j_{S_{\cO'_{b}}\times W_{g}}^{W_{n}} \sgn\otimes \tau_{\wp}.
+      \]
+      By Barbasch-Vogan, $\cO_{g}:=\Spr(\tau_{\emptyset}) = d_{BV}(\ckcO_{g})$,
+      which is well know how to calculate. (In fact, one can deduce the result
+      by our computation. )
 
-  Since the Springer correspondence commutes with parabolic induction, we get
-  $\Spr(\wttau) = \Ind_{\GL_{\cO'_{b}}\times \Sp(2g)}^{\Sp(2n)} 0\times \cO_{g} = \cO_{b}\cupcol \cO_{g}$.
+      Since the Springer correspondence commutes with parabolic induction, we
+      get
+      $\Spr(\wttau) = \Ind_{\GL_{\cO'_{b}}\times \Sp(2g)}^{\Sp(2n)} 0\times \cO_{g} = \cO_{b}\cupcol \cO_{g}$.
 
 
-  \medskip
+      \medskip
 
-  {\bf Suppose $\star=D$.}
+      {\bf Suppose $\star=D$.}
 
-  The bad parity part is the same as that of the case when $\star = C$.
+      The bad parity part is the same as that of the case when $\star = C$.
 
-  Now consider the good parity part.
-  \[
-    \ckcO_{g} = ((2l)^{2r'_{2l}+1}, (2l-1)^{2r'_{2l-1}}, (2l-2)^{2r'_{2l-2}},
-    \cdots, 2^{2r'_{2}}, 1^{2r'_{1}}  )
-  \]
-  and
-  \[
-    W_{\lamckg} = W'_{l}\times
-    \underbrace{S_{2l}\times \cdots \times S_{2l}}_{2r'_{2l}\text{-terms}}
-    \times \prod_{i<2l}
-    \underbrace{S_{i}\times \cdots\times S_{i}}_{r'_{i}\text{-terms}}
-  \]
+      Now consider the good parity part.
+      \[
+        \ckcO_{g} = ((2l)^{2r'_{2l}+1}, (2l-1)^{2r'_{2l-1}}, (2l-2)^{2r'_{2l-2}}, \cdots, 2^{2r'_{2}}, 1^{2r'_{1}} )
+      \]
+      and
+      \[
+        W_{\lamckg} = W'_{l}\times \underbrace{S_{2l}\times \cdots \times S_{2l}}_{2r'_{2l}\text{-terms}} \times \prod_{i<2l} \underbrace{S_{i}\times \cdots\times S_{i}}_{r'_{i}\text{-terms}}
+      \]
 
-  The symbol of sign representation of $W'_{l}$ is
-  \[
-    \binom{0,1, \cdots, l-1}{1,2, \cdots, l\phantom{-1}}.
-  \]
-  (Here we always made the choice of the top and bottom row to compatible with the
-  type $C$ case. )
+      The symbol of sign representation of $W'_{l}$ is
+      \[
+        \binom{0,1, \cdots, l-1}{1,2, \cdots, l\phantom{-1}}.
+      \]
+      (Here we always made the choice of the top and bottom row to compatible
+      with the type $C$ case. )
 
-  Induce to include all $2l$-length columns yields
-  \[
-    \binom{r'_{2l}+0,r'_{2l}+1, \cdots, r'_{2l}+l-1}{
-      r'_{2l}+1,r'_{2l}+2, \cdots, r'_{2l}+l\phantom{-1}}.
-  \]
-  Now move the the shorter columns. When odd columns
-  $(2i+1)^{2r'_{2i+1}}$ occurs, it adds $(i)^{r'_{2i+1}}$ columns on the left
-  and $(i+1)^{r'_{2i+1}}$ on the right.
-  When even columns $(2i)^{r'_{2i}}$ occur,  the bifurcation
-  happens: one can
-  \begin{itemize}
-    \item attach columns $(i)^{r'_{2i}}$ on the left and
-    columns $(i)^{r'_{2i}}$ on the right, which corresponds to
-    $(2i,2i+1)\neq \sP$, or
-    \item
-    attach columns $(i-1)^{r'_{2i}}$ on the left and
-    columns $(i+1)^{r'_{2i}}$ on the right, which corresponds to
-    $(2i,2i+
-    1)\in \sP$,
-  \end{itemize}
+      Induce to include all $2l$-length columns yields
+      \[
+        \binom{r'_{2l}+0,r'_{2l}+1, \cdots, r'_{2l}+l-1}{ r'_{2l}+1,r'_{2l}+2, \cdots, r'_{2l}+l\phantom{-1}}.
+      \]
+      Now move the the shorter columns. When odd columns $(2i+1)^{2r'_{2i+1}}$
+      occurs, it adds $(i)^{r'_{2i+1}}$ columns on the left and
+      $(i+1)^{r'_{2i+1}}$ on the right. When even columns $(2i)^{r'_{2i}}$
+      occur, the bifurcation happens: one can
+      \begin{itemize}
+        \item attach columns $(i)^{r'_{2i}}$ on the left and columns
+              $(i)^{r'_{2i}}$ on the right, which corresponds to
+              $(2i,2i+1)\neq \wp$, or
+        \item attach columns $(i-1)^{r'_{2i}}$ on the left and columns
+              $(i+1)^{r'_{2i}}$ on the right, which corresponds to
+              $(2i,2i+ 1)\in \wp$,
+      \end{itemize}
 
-  Therefore,
-  \[
-    \begin{array}{ccc}
-      \bF_{2}(\CPP(\ckcO_{g}))&\longrightarrow
-      & J_{W_{\lamckg}}^{W_{g}} \sgn \\
-      \sP&\mapsto&    (\cktau_{L},\cktau_{R}) =:\cktau_{\sP}
-    \end{array}
-  \]
-  where
-  \[
-  \bfrr_{l}(\cktau_{L})  =
-      r'_{2l} =
-      \half (\bfrr_{2l}(\ckcO_{g})-1)
-  \]
-  \[
-  \bfrr_{1}(\cktau_{R})  =
-      1+ \sum_{i} r'_{i} =
-      \half (\bfrr_{1}(\ckcO_{g})+1)
-  \]
-  and, if $(2i,2i+1)\notin \sP$,
-  \[
-    \begin{split}
-      \bfrr_{i}(\cktau_{L}) & = \sum_{l\geq 2i} r'_{l}
-      = \half(\bfrr_{2i}(\ckcO)-1)\\
-      \bfrr_{i+1}(\cktau_{R}) & = 1 + \sum_{l\geq 2i+1} r'_{l}
-      = \half(\bfrr_{2i+1}(\ckcO)+1)
-    \end{split}
-  \]
-  if $(2i,2i+1)\in \sP$,
-  \[
-    \begin{split}
-      \bfrr_{i}(\cktau_{L}) & = \sum_{l\geq 2i+1} r'_{l}
-      = \half(\bfrr_{2i+1}(\ckcO)-1)\\
-      \bfrr_{i}(\cktau_{R}) & = 1 + \sum_{l\geq 2i} r'_{l}
-      = \half(\bfrr_{2i}(\ckcO)+1)
-    \end{split}
-  \]
+      Therefore,
+      \[
+        \begin{array}{ccc}
+          \bF_{2}(\CPP(\ckcO_{g}))&\longrightarrow
+          & J_{W_{\lamckg}}^{W_{g}} \sgn \\
+          \wp&\mapsto&    (\cktau_{L},\cktau_{R}) =:\cktau_{\wp}
+        \end{array}
+      \]
+      where
+      \[
+        \bfrr_{l}(\cktau_{L}) = r'_{2l} = \half (\bfrr_{2l}(\ckcO_{g})-1)
+      \]
+      \[
+        \bfrr_{1}(\cktau_{R}) = 1+ \sum_{i} r'_{i} = \half (\bfrr_{1}(\ckcO_{g})+1)
+      \]
+      and, if $(2i,2i+1)\notin \wp$,
+      \[
+        \begin{split}
+          \bfrr_{i}(\cktau_{L}) & = \sum_{l\geq 2i} r'_{l}
+          = \half(\bfrr_{2i}(\ckcO)-1)\\
+          \bfrr_{i+1}(\cktau_{R}) & = 1 + \sum_{l\geq 2i+1} r'_{l} = \half(\bfrr_{2i+1}(\ckcO)+1)
+        \end{split}
+      \]
+      if $(2i,2i+1)\in \wp$,
+      \[
+        \begin{split}
+          \bfrr_{i}(\cktau_{L}) & = \sum_{l\geq 2i+1} r'_{l}
+          = \half(\bfrr_{2i+1}(\ckcO)-1)\\
+          \bfrr_{i}(\cktau_{R}) & = 1 + \sum_{l\geq 2i} r'_{l} = \half(\bfrr_{2i}(\ckcO)+1)
+        \end{split}
+      \]
 
-  Also note that $\cktau_{\sP}=\cktau_{\sP^{c}}$.
-  The rest parts are the same as that of type $C$.
+      Also note that $\cktau_{\wp}=\cktau_{\wp^{c}}$. The rest parts are the
+      same as that of type $C$.
 
-  {\bf Suppose $\star=B$. }
+      {\bf Suppose $\star=B$. }
 
-  In this case, bad parity is odd and every odd row occurs with with even times.
+      In this case, bad parity is odd and every odd row occurs with with even
+      times.
 
-  We can write $r'_{i} := \floor{\half(\bfrr_{i}(\ckcO_{b})-\bfrr_{i-1}(\ckcO_{b}))}$
-  \[
-    \ckcO_{b} % = [2r_{1}+1, 2r_{1}+1, \cdots, 2r_{k}+1,2r_{k}+1]
-    %= (2c_{0},2c_{1},2c_{1}, \cdots, 2c_{l}, 2c_{l}).
-    = ((2l)^{2r'_{2l}+1}, (2l-1)^{2r'_{2l-1}},\cdots, 1^{2r'_{1}})
-  \]
- % with $k = c_{0}$ and $l = r_{1}$.
-  Then
-  \[
-    W_{\lamckb} = W_{l} \times
-    \underbrace{S_{2l}\times \cdots \times S_{2l}}_{2r'_{2l}\text{-terms}}
-    \times \prod_{i<2l}
-    \underbrace{S_{i}\times \cdots\times S_{i}}_{r'_{i}\text{-terms}}
-  \]
-  (Note that in the product, $r'_{i}=0$ if $i$ is odd.)
-  The computation of
-  $\cksigma_{b} = J_{W_{\lamckb}}^{W_{b}} \sgn$ is similar to that of the good
-  parity for type $C$ with no bifurcating, one deduce that $J$-induction and
-  $j$-induction gives the same result.
-  \[
-    \begin{split}
-    \cksigma_{b} &=
-       \binom{0, 1+r_{l}, 2+r_{l-1}\cdots, l+r_{1}}{1+r_{l},2+r_{l-1}, \cdots, l+r_{1}}\\
-       & = ([r_{1},r_{2},\cdots, r_{l}],[r_{1}+1,r_{2}+1,\cdots,r_{l}+1])\\
-     \end{split}
-   \]
-  with $r_{i} = \half\bfrr_{2i-1}(\ckcO_{b}) =  \half\bfrr_{2i}(\ckcO_{b})$.
-  Now
-  \[
-    \sigma_{b} =
-    ((r_{1}+1,r_{2}+1,\cdots,r_{l}+1),
-    (r_{1},r_{2},\cdots, r_{l}))
-    = j_{S_{\cO'_{b}}}^{W_{b}}\sgn
-  \]
-  where $\cO'_{b}=(\bfrr_{2}(\ckcO_{b}),\bfrr_{4}(\ckcO_{b}),\cdots,
- \bfrr_{2l}(\ckcO_{b}))$.
- Under the Springer correspondence of type $B$, it corresponds to
- $\Ind_{\GL_{b}}^{\SO(2b+1)}\cO'_{b} = \cO'_{b}\cuprow \cO'_{b}\cuprow (1)$.
+      We can write
+      $r'_{i} := \floor{\half(\bfrr_{i}(\ckcO_{b})-\bfrr_{i-1}(\ckcO_{b}))}$
+      \[
+        \ckcO_{b} % = [2r_{1}+1, 2r_{1}+1, \cdots, 2r_{k}+1,2r_{k}+1]
+        % = (2c_{0},2c_{1},2c_{1}, \cdots, 2c_{l}, 2c_{l}).
+        = ((2l)^{2r'_{2l}+1}, (2l-1)^{2r'_{2l-1}},\cdots, 1^{2r'_{1}})
+      \]
+            %             with $k = c_{0}$ and $l = r_{1}$.
+      Then
+      \[
+        W_{\lamckb} = W_{l} \times \underbrace{S_{2l}\times \cdots \times S_{2l}}_{2r'_{2l}\text{-terms}} \times \prod_{i<2l} \underbrace{S_{i}\times \cdots\times S_{i}}_{r'_{i}\text{-terms}}
+      \]
+      (Note that in the product, $r'_{i}=0$ if $i$ is odd.) The computation of
+      $\cksigma_{b} = J_{W_{\lamckb}}^{W_{b}} \sgn$ is similar to that of the
+      good parity for type $C$ with no bifurcating, one deduce that
+      $J$-induction and $j$-induction gives the same result.
+      \[
+        \begin{split}
+          \cksigma_{b} &=
+          \binom{0, 1+r_{l}, 2+r_{l-1}\cdots, l+r_{1}}{1+r_{l},2+r_{l-1}, \cdots, l+r_{1}}\\
+          & = ([r_{1},r_{2},\cdots, r_{l}],[r_{1}+1,r_{2}+1,\cdots,r_{l}+1])\\
+        \end{split}
+      \]
+      with $r_{i} = \half\bfrr_{2i-1}(\ckcO_{b}) = \half\bfrr_{2i}(\ckcO_{b})$.
+      Now
+      \[
+        \sigma_{b} = ((r_{1}+1,r_{2}+1,\cdots,r_{l}+1), (r_{1},r_{2},\cdots, r_{l})) = j_{S_{\cO'_{b}}}^{W_{b}}\sgn
+      \]
+      where
+      $\cO'_{b}=(\bfrr_{2}(\ckcO_{b}),\bfrr_{4}(\ckcO_{b}),\cdots, \bfrr_{2l}(\ckcO_{b}))$.
+      Under the Springer correspondence of type $B$, it corresponds to
+      $\Ind_{\GL_{b}}^{\SO(2b+1)}\cO'_{b} = \cO'_{b}\cuprow \cO'_{b}\cuprow (1)$.
 
-  % \[
-  %   \begin{split}
-  %     \cksigma_{b} &:= \sigma_{b}\otimes \sgn = j_{W_{\lamckb}}^{W_{b}} \sgn \\
-  %     & = %\dagger_{2c_{l}}\cdots \dagger_{2c_{1}}
-  %     \sigma_{b}\otimes \sgn = j_{W_{\lamckb}}^{W_{b}} \sgn\otimes
-  %     \binom{0, 1, \cdots, c_{0}}{1, \cdots, c_{0}}\\
-  %     & =
-  %     \binom{0, 1+r_{k}, 2+r_{k-1}\cdots, c_{0}+r_{1}}{1+r_{k},2+r_{k-1}, \cdots, c_{0}+r_{1}}\\
-  %     & = ([r_{1},r_{2},\cdots, r_{k}],[r_{1}+1,r_{2}+1,\cdots,r_{k}+1])\\
-  %     &= ((c_{1},c_{2},\cdots, c_{k}),(c_{0},c_{1}, \cdots, c_{l}))\\
-  %   \end{split}
-  % \]
+      % \[
+      %   \begin{split}
+      %     \cksigma_{b} &:= \sigma_{b}\otimes \sgn = j_{W_{\lamckb}}^{W_{b}} \sgn \\
+      %     & = %\dagger_{2c_{l}}\cdots \dagger_{2c_{1}}
+      %     \sigma_{b}\otimes \sgn = j_{W_{\lamckb}}^{W_{b}} \sgn\otimes
+      %     \binom{0, 1, \cdots, c_{0}}{1, \cdots, c_{0}}\\
+      %     & =
+      %     \binom{0, 1+r_{k}, 2+r_{k-1}\cdots, c_{0}+r_{1}}{1+r_{k},2+r_{k-1}, \cdots, c_{0}+r_{1}}\\
+      %     & = ([r_{1},r_{2},\cdots, r_{k}],[r_{1}+1,r_{2}+1,\cdots,r_{k}+1])\\
+      %     &= ((c_{1},c_{2},\cdots, c_{k}),(c_{0},c_{1}, \cdots, c_{l}))\\
+      %   \end{split}
+      % \]
 
 
-  % We take the convention that
-  % $\dagger \cO = [r_{i}+1]$.
-  % By abuse of notation, let $\dagger_{n} \sigma$  denote the
-  % $j_{S_{n} \times W_{\abs{\sigma}}}^{W_{n+\abs{\sigma}}} \sgn\otimes \sigma$.
-  % We can write
-  % \[
-  %   \ckcO_{b} = [2r_{1}+1, 2r_{1}+1, \cdots, 2r_{k}+1,2r_{k}+1]
-  %   = (2c_{0},2c_{1},2c_{1}, \cdots, 2c_{l}, 2c_{l})
-  % \]
-  % with $k = c_{0}$ and $l = r_{1}$.
+      % We take the convention that $\dagger \cO = [r_{i}+1]$. By abuse of
+      % notation, let $\dagger_{n} \sigma$ denote the
+      % $j_{S_{n} \times W_{\abs{\sigma}}}^{W_{n+\abs{\sigma}}} \sgn\otimes \sigma$.
+      % We can write
+      % \[
+      %   \ckcO_{b} = [2r_{1}+1, 2r_{1}+1, \cdots, 2r_{k}+1,2r_{k}+1] = (2c_{0},2c_{1},2c_{1}, \cdots, 2c_{l}, 2c_{l})
+      % \]
+      % with $k = c_{0}$ and $l = r_{1}$.
 
-% \[
-% \begin{split}
-%   W_{\lamckb} &= W_{c_{0}} \times S_{2c_{1}} \times S_{2c_{2}}\times \cdots \times S_{2c_{l}}\\
-%   \cksigma_{b} &:= \sigma_{b}\otimes \sgn = j_{W_{\lamckb}}^{W_{b}} \sgn \\
-%   & = \dagger_{2c_{l}}\cdots \dagger_{2c_{1}}
-%   \binom{0, 1, \cdots, c_{0}}{1, \cdots, c_{0}}\\
-%   & =
-%   \binom{0, 1+r_{k}, 2+r_{k-1}\cdots, c_{0}+r_{1}}{1+r_{k},2+r_{k-1}, \cdots, c_{0}+r_{1}}\\
-%   & = ([r_{1},r_{2},\cdots, r_{k}],[r_{1}+1,r_{2}+1,\cdots,r_{k}+1])\\
-%   &= ((c_{1},c_{2},\cdots, c_{k}),(c_{0},c_{1}, \cdots, c_{l}))\\
-% \end{split}
-% \]
+      % \[
+      %   \begin{split}
+      %     W_{\lamckb} &= W_{c_{0}} \times S_{2c_{1}} \times S_{2c_{2}}\times \cdots \times S_{2c_{l}}\\
+      %     \cksigma_{b} &:= \sigma_{b}\otimes \sgn = j_{W_{\lamckb}}^{W_{b}} \sgn \\
+      %     & = \dagger_{2c_{l}}\cdots \dagger_{2c_{1}}
+      %     \binom{0, 1, \cdots, c_{0}}{1, \cdots, c_{0}}\\
+      %     & =
+      %     \binom{0, 1+r_{k}, 2+r_{k-1}\cdots, c_{0}+r_{1}}{1+r_{k},2+r_{k-1}, \cdots, c_{0}+r_{1}}\\
+      %     & = ([r_{1},r_{2},\cdots, r_{k}],[r_{1}+1,r_{2}+1,\cdots,r_{k}+1])\\
+      %     &= ((c_{1},c_{2},\cdots, c_{k}),(c_{0},c_{1}, \cdots, c_{l}))\\
+      %   \end{split}
+      % \]
 
-% Therefore
-% \[
-%   \begin{split}
-%     \sigma_{b} &= \cksigma_{b}\otimes \sgn = ((r_{1}+1,r_{2}+1,\cdots,r_{k}+1),(r_{1},r_{2},\cdots, r_{k})) \\
-%     & = j_{S_{2r_{1}+1}\times \cdots S_{2r_{k}+1}}^{W_{b}} \sgn\\
-%     & = j_{S_{b}}^{W_{b}} (2r_{1}+1, 2r_{2}+1, \cdots, 2r_{k}+1)
-%   \end{split}
-% \]
-% which corresponds to the orbit
-% \[
-%   \cO_{b} = (2r_{1}+1, 2r_{1}+1,2r_{2}+1, 2r_{2}+1,  \cdots,2r_{k}+1, 2r_{k}+1 ) = \ckcO_{b}^{t}.
-% \]
-% (Note that $\cO'_{b} = (2r_{1}+1,2r_{2}+1, \cdots, 2r_{k}+1)$ which corresponds
-% to $j_{W_{L_{b}}}^{S_{b}}\sgn$ and $\ind_{L}^{G} \cO'_{b} = \cO_{b}$.
-% )
-% This implies the unique special representation is
-% \[
-%   \sigma_{b} = (j_{W_{\lamckb}}^{W_{b}}\sgn), \quad \text{where } W_{L,b} = \prod_{i=1}^{k} S_{2r_{i}+1}.
-% \]
-% The $J$-induction is calculated by \cite{Lu}*{(4.5.4)}.
-% It is easy to see that in our case $J_{W_{\lamckb}}^{W_{b}} \sgn$ consists of
-% the single special representation by induction.
-
-
- Now we consider the good parity parts, where each row of $\ckcO_{g}$ has even
- length.
-
- Assume $r'_{i} := \half(\bfrr_{i}(\ckcO_{g})-\bfrr_{i-1}(\ckcO_{g}))$
- and so
-  \[
-    \ckcO_{g} % = [2r_{1}+1, 2r_{1}+1, \cdots, 2r_{k}+1,2r_{k}+1]
-    %= (2c_{0},2c_{1},2c_{1}, \cdots, 2c_{l}, 2c_{l}).
-    = ((2l+1)^{2r'_{2l+1}}, (2l)^{2r'_{2l}},\cdots, 1^{2r'_{1}})
-  \]
-% Consider
-% \[
-% \cO_{g} = [2r_{1},2r_{2}, \cdots, 2r_{2k-1},2r_{2k}]
-% = (C_{1},C_{1}, C_{2},C_{2},\cdots, C_{l}, C_{l}).
-% \]
-with $l =\min\set{i|\bfrr_{2i+2}(\ckcO_{g}) = 0}$.
-
-Then
-  \[
-    W_{\lamckg} =
-    \times \prod_{i\leq 2l+1}
-    \underbrace{S_{i}\times \cdots\times S_{i}}_{r'_{i}\text{-terms}}
-  \]
-
-Note that the trivial representation of the trivial group has symbol
-\[
-\binom{0,1, 2, \cdots, l\phantom{-1}}{0,1, \cdots, l-1}.
-\]
+      % Therefore
+      % \[
+      %   \begin{split}
+      %     \sigma_{b} &= \cksigma_{b}\otimes \sgn = ((r_{1}+1,r_{2}+1,\cdots,r_{k}+1),(r_{1},r_{2},\cdots, r_{k})) \\
+      %     & = j_{S_{2r_{1}+1}\times \cdots S_{2r_{k}+1}}^{W_{b}} \sgn\\
+      %     & = j_{S_{b}}^{W_{b}} (2r_{1}+1, 2r_{2}+1, \cdots, 2r_{k}+1)
+      %   \end{split}
+      % \]
+      % which corresponds to the orbit
+      % \[
+      %   \cO_{b} = (2r_{1}+1, 2r_{1}+1,2r_{2}+1, 2r_{2}+1, \cdots,2r_{k}+1, 2r_{k}+1 ) = \ckcO_{b}^{t}.
+      % \]
+      % (Note that $\cO'_{b} = (2r_{1}+1,2r_{2}+1, \cdots, 2r_{k}+1)$ which
+      % corresponds to $j_{W_{L_{b}}}^{S_{b}}\sgn$ and
+      % $\ind_{L}^{G} \cO'_{b} = \cO_{b}$. ) This implies the unique special
+      % representation is
+      % \[
+      %   \sigma_{b} = (j_{W_{\lamckb}}^{W_{b}}\sgn), \quad \text{where
+      % } W_{L,b} = \prod_{i=1}^{k} S_{2r_{i}+1}.
+      % \]
+      % The $J$-induction is calculated by \cite{Lu}*{(4.5.4)}. It is easy to
+      % see that in our case $J_{W_{\lamckb}}^{W_{b}} \sgn$ consists of the
+      % single special representation by induction.
 
 
-  Induce to include all $2l+1$-length columns yields
-  \[
-    \binom{r'_{2l+1}+0,r'_{2l+1}+1,r'_{2l+1}+2,\cdots, r'_{2l+1}+l\phantom{-1}}{
-      r'_{2l+1}+0,r'_{2l+1}+1, \cdots, r'_{2l+1}+l-1}.
-  \]
-  Now move the the shorter columns. When odd columns
-  $(2i+1)^{2r'_{2i+1}}$ occurs, it adds $(i+1)^{r'_{2i+1}}$ columns on the left
-  and $(i)^{r'_{2i+1}}$ on the right.
-  When even columns $(2i)^{r'_{2i}}$ occur,  the bifurcation
-  happens: one can
-  \begin{itemize}
-    \item attach columns $(i)^{r'_{2i}}$ on the left and
-    columns $(i)^{r'_{2i}}$ on the right, which corresponds to
-    $(2i,2i+1)\neq \sP$, or
-    \item
-    attach columns $(i-1)^{r'_{2i}}$ on the left and
-    columns $(i+1)^{r'_{2i}}$ on the right, which corresponds to
-    $(2i,2i+1)\in \sP$.
-  \end{itemize}
+      Now we consider the good parity parts, where each row of $\ckcO_{g}$ has
+      even length.
+
+      Assume $r'_{i} := \half(\bfrr_{i}(\ckcO_{g})-\bfrr_{i-1}(\ckcO_{g}))$ and
+      so
+      \[
+        \ckcO_{g} % = [2r_{1}+1, 2r_{1}+1, \cdots, 2r_{k}+1,2r_{k}+1]
+        % = (2c_{0},2c_{1},2c_{1}, \cdots, 2c_{l}, 2c_{l}).
+        = ((2l+1)^{2r'_{2l+1}}, (2l)^{2r'_{2l}},\cdots, 1^{2r'_{1}})
+      \]
+      % Consider
+      % \[
+      %   \cO_{g} = [2r_{1},2r_{2}, \cdots, 2r_{2k-1},2r_{2k}] = (C_{1},C_{1}, C_{2},C_{2},\cdots, C_{l}, C_{l}).
+      % \]
+      with $l =\min\set{i|\bfrr_{2i+2}(\ckcO_{g}) = 0}$.
+
+      Then
+      \[
+        W_{\lamckg} = \times \prod_{i\leq 2l+1} \underbrace{S_{i}\times \cdots\times S_{i}}_{r'_{i}\text{-terms}}
+      \]
+
+      Note that the trivial representation of the trivial group has symbol
+      \[
+        \binom{0,1, 2, \cdots, l\phantom{-1}}{0,1, \cdots, l-1}.
+      \]
 
 
-  Therefore,
-  \[
-    \begin{array}{ccc}
-      \bF_{2}(\CPP(\ckcO_{g}))&\longrightarrow
-      & J_{W_{\lamckg}}^{W_{g}} \sgn \\
-      \sP&\mapsto&    (\cktau_{L},\cktau_{R}) =:\cktau_{\sP}
-    \end{array}
-  \]
-  where
-  % \[
-  % \bfrr_{2l+1}(\cktau_{L})  =
-  %     r'_{2l+1} =
-  %     \half \bfrr_{2l+1}(\ckcO_{g})
-  % \]
-  \[
-  \bfrr_{1}(\cktau_{L})  =
-      \sum_{i} r'_{i} =
-      \half \bfrr_{1}(\ckcO_{g})
-  \]
-  and, if $(2i,2i+1)\notin \sP$,
-  \[
-    \begin{split}
-      \bfrr_{i+1}(\cktau_{L}) & = \sum_{l\geq 2i+1} r'_{l}
-      = \half\bfrr_{2i+1}(\ckcO)\\
-      \bfrr_{i}(\cktau_{R}) & = \sum_{l\geq 2i} r'_{l}
-      = \half\bfrr_{2i}(\ckcO)
-    \end{split}
-  \]
-  if $(2i,2i+1)\in \sP$,
-  \[
-    \begin{split}
-      \bfrr_{i+1}(\cktau_{L}) & = \sum_{l\geq 2i} r'_{l}
-      = \half\bfrr_{2i}(\ckcO)\\
-      \bfrr_{i}(\cktau_{R}) & = \sum_{l\geq 2i+1} r'_{l}
-      = \half\bfrr_{2i+1}(\ckcO)
-    \end{split}
-  \]
-
-  Some remarks on the BV-dual.
-  The calculation of $\cO_{g}$ from $\tau_{\emptyset}$ can be reduced
-  to the case of quasi-distinguished orbits
-  (other case are deduced from this by parabolic induction, corresponds to
-  attach two even columns for the balanced pairs).
-  Compare Sommer's description of Springer correspondence with ours,
-  we deduce that
-  \[
-    \cO_{g} = (\bfrr_{1}(\ckcO_{1})+1,\bfrr_{2}(\ckcO_{2})-1,\bfrr_{3}(\ckcO_{3})+1,
-    \cdots, \bfrr_{2l}(\ckcO_{2l})-1,\bfrr_{2l+1}(\ckcO_{2l+1})+1)
-  \]
-  The rest parts are similar to that of type $D$.
-  }
+      Induce to include all $2l+1$-length columns yields
+      \[
+        \binom{r'_{2l+1}+0,r'_{2l+1}+1,r'_{2l+1}+2,\cdots, r'_{2l+1}+l\phantom{-1}}{ r'_{2l+1}+0,r'_{2l+1}+1, \cdots, r'_{2l+1}+l-1}.
+      \]
+      Now move the the shorter columns. When odd columns $(2i+1)^{2r'_{2i+1}}$
+      occurs, it adds $(i+1)^{r'_{2i+1}}$ columns on the left and
+      $(i)^{r'_{2i+1}}$ on the right. When even columns $(2i)^{r'_{2i}}$ occur,
+      the bifurcation happens: one can
+      \begin{itemize}
+        \item attach columns $(i)^{r'_{2i}}$ on the left and columns
+              $(i)^{r'_{2i}}$ on the right, which corresponds to
+              $(2i,2i+1)\neq \wp$, or
+        \item attach columns $(i-1)^{r'_{2i}}$ on the left and columns
+              $(i+1)^{r'_{2i}}$ on the right, which corresponds to
+              $(2i,2i+1)\in \wp$.
+      \end{itemize}
 
 
-  We sketch the proof for the case when $\star = \wtC$.
+      Therefore,
+      \[
+        \begin{array}{ccc}
+          \bF_{2}(\CPP(\ckcO_{g}))&\longrightarrow
+          & J_{W_{\lamckg}}^{W_{g}} \sgn \\
+          \wp&\mapsto&    (\cktau_{L},\cktau_{R}) =:\cktau_{\wp}
+        \end{array}
+      \]
+      where
+      % \[
+      %   \bfrr_{2l+1}(\cktau_{L}) = r'_{2l+1} = \half \bfrr_{2l+1}(\ckcO_{g})
+      % \]
+      \[
+        \bfrr_{1}(\cktau_{L}) = \sum_{i} r'_{i} = \half \bfrr_{1}(\ckcO_{g})
+      \]
+      and, if $(2i,2i+1)\notin \wp$,
+      \[
+        \begin{split}
+          \bfrr_{i+1}(\cktau_{L}) & = \sum_{l\geq 2i+1} r'_{l}
+          = \half\bfrr_{2i+1}(\ckcO)\\
+          \bfrr_{i}(\cktau_{R}) & = \sum_{l\geq 2i} r'_{l} = \half\bfrr_{2i}(\ckcO)
+        \end{split}
+      \]
+      if $(2i,2i+1)\in \wp$,
+      \[
+        \begin{split}
+          \bfrr_{i+1}(\cktau_{L}) & = \sum_{l\geq 2i} r'_{l}
+          = \half\bfrr_{2i}(\ckcO)\\
+          \bfrr_{i}(\cktau_{R}) & = \sum_{l\geq 2i+1} r'_{l} = \half\bfrr_{2i+1}(\ckcO)
+        \end{split}
+      \]
+
+      Some remarks on the BV-dual. The calculation of $\cO_{g}$ from
+      $\tau_{\emptyset}$ can be reduced to the case of quasi-distinguished
+      orbits (other case are deduced from this by parabolic induction,
+      corresponds to attach two even columns for the balanced pairs). Compare
+      Sommer's description of Springer correspondence with ours, we deduce that
+      \[
+        \cO_{g} = (\bfrr_{1}(\ckcO_{1})+1,\bfrr_{2}(\ckcO_{2})-1,\bfrr_{3}(\ckcO_{3})+1, \cdots, \bfrr_{2l}(\ckcO_{2l})-1,\bfrr_{2l+1}(\ckcO_{2l+1})+1)
+      \]
+      The rest parts are similar to that of type $D$. }
 
 
-  For a partition $\cO$, we set
-  \[
-    \sfS_{\cO} := \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\cO)}
-  \]
-  so that $j_{\sfS_{\cO}}^{\sfS_{\abs{\cO}}}\sgn = \cO$.
+    We sketch the proof for the case when $\star = \wtC$.
 
 
-  We first consider the good parity (even) part.
-
- Now we consider the good parity parts, where each row of $\ckcO_{g}$ has even
- length.
-
- We set $r'_{i} := \half(\bfrr_{i}(\ckcO_{g})-\bfrr_{i-1}(\ckcO_{g}))$,
- $l =\min\set{i|\bfrr_{2i+1}(\ckcO_{g})=0}$,
- and write
-  \[
-    \ckcO_{g} % = [2r_{1}+1, 2r_{1}+1, \cdots, 2r_{k}+1,2r_{k}+1]
-    %= (2c_{0},2c_{1},2c_{1}, \cdots, 2c_{l}, 2c_{l}).
-    = ((2l)^{2r'_{2l}}, (2l-1)^{2r'_{2l-1}},\cdots, 1^{2r'_{1}})
-  \]
-  where $i^{r'}$ denotes $r'$-copies of length $i$ columns.
-% Consider
-% \[
-% \cO_{g} = [2r_{1},2r_{2}, \cdots, 2r_{2k-1},2r_{2k}]
-% = (C_{1},C_{1}, C_{2},C_{2},\cdots, C_{l}, C_{l}).
-% \]
- The Weyl group of good parity is $\sfW'_{n_{g}}$ with
- $n_{g} = \half\abs{\ckcO_{g}}$.
- For $1\leq k\leq l$, let
-  \[
-    % S_{r,s}  =
-    %  \prod_{i=r}^{s}
-    %  \underbrace{\sfS_{i}\times \cdots\times
-    %  \sfS_{i}}_{r'_{i}\text{-terms}}
-    \vec{S}_{i}  =
-     \underbrace{\sfS_{i}\times \cdots\times \sfS_{i}}_{r'_{i}\text{-terms}}
-     \AND
-     n_{k}  = \sum_{i=k}^{l} i\cdot r'_{i}.
-     % \AND
-     % n_{r,s}  = \sum_{i=r}^{s} i\cdot r'_{i}.
-\]
-
-Then $W_{\lamckg}=\prod_{i=1}^{l} \vec{S}_{i}$ and
-\[
-    \begin{split}
-      \ckLV_{\ckcO_{g}}& :=J_{W_{\lamckg}}^{\Wg}\sgn\\
-      & =  J_{\vec{S}_{1}\times \sfW'_{n_{2}}}^{W_{n_{1}}}
-      \Big(\sgn \otimes
-      J_{\vec{S}_{2}\times \sfW'_{n_{3}}}^{\sfW'_{n_{2}}}\Big(\sgn
-      \otimes \cdots\big(J_{\vec{S}_{l}} \sgn\big)\cdots \Big)\Big) \\
-    \end{split}
-  \]
-  Applying \cite{Lu}*{(4.6.2)} inductively, we see that the operation
-  $J_{\vec{S}_{i}\times \sfW'_{n_{i+1}}}^{\sfW'_{n_{i}}}(\sgn \otimes \underline{\ \ \ })$
-  doubles (resp. keeps) the number of irreducible components if $i$ is odd
-  (resp. even).
-
-  Suppose $\CPPs(\ckcO_{g}) = \emptyset$, then $\ckLV_{\ckcO_{g}}$
-  is irreducible and marked by label $I$.
-
-  Now assume $\CPPs(\ckcO_{g})\neq \emptyset$.
-  Then the two parts of the bipartition of an irreducible
-  component are different.
-  Let $i_{0}:= \min\Set{i| (2i-1,2i)\in \CPPs(\ckcO_{g})}$.
-  % $(2i_{0}-1,2i_{0})$ be the element in such that $i_{0}$ is minimal.
-  Then we have a bijection
-  \[
-    \set{\sP\in \bF_{2}[\CPPs(\ckcO_{g})]|(2i_{0}-1,2i_{0})\notin \sP}  \longrightarrow  \ckLV_{\ckcO_{g}}
-  \]
-  to record the bifurcation when attaching odd length columns.
-  Here we send
-  $\sP$ to $\cktau_{\sP}:= (\cktau_{L},\cktau_{R})$ such that
-  \[
-    (\bfrr_{i}(\cktau_{L}),\bfrr_{i}(\cktau_{R}))
-    := \begin{cases}
-      (\half\bfrr_{2i}(\ckcO_{g}),\half\bfrr_{2i-1}(\ckcO_{g}))
-      & \text{if } (2i-1,2i)\notin \sP\\
-      (\half\bfrr_{2i-1}(\ckcO_{g}),\half\bfrr_{2i}(\ckcO_{g}))
-      & \text{if } (2i-1,2i)\in \sP\\
-    \end{cases}
-  \]
-  We obtain the structure of $\LC_{\ckcO_{g}}$ by tensoring the sign
-  representation.
-
-  \trivial[]{
-  Note that the trivial representation of the trivial group is represented by the symbol
-  \[
-    \binom{0,1, 2, \cdots, l-1}{0,1,2, \cdots, l-1}_{I}.
-  \]
-  % Induce to include all $2l$-length columns yields
-  % \[
-  %   \binom{r'_{2l+1}+0,r'_{2l+1}+1,r'_{2l+1}+2,\cdots, r'_{2l+1}+l\phantom{-1}}{
-  %     r'_{2l+1}+0,r'_{2l+1}+1, \cdots, r'_{2l+1}+l-1}.
-  % \]
-
-  Now move the the shorter columns. When even columns
-  $(2i)^{2r'_{2i}}$ occurs, it adds $(i)^{r'_{2i}}$ columns on the left
-  and $(i)^{r'_{2i}}$ on the right.
-  When odd columns $(2i-1)^{r'_{2i-1}}$ occur,  the bifurcation
-  happens: one can
-  \begin{itemize}
-    \item attach columns $(i-1)^{r'_{2i-1}}$ on the left and
-    columns $(i)^{r'_{2i-1}}$ on the right, which corresponds to
-    $(2i-1,2i)\neq \sP$, or
-    \item
-    attach columns $(i)^{r'_{2i-1}}$ on the left and
-    columns $(i-1)^{r'_{2i-1}}$ on the right, which corresponds to
-    $(2i-1,2i)\in \sP$.
-  \end{itemize}
-  Note that when we first encounter the longest odd column, we make the choice
-  that the size of left part is larger than that of the right part.
-  Now
-  If $(2i-1,2i)\notin \sP$,
-  \[
-    \begin{split}
-      \bfrr_{i}(\cktau_{L}) & = \sum_{l\geq 2i} r'_{l}
-      = \half\bfrr_{2i}(\ckcO_{g})\\
-      \bfrr_{i}(\cktau_{R}) & = \sum_{l\geq 2i-1} r'_{l}
-      = \half\bfrr_{2i-1}(\ckcO_{g})
-    \end{split}
-  \]
-  if $(2i-1,2i)\in \sP$,
-  \[
-    \begin{split}
-      \bfrr_{i}(\cktau_{L}) & = \sum_{l\geq 2i-1} r'_{l}
-      = \half\bfrr_{2i-1}(\ckcO_{g})\\
-      \bfrr_{i}(\cktau_{R}) & = \sum_{l\geq 2i} r'_{l}
-      = \half\bfrr_{2i}(\ckcO_{g})
-    \end{split}
-  \]
-  }
+    For a partition $\cO$, we set
+    \[
+      \sfS_{\cO} := \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\cO)}
+    \]
+    so that $j_{\sfS_{\cO}}^{\sfS_{\abs{\cO}}}\sgn = \cO$.
 
 
-  Now we consider the bad parity (odd) part.
-  Suppose $\ckcO_{b}$ is nonempty such that
-  \[
-    \ckcO_{b} = (2c_{0},2c_{1}, 2c_{1}, 2c_{2},2c_{2}, \cdots, 2c_{k}, 2c_{k})
-  \]
-  where $2k+1=\bfrr_{1}(\ckcO_{b})$ and $2c_{i} = \bfcc_{2i+1}(\ckcO_{b})$.
-  Now
-  \[
-    W_{\lamckb} = \sfW_{c_{0}} \times \sfS_{2c_{1}} \times \sfS_{2c_{2}}\times \cdots \times \sfS_{2c_{k}}
-  \]
-  and %$J_{W_{\lamckb}}^{W_{b}}\sgn$ is irreducible by
-  \[
-    \begin{split}
-      \cktau_{b} &:= J_{W_{\lamckb}}^{W_{b}} \sgn
-      = ((c_{1},c_{2},\cdots, c_{k}),(c_{0},c_{1}, \cdots, c_{l}))\\
-      & = \big([\half(\bfrr_{2}(\ckcO)-1),\half(\bfrr_{4}(\ckcO)-1),\cdots, \half(\bfrr_{2c_{0}}(\ckcO)-1)],\\
-      & \hspace{2em}
-      [\half(\bfrr_{2}(\ckcO)+1),\half(\bfrr_{4}(\ckcO)+1),\cdots, \half(\bfrr_{2c_{0}}(\ckcO)+1)]\big)
-    \end{split}
-  \]
-  is irreducible by \cite{Lu}*{(4.5.4)}.
-  Tensoring with sign yields the formula of $\tau_{b}$. Moreover,
-  by the fake degree formula (see \cite{Carter}*{p~376}), we have
-\[
-    \tau_{b} = \cktau_{b}\otimes \sgn
-      = j_{\sfS_{\cO'_{b}}}^{\sfW_{n_{b}}} \sgn.
-\]
-where
-$ \cO'_{b} := (\ckcO'_{b})^{t}:=(\bfrr_{2}(\ckcO),\bfrr_{4}(\ckcO),\cdots , \bfrr_{2c_{0}}(\ckcO))$.
+    We first consider the good parity (even) part.
 
-\medskip
-\def\ckfll{\check{\fll}}
+    Now we consider the good parity parts, where each row of $\ckcO_{g}$ has
+    even length.
 
-Now we sketch the proof of \eqref{eq:dBV.W}.
+    We set $r'_{i} := \half(\bfrr_{i}(\ckcO_{g})-\bfrr_{i-1}(\ckcO_{g}))$,
+    $l =\min\set{i|\bfrr_{2i+1}(\ckcO_{g})=0}$, and write
+    \[
+      \ckcO_{g} % = [2r_{1}+1, 2r_{1}+1, \cdots, 2r_{k}+1,2r_{k}+1]
+      % = (2c_{0},2c_{1},2c_{1}, \cdots, 2c_{l}, 2c_{l}).
+      = ((2l)^{2r'_{2l}}, (2l-1)^{2r'_{2l-1}},\cdots, 1^{2r'_{1}})
+    \]
+    where $i^{r'}$ denotes $r'$-copies of length $i$ columns.
+    % Consider
+    % \[
+    %   \cO_{g} = [2r_{1},2r_{2}, \cdots, 2r_{2k-1},2r_{2k}] = (C_{1},C_{1}, C_{2},C_{2},\cdots, C_{l}, C_{l}).
+    % \]
+    The Weyl group of good parity is $\sfW'_{n_{g}}$ with
+    $n_{g} = \half\abs{\ckcO_{g}}$. For $1\leq k\leq l$, let
+    \[
+      % S_{r,s} = \prod_{i=r}^{s} \underbrace{\sfS_{i}\times \cdots\times \sfS_{i}}_{r'_{i}\text{-terms}}
+      \vec{S}_{i} = \underbrace{\sfS_{i}\times \cdots\times \sfS_{i}}_{r'_{i}\text{-terms}} \AND n_{k} = \sum_{i=k}^{l} i\cdot r'_{i}.
+      % \AND n_{r,s} = \sum_{i=r}^{s} i\cdot r'_{i}.
+    \]
 
-Recall the definition of the metaplectic Barbasch-Vogan dual in \cite{BMSZ1}.
-The duality map commutes with parabolic induction:
-Suppose $\ckfll\subset \check \ckfgg$ is a parabolic subalgebra of $\ckfgg$ and
-$\fll$ is the corresponding parabolic subalgebra in $\fgg$, then
-\begin{equation}\label{eq:inddBV}
- \dBV(\ckcO) =  \Ind_{\fll}^{\fgg}(\dBV(\ckcO_{\ckfll}))
-\end{equation}
-for each nilpotent orbit $\ckcO$ in $\ckfgg$ such that
-$\ckcO_{\ckfll}:=\ckcO\cap \ckfll\neq \emptyset$. This is clear by reducing to
-the type $B$ case, see \cite{BMSZ1}*{Proposition~3.8}. By removing pairs of rows
-with the same lengths in $\ckcO$, we reduced to check the equality in the case
-when $\ckcO_{b}=\emptyset$ and $\bfrr_{2i-1}(\ckcO_{g})>\bfrr_{2i}(\ckcO_{g})$
-for all $i$ such that $i\leq \bfcc_{1}(\ckcO_{g})$. In this case, both sides of
-\eqref{eq:dBV.W} can be easily computed directly, which equals to
-\[
-  (\bfrr_{1}(\ckcO)-1, \bfrr_{2}(\ckcO)+1, \cdots,\bfrr_{2c-1}(\ckcO)-1,\bfrr_{2c}(\ckcO)+1)
-\]
-with $c = \min\set{i|\bfrr_{2i+1}(\ckcO)=0}$.
+    Then $W_{\lamckg}=\prod_{i=1}^{l} \vec{S}_{i}$ and
+    \[
+      \begin{split}
+        \ckLV_{\ckcO_{g}}& :=J_{W_{\lamckg}}^{\Wg}\sgn\\
+        & = J_{\vec{S}_{1}\times \sfW'_{n_{2}}}^{W_{n_{1}}} \Big(\sgn \otimes J_{\vec{S}_{2}\times \sfW'_{n_{3}}}^{\sfW'_{n_{2}}}\Big(\sgn
+        \otimes \cdots\big(J_{\vec{S}_{l}} \sgn\big)\cdots \Big)\Big) \\
+      \end{split}
+    \]
+    Applying \cite{Lu}*{(4.6.2)} inductively, we see that the operation
+    $J_{\vec{S}_{i}\times \sfW'_{n_{i+1}}}^{\sfW'_{n_{i}}}(\sgn \otimes \underline{\ \ \ })$
+    doubles (resp. keeps) the number of irreducible components if $i$ is odd
+    (resp. even).
 
-% Now we compare the metaplectic dual defined in \cite{BMSZ1} with the
-% Weyl group representations.
-\trivial[]{
-  Compare Sommer's description of Springer correspondence
-  we deduce that the RHS is
-  \[
-    \cO_{g} = (\bfrr_{1}(\ckcO_{1})-1,\bfrr_{2}(\ckcO_{2})+1,\bfrr_{3}(\ckcO_{3})+1,
-    \cdots, \bfrr_{2l-1}(\ckcO_{2l-1})-1,\bfrr_{2l}(\ckcO_{2l})+1)
-  \]
-  The LHS is calculated by
-  $((((\ckcO^{t})_{D})^{+})^{-})_{C}$.
-  We write $R_{i}=\bfrr_{i}(\ckcO)=2r_{i}$.
-  Now under our assumption, $R_{2i-1}>R_{2i}$, we have
-  \[
-    \begin{split}
-      ((((\ckcO^{t})_{D})^{+})^{-})_{C} &=
-      ((((R_{1},R_{2}, \cdots, R_{2l-1},R_{2l})_{D})^{+})^{-})_{C}\\
-      &=((R_{1}-1,R_{2}, \cdots, R_{2l-1},R_{2l},1))_{C}\\
-      &=(R_{1}-1,R_{2}+1, \cdots, R_{2l-1}-1,R_{2l}+1)\\
-    \end{split}
-  \]
-  So the proof is done.
+    Suppose $\CPPs(\ckcO_{g}) = \emptyset$.
+    We define
+    \[
+      \tA'(\ckcO):= \bF_{2}[\emptyset]
+    \]
+    to be the trivial group.
+    Then $\ckLV_{\ckcO_{g}}$ is
+    irreducible and marked by label $I$.  Hence, $\LC(\ckcO_{g})$,
+    $\LC(\ckcO)$ and $\tA'(\ckcO)$ are naturally identified.
 
-}
 
-At last, one can see that
-$\dBV(\ckcO_{b}\cuprow \ckcO_{g})
-= \ckcO_{b}^{t} \cupcol \dBV(\ckcO_{g})$ using
-\eqref{eq:inddBV}.
+    Now assume $\CPPs(\ckcO_{g})\neq \emptyset$. Then the two parts of the
+    bipartition of an irreducible component are different. Let
+    $i_{0}:= \min\Set{i| (2i-1,2i)\in \CPPs(\ckcO_{g})}$.
+    % $(2i_{0}-1,2i_{0})$ be the element in such that $i_{0}$ is minimal.
+    Then we have a bijection
+    \[
+      \tA'(\ckcO):= \set{\wp\in \bF_{2}[\CPPs(\ckcO_{g})]|(2i_{0}-1,2i_{0})\notin \wp} \longrightarrow \ckLV_{\ckcO_{g}}
+    \]
+    to record the bifurcation when attaching odd length columns. Here we send
+    $\wp$ to $\cktau_{\wp}:= (\cktau_{L},\cktau_{R})$ such that
+    \[
+      (\bfrr_{i}(\cktau_{L}),\bfrr_{i}(\cktau_{R})) := \begin{cases} (\half\bfrr_{2i}(\ckcO_{g}),\half\bfrr_{2i-1}(\ckcO_{g}))
+        & \text{if } (2i-1,2i)\notin \wp\\
+        (\half\bfrr_{2i-1}(\ckcO_{g}),\half\bfrr_{2i}(\ckcO_{g}))
+        & \text{if } (2i-1,2i)\in \wp\\
+      \end{cases}
+    \]
+    We obtain the structure of $\LC_{\ckcO_{g}}$ by tensoring the sign
+    representation.
+
+    \trivial[]{ Note that the trivial representation of the trivial group is
+      represented by the symbol
+      \[
+        \binom{0,1, 2, \cdots, l-1}{0,1,2, \cdots, l-1}_{I}.
+      \]
+      % Induce to include all $2l$-length columns yields
+      % \[
+      %   \binom{r'_{2l+1}+0,r'_{2l+1}+1,r'_{2l+1}+2,\cdots, r'_{2l+1}+l\phantom{-1}}{ r'_{2l+1}+0,r'_{2l+1}+1, \cdots, r'_{2l+1}+l-1}.
+      % \]
+
+      Now move the the shorter columns. When even columns $(2i)^{2r'_{2i}}$
+      occurs, it adds $(i)^{r'_{2i}}$ columns on the left and $(i)^{r'_{2i}}$ on
+      the right. When odd columns $(2i-1)^{r'_{2i-1}}$ occur, the bifurcation
+      happens: one can
+      \begin{itemize}
+        \item attach columns $(i-1)^{r'_{2i-1}}$ on the left and columns
+              $(i)^{r'_{2i-1}}$ on the right, which corresponds to
+              $(2i-1,2i)\neq \wp$, or
+        \item attach columns $(i)^{r'_{2i-1}}$ on the left and columns
+              $(i-1)^{r'_{2i-1}}$ on the right, which corresponds to
+              $(2i-1,2i)\in \wp$.
+      \end{itemize}
+      Note that when we first encounter the longest odd column, we make the
+      choice that the size of left part is larger than that of the right part.
+      Now If $(2i-1,2i)\notin \wp$,
+      \[
+        \begin{split}
+          \bfrr_{i}(\cktau_{L}) & = \sum_{l\geq 2i} r'_{l}
+          = \half\bfrr_{2i}(\ckcO_{g})\\
+          \bfrr_{i}(\cktau_{R}) & = \sum_{l\geq 2i-1} r'_{l} = \half\bfrr_{2i-1}(\ckcO_{g})
+        \end{split}
+      \]
+      if $(2i-1,2i)\in \wp$,
+      \[
+        \begin{split}
+          \bfrr_{i}(\cktau_{L}) & = \sum_{l\geq 2i-1} r'_{l}
+          = \half\bfrr_{2i-1}(\ckcO_{g})\\
+          \bfrr_{i}(\cktau_{R}) & = \sum_{l\geq 2i} r'_{l} = \half\bfrr_{2i}(\ckcO_{g})
+        \end{split}
+      \]
+    }
+
+
+    Now we consider the bad parity (odd) part. Suppose $\ckcO_{b}$ is nonempty
+    such that
+    \[
+      \ckcO_{b} = (2c_{0},2c_{1}, 2c_{1}, 2c_{2},2c_{2}, \cdots, 2c_{k}, 2c_{k})
+    \]
+    where $2k+1=\bfrr_{1}(\ckcO_{b})$ and $2c_{i} = \bfcc_{2i+1}(\ckcO_{b})$.
+    Now
+    \[
+      W_{\lamckb} = \sfW_{c_{0}} \times \sfS_{2c_{1}} \times \sfS_{2c_{2}}\times \cdots \times \sfS_{2c_{k}}
+    \]
+    and %$J_{W_{\lamckb}}^{W_{b}}\sgn$ is irreducible by
+    \[
+      \begin{split}
+        \cktau_{b} &:= J_{W_{\lamckb}}^{W_{b}} \sgn
+        = ((c_{1},c_{2},\cdots, c_{k}),(c_{0},c_{1}, \cdots, c_{l}))\\
+        & = \big([\half(\bfrr_{2}(\ckcO)-1),\half(\bfrr_{4}(\ckcO)-1),\cdots, \half(\bfrr_{2c_{0}}(\ckcO)-1)],\\
+        & \hspace{2em} [\half(\bfrr_{2}(\ckcO)+1),\half(\bfrr_{4}(\ckcO)+1),\cdots, \half(\bfrr_{2c_{0}}(\ckcO)+1)]\big)
+      \end{split}
+    \]
+    is irreducible by \cite{Lu}*{(4.5.4)}. Tensoring with sign yields the
+    formula of $\tau_{b}$. Moreover, by the fake degree formula (see
+    \cite{Carter}*{p~376}), we have
+    \[
+      \tau_{b} = \cktau_{b}\otimes \sgn = j_{\sfS_{\cO'_{b}}}^{\sfW_{n_{b}}} \sgn.
+    \]
+    where
+    $ \cO'_{b} := (\ckcO'_{b})^{t}:=(\bfrr_{2}(\ckcO),\bfrr_{4}(\ckcO),\cdots , \bfrr_{2c_{0}}(\ckcO))$.
+
+    \medskip \def\ckfll{\check{\fll}}
+
+    Now we sketch the proof of \eqref{eq:dBV.W}.
+
+    Recall the definition of the metaplectic Barbasch-Vogan dual in
+    \cite{BMSZ1}. The duality map commutes with parabolic induction: Suppose
+    $\ckfll\subset \check \ckfgg$ is a parabolic subalgebra of $\ckfgg$ and
+    $\fll$ is the corresponding parabolic subalgebra in $\fgg$, then
+    \begin{equation}\label{eq:inddBV}
+      \dBV(\ckcO) =  \Ind_{\fll}^{\fgg}(\dBV(\ckcO_{\ckfll}))
+    \end{equation}
+    for each nilpotent orbit $\ckcO$ in $\ckfgg$ such that
+    $\ckcO_{\ckfll}:=\ckcO\cap \ckfll\neq \emptyset$. This is clear by reducing
+    to the type $B$ case, see \cite{BMSZ1}*{Proposition~3.8}. By removing pairs
+    of rows with the same lengths in $\ckcO$, we reduced to check the equality
+    in the case when $\ckcO_{b}=\emptyset$ and
+    $\bfrr_{2i-1}(\ckcO_{g})>\bfrr_{2i}(\ckcO_{g})$ for all $i$ such that
+    $i\leq \bfcc_{1}(\ckcO_{g})$. In this case, both sides of \eqref{eq:dBV.W}
+    can be easily computed directly, which equals to
+    \[
+      (\bfrr_{1}(\ckcO)-1, \bfrr_{2}(\ckcO)+1, \cdots,\bfrr_{2c-1}(\ckcO)-1,\bfrr_{2c}(\ckcO)+1)
+    \]
+    with $c = \min\set{i|\bfrr_{2i+1}(\ckcO)=0}$.
+
+    % Now we compare the metaplectic dual defined in \cite{BMSZ1} with the Weyl
+    % group representations.
+    \trivial[]{ Compare Sommer's description of Springer correspondence we
+      deduce that the RHS is
+      \[
+        \cO_{g} = (\bfrr_{1}(\ckcO_{1})-1,\bfrr_{2}(\ckcO_{2})+1,\bfrr_{3}(\ckcO_{3})+1, \cdots, \bfrr_{2l-1}(\ckcO_{2l-1})-1,\bfrr_{2l}(\ckcO_{2l})+1)
+      \]
+      The LHS is calculated by $((((\ckcO^{t})_{D})^{+})^{-})_{C}$. We write
+      $R_{i}=\bfrr_{i}(\ckcO)=2r_{i}$. Now under our assumption,
+      $R_{2i-1}>R_{2i}$, we have
+      \[
+        \begin{split}
+          ((((\ckcO^{t})_{D})^{+})^{-})_{C} &=
+          ((((R_{1},R_{2}, \cdots, R_{2l-1},R_{2l})_{D})^{+})^{-})_{C}\\
+          &=((R_{1}-1,R_{2}, \cdots, R_{2l-1},R_{2l},1))_{C}\\
+          &=(R_{1}-1,R_{2}+1, \cdots, R_{2l-1}-1,R_{2l}+1)\\
+        \end{split}
+      \]
+      So the proof is done.
+
+    }
+
+    At last, one can see that
+    $\dBV(\ckcO_{b}\cuprow \ckcO_{g}) = \ckcO_{b}^{t} \cupcol \dBV(\ckcO_{g})$
+    using \eqref{eq:inddBV}.
   \end{proof}
 
-% \begin{remark}
-%   When $\star=\wtC$, one can see that
-%   $\dBV(\ckcO_{b}\cuprow \ckcO_{g}) = \ckcO_{b}^{t} \cupcol \dBV(\ckcO_{g})$
-%   using \eqref{eq:inddBV}.
-%   \trivial[]{
-%   This could be checked using the formula of Springer correspondence
-%   directly, see Sommer's.  }
-% \end{remark}
+  % \begin{remark}
+  %   When $\star=\wtC$, one can see that
+  %   $\dBV(\ckcO_{b}\cuprow \ckcO_{g}) = \ckcO_{b}^{t} \cupcol \dBV(\ckcO_{g})$
+  %   using \eqref{eq:inddBV}. \trivial[]{ This could be checked using the
+  %   formula of Springer correspondence directly, see Sommer's. }
+  % \end{remark}
+%
+Since the representation theory of $\sfW_{n}$ is more elementary than that of
+$\sfW'_{n}$, we prefer to induces every thing to $\sfW_{n}$.
+We record the following technical lemma for the later use.
+
+\begin{lem}\label{lem:WLcell}
+  Suppose $\star=\wtC$. For any $\wp\in \tA(\ckcO)$, let
+  $\wttau_{\wp} = (\imath_{\wp},\jmath_{\wp})$. Then
+  \[
+    \Ind_{\sfW_{n_{b}}\times \sfW'_{n_{g}}}^{\sfW_{n_{b}}\times \sfW_{n_{g}}} \tau_{b}\boxtimes \tau_{\wp} =
+    \begin{cases}
+      \tau_{b}\boxtimes \wttau_{\emptyset} & \text{if } \tA(\ckcO) =\emptyset,\\
+      \tau_{b}\boxtimes \wttau_{\wp} \oplus \tau_{b}\boxtimes \wttau_{\wp^{c}}
+      &\text{otherwise}.
+    \end{cases}
+  \]
+Let
+\[
+  \tLV_{\ckcO}:= \Ind_{W_{b}\times W_{g}}^{\sfW_{n_{b}}\times \sfW_{n_{g}}}\LV_{\ckcO}
+\]
+and $\tLC_{\ckcO}$ be the set of irreducible components of the
+$\sfW_{n_{b}}\times \sfW_{n_{g}}$-module $\tLV_{\ckcO}$. Then we have a
+bijection
+  \[
+      \begin{array}{lccccccc}
+        \tA(\ckcO)&=&\tA(\ckcO_{g}) & \longrightarrow & \tLC(\ckcO_{g})
+        & \longrightarrow & \tLC(\ckcO)\\
+                  &  &\wp & \mapsto & \wttau_{\wp}
+        & \mapsto & \tau_{b}\otimes \wttau_{\wp}.
+      \end{array}
+  \]
+  Suppose $\star\in\set{D,D^{*}}$. For any $\wp\in \tA(\ckcO)$, let
+  $\wttau_{\wp} = (\imath_{\wp},\jmath_{\wp})$ and $\wttau_{b} = \Ind_{\sfW'_{n_{b}}}^{\sfW_{n_{b}}}\tau_{b}$.
+  Then
+  \[
+    \Ind_{\sfW'_{n_{b}}\times \sfW'_{n_{g}}}^{\sfW_{n_{b}}\times \sfW_{n_{g}}} \tau_{b}\boxtimes \tau_{\wp} =
+    \begin{cases}
+      \wttau_{b} & \text{if } n_{g}=0\\
+      \wttau_{b}\boxtimes \wttau_{\wp} \oplus \wttau_{b}\boxtimes \wttau_{\wp}^{s}
+      &\text{otherwise}.
+    \end{cases}
+  \]
+  where $\wttau_{\wp}^{s}:= \wttau_{\wp}\otimes \brsgn \neq \wttau_{\sP}$.
+
+  % Then we have a bijection
+  % \[
+  %     \begin{array}{lccccccc}
+  %       \tA(\ckcO)&=&\tA(\ckcO_{g}) & \longrightarrow & \tLC(\ckcO_{g})
+  %       & \longrightarrow & \tLC(\ckcO)\\
+  %                   &  &\wp & \mapsto & \wttau_{\wp} &
+  %                                                    \mapsto & \tau_{b}\otimes \wttau_{\wp}.
+  %     \end{array}
+  % \]
+\end{lem}
+\begin{proof}
+  The lemma follows immediately from the above lemma on the explicit
+  descriptions of the left cells.
+\end{proof}
+
 
 \subsection{Coherent continuation representations}
 
@@ -4556,10 +4522,10 @@ $\sfS_{t}$.
         \begin{split}
           \cC_b^{n} & :=\bigoplus_{\substack{2t+c+d=n}} \Ind_{\sfH_{t} \times \sfW_{c}\times \sfW_{d}}^{\sfW_{n}}
           \hsgn\boxtimes 1\boxtimes 1 \\
-          \cC_g^{p,q} &:=\bigoplus_{\substack{0\leq p-(2t+a+r)\leq 1\\0\leq q - (2t+a+s)\leq 1}} \Ind_{\sfH_{t} \times \sfS_{a}\times \sfW_s\times \sfW_r}^{\sfW_{n}}
+          \cC_g^{p,q} &:=\bigoplus_{\substack{0\leq p-(2t+a+2r)\leq 1\\0\leq q - (2t+a+2s)\leq 1}} \Ind_{\sfH_{t} \times \sfS_{a}\times \sfW_s\times \sfW_r}^{\sfW_{n}}
           \hsgn \boxtimes 1 \boxtimes \sgn \boxtimes \sgn \\
-          &\cong \bigoplus_{\substack{0\leq p-(2t+c+d+r)\leq 1\\0\leq q - (2t+c+d+s)\leq 1}} \bigoplus_{\sigma} \Ind_{\sfW_{2t} \times \sfW_{c}\times \sfW_{d}\times \sfW_s\times \sfW_r}^{\sfW_{n}}
-          (\sigma,\sigma) \boxtimes 1 \boxtimes \brsgn \boxtimes \sgn \boxtimes \sgn \\
+          % &\cong \bigoplus_{\substack{0\leq p-(2t+c+d+2r)\leq 1\\0\leq q - (2t+c+d+2s)\leq 1}} \bigoplus_{\sigma} \Ind_{\sfW_{2t} \times \sfW_{c}\times \sfW_{d}\times \sfW_s\times \sfW_r}^{\sfW_{n}}
+          % (\sigma,\sigma) \boxtimes 1 \boxtimes \brsgn \boxtimes \sgn \boxtimes \sgn \\
         \end{split}
         \]
         \trivial[]{ Here is a point which could cases confusion: Although the
@@ -4575,54 +4541,71 @@ $\sfS_{t}$.
   \item Suppose $\star=C^{*}$. Define
         \[
         \begin{split}
-          \cC_b^{n} & =
+          \cC_b^{n} & :=
           \begin{cases}
-           \Res_{\sfW_{n}}^{\sfW'_{n}} \Ind_{\sfH_{t}}^{\sfW_{n}} \hsgn &
+           % \Res_{\sfW_{n}}^{\sfW'_{n}}
+           \Ind_{\sfH_{t}}^{\sfW_{n}} \hsgn &
             \text{if $n=2t$ is even} \\
             0 & \text{otherwise}\\
           \end{cases}\\
           \cC_g^{2p,2q} %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
           &:=\bigoplus_{\substack{(t+s,t+r)=(p,q)}} \Ind_{\sfH_{t} \times \sfW_s\times \sfW_t}^{\sfW_{p+q}}
           \hsgn \otimes \sgn \otimes \sgn \\
-          & =\bigoplus_{\substack{(t+s,t+r)=(p,q)}} \bigoplus_{\sigma\in \Irr(\sfS_{t})} \Ind_{\sfW_{2t}\times \sfW_s\times \sfW_r}^{\sfW_{p+q}}
-          (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
+          % & =\bigoplus_{\substack{(t+s,t+r)=(p,q)}} \bigoplus_{\sigma\in \Irr(\sfS_{t})} \Ind_{\sfW_{2t}\times \sfW_s\times \sfW_r}^{\sfW_{p+q}}
+          % (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
         \end{split}
         \]
   \item Suppose $\star=C$. Define
         \[
         \begin{split}
-          \cC_b^{n} & :=\bigoplus_{\substack{2t+a=n}} \Res_{\sfW_{n}}^{\sfW'_{n}} \left( \Ind_{\sfH_{t} \times \sfS_a}^{\sfW_{n}}
-            \hsgn\otimes 1\right) \\
+          \cC_b^{n} & :=\bigoplus_{\substack{2t+a=n}} %\Res_{\sfW_{n}}^{\sfW'_{n}} \left(
+          \Ind_{\sfH_{t} \times \sfS_a}^{\sfW_{n}}
+          \hsgn\otimes 1 %\right)
+        \\
           \cC_g^{n,n} &:= \bigoplus_{2t+a+c+d=n}\Ind_{\sfH_{t} \times \sfS_{a} \times \sfW_c\times \sfW_d}^{W_{n}} \hsgn \otimes
           \sgn \otimes 1 \otimes 1\\
-          & =\bigoplus_{\substack{t+r+s+c+d=n}} \bigoplus_{\sigma } \Ind_{\sfW_{2t}\times \sfW_s\times \sfW_r\times \sfW_{c}\times \sfW_{d}}^{\sfW_{n_{g}}}
-          (\sigma,\sigma)\otimes \sgn \otimes \bsgn \otimes 1\otimes 1 \\
+          % & =\bigoplus_{\substack{t+r+s+c+d=n}} \bigoplus_{\sigma } \Ind_{\sfW_{2t}\times \sfW_s\times \sfW_r\times \sfW_{c}\times \sfW_{d}}^{\sfW_{n_{g}}}
+          % (\sigma,\sigma)\otimes \sgn \otimes \bsgn \otimes 1\otimes 1 \\
+        \end{split}
+        \]
+  \item Suppose $\star=\wtC$. Define
+        \[
+        \begin{split}
+          \cC_b^{n} & :=\bigoplus_{\substack{2t+c+d=n}} %\Res_{\sfW_{n}}^{\sfW'_{n}} \left(
+          \Ind_{\sfH_{t} \times \sfW_c\times \sfW_{d}}^{\sfW_{n}}
+          \hsgn\boxtimes 1 \boxtimes 1 %\right)
+        \\
+          \cC_g^{n,n} &:= \bigoplus_{2t+a+a'=n}\Ind_{\sfH_{t} \times \sfS_{a} \times \sfS_{a'}}^{\sfW_{n}} \hsgn \otimes
+          \sgn \otimes 1 \\
+          % & =\bigoplus_{\substack{t+r+s+c+d=n}} \bigoplus_{\sigma } \Ind_{\sfW_{2t}\times \sfW_s\times \sfW_r\times \sfW_{c}\times \sfW_{d}}^{\sfW_{n_{g}}}
+          % (\sigma,\sigma)\otimes \sgn \otimes \bsgn \otimes 1\otimes 1 \\
         \end{split}
         \]
   \item Suppose $\star=D$ and $p+q=2m$ is even. Define
         \[
         \begin{split}
-          \cC_b^{n} & = \bigoplus_{\substack{2t+a=n_{1}}}
-          \Ind_{\sfH_{t}\times \sfS_{a}}^{\sfW'_{n}} \hsgn\otimes 1\\
+          \cC_b^{n} & :=
+          \bigoplus_{\substack{2t+a=n}}
+          \Ind_{\sfH_{t}\times \sfS_{a}}^{\sfW_{n}} \hsgn\otimes 1\\
           \cC_g^{p,q} %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
-          &= \bigoplus_{\substack{2t+c+d+2r=p\\2t+c+d+2s=q}} \Res_{\sfW_{m}}^{\sfW'_{m}}\left(\Ind_{\sfH_{t} \times \sfW_s\times \sfW_r\times \sfW'_{c}\times \sfW'_{d} }^{\sfW'_{}} \hsgn \otimes \bsgn \otimes \bsgn \otimes 1\otimes 1 \right)
+           & := \bigoplus_{\substack{2t+c+d+2r=p\\2t+c+d+2s=q}}
+          % \Res_{\sfW_{m}}^{\sfW'_{m}}\left(
+            \Ind_{\sfH_{t} \times \sfW_s\times \sfW_r\times \sfW'_{c}\times \sfW_{d} }^{\sfW_{(p+q)/2}} \hsgn \otimes \bsgn \otimes \bsgn \otimes 1\otimes 1 %\right)
           \\
         \end{split}
         \]
   \item Suppose $\star=D^{*}$. Define
         \[
         \begin{split}
-          \cC_b^{n} & =
+          \cC_b^{n} & :=
           \begin{cases}
-            \Res_{\sfW_{n}}^{\sfW'_{n}} \Ind_{\sfH_{t}}^{\sfW'_{n}} \hsgn &
+            \Ind_{\sfH_{t}}^{\sfW'_{n}} \hsgn &
             \text{if $n=2t$ is even} \\
             0 & \text{otherwise}\\
           \end{cases}\\
           \cC_g^{n,n} %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
           &:=\bigoplus_{\substack{2t+a=n}} \Ind_{\sfH_{t} \times \sfS_{a}}^{\sfW'_{n}}
           \hsgn \otimes \sgn \\
-          & =\bigoplus_{\substack{2t+r+s=n}} \bigoplus_{\sigma} \Ind_{\sfW'_{2t}\times \sfW_r\times \sfW_s}^{\sfW_{n}}
-          (\sigma,\sigma)_{1}\otimes \sgn \otimes \bsgn \\
         \end{split}
         \]
 \end{itemize}
@@ -4667,11 +4650,22 @@ We define
 
 \begin{prop}
   As $W_{\Lambda_{n_{b},n_{g}}}:= W_{b}\times W_{g}$-module, the coherent
-  continuation representation
+  continuation representation $\Coh_{\Lambda_{n_{b},n_{g}}}(G)$
+  is isomorphic to the restriction to $W_{\Lambda_{n_{b},n_{g}}}$
+  of
   \[
-    \Coh_{\Lambda_{n_{b},n_{g}}}(G)\cong \cC_{b}^{n_{b}}\otimes\cC_{g}^{p,q}
-  \]
-  with $(p,q) = \Sign(G) - (n_{b},n_{b})$.
+    \begin{cases}
+    \cC_{b}^{n_{b}}\boxtimes\cC_{g}^{p,q} & \text{if } \star \in \set{B,C,\wtC,C^{*},D}\\
+    \Ind_{\sfW'_{n_{b}}\times \sfW'_{n_{g}}}^{W''}(\cC_{b}^{n_{b}}\boxtimes\cC_{g}^{p,q}) & \text{if } \star D^{*}\\
+  \end{cases}
+\]
+with $(p,q) = \Sign(G) - (n_{b},n_{b})$ and
+\[
+  W'' := \left(\sfW_{n_{b}}\times \sfW_{n_{g}}\right)\cap \sfW'_{n_{g}+n_{b}}
+  \text{when $\star = D^{*}$.}
+\]
+
+
 \end{prop}
 \begin{remark}
   When $\star \in \set{C^{*},D^{*}}$ and $n_{b}$ is odd,
@@ -4692,15 +4686,64 @@ G'_{n} := \begin{cases}
 \end{cases}
 \]
 
-\begin{prop}
-  In all the cases
+
+\begin{prop}\label{prop:BP.PP}
+  In all the cases,
   \[
-    [\tau_{b}: \cC_{b}] = \PBP_{\star,b}(\ckcO_{b}) = \PBP_{G'}(\ckcO'_{n_{b}})
-    = \Unip_{\ckcO'_{b}}(G'_{n_{b}})
+    \PBP_{\star,b}(\ckcO_{b}) = \PP_{G'}(\ckcO'_{b}) =\Unip_{G'}(\ckcO'_{b}).
   \]
-  and
+\end{prop}
+\begin{proof}
+  Suppose $\star \in \Set{C^{*},D^{*}}$.
+  Then
   \[
-   \sum_{\tau\in \LC_{\ckcO_{g}}} [\tau:\cC_{g}] = \PBP_{G}(\ckcO_{g}).
+    \begin{split}
+     \abs{\PBP_{\star,b}(\ckcO_{b})} = \abs{\PP_{G'}(\ckcO'_{b})}
+    = \abs{\Unip_{\ckcO'_{b}}(G'_{n_{b}})} = 1.
+    \end{split}
+  \]
+  Suppose $\star \in \Set{B,C,\wtC,D}$, $\tau_{b} = (\tau_{L,b},\tau_{R,b})$
+  and $\tau'_{b} = \cO'_{b}$
+  It is easy to see that we have a bijection:
+  \[
+    \begin{array}{ccc}
+      \PBP_{\star,b}(\ckcO_{b}) &  \longrightarrow & \PP_{A^{\bR}}(\ckcO'_{b})\\
+      (\uptau_{L},\uptau_{R})& \mapsto & \uptau'
+    \end{array}
+  \]
+  where $\uptau'$ is defined by the condition that
+  \[
+    \uptau_{L}(\bfcc_{j}(\tau_{L,b}),j)=d \Longleftrightarrow \uptau'(\bfcc_{j}(\tau'_{b}),j)=d.
+  \]
+  \trivial[]{
+    % Let $\tau' = \ckcO'^{t}_{b}$ and $\tau_{b}=(\tau_{L,b}, \tau_{R,b})$.
+    % Here $\tau_{L,b}, \tau_{R,b}$.
+    Now the claim follows for the fact that the bottom rows in $\uptau_{L}$
+    can be filled by $\bullet/c$ or $d$ and
+    \[
+      \bfcc_{i}(\tau_{L,b})
+      = \bfcc_{j}(\tau_{L,b})
+      \Leftrightarrow
+      \bfcc_{i}(\tau'_{b})  = \bfcc_{j}(\tau'_{b})
+      \quad \forall i,j\in \bN^{+}.
+    \]
+  }
+
+\end{proof}
+
+\begin{prop}
+  In all the cases, we have
+  % \[
+  %   [\tau_{b}: \cC_{b}] = \PBP_{\star,b}(\ckcO_{b}) = \PBP_{G'}(\ckcO'_{n_{b}})
+  %   = \Unip_{\ckcO'_{b}}(G'_{n_{b}})
+  % \]
+  % and
+  % \[
+  %  \sum_{\tau\in \LC_{\ckcO_{g}}} [\tau:\cC_{g}] = \PBP_{G}(\ckcO_{g}).
+  % \]
+  \[
+    \sum_{\sP\in \tA'(\ckcO)} [\tau_{b}\otimes \tau_{\sP}: \Coh_{\Lambda_{n_{b},n_{g}}}(G)] = \abs{\PBP_{\star,b}(\ckcO_{b})}\cdot
+    \abs{\PBP_{\star}(\ckcO_{g}; G)}.
   \]
 \end{prop}
 \begin{proof}
@@ -4712,13 +4755,6 @@ G'_{n} := \begin{cases}
       \Res_{\sfW_{n_{b}}}^{\sfW'_{n_{b}}} \Ind_{\sfH_{n'_{b}}}^{\sfW_{n_{b}}} \hsgn \\
       &= \bigoplus_{\sigma\in \Irr(\sfS_{n'_{b}})}
       \left((\sigma,\sigma)_{I} \oplus (\sigma,\sigma)_{II}\right).
-    \end{split}
-  \]
-  Therefore,
-  \[
-    \begin{split}
-    [\tau_{b}: \cC_{b}] =\# \PBP_{\star,b}(\ckcO_{b}) =\# \PBP_{G'}(\ckcO'_{b})
-    = \# \Unip_{\ckcO'_{b}}(G'_{n_{b}}) = 1.
     \end{split}
   \]
   For the good parity,
@@ -4734,21 +4770,264 @@ G'_{n} := \begin{cases}
   them by $s$ and $r$ respectively.
 
 
+  Suppose $\star=C$
+  \[
+\begin{split}
+  & [\tau_{b}\boxtimes \tau_{\wp} :
+  \cC_{b} \boxtimes \cC_{g}]_{\sfW'_{n_{b}}\times \sfW_{n_{g}}}\\
+  = & [\Ind_{\sfW'_{n_{b}}\times \sfW_{n_{g}}}^{\sfW_{n_{b}}\times \sfW_{n_{g}}} \tau_{b}\boxtimes \tau_{\wp} :
+  \cC_{b} \boxtimes \cC_{g}]_{\sfW_{n_{b}}\times \sfW_{n_{g}}}\\
+  = & [\wttau_{b}\boxtimes \tau_{\wp}:
+  \cC_{b} \boxtimes \cC_{g}]_{\sfW_{n_{b}}\times \sfW_{n_{g}}}\\
+  =& \# \PBP_{\star}(\ckcO_{b})\cdot \# \PBP_{\star}(\ckcO_{g};\wp)
+\end{split}
+  \]
+  % For the bad parity, $n_{b}=2n'_{b}$
+  % must be even.
+  % \[
+  %   \begin{split}
+  %     \cC_b^{n_{b}} &=
+  %     \Res_{\sfW_{n_{b}}}^{\sfW'_{n_{b}}}
+  %     \left(
+  %     \bigoplus_{2t+a=n_{b}}\Ind_{\sfH_{t}\times \sfS_{a}}^{\sfW_{n_{b}}}
+  %     \hsgn \otimes 1
+  %     \right)\\
+  %     &= \bigoplus_{2t+c+d=n_{b}}\bigoplus_{\sigma\in \Irr(\sfS_{t})}
+  %     \left((\sigma,\sigma)_{I} \oplus (\sigma,\sigma)_{II}\right) \times ([d,],[c,]).
+  %   \end{split}
+  % \]
+  % Note that $\tau_{b}=(\cO'_{b},\cO'_{b})_{I}$.
+  % Therefore we only need to consider the case when $c=d$ in the above formula.
+  % \[
+  %   \begin{split}
+  %     [\tau_{b}: \cC_{b}^{n_{b}}]
+  %     & =
+  %     [\cO'_{b}:\bigoplus_{\substack{t+d = n'_{b}\\ \sigma}} \sigma \times 1].
+  %   \end{split}
+  % \]
+  % By the counting of unipotent representation of $\GL(n'_{b},\bR)$.
+  % We see that $\PBP_{\star,b}(\ckcO_{b})$ is identified with
+  % $\PBP_{A^{\bR}}(\ckcO'_{b})$  by send
+  % $(\uptau_{L},\uptau_{R})$ to the painted partition $\uptau'$  such that
+  % \[
+  %   \uptau_{L}(i,j)=d \Leftrightarrow \uptau'(i,j)=d.
+  % \]
+
+  % For the good parity, this is clear by the branching rules.
+
+
   Suppose $\star = D^{*}$.
-  The bad part is the same as that of type $C^{*}$. For the good part,
-  there is only one block of representations.
-  Note that, the left and right parts in $\tau_{\sP}$ are never the same.
-  By abuse of notation, let $\tau_{\sP}$ denote also the $\sfW$-representation.
+  % {\color{red} Has a lot of problems!!!}
+  Let
+  \[
+  \wttau_{b} = \Ind_{\sfW'_{n_{b}}}^{\sfW_{n_{b}}} \tau_{b} \AND
+  \wttau_{\wp}: = (\imath_{\wp},\jmath_{\wp}).
+  \]
+  Note that $\wttau_{\wp}|_{W_{g}} = \tau_{\wp}$ form the explicit description
+  of $\tau_{\wp}$ and $\bfcc_{1}(\imath_{\wp})\geq \bfcc_{1}(\jmath_{sP})$.
+
+
+  Suppose $n_{g}=0$ first and let $t=n_{b}/2$, then
+  $\tau_{b} = (\tau'_{b},\tau'_{b})_{I}$ and
+  \[
+    \begin{split}
+        [\tau_{b} :
+      \cC_{b}]_{W_{b}}
+      = &
+      [\tau_{b}: \Ind_{\sfH_{t}}^{\sfW'_{n_{b}}}\tsgn]\\
+      = & [(\tau'_{b},\tau'_{b})_{I}: \bigoplus_{\sigma}(\sigma,\sigma)_{I}]\\
+      = 1.
+    \end{split}
+  \]
+
+
+  Suppose $n_{b}=0$ then
+  \[
+    \begin{split}
+        [\tau_{\wp} :
+      \cC_{g}]_{\sfW'_{n_{g}}}
+      = &
+      [\wttau_{\wp}|_{W_{g}}:\sum_{2t+a=n_{g}} \Ind_{\sfH_{t}\times \sfS_{a}}^{\sfW'_{n_{g}}}\tsgn\otimes \sgn]_{\sfW'_{n_{g}}}\\
+      = & [\wttau_{\wp}: \sum_{2t+a=n_{g}} \Ind_{\sfH_{t}\times \sfS_{a}}^{\sfW'_{n_{g}}}\tsgn\otimes \sgn]_{\sfW_{n_{g}}}\\
+      = & \PBP_{\star}(\ckcO_{g};\wp)
+    \end{split}
+  \]
+
+  Now consider the general case, we assume $n_{b}$ and $n_{g}$ are both
+  non-zero. We claim that
+  $\Ind_{W_{b}\times W_{g}}^{W''} \tau_{b}\boxtimes \tau_{\wp} = (\wttau_{b}\otimes \wttau_{\wp})|_{W''}$:
+  first, the dimension of the two sides are equal ($W_{b}\times W_{g}$ has index
+  $2$ in $W''$); second,
+  \[
+    \begin{split}
+      &[\Ind_{W_{b}\times W_{g}}^{W''}\tau_{b}\boxtimes \tau_{\wp}:(\wttau_{b}\otimes \wttau_{\wp})|_{W''}] \\
+      =& [\Ind_{\sfW'_{n_{b}}\times \sfW'_{n_{g}}}^{\sfW_{n_{b}}\times \sfW_{n_{g}}}\tau_{b}\boxtimes \tau_{\wp}:\wttau_{b}\otimes \wttau_{\wp}]\\
+      =& [\wttau_{b}\boxtimes \wttau_{\wp} \oplus \wttau_{b}\boxtimes (\wttau_{\wp}\otimes \brsgn):\wttau_{b}\otimes \wttau_{\wp}] =1\\
+    \end{split}
+  \]
+  where $\wttau_{\wp}\otimes \brsgn$ has the bipartition obtained by switching the
+  left and right side of $\wttau_{\wp}$.
+
+  \[
+    \begin{split}
+      &  [\tau_{b}\boxtimes \tau_{\wp} :
+      \Ind_{\sfW'_{n_{b}}\times \sfW'_{n_{g}}}^{W''} \cC_{b} \boxtimes \cC_{g}]_{\sfW'_{n_{b}}\times \sfW'_{n_{g}}}\\
+      = &
+      [\Ind_{W_{b}\times W_{g}}^{W''} \tau_{b}\boxtimes \wttau_{\wp} :
+      \Ind_{W_{b}\times W_{g}}^{W''} \cC_{b} \boxtimes \cC_{g}]_{W''}\\
+      = &
+      [(\wttau_{b}\boxtimes \wttau_{\wp})|_{W''}:
+      \Ind_{W_{b}\times W_{g}}^{W''} \cC_{b} \boxtimes \cC_{g}]_{W''}\\
+      = &
+      [\wttau_{b}\boxtimes \wttau_{\wp}:
+      \Ind_{W_{b}\times W_{g}}^{\sfW_{n_{b}}\times \sfW_{n_{g}}} \cC_{b} \boxtimes \cC_{g}]_{\sfW_{n_{g}}\times \sfW_{n_{b}}}\\
+      =&  \# \PBP_{\star}(\ckcO_{b})\cdot \# \PBP_{\star}(\ckcO_{g};\wp)
+    \end{split}
+  \]
+
+  \medskip
+
+  Suppose $\star = D$.
+  Suppose that $n_{g}\neq 0$.
+  Since $\bfcc_{1}(\imath_{\wp})>\bfcc_{1}(\jmath_{\wp})$, we have
+  $\wttau^{s}_{\wp}:=\wttau_{\wp}\otimes \brsgn\ncong\wttau_{\wp}$.
+  \[
+\begin{split}
+  & [\tau_{b}\boxtimes \tau_{\wp} :
+  \cC_{b} \boxtimes \cC_{g}]_{\sfW'_{n_{b}}\times \sfW'_{n_{g}}}\\
+  = & [\Ind_{\sfW'_{n_{b}}\times \sfW'_{n_{g}}}^{\sfW_{n_{b}}\times \sfW_{n_{g}}} \tau_{b}\boxtimes \tau_{\wp} :
+  \cC_{b} \boxtimes \cC_{g}]_{\sfW_{n_{b}}\times \sfW_{n_{g}}}\\
+  = & [\wttau_{b}\boxtimes \wttau_{\wp}\oplus \wttau_{b}\boxtimes \wttau_{\wp}^{s}:
+  \cC_{b} \boxtimes \cC_{g}]_{W''}\\
+  = & [\wttau_{b}\boxtimes \wttau_{\wp}:
+  \cC_{b} \boxtimes \cC_{g}]_{\sfW_{n_{g}}\times \sfW_{n_{b}}}\\
+  =& \# \PBP_{\star}(\ckcO_{b})\cdot \# \PBP_{\star}(\ckcO_{g};\wp)
+\end{split}
+  \]
+The terms involving $\wttau_{\sP}^{s}$ vanish since
+every irreducible component $(\sigma_{L},\sigma_{R})$ in $\cC_{g}$ satisfies
+    $\sigma_{L}\supseteq \sigma_{R}$ but $\bfcc_{1}(\imath_{\wp})>\bfcc_{1}(\jmath_{\wp})$.
+
+  Suppose that $n_{g} =  0$.
+  \[
+    \begin{split}
+      & [\tau_{b} : \cC_{b}^{n_{b}}]_{\sfW'_{n_{b}}}\\
+      =& [\Ind_{\sfW'_{n_{b}}}^{\sfW_{n_{b}}} \tau_{b} : \bigoplus_{\substack{2t+a=n}}
+      \Ind_{\sfH_{t}\times \sfS_{a}}^{\sfW_{n}} \hsgn\otimes 1] \\
+      =& [ \wttau_{b} : \bigoplus_{\substack{2t+a=n}}
+      \Ind_{\sfH_{t}\times \sfS_{a}}^{\sfW_{n}} \hsgn\otimes 1] \\
+    \end{split}
+  \]
+  In any cases, the counting formula holds.
+  \trivial{
+    There is place to confuse: Why there shouldn't be
+    double the size of special unipotent representations?
+
+    In fact, $\AC_{\bC}(\pi)$ can only be the fixed type, say $\cO_{I}$! Note
+    that we fixed an infinitesimal character which has half-integral values.
+    This choice implicitly force us to fix real Siegel parabolic when we do
+    induction from $\GL$! The non-trivial outer automorphism, say $c$, will
+    permute the infinitesimal character to the another one and we then will have
+    $\AC_{\bC}({}^{c}\pi)i = \cO_{II}$.
+
+
+    Using Barbasch's formula of wavefront, we see that the induction $\pi_{I}:=\Ind_{\GL}^{\SO}\pi'$ must be
+    irreducible, where $\pi'$ is a unipotent repn. of $\GL$.
+    This will also implies $\Ind_{\GL}^{\rO}\pi'$ is irreducible and restricted
+    to two $\SO$-modules, $\pi_{I}$ and $\pi_{II}$.
+
+  }
+
+  Suppose $\star = \wtC$.
   Then
-  $[\tau_{\sP}|_{\sfW'}:\Ind_{\sfH_{t}\times \sfS_{a}}^{\sfW'}\hsgn\boxtimes \sgn] =
-[\tau_{\sP}|_{\sfH_{t}\times \sfS_{a}}:\hsgn\boxtimes \sgn] =
-[\tau_{\sP}:\Ind_{\sfH_{t}\times \sfS_{a}}^{\sfW}\hsgn\boxtimes \sgn] = \#\PBP.
-  $
-  
+  \[
+    \begin{split}
+       & [\tau_{b}\boxtimes \tau_{\wp} :
+      \cC_{b} \boxtimes \cC_{g}]_{\sfW_{n_{b}}\times \sfW_{n_{g}}}\\
+      = & [ \tau_{b}\boxtimes \Ind_{\sfW'_{n_{g}}}^{\sfW_{n_{g}}}\tau_{\wp} : \cC_{b} \boxtimes \cC_{g}]_{\sfW_{n_{b}}\times \sfW_{n_{g}}}\\
+      = &\sum_{\sP\in \tA(\ckcO)}  [\tau_{b}\boxtimes \wttau_{\wp}:
+      \cC_{b} \boxtimes \cC_{g}]_{\sfW_{n_{b}}\times \sfW_{n_{g}}}\\
+      =& \# \PBP_{\star}(\ckcO_{b})\cdot \# \PBP_{\star}(\ckcO_{g})
+    \end{split}
+  \]
 
-  This follows from the branching rules of the Weyl group representations.
-
+  Suppose $\star = B^{*}$.
+  Then
+  \[
+    \begin{split}
+      & \sum_{\sP\in \tA'(\ckcO)}[\tau_{b}\boxtimes \tau_{\wp} :
+      \cC_{b} \boxtimes \cC_{g}]_{\sfW_{n_{b}}\times \sfW'_{n_{g}}}\\
+      =& \# \PBP_{\star}(\ckcO_{b})\cdot \# \PBP_{\star}(\ckcO_{g};\wp)
+    \end{split}
+  \]
 \end{proof}
+
+\section{Reduction to the good parity case}
+
+In this section, $G$ is a classical group or metaplectic group.
+
+\begin{lem}
+  Suppose $n_{g}=0$. Then we have a bijection
+  \[
+    \begin{array}{rccc}
+      \fI: &\Unip_{G'}(\ckcO'_{b}) & \longrightarrow & \Unip_{G}(\ckcO) \\
+      &\pi' & \mapsto & \pi:=\Ind_{P}^{G}\pi'
+    \end{array}
+  \]
+  where $P$ is the standard parabolic subgroup of $G$ whose Levi subgroup is
+  isomorphic to $G'$.
+  Let $\sO'$ be the real nilpotent orbit in $G'$ such that $\sO'_{\bC}=\cO$.
+  and $\sO$ be the real induction of $\sO'$ to $G$.
+  Then
+  \[
+    \AC(\pi) = \sO
+  \]
+  is multiplicity one.
+\end{lem}
+\begin{proof}
+  Note that $\WF(\pi)=\sO'$.
+  It follows from Barabasch's formula on wavefront cycle that the
+  associated variety of $\pi:=\Ind_{P}^{G}\pi'$ is $\sO$ with multiplicity one.
+  This immediately implies that $\pi$ is irreducible. In fact, if $\pi$ is
+  reducible, $\pi$ must contain a irreducible sub-quotient with infinitesimal
+  character $\lambda_{\ckcO}$ and GK-dimension $<\half\dim_{\bC}\cO$, this
+  is contradict to \Cref{lem:LC.mu}.
+  \trivial[]{
+    First, it is not obvious to me that the wavefront of $\Ind_{P}^{G}\pi$
+    must be contained in $\Ind\WF(\pi)$. But it is clear that the leading term
+    must be $\sum_{\sO\text{ open in } \WF(\pi)}\Ind\sO$. So the boundaries has
+    less GK-dimension.
+
+    Suppose $\pi_{0}$ is the sub-quotient with less GK-dimension.
+    On the other hand, the maximal primitive ideal $\cI_{\ckcO}$  with infinitesimal
+    character must contains $\Ann\pi_{0}$. In other words,
+    $\AV_{\bC}(\pi_{0})\subseteq \bcO$ which implies GK-dimension of
+    $\pi_{0}\geq \half\dim_{\bC}\cO$, a contradiction.
+    % Let $\mu = \lamck$.
+    % Note that every $W_{[\mu]}$-module in $\Grt_{\mu}(G)$ is in $\Ind_{W_{\mu}}^{W_{[\mu]}}$
+  }
+  Note that representations in $\Unip_{G'}(\ckcO'_{b})$ have distinct
+  cuspidal data, which implies that $\Ind_{P}^{G}\pi'$ has distinct cuspidal
+  data when $\pi'$ varies.
+  Recall that $\star' \in \set{A^{\bR},A^{\bC}, A^{\bH}}$ depends on $G$.
+  Therefore, $\fI$ is injective. The bijection follows from the counting
+  inequality below:
+  \[
+    \abs{\PP_{\star'}(\ckcO'_{b})}=\abs{\Unip_{G'}}(\ckcO'_{b})\leq \abs{\Unip_{G}(\ckcO)}
+    \leq \abs{\PBP_{\star,b}(\ckcO_{b})} = \abs{\PP_{\star'}(\ckcO'_{b})}.
+  \]
+\end{proof}
+
+\begin{lem}
+  There is a bijection
+    \[
+      \begin{array}{ccc}
+        \Unip_{\star'}(\ckcO'_{b})\Unip_{\star}(\ckcO_{g})&         \longrightarrow &\Unip_{C^{*}}(\ckcO) \\
+        (\pi',\pi_{0}) & \mapsto
+                         & \pi'\rtimes \pi_{0}.
+      \end{array}
+    \]
+\end{lem}
 
 \subsection{Counting special unipotent representation of $G=\Sp(p,q)$}.
 
@@ -4822,16 +5101,16 @@ Let
   multiplicity free. hence $\pi_{\star,\ckcO_{b}}$ must be irreducible.
 \end{proof}
 
-For each $\sP\subset \CPP(\ckcO_{g})$, let
+For each $\wp\subset \CPP(\ckcO_{g})$, let
 \[
-  \PBP_{\star,\sP}(\ckcO_g)= \Set{(\imath,\jmath,\cP,\cQ)| %
+  \PBP_{\star,\wp}(\ckcO_g)= \Set{(\imath,\jmath,\cP,\cQ)| %
     \begin{array}{l}
-      (\imath,\jmath) = \tau_{\sP}\\
+      (\imath,\jmath) = \tau_{\wp}\\
       \Im \cP \subset \set{\bullet}, \Im \cQ \subset\set{\bullet, s,r}\\
     \end{array}
   }
 \]
-where $\tau_{\sP}$ is defined in \Cref{lem:cell.C}.
+where $\tau_{\wp}$ is defined in \Cref{lem:cell.C}.
 By abuse of notation, we write
 \[
 \PBP_{\star}(\ckcO_g) :=\PBP_{\star,\emptyset}(\ckcO_g)
@@ -4873,10 +5152,10 @@ By abuse of notation, we write
 \begin{proof}
   \begin{enumPF}
     \item
-    Suppose $(2i-1,2i)\in \sP\subset \CPP(\ckcO_{g})$.
-    Let $(\imath,\jmath) :=\tau_{\sP}$. Then
+    Suppose $(2i-1,2i)\in \wp\subset \CPP(\ckcO_{g})$.
+    Let $(\imath,\jmath) :=\tau_{\wp}$. Then
     $\bfcc_{i}(\imath)>\bfcc_{i}(\jmath)$ which implies that
-    $\PBP_{\star,\sP}(\ckcO_{g}) = \emptyset$.
+    $\PBP_{\star,\wp}(\ckcO_{g}) = \emptyset$.
     \item
     The first claim is similar to part (i), see \cite{BMSZ2}*{Proposition~10.1}.
     \item This is \cite{Mc}*{Theorem 6}, also see \cite{BMSZ2}.
@@ -5020,17 +5299,17 @@ Now $[\tau_{b}:\cC_{b}]$ is counted by the size of the following set
     \end{array}
   }
 \]
-and for each $\sP\subset \CPP(\ckcO_{g})$, the multiplicity
-$[\tau_{\sP}: \cC_{g}]$ is counted by the size of
+and for each $\wp\subset \CPP(\ckcO_{g})$, the multiplicity
+$[\tau_{\wp}: \cC_{g}]$ is counted by the size of
 \[
-  \PBP_{\star}(\ckcO_g,\sP):= \Set{(\imath,\jmath,\cP,\cQ)| %
+  \PBP_{\star}(\ckcO_g,\wp):= \Set{(\imath,\jmath,\cP,\cQ)| %
     \begin{array}{l}
-      (\imath,\jmath) = \tau_{\sP}\\
+      (\imath,\jmath) = \tau_{\wp}\\
       \Im \cP \subset \set{\bullet,r,c,d}, \Im \cQ \subset\set{\bullet, s}\\
     \end{array}
   }
 \]
-and for each $\sP$
+and for each $\wp$
 
 Recall the definition of $\PP_{A^{\bR}}(\ckcO'_{b})$ in  \eqref{eq:PP.AR}.
 
@@ -5087,10 +5366,10 @@ Now we consider the good parity part. We defer the proof of the following lemma
 in the \Cref{app:comb}
 
 \begin{lem}
-  For each $\sP\in \subset \CPP(\ckcO_{g})$,
+  For each $\wp\in \subset \CPP(\ckcO_{g})$,
   we have
   \[
-    \abs{\PBP_{\star}(\ckcO_{g},\sP)} =
+    \abs{\PBP_{\star}(\ckcO_{g},\wp)} =
     \abs{\PBP_{\star}(\ckcO_{g},\emptyset)}.
   \]
   In particular, we have
@@ -5122,16 +5401,16 @@ The left cell.
   \]
   and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
 
-  For $\sP \in \CQ(\ckcO)$, let
+  For $\wp \in \CQ(\ckcO)$, let
   \[
-    \tau_{\sP} := (\imath,\jmath) \in \Irr(W'_{g})
+    \tau_{\wp} := (\imath,\jmath) \in \Irr(W'_{g})
   \]
   such that for all $i\geq 1$
   \[
   (\bfcc_{i}(\imath), \bfcc_{i}(\jmath)):=
   \begin{cases}
     (\half \bfrr_{2i-1}(\ckcO_{g}), \half \bfrr_{2i}(\ckcO_{g}))
-    & \text{if } (2i-1,2i)\notin \sP,\\
+    & \text{if } (2i-1,2i)\notin \wp,\\
     (\half \bfrr_{2i}(\ckcO_{g}),\half \bfrr_{2i-1}(\ckcO_{g})) & \text{otherwise.}
   \end{cases}
   \]
@@ -5140,10 +5419,10 @@ The left cell.
   \[
     \begin{array}{ccc}
       \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
-      \sP & \mapsto & \tau_{b}\otimes \tau_{\sP},
+      \wp & \mapsto & \tau_{b}\otimes \tau_{\wp},
     \end{array}
   \]
-  such that $\tau_{b}\otimes \tau_{\sP}$ is the special representation in
+  such that $\tau_{b}\otimes \tau_{\wp}$ is the special representation in
   $\LC(\ckcO)$.
 
   We remark that if $\CPP(\ckcO_{g})=\emptyset$ the the
@@ -5290,9 +5569,9 @@ The left cell.
   \]
   and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
 
-  For $\sP \in \CQ(\ckcO)$, let
+  For $\wp \in \CQ(\ckcO)$, let
   \[
-    \tau_{\sP} := (\imath,\jmath) \in \Irr(W_{b})
+    \tau_{\wp} := (\imath,\jmath) \in \Irr(W_{b})
   \]
   such that
   \[
@@ -5303,7 +5582,7 @@ The left cell.
   (\bfcc_{i}(\imath), \bfcc_{i+1}(\jmath)):=
   \begin{cases}
     (\half \bfrr_{2i}(\ckcO_{g}), \half \bfrr_{2i+1}(\ckcO_{g}))
-    & \text{if } (2i,2i+1)\notin \sP,\\
+    & \text{if } (2i,2i+1)\notin \wp,\\
     (\half \bfrr_{2i+1}(\ckcO_{g}),\half \bfrr_{2i}(\ckcO_{g})) & \text{otherwise.}
   \end{cases}
   \]
@@ -5312,10 +5591,10 @@ The left cell.
   \[
     \begin{array}{ccc}
       \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
-      \sP & \mapsto & \tau_{b}\otimes \tau_{\sP},
+      \wp & \mapsto & \tau_{b}\otimes \tau_{\wp},
     \end{array}
   \]
-  such that $\tau_{b}\otimes \tau_{\sP}$ is the special representation in
+  such that $\tau_{b}\otimes \tau_{\wp}$ is the special representation in
   $\LC(\ckcO)$.
 \end{lem}
 
@@ -5365,17 +5644,17 @@ Clearly $[\tau_{b}:\cC_{b}]$ is counted by the size of the following set
     \end{array}
   }
 \]
-and for each $\sP\subset \CPP(\ckcO_{g})$, the multiplicity
-$[\tau_{\sP}: \cC_{g}]$ is counted by the size of
+and for each $\wp\subset \CPP(\ckcO_{g})$, the multiplicity
+$[\tau_{\wp}: \cC_{g}]$ is counted by the size of
 \[
-  \PBP_{\star}(\ckcO_g,\sP):= \Set{(\imath,\jmath,\cP,\cQ)| %
+  \PBP_{\star}(\ckcO_g,\wp):= \Set{(\imath,\jmath,\cP,\cQ)| %
     \begin{array}{l}
-      (\imath,\jmath) = \tau_{\sP}\\
+      (\imath,\jmath) = \tau_{\wp}\\
       \Im \cP \subset \set{\bullet,c}, \Im \cQ \subset\set{\bullet, s,r,d}\\
     \end{array}
   }
 \]
-and for each $\sP$.
+and for each $\wp$.
 
 Recall the definition of $\PP_{A^{\bR}}(\ckcO'_{b})$ in  \eqref{eq:PP.AR}.
 
@@ -5418,10 +5697,10 @@ Now we consider the good parity part. We defer the proof of the following lemma
 in the \Cref{app:comb}
 
 \begin{lem}
-  For each $\sP\in \subset \CPP(\ckcO_{g})$,
+  For each $\wp\in \subset \CPP(\ckcO_{g})$,
   we have
   \[
-    \abs{\PBP_{\star}(\ckcO_{g},\sP)} =
+    \abs{\PBP_{\star}(\ckcO_{g},\wp)} =
     \abs{\PBP_{\star}(\ckcO_{g},\emptyset)}.
   \]
   In particular, we have
@@ -5456,9 +5735,9 @@ Let $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$.
   \]
   and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
 
-  For $\sP \in \CQ(\ckcO)$, let
+  For $\wp \in \CQ(\ckcO)$, let
   \[
-    \tau_{\sP} := (\imath,\jmath) \in \Irr(W'_{g})
+    \tau_{\wp} := (\imath,\jmath) \in \Irr(W'_{g})
   \]
   such that
   \[
@@ -5473,7 +5752,7 @@ Let $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$.
   \begin{cases}
     (\half (\bfrr_{2i+1}(\ckcO_{g})+1),
     \half (\bfrr_{2i}(\ckcO_{g})-1))
-    & \text{if } (2i,2i+1)\notin \sP,\\
+    & \text{if } (2i,2i+1)\notin \wp,\\
     (\half (\bfrr_{2i}(\ckcO_{g})+1),\half (\bfrr_{2i+1}(\ckcO_{g})-1)) & \text{otherwise.}
   \end{cases}
   \]
@@ -5482,10 +5761,10 @@ Let $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$.
   \[
     \begin{array}{ccc}
       \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
-      \sP & \mapsto & \tau_{b}\otimes \tau_{\sP}.
+      \wp & \mapsto & \tau_{b}\otimes \tau_{\wp}.
     \end{array}
   \]
-  such that $\tau_{b}\otimes \tau_{\sP}$ is the special representation in
+  such that $\tau_{b}\otimes \tau_{\wp}$ is the special representation in
   $\LC(\ckcO)$.
 \end{lem}
 
@@ -5527,17 +5806,17 @@ Clearly $[\tau_{b}:\cC_{b}]$ is counted by the size of the following set
     \end{array}
   }
 \]
-and for each $\sP\subset \CPP(\ckcO_{g})$, the multiplicity
-$[\tau_{\sP}: \cC_{g}]$ is counted by the size of
+and for each $\wp\subset \CPP(\ckcO_{g})$, the multiplicity
+$[\tau_{\wp}: \cC_{g}]$ is counted by the size of
 \[
-  \PBP_{\star}(\ckcO_g,\sP):= \Set{(\imath,\jmath,\cP,\cQ)| %
+  \PBP_{\star}(\ckcO_g,\wp):= \Set{(\imath,\jmath,\cP,\cQ)| %
     \begin{array}{l}
-      (\imath,\jmath) = \tau_{\sP}\\
+      (\imath,\jmath) = \tau_{\wp}\\
       \Im \cP \subset \set{\bullet,s,r,c,d}, \Im \cQ \subset\set{\bullet}\\
     \end{array}
   }
 \]
-and for each $\sP$.
+and for each $\wp$.
 
 
 \begin{lem}
@@ -6336,7 +6615,7 @@ bipartition $\tau_{\cO}$. The type of $\sigma(\cO)$ is $j_{W'}^{W} \sigma'(\cO)$
     Two partition $\lambda\sim_X \mu$ if they have the same $X$-collapsing.
   Sommers showed that two partition $\lambda$ and $\mu$ maps to the same module $E_\lambda = E_\mu$
   if they have the same X-collapse. But the Springer correspondence is injective,
-  so we have the map $\sP/\sim_X \xrightarrow{1-1} \sP_X \hookrightarrow \widehat{W}$
+  so we have the map $\wp/\sim_X \xrightarrow{1-1} \wp_X \hookrightarrow \widehat{W}$
   which gives the claim.
   }
 \end{proof}
@@ -6501,11 +6780,11 @@ This is clear by the explicit formula for the both sides.
 
 \subsection{Proof of ...}
 \begin{proof}
-  Let $i$ be the minimal integer such that $(2i-1, 2i)\in \sP$.
-  We define $\sP' = \sP - \set{(2i-1,2i)}$.
+  Let $i$ be the minimal integer such that $(2i-1, 2i)\in \wp$.
+  We define $\wp' = \wp - \set{(2i-1,2i)}$.
   We will establish a bijection
   \[
-    \PBP_{\star}(\ckcO_{g}, \sP')\longrightarrow \PBP_{\star}(\ckcO_{g},\sP).
+    \PBP_{\star}(\ckcO_{g}, \wp')\longrightarrow \PBP_{\star}(\ckcO_{g},\wp).
   \]
 \end{proof}
 
