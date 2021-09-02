@@ -1296,6 +1296,8 @@
 
 \def\brsgn{\breve{\sgn}}
 
+\def\fhha{\fhh^a}
+
 \begin{document}
 
 
@@ -2230,7 +2232,7 @@ In particular $w\mapsto r_{i} w r_{i}^{-1}$ induces isomorphism
   maps cell representations to cell representations.
 
 \trivial{
-  Let $C = \set{x\in \fhh| \inn{x}{\alpha} >0  \ \forall \alpha\in \WT{\fnn})}$
+  Let $C = \set{x\in \fhh| \inn{x}{\alpha} >0  \ \forall \alpha\in \WT{\fnn}}$
     and
 $D_{\lambda} = \set{x\in \fhh| -\inn{x}{\beta} >0 \ \forall \beta\in R^+_{[\lambda]}}$.
 $C$ and $D_{\lambda}$ are fundamental domains of $\fhh$ under $W$ and
@@ -3569,7 +3571,7 @@ Recall that
 
 
   To state the results, we made some definitions first. Define the irreducible
-  $W_{b}$-representation attached to $\ckcO_{b}$ by the following formula
+  $W_{b}$ representation attached to $\ckcO_{b}$ by the following formula
   \[
     \tau_{b} := \begin{cases}
       \Big(\big(\half(\bfrr_{2}(\ckcO_{b})+1), \half(\bfrr_{4}(\ckcO_{b})+1), \cdots, \half(\bfrr_{2c}(\ckcO_{b})+1)\big),\\
@@ -4143,7 +4145,8 @@ Recall that
       \[
         \cO_{g} = (\bfrr_{1}(\ckcO_{1})+1,\bfrr_{2}(\ckcO_{2})-1,\bfrr_{3}(\ckcO_{3})+1, \cdots, \bfrr_{2l}(\ckcO_{2l})-1,\bfrr_{2l+1}(\ckcO_{2l+1})+1)
       \]
-      The rest parts are similar to that of type $D$. }
+      The rest parts are similar to that of type $D$.
+    }
 
 
     We sketch the proof for the case when $\star = \wtC$.
@@ -5018,53 +5021,168 @@ In this section, $G$ is a classical group or metaplectic group.
   \]
 \end{proof}
 
-\begin{lem}
+\begin{prop}
   There is a bijection
     \[
       \begin{array}{ccc}
-        \Unip_{\star'}(\ckcO'_{b})\Unip_{\star}(\ckcO_{g})&         \longrightarrow &\Unip_{C^{*}}(\ckcO) \\
+        \Unip_{\star'}(\ckcO'_{b})\times \Unip_{\star}(\ckcO_{g})&         \longrightarrow &\Unip_{C^{*}}(\ckcO) \\
         (\pi',\pi_{0}) & \mapsto
                          & \pi'\rtimes \pi_{0}.
       \end{array}
     \]
+\end{prop}
+We use Kazhdan-Lusztig theory to reduce the problem to bad and good parts
+separately. The method was already carefully explained in \cite{Mat} and see
+\cite{GI}*{Section~3} for a comprehensive account of the problem.
+Note that the method does not really relies on the Vogan duality and nor
+require the whole coherent continuation module are isomorphism.
+
+
+\def\fhhaso{(\fhh^a_1)^*}
+\def\fhhast{(\fhh^a_1)^*}
+\newcommand{\ff}{\varphi}
+
+We made the following assumptions (c. f. \cite{GI}*{\S 3E}):
+\begin{enumerate}[label*=(\roman*)]
+  \item $G_{1}$ and $G_{2}$ are two real reductive groups ;
+  \item there is an isomorphism $\ff\colon \fhha_{1}\rightarrow \fhha_{2}$
+        between abstract Cartan subalgebras $\fhha_{1}$ and $\fhha_{2}$ of
+        $G_{1}$ and $G_{2}$ respectively; ;
+  \item $\lambda_{1}\in \fhhaso$ and $\lambda_2\in \fhhast$ are fixed regular
+        elements such that $\lambda_{1} = \lambda_{2}\circ \ff$;
+  \item $\ff$ induces an isomorphism
+        $\ff\colon R_{\lambda_{1}}^{+}\rightarrow R_{\lambda_{2}}^{+}$, and the
+        associated integral Weyl groups
+        $\ff\colon W_{[\lambda_{1}]}\rightarrow W_{[\lambda_{2}]}$;
+  \item
+  there is an injection
+  \[
+    \ff \colon B_{1}\rightarrow B_{2}
+  \]
+        where $b_{1}$ and $B_{2}$ are blocks of conjugate classes of regular
+        characters with infinitesimal character $\lambda_{1}$ and $\lambda_{2}$
+        satisfies the following compatibility conditions: Suppose
+        $\gamma_{2} = \phi(\gamma_{1})\in B_{2}$ such
+        that \begin{enumerate}[label=(\alph*)]
+               \item $\ff\circ \theta_{\gamma_{1}} = \theta_{\gamma_{2}}\circ \ff$
+                     where $\theta_{\gamma_{i}}$ are the Cartan involution
+                     induced on the corresponding abstract root systems.
+                     \trivial[]{ This condition implies that, the notion of
+                     compact/complex/real and
+                     $\alpha\in R^{+}(\gamma), \theta(\alpha)\notin R^{+}(\gamma)$
+                     are preserved by $\ff$. In particular, the integral length
+                     function $l^{I}$ (defined up to a shifting) of $G_{1}$ and
+                     $G_{2}$ can be uniformly identified. }
+                   % \item Suppose $\alpha_{1}$ is noncompact type I (resp.
+                   % noncompact/real type I/II) if and only if
+                   % $\alpha_{2}:= \ff(\alpha_{1})$ is noncompact type I (resp.
+                   % type II).
+               \item For simple roots in $R^{+}_{\lambda_{i}}$, the notions of
+                     noncompact/real type I/II are preserved by $\ff$:
+                     $\alpha_{1}$ is noncompact type I if and only if
+                     $\alpha_{2}:= \ff(\alpha_{1})$ is noncompact type I, etc;
+               \item The cross actions are compatible:
+                     \[
+                     \ff(w\cross [\gamma_{1}]) = \ff(w)\cross [\ff(\gamma_{1})] \qquad \forall \gamma_{1}\in B_{1}, w\in W_{[\lambda_{1}]}.
+                     \]
+               \item The Cayley transforms are compatible:
+                     \[
+                     \ff( c^{\alpha_{1}} \gamma_{1}) = c^{\ff(\alpha_{1})}(\ff(\gamma_{1})) \qquad \forall \gamma_{1}\in B_{1}, \alpha_{1} \text{is
+                     noncompact imaginary}
+                     \]
+                     and
+                     \[
+                     \ff( c_{\alpha_{1}} \gamma_{1}) = c_{\ff(\alpha_{1})}(\ff(\gamma_{1})) \qquad \forall \gamma_{1}\in B_{1}, \alpha_{1} \text{is
+                     real and satisfies parity conditon}
+                     \]
+               \item The $\tau$ invariants are compatible:
+                     \[
+                     \ff(\tau(\gamma_{1})) = \tau(\ff(\gamma_{1}))\qquad \forall \gamma_{1}\in B_{1}.
+                     \]
+                     \trivial[]{
+                       This condition seems not been used below, but used in
+                       Gan-Ichino's proof!
+                       For linear group the matching of $\tau$-invariant is
+                       automatic since it is explicitly determined by the types
+                       of simple roots.
+                       For metaplectic groups, it needs extra information to
+                       determine the $\tau$-invariant, see
+                       \cite{RT1}*{Lemma~6.28}.
+                       It is not clear to me that the $\tau$-invariant must match.
+
+                       On the other hand, the proof of \Cref{lem:ff.irr} seems
+                       implies that $\tau$-invariants match automatically!
+                     }
+
+             \end{enumerate}
+\end{enumerate}
+
+For a fixed block $B$ a regular infinitesimal character $\lambda$,
+let $\Grt_{B}$ be the span of $\set{\pi_{\gamma}|\gamma\in B}$ in the
+Grothendieck group, and $\Coh_{B} := \ev{\lambda}^{-1}(\Grt(B))$.
+
+What we really need is the validity of the following
+conditions:
+\begin{itemize}
+  \item there is an injection of $W_{[\lambda_{1}]}=W_{[\lambda_{2}]}$-module
+  \begin{equation}\label{eq:coh.ff}
+    \ff\colon \Coh_{B_{1}}\rightarrow \Coh_{B_{2}}
+  \end{equation}
+  such that, at our fixed regular infinitesimal character $\lambda_{1}$,
+  $\Theta(\lambda_{1})$ is irreducible implies $\ff(\Theta)(\ff(\lambda_{1}))$
+  is irreducible.
+\end{itemize}
+Under the above assumption, $\ff$ is given by
+sending $\Theta_{\gamma_{1}}$ to $\Theta_{\ff(\gamma_{1})}$.
+Moreover, the above map on coherent continuation representations
+can be lifted to maps between Hecke-modules and the validity of Kazhdan-Lusztig
+conjecture implies the preservation of irreducibility at $\lambda_{1}$.
+
+
+\begin{lem}[{c. f. \cite{GI}*{Lemma~3.3}}]\label{lem:ff.irr}
+  Suppose $\mu_{1}\in [\lambda_{1}]$ is dominant and $\Theta\in \Coh_{B_{1}}$.
+  The evaluation at $\mu_{1}$ induces an injection
+  \[
+  \ff_{\mu_{1}}  \ev{\mu_{1}}(\Coh_{B_{1}}) \longrightarrow  \ev{\mu_{2}}(\Coh_{B_{2}}).
+  \]
+  Moreover, $\ff_{\mu_{1}}(\pi)$ is irreducible if $\pi$ i irreducible.
 \end{lem}
+\begin{proof}
+  The injectivity of $\ff_{\mu_{1}}$ is clear from \Cref{lem:coh.count} and the
+  injectivity of \Cref{eq:coh.ff}. \trivial[]{Note that $W_{[\lambda_{1}]}$ is a
+    finite group!}
+
+  We now prove the second claim. Let $\Theta\in \Coh_{B_{1}}$ such that
+  $\Theta(\mu_{1})=\pi$ and $\Theta(\lambda_{1})$ is irreducible (the existence
+  of $\Theta$ is an abstract property of the coherent continuation). By our
+  assumption $\ff(\Theta)(\lambda_{1})$ is irreducible. Therefore
+  $\ff(\Theta)(\ff(\mu_{1}))$ must be irreducible since it is non zero by the
+  first claim.
+\end{proof}
+
+
+\begin{proof}
+  In all cases, we let $G_{1} = G_{b}\times G_{g}$ and $G_{2}=G$.
+  The map $\ff$ is the natural embedding when $\star \in \set{C,C^{*}, D,D^{*}}$
+  is given by \cite{GI}*{\S 3G} when $\star = B$, and is the natural double
+  covering when $\star =\wtC$.
+
+  Since coherent continuation is compatible with induction, we have the
+  following commutative diagram
+  \[
+    \begin{tikzcd}[column sep=large]
+     &  \Coh_{[\lambda'_{b}]}(G'_{b})\otimes \Coh_{[\lambda_{g}]}(G_{g}) \ar[dl]\ar[dr]&\\
+     \Coh_{[\lambda_{b}]}(G_{b})\otimes \Coh_{[\lambda_{g}]}(G_{g}) \ar[rr]& &
+     \Coh_{[\lamck]}(G)
+    \end{tikzcd}
+  \]
+  which sends $\pi'\boxtimes \pi_{0}$ to the corresponding induced modules.
+  Now the irreducibility follows from that of the LHS.
+\end{proof}
 
 \subsection{Counting special unipotent representation of $G=\Sp(p,q)$}.
 
 The dual group of $\Gc = \Sp(2n,\bC)$ is $\ckGc = \SO(2n+1,\bC)$.
-
-We set $(2m+1,2m') = (\abs{\ckcO_g},\abs{\ckcO_b})$.
-
-% By Vogan duality, the dual group for class $[\lamck]$ is
-% \[
-%   \SO(2m+1,\bC)\times \rO(2m',\bC).
-% \]
-
-
-\begin{lem}
-  Recall \eqref{eq:Lam.C} for the definition of lattice $\Lambda_{n_{b},n_{g}}$.
-  We have the following formula on the coherent continuation
-  representations based on $\Lambda_{n_{b},n_{g}}$:
-  \[
-    \bigoplus_{p+q=n} \Coh_{\Lambda_{n_{b}, n_{g}}}(\Sp(p,q)) \cong \cC_{b}\times \cC_{g}.
-  \]
-  with
-  \[
-    \begin{split}
-      \cC_g %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
-      &=\bigoplus_{\substack{t,s,r\in\bN\\2t+s+r=n_{g}}} \Ind_{H_{t} \times W_s\times W_t}^{W_{n_{g}}}
-       \hsgn \otimes \sgn \otimes \sgn \\
-      & =\bigoplus_{\substack{t,s,r\in\bN\\2t+s+r=n_{g}}} \Ind_{W_{2t}\times W_s\times W_r}^{W_{n_{g}}}
-      (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
-      \cC_b & =
-      \begin{cases}
-        \Ind_{H_{t}}^{W'_{n_{b}}} \sgn &
-        \text{if $n_{b}=2t'$ is even} \\
-        0 & \text{otherwise}\\
-      \end{cases}\\
-    \end{split}
-  \]
-\end{lem}
 
 Let
 \[
@@ -5075,45 +5193,6 @@ Let
       }\\
     \end{array}
   }
-\]
-
-\begin{lem}\label{lem:bp.C*}
-  The set $\PBP_{\star}(\ckcO_{b})$ is a singleton.
-  Let $\ckcO_{1}$ be the partition with only one box.
-  Then  there only one special unipotent representation
-  attached to $\ckcO_{b}\cuprow \ckcO_{1}$ which is given by
-  \[
-    \pi_{\star,\ckcO_{b}}:=
-    \Ind_{\GL_{b}(\bH)}^{\Sp(b,b)}\pi_{\ckcO'_{b}}
-  \]
-  where $\pi_{\ckcO'_{b}}$ is the unique special unipotent representation
-  attached
-  to $\ckcO'_{b}$.
-  % the parabolic induction from
-  % the unique special unipotent representation of $\GL_{b}(\bH)$ to
-  % $\Sp(b,b)$.
-\end{lem}
-\begin{proof}
-  The claim of the size of $\PBP_{\star}$ is clear, i.e. there is only one
-  special unipotent representation attached to $\ckcO'_{b}$. A prior,
-  $\Ind_{\GL_{b}(\bH)}^{\Sp(b,b)}\pi_{\ckcO'_{b}}$ maybe a finite copies of the
-  unique special unipotent representation. Meanwhile its associated variety is
-  multiplicity free. hence $\pi_{\star,\ckcO_{b}}$ must be irreducible.
-\end{proof}
-
-For each $\wp\subset \CPP(\ckcO_{g})$, let
-\[
-  \PBP_{\star,\wp}(\ckcO_g)= \Set{(\imath,\jmath,\cP,\cQ)| %
-    \begin{array}{l}
-      (\imath,\jmath) = \tau_{\wp}\\
-      \Im \cP \subset \set{\bullet}, \Im \cQ \subset\set{\bullet, s,r}\\
-    \end{array}
-  }
-\]
-where $\tau_{\wp}$ is defined in \Cref{lem:cell.C}.
-By abuse of notation, we write
-\[
-\PBP_{\star}(\ckcO_g) :=\PBP_{\star,\emptyset}(\ckcO_g)
 \]
 
 
@@ -5313,49 +5392,6 @@ and for each $\wp$
 
 Recall the definition of $\PP_{A^{\bR}}(\ckcO'_{b})$ in  \eqref{eq:PP.AR}.
 
-\begin{lem}
-  For each $\uptau' \in \PP_{A^{\bR}}(\ckcO'_{b})$, there is a unique painted
-  bipartition $\uptau\in \PBP_{\star}(\ckcO_{b})$ such that
-  \[
-    \cP_{\uptau'}(i,j) = d \quad % \text{if and only if}
-    \Leftrightarrow
-    \quad
-    \cQ_{\uptau}(i,j) = d \quad \forall (i,j)\in \BOX{\imath}\\
-  \]
-  The map gives a bijection
-  \[
-    \begin{array}{ccccccc}
-      \Unip_{\ckcO'_{b}}(\GL_{b}(\bR))&\longleftarrow
-      &\PP_{A^{\bR}}(\ckcO'_{b}) & \longleftrightarrow
-      & \PBP_{\star}(\ckcO_{b}) & \longrightarrow
-      & \Unip_{\ckcO_{b}\cuprow \ckcO_{1}}(\Sp(2b,\bR))\\
-      \pi_{\uptau'} & \mapsfrom & \uptau' & \mapsto
-      & \uptau & \mapsto & \pi_{\uptau}.
-    \end{array}
-  \]
-  Here $\pi_{\uptau'}$ is defined in \eqref{eq:u.GLR} and
-  \[
-    \pi_{\uptau} := \Ind_{\GL_{b}(\bR)}^{\Sp_{2b}(\bR)} \pi_{\uptau'}.
-  \]
-\end{lem}
-\begin{proof}
-  The claims about painted bipartitions are clear.
-  The irreduciblity of $\pi_{\uptau}$ follows from the multiplicity one
-  of its wavefront cycle.
-
-  The representations $\pi_{\uptau_{1}}\neq \pi_{\uptau_{2}}$ if
-  $\uptau_{1}\neq \uptau_{2}$ since they have different cuspidal data by the
-  construction.
-\end{proof}
-
-% \[
-%   \begin{split}
-%     \cC_g &= \bigoplus_{p+q=2m+1}\Cint{\rho}(\SO(p,q))  \\
-%     &=
-%     \bigoplus_{2b+s+r+c+d=m}\Ind_{W_b\ltimes \set{-1}^b\times W_s\times W_r\times W_c\times W_d}^{W_m} 1 \otimes \det \otimes \det \otimes 1 \otimes 1\\
-%     \cC_b &= \Cint{\rho}(\SO^*(2m)) = \bigoplus_{\substack{2s+b=m}}\Ind_{W_s\ltimes \set{-1}^s\times S_b}^{W_m} 1 \otimes\sgn\otimes \sgn
-%   \end{split}
-% \]
 
 We define
 \[
@@ -5659,44 +5695,6 @@ and for each $\wp$.
 Recall the definition of $\PP_{A^{\bR}}(\ckcO'_{b})$ in  \eqref{eq:PP.AR}.
 
 \begin{lem}
-  For each $\uptau' \in \PP_{A^{\bR}}(\ckcO'_{b})$, there is a unique painted
-  bipartition $\uptau\in \PBP_{\star}(\ckcO_{b})$ such that
-  \[
-    \cP_{\uptau'}(i,j) = d \quad % \text{if and only if}
-    \Leftrightarrow
-    \quad
-    \cP_{\uptau}(i,j) = d \quad \forall (i,j)\in \BOX{\imath}\\
-  \]
-  The map gives a bijection
-  \[
-    \begin{array}{ccccccc}
-      \Unip_{\ckcO'_{b}}(\GL_{b}(\bR))&\longleftarrow
-      &\PP_{A^{\bR}}(\ckcO'_{b}) & \longleftrightarrow
-      & \PBP_{\star}(\ckcO_{b}) & \longrightarrow
-      & \Unip_{\ckcO_{b}}(\SO(2b+1,2b))\\
-      \pi_{\uptau'} & \mapsfrom & \uptau' & \mapsto
-      & \uptau & \mapsto & \pi_{\uptau}.
-    \end{array}
-  \]
-  Here $\pi_{\uptau'}$ is defined in \eqref{eq:u.GLR} and
-  \[
-    \pi_{\uptau} := \Ind_{\GL_{b}(\bR)\times \SO(1,0)}^{\SO(2b+1,2b)} \pi_{\uptau'}.
-  \]
-\end{lem}
-\begin{proof}
-  The claims about painted bipartitions are clear.
-  The irreduciblity of $\pi_{\uptau}$ follows from the multiplicity one
-  of its wavefront cycle.
-
-  The representations $\pi_{\uptau_{1}}\neq \pi_{\uptau_{2}}$ if
-  $\uptau_{1}\neq \uptau_{2}$ since they have different cuspidal data by the
-  construction.
-\end{proof}
-
-Now we consider the good parity part. We defer the proof of the following lemma
-in the \Cref{app:comb}
-
-\begin{lem}
   For each $\wp\in \subset \CPP(\ckcO_{g})$,
   we have
   \[
@@ -5714,87 +5712,6 @@ in the \Cref{app:comb}
 
 \section{Type D}
 
-
-Let $\ckcO = \ckcO_{b}\cuprow \ckcO_{g}$.
-
-\subsection{The left cell $\LC_{\ckcO}$}
-%We compute the left cell $\LC_{\ckcO}$ case by case.
-
-\begin{lem}
-  Suppose $\star \in \set{D, D^{*}}$, $\ckcO_{b}$ has $2k$ rows and $\ckcO_{g}$
-  has $2l$-rows. Here each row in $\ckcO_{b}$ has even length and each row in
-  $\ckcO_{g}$ has odd length, and $\WLamck = W'_{b}\times W'_{g}$ where
-  $b= \frac{\abs{\ckcO_{b}}}{2}$ and $g = \frac{\abs{\ckcO_{g}}}{2}$. Let
-  \[
-    \tau_{b} = \left( (\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}), (\half\bfrr_{2}(\ckcO_{b}), \half\bfrr_{4}(\ckcO_{b}),\cdots, \half\bfrr_{2k}(\ckcO_{b}) \right)_{I}\in \Irr(W'_{b}).
-  \]
-  Set
-  \[
-    \CPP(\ckcO_{g}) = \set{(2i,2i+1)| \bfrr_{2i}(\ckcO_{g})> \bfrr_{2i+1}(\ckcO_{g})>0, \text{
-        and } i\in \bN^{+}}
-  \]
-  and $\CQ(\ckcO)= \bF_{2}[\CPP(\ckcO_{g})]$.
-
-  For $\wp \in \CQ(\ckcO)$, let
-  \[
-    \tau_{\wp} := (\imath,\jmath) \in \Irr(W'_{g})
-  \]
-  such that
-  \[
-    \begin{split}
-      \bfcc_{1}(\imath)  &:= \half(\bfrr_{1}(\ckcO_{g})+1)\\
-      (\bfcc_{l+1}(\imath), \bfcc_{l}(\jmath))  &:= (0,\half(\bfrr_{2l}(\ckcO_{g})-1))
-    \end{split}
-  \]
-  and for all $1\leq i< l$
-  \[
-  (\bfcc_{i+1}(\imath), \bfcc_{i}(\jmath)):=
-  \begin{cases}
-    (\half (\bfrr_{2i+1}(\ckcO_{g})+1),
-    \half (\bfrr_{2i}(\ckcO_{g})-1))
-    & \text{if } (2i,2i+1)\notin \wp,\\
-    (\half (\bfrr_{2i}(\ckcO_{g})+1),\half (\bfrr_{2i+1}(\ckcO_{g})-1)) & \text{otherwise.}
-  \end{cases}
-  \]
-
-  Then we have the following bijection
-  \[
-    \begin{array}{ccc}
-      \CQ(\ckcO) &\longrightarrow & \LC(\ckcO)\\
-      \wp & \mapsto & \tau_{b}\otimes \tau_{\wp}.
-    \end{array}
-  \]
-  such that $\tau_{b}\otimes \tau_{\wp}$ is the special representation in
-  $\LC(\ckcO)$.
-\end{lem}
-
-Let \[
-  \Lambda_{n_{1}, n_{2}} = (\underbrace{\half,\cdots,\half}_{n_{1}\text{-terms}}, \underbrace{0,\cdots,0}_{n_{2}\text{-terms}}, )
-\]
-
-We set $(2n_{g},2n_{b}) = (\abs{\ckcO_g},\abs{\ckcO_b})$.
-
-\begin{lem}
-  We have the following formula on the coherent continuation
-  representations based on $\Lambda_{n_{1},n_{2}}$:
-  \[
-    \bigoplus_{p+q=2n} \Coh_{\Lambda_{n_1, n_2}}(\SO(p,q)) \cong \cC_{b}\otimes \cC_{g}.
-  \]
-  with
-  \[
-    \begin{split}
-      \cC_g %& = \bigoplus_{p+q=m} \Cint{\rho}(\Sp(p,q)) \\
-      &=\bigoplus_{\substack{t,c,d,s,r\in\bN\\2t+c+d+s+r=n_{g}}} \Ind_{H_{t} \times \times W_s\times W_r\times W_{c}\times W_{d} }^{W_{n_{g}}}
-      \hsgn \otimes \sgn \otimes \sgn \otimes 1\otimes 1\\
-      % & =\bigoplus_{\substack{t,s,r\in\bN\\2t+s+r=n_{g}}} \Ind_{W_{2t}\times
-      % W_s\times W_r}^{W_{n_{g}}}
-      % (\sigma,\sigma)\otimes \sgn \otimes \sgn \\
-      \cC_b & =
-      \bigoplus_{\substack{t,a\in \bN\\2t+a=n_{1}}}
-      \Ind_{H_{t}\times S_{a}}^{W_{n_{1}}} \hsgn\otimes 1
-    \end{split}
-  \]
-\end{lem}
 
 
 Clearly $[\tau_{b}:\cC_{b}]$ is counted by the size of the following set
@@ -5818,41 +5735,6 @@ $[\tau_{\wp}: \cC_{g}]$ is counted by the size of
 \]
 and for each $\wp$.
 
-
-\begin{lem}
-  For each $\uptau' \in \PP_{A^{\bR}}(\ckcO'_{b})$, there is a unique painted
-  bipartition $\uptau\in \PBP_{\star}(\ckcO_{b})$ such that
-  \[
-    \cP_{\uptau'}(i,j) = d \quad % \text{if and only if}
-    \Leftrightarrow
-    \quad
-    \cP_{\uptau}(i,j) = d \quad \forall (i,j)\in \BOX{\imath}\\
-  \]
-  The map gives a bijection
-  \[
-    \begin{array}{ccccccc}
-      \Unip_{\ckcO'_{b}}(\GL_{b}(\bR))&\longleftarrow
-      &\PP_{A^{\bR}}(\ckcO'_{b}) & \longleftrightarrow
-      & \PBP_{\star}(\ckcO_{b}) & \longrightarrow
-      & \Unip_{\ckcO_{b}}(\SO(2b+1,2b))\\
-      \pi_{\uptau'} & \mapsfrom & \uptau' & \mapsto
-      & \uptau & \mapsto & \pi_{\uptau}.
-    \end{array}
-  \]
-  Here $\pi_{\uptau'}$ is defined in \eqref{eq:u.GLR} and
-  \[
-    \pi_{\uptau} := \Ind_{\GL_{b}(\bR)}^{\SO(2b,2b)} \pi_{\uptau'}.
-  \]
-\end{lem}
-\begin{proof}
-  The claims about painted bipartitions are clear.
-  The irreduciblity of $\pi_{\uptau}$ follows from the multiplicity one
-  of its wavefront cycle.
-
-  The representations $\pi_{\uptau_{1}}\neq \pi_{\uptau_{2}}$ if
-  $\uptau_{1}\neq \uptau_{2}$ since they have different cuspidal data by the
-  construction.
-\end{proof}
 
 
 \appendix
@@ -5927,85 +5809,6 @@ be two bipartition. Then
   j_{W_{\abs{\tau}}\times W_{\abs{\sigma}}}^{W_{\abs{\tau}+\abs{\sigma}}}
   \tau \boxtimes \sigma = (\tau_{L}\cup \sigma_{L}, \tau_{R}\cup \sigma_{R})
 \]
-
-
-\delete{
-\subsection{Parameterize of Unipotent representations}
-We fix an abstract complex Cartan subgroup $\bfH_a$ and $\fhh_a$ in $\bfG$ and a
-set of simple roots $\Pi_a$.  Let $\cP(\bfG)$ be the set of all Langlands
-parameters of $G$-modules with character $\rho$ (i.e. the infinitesimal
-character of the trivial representation). For $\gamma\in \cP(\bfG)$, let
-$\cL(\gamma)$, $\cS(\gamma)$ and $\Phi_\gamma$ be the corresponding Langlands
-quotient, standard module and coherent family such that
-$\Phi_\gamma(\rho) = \cL(\gamma)$. Let $\cM(\bfG)$ be the span of $\cL(\gamma)$.
-Let $\set{\bB}$ be the set of all blocks. Then $\cP(\bfG) = \bigsqcup_\cB \cB$.
-The Weyl group $W = W(G)$ acts on $\cM(\bfG)$ by coherent continuation.  Let
-$\cM_{\cB}$ be the submodule of $\cM(\bfG)$ spanned by $\gamma\in\cB$, then
-\[
-  \cM(\bfG) = \bigoplus_\cB \cM_{\cB}
-\]
-Let $\tau(\gamma)\subset \Pi_a$ be the $\tau$-invariant of $\gamma$.
-
-Let $\ckcO$ be even orbit. $\lambda= \half \ckhh$.  Define
-\[
-  S(\lambda) = \set{\alpha\in \Pi_a| \inn{\alpha}{\lambda}=0}.
-\]
-Let $\cP_{\lambda}(\bfG)$ be the set of all Langlands parameters with
-infinitesimal character $\lambda$. Let $T_{\lambda,\rho}$ be the translation
-functor.  Let
-\[
-  \cB(S) = \set{\gamma\in \cB|S\cap \tau(\gamma)=\emptyset}
-\]
-and
-\[
-  \cP(\bfG,S) = \bigsqcup_{\cB} \cB(S)
-\]
-
-
-Then
-\[
-  \begin{tikzcd}[row sep=0em]
-    \cP(\bfG,S) \ar[r] & \cP_{\lambda}(\bfG)\\
-    \gamma \ar[r, maps to]& T_{\lambda, \rho}(\gamma)
-  \end{tikzcd}
-\]
-
-Let $\cO$ be a complex nilpotent orbit in $\fgg$.  Let
-\[
-  \cB(S,\cO) = \set{\gamma\in \cB(S)|\AVC(\cL(\gamma))\subset \bcO}
-\]
-
-Let
-\[
-  \begin{aligned}
-    m_S(\sigma) &= [\sigma: \Ind_{W(S)}^{W}\bfone]\\
-    m_\cB(\sigma)& = [\sigma: \cM_\cB]
-  \end{aligned}
-\]
-
-
-Barbasch \cite{B10}*{Theorem~9.1} established the following theorem.
-\begin{thm}
-  \[
-    |\cB(S,\cO)| = \sum_{\sigma} m_\cB(\sigma)m_S(\sigma)
-  \]
-  Here $\sigma\times \sigma$ running over the $W\times W$ appears in the double
-  cell $\cC(\cO)$.
-\end{thm}
-\begin{proof}
-  We need to take the graded module of $\cM(\bfG)$ with respect to the
-  $\LRleq$. By abuse of notation, we identify the basis $\cP(\bfG)$ with its
-  image in the graded module.  Note that $S\cap \tau(\lambda)=\emptyset$ if and
-  only if $W(S)$ acts on $\gamma$ trivially by \cite[Lemma~14.7]{V4}.  On the
-  other hand, by \cite[Theorem~14.10, and page 58]{V4},
-  $\AVC(\cL(\gamma))\subset \bcO$ only if $\gamma$ generate a $W$-module in the
-  double cell of $\cO$.
-\end{proof}
-
-Now assume $S=S(\lambda)$. By \cite[Cor~5.30 b) and c)]{BVUni},
-$[\sigma: \Ind_{W(S)}^{W}\bfone]=[\bfone|_{W(S)}:\sigma]\leq 1$.
-
-}
 
 
 
@@ -7209,6 +7012,20 @@ pages={796--853},
   year = {1966},
 }
 
+\bib{GI}{article}{
+   author={Gan, Wee Teck},
+   author={Ichino, Atsushi},
+   title={On the irreducibility of some induced representations of real
+   reductive Lie groups},
+   journal={Tunis. J. Math.},
+   volume={1},
+   date={2019},
+   number={1},
+   pages={73--107},
+   issn={2576-7658},
+   review={\MR{3907735}},
+   doi={10.2140/tunis.2019.1.73},
+}
 
 \bib{HLS}{article}{
     author = {Harris, M.},
@@ -7586,6 +7403,19 @@ year={1989},
     pages ={265--311},
 }
 
+\bib{Mat}{article}{
+   author={Matumoto, Hisayosi},
+   title={On the representations of ${\rm Sp}(p,q)$ and ${\rm SO}^*(2n)$
+   unitarily induced from derived functor modules},
+   journal={Compos. Math.},
+   volume={140},
+   date={2004},
+   number={4},
+   pages={1059--1096},
+   issn={0010-437X},
+   review={\MR{2059231}},
+   doi={10.1112/S0010437X03000629},
+}
 
 \bib{Mc}{article}{
    author = {McGovern, W. M},
