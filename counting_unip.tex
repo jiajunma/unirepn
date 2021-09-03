@@ -4969,11 +4969,11 @@ every irreducible component $(\sigma_{L},\sigma_{R})$ in $\cC_{g}$ satisfies
 
 In this section, $G$ is a classical group or metaplectic group.
 
-\begin{lem}
+\begin{lem}\label{lem:Unip.BP}
   Suppose $n_{g}=0$. Then we have a bijection
   \[
     \begin{array}{rccc}
-      \fI: &\Unip_{G'}(\ckcO'_{b}) & \longrightarrow & \Unip_{G}(\ckcO) \\
+      \fI_{b}: &\Unip_{G'}(\ckcO'_{b}) & \longrightarrow & \Unip_{G}(\ckcO) \\
       &\pi' & \mapsto & \pi:=\Ind_{P}^{G}\pi'
     \end{array}
   \]
@@ -5010,10 +5010,9 @@ In this section, $G$ is a classical group or metaplectic group.
     % Note that every $W_{[\mu]}$-module in $\Grt_{\mu}(G)$ is in $\Ind_{W_{\mu}}^{W_{[\mu]}}$
   }
   Note that representations in $\Unip_{G'}(\ckcO'_{b})$ have distinct
-  cuspidal data, which implies that $\Ind_{P}^{G}\pi'$ has distinct cuspidal
-  data when $\pi'$ varies.
+  cuspidal data/Langlands parameter. This implies that $\Ind_{P}^{G}\pi'$ has distinct cuspidal data/Langlands when $\pi'$ varies.
   Recall that $\star' \in \set{A^{\bR},A^{\bC}, A^{\bH}}$ depends on $G$.
-  Therefore, $\fI$ is injective. The bijection follows from the counting
+  Therefore, $\fI_{b}$ is injective. The bijection follows from the counting
   inequality below:
   \[
     \abs{\PP_{\star'}(\ckcO'_{b})}=\abs{\Unip_{G'}}(\ckcO'_{b})\leq \abs{\Unip_{G}(\ckcO)}
@@ -5021,163 +5020,325 @@ In this section, $G$ is a classical group or metaplectic group.
   \]
 \end{proof}
 
-\begin{prop}
+
+Case by case,  we set
+\[
+  (G_{b},G_{g}) =
+  \begin{cases}
+    (\SO(n_{b},n_{b}+1),\SO(p,q)) & \text{when } \star = B \\
+    (\Sp(2n_{b},\bR),\Sp(2n_{g},\bR)) & \text{when } \star = C \\
+    (\Sp(n_{b},n_{b}), \Sp(p,q)) & \text{when } \star = C^{*} \\
+    (\Mp(2n_{b},\bR),\Mp(2n_{g},\bR)) & \text{when } \star = \wtC \\
+    (\rO^{*}(n_{b}), \rO^{*}(n_{g})) & \text{when } \star = D^{*} \\
+    (\SO(n_{b},n_{b}), \SO(p,q) )& \text{when } \star = D \\
+  \end{cases}
+\]
+Let $G'$ be the Levi of the Siegel parabolic in $G_{b}$.
+
+\begin{prop}\label{prop:red}
   There is a bijection
-    \[
-      \begin{array}{ccc}
-        \Unip_{\star'}(\ckcO'_{b})\times \Unip_{\star}(\ckcO_{g})&         \longrightarrow &\Unip_{C^{*}}(\ckcO) \\
-        (\pi',\pi_{0}) & \mapsto
-                         & \pi'\rtimes \pi_{0}.
+  \begin{equation}\label{eq:IND}
+      \begin{array}{rccc}
+    \fI\colon &   \Unip_{G'}(\ckcO'_{b})\times \Unip_{G_{g}}(\ckcO_{g})&         \longrightarrow &\Unip_{G}(\ckcO) \\
+     &   (\pi',\pi_{0}) & \mapsto & \pi'\rtimes \pi_{0}.
       \end{array}
-    \]
-\end{prop}
-We use Kazhdan-Lusztig theory to reduce the problem to bad and good parts
-separately. The method was already carefully explained in \cite{Mat} and see
+    \end{equation}
+  \end{prop}
+
+% We would like to reduce the problem to consider the bad and good parts
+% separately.
+First we translate the problem to
+regular infinitesimal character using the following lemma:
+ The method was already carefully explained in \cite{Mat} and see
 \cite{GI}*{Section~3} for a comprehensive account of the problem.
-Note that the method does not really relies on the Vogan duality and nor
-require the whole coherent continuation module are isomorphism.
 
 
 \def\fhhaso{(\fhh^a_1)^*}
 \def\fhhast{(\fhh^a_1)^*}
-\newcommand{\ff}{\varphi}
-
-We made the following assumptions (c. f. \cite{GI}*{\S 3E}):
-\begin{enumerate}[label*=(\roman*)]
-  \item $G_{1}$ and $G_{2}$ are two real reductive groups ;
-  \item there is an isomorphism $\ff\colon \fhha_{1}\rightarrow \fhha_{2}$
-        between abstract Cartan subalgebras $\fhha_{1}$ and $\fhha_{2}$ of
-        $G_{1}$ and $G_{2}$ respectively; ;
-  \item $\lambda_{1}\in \fhhaso$ and $\lambda_2\in \fhhast$ are fixed regular
-        elements such that $\lambda_{1} = \lambda_{2}\circ \ff$;
-  \item $\ff$ induces an isomorphism
-        $\ff\colon R_{\lambda_{1}}^{+}\rightarrow R_{\lambda_{2}}^{+}$, and the
-        associated integral Weyl groups
-        $\ff\colon W_{[\lambda_{1}]}\rightarrow W_{[\lambda_{2}]}$;
-  \item
-  there is an injection
-  \[
-    \ff \colon B_{1}\rightarrow B_{2}
-  \]
-        where $b_{1}$ and $B_{2}$ are blocks of conjugate classes of regular
-        characters with infinitesimal character $\lambda_{1}$ and $\lambda_{2}$
-        satisfies the following compatibility conditions: Suppose
-        $\gamma_{2} = \phi(\gamma_{1})\in B_{2}$ such
-        that \begin{enumerate}[label=(\alph*)]
-               \item $\ff\circ \theta_{\gamma_{1}} = \theta_{\gamma_{2}}\circ \ff$
-                     where $\theta_{\gamma_{i}}$ are the Cartan involution
-                     induced on the corresponding abstract root systems.
-                     \trivial[]{ This condition implies that, the notion of
-                     compact/complex/real and
-                     $\alpha\in R^{+}(\gamma), \theta(\alpha)\notin R^{+}(\gamma)$
-                     are preserved by $\ff$. In particular, the integral length
-                     function $l^{I}$ (defined up to a shifting) of $G_{1}$ and
-                     $G_{2}$ can be uniformly identified. }
-                   % \item Suppose $\alpha_{1}$ is noncompact type I (resp.
-                   % noncompact/real type I/II) if and only if
-                   % $\alpha_{2}:= \ff(\alpha_{1})$ is noncompact type I (resp.
-                   % type II).
-               \item For simple roots in $R^{+}_{\lambda_{i}}$, the notions of
-                     noncompact/real type I/II are preserved by $\ff$:
-                     $\alpha_{1}$ is noncompact type I if and only if
-                     $\alpha_{2}:= \ff(\alpha_{1})$ is noncompact type I, etc;
-               \item The cross actions are compatible:
-                     \[
-                     \ff(w\cross [\gamma_{1}]) = \ff(w)\cross [\ff(\gamma_{1})] \qquad \forall \gamma_{1}\in B_{1}, w\in W_{[\lambda_{1}]}.
-                     \]
-               \item The Cayley transforms are compatible:
-                     \[
-                     \ff( c^{\alpha_{1}} \gamma_{1}) = c^{\ff(\alpha_{1})}(\ff(\gamma_{1})) \qquad \forall \gamma_{1}\in B_{1}, \alpha_{1} \text{is
-                     noncompact imaginary}
-                     \]
-                     and
-                     \[
-                     \ff( c_{\alpha_{1}} \gamma_{1}) = c_{\ff(\alpha_{1})}(\ff(\gamma_{1})) \qquad \forall \gamma_{1}\in B_{1}, \alpha_{1} \text{is
-                     real and satisfies parity conditon}
-                     \]
-               \item The $\tau$ invariants are compatible:
-                     \[
-                     \ff(\tau(\gamma_{1})) = \tau(\ff(\gamma_{1}))\qquad \forall \gamma_{1}\in B_{1}.
-                     \]
-                     \trivial[]{
-                       This condition seems not been used below, but used in
-                       Gan-Ichino's proof!
-                       For linear group the matching of $\tau$-invariant is
-                       automatic since it is explicitly determined by the types
-                       of simple roots.
-                       For metaplectic groups, it needs extra information to
-                       determine the $\tau$-invariant, see
-                       \cite{RT1}*{Lemma~6.28}.
-                       It is not clear to me that the $\tau$-invariant must match.
-
-                       On the other hand, the proof of \Cref{lem:ff.irr} seems
-                       implies that $\tau$-invariants match automatically!
-                     }
-
-             \end{enumerate}
-\end{enumerate}
-
-For a fixed block $B$ a regular infinitesimal character $\lambda$,
-let $\Grt_{B}$ be the span of $\set{\pi_{\gamma}|\gamma\in B}$ in the
-Grothendieck group, and $\Coh_{B} := \ev{\lambda}^{-1}(\Grt(B))$.
-
-What we really need is the validity of the following
-conditions:
-\begin{itemize}
-  \item there is an injection of $W_{[\lambda_{1}]}=W_{[\lambda_{2}]}$-module
-  \begin{equation}\label{eq:coh.ff}
-    \ff\colon \Coh_{B_{1}}\rightarrow \Coh_{B_{2}}
-  \end{equation}
-  such that, at our fixed regular infinitesimal character $\lambda_{1}$,
-  $\Theta(\lambda_{1})$ is irreducible implies $\ff(\Theta)(\ff(\lambda_{1}))$
-  is irreducible.
-\end{itemize}
-Under the above assumption, $\ff$ is given by
-sending $\Theta_{\gamma_{1}}$ to $\Theta_{\ff(\gamma_{1})}$.
-Moreover, the above map on coherent continuation representations
-can be lifted to maps between Hecke-modules and the validity of Kazhdan-Lusztig
-conjecture implies the preservation of irreducibility at $\lambda_{1}$.
-
+\newcommand{\ff}{f}
+\newcommand{\ffcoh}{\varphi}
 
 \begin{lem}[{c. f. \cite{GI}*{Lemma~3.3}}]\label{lem:ff.irr}
-  Suppose $\mu_{1}\in [\lambda_{1}]$ is dominant and $\Theta\in \Coh_{B_{1}}$.
-  The evaluation at $\mu_{1}$ induces an injection
+  Suppose that
+  \begin{enumerate}[label=(\roman*),series=KLff]
+    \item \label{it:KLff.1} $G_{1}$ and $G_{2}$ are two real reductive groups in
+          the Harish-Chandra class
+    \item there is an isomorphism \[ \ff\colon \fhhaso\rightarrow \fhhast
+          \]
+          of the dual of the abstract Cartans of $G_{1}$ and $G_{2}$;
+    \item $\lambda_{1} \in \fhhaso$ and $\lambda_{2} = \ff(\lambda_{1})$ are
+          regular dominant elements;
+          % \item $\lambda_{1}$ and $\lambda_{2}$ are regular;
+    \item \label{it:KLff.4} $\ff$ induces a bijection between
+          $R^{+}_{[\lambda_{1}]}$ and $R^{+}_{[\lambda_{2}]}$, so that we can
+          identify $W_{[\lambda_{1}]}$ with $W_{[\lambda_{2}]}$ via $\ff$;
+  \end{enumerate}
+  Let $\Coh_{1}$ be a $W_{[\lambda_{1}]}$ submodule of
+  $\Coh_{[\lambda_{1}]}(G_{1})$ such that $\ev{\lambda_{1}}(\Coh_{1})$ is
+  spanned by irreducible $G_{1}$-modules. Suppose
+  \begin{equation}\label{eq:coh.ff}
+    \ffcoh\colon \Coh_{1}\rightarrow \Coh_{[\lambda_{2}]}(G_{2})
+  \end{equation}
+  is an injection between $W_{[\lambda_{1}]}=W_{[\lambda_{2}]}$-modules such
+  that
+  \begin{itemize}
+    \item $\ffcoh(\Theta)(\lambda_{2})$ is irreducible if $\Theta\in \Coh_{1}$
+          and $\Theta(\lambda_{1})$ is irreducible.
+  \end{itemize}
+
+  Then for any $\mu_{1}\in [\lambda_{1}]$, the evaluation at $\mu_{1}$ induces
+  an injection
   \[
-  \ff_{\mu_{1}}  \ev{\mu_{1}}(\Coh_{B_{1}}) \longrightarrow  \ev{\mu_{2}}(\Coh_{B_{2}}).
+    \ffcoh_{\mu_{1}} \colon \ev{\mu_{1}}(\Coh_{1}) \longrightarrow \ev{\ff(\mu_{1})}(\Coh_{[\lambda_{2}]}(G_{2})).
   \]
-  Moreover, $\ff_{\mu_{1}}(\pi)$ is irreducible if $\pi$ i irreducible.
+  such that $\ffcoh_{\mu_{1}}(\pi)$ is irreducible if $\pi$ is irreducible.
 \end{lem}
 \begin{proof}
   The injectivity of $\ff_{\mu_{1}}$ is clear from \Cref{lem:coh.count} and the
-  injectivity of \Cref{eq:coh.ff}. \trivial[]{Note that $W_{[\lambda_{1}]}$ is a
+  injectivity of \eqref{eq:coh.ff}. \trivial[]{Note that $W_{[\lambda_{1}]}$ is a
     finite group!}
 
-  We now prove the second claim. Let $\Theta\in \Coh_{B_{1}}$ such that
+  We now prove the second claim. It easy to reduce to the case when $\mu_{1}$ is
+  $R^{+}_{[\lambda_{1}]}$ dominant, c.f. \cite{GI}*{Lemma~3.3}.
+  Let $\Theta\in \Coh_{1}$ such that
   $\Theta(\mu_{1})=\pi$ and $\Theta(\lambda_{1})$ is irreducible (the existence
   of $\Theta$ is an abstract property of the coherent continuation). By our
-  assumption $\ff(\Theta)(\lambda_{1})$ is irreducible. Therefore
-  $\ff(\Theta)(\ff(\mu_{1}))$ must be irreducible since it is non zero by the
+  assumption $\ffcoh(\Theta)(\lambda_{1})$ is irreducible. Therefore
+  $\ffcoh_{\mu_{1}}(\pi):=\ffcoh(\Theta)(\ff(\mu_{1}))$ must be irreducible since it is non zero by the
   first claim.
 \end{proof}
 
+In our case, we use the Kazhdan-Lusztig-Vogan theory to obtain the injection
+\eqref{eq:coh.ff} and then reduce the problem to bad and good parts
+separately.
+Note that the method does not really relies on the Vogan duality and nor
+require the whole coherent continuation module are isomorphism.
 
-\begin{proof}
-  In all cases, we let $G_{1} = G_{b}\times G_{g}$ and $G_{2}=G$.
-  The map $\ff$ is the natural embedding when $\star \in \set{C,C^{*}, D,D^{*}}$
-  is given by \cite{GI}*{\S 3G} when $\star = B$, and is the natural double
-  covering when $\star =\wtC$.
+In additional to \ref{it:KLff.1}-\ref{it:KLff.4} in
+\Cref{lem:ff.irr}, we made the following assumptions (c. f. \cite{GI}*{\S 3E}):
+\begin{enumerate}[KLff]
+  % \item $G_{1}$ and $G_{2}$ are two real reductive groups ;
+  % \item there is an isomorphism $\ff\colon \fhha_{1}\rightarrow \fhha_{2}$
+  % between abstract Cartan subalgebras $\fhha_{1}$ and $\fhha_{2}$ of $G_{1}$
+  % and $G_{2}$ respectively; ;
+  % \item $\lambda_{1}\in \fhhaso$ and $\lambda_2\in \fhhast$ are fixed regular
+  % elements such that $\lambda_{1} = \lambda_{2}\circ \ff$;
+  % \item $\ff$ induces an isomorphism
+  % $\ff\colon R_{\lambda_{1}}^{+}\rightarrow R_{\lambda_{2}}^{+}$, and the
+  % associated integral Weyl groups
+  % $\ff\colon W_{[\lambda_{1}]}\rightarrow W_{[\lambda_{2}]}$;
+  \item there is an injection
+        \[
+        \ffcoh \colon B\rightarrow \cP_{\lambda_{2}}(G_{2})
+        \]
+        where $B\subset \cP_{\lambda_{1}}(G_{1})$ is a union of blocks of
+        conjugate classes of regular characters with infinitesimal character
+        $\lambda_{1}$.
+  \item for $\gamma_{1}\in B$ and $\gamma_{2} = \ffcoh(\gamma_{1})\in \cP_{\lambda_{2}}(G_{2})$ the
+        following conditions are satisfied
+        \begin{enumerate}[label=(\alph*)]
+          \item $\ff \circ \theta_{\gamma_{1}} = \theta_{\gamma_{2}}\circ \ff$
+                where $\theta_{\gamma_{i}}$ are the Cartan involution induced on
+                the corresponding abstract root systems. \trivial[]{ This
+                condition implies that, the notion of compact/complex/real and
+                $\alpha\in R^{+}(\gamma), \theta(\alpha)\notin R^{+}(\gamma)$
+                are preserved by $\ff$. In particular, the integral length
+                function $l^{I}$ (defined up to a shifting) of $G_{1}$ and
+                $G_{2}$ can be uniformly identified. }
+              % \item Suppose $\alpha_{1}$ is noncompact type I (resp.
+              % noncompact/real type I/II) if and only if
+              % $\alpha_{2}:= \ff(\alpha_{1})$ is noncompact type I (resp. type
+              % II).
+          \item For simple roots in $R^{+}_{\lambda_{i}}$, the notions of
+                noncompact/real type I/II are preserved by $\ff$: $\alpha_{1}$
+                is noncompact type I if and only if
+                $\alpha_{2}:= \ff(\alpha_{1})$ is noncompact type I, etc;
+          \item The cross actions are compatible:
+                \[
+                \ff(w\cross [\gamma_{1}]) = \ff(w)\cross [\ff(\gamma_{1})] \qquad \forall \gamma_{1}\in B_{1}, w\in W_{[\lambda_{1}]}.
+                \]
+          \item The Cayley transforms are compatible:
+                \[
+                \ff( c^{\alpha_{1}} (\gamma_{1})) = c^{\ff(\alpha_{1})}(\ff(\gamma_{1})) \qquad \forall \gamma_{1}\in B_{1}, \alpha_{1} \text{is
+                noncompact imaginary}
+                \]
+                and
+                \[
+                  \ff( c_{\alpha_{1}} (\gamma_{1})) = c_{\ff(\alpha_{1})}(\ff(\gamma_{1}))
+                \]
+                for all $\gamma_{1}\in B_{1}, \alpha_{1}$ is
+                real and satisfies parity condition.
+          % \item The $\tau$ invariants are compatible:
+          %       \[
+          %       \ff(\tau(\gamma_{1})) = \tau(\ff(\gamma_{1}))\qquad \forall \gamma_{1}\in B_{1}.
+          %       \]
+          %       \trivial[]{ This condition seems not been used below, but used
+          %       in Gan-Ichino's proof! For linear group the matching of
+          %       $\tau$-invariant is automatic since it is explicitly determined
+          %       by the types of simple roots. For metaplectic groups, it needs
+          %       extra information to determine the $\tau$-invariant, see
+          %       \cite{RT1}*{Lemma~6.28}. It is not clear to me that the
+          %       $\tau$-invariant must match.
 
-  Since coherent continuation is compatible with induction, we have the
+          %       On the other hand, the proof of \Cref{lem:ff.irr} seems implies
+          %       that $\tau$-invariants match automatically! }
+        \end{enumerate}
+\end{enumerate}
+
+%For a fixed block $B$ a regular infinitesimal character $\lambda_{1}$,
+Under the above assumptions, let $\Grt_{B}$ be the span of $\set{\barpi_{\gamma}|\gamma\in B}$ in the
+Grothendieck group, and $\Coh_{1} := \ev{\lambda}^{-1}(\Grt(B))$.
+% What we really need is the validity of the following
+% conditions:
+% \begin{itemize}
+%   \item there is an injection of $W_{[\lambda_{1}]}=W_{[\lambda_{2}]}$-module
+%   \begin{equation}\label{eq:coh.ff}
+%     \ff\colon \Coh_{B_{1}}\rightarrow \Coh_{B_{2}}
+%   \end{equation}
+%   such that, at our fixed regular infinitesimal character $\lambda_{1}$,
+%   $\Theta(\lambda_{1})$ is irreducible implies $\ff(\Theta)(\ff(\lambda_{1}))$
+%   is irreducible.
+% \end{itemize}
+Then $\ffcoh$ is given by sending $\Theta_{\gamma_{1}}$ to
+$\Theta_{\ff(\gamma_{1})}$. In fact, the above map on coherent continuation
+representations can be lifted to maps between Hecke-modules and the validity of
+Kazhdan-Lusztig-Vogan conjecture implies the preservation of irreducibility of
+$\ffcoh$ at $\lambda_{1}$.
+
+
+% \begin{lem}[{c. f. \cite{GI}*{Lemma~3.3}}]\label{lem:ff.irr}
+%   Suppose $\mu_{1}\in [\lambda_{1}]$ is dominant and $\Theta\in \Coh_{B_{1}}$.
+%   The evaluation at $\mu_{1}$ induces an injection
+%   \[
+%   \ff_{\mu_{1}}  \ev{\mu_{1}}(\Coh_{B_{1}}) \longrightarrow  \ev{\mu_{2}}(\Coh_{B_{2}}).
+%   \]
+%   Moreover, $\ff_{\mu_{1}}(\pi)$ is irreducible if $\pi$ i irreducible.
+% \end{lem}
+% \begin{proof}
+%   The injectivity of $\ff_{\mu_{1}}$ is clear from \Cref{lem:coh.count} and the
+%   injectivity of \Cref{eq:coh.ff}. \trivial[]{Note that $W_{[\lambda_{1}]}$ is a
+%     finite group!}
+
+%   We now prove the second claim. Let $\Theta\in \Coh_{B_{1}}$ such that
+%   $\Theta(\mu_{1})=\pi$ and $\Theta(\lambda_{1})$ is irreducible (the existence
+%   of $\Theta$ is an abstract property of the coherent continuation). By our
+%   assumption $\ff(\Theta)(\lambda_{1})$ is irreducible. Therefore
+%   $\ff(\Theta)(\ff(\mu_{1}))$ must be irreducible since it is non zero by the
+%   first claim.
+% \end{proof}
+
+
+We set $G_{1} := G_{b}\times G_{g}$ and $G_{2}:=G$.
+There is a natural map
+\[
+\ff\colon G_{1} = G_{b}\times G_{g}\longrightarrow G = G_{2}.
+\]
+The map is given by \cite{GI}*{\S 3G} when $\star = B$ and given by
+\cite{RT2}*{\S 5} when $\star = \wtC$. In the other cases, they are natural
+embeddings. The maps between abstract Cartans
+$\ff\colon \fhhaso\rightarrow \fhhast$ are given by putting the coordinate of
+$G_{b}$ before $G_{g}$.
+
+Let $\lambda\in\fhhast $ be a regular dominant element in $[\lamck]$.
+Then
+$\lambda_{1}:= \ff^{-1}(\lambda)$ is regular dominant for $G_{1}$.
+Let $B = \cP_{\lambda_{1}}(G_{1})$ in all the case.
+The map $\ffcoh$ is given by the natural maps between real Cartans.
+This is clear when $\ff$ is an embedding.
+See \cite{GI}*{\S 3} when $G$ is a special orthogonal group and
+\cite{RT2}*{\S 5} when $G$ is a metaplectic group.
+
+\begin{proof}[{Proof of \Cref{prop:red}: the injectivity of $\fI$}]
+  Let % $\mu_{2} = \lamck$
+      % and
+  $\mu_{1} = \ff^{-1}(\lamck)$.
+  Since coherent continuation is compatible with induction
+  \cite{Vg}*{Proposition~7.4.1}, we have the
   following commutative diagram
   \[
-    \begin{tikzcd}[column sep=large]
-     &  \Coh_{[\lambda'_{b}]}(G'_{b})\otimes \Coh_{[\lambda_{g}]}(G_{g}) \ar[dl]\ar[dr]&\\
-     \Coh_{[\lambda_{b}]}(G_{b})\otimes \Coh_{[\lambda_{g}]}(G_{g}) \ar[rr]& &
-     \Coh_{[\lamck]}(G)
+    \begin{tikzcd}[column sep={4cm,between origins}]
+      &  \Coh_{[\lambda'_{b}]}(G'_{b})\otimes \Coh_{[\lambda_{g}]}(G_{g}) \ar[dl,"\Ind_{P_{b}}^{G_{b}}\otimes \id"']\ar[dr,"\Ind_{P}^{G}"]&\\
+      \Coh_{[\lambda_{b}]}(G_{b})\otimes \Coh_{[\lambda_{g}]}(G_{g}) \ar[d,"\ev{\mu_{1}}"'] \ar[rr,"\ffcoh"]& & \Coh_{[\lamck]}(G) \ar[d,"\ev{\ckcO}"]\\
+      \Grt_{\mu_{1}}(G_{b}\times G_{g}) \ar[rr,"\ffcoh_{\mu_{1}}"]& &
+      \Grt_{\lamck}\\
     \end{tikzcd}
   \]
-  which sends $\pi'\boxtimes \pi_{0}$ to the corresponding induced modules.
-  Now the irreducibility follows from that of the LHS.
+  Here $P_{b}$ is the parabolic subgroup of $G_{b}$ whose Levi subgroup is
+  isomorphic to $G'_{b}$ and $P$ is the parabolic of $G$ whose Levi subgroup is
+  isomorphic to $G'_{b}\times G_{g}$. The horizontal line $\ffcoh$ is an
+  injection by the above setting, which implies $\ffcoh_{\mu_{1}}$ is injective
+  by \Cref{lem:ff.irr}. Note that $\ffcoh_{\mu_{1}}$ sends
+  $\Ind_{P_{b}}(\pi')\otimes \pi_{0}$ to $\Ind_{P}^{G} (\pi'\otimes \pi_{0})$.
+  \trivial{ Let
+    $\Theta'\otimes \Theta_0\in \Coh_{[\lambda'_{b}]}(G'_{b})\otimes \Coh_{[\lambda_{g}]}(G_{g})$
+    be coherent family such that
+    $\Theta'\otimes \Theta_0(\lamck) = \pi'\otimes \pi_0$. Now
+    $\Ind_{P_{b}}(\pi')\otimes \pi_{0} = (\Ind_{P_{b}}\otimes \id) (\Theta'\otimes \Theta_{0})(\mu_{1})$
+    and
+    $\Ind_{P}(\pi'\otimes \pi_{0}) = \ffcoh(\Ind_{P_{b}}\otimes \id (\Theta'\otimes \Theta_{0}))(\lamck) = (\Ind_{P}^{G}) (\Theta'\otimes \Theta_{0})(\lamck)$
+  }
+  Now the proposition follows from \Cref{lem:Unip.BP}.
+\end{proof}
+
+
+\begin{lem}\label{lem:BGcount}
+  We have
+  \[
+    \abs{\Unip_{G}(\ckcO)} =
+    \abs{\Unip_{G_{b}}(\ckcO_{b})}\cdot
+    \abs{\Unip_{G_{g}}(\ckcO_{g})}
+  \]
+\end{lem}
+\begin{proof}
+  It suffice to assume $n_{b}$ and $n_{g}$ are both non-zero Fix a regular
+  dominant infinitesimal character $\lambda\in [\lamck]$ and write
+  $(\lambda_{b},\lambda_{g}):=\ff^{-1}(\lambda)$. It requires a some more
+  precise information about the blocks/cell of $G$. Suppose $\star \neq D^{*}$.
+  Then
+  \[
+    \ffcoh \colon \cP_{\lambda_{b}}(G_{b})\times \cP_{\lambda_{g}}(G_{g}) \longrightarrow \cP_{\lambda}(G)
+  \]
+  is a bijection. In particular each Harish-Chandra in $\cP_{\lambda}(G)$ is a
+  product of cells in $\cP_{\lambda_{b}}(G_{b})$ and cells in
+  $\cP_{\lambda_{g}}(G_{g})$. This implies $\ffcoh$ restricted to an isomorphism
+  \[
+    \Coh_{[\lambda_{b}],\bcO_{b}}(G_{g})\otimes \Coh_{[\lambda_{g}],\bcO_{g}}(G_{b}) \xrightarrow{\ \ \ \ffcoh\ \ \ } \Coh_{[\lambda],\bcO}(G).
+  \]
+  and the lemma follows.
+
+  Now consider the case where $\star = D^{*}$. In this case, $\cP_{\lambda}(G)$
+  has $2$ blocks. Meanwhile $\cP_{\lambda_{b}}(G_{b})$ and
+  $\cP_{\lambda_{g}}(G_{g})$ have only $1$ block. Let
+  $B_{1} := (\cP_{\lambda_{b}}(G_{b})\times \cP_{\lambda_{g}}(G_{g}))$ and
+  $B_{2}$ be the other block. For any $\sfW'_{n}$-module $\tau$, let $\tau^{s}$
+  denote the twist of $\tau$ by any non-trivial element in $\sfW_{n}/\sfW'_{n}$.
+
+  Then \[ \Coh_{B_{1}} \cong \cC_{b}\otimes \cC_{g} = \Coh_{[\lambda_{b}],\bcO_{b}}(G_{g})\otimes \Coh_{[\lambda_{g}],\bcO_{g}}(G_{b}),
+  \]
+  $\Coh_{B_{2}} \cong \cC_{b}^{s}\otimes \cC_{g}^{s}$ and
+  \[
+    \Coh_{[\lambda]}(G) = \Coh_{B_{1}}\oplus \Coh_{B_{2}}.
+  \]
+  Clearly $\Coh_{[\lambda], \bcO}$ is compatible with the above decomposition
+  and we have
+  \[
+    \Coh_{[\lambda_{b}],\bcO_{b}}(G_{g})\otimes \Coh_{[\lambda_{g}],\bcO_{g}}(G_{b}) \xrightarrow{\ \ \ \ffcoh\ \ \ } \Coh_{[\lambda],\bcO}(G)\cap \Coh_{B_{1}}.
+  \]
+
+  Observe that $[\tau_{b}:\cC_{b}^{s}]=0$. Therefore
+  \[
+    \begin{split}
+      \abs{\Unip_{G}(\ckcO)} & = \sum_{\tau_{b}\boxtimes \tau_{g}\in \LC_{\ckcO}} [\tau_{b}\otimes \tau_{g}:\Coh_{[\lambda],\bcO}(G)\cap \Coh_{B_1}]\\
+    & \ \ + \sum_{\tau_{b}\boxtimes \tau_{g}\in \LC_{\ckcO}}[\tau_{b}\otimes \tau_{g}:\Coh_{[\lambda],\bcO}(G)\cap \Coh_{B_2}] \\
+  &= \sum_{\tau_{b}\boxtimes \tau_{g}\in \LC_{\ckcO}} [\tau_{b}\otimes \tau_{g}:
+  \Coh_{[\lambda_{b}],\bcO_{b}}(G_{g})\otimes \Coh_{[\lambda_{g}],\bcO_{g}}(G_{b})]\\
+  &= \abs{\Unip_{G_{b}}(\ckcO_{b})}\cdot \abs{\Unip_{G_{g}}(\ckcO_{g})}
+\end{split}
+\]
+\end{proof}
+
+\begin{proof}[{Proof of \Cref{prop:red}: the bijectivity of $\fI$}]
+Now the bijectivity of $\fI$ follows by the counting in \Cref{lem:BGcount}.
 \end{proof}
 
 \subsection{Counting special unipotent representation of $G=\Sp(p,q)$}.
@@ -7907,6 +8068,6 @@ pages={147--167},
 %%% Local Variables:
 %%% coding: utf-8
 %%% mode: latex
-%%% TeX-engine: tex
+%%% TeX-engine: xetex
 %%% ispell-local-dictionary: "en_US"
 %%% End:
