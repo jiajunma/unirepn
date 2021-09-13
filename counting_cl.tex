@@ -131,7 +131,7 @@ Recall that
       (\bfcc_{l}(\imath), \bfcc_{l}(\jmath)) :=
       (0,\half(\bfrr_{2l+1}(\ckcO_{g})-1))
     \]
-    and for all $1\leq i< l$
+    and, for all $1\leq i< l$
     \[
       (\bfcc_{i}(\imath), \bfcc_{i}(\jmath)):=
       \begin{cases}
@@ -151,12 +151,12 @@ Recall that
         (\bfcc_{l+1}(\imath), \bfcc_{l}(\jmath)) &:= (0,\half(\bfrr_{2l+1}(\ckcO_{g})-1))
       \end{split}
     \]
-    and for all $1\leq i<l$
+    and, for all $1\leq i<l$
     \[
       (\bfcc_{i+1}(\imath), \bfcc_{i}(\jmath)):=
       \begin{cases}
-        (\half (\bfrr_{2i+1}(\ckcO_{g})+1),
-        \half (\bfrr_{2i}(\ckcO_{g})-1))
+        \left(\half (\bfrr_{2i+1}(\ckcO_{g})+1),
+        \half (\bfrr_{2i}(\ckcO_{g})-1)\right)
         & \text{if } (2i,2i+1)\notin \sP,\\
         (\half (\bfrr_{2i}(\ckcO_{g})+1),\half (\bfrr_{2i+1}(\ckcO_{g})-1)) & \text{otherwise.}
       \end{cases}
@@ -179,24 +179,72 @@ Recall that
     %   (\bfcc_{l+1}(\imath), \bfcc_{l+1}(\jmath)) := (0,\half(\bfrr_{2l+1}(\ckcO_{g})-1))
     % \]
     % and for all $1\leq i\leq l$
-    \item
+    \item Suppose $\star=B$.
+    Then
+    \[
+      \bfcc_{1}(\jmath)  := \half\bfrr_{1}(\ckcO_{g})
+    \]
+    and for all $i\geq 1$
+    \[
+      (\bfcc_{i}(\imath), \bfcc_{i+1}(\jmath)):=
+      \begin{cases}
+        (\half \bfrr_{2i}(\ckcO_{g}), \half \bfrr_{2i+1}(\ckcO_{g}))
+        & \text{if } (2i,2i+1)\notin \sP,\\
+        (\half \bfrr_{2i+1}(\ckcO_{g}),\half \bfrr_{2i}(\ckcO_{g})) & \text{otherwise.}
+      \end{cases}
+    \]
+    \item Suppose $\star = \wtC$.
+    Then for all  $i\geq 1$
+    \[
+      (\bfcc_{i}(\imath), \bfcc_{i}(\jmath)):=
+      \begin{cases}
+        (\half \bfrr_{2i-1}(\ckcO_{g}), \half \bfrr_{2i}(\ckcO_{g}))
+        & \text{if } (2i-1,2i)\notin \sP,\\
+        (\half \bfrr_{2i}(\ckcO_{g}),\half \bfrr_{2i-1}(\ckcO_{g})) & \text{otherwise.}
+      \end{cases}
+    \]
   \end{itemize}
 
+  For $\sP\subset\CPPs(\ckcO_{g})$, let $\sP^{c}$ be the complement of $\sP$ in
+  $\CPPs(\ckcO_{g})$.
+  Define
+  \[
+    \barA(\ckcO)=
+    \begin{cases}
+      \wtA(\ckcO) & \text{when } \star \in \set{B,C,C^{*}},\\
+      \wtA(\ckcO)/\sP\sim\sP^{c} & \text{when } \star \in \set{\wtC,D,D^{*}}.\\
+    \end{cases}
+  \]
+  Here $\wtA(\ckcO)/\sP\sim\sP^{c}$ denote the quotient of $\wtA(\ckcO)$ by
+  identifying $\sP$ with its complement $\sP^{c}$.
+
+  When $\star\neq \wtC$, $\barA(\ckcO)$ is nothing but the Lusztig canonical
+  quotient attached to $\ckcO$.
+  \trivial{
+    This can be seem from the following lemma, c.f.
+    \cite{BVUni}*{Proposition~5.28}.
+  }
+
+  Note that by definition, we have
+  $\wtA(\ckcO)=\wtA(\ckcO_{g})$ and
+  $\barA(\ckcO)=\barA(\ckcO_{g})$.
+
+  Recall that
+  \[
+    \LV_{\ckcO}:= \left(\Ind_{W_{\lambda_{\ckcO}}}^{W_{[\lambda_{\ckcO}]}} \sgn\right)
+    \otimes \sgn.
+  \]
+
 \begin{lem}\label{lem:Lcell}
-  % Suppose $\star \in \set{C, C^{*}}$, $\ckcO_{b}$ has $2k$ rows and $\ckcO_{g}$
-  % has $2l+1$-rows. Here each row in $\ckcO_{b}$ has even length and each row in
-  % $\ckcO_{g}$ has odd length, and $\WLamck = W'_{b}\times W_{g}$ where
-  % $b= \frac{\abs{\ckcO_{b}}}{2}$ and $g = \frac{\abs{\ckcO_{g}}-1}{2}$. Let
-  %
-  In all the cases there is a irreducible $\Wb$-representation $\tau_{b}$
-  such that
+
+  In all the cases,  we have
+  and a bijection of left cells
   \[
     \begin{array}{ccc}
       \LC(\ckcO_{g}) & \longrightarrow & \LC(\ckcO)\\
-      \tau_g & \mapsto & \tau_{b}\otimes \tau_{g}
+      \tau_g & \mapsto & \tau_{b}\otimes \tau_{g}.
     \end{array}
   \]
-  is a bijection.
 
 
 \end{lem}

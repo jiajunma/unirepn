@@ -2894,6 +2894,36 @@ Now we get the following theorem on the upper bound of small representations.
 \end{remark}
 
 
+Another interesting consequence of \Cref{cor:coh.HC} is that we can determine
+the complex associated variety attached to a Harish-Chandra cell by the
+character of the cell representation.
+
+\begin{lem}\label{lem:AV.HC}
+  Let $\sC$ be an Harish-Chandra cell at a regular infinitesimal character $\lambda$ and $\sV$ be the corresponding cell
+  representation.
+  \trivial[]{
+    I guess
+    the assumption of ``regular'' is unnecessary.
+  }
+  Then there is a unique special representation $\sigma\in \Irrsp(W_{[\lambda]})$ such
+  that $\sigma$ has minimal generic degree in $\sV$
+  and every irreducible modules $\pi$ in $\sC$ has complex associated variety
+  \[
+    \AVC(\pi) = \Spr(\Ind_{W_{[\lambda]}}^{W}\sigma).
+  \]
+  Moreover, $\sigma$ is precisely the unique irreducible character
+  with minimal fake degree occurring in $\sV$.
+\end{lem}
+\begin{proof}
+  Let $\pi\in \sC$ and the primitive ideal $\Ann(\pi)$ is attached to the
+  special representation $\sigma \in \Irr(W_{[\lambda]})$.
+  By \Cref{cor:coh.HC}, every irreducible character $\sigma'$ occur in
+  $\sV$ satisfies $\sigma \leqLR \sigma'$.
+  On the other hand, $\sigma$ do occurs in $\sV$ by Barbasch-Vogan and King's
+  result, see \cite{Cas}*{Remark~3.2}.
+  The rest part of the lemma is clear.
+\end{proof}
+
 \subsection{Coherent continuation representation of Harish-Chandra modules}
 
 Recall the definition of regular characters \cite{Vg}*{Definition~6.6.1}.
@@ -4641,6 +4671,12 @@ Clearly,
 \]
 with $W_{b}$ and $W_{g}$ defined by \eqref{eq:Wbg}.
 
+{
+  \color{red}
+  Here $\PBP_{*}(\_)$ denote the set of painted bi-partitions running
+  over all relevant shapes.
+}
+
 We define
 \[
 \Sign(G):= \begin{cases}
@@ -4746,7 +4782,7 @@ G'_{n} := \begin{cases}
   % \]
   \[
     \sum_{\sP\in \tA'(\ckcO)} [\tau_{b}\otimes \tau_{\sP}: \Coh_{\Lambda_{n_{b},n_{g}}}(G)] = \abs{\PBP_{\star,b}(\ckcO_{b})}\cdot
-    \abs{\PBP_{\star}(\ckcO_{g}; G)}.
+    \abs{\PBP_{G_{g}}(\ckcO_{g})}.
   \]
 \end{prop}
 \begin{proof}
@@ -4965,7 +5001,7 @@ every irreducible component $(\sigma_{L},\sigma_{R})$ in $\cC_{g}$ satisfies
   \]
 \end{proof}
 
-\section{Reduction to the good parity case}
+\subsection{Reduction to the good parity case}
 
 In this section, $G$ is a classical group or metaplectic group.
 
@@ -5300,11 +5336,11 @@ See \cite{GI}*{\S 3} when $G$ is a special orthogonal group and
   \]
   is a bijection. In particular each Harish-Chandra in $\cP_{\lambda}(G)$ is a
   product of cells in $\cP_{\lambda_{b}}(G_{b})$ and cells in
-  $\cP_{\lambda_{g}}(G_{g})$. This implies $\ffcoh$ restricted to an isomorphism
+  $\cP_{\lambda_{g}}(G_{g})$. By \Cref{lem:AV.HC}, this implies $\ffcoh$ restricted to an isomorphism
   \[
     \Coh_{[\lambda_{b}],\bcO_{b}}(G_{g})\otimes \Coh_{[\lambda_{g}],\bcO_{g}}(G_{b}) \xrightarrow{\ \ \ \ffcoh\ \ \ } \Coh_{[\lambda],\bcO}(G).
   \]
-  and the lemma follows.
+g  and the lemma follows.
 
   Now consider the case where $\star = D^{*}$. In this case, $\cP_{\lambda}(G)$
   has $2$ blocks. Meanwhile $\cP_{\lambda_{b}}(G_{b})$ and
@@ -5338,9 +5374,16 @@ See \cite{GI}*{\S 3} when $G$ is a special orthogonal group and
 \end{proof}
 
 \begin{proof}[{Proof of \Cref{prop:red}: the bijectivity of $\fI$}]
-Now the bijectivity of $\fI$ follows by the counting in \Cref{lem:BGcount}.
+Now the bijectivity of $\fI$ follows by the counting in  \Cref{lem:Unip.BP} and \Cref{lem:BGcount}.
 \end{proof}
 
+
+
+\section{Some case by case computation.}
+
+{\color{red} The below will be merged with the definition of painted
+  bi-partition and the computation of coherent continuation representations in
+  various cases. }
 \subsection{Counting special unipotent representation of $G=\Sp(p,q)$}.
 
 The dual group of $\Gc = \Sp(2n,\bC)$ is $\ckGc = \SO(2n+1,\bC)$.
@@ -5575,7 +5618,7 @@ in the \Cref{app:comb}
   \]
 \end{lem}
 
-\section{Type $\wtC$}
+\subsection{Type $\wtC$}
 
 
 The left cell.
@@ -5727,7 +5770,7 @@ The left cell.
 %\subsection{Type C}
 
 
-\section{Type $B$}
+\subsection{Type $B$}
 
   The dual group of $\Gc = \SO(2n+1,\bC)$ is $\ckGc = \Sp(2n,\bC)$. The odd is
   the bad parity, and even is the good parity.
@@ -5871,7 +5914,7 @@ Recall the definition of $\PP_{A^{\bR}}(\ckcO'_{b})$ in  \eqref{eq:PP.AR}.
 \end{lem}
 
 
-\section{Type D}
+\subsection{Type D}
 
 
 
