@@ -8,7 +8,7 @@
 Let $G$ be a real reductive group in the Harish-Chandra class, which may be linear or non-linear. Write $\fgg$ for the complexified Lie algebra of $G$ and let $\h$ denote its universal Cartan subalgebra. Let $\lambda \in \h^*$ (a superscript $*$ indicates the dual space). By Harish-Chandra isomorphism, it determines  an algebraic character $\chi_\lambda: \CZ(\g)\rightarrow \C$. Here $\CZ(\g)$ denotes the center of the universal enveloping algebra $\mathcal U(\g)$. Denote by $\Irr(G)$ the set of isomorphism classes of irreducible Casselman-Wallach representations of $G$, and by $\Irr_\lambda(G)$ its subset consisting of the representations with infinitesimal character $\chi_\lambda$. The latter set has finite cardinality.
 
 
-Let $\mathrm{Nil}(\g^*)$ denote the set of nilpotent elements in $\g^*$. It has only finitely many orbits under the coadjoint action of the inner automorphism group $\mathrm{Inn}(\g)$ of $\g$. Let $\sfS$ be an  $\mathrm{Inn}(\g)$-stable Zariski closed subset of $\mathrm{Nil}(\g^*)$. Put
+Let $\Nil(\g^*)$ denote the set of nilpotent elements in $\g^*$. It has only finitely many orbits under the coadjoint action of the inner automorphism group $\mathrm{Inn}(\g)$ of $\g$. Let $\sfS$ be an  $\mathrm{Inn}(\g)$-stable Zariski closed subset of $\mathrm{Nil}(\g^*)$. Put
 \[
   \Irr_{\lambda,\sfS}(G):=\Set{\pi \in \Irr_{\lambda}(G)| \text{$\AVC(\pi)\subset \sfS$} }.
 \]
@@ -185,7 +185,7 @@ We are particularly interested in counting special unipotent representations of 
 
 Let $\star$ be one of the  14 symbols
 \[
-\textrm{ $A$, $A^\C$, $A^\bH$, $A^*$, $B$, $D$,   $B^\C$, $D^\C$, $C$, $C^\C$, $D^*$, $C^*$, $\widetilde C$, $\widetilde C^\C$. }
+\textrm{ $A$, $A^\C$, $A^\bH$, $A^*$, $B$, $D$,   $B^\C$, $D^\C$, $C$, $C^\C$, $D^*$, $C^*$, $\wtC$, $C^\C$. }
 \]
 Suppose that $G$ is a classical Lie group of type $\star$, namely $G$ respectively equals
 one of the following Lie groups:
@@ -356,7 +356,10 @@ Suppose that $\star\in \{A, A^\bH, A^*\}$.  A painting $\CP$ on a Young diagram 
   \item
  if $\star=A^*$, then $\CP^{-1}(\bullet)$ has even number of boxes in every row of $\imath$.
  \end{itemize}
- Write $\mathrm{PP}_\star(\imath)$ for the set of paintings on $\imath^t$ (the transpose of $\imath$) that has type $\star$.
+ To reconcile with the Barbasch-Vogan duality, we write $\PP_\star(\imath^{t})$
+ for the set of paintings on $\imath$ that has type $\star$ where $\imath^{t}$
+ is the transpose of $\imath$,.
+
  \end{defn}
 
 
@@ -404,8 +407,18 @@ Suppose that $\imath$ is a Young diagram and $\CP$ is a painting on  $\imath$ th
   \end{itemize}
 Define the signature of $\CP$ to be the pair
 \[
-  (p_\CP, q_\cP):=(\sharp( \mathrm{AC}_\CP^{-1}(+)),\, \sharp( \mathrm{AC}_\CP^{-1}(-))).
+  \begin{split}
+    (p_\CP, q_\cP):=
+    &= (\sharp(\cP^{-1}(r))+\half \sharp(\cP^{-1}(\bullet)),\sharp(\cP^{-1}(s))
+    + \half \sharp(\cP^{-1}(\bullet)))\\
+    &=
+    (\sharp( \mathrm{AC}_\CP^{-1}(+)),\, \sharp( \mathrm{AC}_\CP^{-1}(-))).\\
+  \end{split}
 \]
+\trivial[]{
+  The first equation is the true definition of signature.
+ The second one is an easy consequence of the definition of $\AC_\cP$.
+}
 
 \begin{eg}
  Suppose that \[
@@ -418,20 +431,23 @@ Define the signature of $\CP$ to be the pair
   \]
 \end{eg}
 
-Given two Young diagrams $\imath$ and $\jmath$, write $\imath\sqcup \jmath$ for the Young diagram whose multiset of nonzero row lengths equals the union of those of $\imath$ and $\jmath$.
+Given two Young diagrams $\imath$ and $\jmath$, write $\imath\cuprow \jmath$ for
+the Young diagram whose multiset of nonzero row lengths equals the union of
+those of $\imath$ and $\jmath$.
 
 For unitary groups, we have the following result.
 \begin{thm}
-Assume that $\star=A^*$ so that $G=\oU(p,q)$. If there is a decomposition
- \[
-   \check \CO=\check \CO_{\mathrm g} \sqcup \check \CO_{\mathrm b}\sqcup \check \CO_{\mathrm b}
- \]
- such that all nonzero row lengths of $\check \CO_{\mathrm g}$ have the same parity as $p+q$, and all nonzero row lengths of $\check \CO_{\mathrm b}$ have different parity as $p+q$, then
- \[
-\sharp(\Unip_{\check \CO}(G))=
-        \sharp\{\CP\in \mathrm{PP}_\star(\check \CO_{\mathrm g})\mid (p_\CP+\abs{\CO_{\mathrm b}}, q_\CP+\abs{\CO_{\mathrm b}})=(p,q)\}
-        \]
-If there is no such decomposition, then $\sharp(\Unip_{\check \CO}(G))=0$.
+  Assume that $\star=A^*$ so that $G=\oU(p,q)$. If there is a decomposition
+  \[
+    \ckcO=\ckcOg \cuprow \ckcOb \cuprow \ckcOb
+  \]
+  such that all nonzero row lengths of $\check \CO_{\mathrm g}$ have the same
+  parity as $p+q$, and all nonzero row lengths of $\check \CO_{\mathrm b}$ have
+  different parity as $p+q$, then
+  \[
+    \sharp(\Unip_{\check \CO}(G))= \sharp\set{\CP\in \mathrm{PP}_\star(\ckcOg)|(p_\CP+\abs{\ckcOb}, q_\CP+\abs{\ckcOb})=(p,q)}
+  \]
+  If there is no such decomposition, then $\sharp(\Unip_{\check \CO}(G))=0$.
 
 \end{thm}
 
@@ -837,3 +853,8 @@ In \cite{BMSZ2}, we will construct sufficiently many representations in $\Unip_{
 
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "counting_main"
+%%% End:
