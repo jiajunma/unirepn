@@ -38,23 +38,23 @@ Write $\mathcal R(\g)$ for the Grothendieck group, with $\C$-coefficients,  of t
 
 
 
-Write $\Delta\subset Q\subset \h^*$ for the root system and the root lattice of $\fgg$, respectively. Let $\Lambda\subset \h^*$ be a $Q$-coset, and write $W_\Lambda$ for its stabilizer group in $W$. Then $W_\Lambda$ equals the Weyl group of the root system
+Write $\Delta\subset Q\subset \h^*$ for the root system and the root lattice of $\fgg$, respectively. Let $\Lam\subset \h^*$ be a $Q$-coset, and write $W_\Lam$ for its stabilizer group in $W$. Then $W_\Lam$ equals the Weyl group of the root system
 \[
-  \{\alpha \in \Delta\mid \langle \mu, \alpha^\vee\rangle \in \Z\textrm{ for all }\mu\in \Lambda\}\qquad (\alpha^\vee \textrm{ denotes the corresponding coroot}).
+  \{\alpha \in \Delta\mid \langle \mu, \alpha^\vee\rangle \in \Z\textrm{ for all }\mu\in \Lam\}\qquad (\alpha^\vee \textrm{ denotes the corresponding coroot}).
 \]
 
 
 \begin{defn}\label{defcoh}
-  Let $\CK$  be a $\mathcal R(\g)$-module equipped with a family $\{\CK_\mu\}_{\mu\in  \h^*}$ of subspaces such that $\CK_{w\cdot \mu}=\CK_\mu$ for all $w\in W_\Lambda$ and $\mu\in \h^*$.
-  A $\CK$-valued coherent family on $\Lambda$ is a map
+  Let $\CK$  be a $\mathcal R(\g)$-module equipped with a family $\{\CK_\mu\}_{\mu\in  \h^*}$ of subspaces such that $\CK_{w\cdot \mu}=\CK_\mu$ for all $w\in W_\Lam$ and $\mu\in \h^*$.
+  A $\CK$-valued coherent family on $\Lam$ is a map
   \[
-    \Theta: \Lambda\rightarrow \CK%, \qquad \mu\mapsto \Theta_\mu
+    \Theta: \Lam\rightarrow \CK%, \qquad \mu\mapsto \Theta_\mu
   \]
   satisfying the following two conditions:
   \begin{itemize}
-  \item for all $\mu\in \Lambda$,
+  \item for all $\mu\in \Lam$,
     $\Theta(\mu)\in \CK_\mu$;
-  \item for all finite-dimensional algebraic representations $F$ of $\mathrm{Inn}(\g)$, and all $\mu\in \Lambda$,
+  \item for all finite-dimensional algebraic representations $F$ of $\mathrm{Inn}(\g)$, and all $\mu\in \Lam$,
       \[
       F\cdot (\Theta(\mu)) = \sum_{\nu} \Theta(\mu+\nu),
   \]
@@ -63,26 +63,26 @@ Write $\Delta\subset Q\subset \h^*$ for the root system and the root lattice of 
   \end{defn}
 
 
-In the notation of Definition \ref{defcoh},   let $\Coh_{\Lambda}(\CK)$ denote the vector space  of all $\mathcal K$-valued coherent families
-  on $\Lambda$. It is a representation of  $W_{\Lambda}$ under the action
+In the notation of Definition \ref{defcoh},   let $\Coh_{\Lam}(\CK)$ denote the vector space  of all $\mathcal K$-valued coherent families
+  on $\Lam$. It is a representation of  $W_{\Lam}$ under the action
   \[
-    (w\cdot \Theta)(\mu) = \Theta(w^{-1}\cdot \mu), \qquad \textrm{for all }\  w\in W_\Lambda, \ \mu\in \Lambda.
+    (w\cdot \Theta)(\mu) = \Theta(w^{-1}\cdot \mu), \qquad \textrm{for all }\  w\in W_\Lam, \ \mu\in \Lam.
   \]
 For simplicity in notation, put
 \[
-\Coh_{\Lambda,\sfS}(G):=\Coh_{\Lambda}(\CK_\sfS(G)).
+\Coh_{\Lam,\sfS}(G):=\Coh_{\Lam}(\CK_\sfS(G)).
 \]
 
 
 \subsection{Counting the irreducible representations with bounded complex associated varieties}
 
-Suppose that $\lambda\in \Lambda$ and denote by $W_\lambda$ the stabilizer of $\lambda$ in $W$. Then $W_\lambda\subset W_\Lambda$. Write $1_{W_\lambda}$  for the trivial representation of $W_{\lambda}$.
+Suppose that $\lambda\in \Lam$ and denote by $W_\lambda$ the stabilizer of $\lambda$ in $W$. Then $W_\lambda\subset W_\Lam$. Write $1_{W_\lambda}$  for the trivial representation of $W_{\lambda}$.
 
 The following Theorem is due to Vogan. We will provide a proof for the lack of reference.
 \begin{thm}\label{count1}
 The equality
   \[
-    \sharp(\Irr_{\lambda,\sfS}(G)) = [1_{W_{\lambda}}:\Coh_{\Lambda,\sfS}(G)]
+    \sharp(\Irr_{\lambda,\sfS}(G)) = [1_{W_{\lambda}}:\Coh_{\Lam,\sfS}(G)]
   \]
   holds.
   % \[
@@ -92,23 +92,23 @@ The equality
 Here and henceforth, $[\ : \ ]$ indicates the multiplicity of the first (irreducible) representation in the second one.
 Theorem \ref{count1} implies that
  \begin{equation}\label{countlg}
-    \sharp(\Irr_{\lambda,\sfS}(G)) = \sum_{\sigma\in \Irr(W_\Lambda)} [1_{W_{\lambda}}: \sigma]\cdot [\sigma: \Coh_{\Lambda,\sfS}(G)].
+    \sharp(\Irr_{\lambda,\sfS}(G)) = \sum_{\sigma\in \Irr(W_\Lam)} [1_{W_{\lambda}}: \sigma]\cdot [\sigma: \Coh_{\Lam,\sfS}(G)].
   \end{equation}
-Thus it suffices to understand the multiplicity $ [\sigma: \Coh_{\Lambda,\sfS}(G)]$ for every $\sigma\in \Irr(W_\Lambda)$.  Let $\sigma\in  \Irr(W_\Lambda)$.  Define the nilpotent orbit
+Thus it suffices to understand the multiplicity $ [\sigma: \Coh_{\Lam,\sfS}(G)]$ for every $\sigma\in \Irr(W_\Lam)$.  Let $\sigma\in  \Irr(W_\Lam)$.  Define the nilpotent orbit
 \[
-\CO_\sigma:=\mathrm{Springer}(j_{W_\Lambda}^W \sigma_0)\subset \mathrm{Nil}(\g^*) \quad (``\mathrm{Springer}"\textrm{ indicates the Springer correspondence}),
+\CO_\sigma:=\mathrm{Springer}(j_{W_\Lam}^W \sigma_0)\subset \mathrm{Nil}(\g^*) \quad (``\mathrm{Springer}"\textrm{ indicates the Springer correspondence}),
 \]
-where  $\sigma_0$ denote the special irreducible representation of $W_\Lambda$ that lies in the same double cell as  $\sigma$, and $j_{W_\Lambda}^W \sigma_0$ denotes the $j$-induction which is an irreducible representation of $W$.
-%In what follows, we shall attach to $\sigma$ an $\mathrm{Inn}(\g)$-orbit $\CO_\sigma\subset\mathrm{Nil}(\g^*)$. Let $\sigma_0$ denote the special irreducible representation of $W_\Lambda$ that lies in the same double cell as  $\sigma$. Then among all the irreducible representations of $W$ occurring in the induced representation $\Ind_{W_\Lambda}^W \sigma_0$, there is a unique one with minimal fake degree. Moreover, this irreducible representation occurs with multiplicity one in $\Ind_{W_\Lambda}^W \sigma_0$. Write $j_{W_\Lambda}^W \sigma_0\subset \Ind_{W_\Lambda}^W \sigma_0 $ for this irreducible representation. Finally we define
+where  $\sigma_0$ denote the special irreducible representation of $W_\Lam$ that lies in the same double cell as  $\sigma$, and $j_{W_\Lam}^W \sigma_0$ denotes the $j$-induction which is an irreducible representation of $W$.
+%In what follows, we shall attach to $\sigma$ an $\mathrm{Inn}(\g)$-orbit $\CO_\sigma\subset\mathrm{Nil}(\g^*)$. Let $\sigma_0$ denote the special irreducible representation of $W_\Lam$ that lies in the same double cell as  $\sigma$. Then among all the irreducible representations of $W$ occurring in the induced representation $\Ind_{W_\Lam}^W \sigma_0$, there is a unique one with minimal fake degree. Moreover, this irreducible representation occurs with multiplicity one in $\Ind_{W_\Lam}^W \sigma_0$. Write $j_{W_\Lam}^W \sigma_0\subset \Ind_{W_\Lam}^W \sigma_0 $ for this irreducible representation. Finally we define
 
 %Here and henceforth, for every $\sigma'\in \Irr(W)$, $\mathrm{Springer}(\sigma')$ denotes the
-%Under Springer correspondence, $j_{W_\Lambda}^W \sigma_0$ corresponds to the trivial $\mathrm{Inn}(\g)$-equivariant local system on an $\mathrm{Inn}(\g)$-orbit in $\mathrm{Nil}(\g^*)$. Then $\CO_\sigma$ is defined to be this orbit.
+%Under Springer correspondence, $j_{W_\Lam}^W \sigma_0$ corresponds to the trivial $\mathrm{Inn}(\g)$-equivariant local system on an $\mathrm{Inn}(\g)$-orbit in $\mathrm{Nil}(\g^*)$. Then $\CO_\sigma$ is defined to be this orbit.
 
 
 \begin{prop}\label{count2}
-Suppose that $\sigma\in  \Irr(W_\Lambda)$ and $\CO_\sigma\nsubset \sfS$. Then
+Suppose that $\sigma\in  \Irr(W_\Lam)$ and $\CO_\sigma\nsubset \sfS$. Then
   \[
-    [\sigma: \Coh_{\Lambda,\sfS}(G)]=0.
+    [\sigma: \Coh_{\Lam,\sfS}(G)]=0.
   \]
 
   % \[
@@ -118,26 +118,26 @@ Suppose that $\sigma\in  \Irr(W_\Lambda)$ and $\CO_\sigma\nsubset \sfS$. Then
 
 Combining Theorems \ref{count1} and \ref{count2}, we conclude that
   \begin{equation}\label{leq2}
-  \sharp(\Irr_{\lambda,\sfS}(G)) = \sum_{\sigma\in \Irr(W_\Lambda), \CO_\sigma\subset \sfS} [1_{W_{\lambda}}: \sigma]\cdot [\sigma: \Coh_{\Lambda,\sfS}(G)].
+  \sharp(\Irr_{\lambda,\sfS}(G)) = \sum_{\sigma\in \Irr(W_\Lam), \CO_\sigma\subset \sfS} [1_{W_{\lambda}}: \sigma]\cdot [\sigma: \Coh_{\Lam,\sfS}(G)].
     \end{equation}
 
 Write
 \[
-  \Coh_{\Lambda}(G):= \Coh_{\Lambda,\mathrm{Nil}(\g^*)}(G),
+  \Coh_{\Lam}(G):= \Coh_{\Lam,\mathrm{Nil}(\g^*)}(G),
   \]
-  which contains $ \Coh_{\Lambda,\sfS}(G)$ as a subrepresentation. It is obvious that
+  which contains $ \Coh_{\Lam,\sfS}(G)$ as a subrepresentation. It is obvious that
   \begin{equation}\label{leq1}
-    [\sigma: \Coh_{\Lambda,\sfS}(G)]\leq [\sigma: \Coh_{\Lambda}(G)].
+    [\sigma: \Coh_{\Lam,\sfS}(G)]\leq [\sigma: \Coh_{\Lam}(G)].
   \end{equation}
   We expect that
    \begin{equation}\label{leq1}
-  \textrm{if $\ \CO_\sigma\subset \sfS\ $, then  }\  [\sigma: \Coh_{\Lambda,\sfS}(G)]= [\sigma: \Coh_{\Lambda}(G)].
+  \textrm{if $\ \CO_\sigma\subset \sfS\ $, then  }\  [\sigma: \Coh_{\Lam,\sfS}(G)]= [\sigma: \Coh_{\Lam}(G)].
   \end{equation}
 
 
  % the equality always holds. Combining Theorem \ref{count1}, Theorem \ref{count2} and \eqref{leq1}, we conclude that
   %\begin{equation}\label{leq2}
-  %\sharp(\Irr_{\lambda,\sfS}(G)) \leq \sum_{\sigma\in \Irr(W_\Lambda), \CO_\sigma\subset \sfS} [1_{W_{\lambda}}: \sigma]\cdot [\sigma: \Coh_{\Lambda}(G)].
+  %\sharp(\Irr_{\lambda,\sfS}(G)) \leq \sum_{\sigma\in \Irr(W_\Lam), \CO_\sigma\subset \sfS} [1_{W_{\lambda}}: \sigma]\cdot [\sigma: \Coh_{\Lam}(G)].
     %\end{equation}
 
 
@@ -148,18 +148,18 @@ Write
 Write $I_\lambda$ for the maximal ideal of $\mathcal U(\g)$ with infinitesimal character $\lambda$. Its associated variety equals the Zariski closure $\overline{\CO_\lambda}$ of an $\mathrm{Inn}(\g)$-orbit  $\CO_\lambda\subset\mathrm{Nil}(\g^*) $.  Note that an irreducible Casselman-Wallach representation of $G$ lies in $\Irr_{\lambda,\overline{\CO_\lambda}}(G)$ if and only if it is annihilated by $I_\lambda$.
 
 
-Let $\LC_{\lambda}\subset \Irr(W_\Lambda)$ be the subset consisting all the irreducible representations that occur in
+Let $\LC_{\lambda}\subset \Irr(W_\Lam)$ be the subset consisting all the irreducible representations that occur in
   \[
-    (J_{W_{\lambda}}^{W_{\Lambda}} \sgn )\otimes \sgn,
+    (J_{W_{\lambda}}^{W_{\Lam}} \sgn )\otimes \sgn,
   \]
-where $J_{W_{\lambda}}^{W_{\Lambda}} $ indicates the $J$-induction, and $\sgn$ denotes the sign character.
+where $J_{W_{\lambda}}^{W_{\Lam}} $ indicates the $J$-induction, and $\sgn$ denotes the sign character.
 
 
 
  \begin{prop}[{\cite{BVUni}*{(5.26), Proposition~5.28}}]\label{lem:lcell.BV0}
  The set
  \[
-    \LC_{\lambda} = \Set{\sigma\in  \Irr(W_\Lambda)\mid \CO_\sigma\subset \overline{\CO_\lambda}, \    [1_{W_{\lambda}}:\sigma]\neq 0}.
+    \LC_{\lambda} = \Set{\sigma\in  \Irr(W_\Lam)\mid \CO_\sigma\subset \overline{\CO_\lambda}, \    [1_{W_{\lambda}}:\sigma]\neq 0}.
    \]
   Moreover, the multiplicity $[1_{W_{\lambda}}:\sigma]$ is one
   when $\sigma\in \LC_\lambda$.
@@ -172,7 +172,7 @@ and Proposition \ref{lem:lcell.BV0}, we obtain the following inequality (and the
  % Under the notation of \Cref{lem:lcell.BV}, we have
  The inequality
   \begin{equation}\label{boundc}
-    \sharp(\Irr_{\lambda,\overline{\CO_\lambda}}(G)) \leq \sum_{\sigma\in \LC_\lambda} [\sigma: \Coh_{\Lambda}(G)]
+    \sharp(\Irr_{\lambda,\overline{\CO_\lambda}}(G)) \leq \sum_{\sigma\in \LC_\lambda} [\sigma: \Coh_{\Lam}(G)]
   \end{equation}
   holds.
 \end{cor}
@@ -181,122 +181,177 @@ and Proposition \ref{lem:lcell.BV0}, we obtain the following inequality (and the
 
 \subsection{Special unipotent representations of classical groups}
 
-We are particularly interested in counting special unipotent representations of  real classical groups.
+We are particularly interested in counting special unipotent representations of
+real classical groups.
 
-Let $\star$ be one of the  14 symbols
+Let $\star$ be one of the 14 symbols
 \[
-\textrm{ $A$, $A^\C$, $A^\bH$, $A^*$, $B$, $D$,   $B^\C$, $D^\C$, $C$, $C^\C$, $D^*$, $C^*$, $\wtC$, $C^\C$. }
+  \textrm{ $A$, $A^\C$, $A^\bH$, $A^*$, $B$, $D$, $B^\C$, $D^\C$, $C$, $C^\C$,
+    $D^*$, $C^*$, $\wtC$, $\wtC^\C$. }
 \]
-Suppose that $G$ is a classical Lie group of type $\star$, namely $G$ respectively equals
-one of the following Lie groups:
+Suppose that $G$ is a classical Lie group of type $\star$, namely $G$
+respectively equals one of the following Lie groups:
 \[
-\begin{array}{c}
-   \GL_n(\R), \ \GL_n(\C), \  \GL_n(\bH),\  \oU(p,q),\smallskip\\
+  \begin{array}{c}
+    \GL_n(\R), \ \GL_n(\C), \  \GL_n(\bH),\  \oU(p,q),\smallskip\\
     \SO(p,q)\ (p+q\, \textrm{ is odd}),  \  \SO(p,q)\  (p+q\, \textrm{ is even}),\smallskip\\
-     \SO_n(\C) \ (n\, \textrm{ is odd}),  \
-     \SO_n(\C) \ (n\, \textrm{ is even}),\smallskip \\
-     \Sp_{2n}(\R), \ \Sp_{2n}(\C), \  \oO^*(2n), \  \Sp(p,q),\   \widetilde \Sp_{2n}(\R), \ \Sp_{2n}(\C) \qquad (n, p, q\geq 0).
-     \end{array}
+    \SO_n(\C) \ (n\, \textrm{ is odd}),  \
+    \SO_n(\C) \ (n\, \textrm{ is even}),\smallskip \\
+    \Sp_{2n}(\R), \ \Sp_{2n}(\C), \  \oO^*(2n), \  \Sp(p,q),\   \widetilde \Sp_{2n}(\R), \ \Sp_{2n}(\C) \qquad (n, p, q\geq 0).
+  \end{array}
 \]
-Here $\widetilde \Sp_{2n}(\R)$ denotes the metaplectic double cover of the symplectic group $\Sp_{2n}(\R)$ that does not split unless $n=0$.
-As usual, the universal Cartan subalgebra $\h$ of
- the complexified Lie algebra $\g$ of $G$ is respectively identified with
+Here $\wtSp_{2n}(\R)$ denotes the metaplectic double cover of the symplectic
+group $\Sp_{2n}(\R)$ that does not split unless $n=0$. As usual, the universal
+Cartan subalgebra $\h$ of the complexified Lie algebra $\g$ of $G$ is
+respectively identified with
 \[
-\begin{array}{c}
-  \C^n, \ \C^n\times \C^n, \ \C^{2n},  \ \C^{p+q},\smallskip \\
-\C^{\frac{p+q-1}{2}},\ \C^{\frac{p+q}{2}}, \smallskip \\
-\C^{\frac{p+q-1}{2}}\times \C^{\frac{p+q-1}{2}},\  \C^{\frac{p+q}{2}}\times \C^{\frac{p+q}{2}}, \smallskip \\
-\C^n,\ \C^n\times \C^n, \ \C^n, \, \C^{p+q},   \ \C^n,\ \C^n\times \C^n.
-     \end{array}
+  \begin{array}{c}
+    \C^n, \ \C^n\times \C^n, \ \C^{2n},  \ \C^{p+q},\smallskip \\
+    \C^{\frac{p+q-1}{2}},\ \C^{\frac{p+q}{2}}, \smallskip \\
+    \C^{\frac{p+q-1}{2}}\times \C^{\frac{p+q-1}{2}},\  \C^{\frac{p+q}{2}}\times \C^{\frac{p+q}{2}}, \smallskip \\
+    \C^n,\ \C^n\times \C^n, \ \C^n, \, \C^{p+q},   \ \C^n,\ \C^n\times \C^n.
+  \end{array}
 \]
 
 
-We define the Langlands dual $\check G$ of $G$ to be the respective complex group
+We define the Langlands dual $\ckG$ of $G$ to be the respective complex group
 \[
- \begin{array}{c}
-   \GL_n(\C), \ \GL_n(\C), \  \GL_{2n}(\C),\  \GL_{p+q}(\C),\smallskip\\
-    \Sp_{p+q-1}(\C)\ (p+q\, \textrm{ is odd}),  \  \oO_{p+q}(\C)\  (p+q\, \textrm{ is even}),\smallskip\\
-     \Sp_{n-1}(\C) \ (n\, \textrm{ is odd}),  \
-     \oO_n(\C) \ (n\, \textrm{ is even}),\smallskip \\
-     \oO_{2n+1}(\C), \ \oO_{2n+1}(\C), \  \oO_{2n}(\C), \  \oO_{2p+2q+1}(\C),\    \Sp_{2n}(\C) \  \textrm{or } \  \Sp_{2n}(\C).
-     \end{array}
+  \begin{array}{c}
+    \GL_n(\C), \ \GL_n(\C), \  \GL_{2n}(\C),\  \GL_{p+q}(\C),\smallskip\\
+    \Sp_{p+q-1}(\C)\ (p+q\, \textrm{ is odd}),  \  \SO_{p+q}(\C)\  (p+q\, \textrm{ is even}),\smallskip\\
+    \Sp_{n-1}(\C) \ (n\, \textrm{ is odd}),  \
+    \SO_n(\C) \ (n\, \textrm{ is even}),\smallskip \\
+    \SO_{2n+1}(\C), \ \SO_{2n+1}(\C), \  \SO_{2n}(\C), \  \SO_{2p+2q+1}(\C),\    \Sp_{2n}(\C) \  \textrm{or } \  \Sp_{2n}(\C).
+  \end{array}
 \]
-Write $n_{\check G}$ for the dimension of the standard representation of $\check G$, which respectively equals
+Write $\nckG$ for the dimension of the standard representation of $\check G$,
+which respectively equals
 \[
- n, n, 2n, p+q, p+q-1, p+q, n-1, n, 2n+1, 2n+1, 2n, 2p+2q+1, 2n, \textrm{ or }\ 2n.
+  n, n, 2n, p+q, p+q-1, p+q, n-1, n, 2n+1, 2n+1, 2n, 2p+2q+1, 2n, \textrm{ or
+  }\ 2n.
 \]
 
 For a Young diagram $\imath$, write
 \[
- \mathbf r_1(\imath)\geq \mathbf r_2(\imath)\geq \mathbf r_3(\imath)\geq \cdots
+  \mathbf r_1(\imath)\geq \mathbf r_2(\imath)\geq \mathbf r_3(\imath)\geq \cdots
 \]
-for its row lengths, and similarly,
-write
+for its row lengths, and similarly, write
 \[
- \mathbf c_1(\imath)\geq \mathbf c_2(\imath)\geq \mathbf c_3(\imath)\geq \cdots
+  \mathbf c_1(\imath)\geq \mathbf c_2(\imath)\geq \mathbf c_3(\imath)\geq \cdots
 \]
-for its column lengths.
-Denote by $\abs{\imath}:=\sum_{i=1}^\infty \mathbf r_i(\imath)$ the total size of $\imath$.
-Let $\check \CO$ be a Young diagram with  the following property:
-\begin{itemize}
-\item $\abs{\check \CO}=n_{\check G}$;
-\item if $\star\in\{D,  D^\C,  D^*,C, C^\C, C^* \} $, then all even rows occur in $\check \CO$ with even multiplicity;
-\item if $\star\in \{B, \widetilde C, B^\C, \widetilde C^\C \}$, then all odd rows occur in $\check \CO$ with even multiplicity.
-\end{itemize}
-As usual, $\check \CO$ is identified with a nilpotent orbit in the Lie algebra $\check \g$ of $\check G$.
+for its column lengths. Denote by
+$\abs{\imath}:=\sum_{i=1}^\infty \mathbf r_i(\imath)$ the total size of
+$\imath$.
 
-%Define
-%\[
- % r_{\check \CO}:= r_{\star, \check \CO}:=  \begin{cases}
- % \abs{\check \CO}, & \text{if } \star \in \set{A, A^\bH, A^*};\\
-  % 2\cdot \abs{\check \CO}, & \text{if } \star =A^\C;\\
-%\left  \lfloor \frac{\abs{\check \CO}}{2}\right \rfloor, & \text{if } \star \in \set{B, C, D, D^*, C^*,\widetilde C};\\
- % 2\cdot \left \lfloor \frac{\abs{\check \CO}}{2}\right \rfloor, & \text{if } \star \in \set{B^\C, C^\C, D^\C, \widetilde C^\C};\\
-  %\end{cases}
-% \]
-We define an element  $\lambda_{\check \CO}:=\lambda_{\star, \check \CO} \in \h^*$  as in what follows.
-For every  $a\in \bN^+$ (the set of positive integers), write
+From now on, we fix a pinning and so an abstract root system of the group
+$\ckcG$.
+
+
+We recall the parameterization of the set $\Nil(\ckG)$ of nilpotent $\ckG$
+orbits in $\ckfgg:=\Lie(\ckG)$ by Young diagrams. Each nilpotent orbit
+$\ckcO\in \Nil(\ckG)$ is identified with a Young diagram, still called $\ckcO$
+by abuse of notation, together with a possible symbol $I/II$ with the following
+property:
+\begin{itemize}
+  \item $\abs{\ckcO}=n_{\check G}$;
+  \item if $\star\in\set{D, D^\C, D^*,C, C^\C, C^* } $, then all even rows occur
+        in $\check \CO$ with even multiplicity;
+  \item if $\star\in \set{B, \widetilde C, B^\C, \widetilde C^\C }$, then all
+        odd rows occur in $\ckcO$ with even multiplicity.
+  \item if $\star\in \set{D,D^{\bC},D^{*}}$ and all rows of $\ckcO$ are even
+  (called a very even orbit), then one attach the
+        symbol ``$I$'' or ``$II$'' to $\ckcO$. We adopt the convention that the
+        orbits with symbol $I$ are those can be induced from the standard
+        parabolic subgroups.
+\end{itemize}
+% By abuse of notation, we write $\ckcO$ for the partition $\imath_{\ckcO}$ and
+% Note that the outer automorphism of the special orthogonal group exchanges the
+% symbol $I$ and $II$.
+Since, the situation of orbits marked with $I$ and $II$ are
+symmetry (see \Cref{rmk:OII}), in the following we will not consider the orbits with ``$II$'' and if
+$\star\in \set{D,D^{\bC},D^{*}}$,
 \[
-  \rho(a):=\left\{ \begin{array}{ll}
-                  (\frac{a-1}{2}, \frac{a-3}{2}, \cdots, 2,1), \quad &\textrm{if $a$ is odd;}\smallskip\\
-                    (\frac{a-1}{2}, \frac{a-3}{2}, \cdots, \frac{3}{2}, \frac{1}{2}), \quad &\textrm{if $a$ is even,}\\
-                    \end{array}
-                 \right.
+  \text{ a partition is implicitly attached to the symbol ``$I$'' when
+    necessary. }
+\]
+
+
+\smallskip
+
+From now on, let $\ckcO$ be a Young diagram which is naturally identified with
+an nilpotent orbit of $\ckcG$.
+
+We define an element $\lambda_{\ckcO}:=\lambda_{\star, \ckcO} \in \h^*$ as in
+what follows. For every $a\in \bN^+$ (the set of positive integers), write
+\[
+  \rho(a):=\begin{cases}
+    (\frac{a-1}{2}, \frac{a-3}{2}, \cdots, 2,1),  &\textrm{if $a$ is odd;}\smallskip\\
+    (\frac{a-1}{2}, \frac{a-3}{2}, \cdots, \frac{3}{2}, \frac{1}{2}), &\textrm{if $a$ is even,}\\
+  \end{cases}
 \]
 and
 \[
-   \tilde \rho(a):=
-                  (\frac{a-1}{2}, \frac{a-3}{2}, \cdots, \frac{3-a}{2},\frac{1-a}{2}).
+  \tilde \rho(a):= (\frac{a-1}{2}, \frac{a-3}{2}, \cdots, \frac{3-a}{2},\frac{1-a}{2}).
 \]
-By convention, $\rho(1)$ is the empty sequence. Write $a_1\geq  a_2\geq \cdots\geq a_s>0$ ($s\geq 0$)  for the nonzero row lengths of  $\check \CO$. Then we define
+By convention, $\rho(1)$ is the empty sequence. Write
+$a_1\geq a_2\geq \cdots\geq a_s>0$ ($s\geq 0$) for the nonzero row lengths of
+$\check \CO$. Then we define
 \[
   \lambda_{\check \CO}:= \begin{cases}
- (\tilde \rho( a_1), \tilde \rho(a_2),  \cdots, \tilde \rho(a_s)), & \text{if } \star \in \set{A, A^\bH, A^*};\\
-  (\tilde \rho( a_1), \tilde \rho(a_2),  \cdots, \tilde \rho(a_s); \tilde \rho( a_1), \tilde \rho(a_2),  \cdots, \tilde \rho(a_s)), & \text{if } \star =A^\C;\\
-  (\rho( a_1), \rho(a_2),  \cdots, \rho(a_s), 0^{l_1} ) , & \text{if } \star \in \set{B, C, D, D^*, C^*,\widetilde C};\\
-(\rho( a_1), \rho(a_2),  \cdots, \rho(a_s), 0^{l_1} ;  \rho( a_1), \rho(a_2),  \cdots, \rho(a_s), 0^{l_1} ) , & \text{if } \star \in \set{B^\C, C^\C, D^\C, \widetilde C^\C}.\\
-   \end{cases}
+    (\tilde \rho( a_1), \tilde \rho(a_2),  \cdots, \tilde \rho(a_s)), & \text{if } \star \in \set{A, A^\bH, A^*};\\
+    (\tilde \rho( a_1), \tilde \rho(a_2),  \cdots, \tilde \rho(a_s); \tilde \rho( a_1), \tilde \rho(a_2),  \cdots, \tilde \rho(a_s)), & \text{if } \star =A^\C;\\
+    (\rho( a_1), \rho(a_2),  \cdots, \rho(a_s), 0^{l_1} ) , & \text{if } \star \in \set{B, C, D, D^*, C^*,\widetilde C};\\
+    (\rho( a_1), \rho(a_2),  \cdots, \rho(a_s), 0^{l_1} ;  \rho( a_1), \rho(a_2),  \cdots, \rho(a_s), 0^{l_1} ) , & \text{if } \star \in \set{B^\C, C^\C, D^\C, \widetilde C^\C}.\\
+  \end{cases}
 \]
 Here
 \[
-l_1:= \left\lfloor\frac{\textrm{the number of odd rows of the Young diagram of $\check \CO$}}{2}\right\rfloor,
+  l_1:= \left\lfloor\frac{\textrm{the number of odd rows of the Young diagram of
+        $\check \CO$}}{2}\right\rfloor,
 \]
 and $0^{l_1}$ denotes the sequence of $0$'s of length $l_1$.
 
-By using  Harish-Chandra isomorphism, we view $\lambda_{\check \CO}$ as a character $\lambda_{\check \CO}: \mathcal Z(\g)\rightarrow \C$. Write $I_{\check \CO}:=I_{\star, \check \CO}$ for the maximal ideal of $\mathcal U(\g)$ with infinitesimal character $\lambda_{\check \CO}$. If $\star=D$ or $D^*$, then $\g=\o_{m}(\C)$ with $m=p+q$  or $2n$ respectively. In this case, put $I'_{\check \CO}:=\Ad_g(I_{\check \CO})$, where $g\in \oO_m(\C)\setminus \SO_m(\C)$ and $\Ad$ indicates the adjoint action. If $\star=D^\C$, then $\g=\o_{n}(\C)\times \o_n(\C)$, and we put $I'_{\check \CO}:=\Ad_{(g,g)}(I_{\check \CO})$, where $g\in \oO_n(\C)\setminus \SO_n(\C)$. In all these  cases, $I_{\check \CO}=I'_{\check \CO}$ unless $\check \CO$ has no odd rows.
+Note that $\lambda_{\ckcO}$ is conjugate to the neutral element in any
+$\fsl_{2}$ triple attached to $\ckcO$. (put more explanation? )
 
-Finally, we define the set of the special unipotent representations of $G$ attached to $\check \CO$ by
-\begin{eqnarray*}
-&&\Unip_{\check \CO}(G):= \Unip_{\star, \check \CO}(G) \\
-&:=& \begin{cases}
-   \{\pi\in \Irr(G)\mid \pi \textrm{ is annihilated by $ I_{\check \CO}$ or $I'_{\check \CO}$}\}, & \text{if } \star \in \set{D, D^\C, D^*};\\
-  \{\pi\in \Irr(G)\mid \pi \textrm{ is genuine  and annihilated by } I_{\check \CO}\}, & \text{if } \star =\widetilde C;\\
-   \{\pi\in \Irr(G)\mid \pi \textrm{ is annihilated by } I_{\check \CO}\}, & otherwise.\\
-      \end{cases}
-\end{eqnarray*}
-Here ``genuine" means that the representation $\pi$ of $\widetilde \Sp_{2n}(\R)$ does not descend to $\Sp_{2n}(\R)$.
-Our ultimate goal is to parametrize the set $\Unip_{\check \CO}(G)$ and to construct  all the representations in this set (\cite{BMSZ2}).
+By using Harish-Chandra isomorphism, we view $\lambda_{\check \CO}$ as a
+character $\lambda_{\check \CO}: \mathcal Z(\g)\rightarrow \C$. Write
+\[
+  I_{\check \CO}:=I_{\star, \check \CO}
+\] for the maximal ideal of $\cU(\g)$ with infinitesimal character
+$\lambda_{\check \CO}$.
 
+Finally, we define the set of the special unipotent representations of $G$
+attached to $\ckcO$ by
+\[
+  \begin{split}
+    \Unip_{\ckcO}(G):=&  \Unip_{\star, \ckcO}(G) \\
+    :=& \begin{cases}
+      % \{\pi\in \Irr(G)\mid \pi \textrm{ is annihilated by $ I_{\check \CO}$ or $I'_{\check \CO}$}\}, & \text{if } \star \in \set{D, D^\C, D^*};\\
+      \{\pi\in \Irr(G)\mid \pi \textrm{ is genuine  and annihilated by } I_{\check \CO}\}, & \text{if } \star =\widetilde C;\\
+      \{\pi\in \Irr(G)\mid \pi \textrm{ is annihilated by } I_{\check \CO}\}, & otherwise.\\
+    \end{cases}
+  \end{split}
+\]
+Here ``genuine" means that the representation $\pi$ of $\widetilde \Sp_{2n}(\R)$
+does not descend to $\Sp_{2n}(\R)$. Our ultimate goal is to parametrize the set
+$\Unip_{\check \CO}(G)$ and to construct all the representations in this set
+(\cite{BMSZ2}).
+(Define the unipotent packet using the neutral element first? )
+
+\begin{remark}
+  Suppose $\star=\set{D,D^{\bC},D^{*}}$.
+  Let $\cA$ be an outer automorphism of $G$, which induces an automorphism on
+  $\fgg$ and $\cU(\fgg)$.
+  Let
+  \[
+  I'_{\ckcO}:=\cA(I_{\ckcO}).
+  \]
+  If $\ckcO$ has only even rows (i.e. $\ckcO$ is very even),
+  then $I'_{\ckcO}$ is the maximal primitive ideal attached to the nilpotent
+  orbit $\ckcO_{II}$.
+  Otherwise $I_{\ckcO}=I'_{\ckcO}$.
+\end{remark}
 
 
 
@@ -439,13 +494,13 @@ For unitary groups, we have the following result.
 \begin{thm}
   Assume that $\star=A^*$ so that $G=\oU(p,q)$. If there is a decomposition
   \[
-    \ckcO=\ckcOg \cuprow \ckcOb \cuprow \ckcOb
+    \ckcO=\ckcOg \cuprow \ckcOpb \cuprow \ckcOpb
   \]
-  such that all nonzero row lengths of $\check \CO_{\mathrm g}$ have the same
-  parity as $p+q$, and all nonzero row lengths of $\check \CO_{\mathrm b}$ have
+  such that all nonzero row lengths of $\ckcOg$ have the same
+  parity as $p+q$, and all nonzero row lengths of $\ckcOpb$ have
   different parity as $p+q$, then
   \[
-    \sharp(\Unip_{\check \CO}(G))= \sharp\set{\CP\in \mathrm{PP}_\star(\ckcOg)|(p_\CP+\abs{\ckcOb}, q_\CP+\abs{\ckcOb})=(p,q)}
+    \sharp(\Unip_{\ckcO}(G))= \sharp \set{\CP\in \mathrm{PP}_\star(\ckcOg)|(p_\CP+\abs{\ckcOpb}, q_\CP+\abs{\ckcOpb})=(p,q)}
   \]
   If there is no such decomposition, then $\sharp(\Unip_{\check \CO}(G))=0$.
 
@@ -455,18 +510,18 @@ For unitary groups, we have the following result.
 
 Now we assume that
 \[
-\star\in \{ B, D,   B^\C, D^\C, C, C^\C, D^*, C^*, \widetilde C, \widetilde C^\C\}.
+\star\in \Set{ B, D,   B^\C, D^\C, C, C^\C, D^*, C^*, \widetilde C, \widetilde C^\C}.
 \]
 Then there is a unique decomposition
  \[
-   \check \CO=\check \CO_{\mathrm g} \sqcup \check \CO_{\mathrm b}\sqcup \check \CO_{\mathrm b}
+   \ckcO=\ckcOg \cuprow \ckcOpb\cuprow \ckcOpb
  \]
- such that $\check \CO_{\mathrm g}$ has $\star$-good parity in the sense that all its nonzero row lengths are
+ such that $\ckcOg$ has $\star$-good parity in the sense that all its nonzero row lengths are
  \[
  \left\{
      \begin{array}{ll}
-       \textrm{even}, &\hbox{if $\star\in \{B, B^\C, \widetilde C, \widetilde C^\C\}$}; \smallskip\\
-         \textrm{odd}, &\hbox{if $\star\in \{C, D, C^\C, D^\C, D^*, C^*\}$},
+       \textrm{even}, &\hbox{if $\star\in \set{B, B^\C, \widetilde C, \widetilde C^\C}$}; \smallskip\\
+         \textrm{odd}, &\hbox{if $\star\in \set{C, D, C^\C, D^\C, D^*, C^*}$},
           \end{array}
    \right.
    \]
@@ -475,207 +530,258 @@ Then there is a unique decomposition
  \[
  \left\{
      \begin{array}{ll}
-       \textrm{odd}, &\hbox{if  $\star\in \{B, B^\C, \widetilde C, \widetilde C^\C\}$}; \smallskip\\
-         \textrm{even}, &\hbox{if  $\star\in \{C, D, C^\C, D^\C, D^*, C^*\}$}.
+       \textrm{odd}, &\hbox{if  $\star\in \set{B, B^\C, \widetilde C, \widetilde C^\C}$}; \smallskip\\
+         \textrm{even}, &\hbox{if  $\star\in \set{C, D, C^\C, D^\C, D^*, C^*}$}.
           \end{array}
    \right.
    \]
 For simplicity, put
 \[
-  l:=\abs{\check \CO_{\mathrm b}},
+  l:=\abs{\ckcOb},
 \]
-and respectively put
+and
 \[
- \begin{array}{rl}
-    G_l:=  & \SO(p-l,q-l)\ \  (\textrm{when $p,q\geq l$}),   \ \     \SO_{n-2l}(\C),  \  \   \Sp_{2n-2l}(\R), \  \ \Sp_{2n-2l}(\C), \smallskip \\
-  & \oO^*(2n-2l), \ \  \Sp(p-\frac{l}{2},q-\frac{l}{2}) \ \  (\textrm{when $p,q\geq 2l$}),  \ \   \widetilde \Sp_{2n-2l}(\R) \ \ \textrm{or }  \ \  \Sp_{2n-2l}(\C),
-     \end{array}
+\Gpb := \begin{cases}
+  \GL_{\abs{\ckcOpb}}(\bR) & \text{when } \star \in \set{B,C,\wtC,D}, \\
+  \GL_{\abs{\ckcOpb}}(\bC) & \text{when } \star \in \set{B^{\bC},C^{\bC},\wtC^{\bC},D^{\bC}}. \\
+  \GL_{\half \abs{\ckcOpb}}(\bH) & \text{when } \star \in \set{C^{*},D^{*}}. \\
+\end{cases}
 \]
-when \[
- \begin{array}{rl}
-    G=  & \SO(p,q)   \ \     \SO_{n}(\C),  \  \   \Sp_{2n}(\R), \  \ \Sp_{2n}(\C), \smallskip \\
-  & \oO^*(2n), \ \  \Sp(p,q),  \ \   \widetilde \Sp_{2n}(\R) \ \ \textrm{or }  \ \  \Sp_{2n}(\C).
-     \end{array}
+Note that $G$ has a subgroup isomorphic to
+$\Gpb$
+if and only if
+\[
+  \begin{cases}
+    p,q\geq l & \text{when $G = \SO(p,q)$},\\
+    p,q\geq 2l &  \text{when $G = \Sp(p,q)$},\\
+    \text{no conditions} & \text{otherwise}.
+  \end{cases}
 \]
-
+In such cases, $G$ has a Levi subgroup isomorphic to  $\Gpb\times \Gg$
+where
+\[
+  \Gg :=
+  \begin{cases}
+    \SO(p-l,q-l) & \textrm{when $\star\in \set{B,D}$},\\
+    \SO_{n-2l}(\bC) &\textrm{when $\star\in \set{B^{\bC},D^{\bC}}$},\\
+    \rO^{*}(2n-2l) &\textrm{when $\star = D^{*}$},\\
+    \Sp_{2n-2l}(\bR) &\textrm{when $\star = C$},\\
+    \wtSp_{2n-2l}(\bR) &\textrm{when $\star = \wtC$},\\
+    \Sp_{2n-2l}(\bC) &\textrm{when $\star \in \set{C^{\bC},\wtC^{\bC}}$},\\
+    \Sp(p-\half l,q-\half l) &\textrm{when $\star = C^{*}$}.\\
+  \end{cases}
+\]
+% and respectively put
+% \[
+%  \begin{array}{rl}
+%     \Gg:=  & \SO(p-l,q-l)\ \  (\textrm{when $p,q\geq l$}),   \ \     \SO_{n-2l}(\C),  \  \   \Sp_{2n-2l}(\R), \  \ \Sp_{2n-2l}(\C), \smallskip \\
+%   & \oO^*(2n-2l), \ \  \Sp(p-\frac{l}{2},q-\frac{l}{2}) \ \  (\textrm{when $p,q\geq 2l$}),  \ \   \widetilde \Sp_{2n-2l}(\R) \ \ \textrm{or }  \ \  \Sp_{2n-2l}(\C),
+%      \end{array}
+% \]
+% when \[
+%  \begin{array}{rl}
+%     G=  & \SO(p,q)   \ \     \SO_{n}(\C),  \  \   \Sp_{2n}(\R), \  \ \Sp_{2n}(\C), \smallskip \\
+%   & \oO^*(2n), \ \  \Sp(p,q),  \ \   \widetilde \Sp_{2n}(\R) \ \ \textrm{or }  \ \  \Sp_{2n}(\C).
+%      \end{array}
+% \]
 
 \begin{thm}\label{reduction}
-(a) Assume that $\star\in \{B,D\}$ so that $G=\SO(p,q)$. Then
- \[
-\sharp(\Unip_{\check \CO}(G))=\left\{
-     \begin{array}{ll}
-      \sharp(\Unip_{\check \CO_{\mathrm g}}(G_l))\times \sharp(\Unip_{\check \CO_{\mathrm b}}(\GL_l(\R)) ), &\hbox{if $p,q\geq l$}; \smallskip\\
-           0, &\hbox{otherwise.}  \end{array}
-   \right.
-        \]
-
-(b) Assume that $\star=C^*$ so that $G=\Sp(p,q)$. Then
- \[
-\sharp(\Unip_{\check \CO}(G))=\left\{
-     \begin{array}{ll}
-      \sharp(\Unip_{\check \CO_{\mathrm g}}(G_l )), &\hbox{if $p,q\geq \frac{l}{2}$}; \smallskip\\
-           0, &\hbox{otherwise.}  \end{array}
-   \right.
-        \]
+  Retain the notation above.
+  When $G$ has a subgroup isomorphic to $\Gpb$,
+  there is a bijection
+  \begin{equation}\label{eq:IND}
+      \begin{array}{rccc}
+    \fI\colon &   \Unip_{G'}(\ckcO'_{b})\times \Unip_{G_{g}}(\ckcO_{g})&         \longrightarrow &\Unip_{G}(\ckcO) \\
+     &   (\pi',\pi_{0}) & \mapsto & \pi'\rtimes \pi_{0}.
+      \end{array}
+    \end{equation}
+    Otherwise,
+    \[
+    \Unip_{G}(\ckcO)=\emptyset.
+    \]
+  \end{thm}
 
 
-(c) Assume that $\star\in \{C,\widetilde C\}$ so that $G=\Sp_{2n}(\R)$ or $\widetilde \Sp_{2n}(\R)$. Then
- \[
-\sharp(\Unip_{\check \CO}(G))=
-      \sharp(\Unip_{\check \CO_{\mathrm g}}(G_l))\times \sharp(\Unip_{\check \CO_{\mathrm b}}(\GL_l(\R)) ).       \]
+ Combine the result for general linear groups, we list the consequence of the
+ above theorem as the follows:
+ \begin{enumerate}[label=(\alph*)]
+   \item Assume that $\star\in \{B,D\}$ so that $G=\SO(p,q)$. Then
+         \[
+         \sharp(\Unip_{\check \CO}(G))=
+         \begin{cases}
+           \sharp(\Unip_{\check \CO_{\mathrm g}}(G_l))\times \sharp(\Unip_{\check \CO_{\mathrm b}}(\GL_l(\R)) ), &\hbox{if $p,q\geq l$}; \smallskip\\
+           0, &\hbox{otherwise.}
+         \end{cases}
+         \]
+   \item Assume that $\star=C^*$ so that $G=\Sp(p,q)$. Then
+         \[
+         \sharp(\Unip_{\check \CO}(G))=
+         \begin{cases}
+           \sharp(\Unip_{\check \CO_{\mathrm g}}(G_l )), &\hbox{if $p,q\geq \frac{l}{2}$}; \smallskip\\
+           0, &\hbox{otherwise.}
+         \end{cases}
+         \]
+
+   \item Assume that $\star\in \{C,\widetilde C\}$ so that $G=\Sp_{2n}(\R)$ or
+         $\widetilde \Sp_{2n}(\R)$. Then
+         \[
+         \sharp(\Unip_{\check \CO}(G))= \sharp(\Unip_{\check \CO_{\mathrm g}}(G_l))\times \sharp(\Unip_{\check \CO_{\mathrm b}}(\GL_l(\R)) ). \]
+   \item
+         Assume that $\star\in \{B^\C, D^\C, C^\C,\widetilde C^\C, D^*\}$. Then
+         \[
+         \sharp(\Unip_{\check \CO}(G))= \sharp(\Unip_{\check \CO_{\mathrm g}}(G_l)).
+         \]
+ \end{enumerate}
 
 
-(d)  Assume that $\star\in \{B^\C, D^\C, C^\C,\widetilde C^\C, D^*\}$. Then
- \[
-\sharp(\Unip_{\check \CO}(G))=
-      \sharp(\Unip_{\check \CO_{\mathrm g}}(G_l)).
-       \]
+ \subsection{Orthogonal and symplectic groups: the case of good parity}
+ Now we further assume that $\check \CO$ has $\star$-good parity, namely
+ $\check \CO=\check \CO_{\mathrm g}$. By Theorem \ref{reduction}, the counting
+ problem in general is reduced to this case.
 
 
 
+ \delete{
+   \begin{defn}
+     A $\star$-pair is a pair $(i,i+1)$ of consecutive positive integers such
+     that
+     \[
+       \left\{
+         \begin{array}{ll}
+           i\textrm{ is odd}, \quad &\textrm{if $\star\in\{C, \widetilde{C}, C^*, C^\C, \widetilde C^\C\}$};  \\
+           i \textrm{ is even}, \quad &\textrm{if $\star\in\{B, D, D^*, B^\C, D^\C\}$}. \\
+         \end{array}
+       \right.
+     \]
+     A $\star$-pair $(i,i+1)$ is said to be primitive in $\check \CO$ if
+     $\mathbf r_i(\check \CO)-\mathbf r_{i+1}(\check \CO)$ is positive and even.
+     Denote $\mathrm{PP}_\star(\check \CO)$ the set of all $\star$-pairs that
+     are primitive in $\check \CO$.
+   \end{defn}
+ }
 
 
-\end{thm}
 
-
-\subsection{Orthogonal and symplectic groups: the case of good parity}
-Now we further assume that  $\check \CO$ has $\star$-good parity, namely $\check \CO=\check \CO_{\mathrm g}$. By Theorem \ref{reduction}, the counting problem in general is reduced to this  case.
-
-
-
-\delete{
 \begin{defn}
- A $\star$-pair is a pair  $(i,i+1)$ of consecutive positive integers such that
-\[
-   \left\{
-     \begin{array}{ll}
-      i\textrm{ is odd}, \quad &\textrm{if $\star\in\{C, \widetilde{C}, C^*, C^\C, \widetilde C^\C\}$};  \\
-      i \textrm{ is even}, \quad &\textrm{if $\star\in\{B, D, D^*, B^\C, D^\C\}$}. \\
-       \end{array}
-   \right.
-\]
-A $\star$-pair   $(i,i+1)$ is said to be primitive in $\check \CO$ if    $\mathbf r_i(\check \CO)-\mathbf r_{i+1}(\check \CO)$ is positive and even.
-Denote $\mathrm{PP}_\star(\check \CO)$ the  set of all $\star$-pairs that are primitive in $\check \CO$.
+  A $\star$-pair is a pair $(i,i+1)$ of consecutive positive integers such that
+  \[
+    \left\{
+      \begin{array}{ll}
+        i\textrm{ is odd}, \quad &\textrm{if $\star\in\{C, \widetilde{C}, C^*, C^\C, \widetilde C^\C\}$};  \\
+        i \textrm{ is even}, \quad &\textrm{if $\star\in\{B, D, D^*, B^\C, D^\C\}$}. \\
+      \end{array}
+    \right.
+  \]
+  A $\star$-pair $(i,i+1)$ is said to be
+  \begin{itemize}
+    \item vacant in $\check \CO$, if
+          $\mathbf r_i(\check \CO)=\mathbf r_{i+1}(\check \CO)=0$;
+    \item balanced in $\check \CO$, if
+          $\mathbf r_i(\check \CO)=\mathbf r_{i+1}(\check \CO)>0$;
+    \item tailed in $\check \CO$, if
+          $\mathbf r_i(\check \CO)-\mathbf r_{i+1}(\check \CO)$ is positive and
+          odd;
+    \item primitive in $\check \CO$, if
+          $\mathbf r_i(\check \CO)-\mathbf r_{i+1}(\check \CO)$ is positive and
+          even.
+  \end{itemize}
+  Denote $\CPP_\star(\check \CO)$ the set of all $\star$-pairs that are
+  primitive in $\check \CO$.
 \end{defn}
+We remark that, the set $\CPP_{\star}(\ckcO)$ is the same as that in
+\cite{So}*{Section~5}
+(used to describe Lusztig's canonical quotient) when $\star\neq \wtC^{\bC}$.
+
+
+\begin{thm}[Barbasch-Vogan, Barbasch]\label{complex}
+  Assume that $\star\in \{B^\C,D^\C, C^\C, \widetilde C^\C\}$. Then
+  \[
+    \sharp(\Unip_{\check \CO}(G))=2^{\sharp(\CPP_\star(\check \CO))} .
+  \]
+\end{thm}
+\trivial[]{
+  Here is a tricky point: When $\star = \wtC^{\bC}$,  the Lusztig canonical quotient of $\ckcO$
+  is a quotient by $\wp\sim \wp^{c}$ of $\bF_{2}[\CPP_{\star}(\ckcO)]$.
+  However, the counting should still be correct!
 }
-
-
-
-\begin{defn}
- A $\star$-pair is a pair  $(i,i+1)$ of consecutive positive integers such that
-\[
-   \left\{
-     \begin{array}{ll}
-      i\textrm{ is odd}, \quad &\textrm{if $\star\in\{C, \widetilde{C}, C^*, C^\C, \widetilde C^\C\}$};  \\
-      i \textrm{ is even}, \quad &\textrm{if $\star\in\{B, D, D^*, B^\C, D^\C\}$}. \\
-       \end{array}
-   \right.
-\]
-A $\star$-pair   $(i,i+1)$ is said to be
-\begin{itemize}
-\item
-vacant in $\check \CO$, if $\mathbf r_i(\check \CO)=\mathbf r_{i+1}(\check \CO)=0$;
-\item
-balanced in $\check \CO$,  if  $\mathbf r_i(\check \CO)=\mathbf r_{i+1}(\check \CO)>0$;
-\item
-tailed in $\check \CO$,  if  $\mathbf r_i(\check \CO)-\mathbf r_{i+1}(\check \CO)$ is positive and odd;
-\item
-primitive in $\check \CO$, if    $\mathbf r_i(\check \CO)-\mathbf r_{i+1}(\check \CO)$ is positive and even.
-\end{itemize}
-Denote $\mathrm{PP}_\star(\check \CO)$ the  set of all $\star$-pairs that are primitive in $\check \CO$.
-\end{defn}
-
-
-
-\begin{thm}\label{complex}
-Assume that $\star\in \{B^\C,D^\C, C^\C, \widetilde C^\C\}$. Then
- \[
-\sharp(\Unip_{\check \CO}(G))=2^{\sharp(\mathrm{PP}_\star(\check \CO))} .        \]
-\end{thm}
-
 
 
 We attach to $\check \CO$ a pair of Young diagrams
 \[
-(\imath_{\check \CO}, \jmath_{\check \CO}):=(\imath_\star(\check \CO), \jmath_\star(\check \CO)),
+  (\imath_{\check \CO}, \jmath_{\check \CO}):=(\imath_\star(\check \CO), \jmath_\star(\check \CO)),
 \]
- as follows.
+as follows.
 
 \medskip
 
-\noindent
-{\bf The case when $\star=\{B, B^\C\}$.} In this case,
- \[
-   \mathbf c_{1}(\jmath_{\check \CO})=\frac{\mathbf r_1(\check \CO)}{2},
+\noindent {\bf The case when $\star=\{B, B^\C\}$.} In this case,
+\[
+  \mathbf c_{1}(\jmath_{\check \CO})=\frac{\mathbf r_1(\check \CO)}{2},
 \]
 and for all $i\geq 1$,
 \[
-\left (\mathbf c_{i}(\imath_{\check \CO}), \mathbf c_{i+1}(\jmath_{\check \CO})\right )=
-            \left (\frac{\mathbf r_{2i}(\check \CO)}{2},  \frac{\mathbf r_{2i+1}(\check \CO)}{2}\right ).
+  \left (\mathbf c_{i}(\imath_{\check \CO}), \mathbf c_{i+1}(\jmath_{\check \CO})\right )= \left (\frac{\mathbf r_{2i}(\check \CO)}{2}, \frac{\mathbf r_{2i+1}(\check \CO)}{2}\right ).
 \]
 
 \medskip
 
-\noindent
-{\bf The case when $\star\in \{\widetilde C, \widetilde C^\C\}$.}  In this case, for all $i\geq 1$,
+\noindent {\bf The case when $\star\in \{\widetilde C, \widetilde C^\C\}$.} In
+this case, for all $i\geq 1$,
 \[
-(\mathbf c_{i}(\imath_{\check \CO}), \mathbf c_{i}(\jmath_{\check \CO}))=
-           \left (\frac{\mathbf r_{2i-1}(\check \CO)}{2},  \frac{\mathbf r_{2i}(\check \CO)}{2}\right).
+  (\mathbf c_{i}(\imath_{\check \CO}), \mathbf c_{i}(\jmath_{\check \CO}))= \left (\frac{\mathbf r_{2i-1}(\check \CO)}{2}, \frac{\mathbf r_{2i}(\check \CO)}{2}\right).
 \]
 
 \medskip
 
-\noindent
-{\bf The case when $\star\in \{C,C^*, C^\C\}$.} In this case, for all $i\geq 1$,
+\noindent {\bf The case when $\star\in \{C,C^*, C^\C\}$.} In this case, for all
+$i\geq 1$,
 \[
-(\mathbf c_{i}(\jmath_{\check \CO}), \mathbf c_{i}(\imath_{\check \CO}))=
-   \left\{
-     \begin{array}{ll}
-        (0,  0), &\hbox{if $(2i-1, 2i)$ is vacant  in $\check \CO$};\smallskip\\
-        (\frac{\mathbf r_{2i-1}(\check \CO)-1}{2},  0), & \hbox{if $(2i-1, 2i)$ is tailed in $\check \CO$};\smallskip\\
-                  (\frac{\mathbf r_{2i-1}(\check \CO)-1}{2},  \frac{\mathbf r_{2i}(\check \CO)+1}{2}), &\hbox{otherwise}.\\
-            \end{array}
-   \right.
+  (\mathbf c_{i}(\jmath_{\check \CO}), \mathbf c_{i}(\imath_{\check \CO}))= \left\{
+    \begin{array}{ll}
+      (0,  0), &\hbox{if $(2i-1, 2i)$ is vacant  in $\check \CO$};\smallskip\\
+      (\frac{\mathbf r_{2i-1}(\check \CO)-1}{2},  0), & \hbox{if $(2i-1, 2i)$ is tailed in $\check \CO$};\smallskip\\
+      (\frac{\mathbf r_{2i-1}(\check \CO)-1}{2},  \frac{\mathbf r_{2i}(\check \CO)+1}{2}), &\hbox{otherwise}.\\
+    \end{array}
+  \right.
 \]
 \medskip
 
-\noindent
-{\bf The case when $\star\in \{D,D^*, D^\C\}$.} In this case,
- \[
-   \mathbf c_{1}(\imath_{\check \CO})= \left\{
-     \begin{array}{ll}
+\noindent {\bf The case when $\star\in \{D,D^*, D^\C\}$.} In this case,
+\[
+  \mathbf c_{1}(\imath_{\check \CO})= \left\{
+    \begin{array}{ll}
       0,  &\hbox{if $\mathbf r_1(\check \CO)=0$}; \smallskip\\
-       \frac{\mathbf r_1(\check \CO)+1}{2},   &\hbox{if $\mathbf r_1(\check \CO)>0$},\\
-            \end{array}
-   \right.
- \]
+      \frac{\mathbf r_1(\check \CO)+1}{2},   &\hbox{if $\mathbf r_1(\check \CO)>0$},\\
+    \end{array}
+  \right.
+\]
 and for all $i\geq 1$,
 \[
-(\mathbf c_{i}(\jmath_{\check \CO}), \mathbf c_{i+1}(\imath_{\check \CO}))=
-   \left\{
-     \begin{array}{ll}
-        (0,  0), &\hbox{if $(2i, 2i+1)$ is vacant in $\check \CO$};\smallskip\\
+  (\mathbf c_{i}(\jmath_{\check \CO}), \mathbf c_{i+1}(\imath_{\check \CO}))= \left\{
+    \begin{array}{ll}
+      (0,  0), &\hbox{if $(2i, 2i+1)$ is vacant in $\check \CO$};\smallskip\\
       \left  (\frac{\mathbf r_{2i}(\check \CO)-1}{2},  0\right ), & \hbox{if $(2i, 2i+1)$ is tailed in $\check \CO$};\smallskip\\
-                \left  (\frac{\mathbf r_{2i}(\check \CO)-1}{2},  \frac{\mathbf r_{2i+1}(\check \CO)+1}{2}\right ), &\hbox{otherwise}.\\
-            \end{array}
-   \right.
+      \left  (\frac{\mathbf r_{2i}(\check \CO)-1}{2},  \frac{\mathbf r_{2i+1}(\check \CO)+1}{2}\right ), &\hbox{otherwise}.\\
+    \end{array}
+  \right.
 \]
 
 
 
 
-\begin{eg} Suppose that $\star=C$, and $\check \CO$ is the following Young diagram which has $\star$-good parity.
-\begin{equation*}\label{eq:sp-nsp.C}
-  \tytb{\ \ \ \ \  , \ \ \  , \ \ \ , \ \ \  , \ \ \ , \  ,\  }
-   \end{equation*}
-   Then
-\[
-  \mathrm{PP}_\star(\check \CO)=\{(1,2), (5,6)\}
-\]
-and
-\[
-  (\imath_{\check \CO}, \jmath_{\check \CO})= \tytb{\ \ \ ,\ \  } \times \tytb{\ \ \ , \  }.
-\]
+\begin{eg} Suppose that $\star=C$, and $\check \CO$ is the following Young
+  diagram which has $\star$-good parity.
+  \begin{equation*}\label{eq:sp-nsp.C}
+    \tytb{\ \ \ \ \  , \ \ \  , \ \ \ , \ \ \  , \ \ \ , \  ,\  }
+  \end{equation*}
+  Then
+  \[
+    \CPP_\star(\check \CO)=\{(1,2), (5,6)\}
+  \]
+  and
+  \[
+    (\imath_{\check \CO}, \jmath_{\check \CO})= \tytb{\ \ \ ,\ \ } \times \tytb{\ \ \ , \ }.
+  \]
 
 
 \end{eg}
@@ -683,159 +789,176 @@ and
 
 
 \delete{
-\begin{eg} Suppose that $\star=C$, and $\check \CO$ is the following Young diagram which has $\star$-good parity.
-\begin{equation*}\label{eq:sp-nsp.C}
-  \tytb{\ \ \ \ \  , \ \ \  , \ \ \ , \ \ \  , \ \ \ , \  ,\  }
-   \end{equation*}
-   Then
-\[
-  \mathrm{PP}_\star(\check \CO)=\{(1,2), (5,6)\}.
-\]
-and $(\imath_\star(\check \CO, \wp), \jmath_\star(\check \CO, \wp))$ %\in \mathrm{BP}_\star(\check \CO)$
-has the  following form.
+  \begin{eg} Suppose that $\star=C$, and $\check \CO$ is the following Young
+    diagram which has $\star$-good parity.
+    \begin{equation*}\label{eq:sp-nsp.C}
+      \tytb{\ \ \ \ \  , \ \ \  , \ \ \ , \ \ \  , \ \ \ , \  ,\  }
+    \end{equation*}
+    Then
+    \[
+      \mathrm{PP}_\star(\check \CO)=\{(1,2), (5,6)\}.
+    \]
+    and $(\imath_\star(\check \CO, \wp), \jmath_\star(\check \CO,
+    \wp))$ %\in \mathrm{BP}_\star(\check \CO)$
+    has the following form.
 
-\begin{equation*}\label{eq:sp-nsp.C}
-\begin{array}{rclcrcl}
-  \wp=\emptyset & : & \tytb{\ \ \ ,\ \  } \times \tytb{\ \ \ , \  }  & \qquad \quad &  \wp=\{(1,2)\}& : & \tytb{\ \ \  , \ \ , \   } \times \tytb{\ \ \  } \medskip \medskip \medskip \\
-    \wp=\{(5,6)\} & : & \tytb{\ \ \ ,\ \ \ } \times \tytb{\ \ , \   }  & \qquad \quad &  \wp=\{(1,2), (5,6)\}  & : & \tytb{\ \ \  , \ \ \ ,  \ } \times \tytb{\ \   } \\
-  \end{array}
-  \end{equation*}
+    \begin{equation*}\label{eq:sp-nsp.C}
+      \begin{array}{rclcrcl}
+        \wp=\emptyset & : & \tytb{\ \ \ ,\ \  } \times \tytb{\ \ \ , \  }  & \qquad \quad &  \wp=\{(1,2)\}& : & \tytb{\ \ \  , \ \ , \   } \times \tytb{\ \ \  } \medskip \medskip \medskip \\
+        \wp=\{(5,6)\} & : & \tytb{\ \ \ ,\ \ \ } \times \tytb{\ \ , \   }  & \qquad \quad &  \wp=\{(1,2), (5,6)\}  & : & \tytb{\ \ \  , \ \ \ ,  \ } \times \tytb{\ \   } \\
+      \end{array}
+    \end{equation*}
 
 \end{eg}
 }
 
-Here and henceforth, when no confusion is possible, we write $\alpha\times \beta$ for a pair $(\alpha, \beta)$.  We will also write $\alpha\times \beta\times \gamma$ for a triple $(\alpha, \beta, \gamma)$.
+Here and henceforth, when no confusion is possible, we write
+$\alpha\times \beta$ for a pair $(\alpha, \beta)$. We will also write
+$\alpha\times \beta\times \gamma$ for a triple $(\alpha, \beta, \gamma)$.
 
 
-We introduce two more symbols $B^+$ and $B^-$, and make the following definition.
- \begin{defn}\label{defpbp0}
- A painted bipartition is a triple $\tau=(\imath, \CP)\times (\jmath, \cQ)\times \alpha$, where $(\imath, \CP)$ and $ (\jmath, \mathcal Q)$ are painted Young diagrams, and $\alpha\in \{B^+,B^-, C,D,\widetilde {C}, C^*, D^*\}$, subject to the following conditions:
- \begin{itemize}
-  \delete{\item
- $(\imath, \jmath)\in \mathrm{BP}_\alpha$ if $\alpha\notin\{B^+,B^-\}$, and  $(\imath, \jmath)\in \mathrm{BP}_{B}$ if $\alpha\in\{B^+,B^-\}$;}
+We introduce two more symbols $B^+$ and $B^-$, and make the following
+definition.
+\begin{defn}\label{defpbp0}
+  A painted bipartition is a triple
+  $\tau=(\imath, \CP)\times (\jmath, \cQ)\times \alpha$, where $(\imath, \CP)$
+  and $ (\jmath, \mathcal Q)$ are painted Young diagrams, and
+  $\alpha\in \{B^+,B^-, C,D,\widetilde {C}, C^*, D^*\}$, subject to the
+  following conditions:
+  \begin{itemize}
+          \delete{\item $(\imath, \jmath)\in \mathrm{BP}_\alpha$ if
+          $\alpha\notin\{B^+,B^-\}$, and $(\imath, \jmath)\in \mathrm{BP}_{B}$
+          if $\alpha\in\{B^+,B^-\}$;}
 
- \item
- $\CP^{-1}(\bullet)=\mathcal Q^{-1}(\bullet)$;
- \item
- the image of $\CP$ is contained in
- \[
- \left\{
-     \begin{array}{ll}
-         \{\bullet, c\}, &\hbox{if $\alpha=B^+$ or $B^-$}; \smallskip\\
+    \item $\CP^{-1}(\bullet)=\mathcal Q^{-1}(\bullet)$;
+    \item the image of $\CP$ is contained in
+          \[
+          \left\{
+          \begin{array}{ll}
+            \{\bullet, c\}, &\hbox{if $\alpha=B^+$ or $B^-$}; \smallskip\\
             \{\bullet,  r, c,d\}, &\hbox{if $\alpha=C$}; \smallskip\\
-          \{\bullet, s, r, c,d\}, &\hbox{if $\alpha=D$}; \smallskip\\
+            \{\bullet, s, r, c,d\}, &\hbox{if $\alpha=D$}; \smallskip\\
             \{\bullet, s, c\}, &\hbox{if $\alpha=\widetilde{ C}$}; \smallskip \\
-        \{\bullet\}, &\hbox{if $\alpha=C^*$}; \smallskip \\
-          \{\bullet, s\}, &\hbox{if $\alpha=D^*$},\\
-            \end{array}
-   \right.
- \]
- \item
- the image of $\mathcal Q$ is contained in
- \[
- \left\{
-     \begin{array}{ll}
-         \{\bullet, s, r, d\}, &\hbox{if $\alpha=B^+$ or $B^-$}; \smallskip\\
-           \{\bullet, s\}, &\hbox{if $\alpha=C$}; \smallskip\\
-           \{\bullet\}, &\hbox{if $\alpha=D$}; \smallskip\\
-             \{\bullet, r, d\}, &\hbox{if $\alpha=\widetilde{ C}$}; \smallskip\\
-        \{\bullet, s,r\}, &\hbox{if $\alpha=C^*$}; \smallskip \\
-          \{\bullet, r\}, &\hbox{if $\alpha=D^*$}.
-            \end{array}
-   \right.
- \]
+            \{\bullet\}, &\hbox{if $\alpha=C^*$}; \smallskip \\
+            \{\bullet, s\}, &\hbox{if $\alpha=D^*$},\\
+          \end{array}
+          \right.
+          \]
+    \item the image of $\mathcal Q$ is contained in
+          \[
+          \left\{
+          \begin{array}{ll}
+            \{\bullet, s, r, d\}, &\hbox{if $\alpha=B^+$ or $B^-$}; \smallskip\\
+            \{\bullet, s\}, &\hbox{if $\alpha=C$}; \smallskip\\
+            \{\bullet\}, &\hbox{if $\alpha=D$}; \smallskip\\
+            \{\bullet, r, d\}, &\hbox{if $\alpha=\widetilde{ C}$}; \smallskip\\
+            \{\bullet, s,r\}, &\hbox{if $\alpha=C^*$}; \smallskip \\
+            \{\bullet, r\}, &\hbox{if $\alpha=D^*$}.
+          \end{array}
+          \right.
+          \]
 
- \end{itemize}
- \end{defn}
+  \end{itemize}
+\end{defn}
 
   %\begin{remark}
- %The set of painted bipartition counts the multiplicities of an irreducible representation of $W_{r_{\fgg}}$ occurs in the coherent continuation representation at the infinitesimal character of the trivial representation.
-%For the relationship between painted bipartitions and the coherent continuation representations of Harish-Chandra modules, see \cite{Mc}.
-%\end{remark}
+  %  The set of painted bipartition counts the multiplicities of an irreducible
+  %  representation of $W_{r_{\fgg}}$ occurs in the coherent continuation
+  %  representation at the infinitesimal character of the trivial
+  %  representation. For the relationship between painted bipartitions and the
+  %  coherent continuation representations of Harish-Chandra modules, see
+  %  \cite{Mc}.
+  %\end{remark}
 
 For any painted bipartition $\tau$ as in Definition \ref{defpbp0}, we write
 \[
-  \imath_\tau:=\imath,\ \cP_\tau:=\cP,\  \jmath_\tau:=\jmath,\  \cQ_\tau:=\cQ,\ \alpha_\tau:=\alpha,
+  \imath_\tau:=\imath,\ \cP_\tau:=\cP,\ \jmath_\tau:=\jmath,\ \cQ_\tau:=\cQ,\ \alpha_\tau:=\alpha,
 \]
 and
 \[
   \star_\tau:= \left\{
-     \begin{array}{ll}
-         B, &\hbox{if $\alpha=B^+$ or $B^-$}; \smallskip\\
-            \alpha, & \hbox{otherwise}.           \end{array}
-   \right.
-  \]
-%Its leading column is then defined to be the first column of $(\jmath, \CQ)$ when $\star_\tau\in \{B, C,C^*\}$,
-%and the first column of  $(\imath, \CP)$ when $\star_\tau\in \{\widetilde C, D, D^*\}$.
-
-We further define a pair $(p_{\tau}, q_{\tau})$  of natural numbers given by the following recipe.
- \begin{itemize}
-  \item
-  If $\star_\tau\in \{B, D, C^*\}$, $(p_\tau, q_\tau)$ is given by counting  the various symbols appearing in $(\imath, \CP)$, $(\jmath, \cQ)$ and $\{\alpha\}$ :
-  \begin{equation}\label{ptqt}
-  \left\{
-     \begin{array}{l}
-    p_\tau :=( \# \bullet)+ 2 (\# r) +(\# c )+ (\# d) + (\# B^+);\smallskip\\
-    q_\tau :=( \# \bullet)+ 2 (\# s) + (\# c) + (\# d) + (\# B^-).\\
-    \end{array}
-    \right.
-\end{equation}
-Here
-\[
-\#\bullet:=\#(\cP^{-1}(\bullet))+\#(\cQ^{-1}(\bullet))\qquad (\textrm{$\#$ indicates the cardinality of a finite set}),
+    \begin{array}{ll}
+      B, &\hbox{if $\alpha=B^+$ or $B^-$}; \smallskip\\
+      \alpha, & \hbox{otherwise}.           \end{array}
+  \right.
 \]
-and the other terms are similarly defined.
-\item
-If $\star_\tau\in \{C, \widetilde C, D^*\}$,  $p_\tau:=q_\tau:=\abs{\tau}$.
+% Its leading column is then defined to be the first column of $(\jmath, \CQ)$
+% when $\star_\tau\in \{B, C,C^*\}$, and the first column of $(\imath, \CP)$
+% when $\star_\tau\in \{\widetilde C, D, D^*\}$.
+
+We further define a pair $(p_{\tau}, q_{\tau})$ of natural numbers given by the
+following recipe.
+\begin{itemize}
+  \item If $\star_\tau\in \{B, D, C^*\}$, $(p_\tau, q_\tau)$ is given by
+        counting the various symbols appearing in $(\imath, \CP)$,
+        $(\jmath, \cQ)$ and $\{\alpha\}$ :
+        \begin{equation}\label{ptqt}
+          \left\{
+            \begin{array}{l}
+              p_\tau :=( \# \bullet)+ 2 (\# r) +(\# c )+ (\# d) + (\# B^+);\smallskip\\
+              q_\tau :=( \# \bullet)+ 2 (\# s) + (\# c) + (\# d) + (\# B^-).\\
+            \end{array}
+          \right.
+        \end{equation}
+        Here
+        \[
+        \#\bullet:=\#(\cP^{-1}(\bullet))+\#(\cQ^{-1}(\bullet))\qquad (\textrm{$\#$
+        indicates the cardinality of a finite set}),
+        \]
+        and the other terms are similarly defined.
+  \item If $\star_\tau\in \{C, \widetilde C, D^*\}$,
+        $p_\tau:=q_\tau:=\abs{\tau}$.
 \end{itemize}
 \smallskip
 
 We also define a classical group
-  \begin{equation}\label{def:Gt}
- G_\tau:= \left\{
-     \begin{array}{ll}
-         \oO(p_\tau, q_\tau), &\hbox{if $\star_\tau=B$ or $D$}; \smallskip\\
-            \Sp_{2\abs{\tau}}(\R), &\hbox{if $\star_\tau=C$}; \smallskip\\
-           \widetilde{\Sp}_{2\abs{\tau}}(\R), &\hbox{if $\star_\tau=\widetilde{ C}$}; \smallskip \\
-        \Sp(\frac{p_\tau}{2}, \frac{q_\tau}{2}), &\hbox{if $\star_\tau=C^*$}; \smallskip \\
-          \oO^*(2\abs{\tau}), &\hbox{if $\star_\tau=D^*$}.\\
-            \end{array}
-   \right.
+\begin{equation}\label{def:Gt}
+  G_\tau:=
+  \begin{cases}
+    \SO(p_\tau, q_\tau), &\hbox{if $\star_\tau=B$ or $D$}; \smallskip\\
+    \Sp_{2\abs{\tau}}(\R), &\hbox{if $\star_\tau=C$}; \smallskip\\
+    \widetilde{\Sp}_{2\abs{\tau}}(\R), &\hbox{if $\star_\tau=\widetilde{ C}$}; \smallskip \\
+    \Sp(\frac{p_\tau}{2}, \frac{q_\tau}{2}), &\hbox{if $\star_\tau=C^*$}; \smallskip \\
+    \oO^*(2\abs{\tau}), &\hbox{if $\star_\tau=D^*$}.\\
+  \end{cases}
 \end{equation}
 
 Define
 \[
-\mathrm{PBP}_\star(\check \CO):=\{
-\tau\textrm{ is a painted bipartition}  \mid    \star_\tau = \star,
- \text{ and }    (\imath_\tau,\jmath_\tau) = (\imath_{\check \CO}, \jmath_{\check \CO})\}.
+  \begin{split}
+  \PBP_\star(\check \CO) &:=\set{ \uptau\textrm{ is a painted
+    bipartition} \mid \star_\uptau = \star, \text{ and
+  } (\imath_\tau,\jmath_\tau) = (\imath_{\check \CO}, \jmath_{\check \CO})}, \AND\\
+\PBP_{G}(\ckcO) &:=\set{\uptau\in \PBP_{\star}(\ckcO)| G_{\uptau} = G}.
+\end{split}
 \]
 
 
 \delete{
-\[
-\begin{array}{rl}
-\mathrm{PBP}_\star(\check \CO):=\{ &
-\tau\textrm{ is a painted bipartition}  \mid    \star_\tau = \star,
- \text{ and } \\  & (\imath_\tau,\jmath_\tau) = (\imath_{\check \CO}, \jmath_{\check \CO})\}.
-\end{array}
-\]
+  \[
+    \begin{array}{rl}
+      \mathrm{PBP}_\star(\check \CO):=\{ &
+                                           \tau\textrm{ is a painted bipartition}  \mid    \star_\tau = \star,
+                                           \text{ and } \\  & (\imath_\tau,\jmath_\tau) = (\imath_{\check \CO}, \jmath_{\check \CO})\}.
+    \end{array}
+  \]
 }
 
 
 
 
 \begin{eg} Suppose that $\star=B$ and
-\[
- \check \CO =\tytb{\ \ \ \ \ \ , \ \ \ \ \ \ , \ \ , \ \ , \ \  }
-\]
-Then
-\[
-\tau:= \tytb{\bullet \bullet ,\bullet , c } \times \tytb{\bullet \bullet  d ,\bullet , d }\times B^+\in \mathrm{PBP}_{\star}(\check \CO),
-\]
-and
-\[
-G_\tau=\SO(10,9).
- \]
+  \[
+    \check \CO =\tytb{\ \ \ \ \ \ , \ \ \ \ \ \ , \ \ , \ \ , \ \ }
+  \]
+  Then
+  \[
+    \tau:= \tytb{\bullet \bullet ,\bullet , c } \times \tytb{\bullet \bullet d ,\bullet , d }\times B^+\in \mathrm{PBP}_{\star}(\check \CO),
+  \]
+  and
+  \[
+    G_\tau=\SO(10,9).
+  \]
 \end{eg}
 
 
@@ -843,13 +966,15 @@ G_\tau=\SO(10,9).
 
 
 \begin{thm}\label{countup}
-Assume that $\star\in  \{B, C,D,\widetilde {C}, C^*, D^*\}$. Then
- \[
-\sharp(\Unip_{\check \CO}(G))\leq 2^{\sharp(\mathrm{PP}_\star(\check \CO))} \cdot  \sharp \{\tau\in \mathrm{PBP}_\star(\check \CO)\mid  G_\tau=G\}.
-   \]
+  Assume that $\star\in \{B, C,D,\widetilde {C}, C^*, D^*\}$. Then
+  \[
+    \sharp(\Unip_{\ckcO}(G))\leq 2^{\sharp(\CPP_\star(\check \CO))} \cdot \sharp
+    \PBP_{G}(\ckcO).
+  \]
 \end{thm}
 
-In \cite{BMSZ2}, we will construct sufficiently many representations in $\Unip_{\check \CO}(G)$, and show that the equality holds in \Cref{countup}.
+In \cite{BMSZ2}, we will construct sufficiently many representations in
+$\Unip_{\check \CO}(G)$, and show that the equality holds in \Cref{countup}.
 
 
 \end{document}
