@@ -797,8 +797,8 @@
 \newtheorem{eg}[thm]{Example}
 
 \theoremstyle{remark}
-\newtheorem*{remark}{Remark}
-\newtheorem*{remarks}{Remarks}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{remarks}[thm]{Remarks}
 
 
 \def\cpc{\sigma}
@@ -1300,11 +1300,22 @@
 
 \providecommand{\nsubset}{\not\subset}
 
-\def\cuprow{{\stackrel{r}{\sqcup}}}
-\def\cupcol{{\stackrel{c}{\sqcup}}}
+\def\cuprow{{\,\stackrel{r}{\sqcup}\,}}
+\def\cupcol{{\,\stackrel{c}{\sqcup}\,}}
 
 \def\ckcOb{\ckcO_{\mathrm b}}
+\def\ckcOpb{\ckcO'_{\mathrm b}}
 \def\ckcOg{\ckcO_{\mathrm g}}
+
+\def\Gb{G_{\mathrm b}}
+\def\Gpb{G'_{\mathrm b}}
+\def\Gg{G_{\mathrm g}}
+\newcommand{\Lam}{{[\lambda]}}
+
+\newcommand{\Grt}{\cK}
+\newcommand{\nckG}{n_{\ckG}}
+%\newcommand{\nb}{n_{\mathrm b}}
+%\newcommand{\ng}{n_{\mathrm g}}
 
 \usepackage{xr}
 \usepackage{subfiles} % Best loaded last in the preamble
@@ -1321,8 +1332,8 @@
 
 \author [J.-J. Ma] {Jia-jun Ma}
 \address{School of Mathematical Sciences\\
-  Shanghai Jiao Tong University\\
-  800 Dongchuan Road, Shanghai, 200240, China} \email{hoxide@sjtu.edu.cn}
+  Xiamen University\\
+  Xiamen, China} \email{hoxide@xmu.edu.cn}
 
 \author [B. Sun] {Binyong Sun}
 % MCM, HCMS, HLM, CEMS, UCAS,
