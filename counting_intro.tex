@@ -93,8 +93,8 @@ system
   satisfying the following two conditions:
   \begin{itemize}
     \item for all $\mu\in \Lam$, $\Theta(\mu)\in \CK_\mu$;
-    \item for all finite-dimensional algebraic representations $F$ of
-          $\mathrm{Inn}(\g)$, and all $\mu\in \Lam$,
+    \item for all finite-dimensional algebraic representations $F\in \Grt(G)$
+          and all $\mu\in \Lam$,
           \[
           F\cdot (\Theta(\mu)) = \sum_{\nu} \Theta(\mu+\nu),
           \]
@@ -104,7 +104,7 @@ system
 \end{defn}
 
 
-In the notation of Definition \ref{defcoh}, let $\Coh_{\Lam}(\CK)$ denote the
+In the notation of \Cref{defcoh}, let $\Coh_{\Lam}(\CK)$ denote the
 vector space of all $\mathcal K$-valued coherent families on $\Lam$. It is a
 representation of $W_{\Lam}$ under the action
 \[
@@ -152,21 +152,6 @@ nilpotent orbit
 where $\sigma_0$ denote the special irreducible representation of $W_\Lam$ that
 lies in the same double cell as $\sigma$, and $j_{W_\Lam}^W \sigma_0$ denotes
 the $j$-induction which is an irreducible representation of $W$.
-% In what follows, we shall attach to $\sigma$ an $\mathrm{Inn}(\g)$-orbit
-% $\CO_\sigma\subset\mathrm{Nil}(\g^*)$. Let $\sigma_0$ denote the special
-% irreducible representation of $W_\Lam$ that lies in the same double cell as
-% $\sigma$. Then among all the irreducible representations of $W$ occurring in
-% the induced representation $\Ind_{W_\Lam}^W \sigma_0$, there is a unique one
-% with minimal fake degree. Moreover, this irreducible representation occurs
-% with multiplicity one in $\Ind_{W_\Lam}^W \sigma_0$. Write
-% $j_{W_\Lam}^W \sigma_0\subset \Ind_{W_\Lam}^W \sigma_0 $ for this irreducible
-% representation. Finally we define
-
-% Here and henceforth, for every $\sigma'\in \Irr(W)$,
-% $\mathrm{Springer}(\sigma')$ denotes the Under Springer correspondence,
-% $j_{W_\Lam}^W \sigma_0$ corresponds to the trivial
-% $\mathrm{Inn}(\g)$-equivariant local system on an $\mathrm{Inn}(\g)$-orbit in
-% $\mathrm{Nil}(\g^*)$. Then $\CO_\sigma$ is defined to be this orbit.
 
 
 \begin{prop}\label{count2}
@@ -180,9 +165,15 @@ the $j$-induction which is an irreducible representation of $W$.
   % \]
 \end{prop}
 
+
+Let
+\[
+  \sfC_{\sfS}:= \Set{\sigma\in \Irr(\WLam)| \cO_{\sigma}\subseteq \sfS}.
+\]
+
 Combining Theorems \ref{count1} and \ref{count2}, we conclude that
 \begin{equation}\label{leq2}
-  \sharp(\Irr_{\lambda,\sfS}(G)) = \sum_{\sigma\in \Irr(W_\Lam), \CO_\sigma\subset \sfS} [1_{W_{\lambda}}: \sigma]\cdot [\sigma: \Coh_{\Lam,\sfS}(G)].
+  \sharp(\Irr_{\lambda,\sfS}(G)) = \sum_{\sigma \in \sfC_{\sfS}} [1_{W_{\lambda}}: \sigma]\cdot [\sigma: \Coh_{\Lam,\sfS}(G)].
 \end{equation}
 
 Write

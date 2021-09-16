@@ -24,7 +24,7 @@
 %\usepackage{paralist}
 
 
-\usepackage{amsrefs}
+\usepackage[alphabetic]{amsrefs}
 
 \usepackage[all,cmtip]{xy}
 \usepackage{rotating}
@@ -483,7 +483,7 @@
     showstringspaces=false,
     breaklines=true,
     emph={Output},emphstyle=\color{blue},
-} 
+}
 
 \newcommand{\BA}{{\mathbb{A}}}
 %\newcommand{\BB}{{\mathbb {B}}}
@@ -1155,7 +1155,7 @@
   noframe/on/.style = {noframe/true},
   noframe/off/.style = {noframe/false},
 }
-\makeatother 
+\makeatother
 
 
 \def\wAV{\AV^{\mathrm{weak}}}
@@ -1178,9 +1178,16 @@
 \DeclareDocumentCommand{\bigtimes}{}{\mathop{\scalebox{1.7}{$\times$}}}
 \providecommand\mapsfrom{\scalebox{-1}[1]{$\mapsto$}}
 
+\def\ihh{{i_\fhh}}
+
 \def\Gc{G_\bC}
 \def\Gcad{G_\bC^{\text{ad}}}
+\def\Gad{\Inn(\fgg)}
+
 \def\hha{{}^a\fhh}
+\def\ahh{\hha}
+\def\aSR{{}^a\Sigma}
+\def\aRp{{}^a\Delta^+}
 \def\aX{{}^aX}
 \def\aQ{{}^aQ}
 \def\aP{{}^aP}
@@ -1197,7 +1204,7 @@
 \def\ch{\mathrm{ch}\,}
 \def\Wlam{W_{[\lambda]}}
 \def\aLam{a_{\Lambda}}
-\def\WLam{W_{\Lambda}}
+\def\WLam{W_{\Lam}}
 \def\WLamck{W_{[\lambda_{\ckcO}]}}
 \def\Wlamck{W_{\lamck}}
 \def\Rlam{R_{[\lambda]}}
@@ -1266,6 +1273,10 @@
 % \def\leqLR{{\leq_{LR}}}
 
 
+\def\Dsp{\cD^{\text{sp}}}
+\def\Csp{\sfC^{\text{sp}}}
+
+
 \def\lneqL{\mathrel{\mathop{<}\limits_{\scriptscriptstyle L}}}
 \def\lneqR{\mathrel{\mathop{<}\limits_{\scriptscriptstyle R}}}
 \def\lneqLR{\mathrel{\mathop{<}\limits_{\scriptscriptstyle LR}}}
@@ -1310,6 +1321,8 @@
 \def\Gb{G_{\mathrm b}}
 \def\Gpb{G'_{\mathrm b}}
 \def\Gg{G_{\mathrm g}}
+
+
 \newcommand{\Lam}{{[\lambda]}}
 
 \newcommand{\Rg}{\cR(\fgg)}
@@ -1361,17 +1374,17 @@
 
 \subfile{counting_intro}
 
-\section{Counting representations via the translation principle}
+\subfile{counting_abs}
 
-\section{Review of Primitive ideals and Weyl group representations}
 
-\section{Counting Harish-Chandra modules with support condition}
+
 
 \section{Counting for general linear groups}
 
 \section{Counting for unitary groups}
 
 \section{Counting in type BCD}
+
 % \subfile{counting_abs}
 
 % \subfile{counting_A}
@@ -1379,6 +1392,8 @@
 % \subfile{counting_cl}
 
 \appendix
+
+\section{Some combinatorics}
 
 % \subfile{counting_wrep}
 

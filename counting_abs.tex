@@ -1077,6 +1077,593 @@ The above lemma have the following immediate consequence.
 
 
 
+\section{Counting Harish-Chandra modules with support condition}
+
+In this section, let $G$ be a real reductive group in the Harish-Chandra class.
+Here $G$ could be a nonlinear group.
+We retain the notation in \Cref{eg:Coh.HC}.
+We recall the argument before \cite{Mc}*{Theorem~1}.
+
+We fix a Cartan involution $\theta$ on $G$ and let $K = G^{\theta}$
+be the maximal compact subgroup of $G$.
+
+% \begin{thm}[Barbasch-Vogan]\label{thm:count}
+%   For a complex nilpotent orbit $\cO$,
+%   define
+%   \[
+%     S_{\cO} = \left\{\sigma \in \widehat{W_{[\mu]}}|
+%       \Spr(j_{W_{[\mu]}}^{W} \sigma_{s}) = \cO
+%     \right\}
+%   \]
+%   where $\sigma_{s}$ is the special representation in the double cell containing
+%   $\sigma$.
+
+%   Let $\Pi_{\cO,\mu}(G)$ denote the set of irreducible admissible $G$-module with
+%   complex associated variety $\overline{\cO}$.
+%   % Let $W_{\mu}$ be the stabilizer of $\mu$ and $W_{[\mu]}$ be the stabilizer of
+%   % the lattice
+%   Then
+%   \[
+%     \# \Pi_{\cO,\mu}(G) =
+%     \sum_{\sigma\in S_{\cO}} [\sigma: \mathrm{Coh}_{[\mu]}(G)] \cdot
+%     [1_{W_{\mu}}, \sigma|_{W_{\mu}}].
+%   \]
+%   % Here $[\sgima : \ ]$ denote the multiplicity of $\sigma$
+%   % and  $W_{\mu}$ is the stabilizer of $\mu$.
+% \end{thm}
+
+\subsection{An embedding of coherent families of Harish-Chandra modules into
+  that of category $\cO$}
+In this section, we recall a result in \cite{Cas}. Let $\fbb = \fhh\oplus \fnn$
+be a Borel subalgebra in $\fgg$ with the nilradical $\fnn$ and $\fhh$ a Cartan
+subalgebra in $\fbb$. For a subalgebra $\fuu$ of $\fnn$ and $q\in \bN$, Casian
+defined the localization functors $\gamma_{\fuu}^{q}$ on the category of
+$\fuu$-module. By \cite{Cas}*{Proposition~4.8}, $\gamma_{\fuu}^{q}$ can be
+defined as the right derived functor of the functor $\gamma_{\fuu}^{0}$ which
+sends a $\fuu$-module $M$ to
+\[
+  \gamma_{\fuu}^{0}(M):= \Set{v\in M| \fuu^{k} v = 0 \text{ for some positive
+      integer $k$}}.
+\]
+In particular, the $\fuu$-action on $\gamma_{\fuu}^{q}$ is locally nilpotent.
+
+Suppose $M$ is a $\fgg$-module, we have (see \cite{Cas}*{Proposition~4.14})
+\begin{equation}\label{eq:anngamma}
+  \Ann M \subseteq \Ann (\gamma_{\fuu}^{q}(M)).
+\end{equation}
+Moreover, $\gamma_{\fuu}^{q}$ commutes with tensoring finite diemsional
+representations of $\fgg$, i.e. for a finite dimensional $\fgg$-module $F$ there
+is a natural isomorphism (c.f. \cite{Cas}*{Proposition~4.11})
+\begin{equation}\label{eq:Fgamma}
+  F\otimes \gamma_{\fuu}^{q}(M)\cong
+  \gamma_{\fuu}^{q}(F\otimes M).
+\end{equation}
+If the $\fgg$-module have finite dimensional $\fnn$-cohomology, then
+$\gamma_{\fnn}^{q}(M)$ is in the category $\cO'$. See
+\cite{Cas}*{Proposition~4.9}.
+
+
+
+Suppose $M$ is a $(\fgg,K)$-module. From the definition of $\gamma_{\fuu}^{q}$,
+we can see that $\gamma_{\fuu}^{q}(M)$ is naturally a $(\fgg, K_{L})$-module
+where $K_{L}$ denote the normalizer of $\fuu$ in $K$. Let $\fll$ be the
+normailzer of $\fuu$ in $\fgg$. Then there is the a spectrum sequence of
+$(\fll,K_{L})$-module convergent to $H^{p+q}(\fuu,M)$ (see
+\cite{Cas}*{Proposition~4.4}):
+\begin{equation}\label{eq:ugamma}
+  H^{q}(\fuu,\gamma_{\fuu}^{p}(M)) \Rightarrow H^{p+q}(\fuu,M).
+\end{equation}
+
+For our application, we always assume $M$ is a $(\fgg,K)$-module, and take
+$\fuu=\fnn$.
+
+Let $H$ be a $\theta$-stable Cartan subgroup of $G$, $T=H^{\theta}$ be the
+maximal compact subgroup of $H$ and $\fhh:=\Lie(H)_{\bC}$ is the corresponding
+Cartan subalgebra in $\fgg$. We can view a finite dimensional $H$-module as a
+$(\fhh,T)$-module and vice versa.
+
+The localization functor $\gamma_{\fnn}^{q}$ is compatible with coherent
+continuation.
+\begin{lem}\label{lem:coh.gamma}
+  Assume that each irreducible $(\fgg,K)$-module have finite dimensional
+  $\fnn$-cohomology. For each $q\in \bN$, we have the following map between
+  $\Wlam$-modules:
+  \[
+    \begin{array}{ccc}
+      \gamma_{\fnn}^{q}\colon \Coh_{[\lambda]}(\fgg,K)
+      &\longrightarrow
+      & \Coh_{[\lambda]}(\fgg,H,\fnn) \\
+      \Theta & \mapsto & \gamma_{\fnn}^{q}\circ \Theta.
+    \end{array}
+  \]
+\end{lem}
+\begin{proof}
+  This is a consequence of \eqref{eq:anngamma} and \eqref{eq:Fgamma}. \trivial[]{
+    \[
+      \begin{split}
+        F\otimes \gamma_{\fnn}^q\Theta(\mu) & =
+        \gamma_{\fnn}^{q}(F\otimes \Theta(\mu))\\
+        &= \gamma_{\fnn}^{q}(\sum_{\beta\in \WT{F}} \Theta(\mu+\beta))\\
+        &= \sum_{\beta\in \WT{F}}\gamma_{\fnn}^{q}( \Theta(\mu+\beta))\\
+      \end{split}
+    \]
+  }
+\end{proof}
+
+We fix a positive system of real roots $\Delta^{+}_{\bR}$ and a Borel subalgebra
+$\fbb=\fhh\oplus \fnn$ such that $\Delta^{+}_{\bR}\subset \WT{\fnn}$. We let
+$e^{\alpha}\in \Irr(H)$ be the $H$-character on the $\alpha$-root space.
+
+For a finite length $(\fgg,K)$-module $M$, we view its global character
+$\Theta_{G}(M)$ as a analytic function defined on the set $\Greg$ of regular
+semisimple elements on $G$.
+
+
+The following theorem is crucial.
+\begin{thm}[\cite{Cas}*{Theorem~3.1}]\label{thm:gamma.HC}
+  % Let $\bfnn$ be the maximal nilptent Lie subalgebra of $\fgg$ with spanned by
+  % roots in $\Delta^{+}$.
+  Let $M$ be a finite length $(\fgg,K)$-module. The following statements hold.
+  \begin{enumT}
+    \item The Lie algebra cohomology $H^{q}(\fnn,M)$ is finite dimensional for
+    each $q\in \bN$. In particular, $\gamma_{\fnn}^{q}(M)$ is in the category
+    $\cO'(\fgg,H,\fnn)$ for eah $q\in \bN$.
+    \item
+    % $\Ann M \subseteq \Ann (\gamma_{\fnn}^{q}M)$.
+    % \item
+    Let
+    \[
+      \Hnreg:= \Set{h\in H|
+        \begin{array}{l}
+          \text{$h$ is regular semisimple}\\
+          \abs{e^{\alpha}(h)}<1 \text{ for each real root }
+          \alpha\in \Delta^{+}_{\bR}
+        \end{array}
+      }
+    \]
+    Then
+    \begin{equation}\label{eq:char}
+      \begin{split}
+        \Theta_{G}(M)|_{\Hnreg} &= \frac{\sum_{q\in \bN} (-1)^{q}\Theta_{H} \left(H^{q}(\fnn,M)\right)}
+        {\prod_{\alpha\in \WT{\fnn}}(1- e^{\alpha})}\\
+        &= \frac{\sum_{p,q\in \bN} (-1)^{p+q}\Theta_{H} \left(H^{q}(\fnn,\gamma_{\fnn}^{p}(M))\right)}
+        {\prod_{\alpha\in \WT{\fnn}}(1- e^{\alpha})}\\
+      \end{split}
+    \end{equation}
+  \end{enumT}
+  \qed
+\end{thm}
+\begin{proof}
+  The theorem is a recollection of Casian's results in loc. cit. The last
+  equality in \eqref{eq:char} follows from \eqref{eq:ugamma}. The last
+  expression in \eqref{eq:char} is also a finite sum, since only finite may
+  terms of $\gamma_{\fnn}^{p}(M)$ are non-zero and they are in the category
+  $\cO'$.
+\end{proof}
+
+
+Retain the notation in \Cref{thm:gamma.HC}, we write
+\[
+  \gamma_{\fnn}:= \sum_{q\in \bN} (-1)^{q} \gamma^{q}_{\fnn}\colon \Grt(\fgg,K) \longrightarrow \Grt(\fgg,H,\fnn)
+\]
+
+% \[
+%   \gamma_{\fnn}:= \sum_{q\in \bN} (-1)^{q} \gamma^{q}_{\fnn}\colon \Coh_{[\lambda]}(\fgg,K) \longrightarrow \Coh_{[\lambda]}(\fgg,H,\fnn)
+% \]
+
+\begin{cor}[c.f. {\cite{Mc}}]\label{cor:HC.embed}
+  % [\cite{Cas}*{Theorem~3.1}]
+  Let $H_{1}, H_{2}, \cdots, H_{s}$ form a set of representatives of the
+  conjugacy class of $\theta$-stable Cartan subgroup of $G$. Fix maximal
+  nilpotent Lie subalgebra $\fnn_{i}$ for each $H_{i}$ as in
+  \Cref{thm:gamma.HC}. Then
+  \[
+    \begin{array}{cccc}
+      \gamma:=\oplus_{i} \gamma_{\fnn_{i}}: &\Grt(\fgg,K)
+      &\longrightarrow & \bigoplus_{i=1}^{s} \Grt(\fgg,H_{i},\fnn_{i})\\
+    \end{array}
+  \]
+  is an embedding of abelian groups.
+\end{cor}
+\begin{proof}
+  Let $\Hireg$ be the set of regular semisimple elements in $H_{i}$. By the
+  results of Harish-Chandra, taking the character of the elements induces an
+  embedding of $\Grt(\fgg,K)$ into the space of real analytic functions on
+  $\bigsqcup_{i} \Hireg$. Since $\Hnireg$ is open in $\Hireg$ and meets all the
+  connected components of $\Hireg$, any real analytic function on
+  $\bigsqcup_{i} \Hireg$ is determined by its restriction on
+  $\bigsqcup_{i} \Hnireg$. Now \eqref{eq:char} implies that the global character
+  of any $M\in \Grt(\fgg,K)$ can be computed from the image $\gamma(M)$.
+  % $\Theta M$ of an element $M\in \Grt_{\chi}(\fgg,K)$ is completely determined
+  % by the formal character $\mathrm{ch}(\gamma(M))$.
+\end{proof}
+
+\begin{cor}\label{cor:coh.HC}
+  Retain the notation in \Cref{cor:HC.embed}.
+  Let $\sfS$ be a $\Gcad$-invariant closed subset in the nilpotent cone of
+  $\fgg$ and $\lambda\in \fhh^{*}$.
+  Then $\gamma$ induces an embedding of $\Wlam$-module.
+  \[
+    \begin{array}{cccc}
+      \gamma:=\oplus_{i} \gamma_{\fnn_{i}}: &\Coh_{[\lambda],\sfS}(\fgg,K)
+      &\longrightarrow & \bigoplus_{i=1}^{s} \Coh_{[\lambda],\sfS}(\fgg,H_{i},\fnn_{i})\\
+      &\Theta& \mapsto &\gamma\circ \Theta
+    \end{array}
+  \]
+  In particular, $[\sigma:\Coh_{[\lambda],\sfS}(\fgg,K)]\neq 0$ only if
+  $\sigma\in \sfC_{\sfS}$.
+\end{cor}
+\begin{proof}
+  The maps is well-defined by \eqref{eq:anngamma}. It is an embedding by
+  \Cref{cor:HC.embed}.
+\end{proof}
+
+\medskip
+
+Now we get the following theorem on the upper bound of small representations.
+\begin{thm}
+  Let $\mu\in \fhh^{*}$. Let $\Pi_{W\cdot \mu}(G)$ be the set of irreducible
+  $G$-modules annihilated by the maximal primitive ideal $\cI_{\mu}$ of
+  infinitesimal character $\mu$. Let $\LC_{\mu}$ be the left cell of
+  $\Irr(W_{[\mu]})$ defined in \eqref{eq:LC.mu} and $\cO_{\mu}$ be the nilpotent
+  orbit defined by \eqref{eq:O.mu}. Then
+  \[
+    \begin{split}
+      \abs{\Pi_{W\cdot \mu}(G)} &= \sum_{\sigma\in \LC_{\mu}}
+      [\sigma:\Coh_{[\mu],\bcO_{\mu}}(G)]\\
+      &\leq \sum_{\sigma\in \LC_{\mu}}
+      [\sigma:\Coh_{[\mu]}(G)]\\
+    \end{split}
+  \]
+\end{thm}
+\begin{proof}
+  The equality follows from \Cref{lem:coh.count}, \Cref{cor:coh.HC} and
+  \Cref{lem:LC.mu}. The inequality is also clear since
+  $\Coh_{[\mu],\bcO_{\mu}}(G)$ is a submodule of $\Coh_{[\mu]}(G)$.
+\end{proof}
+
+% Then the localization functor induces a homomorphism
+% \[
+%   \begin{array}{cccc}
+%       \gamma_{\fnn}: &\Grt_{\chi,\cZ}(\fgg,K) &\longrightarrow & \Grt_{\chi,\cZ}(\cO_{\whH})\\
+%       & M &\mapsto & \sum_{q}  (-1)^{q} \gamma^{q}_{\fnn} M
+%     \end{array}
+%   \]
+%   Fix an infinitesimal character $\chi$, and a close $G$-invariant set
+%   $\cZ\in \cN_{\fgg}$.
+
+
+% \def\VHC{\sV^{\mathrm{HC}}}
+% \begin{cor}
+%   Fix an irreducible $(\fgg,K)$-module $\pi$ with infinitesimal character
+%   $\chi_{\lambda}$. Let $\VHC(\pi)$ be the Harish-Chandra cell representation
+%   containing $\pi$ and $\cD$ be the double cell in $\widehat{W_{[\lambda]}}$
+%   containing the special representation $\sigma(\pi)$attached to $\Ann(\pi)$.
+%   Then $[\sigma, \VHC(\pi)]\neq 0$ only if $\sigma \in \cD$. Moreover,
+%   $\sigma(\pi)$ always occures in $\VHC(\pi)$
+% \end{cor}
+% \begin{proof}
+%   The occurrence of $\sigma(\pi)$ is a result of King.
+
+%   Note that we have an embedding
+%   \[
+%     \gamma \colon \Grt_{\chi}(\fgg,K)\longrightarrow \bigoplus_{i}\Grt(\fgg,\fbb,\lambda).
+%   \]
+%   where the left hand sides is identified with a finite copies of
+%   $\bC[W_{[\lambda]}]$.
+
+%   Since $\Ann(\pi)\subseteq \Ann (\gamma_{\fnn}^{q}(\pi))$, we conclude that
+%   $[\sigma, \VHC(\pi)]\neq 0$ implies that $\sigma(\pi)\leqLR \sigma$.
+
+%   By the Vogan duality, $\cD\otimes \sgn$ is also a Harish-Chandra cell. So we
+%   have $\sigma(\pi)\otimes \sgn \leqLR \sigma\otimes \sgn$.
+
+%   Therefore, $\sigma(\pi)\approxLR$
+% \end{proof}
+\begin{remark}
+  Let $\lambda$ be a regular element in $[\mu]$. Assume that for each
+  Harish-Chandra cell representation $\sV^{HC}$ at the infinitesimal character
+  $\chi_{\lambda}$, the $W_{[\mu]}$-representations occur in $\sV^{HC}$ are all
+  contained in a unique double cell. Then one can prove that the inequality in
+  the above theorem is sharp (c.f. \cite{BV.W}). However, we do not know such
+  kind of claim holds in a general.
+\end{remark}
+
+
+Another interesting consequence of \Cref{cor:coh.HC} is that we can determine
+the complex associated variety attached to a Harish-Chandra cell by the
+character of the cell representation.
+
+\begin{lem}\label{lem:AV.HC}
+  Let $\sC$ be an Harish-Chandra cell at a regular infinitesimal character $\lambda$ and $\sV$ be the corresponding cell
+  representation.
+  \trivial[]{
+    I guess
+    the assumption of ``regular'' is unnecessary.
+  }
+  Then there is a unique special representation $\sigma\in \Irrsp(W_{[\lambda]})$ such
+  that $\sigma$ has minimal generic degree in $\sV$
+  and every irreducible modules $\pi$ in $\sC$ has complex associated variety
+  \[
+    \AVC(\pi) = \Spr(\Ind_{W_{[\lambda]}}^{W}\sigma).
+  \]
+  Moreover, $\sigma$ is precisely the unique irreducible character
+  with minimal fake degree occurring in $\sV$.
+\end{lem}
+\begin{proof}
+  Let $\pi\in \sC$ and the primitive ideal $\Ann(\pi)$ is attached to the
+  special representation $\sigma \in \Irr(W_{[\lambda]})$.
+  By \Cref{cor:coh.HC}, every irreducible character $\sigma'$ occur in
+  $\sV$ satisfies $\sigma \leqLR \sigma'$.
+  On the other hand, $\sigma$ do occurs in $\sV$ by Barbasch-Vogan and King's
+  result, see \cite{Cas}*{Remark~3.2}.
+  The rest part of the lemma is clear.
+\end{proof}
+
+\subsection{Coherent continuation representation of Harish-Chandra modules}
+
+In this section, we provides the proof of \Cref{thm:cohHC}, which is a formula of coherent continuation representation due to Barbasch-Vogan.
+Note that the formula holds for non-linear groups as well as the non-integral
+infinitesimal character!
+
+\medskip
+
+First recall the definition of regular characters \cite{Vg}*{Definition~6.6.1}.
+
+A regular character of $G$ is a tuple a tuple $\gamma := (H,\Gamma,\bargamma)$
+such that
+\begin{itemize}
+  \item $H$ is a $\theta$-stable Cartan subgroup of $G$,
+  \item $\Gamma$ is a continuous character of $H$,
+  \item if $\alpha$ is imaginary, then $\inn{\bargamma}{\ckalpha}$ is real and
+        non-zero,
+  \item the differential of $\Gamma$ is
+        \[
+        \bargamma+ \rho_{i} - 2\rho_{ic}
+        \]
+        where %$\rho_{i}$ is the half sum of imaginary roots $\$ such that $\inn{\bargamma}{\ckalpha}$
+        \[
+        \rho_{i} =\half\sum_{\substack{\alpha \text{
+        imaginary}\\ \inn{\bargamma}{\ckalpha}>0}} \alpha \quad\text{and}\quad \rho_{ic} =\half\sum_{\substack{\alpha \text{
+        compact imaginary}\\ \inn{\bargamma}{\ckalpha}>0}} \alpha.
+        \]
+\end{itemize}
+We say $\gamma$ is non-singular if $\bargamma$ is regular in $\fhh^*$. The group $K$ acts on the set of regular characters of $G$ we let $[\gamma]$ to denote the $K$-conjugacy class of regular character containing $\gamma$.
+
+Let $\cR(G)$ denote the set of regular characters of $G$ and $\cR_{\lambda}(G)$ be the subset of $\cR(G)$ consists of regular characters with infinitesimal character $\lambda$. Let $\cP(G):=\cR(G)/K$ and $\cP_{\lambda}(G):=\cR_{\lambda}(G)/K$ be the corresponding sets of $K$-conjugacy classes.
+% of regular characters and $\cP_\lambda(G)$ be the subset with infinitesimal character $\lambda$. By abuse of notation, we identify $\gamma$ with its conjugacy class.
+
+For each regular character $\gamma$, we attach a standard representation
+$\pi_\gamma$ with infinitesimal character $\bargamma$ and let $\barpi_\gamma$ be
+the maximal completely reducible submodule of $\pi_\gamma$
+\cite{Vg}*{6.5.2,6.5.11,6.6.3}. Then $\barpi_\gamma$ and the image of
+$\pi_\gamma$ in the Grothendieck group of $(\fgg,K)$-module only depends on the
+$K$-conjugation class of $\gamma$. This justifies the consideration of $\cP(G)$.
+
+
+Now we assume that $\lambda\in \fhh^*$ is a regular element. Then
+$\barpi_\gamma$ is the unique irreducible submodule in $\pi_\gamma$.
+% Let $\Pi_{\lambda}(G)$ be the set of irreducible $(\fgg,K)$-modules with
+% infinitesimal character $\lambda$, then
+The following map is bijective (Langlands classification)
+\[
+  \begin{array}{ccc}
+    \cP_{\lambda}(G) & \longrightarrow & \Irr_{\lambda}(G)\\
+    {[\gamma]} & \mapsto & \barpi_{\gamma}
+  \end{array}
+\]
+and $\Set{\pi_\gamma|\gamma\in \cP_{\lambda}(G)}$ forms a basis of
+$\Grt_{\lambda}(G)$. As a consequence, we have an isomorphism of vector spaces
+\[
+  \begin{array}{ccc}
+    \bC[\cP_{\lambda}(G)] & \longrightarrow & \Coh_{[\lambda]}(G)\\
+    {[\gamma]} & \mapsto & \Theta_{\gamma}
+  \end{array}
+\]
+where $\Theta_{\gamma}$ is the unique coherent family such that
+$\Theta_{\gamma}(\lambda) = \pi_{\gamma}$.
+In the following, we identify the two sides implicitly.
+
+\medskip
+
+\def\Wa{W^{a}}
+\def\WiR{W_{i\bR}}
+\def\fhhiR{\fhh_{i\bR}}
+\def\WR{W_{\bR}}
+\def\WC{W_{\bC}}
+\def\lama{\lambda^{a}}
+\def\Wlama{W^a_{[\lambda]}}
+For any
+regular element $\lambda\in \fhh^{*}$, let $\lambda^{a}$ be the dominant element
+in the abstract Cartan $\fhh^{a}$ corresponding to $\lambda$ and
+\[
+  i_{\lambda}\colon W(\fgg,\fhh)\longrightarrow \Wa
+\]
+be the identification of $W(\fgg,\fhh)$ with the abstract Weyl group $\Wa$.
+
+From now on we fix a regular element $\lambda \in \fhh^{*}$.
+
+Let $\Wlama:= i_{\lambda}(W_{[\lambda]})$ be the abstract integral Weyl group.
+We identify $W_{[\lambda]}$ with $\Wlama$ implicitly.
+
+\newcommand{\cross}{\times} \newcommand{\crossa}{\times^a} In the following, we
+assume $\gamma=(H,\Gamma,\bargamma)\in \cR_{\lambda}(G)$. On one hand, a element
+$w$ in the real Weyl group $W(G,H)$ acts on $\gamma$ by conjugation and gives a
+new regular character denoted by $w\cdot \gamma$. \trivial{ Note that
+  $W(G,H) = W(K_{\bC},H_{\bC}):= N_{K_{\bC}}(H_{\bC})/K_{\bC}\cap H_{\bC}$ is a
+  subgroup of $W(\fgg,\fhh)$. }
+
+On the other hand, $W_{[\bargamma]}$ acts on $\gamma$ by cross action
+$(w,\gamma)\mapsto w\times gamma$ \cite{Vg}*{8.3.1}. On define the abstract Weyl
+group $\Wlama$ acts on $\cR_{\lambda}(G)$ by
+\[
+  w \crossa \gamma := \dot{w}^{-1}\times \gamma \text{ with
+  } \dot{w}\in W_{[\lambda]}, w = i_{\bargamma}(\dot{w}),
+\]
+see \cite{V4}*{Definition~4.2}.
+
+The cross action of $\Wlama$ descents to an action on $\cP_{\lambda}(G)$.
+{\color{red} reference? Maybe \cite{V4}?} Let $\Wa_{[\gamma]}\subset \Wlama$ be the stabilizer of
+$[\gamma]$ under cross action. Then
+\[
+  \Wa_{[\gamma]}:= i_{\bargamma}(W_{[\gamma]})
+  \quad \text{ with }\quad
+  W_{[\gamma]}:=\Set{w\in W(G,H)| w\times \gamma = w\cdot \gamma}.
+\]
+The $\theta$-action on $\fhh$ induces an action on $W(\fgg,\fhh)$. Then we have
+the following tower of groups
+\[
+  W_{[\gamma]} < W(G,H) < W(\fgg,\fhh)^{\theta}
+\]
+and
+\[
+  W(\fgg,\fhh)^{\theta}=(\WC)^{\theta}\ltimes (\WiR\times \WR)
+\]
+where $\WC$, $\WiR$ and $\WR$ are Weyl groups of complex, compact and real
+roots respectively (see \cite{V4}*{Proposition~3.12} and
+\cite{AC}*{(12.1)-(12.5)}).
+
+
+Define a quadratic character on $W(\fgg,\fhh)^{\theta}$ by
+\[
+  \begin{array}{rccc}
+    \sgn_{\fhh}\colon  W(\fgg,\fhh)^{\theta} =
+    & (\WC)^{\theta}\ltimes (\WiR\times \WR)
+    & \longrightarrow & \Set{\pm 1}\\
+    & (w_{\bC},w_{i\bR},w_{\bR}) & \mapsto & \sgn_{\WiR}(w_{i\bR})
+  \end{array}
+\]
+where $\sgn_{\WiR}$ denote the sign character of the imaginary Weyl group. Let
+$\fhhiR^{*}$ be the span of imaginary roots, then
+\[
+  \sgn_{\fhh}(w) = \det(w|_{\fhhiR^{*}}).
+\]
+Let $\sgn_{[\gamma]}:=\sgn_{\fhh}|_{W_{[\gamma]}}$ be the restriction of
+$\sgn_{\fhh}$ on the cross stabilizer $W_{[\gamma]}$.
+
+The following result is a unpublished result of Barbasch-Vogan based on results
+in \cite{Vg}*{Chapter 8}, a same argument works equally well with non-linear groups
+in the Harish-Chandra class.
+
+\begin{thm}[{c.f. \cite{BV.W}*{Proposition~2.4}}]
+  \label{thm:cohHC}
+  Suppose $\Pi_{\lambda}(G) = \bigsqcup_{i=1}^{k} \Wlama\crossa [\gamma_{i}]$
+  where $\gamma_{i}=(H_{i},\Gamma_{i},\bargamma_{i})$ are representatives of the
+  $\Wlama$-orbits of $\Pi_{\lambda}(G)$. Then
+  \[
+    \Coh_{[\lambda]}(G) \cong \bigoplus_{i=1}^{k}
+    \Ind_{W_{[\gamma_{i}]}}^{\Wlama} \sgn_{[\gamma_{i}]}.
+  \]
+\end{thm}
+\begin{proof}[Sketch of the proof]
+  To avoid the confusion, we use $t(w)$ to denote the coherent continuation
+  action.
+  The action of simple roots in $R^{+}_{\lambda}$ on the basis $\Theta_{\gamma}$
+  is given calculated in \cite{Vg}*{Chapter 8} and summarized in
+  \cite{V4}*{Definition~14.4}. The calculation reduced to the representation
+  theory of $\SL(2,\bR)$.
+  For non-linear groups see \cite{RT3}*{Definition~9.4} and note that
+  the formula is exactly the same as that of linear groups for integral simple
+  roots.
+  \trivial[]{
+    Let $\cT_{\lambda_{1}}^{\lambda_{2}}$ be the translation functor from
+    infinitesimal character $\lambda_{1}$ to $\lambda_{2}$.
+    Fix a
+    By abstract non-sense, one have \cite{Vg}*{Prop~7.2.22}
+    \[
+      \Theta_{\pi}(\lambda) + s_{\alpha}\cdot \Theta_{\pi}(\lambda)=
+      \cT_{\lambda_{0}}^{\lambda}\cT_{\lambda}^{\lambda_{0}}(\pi)=:
+      \phi_{\alpha} \psi_{\alpha} (\pi)
+    \]
+    where $\lambda_{0}$ is an element such that $\inn{\lambda_{0}}{\alpha}=0$
+    and $\inn{\lambda_{0}}{\beta}>0$ for all
+    $\alpha\neq \beta \in R^{+}_{[\lambda]}$.
+    By lifting to the covering group, we can assume that
+    $\lambda-\lambda_{0}$ is a weight of a finite dimensional representation
+    of $G$.
+
+    Now the computation reduces to compute the RHS
+    $=\phi_{\alpha} \psi_{\alpha} (\pi)$ of the above equality. (Sometimes, we
+    need \cite{Vg}*{Prop~8.3.18} for the explicit computation of cross action.)
+    This is computed case by case (let $t(w)$ denote the coherent continuation
+    action):
+    \begin{itemize}
+      \item For compact imaginary roots, by Hecht-Schmid's ``A proof of
+      Blattner's conjecture'', where RHS $=0$.
+      \[
+        t(s_{\alpha}) \gamma = - \gamma = - s_{\alpha}\cross \gamma.
+      \]
+      \item For non-compact imaginary roots, reduce to $\SL(2,\bR)$
+      \cite{Vg}*{8.4.5,8.4.6}.
+      \[
+        t(s_{\alpha}) \gamma = - s_{\alpha}\cross \gamma + R
+      \]
+      where $R = c^{\alpha}(\gamma)$ or
+      $\gamma^{\alpha}_{+}+\gamma^{\alpha}_{-}$ is a combination of
+      regular characters on the Cartan subgroup $H^{\alpha}$ (which has
+      higher $\bR$-rank, in fact
+      $\rank_{\bR}H^{\alpha} = \rank_{\bR} H +1$).
+      \item For real roots we can use \cite{Vg}*{8.3.19} which is a consquence
+      of the (cohomological induction) construction of the standard
+      module. The result says if $w$ acts trivial on $\ftt=\fhh^{\theta}$,
+      then $t(w^{-1})\gamma = w\cross \gamma$. When $\alpha$ is a real
+      root, then clearly $s_{\alpha}$ acts on $\ftt$ trivially (since
+      $-\alpha(x) = \theta(\alpha)(x) = \alpha(\theta(x)) = \alpha(x) = 0
+      \ \forall x\in \ftt$)
+      and we have
+      \[
+        t(s_{\alpha}) \gamma = s_{\alpha}\cross \gamma.
+      \]
+      \item For complex root, use \cite{Vg}*{8.2.7} (whose proof relies on a
+      long exact sequence in \cite{Vg}*{7.4.3(a)} which is also formal) we get:
+      $\gamma + s_{\alpha}\cross \gamma = \phi_{\alpha} \psi_{\alpha} (\gamma)$
+      (here $\gamma-n\alpha = s_{\alpha}\cross \gamma$ by the definition of
+      cross action).
+      In particular, we have
+      \[
+        t(s_{\alpha}) \gamma = s_{\alpha}\cross \gamma.
+      \]
+    \end{itemize}
+ }
+
+ Let
+ \[
+   \cP_{\lambda,r}(G):= \Set{[(H,\Gamma,\bargamma)]|
+     \text{real rank of $H$ is $r$}}
+ \]
+ and $\cP_{\lambda,\geq r} = \bigsqcup_{l\geq r}\cP_{\lambda,l}$. Define
+ \[
+   \Coh_{[\lambda],\geq r}(G) :=
+   \Span\Set{\Theta_{[\gamma]}|[\gamma]\in \cP_{\lambda,\geq r}}
+ \]
+ From the explicit formula of the coherent continuation actions on the standard
+ modules, we have that, for $[\gamma]\in \cP_{\lambda,\geq r}(G)$,
+ \[
+   t(s_{\alpha})\; [\gamma]
+   \equiv
+   \begin{cases}
+     - s_{\alpha}\crossa [\gamma] & \text{if $\alpha$ is imaginary,}\\
+     \phantom{-} s_{\alpha}\crossa [\gamma] & \text{otherwise.}
+   \end{cases}
+ \]
+ Now it is elementary to deduce that, as $\Wlama$-module,
+ \[
+   \frac{\Coh_{[\lambda],\geq r}(G)}{\Coh_{[\lambda],\geq r+1}(G)}
+   \cong \bigoplus_{\Wlama \crossa [\gamma]}
+   \Ind_{W_{[\gamma]}}^{\Wlama} \sgn_{[\gamma]}
+ \]
+ where the summation runs over the cross action orbits
+ in $\cP_{\lambda,r}(G)$.
+ Since $\Wlama$ is a finite group, we get the theorem by the complete
+ reduciblity of $\Coh_{[\lambda]}(G)$.
+\end{proof}
+
+We remark that, when $\lambda$ is integral, the set $\cP_{\lambda}(G)$ can be enumerated using \cite{AC} (the
+algorithm is implemented in atlas) for linear groups.
+Under atlas' parameters, the cross action is also easy to calculate.
+For the metaplectic group, the problem was solved by Renard-Trapa \cite{RT1,RT2}.
+
+
 
 \end{document}
 
