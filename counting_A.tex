@@ -8,239 +8,340 @@ known to the experts. We review the result and provide some proves due to the
 lack of reference.
 
 % We assume that $G  = \GL_{n}(\bC), \GL_{n}(\bR), \GL_{\half n}(\bH)$ and $\star = A,A^{\bC}, A^{\bH}$ respectively.
-%
-In all the cases, $\ckG = \GL_{n}(\bC)$ and $n$ is even if
-$G = \GL_{\half n}{\bH}$.
-The nilpotent orbit $\ckcO$ is parameterized by Young diagram.
-\[
-  W = \begin{cases}
-    \sfS_{n} & \text{if } \star \in \set{A, A^{\bH}}\\
-    \sfS_{n}\times \sfS_{n} & \text{if } \star = A^{\bC}\\
-  \end{cases}
-\]
-Let
-\[
-  \cO :=\dBV(\ckcO) = \ckcO^{t} \AND \tau = \Spr^{-1}(\cO).
-\]
-Here $\tau$ has the partition $\cO$.
 
-Every irreducible representation in $\Irr(W)$ is special.
-For the infinitesimal character $\lamck$,
+In all the cases, $\ckG = \GL_{n}(\bC)$ and $n$ is even if
+$G = \GL_{\frac{n}{2}}(\bH)$.
+The nilpotent orbit $\ckcO$ is parameterized by Young diagrams.
+Let $\YD_{n}$ be the set of Young diagrams with $n$-boxes.
+
+Fix $\ckcO\in \Nil(\ckG) = \YD_{n}$ and set
 \[
-  \LC_{\lamck} = \LRC_{\lamck}= \begin{cases}
-   \set{\tau} & \text{}
-  \end{cases}
+  \cO :=\dBV(\ckcO) = \ckcO^{t} \AND \wttau := \Spr^{-1}(\cO).
 \]
+Here $\wttau$ has the partition $\cO$.
+
+
 
 \subsection{Special unipotent representations of $G = \GL_n(\bC)$}
 When $G = \GL_{n}(\bC)$ the classification is a special case in \cite{BVUni}.
 
 Since the Lusztig canonical quotient of $\ckcO$ is trivial, the set of unipotent representations
-of $G = \GL_n(\bC)$ one-one corresponds to nilpotent orbits in $\Nil(\ckGc)$ by
+of $G = \GL_n(\bC)$ one-one corresponds to nilpotent orbits in $\Nil(\ckGc) = \YD_{n}$ by
 \cite{BVUni}.
-Suppose $\ckcO$ has rows
+
+\begin{thm}
+Suppose $\ckcO\in \YD_{n} = \Nil(\ckGc)$ and $\ckcO$ has $k$ columns.
+Let
 \[
-\bfrr_1(\ckcO)\geq \bfrr_2(\ckcO)\geq \cdots\geq
-\bfrr_k(\ckcO) >0.
+ \pi_{\ckcO} := 1_{\bfrr_1(\ckcO)}\times  1_{\bfrr_2(\ckcO)}\times \cdots
+ \times 1_{\bfrr_k(\ckcO)}
 \]
-Then $\cO := \dBV(\ckcO)$ has columns $\bfcc_i(\cO) = \bfrr_i(\ckcO)$ for all
-$i\in \bN^+$.
-The map $\ckcO \mapsto \cO$ is a bijection.
-
-
-We set $\CP =  \YD$ be the set of Young diagrams.
-For $\uptau \in \CP$ which has $k$ columns,
-let $1_{c}$ be the trivial representations of $\GL_c(\bC)$.
+be the normalized parabolic induction where $1_{c}$ denote the trivial
+representations of $\GL_c(\bC)$.
+Then
 \[
- \pi_\uptau = 1_{\bfcc_1(\uptau)}\times  1_{\bfcc_2(\uptau)}\times \cdots
- \times 1_{\bfcc_k(\uptau)}.
+  \Unip_{A^{\bC}}(\ckcO) = \Set{\pi_{\ckcO}}.
 \]
+\end{thm}
 
+
+\begin{remark}
 The Vogan duality gives a duality between Harish-Chandra cells.
 In this case, Harish-Chandra cells is the double cell
 of Lusztig.
 Now we have a duality
 \[
- \pi_\uptau \leftrightarrow \pi_{\uptau^t}.
+ \pi_\ckcO \leftrightarrow \pi_{\ckcO^t}.
 \]
+\end{remark}
 
-Let $\uptau' := \DD(\uptau)$ be the partition obtained by deleting the first column
-of $\uptau$.
-Let $\theta_{a,b}$ (resp. $\Theta_{a,b}$) be the  theta lift (resp. big theta lift) from $\GL_a(\bC)$ to
-$\GL_b(\bC)$.
-Then we have
+We record the following easy lemma which is a baby case of our results on other
+classical groups.
+\begin{lem}
+  Let $\ckcO' := \DDD(\ckcO)$ be the partition obtained by deleting the first
+  column of $\ckcO$. Let $\theta_{\GL_{a}(\bC),\GL_{b}(\bC)}$ (resp.
+  $\Theta_{\GL_{a}(\bC),\GL_{b}(\bC)}$) be the theta lift (resp. big theta lift)
+  from $\GL_a(\bC)$ to $\GL_b(\bC)$. Then we have
+  \[
+    \pi_{\ckcO} = \theta_{\GL_{\abs{\ckcO'}}(\bC),\GL_{\abs{\ckcO}}(\bC)} (\pi_{\ckcO'})= \Theta_{\GL_{\abs{\ckcO'}}(\bC),\GL_{\abs{\ckcO}}(\bC)} (\pi_{\ckcO'}).
+  \]
+\end{lem}
+
+
+\subsection{Special unipotent representations of $\GL_n(\bR)$ and
+  $\GL_{\frac{n}{2}}(\bR)$}
+In this section, we assume $G = \GL_{n}(\bR)$ or $\GL_{\frac{n}{2}}(\bR)$, i.e.
+$\star\in \set{A,A^{\bH}}$.
+
+
+Suppose there is decomposition %$\ckcO\in \Nil(\ckGc)$ and decompose
 \[
-  \pi_{\uptau} = \theta_{{\abs{\uptau'}},{\abs{\uptau}}} (\pi_{\uptau}).
+  \ckcO = \ckcO_{e} \cuprow \ckcO_{o}
 \]
+where $\ckcO_e$ and $\ckcO_o$ are partitions consist of even and odd rows
+respectively.
 
-In the rest of this section, $G = \GL_{n}(\bR)$ or $\GL_{n}(\bH)$.
-
-Let $\YD$ be the set of Young diagrams viewed as a finite multiset of positive
-integers. The set of nilpotent orbits in $\GL_n(\bC)$ is identified with Young
-diagram of $n$ boxes.
-
-
-Let $\ckGc = \GL_n(\bC)$.
-Fix
-an orbit $\ckcO\in \Nil(\ckG)$, let $\ckcO_e$ (resp. $\ckcO_o$) be the partition
-consists of all even (resp. odd) rows in $\ckcO$.
-
-Let $S_n$ denote the Weyl group of $\GL_n(\bC)$.
-Let $W_n := S_n \ltimes \set{\pm 1}^n$ denote the Weyl group of type $B_n$ or $C_n$.
-Let $\sgn$ denote the sign representation of the Weyl group.
-The group $W_n$ is naturally embedded in $S_{2n}$.
-For $W_n$, let $\epsilon$ denote the unique non-trivial character which is trivial on $S_n$.
-Note that $\epsilon$ is also the restriction of the $\sgn$ of $S_{2n}$ on $W_n$.
-
-
-
-\subsection{Counting unipotent representations of $\GL_n(\bR)$}
-Now let $\ckcO\in \Nil(\ckGc)$.
-Recall the decomposition $\ckcO  = \ckcO_e \cup \ckcO_o$.
-Let $n_e = \abs{\ckcO_e}, n_o = \abs{\ckcO_o}$ and $\lambda_\ckcO = \half \ckhh$.
-
-Then
-\[
-  W_{\lamck} \cong S_{\abs{\ckcO_e}}\times S_{\abs{\ckcO_o}}.
-\]
-\[
- W_{\lambda_\ckcO} = \prod_j S_{\bfcc_j(\ckcO_e)}\times \prod_j S_{\bfcc_j(\ckcO_o)}
-\]
-By the formula of $a$-function, one can easily see that
-The cell in $W(\lamck)$ consists of the unique representation $J_{W_{\lamck}}^{\Wint{\lamck}} (1)$.
-Now the $W$-cell $(J_{W_{\lamck}}^W \sgn)\otimes \sgn$ consists a single
-representation
-\[
-\tau_{\ckcO} = \ckcO_{e}^{t}\boxtimes \ckcO_{o}^{t}.
-\]
-The representation $j_{W_{\lamck}}^{S_{n}} \tau_{\ckcO}$
-corresponds to the orbit $\cO= \ckcO^t $ under the Springer
-correspondence.
-\trivial{
-WLOG, we assume $\ckcO =  \ckcO_o$.
-
-Let $\sigma\in \widehat{S_n}$. We identify $\sigma$ with a Young diagram.
-Let $c_i = \bfcc_i(\sigma)$.
-Then $\sigma = J^{S_n}_{W'} \epsilon_{W'}$ where $W' = \prod S_{c_i}$
-(see Carter's book).
-This implies Lusztig's a-function takes value
-\[
-a(\sigma) = \sum_i c_i(c_i-1) /2
-\]
-Compairing the above with the dimension formula of nilpotent Orbits
-\cite{CM}*{Collary~6.1.4}, we get (for the formula, see Bai ZQ-Xie Xun's paper on
-GK dimension of $SU(p,q)$)
-\[
-\half \dim(\sigma) = \dim(L(\lambda)) = n(n-1)/2 - a(\sigma).
-\]
-Here $\dim(\sigma)$ is the dimension of nilpotent orbit attached to the Young
-diagram of $\sigma$ (it is the Springer correspondence, regular orbit maps to
-trivial representation, note that $a(\triv)=0$), $L(\lambda)$ is any highest
-weight module in the cell of $\sigma$.
-
-
-Return to our question, let $S' = \prod_i S_{\bfcc_i(\ckcO)}$. We want to find
-the component $\sigma_0$ in $\Ind_{S'}^{S_n} 1$ whose $a(\sigma_0)$ is maximal,
-i.e. the Young diagram of $\sigma_0$ is minimal.
-
- By the branaching rule, $\sigma \subset \Ind_{S'}^{S_n} 1$ is given by adding
- rows of lenght $\bfcc_i(\ckcO)$ repeatly (Each time add at most one box in each
- column).
- Now it is clear that $\sigma_0 = \ckcO^t$ is desired.
-
- This agrees with the Barbasch-Vogan duality $\dBV$ given by
- \[
-  \ckcO \xrightarrow{Springer}\ckcO \xrightarrow{\otimes \sgn} \ckcO^t
-  \xrightarrow{Springer} \ckcO^t.
- \]
-}
-
-The $\Wint{\lamck}$-module $\Cint{\lamck}$ is given by the following formula:
+We list some easy facts below:
 \[
   \begin{split}
-  \Cint{\lamck} &\cong \cC_{n_e}\otimes \cC_{n_o} \quad \text{with} \\
- \cC_n &:= \bigoplus_{\substack{s,a,b\\2s+a+b=n}}
- \Ind_{W_s\times S_a\times S_b}^{S_{n}} \epsilon \otimes 1\otimes 1. % \text{ is a $S_n$-module.}
+    W &= \sfS_{n} \\
+    W_{[\lamck]} & = \sfS_{\abs{\ckcO_{e}}}\times \sfS_{\abs{\ckcO_{o}}} \\
+    W_{\lamck} & = \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\ckcO_{e})}\times \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\ckcO_{o})}\\\
+    \tau_{\lamck} & := (j_{W_{\lamck}}^{W_{[\lamck]}}\sgn )\otimes \sgn =  \ckcO_{e}^{t}\boxtimes \ckcO_{o}^{t}\\
+    \LC_{\lamck} & = \LRC_{\lamck}= \set{\tau_{\lamck}}, \AND \\
+    \wttau_{\lamck} & = j_{W_{[\lamck]}}^{W}\tau_{\lamck} = \Spr^{-1}(\cO).
   \end{split}
 \]
 
-According to Vogan duality,  we can obtain the above formula by tensoring $\sgn$
-on the forumla of the unitary groups in \cite{BV.W}*{Section~4}.
 
-By branching rules of the symmetric groups,  $\Unip_{\ckcO}(G)$ can be parameterized by painted partition.
+% Now let $\ckcO\in \Nil(\ckGc)$ and decompose
+% \[
+%   \ckcO = \ckcO_{e} \cuprow \ckcO_{o}
+% \]
+% where $\ckcO_e$ and $\ckcO_o$ are partitions consist of even and odd rows
+% respectively.
 
+% Every irreducible representation in $\Irr(W)$ is special. For the
+% infinitesimal character $\lamck$,
+% \[
+
+% \]
+
+% In all the cases, let $\DDD$ denote the dual descent of Young diagrams.
+% Suppose $\ckcO$ is a Young diagram, it delete the longest row in $\ckcO$
+
+
+% Let $\YD$ be the set of Young diagrams viewed as a finite multiset of positive
+% integers. The set of nilpotent orbits in $\GL_n(\bC)$ is identified with Young
+% diagram of $n$ boxes.
+
+
+
+Let $\sfW_n := \sfS_n \ltimes \set{\pm 1}^n$ denote the Weyl group of type $B_n$
+or $C_n$. Let $\sgn$ denote the sign representation of the Weyl group.
+
+The group $\sfW_n$ is naturally embedded in $\sfS_{2n}$. For $\sfW_n$, let
+$\epsilon$ denote the unique non-trivial character which is trivial on $\sfS_n$,
+which is also the restriction of the $\sgn$ of $S_{2n}$ on $W_n$. The following
+branching formula is known (see \cite{BV.W}*{Lemma~4.1~(b)})
+\begin{equation}
+  \Ind_{\sfW_{n}}^{\sfS_{2n}} = \bigoplus_{\substack{\sigma\in \YD_{2n}\\
+      \bfcc_{i}(\sigma) \text{ is even } \forall i\in \bN}} \sigma.
+\end{equation}
+
+% Let $n_e = \abs{\ckcO_e}, n_o =
+% \abs{\ckcO_o}$. % and $\lambda_\ckcO = \half \ckhh$.
+% By the formula of $a$-function, one can easily see that The cell in
+% $W(\lamck)$ consists of the unique representation
+% $J_{W_{\lamck}}^{\Wint{\lamck}} (1)$. Now the $W$-cell
+% $(J_{W_{\lamck}}^{W_{[\lamck]}} \sgn)\otimes \sgn$ consists a single
+% representation
+% \[
+%   \tau_{\ckcO} = \ckcO_{e}^{t}\boxtimes \ckcO_{o}^{t}.
+% \]
+% The representation $j_{W_{\lamck}}^{S_{n}} \tau_{\ckcO}$ corresponds to the
+% orbit $\cO= \ckcO^t $ under the Springer correspondence.
+\trivial[h]{ WLOG, we assume $\ckcO = \ckcO_o$.
+
+  Let $\sigma\in \widehat{S_n}$. We identify $\sigma$ with a Young diagram. Let
+  $c_i = \bfcc_i(\sigma)$. Then $\sigma = J^{S_n}_{W'} \epsilon_{W'}$ where
+  $W' = \prod S_{c_i}$ (see Carter's book). This implies Lusztig's a-function
+  takes value
+  \[
+    a(\sigma) = \sum_i c_i(c_i-1) /2
+  \]
+  Comparing the above with the dimension formula of nilpotent Orbits
+  \cite{CM}*{Collary~6.1.4}, we get (for the formula, see Bai ZQ-Xie Xun's paper
+  on GK dimension of $SU(p,q)$)
+  \[
+    \half \dim(\sigma) = \dim(L(\lambda)) = n(n-1)/2 - a(\sigma).
+  \]
+  Here $\dim(\sigma)$ is the dimension of nilpotent orbit attached to the Young
+  diagram of $\sigma$ (it is the Springer correspondence, regular orbit maps to
+  trivial representation, note that $a(\triv)=0$), $L(\lambda)$ is any highest
+  weight module in the cell of $\sigma$.
+
+
+  Return to our question, let $S' = \prod_i S_{\bfcc_i(\ckcO)}$. We want to find
+  the component $\sigma_0$ in $\Ind_{S'}^{S_n} 1$ whose $a(\sigma_0)$ is
+  maximal, i.e. the Young diagram of $\sigma_0$ is minimal.
+
+  By the branching rule, $\sigma \subset \Ind_{S'}^{S_n} 1$ is given by adding
+  rows of length $\bfcc_i(\ckcO)$ repeatly (Each time add at most one box in
+  each column). Now it is clear that $\sigma_0 = \ckcO^t$ is desired.
+
+  This agrees with the Barbasch-Vogan duality $\dBV$ given by
+  \[
+    \ckcO \xrightarrow{\Spr}\ckcO \xrightarrow{\otimes \sgn} \ckcO^t \xrightarrow{\Spr} \ckcO^t.
+  \]
+}
+
+We define the set of painted partitions of type $A$ as the following:
 \begin{equation}\label{eq:PP.AR}
-\PP_{A^{\bR}}(\ckcO) = \Set{\uptau:=(\tau, \cP)|
-  \begin{array}{l}
-    \text{$\tau = \ckcO^{t}$}\\
-    \text{$\Im(\cP)\subset \set{\bullet,c,d}$}\\
-    \text{$\#\set{i|\cP(i,j)=\bullet}$ is even}
-    % \text{``$\bullet$'' occures with even}\\
-    % \text{mulitplicity in each column}
-  \end{array}
-}.
+  \PP_{A}(\ckcO) = \Set{\uptau:=(\tau, \cP)|
+    \begin{array}{l}
+      \text{$\tau = \ckcO^{t}$}\\
+      \text{$\Im(\cP)\subseteq \set{\bullet,c,d}$}\\
+      \text{$\#\set{i|\cP(i,j)=\bullet}$ is even for all $j\in \bN^{+}$}
+    \end{array}
+  }.
 \end{equation}
-For $\uptau:=(\tau,\cP)\in \PP_{A^{\bR}}(\ckcO)$, we write $\cP_{\uptau}:= \cP$.
+It is easy to see that
+\begin{equation}\label{eq:PPA.count}
+  \#(\PP_{A}(\ckcO)) = \prod_{r\in \bN^{+}} (\#\set{i\in \bN^{+}| \bfrr_{i}(\ckcO)=r}+1)
+\end{equation}
 
-\trivial{
-The typical diagram of all columns with even length $2c$ are
-\[
-\ytb{\bullet\cdots\bullet\bullet\cdots\bullet,\vdots\vdots\vdots\vdots\vdots\vdots,
-\bullet\cdots\bullet c\cdots c,
-\bullet\cdots\bullet d\cdots d
-}
-\]
+\begin{lem} \label{lem:GL.count}
+  Suppose $G = \GL_{n}(\bR)$. Let
+  \[
+    \cC_n := \bigoplus_{\substack{s,a,b\in \bN \\2s+a+b=n}} \Ind_{W_s\times S_a\times S_b}^{S_{n}} \sgn \otimes 1\otimes 1.
+  \]
+  Then, as $W_{[\lamck]}$-module,
+  \[
+    \Cint{\lamck} \cong \cC_{\abs{\ckcO_{e}}}\otimes \cC_{\abs{\ckcO_{o}}}.
+  \]
+  Furthermore,
+  \begin{equation}\label{eq:A.count}
+    [\tau_{\lamck}: \Cint{\ckcO}] = \# (\PP_{A}(\ckcO_{e}))\times
+    \# (\PP_{A}(\ckcO_{o})) = \# (\PP_{A}(\ckcO)).
+  \end{equation}
+  \qed
+\end{lem}
+\begin{proof}
+  We only explain the last equation and leave the rest to the reader.
+  The multiplicity formula follows from the Pieri rule and the last equality
+  follows from \eqref{eq:PPA.count}.
+\end{proof}
+% The $\Wint{\lamck}$-module $\Cint{\lamck}$ is given by the following formula:
+% According to Vogan duality, we can obtain the above formula by tensoring
+% $\sgn$ on the forumla of the unitary groups in \cite{BV.W}*{Section~4}.
 
-The typical diagram of all columns with odd length $2c+1$ are
-\[
-\ytb{\bullet\cdots\bullet\bullet\cdots\bullet,\vdots\vdots\vdots\vdots\vdots\vdots,
-\bullet\cdots\bullet \bullet\cdots\bullet ,
-c\cdots c d\cdots d
-}
-\]
+\trivial[]{
+By branching rules of the symmetric groups, $\Unip_{\ckcO}(G)$ can be
+parameterized by painted partition.
+
+For $\uptau:=(\tau,\cP)\in \PP_{A}(\ckcO)$, we write $\cP_{\uptau}:= \cP$.
+
+  The typical diagram of all columns with even length $2c$ are
+  \[
+    \ytb{\bullet\cdots\bullet\bullet\cdots\bullet,\vdots\vdots\vdots\vdots\vdots\vdots, \bullet\cdots\bullet c\cdots c, \bullet\cdots\bullet d\cdots d }
+  \]
+
+  The typical diagram of all columns with odd length $2c+1$ are
+  \[
+    \ytb{\bullet\cdots\bullet\bullet\cdots\bullet,\vdots\vdots\vdots\vdots\vdots\vdots, \bullet\cdots\bullet \bullet\cdots\bullet , c\cdots c d\cdots d }
+  \]
 }
 
-Let $\sgn_n\colon \GL_n(\bR)\rightarrow \set{\pm 1}$ be the sign of determinant.
-Let $1_n$ be the trivial representation of $\GL_n(\bR)$.
-For $\uptau\in \PP{\ckcO}$, we attache the representation
+Let $\sgn_a\colon \GL_a(\bR)\rightarrow \set{\pm 1}$ be the sign of determinant
+and $1_a$ be the trivial representation of $\GL_a(\bR)$.
+For
+$\uptau\in \PP_{A}{\ckcO}$, we attache the representation
 \begin{equation}\label{eq:u.GLR}
-\pi_\uptau :=
-\bigtimes_{j} \underbrace{1_j \times \cdots \times 1_j}_{c_j\text{-terms}}\times
-\underbrace{\sgn_j \times \cdots \times {\sgn_j} }_{d_j\text{-terms}}.
+  \pi_\uptau :=
+  \bigtimes_{j} \underbrace{1_j \times \cdots \times 1_j}_{c_j\text{-terms}}\times
+  \underbrace{\sgn_j \times \cdots \times {\sgn_j} }_{d_j\text{-terms}}.
 \end{equation}
-Here
+where
 \begin{itemize}
-  \item
-$j$ running over all column lengths in $\ckcO^t$,
-\item $d_j$ is the number of
-columns of length $j$ ending with the symbol ``d'',
-\item  $c_j$ is the number of
-columns of length $j$ ending with the symbol ``$\bullet$'' or ``$c$'', and
-\item  ``$\times$'' denote the parabolic induction.
+  \item $j$ running over all column lengths in $\ckcO^t$,
+  \item $d_j$ is the number of columns of length $j$ ending with the symbol
+        ``d'',
+  \item $c_j$ is the number of columns of length $j$ ending with the symbol
+        ``$\bullet$'' or ``$c$'', and
+  \item ``$\times$'' denote the parabolic induction.
 \end{itemize}
+
+\begin{thm}[c.f. Vogan]
+  The following map is a bijection
+  \[
+    \begin{array}{ccc}
+      \PP_{A}(\ckcO) & \longrightarrow & \Unip_{A}(\ckcO)\\
+      \uptau & \mapsto & \pi_{\uptau}.
+    \end{array}
+  \]
+\end{thm}
+\begin{proof}
+  The irreducibility and unitarity of $\pi_{\uptau}$ see \cite{V.GL}.
+  The map is injective since $\pi_{\uptau_{1}}$ and $\pi_{\uptau_{2}}$ have different
+  cuspidal data if  $\uptau_{1}\neq \uptau_{2}$.
+  The map is bijective by \Cref{lem:GL.count}.
+\end{proof}
 
 \subsection{Special Unipotent representations of $G=\GL_{m}(\bH)$}
 
-Suppose that $\cO$ is the complexificiation of a rational nilpotent $\GL_{m}(\bH)$-orbit.
-Then $\cO$ has only even length columns.
-Therefore, $\Unip_\ckcO(G) \neq\emptyset$ only if $\ckcO = \ckcO_e$.
+Retain the definitions in the previous section. Now suppose $G = \GL_{\frac{n}{2}}(\bH)$.
 
-In this case the coherent continuation representation is given by
+\begin{lem}
+  We have
+  \[
+    \Cint{\lamck}(G)  = \begin{cases}
+      \Ind_{\sfW_{\frac{n}{2}}}^{\sfS_{n}}\epsilon & \text{ if
+      } \ckcO = \ckcO_{e}\\
+      0 & \text{ otherwise
+      } \\
+    \end{cases}
+  \]
+  In particular, $\Unip_\ckcO(G) = \emptyset$ if $\ckcO \neq \ckcO_e$.
+
+  When $\ckcO = \ckcO_{e}$,
+  \[
+    \Unip_{A^{\bH}}(G) = \set{\pi_{\ckcO}}
+  \]
+  where
+  \[
+    %\pi_{\ckcO} := \bigtimes_i 1_{\bfrr_i(\ckcO)/2}.
+    \pi_{\ckcO} := 1_{\bfrr_1(\ckcO)/2}\times 1_{\bfrr_2(\ckcO)/2} \times \cdots
+   \times  1_{\bfrr_k(\ckcO)/2},
+  \]
+  $k = \bfcc_{1}(\ckcO)$
+  and $1_{a}$ denote the trivial representation of $\GL_{a}(\bH)$.
+% which is a element in $\Unip_{A^{\bH}}(\ckcO)$
+
+% In this case the coherent continuation representation is given by
+% \[
+%   \Cint{\lamck}(G) = \Ind_{W_m}^{\sfS_{2n}}\epsilon
+% \]
+% and $\Unip_\ckcO(G)$ is a singleton. %We use partition $\tau:= \ckcO^t$ to parameter special unipotent representations of $\GL_{m}(\bH)$.
+\end{lem}
+\begin{proof}
+  The $G$-module $\pi_{\ckcO}$ is irreducible, unitary and unipotent by Vogan
+  \cite{V.GL}.
+  The rest parts is clear by $[\tau_{\ckcO}:\Cint{\lamck}(G)] = 0$ if
+  $\ckcO \neq \ckcO_{e}$
+  and $[\tau_{\ckcO}:\Cint{\lamck}(G)] = 1$ otherwise.
+\end{proof}
+
+
+
+\section{Special unipotent representations of $\rU(p,q)$}
+\def\nbb{n_{\mathrm b}}
+\def\ngg{n_{\mathrm g}}
+
+In this section, we assume $G  = \rU(p,q)$ so that $\star = A^{*}$.
+Note that $\ckG = \GL_{n}(\bC)$.
+
+We make the following decomposition:
 \[
-  \Cint{\lamck}(G) = \Ind_{W_m}^{S_2m}\epsilon
+\ckcO = \ckcO_{g}\cuprow \ckcO_{b}
 \]
-and $\Unip_\ckcO(G)$ is a singleton. %We use partition $\tau:= \ckcO^t$ to parameter special unipotent representations of $\GL_{m}(\bH)$.
-For each partition $\tau$ only having even columns, we define
+where every row in $\ckcO_{g}$ has the parity of $\abs{\ckcO}$ (called ``good parity'')
+and every row in $\ckcO_{b}$ has the parity different from $\abs{\ckcO}$ (called
+``bad parity'').
+Let $(\ngg,\nbb) = (\abs{\ckcO_g},\abs{\ckcO_b})$.
+Clearly
 \[
-  \pi_{\tau} := \bigtimes_i 1_{\bfcc_i(\tau)/2}.
+  \begin{split}
+    \WLamck &= \sfS_{\ngg}\times \sfS_{\nbb}\\
+    \tau_{\lamck}  & = \ckcO_{g}^{t}\boxtimes \ckcO_{b}^{t}\\
+  \end{split}
 \]
 
-\subsection{Counting special unipotent repesentations of $\rU(p,q)$}
-We call the parity of $\abs{\ckcO}$ the ``good pairity''.  The other pairity is called the ``bad parity''.
-We write $\ckcO = \ckcO_g\cup \ckcO_b$ where $\ckcO_g$ and $\ckcO_b$ consist of good parity length rows
-and bad parity rows respectively.
+\begin{lem}
+  Let
+\end{lem}
 
-Let $(n_g,n_b) = (\abs{\ckcO_g},\abs{\ckcO_b})$.
+
 Now as the $S_{n_g}\times S_{n_b}$
 \[
 \bigoplus_{\substack{p,q\in \bN\\p+q=n}} \Cint{\lamck}(\rU(p,q)) = \cC_{g}\otimes \cC_{b}
