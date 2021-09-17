@@ -1,31 +1,37 @@
 \documentclass[counting_main.tex]{subfiles}
 \begin{document}
 
-\section{Counting in type A}
-The results in this section are well known to the experts.
+\section{Unipotent representations of general linear groups}
 
+The classification of unipotent representations of general linear groups is well
+known to the experts. We review the result and provide some proves due to the
+lack of reference.
 
-Let $\YD$ be the set of Young diagrams viewed as a finite multiset of positive
-integers. The set of nilpotent orbits in $\GL_n(\bC)$ is identified with Young
-diagram of $n$ boxes.
+% We assume that $G  = \GL_{n}(\bC), \GL_{n}(\bR), \GL_{\half n}(\bH)$ and $\star = A,A^{\bC}, A^{\bH}$ respectively.
+%
+In all the cases, $\ckG = \GL_{n}(\bC)$ and $n$ is even if
+$G = \GL_{\half n}{\bH}$.
+The nilpotent orbit $\ckcO$ is parameterized by Young diagram.
+\[
+  W = \begin{cases}
+    \sfS_{n} & \text{if } \star \in \set{A, A^{\bH}}\\
+    \sfS_{n}\times \sfS_{n} & \text{if } \star = A^{\bC}\\
+  \end{cases}
+\]
+Every irreducible representation in $\Irr(W)$ is special.
+For the infinitesimal character $\lamck$,
+\[
+  \LC_{\lamck} = \LRC_{\lamck}= \begin{cases}
 
-
-Let $\ckGc = \GL_n(\bC)$.
-Fix
-an orbit $\ckcO\in \Nil(\ckG)$, let $\ckcO_e$ (resp. $\ckcO_o$) be the partition
-consists of all even (resp. odd) rows in $\ckcO$.
-
-Let $S_n$ denote the Weyl group of $\GL_n(\bC)$.
-Let $W_n := S_n \ltimes \set{\pm 1}^n$ denote the Weyl group of type $B_n$ or $C_n$.
-Let $\sgn$ denote the sign representation of the Weyl group.
-The group $W_n$ is naturally embedded in $S_{2n}$.
-For $W_n$, let $\epsilon$ denote the unique non-trivial character which is trivial on $S_n$.
-Note that $\epsilon$ is also the restriction of the $\sgn$ of $S_{2n}$ on $W_n$.
-
+  \end{cases}
+\]
 
 \subsection{Special unipotent representations of $G = \GL_n(\bC)$}
-By \cite{BVUni}, the set of unipotent representations
-of $G = \GL_n(\bC)$ one-one corresponds to nilpotent orbits in $\Nil(\ckGc)$.
+When $G = \GL_{n}(\bC)$ the classification is a special case in \cite{BVUni}.
+
+Since the Lusztig canonical quotient of $\ckcO$ is trivial, the set of unipotent representations
+of $G = \GL_n(\bC)$ one-one corresponds to nilpotent orbits in $\Nil(\ckGc)$ by
+\cite{BVUni}.
 Suppose $\ckcO$ has rows
 \[
 \bfrr_1(\ckcO)\geq \bfrr_2(\ckcO)\geq \cdots\geq
@@ -60,6 +66,27 @@ Then we have
 \[
   \pi_{\uptau} = \theta_{{\abs{\uptau'}},{\abs{\uptau}}} (\pi_{\uptau}).
 \]
+
+In the rest of this section, $G = \GL_{n}(\bR)$ or $\GL_{n}(\bH)$.
+
+Let $\YD$ be the set of Young diagrams viewed as a finite multiset of positive
+integers. The set of nilpotent orbits in $\GL_n(\bC)$ is identified with Young
+diagram of $n$ boxes.
+
+
+Let $\ckGc = \GL_n(\bC)$.
+Fix
+an orbit $\ckcO\in \Nil(\ckG)$, let $\ckcO_e$ (resp. $\ckcO_o$) be the partition
+consists of all even (resp. odd) rows in $\ckcO$.
+
+Let $S_n$ denote the Weyl group of $\GL_n(\bC)$.
+Let $W_n := S_n \ltimes \set{\pm 1}^n$ denote the Weyl group of type $B_n$ or $C_n$.
+Let $\sgn$ denote the sign representation of the Weyl group.
+The group $W_n$ is naturally embedded in $S_{2n}$.
+For $W_n$, let $\epsilon$ denote the unique non-trivial character which is trivial on $S_n$.
+Note that $\epsilon$ is also the restriction of the $\sgn$ of $S_{2n}$ on $W_n$.
+
+
 
 \subsection{Counting unipotent representations of $\GL_n(\bR)$}
 Now let $\ckcO\in \Nil(\ckGc)$.
@@ -337,3 +364,8 @@ special unipotent representations on the two sides.
 
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "counting_main"
+%%% End:
