@@ -194,7 +194,7 @@ It is easy to see that
 \begin{lem} \label{lem:GL.count}
   Suppose $G = \GL_{n}(\bR)$. Let
   \[
-    \cC_n := \bigoplus_{\substack{s,a,b\in \bN \\2s+a+b=n}} \Ind_{W_s\times S_a\times S_b}^{S_{n}} \sgn \otimes 1\otimes 1.
+    \cC_n := \bigoplus_{\substack{t,c,d\in \bN \\2t+c+d=n}} \Ind_{\sfW_t\times \sfS_c\times \sfS_d}^{\sfS_{n}} \sgn \otimes 1\otimes 1.
   \]
   Then, as $W_{[\lamck]}$-module,
   \[
@@ -273,14 +273,24 @@ where
 Retain the definitions in the previous section. Now suppose $G = \GL_{\frac{n}{2}}(\bH)$.
 
 \begin{lem}
+  Let
+  \[
+  \cC_{n} = \begin{cases}
+    \Ind_{\sfW_{\frac{n}{2}}}^{\sfS_{n}}\epsilon
+    & \text{if $n$ is even, }  \\
+      0 & \text{ otherwise. } \\
+    \end{cases}
+  \]
   We have
   \[
-    \Cint{\lamck}(G)  = \begin{cases}
-      \Ind_{\sfW_{\frac{n}{2}}}^{\sfS_{n}}\epsilon & \text{ if
-      } \ckcO = \ckcO_{e}\\
-      0 & \text{ otherwise
-      } \\
-    \end{cases}
+    \Cint{\lamck}(G)  =
+    \cC_{\abs{\ckcO_{g}}}\otimes \cC_{\abs{\ckcO_{b}}}.
+    % \begin{cases}
+    %   \Ind_{\sfW_{\frac{n}{2}}}^{\sfS_{n}}\epsilon & \text{ if
+    %   } \ckcO = \ckcO_{e}\\
+    %   0 & \text{ otherwise
+    %   } \\
+    % \end{cases}
   \]
   In particular, $\Unip_\ckcO(G) = \emptyset$ if $\ckcO \neq \ckcO_e$.
 
@@ -317,17 +327,46 @@ Retain the definitions in the previous section. Now suppose $G = \GL_{\frac{n}{2
 \section{Special unipotent representations of $\rU(p,q)$}
 \def\nbb{n_{\mathrm b}}
 \def\ngg{n_{\mathrm g}}
+\def\tU{\widetilde{\rU}}
 
-In this section, we assume $G  = \rU(p,q)$ so that $\star = A^{*}$.
-Note that $\ckG = \GL_{n}(\bC)$.
+In this section, let $\star \in \set{A^{*}, \wtA^{*}}$ and
+\[
+  G :=
+  \begin{cases}
+    \rU(p,q)  & \text{when }\star = A^{*}\\
+    \tU(p,q)  & \text{when }\star = \wtA^{*}
+\end{cases}
+\]
+where $\tU(p,q)$ is the determinant square double cover of $\rU(p,q)$.
+
+For each nilpotent orbit $\ckcO\in \Nil(\ckG)$, let
+\[
+  \Unip_{G}(\ckcO) :=
+  \begin{cases}
+   \Set{\pi\in \Irr(G)| \Ann\pi = I_{\ckcO}} & \text{if $\star = A^{*}$}, \\
+   \Set{\pi\in \Irr(G)| \Ann\pi = I_{\ckcO} \text{ and $\pi$ is
+       geninue}} & \text{if $\star = A^{*}$}. \\
+  \end{cases}
+\]
+
+In this section we count the number of elements in $\Unip_{G}(\ckcO)$.
+
+We define
+\[
+  \text{``good parity ''} = \begin{cases}
+    \text{the parity of $\abs{\ckcO}$} &  \text{if $\star = A^{*}$}, \\
+    \text{the parity of $\abs{\ckcO}+1$} &  \text{if $\star = \wtA^{*}$}, \\
+  \end{cases}
+\]
+and the other parity is called the bad parity.
 
 We make the following decomposition:
 \[
 \ckcO = \ckcO_{g}\cuprow \ckcO_{b}
 \]
-where every row in $\ckcO_{g}$ has the parity of $\abs{\ckcO}$ (called ``good parity'')
-and every row in $\ckcO_{b}$ has the parity different from $\abs{\ckcO}$ (called
-``bad parity'').
+where every row in $\ckcO_{g}$ has the good parity
+and every row in $\ckcO_{b}$ has the bad parity.
+
 Let $(\ngg,\nbb) = (\abs{\ckcO_g},\abs{\ckcO_b})$.
 Clearly
 \[
@@ -337,60 +376,128 @@ Clearly
   \end{split}
 \]
 
+We define $\Coh_{\Lamck}$ to be the coherent continuations of genuine
+representations if $\star = \wtA^{*}$.
+
 \begin{lem}
   Let
-\end{lem}
-
-
-Now as the $S_{n_g}\times S_{n_b}$
-\[
-\bigoplus_{\substack{p,q\in \bN\\p+q=n}} \Cint{\lamck}(\rU(p,q)) = \cC_{g}\otimes \cC_{b}
-\]
-where
 \[
   \begin{split}
- \cC_{g} &= \bigoplus_{\substack{s,a,b\in \bN\\2s+a+b=n_g}} \Ind_{W_{s}\times S_a\times S_b}^{S_{n_g}}
- 1\otimes \sgn\otimes \sgn \\
+    \cC_{p,q} &= \bigoplus_{\substack{t,s,r\in \bN\\t+r=p, t+s = q}}
+    \Ind_{\sfW_{t}\times \sfS_s\times \sfS_r}^{\sfS_{n_g}}
+ 1\otimes \sgn \otimes \sgn \\
  \cC_{b} &= \begin{cases}
-  \Ind_{W_{\frac{n_b}{2}}}^{S_{n_b}} 1 & \text{if $n_b$ is even}\\
+  \Ind_{\sfW_{\frac{\nbb}{2}}}^{\sfS_{\nbb}} 1 & \text{if $\nbb$ is even}\\
   0 & \text{otherwise}.
  \end{cases}
   \end{split}
 \]
-
-By the above formula, we have
-\begin{lem}
-  \begin{enumT}
-    \item
-The set $\Unip_{\ckcO_b}(\rU(p,q))\neq \emptyset$ if and only if $p=q$ and
-each row lenght in $\ckcO$ has even multiplicity.
-\item
-Suppose $\Unip_{\ckcO_b}(\rU(p,p))\neq \emptyset$, let $\ckcO'$ be the Young diagram
-such that $\bfrr_i(\ckcO') = \bfrr_{2i}(\ckcO_b)$ and $\pi'$ be the unique special
-uinpotent representation in $\Unip_{\ckcO'}(\GL_{p}(\bC))$.
-Then the unique element in $\Unip_{\ckcO_b}(\rU(p,p))$  is given by
+Then, as the $\WLamck =\sfS_{n_g}\times \sfS_{n_b}$ module,
 \[
-  \pi := \Ind_{P}^{\rU(p,p)} \pi'
+  \Coh_{\Lamck}(G) = \begin{cases}
+    \cC_{p-\half \nbb,q-\half \nbb}\otimes \cC_{b} & \text{if $\nbb$ is even and
+      $p,q \geq \half \nbb$}\\
+    0 & \text{otherwise}.
+  \end{cases}
 \]
-where $P$ is a parabolic subgroup in $\rU(p,p)$ with Levi factor equals
-to $\GL_p(\bC)$.
-\item
-In general, when $\Unip_{\ckcO_b}(\rU(p,p))\neq \emptyset$, we have a natural bijection
-\[
-  \begin{array}{rcl}
-  \Unip_{\ckcO_g}(\rU(n_1,n_2)) &\longrightarrow& \Unip_{\ckcO}(\rU(n_1+p,n_2+p))\\
-  \pi_0 & \mapsto & \Ind_P^{\rU(n_1+p,n_2+p)} \pi'\otimes \pi_0
-  \end{array}
-\]
-where $P$ is a parabolic subgroup with Levi factor $\GL_p(\bC)\times \rU(n_1,n_2)$.
-  \end{enumT}
 \end{lem}
+\begin{proof}
+  For non-linear group, tensoring the genuine $\det^{1/2}$-character yields a
+  $\WLam$-module isomorphism
+  $\Coh_{[\lamck+(\half, \cdots, \half)]}(\rU(p,q)) \longrightarrow \Coh_{\Lamck}(G)$.
+  So the problem reduces to the linear group case, which follows from a routine
+  calculation.
+\end{proof}
 
-The above lemma ensure us to reduce the problem to the case when $\ckcO = \ckcO_g$.
+% \trivial[]{
+%   Let
+%   $\lambda := (\lambda_{1},\cdots,\lambda_{n})=(\underbrace{1/2, \cdots, 1/2}_{a},\underbrace{0,\cdots,0}_{b})$
+%   how to compute  $\Coh_{\Lam}(\wtU(p,q))$ of the genuine $\wtU(p,q)$ at the
+%   infinitesimal character coset $[\lambda]$?
+
+%   Twist the genuine $\wtU(p,q)$ representations with $\det^{1/2}$ yields
+%   an isomorphism between $\Coh_{\Lam}(\wtU(p,q))$ with
+%   $\Coh_{\Lam+\half}(U(p,q))$.
+% }
+
+% If $p,q \geq \half \nbb$, we write
+% \[
+% \Gg :=\begin{cases}
+
+% \end{cases}
+% \]
+
+Note that the structure of Harish-Chandra cell is determined by \cite{Bo}.
+As a consequence, we have the following sharp counting theorem.
+
+\begin{thm}
+  Retain the above setting. Then
+  \begin{enumerate}[label=(\alph*)]
+    \item $\Unip_{G}(\ckcO)= \emptyset$ if any of the following conditions are
+          not satisfied
+          \begin{itemize}
+            \item each row length in $\ckcOb$ occurs in even multiplicity, i.e.
+                  $\bfcc_{i}(\ckcOb)$ is even for every $i\in \bN^{+}$,
+            \item $p,q \geq \half \nbb$,
+            \item and $p+q$ is even when $G = \wtU(p,q)$.
+          \end{itemize}
+    \item If the above conditions are satisfied,
+          \[
+          \sharp(\Unip_{G}(\ckcO)) = \sharp(\Unip_{\Gg}(\ckcO_{g}) = \Nil_{G}(\cO).
+          \]
+          Here $\Gg = \rU(p-\half \nbb,q-\half \nbb)$ or
+          $\tU(p-\half \nbb,q-\half \nbb)$ and $\Nil_{G}(\cO)$ denote the set of
+          real nilpotent orbit in $G$ whose complexification is $\cO$.
+    \item Moreover, write $\ckcOb = \ckcOpb\cuprow \ckcOpb$ and let
+          $\pi_{\ckcOpb}$ be the unique element in
+          $\Unip_{\GL_{\half\nbb}(\bC)}(\ckcOpb)$. Then we have a bijection
+          \[
+          \begin{array}{ccc}
+            \Unip_{\Gg}(\ckcOg) &\longrightarrow & \Unip_{G}(\ckcO)\\
+            \pi_{0}& \mapsto & \pi_{\ckcOpb}\rtimes \pi_{0}. \\
+          \end{array}
+          \]
+  \end{enumerate}
+\end{thm}
+\begin{proof}
+  The lemma follows from the calculation of $[\tau_{\lamck}:\Cint{\lamck}(G)]$.
+
+  When $G = \tU(p,q)$ and $p+q$ is odd, the good parity is even and so
+  $\abs{\ckcOb}$ must be odd. There must be a row in $\ckcOb$ occurs in
+  odd multiplicity, which implies $\Unip_{G}(\ckcO)=\emptyset$.
+\end{proof}
+
+  % \begin{enumT}
+  %   \item The set $\Unip_{\ckcO_b}(\rU(p,q))\neq \emptyset$ if and only if $p=q$
+  %   and each row lenght in $\ckcO$ has even multiplicity.
+  %   \item Suppose $\Unip_{\ckcO_b}(\rU(p,p))\neq \emptyset$, let $\ckcO'$ be the
+  %   Young diagram such that $\bfrr_i(\ckcO') = \bfrr_{2i}(\ckcO_b)$ and $\pi'$
+  %   be the unique special uinpotent representation in
+  %   $\Unip_{\ckcO'}(\GL_{p}(\bC))$. Then the unique element in
+  %   $\Unip_{\ckcO_b}(\rU(p,p))$ is given by
+  %   \[
+  %     \pi := \Ind_{P}^{\rU(p,p)} \pi'
+  %   \]
+  %   where $P$ is a parabolic subgroup in $\rU(p,p)$ with Levi factor equals to
+  %   $\GL_p(\bC)$.
+  %   \item In general, when $\Unip_{\ckcO_b}(\rU(p,p))\neq \emptyset$, we have a
+  %   natural bijection
+  %   \[
+  %     \begin{array}{rcl}
+  %       \Unip_{\ckcO_g}(\rU(n_1,n_2)) &\longrightarrow& \Unip_{\ckcO}(\rU(n_1+p,n_2+p))\\
+  %       \pi_0 & \mapsto & \Ind_P^{\rU(n_1+p,n_2+p)} \pi'\otimes \pi_0
+  %     \end{array}
+  %   \]
+  %   where $P$ is a parabolic subgroup with Levi factor
+  %   $\GL_p(\bC)\times \rU(n_1,n_2)$.
+  % \end{enumT}
+
+The above theorem ensure us to reduce the problem to the case when $\ckcO = \ckcO_g$.
+We give some comments on the construction.
 Now assume $\ckcO = \ckcO_g$ and so $\Cint{\ckcO}$ corresponds to the blocks of
 the infinitesimal character of the trivial representation.
 
-By \cite{BV.W}*{Theorem~4.2},  Harish-Chandra cells in $\Cint{\ckcO}$ are in one-one
+By \cite{BV.W}*{Theorem~4.2} and \cite{Bo},  Harish-Chandra cells in $\Cint{\ckcO}$ are in one-one
 correspondence to real nilpotent orbits in $\cO:=\dBV(\ckcO)=\ckcO^t$.
 
 \trivial{
@@ -428,7 +535,7 @@ When $\ckcO=\ckcO_g$, the associated varity of every special unipotent represent
 is irreducible. Moreover, the following map  is a bijection.
 \[
   \begin{array}{rcl}
-  \Unip_{\ckcO_g}(\rU(n_1,n_2)) &\longrightarrow& \set{\text{rational forms of $\ckcO^t$}}\\
+  \Unip_{\ckcO}(\rU(p,q)) &\longrightarrow& \Nil_{G}(\ckcO)\\
   \pi_0 & \mapsto & \wAV(\pi_0).
   \end{array}
 \]
@@ -448,11 +555,23 @@ obtained by deleteing the first column of $\sO$.
 Suppose $\sO$ has $k$-columns. Inductively we have a sequence of unitary groups
 $\rU(p_i,q_i)$ with $(p_i,q_i) = \Sign(\DD^i(\sO))$ for $i=0, \cdots, k$. Then
 \begin{equation}\label{eq:u.U}
-  \pi_\tau = \theta^{\rU(p_0,q_0)}_{\rU(p_1,q_1)} \theta^{\rU(p_1,q_1)}_{\rU(p_2,q_2)}\cdots
-\theta^{\rU(p_{k-1},q_{k-1})}_{\rU(p_k,q_k)}(1)
+%   \pi_\tau = \theta^{\rU(p_0,q_0)}_{\rU(p_1,q_1)} \theta^{\rU(p_1,q_1)}_{\rU(p_2,q_2)}\cdots
+% \theta^{\rU(p_{k-1},q_{k-1})}_{\rU(p_k,q_k)}(1)
+  \pi_\tau = \theta_{G_{1},G_{0}} \theta_{G_{2},G_{1}}\cdots \theta_{G_{k},G_{k-1}} (1)
 \end{equation}
-where $1$ is the trivial representation of $\rU(p_k,q_k)$.
+where
+\begin{itemize}
+  \item
+  $G_{0}=G$,
+  \item for $0<i\leq k$$G_{i} = \rU(p_{i},q_{i})$ if $p_{i-1}+q_{i-1}$ is even and
+ $G_{i} = \tU(p_{i},q_{i})$ otherwise, and
+  \item
+$1$ is the trivial representation of $G_{k}$.
+\end{itemize}
 
+
+\trivial{
+  Duality between unitary group and real general linear group.
 
 Suppose $\ckcO = \ckcO_g$. Form the duality between cells of $\rU(p,q)$ and
 $\GL(n,\bR)$. We have an ad-hoc (bijective) duality between unipotent
@@ -468,7 +587,7 @@ Here $\ckcO^t = \dBV(\ckcO)$ and $\dBV(\uptau)$ is the pained bipartition
 obtained by transposeing $\uptau$ and replace $s$ and $r$ by $c$ and $d$
 respectively. See \eqref{eq:u.U} and \eqref{eq:u.GLR} for the definition of
 special unipotent representations on the two sides.
-
+}
 
 \end{document}
 
