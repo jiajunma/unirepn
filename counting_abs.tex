@@ -931,12 +931,9 @@ $W_{[\lambda]}/W_{\mu}$. \trivial[]{ $r\in \sfD_{\sfS_{\mu}}$ is the element
 
   Let
   \[
-    \CLR_{\sigma,\mu} = \CLR_{\sigma,\mu}\cap \sfD_{\sfS_{\mu}}
+    \CLR_{\sigma,\mu} = \CLR_{\sigma}\cap \sfD_{\sfS_{\mu}}
   \]
-  % \[
-  %   \CLR_{\sigma,\mu} = \Set{w\in \CLR_{\sigma}|\tau(w)\cap R_{\mu}= \emptyset}
-  % \]
-  and $\CLR_{\cO,\mu} = \bigcup_{\sigma\in \Dsp_{\cO}} \CLR_{\sigma,\mu}$. Then
+  and $\CLR_{\cO,\mu} = \bigcup_{\sigma\in \Dsp_{\cO},\mu} \CLR_{\sigma,\mu}$. Then
   \[
     \Pi_{W\cdot\mu,\cO} = \Set{L(r_{i}w)|w\in \CLR_{\cO,\mu} \text{ and
       } i=1,2,\cdots,k} .
@@ -1486,7 +1483,7 @@ From now on we fix a regular element $\lambda \in \fhh^{*}$.
 Let $\Wlama:= i_{\lambda}(W_{[\lambda]})$ be the abstract integral Weyl group.
 We identify $W_{[\lambda]}$ with $\Wlama$ implicitly.
 
-\newcommand{\cross}{\times} \newcommand{\crossa}{\times^a} In the following, we
+In the following, we
 assume $\gamma=(H,\Gamma,\bargamma)\in \cR_{\lambda}(G)$. On one hand, a element
 $w$ in the real Weyl group $W(G,H)$ acts on $\gamma$ by conjugation and gives a
 new regular character denoted by $w\cdot \gamma$. \trivial{ Note that
@@ -1513,7 +1510,7 @@ $[\gamma]$ under cross action. Then
 The $\theta$-action on $\fhh$ induces an action on $W(\fgg,\fhh)$. Then we have
 the following tower of groups
 \[
-  W_{[\gamma]} < W(G,H) < W(\fgg,\fhh)^{\theta}
+  W_{[\gamma]} \subseteq W(G,H) \subseteq W(\fgg,\fhh)^{\theta}
 \]
 and
 \[

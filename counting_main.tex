@@ -1175,7 +1175,8 @@
 \def\Wint#1{W_{[#1]}}
 \def\CLam{\Coh_{\Lambda}}
 \def\Cint#1{\Coh_{[#1]}}
-\def\PP{\mathrm{PP}}
+\def\PP{\mathsf{PAP}}
+\def\PAP{\mathsf{PAP}}
 \def\BOX#1{\mathrm{Box}(#1)}
 \DeclareDocumentCommand{\bigtimes}{}{\mathop{\scalebox{1.7}{$\times$}}}
 \providecommand\mapsfrom{\scalebox{-1}[1]{$\mapsto$}}
@@ -1217,11 +1218,31 @@
 \def\CL{{\sC}^{\scriptscriptstyle L}}
 \def\CR{{\sC}^{\scriptscriptstyle R}}
 \def\CLR{{\sC}^{\scriptscriptstyle LR}}
+\def\LV{{}^{\scriptscriptstyle L}\sV}
 \def\LC{{}^{\scriptscriptstyle L}\sC}
 \def\RC{{}^{\scriptscriptstyle R}\sC}
 \def\LRC{{}^{\scriptscriptstyle LR}\sC}
 \def\ckLC{{}^{\scriptscriptstyle L}\check{\sC}}
 
+\def\LV{{}^{\scriptscriptstyle L}\sV}
+\def\ckLV{{}^{\scriptscriptstyle L}\check\sV}
+
+\def\tLV{{}^{\scriptscriptstyle L}\widetilde{\sV}}
+\def\tLC{{}^{\scriptscriptstyle L}\widetilde{\sC}}
+
+\def\brsgn{\breve{\sgn}}
+\def\bsgn{\overline{\sgn}}
+
+\def\Wb{W_{b}}
+\def\Wg{W_{g}}
+
+
+\def\nbb{n_{\mathrm b}}
+\def\ngg{n_{\mathrm g}}
+\def\tU{\widetilde{\rU}}
+
+\newcommand{\cross}{\times}
+\newcommand{\crossa}{\times^a}
 
 \def\bVL{{\overline{\sV}}^{\scriptscriptstyle L}}
 \def\bVR{{\overline{\sV}}^{\scriptscriptstyle R}}
@@ -1250,9 +1271,15 @@
 \def\Prim{\mathrm{Prim}}
 
 
+
+\def\imathp{\imath_{\sP}}
+\def\jmathp{\jmath_{\sP}}
+
 \def\CQ{\overline{\sfA}}% Lusztig's canonical quotient
-\def\CPP{\mathfrak{P}}
-\def\CPPs{\mathfrak{P}_{\star}}
+\def\CPP{\mathrm{PP}}
+\def\CPPs{\mathrm{PP}_{\star}}
+%\def\CPP{\mathfrak{P}}
+%\def\CPPs{\mathfrak{P}_{\star}}
 
 
 \def\ceil#1{\lceil #1 \rceil}
@@ -1261,8 +1288,11 @@
 
 \def\hsgn{\widetilde{\mathrm{sgn}}}
 
-\def\PBPe{\mathrm{PBP}^{\mathrm{ext}}}
-\def\PBPes{\mathrm{PBP}^{\mathrm{ext}}_{\star}}
+\def\tPBP{\widetilde{\mathsf{PBP}}}
+\def\PBPe{\mathsf{PBP}^{\mathrm{ext}}}
+\def\PBPes{\mathsf{PBP}^{\mathrm{ext}}_{\star}}
+\def\PBPsb{\mathsf{PBP}_{\star,b}}
+
 \def\bev#1{\overline{\mathrm{ev}}_{#1}}
 
 \def\Prim{\mathrm{Prim}}
@@ -1318,6 +1348,7 @@
 
 \def\ckcOb{\ckcO_{\mathrm b}}
 \def\ckcOpb{\ckcO'_{\mathrm b}}
+\def\cOpb{\cO'_{\mathrm b}}
 \def\ckcOg{\ckcO_{\mathrm g}}
 
 \def\Gb{G_{\mathrm b}}
@@ -1381,17 +1412,13 @@
 
 \subfile{counting_A}
 
-\section{Counting for general linear groups}
 
-\section{Counting for unitary groups}
-
-\section{Counting in type BCD}
 
 % \subfile{counting_abs}
 
 % \subfile{counting_A}
 
-% \subfile{counting_cl}
+\subfile{counting_cl}
 
 \appendix
 
