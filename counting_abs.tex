@@ -1357,7 +1357,7 @@ Now we get the following theorem on the upper bound of small representations.
 
 %   Therefore, $\sigma(\pi)\approxLR$
 % \end{proof}
-\begin{remark}
+\begin{remark} \label{r46}
   Let $\lambda$ be a regular element in $[\mu]$. Assume that for each
   Harish-Chandra cell representation $\sV^{HC}$ at the infinitesimal character
   $\chi_{\lambda}$, the $W_{[\mu]}$-representations occur in $\sV^{HC}$ are all
@@ -1372,15 +1372,12 @@ the complex associated variety attached to a Harish-Chandra cell by the
 character of the cell representation.
 
 \begin{lem}\label{lem:AV.HC}
-  Let $\sC$ be an Harish-Chandra cell at a regular infinitesimal character $\lambda$ and $\sV$ be the corresponding cell
-  representation.
-  \trivial[]{
-    I guess
-    the assumption of ``regular'' is unnecessary.
-  }
-  Then there is a unique special representation $\sigma\in \Irrsp(W_{[\lambda]})$ such
-  that $\sigma$ has minimal generic degree in $\sV$
-  and every irreducible modules $\pi$ in $\sC$ has complex associated variety
+  Let $\sC$ be an Harish-Chandra cell at a regular infinitesimal character
+  $\lambda$ and $\sV$ be the corresponding cell representation. \trivial[]{ I
+    guess the assumption of ``regular'' is unnecessary. } Then there is a unique
+  special representation $\sigma\in \Irrsp(W_{[\lambda]})$ such that $\sigma$
+  has minimal generic degree in $\sV$ and every irreducible modules $\pi$ in
+  $\sC$ has complex associated variety
   \[
     \AVC(\pi) = \Spr(\Ind_{W_{[\lambda]}}^{W}\sigma).
   \]
@@ -1396,6 +1393,7 @@ character of the cell representation.
   result, see \cite{Cas}*{Remark~3.2}.
   The rest part of the lemma is clear.
 \end{proof}
+
 
 \subsection{Coherent continuation representation of Harish-Chandra modules}
 
@@ -1661,6 +1659,80 @@ Under atlas' parameters, the cross action is also easy to calculate.
 For the metaplectic group, the problem was solved by Renard-Trapa \cite{RT1,RT2}.
 
 
+
+
+\subsection{Counting equality by Vogan duality}
+In this section, we prove the counting equality for small representations
+only assuming the existence of Vogan duality for $G$.
+
+\def\dG{\ckM}
+\def\CHC{\sC^{\mathrm{HC}}}
+
+We recall the following key properties of Vogan duality. Fix a regular element
+$\lambda$ in $\hha^{*}$, and $B$ is a block in $\cP_{\lambda}(G)$.
+Suppose $B$ satisfies the Vogan duality. This means that
+there are
+\begin{itemize}
+  \item
+a real reductive group $\dG$ (depends on $\lambda$) in the Harish-Chandra,
+
+\item a block $\ckB$ in $\cP_{\ckrho}(\ckcG)$ where $\ckrho$ is the half sun of
+roots of $\ckG$, and
+\item
+is an bijection %$[\gamma]\in \cP_{\lambda}(G)$
+  \[
+    \begin{array}{rccc}
+     &\cP_{\lambda}(G)&\rightarrow& \cP_{\ckrho}(\dG)\\
+      &\gamma & \mapsto& \ckgamma
+    \end{array}
+  \]
+\end{itemize}
+such that the above bijection respects Harish-Chandra cells and for $\gamma$
+\[
+  \LV(\gamma) \cong \LV(\ckgamma)\otimes \sgn.
+\]
+
+Now we consider the partition of $\cP_{\lambda}(G)$ into Harish-Chandra cells.
+Let
+\[
+\fC:= \set{\CHC_{\gamma}|\gamma\in \cP_{\lambda}(G)}
+\]
+be the set of Harish-Chandra cells.
+Fix an element $\mu\in [\lambda]$ and define
+\[
+\begin{split}
+  \fC_{\mu}  := &\set{\CHC_{\gamma} \in \fC| [1_{W_{\mu}}:\LV(\gamma)]\neq 0}, \AND\\
+  \fC'_{\mu} :=& \fC - \fC_{\mu}.
+\end{split}
+\]
+
+The following lemma is crucial for us.
+Recall the definition of  the special representation $\sigma_{\mu}$.
+\begin{lem}
+For each cell $\CHC_{\gamma}\in \fC_{\mu}$.
+We have the following possible cases
+\begin{itemize}
+  \item either
+        $\sigma_{\mu}$ occurs in $\LV_{\gamma}$ and in which case every irreducible representation $\sigma$ occurs in  $\LV_{\gamma}$
+        satisfies $\sigma\approxLR \sigma_{\mu}$, or
+  \item $\sigma_{\mu}$ does not occurs in $\LV_{\gamma}$ and every irreducible representation $\sigma$ occurs in  $\LV_{\gamma}$
+        satisfies $\sigma\lneqL \sigma_{\mu}$.
+\end{itemize}
+\end{lem}
+\begin{proof}
+  Note that $\sigma_{\mu}$ is the maximal irr. repn. under $\leqLR$ order
+  satisfies $[1_{W_{\mu}}: \sigma_{\mu}]\neq 0$.
+
+  By Vogan duality, every representation in $\LV_{\ckgamma}$ contains
+  $\sgn_{W_{\mu}}$.
+  Which implies that, every repn. $\sigma$ in $\CHC_{\gamma}$  satisfies
+  \[
+   \sigma_{\mu}\otimes \sgn\leqLR \sigma\otimes \sgn
+   \Leftrightarrow \sigma \leqLR \sigma_{\mu}
+  \]
+  Suppose $\sigma_{\mu}$ occurs
+
+\end{proof}
 
 \end{document}
 
