@@ -1,0 +1,155 @@
+\documentclass[counting_main.tex]{subfiles}
+
+
+\begin{document}
+
+\section{Combinatorics of painted bi-partitions}
+
+In this section, we assume $\ckcO = \ckcOg$ and $\star \in \Set{B,C,\wtC,C^{*},D,D^{*}}$.
+
+Recall the definition of the set of primitive pairs $\CPP(\ckcO)$.
+
+The following proposition is the main result of this section
+\begin{prop} \label{prop:PBP}
+  When $\star\in \set{C^{*}, D^{*}}$,
+  \[
+    \PBP_{\star}(\tau_{\wp}) = \emptyset \quad \text{if } \wp \neq \emptyset.
+  \]
+  When $\star\in \set{B,C,\wtC,D}$,
+  \[
+    \sharp(\PBP_{\star}(\tau_{\emptyset})) = \sharp(\PBP_{\star}(\tau_{\wp}))
+    \quad \forall \wp \subseteq \CPP(\ckcO).
+  \]
+  In particular, we always have
+  \[
+    \sharp(\tPBP_{\star}(\ckcO))  = \sharp(\PBPe_{\star}(\ckcO)).
+  \]
+\end{prop}
+
+%\subsection{The case of quaternionic groups}
+
+The quaternionic case is simple.
+
+\begin{proof}[Proof of {\Cref{prop:PBP}} the quaternionic case]
+
+  Recall the definition of $\tau_{\sP}$ in \Cref{sec:LCBCD}.
+
+  \smallskip
+
+First consider the case when $\star = C^{*}$.
+Suppose that $\wp \neq \emptyset$. Then we have
+\begin{equation}\label{eq:res.C*}
+  \bfcc_{i}(\imath_{\wp}) = \half(\bfrr_{2i-1}(\ckcO)+1)>
+  \half(\bfrr_{2i}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp})
+  \quad \forall (2i-1, 2i)\in \wp,
+\end{equation}
+On the other hand, suppose $\PBP_{\star}(\tau_{\wp})$ is non-empty and
+$\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$
+is an element in it.
+By the requirement of painted bipartition, we have
+\[
+  \bfcc_{i}(\imath_{\wp}) = \sharp\set{j| \cP(i,j)=\bullet}
+= \sharp\set{j| \cQ(i,j)=\bullet}
+\leq \bfcc_{i}(\imath_{\wp}) \quad \forall i=1,2,3,\cdots,
+\]
+which is contradict to \eqref{eq:res.C*}.
+Hence, $\PBP_{\star}(\tau_{\wp})= \emptyset$.
+
+\smallskip
+
+Now consider the case when $\star = D^{*}$.
+Suppose that $\wp \neq \emptyset$. Then we have
+\begin{equation}\label{eq:res.D*}
+  \bfcc_{i+1}(\imath_{\wp}) = \half(\bfrr_{2i}(\ckcO)+1)>
+  \half(\bfrr_{2i+1}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp})
+  \quad \forall (2i, 2i+1)\in \wp.
+\end{equation}
+On the other hand, suppose $\PBP_{\star}(\tau_{\wp})$ is non-empty and
+$\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$
+is an element in it.
+By the requirement of painted bipartition, we have
+\[
+  \bfcc_{i+1}(\imath_{\wp}) \leq \sharp\set{j| \cP(i,j)=\bullet}
+  =\sharp\set{j| \cQ(i,j)=\bullet}
+  \leq \bfcc_{i}(\jmath_{\wp}) \quad \forall i = 1,2,3, \cdots,
+\]
+which is contradict to \eqref{eq:res.D*}.
+Hence, $\PBP_{\star}(\tau_{\wp})= \emptyset$.
+
+\end{proof}
+
+
+The rest of the section is devoted to the proof for
+$\star \in \set{B,C,\wtC,D}$.
+
+
+\begin{lem}
+  Suppose $\star = \set{C,\wtC}$, $\wp\neq \emptyset$, and $t:=\min{t|(2t-1,2t)\in \wp}$.
+  Let $\sQ:=\wp - \set{(2t-1,2t)}$.
+  \[
+  \sharp(\PBP_{\star}(\tau_{\sQ})) = \sharp(\PBP_{\star}(\tau_{\wp})).
+  \]
+\end{lem}
+\begin{proof}
+  We prove the equality by defining a bijection
+  \[
+    T_{\wp,\sQ}\colon \PBP_{\star}(\tau_{\wp}) \rightarrow \PBP_{\star}(\tau_{\sQ}).
+  \]
+
+  We begin with the simpler case.
+
+  Suppose $\star = \wtC$. Let
+  $(b_{1},b_{2}) = (\frac{\bfrr_{2t-1}(\ckcO)}{2},\frac{\bfrr_{2t}(\ckcO)}{2})$.
+  Then
+  \[
+    (\bfcc_{t}(\imath_{\sQ}), \bfcc_{t}(\jmath_{\sQ})) = (b_{1},b_{2})= (\bfcc_{t}(\jmath_{\wp}), \bfcc_{t}(\imath_{\wp})).
+  \]
+  For other columns, we have
+  \[
+    \bfcc_{i}(\imath_{\sQ}) = \bfcc_{i}(\imath_{\wp}) \AND \bfcc_{i}(\imath_{\sQ}) = \bfcc_{i}(\imath_{\wp})\quad \text{when
+      $i\neq t$}.
+  \]
+  For
+  $\uptau': = (\imath_{\wp},\cP')\times (\jmath_{\wp},\cQ')\in \PBPs(\tau_{\wp})$,
+  define
+  \[
+  T_{\wp,\sQ}(\uptau'):=\uptau := (\imath_{\sQ},\cP)\times (\jmath_{\sQ},\cQ)\in \PBP_{\star}(\tau_{\sQ})
+  \]
+  by the following formula
+  \[
+    \begin{split}
+      \text{$\forall (i,j)\in \BOX{\imath_{\sQ}}$,} \quad \cP(i,j) &= \begin{cases}
+        s& \text{if $j=t$ and  $\cQ'(i,j)=r$,}\\
+        c& \text{if $j=t$ and  $\cQ'(i,j)=d$,}\\
+        \cP'(i,j) &\text{otherwise.}
+      \end{cases}\\
+      \text{$\forall (i,j)\in \BOX{\jmath_{\sQ}}$,} \quad   \cQ(i,j) &=  \cQ'(i,j).\\
+    \end{split}
+  \]
+  We leave it to the reader to check that the above formula does define an valid
+  painted bipartition. Retain the above notation, it is easy to check that
+  the inverse map
+  \[
+    T_{\sQ,\wp}\colon \PBP_{\star}(\tau_{\sQ}) \rightarrow \PBP_{\star}(\tau_{\wp})\quad
+    \uptau \mapsto \uptau'
+  \]
+  is given by the following formula:
+  \[
+    \begin{split}
+      \text{$\forall (i,j)\in \BOX{\imath_{\wp}}$,} \quad   \cP'(i,j) &=  \cP(i,j),\\
+      \text{$\forall (i,j)\in \BOX{\jmath_{\wp}}$,} \quad \cQ'(i,j) &= \begin{cases}
+        r& \text{if $j=t$ and  $\cP(i,j)=s$,}\\
+        d& \text{if $j=t$ and  $\cP(i,j)=c$,}\\
+        \cQ(i,j) &\text{otherwise.}
+      \end{cases}
+    \end{split}
+  \]
+\end{proof}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "counting_main"
+%%% End:
