@@ -1,0 +1,3722 @@
+
+\documentclass[11pt ,reqno]{amsart}
+%\TagsOnRight
+%%%%Definitions
+\usepackage{amssymb,amscd,verbatim, amsthm,tikz-cd,todonotes}
+%\usepackage[active]{srcltx}
+\usepackage{xcolor}
+%\usepackage[small,nohug,heads=vee]{diagram}
+%\diagramstyle[labelstyle=\scriptstyle]
+\synctex=1
+\begin{document}
+
+\today\hfill
+
+
+
+\bigskip
+
+\title {The Associated Variety of a Unipotent Representation}
+%\author{Dan Barbasch}
+%       \address[D. Barbasch]{Dept. of Mathematics\\
+%               Cornell University\\Ithaca, NY 14850}
+%        \email{barbasch@math.cornell.edu}
+
+\maketitle
+
+
+\newfont{\sans}{cmss10}
+\newfont{\sansm}{cmss8}
+\newfont{\biig}{cmbx12}
+
+\newcommand\clrr{\color{red}}
+\newcommand\clrblu{\color{blue}}
+
+\newcommand\lr{\overset{LR}{<}}
+\newcommand\elr{\overset{LR}{\approx}}
+
+\newcommand\vh{{\vspace{0.3in}}}
+\newcommand\ovl{\overline}
+\newcommand\uset{\underset}
+\newcommand\ub{\underbrace}
+\newcommand\unl{\underline}
+
+
+\newcommand \ov[1]{{\overline{#1}}}
+\newcommand \fk[1]{{\mathfrak{#1}}}
+\newcommand\unb[2]{{\underbrace{#2}_{#1}}}
+\newcommand\und[1]{{\underline{#1}}}
+\newcommand\ul[1]{{\underline{#1}}}
+\newcommand\ma[2]{{\begin{matrix} #1\\#2\end{matrix}}}
+\newcommand\maf[4]{{\begin{matrix} #1\\#2\\#3\\#4\end{matrix}}}
+\newcommand \C[1]{{\mathcal #1}}
+\newcommand \ch[1]{{\check{#1}}}
+\newcommand \bb[1]{{\mathbb #1}}
+\newcommand \wti[1]{{\widetilde #1}}
+
+\newcommand\mat{\begin{matrix}}
+\newcommand\emat{\end{matrix}}
+\newcommand\pmat{\begin{pmatrix}}
+\newcommand\epmat{\end{pmatrix}}
+
+\newcommand\msp[1]{&\multispan#1\hrulefill}
+\newcommand\tableau[1]{
+ \vbox{\offinterlineskip \hrule
+ \halign{&\vrule##&\strut\ \hfil##\hfil\ &\vrule##&\strut\ \hfil##\hfil\ \cr #1\cr}}}
+
+\newcommand\ph[1]{\phantom{#1}}
+
+
+\newcommand\AV{{\mathcal V}}
+\newcommand\Ac{{\mathcal V_c}}
+\newcommand \CC{\mathcal C}
+\newcommand \CF{\mathcal F}
+\newcommand \CK{\mathcal K}
+\newcommand \CN{\mathcal N}
+\newcommand \CP{\mathcal P}
+\newcommand \CQ{\mathcal Q}
+\newcommand \CR{\mathcal R}
+
+\newcommand \CO{\mathcal O}
+\newcommand \COc{\mathcal O_c}
+\newcommand\vO{{\check \CO}}
+\newcommand\vOc{{\check \CO_c}}
+
+\newcommand\chp{{\check\pi}}
+\newcommand\chg{\check{\g}}
+\newcommand\cchi{\check{\chi}}
+\newcommand\eset{{\emptyset}}
+
+\newcommand\g{{\mathfrak g}}
+\newcommand\kf{{\mathfrak k}}
+\newcommand\lf{{\mathfrak l}}
+\newcommand\q{{\mathfrak q}}
+\newcommand\s{{\mathfrak s}}
+\newcommand\uf{{\mathfrak u}}
+\newcommand\ie{\textit{i.e. }~}
+\newcommand\cf{\textit{c.f. }~}
+
+\newcommand \CSGs{\textit{Cartan subgroups}~}
+\newcommand \CSG{\textit{Cartan subgroup}~}
+
+\newcommand\al{{\alpha}}
+\newcommand\la{{\lambda}}
+\newcommand\Sig{{\Sigma}}
+\newcommand\sig{{\sigma}}
+\newcommand\ep{{\epsilon}}
+
+
+\newcommand{\ba}{{\mathbf a}}
+\newcommand{\bg}{{\mathbf g}}
+\newcommand{\bk}{{\mathbf k}}
+\newcommand{\bl}{{\mathbf l}}
+\newcommand{\bm}{{\mathbf m}}
+\newcommand{\bp}{{\mathbf p}}
+
+\newcommand\vg{{\check{\fk g}}}
+\newcommand\vl{{\check{\fk l}}}
+\newcommand\vm{{\check{\fk m}}}
+\newcommand\vq{{\check{\fk q}}}
+\newcommand\vu{{\check{\fk u}}}
+
+
+
+
+\newcommand{\bA}{{\mathbb A}}
+\newcommand{\bC}{{\mathbb C}}
+\newcommand{\bF}{{\mathbb F}}
+\newcommand{\bN}{{\mathbb N}}
+\newcommand{\bQ}{{\mathbb Q}}
+\newcommand{\bR}{{\mathbb R}}
+\newcommand{\bZ}{{\mathbb Z}}
+\newcommand{\Hc}{H^{*}(}
+%\newcommand{\CP}{\C P}
+\newcommand{\hG}{\hat{G}}
+
+\newcommand\kbar{\ovl{\bk}}
+\newcommand\Ad{{\operatorname{Ad}}}
+\newcommand\Hom{{\operatorname{Hom}}}
+\newcommand\ad{{\operatorname{ad}}}
+\newcommand\Ind{\operatorname{Ind}}
+\newcommand\im{{\operatorname{im}}}
+\newcommand\diag{{\operatorname{diag}}}
+\newcommand\tr{{\operatorname{tr}}}
+\newcommand\Ext{{\operatorname{Ext}}}
+\newcommand\vol{{\operatorname{vol}}}
+\newcommand\Ho{{\operatorname{H}}}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem*{remark*}{Remark}
+
+
+\numberwithin{equation}{subsection}
+
+
+\section{Assumptions and Notation}\label{1}
+
+\bigskip
+The groups under consideration, are the real points of a classical
+group, $So(a,b)$ or $Sp(2n,\bR)$, and $Mp(2n,\bR)$. The
+complexification of the Cartan
+decomposition is denoted $\g=\kf + \s.$
+
+\medskip 
+\subsection{Weyl groups}\label{1.1} We will denote the Weyl group of type $B_a$
+by $W_a.$  The Weyl 
+group of type $D$ will be written as $W'_{a}.$ The parametrization of
+representations is as in [L1]. Thus the representations of $W_a$ are
+parametrized by pairs of partitions $\tau=\tau_L\times\tau_R$, and
+similarly for $W'_a.$ For $W',$ if $\tau_1\ne \tau_2,$ then
+$\tau_1\times\tau_2$ and $\tau_2\times\tau_1$ parametrize the same
+representation; we choose the one where the harmonic degree of the
+realization in [L1] matches the lowest degree occurence of $\tau$ in
+the space of harmonic polynomials on the \CSG. If $\tau_1=\tau_2,$
+then there are two inequivalent representations $(\tau_I$ and
+$\tau_{II}).$
+
+We will use the {\it obvious} generalization of the Littlewood-Richardson
+rule to $W_a.$ We only need it when one of the representations is trivial or sign.
+
+\medskip
+\subsection{Langlands parameters}\label{1.2} The infinitesimal character is a
+translate of $\rho$ by the root lattice.  The representations are all {\it special
+unipotent}. We will use the usual realizations of the \CSGs and their root systems
+for the classical groups. A Langlands parameter is then a sequence of
+numbers, integers in type B,\ D and half--integers in type B. The real
+part of the parameter is denoted by underlining with superscript $\pm$
+to denote the character on the compact part of the centralizer. The
+imaginary part of the parameter may also have superscripts of $\pm$ in
+types B,\ C. For  $Mp,$ the infinitesimal character will be formed
+of half integers only.
+
+\medskip
+We will use [V] freely.
+\subsection{Nilpotent Orbits}\label{1.3} The nilpotent orbits are parametrized by
+partitions/tableaus with alternating signs on each row. Rows of the
+same size are interchangeable. For types B,\ D, even rows
+occur an even number of times; for type C, rows of odd size occur an
+even number of times. They have to occur in pairs one
+starting with $-$ one starting with $+.$ The same rules apply for type
+C and odd sized rows.
+
+\medskip
+Let $\lf=\lf_0 + \lf_1$ be a Levi component of a maximal parabolic
+subgroup $\q=\lf +\uf$ which is stable under conjugation. Here $\lf_0$
+refers to a subalgebra of the same type as $\g$, and $\lf_1$ is type A. Let $\CO$ be a
+nilpotent orbit in $\lf_0\cap \s.$ We are interested in the nilpotent
+orbit which is induced from $\CO\times triv$ on $\lf_0\times\lf_1.$ If $\q$ is
+$\theta$--stable, then $\lf_1=u(p,q).$ In types B,\ D, the induced
+nilpotent is obtained by adding $p$ pluses and $q$ minuses one to the
+beginning (right) of  each row and the same to the end (left), as high as possible so
+that the result is again a signed tableau. If $\q$ is real, then
+$\lf_1=gl(m).$ In this case, add 2 to each row (as high as possible) to
+form a signed tableau. In this case we get a union of nilpotent orbits.
+
+In type C the same rules apply, but for $\theta$-stable parabolics,
+add $q$ pluses and $p$ minuses to the end of the rows.
+
+\medskip
+Given a special orbit $\CO,$ we denote by $\vO$ the corresponding dual orbit.
+
+
+\medskip
+The parameter $\la_{\C O}$, which is the infinitesimal character, is listed case by case. 
+
+\bigskip
+\noindent\textbf{Type B.\ } The column sizes are $C_{2a}\ge
+C_{2a-1}\ge \dots \ge C_1\ge C_0$ satisfying $C_{2i+1}\equiv C_{2i}\
+(2)$, and $C_{2a}\equiv 1\ (2).$ 
+Special orbits satisfy $C_{2i+1}=C_{2i}$ whenever the columns are even. We
+will reduce to the case when  $C_{2i-1}=C_{2i-2}$; this is equivalent to
+the fact that $\C O$ has no even sized rows. {The complex nilpotent
+orbit is induced from a Levi component $L=SO(2n+1-C_{2i-1})\times
+GL(C_{2i-1})$ in this case}. Write $C_{2a}=2c_{2a}+1$,
+$C_{2i+1}=2c_{2i+1}-\ep_{i}$ and  $C_{2i}=2c_{2i}+\ep_{i},$ with
+$\ep_i=0,1$. The (special) Weyl
+group representation associated to a special nilpotent orbit $\C O$
+has columns
+\begin{equation}
+  \label{eq:tableaub}
+\tau_L\times\tau_R=(c_{2a-1},\dots ,c_1)\times (c_{2a},c_{2a-2},\dots ,c_0).  
+\end{equation}
+The other representations in the primitive ideal cell are given by
+interchanging 
+$$
+(c_{2i+1}, c_{2i})\longleftrightarrow
+(c_{2i},c_{2i+1}).
+$$  
+This corresponds to the Springer representation
+(associated to the trivial local system) for another nilpotent orbit.
+The other representations in the primitive ideal double cell do not
+occur at all in the coherent continuation representation. This is
+clear from the computation in the next section and also from [McG].  
+
+The infinitesimal character $\la_{\C O}$ is obtained by concatenating
+$$
+c_{i}\longleftrightarrow (c_{i}+1/2,\dots ,1/2).
+$$
+\begin{remark*}
+When all but the largest odd row occurs an even number of times, there
+is a 1-1 correspondence between local systems on real orbits $\CO$ and
+unipotent representations. 
+  
+Adding a column of size greater than or equal to $C_{2a}$ on the left
+with the obvious choice of signs gives a
+nilpotent orbit in type C, and implements the moment map corresponding
+to the $\Theta-$correspondence $Mp()\times O(odd).$   
+\end{remark*}
+\noindent\textbf{Type C.\ } Label the columns $C_{2a}\ge C_{2a-1}\ge
+\dots \ge C_1\ge C_0\ge 0,$ satisfying $C_{2i}\equiv C_{2i-1}\ (2)$
+and $C_0\equiv 0\ (2).$   Special orbits satisfy $C_{2i}=C_{2i-1}$ whenever
+they are odd.  
+We will reduce to the case when all $C_{2i}=C_{2i-1}$; this
+is equivalent to the fact that $\C O$ has no odd sized rows. 
+{The complex nilpotent orbit is induced from a
+  Levi component 
+  $L=Sp(2n-C_{2i})\times GL(C_{2i})$ in this case}. Write
+$C_0=2c_0$, $C_{2i}=2c_{2i}+\ep_i$ and $C_{2i-1}=2c_{2i-1}-\ep_i.$
+The (special) Weyl group representation associated to the special $\C O$
+has columns
+\begin{equation}
+  \label{eq:tableauc}
+\tau_L\times\tau_R=(c_{2a-1},\dots , c_1)\times (c_{2a},\dots ,c_0).
+\end{equation}
+The other representations in the primitive ideal cell are given by
+interchanging 
+\begin{equation}
+  \label{eq:wccell}
+ (c_{2i}, c_{2i-1})\longleftrightarrow (c_{2i-1}{\clrr -1},c_{2i}{\clrr +1}).  
+\end{equation}
+These  correspond to the Springer representation associated to the
+trivial local system for other nilpotent orbits.
+ 
+ The other representations in the primitive ideal double cell do not
+ occur at all in the coherent continuation representation. This is
+ clear from the computation in the next section and also from [McG].  
+
+The infinitesimal character $\la_{\C O}$ is a concatenation of coordinates,
+\begin{equation}
+\begin{aligned}
+    \label{eq:inflc}
+&C_{2i}&&\longleftrightarrow &&(c_{2i},\dots ,1)\\
+&C_{2i-1}&&\longleftrightarrow &&(c_{2i-1}-1,\dots ,0).
+\end{aligned}
+\end{equation}
+
+\begin{remark*}
+When $\CO_c$ has every even size row occuring an even number of times,
+there is a 1-1 correspondence between local systems on real   orbits
+$\CO$ and unipotent representations.
+
+Adding a column of size greater than or equal to $C_{2a}$ gives a
+nilpotent orbit of type $D$, and implements the
+$\Theta-$correspondence. 
+\end{remark*}
+\noindent{
+
+\noindent\textbf{Type $\mathbf{\wti C}$.\ } We consider the case when
+the infinitesimal character $\chi$ is formed of half-integers
+only. The integral system is type D.
+The dual group is $G=Mp(2n,\bR)$ and the nilpotent orbits $\vO$  are
+those with even rows only. 
+The computations for the coherent continuation representation
+are in \cite{RT}. At the corresponding regular infinitesimal character, there are two
+copies of $D_n$, which combine together to give a representation of
+the Weyl group of type $C.$    
+
+Label the rows of $\vO$ paired as 
+$(R_{2m+1}=2r_{2m+1}\ge R_{2m}=2r_{2m})\ge  \dots \ge (R_1=2r_1\ge
+R_0=2r_0).$  The columns occur in pairs, and are labelled
+$C_1,C_1\ge\dots \ge C_r,C_r$. The infinitesimal character associated
+to $\vO$ is  
+$$
+\chi=\chi(\vO)=(\underset{C_1}{\underbrace{1/2,\dots ,1/2}},\dots , \underset{C_r}{\underbrace{r-1/2,\dots ,r-1/2}}).
+$$
+ The associated variety of the corresponding unipotent representations
+ is (a union of real forms of) the complex nilpotent orbit with 
+$$
+\begin{aligned}
+&{rows:\ } &(C_i,C_i) &\quad\text{ if }\quad &C_i \text{ is even},\\
+           &&(C_{i}+1,C_i-1) &\quad\text{ if }\quad &C_i \text{ is odd},\\
+&&\\
+&{columns:\ } &(R_{2i+1,}R_{2i}) &\quad\text{ if }\quad &R_{2i+1}=R_{2i},\\
+&&(R_{2i+1}-1,R_{2i}+1) &\quad\text{ if }\quad &R_{2i+1}>R_{2i}.  
+\end{aligned}
+$$
+If a size of an odd  column is repeated, say
+$C_i=C_i=C_{i+1}=C_{i+1}=2c_i+1$, $\CO$ gets only one pair of rows
+$(2c_i+2,2c_i)$, the others become $(2c_i+1,2c_i+1).$
+
+
+The Weyl group representation corresponding to $\CO$ has pairs of rows 
+$c_i\times c_i$ for $c_i$ even, and $c_i+1\times c_i$ for $c_i$ odd.
+
+\begin{example*}
+  
+
+A special case is when all row sizes of $\CO$ occur an even number of
+times, except for the largest 
+one, which is even and occurs an odd number of times. This is
+equivalent to  $\vO$ having the property that each row occurs an even
+number of times (corresponding to $\vO_I$ and $\vO_{II}$ in type
+$D$). The associated variety is a single orbit, and there are exactly two
+representations for each nilpotent orbit $\CO,$ corresponding to the
+characters of the component group of the centralizer of an element in
+$\CO.$ A more general case  is described later.
+\end{example*}
+\begin{remark*}
+The nilpotent orbit $\CO$ listed is in $sp(2n,\bC),$   and is in
+general not special. Considerations of primitive ideals take place in
+type D.
+
+Adding an odd sized column of length at least  $2c_{2a}+1$ gives a
+nilpotent orbit of type B, and implements the $\Theta-$correspondence. 
+\end{remark*}
+
+}
+
+
+\medskip
+\noindent\textbf{Type D.\ } Label the columns $C_{2a-1}\ge\dots \ge
+C_0\ge 0$ satisfying $C_{2i}\equiv C_{2i-1}\ (2),$ and $C_{2a-1}\equiv
+C_0\equiv 0\ (2).$ As before, write
+$C_{2i}=2c_{2i}+\ep_i$, $C_{2i-1}=2c_{2i-1}-\ep_i$ and $C_0=2c_0,\
+C_{2a-1}=2c_{2a-1}.$  Special nilpotent orbits satisfy
+$C_{2i}=C_{2i-1}$ whenever  they are odd. We will reduce to the case
+$C_{2i}=C_{2i-1}$ which is the case of $\CO$ having no even
+sized rows.
+The special Weyl group representation associated to $\C O$ has columns
+\begin{equation}
+  \label{eq:drep}
+\tau_L\times\tau_R=(c_{2a-1},\dots ,c_1)\times (c_{2a-2},\dots
+,c_0)\sim
+(c_{2a-2},\dots
+,c_0)\times (c_{2a-1},\dots ,c_1).  
+\end{equation}
+The other representations in the primitive ideal cell are obtained by
+interchanging pairs coming from even columns, 
+$$
+(c_{2i},c_{2i-1})\longleftrightarrow (c_{2i-1}+1,c_{2i}-1).
+$$
+This is again as in  [McG].  
+The infinitesimal character $\la_{\C O}$ is as in type C, \eqref{eq:inflc}.
+\begin{remark*}
+Adding an even sized column of length at least $2c_{2a-1}$ gives a
+nilpotent orbit of type C, and implements the $\Theta-$correspondence. 
+
+In the case when all rows of odd size occur an even number of times,
+the corresponding unipotent representations can be parametrized by the
+local systems on the \textit{real} orbits.
+
+\end{remark*}
+
+
+  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The coherent continuation representation}\label{2}
+For the linear groups we follow \cite{V4}. For $Mp(2n,\bR),$ we
+follow \cite{RT}.
+
+\begin{definition}
+Fix a block $\C B$ with infinitesimal character
+$\rho.$ The Hecke algebra $\C H(W)$ over $\bZ[u,u^{-1}]$ acts as
+follows. Let $T_s$ be the operator corresponding to the simple
+reflection $s.$ The action on a basis of standard modules $\{\gamma\}$
+in the Grothendieck group $\C M(\C B),$ the action is 
+\begin{description}
+\item[(a) ] $\al$ compact imaginary ($\ep(\al)=0$)
+  $T_s\gamma=u\gamma.$
+\item[(a*) ] $\al$ real, no parity condition ($\check{\delta}(\al)=0$)
+  $T_s\gamma=-\gamma$.
+\item[(b) ] $\al$ complex $\theta\al\in R^+(\gamma)$,
+$T_s\gamma=(s\times\gamma)$.
+\item[(b*) ] $\al$ complex $\theta\al\notin R^+(\gamma)$,
+$T_s\gamma=u(s\times\gamma) +(u-1)\gamma$.
+\item[(c) ] $\al$ noncompact imaginary (type I)
+  $T_s\gamma=s\times\gamma+ c^\al(\gamma).$
+\item[(c*) ] $\al$ real  (type II) parity condition
+  $T_s\gamma=(u-1)\gamma-s\times\gamma+ (u-1)c_\al(\gamma).$
+\item[(d) ] $\al$ noncompact imaginary ($\ep(\gamma)=1$ type II),
+$T_s\gamma=\gamma +\gamma^\al_++\gamma^\al_-.$ 
+\item[(d*) ] $\al$ real ($\check\delta(\gamma)=1$ type I). Then
+  $T_s\gamma=(u-2)\gamma +(u-1)(\gamma_\al^++\gamma_\al^-).$
+\end{description}
+The coherent continuation representation is obtained by changing $T_s$
+to $-T_s,$ rescaling $\gamma$ by $(-1)^{\ell(\gamma)}$, and setting  $u=1.$ 
+\begin{description}
+\item[(a) ] $\al$ compact imaginary $\ep(\al)=0$)
+  $t(s)\gamma=-\gamma.$
+\item[(a*) ] $\al$ real, no parity condition ($\check{\delta}(\al)=0$)
+  $t(s)\gamma=\gamma$.
+\item[(b) ] $\al$ complex $\theta\al\in R^+(\gamma)$,
+$t(s)\gamma=(s\times\gamma)$.
+\item[(b*) ] $\al$ complex $\theta\al\notin R^+(\gamma)$,
+$t(s)\gamma=s\times\gamma$.
+\item[(c) ] $\al$ noncompact imaginary (type I)
+  $t(s)\gamma=-s\times\gamma+ c^\al(\gamma).$
+\item[(c*) ] $\al$ real  (type II) parity condition
+  $t(s)\gamma=s\times\gamma.$
+\item[(d) ] $\al$ noncompact imaginary ($\ep(\gamma)=1$ type II),\newline
+$t(s)\gamma=-\gamma +\gamma^\al_++\gamma^\al_-.$ 
+\item[(d*) ] $\al$ real ($\check\delta(\gamma)=1$ type I). Then
+  $t(s)\gamma=\gamma.$
+\end{description}
+\end{definition}
+
+The duality is obtained by tensoring with $sgn.$ Types $B$ and $C$ are
+interchanged, while type $D$ maps to itself. The modification for $Mp$
+is in \cite{RT}. 
+
+\subsection{} 
+{
+Let $\chi$ be a singular infinitesimal character which
+differs from a regular one $\chi_{reg}$ by the root lattice. Let
+$\C I(\chi)$ be the maximal primitive ideal for the
+integral system determined by $\chi,$  $\C
+C(\C I(\chi))$ the corresponding cell, and $W(\chi)$ the centralizer in the
+Weyl group for the coresponding integral system.
+
+This section is devoted to proving the following multiplicity formula. The argument follows \cite{McG}. 
+\begin{theorem}\label{t:mult}
+The number of irreducible representations with annihilator $\C
+I(\chi)$ in a block $\C B$ is given by the sum of
+multiplicities
+$$
+\sum_{\sig\in\C C(\chi)}[\sig\ :\ \C C(\chi)]\cdot[\sig:\C B].
+$$
+For special unipotent representations, the cells $\C I(\chi)$ have
+ multiplicity \newline $[\sig,\Ind_{W(\chi)}^W triv_\chi]$ with
+ $\sigma$ in the double cell corresponding to $\C I(\chi).$ They satisfy
+ $\le 1.$  
+\end{theorem}
+}
+
+\subsubsection{}
+Assume the infinitesimal character is regular integral. The following
+definitions and properties are from Section 14 of  \cite{V4}.
+
+
+Fix a block $\C B$ of representations, and denote by $\bZ(\C B)$ the corresponding
+Grothendieck group. Then Definition 14.4 in \cite{V4} defines a
+representation $t(w)$ of the (complex, abstract) Weyl group $W^a$ on $\bZ(\C B).$
+The formulas are before Section 2.1 above.
+\begin{definition}[14.6 in \cite{V4}]
+ Let  $\overset{LR}{<}$ on $\C B$ be the smallest preorder relation with the following
+property.  Fix  w$\in W, \gamma\in \C B$, and write
+$$
+t(w)\pi(\gamma)=\sum a_\phi\pi(\phi)
+$$
+Then 
+$$
+a_\phi\ne 0 \Longrightarrow \gamma \overset{LR}{<}\phi.
+$$
+The set of parameters $\phi\lr \gamma$ is denoted $\ovl{\C C}^{LR}(\gamma).$
+\end{definition}
+This amounts to saying that there is a finite dimensional
+representation $F$ so that $\pi(\phi)$ occurs as a composition factor
+in $\pi(\gamma)\otimes F.$
+The associated representation of $W$ in the subspace of $\bZ(\C B)$ is
+denoted $\ovl{\C V}^{LR}(\gamma)$.
+
+The relation $\lr$ generates an equivalence relation 
+$$
+\gamma\elr \phi \Longleftrightarrow \gamma\lr\phi \text{ and } \phi \lr\gamma
+$$
+The equivalence clasees are called HC-cells, and we write $\C C^{LR}(\gamma)$ for the equivalence class of $\gamma$. If $(\pi_1,V_1)$ and $(\pi_2,V_2)$ are irreducible $(\fk
+  g,K)-$modules,  $\pi_1$ and $\pi_2$ belong to the same
+  Harish-Chandra cell, if there exist finite dimensional
+  representations $F_1, F_2$ such that $\pi_2$ is a composition factor
+  of $\pi_1\otimes F_1$ and $\pi_1$ is a composition factor of
+  $\pi_2\otimes F_2.$ 
+
+  The corresponding $W-$representations are defined as follows. Let
+  $$
+  \C C_+^{LR}:=\ovl{\C C}^{LR}(\gamma)\backslash \C C^{LR}(\gamma).
+$$
+The subspace in $\bZ(\C B)$ denoted $\C V_+(\gamma)$ is generated by the elements
+in $\C C_+^{LR}(\gamma)$. This  is a representation of $W,$ and the HC-cell
+of $\gamma$ as a representation is  
+$$
+\C V^{LR}(\gamma):=\ov{\C V}^{LR}(\gamma)/\C V_+^{LR}(\gamma).
+$$1
+
+\begin{proposition}[Corollary 14.9, \cite{V4}]
+  Let $\C B^\vee$ be the dual block. Then
+  \begin{description} 
+  \item[(a)] $\gamma\lr \phi \Leftrightarrow \phi^\vee\lr
+    \gamma^\vee$. In particular,
+    $$
+    { \C C^{LR}(\gamma)=\C C^{LR}(\gamma^\vee)}
+    $$
+  \item[(b)] $\langle t(w)m,n\rangle =(-1)^{\ell(w)}\langle m,t(w)n\rangle$.
+\item[(c)] { $\C V^{LR}(\gamma)\cong \C V(\gamma^\vee)^*\otimes (sgn).$}    
+  \end{description}  
+\end{proposition}
+
+\begin{theorem}[Theorem 14.10, Corollary 14.11
+  \cite{V4}]\label{t:goldie} There is a natural map, called character
+  polynomial 
+  $$Ch:\C V^{LR}(\gamma)\longrightarrow S(\fk h^a)\quad (\fk h\ \text{ the
+    Cartan subalgebra) }$$   so that
+  \begin{description}
+  \item[(a) ] $Ch (\pi(\gamma))$ is a homogeneous $W^a-$harmonic polynomial.
+  \item[(b)] $Ch(\pi(\gamma)) $ is up to a nonzero constant Joseph's
+    Goldie rank polynomial of  the primitive ideal
+    $I(\pi(\gamma))\subset U(\fk g)$, the annihilator of
+    $\pi(\gamma).$ 
+    \item[(c)] $Ch(t(w)\pi(\gamma))=w\cdot ch(\pi(\gamma)).$ The
+      HC-cell of $\pi(\gamma)$ contains the Goldie rank representation
+      associated to $I(\pi(\gamma))$. 
+  \end{description}
+  
+\end{theorem}
+\subsubsection{} We refine the results in the previous section,
+especially Theorem \ref{t:goldie}. Note the difference that \cite{K}
+deals with just the most split Cartan subalgebra while \cite{C} deal
+with all Cartan subalgebras.
+
+The character of an admissible module $\pi$ (lifted to a neighborhood of $0\subset \fk g$)
+$\theta(\pi)$ has a Taylor expansion. For $f\in C_c^\infty (\fk g),$
+let $f_t(X):=t^{-\dim \fk g}f(X/t).$ 
+Embed the character in a coherent family. 
+By theorem 3.4 in \cite{C}, the Taylor expansion in $t$ satisfies 
+$$
+\theta(\pi(\mu))(f_t)=t^{-d}p(\mu)_dE_{d}+ \text{ higher order terms }.
+$$
+where $p(\mu)$ is a harmonic polynomial of degree equal to the
+Gelfand-Kirillov dimension of $\pi.$ Furthermore, from \cite{BV1},
+$AV(\pi)\subset V(I(\pi))$.
+
+
+
+Choose a real $\theta-$stable Cartan subalgebra $\fk h$. and a
+positive system $\Delta_\bR^+$ of the positive roots.  Let $\fk n$ be
+any nilradical of a Borel subalgebra containing $\fk h,$ and such that
+$\Delta^+_\bR\subset \Delta(\fk n).$ Let $H^-_{reg}=\{h\in H_{reg}\ :\
+|e^\al(h)|<1\}.$  
+
+\begin{theorem}[Theorem 3.1, \cite{C}] Let $M$ be a Harish-Chandra
+  module. Then $H^*(\fk n,M)$ is finite dimensional, and
+  $$
+\theta(M)\mid_{H^-_{reg}}=\frac{\sum (-1)^q\tr_H H^q(\fk
+  n,M)}{\prod_{\al\in\Delta(n)}(1-e_{-\al})} 
+$$
+\end{theorem}
+Denote by $Ch(\fk n,M):=\sum (-1)^q H^q(\fk n,M).$  
+\begin{proposition}[Proposition 2.11, \cite{C}] There are functors
+  $\Gamma_{\fk n}^j$ from admissible modules to category ${\C O}'$ so that
+  \begin{description}
+  \item[(a)] $I(\pi)\subset I(\Gamma^j(\pi))$.
+  \item[(b)] $Ch(\fk n,M)=\sum (-1)^q\Gamma_{\fk n} ^q(M).$
+    \item[(c)] By embedding into coherent families,
+      $\Gamma^j_{\fk n}(t(w)\pi)=t(w)\Gamma^j_{\fk n}(\pi)$. 
+  \end{description}  
+\end{proposition}
+ 
+Primitive ideals are grouped according to  the complex double
+cells which are parametrized by special nilpotnet orbits. The notion
+of double cone corresponds to inclusions of closures of special
+orbits. In particular, $I\subset I'$ implies the double cell of $I'$
+is in the double cone of the double cell of $I.$ From the previous
+results, we conclude that the representations occuring in $\ovl{\C
+  C}^{LR}$ must occur in the double cone determined by the $I(\pi)$ of
+the representations in the HC-cell. The representations occuring in
+$\C C^{LR}_+$ must have strictly lower Gelfand-Kirillov dimensions, so
+have to occur in the double cones for complex orbits of strictly lower
+dimension.
+\begin{corollary}[Theorem 3.4,\ \cite{C}]
+Let $M$ be an irreducible Harish-Chandra module with coherent family
+$\theta(\mu)$. There exista a distribution $E_d$ so that the leading
+term of the Taylor expansion is $D_{-d}(\mu)=p(\mu)E_{-d}$ where
+$p(\mu)$ is a multiple of the Goldie rank polynomial of $I(\pi)$.
+\end{corollary}
+This is essentially Theorem 2 above. The polynomial is made more
+precise; it is a multiple of the Goldie rank polynomial. 
+
+
+\subsubsection{} The fact that the HC-cell consists of
+$W-$representations  of the double cell corresponding to the primitive
+ideal, does not follow directly from the results above. We don't know
+a proof in this generality. We review some of the steps in \cite{McG}.   
+
+Let $\C C_0$ be the double cell containing the special representation
+$\sig_0$ which is the Goldie rank representation attached to $I(\gamma),$
+The ideals $I(\pi)$ for $\pi\in
+\C C^{LR}(\gamma)$ all have Goldie rank polynomials belonging to the
+special representation $\sig_0.$ The corresponding double cell
+determine a \textit{lower} double cone of $W-$representations belonging to smaller
+nilpotent orbits, and an \textit{upper} double cone corresponding to
+larger nilpotent orbits. The Weyl group representations  are related
+by tensoring with $Sgn$ and the duality in \cite{BV2}. 
+
+The results in \cite{V4}
+imply that $\C
+V_+^{LR}(\gamma^\vee)$ belongs to the \textit{upper} double cone
+determined by the primitive ideal $I(\gamma^\vee).$
+This implies that $\C V^{LR}(\gamma)$ consists of representations which belong
+to an upper and a lower double cone, More precisely, 
+the Goldie rank polynomial representation of $\theta_{\gamma^\vee}$
+belong to the special representation of the  double cell attached to
+$I(\gamma^\vee)$, and the representation $\sig_0\otimes Sgn$ belongs
+to this upper cone. If we knew that $\sig_0\otimes Sgn$ is the Goldie
+rank representation of $I(\gamma^\vee)$ the proof in McGovern would
+suffice. 
+
+
+\medskip
+Instead, the next paragraph claims Theorem 1 without the above fact. It is
+counting the unipotent representations  in terms of the coherent
+continuation representation. The main point is that these
+representations have maximal primitive ideal at a particular singular
+infinitesimal character. Representations at this particular
+infinitesimal character cannot give rise to representations which
+belong to the strictly lower double cone. 
+
+\bigskip
+Let $\chi$ be an infinitesimal character of unipotent
+representations. Consider a HC-cell that contains  special unipotent
+parameters for $\chi.$  Here $\gamma$ has regular
+integral infinitesimal character $\chi_{reg}$, and the actual unipotent parameter
+is $T_\chi(\gamma)$ with $T_\chi$ the appropriate translation functor.
+It  makes the simple roots $(\chi,\al)=0$ singular. These roots are not in the $\tau-$invariant of the
+$\pi_i.$ Dualizing, each of the $\pi_i^\vee$ has these
+simple coroots in the $\tau-$invariant. This is from earlier, combining \cite{V4} 
+with \cite{ABV} for special unipotent parameters. Then
+$\sum c_i\pi_i^\vee$ transforms according to $Sgn$ of $W(\chi).$ 
+So the expression $\sum c_i\pi_i$ transforms according to $Triv$ of $W(\chi).$
+A  combination $\sum c_i\pi_i$  decomposes into
+Weyl group representation components. All of them are in the double
+cone below the double cell determined by the Goldie rank/Primitive
+ideal. This was proved earlier using \cite{V4} and \cite{C}.
+It is a fact about these unipotent primitive ideals that the
+representations in the striclty lower double cone cannot contain
+$Triv$ of $W(\chi)$ as explained in \cite{BV2}. The lower double
+cone divided by the strictly lower double cone is the double cell. 
+
+A key fact is that the translation functor
+from regular to singular infinitesimal character is exact, and the
+kernel is given precisely in terms of the $\tau-$invariant. One 
+(maybe best) way to see this is looking at all the $\pi^\vee$ who
+have to transform by the $Sgn$ representation of $W$. The
+``\textit{kernel}'' of the translation functor to infinitesimal
+character $\chi^\vee$ satisfying $(\chi^\vee,\al^\vee)=0$ is precisely the set of
+representations which have these $\al^\vee$ in their
+$\tau-$invariant. Any combination $\sum c_i\pi_i^\vee$ from a double
+cell transforms according to $Sgn$ of $W(\chi)$ precisely if each of the $\pi_i^\vee$ do; i.e. the
+roots are in the $\tau-$invariant. This follows from the formula for
+the $T_\al$ and arguing with the Bruhat order. 
+
+
+This provides a proof of Theorem \ref{t:mult}, which
+is sufficient for our purposes. The tableaus in the next section count
+the multiplicities in Theorem \ref{t:mult}. The matchup of the representations
+constructed via $\Theta$ with the tableaus shows that all special
+unipotent representations are accounted for. 
+
+\begin{conjecture}
+The HC-cells in the cases of linear groups considered are all primitive
+ideal   cells for the special unipotent primitive ideals. Each cell is
+indexed by the associated variety together with the block that the
+representations belong to. 
+\end{conjecture}
+This is sharper than the counting argument. 
+\newpage
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Multiplicity Formulas}
+\subsubsection{Type B}\label{2.1} The Cartan subgroups are parametrized by
+four integers $(p,q,2s,t),$ satisfying $p+q+2s+t=n.$ The corresponding
+representation is 
+\begin{equation}
+\sum_{\sig\in\widehat{W}_{2s}}Ind_{W_p\times W_q\times W_{2s}\times S_t}^{W_n}
+[sgn\otimes sgn\otimes\sig\otimes triv].
+\end{equation}
+The sum is over the $\sig=\tau\times\tau$ where $\tau$ is a partition
+of $s.$ 
+The representation $\sig$ is labelled by dots, sign by $r$ or $r',$ and $triv$
+by $c.$ Recall also the well known formula
+\begin{equation}
+Ind_{S_n}^{W_n}(triv)=\sum_{a+b=n} (a)\times(b)
+\label{2.1.1}\end{equation}
+To induce we add $r$ and $r'$ at most one to each row to $\tau_R$, and
+$c$ at most one to each column to both $\tau_L$ and $\tau_R$ the total
+number being $r$.
+
+{
+  \begin{remark*}
+This only counts  $So(a,b)$ with $a>b.$ The answer matches type $C$
+tensored with $sgn$.  
+  \end{remark*}
+}
+
+
+\subsubsection{Type C}\label{2.2} The Cartan subgroups are parametrized by
+three integers $(a,2s,b)$ where $a+2s+b=n.$ For the coherent
+continuation representation we need four integers $(t,2s,p,q),$
+satisfying $t+2s+p+q=n.$ The corresponding representation is 
+\begin{equation}
+\sum_{\sig\in\widehat{W}_{2s}} \Ind_{S_t\times W_{2s}\times W_p\times W_q}
+^{W_n}[sgn\otimes\sig\otimes triv\otimes triv].
+\label{2.2.1}\end{equation}
+The sum is over the $\sig=\tau\times\tau$ where $\tau$ is a partition
+of $s.$ The notation is set up to take the duality in [V1] of types $B$ and
+$C$ into account. So we write $r$ for the sign representation of
+$S_t,$ and $c$ and $c'$ for the trivial representation of $W_p,\ W_q.$
+We label the rows of $\tau_L$ as $r_0,r_2,\dots ,r_{2m}$ and the rows of
+$\tau_R$ as $r_1,r_3,\dots ,r_{2m-1}$ to conform to the notation of the
+special symbol
+\begin{equation}
+\begin{pmatrix} r_0&   &r_2+1&     &      &\dots       &            &r_{2m}+m\\
+            &r_1&     &r_3+1&\dots &            &r_{2m-1}+m-1&       \end{pmatrix}
+          \label{2.2.2}\end{equation}
+
+\subsubsection{Type $\mathbf{\wti{C}}$}\label{ctilde}
+{The coherent continuation representation  consists of
+  two blocks $\C B_\pm$  from type D with infinitesimal
+  character  regular formed of half-integers  $\chi_\pm=(n-\frac12,\dots ,\frac32,\pm \frac12)$. 
+The sum $\C B:=\C B_++\C B_-$ admits a representation of $W(C_n).$ The
+analogue of Proposition \ref{t:mult} holds for the larger
+representation $\C B$. A representation $\tau_L\times \tau_R$ with
+$\tau_L\ne \tau_R$ restricts irreducibly. The representations $\tau_L\times \tau_R$ and
+$\tau_R\times\tau_L$ have the same rstriction. A representation with
+$\tau_L=\tau_R$ restricts to a sum
+$\tau\times\tau_I+\tau\times\tau_{II}.$ We will not use the finer
+results about $\C B_\pm$ for $W(D_n)$, just $\C B$ for $W(C_n).$  
+
+The description of $\C B$ is as follows. The Cartan subgroups are
+parametrized by $(a,2s,b)$ with $a+2s+b=n.$ The coherent continuation representation is
+$$
+\sum_{\tau\times\tau}\Ind_{S_a\times C_{2s}\times S_b}[sgn\otimes \sig\otimes triv]. 
+$$
+The algorithm for the multiplicities is the same as in the other
+cases. Use $r'$s for the imaginary part, $\bullet$ for the complex part,
+and $c$ for the real part; and use the Littlewood-Richardson rule.
+For an orbit $\vO$ with columns $C_{2a+1},C_{2a},\dots , C_2,C_1$ and
+infinitesimal character $\chi(\vO),$  the relevant representations in
+the Harish-Chandra cell are obtained by exchanging $(c_{2i+1}+1)\times c_{2i}$
+with $(c_{2i}+2)\times (c_{2i+1}-1)$ for the pairs of odd sized columns
+satisfying $C_{2i+1}=2c_{2i+1}+1>C_{2i}=2c_{2i}+1.$ Recall that
+$\tau_L\times\tau_R\cong \tau_R\times\tau_L.$ 
+\begin{example*}[$Mp(4,\bb R)$]
+  
+
+
+
+In
+$sp(4,\bb R),$ the orbit $\C O=(2,2)$ admits representations with
+infinitesimal character $h^\vee/2=(1/2,1/2)$ for the same
+orbit viewed as $\vO$. 
+
+\medskip
+\begin{tabular}{|l|l|l|l|l|}
+  \hline
+  &&&&\\
+  Parameter&$\CO$&LKT&S-Parameter&LKT\\
+  &&&&\\
+  \hline
+  &&&&\\
+  $(3/2,1/2)$&$(2,2)$&$(5/2,5/2)$&$-$&\\
+  &&&&\\ %\hline\\ 
+  $(3/2,-1/2)$&$(4)$&$(5/2,-1/2)$&$(1/2,-1/2)$ &$(3/2,-1/2)$\\
+  &&&&\\ %\hline\\ 
+$(-3/2,1/2)$&$(4)$&$(1/2,-5/2)$&$(1/2,-1/2)$ &$(1/2,-3/2)$\\
+  &&&&\\ %\hline\\ 
+  $(-3/2,-1/2)$&$(2,2)$&$(-5/2,-5/2)$&$-$&\\
+  &&&&\\ %\hline\\
+  $(\ul{3/2,1/2})$&$(2,2)$&$(3/2,-1/2),(1/2,-3/2)$&$-$ &\\
+  &&&&\\ %\hline\\ 
+  $(\ul{3/2,-1/2})$&$(2,2)$&$(3/2,-3/2)$&$-$ &\\
+   &&&&\\ %\hline\\
+  $(3/2,\ul{1/2})$&$(4)$&$(5/2,3/2)$&$(1/2,\ul{-1/2})$ &$(3/2,1/2)$\\
+  &&&&\\ %\hline\\ 
+  $(3/2,\ul{-1/2})$&$(2,2)$&$(5/2,1/2)$&$(1/2,\ul{1/2})$ &$(3/2,3/2)$\\
+  &&&&\\ %\hline\\ 
+  $({-3/2},\ul{1/2})$&$(2,2)$&$(-1/2,-5/2)$&$(-1/2,\ul{-1/2})$ &$(-3/2,-3/2)$\\
+  &&&&\\ %\hline\\ 
+  $(-3/2,\ul{-1/2})$&$(4)$&$(-3/2,-5/2)$&$(-1/2,\ul{1/2})$ &$(-1/2,-3/2)$\\
+  &&&&\\ %\hline\\ 
+  $(\ul{3/2},1/2)$&$(2,2)$&$(3/2,3/2)$&$(\ul{1/2},\ul{1/2})$ &$(1/2,1/2)$\\
+  &&&&\\ %\hline\\ 
+  $(\ul{3/2},-1/2)$&$(2,1,1)$&$(-1/2,-3/2)$&$-$ &\\
+  &&&&\\ %\hline\\ 
+  $(\ul{-3/2},1/2)$&$(2,1,1)$&$(3/2,1/2)$&$-$ &\\
+  &&&&\\ %\hline\\ 
+  $(\ul{-3/2},-1/2)$&$(2,2)$&$(-3/2,-3/2)$&$(\ul{-1/2},\ul{-1/2})$ &$(-1/2,-1/2)$\\
+  &&&&\\ %\hline 
+  \ $(\ul{3/2},\ul{1/2})$&$(2,1,1)$&$(1/2,1/2)$&$-$ &\\
+  &&&&\\  %\hline\\ 
+  $(\ul{3/2},\ul{-1/2})$&$(2,2)$&$(1/2,-1/2)$&$(\ul{1/2},\ul{-1/2})$ &$(1/2,-1/2)$ same\\
+  &&&&\\ %\hline\\ 
+  $(\ul{-3/2},\ul{1/2})$&$(2,2)$&$(1/2,-1/2)$&$(\ul{1/2},\ul{-1/2})$&$(1/2,-1/2)$ same\\
+  &&&&\\ %\hline\\
+  $(\ul{-3/2},\ul{-1/2})$&$(2,1,1)$&$(-1/2,-1/2)$&$-$ &\\
+  &&&&\\
+  \hline
+\end{tabular}
+\end{example*}
+}
+\newpage
+
+\subsubsection{Type D}\label{2.3}\
+\begin{comment}
+{\clrr This seems to count for $O(a,b)$, as well as for $SO(a,b).$ Some Cartan subgroups become conjugate under $O(a,b)$; so fewer parameters. On the other hand, representations extend in two different ways}. 
+\end{comment}
+The Cartan subgroups are parametrized by
+integers 
+$$
+(p,q,2s,t,u),\qquad p+q+2s+t+u=n.
+$$
+There are
+actually two \CSGs for each $s>0$ whenever $p=q=0$. The representation $\sig$ is
+denoted $\sig_I$ or $\sig_{II}$ according to the choice of Cartan
+subgroup. The choice of subscript depends on a choice of the roots in
+the ``\textit{fork}'' of the diagram. The representations are $\C J_{W(A_{n-1})}^{W'}(sgn)$ (in
+the sense of Lusztig-Spaltenstein) from the
+respective maximal subalgebras of type A.
+
+The corresponding coherent continuation representation is 
+\begin{equation}
+\sum_{\sig\in\widehat{W}'_{2s}}
+Ind_{W'\cap W_p\times W_q\times W'_{2s}\times W_t\times W_u}^{W'_n}
+[sgn\otimes sgn \otimes\sig\otimes triv\otimes triv].
+\end{equation}
+The sum is over the $\sig=\tau\times\tau$ where $\tau$ is a partition
+of $s,$ and both $\sig_{I,II}$ occur.   We label the $\sig$ by $\bullet'$s, trivial representations
+by $c$ and $c'$ and the 
+$sgn$ representations by $r$ and $r'.$ These are all added to $\tau_L$ 
+when inducing. {\clrr Add the $r'$ before the $r.$}
+The $sgn$ representation of $W'_n$ is denoted
+$(1^n)\times\emptyset\cong \emptyset\times (1^n)$ and the trivial
+representation is $(n)\times\emptyset\cong \emptyset\times (n).$ 
+
+\bigskip
+If the nilpotent orbit has rows $R_0\le R_1\le\dots\le R_{2m-1}$
+satisfying $R_{2i}\cong R_{2i+1}\mod{2},$ write
+$R_{2i}=2r_{2i}+1$ and $R_{2i+1}=2r_{2i+1}-1$ when they are odd,
+$R_{2i}=2r_{2i}$ and $R_{2i+1}=2r_{2i+1}$ when they are even. The pair
+$\tau_L\times\tau_R$ has rows 
+\begin{equation}
+  \label{eq:weyld}
+(r_0,r_2,\dots ,r_{2m-2})\times   (r_1,r_3,\dots ,r_{2m-1}).
+\end{equation}
+This conforms to the special
+symbol notation
+\begin{equation}\label{eq:symbold}
+\begin{pmatrix} 
+r_0&r_2+1&\dots &r_{2m-2}+m-1\\
+r_1&r_3+1&\dots &r_{2m-1}+m-1
+\end{pmatrix}
+\sim
+\begin{pmatrix} 
+  r_1&r_3+1&\dots &r_{2m-1}+m-1\\
+  r_0&r_2+1&\dots &r_{2m-2}+m-1
+\end{pmatrix}.
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Reduction Theorems}\label{sec:reduction}
+\subsection{Classical Cases}\
+
+{\clrr We give details for Type C}. The orbit $\CO$ is assumed special.
+Consider the multiplicity of the special representation. We refer to
+\eqref{eq:tableauc} for $\tau_L\times \tau_R.$ 
+
+\textbf{Assume $\mathbf{c_0>0}$}. Then the largest rows of $\CO$ must
+be odd sized, and occur 
+an even number of times; there is only one choice of signature. The column for
+$c_0$ must be filled with $r$'s. The remainder of the rows
+corresponding to the column of size $c_0$  in both $\tau_L$ and $\tau_R$ must
+be filled with $\bullet'$s. Note that the rows in $\tau_L$ must be of size
+one less than those of $\tau_R.$ The multiplicity is not affected if
+they are removed from both $\tau_L$ and $\tau_R.$ The computation of
+multiplicities is reduced to the case $c_0=0.$ 
+
+
+\textbf{Assume $\mathbf{c_0=0}$ but $\mathbf{c_2>c_1}$}. The largest rows of $\CO$ are even. The
+next largest ones are odd. 
+The first $c_1$ rows in the column for
+$c_2$ must be filled by $\bullet'$s or $r's$. The remaining rows in
+$c_2$ are filled with $r'$s. The remainder of rows $c_1+1$ to $c_2$ in both $\tau_L$ and
+$\tau_R$ (columns $c_3, c_4\dots$) must be filled with
+$\bullet'$s. They  correspond to the next largest odd rows of $\CO,$ and
+do not affect the multiplicities.
+
+Alternatively, consider the case $C_{2a}>C_{2a-1}.$ 
+There are $C_{2a}-C_{2a-1}$ rows of size 1. 
+The bottom $c_{2a}-c_{2a-1}$ entries in column $c_{2a}$ are filled with $r'$s. 
+They do not affect the multiplicity, and can be removed.
+
+Furthermore, suppose still that $c_{2a}>c_{2a-1},$ and consider the other
+nonspecial representations in the $HC-$cell. The argument is the same
+for those with pairs $(c_{2a-1},c_{2a}).$  For those with
+$(c_{2a}+1,c_{2a-1}-1)$, there must be $c_{2a}-c_{2a-1}$ entries
+in the largest column of $\tau_L$ labelled $r$. The multiplicity is
+not affected by removing the rows of size $1$. 
+
+In general, $c_{2i}>c_{2i-1}$ corresponds to $2c_{2i}-2c_{2i-1}$ odd
+sized rows in $\CO$. The corresponding rows in $\tau_L$ are one less
+than those in $\tau_R.$ So the rows of $\tau_L$ must be filled with
+$\bullet'$s while the rows of $\tau_R$ with $\bullet'$s and one $r.$
+Similarly for the nonspecial representations with $c_{2i},c_{2i-1})$
+and those with $c_{2i-1}+1,c_{2i}-1.$ 
+
+In conclusion,  the multiplicity is not affected if the odd sized rows
+of $CO$ are removed. 
+\begin{theorem}[{Type C}]\label{t:1}
+The multiplicities of a $\tau_L\times\tau_R$ coincide with the case
+when $C_0=0$ and $c_{2i}=c_{2i-1}$ when $C_{2i},C_{2i-1}$ are both even, and
+$c_{2i}=c_{2i-1}+1$ in case $C_{2i}C_{2i-1}$ are both odd. 
+
+\end{theorem}
+\begin{proof}
+See above. 
+\end{proof}
+For the other types, the reduction is to the case when 
+\begin{itemize}
+\item $\CO$ has no even row sizes in types B,D,
+\item $\CO$ has no odd row sizes in type C.
+\end{itemize}
+\begin{remark*}
+The dual parameters are obtained by $\theta-$induction.  
+\end{remark*}
+
+
+\medskip
+{\clrr Back to Type C}. 
+Assume that $C_{2i+1}>C_{2i}=C_{2i-1}=\dots =C_{2i-2k+2}=C_{2i-2k+1}>C_{2i-2k}$
+with $k>1.$ There are two cases:
+\begin{itemize}
+\item[(a)] all even, so $c_{2i}=\dots =c_{2i-2k-1}=c$,
+\item[(b)] all odd, so $c_{2i}=c_{2i-1}+1=\dots = c_{2i-2k}=c_{2i-2k-1}+1=c.$ 
+\end{itemize}
+{
+\noindent Case (a) \textbf{does not} admit special unipotent
+representations; the dual orbit $\vO$ in type B is not even. However $\CO$
+can be even, so serves as $\vO$ for type B. It fits with the previous
+reduction for type B which was omitted. 
+
+\noindent Case (b) \textbf{does} admit integral special unipotent representations.}
+
+
+\medskip
+In Case (a),  there are two types of Weyl group representations in
+HC. The tableaus $\tau_L$ and $\tau_R$ both have $k$ columns of size
+$c$, or $\tau_L$ has $k$ columns of size $c+1$, and $\tau_R$ has
+$k$ columns of size $c-1.$  
+\begin{theorem}[Type C]\label{t:2}
+In Case (a), (analogue of Theorem \ref{t:1} for type B) the multiplicity of $\tau_L\times\tau_R$ is identical to the case when
+$k=1.$ 
+
+\medskip
+In Case (b), there is a reduction to $k=1$. 
+\end{theorem}
+\begin{proof}
+Consider Case (a). The columns for $c_{2i}$ to $c_{2i-2k+2}$ and
+$c_{2i-1}$ to $c_{2i-2k+1}$ all must be
+labelled $\bullet.$ They do not contribute to the multiplicity. 
+So the multiplcity of the special representations are the same for
+$k>1$ and $k=1.$ 
+
+
+In Case (b), the pattern for $\tau$ for the bottom of columns
+$c_{2i-1}$ to $c_{2i-2k-1}$ is
+$$
+\begin{matrix}
+\bullet&\bullet &  \dots &\bullet &x_1\\
+x_2      &y       &  \dots &z       &w \\
+x_3      &        &        &        &
+\end{matrix}
+\quad\times\quad
+\begin{matrix}
+\bullet&\bullet &  \dots &\bullet &y_1\\
+y_2      &\emptyset      &\emptyset  \dots &\emptyset      &\emptyset \\  
+y_3      &        &        &        &
+\end{matrix}
+$$
+where 
+\begin{enumerate}
+\item $x_1$ can be $\bullet, r,c$, while $y_1$ must $\bullet$ if
+  $x_1=\bullet,$ and $r$ otherwise. It is completely determined by
+  $x-1.$ 
+\item  $x_2$ can be $\bullet,r,c,c'$,
+\item $y,z, w$ must be $c$ or $c',$
+\item $x_3, y_3$ may or may not occur.
+\end{enumerate}
+We compare the case of $k>1$ with $k=1.$ Every tableau with $k>1$ can
+be obtained from one with $k=1$ by adding columns ending in $y,\dots ,z.$
+ 
+\begin{enumerate}
+\item $y=r,c$ corresponds to $\theta-$induction. There is only one
+  choice of a factor $u(p,q).$ 
+\item Subsequent
+  columns ending in $c$ correspond to $\theta$ or $r-$induction, and a
+  column ending in $c'$ corresponds to    $r-$induction.  
+\end{enumerate}
+For $\vO,$  the $r,c$ correspond to adding a
+  pair of equal rows with a $
+  \begin{matrix}
+    +\\ -
+  \end{matrix}
+$. A column ending in $c'$ corresponds
+  to adding a pair of rows with $
+  \begin{matrix}
+    +\\ +
+  \end{matrix}
+.$
+\end{proof}
+The following also holds.
+\begin{theorem}  [Type C]\label{t:reduction}
+
+Assume that $C_{2i+1}-C_{2i}>2$ with $C_{2i+1}=2c_{2i+1}$ and
+$C_{2i}=2c_{2i}.$ The tableaus have $c_{2i+1}-c_{2i}$  pairs of equal
+rows; at least one such pair  ends in $r\times r$, $c\times r$ or
+$\bullet\times\bullet.$ The nilpotent orbit $\CO$ has a pair of equal rows with signs $
+\begin{matrix}
+  +\\ +
+\end{matrix}
+$ or $\begin{matrix}
+  -\\ -
+\end{matrix}$
+in the $r,c$ cases, $\begin{matrix}
+  +\\ -
+\end{matrix}$ in the $\bullet$ case. The dual orbit $\vO$
+is real induced in the first two cases, $\theta-$induced in the
+$\bullet$ case. 
+\end{theorem}
+
+
+
+
+
+
+  \subsection{Metaplectic Case}
+  \subsection{Relation to type B}
+Because of the reduction theorem in
+the previous section, we only need to consider the case when both
+$\CO$ and $\vO$ are even. The $\Theta-$correspondence provides a
+relation between unipotent representations of type B and type $\wti
+C.$ Since $O(p,q)\cong SO(p,q)\times\bZ_2,$ there is a factor of 2
+between the two groups. Furthermore, the $\Theta-$correspondence has
+domain all of $O(p,q)$ not just $p>q.$ This is another factor of 2
+accounted for by the fact that there are two blocks in type $\wti C,$
+encoded by counting $\tau_L\times\tau_R$ and $\tau_R\times\tau_L$
+separately. 
+
+\bigskip
+An even nilpotent orbit $\CO_{\wti C}$ in type
+$\wti C$ (same as type C of course) will have columns
+$$
+C_{2a+1}=C_{2a}>\dots >C_2=C_1
+$$
+with $C_i$ even or odd. Such an orbit comes (via $\Theta$) from
+$\CO_B$ which has columns
+$$
+C_{2a}>C_{2a-1}=C_{2a-2}>\dots >C_2=C_1.
+$$
+A pair of even $C_{2i+1}=C_{2i}=2c_i$ contributes a pair of 
+columns  $c_i\times c_i$ to $\tau_L^{\wti C}\times\tau_R^{\wti C}.$ A pair of odd
+columns $C_{2i+1}=C_{2i}=2c_i+1$ contributes $(c_{i}+1)\times
+c_{i}$. 
+The relation between $\CO_{\wti C}$ and $\CO_{B}$ is as follows. If
+$C_{2a+1}=2c_a+1$ is odd, remove the largest column, and let the rows
+start with the same signs as for $\wti C.$ If $C_{2a+1}=2c_a$ is even,
+remove it, and increase $C_{2a}$ by one. In all cases remove the
+largest column of $\tau_R.$ An unmatched $\bullet$ in $\tau_L$ is
+replaced by an $r'$. There should be no $r$ in $\tau_L^B$; replace
+with $\bullet.$ This produces a tableau dual to those of type
+C in the following sense. Consider the tableau of type C as described
+in an earlier section. Tensor by sign which interchanges $\tau_L$
+with $\tau_R$ and transposes. Replace $r\longleftrightarrow c$
+and $c'\leftrightarrow r'.$ Rearrange to have the $r'$ earlier than  the
+others.
+
+\subsection{Nonspecial Representations}
+\begin{proposition}[hccells]
+  \label{p:hc}
+The Weyl group representations in the Harish-Chandra  cells accociated
+to the same orbit all occur with  the same multiplicity. 
+\end{proposition}
+\begin{proof}
+The shapes $\tau_L\times\tau_R$ look like
+$$
+\begin{matrix}
+  &\dots &&&c_i+1&\dots\\
+  &\dots &\dots&\dots&\dots&\dots\\
+  \star&\dots &\star&\star&\star&\dots\\
+  \star&\dots &\star&\star&\star
+\end{matrix}
+\quad\times\quad
+\begin{matrix}
+  &\dots     &&c_i&&\dots\\
+  &\dots &\dots&\dots&\dots&\\
+  \star&\dots &\star&\star&\\
+  \star&\dots &\star&
+\end{matrix}.
+$$
+The rows above are of greater or
+equal length, and the rows below of strictly smaller
+length. We must move one block from the column of length $c_i+1$ in $\tau_L$ to the column of length $c_i$ in $\tau_r.$ The column in $\tau_L$ must end in $c$ or $r.$ If it ends in $r$, then the block to the left must be a $\bullet$. The corresponding block in $\tau_R$ must also be a $\bullet.$ In this case, remove one $r$ from the column $c_i+1$ and add it as high as possible to the column $c_i$ of $\tau_L.$ The other case is if the block is $c.$ If there is an $r$ above it, move one $r$ from $\tau_L$ to $\tau_R$ as before. If not, either $c_i=0$ or else there are only $\bullet$ above in the column. In these cases, move the $c$ from column $c_i+1$ in $\tau_L$ to the column $c_i$ in $\tau_R;$ The $c$ in the column for $\tau_L$ moves up one block.
+
+The following are some examples.
+$$
+\begin{aligned}
+&\begin{matrix}
+    \bullet&\bullet&\al\\
+  \bullet&\bullet&r\\
+\end{matrix}
+\quad\times\quad
+\begin{matrix}
+\bullet&\bullet&c\\
+\bullet&\bullet&\\
+\end{matrix}
+\quad\mapsto\quad
+\begin{matrix}
+    \bullet&\bullet&\al\\
+  \bullet&\bullet&
+\end{matrix}
+\quad\times\quad
+\begin{matrix}
+\bullet&\bullet&r\\
+\bullet&\bullet&c\\ 
+\end{matrix}
+\\
+&
+\mat
+\bullet&\bullet&r\\
+\beta_1&\beta_2&c
+\emat
+\quad\times\quad
+\mat
+\bullet&\bullet&c\\
+y_1&y_2&
+\emat
+\quad\mapsto\quad
+\mat
+\bullet&\bullet&c\\
+\beta_1&\beta_2&
+\emat
+\quad\times\quad
+\mat
+\bullet&\bullet&r\\
+\bullet&\bullet&c
+\emat
+\end{aligned}
+$$
+\end{proof}
+\begin{proposition}[reduction, odd rows]
+  \label{p:oddrows}
+Suppose an odd columns size of $\vO$ repeats (\ie
+$C_i=C_i=C_{i+1}=C_{i+1}$). The mumber of unipotent representations
+for $\vO$ and $\vO'$ with one pair of columns removed is the same. For
+$\CO,$ a pair of odd size rows is removed.
+\end{proposition}
+\begin{proof}
+Consider the special representation, \ie the one with corresponding
+rows all $c_i+1\times c_i$. The shape (with the first row indicating
+the column position) 
+$$
+\begin{matrix}
+  1&\dots &c_i-1&c_i&c_i+1\\
+  &\dots &\dots&\dots&\dots\\
+  \star&\dots &\star&\star&\star\\
+  \star&\dots &\star&\star&\star
+\end{matrix}
+\quad\times\quad
+\begin{matrix}
+  1&\dots     &c_i-1&c_i\\
+  &\dots &\dots&\dots\\
+  \star&\dots &\star&\star\\
+  \star&\dots &\star&\star
+\end{matrix}
+$$
+occurs in $\tau_L\times\tau_R$, with the rows above of greater or
+equal length, and the rows below of strictly smaller
+length. The earlier row in $\tau_L$ must have $\bullet$ up
+to entry $c_i,$ and therefore the same must hold for $\tau_R.$ Column $c_i+1$ 
+in $\tau_L$ must end in  $
+\begin{matrix}
+r\\\star  
+\end{matrix}
+$. So the tableaus are
+$$
+\begin{matrix}
+    1&\dots &c_i-1&c_i&c_i+1\\
+  &\dots &\dots&\dots&\dots\\
+  \bullet&\dots &\bullet&\bullet&r\\
+  \star&\dots &\star&\star&\star
+\end{matrix}
+\quad\times\quad
+\begin{matrix}
+  1&\dots &c_i-1&c_i\\
+  &\dots &\dots&\dots\\
+  \bullet&\dots &\bullet&\bullet\\
+  \star&\dots &\star&\star
+\end{matrix}
+$$
+The claim follows from the fact that the higher pair of rows is always the same.
+\end{proof}
+Again,   counting is reduced to the case when both $\CO$ and $\vO$ have
+even sized rows only.
+
+\subsubsection{The orbits $\C O$ and  $\vO$}
+Consider the orbit with columns
+$C_i$ such that $C_{2i}\equiv C_{2i-1}\ (mod\ 2)$ and
+$C_{2i}=C_{2i-1}$ if $C_{2i}\equiv 0\ (mod\ 2)$, so that it
+represents a nilpotent orbit of type $C$. In addition, assume that
+$C_{2i+1}>C_{2i}$; so this is after the reduction in theorem \ref{t:1}. Associate to it the dual orbit $\vO$ with rows
+$C_{2i}+1,C_{2i-1}-1$ whenever the pair is odd length as before, and
+$C_{2i},C_{2i-1}$ whenever  the length is even. The condition
+$C_{2i+1}>C_{2i}$ insures that this is a nilpotent
+orbit (even). 
+
+\begin{theorem}\label{t:seesaw}
+For the nilpotent orbits $\C O$ satisfying $C_{2i+1}>C_{2i}$ all the
+representations are obtained by the $\Theta-$correspondence via the
+algorithm using the columns. Pairs of even colummns $C_{2i}=C_{2i-1}$
+are replaced by  $C_{2i}-1,C_{2i-1}+1$ to insure that the seesaw pairs
+are all of the form $SO(2m+1)\times Mp(2n).$ This is where unions of
+nilpotent orbits show up in $AV(\pi)$.
+
+For cases when $C_{2i}=C_{2i-1}\equiv 0\ (mod\ 2),$ the unipotent
+representations fit into induced modules from unipotent
+representations on Levi components.
+\end{theorem}
+
+\begin{proposition*} When $C_{2i+1}>C_{2i},$ the number of special unipotent representations with associated
+variety $\C O$ equals the sum over the conjugacy classes in the
+component groups of the real forms of $\C O$. All special unipotent
+representations as above have asymptotic cycles single real forms. 
+  
+\end{proposition*}
+
+
+\begin{example}
+Let $\C O=2^{2n}.$ The infinitesimal character is 
+$$
+(n-1/2,n-1/2,\dots ,1/2,1/2).
+$$
+There are $4n+1$ unipotent representations. They are all obtained by
+the $\Theta-$correspondence from the pair $Sp(4n,\bb R)\times O(2n+1).$
+There are $2n+1$ representations which are derived modules and $2n$
+representations which occur in induced modules from characters of
+$\wti{GL}(2n,\bb R).$ The associated cycle is a sum of two
+  \textit{adjacent} nilpotent orbits. Each $O(p,q)$ with $p+q=2n+1$
+  contributes, one representation if $p$ or $q=0,$ and three
+  otherwise. There are coincidences between $O(p,q)$ and $O(p-1,q+1)$
+  and $O(p,q)$ and $O(p+1,q-1).$ 
+\end{example}
+\begin{example}
+ Let $\C O=2^{2n+1}.$ The infinitesimal character is
+ $(n+1/2,n-1/2,n-1/2,\dots ,1/2,1/2).$ There are $8n$ representations, each
+ with associated cycle one of $2n+1$ real forms. They correspond to
+ the $O(p,q)$ with $p+q=2n+1;$ $2n-1$ get four representations each,
+ and $2$ of them get two each. 
+
+\end{example}
+
+
+
+
+\section{Algorithms for the Associated Variety}\label{3}
+
+Denote by $\pi$ an irreducible Harish--Chandra module, and by $\chp$ the
+dual. Let $\AV(\pi)$ be its associated variety and $\Ac(\pi)$ the primitive ideal variety. We describe $\AV(\pi)$ and $\AV(\chp)$ for
+special unipotent representations.
+The representations for which all
+the components in $\AV$ belong to the same complex orbit $\C O_c$ will 
+
+
+\medskip
+We parametrize everything in terms of the even
+nilpotent $\vOc.$ The cases when $\vOc$ has only odd sized rows in
+type C and only even sized rows in type B,\ D are omitted since they
+are easy. It is well known that $\Ac(\pi)$ is the closure of a single
+orbit, so $\AV(\pi)$ (and $\AV(\chp)$) is a union of real forms of a
+single orbit $\COc.$ The {\it signature} of a column of size $x$ of a
+real nilpotent orbit denotes the number of $+,-$ in the first column. 
+
+\subsection{}\label{sec:3.1} The following will be a consequence of the
+algorithms. 
+\begin{enumerate}
+\item In type B,D, the signature on an odd length column of any
+  nilpotent orbit in  $\AV(\pi)$ is the
+  same, say  $(a,b).$  On a column of even length, the signature can
+  only be $(a,b+1)$ or $(a+1,b).$ 
+\item In type C, the signature of an odd length column in any
+  nilpotent orbit in $\AV(\pi)$ can only be $(a,b+1)$ or $(a+1,b).$
+  On an even length column, the signature is always $(a,b).$ 
+\end{enumerate}
+This has to be true for $\AV(\chp)$ as well.
+
+\subsection{Type  C/B}\label{3.2} The convention is that $\CO$ is type
+C and $\vO$ is type B. Let $\COc$ be an even special nilpotent orbit (in
+$\g_c$ of type C) so that the orbit has columns $(C_{2a}=C_{2a-1}> C_{2a-2}=C_{2a-3}> \dots >C_2= C_{1}>C_0,$  conforming to the reduction in the previous section. 
+
+The dual orbit $\vOc$ is even with rows  
+\begin{equation}
+  \begin{cases}
+    C_{2i}+1,C_{2i-1}-1 &\text{ if } C_{2i}=C_{2i-1} \text{ is even,}\\
+   C_{2i},C_{2i-1} &\text{ if } C_{2i}=C_{2i-1} \text{ is odd,}\\
+   C_0+1 & \text{ if } i=0.
+  \end{cases}
+\label{3.2.1}\end{equation}
+%The Lusztig symbol is $(r_0,r_1)(r_2+1,r_3+1),\dots %(r_{2m-2}+m-1,r_{2m-1}+m-1)(r_{2m}+m).$ 
+The Weyl group representation is
+\begin{equation}
+(c_{2a-1},c_{2a-3},\dots, c_{1})\times (c_{2a},c_{2a-2},\dots ,c_{0})
+\end{equation}
+as in \eqref{eq:tableauc}.
+The labelling of $\tau_R$ is completely determined by
+its shape and the labelling of $\tau_L,$ so we often only give
+$\tau_L$. Recall that each row in $\tau_R$ is filled by $\bullet$
+except possibly the last entry.
+
+
+\bigskip
+We  build $\AV(\pi)$ in stages. Start with the first pair of columns. The $\bullet'$s add pairs of rows with signs $\begin{matrix}  +\\-\end{matrix}$. The remainder of $r,c$ adds
+\begin{equation}
+\begin{matrix} r\\ \vdots\\ r\end{matrix} \times \begin{matrix} r\\ \vdots\\ x\end{matrix}
+\leftrightarrow \begin{matrix} +-\\ \vdots \\ +-\end{matrix}\qquad
+\begin{matrix} r\\ \vdots\\ c\end{matrix} \times \begin{matrix} r\\ \vdots\\ x\end{matrix}
+\leftrightarrow \begin{matrix} -+\\ \vdots \\ -+\end{matrix}.
+\label{3.2.5}\end{equation}
+The number of rows in the nilpotent orbit is odd if $x=\emptyset$ and
+even if $x=r.$  
+
+A pair $c'\times r$ adds a pair of rows $\mat +-\\-+\emat$ while
+$c'\times \emptyset$ adds a $\mat +-\emat\cup\mat -+\emat$ to make a
+union of nilpotent orbits.
+
+For example, in case $\CO=(222),$ we get the following
+7 tableaus and their corresponding $\AV(\pi)$:
+\begin{alignat}{2}
+&\begin{matrix} r\\ r\end{matrix}\times \begin{matrix} r\\ \ \end{matrix},\quad 
+\begin{matrix} r\\ c\end{matrix}\times \begin{matrix} r\\ \ \end{matrix}
+&&\qquad\longleftrightarrow\qquad
+\begin{matrix} +&-\\ +&-\\ +&-\end{matrix},\quad \begin{matrix} -&+\\ -&+ \\
+-&+\end{matrix},\label{3.2.6a}\\
+\noalign{\bigskip}
+&\begin{matrix} \bullet\\ r\end{matrix}\times \begin{matrix} \bullet\\ \ \end{matrix},\quad
+\begin{matrix} \bullet\\ c\end{matrix}\times \begin{matrix}\bullet\\ \ \end{matrix}
+&&\qquad\longleftrightarrow\qquad
+\begin{matrix} +&-\\ -&+\\ +&-\end{matrix},\quad \begin{matrix} +&-\\ -&+\\ -&+\end{matrix},
+\label{3.2.6b}\\
+\noalign{\bigskip}
+&\begin{matrix} r\\ c'\end{matrix}\times \begin{matrix} r\\ \ \end{matrix},\quad \begin{matrix}
+c\\ c'\end{matrix}\times \begin{matrix} r\\ \ \end{matrix} 
+&&\qquad\longleftrightarrow\qquad 
+\begin{matrix} +&-\\ +&-\\ +&-\end{matrix}\cup \begin{matrix} +&-\\+&-\\ -&+\end{matrix},\quad
+\begin{matrix} -&+\\ -&+\\ -&+\end{matrix}\cup \begin{matrix} -&+\\ -&+\\ +&-\end{matrix},
+\label{3.2.6c}\\ 
+\noalign{\bigskip}
+&\begin{matrix} \bullet\\ c'\end{matrix}\times \begin{matrix}\bullet\\ \ \end{matrix}
+&&\qquad\longleftrightarrow\qquad 
+\begin{matrix} +&-\\ -&+\\ +&-\end{matrix}\cup \begin{matrix} +&-\\ -&+\\ -&+\end{matrix}.
+\label{3.2.6d}
+\end{alignat}
+
+\bigskip
+\noindent Now we describe how to add the next pair of columns. Assume
+the column in $\tau_L$ does not end in $c'.$ A 
+typical pair of columns in $\tau_L\times \tau_R$ is of the form
+$$
+\begin{matrix}
+  \bullet\\ \vdots \\\bullet\\ r\\ \vdots \\r \\y
+\end{matrix}
+\times
+\begin{matrix}
+  \bullet\\ \vdots \\\bullet\\ r\\ \vdots \\r \\ x
+\end{matrix}
+$$
+The previous columns must have $\bullet$ next to the $\bullet$'s and $r'$s.
+The pair $y\times x$ can be $r\times r,$ $r\times\emptyset,$ $c\times r$
+or $c\times\emptyset.$ If $x\ne \emptyset,$ the previous column must have
+a $\bullet.$ Otherwise the pattern in the last row is $cc\times r,$ $rc\times r$ or
+$\bullet c\times r.$ 
+
+\bigskip
+\noindent\textbf{(I)} A pair $\bullet\times\bullet$ can only be added
+to a pair of rows which end in $\bullet\times\bullet.$ Add two to the
+row size, and preserve the signs.  
+
+The remaining rows end in  (II) or (III).
+
+\noindent\textbf{(II)} 
+\begin{equation}
+\begin{matrix} r\\ \vdots\\ r\end{matrix}\times\begin{matrix} r\\ \vdots\\ x\end{matrix}
+\label{3.2.7}\end{equation}
+can only be adjoined to a column with $\bullet;$ add 2 to the
+corresponding rows and change all the signs to $+.$ If $x=\emptyset,$
+all the rows change to $+.$ 
+
+\noindent\textbf{(III)} A pair 
+\begin{equation}
+\begin{matrix} r\\ \vdots\\ r\\ c\end{matrix}\times\begin{matrix} r\\
+  \vdots\\ r\\ x\end{matrix}
+\label{3.2.8}\end{equation}
+adds 2 to the corresponding rows. When $x=r,$ the previous columns in
+both $\tau_L$ and $\tau_R$ are filled with $\bullet,$ so they have
+pairs of rows with $\pm;$  change them all to $-$.
+When $x=\emptyset,$ the previous columns have
+$\bullet$ except for the entry next to $c$ which may be $\bullet,r,c.$
+The patterns are 
+{\clrr
+$$
+\begin{aligned}
+&cc\times r, &&\text{changes the rows with - to +, except the last one gets a -},\\
+&rc\times r, &&\text{changes the rows with + to -, except the last one stays a +},\\
+&\bullet c\times r, &&\text{changes the rows to -.}
+\end{aligned}
+$$
+}
+%The first changes the rows starting with $-$ to $+$, except for the last one %which gets a
+%$-$.  The second changes all the rows staring with $+$ to $-$, except for the %last one which stays $+$. The third changes all the rows to $-$.
+
+\bigskip
+\noindent We now add the $c'.$ 
+
+\noindent\textbf{(IV)} A pair $c'\times r$ can only be added to a pair
+of rows ending in $\bullet\times\bullet$ (due to the restriction of $\vO$ having to be even). It increases the size of the
+corresponding pair of rows in $\vO$ by 2 and leaves their signs $\pm$ unchanged.
+
+\noindent\textbf{(V)} A pair $c'\times \emptyset$ adds 2 to one of the rows of the appropriate size, and leaves the sign unchanged. If there are two rows of the same
+size with opposite signs, add two nilpotent orbits to $\AV(\pi),$ one
+for each choice of sign. 
+\subsection{Type D}\label{3.3}  
+Let $\CO$ be a special nilpotent orbit so that the dual orbit $\vO$ is
+even. The special Weyl group representation is, as in \ref{eq:drep};
+we use
+\begin{equation*}
+\tau_L\times\tau_R=(c_{2a-1},\dots ,c_1)\times (c_{2a-2},\dots
+,c_0).  
+\end{equation*}
+The associated variety is obtained in the same way as for type C;
+$r'\times \emptyset$ is treated as $\bullet$. Recall it is added first.
+If there no earlier column it contributes a pair of rows
+$\mat+\\-\emat$. If there is an earlier column,  the pattern is
+$\mat\bullet r'\emat\times \mat\bullet\emptyset\emat$. The
+$\bullet\times\bullet$ contributes a pair of even sized equal rows of opposite
+signs; augment them both by  one. Subsequent columns and $r,c,c'$ are added as in
+type C.
+
+\begin{remark*}
+The following provides an \textit{``embedding''} of type D into type
+C.  Add 1 to each row in $\tau_R,$ ($m-1$ of them including the empty
+ones). Change $r'$ to $\bullet$ in $\tau_L$  and put $\bullet$ in the corresponding entry in
+$\tau_R.$ The remaining new entries in $\tau_R$ get filled with $r$'s.
+
+This embeds  the $AV(\pi)$ corresponding to an $\CO_C$
+in type D, into those for the $\CO_c$ for type C where each row has been
+augmented by one. It implements the $\Theta-$correspondence. 
+\end{remark*}
+\begin{remark*}
+In the case when $\CO$ and $\vO$ are both special, the $HC-$cells are
+related by tensoring with $sgn.$ The main case is when they are both
+even. The procedure for computing the
+$AV(\pi)$ from the multiplicity of the special representation in the
+coherent continuation representation is \textbf{not} compatible with
+tensoring with $sgn$.  
+\end{remark*}
+
+\newpage
+\subsection{TYPE B/C} The coherent continuation representation of type
+$B$ is obtained from type $C$ by tensoring with $sgn.$ In this case
+$\vO$ is type B and $\CO$ is even type C. As a result, the columns of
+$\tau_L\tau_R$ are labelled $c_{2i}\ge \dots c_0\ge 0.$ 
+Tensoring with $sgn$ means that the multiplicities are obtained from
+type C by interchanging and taking transposes of $\tau_L\times\tau_R.$
+The correspondence is $c,c'\longleftrightarrow r',r,$ and
+$r\longleftrightarrow c.$  We add $\bullet$ first, then $r'$ then $r$
+and last $c$. 
+
+The labelling of $\tau_L$ is completely determined by its shape and
+the labelling of $\tau_R,$ so we often only give $\tau_L$. 
+
+\bigskip
+Recall that the coherent continuation representation formulas are for
+$SO(a,b)$ with $a>b.$ For the $\Theta-$correspondence we will need
+$a<b$ as well (duplicate the answers by changing all the signs) and
+O(a,b). The passage for this last one is more complicated; some
+reprewsentations extend to irreducible ones, others in two different ways.
+The algorithms give nilpotent orbits in $so(a,b)$ such that some times
+$a>b$ and other times $b<a.$ 
+
+\subsubsection{Case $c_{2j-1}>c_{2j}$} This is the case when the
+number of represwentations matches the number of local systems on the
+real forms of $\CO.$
+
+We start with the pair $c_{2i}\ge c_{2i=1}.$ Start with the entries up
+to $c_{2i}$ in both of them. The matchup is according to the entries
+at the end
+$$
+\bullet\times\bullet\longleftrightarrow
+\mat
+-&+&-\\
++&-& \\
+-&+ & \\
+\vdots&\vdots &\\
++&-& \\
+-&+ & \\
++ &&\\
++ &&\\
+\emat
+\qquad
+c\times c, c\times r\longleftrightarrow
+\mat
++&-&+\\
++&-& \\
+-&+ & \\
+\vdots&\vdots &\\
++&-& \\
+-&+ & \\
++ &&\\
+- &&\\
+\emat
+\qquad
+c\times r'\longleftrightarrow
+\mat
++&-&+\\
++&-& \\
+-&+ & \\
+\vdots&\vdots &\\
++&-& \\
+-&+ & \\
++ &&\\
++ &&\\
+\emat
+$$
+Each element in the tail in column $c_{2i}$ adds a pair
+$$
+r'\longleftrightarrow \mat +\\+\emat\qquad r,c\longrightarrow \mat +\\-\emat.
+$$
+We now add $c_{2i-2}>c_{2i-3}.$ The symbols $\bullet,r',r,c$ get added
+next to $\bullet'$s in $\tau_R$. The same rules apply. for the
+$c_{2i-3}$ pairs of entries, 
+\begin{description}
+\item[(a)] ending in $\bullet\times\bullet$ apply $\theta-induction$ so that the
+  signs alternate on the odd size rows.
+\item[(b)] ending in $c\times r'$ apply $\theta-$induction so that the
+  last two even sized rows go up by one, and get the same sign as the
+  next pair of odd sized rows
+\item[(c)] endiong in $c\times r,c$ apply $\rho-$induction.  
+\end{description}
+The tail increases the last even pair of rows to a pair larger by one according to
+\begin{description}
+\item[d] $c\times r'$ changes the pair to the same sign as the pair of
+  rows larger by 1, $c\times r,c$ changes it to apir with $\mat +\\-\emat$.
+\end{description}
+
+\subsubsection{Case $c_{2j-1}=c_{2j}$} Form the nilpotent with the
+$c_{2j}-1.$ The remaining slot is occupied by $\emptyset\times r',
+\emptyset\times r,c.$ For $r'$  apply $\theta$induction increasing one
+row by two with the same sign as the existing rows. For
+$\emptyset\times r,c$ use $\rho-induction.$ proceed from the smallest
+pair upwards. An exception is the case
+$$
+\mat \bullet&r\\c& \emat,
+\qquad
+\mat\bullet &c\\r &\emat.
+$$
+In this case, increase row by two so as to form a pair
+$$
+\mat +&\dots
+&+\\ - &\dots & -\emat
+$$
+
+
+
+
+\begin{comment}
+  
+
+\bigskip
+We start with a pair of rows of size 2. The tableau
+
+\begin{alignat}{3}
+&\text{Tableau }\qquad     &\qquad\qquad&\CO\subset
+Sp\qquad&\qquad\qquad&\vO\subset So\notag\\
+\noalign{\smallskip}
+&c\times r            &&\mat -+\\ -+\emat&&\mat +&-&+\\ +&&\\ -&&\emat\notag\\ 
+\noalign{\smallskip}
+&r\times r            &&\mat +-\\ +-\emat&&\mat +&-&+\\ +&&\\ -&&\emat\label{eq:11}\\ 
+\noalign{\smallskip}
+&c'\times r           &&\mat +-\\ -+\emat&&\mat +&-&+\\ +&&\\ +&&\emat\notag\\
+\noalign{\smallskip}
+&\bullet\times \bullet&&\mat +-\\ -+\emat&&\mat -&+&-\\ +&&\\ +&&\emat\notag
+\end{alignat}
+
+The pairs $c\times r$ and $r\times r$ correspond to $\rho-$induction of
+the nilpotent in $O(1)$ with a  single $-$ by a $gl(2,\bR).$ The pairs $c'\times r$ and
+$\bullet\times \bullet$ correspond to $\theta-$induction; the first with $u(2,0)$,
+the second with $u(1,1).$ 
+
+If there are more pairs of rows of size 1, apply $\rho/\theta$ induction for
+each added pair starting at the bottom. A  $c'\times r$ is at the
+bottom, and so the nilpotent orbit starts as in \eqref{eq:11}.     
+Then apply  $\rho-$induction for each subsequent $r\times r$ or $c\times
+r.$  The Levi component on the $\vO-$side is a $gl(2,\bR).$  For the
+$\bullet\times\bullet'$s use $\theta-$induction with $u(2,0)$ or
+$u(0,2)$; there is only one choice. If there is no $c'\times r$ present,
+start with the nilpotent orbit corresponding to
+\eqref{eq:11}. The $r\times r$ and $c\times r$ are added by
+$\rho-$induction; $\AV$ is a union of two orbits. The
+$\bullet\times\bullet$ are added by $\theta-$induction with Levi
+component $u(1,1).$
+
+\bigskip
+Next consider the triangular case, $\tau_L=\tau_R$, and each size row
+occurs exactly once in $\tau_L=\tau_R,$ say $(m,m-1,\dots ,1).$ The
+corresponding nilpotent orbit has rows, $(2m+1,2m-1,2m-1,\dots
+,3,3,1,1).$ The largest row of $\vO$ gets sign $+.$ Alternate the
+signs of the pairs of rows of $\vO$ going downward. Then change the
+signs as follows: 
+$$
+\begin{aligned}
+  &\bullet\times \bullet\qquad &&\text{ keep
+  the signs }&&\quad \mat +\\+\emat\text{ or }\mat -\\-\emat\\
+  &c'\times r\qquad &&\text{ flip
+    the signs }&&\quad \mat +\\+\emat \longleftrightarrow \mat -\\-\emat\\
+  &r\times r,\ c\times r\qquad  &&\text{ change the signs to
+    alternate }&&\quad \mat +\\-\emat.
+\end{aligned}
+$$
+Another way of saying this is that each pair of rows corresponds to
+$\theta-$induction when the pair ends in $\bullet\times\bullet$ or
+$c'\times r,$ and $\rho-$induction when the pair ends in $r\times r$
+or $c\times r$. In the case of $\theta-$induction, there are two
+choices. For $\bullet\times\bullet$ choose the one where the result
+has $p-q$ in $SO(p,q)$ smaller.
+Repeated pairs of (equal) rows give the cases when $\tau_L=\tau_R.$ These are added
+by the same rules as adding pairs of rows of size 1.
+
+\bigskip
+In the case there are rows of unequal length, consider the
+semi-triangular case when the rows of $\tau_L$ and $\tau_R$ are
+$$
+(m,m-1,\dots ,1)\times (m-1,\dots ,0).
+$$
+The nilpotent orbit $\vO$
+has rows
+$$
+\vO=(2m-1,2m-1,2m-3,2m-3,\dots , 3,3,1,1,1).
+$$
+The edges of $\tau_L$ end
+in $r,c,c'.$ Strip them to get a triangular $\tau_L\times\tau_R$, and
+form the nilpotent orbit. Then add the
+edges starting with the largest row. An $r,c$ adds a pair of rows
+$\mat +\\-\emat$ at
+the bottom. A $c'$ adds a $\mat -\\-\emat$ if next to a $\bullet$, a
+$\mat +\\+\emat$ if next to an $r.$
+
+For the entry in the next lower row in $\tau_L,$ increase one row by two following
+$\rho/\theta$-induction for $r/c$ and $c'.$ 
+\begin{itemize}
+\item Adding $r/c$ follows $\rho-induction$ increasing a row by 2,
+  except for
+  $$
+\mat\bullet& r\\c&\emat \qquad \mat\bullet& c\\ r&\emat,
+$$
+when only a row with a $-$ is increased.
+\item  Adding $c'$ adds two and flips a $-$ if below $\bullet,$ adds
+  two and flips a $+$ if below $r.$ 
+\end{itemize}
+Examples \ref{3.5} and \ref{3.6} illustrate these rules.
+
+
+Continue this way down the rows of $\tau_L$.
+
+When sizes of pairs of rows are repeated, form the nilpotent orbit
+from $\tau_L\times \tau_R$ with the duplicate pairs of rows
+ending in $\bullet$ and $r/c$ removed, and then add the pairs of equal
+rows as in the case $\tau_L=\tau_R$.
+
+\end{comment}
+
+\newpage
+\subsection{Example}\label{3.5} Consider the infinitesimal character $(1,0,0)$
+corresponding to $\CO=(3,1,1,1,1)$ and $\vO=(4,2).$ Only half the
+size of each row of the nilpotent
+orbit in $Sp$ is listed with its sign. {\clrr For type C, double the sizes of
+the rows to get the actual partition of the nilpotent orbit}. We get
+$\pmat  x&x\epmat\times \mat  x&\emat:$ 
+
+\bigskip
+\hrule
+\medskip
+$\mat \bullet&r\emat$\qquad $\mat -&+&-\\+&&\\+&&\\+&&\\-&&\emat$\qquad
+\qquad $\mat+&-\\+&\emat$\qquad $(\ul{1}^-,\ul{0}^-,\ul{0}^-),\ (10\ul{0}^+)$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&c\emat$\qquad $\mat -&+&-\\+&&\\+&&\\+&&\\-&&\emat$\qquad
+\qquad $\mat-&+\\-&\emat$\qquad $(\ul{1}^-,\ul{0}^-,\ul{0}^-),\ (0-1\ul{0}^+)$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&c'\emat$\qquad $\mat -&+&-\\+&&\\+&&\\+&&\\+&&\emat$\qquad
+\qquad $\mat-&+\\+&\emat\cup\mat+&-\\-&\emat $
+\qquad $(\ul{1}^+,\ul{0}^+,\ul{0}^+),\ (\ul{10}\ul{0}^+)$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat c'&c'\emat$\qquad $\mat +&-&+\\+&&\\+&&\\+&&\\+&&\emat$\qquad
+\qquad $\mat-&+\\+&\emat\cup\mat+&-\\-&\emat $
+\qquad $(\ul{1}^+,\ul{0}^-,\ul{0}^+)$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat r&c\emat$\qquad $\mat +&-&+\\+&&\\-&&\\+&&\\-&&\emat$\qquad
+\qquad $\mat-&+\\+&\emat$\qquad $(\ul{1}^+,\ul{0}^+,\ul{0}^-)$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat c&c\emat$\qquad $\mat +&-&+\\+&&\\-&&\\+&&\\-&&\emat$\qquad
+\qquad $\mat+&-\\-&\emat$\qquad $(\ul{1}^+,\ul{0}^+,\ul{0}^-)$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat r&c'\emat$\qquad $\mat +&-&+\\+&&\\-&&\\+&&\\+&&\emat$\qquad
+\qquad $\mat+&-\\+&\emat$\qquad $(\ul{1}^-,\ul{0}^-,\ul{0}^+),\ (10\ul{0}^-)$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat c&c'\emat$\qquad $\mat +&-&+\\+&&\\-&&\\+&&\\+&&\emat$\qquad
+\qquad $\mat-&+\\-&\emat$\qquad $(\ul{1}^-,\ul{0}^-,\ul{0}^+),\ (0-1\ul{0}^-)$
+
+\hfill
+\medskip
+
+\subsection{Example}\label{3.6} Consider the infinitesimal character
+$(1,1,0,0)$ corresponding to the nilpotent $(4,2,2)$ in type $C$ dual to
+$(3,3,1,1,1)$ in type $B.$ The parameters, $\AV(\pi)$ and $\AV(\chp)$  correspond to
+$\mat x&x\\x&\emat\times\mat x&\\&\emat,$  and are as follows.
+
+\bigskip
+\hrule
+\medskip
+$\mat \bullet&r\\ c&\emat$\qquad  $\mat +&-&+\\ -&+&-\\+&&\\+&&\\-&&\emat$
+\qquad $\mat +&-\\-&\\+\emat$\qquad $\ul{1}^+\ul{1}^-\ul{0}^+\ul{0}^-$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat r&c\\ c&\emat$\qquad  $\mat +&-&+\\-&+&-\\+&&\\+&&\\-&&\emat
+\cup  \mat +&-&+\\+&-&+\\-&&\\+&&\\-&&\emat$
+\qquad $\mat +&-\\-&\\-\emat$\qquad $\ul{10}\ul{1}^-\ul{0}^-$\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&c'\\ r&\emat$\qquad  $\mat +&-&+\\ -&+&-\\+&&\\+&&\\+&&\emat$
+\qquad $\mat +&-\\-&\\+\emat\cup\mat -&+\\+&\\+\emat $
+\qquad $\ul{1}^+\ul{1}^-\ul{0}^-\ul{0}^-$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat r&c\\ r&\emat$\qquad  $\mat +&-&+\\-&+&-\\+&&\\+&&\\-&&\emat
+\cup  \mat +&-&+\\+&-&+\\-&&\\+&&\\-&&\emat$
+\qquad $\mat -&+\\+&\\+\emat$\qquad $\ul{10}\ul{1}^-\ul{0}^-$\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&c\\ r&\emat$\qquad  $\mat +&-&+\\ -&+&-\\+&&\\+&&\\-&&\emat$
+\qquad $\mat -&+\\-&\\+\emat$\qquad $\ul{1}^+\ul{1}^-\ul{0}^+\ul{0}^-$\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&c'\\ c&\emat$\qquad  $\mat +&-&+\\ -&+&-\\+&&\\+&&\\+&&\emat$
+\qquad $\mat -&+\\+&\\-\emat\cup\mat +&-\\-&\\-\emat $
+\qquad $\ul{1}^+\ul{1}^-\ul{0}^-\ul{0}^-$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat c&c\\ c'&\emat$\qquad  $\mat -&+&-\\ -&+&-\\+&&\\-&&\\-&&\emat$
+\qquad $\mat +&-\\-&\\-\emat\cup\mat +&-\\-&\\+\emat $
+\qquad $\ul{1}^+\ul{1}^+\ul{0}^+\ul{0}^-$\hfill
+\medskip
+\hrule
+\medskip
+$\mat r&c\\ c'&\emat$\qquad  $\mat -&+&-\\ -&+&-\\+&&\\-&&\\-&&\emat$
+\qquad $\mat -&+\\+&\\+\emat\cup\mat -&+\\+&\\-\emat $
+\qquad $\ul{1}^+\ul{1}^+\ul{0}^+\ul{0}^-$\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&c'\\ c'&\emat$\qquad  $\mat -&+&-\\ -&+&-\\+&&\\+&&\\+&&\emat$
+\qquad $\mat -&+\\+&\\+\emat\cup\mat -&+\\+&\\-\emat\cup 
+\mat +&-\\-&\\-\emat\cup\mat +&-\\-&\\+\emat$
+\qquad $\ul{1}^+\ul{1}^+\ul{0}^+\ul{0}^+$\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&r\\ r&\emat$\qquad  $\mat +&-&+\\+&-&+\\-&&\\-&&\\-&&\emat
+\cup  \mat +&-&+\\-&+&-\\+&&\\-&&\\-&&\emat$
+\qquad $\mat +&-\\+&\\+\emat$\qquad ${10}\ul{1}^-\ul{0}^-$\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&c\\ c&\emat$\qquad  $\mat +&-&+\\+&-&+\\-&&\\-&&\\-&&\emat
+\cup  \mat +&-&+\\-&+&-\\+&&\\-&&\\-&&\emat$
+\qquad $\mat -&+\\-&\\-\emat$\qquad $0-1\ul{1}^-\ul{0}^-$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat r&c'\\ r&\emat$\qquad  $\mat +&-&+\\+&-&+\\-&&\\+&&\\+&&\emat
+\cup  \mat +&-&+\\-&+&-\\+&&\\+&&\\+&&\emat$
+\qquad $\mat +&-\\+&\\+\emat$\qquad ${10}\ul{1}^-\ul{0}^+$\hfill
+\medskip
+\hrule
+\medskip
+$\mat r&c'\\ c&\emat$\qquad  $\mat +&-&+\\+&-&+\\-&&\\+&&\\+&&\emat
+\cup  \mat +&-&+\\-&+&-\\+&&\\+&&\\+&&\emat$
+\qquad $\mat -&+\\-&\\-\emat$\qquad $0-1\ul{1}^-\ul{0}^+$\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&r\\ c'&\emat$\qquad  $\mat +&-&+\\ +&-&+\\-&&\\+&&\\-&&\emat$
+\qquad $\mat +&-\\+&\\-\emat\cup\mat +&-\\+&\\+\emat $
+\qquad $\ul{1}^-\ul{1}^-\ul{0}^-\ul{0}^-$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&c\\ c'&\emat$\qquad  $\mat +&-&+\\ +&-&+\\-&&\\+&&\\-&&\emat$
+\qquad $\mat -&+\\-&\\-\emat\cup\mat -&+\\-&\\+\emat $
+\qquad $\ul{1}^-\ul{1}^-\ul{0}^-\ul{0}^-$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat r&c'\\ c'&\emat$\qquad  $\mat +&-&+\\ +&-&+\\+&&\\+&&\\+&&\emat$
+\qquad $\mat +&-\\+&\\+\emat\cup\mat +&-\\+&\\-\emat\cup \mat-&+\\+&\\+&\emat $
+\qquad $\ul{1}^-\ul{1}^-\ul{0}^-\ul{0}^+$
+\hfill
+\medskip
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat c&c'\\ c'&\emat$\qquad  $\mat +&-&+\\ +&-&+\\+&&\\+&&\\+&&\emat$
+\qquad $\mat -&+\\-&\\-\emat\cup\mat -&+\\-&\\+\emat\cup\mat +&-\\-&\\-\emat  $
+\qquad $\ul{1}^-\ul{1}^-\ul{0}^-\ul{0}^+$
+\hfill
+\medskip
+\hrule
+
+
+\subsection{Example}\label{3.7} Consider the infinitesimal character
+$(2,1,1,1,0,0)$ corresponding to the nilpotent $(4,4,4,2)$ in type $C$ dual to
+$(5,3,3,3,1)$ in type $B.$ The parameters and supports correspond to
+$\pmat x&x\\x&x&\epmat\times\pmat x&x\\x&\epmat$ are as follows.
+
+\bigskip
+\hrule
+\medskip
+$\mat \bullet&\bullet\\ \bullet&r\emat$\qquad  
+$\mat +&-&+&-&+\\ +&-&+&&\\-&+&-&&\\-&+&-&&\\+&&&&\emat$
+\qquad $\mat +&-\\-&+\\+&-\\+&&\emat$
+\qquad $\ul{2}^-\ul{1}^+\ul{1}^-\ul{0}^-\ul{1}^-\ul{1}^-\ul{0}^-$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&\bullet\\ \bullet&c\emat$\qquad  
+$\mat +&-&+&-&+\\ +&-&+&&\\-&+&-&&\\-&+&-&&\\+&&&&\emat$
+\qquad $\mat +&-\\-&+\\-&+\\-&&\emat$
+\qquad $\ul{2}^-\ul{1}^+\ul{1}^-\ul{0}^-\ul{1}^-\ul{1}^-\ul{0}^-$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&\bullet\\ \bullet&c'\emat$\qquad  
+$\mat +&-&+&-&+\\ -&+&-&&\\-&+&-&&\\-&+&-&&\\+&&&&\emat$
+\qquad $\mat +&-\\-&+\\+&-\\-&&\emat\cup\mat +&-\\-&+\\-&+\\+&&\emat$
+\qquad 
+\qquad $\mat \ul{2}^+\ul{1}^+\ul{1}^+\ul{1}^+\ul{1}^+\ul{0}^+\ul{0}^+\\
+\ul{2-1}\ \ul{10}\ \ul{1}^+\ul{1}^+\ul{0}^+\emat$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&\bullet\\ r&c\emat$\qquad  
+$\mat -&+&-&+&-\\ +&-&+&&\\+&-&+&&\\-&+&-&&\\+&&&&\emat$
+\qquad $\mat +&-\\-&+\\-&+\\+&&\emat$
+\qquad 
+\qquad $\mat\ul{2}^+\ul{1}^+\ul{1}^+\ul{0}^+\ul{1}^+\ul{1}^-\ul{0}^-,\\
+\ul{2-1}\ \ul{10}\ \ul{1}^+\ul{1}^-\ul{0}^-\emat$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&\bullet\\ c&c\emat$\qquad  
+$\mat -&+&-&+&-\\ +&-&+&&\\+&-&+&&\\-&+&-&&\\+&&&&\emat$
+\qquad $\mat +&-\\-&+\\+&-\\-&&\emat$
+\qquad 
+\qquad $\mat\ul{2}^+\ul{1}^+\ul{1}^+\ul{0}^+\ul{1}^+\ul{1}^-\ul{0}^-,\\
+\ul{2-1}\ \ul{10}\ \ul{1}^+\ul{1}^-\ul{0}^-\emat$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&\bullet\\ r&c'\emat$\qquad  
+$\mat -&+&-&+&-\\ +&-&+&&\\-&+&-&&\\-&+&-&&\\+&&&&\emat$
+\qquad $\mat +&-\\-&+\\+&-\\+&&\emat$
+\qquad 
+\qquad $\mat\ul{2}^-\ul{1}^-\ul{1}^-\ul{0}^-\ul{1}^+\ul{1}^+\ul{0}^+,\\
+\ul{2}^-\ \ul{10}\ \ul{0}^-\ul{1}^+\ul{1}^+\ul{0}^+\emat$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&\bullet\\ c&c'\emat$\qquad  
+$\mat -&+&-&+&-\\ +&-&+&&\\-&+&-&&\\-&+&-&&\\+&&&&\emat$
+\qquad $\mat +&-\\-&+\\-&+\\-&&\emat$
+\qquad 
+\qquad $\mat\ul{2}^-\ul{1}^-\ul{1}^-\ul{0}^-\ul{1}^+\ul{1}^+\ul{0}^+,\\
+\ul{2}^-\ \ul{10}\ \ul{0}^-\ul{1}^+\ul{1}^+\ul{0}^+\emat$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&\bullet\\ c'&c'\emat$\qquad  
+$\mat -&+&-&+&-\\ -&+&-&&\\-&+&-&&\\-&+&-&&\\+&&&&\emat$
+\qquad $\mat +&-\\-&+\\-&+\\+&&\emat\cup\mat +&-\\-&+\\+&-\\-&&\emat $
+\qquad 
+\qquad $\ul{2}^+\ul{1}^+\ul{1}^-\ul{0}^-\ul{1}^-\ul{1}^-\ul{0}^-$
+\hfill
+\medskip
+\hrule
+%\newpage
+\hrule
+\medskip
+$\mat \bullet&r\\ \bullet&r\emat$\qquad  
+$\mat -&+&-&+&-\\ +&-&+&&\\+&-&+&&\\+&-&+&&\\-&&&&\emat\cup
+\mat -&+&-&+&-\\ +&-&+&&\\+&-&+&&\\-&+&-&&\\+&&&&\emat$
+\qquad $\mat +&-\\+&-\\+&-\\+&&\emat$
+\qquad $\mat 21\ \ul{1}^-\ul{0}^-\ul{1}^+\ul{1}^+\ul{0}^+,\\ 1\
+\ul{2}^-\ul{1}^-\ul{0}^-\ul{1}^+\ul{1}^+\ul{0}^+\emat$ 
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&r\\ \bullet&c\emat$\qquad  
+$\mat -&+&-&+&-\\ +&-&+&&\\+&-&+&&\\+&-&+&&\\-&&&&\emat\cup
+\mat -&+&-&+&-\\ +&-&+&&\\+&-&+&&\\-&+&-&&\\+&&&&\emat$
+\qquad $\mat -&+\\-&+\\-&+\\-&&\emat$
+\qquad $\mat -1-2\ \ul{1}^-\ul{0}^-\ul{1}^+\ul{1}^+\ul{0}^+,\\ -1\
+\ul{2}^-\ul{1}^-\ul{0}^-\ul{1}^+\ul{1}^+\ul{0}^+\emat$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&r\\ \bullet&c'\emat$\qquad  
+$\mat -&+&-&+&-\\ +&-&+&&\\+&-&+&&\\+&-&+&&\\+&&&&\emat$
+\qquad $\mat +&-\\+&-\\-&+\\+&&\emat\cup\mat +&-\\+&-\\+&-\\-&&\emat$
+\qquad $\ul{2}^-\ul{1}^-\ul{1}^-\ul{0}^-\ul{1}^-\ul{1}^-\ul{0}^-$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&c\\ \bullet&c'\emat$\qquad  
+$\mat -&+&-&+&-\\ +&-&+&&\\+&-&+&&\\+&-&+&&\\+&&&&\emat$
+\qquad $\mat -&+\\-&+\\-&+\\+&&\emat\cup\mat -&+\\-&+\\+&-\\-&&\emat$
+\qquad $\ul{2}^-\ul{1}^-\ul{1}^-\ul{0}^-\ul{1}^-\ul{1}^-\ul{0}^-$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&r\\ r&c\emat$\qquad  
+$\mat +&-&+&-&+\\ +&-&+&&\\-&+&-&&\\-&+&-&&\\+&&&&\emat\cup
+\mat +&-&+&-&+\\ +&-&+&&\\-&+&-&&\\+&-&+&&\\-&&&&\emat$
+\qquad $\mat -&+\\-&+\\-&+\\+&&\emat$
+\qquad $1\ul{2-1}\ \ul{10}\ul{1}^-\ul{0}^-$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&r\\ c&c\emat$\qquad  
+$\mat +&-&+&-&+\\ +&-&+&&\\-&+&-&&\\-&+&-&&\\+&&&&\emat\cup
+\mat +&-&+&-&+\\ +&-&+&&\\-&+&-&&\\+&-&+&&\\-&&&&\emat$
+\qquad $\mat +&-\\+&-\\+&-\\-&&\emat$
+\qquad $-1\ul{2-1}\ \ul{10}\ul{1}^-\ul{0}^-$ 
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&c\\ c&c'\emat$\qquad  
+$\mat +&-&+&-&+\\ +&-&+&&\\+&-&+&&\\-&+&-&&\\+&&&&\emat\cup
+\mat +&-&+&-&+\\ +&-&+&&\\+&-&+&&\\+&-&+&&\\-&&&&\emat$
+\qquad $\mat -&+\\-&+\\-&+\\-&&\emat$
+\qquad $\mat{-1}{-2}\ \ul{1}^-\ul{0}^-\ul{1}^-\ul{1}^-\ul{0}^-,\\
+{-1}\ \ul{2}^-\ \ul{1}^-\ul{0}^-\ul{1}^-\ul{1}^-\ul{0}^-\emat$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&r\\ r&c'\emat$\qquad  
+$\mat +&-&+&-&+\\ +&-&+&&\\+&-&+&&\\-&+&-&&\\+&&&&\emat\cup
+\mat +&-&+&-&+\\ +&-&+&&\\+&-&+&&\\+&-&+&&\\-&&&&\emat$
+\qquad $\mat +&-\\+&-\\+&-\\+&&\emat$
+\qquad $\mat{2}{1}\ \ul{1}^-\ul{0}^-\ul{1}^-\ul{1}^-\ul{0}^-,\\
+{1\ }\ul{2}^-\ \ul{1}^-\ul{0}^-\ul{1}^-\ul{1}^-\ul{0}^-\emat$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&c\\ r&c'\emat$\qquad  
+$\mat -&+&-&+&-\\ -&+&-&&\\-&+&-&&\\+&-&+&&\\+&&&&\emat$
+\qquad $\mat -&+\\-&+\\+&-\\+&&\emat$
+\qquad $\mat\ul{2}^+\ul{1}^+\ul{1}^+\ul{0}^+\ul{1}^-\ul{1}^-\ul{0}^-,\\
+\ul{2-1}\ \ul{10}\ \ul{1}^-\ul{1}^-\ul{0}^-\emat$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&r\\ c&c'\emat$\qquad  
+$\mat -&+&-&+&-\\ -&+&-&&\\-&+&-&&\\+&-&+&&\\+&&&&\emat$
+\qquad $\mat +&-\\+&-\\-&+\\-&&\emat$
+\qquad $\mat\ul{2}^+\ul{1}^+\ul{1}^+\ul{0}^+\ul{1}^-\ul{1}^-\ul{0}^-,\\
+\ul{2-1}\ \ul{10}\ \ul{1}^-\ul{1}^-\ul{0}^-\emat$
+\hfill
+\medskip
+\hrule
+
+\medskip
+$\mat \bullet&c\\ c'&c'\emat$\qquad  
+$\mat +&-&+&-&+\\ +&-&+&&\\+&-&+&&\\+&-&+&&\\+&&&&\emat$
+\qquad $\mat -&+\\-&+\\+&-\\-&&\emat\cup\mat -&+\\-&+\\-&+\\+&&\emat$
+\qquad $\mat\ul{2}^-\ul{1}^+\ul{1}^-\ul{0}^-\ul{1}^+\ul{1}^+\ul{0}^+,\\
+-1\ \ul{2}^+\ul{1}^-\ul{0}^-\ul{1}^+\ul{1}^+\ul{0}^+\emat$
+\hfill
+\medskip
+\hrule
+\medskip
+$\mat \bullet&r\\ c'&c'\emat$\qquad  
+$\mat +&-&+&-&+\\ +&-&+&&\\+&-&+&&\\+&-&+&&\\+&&&&\emat$
+\qquad $\mat +&-\\+&-\\+&-\\-&&\emat\cup\mat +&-\\+&-\\-&+\\+&&\emat$
+\qquad $\mat\ul{2}^-\ul{1}^+\ul{1}^-\ul{0}^-\ul{1}^+\ul{1}^+\ul{0}^+\\ 
+1\ \ul{2}^+\ul{1}^-\ul{0}^-\ul{1}^+\ul{1}^+\ul{0}^+\emat$
+\hfill
+\medskip
+\hrule
+\newpage
+\subsection{Type $\wti{C}$}
+
+Consider the case when all pairs of columns of $\tau_L$ and $\tau_R$
+differ by one. Successive pairs are strictly smaller so that the
+corresponding dual nilpotent orbit is even also. Otherwise $\AV$ is
+obtained by $\rho-$induction or $\theta-$induction. The conventon is
+\begin{enumerate}
+\item $\rho-$induction means adding $2$ to the length of a  column
+  leaving the sign unchanged
+\item $\theta-$induction means adding $2$ to the end of the column,
+  and changing the sign from $-$ to $+$ for $r$ and $+$ to $-$ for $c.$
+\end{enumerate}
+Due to the previous section, we only deal with special tableaus. We
+add pairs of columns  starting with the  largest pair. The largest
+pair of columns is 
+$$
+\begin{aligned}
+&\mat
+\bullet &\times &\bullet\\
+\vdots & &\vdots\\
+\bullet & &\bullet\\
+r&   &r\\
+\vdots & &\vdots\\
+r& &r\\
+r& &x\\
+a & &
+\emat &\qquad\text{ or } \qquad
+\mat
+\bullet &\times &\bullet\\
+\vdots & &\vdots\\
+\bullet & &\bullet\\
+r&   &r\\
+\vdots & &\vdots\\
+r& &r\\
+r& &r\\
+a && x
+\emat
+\end{aligned}
+$$
+For unequal columns, the nilpotent orbit gets
+\begin{enumerate}
+\item pairs of rows $\mat +-\\ -+\emat$ for $\bullet\times\bullet$
+\item pairs of rows $\mat +-\\+-\emat$ for $r\times r$ and $x=r$, and $\mat -+\\-+\emat$,   for $x=c$,
+\item a row $\mat +-\emat$ for $a=r$, and $\mat -+\emat$ for $a=c$.
+\end{enumerate}
+For equal columns, use
+\begin{enumerate}
+\item pairs of rows $\mat+-\\-+\emat$ for $\bullet\times\bullet$
+\item pairs of rows $\mat +-\\+-\emat$ for $a=r$, and $\mat-+\\-+\emat$  for $a=c$ for all $r\times r$.
+\item one last pair of rows with sign as before for $a=x$, and a union of nilpotent orbits, one with $\mat +-\\+-\emat\cup\mat +-\\-+\emat$ for $a=r, x=c$, and $\mat +-\\-+\emat\cup\mat -+\\-+\emat$ for $a=c, x=r.$
+\end{enumerate}
+To describe the process of adding the next pair of columns, we
+describe the last two pairs of columns of $\tau_L\times \tau_R.$  
+$$
+\begin{aligned}
+&(a)&&(b)&&(c)&&(d)\\
+&\mat
+\vdots &\vdots&\times &\vdots &\vdots\\
+\bullet &r& &\bullet&r\\
+\bullet &\al & &\bullet&x\\
+\bullet& & &\bullet&\\
+\vdots && &\vdots&\\
+\bullet&  & &\bullet&\\
+r&&&r\\
+\vdots && &\vdots&\\
+r&&&r&\\
+r&&&y&\\
+\gamma&&&&
+\emat
+\quad
+&&\mat
+\vdots &\vdots&\times &\vdots &\vdots\\
+\bullet &r& &\bullet&r\\
+r&c & &r&c\\
+r&&&r\\
+\vdots && &\vdots&\\
+\vdots && &\vdots&\\
+\vdots && &\vdots&\\
+r&&&r&\\
+r&&&y&\\
+\gamma&&&&
+\emat
+\quad
+&&\mat
+\vdots &\vdots&\times &\vdots &\vdots\\
+\bullet &r& &\bullet&x\\
+\bullet &\al & &\bullet&\\
+\bullet& & &\bullet&\\
+\vdots && &\vdots&\\
+\bullet&  & &\bullet&\\
+r&&&r\\
+\vdots && &\vdots&\\
+r&&&r&\\
+r&&&r&\\
+\gamma&&&y&
+\emat
+\quad
+&&\mat
+\vdots &\vdots&\times &\vdots &\vdots\\
+\bullet &r& &\bullet&x\\
+r&c & &r&\\
+r&&&r\\
+\vdots && &\vdots&\\
+\vdots && &\vdots&\\
+\vdots && &\vdots&\\
+r&&&r&\\
+r&&&r&\\
+\gamma&&&y&
+\emat
+\end{aligned}
+$$
+and four more,
+$$
+\begin{aligned}
+&(e)&&(f)&&(g)&&(h)\\  
+&\mat
+\vdots &\vdots&\times &\vdots &\vdots\\
+\bullet &r& &\bullet&r\\
+\bullet &\al & &\bullet&x\\
+\bullet& & &\bullet&\\
+\vdots && &\vdots&\\
+\bullet&  & &\bullet&\\
+r&&&r\\
+\vdots && &\vdots&\\
+r&&&r&\\
+r&&&r&\\
+\gamma&&&y&
+\emat
+\quad
+&&\mat
+\vdots &\vdots&\times &\vdots &\vdots\\
+\bullet &r& &\bullet&r\\
+r&c & &r&c\\
+r&&&r\\
+\vdots && &\vdots&\\
+\vdots && &\vdots&\\
+\vdots && &\vdots&\\
+r&&&r&\\
+r&&&r&\\
+\gamma&&&y&
+\emat
+\quad
+&&\mat
+\vdots &\vdots&\times &\vdots &\vdots\\
+\bullet &r& &\bullet&x\\
+\bullet &\al & &\bullet&\\
+\bullet& & &\bullet&\\
+\vdots && &\vdots&\\
+\bullet&  & &\bullet&\\
+r&&&r\\
+\vdots && &\vdots&\\
+r&&&r&\\
+r&&&y&\\
+\gamma&&&&
+\emat
+\quad
+&&\mat
+\vdots &\vdots&\times &\vdots &\vdots\\
+\bullet &r& &\bullet&x\\
+r&c & &r&\\
+r&&&r\\
+\vdots && &\vdots&\\
+\vdots && &\vdots&\\
+\vdots && &\vdots&\\
+r&&&r&\\
+r&&&y&\\
+\gamma&&&&
+\emat
+\end{aligned}  
+$$
+The vertical dots can be $\bullet\bullet\times\bullet\bullet$ or $\bullet
+r\times\bullet r$. 
+The cases are grouped by the pairs of columns (larger, smaller)
+\begin{description}
+\item[(a) and (b)] (unequal, equal)
+\item[(c) and (d)] (equal, unequal)
+\item[(e) and (f)] (equal,equal)
+\item[(g) and (h)] (unequal, unequal)  
+\end{description}
+The appropriate rows are increased by two, and the signs are changed as follows.
+Denote by the \textit{tail} the portion including and below 
+$$
+\begin{aligned}
+&(a)(e)&&(b)(f)&&(c)(g)&&(d)(h)\\   
+&\mat\bullet&\al\\&\emat\times\mat\bullet&x\\ &\emat,\qquad
+&& \mat r&c\\&\emat\times\mat r&c\\&\emat,\qquad
+&&\mat\bullet& r\\\bullet&\al\emat
+\times\mat\bullet& x\\\bullet &\emat,\qquad
+&&\mat\bullet&r\\ r&c\emat\times\mat\bullet&x\\ r& \emat,\qquad
+%\mat\bullet&r\\\bullet&\al\emat \times \mat\bullet&x\\\bullet &\emat,\qquad
+%\mat \bullet&r\\ r&c\emat\times \mat\bullet&x\\r&\emat.
+  \end{aligned}
+$$ 
+We construct the signs for the tail. The remainder will be determined;
+the remaining pairs of rows are  $\bullet\bullet\times\bullet\bullet$ and
+$\bullet r\times\bullet r$.
+\begin{enumerate}
+\item $\bullet\bullet \times\bullet\bullet$
+changes $\mat +\\-\emat$ to $\mat +-\\-+\emat.$   
+\item In cases (a)(e) and (c)(g), the rows of size 2 follow the signs
+  for a single pair of columns for the tail. The rows of size 4 follow
+  the signs of the pair of smaller columns.
+\item In cases (b), (d) and (h) construct the signs for the pair of columns
+  below $rc\times r$ as for a single pair of columns. The extra $c$ in
+  $\tau_L$ increases one row to $+-+-$ or $-+-+$ according to $y$.
+  The rows above, $\bullet r\times\bullet r$ are increased by $2,$ and
+  follow the sign of $rc\times r$.
+\item For case (f), for the tail below $rc\times rc$, construct the
+  signs as in types (b), (d), (h) without the $c$ in $\tau_L.$  The omitted
+  $c$ in $tau_L$ is added by $\rho-$induction. The pairs of rows
+  $\bullet r\times\bullet r$ above, acquire the sign from  $\gamma;$
+  $+-+-$ for $\gamma=r,$ and $-+-+$ for $\gamma=c.$    
+\end{enumerate}
+
+\bigskip
+The following examples are templates for the algorithms.
+\begin{example} $\CO_c=(4442)$. We record half the sizes of the rows
+  to save space. We start with the first pair of columns:
+  $$
+  \begin{aligned}
+    &\mat\bullet\\\bullet\emat\times\mat\bullet\\\bullet\emat
+    &&\mat\bullet\\ r\emat\times\mat\bullet\\ r\emat
+    &&\mat\bullet\\ r\emat\times\mat\bullet\\ c\emat
+    &&\mat\bullet\\ c\emat\times\mat\bullet\\ r\emat
+    &&\mat\bullet\\ c\emat\times\mat\bullet\\ c\emat\\
+    &\mat+\\-\\+\\-\emat
+    &&\mat+\\-\\+\\+\emat
+    &&\mat+\\-\\+\\+\emat\cup\mat +\\-\\+\\-\emat
+    &&\mat+\\-\\+\\+\emat\cup\mat -\\-\\-\\+\emat
+    &&\mat+\\-\\-\\-\emat\\
+     &\mat r\\ r\emat\times\mat r\\ r\emat
+    &&\mat r \\ r\emat\times\mat r\\ c\emat
+    &&\mat r\\ c\emat\times\mat r\\ r\emat
+    &&\mat r\\ c\emat\times\mat r\\ c\emat \\
+    &\mat+\\+\\+\\+\emat
+    &&\mat+\\+\\+\\+\emat\cup\mat +\\+\\+\\-\emat
+    &&\mat-\\-\\-\\+\emat\cup\mat -\\-\\-\\-\emat
+    &&\mat-\\-\\-\\-\emat
+  \end{aligned}
+  $$
+$$
+\begin{aligned}
+&\mat\bullet&\bullet\\\bullet&r\emat\times\mat\bullet&\bullet\\\bullet&\emat\qquad
+&&\mat\bullet&\bullet\\\bullet&c\emat\times\mat\bullet&\bullet\\\bullet &\emat
+\\
+&\mat+-\\-+\\+-\\+\quad\emat
+&&\mat+-\\-+\\-+\\-\quad\emat
+\end{aligned}
+$$
+$\line(1,0){360}$
+$$
+  \begin{aligned}
+&  
+\mat \bullet &\bullet\\r&c\emat \times\mat\bullet &\bullet\\{r}& \emat&&\quad\mat \bullet&
+\bullet\\r&c\emat \times\mat\bullet& \bullet\\ {c}&\emat&&\quad\mat \bullet&
+\bullet\\c&c\emat\times\mat\bullet& \bullet\\{r}& \emat&&\quad\mat \bullet&
+\bullet\\c&c\emat \times\mat\bullet&\bullet\\{c}&\emat\\
+&\mat +-\\-+\\+-\\{+}\quad\emat
+&&\quad
+\mat +-\\-+\\+-\\{+}\quad\emat\cup\mat +-\\-+\\+-\\ {+}\quad\emat
+&&\quad
+\mat +-\\-+\\-+\\{-}\quad\emat\cup\mat +-\\-+\\-+\\ {+}\quad\emat
+&&\quad
+\mat +-\\-+\\-+\\ {-}\quad\emat
+\end{aligned}
+$$
+$\line(1,0){360}$
+$$
+\begin{aligned}
+  &\mat \bullet &r\\\bullet&r\emat \times\mat\bullet &r\\\bullet& \emat
+  &&\quad\mat \bullet&r\\\bullet&r\emat \times\mat\bullet& c\\\bullet&\emat
+  &&\quad\mat \bullet&r\\\bullet &c\emat\times\mat\bullet& r\\\bullet&\emat
+  &&\quad\mat \bullet&r\\\bullet&c\emat \times\mat\bullet&c\\\bullet&\emat\\
+&\mat +-\\+-\\+-\\ {+}\quad\emat
+&&\quad
+\mat -+\\-+\\+-\\ {+}\quad\emat
+&&\quad
+\mat +-\\+-\\-+\\ {-}\quad\emat
+&&\quad
+\mat -+\\-+\\-+\\ {-}\quad\emat
+\end{aligned}
+$$
+$$
+  \begin{aligned}
+&\mat \bullet &r\\r&c\emat \times\mat\bullet &r\\{r}& \emat
+&&\quad\mat \bullet&r\\r&c\emat \times\mat\bullet& r\\{c}&\emat
+&&\quad\mat \bullet&r\\r&c\emat\times\mat\bullet& c\\{r}& \emat
+&&\quad\mat \bullet&r\\r&c\emat \times\mat\bullet&c\\{c}&\emat\\
+&\mat +-\\+-\\+-\\ {+}\quad \emat
+&&\quad\mat +-\\+-\\+-\\{+}\quad\emat\cup\mat+-\\+-\\+-\\{-}\quad\emat
+&&\quad\mat -+\\-+\\+-\\{+}\quad\emat
+&&\quad\mat -+\\-+\\+-\\{-}\quad\emat\cup\mat-+\\-+\\+-\\{+}\quad\emat
+\end{aligned}
+$$
+
+$\line(1,0){360}$
+
+$$
+  \begin{aligned}
+&  
+\mat \bullet &r\\c&c\emat \times\mat\bullet &r\\{r}&& \emat&&\quad\mat \bullet&
+r\\c&c\emat \times\mat\bullet& r\\ {c}&&\emat&&\quad\mat \bullet&
+r\\c&c\emat\times\mat\bullet& c\\{r}& \emat&&\quad\mat \bullet&
+r\\c&c\emat \times\mat\bullet&c\\{c}&\emat\\
+&\mat +-\\+-\\-+\\ {-}\quad\emat\cup\mat +-\\+-\\-+\\{+}\quad\emat
+&&\quad
+\mat +-\\+-\\-+\\ {-}\quad\emat
+&&\quad
+\mat -+\\-+\\-+\\ {-}\quad\emat\cup\mat -+\\-+\\-+\\ {+}\quad\emat
+&&\quad
+\mat -+\\-+\\-+\\ {-}\quad\emat
+\end{aligned}
+$$
+\end{example}
+
+\begin{example}
+  Let $\CO_c=(2{2})$.  The sizes of rows are not doubled.
+  $$
+  \begin{aligned}
+ &\bullet\times\bullet &&{r}\times {r}&&{r}\times
+ {c}&&{c}\times {r}&&c\times {c}\\
+ &\mat +-\\-+\emat\qquad &&\mat +-\\+-\emat\qquad&&\mat +-\\-+\emat\cup\mat
+ +-\\-+\emat\qquad&&\mat-+\\+-\emat\cup\mat-+\\-+\emat\qquad&&\mat -+\\-+\emat 
+  \end{aligned}
+  $$
+\end{example}
+\begin{example}
+Let $\CO_c=(442{2})$. We record only the cases when the number of
+$+$'s is at least as large as the number or $-'$s in the rows $44.$
+For the others flip the signs. Only half the sizes of the rows are listed
+$$
+\begin{aligned}
+&\mat\bullet&\bullet\\\bullet\emat\times\mat\bullet&\bullet\\\bullet\emat\quad
+&&\mat\bullet&r\\\bullet\emat\times\mat\bullet&r\\\bullet\emat\quad
+&&\mat\bullet&r\\\bullet\emat\times\mat\bullet&c\\\bullet\emat\quad\\
+%&&\mat\bullet&c\\\bullet\emat\times\mat\bullet&r\\\bullet\emat\quad
+%&&\mat\bullet&c\\\bullet\emat\times\mat\bullet&r\\\bullet\emat
+&\mat +-\\-+\\+\quad\\-\quad\emat
+&&\mat +-\\+-\\+\quad\\-\quad\emat
+&&\mat +-\\+-\\+\quad\\-\quad\emat\cup\mat +-\\-+\\+\quad\\-\quad\emat
+%&&\mat +-\\-+\\+\quad\\-\quad\emat\cup\mat -+\\-+\\+\quad\\-\quad\emat
+%&&\mat -+\\-+\\+\quad\\-\quad\emat
+\end{aligned}
+$$
+$$
+\begin{aligned}
+&\mat\bullet&\bullet\\ r\emat\times\mat\bullet&\bullet\\ r\emat\qquad
+&&\mat\bullet&\bullet\\ r\emat\times\mat\bullet&\bullet\\ c\emat\qquad
+&&\mat\bullet&\bullet\\ c\emat\times\mat\bullet&\bullet\\ r\emat\qquad
+&&\mat\bullet&\bullet\\ c\emat\times\mat\bullet&\bullet \\ c\emat\qquad\\
+&\mat +-\\-+\\+\quad\\+\quad\emat
+&&\mat +-\\-+\\+\quad\\+\quad\emat\cup\mat +-\\-+\\+\quad\\-\quad\emat
+&&\mat +-\\-+\\+\quad\\-\quad\emat\cup\mat +-\\-+\\-\quad\\-\quad\emat
+&&\mat +-\\-+\\-\quad\\-\quad\emat
+\end{aligned}
+$$
+$$
+\begin{aligned}
+&\mat\bullet&r\\ r\emat\times\mat\bullet&r\\ r\emat\quad
+&&\mat\bullet&r\\ r\emat\times\mat\bullet&c\\ r\emat\quad
+&&\mat\bullet&r\\ r\emat\times\mat\bullet&r\\ c\emat\quad
+&&\mat\bullet&r\\ r\emat\times\mat\bullet&c \\ c\emat\quad\\
+&\mat +-\\+-\\+\quad\\+\quad\emat
+&&\mat +-\\-+\\+\quad\\+\quad\emat\cup\mat +-\\+-\\+\quad\\-\quad\emat
+&&\mat +-\\+-\\+\quad\\+\quad\emat\cup\mat +-\\+-\\+\quad\\-\quad\emat
+&&\mat +-\\-+\\+\quad\\+\quad\emat\cup\mat +-\\+-\\+\quad\\-\quad\emat
+\cup\mat +-\\-+\\+\quad\\-\quad\emat\cup\mat +-\\+-\\-\quad\\-\quad\emat
+\end{aligned}
+$$
+$$
+\begin{aligned}
+&\mat\bullet&r\\ c\emat\times\mat\bullet&r\\ r\emat\qquad
+&&\mat\bullet&r\\ c\emat\times\mat\bullet&c\\ r\emat\qquad
+&&\mat\bullet&r\\ c\emat\times\mat\bullet&r\\ c\emat\qquad
+&&\mat\bullet&r\\ c\emat\times\mat\bullet&c \\ c\emat\qquad\\
+&\mat +-\\+-\\-\quad\\-\quad\emat\cup\mat +-\\+-\\-\quad\\+\quad\emat
+&&\mat +-\\-+\\-\quad\\-\quad\emat\cup\mat +-\\-+\\-\quad\\+\quad\emat\cup
+\mat +-\\+-\\-\quad\\-\quad\emat
+&&\mat +-\\+-\\-\quad\\-\quad\emat
+&&\mat +-\\-+\\-\quad\\-\quad\emat
+\end{aligned}
+$$
+$$
+\begin{aligned}
+&\mat r&c\\ r\emat\times\mat  r&c\\ r\emat\qquad
+&&\mat r&c\\ r\emat\times\mat r&c\\ c\emat\qquad\\
+%&&\mat r&c\\ c\emat\times\mat r&c\\ r\emat\qquad
+%&&\mat r&c\\ c\emat\times\mat r&c \\ c\emat\qquad\\
+&\mat +-\\+-\\+\quad\\+\quad\emat
+&&\mat +-\\+-\\+\quad\\+\quad\emat\cup\mat+-\\+-\\+\quad\\-\quad\emat\cup
+\mat+-\\-+\\+\quad\\+\quad\emat
+%&&\mat -+\\-+\\+\quad\\-\quad\emat\cup\mat -+\\-+\\-\quad\\-\quad\emat
+%&&\mat -+\\-+\\-\quad\\-\quad\emat
+\end{aligned}
+$$
+\end{example}
+
+
+
+
+\subsubsection{} We return to the case when all pairs of columns are odd size.
+The largest size row occurs an odd number of tiumes while all others
+occur an even number of times. We reduce the computation of $\AV(\pi)$
+to that when the largest pair of columns is removed. The edges of 
+$\tau_L\times\tau_R$ are
+$$
+\mat
+  \vdots &\vdots\\
+  \bullet &\beta\\
+  \vdots &      \\
+  \star &\\
+  \gamma\\
+\emat
+  \qquad\times\qquad
+\mat
+  \vdots &\vdots\\
+  \bullet &\\
+  \vdots &      \\
+  y&\\
+  &
+\emat
+\qquad\text{ or }\qquad
+\mat
+  \vdots &\vdots\\
+  r&c\\
+  \vdots &      \\
+  r&\\
+  \gamma\\
+\emat
+  \qquad\times\qquad
+\mat
+  \vdots &\vdots\\
+  r &\\
+  \vdots &      \\
+  y&\\
+  &
+\emat
+$$
+$\AV(\pi)$ for a tableau on the left comes from the tableau with the
+largest columns removed. $\AV(\pi)$ of the  one on the right comes from
+the tableau where the largest pair of columns is removed, and the $c$
+in the second column of $\tau_L$ is replaced by $y.$ 
+
+More precisely, let $\tau_L'\times \tau_R'$ be a pair of tableaus with
+sizes same as $\tau_L\times\tau_R$ with the largest pair removed. Add
+pairs of largest columns in all possible ways, reversing the
+proicedure just outlined. In particular, move the last element
+in $\tau_L'$ to the last element in $\tau_R$ when adding a row
+$rc$. In particular, each row of $\AV(\pi')$ is extended by 2. Pairs
+of rows of size two are added with signs all possible ways. Whenever
+$\mat +-\\-+\emat$ occurs, there are two $\tau_L\times\tau_R$  giving the same
+$\AV.$  
+\begin{theorem}
+When all pairs of columns of $\CO_c$ are odd, there is a one-to-one
+correspondence between the local systems of the real nilpotent orbits
+and the $\AV(\pi).$
+
+In this theorem, in addition to the factor of 2 coming from the $\mat
++-\\-+\emat$, there is another factor coming from the non-special
+tableaus, which also account for parameters.
+\end{theorem}
+ 
+\newpage
+\section{The $\Theta-$correspondence, $C/D$ and $\wti{C}/B$}
+\subsection{Local Systems on Nilpotent Orbits} The nilpotent orbits in
+type C all have pairs of equal columns; by assumption, no size occurs
+more than twice. In terms of rows, all rows are of even size, and
+every even size occurs.  
+
+
+The orbits in type D all have pairs of equal columns, except for the
+smallest and the largest, which each occur once, and are even size. In
+terms of rows, all are odd sized, and every odd size occurs.   
+
+For type C, the Jordan blocks are represented by 
+$$
+\dots \longrightarrow e_i\longrightarrow e_{i+1}\longrightarrow\dots
+\longrightarrow \pm f_{i+1}\longrightarrow \pm f_i\longrightarrow
+\dots 
+$$
+The reductive part of the centralizer is a product of  $O(p_i)\times O(q_i)$ where $p_i,q_i$ are the number of rows of size $i$ starting with an $e$ or an $f$ respectively.
+
+For type $B/D,$ the Jordan blocks are all of odd size, and every odd size occurs,
+$$
+\dots \longrightarrow v_i^+\longrightarrow
+w_i^+\longrightarrow\dots\longrightarrow v_0/w_0\longrightarrow\dots\longrightarrow \pm v_i^-\longrightarrow \pm w^-_i\longrightarrow\dots 
+$$
+The elements $v_0,w_0$ satisfy $|v_0|=|w_0|= 1.$ So there are two types of rows,
+those with  $v_0$ in the middle, call them $+$, and those with $w_0$
+in the middle, call them $-$.
+The component group is as in the case of type $C.$ 
+
+The $\Theta-$correspondence is implemented by \textit{interlacing} the two Jordan forms corresponding to the variety $\C Z\subset\Hom[\C L,V]\oplus\Hom[\C L^\perp, W].$  The component groups match via the centralizers of the joint Jordan forms.
+
+
+The $\Theta-$correspondence from $\CO_2$ to $\CO_1$ is
+\begin{itemize}
+\item from type C to a larger type B/D, an odd/even column of size  larger
+  than the largest column of $\CO_2$  is added,
+\item from type B/D to a larger type C, a column of size larger than or
+  equal to  two less than the largest column of $\CO_2$ is added. 
+\end{itemize}
+ 
+
+
+
+
+
+Write $C(\CO_1,\CO_2)$ and $C(\C O_i)$ for the respective
+centralizers. There is a diagram
+\begin{equation}
+  \label{eq:kernel}
+\begin{tikzcd}
+&\arrow[dl,"\pi_1" ']C(\CO_1,\CO_2)\arrow[rd,"\pi_2"]&\\
+%\arrow[dl,"\pi_1"]&&\arrow[dr,"\pi_2"]\\
+C(\CO_1)&& C(\CO_2)
+\end{tikzcd}  
+\end{equation}
+\begin{itemize}
+\item $\pi_1$ is always \textit{onto}.
+\item The local systems are obtained by pulling back along $\pi_2,$
+  and pushing forward along $\pi_1.$ 
+  \textit{This MEANS} that for the system on $\CO_2$ to occur,
+the pullback along $\pi_2$ must be trivial on the kernel of $\pi_1.$ 
+\item The kernel of $\pi_1$ is trivial whenever adding a column of equal or larger size.
+\item When the added column is of size two less, the
+  $\Theta-$correspondence is from type B/D to type $\wti{C}/C.$ The kernel is
+  nontrivial. Assume this is the case; $\C O_2$ has
+  $p_1:=p_1(\CO_2)$ rows with $+$ and   $q_1:=q_1(\CO_2)$ rows (of size 1) 
+  with $-$. The (reductive part of the) centralizer for the rows of
+  size 1 is $O(p_1)\times O(q_1).$ When   $p_1/q_1=0$
+(i.e. $p_1$ or $q_1=0$),  there is only one choice for $\C O_1;$ it will have
+  $(p_1-1)/(q_1-1)$  rows of size 2 starting with $+/-.$  The local
+  system must be trivial on $O(p_1)/O(q_1)$ in order to lift.
+
+  When the
+  rows of size 1 have both $\pm,$ say $(p_1,q_1)$ for the rows
+  with $(+,-),$ there are two possible $\C O_1$. On the rows of size
+  two of $\CO_1$, one has signature   $(p_1,q_1-1)$, call it $\C O_1^+,$ the other $(p_1-1,q_1),$ call it
+  $\C O_1^-.$ In other words, extend all rows of $\CO_2$ of size $\ge 2$ by one
+  to make a Jordan form, preserving the signs. For the rows of size one, remove a $-$ and
+  extend the rest by one preserving the signs to form $\CO_1^+$. For $\CO_1^-$ remove a $+$ and extend
+  the rest by one to form a Jordan block of type C.
+  In order to lift, the local system has to be trivial on the $O(q_1)$ for
+  $\C O_1^+,$  trivial on $O(p_1)$  for $\C O_1^-$ respectively.
+  In particular, a representation containing $(\C O_2,\chi_2)$ in its $\AV,$
+  will lift to one containing $(\C O_1^+,\chi^+)\sqcup
+  (\CO_1^-,\chi^-)$ if and only if the local system $\chi_2$ is
+  trivial on  $O(p_1)\times   O(q_1).$ The $\chi^\pm$ are trivial,
+  subject to the tensoring rule in the next item.
+\item {\clrblu When $p+q$ is odd, there is a \textit{tensoring with
+      $Sgn$}. From type C to type D, the change is  \textit{before}
+    lifting the local systems. From type D to type C, the change is
+    \textit{after} lifting the local system. For type B, $p+q$ is
+    always odd.} 
+  
+\item Tensoring with characters of $O(p,q)$ is done the standard
+  way. A Jordan row is centered at a $v_0$ or  $w_0$; the characters
+  on the corresponding $O(p_i)$ and $O(q_i)$ get tensored with the
+  corresponding characters on $O(p)$ or $O(q)$ respectively. Each
+  representation gives rise to ``\textit{four}'' new ones if $p_i\cdot q_i\ne 0$ 
+  for some $i,$ ``\textit{two}'' if $p_i\cdot q_i=0$ for all $i.$ 
+
+\end{itemize}
+ 
+
+
+
+\subsection{Even sized columns only, type D} This is the  ``\textit{easy}''
+case. The nilpotent orbits are parametrized by the columns of the
+Jordan forms.
+\begin{enumerate}
+\item  See-saw pairs starting with the trivial orbit cover all
+  cases.
+\item The correspondence follows the Kraft-Procesi model
+\item At most one repetition of a column size is allowed. Otherwise
+  the moment map allows for representations that have $\CO_c$ strictly
+  larger than the minimal orbit mandated by the infinitesimal
+  character. The''\textit{first}'' example is $\CO_c=(4,2,2)$ ``\textit{as
+  columns}'' ($(3,3,1,1)$ as rows). The infinitesimal character is
+  $\chi=(2,1,1,0).$ The unipotent representation has
+  ``\textit{columns}'' $(4,4).$
+\item $\AV(\pi)$ consists of a single real form of the corresponding
+  complex nilpotent orbit.   
+\item The number of unipotent representations equals the number of
+  local system on the real forms of $\CO_c$. There are twice as many
+  representations in $O(a,b)$ than in $SO(a,b)$. Two representations
+  of $O(a,b)$ that restrict to the same representation of $SO(a,b)$
+  are related by tensoring with $det.$  Using $O(a,b)$ accounts for
+  the extra nonspecial representations in the $HC-$cell of type
+  $C$ via the $\Theta-$correspondence. The first example is $Sp(4)\times O(4)$ matching
+  $\CO_c=(2,2)$ in $sp(4,\bb R)$ with $\CO_c=(2)$ in $O(a,b)$ with   $a+b=2.$ 
+
+\item The algorithm for $\AV(\pi)$ in type D, (unlike type B for
+  $So(p,q)$, computes for
+  representations of $SO(a,b)$ or $O(a,b)$ with all $(a,b).$ 
+\end{enumerate}
+\subsubsection{Type D to Type C} Let $\CO_D$ be an orbit in type D, with even sized columns only. The case 
+$$
+D_{2i-1}>D_{2i-2}=D_{2i-3}>\dots >D_{2}=D_1>D_0=0
+$$ 
+is the main one.  The $\Theta-$correspondence on the level of orbits (coming from the moment map) is obtained by adding a column of size larger than the largest column of $\CO_D;$ the orbit $\CO_C=\Theta(\CO_D)$  has columns 
+$$
+\begin{aligned}
+ C_{2i}&\ge (C_{2i-1}=D_{2i-1})>(C_{2i-2}=D_{2i-2})=(D_{2i-3}=C_{2i-3})>\dots >\\
+&>(C_2=D_2)=(D_1=C_1)>C_0=D_0=0. 
+\end{aligned}
+$$ 
+It is enough to consider the case when   $C_{2i}=D_{2i-1}$. Each
+tableau for type $D$ embeds into one of type C by changing the $r'$ in
+$\tau_L$ to $\bullet,$ adding a column of size $c_{2i}$ to $\tau_R,$
+and adjusting the entries according to type C. This accounts for half
+the unipotent representations of $Sp.$ The other half is accounted for
+by the fact that the HC-cells have twice as many representations in
+type C as in type D; $\AV(\Theta(\pi))$ for these representations
+stays the same, but there are twice as many local systems in $O(a,b)$
+than in $SO(a,b).$
+\begin{example}
+Let $\CO_D=(2),$ in type D match $\CO_C=(22)$ in type C.  The HC-cells
+are
+$$
+\{1\times 0\}\mapsto \{1\times 1, 11\times 0\}.
+$$
+The matchup is
+$$
+r\times 0\mapsto r\times r,\quad c\times 0\mapsto c\times r,\qquad
+c'\times 0\mapsto c'\times r,\qquad r'\times 0\mapsto \bullet\times \bullet,
+$$
+add an $r$ to the row in $\tau_L$; except the $r'$ is replaced by
+$\bullet,$ and the column in $\tau_L$ acquires a $\bullet$ in the
+appropriate place.
+
+We group the tableaus in type C to match the HC-cells:
+$$
+\begin{aligned}
+&r\times r\longleftrightarrow \mat r\\r\emat\times \mat\emptyset\\ \emat
+\qquad&\qquad
+c\times
+  r\longleftrightarrow\mat r\\c\emat\times\mat\emptyset\\\emat &\\
+ &\bullet\times \bullet\longleftrightarrow
+  \mat r\\ c'\emat\times\mat\emptyset\\\emat\qquad &\qquad c'\times r\longleftrightarrow
+  \mat c\\ c'\emat\times\mat\emptyset\\\emat&
+\end{aligned}
+$$
+The general rule in the first row is to remove an $r$ from the column
+of $\tau_R$ and add it to the column of $\tau_L.$ This does not give a
+valid tableau in the second row, so it is modified accordingly. 
+\end{example}
+\begin{example}
+Let $\CO_D=(4220)$ in type D match $(44220)$ in type $C$. The rules in
+the previous example are extended to this case. The matchup of HC-cells is 
+$$
+\{ 21\times 1,\ 22\times \emptyset\}\longrightarrow \{21\times 21,\ 22\times 11,\ 211\times 2,\ 221\times 1\}
+$$
+There are 16 cells. We pair the tableaus for type D as follows.
+$$
+\begin{aligned}
+&\left\{\mat\bullet&r'\\r'&\emat,\quad \mat
+r'&r\\r'&c'\emat\right\}&&\mapsto\left\{\mat\bullet&\bullet\\\bullet
+&\emat,\quad\mat\bullet&\bullet\\r&\\c'\emat,\quad\mat\bullet&r\\\bullet&c'\emat,\quad \mat\bullet&r\\r&c'\\c'&\emat\right\}\\
+&\left\{\mat\bullet&r'\\r&\emat,\quad \mat r'&r\\r&c'\emat\right\}
+&&\mapsto\left\{\mat\bullet&\bullet\\ r&\emat,\quad
+\mat\bullet&\bullet\\r&\\ r&\emat,\quad\mat\bullet&r\\ r&c'\emat,\quad \mat\bullet&r\\r&c'\\r&\emat\right\}\\
+&\left\{\mat\bullet&r'\\c&\emat,\quad \mat r'&r\\c&c'\emat\right\}
+&&\mapsto\left\{\mat\bullet&\bullet\\ c&&\emat,
+\quad\mat\bullet&\bullet\\r&\\c'&\emat,\quad\mat\bullet&r\\ c&c'&\emat,\quad \mat\bullet&r\\r&c'\\c&\emat\right\}\\
+&\left\{\mat\bullet&r'\\ c'&\emat,\quad \mat r'&r\\c'&c'\emat\right\}
+&&\mapsto\left\{\mat\bullet&\bullet\\c'
+&\emat,\quad\mat\bullet&\bullet\\r&\\c'\emat,\quad\mat\bullet&r\\c'&c'\emat,\quad
+\mat\bullet&r\\r&c'\\c'&\emat\right\}\\
+&\dots &&
+\end{aligned}
+$$
+with the remainder following the rules from Example 6 for each pair of
+equal columns. The $\bullet$'s in type C removed from $\tau_R$ are replaced by
+$r'$ in $\tau_L,$ and only the first and second tableaus for type C
+match tableaus in type D.\hfill \qed
+
+\end{example}
+
+We write down the general rule for how to pair special and nonspecial
+tableaus in type C.  For a pair of equal columns of size $c_i\times c_i$, remove
+an $r$ from the column in $\tau_R,$ and insert it in the column  of
+$\tau_L$. The cases $\bullet\times\bullet$ and $c'\times r$ are
+exceptions and follow Example 6. Further exceptions when inserting an
+$r$ and moving the end of the row down does not result in a tableau are
+$$
+\begin{aligned}
+  &\mat
+  \bullet&r\\r&\emat\longleftrightarrow\mat r&c\\ r&c'\emat\qquad &&\qquad  \mat \bullet&r\\ c&\emat\longleftrightarrow\mat r&c\\ c&c'\emat\\
+&\mat\bullet&r\\ c'&\emat\longleftrightarrow \mat r& c\\ c'& c'\emat
+\qquad&&\qquad
+\mat\bullet&c\\ c'& \emat\longleftrightarrow\mat c&c\\ c'&c'\emat
+\end{aligned}
+$$
+{For these exceptions, going from the special to the
+  nonspecial tableau to the right,   replace the last $\bullet$ in the
+  top row by the element to its   right, and add  $c$ at the end.  Add
+  a $c'$ to the row below. The ``\textit{definition}'' of   the
+  exception is that ``\textit{extending}'' the second column by an $r$
+  does not result in a valid tableau; the exisitng entry being bumped
+  one row down. Going the   other
+  way, replace the corner by $\bullet,$ and move the entry in the
+  corner, which is $r,c$, to the right. Remove the $c'$ below}.  
+\subsubsection{Type C to Type D} Let $\CO_C$ be an orbit in type C, with even sized columns only. The case 
+$$
+C_{2i}=C_{2i-1}>C_{2i-2}=C_{2i-3}>\dots >C_{2}=C_1>C_0=0
+$$
+ is the main one.  The $\Theta-$correspondence on the level of orbits (coming from the moment map) is obtained by adding a column $D_{2i+1}$ of size larger than the largest column of $\CO_C;$ the orbit $\CO_D=\Theta(\CO_C)$  has columns 
+$$
+\begin{aligned}
+ D_{2i+1}&>D_{2i}=C_{2i}=C_{2i-1}=D_{2i-1}>D_{2i-2}=C_{2i-2}>\dots >\\
+&>D_2=C_2=C_1=D_1>D_0=C_0=0. 
+\end{aligned}
+$$ 
+It is enough to consider the case when   $D_{2i+1}=C_{2i}+2$.
+The algorithm for $\AV(\pi)$ to $\AV(\Theta(\pi))$ from $Sp(2n,\bR)$ to
+$O(a,b)$ is as follows. For the cases when the largest columns of
+$\tau$ of type C are $c_{2i-1}\times c_{2i}$, add
+$\bullet$ to each row of $\tau_L,$ and a $r',r,c,c'$ for a row of one
+at the bottom, depending on $O(a,b)$ that is being lifted to:
+$$
+\begin{aligned}
+  &r\mapsto \mat +\\+\emat,\qquad  &&c\mapsto \mat -\\-\emat \\
+  &r'\mapsto \mat +\\-\emat,\qquad  &&c'\mapsto \mat +\\-\emat 
+\end{aligned}
+$$
+Change $\bullet$ to $r'$ where
+necessary,  and similarly change the entries in $\tau_R$ to $\bullet$
+to form a $\tau$  of type D. For the cases $c_{2i-1}+1\times c_{2i}-1$
+follow the rules in blue from the previous section applying
+$r'\mapsto\bullet$ where necessary to match non-special with special
+tableaus and $\AV(\pi)'$s.
+
+
+
+\subsection{Local Systems, even sized columns only}
+We assign local systems to the tableaus in type C. Type D follows from
+the algorithms and the $\Theta-$correspondence.
+
+Nilpotent orbits were already assigned to the special tableaus.  
+{\clrblu Recall that we assume NO columns repeat}.
+
+The general pattern for a  pair of equal columns $c_j\times c_{j}$ and
+the corresponding
+$c_{j}+1\times c_{j}-1$ is schematically recorded as
+$$
+\begin{aligned}
+&(-)\quad\longleftrightarrow &&r\times r \qquad &&
+(+)\quad\longleftrightarrow&&\begin{matrix}
+ r\\r
+\end{matrix}\times\emptyset\\ 
+&(-)\quad\longleftrightarrow &&c\times r\qquad &&(+)\quad\longleftrightarrow&&\begin{matrix}
+r\\c
+\end{matrix}\times\emptyset  && \\
+&\left(\mat -\\ -\emat\right)\quad \longleftrightarrow&&\bullet\times\bullet\qquad &&
+\left(\mat -\\ +\emat\right)\quad\longleftrightarrow&&\begin{matrix}
+r\\c'
+\end{matrix}\times\emptyset\\
+&\left(\mat +\\ +\emat\right)\quad\longleftrightarrow &&c'\times r&&
+\left(\mat +\\ -\emat\right)\quad\longleftrightarrow &&\begin{matrix}
+c\\c'
+\end{matrix}\times\emptyset
+\end{aligned}
+$$
+This is the case of $\CO=(22).$ 
+In the last two rows, the top sign refers to the row with a $+$; and
+$\pm$ refers to trivial/sign.
+
+
+The column may have a number of $\bullet$ and $r$ which were
+omitted. The reductive part of the centralizer for each row size is $O(p_i)\times
+O(q_i)$, with $p_i$ is the number of rows with a $+$ and $q_i$ the
+number of rows with a $-.$ Recall that a $c'\times r$ gives a pair of
+rows $\mat +-\dots\\-+\dots\emat.$ The rules are as follows.
+
+In the cases $c_{j}\times c_{j}$
+\begin{itemize}
+\item no $c'$ present, only $\bullet$, $r$ and $c$ in the column for
+  $\tau_L:$ $\left(\mat-\\-\emat\right).$ 
+\item $c'$ present, same as before for the rest of the column:
+  $\left(\mat +\\+\emat\right)$.
+\end{itemize}
+
+In the cases $c_{j}+1\times c_{j}-1$,
+\begin{itemize}
+\item no $c,c'$ present: $\left(\mat-\\+\emat\right)$
+\item no $c',$ but $c$ present: $\left(\mat +\\-\emat\right)$
+\item $c'$ present, no $c$:   $\left(\mat-\\ +\emat\right)$ 
+\item $c'$ and $c$ present: $\left(\mat +\\-\emat\right)$  
+\end{itemize}
+{Tableaus which give rise to the same $\AV$ have
+  $\bullet\times\bullet$ replaced by $c'\times r.$}
+This provides a 1-1 correspondence between tableaus and local systems.
+
+\newpage
+
+
+\subsection{Odd sized columns present}
+The odd sized columns give rise to pairs $c_j+1\times c_j.$
+\begin{enumerate}
+\item The same restriction about the size of a column occuring at most
+  two times holds.  
+\item There is no longer a one-to-one correspondence between local
+  systems on real orbits and unipotent representations; some unipotent
+  representations have $\AV(\pi)$ a union of real forms.
+\item The number of representations does \textit{not double}.
+\end{enumerate}
+\subsection{Streamlining the Algorithm} Construct the nilpotent orbit
+for the special tableau where all the $c'$ coming from odd columns where removed. Then add the $c'$ for the odd sized columns starting from the bottom. If there is a choice of adding to rows starting with different signs, form a union.
+
+\bigskip
+We write down an algorithm for the local system by
+adding a largest  column.
+\subsubsection{Type D to type C} When adding a column
+$C=2c$, two less than the largest column of $\CO$ of type D, add
+$2c+2$, the size of the largest column instead. 
+The representations of $O(a,b)$ correspond to the representations of
+\newline $Sp(a+b+2c+2)$ in a one-to-one fashion.
+We use $Sp$ to parametrize $O(a,b)$ (different
+from $So(a,b)$). We keep only half the tableaus as illustrated in Examples 6 and 7. 
+We will  show how to remove a row of size $2$ to match all tableaus
+with (some of the) local systems.
+
+\medskip
+Assume that the local systems are known for $\pi$ of
+type D. Then the local systems for $\Theta(\pi)$ lift in one-to-one
+fashion for $Sp(a+b+2c+2)$; the kernel in \eqref{eq:kernel} is trivial
+and $\pi_1,\pi_2$ are isomorphisms.
+
+If all the rows of size two have the same sign, there is only one way to
+remove one. The local systems on $\CO_D$  trivial on $O(p_1-1)$
+or $O(q_1-1)$ respectively,  lift. The tableaus are obtained by adding
+a column of $\bullet$ with $r'$s or $r'$ and a $c$ to $\tau_L.$
+Tensoring, one gets double the parameters; they match the missing
+nonspecial tableaus. The
+system trivial on $O(p_1-1)/O(q_1-1)$ also lifts to $Sp(a+b+2c).$
+These are the tableaus with one less $r$ added in the largest column
+of $\tau_L.$ .
+
+If $\C O_C$  has both signatures in the rows of size 1, there are
+three local systems $\left(\mat +\\+\emat\right),$ $\left(\mat
+  +\\-\emat\right),$ and $\left(\mat -\\+\emat\right)$ that lift to
+$Sp(a+b+2c).$ Take the corresponding lifted $\AV'$s for $Sp(2c+2)$ where the
+\textit{tail} has hte \textit{extra} $c'\times r.$ The tableaus with
+one $r$ removed from the largest column of $\tau_L$ correspond to
+taking out a $+-$, $-+$ or making the union of the two when there is a
+$c'$ present.
+
+This accounts for all tableaus with $\AV$  real forms of $\C
+O_C;$ they all come by the $\Theta$ correspondence. 
+
+\subsubsection{Type C to type D} We add a column of even size larger
+than the largest column of the orbits in $\AV(\pi)$ for $Sp(2n,\bR)$, to get nilpotent
+orbits in $\AV(\Theta(\pi))$ for $O(a',b').$  All the local systems
+lift; the kernoel of $\pi_1$ is trivial. If $\AV(\pi)$ is a
+union of orbits all with the same signature $(a,b)$, then $\AV(\Theta(\pi))$
+has rows of size greater than three with total signature $(a,b)$, and
+the rows of size one have signature the difference to  $(a',b').$
+This is the case when the largest column has even size, but also some
+cases with odd largest column. When the
+largest column of $\CO_C$ has odd size, then the total signatures on
+the nilpotent orbits in the associated variety can be a mix of
+$(a+1,b)$ and $(a,b+1).$ Assume this is the case.
+If $a'\ge b+1$ and $b'\ge a+1,$ all nilpotent
+orbits with total signature $(a',b')$ obtained by the algorithm of
+extending each row by one occur. In the cases  when $a'=b,\ b'\ge a$ and  
+$a'\ge b,\ b'=a,$ the nilpotent orbits with signature $(a,b-1)$ and
+$(a+1,b)$ respectively drop out. The resulting local systems carry over for the
+rows of size greater than 1, and are trivial on the component groups
+for the rows of size 1. The tableaus of the representations
+$\Theta(\pi_i)$ satisfying
+$\AV(\Theta(\pi_1))=\AV(\Theta(\pi_2))$ must have $\tau_L$ of the form
+$$
+\tau_L(\Theta(\pi_1)):\ \mat
+\bullet&r\\
+\vdots&\vdots \\
+\bullet&r,c\\
+r&c'\\
+r&\\
+\vdots& \\
+r&\\
+r,c&\\
+\emat
+\qquad\longleftrightarrow\qquad
+\tau_L(\Theta(\pi_2)):\ \mat
+\bullet&r\\
+\vdots&\vdots \\
+\bullet&r\\
+\bullet&r,c\\
+r&\\
+\vdots& \\
+r&\\
+r,c&\\
+\emat
+$$
+with matching pairs $r,c$ in the corresponding columns. The $r,c$
+means that $r$ or $c$ can occur in that position. The second
+columns in $\tau_R$ are of length one less than those in $\tau_L.$
+
+$\AV(\pi_1)$ contains $\AV(\pi_2)$ strictly. The local systems on the nilpotent orbits are
+known/assigned  by induction. The two representations are related by
+tensoring with characters of $O(a',b').$ 
+
+{\clrblu The local systems have to be ``shifted'' according to the
+  parity $(a'+b')/2$   every time}.
+
+This shows that any unipotent representation of $O(a',b')$ with $\AV$
+a union of real forms of $\C O_D$ is obtained by $\Theta-$lifts and
+tensoring with characters.
+
+\begin{example}
+  Let $\CO_c=(1,1)$ in $Sp(2,\bb R).$ There are three representations,
+  corresponding to $r\times\emptyset$, $c\times\emptyset$ and
+  $c'\times\emptyset.$ $\AV(\pi)$ are $+-,$ $-+$ and $+-\cup-+.$
+  Applying $\Theta$ from  $Sp(2,\bb R)$ to $O(6)$  gives 13
+  representations corresponding to $\CO_c=(3,1,1,1).$
+  There are however 20 representations for the real forms of $So(6),$
+  and 40 for $O(6).$  The representations for $O(6)$ match those for
+  $Sp(10,\bb C)$ for $\CO_c=(4,2,2,2).$ We need to tensor with
+  characters of $O(p,q)$ to get to 40. 
+\end{example}
+\begin{example}
+  Let $\CO_c=(4,1,1)$ in $O(6).$ Computing $\Theta$ from $O(6)$ to
+  $Sp(8)$  gives 17 representations only. The tableaus
+  $$
+  \mat r'&r\\r'\emat\times \mat \emptyset\\ \emat\qquad
+\mat r'&c\\r'\emat\times \mat \emptyset\\ \emat\qquad
+\mat r'&c'\\r'\emat\times \mat \emptyset\\ \emat
+  $$
+  cannot be embedded into $\mat x&x\\ x\emat\times \mat x&\\ \ &
+  \emat$ for $Sp(8).$ They do show up for $\Theta$ going to $Sp(2n,\bb
+  R)$ for $2n\ge 10.$  In
+  that case all 40 representations appear; this matches the fact that
+  $\CO_c=(4,2,2,2)$ has $HC-$cells formed of  a special and a nonspecial
+  representation each occuring with multiplicity one.
+\end{example}
+\subsubsection{} Consider the case when a pair of equal
+$c_{i}\times c_{i}$ is added to a tableau with last columns
+$c_{i-1}\times c_{i-1}+1$ going to type D,
+and then type C which also parametrizes the orthogonal
+group in type D. By induction, it is assumed that local
+systems were attached to the smaller case. All rows larger
+than one inherit the local systems from the smaller orbit; increase
+all rows of the smaller nilpotent orbit by one to get a nilpotent
+orbit of type $D.$  Denote the $+'s$ by $v$ and the $-'$s by $w.$
+The last row of size one of $\tau_L$ is 
+$$
+\begin{aligned}[l]
+&\mat r' r\emat\times\mat\emptyset \emat,\quad \mat rc'\emat\times\mat\emptyset \emat
+\quad&\longleftrightarrow\quad &\mat v&w&v&\\ v&\emat,\\
+&\mat r' c\emat\times\mat\emptyset \emat,\quad \mat cc'\emat\times\mat\emptyset \emat
+\quad&\longleftrightarrow\quad &\mat v&w&v\\ v\emat,\\
+&\mat r' c'\emat\times\mat\emptyset \emat,\quad \mat c'c'\emat\times\mat\emptyset \emat
+\quad&\longleftrightarrow\quad &\mat v&w&v\\ w\emat\sqcup \mat w&v&w\\v\emat,\\
+&\mat rc\emat\times\mat\emptyset \emat\quad&\longleftrightarrow\quad &\mat w&v&w\\ v\emat,\\
+&\mat cc\emat\times\mat\emptyset \emat\quad&\longleftrightarrow\quad &\mat v&w&v\\ w\emat.
+\end{aligned}
+$$
+Everything is  \textit{modulo the parity shift}.
+
+ There are three pairs of tableaus that contain $c'$,
+ paired up with another three pairs with the same $\AV.$ The tableaus
+ with $c'$ in the first two rows and $c'c'$ in the third row get $(+)$
+ on the rows of size one, and inherit the local  system on the larger
+ rows from the representation they came from. 
+
+The last two cases have  tableaus that do not have $c'.$ Assign
+$(+)=triv$  to the row of size 1.  
+  This is the lift from type C to type D. The missing representations
+  for the orthogonal group are obtained by 
+tensoring with $\ep\rtimes\eta$. The representations are now
+parametrized by the $Sp$ where we added another column equal to the
+largest column to $\tau_R$. The pair of largest columns doubles each occurence to
+a \textit{``special''} and \textit{``nonspecial''} representation
+``\textit{on the row of size 2}''. 
+The first three cases get four each, the last two, only two. Tensoring changes
+the local system according to the effect $\ep,\eta$ has on the
+middle element of each row.  The associated tableaus are according to
+$\ep\times\eta=(\pm)(\pm)$:
+\begin{itemize}
+\item $(+)(+)$ same,
+\item $(-)(-)$ switches $\text{special}\longleftrightarrow \text{nonspecial}$,
+\item $(+)(-)$ $r'\longleftrightarrow c'$,
+\item $(-)(+)$ $r'\longleftrightarrow  c'$ and
+      $\text{special}\longleftrightarrow \text{nonspecial}$.
+    \end{itemize}
+So for the first three cases each tableau gives rise to four, two for the last two cases.
+For the last two tableaus, only two  representations are created by
+tensoring. 
+This accounts for all occurences of unipotent representations in the
+$\Theta-$correspondence.
+\begin{remark}
+In the first two cases, we chose to  lift from the tableaus
+$r\times\emptyset$ and $c\times\emptyset$ to 
+$r'r\times\emptyset$ and $r'c\times\emptyset$ rather than  $c'\times
+0$.This is  because the latter has $\AV$ a union of nilpotents, and some get
+``\textit{killed}''  in the lifting. There are coincidences arising
+from lifting and tensoring, and we made a specific choice.
+\end{remark}
+
+
+Going up to type C
+replaces the $r'$ by $\bullet,$ and adjusts $\tau_R$ accordingly. The
+rows of the ensuing nilpotent is obtained by increasing the sizes of all rows in
+the nilpotent orbits by one, to form a tableau of type C. The local
+systems get lifted. 
+\subsubsection{} Assume that $c_{2i-1}\times c_{2i}$ with
+$c_{2i}=c_{2i-1}>c_{2i-3}=c_{2i_2}+1.$  There is more than one row of
+size one in $\tau_L$. The same rules as before are used, except the
+first column of $\tau_L$ is longer, and the nilpotent orbit will have
+several $v,w,$ in the row of ones.  As before,
+sorting by $\AV,$ there will be cases where tensoring will create four
+representations, and cases with only two.
+
+\subsubsection{} Consider the case when $c_{2i-1}-1=c_{2i}\ge
+c_{2i-3}-1=c_{2i-2}.$ Use the tableaus of type C with $c_{2i}+1$ to parametrize the
+representations in type D, with the local systems already assigned.
+$\AV(\pi)$ and the local system is obtained as follows.
+
+\begin{itemize}
+\item On the level of $\AV$, subtract a row of size two of the sign for
+  which the local system is $(+)$; make a union if both have $(+)$,
+  and assign the \textit{restriction} of the local system on the
+  remaining rows of size two.
+\item On the level of tableaus, those ending in $\bullet$ \textit{vanish}; the
+  assignment is designed to attach $\left(\mat -\\-\emat\right)$ to
+  the rows of size one. For the remainder of tableaus, only one of the paired
+  special/nonspecial tableaus occurs; $\AV$ is obtained from the
+  tableau of $Sp(2n+2,\bb C)$  by removing an $r$ from the largest
+  column of $\tau_R,$ and  using the algorithm for the smaller $Sp$.  
+\end{itemize}
+
+
+
+
+\newpage
+\section{The $\Theta-$correspondence, $B/\wti{C}$}
+{\clrr Needs more work}.
+
+Some times the
+$\Theta-$correspondence has coincidences. Other times it does not seem
+to produce enough representations. 
+
+\begin{example}
+The orbit $\C O_2=(3,1)$ (columns) in $sp(4,\bb R)$ is obtained from $\C
+O_1=(1)$ in $O(1,0)$ and $O(0,1)$ by the $\Theta-$correspondence. There
+are exactly four characters and exactly four metaplectic representations.  
+\end{example}
+\begin{example}
+Let $\C O_2=(3,3,1)$ in $so(7)$. It comes from $\C O_1=(3,1)$ in $sp(4).$ There
+are two representations for $\C O_2$ and four for $\C O_1.$   
+\end{example}
+\begin{example}
+Let $\C O_2=(5,3,1)$ in $so(9).$ It comes from $\C O_1=(3,1)$. This
+time I count $16=2\cdot 8$ for $\C O_2$ ($so(a,b)$ for all $a,b$ not
+just $a>b$). There are only four available from $sp(4).$   
+\end{example}
+
+\begin{example}
+  Let $\C O_2=(3,3)$ in $sp(6)$. It comes from $\C O_1=(3)$ in
+  $so(3)$. There are twelve represenations for $\C O_2$ and I think
+  there are coincidences in the $\Theta-$lifts, and some characters
+  do not lift.
+\end{example}
+\begin{example}
+Let $\C O_2=(5,3,3)$. There are $48$ representations counting all
+$O(a,b)$. I only see at most $36$ lifts from $\C O_1=(3,3)$.    
+\end{example}
+
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{99}
+\bibitem[ABV]{ABV}
+jeffrey~Adams,  Dan~Barbasch, D.~Vogan, {\em The Langlands
+  Classification and Irreducible Characters for Real Reductive
+  Groups},  Progress in Mathematics, vol. 104, Birkh\"auser, (1992)
+
+
+  
+\bibitem[BV1]{BV1}
+  Dan~Barbasch, D.~Vogan, {\em The local structure of Characters}, J. of Func. Analysis,
+  vol. 37, issue 1, (1980) pp. 27-55
+
+\bibitem[BV2]{BV2}
+  Dan~Barbasch, D.~Vogan, {\em Unipotent representations of semisimple
+  complex groups},
+  Annals of Math.,
+  vol. 121, issue 1 (1985) pp. 41-110
+  
+\bibitem[C]{C}
+  L.~Casian, {\em Primitive Ideals and Representations }, Journal of Algebra, 101,(1986) pp 497-515
+
+\bibitem[K]{K}
+  D.~King, {\em The character polynomial of the annihilator of an
+    irreducible Harish-Chandra module} Amer. J. Math. 103 (1981) pp 1195-1240
+
+\bibitem[L]{L}
+G.~Lusztig {\em Characters of Reductive Groups over a Finite Field} ,
+Ann. of Math. Stud., vol. 107, Princeton  University Press, Princeton, 1984
+
+\bibitem[McG]{McG}
+G.~McGovern {\em Cells of Harish-Chandra Modules for Real Classical
+  Groups}, American Journal of Mathematics, Vol. 120, No. 1 (Feb.,
+1998), pp. 211-228 
+
+\bibitem[RT]{RT}
+D.~Renard, P.~Trapa, {\em Irreducible Genuine Characters of the
+  Metaplectic Group : Kazhdan-Lusztig Algorithm and Vogan Duality},
+Reprsentation Theory, vol. 4, (2000) 245–295 
+
+  
+\bibitem[V4]{V4}
+D.~Vogan {\em  Irreducible Characters of Semisimple Lie Groups
+  IV. Character-Multiplicity Duality}, Duke mathematical Journal,
+vol. 49, no. 4, 1982, 943-1073
+
+\end{thebibliography}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+\begin{comment}
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{comment}
+
+
+
+\bigskip
+Adding a pair $x\times x$ to \eqref{eq:10} amounts to
+\begin{alignat}{3}\label{3.4.5}
+&\text{Tableau }\qquad&\qquad\qquad&\vO\qquad          &\qquad\qquad&\CO\notag \\
+\noalign{\medskip
+\hrule
+\medskip}
+&\mat r\\ c\emat\times \mat r\\ \emptyset\emat&&\mat -+\\ -+\\ -+\emat&&
+\mat +&-&+\\ +&-&+\\ -&&\emat\cup \mat +&-&+\\ -&+&-\\ +&&\emat\notag \\ 
+\noalign{\medskip
+\hrule
+\medskip}
+&\mat r\\ r\emat\times \mat r\\ \emptyset\emat&&\mat +-\\ +-\\ +-\emat&&
+\mat +&-&+\\ +&-&+\\ -&&\emat\cup \mat +&-&+\\ -&+&-\\ +&&\emat\notag \\ 
+\noalign{\medskip
+\hrule
+\medskip}
+&\mat r\\ c'\emat\times \mat r\\ \emptyset\emat&&\mat +-\\ +-\\ +-\emat\cup\mat +-\\ +-\\ -+\emat &&
+\mat +&-&+\\ +&-&+\\ +&&\emat\notag \\
+\noalign{\medskip
+\hrule
+\medskip}
+&\mat c\\ c'\emat\times \mat r\\ \emptyset\emat&&\mat -+\\ -+\\ +-\emat\cup\mat -+\\ -+\\ -+\emat &&
+\mat +&-&+\\ +&-&+\\ +&&\emat\\
+\noalign{\medskip
+\hrule
+\medskip}
+&\mat \bullet\\ r\emat\times \mat \bullet\\ \emptyset\emat&&\mat +-\\ -+\\ +-\emat&&
+\mat +&-&+\\ -&+&-\\ +&&\emat\notag \\
+\noalign{\medskip
+\hrule
+\medskip}
+&\mat \bullet\\ c\emat\times \mat \bullet\\ \emptyset\emat&&\mat +-\\ -+\\ -+\emat&&
+\mat +&-&+\\ -&+&-\\ +&&\emat\notag \\
+\noalign{\medskip
+\hrule
+\medskip}
+&\mat \bullet\\ c'\emat\times \mat \bullet\\ \emptyset\emat
+&&\mat +-\\ -+\\ +-\emat\cup\mat +-\\ -+\\ -+\emat&&
+\mat -&+&-\\ -&+&-\\ +&&\emat \notag \\ 
+\noalign{\medskip
+\hrule
+\medskip}
+\notag
+\end{alignat}
+
+In general, adding a pair of equal rows is done as follows. Any switch
+to make the number of $+$'s greater than the number of $-$'s in type B
+is done at the end. 
+
+\noindent\textbf{(A0)} A pair  $\bullet \dots \bullet c\times \bullet \dots
+\bullet r$ adds a pair of rows $\mat -+\dots -+\\ -+\dots -+\emat$ to
+the nilpotents in $\AV(\chp).$ It amounts to {\it real} induction for
+$\AV(\pi)$ if the smallest  rows in the nilpotents in $\AV(\chp)$ have the same
+sign. Otherwise use $\theta$-induction with an extra $-$ if there is a choice.
+
+\noindent\textbf{(A1)} A pair  $\bullet \dots \bullet r\times \bullet \dots
+\bullet r$ adds a pair of rows $\mat +-\dots +-\\ +-\dots +-\emat$ to
+the nilpotents in $\AV(\chp).$  If a $c$ is present in the column of
+$\tau_L$ that the $r$ is being added to, then the pair of rows
+inherits the sign of the row with the $c.$ It amounts to {\it real}
+induction for $\AV(\pi)$ if the smallest rows of the nilpotents in $\AV(\chp)$ have the
+same sign. Otherwise use $\theta$-induction with an extra $-$ if there is a choice.
+
+\noindent\textbf{(B0)} A pair  $\bullet \dots \bullet \times \bullet \dots
+\bullet$ adds a pair of rows $\mat +-\dots +-\\ -+\dots -+\emat$ to
+the nilpotents in $\AV(\chp).$ It amounts to $\theta$ induction for
+$\AV(\pi).$ If there is a choice in the signature, use an extra $+.$ 
+
+\noindent\textbf{(C0)} A pair  $\bullet \dots \bullet c'\times \bullet \dots
+\bullet r$ adds a pair of rows $\mat +-\dots +-\\ -+\dots -+\emat$ to
+the nilpotents in $\AV(\chp).$ It amounts to $\theta$ induction for
+$\AV(\pi).$ If there is a choice in the signature, use an extra $-.$ 
+
+\bigskip
+Now suppose that the last row in $\tau_L$ is strictly larger than the
+corresponding one in $\tau_R.$ Let $\tau'$ be the obtained from $\tau$
+by truncating the last row of $\tau_L$ so that $\tau'_L$ and $\tau'_R$
+have the largest rows of the same size. We build $\AV(\pi)$ from
+$\AV(\pi')$ by describing the effect of adding a series of 
+$x\times\emptyset$ to $\AV(\pi').$ For the first one the rules are:
+
+\noindent\textbf{(D0)} A $c\times\eset$ that is added next to $\bullet\times
+\bullet$ changes both rows for
+$\bullet\dots\bullet\times\bullet\dots\bullet$ in $A(\chp)$ to $-$ and
+increases one of them by $2.$
+Suppose the result is formed of nilpotent orbits having their two
+largest sized rows all of the
+same sign. Let $\wti\pi$ be the representation corresponding to the
+$\wti\tau$ obtained from $\tau$ by replacing the largest pair of rows
+by  $\bullet\dots\bullet r\times\bullet\dots\bullet r.$ Then $\AV(\pi)$
+is obtained from $\AV(\wti\pi)$ by adding a pair of rows of size 1 with
+signs $\mat -\\ -\emat$ to all its nilpotents.
+Otherwise add a pair of rows $\mat +\\ -\emat$ to each nilpotent in $\AV(\pi).$ 
+
+\noindent\textbf{(E0)} If $c\times\eset$ is added next to $r\times r,$  it
+increases one of the last two rows by 2 and changes its sign. The
+nilpotents in $\AV(\pi)$ get a $\mat +\\-\emat.$
+
+\noindent\textbf{(F0)} An $r\times \eset$ can only be added next to a
+$\bullet\times\bullet;$ it changes the sign of $-+\dots$ and adds 2 to
+it. For $\AV(\pi)$ the similar rule to (D0) applies. 
+
+\noindent\textbf{(G0)} A $c'\times\eset$ increases a row in $\AV(\chp)$ by
+2. If there are largest rows of both signs in a nilpotent, two of
+them, one for each sign are added. For $\AV(\pi)$ add a pair of rows
+$\mat +\\ +\emat.$  
+
+More $c\times\emptyset$ and $c'\times \emptyset$ have the following effect:
+
+\noindent\textbf{(E1)} Subsequent $c\times\eset$ change the sign and increase
+the largest row by 2 in $\AV(\chp)$ and add a pair $\mat+\\ -\emat$ to
+the nilpotents in $\AV(\pi)$. 
+
+\noindent\textbf{(G1)} Subsequent $c'\times \eset$ increase the largest row by
+2 in $\AV(\chp)$ and add pairs $\mat +\\ +\emat$ to $\AV(\pi).$ 
+
+
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+{\clrblu We anticipate the shape of the nilpotent orbit}. When $c_0>0$
+there are $c_0$ pairs of rows of size $2r+1$ each starting with a $+$
+and a $-.$ \textbf{Assume that $c_0=0.$}
+When $\mathbf{c_2>c_1}$, the $\bullet$'s and $c'$ in Cases (3) and (4) 
+translate into pairs of rows of size $2r$ starting one with $+$, one
+with $-.$ Case (1) corresponds to  pairs of rows starting with $+$. Case (2)
+corresponds to $c_0$ pairs of rows starting with $-.$ 
+
+When $\mathbf{c_1=c_2+1},$ there is an extra row of size $2r$. Cases
+(1) and (2) acquire an extra row with 
+$a+$ or a $-$ respectively. In Cases (3) and (4), there is a union of
+nilpotent ortbits, one with an extra row with a $+$, one with an extra
+row with  a $-$.    
+
+\begin{theorem}
+The number of representations with primitive ideal $\C I_{\CO_c}$ and infinitesimal character $\la_{\C O_c}$ equals the sum of the sizes $|A(\C  O)|.$ 
+\end{theorem}
+
+\begin{proof}
+We do type C; the other cases are analogous.  
+
+The number of unipotent representations (added over several real forms
+of the Li algebra in types B, D) equals the sum of multiplicities of
+the $\sig$ correspoinding to the primitive ideal cell $\C I_{\CO}$  in
+the coherent continuation representation, counted with the
+multiplicity  of the $sgn$ representation of the Weyl group of the
+Levi component determined by the centralizer of $\la_{\C O}.$ From
+[BV] and elsewhere this is one.  The size of $|A(\C O)|$ is the
+product of $2^2$ for even sized rows with signatures both $\pm$, and
+$2$ for even sized rows of just one signature. The number of rows of
+size $2i$ is $n_{2i}:=2c_{2r-2i+1}-2c_{2r-2i}$. So it contributes
+$2+4(n_{2i}-2)+2=4(n_{2i}-1).$ 
+
+\medskip
+Now consider the multiplicity of the special representation. Column
+$c_0$ can only have $\bullet$ or $r.$ In any case, the rows forming
+the top of column $c_{2r}$ to $c_2$ must have $\bullet$'s before the
+entries in $c_0$. Consequently this has to be the case for the top
+rows in columns  $c_{2r-1}$ to $c_3$. Columns $c_1$ and $c_0$ muat
+have the same number of $\bullet$'s, and column $c_0$ can only be
+filled $r.$ Let $0\le x\le c_0$ be the number of $\bullet$'s. The
+remaining entries can only be filled by  
+\begin{enumerate}
+\item all $r$
+\item all $r$ and one $c$
+\item all $r$ and one $c'$
+\item all $r$, one $c$ and one $c'.$ 
+\end{enumerate}
+Cases (1) and (2) with no $\bullet$'s correspond to  signatures all
+$+$ and all $-.$ The number of  $\bullet$'s and $c'$ count the pairs
+of rows with a $+$ and a $-$. The reamining all $r$, or all $r$ and
+one $c$ count the reamining rows all with the same sign, $+$ or $-.$
+So the rows with a single sign have been counted once, the rows with
+both signs twice; this adds up to $2(n_{2i}-1).$ The other
+$2(n_{2i}-1)$ come from the representation with $c_1$ and $c_0$ were
+interchanged.    
+
+
+\end{proof}
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%
+More precisely, the cases of the last two pairs of columns  are
+$$
+\begin{aligned}
+&\mat
+\bullet &\bullet&\times &\bullet&\bullet\\
+\vdots &\vdots& &\vdots&\vdots\\
+\bullet &\bullet & &\bullet&\bullet\\
+\bullet& r & &\bullet&r\\
+\vdots &\vdots& &\vdots&\vdots\\
+\bullet& r & &\bullet&r\\
+\bullet&r &&\bullet  &x\\
+r&c&& r\\
+\vdots &&& \vdots&\\
+r&&&y&\\
+b&&&&
+\\
+\emat
+&\qquad \text{ and }\qquad\mat
+\bullet &\bullet&\times &\bullet&\bullet\\
+\vdots &\vdots& &\vdots&\vdots\\
+\bullet &\bullet & &\bullet&\bullet\\
+\bullet& r & &\bullet&r\\
+\vdots &\vdots& &\vdots&\vdots\\
+\bullet& r & &\bullet&x\\
+\bullet&a &&\bullet  &\\
+\vdots &&& \vdots&\\
+r&&&r&\\
+r&&&y&\\
+b&&&&
+\emat
+\end{aligned}
+$$
+The rules for the nilpotent orbits are
+\begin{enumerate}
+\item the rows $\bullet\bullet\times\bullet\bullet$ get pairs of rows $\mat
+  +-&\hdots &+-\\ -+&\hdots &-+\emat$
+\item the rows $\bullet r\times\bullet r$ get pairs $\mat
+  +-&\hdots &+-\\ +-&\hdots &+-\emat$ or $\mat
+  -+&\hdots &-+\\ -+&\hdots &-+\emat$ depending on $x=r$ or $x=c.$
+\item the row  $\bullet a\times\bullet$ gets $\mat
+  +-&\hdots &+-&+-\\ -+&\hdots &-+&\emat$ or $\mat
+  -+&\hdots &-+&-+\\ +-&\hdots &+-&\emat$ depending on whether $a=r$
+  or $a=c$. The rows $r\times r$ get the sign of $y$.
+  \item $rc\times r$ gets $\mat +-&\dots&+-&+-\\+-&\dots&+-&\emat$ if $y=r$ and
+    $\mat -+&\dots&-+&+-\\-+&\dots&-+&\emat$ if $y=c.$ The pairs $r\times r$ follow the
+    sign of the smaller row.
+\item $b\times\emptyset$ gets $+-\dots$ or $-+\dots $ depending on
+  $b=r$ or $b=c.$  
+\end{enumerate}
+\bigskip
+In the general case when pairs of equal columns occur, we construct
+$\AV$ by induction. Suppose $\AV(\tau_L'\times\tau_R'$  for the
+case for smaller size are known. There are several cases. We sort them
+out by the edges:
+
+
+\begin{comment}
+\begin{enumerate}
+\item $r\times r$ comes from $r\times\emptyset.$ Extend the next
+  smaller row   by 2 with the same sign as the larger. Same for  $c\times c$ coming from $c\times\emptyset$.
+\item For $r\times c$ or $c\times r$ increase a smaller row by 2 according to
+preserving the sign; make a union if there is a choice.  
+\end{enumerate}
+For example,
+\begin{description}
+\item[A] $\mat \bullet\\ r\emat\times \mat\bullet\\ r\emat$ gives
+  $\mat +-\\-+\\+-\\+-\emat$
+
+  \bigskip
+\item[B]
+$\mat \bullet\\ r\emat\times \mat\bullet\\ c\emat$ gives $\mat
++-\\-+\\+-\\+-\emat\cup \mat +-\\-+\\+-\\-+\emat$
+
+\bigskip
+\item[C] $\mat r\\ r\emat\times \mat r\\ c\emat$ gives $\mat
++-\\+-\\+-\\+-\emat\cup \mat +-\\+-\\+-\\-+\emat$
+
+  
+\end{description}
+\subsubsection{Triangular Nilpotents} The  \textit{triangular case} is defined as the one where each  row size, even,  occurs exactly twice, except for the largest one which occurs just once. Each matching pair of rows in $\tau_L\times \tau_R$ has sizes $(r_i+1)\times r_i$ in increasing order $r_i<r_{i+1}.$So $\tau_L$ has row sizes $1<2<\dots <k.$ Typical rows are labeled
+$$
+\mat
+\dots &\bullet&\alpha_1&\alpha_2&\times&\bullet&x&\\
+\dots &\beta_1&\beta_2&         &\times&y& \\
+\dots &\gamma &       &         &      & &
+\emat
+$$
+$\al_1$ and $\beta_1$ can only be $\bullet$ or $r$, while $\beta_2=r$ or $c.$ Similarly, $\al_2=r$ or $c.$ 
+\begin{enumerate}
+\item when $\beta_1=\bullet,$ $y=\bullet$ as well. If $\al_1=\bullet$ as well, $x=\bullet.$ Pair up $(\beta_2,\al_2)$. The cases are  
+  $
+  \pmat\beta_2\\ \al_2\epmat=
+  \begin{cases}
+    \mat r\\ r\emat & \ \mat +-\\-+\emat, \\
+    \mat r\\c\emat & \ \mat +-\\+-\emat \\
+    \mat c\\ r\emat & \ \mat -+\\-+\emat \\
+    \mat c\\ c\emat & \ \mat -+\\+-\emat
+  \end{cases}
+  $
+\item when $\beta_1=\bullet,$ and  $\al_1=r,$ then $\alpha_2=c.$ Pair up $(\beta_2,x).$ The cases are
+  $
+  \pmat\beta_2\\ x\epmat=
+  \begin{cases}
+    \mat r\\ r\emat & \ \mat +-\\+-\emat \\
+    \mat r\\ c\emat & \ \mat -+\\+-\emat \\
+    \mat c\\ r\emat & \ \mat +-\\-+\emat \\
+    \mat c\\ c\emat & \ \mat -+\\-+\emat
+  \end{cases}
+  $
+\item when $\beta_1=r,$ then $\beta_2=c$. If $\al_1=\bullet,$ then $x=\bullet$. Pair up $(y,\al_2).$ The cases are
+  $
+  \pmat y\\ \al_2\epmat=
+  \begin{cases}
+    \mat r\\ r\emat & \ \mat -+\\+-\emat \\
+    \mat r\\ c\emat & \ \mat -+\\+-\emat \\
+    \mat c\\ r\emat & \ \mat +-\\+-\emat \\
+    \mat c\\ c\emat & \ \mat -+\\-+\emat
+  \end{cases}
+  $
+  \item when $\beta_1=r,$ then $\beta_2=c$. If $\al_1=r,$ then $\al_2=c$. Pair up $(x,y).$ The cases are
+  $
+  \pmat x\\ y\epmat=
+  \begin{cases}
+    \mat r\\ r\emat & \ \mat +-\\+-\emat \\
+    \mat r\\ c\emat & \ \mat +-\\-+\emat \\
+    \mat c\\ r\emat & \ \mat -+\\+-\emat \\
+    \mat c\\ c\emat & \ \mat -+\\-+\emat
+  \end{cases}
+  $  
+\end{enumerate}
+\end{comment}
+
+\begin{description}
+\item[(a)] Remove the $x$, and construct $\AV'.$ If $x=\al,$
+  extend a row with the same sign as for $\al$ by two. For $x\ne \al$
+form a union of nilpotent orbits with a row extended by two in all
+possible ways.
+\item[(b)] Extend the rows by 2 and follow the sign of $y.$
+\item[(c)] Extend the rows by 2 and add the signs as in the case of a
+  single pair of columns.
+\item[(d)] Extend the rows by 2 and follow the signs of $x$.
+\item[(e)] Same as case (a).
+\item[(f)] Same as (b).
+\item[(g)] Same as (c).
+\item[(h)] Same as (d).
+\end{description}
+
+\begin{comment}
+Larger rows go up by one. The rows end in $\bullet\times\bullet,$
+$r\times r$, $c\times r$ or $c'\times r$ as before.
+Apply the same rules with real induction  from
+Levi components $gl(2m,\bR)$ for $c\times r$ and $r\times r,$ and  with
+$u(m,m)$ if $c'\times r$ is not present, and  $u(m+1,a-1)$ or
+$u(m-1,m+1)$ otherwise. 
+
+
+\bigskip
+{\clrr \%\%\%\%\%\%\%\%\%\%\%\%\%\% }
+
+\bigskip
+Now consider the case when there are pairs of columns in $\tau_L\times
+\tau_R$ of unequal length; differing by 1. The same holds for the rows; the difference
+between the corresponding rows in $\tau_L$ and $\tau_R$ is $\le 1.$
+If there is a single row  of size 2, start with
+\begin{alignat}{3}
+&\text{Tableau }\qquad     &\qquad\qquad&\CO\subset
+Sp\qquad&\qquad\qquad&\vO\subset So\notag\\
+\noalign{\smallskip}
+&c\times \emptyset           &&-+ &&\mat +\\ +\\ -\emat\notag\\ 
+\noalign{\smallskip}
+&r\times \emptyset            &&+- &&\mat +\\ +\\ -\emat\label{eq:11}\\ 
+\noalign{\smallskip}
+&c'\times \emptyset          &&+-\cup -+ &&\mat +\\ +\\ +\emat\notag
+\end{alignat}
+If there are  more pairs of rows of size 2, move $c'\times r$ right
+below the $\bullet\times\bullet'$s. first. The last row is $r\times\emptyset$ or $c\times
+\emptyset.$ They get assigned as in the table above. If there is no
+$c'\times r$, the $\bullet\times\bullet$
+correspond to $\theta-$induction from a $u(m,m)$. If yes, use
+$\theta-$induction with a $u(m+1,m-1)$ or $u(m-1,m+1);$ there is only
+one choice.  
+\end{comment}
+
+
+The nilpotent orbit corresponding to the case when all
+rows end in $c,r,$  has nilpotent orbit with signature $+$ for the
+largest row, and pairs $\pm$ for all pairs of equal rows.
+Adding pairs of rows ending in
+$r,c$ corresponds to $\rho-$induction in $\vO.$ Adding pairs ending in
+$\bullet/c'$ corresponds to $\theta-$induction following the previous
+case of rows of only size 2.
+
+\begin{comment}
+The coherent continuation representation of type
+$B$ is obtained from type $C$ by tensoring with $sgn.$ So we use the
+coherent continuation representation of type $C$ with its associated
+$\C O,$ and compute the corresponding $\vO$ in type B. Recall from the
+previous section that we only need to compute the cases when both $\C O$
+and $\vO$ are even. 
+
+The labelling of $\tau_R$ is completely determined by its shape
+together with 
+the labelling of $\tau_L,$ so we often only give $\tau_L$.
+Consider first the case where each size row occurs exactly once in
+$\tau_L,$ say $(m,m-1,\dots ,1),$ and the corresponding rows in
+$\tau_R$ are equal, or just one less than the corresponding ones for
+$\tau_L.$  We start with a single $+$.
+
+If the first pair is $x\times x,$ then
+\begin{alignat}{4}
+&\text{Tableau }\qquad     &\qquad&\CO\subset
+Sp\qquad&\qquad&\vO\subset So&Induced\notag\\
+\noalign{\vspace{0.1in}}
+&c\times r            &&\mat -+\\ -+\emat&&\mat -&+&-\\ +&\\
+-&&\emat&& gl(2,\bR),\notag\\ 
+\noalign{\vspace{0.1in}}
+&r\times r            &&\mat +-\\ +-\emat&&\mat -&+&-\\ +&&\\
+-&&\emat && gl(2,\bR),\label{eq:11}\\ 
+\noalign{\vspace{0.1in}}
+&c'\times r           &&\mat +-\\ -+\emat&&\mat -&+&-\\ -&&\\ -&&\emat
+&& u(0,2),\notag\\
+\noalign{\vspace{0.1in}}
+&\bullet\times \bullet&&\mat +-\\ -+\emat&&\mat -&+&-\\ +&&\\ +&&\emat
+&& u(1,1),\notag
+\end{alignat}
+In case $x\times\emptyset,$
+\begin{alignat}{3}
+&\text{Tableau }\qquad     &\qquad&\CO\subset
+Sp\qquad&\qquad&\vO\subset So\notag\\
+&c\times \emptyset &&\mat-+\emat&&\mat +\\-\\ +\emat\notag\\
+\noalign{\vspace{0.2in}}
+&r\times \emptyset &&\mat+-\emat&&\mat +\\-\\ +\emat\label{eq:12}\\
+\noalign{\vspace{0.2in}}
+&c'\times \emptyset &&\mat-+\emat\cup \mat +-\emat&&\mat +\\+\\ +\emat\notag
+\end{alignat}
+The general rules are
+\begin{itemize}
+\item Adding equal pairs of rows amounts to $\rho-$induction if the pair ends
+  in $c\times r$ or $r\times r.$
+\item  Adding equal pairs of rows ending in $\bullet\times\bullet$ amounts  to
+  $\theta-$induction with one extra sign same as the largest row.
+\item Adding equal pairs of rows ending in $c'\times r$ amounts  to
+  $\theta-$induction with one extra sign opposite to  the largest row.
+\item When adding an unequal pair of rows, use the same rules as before with the last
+entry in $\tau_L$  removed. Then adding $c\times\emptyset,\
+r\times\emptyset$ amounts to adding a $\mat +\\-\emat$. Adding 
+$c'\times\emptyset$ amounts to adding a $\mat -\\-\emat.$
+An exception occurs when the row in $\tau_L$ ends in $r$ or $c,$ and the last/previous
+column end in the same. In that case, compute
+the tableau with the $r,c$ removed, and with one $\bullet$ in the
+previous column replaced by $r$. Then add a $\mat +\\+\emat$ at the bottom of the tableau.
+\end{itemize}
+The general case reduces to this by applying the rules above to the
+tableau where all duplicate pairs of rows of the same size ending in $\bullet\times\bullet$ and
+$c\times r,\ r\times r$ are removed. Then add the pairs with
+$\bullet\times\bullet$ as $\theta-$ induction and  $c\times r,\
+r\times r$ as $\rho-$induction.
+
+One can flip all the signs to get a nilpotent orbit in $So(p,q)$ with  $p>q.$
+
+\end{comment}
