@@ -5,28 +5,27 @@
 
 \section{Combinatorics of painted bi-partitions}
 
-In this section, we assume $\ckcO = \ckcOg$ and $\star \in \Set{B,C,\wtC,C^{*},D,D^{*}}$.
+In this section, we assume $\ckcO = \ckcOg$ and
+$\star \in \Set{B,C,\wtC,C^{*},D,D^{*}}$.
 
 Recall the definition of the set of primitive pairs $\CPP(\ckcO)$.
 
 The following proposition is the main result of this section
-\begin{prop} \label{prop:PBP}
-  When $\star\in \set{C^{*}, D^{*}}$,
+\begin{prop} \label{prop:PBP} When $\star\in \set{C^{*}, D^{*}}$,
   \[
     \PBP_{\star}(\tau_{\wp}) = \emptyset \quad \text{if } \wp \neq \emptyset.
   \]
   When $\star\in \set{B,C,\wtC,D}$,
   \[
-    \sharp(\PBP_{\star}(\tau_{\emptyset})) = \sharp(\PBP_{\star}(\tau_{\wp}))
-    \quad \forall \wp \subseteq \CPP(\ckcO).
+    \sharp(\PBP_{\star}(\tau_{\emptyset})) = \sharp(\PBP_{\star}(\tau_{\wp})) \quad \forall \wp \subseteq \CPP(\ckcO).
   \]
   In particular, we always have
   \[
-    \sharp(\tPBP_{\star}(\ckcO))  = \sharp(\PBPe_{\star}(\ckcO)).
+    \sharp(\tPBP_{\star}(\ckcO)) = \sharp(\PBPe_{\star}(\ckcO)).
   \]
 \end{prop}
 
-%\subsection{The case of quaternionic groups}
+% \subsection{The case of quaternionic groups}
 
 The quaternionic case is simple.
 
@@ -36,45 +35,39 @@ The quaternionic case is simple.
 
   \smallskip
 
-First consider the case when $\star = C^{*}$.
-Suppose that $\wp \neq \emptyset$. Then we have
-\begin{equation}\label{eq:res.C*}
-  \bfcc_{i}(\imath_{\wp}) = \half(\bfrr_{2i-1}(\ckcO)+1)>
-  \half(\bfrr_{2i}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp})
-  \quad \forall (2i-1, 2i)\in \wp,
-\end{equation}
-On the other hand, suppose $\PBP_{\star}(\tau_{\wp})$ is non-empty and
-$\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$
-is an element in it.
-By the requirement of painted bipartition, we have
-\[
-  \bfcc_{i}(\imath_{\wp}) = \sharp\set{j| \cP(i,j)=\bullet}
-= \sharp\set{j| \cQ(i,j)=\bullet}
-\leq \bfcc_{i}(\imath_{\wp}) \quad \forall i=1,2,3,\cdots,
-\]
-which is contradict to \eqref{eq:res.C*}.
-Hence, $\PBP_{\star}(\tau_{\wp})= \emptyset$.
+  First consider the case when $\star = C^{*}$. Suppose that
+  $\wp \neq \emptyset$. Then we have
+  \begin{equation}\label{eq:res.C*}
+    \bfcc_{i}(\imath_{\wp}) = \half(\bfrr_{2i-1}(\ckcO)+1)>
+    \half(\bfrr_{2i}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp})
+    \quad \forall (2i-1, 2i)\in \wp,
+  \end{equation}
+  On the other hand, suppose $\PBP_{\star}(\tau_{\wp})$ is non-empty and
+  $\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$ is an
+  element in it. By the requirement of painted bipartition, we have
+  \[
+    \bfcc_{i}(\imath_{\wp}) = \sharp\set{j| \cP(i,j)=\bullet} = \sharp\set{j| \cQ(i,j)=\bullet} \leq \bfcc_{i}(\imath_{\wp}) \quad \forall i=1,2,3,\cdots,
+  \]
+  which is contradict to \eqref{eq:res.C*}. Hence,
+  $\PBP_{\star}(\tau_{\wp})= \emptyset$.
 
-\smallskip
+  \smallskip
 
-Now consider the case when $\star = D^{*}$.
-Suppose that $\wp \neq \emptyset$. Then we have
-\begin{equation}\label{eq:res.D*}
-  \bfcc_{i+1}(\imath_{\wp}) = \half(\bfrr_{2i}(\ckcO)+1)>
-  \half(\bfrr_{2i+1}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp})
-  \quad \forall (2i, 2i+1)\in \wp.
-\end{equation}
-On the other hand, suppose $\PBP_{\star}(\tau_{\wp})$ is non-empty and
-$\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$
-is an element in it.
-By the requirement of painted bipartition, we have
-\[
-  \bfcc_{i+1}(\imath_{\wp}) \leq \sharp\set{j| \cP(i,j)=\bullet}
-  =\sharp\set{j| \cQ(i,j)=\bullet}
-  \leq \bfcc_{i}(\jmath_{\wp}) \quad \forall i = 1,2,3, \cdots,
-\]
-which is contradict to \eqref{eq:res.D*}.
-Hence, $\PBP_{\star}(\tau_{\wp})= \emptyset$.
+  Now consider the case when $\star = D^{*}$. Suppose that $\wp \neq \emptyset$.
+  Then we have
+  \begin{equation}\label{eq:res.D*}
+    \bfcc_{i+1}(\imath_{\wp}) = \half(\bfrr_{2i}(\ckcO)+1)>
+    \half(\bfrr_{2i+1}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp})
+    \quad \forall (2i, 2i+1)\in \wp.
+  \end{equation}
+  On the other hand, suppose $\PBP_{\star}(\tau_{\wp})$ is non-empty and
+  $\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$ is an
+  element in it. By the requirement of painted bipartition, we have
+  \[
+    \bfcc_{i+1}(\imath_{\wp}) \leq \sharp\set{j| \cP(i,j)=\bullet} =\sharp\set{j| \cQ(i,j)=\bullet} \leq \bfcc_{i}(\jmath_{\wp}) \quad \forall i = 1,2,3, \cdots,
+  \]
+  which is contradict to \eqref{eq:res.D*}. Hence,
+  $\PBP_{\star}(\tau_{\wp})= \emptyset$.
 
 \end{proof}
 
@@ -82,70 +75,169 @@ Hence, $\PBP_{\star}(\tau_{\wp})= \emptyset$.
 The rest of the section is devoted to the proof for
 $\star \in \set{B,C,\wtC,D}$.
 
+We refer to \cite{BMSZ1} for the definition of descent $\DD$ of painted bipartition.
 
+
+\def\PPm{\wp_{\downarrow}}
+\def\uptaum{\uptau_{\downarrow}}
+
+Suppose $\wp$ is a non-empty subset of $\CPP(\ckcO)$. In this section, we let
+\[
+  t:=
+  \begin{cases}
+    \min\set{t|(2t-1,2t)\in \wp} & \text{when $\star \in \set{C,\wtC}$}\\
+    \min\set{t|(2t,2t+1)\in \wp} & \text{when $\star \in \set{B,D}$}\\
+  \end{cases}
+\]
+and
+\[
+  \PPm:=
+  \begin{cases}
+    \wp - \set{(2t-1,2t)}  & \text{when $\star \in \set{C,\wtC}$}\\
+    \wp -  \set{(2t,2t+1)} & \text{when $\star \in \set{B,D}$}\\
+  \end{cases}
+\]
+% Suppose $\star = \wtC$, $\wp\neq \emptyset$, and
+% $t:=\min{t|(2t-1,2t)\in \wp}$. Let $\PPm:=\wp - \set{(2t-1,2t)}$. Let
+% $\PPm:=\wp - \set{(2t-1,2t)}$.
+
+We begin with the simpler case.
 \begin{lem}
-  Suppose $\star = \set{C,\wtC}$, $\wp\neq \emptyset$, and $t:=\min{t|(2t-1,2t)\in \wp}$.
-  Let $\sQ:=\wp - \set{(2t-1,2t)}$.
+  Suppose $\star \in \set{B, \wtC}$.
   \[
-  \sharp(\PBP_{\star}(\tau_{\sQ})) = \sharp(\PBP_{\star}(\tau_{\wp})).
+    \sharp(\PBP_{\star}(\tau_{\PPm})) = \sharp(\PBP_{\star}(\tau_{\wp})).
   \]
 \end{lem}
 \begin{proof}
   We prove the equality by defining a bijection
   \[
-    T_{\wp,\sQ}\colon \PBP_{\star}(\tau_{\wp}) \rightarrow \PBP_{\star}(\tau_{\sQ}).
+    T_{\wp,\PPm}\colon \PBP_{\star}(\tau_{\wp}) \rightarrow \PBP_{\star}(\tau_{\PPm}).
   \]
-
-  We begin with the simpler case.
+  and its inverse $T_{\PPm,\wp}$ explicitly. In the following discussion, let
+  $\uptau = (\imath_{\wp},\cP_{\uptau})\times (\imath_{\wp},\cQ_{\uptau})$
+  denote an element in $\PBP_{\star}(\tau_{\wp})$ and
+  $\uptaum = (\imath_{\wp},\cP_{\uptaum})\times (\imath_{\wp},\cQ_{\uptaum})$
+  denote an element in $\PBP_{\star}(\tau_{\PPm})$.
 
   Suppose $\star = \wtC$. Let
   $(b_{1},b_{2}) = (\frac{\bfrr_{2t-1}(\ckcO)}{2},\frac{\bfrr_{2t}(\ckcO)}{2})$.
   Then
   \[
-    (\bfcc_{t}(\imath_{\sQ}), \bfcc_{t}(\jmath_{\sQ})) = (b_{1},b_{2})= (\bfcc_{t}(\jmath_{\wp}), \bfcc_{t}(\imath_{\wp})).
-  \]
-  For other columns, we have
-  \[
-    \bfcc_{i}(\imath_{\sQ}) = \bfcc_{i}(\imath_{\wp}) \AND \bfcc_{i}(\imath_{\sQ}) = \bfcc_{i}(\imath_{\wp})\quad \text{when
-      $i\neq t$}.
-  \]
-  For
-  $\uptau': = (\imath_{\wp},\cP')\times (\jmath_{\wp},\cQ')\in \PBPs(\tau_{\wp})$,
-  define
-  \[
-  T_{\wp,\sQ}(\uptau'):=\uptau := (\imath_{\sQ},\cP)\times (\jmath_{\sQ},\cQ)\in \PBP_{\star}(\tau_{\sQ})
-  \]
-  by the following formula
-  \[
     \begin{split}
-      \text{$\forall (i,j)\in \BOX{\imath_{\sQ}}$,} \quad \cP(i,j) &= \begin{cases}
-        s& \text{if $j=t$ and  $\cQ'(i,j)=r$,}\\
-        c& \text{if $j=t$ and  $\cQ'(i,j)=d$,}\\
-        \cP'(i,j) &\text{otherwise.}
-      \end{cases}\\
-      \text{$\forall (i,j)\in \BOX{\jmath_{\sQ}}$,} \quad   \cQ(i,j) &=  \cQ'(i,j).\\
+      (\bfcc_{t}(\imath_{\PPm}), \bfcc_{t}(\jmath_{\PPm}))
+      &= (b_{1},b_{2})= (\bfcc_{t}(\jmath_{\wp}), \bfcc_{t}(\imath_{\wp})),\AND\\
+      (\bfcc_{i}(\imath_{\PPm}), \bfcc_{i}(\jmath_{\PPm}) )
+      & = (\bfcc_{i}(\imath_{\wp}), \bfcc_{i}(\jmath_{\wp}) ) \quad \text{when $i\neq t$}.
     \end{split}
   \]
-  We leave it to the reader to check that the above formula does define an valid
-  painted bipartition. Retain the above notation, it is easy to check that
-  the inverse map
+  % For
+  % $\uptau': = (\imath_{\wp},\cP')\times (\jmath_{\wp},\cQ')\in \PBPs(\tau_{\wp})$,
+  For $\uptau\in\PBPs(\tau_{\wp})$ define $T_{\wp,\PPm}(\uptau) = \uptaum$  with
+  $\uptaum$ given
+  by the following formula
+  % by the
+  % \[
+  %   T_{\wp,\PPm}(\uptau):=\uptau := (\imath_{\PPm},\cP)\times (\jmath_{\PPm},\cQ)\in \PBP_{\star}(\tau_{\PPm})
+  % \]
   \[
-    T_{\sQ,\wp}\colon \PBP_{\star}(\tau_{\sQ}) \rightarrow \PBP_{\star}(\tau_{\wp})\quad
-    \uptau \mapsto \uptau'
+    \begin{split}
+      \text{$\forall (i,j)\in \BOX{\imath_{\PPm}}$,} \quad \cP_{\uptaum}(i,j) &= \begin{cases}
+        s& \text{if $j=t$ and  $\cQ_{\uptau}(i,j)=r$,}\\
+        c& \text{if $j=t$ and  $\cQ_{\uptau}(i,j)=d$,}\\
+        \cP_{\uptau}(i,j) &\text{otherwise.}
+      \end{cases}\\
+      \text{$\forall (i,j)\in \BOX{\jmath_{\PPm}}$,} \quad   \cQ_{\uptaum}(i,j) &=  \cQ_{\uptau}(i,j).\\
+    \end{split}
+  \]
+  We leave it to the reader to check that the above formula does define a valid
+  painted bipartition $\uptaum$. Retain the above notation, it is easy to check that the
+  inverse map
+  \[
+    T_{\PPm,\wp}\colon \PBP_{\star}(\tau_{\PPm}) \rightarrow \PBP_{\star}(\tau_{\wp})\quad \uptaum \mapsto \uptau
   \]
   is given by the following formula:
   \[
     \begin{split}
-      \text{$\forall (i,j)\in \BOX{\imath_{\wp}}$,} \quad   \cP'(i,j) &=  \cP(i,j),\\
-      \text{$\forall (i,j)\in \BOX{\jmath_{\wp}}$,} \quad \cQ'(i,j) &= \begin{cases}
-        r& \text{if $j=t$ and  $\cP(i,j)=s$,}\\
-        d& \text{if $j=t$ and  $\cP(i,j)=c$,}\\
-        \cQ(i,j) &\text{otherwise.}
+      \text{$\forall (i,j)\in \BOX{\imath_{\wp}}$,} \quad   \cP_{\uptau}(i,j) &=  \cP_{\uptaum}(i,j),\\
+      \text{$\forall (i,j)\in \BOX{\jmath_{\wp}}$,} \quad \cQ_{\uptau}(i,j) &= \begin{cases}
+        r& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=s$,}\\
+        d& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=c$,}\\
+        \cQ_{\uptaum}(i,j) &\text{otherwise.}
       \end{cases}
     \end{split}
   \]
+  This finish the prove for the case when $\star=\wtC$. \medskip
+
+  \def\ckcOa{\ckcO^{\scalebox{.6}{$+$}}}
+  \def\sPa{\sP^{\scalebox{.6}{$+$}}}
+  \def\sPam{\sP^{\scalebox{.6}{$+$}}_{\downarrow}}
+  \def\uptaua{\uptau^{\scalebox{.6}{$+$}}}
+  \def\tausPa{\tau_{\sPa}}
+  \def\tausPam{\tau_{\sPam}}
+
+
+  Now suppose $\star = B$. Let $\ckcOa$ be the nilpotent orbit of $\Sp(2n,\bC)$
+  such that
+  \[
+    \bfrr_{1}(\ckcOa) = \bfrr_{1}(\ckcO)+2, \AND \bfrr_{i+1}(\ckcOa) = \bfrr_{i}(\ckcO)\quad \text{for
+      all $i=1,2,3,\cdots,$}.
+  \]
+  Clearly
+  \[
+    \CPP(\ckcOa) = \set{(1,2)}\cup \set{(i+1,i+2)|(i,i+1)\in \CPP(\ckcO)}.
+  \]
+
+  For each subset $\sP\subset \CPP(\ckcO)$, let $\sPa$ denote the subset in
+  $\CPP(\ckcOa)$ defined by
+  \[
+    \sPa:=\set{(i+1,i+2)|(i,i+1)\in \sP}.
+  \]
+  Let $r_{0}:= \half \bfrr_{1}(\ckcO)+1 = \bfcc_{1}(\imath_{\sPa})$. For $x=c$
+  or $s$, define
+  \[
+    \PBP_{\wtC}^{x}(\tausPa):= \Set{\uptaua\in \PBP_{\wtC}(\tau_{\sPa})|\cP_{\uptaua}\left(r_{0},1\right)=x}
+  \]
+  where $\tausPa$ is the bipartition defined with respect to $\ckcOa$.
+
+  It is easy to check that
+  \begin{itemize}
+    \item
+    $\PBP_{\wtC}(\tausPa) = \PBP_{\wtC}^{c}(\tausPa)\sqcup \PBP_{\wtC}^{s}(\tausPa)$,
+    \item the map $T_{\sPa,\sPam}$ restricted into a bijection from
+    $\PBP_{\wtC}^{x}(\tausPa)$ onto $\PBP_{\wtC}^{x}(\tausPam)$ (here $x=s$ or
+    $c$), and
+    \item the descent map restricted to bijections
+    \[
+      \text{
+          $\PBP_{\wtC}^{s}(\tau_{\sPa})\longrightarrow \PBP_{B^{+}}(\tau_{\sP})$
+          and
+          $\PBP_{\wtC}^{c}(\tau_{\sPa})\longrightarrow \PBP_{B^{-}}(\tau_{\sP})$.
+      }
+    \]
+  \end{itemize}
+
+
+  % Define $\wp'':=\set{(i+1,i+2)|(i,i+1)\in \wp}$ and
+  % $\PPm'':=\set{(i+1,i+2)|(i,i+1)\in \wp}$.
+
 \end{proof}
 
+Suppose $\star = C$. Let
+$(b_{1},b_{2}) = (\frac{\bfrr_{2t-1}(\ckcO)-1}{2},\frac{\bfrr_{2t}(\ckcO)+1}{2})$.
+Then
+\[
+  \begin{split}
+    (\bfcc_{t}(\imath_{\PPm}), \bfcc_{t}(\jmath_{\PPm})) &= (b_{2},b_{1}),  \\
+    (\bfcc_{t}(\jmath_{\wp}), \bfcc_{t}(\imath_{\wp})) &= (b_{1}-1,b_{2}+1),\AND\\
+    (\bfcc_{i}(\imath_{\PPm}),\bfcc_{i}(\imath_{\PPm})) &=(\bfcc_{i}(\imath_{\wp}),\bfcc_{i}(\imath_{\wp}))\quad \text{when
+      $i\neq t$}.
+  \end{split}
+\]
+
+For $\uptau\in \PBPs(\tau_{\PPm})$, we define $\uptau'$ by the following recipe:
+\begin{align*}
+  aa
+\end{align*}
 
 \end{document}
 
