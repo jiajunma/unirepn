@@ -4650,20 +4650,19 @@ Here $\wttau$ has the partition $\cO$.
 \subsection{Special unipotent representations of $G = \GL_n(\bC)$}
 When $G = \GL_{n}(\bC)$ the classification is a special case in \cite{BVUni}.
 
-Since the Lusztig canonical quotient of $\ckcO$ is trivial, the set of unipotent representations
-of $G = \GL_n(\bC)$ one-one corresponds to nilpotent orbits in $\Nil(\ckGc) = \YD_{n}$ by
-\cite{BVUni}.
+Since the Lusztig canonical quotient of $\ckcO$ is trivial, the set of unipotent
+representations of $G = \GL_n(\bC)$ one-one corresponds to nilpotent orbits in
+$\Nil(\ckGc) = \YD_{n}$ by \cite{BVUni}.
 
 \begin{thm}
-Suppose $\ckcO\in \YD_{n} = \Nil(\ckGc)$ and $\ckcO$ has $k$ columns.
+Suppose $\ckcO\in \YD_{n} = \Nil(\ckGc)$ and $\ckcO$ has $k$ rows.
 Let
 \[
  \pi_{\ckcO} := 1_{\bfrr_1(\ckcO)}\times  1_{\bfrr_2(\ckcO)}\times \cdots
  \times 1_{\bfrr_k(\ckcO)}
 \]
 be the normalized parabolic induction where $1_{c}$ denote the trivial
-representations of $\GL_c(\bC)$.
-Then
+representations of $\GL_c(\bC)$. Then
 \[
   \Unip_{A^{\bC}}(\ckcO) = \Set{\pi_{\ckcO}}.
 \]
@@ -4712,7 +4711,7 @@ We list some easy facts below:
     W &= \sfS_{n} \\
     W_{[\lamck]} & = \sfS_{\abs{\ckcO_{e}}}\times \sfS_{\abs{\ckcO_{o}}} \\
     W_{\lamck} & = \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\ckcO_{e})}\times \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\ckcO_{o})}\\\
-    \tau_{\lamck} & := (j_{W_{\lamck}}^{W_{[\lamck]}}\sgn )\otimes \sgn =  \ckcO_{e}^{t}\boxtimes \ckcO_{o}^{t}\\
+    \tau_{\lamck} & := (j_{W_{\lamck}}^{W_{[\lamck]}}\sgn )\otimes \sgn =  \ckcO_{e}^{t}\otimes \ckcO_{o}^{t}\\
     \LC_{\lamck} & = \LRC_{\lamck}= \set{\tau_{\lamck}}, \AND \\
     \wttau_{\lamck} & = j_{W_{[\lamck]}}^{W}\tau_{\lamck} = \Spr^{-1}(\cO).
   \end{split}
@@ -7445,7 +7444,7 @@ The rest of this section is devoted to the proof of the following
           be the painting on $\imath_{\wp}$ defined as follows:
           \begin{itemize}
             \item When $(i,j)\in \BOX{\imath_{\wp}}$ and
-            $\set{\bfcc_{t}(\imath_{\wp})-i,t-1}\cap\set{0,1}=\emptyset$
+            $\set{i-\bfcc_{t}(\imath_{\wp})+1,j-t+1}\nsubseteq \set{0,1}$
             (i.e. $(i,j)$ is not one of the four boxes corresponding to
             $A$), we define
             \[
