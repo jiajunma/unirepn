@@ -1652,6 +1652,7 @@ It contains $ \Coh_{\Lam,\sfS}(G)$ as a subrepresentation, and hence
  Combining \eqref{leq2}, \eqref{leq111} and  Propositions \ref{lem:lcell.BV0}, we obtain the following inequality.
 
  \begin{cor}
+   \label{cor:bound}
    % Under the notation of \Cref{lem:lcell.BV}, we have
    The inequality
    \begin{equation}\label{boundc}
@@ -1672,6 +1673,7 @@ Recall the notion of Harish-Chandra cells for $\Coh_{\Lam}(G)$ (which are called
 
 
  \subsection{Special unipotent representations of classical groups}
+ \label{sec:defunip}
 
  We are particularly interested in counting special unipotent representations of
  real classical groups.
@@ -1729,7 +1731,7 @@ Under this identification, we view $\lambda_{\check \CO}$ as an element of $ W\b
 
  Finally, define the set of the special unipotent representations of $G$
  attached to $\ckcO$ by
- \[
+ \begin{equation}\label{eq:defuni}
    \begin{split}
      \Unip_{\ckcO}(G):=&  \Unip_{\star, \ckcO}(G) \\
      :=& \begin{cases}
@@ -1738,7 +1740,7 @@ Under this identification, we view $\lambda_{\check \CO}$ as an element of $ W\b
        \{\pi\in \Irr(G)\mid \pi \textrm{ is annihilated by } I_{\check \CO}\}, & otherwise.\\
      \end{cases}
    \end{split}
- \]
+ \end{equation}
  Here ``genuine" means that the representation $\pi$ of
  $\widetilde \Sp_{2n}(\R)$ does not descend to $\Sp_{2n}(\R)$.
 A main goal of the current paper is to parametrize the set $\Unip_{\check \CO}(G)$, which will be used by the authors to construct all the
@@ -4626,33 +4628,128 @@ We have the following possible cases
 
 
 
-\section{Unipotent representations of general linear groups}
+\section{Special unipotent representations of general linear groups}
 
-The classification of unipotent representations of general linear groups is well
-known to the experts. We review the result and provide some proves due to the
+The classification of special unipotent representations of general linear groups is well
+known to the experts.
+We review the result and provide some proves due to the
 lack of reference.
 
+After all, the special unipotent representations discussed here are exactly those
+defined in \cite{V.GL}*{p450}, i.e. the representations of the form
+\[
+  \Ind_{P}^{\GL_{n}(F)}\chi
+\]
+where $F= \bR, \bC$ or $\bH$, $P$ is a parabolic subgroup of $\GL_{n}(F)$,
+and $\chi$ is a character of $P$ trivial on the connected component of $P$.
+
+
+\medskip
 % We assume that $G  = \GL_{n}(\bC), \GL_{n}(\bR), \GL_{\half n}(\bH)$ and $\star = A,A^{\bC}, A^{\bH}$ respectively.
 
-In all the cases, $\ckG = \GL_{n}(\bC)$ and $n$ is even if
-$G = \GL_{\frac{n}{2}}(\bH)$.
-The nilpotent orbit $\ckcO$ is parameterized by Young diagrams.
+
 Let $\YD_{n}$ be the set of Young diagrams with $n$-boxes.
-
-Fix $\ckcO\in \Nil(\ckG) = \YD_{n}$ and set
+We identify $\YD_{n}$ with the set $\Nil(\GL_{n}(\bC))$ of nilpotent orbits and
+also with the set of irreducible characters of $\sfS_{n}$ via the Springer
+correspondence, see \cite{Carter}*{11.4}.
+More precisely, for $\cO \in \Nil(\GL_{n}(\bC))=\YD_{n}$, the Springer
+correspondence is given by Macdonald's construction of $\sfS_{n}$ via $j$-induction:
 \[
-  \cO :=\dBV(\ckcO) = \ckcO^{t} \AND \wttau := \Spr^{-1}(\cO).
+  \Spr(\cO) = j_{\prod_{j}\sfS_{\bfcc_{j}(\cO)}}^{\sfS_{n}} \sgn.
 \]
-Here $\wttau$ has the partition $\cO$.
+
+\trivial[]{
+  %\begin{minipage}{\textwidth}
+  Here is the diagram to remember
+  \[
+    \begin{tikzcd}[ampersand replacement=\&]
+     \Nil(\GL_{n}) \ar[rr,"\Spr"]\& \& \Irr(\sfS_{n})\\
+      \&\YD_{n} \ar[lu,"\text{Jordan canonical forms}"] \ar[ru,"\text{Macdonald's $j$-induction}"']\&
+    \end{tikzcd}
+  \]
+  % \end{minipage}
+}
+
+For a nilpotent orbit $\ckcO\in \Nil(\GL_{n}(\bC))$, we set % its Barbasch-Vogan dual is
+\[
+  \cO:=\dBV(\ckcO) = \cO^{t} \in \Nil(\GL_{n}(\bC)).
+\]
 
 
+We always decompose $\ckcO$ into even parts and odd parts and write %$\ckcO\in \Nil(\ckGc)$ and decompose
+\[
+  \ckcO = \ckcO_{e} \cuprow \ckcO_{o}
+\]
+where $\ckcO_e$ is a Young diagrams consist of even  length rows
+and $\ckcO_o$ is a Young diagrams consist of odd length rows
+respectively.
+The infinitesimal character $\lamck$ is integral if and only if
+$\ckcO=\ckcO_{e}$ or $\ckcO_{o}$.
+
+We identify the Weyl group $W$ of $\ckG$ with the symmetric group $\sfS_{n}$.
+Some easy facts are listed below:
+\begin{equation}\label{eq:WA}
+  \begin{split}
+    W_{[\lamck]} & = \sfS_{\abs{\ckcO_{e}}}\times \sfS_{\abs{\ckcO_{o}}} \\
+    W_{\lamck} & = \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\ckcO_{e})}\times \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\ckcO_{o})}\\\
+    \tau_{\lamck} & := (j_{W_{\lamck}}^{W_{[\lamck]}}\sgn )\otimes \sgn =  \ckcO_{e}^{t}\boxtimes \ckcO_{o}^{t}\\
+    \LC_{\lamck} & = \LRC_{\lamck}= \set{\tau_{\lamck}}, \AND \\
+    \wttau_{\lamck} & = j_{W_{[\lamck]}}^{W}\tau_{\lamck} = \Spr^{-1}(\cO).
+  \end{split}
+\end{equation}
+
+% Fix $\ckcO\in \Nil(\ckG) = \YD_{n}$ and set
+% \[
+%   \cO :=\dBV(\ckcO) = \ckcO^{t} \AND \wttau := \Spr^{-1}(\cO).
+% \]
+% Here $\wttau$ has the partition $\cO$.
+
+% In all the cases, $\ckG = \GL_{n}(\bC)$ and $n$ is even if
+% $G = \GL_{\frac{n}{2}}(\bH)$.
+% The nilpotent orbit $\ckcO$ is parameterized by Young diagrams.
+
+
+% \subsection{Definition of special unipotent representation }
+
+% In this section, we let $G = \GL_{n}(\bC)$ and $\fgg:=\Lie(G) = \fgl_{n}(\bC)$.
+% Then $\fggC:= \fgg \otimes_{\bR}\bC$ is naturally identified with
+% $\fgg\times \fgg$ and $\cU(\fggC)=\cU(\fgg)\otimes \cU(\fgg)$.
+
+
+% We make the following definition
+% \begin{defn}
+% For $\ckcO\in \Nil(\GL_{n}(\bC))$, let $\cIck$ be the maximal primitive ideal in
+% $\cU(\fgg)$ with infinitesimal character $\lamck$.
+% We call an irreducible admissible representation of $G$ is a special unipotent
+% representation attached to $\ckcO$
+% \end{defn}
+
+% % For $\ckcO\in \Nil(\GL_{n}(\bC))$, let
+% % \[
+% % \lamckC := (\lambck,\lamck)\in \fhh^{*}\times \fhh^{*}.
+% % \]
+% % Via Harish-Chandra homomorphism, $\lamckC$ determine an infinitesimal character
+% % of $\cZ(\fggC)$.
+
+% % see \cite{BVUni}*{Introduction}.
+
+% Following \cite{BVUni}*{Defintion~1.17}, we make the following definition of
+% unipotent representation:
+% \begin{defn}
+% \end{defn}
+
+% Since $\Lie(G)\otimes_{\bR}\bC$ is naturally
 
 \subsection{Special unipotent representations of $G = \GL_n(\bC)$}
-When $G = \GL_{n}(\bC)$ the classification is a special case in \cite{BVUni}.
+\def\lamckC{\lambda^\bC_{\ckcO}}
+\def\fggR{\fgg_{\bR}}
+\def\fggC{\fgg_{\bC}}
+\def\cIck{\cI_{\ckcO}}
+\def\WC{W^{\bC}}
 
-Since the Lusztig canonical quotient of $\ckcO$ is trivial, the set of unipotent representations
-of $G = \GL_n(\bC)$ one-one corresponds to nilpotent orbits in $\Nil(\ckGc) = \YD_{n}$ by
-\cite{BVUni}.
+The definition and classification of special unipotent representations
+is a special case in \cite{BVUni} in the integral infinitesimal character case.
+The general case is also well known to the experts:%, see \cite{V.GL}.
 
 \begin{thm}
 Suppose $\ckcO\in \YD_{n} = \Nil(\ckGc)$ and $\ckcO$ has $k$ columns.
@@ -4668,6 +4765,46 @@ Then
   \Unip_{A^{\bC}}(\ckcO) = \Set{\pi_{\ckcO}}.
 \]
 \end{thm}
+\begin{proof}
+  The unitarity and irrducibility of $\pi_{\ckcO}$ is well known, see
+  \cite{V.GL}. It is clearly an element in $\Unip_{\ckcO}(G)$ by its construction.
+
+  The computation of complex groups doubles that of real groups.
+  We let $\WC$ denote the Weyl group  of the complexification of $G$.
+  Let $\lamckC:=(\lamck,\overline{\lamck})$ which is an element in the dual $\ahh^{*}$ of the universal Cartan.
+  Recall the notation in \cref{eq:WA}.
+  We have the following facts:
+  \[
+    \begin{split}
+      \WC  &\cong  \sfS_{n}\times \sfS_{n}.\\
+      \WC_{[\lamckC]} &= W_{[\lamck]}\times W_{[\lamck]}\\
+      \LC_{\lamckC} &= \set{\tau_{\lamck}\boxtimes \tau_{\lamck}}\\
+    \end{split}
+  \]
+  As the representation of $\WC_{[\lamckC]}$, $\Coh_{[\lamckC]}(G)$ is isomorphic
+  to the regular representation of $ \bC[W_{[\lamck]}]$ (under the left and
+  right translation), see \cite{BVUni}*{(3.15)}.
+  Therefore,
+  \[
+    \sharp \Unip_{\ckcO}(G)\leq [\tau_{\lamck}\boxtimes \tau_{\lamck}: \bC[W_{[\lamck]}]] = 1
+  \]
+  by \Cref{cor:bound}.
+  This finished the proof of the theorem.
+\end{proof}
+
+
+% In this section, we let $G = \GL_{n}(\bC)$ and
+
+% Then $\fggC:= \fgg \otimes_{\bR}\bC$ is naturally identified with
+% $\fgg\times \fgg$ and $\cU(\fggC)=\cU(\fgg)\otimes \cU(\fgg)$.
+
+% When $\lamck$
+
+\trivial[]{
+Since the Lusztig canonical quotient of $\ckcO$ is trivial, the set of unipotent representations
+of $G = \GL_n(\bC)$ one-one corresponds to nilpotent orbits in
+$\Nil(\ckGc) = \YD_{n}$ if $\lamck$ is integral by
+\cite{BVUni}.
 
 
 \begin{remark}
@@ -4692,31 +4829,27 @@ classical groups.
   \]
 \end{lem}
 
+One should be able to deduce the local system attached to $\pi_{\ckcO}$ using
+the inductive formula.
+}
 
-\subsection{Special unipotent representations of $\GL_n(\bR)$ and
-  $\GL_{\frac{n}{2}}(\bR)$}
-In this section, we assume $G = \GL_{n}(\bR)$ or $\GL_{\frac{n}{2}}(\bR)$, i.e.
-$\star\in \set{A,A^{\bH}}$.
+\subsection{Special unipotent representations of $\GL_n(\bR)$}
+In this section, we assume $G = \GL_{n}(\bR)$,  i.e.
+$\star=A^{\bR}$.
 
 
-Suppose there is decomposition %$\ckcO\in \Nil(\ckGc)$ and decompose
-\[
-  \ckcO = \ckcO_{e} \cuprow \ckcO_{o}
-\]
-where $\ckcO_e$ and $\ckcO_o$ are partitions consist of even and odd rows
-respectively.
 
-We list some easy facts below:
-\[
-  \begin{split}
-    W &= \sfS_{n} \\
-    W_{[\lamck]} & = \sfS_{\abs{\ckcO_{e}}}\times \sfS_{\abs{\ckcO_{o}}} \\
-    W_{\lamck} & = \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\ckcO_{e})}\times \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\ckcO_{o})}\\\
-    \tau_{\lamck} & := (j_{W_{\lamck}}^{W_{[\lamck]}}\sgn )\otimes \sgn =  \ckcO_{e}^{t}\boxtimes \ckcO_{o}^{t}\\
-    \LC_{\lamck} & = \LRC_{\lamck}= \set{\tau_{\lamck}}, \AND \\
-    \wttau_{\lamck} & = j_{W_{[\lamck]}}^{W}\tau_{\lamck} = \Spr^{-1}(\cO).
-  \end{split}
-\]
+% We list some easy facts below:
+% \[
+%   \begin{split}
+%     W &= \sfS_{n} \\
+%     W_{[\lamck]} & = \sfS_{\abs{\ckcO_{e}}}\times \sfS_{\abs{\ckcO_{o}}} \\
+%     W_{\lamck} & = \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\ckcO_{e})}\times \prod_{i\in \bN^{+}}\sfS_{\bfcc_{i}(\ckcO_{o})}\\\
+%     \tau_{\lamck} & := (j_{W_{\lamck}}^{W_{[\lamck]}}\sgn )\otimes \sgn =  \ckcO_{e}^{t}\boxtimes \ckcO_{o}^{t}\\
+%     \LC_{\lamck} & = \LRC_{\lamck}= \set{\tau_{\lamck}}, \AND \\
+%     \wttau_{\lamck} & = j_{W_{[\lamck]}}^{W}\tau_{\lamck} = \Spr^{-1}(\cO).
+%   \end{split}
+% \]
 
 
 % Now let $\ckcO\in \Nil(\ckGc)$ and decompose
@@ -4861,7 +4994,7 @@ For $\uptau:=(\tau,\cP)\in \PP_{A}(\ckcO)$, we write $\cP_{\uptau}:= \cP$.
 Let $\sgn_a\colon \GL_a(\bR)\rightarrow \set{\pm 1}$ be the sign of determinant
 and $1_a$ be the trivial representation of $\GL_a(\bR)$.
 For
-$\uptau\in \PP_{A}{\ckcO}$, we attache the representation
+$\uptau\in \PP_{A}(\ckcO)$, we attache the representation
 \begin{equation}\label{eq:u.GLR}
   \pi_\uptau :=
   \bigtimes_{j} \underbrace{1_j \times \cdots \times 1_j}_{c_j\text{-terms}}\times
@@ -4877,7 +5010,7 @@ where
   \item ``$\times$'' denote the parabolic induction.
 \end{itemize}
 
-\begin{thm}[c.f. Vogan]
+\begin{thm}[c.f. \cite{ABV}*{Example~27.6}]
   The following map is a bijection
   \[
     \begin{array}{ccc}
