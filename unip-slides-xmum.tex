@@ -1,14 +1,18 @@
-\documentclass[t,11pt,handout,usenames,dvipsnames]{beamer}
-%\documentclass[t,11pt,usenames,dvipsnames]{beamer}
+%\documentclass[t,serif,11pt,handout,usenames,dvipsnames]{beamer}
+\documentclass[t,11pt,usenames,dvipsnames]{beamer}
 %\documentclass[t,mathserif,11pt]{beamer} 
 %\usetheme{Berlin}
 %\usecolortheme{seahorse}
-\usefonttheme{serif}
+%
 \usetheme{CambridgeUS}
 \usecolortheme{rose}
 \usecolortheme{dolphin}
 
-%\usefonttheme[onlymath]{serif}
+\usefonttheme{serif}
+\usefonttheme{professionalfonts}
+\usepackage{mathpazo}
+%\usepackage{pxfonts}
+
 
 \setbeamertemplate{itemize items}[square]
 \setbeamertemplate{itemize subitem}[circle]
@@ -535,7 +539,7 @@
 
 \def\vV{\bfV^\vee}
 \def\bSb{\bS(\bfbb)}
-\def\vcO{\cO^\vee}
+\def\vcO{\widehat{\cO}}
 
 
 \def\bbF{\overline{\bF}}
@@ -584,7 +588,7 @@ of real classical groups}
 (joint with Dan Barbasch, Binyong Sun and  Chengbo Zhu)
 }
 
-\institute[XMUM]{School of Mathematical Sciences\\
+\institute[XMUM]{Department of Mathematics\\
 Xiamen University Malaysia Campus}
 
 
@@ -604,12 +608,6 @@ Xiamen University Malaysia Campus}
 }
 %\setbeamertemplate{footline}[my footline]
 \setbeamertemplate{footline}[frame number]
-%\includeonlyframes{tt,DU}
-%\includeonlyframes{CG,AC,EX}
-%\includeonlyframes{CT}
-
-%\usefonttheme[onlymath]{serif}
-\usefonttheme{serif}
 
 
 \makeatletter
@@ -618,6 +616,8 @@ Xiamen University Malaysia Campus}
 \newcommand\longleftrightarrowfill@{%
   \arrowfill@\leftarrow\relbar\rightarrow}
 \makeatother
+
+\def\ckcO{\widehat{\cO}}
 
 \begin{document}
 
@@ -656,8 +656,8 @@ Xiamen University Malaysia Campus}
              \hhgraph{0.15\textwidth}{Chevalley.jpg}{Claude Chevalley}
        \item Classification of conjugation classes in $G$:
              \[
-             G/\sim = \bigsqcup_{s\in G_{ss}/\sim} \set{s u|u\in G^{s}}/\sim \;
-             \xleftrightarrow{\ \ bij. \ \ } \bigsqcup_{s\in G_{ss}/\sim} \unip(G^{s})
+             G/\sim = \bigsqcup_{s\in G_{\mathrm{s.s.}}/\sim} \set{s u|u\in G^{s}}/\sim \;
+             \xleftrightarrow{\ \ bij. \ \ } \bigsqcup_{s\in G_{\mathrm{s.s.}}/\sim} \unip(G^{s})
              \]
      \end{itemize}
    \end{frame}
@@ -669,30 +669,36 @@ Xiamen University Malaysia Campus}
               $G_{2}$, $F_{4}$, $E_{6}$, $E_{7}$, $E_{8}\cdots$.
         \item \emph{Question:} How to classify \emph{$\Irr(G)$} where $G= \bfG(k)$?
         \item What is the structure of $\Irr(G)$?
-        \item $G$ is abelian:
-             \hhgraph{0.13\textwidth}{Pontryagin.jpg}{Lev S. Pontryagin}
-              \[
-              G\leftrightsquigarrow G^{\vee} \text{   is an
-              abelian group}
-              \]
+        \item When $G$ is abelian:
+        \item[]    \hhgraph{0.2\textwidth}{Pontryagin.jpg}{Lev S. Pontryagin}
+              \hspace{0.5em}
+            $ G\leftrightsquigarrow \Irr_{\text{unit.}}(G)=\widehat{G}, \text{
+              an
+              abelian group} $
+        \item Examples: $\bR\leftrightsquigarrow \bR$,
+              $\bZ \leftrightsquigarrow S^{1}$,
+              $\bZ/n\bZ \leftrightsquigarrow \mu_{n}$
       \end{itemize}
     \end{frame}
 
-    \begin{frame}{Finite group of Lie type}
+    \begin{frame}{Finite group of Lie type: $G:=\bfG(\bF_{q})$}
       \begin{itemize}[<+->]
-        \item Deligne-Lusztig (finite group, 1970s) \emph{Jordan decomposition}:
-        \item[] Define dual group $\bfG^{*}$.
-            E.g. $\Sp_{2n} = \bfG\leftrightsquigarrow \bfG^{*} = \SO_{2n+1}$\\
+        \item Deligne-Lusztig and Lusztig (1970s--1980s)
+        \item \emph{Jordan decomposition}:
+        \item[] Define dual group $\widehat{\bfG}$.
+            E.g. $\Sp_{2n} = \bfG\leftrightsquigarrow \widehat{\bfG} = \SO_{2n+1}$\\
         \[
-             \hhgraph{0.13\textwidth}{Lusztig}{Lusztig} \hspace{2em}
-             \Irr(G) = \displaystyle \bigsqcup_{\substack{\text{semisimple
-              class}\\ s \in G^{*}_{s.s.}/\sim}} \cE(G, s).
+             \hhgraph{0.14\textwidth}{Deligne}{Deligne}
+              \hspace{2em}
+              \Irr(G) = \displaystyle \bigsqcup_{s \in \widehat{G}_{\text{s.s.}}/\sim
+              %\substack{\text{semisimple class}\\ s \in \widehat{G}_{\text{s.s.}}/\sim}
+            } \cE(G, s).
              \hspace{2em}
-             \hhgraph{0.13\textwidth}{Deligne}{Deligne}
+              \hhgraph{0.14\textwidth}{Lusztig}{Lusztig}
             \]
         \item[] Lusztig's map to the unipotent packet.
         \[
-          \cE(G,s)\xrightarrow{ bij. } \cE(G^{*}_{s},1)
+          \cE(G,s)\xleftrightarrow{\ \  bij. \ \ } \cE(\widehat{G}_{s},1)
         \]
       \end{itemize}
     \end{frame}
@@ -700,7 +706,7 @@ Xiamen University Malaysia Campus}
     \begin{frame}
       \frametitle{Representations of Real Lie groups}
       \begin{itemize}[<+->]
-        \item Examples $G=\GL_{n}(\bR),\rU(p,q), \rO(p,q), \Sp(2n,\bR), \Mp(2n,\bR), \cdots$\\[-1em]
+        \item $G=\GL_{n}(\bR),\rU(p,q), \rO(p,q), \Sp(2n,\bR), \Mp(2n,\bR), \cdots$\\[-1em]
         \item[]\
               \vspace{-1em}
         \[
@@ -711,11 +717,11 @@ Xiamen University Malaysia Campus}
         \[
           \vgraph{0.6\textwidth}{unitary_sl2.png}
         \]
-        \item \emph{Open problem:} Classify the unitary dual!
+        \item \emph{Open problem:} Structure of the unitary dual!
       \end{itemize}
     \end{frame}
 
-    \def\vG{G^\vee}
+    \def\vG{\widehat{G}}
     \begin{frame}
       \frametitle{Langlands and Arthur}
       \begin{itemize}[<+->]
@@ -749,7 +755,8 @@ Xiamen University Malaysia Campus}
       \frametitle{Arthur's unipotent representations}
       \begin{itemize}[<+->]
         \item $\psi:W_{\bR}\times \SL_{2}(\bC)\rightarrow {}^{L} G $
-        \item Unipotent parameter $\Leftrightarrow$ $\psi|_{\bC^{\times}}=$ trivial
+        \item Unipotent parameter: % $\Leftrightarrow$
+              $\psi|_{\bC^{\times}}=$ trivial
         \item[] $\Leftrightarrow$ nilpotent orbit of a real from of $\vG$.
         \item \vgraph{0.15\textwidth}{Arthur2.jpg}  \emph{Conjecture:} $\exists$ unipotent Arthur
         packets
@@ -757,7 +764,8 @@ Xiamen University Malaysia Campus}
         by the trace formula'' 1980's
         \item \hhgraph{0.15\textwidth}{Moeglin.jpg}{M\oe glin}
         \hhgraph{0.15\textwidth}{Renard.jpg}{Renard}
-        \item[] \emph{Reduction to unipotent Arthur packet}
+        % \item[]
+              \emph{Reduction to unipotent Arthur packet}
         \item[] ``Sur Les paquets d'Arthur des groupes classiques r\'eels''\\
         (2020 JEMS)
       \end{itemize}
@@ -769,9 +777,8 @@ Xiamen University Malaysia Campus}
         \item
           \hhgraph{0.12\textwidth}{Barbasch.jpg}{Barbasch}
           \hhgraph{0.12\textwidth}{Vogan.jpg}{Vogan}
-          \[
-            \Unip(G) \approx \text{repn. with smallest ``size''}
-          \]
+              \hspace{.5em}
+         $ \Unip(G) \approx \text{repn. has smallest ``size''} $
         \item Wavefront cycle/Associated cycle:
         \[
           \Irr(G) \longrightarrow \cK(\text{equiv. sheaves on
@@ -788,11 +795,13 @@ Xiamen University Malaysia Campus}
       \frametitle{Barbasch-Vogan's definition of  special unip. repn. II}
       \begin{itemize}[<+->]
             \item[] $G$: a real reductive group.
-            \item  $\ckcO$ : a nilpotent orbit in $\check G$.
+            \item  $\ckcO$ : a nilpotent orbit in $\vG$.
+              \vspace{-1.5em}
             \item[] \hspace{1em} $\leadsto$  the maximal primitive ideal
-            $\cI_\ckcO\subset \cU(\fgg)$. %attached to $\ckcO$.
+            $\cI_{\ckcO}\subset \cU(\fgg)$. %attached to $\ckcO$.
               \hhgraph{0.11\textwidth}{Duflo}{Duflo}
               \hhgraph{0.11\textwidth}{Joseph2}{Joseph}
+              \vspace{-1.5em}
             \item  \emph{Definition} (Barbasch-Vogan):
             \item [] An irr. admissible $G$-repn. is called
             \emph{special unipotent} if
@@ -804,16 +813,16 @@ Xiamen University Malaysia Campus}
             $\Longleftrightarrow$ $\pi$ has inf. char. $\chi_{\ckcO}$ and
             $\AV_\bC(\pi) = \overline{\cO}$
             \item $\cO\in \Nil^{\text{special}}(\bfG)$:\\
-            the \hhgraph{0.1\textwidth}{Lusztig2}{\ }
-            \hhgraph{0.1\textwidth}{Spaltenstein1}{\tiny Spaltenstein}
-            \hhgraph{0.1\textwidth}{Barbasch2}{\ }
-            \hhgraph{0.1\textwidth}{Vogan2}{\ }
+            the \hhgraph{0.08\textwidth}{Lusztig2}{\ }
+            \hhgraph{0.08\textwidth}{Spaltenstein1}{\tiny Spaltenstein}
+            \hhgraph{0.08\textwidth}{Barbasch2}{\ }
+            \hhgraph{0.08\textwidth}{Vogan2}{\ }
             dual of $\ckcO$.
             \item $\Unip_{\ckcO}(G):=$ \{ special unipotent repn. attached to $\ckcO$\}.
       \end{itemize}
     \end{frame}
 
-    \begin{frame}[label=DU]
+   \begin{frame}[label=DU]
         \frametitle{Conjecture/Open problems}
         \begin{itemize}[<+->]
             \item \emph{Major open problem:} Classify the {\red unitary dual}:
@@ -824,8 +833,8 @@ Xiamen University Malaysia Campus}
              $=$  the {\color{red} building blocks} of the unitary dual.
              \item \emph{Conjecture (1980s)}:
              $\Unip_{\ckcO}(G)$ consists of {\red unitary} repn.
-            \item {\red Question 1:} size of $\Unip_{\ckcO}(G)$?
-            \item {\red Question 2:} Construction of unip. repn.
+            \item {\red Question 1:} Size of $\Unip_{\ckcO}(G)$?
+            \item {\red Question 2:} Construction of unipotent repn.
             \item {\red Question 3:} Character formula? % of $\Unip_{\ckcO}(G)$?
             % of elements in $\Unip_{\ckcO}(G)$?
             \item \emph{Barbasch-Vogan} 1985: Complete answers for {\lblue
@@ -861,7 +870,7 @@ Xiamen University Malaysia Campus}
             \centering
             \begin{tabular}{c|c|c|c|c}
                 \hline
-                & $G$ & $\bfG$  & $\bfG^\vee$ & \\
+                & $G$ & $\bfG$  & $\widehat{\bfG}$ & \\
                 \hline
                 \hline
                 $D_n$ & $\rO(p,2n-p)$ & $\rO(2n,\bC)$& $\rO(2n,\bC)$ & $D_n$\\
@@ -905,12 +914,14 @@ Xiamen University Malaysia Campus}
         \item \hhgraph{0.12\textwidth}{Howe}{Howe}
               $\exists \theta$-correspondence.
               (1970s)
+              \vspace{-2em}
         \[
           \text{\emph{E.g.}}\quad
-          \text{a subset of } \Irr(\rO(p,q))\xrightarrow{1-1} \text{a subset of } \Irr(\Sp(2n,\bR))
+          \text{a subset of } \Irr(\rO(p,q))\xleftrightarrow{bij.} \text{a subset of } \Irr(\Sp(2n,\bR))
         \]
-        \item $\theta$-lifting $\approx$ a effective tool to construct
-        ``small'' repn.% and auto. forms.
+        \item $\theta$-lifting $\approx \sqrt{\text{induction}}$: a effective
+              tool for
+        \emph{``small''} repn.% and auto. forms.
         \item Towards the construction of unipotent repn.:
         \item[]
         \hhgraph{0.1\textwidth}{Adams2}{Adams}
@@ -933,7 +944,7 @@ Xiamen University Malaysia Campus}
         \[
       \small
         \begin{tikzcd}[ampersand replacement=\&,column sep=1em,row sep=.5em]
-            \bfG_i^\vee \&  \SO(15,\bC) \&  \rO(10,\bC) \&  \SO(7,\bC) \& \rO(4,\bC)\\
+            \widehat{\bfG}_i \&  \SO(15,\bC) \&  \rO(10,\bC) \&  \SO(7,\bC) \& \rO(4,\bC)\\
             \vcO_i \& \ydiagram{5,3,3,3,1} \&
             \ydiagram{0,3,3,3,1} \& \ydiagram{0,0,3,3,1} \& \ydiagram{0,0,0,3,1}    \\
             \cO_i \& \ydiagram{4,4,4,2}\& \ydiagram{3,3,3,1} \& \ydiagram{2,2,2,0} \&
@@ -957,21 +968,28 @@ Xiamen University Malaysia Campus}
       \frametitle{About the proof}
       \begin{itemize}[<+->]
         \item $\theta$-lifting $\approx \sqrt{\text{parabolic induction}}$
-        \item \emph{Algebra: } Structure of degenerate principle series.
-        \item \emph{Analysis:} Estimation of matrix coefficient integrals
-        \item[] $\leadsto$ unitarity
-        \item \emph{Algebra+Analysis: } $\leadsto$ lower bound of Associated Cycle.
-        \item \emph{Algebraic Geometry:} double fibration of moment maps
-        \item[] $\leadsto$ upper bound of Associated Cycle.
-        \item \emph{lower bound=upper bound}: $\leadsto$ sharp formula of AC.
-        \item \emph{+ Combinatorics: } descent/lift of painted Young diagrams
-        \item[] $\leadsto$ Exhaustion of the construction.
+        \item  Structure of degenerate principle series ({Algebra}).
+        \item Estimation of matrix coeff. integrals ({Analysis}) $\leadsto$ unitarity
+        \item  {Sharp formula of Asso. Cycles}: {\color{orange} lower bound=upper bound}
+              \begin{itemize}
+                \item \emph{Algebra+Analysis: } $\leadsto$ lower bound.
+                \item \emph{Algebraic Geometry:} double fibration of moment maps
+                \item[] \hspace{2em} $\leadsto$ upper bound
+              \end{itemize}
+        \item {Exhaustion}: {\color{orange} lower bound=upper bound} (Combinatorics)
+              \begin{itemize}
+                \item Character theory (Kazhdan-Lusztig-Vogan theory)
+                \item[] $\leadsto$ upper bound by counting ``tableaux'.
+                \item {Asso. Cycle+Injectivity of $\theta$} $\leadsto$
+                      lower bound.
+              \end{itemize}
       \end{itemize}
     \end{frame}
 
+
     \begin{frame}
       %\frametitle{Related papers (Dan Barbasch, M. ,  Binyong Sun and Chen-Bo Zhu)}
-      \frametitle{Related papers (Barbasch, M. ,  Sun and  Zhu)}
+      \frametitle{Preprints (Barbasch, M. ,  Sun and  Zhu)}
         \vfill
         %\centering{\bf\Large {\tt{atlas}} is a great teacher!} \\
         %\vspace{2em}
@@ -984,7 +1002,7 @@ Xiamen University Malaysia Campus}
           \item[]
    	On the notion of metaplectic Barbasch-Vogan duality
         \href{https://arxiv.org/abs/2010.16089}{https://arxiv.org/abs/2010.16089}
-          \item \emph{Main paper}
+          \item \emph{Construction using $\theta$-lifting, 76 pages}
           \item[]
         Special unipotent representations: orthogonal and symplectic groups\\
         \href{https://arxiv.org/abs/1712.05552v2}{https://arxiv.org/abs/1712.05552v2}
