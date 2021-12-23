@@ -2612,7 +2612,7 @@ Therefore
   \Cref{count1} is an immediate consequence of \Cref{sur111} and the following proposition.
 
 \begin{prop}\label{prop:ev}
-  Suppose  $W_{\Lam}$-submodule $\cS$ of $\Coh_{\Lam}(\cK(G))$ is basal.
+  Suppose  $\cS$ is a basal $W_{\Lam}$-submodule of $\Coh_{\Lam}(\cK(G))$.
   For each $\nu\in [\lambda]$, the evaluation map $\ev{\nu}$ at $\nu$
   descents to an isomorphism
   \[
@@ -2620,38 +2620,37 @@ Therefore
   \]
   where
   \[
-    \cS_{W_{\nu}}:=  \cV /\Span\Set{\Phi- w\cdot \Phi | \Phi\in \cS, \, w\in W_{\nu}}
+    \cS_{W_{\nu}}:=  \cS /\Span\Set{\Phi- w\cdot \Phi | \Phi\in \cS, \, w\in W_{\nu}}
   \]
-  is the maximal $W_{\nu}$-invariant quotient of $\cV$.
+  is the maximal $W_{\nu}$-invariant quotient of $\cS$.
 \end{prop}
 \begin{proof}
-  \def\BS{\cB_{\cS}}
-Without loss of generality we assume that $\nu$ is dominant.
-Let $\BS$ be the basis of $\cS$.
-% By \Cref{sur111}, there is a surjective evaluation  map
-%   \[
-%     \ev{\nu, \sfS} \, :\, \Coh_{[\lambda]}(\CK_\sfS(G)) \longrightarrow \Grt_{\nu, \sfS}(G).
-%   \]
+  \def\BS{\cB_{\cS}} Without loss of generality we assume that $\nu$ is
+  dominant. Let $\BS$ be the basis of $\cS$.
+  % By \Cref{sur111}, there is a surjective evaluation map
+  % \[
+  %   \ev{\nu, \sfS} \, :\, \Coh_{[\lambda]}(\CK_\sfS(G)) \longrightarrow \Grt_{\nu, \sfS}(G).
+  % \]
   % This map is $W_\lambda$-invariant.
   We have
   \begin{eqnarray*}
-      \ker (\ev{\nu}|_{\cS})& = & \Span \Set{\Phi\in \BS| \Phi (\nu)=0}\quad \textrm{(by \Cref{lemirr} and \Cref{lemirr6}})\\
-                         &  \subseteq & \Span \Set{\Phi - s_{\alpha}\cdot\Phi |
-                                        \begin{array}{l} \Phi\in  \BS,\\
-                                          \alpha  \text{ is a simple root of
-                                          $\Delta_{\Lam}^+$ such that
-                                          }\la \lambda, \alpha^\vee\ra=0
-                                        \end{array}}\\
-                         &&\hspace{5em}    \qquad  \textrm{(by Lemma \ref{lemirr4})} \\
-           & \subseteq &\Span\Set{\Phi- w\cdot \Phi | \Phi\in \cS, \, w\in W_{\nu}} \\
-    &  \subseteq &  \ker (\ev{\lambda}|_{\cS}). \qquad \text{(by $(\Phi-w\cdot \Phi)(\nu) = \Phi(\nu)-\Phi(w^{-1}\cdot \nu) = 0$)}\\
+    \ker (\ev{\nu}|_{\cS})& = & \Span \Set{\Phi\in \BS| \Phi (\nu)=0}\quad \textrm{(by \Cref{lemirr} and \Cref{lemirr6}})\\
+                          &  \subseteq & \Span \Set{\Phi - s_{\alpha}\cdot\Phi |
+                                         \begin{array}{l} \Phi\in  \BS,\\
+                                           \alpha  \text{ is a simple root of
+                                           $\Delta_{\Lam}^+$}\\  \text{ such that
+                                           }\la \lambda, \alpha^\vee\ra=0
+                                         \end{array}}\\
+                          &&\hspace{9.5em}     \textrm{(by Lemma \ref{lemirr4})} \\
+                          & \subseteq &\Span\Set{\Phi- w\cdot \Phi | \Phi\in \cS, \, w\in W_{\nu}} \\
+                          &  \subseteq &  \ker (\ev{\lambda}|_{\cS}). \hspace{5em} \text{(by $(\Phi-w\cdot \Phi)(\nu) = \Phi(\nu)-\Phi(w^{-1}\cdot \nu) = 0$)}\\
   \end{eqnarray*}
 
- Therefore
-\[
- \ker (\ev{\lambda}|_{\cS})=\Span\Set{\Phi- w \cdot\Phi \mid \Phi\in\cS, \, w\in W_{\lambda}}.
-\]
-and the proposition follows.
+  Therefore
+  \[
+    \ker (\ev{\lambda}|_{\cS})=\Span\Set{\Phi- w \cdot\Phi \mid \Phi\in\cS, \, w\in W_{\lambda}}.
+  \]
+  and the proposition follows.
 \end{proof}
 
 
@@ -4002,36 +4001,57 @@ $G'_{\mathrm b}:=\GL_{\frac{N_{\mathrm b}}{2}}(\C)$ and
     \tU(p-\frac{N_{\mathrm b}}{2},q-\frac{N_{\mathrm b}}{2}),  & \text{if }\star = \wtA.
 \end{cases}
 \]
-Write $\check \CO_{\mathrm b}=2 \ckcOpb$ and let $\pi_{\ckcOpb}$ denote the unique element in
-          $\Unip_{\ckcOpb}(\GL_{\half N_{\mathrm b}}(\bC))$. Then for every $\pi_0\in  \Unip_{\ckcO_{\mathrm g}}(\Gg)$, the  normalized parabolic induction  $\pi_{\ckcOpb}\rtimes \pi_{0}$ is irreducible and is an element of $\Unip_{\ckcO}(G)$ (see ?). 
+Write $\check \CO_{\mathrm b}=2 \ckcOpb$ and let $\pi_{\ckcOpb}$ denote the
+unique element in $\Unip_{\ckcOpb}(\GL_{\half N_{\mathrm b}}(\bC))$. Then for
+every $\pi_0\in \Unip_{\ckcO_{\mathrm g}}(\Gg)$, the normalized parabolic
+induction $\pi_{\ckcOpb}\rtimes \pi_{0}$ is irreducible by
+\cite{Mat96}*{Theorem~3.2.2} and is an element of $\Unip_{\ckcO}(G)$ (\cf
+\cite{MR.U}*{Theorem~5.3}).
 
-\begin{prop} 
-Assume that the two conditions in Proposition \ref{propu0} are satisfied. Then
-                  the map 
-          \[
-          \begin{array}{ccc}
-         \Unip_{\ckcO_{\mathrm g}}(\Gg)&\longrightarrow &\Unip_{\ckcO}(G),\\
-            \pi_{0}& \mapsto & \pi_{\ckcOpb}\rtimes \pi_{0} \\
-          \end{array}
-          \]
-          is bijective. 
-          Consequently, 
-           \be\label{unitarred1}
-          \sharp(\Unip_{\ckcO}(G)) = \sharp(\Unip_{\ckcO_{\mathrm g}}(\Gg)).
-          \ee
+\begin{prop}
+  Assume that the two conditions in \Cref{propu0} are satisfied.
+  Then
+  \begin{equation}\label{unitarred1}
+    \sharp(\Unip_{\ckcO}(G)) =
+    \sharp(\Unip_{\ckcO_{\mathrm g}}(\Gg)),
+  \end{equation}
+  and
+  the map
+  \[
+    \begin{array}{ccc}
+      \Unip_{\ckcO_{\mathrm g}}(\Gg)&\longrightarrow &\Unip_{\ckcO}(G),\\
+      \pi_{0}& \mapsto & \pi_{\ckcOpb}\rtimes \pi_{0} \\
+    \end{array}
+  \]
+  is bijective. %Consequently, % Then
+  % the map
+  % \[
+  %   \begin{array}{ccc}
+  %     \Unip_{\ckcO_{\mathrm g}}(\Gg)&\longrightarrow &\Unip_{\ckcO}(G),\\
+  %     \pi_{0}& \mapsto & \pi_{\ckcOpb}\rtimes \pi_{0} \\
+  %   \end{array}
+  % \]
+  % is bijective. Consequently, \be\label{unitarred1} \sharp(\Unip_{\ckcO}(G)) =
+  % \sharp(\Unip_{\ckcO_{\mathrm g}}(\Gg)). \ee
 \end{prop}
 
-\begin{proof} We  observe that structure of cells in the basal representation  $\Coh_{[\lambda_{\check \CO}]}(\CK'(G))$ (see \cite[Theorem 5]{Bo}) implies the equality in \eqref{boundc22}. Hence 
-\[
-     \sharp(\Unip_{\check \CO}(G)) =[\tau_{\lamck}: \Coh_{[\lambda_{\check \CO}]}(\CK'(G))]. 
- \]
- Similarly, 
- \[
-     \sharp(\Unip_{\check \CO_\mathrm g}(G_\mathrm g)) = [\tau_{\lamck}: \Coh_{[\lambda_{\check \CO_\mathrm g}]}(\CK'(G_\mathrm g))]. 
- \]
- Note that $[\ckcO_{\mathrm b}^{t}:\cC_{\mathrm b}]=1$, in view of \eqref{IndFor}. The above three equalities clearly imply \eqref{unitarred1}. 
+\begin{proof}
+  We observe that structure of cells in the basal representation
+  $\Coh_{[\lambda_{\check \CO}]}(\CK'(G))$ (see \cite[Theorem 5]{Bo}) implies
+  the equality in \eqref{boundc22}. Hence
+  \[
+    \sharp(\Unip_{\check \CO}(G)) =[\tau_{\lamck}: \Coh_{[\lambda_{\check \CO}]}(\CK'(G))].
+  \]
+  Similarly,
+  \[
+    \sharp(\Unip_{\check \CO_\mathrm g}(G_\mathrm g)) = [\tau_{\lamck}: \Coh_{[\lambda_{\check \CO_\mathrm g}]}(\CK'(G_\mathrm g))].
+  \]
+  Note that $[\ckcO_{\mathrm b}^{t}:\cC_{\mathrm b}]=1$, in view of
+  \eqref{IndFor}. The above three equalities clearly imply \eqref{unitarred1}.
  
-For the first assertion, note that the given map is an injection (see ?) and so a bijection by the counting assertion  \eqref{unitarred1}.
+  For the last assertion, note that the given map is an injection by considering
+  their {\color{red}Langlands parameters } %(\cf \cite{MR.U}*{Theorem~5.3})
+  and so a bijection by the counting assertion \eqref{unitarred1}.
 \end{proof}
 
   % \begin{enumT}
@@ -4064,7 +4084,13 @@ Now assume $\ckcO = \ckcO_{\mathrm g}$.
 % and so $\Cint{\ckcO}(G)$ corresponds to the blocks of the infinitesimal
 % character of the trivial representation.
 In this good parity setting, we will state a counting result on
-$\Unip_{\mathrm g}(\ckcO)$.  We refer the reader to \cite{BMSZ2} for the construction of all elements of $\Unip_{\mathrm g}(\ckcO)$ by the method of theta lifting.
+$\Unip_{\ckcO}(G)$. The elements in $\Unip(\ckcO)(G)$ can be constructed by
+cohomological induction explicitly and they are irreducible and unitary due to
+\cite{Mat96,Tr.U}, see also \cite{Tr.H}*{Section~2} and \cite{MR.U}*{Section~4}
+\trivial[h]{
+  See \cite{MR.U}*{First several paragraphs of Section~4}.
+}
+We refer the reader to \cite{BMSZ2} for the construction of all elements of $\Unip_{\mathrm g}(\ckcO)$ by the method of theta lifting.
 
 Recall from \Cref{defpbp0} the set $\PP_{\star}(\ckcO)$, which is the set of paintings on $\ckcO^{t}$ that has type $\star$.
 %We define the set of painted partitions of type $U$ as the following:
@@ -7568,6 +7594,19 @@ year={1981},
 %     pages ={265--311},
 % }
 
+\bib{Mat96}{article}{
+   author={Matumoto, Hisayosi},
+   title={On the representations of ${\rm U}(m,n)$ unitarily induced from
+   derived functor modules},
+   journal={Compositio Math.},
+   volume={100},
+   date={1996},
+   number={1},
+   pages={1--39},
+   issn={0010-437X},
+   review={\MR{1377407}},
+}
+
 \bib{Mat}{article}{
    author={Matumoto, Hisayosi},
    title={On the representations of ${\rm Sp}(p,q)$ and ${\rm SO}^*(2n)$
@@ -7624,21 +7663,21 @@ year={1981},
 %   year = {2017}
 % }
 
-% \bib{MR19}{article}{
-%    author={M\oe glin, Colette},
-%    author={Renard, David},
-%    title={Sur les paquets d'Arthur des groupes unitaires et quelques
-%    cons\'{e}quences pour les groupes classiques},
-%    language={French, with English and French summaries},
-%    journal={Pacific J. Math.},
-%    volume={299},
-%    date={2019},
-%    number={1},
-%    pages={53--88},
-%    issn={0030-8730},
-%    review={\MR{3947270}},
-%    doi={10.2140/pjm.2019.299.53},
-% }
+\bib{MR.U}{article}{
+   author={M\oe glin, Colette},
+   author={Renard, David},
+   title={Sur les paquets d'Arthur des groupes unitaires et quelques
+   cons\'{e}quences pour les groupes classiques},
+   language={French, with English and French summaries},
+   journal={Pacific J. Math.},
+   volume={299},
+   date={2019},
+   number={1},
+   pages={53--88},
+   issn={0030-8730},
+   review={\MR{3947270}},
+   doi={10.2140/pjm.2019.299.53},
+}
 
 
 % \bib{MVW}{book}{
@@ -7926,16 +7965,28 @@ year = {2001},
 %  year={2015}
 %}
 
+\bib{Tr.U}{article}{
+   author={Trapa, Peter E.},
+   title={Annihilators and associated varieties of $A_{\mathfrak q}(\lambda)$
+   modules for $\mathrm U(p,q)$},
+   journal={Compositio Math.},
+   volume={129},
+   date={2001},
+   number={1},
+   pages={1--45},
+   issn={0010-437X},
+   review={\MR{1856021}},
+   doi={10.1023/A:1013115223377},
+}
 
-
-% \bib{Tr}{article}{
-%   title={Special unipotent representations and the Howe correspondence},
-%   author={Trapa, P.},
-%   year = {2004},
-%   journal={University of Aarhus Publication Series},
-%   volume = {47},
-%   pages= {210--230}
-% }
+\bib{Tr.H}{article}{
+  title={Special unipotent representations and the Howe correspondence},
+  author={Trapa, P.},
+  year = {2004},
+  journal={University of Aarhus Publication Series},
+  volume = {47},
+  pages= {210--230}
+}
 
 % \bib{Wa}{article}{
 %    author = {Waldspurger, J.-L.},
