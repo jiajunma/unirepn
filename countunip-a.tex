@@ -4086,7 +4086,7 @@ Now assume $\ckcO = \ckcO_{\mathrm g}$.
 In this good parity setting, we will state a counting result on
 $\Unip_{\ckcO}(G)$. The elements in $\Unip(\ckcO)(G)$ can be constructed by
 cohomological induction explicitly and they are irreducible and unitary due to
-\cite{Mat96,Tr.U}, see also \cite{Tr.H}*{Section~2} and \cite{MR.U}*{Section~4}
+\cite{Mat96,Tr.U}, see also \cite{Tr.H}*{Section~2} and \cite{MR.U}*{Section~4}.
 \trivial[h]{
   See \cite{MR.U}*{First several paragraphs of Section~4}.
 }
@@ -4110,25 +4110,49 @@ For $\cP \in \PP_{\star}(\ckcO)$, we have defined its signature $(p_\CP, q_\cP)$
 %    \frac{ \sharp(\cP^{-1}(\bullet))}{2}+\sharp(\cP^{-1}(s))\right).
 %\]
 
-\begin{thm} Suppose that $\ckcO = \ckcO_{\mathrm g}$.
-Then
-\be\label{sharpuni0}
-    \sharp(\Unip_{\ckcO}(G))= \sharp \set{\CP\in \mathrm{PAP}_{A^*}(\ckcO)|(p_\CP, q_\CP)=(p,q)}=\sharp(\overline \Nil_{G}(\cO)).
-  \ee
-Moreover, for every $\pi\in \Unip_{\ckcO}(G)$, its wavefront set $\WF(\pi)$ is the closure in   $\sqrt{-1}\g_0^*$ of a unique orbit $\sO_\pi\in \overline \Nil_{G}(\cO)$, and the map 
-\[
-  \begin{array}{rcl}
-  \Unip_{\ckcO}(G) &\longrightarrow& \Nil_{\mathrm g}(\cO),\\
-  \pi & \mapsto & \sO_\pi.
-  \end{array}
-\]
- is bijective.
-
+\begin{thm}[\cf {Barbasch-Vogan\cite{BV.W} and Trapa\cite{Tr.H}*{Theorem~2.1}}]
+  Suppose that $\ckcO = \ckcO_{\mathrm g}$. Then
+  \begin{equation} \label{sharpuni0} \sharp(\Unip_{\ckcO}(G))= \sharp \set{\CP\in \mathrm{PAP}_{A^*}(\ckcO)|(p_\CP, q_\CP)=(p,q)}=\sharp(\overline \Nil_{G}(\cO)).
+  \end{equation}
+  Moreover, for every $\pi\in \Unip_{\ckcO}(G)$, its wavefront set $\WF(\pi)$ is
+  the closure in $\sqrt{-1}\g_0^*$ of a unique orbit
+  $\sO_\pi\in \overline \Nil_{G}(\cO)$, and the map
+  \begin{equation}\label{sharpuni1}
+    \begin{array}{rcl}
+      \Unip_{\ckcO}(G) &\longrightarrow& \overline \Nil_{G}(\cO), \\%\Nil_{\mathrm g}(\cO),\\
+      \pi & \mapsto & \sO_\pi.
+    \end{array}
+  \end{equation}
+  is bijective.
 \end{thm}
 
-\begin{proof} The first equality follows from Lemma \ref{lem:ccrU}, \eqref{IndFor} and Pieri's rule. The second equality follows from the one-one
-correspondence of Harish-Chandra cells in $\Cint{\lambda_\ckcO}(\CK'(G))$ with the  orbits in  $\overline \Nil_{G}(\cO)$, by \cite{BV.W}*{Theorem~4.2} and \cite[Theorem 5]{Bo}.
-The second assertion follows from the main result of \cite{SV}, \cite[Theorem 5]{Bo}, and \eqref{sharpuni0}.
+\begin{proof} The first equality  in \eqref{sharpuni0} follows from \Cref{lem:ccrU},
+  \eqref{IndFor} and Pieri's rule.
+  The second equality in \eqref{sharpuni0} follows directly from
+  the bijectivity of \eqref{sharpuni1}.
+  \trivial[]{
+  {delete the following sentence: }
+  The second equality in \eqref{sharpuni0}
+  follows from (an easy) direct computation of numbers of elements both-sides.
+  }
+  % We now prove the second equality,  there is a one-one
+  % correspondence of Harish-Chandra cells in $\Cint{\lambda_\ckcO}(\CK'(G))$ with
+  % the orbits in $\overline \Nil_{G}(\cO)$ by \cite{BV.W}*{Theorem~4.2} and
+  % \cite[Theorem 5]{Bo} (we use \cite{SV}*{Theorem~1.4} to restate the result in
+  % terms of real nilpotent ).
+  %
+ To prove the bijectivity of \eqref{sharpuni1}, we use the one-one
+  correspondence of Harish-Chandra cells in $\Cint{\lambda_\ckcO}(\CK'(G))$ with
+  the orbits in $\overline \Nil_{G}(\cO)$ by \cite{BV.W}*{Theorem~4.2} and
+  \cite[Theorem 5]{Bo} (we use \cite{SV}*{Theorem~1.4} to rephrase the result in
+  terms of real nilpotent orbits).
+  The Harish-Chandra cell representations are all irreducible and explicitly
+  discribed in terms of the Springer correspondence by \cite{Bo}*{Lemma~4}.
+  By the proof of \Cref{cohbbs}, we conclude that
+  there is exactly one unipotent representation attached to each
+  relevent cell and therefore establish the bijection.
+  % The second assertion follows from the main result of
+  % \cite{SV}*{Theorem~1.4}, \cite[Theorem 5]{Bo}, and \eqref{sharpuni0}.
 \end{proof}
 
 \trivial[h]{
