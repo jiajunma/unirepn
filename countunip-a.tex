@@ -2557,6 +2557,7 @@ By using the action of $W_\Lam$, we assume without loss of generality that $\nu$
 
 
 
+\delete{
 \subsection{Proof of \Cref{count1}}
   \Cref{count1} is an immediate consequence of the following proposition.
 
@@ -2599,12 +2600,60 @@ Therefore
  \ker \ev{\lambda, \sfS}=\Span\Set{\Phi- w \cdot\Phi \mid \Phi\in  \Coh_{[\lambda]}(\CK_\sfS(G)), \, w\in W_{\lambda}}.
 \]
 \end{proof}
+}
 % This completes the proof of Theorem \ref{count1}.
 
 
 % \begin{proof}[Proof of \Cref{count1}]
 %   This is an immediate consequence of \Cref{prop:ev}.
 % \end{proof}
+
+\subsection{Proof of \Cref{count1}}
+  \Cref{count1} is an immediate consequence of \Cref{sur111} and the following proposition.
+
+\begin{prop}\label{prop:ev}
+  Suppose  $W_{\Lam}$-submodule $\cS$ of $\Coh_{\Lam}(\cK(G))$ is basal.
+  For each $\nu\in [\lambda]$, the evaluation map $\ev{\nu}$ at $\nu$
+  descents to an isomorphism
+  \[
+    \overline{\ev{\nu}|_{\cS}} \, \colon \cS_{W_{\nu}} \longrightarrow \ev{\nu}(\cS),
+  \]
+  where
+  \[
+    \cS_{W_{\nu}}:=  \cV /\Span\Set{\Phi- w\cdot \Phi | \Phi\in \cS, \, w\in W_{\nu}}
+  \]
+  is the maximal $W_{\nu}$-invariant quotient of $\cV$.
+\end{prop}
+\begin{proof}
+  \def\BS{\cB_{\cS}}
+Without loss of generality we assume that $\nu$ is dominant.
+Let $\BS$ be the basis of $\cS$.
+% By \Cref{sur111}, there is a surjective evaluation  map
+%   \[
+%     \ev{\nu, \sfS} \, :\, \Coh_{[\lambda]}(\CK_\sfS(G)) \longrightarrow \Grt_{\nu, \sfS}(G).
+%   \]
+  % This map is $W_\lambda$-invariant.
+  We have
+  \begin{eqnarray*}
+      \ker (\ev{\nu}|_{\cS})& = & \Span \Set{\Phi\in \BS| \Phi (\nu)=0}\quad \textrm{(by \Cref{lemirr} and \Cref{lemirr6}})\\
+                         &  \subseteq & \Span \Set{\Phi - s_{\alpha}\cdot\Phi |
+                                        \begin{array}{l} \Phi\in  \BS,\\
+                                          \alpha  \text{ is a simple root of
+                                          $\Delta_{\Lam}^+$ such that
+                                          }\la \lambda, \alpha^\vee\ra=0
+                                        \end{array}}\\
+                         &&\hspace{5em}    \qquad  \textrm{(by Lemma \ref{lemirr4})} \\
+           & \subseteq &\Span\Set{\Phi- w\cdot \Phi | \Phi\in \cS, \, w\in W_{\nu}} \\
+    &  \subseteq &  \ker (\ev{\lambda}|_{\cS}). \qquad \text{(by $(\Phi-w\cdot \Phi)(\nu) = \Phi(\nu)-\Phi(w^{-1}\cdot \nu) = 0$)}\\
+  \end{eqnarray*}
+
+ Therefore
+\[
+ \ker (\ev{\lambda}|_{\cS})=\Span\Set{\Phi- w \cdot\Phi \mid \Phi\in\cS, \, w\in W_{\lambda}}.
+\]
+and the proposition follows.
+\end{proof}
+
 
 \subsection{Highest weight modules and coherent continuation representations}
 
