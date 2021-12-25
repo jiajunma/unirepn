@@ -2425,11 +2425,18 @@ Now suppose that $\star\in \{B^\C,D^\C, C^\C, \widetilde C^\C\}$. As in the real
       \end{cases}
 \]
 
-Define the set $\CPP_\star(\ckcOg)$ as in the real case. Then by the work of Barbasch-Vogan (\cite[Corollary 5.29]{BVUni}), we have  
+Define the set $\CPP_\star(\ckcOg)$ as in the real case. Then by the work of
+Barbasch-Vogan \cite[Corollary 5.29]{BVUni} (integral case) and Moeglin-Renard
+\cite{MR.C} (general case), we have
    \[
     \sharp(\Unip_{\check \CO}(G))=\sharp(\Unip_{\ckcOg}(\Gg))=2^{\sharp(\CPP_\star(\ckcOg))}.
   \]
-   As in the real case, every representation in $\Unip_{\check \CO}(G)$ is obtained through irreducible parabolic induction via those of $\Unip_{\ckcO'_{\mathrm b}}( G'_{\mathrm b})\times \Unip_{\ckcO_{\mathrm g}}( G_{\mathrm g})$ (see Theorem \ref{reduction}), and every representation in $\Unip_{\ckcOg}(\Gg)$ is obtained through iterated theta lifting (see \cite[Theorem 3.5.1]{B17} and \cite{BMSZ2}).
+   As in the real case, every representation in $\Unip_{\check \CO}(G)$ is
+   obtained through irreducible parabolic induction via those of
+   $\Unip_{\ckcO'_{\mathrm b}}( G'_{\mathrm b})\times \Unip_{\ckcO_{\mathrm g}}( G_{\mathrm g})$
+   (see Theorem \ref{reduction}), and every representation in
+   $\Unip_{\ckcOg}(\Gg)$ is obtained through iterated theta lifting (see
+   \cite[Theorem 3.5.1]{B17}, \cite{Mo17} and \cite{BMSZ2}).
 
 
 \vskip.25in
@@ -3956,6 +3963,82 @@ Then, as $\WLamck =\sfS_{N_{\mathrm g}}\times \sfS_{N_{\mathrm b}}$-modules,
   calculation.
 \end{proof}
 
+
+Recall from \Cref{defpbp0} the set $\PP_{\star}(\ckcO)$, which is the set of paintings on $\ckcO^{t}$ that has type $\star$.
+%We define the set of painted partitions of type $U$ as the following:
+%\begin{equation*}%\label{eq:PP.U}
+%  \PP_{U}(\ckcO) = \Set{\uptau:=(\tau, \cP)|
+%    \begin{array}{l}
+%      \text{$\tau = \ckcO^{t}$}\\
+%      \text{$\Im(\cP)\subseteq \set{\bullet,s,r}$}\\
+%      \text{$\#\set{j|\cP(i,j)=\bullet}$ is even for all $i\in \bN^{+}$}
+%    \end{array}
+%  }.
+%\end{equation*}
+For $\cP \in \PP_{\star}(\ckcO)$, we have defined its signature $(p_\CP, q_\cP)$ in \eqref{eq:signature}. Let $\overline \Nil_{G}(\cO)$ denote the set of $G$-orbits in $(\sqrt{-1}\g_0^*)\cap \CO$, where $\g_0$ denotes the Lie algebra of $G$ which equals $\u(p,q)$.  
+%For a painted partition $\cP$ of type $U$, define the signature of $\CP$ to be the pair
+%\[
+%    (p_\CP, q_\cP): = \left (\frac{\sharp(\cP^{-1}(\bullet))}{2}+\sharp(\cP^{-1}(r)),\,
+%    \frac{ \sharp(\cP^{-1}(\bullet))}{2}+\sharp(\cP^{-1}(s))\right).
+%\]
+
+We first consider the case when  $\ckcO = \ckcO_{\mathrm g}$.
+%Now assume $\ckcO = \ckcO_{\mathrm g}$.
+% and so $\Cint{\ckcO}(G)$ corresponds to the blocks of the infinitesimal
+% character of the trivial representation.
+In this good parity setting, we will state a counting result on
+$\Unip_{\ckcO}(G)$. The elements in $\Unip_{\ckcO}(G)$ can be constructed by
+cohomological induction explicitly and they are irreducible and unitary due to
+\cite{Mat96,Tr.U}, see also \cite{Tr.H}*{Section~2} and \cite{MR.U}*{Section~4}.
+%\trivial[h]{See \cite{MR.U}*{First several paragraphs of Section~4}.}
+We refer the reader to \cite{BMSZ2} for the construction of all elements of $\Unip_{\ckcO}(G)$ by the method of theta lifting.
+
+
+\begin{thm}[\cf {Barbasch-Vogan\cite{BV.W} and Trapa\cite{Tr.H}*{Theorem~2.1}}]\label{thmunit0}
+  Suppose that $\ckcO = \ckcO_{\mathrm g}$. Then
+  \begin{equation} \label{sharpuni0} \sharp(\Unip_{\ckcO}(G))= \sharp \set{\CP\in \mathrm{PAP}_{A^*}(\ckcO)|(p_\CP, q_\CP)=(p,q)}=\sharp(\overline \Nil_{G}(\cO)).
+  \end{equation}
+  Moreover, for every $\pi\in \Unip_{\ckcO}(G)$, its wavefront set $\WF(\pi)$ is
+  the closure in $\sqrt{-1}\g_0^*$ of a unique orbit
+  $\sO_\pi\in \overline \Nil_{G}(\cO)$, and the map
+  \begin{equation}\label{sharpuni1}
+    \begin{array}{rcl}
+      \Unip_{\ckcO}(G) &\longrightarrow& \overline \Nil_{G}(\cO), \\%\Nil_{\mathrm g}(\cO),\\
+      \pi & \mapsto & \sO_\pi.
+    \end{array}
+  \end{equation}
+  is bijective.
+\end{thm}
+
+\begin{proof} The first equality  in \eqref{sharpuni0} follows from \Cref{lem:ccrU},
+  \eqref{IndFor} and Pieri's rule.
+  The second equality in \eqref{sharpuni0} follows directly from
+  the bijectivity of \eqref{sharpuni1}.
+  \trivial[h]{
+  {delete the following sentence: }
+  The second equality in \eqref{sharpuni0}
+  follows from (an easy) direct computation of numbers of elements both-sides.
+  }
+  % We now prove the second equality,  there is a one-one
+  % correspondence of Harish-Chandra cells in $\Cint{\lambda_\ckcO}(\CK'(G))$ with
+  % the orbits in $\overline \Nil_{G}(\cO)$ by \cite{BV.W}*{Theorem~4.2} and
+  % \cite[Theorem 5]{Bo} (we use \cite{SV}*{Theorem~1.4} to restate the result in
+  % terms of real nilpotent ).
+  %
+ To prove the bijectivity of \eqref{sharpuni1}, we use the one-one
+  correspondence of Harish-Chandra cells in $\Cint{\lambda_\ckcO}(\CK'(G))$ with
+  the orbits in $\overline \Nil_{G}(\cO)$ by \cite{BV.W}*{Theorem~4.2} and
+  \cite[Theorem 5]{Bo} (we use \cite{SV}*{Theorem~1.4} to rephrase the result in
+  terms of real nilpotent orbits).
+  The Harish-Chandra cell representations are all irreducible and explicitly
+  discribed in terms of the Springer correspondence by \cite{Bo}*{Lemma~4}.
+  By the proof of \Cref{cohbbs}, we conclude that
+  there is exactly one unipotent representation attached to each
+  relevent cell and therefore establish the bijection.
+  % The second assertion follows from the main result of
+  % \cite{SV}*{Theorem~1.4}, \cite[Theorem 5]{Bo}, and \eqref{sharpuni0}.
+\end{proof}
+
 % \trivial[]{
 %   Let
 %   $\lambda := (\lambda_{1},\cdots,\lambda_{n})=(\underbrace{1/2, \cdots, 1/2}_{a},\underbrace{0,\cdots,0}_{\mathrm b})$
@@ -3974,6 +4057,7 @@ Then, as $\WLamck =\sfS_{N_{\mathrm g}}\times \sfS_{N_{\mathrm b}}$-modules,
 % \end{cases}
 % \]
 
+Now we consider the general case. 
 
 \begin{prop} \label{propu0}
 The set $\Unip_{\ckcO}(G)$ is empty  unless           \begin{itemize}
@@ -4008,7 +4092,7 @@ induction $\pi_{\ckcOpb}\rtimes \pi_{0}$ is irreducible by
 \cite{Mat96}*{Theorem~3.2.2} and is an element of $\Unip_{\ckcO}(G)$ (\cf
 \cite{MR.U}*{Theorem~5.3}).
 
-\begin{prop}
+\begin{thm}
   Assume that the two conditions in \Cref{propu0} are satisfied.
   Then
   \begin{equation}\label{unitarred1}
@@ -4017,12 +4101,12 @@ induction $\pi_{\ckcOpb}\rtimes \pi_{0}$ is irreducible by
   \end{equation}
   and
   the map
-  \[
+  \be\label{bij00}
     \begin{array}{ccc}
       \Unip_{\ckcO_{\mathrm g}}(\Gg)&\longrightarrow &\Unip_{\ckcO}(G),\\
       \pi_{0}& \mapsto & \pi_{\ckcOpb}\rtimes \pi_{0} \\
     \end{array}
-  \]
+  \ee
   is bijective. %Consequently, % Then
   % the map
   % \[
@@ -4033,7 +4117,7 @@ induction $\pi_{\ckcOpb}\rtimes \pi_{0}$ is irreducible by
   % \]
   % is bijective. Consequently, \be\label{unitarred1} \sharp(\Unip_{\ckcO}(G)) =
   % \sharp(\Unip_{\ckcO_{\mathrm g}}(\Gg)). \ee
-\end{prop}
+\end{thm}
 
 \begin{proof}
   We observe that structure of cells in the basal representation
@@ -4049,9 +4133,7 @@ induction $\pi_{\ckcOpb}\rtimes \pi_{0}$ is irreducible by
   Note that $[\ckcO_{\mathrm b}^{t}:\cC_{\mathrm b}]=1$, in view of
   \eqref{IndFor}. The above three equalities clearly imply \eqref{unitarred1}.
  
-  For the last assertion, note that the given map is an injection by considering
-  their {\color{red}Langlands parameters } %(\cf \cite{MR.U}*{Theorem~5.3})
-  and so a bijection by the counting assertion \eqref{unitarred1}.
+ By the  calculation of  the wavefront set of the induced representations (\cite[Corollary 5.0.10]{B.Orbit}),  Theorem \ref{thmunit0} implies that all the representations $\pi_{\ckcOpb}\rtimes \pi_{0}$, where $\pi_0$ varies in $\Unip_{\ckcO_{\mathrm g}}(\Gg)$, have pairwise distinct wavefront sets.   Thus the map \eqref{bij00} is injective. Hence it is bijection by the counting assertion \eqref{unitarred1}.
 \end{proof}
 
   % \begin{enumT}
@@ -4078,82 +4160,6 @@ induction $\pi_{\ckcOpb}\rtimes \pi_{0}$ is irreducible by
   %   where $P$ is a parabolic subgroup with Levi factor
   %   $\GL_p(\bC)\times \rU(n_1,n_2)$.
   % \end{enumT}
-
-From the above proposition, the problem of construction of all special unipotent representations attached to $\ckcO$ is reduced to the case when $\ckcO = \ckcO_{\mathrm g}$.
-Now assume $\ckcO = \ckcO_{\mathrm g}$.
-% and so $\Cint{\ckcO}(G)$ corresponds to the blocks of the infinitesimal
-% character of the trivial representation.
-In this good parity setting, we will state a counting result on
-$\Unip_{\ckcO}(G)$. The elements in $\Unip(\ckcO)(G)$ can be constructed by
-cohomological induction explicitly and they are irreducible and unitary due to
-\cite{Mat96,Tr.U}, see also \cite{Tr.H}*{Section~2} and \cite{MR.U}*{Section~4}.
-\trivial[h]{
-  See \cite{MR.U}*{First several paragraphs of Section~4}.
-}
-We refer the reader to \cite{BMSZ2} for the construction of all elements of $\Unip_{\mathrm g}(\ckcO)$ by the method of theta lifting.
-
-Recall from \Cref{defpbp0} the set $\PP_{\star}(\ckcO)$, which is the set of paintings on $\ckcO^{t}$ that has type $\star$.
-%We define the set of painted partitions of type $U$ as the following:
-%\begin{equation*}%\label{eq:PP.U}
-%  \PP_{U}(\ckcO) = \Set{\uptau:=(\tau, \cP)|
-%    \begin{array}{l}
-%      \text{$\tau = \ckcO^{t}$}\\
-%      \text{$\Im(\cP)\subseteq \set{\bullet,s,r}$}\\
-%      \text{$\#\set{j|\cP(i,j)=\bullet}$ is even for all $i\in \bN^{+}$}
-%    \end{array}
-%  }.
-%\end{equation*}
-For $\cP \in \PP_{\star}(\ckcO)$, we have defined its signature $(p_\CP, q_\cP)$ in \eqref{eq:signature}. Let $\overline \Nil_{G}(\cO)$ denote the set of $G$-orbits in $(\sqrt{-1}\g_0^*)\cap \CO$, where $\g_0$ denotes the Lie algebra of $G$ which equals $\u(p,q)$.  
-%For a painted partition $\cP$ of type $U$, define the signature of $\CP$ to be the pair
-%\[
-%    (p_\CP, q_\cP): = \left (\frac{\sharp(\cP^{-1}(\bullet))}{2}+\sharp(\cP^{-1}(r)),\,
-%    \frac{ \sharp(\cP^{-1}(\bullet))}{2}+\sharp(\cP^{-1}(s))\right).
-%\]
-
-\begin{thm}[\cf {Barbasch-Vogan\cite{BV.W} and Trapa\cite{Tr.H}*{Theorem~2.1}}]
-  Suppose that $\ckcO = \ckcO_{\mathrm g}$. Then
-  \begin{equation} \label{sharpuni0} \sharp(\Unip_{\ckcO}(G))= \sharp \set{\CP\in \mathrm{PAP}_{A^*}(\ckcO)|(p_\CP, q_\CP)=(p,q)}=\sharp(\overline \Nil_{G}(\cO)).
-  \end{equation}
-  Moreover, for every $\pi\in \Unip_{\ckcO}(G)$, its wavefront set $\WF(\pi)$ is
-  the closure in $\sqrt{-1}\g_0^*$ of a unique orbit
-  $\sO_\pi\in \overline \Nil_{G}(\cO)$, and the map
-  \begin{equation}\label{sharpuni1}
-    \begin{array}{rcl}
-      \Unip_{\ckcO}(G) &\longrightarrow& \overline \Nil_{G}(\cO), \\%\Nil_{\mathrm g}(\cO),\\
-      \pi & \mapsto & \sO_\pi.
-    \end{array}
-  \end{equation}
-  is bijective.
-\end{thm}
-
-\begin{proof} The first equality  in \eqref{sharpuni0} follows from \Cref{lem:ccrU},
-  \eqref{IndFor} and Pieri's rule.
-  The second equality in \eqref{sharpuni0} follows directly from
-  the bijectivity of \eqref{sharpuni1}.
-  \trivial[]{
-  {delete the following sentence: }
-  The second equality in \eqref{sharpuni0}
-  follows from (an easy) direct computation of numbers of elements both-sides.
-  }
-  % We now prove the second equality,  there is a one-one
-  % correspondence of Harish-Chandra cells in $\Cint{\lambda_\ckcO}(\CK'(G))$ with
-  % the orbits in $\overline \Nil_{G}(\cO)$ by \cite{BV.W}*{Theorem~4.2} and
-  % \cite[Theorem 5]{Bo} (we use \cite{SV}*{Theorem~1.4} to restate the result in
-  % terms of real nilpotent ).
-  %
- To prove the bijectivity of \eqref{sharpuni1}, we use the one-one
-  correspondence of Harish-Chandra cells in $\Cint{\lambda_\ckcO}(\CK'(G))$ with
-  the orbits in $\overline \Nil_{G}(\cO)$ by \cite{BV.W}*{Theorem~4.2} and
-  \cite[Theorem 5]{Bo} (we use \cite{SV}*{Theorem~1.4} to rephrase the result in
-  terms of real nilpotent orbits).
-  The Harish-Chandra cell representations are all irreducible and explicitly
-  discribed in terms of the Springer correspondence by \cite{Bo}*{Lemma~4}.
-  By the proof of \Cref{cohbbs}, we conclude that
-  there is exactly one unipotent representation attached to each
-  relevent cell and therefore establish the bijection.
-  % The second assertion follows from the main result of
-  % \cite{SV}*{Theorem~1.4}, \cite[Theorem 5]{Bo}, and \eqref{sharpuni0}.
-\end{proof}
 
 \trivial[h]{
 From the branching rule, the cell is parameterized by painted partition
@@ -4185,10 +4191,11 @@ $\sO$ is the unique (up to row switching) signed Young diagram such that
 }
 
 \begin{remark}
-  Note that the parabolic induction of a real nilpotent orbit may be reducible.
-  When $\ckcO_{\mathrm b}\neq \emptyset$, a special unipotent representation may thus have
-  a reducible associated variety. Nevertheless, the map
-  $\Unip_{\ckcO}(G) \ni \pi \mapsto \WF(\pi)$ remains to be injective in the case of unitary groups. 
+  When $\check \CO\neq \check \CO_{\mathrm g}$, the wavefront set $\WF(\pi)$, where $\pi\in \Unip_{\ckcO}(G)$,  may not be the closure of a single orbit in 
+   $\overline \Nil_{G}(\cO)$.
+  % the parabolic induction of a real nilpotent orbit may be reducible. When $\ckcO_{\mathrm b}\neq \emptyset$, a special unipotent representation may thus have
+ % a reducible associated variety. Nevertheless, the map
+  % $\Unip_{\ckcO}(G) \ni \pi \mapsto \WF(\pi)$ remains to be injective in the case of unitary groups. 
 \end{remark}
 
 \delete{
@@ -5503,7 +5510,7 @@ where
   \]
   where $\cP'$ is defined by the condition that
   \[
-    \cP(\bfcc_{j}(\tau_{L,b}),j)=d \Longleftrightarrow \cP'(\bfcc_{j}(\cOpb),j)=d, \quad \forall j=1,2,\cdots, \bfrr_{1}(\cOpb).
+    \cP(\bfcc_{j}(\tau_{L,b}),j)=d \Longleftrightarrow \cP'(\bfcc_{j}(\cOpb),j)=d, \quad \textrm{ for all } j=1,2,\cdots, \bfrr_{1}(\cOpb).
   \]
   \trivial[h]{
     % Let $\tau' = \ckcO'^{t}_{\mathrm b}$ and $\tau_{\mathrm b}=(\tau_{L,b}, \tau_{R,b})$. Here
@@ -5511,7 +5518,7 @@ where
     Now the claim follows for the fact that the bottom rows in $\uptau_{L}$ can
     be filled by $\bullet/c$ or $d$ and
     \[
-      \bfcc_{i}(\tau_{L,b}) = \bfcc_{j}(\tau_{L,b}) \Leftrightarrow \bfcc_{i}(\cOpb) = \bfcc_{j}(\cOpb) \quad \forall i,j\in \bN^{+}.
+      \bfcc_{i}(\tau_{L,b}) = \bfcc_{j}(\tau_{L,b}) \Leftrightarrow \bfcc_{i}(\cOpb) = \bfcc_{j}(\cOpb) \quad \textrm{ for all } i,j\in \bN^{+}.
     \]
   }
 
@@ -5582,7 +5589,7 @@ Recall from \Cref{cor:bound}, we have the inequality
 
   Now suppose $\ngg>0$. Let
   \[
-    \wttau_{\mathrm b} := \Ind_{\sfW'_{\nbb}}^{\sfW_{\nbb}} \tau_{\mathrm b} = (\cOpb,\cOpb) \AND \wttau_{\wp}: = (\imath_{\wp},\jmath_{\wp}) \quad \forall \wp \subseteq \CPP(\ckcOg).
+    \wttau_{\mathrm b} := \Ind_{\sfW'_{\nbb}}^{\sfW_{\nbb}} \tau_{\mathrm b} = (\cOpb,\cOpb) \AND \wttau_{\wp}: = (\imath_{\wp},\jmath_{\wp}) \quad \textrm{ for all } \wp \subseteq \CPP(\ckcOg).
   \]
   Note that $\imath_{\wp}\neq \jmath_{\wp}$ since
   $\bfcc_{1}(\imath_{\wp})> \bfcc_{1}(\jmath_{\wp})$. It is then easy to see that
@@ -6008,11 +6015,11 @@ In order to ensure condition (v) in \Cref{lem:ff.irr}, we will make some additio
                 $\alpha_{2}:= \ff(\alpha_{1})$ is noncompact, and so forth;
           \item The cross actions are compatible under $f$:
                 \[
-                \ff(w\cross [\gamma_{1}]) = \ff(w)\cross [\ff(\gamma_{1})], \qquad \forall \gamma_{1}\in B, w\in W_{[\lambda_{1}]}.
+                \ff(w\cross [\gamma_{1}]) = \ff(w)\cross [\ff(\gamma_{1})], \qquad \textrm{ for all } \gamma_{1}\in B, w\in W_{[\lambda_{1}]}.
                 \]
           \item The Cayley transforms \cite{V4} are compatible under $f$:
                 \[
-                \ff( c^{\alpha_{1}} (\gamma_{1})) = c^{\ff(\alpha_{1})}(\ff(\gamma_{1})), \qquad \forall \gamma_{1}\in B, \alpha_{1} \text{ is
+                \ff( c^{\alpha_{1}} (\gamma_{1})) = c^{\ff(\alpha_{1})}(\ff(\gamma_{1})), \qquad \textrm{ for all } \gamma_{1}\in B, \alpha_{1} \text{ is
                 noncompact imaginary}
                 \]
                 and
@@ -6023,7 +6030,7 @@ In order to ensure condition (v) in \Cref{lem:ff.irr}, we will make some additio
                 real and satisfies the parity condition \cite[Definition 8.3.11]{V4}.
           % \item The $\tau$ invariants are compatible:
           %       \[
-          %       \ff(\tau(\gamma_{1})) = \tau(\ff(\gamma_{1}))\qquad \forall \gamma_{1}\in B_{1}.
+          %       \ff(\tau(\gamma_{1})) = \tau(\ff(\gamma_{1}))\qquad \textrm{ for all } \gamma_{1}\in B_{1}.
           %       \]
           %       \trivial[]{ This condition seems not been used below, but used
           %       in Gan-Ichino's proof! For linear group the matching of
@@ -6204,65 +6211,69 @@ The counting result of \Cref{lem:BGcount} finally implies the bijectivity of $\f
 
 \section{Combinatorics of painted bipartitions}
 
-Let $\star$, $G$, and $\check \CO$ be as before. In this section, we assume that $\star \in \Set{B,C,\wtC,C^{*},D,D^{*}}$, and $\ckcO = \ckcOg$, namely $\ckcO $ has $\star$-good parity.
+In this section, we assume that $\star \in \{B,C,\wtC,C^{*},D,D^{*}\}$, and $\ckcO = \ckcOg$, namely $\ckcO $ has $\star$-good parity.
+Recall the set  $\CPPs(\ckcO)$ of primitive $\star$-pairs in $\ckcO$. For each subset $\wp$ of $\CPPs(\ckcO)$, we have defined a bipartition $\tau_{\wp}=(\imath_{\wp},\jmath_{\wp})$ in \Cref{sec:LCBCD}.
 
-Recall the set of primitive $\star$-pairs $\CPPs(\ckcO)$ in $\ckcO$. For a subset $\wp$ of $\CPPs(\ckcO)$, we have defined a bipartition $\tau_{\wp}=(\imath_{\wp},\jmath_{\wp})$ in \Cref{sec:LCBCD}.
-
-The purpose of this section is to prove the   following combinatorial result. 
-
-\begin{prop} \label{prop:PBP} When $\star\in \set{C^{*}, D^{*}}$,
+\begin{prop} \label{prop:PBP} If $\star\in \set{C^{*}, D^{*}}$, then
   \[
-    \PBP_{\star}(\tau_{\wp}) = \emptyset, \quad \text{if } \wp \neq \emptyset.
+    \PBP_{\star}(\tau_{\wp}) = \emptyset, \quad \text{for all nonempty subset   $\wp\subset \CPPs(\ckcO)$.}
   \]
-  When $\star\in \set{B,C,\wtC,D}$,
+\end{prop}
+\begin{proof}
+Suppose that
+  $\emptyset\neq \wp\subset \CPPs(\ckcO)$.
+  
+   First assume that  $\star = C^{*}$. Then we have that 
+  \begin{equation}\label{eq:res.C*}
+    \bfcc_{i}(\imath_{\wp}) = \half(\bfrr_{2i-1}(\ckcO)+1)>
+    \half(\bfrr_{2i}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp}),
+    \quad \textrm{ for all } \,\, (2i-1, 2i)\in \wp,
+  \end{equation}
+  Let $\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$ be an element in $\PBP_{\star}(\tau_{\wp})$. By the requirements of a painted bipartition, we have that
   \[
-    \sharp(\PBP_{\star}(\tau_{\wp})) = \sharp(\PBP_{\star}(\tau_{\emptyset})), \quad \forall \wp \subseteq \CPPs(\ckcO).
+    \bfcc_{i}(\imath_{\wp}) = \sharp\set{j| \cP(i,j)=\bullet} = \sharp\set{j| \cQ(i,j)=\bullet} \leq \bfcc_{i}(\jmath_{\wp}), \quad \textrm{ for all } \,\, i=1,2,3,\cdots,
   \]
- Consequently we always have
+  which contradicts \eqref{eq:res.C*}. Hence, $\PBP_{\star}(\tau_{\wp})= \emptyset$.
+
+
+
+  Now we assume that $\star = D^{*}$. 
+  Then we have that
+  \begin{equation}\label{eq:res.D*}
+    \bfcc_{i+1}(\imath_{\wp}) = \half(\bfrr_{2i}(\ckcO)+1)>
+    \half(\bfrr_{2i+1}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp}),
+    \quad \textrm{ for all } \,\, (2i, 2i+1)\in \wp.
+  \end{equation}
+  Let $\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$ be an element in $\PBP_{\star}(\tau_{\wp})$. By the requirements of a painted bipartition, we have that
+  \[
+    \bfcc_{i+1}(\imath_{\wp}) \leq \sharp\set{j| \cP(i,j)=\bullet} =\sharp\set{j| \cQ(i,j)=\bullet} \leq \bfcc_{i}(\jmath_{\wp}), \quad \textrm{ for all } \,\, i = 1,2,3, \cdots,
+  \]
+  which contradicts \eqref{eq:res.D*}. Hence, $\PBP_{\star}(\tau_{\wp})= \emptyset$.
+
+\end{proof}
+
+
+
+%The purpose of this section is to prove the   following combinatorial result. 
+
+
+%We shall deal with the two quaternionic cases first, which are simple. When $\star \in \set{B, C, \wtC, D}$, the proof of the main statement of the above proposition involves an elaborate reduction argument (by removing elements from $\wp$ one-by-one), and will be handled separately in \Cref{lem:down} below.
+%[Proof of {\Cref{prop:PBP}} the quaternionic case]
+
+    \smallskip
+
+
+\begin{prop} \label{prop:PBP} Suppose that   $\star\in \set{B,C,\wtC,D}$. Then
+  \[
+    \sharp(\PBP_{\star}(\tau_{\wp})) = \sharp(\PBP_{\star}(\tau_{\emptyset})), \quad \textrm{for all } \wp \subseteq \CPPs(\ckcO).
+  \]
+ Consequently, 
   \[
     \sharp(\tPBP_{\star}(\ckcO)) = 2^{\sharp(\CPPs(\ckcO))}\cdot \sharp(\PBP_{\star}(\ckcO)), \,\, \text{ and } \,\, \sharp(\tPBP_{\mathrm g}(\ckcO)) = 2^{\sharp(\CPPs(\ckcO))}\cdot \sharp(\PBP_{\mathrm g}(\ckcO)).
   \]
 \end{prop}
 
-% \subsection{The case of quaternionic groups}
-
-We shall deal with the two quaternionic cases first, which are simple. When $\star \in \set{B, C, \wtC, D}$, the proof of the main statement of the above proposition involves an elaborate reduction argument (by removing elements from $\wp$ one-by-one), and will be handled separately in \Cref{lem:down} below.
-\begin{proof}%[Proof of {\Cref{prop:PBP}} the quaternionic case]
-
-    \smallskip
-
-  First consider the case when $\star = C^{*}$. Suppose that
-  $\wp \neq \emptyset$. Then we have
-  \begin{equation}\label{eq:res.C*}
-    \bfcc_{i}(\imath_{\wp}) = \half(\bfrr_{2i-1}(\ckcO)+1)>
-    \half(\bfrr_{2i}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp}),
-    \quad \forall \,\, (2i-1, 2i)\in \wp,
-  \end{equation}
-  Let $\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$ be an element in $\PBP_{\star}(\tau_{\wp})$. By the requirements of a painted bipartition, we have
-  \[
-    \bfcc_{i}(\imath_{\wp}) = \sharp\set{j| \cP(i,j)=\bullet} = \sharp\set{j| \cQ(i,j)=\bullet} \leq \bfcc_{i}(\jmath_{\wp}), \quad \forall \,\, i=1,2,3,\cdots,
-  \]
-  which contradicts \eqref{eq:res.C*}. Hence, $\PBP_{\star}(\tau_{\wp})= \emptyset$.
-
-  \smallskip
-
-  Now consider the case when $\star = D^{*}$. Suppose that $\wp \neq \emptyset$.
-  Then we have
-  \begin{equation}\label{eq:res.D*}
-    \bfcc_{i+1}(\imath_{\wp}) = \half(\bfrr_{2i}(\ckcO)+1)>
-    \half(\bfrr_{2i+1}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp}),
-    \quad \forall \,\, (2i, 2i+1)\in \wp.
-  \end{equation}
-  Let $\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$ be an element in $\PBP_{\star}(\tau_{\wp})$. By the requirements of a painted bipartition, we have
-  \[
-    \bfcc_{i+1}(\imath_{\wp}) \leq \sharp\set{j| \cP(i,j)=\bullet} =\sharp\set{j| \cQ(i,j)=\bullet} \leq \bfcc_{i}(\jmath_{\wp}), \quad \forall \,\, i = 1,2,3, \cdots,
-  \]
-  which contradicts \eqref{eq:res.D*}. Hence, $\PBP_{\star}(\tau_{\wp})= \emptyset$.
-
-This completes the proof for the quaternionic cases.
-\end{proof}
-
-The rest of this section is devoted to the proof of the following
+The rest of this section is devoted to the proof of the following lemma, which clearly implies Proposition \ref{prop:PBP}. 
 
 
 \def\PPm{\wp_{\downarrow}}
@@ -6279,16 +6290,16 @@ The rest of this section is devoted to the proof of the following
   \[
     t:=
     \begin{cases}
-      \min\set{i|(2i-1,2i)\in \wp} & \text{when $\star \in \set{C,\wtC}$}\\
-      \min\set{i|(2i,2i+1)\in \wp} & \text{when $\star \in \set{B,D}$}\\
+      \min\set{i|(2i-1,2i)\in \wp}, & \text{if $\star \in \set{C,\wtC}$};\\
+      \min\set{i|(2i,2i+1)\in \wp}, & \text{if $\star \in \set{B,D}$},\\
     \end{cases}
   \]
   and
   \[
     \PPm:=
     \begin{cases}
-      \wp - \set{(2t-1,2t)}  & \text{when $\star \in \set{C,\wtC}$}\\
-      \wp -  \set{(2t,2t+1)} & \text{when $\star \in \set{B,D}$}\\
+      \wp \setminus \set{(2t-1,2t)},  & \text{if $\star \in \set{C,\wtC}$};\\
+      \wp \setminus   \set{(2t,2t+1)}, & \text{if $\star \in \set{B,D}$}.\\
     \end{cases}
   \]
   Then
@@ -6296,6 +6307,7 @@ The rest of this section is devoted to the proof of the following
     \sharp(\PBP_{\star}(\tau_{\PPm})) = \sharp(\PBP_{\star}(\tau_{\wp})).
   \]
 \end{lem}
+
 \begin{proof}
   We prove the equality by defining a bijection
   \[
@@ -6336,8 +6348,8 @@ The rest of this section is devoted to the proof of the following
   For $\uptaum\in\PBPs(\tau_{\PPm})$, define $\uptau=:T_{\PPm,\wp}(\uptaum)$ by the following formula:
   \[
     \begin{split}
-      \text{$\forall (i,j)\in \BOX{\imath_{\wp}}$,} \quad   \cP_{\uptau}(i,j) &=  \cP_{\uptaum}(i,j),\\
-      \text{$\forall (i,j)\in \BOX{\jmath_{\wp}}$,} \quad \cQ_{\uptau}(i,j) &= \begin{cases}
+      \text{$\textrm{ for all } (i,j)\in \BOX{\imath_{\wp}}$,} \quad   \cP_{\uptau}(i,j) &=  \cP_{\uptaum}(i,j),\\
+      \text{$\textrm{ for all } (i,j)\in \BOX{\jmath_{\wp}}$,} \quad \cQ_{\uptau}(i,j) &= \begin{cases}
         r& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=s$,}\\
         d& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=c$,}\\
         \cQ_{\uptaum}(i,j) &\text{otherwise.}
@@ -6355,12 +6367,12 @@ The rest of this section is devoted to the proof of the following
   is given by the following formula:
   \[
     \begin{split}
-      \text{$\forall (i,j)\in \BOX{\imath_{\PPm}}$,} \quad \cP_{\uptaum}(i,j) &= \begin{cases}
+      \text{$\textrm{ for all } (i,j)\in \BOX{\imath_{\PPm}}$,} \quad \cP_{\uptaum}(i,j) &= \begin{cases}
         s& \text{if $j=t$ and  $\cQ_{\uptau}(i,j)=r$,}\\
         c& \text{if $j=t$ and  $\cQ_{\uptau}(i,j)=d$,}\\
         \cP_{\uptau}(i,j) &\text{otherwise.}
       \end{cases}\\
-      \text{$\forall (i,j)\in \BOX{\jmath_{\PPm}}$,} \quad   \cQ_{\uptaum}(i,j) &=  \cQ_{\uptau}(i,j).\\
+      \text{$\textrm{ for all } (i,j)\in \BOX{\jmath_{\PPm}}$,} \quad   \cQ_{\uptaum}(i,j) &=  \cQ_{\uptau}(i,j).\\
     \end{split}
   \]
   }
@@ -6373,8 +6385,8 @@ The rest of this section is devoted to the proof of the following
   % is given by the following formula:
   % \[
   %   \begin{split}
-  %     \text{$\forall (i,j)\in \BOX{\imath_{\wp}}$,} \quad   \cP_{\uptau}(i,j) &=  \cP_{\uptaum}(i,j),\\
-  %     \text{$\forall (i,j)\in \BOX{\jmath_{\wp}}$,} \quad \cQ_{\uptau}(i,j) &= \begin{cases}
+  %     \text{$\textrm{ for all } (i,j)\in \BOX{\imath_{\wp}}$,} \quad   \cP_{\uptau}(i,j) &=  \cP_{\uptaum}(i,j),\\
+  %     \text{$\textrm{ for all } (i,j)\in \BOX{\jmath_{\wp}}$,} \quad \cQ_{\uptau}(i,j) &= \begin{cases}
   %       r& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=s$,}\\
   %       d& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=c$,}\\
   %       \cQ_{\uptaum}(i,j) &\text{otherwise.}
@@ -7677,15 +7689,34 @@ year={1981},
 %     pages ={1313--1346},
 % }
 
-% \bib{Mo17}{article}{
-%   author={M{\oe}glin, C.},
-%   title = {Paquets d'Arthur Sp\'eciaux Unipotents aux Places Archim\'ediennes et Correspondance de Howe},
-%   journal = {J. Cogdell et al. (eds.), Representation Theory, Number Theory, and Invariant Theory, In Honor of Roger Howe. Progress in Math.}
-%   %series ={Progress in Math.},
-%   volume = {323},
-%   pages = {469--502}
-%   year = {2017}
-% }
+\bib{Mo17}{article}{
+  author={M{\oe}glin, C.},
+  title = {Paquets d'Arthur Sp\'eciaux Unipotents aux Places Archim\'ediennes et Correspondance de Howe},
+  journal = {J. Cogdell et al. (eds.), Representation Theory, Number Theory, and Invariant Theory, In Honor of Roger Howe. Progress in Math.}
+  %series ={Progress in Math.},
+  volume = {323},
+  pages = {469--502}
+  year = {2017}
+}
+
+\bib{MR.C}{article}{
+   author={Moeglin, Colette},
+   author={Renard, David},
+   title={Paquets d'Arthur des groupes classiques complexes},
+   language={French, with English and French summaries},
+   conference={
+      title={Around Langlands correspondences},
+   },
+   book={
+      series={Contemp. Math.},
+      volume={691},
+      publisher={Amer. Math. Soc., Providence, RI},
+   },
+   date={2017},
+   pages={203--256},
+   review={\MR{3666056}},
+   doi={10.1090/conm/691/13899},
+}
 
 \bib{MR.U}{article}{
    author={M\oe glin, Colette},
