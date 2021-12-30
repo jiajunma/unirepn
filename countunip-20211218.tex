@@ -1311,9 +1311,9 @@
 \def\Csp{\sfC^{\text{sp}}}
 
 
-\def\lneqL{\mathrel{\mathop{\lneq}\limits_{\scriptscriptstyle L}}}
-\def\lneqR{\mathrel{\mathop{\lneq}\limits_{\scriptscriptstyle R}}}
-\def\lneqLR{\mathrel{\mathop{\lneq}\limits_{\scriptscriptstyle LR}}}
+\def\lneqL{\mathrel{\mathop{<}\limits_{\scriptscriptstyle L}}}
+\def\lneqR{\mathrel{\mathop{<}\limits_{\scriptscriptstyle R}}}
+\def\lneqLR{\mathrel{\mathop{<}\limits_{\scriptscriptstyle LR}}}
 
 \def\leqL{\mathrel{\mathop{\leq}\limits_{\scriptscriptstyle L}}}
 \def\leqR{\mathrel{\mathop{\leq}\limits_{\scriptscriptstyle R}}}
@@ -1355,14 +1355,9 @@
 
 \def\Gb{G_{\mathrm b}}
 \def\Gpb{G'_{\mathrm b}}
-\def\Pb{P_{\mathrm b}}
 \def\Gg{G_{\mathrm g}}
 
-\def\bcOb{\overline{\cO_{\mathrm b}}}
-\def\bcOg{\overline{\cO_{\mathrm g}}}
 
-\def\lamb{\lambda_{\mathrm b}}
-\def\lamg{\lambda_{\mathrm g}}
 
 
 \def\tPBP{\widetilde{\mathsf{PBP}}}
@@ -1381,7 +1376,6 @@
 
 \usepackage{xr}
 \usepackage{subfiles} % Best loaded last in the preamble
-
 
 
 
@@ -1653,7 +1647,9 @@ $I_\lambda$.
 
 
 Let
-\begin{equation}\label{eq:LC} \LC_{\lambda}:= \Set{\sigma\in \Irr(W_\Lam) | \sigma \text{ occurs in $(J_{W_{\lambda}}^{W_{\Lam}} \sgn )\otimes \sgn$}}, \end{equation}
+\[
+  \LC_{\lambda}:= \Set{\sigma\in \Irr(W_\Lam) | \sigma \text{ occurs in $(J_{W_{\lambda}}^{W_{\Lam}} \sgn )\otimes \sgn$}},
+\]
 called the Lusztig left cell attached to $\lambda$. Here $J_{W_{\lambda}}^{W_{\Lam}} $ indicates the $J$-induction (see \cite[Chapter 12]{Carter}), and $\sgn$
 denotes the sign character (of an appropriate Weyl group).
 
@@ -2429,18 +2425,11 @@ Now suppose that $\star\in \{B^\C,D^\C, C^\C, \widetilde C^\C\}$. As in the real
       \end{cases}
 \]
 
-Define the set $\CPP_\star(\ckcOg)$ as in the real case. Then by the work of
-Barbasch-Vogan \cite[Corollary 5.29]{BVUni} (integral case) and Moeglin-Renard
-\cite{MR.C} (general case), we have
+Define the set $\CPP_\star(\ckcOg)$ as in the real case. Then by the work of Barbasch-Vogan (\cite[Corollary 5.29]{BVUni}), we have  
    \[
     \sharp(\Unip_{\check \CO}(G))=\sharp(\Unip_{\ckcOg}(\Gg))=2^{\sharp(\CPP_\star(\ckcOg))}.
   \]
-   As in the real case, every representation in $\Unip_{\check \CO}(G)$ is
-   obtained through irreducible parabolic induction via those of
-   $\Unip_{\ckcO'_{\mathrm b}}( G'_{\mathrm b})\times \Unip_{\ckcO_{\mathrm g}}( G_{\mathrm g})$
-   (see Theorem \ref{reduction}), and every representation in
-   $\Unip_{\ckcOg}(\Gg)$ is obtained through iterated theta lifting (see
-   \cite[Theorem 3.5.1]{B17}, \cite{Mo17} and \cite{BMSZ2}).
+   As in the real case, every representation in $\Unip_{\check \CO}(G)$ is obtained through irreducible parabolic induction via those of $\Unip_{\ckcO'_{\mathrm b}}( G'_{\mathrm b})\times \Unip_{\ckcO_{\mathrm g}}( G_{\mathrm g})$ (see Theorem \ref{reduction}), and every representation in $\Unip_{\ckcOg}(\Gg)$ is obtained through iterated theta lifting (see \cite[Theorem 3.5.1]{B17} and \cite{BMSZ2}).
 
 
 \vskip.25in
@@ -2568,7 +2557,6 @@ By using the action of $W_\Lam$, we assume without loss of generality that $\nu$
 
 
 
-\delete{
 \subsection{Proof of \Cref{count1}}
   \Cref{count1} is an immediate consequence of the following proposition.
 
@@ -2611,59 +2599,12 @@ Therefore
  \ker \ev{\lambda, \sfS}=\Span\Set{\Phi- w \cdot\Phi \mid \Phi\in  \Coh_{[\lambda]}(\CK_\sfS(G)), \, w\in W_{\lambda}}.
 \]
 \end{proof}
-}
 % This completes the proof of Theorem \ref{count1}.
 
 
 % \begin{proof}[Proof of \Cref{count1}]
 %   This is an immediate consequence of \Cref{prop:ev}.
 % \end{proof}
-
-\subsection{Proof of \Cref{count1}}
-  \Cref{count1} is an immediate consequence of \Cref{sur111} and the following proposition.
-
-\begin{prop}\label{prop:ev}
-  Suppose  $\cS$ is a basal $W_{\Lam}$-submodule of $\Coh_{\Lam}(\cK(G))$.
-  For each $\nu\in [\lambda]$, the evaluation map $\ev{\nu}$ at $\nu$
-  descents to an isomorphism
-  \[
-    \overline{\ev{\nu}|_{\cS}} \, \colon \cS_{W_{\nu}} \longrightarrow \ev{\nu}(\cS),
-  \]
-  where
-  \[
-    \cS_{W_{\nu}}:=  \cS /\Span\Set{\Phi- w\cdot \Phi | \Phi\in \cS, \, w\in W_{\nu}}
-  \]
-  is the maximal $W_{\nu}$-invariant quotient of $\cS$.
-\end{prop}
-\begin{proof}
-  \def\BS{\cB_{\cS}} Without loss of generality we assume that $\nu$ is
-  dominant. Let $\BS$ be the basis of $\cS$.
-  % By \Cref{sur111}, there is a surjective evaluation map
-  % \[
-  %   \ev{\nu, \sfS} \, :\, \Coh_{[\lambda]}(\CK_\sfS(G)) \longrightarrow \Grt_{\nu, \sfS}(G).
-  % \]
-  % This map is $W_\lambda$-invariant.
-  We have
-  \begin{eqnarray*}
-    \ker (\ev{\nu}|_{\cS})& = & \Span \Set{\Phi\in \BS| \Phi (\nu)=0}\quad \textrm{(by \Cref{lemirr} and \Cref{lemirr6}})\\
-                          &  \subseteq & \Span \Set{\Phi - s_{\alpha}\cdot\Phi |
-                                         \begin{array}{l} \Phi\in  \BS,\\
-                                           \alpha  \text{ is a simple root of
-                                           $\Delta_{\Lam}^+$}\\  \text{ such that
-                                           }\la \lambda, \alpha^\vee\ra=0
-                                         \end{array}}\\
-                          &&\hspace{9.5em}     \textrm{(by Lemma \ref{lemirr4})} \\
-                          & \subseteq &\Span\Set{\Phi- w\cdot \Phi | \Phi\in \cS, \, w\in W_{\nu}} \\
-                          &  \subseteq &  \ker (\ev{\lambda}|_{\cS}). \hspace{5em} \text{(by $(\Phi-w\cdot \Phi)(\nu) = \Phi(\nu)-\Phi(w^{-1}\cdot \nu) = 0$)}\\
-  \end{eqnarray*}
-
-  Therefore
-  \[
-    \ker (\ev{\lambda}|_{\cS})=\Span\Set{\Phi- w \cdot\Phi \mid \Phi\in\cS, \, w\in W_{\lambda}}.
-  \]
-  and the proposition follows.
-\end{proof}
-
 
 \subsection{Highest weight modules and coherent continuation representations}
 
@@ -2897,9 +2838,9 @@ Theorem \ref{soer}  and Lemma  \ref{surv} imply that there is a unique element
 \overline \Psi_{w'w_0}:=\overline \Psi_{\g,\b, \Lam, w'w_0}\in  \Coh_{\Lam}( \CK_{ w'\Lam}(\g,\b))
 \]
  such that
-\begin{equation}\label{eq:hw.b}
+\[
 \overline \Psi_{w'w_0}(\nu)=  \oL(\g,\b, w' w_0 \nu) \quad \textrm{ for  every $\nu\in \Lam$ that is regular and dominant.}
-\end{equation}
+\]
 Then
 \begin{equation*}%\label{basisi}
 \textrm{$\{\overline \Psi_{w'w_0}\}_{w_0\in W_\Lam}$ is also a basis of $ \Coh_{\Lam}( \CK_{w'\Lam}(\g,\b))$.}
@@ -2926,7 +2867,7 @@ Write $\h=\h_{\mathrm s}\oplus \c$, where $\h_{\mathrm s}=\h\cap [\g,\g]$ and $\
 
 Let $w\in W$. % and $\Lambda\in \h^*/Q$. %, where $w'\in W_\Lam'$ and $w_0\in W_\Lam$.
 Then there is a unique
-polynomial function $\tilde p_{\g,\Lam,w}$ on $\h^*$, called a \emph{Goldie rank polynomial} such that
+polynomial function $\tilde p_{\g,\Lam,w}$ on $\h^*$ such that
 \begin{itemize}
 \item it is $\c^*$-invariant (under the translations);
 \item for all $\nu\in \Lam$ that is regular and dominant,
@@ -2935,85 +2876,6 @@ polynomial function $\tilde p_{\g,\Lam,w}$ on $\h^*$, called a \emph{Goldie rank
 \]
 (See \cite[Section 5.12]{J1} and \cite[Section 2.10]{J.av}.)
 \end{itemize}
-
-
-The fundamental result \Cref{thm:prim} due to Joseph shows that the Goldie rank polynomials
-classify the set of primitive ideals.
- Recall the coherent family defined in \eqref{eq:hw.b}.
-By the construction of coherent family via translation functor, one can see that
-if $w,w'\in \WLam$ such that
-$\Ann(\overline\Psi_{w} (\nu)) = \Ann(\overline \Psi_{w'}(\nu))\subsetneq \cU(\fgg)$
-for a dominant element $\nu\in \Lam$, then
-$\Ann(\overline\Psi_{w} (\mu)) = \Ann(\overline \Psi_{w'}(\mu))$ for every dominant
-element $\mu\in \Lam$ (\cf \cite{V1}*{Lemma~2.7 and Lemma 2.8}).
-In particular, fixing a dominant $\nu\in \Lam$, we have a well defined map
-\[
-\begin{array}{rlcc}
-&\Prim_{\nu}(\fgg) &\longrightarrow &\bC[\fhh^*]\\
-J &= \Ann(\overline \Psi_{w}(\nu) ) & \mapsto & \tpp_{J}:= \tpp_{\fgg,\Lam,w}.
-\end{array}
-\]
-In fact, using \eqref{eq:goldie.j}, it can be shown that the image of the above maps is precisely
-the set of Goldie rank polynomials non-zero at $\nu$.
-\trivial[h]{
-Let $D_{\nu}$ be the set of shortest elements in left cosets $\WLam/W_{\nu}$.
-Then the image also equals to $\Set{\tpp_{\fgg,\Lam,w}|w\in D_{\nu}}$.
-}
-
-  % The linearly independentness of Goldie rank polynomials established in
-  % \cite{J2}*{Theorem~5.5} implies the converse.)
-\begin{thm}[\cite{J2}*{Theorem~5.4 and Theorem~5.5}]
-  % , see also \cite{BV2}*{Theorem~2.6}]
-  \label{thm:prim}
-  Retain the above notation.
-  For $J_{1}, J_{2}\in \Prim_{\nu}(\fgg)$,
-  \[
-    J_{1}= J_{2}\quad  \text{ if and only if }\quad \tpp_{J_{1}} =\tpp_{J_{2}}
-  \]
-  Moreover, for each $J\in \Prim_{\nu}(\fgg)$,
-  \begin{itemize}
-    \item the $\WLam$-subrepresentation $\sigma_{J}$ in $\bC[\fhh^{*}]$ generated by
-    $\tpp_{J}$ is a univalent irreducible representation of $\WLam$;
-    \item the polynomial $\tpp_{J}$ is homogeneous whose degree equals the fake
-    degree $a(\sigma_{J})$.
-  % Suppose $\nu\in \Lam$ is regular dominant.
-  % For $w_{1}, w_{2}\in \WLam$,
-  % \[
-  % J(w_{1}\cdot \nu) = J(w_{2}\cdot \nu)\quad \text{ if and only if }\quad
-  % \tpp_{\fgg,\Lam,w_{1}} = \tpp_{\fgg,\Lam,w_{2}}.
-  % \]
-  \end{itemize}
-   The representation $\sigma_{J}$ is called the \emph{Goldie rank representation} attached to $J$.
-\qed
-\end{thm}
-
-
-% \begin{proof}
-%   It is by definition that the Goldie rank polynomial only depends on the
-%   primitive ideal, i.e.
-%   $J(w_{1}\cdot \nu) = J(w_{2}\cdot \nu)$ implies
-%   $\tpp_{\fgg,\Lam,w_{1}} = \tpp_{\fgg,\Lam,w_{2}}$.
-%   The linearly independentness of Goldie rank polynomials established in
-%   \cite{J2}*{Theorem~5.5} implies the converse.
-% \end{proof}
-
-% The above theorem can be extends to the singular infinitesimal character case:
-% Suppose $\nu$ is dominant.
-% Then the following maps are bijective
-% \[
-% \begin{array}{ccccc}
-% \Set{\tpp_{\fgg,\Lam,w}|w\in \WLam, \tpp_{\fgg,\Lam,w}(\nu)\neq 0} &\longleftarrow  & \Set{w \in \WLam|\tpp_{\fgg,\Lam,w}(\nu)\neq 0} & \longrightarrow &  \Set{J(w\cdot \nu)}\\
-% \tpp_{\fgg,\Lam,w} & \mapsfrom & w & \mapsto& J(w\cdot \nu).
-% \end{array}
-% \]
-% Moreover, the middle set if the distinguished left coset representative  of
-% $\WLam/W_{\nu}$.
-
-
-
-\medskip
-
-
 
  Write $\check \Delta:=\{\alpha^\vee\,|\, \alpha\in \Delta\}\subset \h$ for the set of coroots. Recall the set
 \[
@@ -3053,9 +2915,9 @@ Suppose that $w\in W_\Lam$. Define a polynomial function $p_{\g, \Lam, w}$ on $\
 \ee
 where $m$ is the smallest non-negative integer that makes the right-hand side of \eqref{polynomial} a nonzero polynomial function.
 Then
-\begin{equation}\label{eq:goldie.j}
+\[
     p_{\g, \Lam, w}(\nu, x)= \tilde p_{\g,\Lam,w}(\nu)\cdot \tilde p'_{\g,\Lam,w}(x), \qquad \nu\in \h^*, \ x\in \h,
-\end{equation}
+\]
 for a unique polynomial function $\tilde p'_{\g,\Lam,w}$ on $\h$ (see \cite{King} and \cite[Section 5.1]{J.hw}).
 
 Applying the above argument to $\g_\Lam$, we have that
@@ -3108,9 +2970,9 @@ Therefore  the proposition follows, in view of Lemma \ref{grp2}.
 
 
  For every $\sigma\in \Irr(W)$, its fake degree is defined to be
- \begin{equation}\label{eq:fdeg}
+  \[
  a(\sigma):=\min\{a\in \BN\,|\, \sigma \textrm{ occurs in the $a$-th symmetric power $\oS^a(\h)$}\}.
- \end{equation}
+ \]
 This is well-defined since every  $\sigma\in \Irr(W)$ occurs in the symmetric power $\oS(\h)=\bigoplus_{a\in \BN}\oS^a(\h)$. The representation $\sigma$ is said to be univalent if it occurs in $\oS^{a(\sigma)}(\h_{\mathrm s})$ with multiplicity one. Note that $\h_{\mathrm s}=\h/\c=\h/\h^W$, where $\h^W$ denotes the $W$-fixed vectors in $\h$.
 
 For every univalent irreducible representation $\sigma_0$ of $W_\Lam$, the $W$-subrepresentation of $\oS^{a(\sigma_0)}(\h_{\mathrm s})$ generated by
@@ -3120,32 +2982,12 @@ For every univalent irreducible representation $\sigma_0$ of $W_\Lam$, the $W$-s
 is irreducible and univalent, with the same fake degree as that of $\sigma_0$ (This result is due to Macdonald, Lusztig, and Spaltenstein. See \cite[Chapter 11]{Carter}). This irreducible representation of $W$ is called the $j$-induction of $\sigma_0$, to be denoted by $j_{W_\Lam}^W(\sigma_0)$.
 
 
-Write $\sigma_{\g,\Lam,w}$ for the $W$-subrepresentation of $\oS(\h)=\C[\h^*]$
-(the space of polynomial functions) generated by $\tilde p_{\g,\Lam,w}$.
-Similarly, we also have a $W_\Lam$-subrepresentation $\sigma_{\g_\Lam,Q_\Lam,w_0}$
-of $\C[\h^*]$ generated by
- $\tilde p_{\g_\Lam,Q_\Lam,w_0}$ which is nothing but the Goldie rank
- representation  $\sigma_{J(w_{0}\nu)}$ for any regular dominant
- $\nu\in [\lambda]$ (\cf \Cref{thm:prim}).
-
-% \[
-% \sigma_{\g_\Lam,Q_\Lam,w_0} := \WLam\cdot \tilde p_{\g_\Lam,Q_\Lam,w_0}
-% \]
-% to be the
-
- \delete{
-   It is well-known that $\sigma_{\g_\Lam,Q_\Lam,w_0}$ is a univalent irreducible
-   representation of $W_\Lam$, and $\tilde p_{\g_\Lam,Q_\Lam,w_0}$ is a
-   homogeneous polynomial function whose degree equals the fake degree
-   $a(\sigma_{\g_\Lam,Q_\Lam,w_0})$ (see \cite[Theorem 5.4]{J2}).
- }
-
-
-By \Cref{grp3},
-\begin{equation}
-  \label{jind0}
-  \sigma_{\g,\Lam,w} = j_{W_\Lam}^W(\sigma_{\g_\Lam,Q_\Lam,w_0}).
-\end{equation}
+Write $\sigma_{\g,\Lam,w}$ for the $W$-subrepresentation of $\oS(\h)=\C[\h^*]$ (the space of polynomial functions) generated by $\tilde p_{\g,\Lam,w}$.
+Similarly, we also have a $W_\Lam$-subrepresentation  $\sigma_{\g_\Lam,Q_\Lam,w_0}$ of $\C[\h^*]$  generated by   $\tilde p_{\g_\Lam,Q_\Lam,w_0}$. It is well-known that $\sigma_{\g_\Lam,Q_\Lam,w_0}$ is a univalent irreducible representation of $W_\Lam$, and $\tilde p_{\g_\Lam,Q_\Lam,w_0}$ is a homogeneous polynomial function whose degree equals the fake degree $a(\sigma_{\g_\Lam,Q_\Lam,w_0})$ (see \cite[Theorem 5.4]{J2}). By Proposition  \ref{grp3},
+\be\label{jind0}
+\sigma_{\g,\Lam,w}
+=  j_{W_\Lam}^W(\sigma_{\g_\Lam,Q_\Lam,w_0}).
+\ee
 
 
 
@@ -3166,34 +3008,21 @@ For every $w\in W$ and every $\nu \in \Lam$ that is regular and dominant, the as
 Let $E$ be a  finite group. A basal representation $V$ of $E$ is basal vector space carrying a representation of $E$. A basal subrepresentation of a basal representation $V$ is a subrepresentation of $V$ that is simultaneously a basal subspace.
 \end{defn}
 
-For examples, $ \Coh_{\Lam}( \CK(G))$ and $ \Coh_{\Lam}( \CK_{w'\Lam}(\g,\b))$
-(recall that $w'\in W_\Lam'$) are basal representations of $W_\Lam$, and
-$ \Coh^{LR}_{\Lam}( \CK_{w'\Lam}(\g,\b))$ is a basal representations of
-$W_\Lam\times W_\Lam$. \Cref{soer} implies that the basal representations
-$ \Coh_{\Lam}( \CK_{w'\Lam}(\g,\b))$ and
-$\Coh^{LR}_{\Lam}( \CK_{w'\Lam}(\g,\b))$ only depend on the set of simple
-reflections in $W_\Lam$ (see also see \cite{BV2}*{Corollary~2.3}). In
-particular, they do not depend on $w'\in W_\Lam'$.
+For examples, $ \Coh_{\Lam}( \CK(G))$ and $ \Coh_{\Lam}( \CK_{w'\Lam}(\g,\b))$ (recall that $w'\in W_\Lam'$) are basal representations of $W_\Lam$, and $ \Coh^{LR}_{\Lam}( \CK_{w'\Lam}(\g,\b))$ is a basal representations of $W_\Lam\times W_\Lam$. Theorem \ref{soer} implies that the basal representations  $  \Coh_{\Lam}( \CK_{w'\Lam}(\g,\b))$ and  $\Coh^{LR}_{\Lam}( \CK_{w'\Lam}(\g,\b))$ only depend on the set of simple reflections in $W_\Lam$ (see also  see \cite{BV2}*{Corollary~2.3}). In particular, they do not depend on $w'\in W_\Lam'$.
 
 
 
-Let $V$ be a basal representation of a finite group $E$, with basal elements
-$\CB\subset V$. For each subset $\mathcal C\subset \CB$, write $\la \CC\ra$ for
-the smallest basal subrepresentation of $V$ containing $\CC$. For each
-$\phi\in \CB$, write $\la \phi\ra:=\la \{\phi\}\ra$ for simplicity. On the set
-$\CB$, define a preorder $\leq$ by
+Let $V$ be a basal representation of a finite group $E$, with basal elements $\CB\subset V$. For each subset $\mathcal C\subset \CB$, write $\la \CC\ra$ for the smallest basal subrepresentation of $V$ containing $\CC$. For each $\phi\in \CB$, write $\la \phi\ra:=\la \{\phi\}\ra$ for simplicity. On the set $\CB$, define a preorder $\leq$ by
 \[
-  \phi_2\leq \phi_1 \quad \textrm{ if and only if
-  } \quad \la \phi_1\ra \subset \la \phi_2 \ra,
+  \phi_1\leq \phi_2  \quad \textrm{ if and only if } \quad \la \phi_1\ra \subset \la \phi_2 \ra,
 \]
 and define an equivalence relation $\approx$ by
 \[
-  \phi_1 \approx \phi_2 \quad \textrm{ if and only if
-  } \quad \la \phi_1 \ra =\la \phi_2 \ra \qquad (\phi_1, \phi_2\in \CB).
+  \phi_1 \approx \phi_2  \quad \textrm{ if and only if } \quad \la \phi_1 \ra =\la \phi_2 \ra \qquad (\phi_1, \phi_2\in \CB).
 \]
 An equivalence class of the relation $\approx$ on the set $\CB$ is called a cell in $V$.
 
-We say that a subset $\CC$ of $\CB$ is order closed if for any $\phi\in \CB$, we have $\phi\in \CC$ whenever $\phi'\leq \phi$ for some $\phi'\in \CC$.
+We say that a subset $\CC$ of $\CB$ is order closed if for any $\phi\in \CB$, we have $\phi\in \CC$ whenever $\phi\leq \phi'$ for some $\phi'\in \CC$.
 This is equivalent to saying that $\la \CC\ra$ is spanned by $\CC$. In general, write $\overline \CC$ for the smallest order closed subset of $\CB$ containing $\CC$.
 
 When $\CC$ is a cell in $V$, define the cell representation attached to $\CC$ by
@@ -3213,31 +3042,25 @@ We are particularly interested in the basal representation $\Coh^{LR}_{\Lam}( \C
 \[
   \CB:= \{ \overline \Psi_{\g,\b, \Lam, w'w_0}\mid w_0\in W_\Lam\}.
 \]
-We will write $ \la \CC\ra_{LR}:=\la \CC \ra $, the smallest basal
-subrepresentation of $\Coh^{LR}_{\Lam}( \CK_{ w'\Lam}(\g,\b))$ containing $\CC$,
-where $\CC$ is a subset of $\CB$.
-The corresponding order on the basis is denoted by $\leqLR$.
+We will write
+ $ \la \CC\ra_{LR}:=\la \CC \ra $, the smallest basal subrepresentation of $\Coh^{LR}_{\Lam}( \CK_{ w'\Lam}(\g,\b))$ containing $\CC$, where $\CC$ is a subset of $\CB$.
 
-% For each subset $\CC$ of $\CB$, respectively write $\la \CC\ra_{L}$ and
-% $ \la \CC\ra_{LR}$ for the smallest basal subrepresentations of
-% $ \Coh_{\Lam}( \CK_{w'.\Lam}(\g,\b))$ and
-% $\widetilde \Coh_{\Lam}( \CK_{ w'.\Lam}(\g,\b))$ containing $\CC$.
+%For each subset $\CC$ of $\CB$, respectively write
+%$\la \CC\ra_{L}$ and $ \la \CC\ra_{LR}$ for the  smallest basal subrepresentations of $ \Coh_{\Lam}( \CK_{w'.\Lam}(\g,\b))$ and $\widetilde \Coh_{\Lam}( \CK_{ w'.\Lam}(\g,\b))$ containing $\CC$.
+
+
 
 Note that every irreducible representation of $W_\Lam$ is self-dual. Hence \eqref{basisv} implies that
-\begin{equation}\label{decocoh}
-  \Coh^{LR}_{\Lam}( \CK_{w'\Lam}(\g,\b))\cong \bigoplus_{\sigma\in \Irr(W_\Lam)} \sigma\otimes \sigma
-\end{equation}
+\be\label{decocoh}
+   \Coh^{LR}_{\Lam}( \CK_{w'\Lam}(\g,\b))\cong \bigoplus_{\sigma\in \Irr(W_\Lam)} \sigma\otimes \sigma
+\ee
 as representations of $W_\Lam\times W_\Lam$. By a double cell in  $\Irr(W_\Lam)$, we mean a set of the form
 \[
   \{\sigma\in \Irr(W_\Lam)\mid \sigma\otimes \sigma\,  \textrm{ occurs in the cell representation $ \Coh^{LR}_{\Lam}( \CK_{w'\Lam}(\g,\b))(\mathcal C)$}\},
 \]
-where $\CC$ is a cell in $ \Coh^{LR}_{\Lam}( \CK_{w'\Lam}(\g,\b))$.
-The isomorphism \eqref{decocoh} implies that $\Irr(W_\Lam)$ is disjoint union of all
-its double cells.
-As noted previously, Theorem \ref{soer} implies that the
-notion of double cells in $\Irr(W_\Lam)$ only depends on the set of simple
-reflections in $W_\Lam$.
-
+where
+ $\CC$ is a cell in  $ \Coh^{LR}_{\Lam}( \CK_{w'\Lam}(\g,\b))$. The isomorphism \eqref{decocoh} implies  that $\Irr(W_\Lam)$ is  disjoint union of
+all its double cells. As noted previously, Theorem \ref{soer} implies that the notion of double cells in   $\Irr(W_\Lam)$ only depends on  the set of simple reflections in $W_\Lam$.
 
 The following conjecture is widely anticipated, although to our knowledge no proof has appeared in the literature. See \cite[page 1055]{V4}.
 
@@ -3248,6 +3071,7 @@ For every cell $\CC$ in  $ \Coh_{\Lam}( \CK(G))$, the set
 \]
 is contained in a single double cell in $\Irr(W_\Lam)$.
 \end{conj}
+
 
 \begin{remark}
 We call a double cell in  $\Irr(W_\Lam)$ a Lusztig double cell. We also call a cell in  $\Coh_{\Lam}( \CK(G))$ a Harish-Chandra cell, and the associated cell representation a Harish-Chandra cell representation.
@@ -3271,10 +3095,6 @@ is a cell in $\Coh^{LR}_{\Lam}( \CK_{ w'\Lam}(\g,\b))$, and $\sigma_0$ is the un
 See \cite[Theorem 2.6 and Corollary 2.16]{BV2} and  \cite[Corollary 14.11]{V4}. Note that by Theorem \ref{soer}, we may assume without loss of generality that $\lambda$ is integral so that $\g=\g_\Lam$.
 \end{proof}
 
-
-
-
-
 For every cell $\CC$ in $\Coh^{LR}_{\Lam}( \CK_{ w'\Lam}(\g,\b))$, write
 $\CO_\CC:= \CO_{\g, \Lam, w' w_0}$, where $w_0$ is an element of $W_\Lam$ such that    $\overline \Psi_{\g,\b, \Lam, w'w_0}\in \CC$. By Lemma \ref{doublecell0}, this is independent of the choice of $w_0$.
 
@@ -3283,16 +3103,9 @@ $\CO_\CC:= \CO_{\g, \Lam, w' w_0}$, where $w_0$ is an element of $W_\Lam$ such t
 \begin{lem}\label{lemlr0}
 Let $\CC_1$ and $\CC_2$ be two cells in  $\Coh^{LR}_{\Lam}( \CK_{ w'\Lam}(\g,\b))$ such that  $\la \CC_1\ra_{LR}\subset \la \CC_2\ra_{LR}$. Then
   \[
-    \overline{\CO_{\CC_1}}\subseteq   \overline{\CO_{\CC_2}},
+    \overline{\CO_{\CC_1}}\subset   \overline{\CO_{\CC_2}},
   \]
-  where $\overline{\phantom A}$ indicates the Zariski closure.
-  % Moreover,
-  %   $\overline{\CO_{\CC_1}}\subsetneq   \overline{\CO_{\CC_2}}$,
-  %   then
-  % \[
-  %   \overline{\CO_{\CC_1}}\subsetneq   \overline{\CO_{\CC_2}},
-  % \]
-\end{lem}
+  where $\overline{\phantom A}$ indicates the Zariski closure. \end{lem}
   \begin{proof}
   For every basal element $\phi$ in  $\Coh^{LR}_{\Lam}( \CK_{ w'\Lam}(\g,\b))$, write $\la \phi\ra_L$ for the smallest $W_\Lam\times \{1\}$-stable basal subspace of $\Coh^{LR}_{\Lam}( \CK_{ w'\Lam}(\g,\b))$ containing $\phi$, and likewise write $\la \phi\ra_R$ for the smallest $\{1\}\times W_\Lam$-stable basal subspace of $\Coh^{LR}_{\Lam}( \CK_{ w'\Lam}(\g,\b))$ containing $\phi$.
 
@@ -3312,74 +3125,21 @@ which further implies that
 Thus $\oL(\g,\b, w'w_1\nu)\in \CK_{\overline{\CO_{\CC_2}},  w'\Lam}(\g,\b)$, and Lemma  \ref{associatedv} implies that $ \overline{\CO_{\CC_1}}\subset   \overline{\CO_{\CC_2}}$.
 
 Now we assume that $\la \phi_1\ra_L\subset \la \phi_2\ra_L$. Put
-$\phi_i':= \overline \Psi_{\g,\b, \Lam, w'w_i^{-1}}$ ($i=1,2$). By \cite[Lemma
-5.2]{Lu}, we know that $\phi_i'\in \CC_i$, and by the argument in \cite[Section
-3]{BVUni}, $\la \phi'_1\ra_R\subset \la \phi'_2\ra_R$. Therefore
-$\overline{\CO_{\CC_1}}\subset \overline{\CO_{\CC_2}}$ by the earlier argument.
-This finishes the proof of the lemma.
-\end{proof}
-
-
-We recall some results about the order on $\Irr(\Wlam). $
-The preorder $\leqLR$ on $\Coh_{\Lam}(\cK_{\Lam}(\fgg,\fbb))$ induces a preorder on $\Irr(\WLam)$:
-\[
-\sigma_{1}\leqLR \sigma_{2} \quad \text{if and only
-  if} \quad \exists\, \text{a double cell $\cC$ such that }
-\begin{array}{l}\sigma_{1}\otimes \sigma_{1} \text{ occurs in }
-  V(\cC) \text{ and }\\
-  \sigma_{2}\otimes \sigma_{2} \text{ occurs in } \braket{\overline \cC}.
-\end{array}
-\]
-We say $\sigma_{1}\approxLR \sigma_{2}$ if and only
-$\sigma_{1}\leqLR \sigma_{2}\leqLR\sigma_{1}$.
-Clearly double cells in $\Irr(\WLam)$ are nothing but the equivalent class of
-$\approxLR$.
-% The some properties about the preorder $\leqLR$ is summaried in the following
-% lemma. %see \cite{BV2}
-\begin{lem}\label{lem:ord}
-  \begin{enumerate}
-    \item Suppose $J_{1},J_{2}$ are two primitive ideals $\cU(\fgg)$ such that $J_{1}\subsetneq J_{2}$. Then
-          \begin{enumerate}[label=(\alph*),ref=(\alph*)]
-            \item\label{it:o1} $\AVC(J_{1})\supsetneq \AVC(J_{2})$ and
-            \item\label{it:o2} $\sigma_{J_{1}}\lneqLR \sigma_{J_{2}}$.
-          \end{enumerate}
-    \item Suppose $\sigma_{1}$ and $\sigma_{2}$ are in $\Irrsp(\WLam)$ such that
-    $\sigma_{1}\leqLR\sigma_{2}$ and $\sigma_{1}\neq \sigma_{2}$.
-   Then $\sigma_{1}\lneqLR\sigma_{2}$ and $a(\sigma_{1})<a(\sigma_{2})$.
-  \end{enumerate}
-  \trivial[h]{
-    \begin{enumerate}
-      \item Fix a regular dominant vector $\nu\in \Lam$. The map from
-            $\set{\cL left cells in \Coh_{\Lam}}(\cK_{\Lam}(\fgg,\fbb))$ to
-            $\Prim_{\nu}(\fgg)$ by $\cL\mapsto \Ann(\phi(\nu))$ for any
-            $\phi\in \cL$ is well defined an order preserving bijection.
-    \end{enumerate}
-  }
-\end{lem}
-\begin{proof}
-  \begin{enumerate}
-    \item
-    The statement \ref{it:o1} is \cite[Korollar 3.6]{BK}.
-    For \ref{it:o2},
-    it suffice to  assume $J_{1}$ and $J_{2}$
-    has the same regular infinitesimal character by translation principle.
-    Now the statement is proved in \cite{BV2}*{Proof of Proposition~3.18 (c)}.
-    \item This is \cite{BV2}*{Lemma~3.22}.
-  \end{enumerate}
-\end{proof}
-
+$\phi_i':= \overline \Psi_{\g,\b, \Lam, w'w_i^{-1}}$ ($i=1,2$). By \cite[Lemma 5.2]{Lu}, we know that $\phi_i'\in \CC_i$, and by the argument in \cite[Section 3]{BVUni},
+$\la \phi'_1\ra_R\subset \la \phi'_2\ra_R$. Therefore  $ \overline{\CO_{\CC_1}}\subset   \overline{\CO_{\CC_2}}$ by the earlier argument. This finishes the proof of the lemma.
+  \end{proof}
 
 \subsection{Proof of Theorem \ref{count2} via $\Coh_{\Lam}(\CK_\sfS(\g,\b))$}
 
 Similar to  \eqref{decLam}, we have a decomposition (as $W_\Lam$-modules)
-\begin{equation}\label{decLam2}
+\be\label{decLam2}
  \Coh_{\Lam}( \CK_\sfS(\g,\b))=\bigoplus_{w'\in W/W_\Lam}\Coh_{\Lam}(\CK_{ \sfS, w'\Lam}(\g, \b) ),
-\end{equation}
+\ee
 where $\CK_{ \sfS, w'\Lam}(\g, \b)$ is the Grothendieck group of $\Rep_{ \sfS, w'\Lam}(\g, \b)$, and the latter is the full subcategory of
 $\Rep(\g, \b)$ whose objects are modules that belong to both $\Rep_{ \sfS}(\g, \b)$ and $\Rep_{w'\Lam}(\g, \b)$.
 
 
-Using \Cref{associatedv}, the same argument as  the proof of \eqref{basiss} shows that  $\Coh_{\Lam}(\CK_{ \sfS, w'\Lam}(\g, \b) )$ is a basal subrepresentation of $\Coh_{\Lam}(\CK_{ w'\Lam}(\g, \b) )$ spanned by
+Using Lemma \ref{associatedv}, the same argument as  the proof of \eqref{basiss} shows that  $\Coh_{\Lam}(\CK_{ \sfS, w'\Lam}(\g, \b) )$ is a basal subrepresentation of $\Coh_{\Lam}(\CK_{ w'\Lam}(\g, \b) )$ spanned by
 \[
  \{ \overline \Psi_{\g,\b, \Lam, w'w_0}\mid w_0\in W_\Lam, \, \CO_{\g, \Lam, w'w_0}\subset \sfS \}.
 \]
@@ -3440,58 +3200,22 @@ Finally, Theorem \ref{count2} follows from Proposition \ref{lem0033}, \eqref{dec
 
 
 
-\subsection{Proof of \Cref{counteq}}  Recall that for every basal element $\Phi\in \mathcal B_\Lam(G)$,
+\subsection{Proof of Theorem \ref{counteq}}  Recall that for every basal element $\Phi\in \mathcal B_\Lam(G)$,
 \[
    \mathrm{AV}_\C(\Phi)= \mathrm{AV}_\C(\Phi(\nu))\quad \textrm{ for all $\nu\in \Lam$ that is regular and dominant}.
 \]
 
-Recall the definition of fake degree in \eqref{eq:fdeg}.
-The following lemma is due to King \cite{King}. See also \cite[Corollary 14.11]{V4} and \cite{Cas}*{Theorem~3.4}.
-\begin{lem}\label{hcgoldie}
-  For every Harish-Chandra cell $\CC$ in $\Coh_{[\lambda]}(\CK(G))$, there is a
-  unique representation $\sigma_\CC\in \Irr(W_\Lam)$ whose fake degree is
-  minimal among all representations occurs in $\Coh_{[\lambda]}(\CK(G))(\CC)$.
-  % that
-  % \begin{itemize}
-  %   \item $\sigma_\CC$ occurs in $\Coh_{[\lambda]}(\CK(G))(\CC)$, and
-  %   \item the fake degree of $\sigma_{\CC}$  $a(\sigma_{\CC}) < a(\sigma)$ for each
-  %    $ \sigma\in \Irr(\WLam)$ occurring in $\braket{\cC}$.
-  % \end{itemize}
-  Moreover,
-  for every $\Phi\in \cC$, $\sigma_{\CC}$ is the Goldie rank representation
-  attached to the primitive ideal $\Ann(\Phi(\nu))$ for any regular dominant
-  $\nu \in [\lambda]$.
-  In particular, $\sigma_{\cC}$ is special
-  and
+
+\begin{lem}\label{hcgodie}
+For every Harish-Chandra cell $\CC$ in $\Coh_{[\lambda]}(\CK(G))$, there is a special representation $\sigma_\CC\in \Irr^{\mathrm{sp}}(W_\Lam)$ such that $\sigma_\CC$ occurs in $\Coh_{[\lambda]}(\CK(G))(\CC)$ and
 \[
-  \AVC(\Phi)=\Spr^{-1}(j_{W_\Lam}^W \sigma_\CC)
+  \mathrm{AV}_\C(\Phi)=\mathrm{Springer}^{-1}(j_{W_\Lam}^W \sigma_\CC)
 \]
-for every $\Phi\in \CC$. \qed
+for every $\Phi\in \CC$.
 \end{lem}
-% \begin{proof}
-% This is proved by King (\cite{King}). See \cite[Corollary 14.11]{V4} and \cite{Cas}*{Theorem~3.4}.
-% \end{proof}
-
-
-
-% \begin{lem}\label{hcgoldie}
-%   For every Harish-Chandra cell $\CC$ in $\Coh_{[\lambda]}(\CK(G))$, there is a
-%   unique special representation $\sigma_\CC\in \Irr^{\mathrm{sp}}(W_\Lam)$ such
-%   that
-%   \begin{itemize}
-%     \item $\sigma_\CC$ occurs in $\Coh_{[\lambda]}(\CK(G))(\CC)$, and
-%     \item the fake degree of $\sigma_{\CC}$  $a(\sigma_{\CC}) < a(\sigma)$ for each
-%      $ \sigma\in \Irr(\WLam)$ occurring in $\braket{\cC}$.
-%   \end{itemize}
-%   Moreover,
-% \[
-%   \AVC(\Phi)=\Spr^{-1}(j_{W_\Lam}^W \sigma_\CC)
-% \]
-% for every $\Phi\in \CC$.
-% \end{lem}
-% \begin{proof}
-% This is proved by King (\cite{King}). See \cite[Corollary 14.11]{V4} and \cite{Cas}*{Theorem~3.4}.
-% \end{proof}
+\begin{proof}
+This is proved by King (\cite{King}). See \cite[Corollary 14.11]{V4}.
+\end{proof}
 
 \begin{lem}\label{cellsfs}
 Assume that for every Harish-Chandra cell $\CC$ in $\Coh_{\Lam}(\CK(G))$, the set
@@ -3510,11 +3234,11 @@ Note that
    \cong \bigoplus_{\CC \textrm{ is a cell in $\Coh_{\Lam}(\CK(G))$}} \Coh_{\Lam}(\CK(G))(\CC),
 \]
 and
-\Cref{hcgoldie} implies that
+ Lemma \ref{hcgodie} implies that
  \[
    \Coh_{\Lam}(\CK_\sfS(G))\cong  \bigoplus_{\CC \textrm{ is a cell in $\Coh_{\Lam}(\CK(G))$, $\sigma_\CC\in \Irr^{\mathrm{sp}}_\sfS(W_\Lam)$}} \Coh_{\Lam}(\CK(G))(\CC).
  \]
-Then \Cref{hcgoldie}  and the assumption of the lemma imply \eqref{eqsigma}. \end{proof}
+Then Lemma \ref{hcgodie}  and the assumption of the lemma imply \eqref{eqsigma}. \end{proof}
 
 Under the assumption of Lemma \ref{cellsfs}, we have that
 \begin{eqnarray*}
@@ -3566,7 +3290,7 @@ for all $\beta\in Q_\h$, $g\in W_H$ and $(\b, \gamma, \nu)\in \widetilde \Irr_\L
 
 On the other hand, we have the cross action of $W_\Lam$ on the set $ \widetilde \Irr_\Lam(H)$ (see \cite[Definition 8.3.1]{Vg}):
 \begin{eqnarray*}
-  && w\cross (\b, \Gamma, \nu)\\
+  && w\cdot (\b, \Gamma, \nu)\\
   &:=&((\xi_\b w^{-1} \xi_\b^{-1})\cdot \b,\, ((\xi_\b w^{-1} \xi_\b^{-1})\cdot \nu-\nu)\otimes (\delta(w^{-1}, \b)-\delta(1,\b))\otimes \Gamma,  \, (\xi_\b w^{-1} \xi_\b^{-1})\cdot \nu),
 \end{eqnarray*}
 for all $w\in W_\Lam$ and $(\b, \Gamma, \nu)\in \widetilde \Irr_\Lam(H)$. It is routine to check that these two actions are well-defined. Moreover,
@@ -3579,41 +3303,7 @@ for all $w\in W_\Lam$, $\beta\in Q_\h$ and $(\b, \Gamma, \nu)\in \widetilde \Irr
  \overline \Irr_\Lam(H):= (W_H\ltimes Q_\h)\backslash ( \widetilde \Irr_\Lam(H)).
 \]
 
-\def\olgamma{\overline\gamma}
-\def\olPsi{\overline\Psi}
-\def\olrX{\overline\rX}
-Let
-\begin{equation}\label{eq:Pram}
-  \cP_{\Lam}(G) := \bigcup_{H} \overline \Irr_\Lam(H)
-\end{equation}
-be the set of parameters for the coherent families based on $[\lambda]$
-where $H$ running over a representative set of conjugacy classes of Cartan
-subgroups of $G$.
 
-Fix a regular dominant element $\mu\in \Lam$.
-For each parameter
-$\overline\gamma \in\cP_{\gamma}$, we pick a $(\fbb,\Gamma, \nu)\in \overline \gamma$ such that $\xi_{\fbb}(\mu)=\nu$.
-Let $\rX((\Gamma,\nu))$ be the standard module defined in \cite{Vg}*{Notational
-  Convention~6.6.3} (where $\bargamma$ is $\nu$ in our setting).
-Since $\nu$ is non-singular,
-$\rX((\Gamma,\nu))$ has a unique irreducible submodule $\olrX((\Gamma,\nu)))$, see
-\cite{Vg}*{Theorem~6.5.10}.
-Similar to the highest weight module case, for each parameter
- $\overline\gamma \in\cP_{\gamma}$
-we can define a coherent family $\Psi_{\olgamma}$ standard module and a coherent
-family $\olPsi_{\olgamma}$ of irreducible module such that
-\begin{equation}\label{eq:psigamma}
-  \Psi_{\olgamma}(\mu):=\rX{((\Gamma,\nu))}
-  \AND
-  \olPsi_{\olgamma}(\mu):=\olrX{((\Gamma,\nu))}.
-\end{equation}
-The set
-$\set{\olPsi_{\olgamma}|\olgamma\in \cP_{\Lam}(G)}$ is our fixed basis of
-$\Coh_{\Lam}(\cK(G))$ by Langlands classification, see \cite{Vg}*{Theorem~6.6.14}. %implies that.  % \cite{Vg}*{??? cc}.
-
-The set $\set{\Psi_{\olgamma}}$ is also a basis (\cite{Vg}*{Proposition~6.6.7}) of $\Coh_{\Lam}(\cK(G))$ under
-which the coherent continuation representation is  relatively easy to compute due
-to Barbasch-Vogan.
 Since $G$ is in the Harish-Chandra's class, the real Weyl group $W_H$ is identified with a subgroup of the Weyl group $W_\h$ of $\g$ with respect to $\h$.
 Write $\t_{\mathrm{im}}$ for the subspace of $\t$ spanned by the set $\{\alpha^\vee\mid \alpha \textrm{ is an imaginary root in $\Delta_\h$}\}$. Then $W_H$ stabilizers $\t_{\mathrm{im}}$, and we define a character
 \[
@@ -3628,7 +3318,6 @@ Pick a Borel subalgebra $\b$ of $\g$ containing $\h$ that extends to a triple $(
 \]
 This is independent of the choice of $\b$.
 
-
 The following result is due to Barbasch-Vogan, in a suitably modified form from \cite{BV.W}*{Proposition~2.4}. As its proof follows the same line as that of \cite{BV.W}*{Proposition~2.4}, we will be content to state the precise result.
 %based on the results of \cite{Vg}*{Chapter 8}.
 
@@ -3636,15 +3325,10 @@ The following result is due to Barbasch-Vogan, in a suitably modified form from 
   \label{thm:cohHC}
  As a representation of $W_\Lam$,
   \[
-    \Coh_{[\lambda]}(\CK(G)) \cong \bigoplus_{\overline \gamma}
+    \Coh_{[\lambda]}(\CK(G)) \cong \bigoplus_{H} \bigoplus_{\overline \gamma\in \overline \Irr_\Lam(H)}
     \Ind_{W_{\overline \gamma}}^{W_\Lam}  \mathrm{sgn}_{\overline \gamma},
   \]
-  % \[
-  %   \Coh_{[\lambda]}(\CK(G)) \cong \bigoplus_{H} \bigoplus_{\overline \gamma\in \overline \Irr_\Lam(H)}
-  %   \Ind_{W_{\overline \gamma}}^{W_\Lam}  \mathrm{sgn}_{\overline \gamma},
-  % \]
-  where $\overline \gamma$ runs over a representative set of the $\WLam$-orbits
-  in $\cP_{\Lam}(G)$ under the cross action.
+  where $H$ runs over a representative set of conjugacy classes of Cartan subgroups of $G$.
 \end{thm}
 
 
@@ -4224,82 +3908,6 @@ Then, as $\WLamck =\sfS_{N_{\mathrm g}}\times \sfS_{N_{\mathrm b}}$-modules,
   calculation.
 \end{proof}
 
-
-Recall from \Cref{defpbp0} the set $\PP_{\star}(\ckcO)$, which is the set of paintings on $\ckcO^{t}$ that has type $\star$.
-%We define the set of painted partitions of type $U$ as the following:
-%\begin{equation*}%\label{eq:PP.U}
-%  \PP_{U}(\ckcO) = \Set{\uptau:=(\tau, \cP)|
-%    \begin{array}{l}
-%      \text{$\tau = \ckcO^{t}$}\\
-%      \text{$\Im(\cP)\subseteq \set{\bullet,s,r}$}\\
-%      \text{$\#\set{j|\cP(i,j)=\bullet}$ is even for all $i\in \bN^{+}$}
-%    \end{array}
-%  }.
-%\end{equation*}
-For $\cP \in \PP_{\star}(\ckcO)$, we have defined its signature $(p_\CP, q_\cP)$ in \eqref{eq:signature}. Let $\overline \Nil_{G}(\cO)$ denote the set of $G$-orbits in $(\sqrt{-1}\g_0^*)\cap \CO$, where $\g_0$ denotes the Lie algebra of $G$ which equals $\u(p,q)$.  
-%For a painted partition $\cP$ of type $U$, define the signature of $\CP$ to be the pair
-%\[
-%    (p_\CP, q_\cP): = \left (\frac{\sharp(\cP^{-1}(\bullet))}{2}+\sharp(\cP^{-1}(r)),\,
-%    \frac{ \sharp(\cP^{-1}(\bullet))}{2}+\sharp(\cP^{-1}(s))\right).
-%\]
-
-We first consider the case when  $\ckcO = \ckcO_{\mathrm g}$.
-%Now assume $\ckcO = \ckcO_{\mathrm g}$.
-% and so $\Cint{\ckcO}(G)$ corresponds to the blocks of the infinitesimal
-% character of the trivial representation.
-In this good parity setting, we will state a counting result on
-$\Unip_{\ckcO}(G)$. The elements in $\Unip_{\ckcO}(G)$ can be constructed by
-cohomological induction explicitly and they are irreducible and unitary due to
-\cite{Mat96,Tr.U}, see also \cite{Tr.H}*{Section~2} and \cite{MR.U}*{Section~4}.
-%\trivial[h]{See \cite{MR.U}*{First several paragraphs of Section~4}.}
-We refer the reader to \cite{BMSZ2} for the construction of all elements of $\Unip_{\ckcO}(G)$ by the method of theta lifting.
-
-
-\begin{thm}[\cf {Barbasch-Vogan\cite{BV.W} and Trapa\cite{Tr.H}*{Theorem~2.1}}]\label{thmunit0}
-  Suppose that $\ckcO = \ckcO_{\mathrm g}$. Then
-  \begin{equation} \label{sharpuni0} \sharp(\Unip_{\ckcO}(G))= \sharp \set{\CP\in \mathrm{PAP}_{A^*}(\ckcO)|(p_\CP, q_\CP)=(p,q)}=\sharp(\overline \Nil_{G}(\cO)).
-  \end{equation}
-  Moreover, for every $\pi\in \Unip_{\ckcO}(G)$, its wavefront set $\WF(\pi)$ is
-  the closure in $\sqrt{-1}\g_0^*$ of a unique orbit
-  $\sO_\pi\in \overline \Nil_{G}(\cO)$, and the map
-  \begin{equation}\label{sharpuni1}
-    \begin{array}{rcl}
-      \Unip_{\ckcO}(G) &\longrightarrow& \overline \Nil_{G}(\cO), \\%\Nil_{\mathrm g}(\cO),\\
-      \pi & \mapsto & \sO_\pi.
-    \end{array}
-  \end{equation}
-  is bijective.
-\end{thm}
-
-\begin{proof} The first equality  in \eqref{sharpuni0} follows from \Cref{lem:ccrU},
-  \eqref{IndFor} and Pieri's rule.
-  The second equality in \eqref{sharpuni0} follows directly from
-  the bijectivity of \eqref{sharpuni1}.
-  \trivial[h]{
-  {delete the following sentence: }
-  The second equality in \eqref{sharpuni0}
-  follows from (an easy) direct computation of numbers of elements both-sides.
-  }
-  % We now prove the second equality,  there is a one-one
-  % correspondence of Harish-Chandra cells in $\Cint{\lambda_\ckcO}(\CK'(G))$ with
-  % the orbits in $\overline \Nil_{G}(\cO)$ by \cite{BV.W}*{Theorem~4.2} and
-  % \cite[Theorem 5]{Bo} (we use \cite{SV}*{Theorem~1.4} to restate the result in
-  % terms of real nilpotent ).
-  %
- To prove the bijectivity of \eqref{sharpuni1}, we use the one-one
-  correspondence of Harish-Chandra cells in $\Cint{\lambda_\ckcO}(\CK'(G))$ with
-  the orbits in $\overline \Nil_{G}(\cO)$ by \cite{BV.W}*{Theorem~4.2} and
-  \cite[Theorem 5]{Bo} (we use \cite{SV}*{Theorem~1.4} to rephrase the result in
-  terms of real nilpotent orbits).
-  The Harish-Chandra cell representations are all irreducible and explicitly
-  discribed in terms of the Springer correspondence by \cite{Bo}*{Lemma~4}.
-  By the proof of \Cref{cohbbs}, we conclude that
-  there is exactly one unipotent representation attached to each
-  relevent cell and therefore establish the bijection.
-  % The second assertion follows from the main result of
-  % \cite{SV}*{Theorem~1.4}, \cite[Theorem 5]{Bo}, and \eqref{sharpuni0}.
-\end{proof}
-
 % \trivial[]{
 %   Let
 %   $\lambda := (\lambda_{1},\cdots,\lambda_{n})=(\underbrace{1/2, \cdots, 1/2}_{a},\underbrace{0,\cdots,0}_{\mathrm b})$
@@ -4318,7 +3926,6 @@ We refer the reader to \cite{BMSZ2} for the construction of all elements of $\Un
 % \end{cases}
 % \]
 
-Now we consider the general case. 
 
 \begin{prop} \label{propu0}
 The set $\Unip_{\ckcO}(G)$ is empty  unless           \begin{itemize}
@@ -4346,55 +3953,36 @@ $G'_{\mathrm b}:=\GL_{\frac{N_{\mathrm b}}{2}}(\C)$ and
     \tU(p-\frac{N_{\mathrm b}}{2},q-\frac{N_{\mathrm b}}{2}),  & \text{if }\star = \wtA.
 \end{cases}
 \]
-Write $\check \CO_{\mathrm b}=2 \ckcOpb$ and let $\pi_{\ckcOpb}$ denote the
-unique element in $\Unip_{\ckcOpb}(\GL_{\half N_{\mathrm b}}(\bC))$. Then for
-every $\pi_0\in \Unip_{\ckcO_{\mathrm g}}(\Gg)$, the normalized parabolic
-induction $\pi_{\ckcOpb}\rtimes \pi_{0}$ is irreducible by
-\cite{Mat96}*{Theorem~3.2.2} and is an element of $\Unip_{\ckcO}(G)$ (\cf
-\cite{MR.U}*{Theorem~5.3}).
+Write $\check \CO_{\mathrm b}=2 \ckcOpb$ and let $\pi_{\ckcOpb}$ denote the unique element in
+          $\Unip_{\ckcOpb}(\GL_{\half N_{\mathrm b}}(\bC))$. Then for every $\pi_0\in  \Unip_{\ckcO_{\mathrm g}}(\Gg)$, the  normalized parabolic induction  $\pi_{\ckcOpb}\rtimes \pi_{0}$ is irreducible and is an element of $\Unip_{\ckcO}(G)$ (see ?). 
 
-\begin{thm}
-  Assume that the two conditions in \Cref{propu0} are satisfied.
-  Then
-  \begin{equation}\label{unitarred1}
-    \sharp(\Unip_{\ckcO}(G)) =
-    \sharp(\Unip_{\ckcO_{\mathrm g}}(\Gg)),
-  \end{equation}
-  and the map
-  \begin{equation}
-  \label{bij00}
-    \begin{array}{ccc}
-      \Unip_{\ckcOg}(\Gg)&\longrightarrow &\Unip_{\ckcO}(G),\\
-      \pi_{0}& \mapsto & \pi_{\ckcOpb}\rtimes \pi_{0} \\
-    \end{array}
-  \end{equation}
-  is bijective. %Consequently, % Then
-  % the map
-  % \[
-  %   \begin{array}{ccc}
-  %     \Unip_{\ckcO_{\mathrm g}}(\Gg)&\longrightarrow &\Unip_{\ckcO}(G),\\
-  %     \pi_{0}& \mapsto & \pi_{\ckcOpb}\rtimes \pi_{0} \\
-  %   \end{array}
-  % \]
-  % is bijective. Consequently, \be\label{unitarred1} \sharp(\Unip_{\ckcO}(G)) =
-  % \sharp(\Unip_{\ckcO_{\mathrm g}}(\Gg)). \ee
-\end{thm}
+\begin{prop} 
+Assume that the two conditions in Proposition \ref{propu0} are satisfied. Then
+                  the map 
+          \[
+          \begin{array}{ccc}
+         \Unip_{\ckcO_{\mathrm g}}(\Gg)&\longrightarrow &\Unip_{\ckcO}(G),\\
+            \pi_{0}& \mapsto & \pi_{\ckcOpb}\rtimes \pi_{0} \\
+          \end{array}
+          \]
+          is bijective. 
+          Consequently, 
+           \be\label{unitarred1}
+          \sharp(\Unip_{\ckcO}(G)) = \sharp(\Unip_{\ckcO_{\mathrm g}}(\Gg)).
+          \ee
+\end{prop}
 
-\begin{proof}
-  We observe that structure of cells in the basal representation
-  $\Coh_{[\lambda_{\check \CO}]}(\CK'(G))$ (see \cite[Theorem 5]{Bo}) implies
-  the equality in \eqref{boundc22}. Hence
-  \[
-    \sharp(\Unip_{\check \CO}(G)) =[\tau_{\lamck}: \Coh_{[\lambda_{\check \CO}]}(\CK'(G))].
-  \]
-  Similarly,
-  \[
-    \sharp(\Unip_{\check \CO_\mathrm g}(G_\mathrm g)) = [\tau_{\lamck}: \Coh_{[\lambda_{\check \CO_\mathrm g}]}(\CK'(G_\mathrm g))].
-  \]
-  Note that $[\ckcO_{\mathrm b}^{t}:\cC_{\mathrm b}]=1$, in view of
-  \eqref{IndFor}. The above three equalities clearly imply \eqref{unitarred1}.
+\begin{proof} We  observe that structure of cells in the basal representation  $\Coh_{[\lambda_{\check \CO}]}(\CK'(G))$ (see \cite[Theorem 5]{Bo}) implies the equality in \eqref{boundc22}. Hence 
+\[
+     \sharp(\Unip_{\check \CO}(G)) =[\tau_{\lamck}: \Coh_{[\lambda_{\check \CO}]}(\CK'(G))]. 
+ \]
+ Similarly, 
+ \[
+     \sharp(\Unip_{\check \CO_\mathrm g}(G_\mathrm g)) = [\tau_{\lamck}: \Coh_{[\lambda_{\check \CO_\mathrm g}]}(\CK'(G_\mathrm g))]. 
+ \]
+ Note that $[\ckcO_{\mathrm b}^{t}:\cC_{\mathrm b}]=1$, in view of \eqref{IndFor}. The above three equalities clearly imply \eqref{unitarred1}. 
  
- By the  calculation of  the wavefront set of the induced representations (\cite[Corollary 5.0.10]{B.Orbit}),  Theorem \ref{thmunit0} implies that all the representations $\pi_{\ckcOpb}\rtimes \pi_{0}$, where $\pi_0$ varies in $\Unip_{\ckcO_{\mathrm g}}(\Gg)$, have pairwise distinct wavefront sets.   Thus the map \eqref{bij00} is injective. Hence it is bijection by the counting assertion \eqref{unitarred1}.
+For the first assertion, note that the given map is an injection (see ?) and so a bijection by the counting assertion  \eqref{unitarred1}.
 \end{proof}
 
   % \begin{enumT}
@@ -4421,6 +4009,52 @@ induction $\pi_{\ckcOpb}\rtimes \pi_{0}$ is irreducible by
   %   where $P$ is a parabolic subgroup with Levi factor
   %   $\GL_p(\bC)\times \rU(n_1,n_2)$.
   % \end{enumT}
+
+From the above proposition, the problem of construction of all special unipotent representations attached to $\ckcO$ is reduced to the case when $\ckcO = \ckcO_{\mathrm g}$.
+Now assume $\ckcO = \ckcO_{\mathrm g}$.
+% and so $\Cint{\ckcO}(G)$ corresponds to the blocks of the infinitesimal
+% character of the trivial representation.
+In this good parity setting, we will state a counting result on
+$\Unip_{\mathrm g}(\ckcO)$.  We refer the reader to \cite{BMSZ2} for the construction of all elements of $\Unip_{\mathrm g}(\ckcO)$ by the method of theta lifting.
+
+Recall from \Cref{defpbp0} the set $\PP_{\star}(\ckcO)$, which is the set of paintings on $\ckcO^{t}$ that has type $\star$.
+%We define the set of painted partitions of type $U$ as the following:
+%\begin{equation*}%\label{eq:PP.U}
+%  \PP_{U}(\ckcO) = \Set{\uptau:=(\tau, \cP)|
+%    \begin{array}{l}
+%      \text{$\tau = \ckcO^{t}$}\\
+%      \text{$\Im(\cP)\subseteq \set{\bullet,s,r}$}\\
+%      \text{$\#\set{j|\cP(i,j)=\bullet}$ is even for all $i\in \bN^{+}$}
+%    \end{array}
+%  }.
+%\end{equation*}
+For $\cP \in \PP_{\star}(\ckcO)$, we have defined its signature $(p_\CP, q_\cP)$ in \eqref{eq:signature}. Let $\overline \Nil_{G}(\cO)$ denote the set of $G$-orbits in $(\sqrt{-1}\g_0^*)\cap \CO$, where $\g_0$ denotes the Lie algebra of $G$ which equals $\u(p,q)$.  
+%For a painted partition $\cP$ of type $U$, define the signature of $\CP$ to be the pair
+%\[
+%    (p_\CP, q_\cP): = \left (\frac{\sharp(\cP^{-1}(\bullet))}{2}+\sharp(\cP^{-1}(r)),\,
+%    \frac{ \sharp(\cP^{-1}(\bullet))}{2}+\sharp(\cP^{-1}(s))\right).
+%\]
+
+\begin{thm} Suppose that $\ckcO = \ckcO_{\mathrm g}$.
+Then
+\be\label{sharpuni0}
+    \sharp(\Unip_{\ckcO}(G))= \sharp \set{\CP\in \mathrm{PAP}_{A^*}(\ckcO)|(p_\CP, q_\CP)=(p,q)}=\sharp(\overline \Nil_{G}(\cO)).
+  \ee
+Moreover, for every $\pi\in \Unip_{\ckcO}(G)$, its wavefront set $\WF(\pi)$ is the closure in   $\sqrt{-1}\g_0^*$ of a unique orbit $\sO_\pi\in \overline \Nil_{G}(\cO)$, and the map 
+\[
+  \begin{array}{rcl}
+  \Unip_{\ckcO}(G) &\longrightarrow& \Nil_{\mathrm g}(\cO),\\
+  \pi & \mapsto & \sO_\pi.
+  \end{array}
+\]
+ is bijective.
+
+\end{thm}
+
+\begin{proof} The first equality follows from Lemma \ref{lem:ccrU}, \eqref{IndFor} and Pieri's rule. The second equality follows from the one-one
+correspondence of Harish-Chandra cells in $\Cint{\lambda_\ckcO}(\CK'(G))$ with the  orbits in  $\overline \Nil_{G}(\cO)$, by \cite{BV.W}*{Theorem~4.2} and \cite[Theorem 5]{Bo}.
+The second assertion follows from the main result of \cite{SV}, \cite[Theorem 5]{Bo}, and \eqref{sharpuni0}.
+\end{proof}
 
 \trivial[h]{
 From the branching rule, the cell is parameterized by painted partition
@@ -4452,11 +4086,10 @@ $\sO$ is the unique (up to row switching) signed Young diagram such that
 }
 
 \begin{remark}
-  When $\check \CO\neq \check \CO_{\mathrm g}$, the wavefront set $\WF(\pi)$, where $\pi\in \Unip_{\ckcO}(G)$,  may not be the closure of a single orbit in 
-   $\overline \Nil_{G}(\cO)$.
-  % the parabolic induction of a real nilpotent orbit may be reducible. When $\ckcO_{\mathrm b}\neq \emptyset$, a special unipotent representation may thus have
- % a reducible associated variety. Nevertheless, the map
-  % $\Unip_{\ckcO}(G) \ni \pi \mapsto \WF(\pi)$ remains to be injective in the case of unitary groups. 
+  Note that the parabolic induction of a real nilpotent orbit may be reducible.
+  When $\ckcO_{\mathrm b}\neq \emptyset$, a special unipotent representation may thus have
+  a reducible associated variety. Nevertheless, the map
+  $\Unip_{\ckcO}(G) \ni \pi \mapsto \WF(\pi)$ remains to be injective in the case of unitary groups. 
 \end{remark}
 
 \delete{
@@ -5735,14 +5368,10 @@ We define the partition $\ckcOpb$ by $\ckcOb = 2\ckcOpb$. To be more precise, $\
 We also define
 \begin{equation}\label{Gpb}
   G'_{\mathrm b} := \begin{cases}
-    \GL(n_{\mathrm b},\bR) & \text{when } \star \in \set{B,C,D}, \\
-    \GL(n_{\mathrm b},\bR)\times \set{\pm 1} & \text{when } \star = \wtC, \\
+    \GL(n_{\mathrm b},\bR) & \text{when } \star \in \set{B,C,\wtC,D}, \\
     \GL(\half n_{\mathrm b},\bH) & \text{when } \star \in \set{C^{*},D^{*}}.\\
   \end{cases}
 \end{equation}
-When $\star=\wtC$, let $\Unip_{\ckcOpb}(\Gpb)$ be the set of genuine unipotent
-representations of $\Gpb$ which is naturally identified with
-$\Unip_{\ckcOpb}(\GL(n_{\mathrm b},\bR))$.
 
 \begin{prop}\label{prop:BP.PP} In all cases, we have
 \[
@@ -5775,7 +5404,7 @@ where
   \]
   where $\cP'$ is defined by the condition that
   \[
-    \cP(\bfcc_{j}(\tau_{L,b}),j)=d \Longleftrightarrow \cP'(\bfcc_{j}(\cOpb),j)=d, \quad \textrm{ for all } j=1,2,\cdots, \bfrr_{1}(\cOpb).
+    \cP(\bfcc_{j}(\tau_{L,b}),j)=d \Longleftrightarrow \cP'(\bfcc_{j}(\cOpb),j)=d, \quad \forall j=1,2,\cdots, \bfrr_{1}(\cOpb).
   \]
   \trivial[h]{
     % Let $\tau' = \ckcO'^{t}_{\mathrm b}$ and $\tau_{\mathrm b}=(\tau_{L,b}, \tau_{R,b})$. Here
@@ -5783,7 +5412,7 @@ where
     Now the claim follows for the fact that the bottom rows in $\uptau_{L}$ can
     be filled by $\bullet/c$ or $d$ and
     \[
-      \bfcc_{i}(\tau_{L,b}) = \bfcc_{j}(\tau_{L,b}) \Leftrightarrow \bfcc_{i}(\cOpb) = \bfcc_{j}(\cOpb) \quad \textrm{ for all } i,j\in \bN^{+}.
+      \bfcc_{i}(\tau_{L,b}) = \bfcc_{j}(\tau_{L,b}) \Leftrightarrow \bfcc_{i}(\cOpb) = \bfcc_{j}(\cOpb) \quad \forall i,j\in \bN^{+}.
     \]
   }
 
@@ -5854,7 +5483,7 @@ Recall from \Cref{cor:bound}, we have the inequality
 
   Now suppose $\ngg>0$. Let
   \[
-    \wttau_{\mathrm b} := \Ind_{\sfW'_{\nbb}}^{\sfW_{\nbb}} \tau_{\mathrm b} = (\cOpb,\cOpb) \AND \wttau_{\wp}: = (\imath_{\wp},\jmath_{\wp}) \quad \textrm{ for all } \wp \subseteq \CPP(\ckcOg).
+    \wttau_{\mathrm b} := \Ind_{\sfW'_{\nbb}}^{\sfW_{\nbb}} \tau_{\mathrm b} = (\cOpb,\cOpb) \AND \wttau_{\wp}: = (\imath_{\wp},\jmath_{\wp}) \quad \forall \wp \subseteq \CPP(\ckcOg).
   \]
   Note that $\imath_{\wp}\neq \jmath_{\wp}$ since
   $\bfcc_{1}(\imath_{\wp})> \bfcc_{1}(\jmath_{\wp})$. It is then easy to see that
@@ -6131,9 +5760,7 @@ In this section, $G$ is a classical Lie group of type $\star \in \set{B,\wtC, C,
     \abs{\PP_{\star'}(\ckcO'_{\mathrm b})}=\abs{\Unip_{\ckcO'_{\mathrm b}}(G'_{\mathrm b})}\leq \abs{\Unip_{\ckcO}(G)}
     \leq \abs{\PBP_{\star}(\ckcO_{\mathrm b}; \tau_{\mathrm b})} = \abs{\PP_{\star'}(\ckcO'_{\mathrm b})}.
   \]
-  Here $\star' \in \set{A,A^{\bH}}$ depending on $G$ and the last equality is
-  \Cref{prop:BP.PP}.
-  %. The last equality holds because of \Cref{cor:bound} and \Cref{prop:cohBCD}.
+  Here $\star' \in \set{A,A^{\bH}}$ depending on $G$. The last equality holds because of \Cref{cor:bound} and \Cref{prop:cohBCD}.
 \end{proof}
 
 
@@ -6165,187 +5792,216 @@ Let $P$ be the standard parabolic subgroup of $G$ whose Levi component is isomor
 
 % We would like to reduce the problem to consider the bad and good parts
 % separately.
-%
+The theorem will be proved by translating to a regular infinitesimal character using the following lemma.
+ The method is carefully explained in \cite{Mat}. See also
+\cite{GI}*{Section~3} for a comprehensive account.
+
 
 \def\fhhaso{(\fhh^a_1)^*}
 \def\fhhast{(\fhh^a_2)^*}
 \newcommand{\ff}{f}
 \newcommand{\ffcoh}{\varphi}
 
-  The rest of the section is devoted to prove the theorem.
-
-%\subsubsection{Injectivity }
- We first prove the injectivity of $\fI$ by translating problems to the
- ``endoscopic group'' $\Gb\times \Gg$ at regular infinitesimal
- character. The method was used in \cite{Mat} and also see
-\cite{GI}*{Section~3} for a comprehensive account for the odd orthogonal group
-case. % The setting for the metaplectic group see \cite{RT2}*{\S 5}. % when $G$ is a metaplectic group.
-
-To reconcile the notation in \cite{GI}, we set
-% $G'_{2}:=\Gpb \times \Gg$,
-%   $G_{2} := G_{\mathrm b}\times G_{\mathrm g}$ and $G_{1}:=G$.
-\[ G'_{2}:=\Gpb \times \Gg \AND
-  G_{2} := G_{\mathrm b}\times G_{\mathrm g} %$ and $G_{1}:=G$.
-\]
-  We always fix an identification of $\Gpb$ with a the Levi subgroup of a fixed Siegel parabolic
-  in $\Pb$ in $\Gb$ and so $G'_{2}$ as a subgroup of $G_{2}$.
-
-  Fix a maximally split Cartan
-  $H_{2}^{s}\subsetneq \Gpb\times \Gg\subsetneq \Gb\times \Gg$ of $G_{1}$.
-  There is a is naturally mapping to a maximally split Cartan $H^{s}$ in $G$ via the natural
-  embedding $\Gpb\times \Gg \subseteq P\subseteq G$. The map induces an
-  isomorphism of $\Lie(H_{2}^{s})$ and $\Lie(H^{2})$ and is an isomorphism
-  except the metaplectic group case \cite{RT2}*{\S 5}. Moreover, there are
-\begin{itemize}
-  \item a natural embeddings $\Gpb\subseteq \Gb\subseteq G$ and $\Gg\subseteq G$
-        (See \cite{GI}*{3G} for the odd orthogonal group case and \cite{RT2}*{\S
-        5} for the metaplectic group case),
-  \item a Borel subalgebra $\fbb\subseteq \Lie(P)_{\bC}$ containing
-  $\Lie(H^{s})$, and
-  \item a Borel subalgebra  $\fbb_{2}\subseteq \Lie(\Pb)_{\bC}\oplus \Lie(\Gg)_{\bC}$ containing
-  $\Lie(H_{2}^{s})$
-\end{itemize}
-  such that the choice of $\fbb_{2}$ and $\fbb$ compatible in the sense that
-  $\fbb_{2}=\fbb_{\mathrm b}\oplus \fbb_{\mathrm g}$ where $\fbb_{\mathrm b}$
-  and $\fbb_{\mathrm g}$ are preimages of $\fbb$ induced by the embeddings
-  $\Gb\subseteq G$ and $\Gg\subseteq G$.
-  Let  $\fbb'_{2}$ be the preimage of $\fbb_{2}$
-  induced by the embedding $G'_{2} \subset G_{2}$.
-  With the above fixed choices of Borel subgroups, we identify the abstract Cartan subalgebras
-  $\ahh'_{2}$ of $G'_{2}$, $\ahh_{2}$ of $G_{2}$ and $\ahh$ of $G$
-  by matching $(\Lie(H^{s}_{2})_{\bC},\fbb'_{2})$,
-  $(\Lie(H_{2}^{s})_{\bC},\fbb_{2})$  and $(\Lie(H^{s})_{\bC},\fbb)$.
-
-  Via the maps $H^{s}_{2}\rightarrow H^{s}\rightarrow \Ad_{\fgg}(H^{s})$, the abstract
-  root lattice $Q$ is identified with lattices in $\Irr(H)$ and $\Irr(H^{s}_{2})$.
-  The coherent family and coherent continuation representation can
-  extend to these lattices, \cf \cite{Vg}*{Lemma~7.2.6}.
-  By abuse of notation,
-  we have $\Coh_{\Lamck}(\cK(G'_{2}))$ and $\Coh_{\Lamck}(\cK(G_{2}))$ where
-  $\cK(G'_{2})$
-  and $\cK(G_{2})$ denote the Grothendieck groups of genuine representations
-  when $G$ is a metaplectic group.
-
-  % Fix a regular dominant vector $\lambda\in \Lamck$, there are natural
-  % injections of regular characters $(\Gamma,\nu)$
-  % between
-  Furthermore,  there are natural maps
-  \[
-     \cP_{\Lamck}(G'_{2}) \xrightarrow{f'} \cP_{\Lamck}(G_{2})\xrightarrow{f}\cP_{\Lamck}(G)
-  \]
-  constructed by matching regular characters.   % of $G'_{2}$, $G_{2}$ and $G$.
-  See \cite{GI}*{p 97} for the odd orthogonal group case, \cite{RT2}*{p26} for
-  the metaplectic group case, and the other cases are similar which can also be
-  established by using the Vogan duality twice \cite{V4}*{Section~11}.
-  In all cases, the map $f$ is injective.
-  \trivial[]{
-    There is no reason that $f'$ must be injective. In fact by counting the size
-    of domain and codomain of $f'$, we known that $f'$ cannot be injective when
-    $\star\in \set{C,D}$.
-  }
-  Recall the definition of coherent families of standard modules in
-  \eqref{eq:psigamma}. We define
-  \begin{equation}\label{eq:cohinj}
-    \begin{array}{rcccl}
-\varphi:=\varphi^{f}\colon&  \Coh_{\Lamck}(\cK(G_{2})) &\longrightarrow& \Coh_{\Lamck}(\CK(G)) & \\
-  &  \Psi_{\olgamma_{2}} & \mapsto & \Psi_{f(\olgamma_{2})} & \text{for each }
-  \olgamma_{2}\in \cP_{\Lamck}(G_{2}).
-    \end{array}
+\begin{lem}[{c. f. \cite{GI}*{Lemma~3.3}}]\label{lem:ff.irr} Suppose that
+  \begin{enumerate}[label=(\roman*),series=KLff]
+    \item \label{it:KLff.1} $G_{1}$ and $G_{2}$ are two real reductive groups in
+          the Harish-Chandra class;
+    \item there is an isomorphism
+          \[ \ff\colon \fhhaso\rightarrow \fhhast
+          \]
+          of the duals of the abstract Cartan subalgebras of $G_{1}$ and
+          $G_{2}$;
+    \item $\lambda_{1} \in \fhhaso$ and $\lambda_{2} = \ff(\lambda_{1})$ are
+          dominant regular;
+          % \item $\lambda_{1}$ and $\lambda_{2}$ are regular;
+    \item %\label{it:KLff.4}
+          $\ff$ induces a bijection between $\Delta _{[\lambda_{1}]}$ and
+          $\Delta _{[\lambda_{2}]}$, through which we identify
+          $W_{[\lambda_{1}]}$ with $W_{[\lambda_{2}]}$;
+  \end{enumerate}
+  Let $\Coh_{1}$ be a $W_{[\lambda_{1}]}$-submodule of
+  $\Coh_{[\lambda_{1}]}(\CK(G_{1}))$ such that $\ev{\lambda_{1}}(\Coh_{1})$ is
+  spanned by irreducible $G_{1}$-modules. Suppose
+  \begin{equation}\label{eq:coh.ff}
+    \ffcoh\colon \Coh_{1}\longrightarrow \Coh_{[\lambda_{2}]}(\CK(G_{2}))
   \end{equation}
-  Similarly, we define $\varphi^{f'}$ and $\varphi^{f\circ f'}$.
-  % $\varphi^{f'}\colon&  \Coh_{\Lamck}(\cK(G'_{2})) \rightarrow \Coh_{\Lamck}(\CK(G_{2}))$
-  % and $\varphi^{f\circ f'}\colon&  \Coh_{\Lamck}(\cK(G'_{2})) \rightarrow \Coh_{\Lamck}(\CK(G))$.
+  is an injection of $W_{[\lambda_{1}]}=W_{[\lambda_{2}]}$-modules such
+  that
+  \begin{enumerate}[KLff]
+    \item \label{it:KLff.5} $\ffcoh(\Phi)(\lambda_{2})$ is irreducible if $\Phi\in \Coh_{1}$
+          and $\Phi(\lambda_{1})$ is irreducible.
+  \end{enumerate}
 
-  \begin{lem}\label{lem:cohred}
-    \begin{enumT}
-      \item
-      The integral Weyl group of $\Lamck$ with respect to $G_{2}$ is
-      naturally identified with $\WLamck$.
-      \item \label{it:basal}
-      The map $\varphi$ is basal $\WLam$-module injection.
-      \item \label{it:phinu} Evaluating at $\nu\in \Lamck$, the map $\varphi$ induces an injection
-     \[
-       \varphi_{\nu}\colon \cK_{\nu}(G_{2})\rightarrow \cK_{\nu}(G)
-     \]
-     which preserves the
-      irreducibility. \cf \cite{GI}*{Lemma~3.3}.
-      \item
-    The following diagram is commutative:
-    \[
-    \begin{tikzcd}[column sep={4cm,between origins}]
-      &  \Coh_{\Lamck}(\CK(G'_2)) \ar[dl,"\varphi^{f'}"']\ar[dr,"\varphi^{f\circ f'}"]&\\
-      \Coh_{\Lamck}(\CK(G_{2})  \ar[rr,"\varphi"]& & \Coh_{[\lamck]}(\CK(G)).\\
-    \end{tikzcd}
-  \]
-  \item \label{it:ind} The maps $\varphi^{f'}$ and $\varphi^{f\circ f'}$ are parabolic
-  induction functors: for any $\Psi\in \Coh_{\Lamck}(\cK(G'_{2}))$ and
-  $\nu\in \Lamck$,
+  Then for any $\mu_{1}\in [\lambda_{1}]$, the evaluation at $\mu_{1}$ induces
+  an injection
   \[
-    (\varphi^{f'}(\Psi))(\nu) = \Ind_{P_{\mathrm b}\times \Gg}^{\Gb\times\Gg}\Psi(\nu) \AND
-    (\varphi^{f\circ f'}(\Psi))(\nu) = \Ind_{P}^{G} \Psi(\nu).
+    \ffcoh_{\mu_{1}} \colon \ev{\mu_{1}}(\Coh_{1}) \longrightarrow \ev{\ff(\mu_{1})}(\Coh_{[\lambda_{2}]}(\CK(G_{2}))). 
   \]
-  Consequently, under the notation in \ref{it:phinu},
-  \[
-    \varphi_{\nu}\left((\Ind_{P_{b}\times \Gg}^{\Gb}\pi')\otimes \pi_{0}\right) = \Ind_{P}^{G}(\pi'\otimes \pi_{0})
-    \quad \text{for any $\pi'\otimes \pi_{0}\in \cK_{\nu}(\Gb\times \Gg)$}.
-  \]
-\end{enumT}
+ Furthermore $\ffcoh_{\mu_{1}}(\pi)$ is irreducible if $\pi \in \ev{\mu_{1}}(\Coh_{1})$ is irreducible.
 \end{lem}
-
 \begin{proof}
-  \begin{enumT}
-    \item This is clear by the construction.
-    \item  The $\varphi$ is $\WLam$ can be see directly from the explicit
-    formula of the coherent continuation action on standard modules.
-    Now the Kazhdan-Lusztig-Vogan algorithm ensures that
-    $\varphi(\olPsi_{\olgamma_{2}}) = \olPsi_{f(\olgamma_{2})}$ at any regular
-    dominant element
-    $\nu\in \Lamck$, i.e. $\varphi$ is basal,
-    see \cite{RT2}*{Theorem~1.1} for metaplectic groups, \cite{GI}*{p91} and
-    \cite{ABV}*{Theorem~16.22}.
-    \item The claim on the injectivity of $\varphi_{\nu}$ is clear from
-    \Cref{prop:ev} and the injectivity of \eqref{eq:cohinj}.\trivial[h]{Note
-      that $\WLamck$ is a finite group!}
+  The first claim on the injectivity of $\ffcoh_{\mu_{1}}$ is clear from \Cref{prop:ev} and the
+  injectivity of \eqref{eq:coh.ff}. \trivial[h]{Note that $W_{[\lambda_{1}]}$ is a
+    finite group!}
 
-    For the second claim, may
-    easily reduce it to the case when $\nu$ is dominant. Let
-  $\pi \in \cK_{\nu}(G_{2})$ and $\Psi\in \Coh_{\Lamck}(\cK(G_{2}))$ be the
-  basal element such that $\Psi(\nu)=\pi$. Now $\varphi(\Psi)$ is also basal by
-  \ref{it:basal}, and so . $\varphi_{\nu}(\pi):=\varphi(\Psi)(\nu)$ must be
-  either irreducible or zero.
-  By the injectivity of $\varphi_{\nu}$, it is non-zero and so the
-    claim follows.
-    \item Since standard modules can be constructed via
-   parabolic induction \cite{Vg}*{Theorem~6.6.14}, the claims follow from induction by stages.
-   \item Note that coherent continuation is compatible with parabolic induction
-   \cite{Vg}*{Corollary~7.2.10}. In our case, only the $0$-th term $\sR_{\fqq}^{0}$ in $X_{\fqq}$ loc.
-   cit. non-vanish since $\Pb$ and $P$ are real parabolic subgroups.
-   The claim follows.
-  \end{enumT}
+  We now prove the second claim. We may easily reduce it to the case when $\mu_{1}$ is
+  $\Delta ^{+}_{[\lambda_{1}]}$ dominant, c.f. \cite{GI}*{Lemma~3.3}.
+  Let $\pi \in \ev{\mu_{1}}(\Coh_{1})$. We may find $\Phi\in \Coh_{1}$ such that
+  $\Phi(\mu_{1})=\pi$ and $\Phi(\lambda_{1})$ is irreducible (this is a general property of the coherent continuation family). By our
+  assumption $\ffcoh(\Phi)(\lambda_{2})$ is irreducible. Therefore
+  $\ffcoh_{\mu_{1}}(\pi):=\ffcoh(\Phi)(\ff(\mu_{1}))$ must be either
+  irreducible or zero (another general property of the coherent continuation family).
+  By the injectivity  of $\ffcoh_{\mu_{1}}$, it is non-zero and so the lemma
+  follows.
 \end{proof}
 
+%In this paper, we will use the Kazhdan-Lusztig-Vogan theory to obtain the injection
+%\eqref{eq:coh.ff} and then reduce the problem to bad and good parities separately.
+%Note that the method does not really rely on the Vogan duality and nor
+%require the whole coherent continuation modules to be isomorphic.
 
-%\subsubsection{Injectivity of $\fI$ and irreducibility of $\pi'\rtimes \pi_{0}$}
-%\begin{proof}[Proof of the injectivity of $\fI$ and the irreducibility of $\pi'\rtimes \pi_{0}$]
-\begin{proof}[Proof of \Cref{thm:red}]
-  In views of \Cref{lem:cohred}~\ref{it:phinu} and \ref{it:ind}, the injectivity
-  of $\fI$ and the irreducibility of $\pi'\rtimes \pi_{0}$ follows immediately
-  from those claims in the bad parity case, see \Cref{lem:Unip.BP}.
-
-  The representation $\pi'\rtimes \pi_{0}$ is in $\Unip_{\ckcO}(G)$ now immediately follows from
-  the formula on wavefront cycle of parabolic induction \cite[Corollary
-  5.0.10]{B.Orbit}.
-  \trivial[]{
-  The claim also can be establish by computing Goldie rank
-  representation, see the proof of \Cref{lem:BGcount}
-  }
-
-  The counting result \Cref{lem:BGcount} below finally implies the bijectivity of $\fI$.
-\end{proof}
+For a real reductive group $G$ in the Harish-Chandra class, let $\cP_{\lambda}(G)$ denote the set of $K$-conjugate classes of regular characters with infinitesimal character
+        $\lambda$, where $K$ is a maximal compact subgroup determined by a fixed Cartan involution. Attached to any regular character $\gamma$, there is a standard representation $\pi _{\gamma}$ and an irreducible representation $\barpi_{\gamma}$. See \cite{Vg}.
+        
+In order to ensure condition (v) in \Cref{lem:ff.irr}, we will make some additional assumptions (c.~f. \cite{GI}*{\S 3E}).  
 
 
 
-%\subsection{A counting equality}
+%In addition to \ref{it:KLff.1}-\ref{it:KLff.5} in
+%\Cref{lem:ff.irr}, we make the following assumptions (c.~f. \cite{GI}*{\S 3E}):
+\begin{enumerate}[KLff]
+  % \item $G_{1}$ and $G_{2}$ are two real reductive groups ;
+  % \item there is an isomorphism $\ff\colon \fhha_{1}\rightarrow \fhha_{2}$
+  % between abstract Cartan subalgebras $\fhha_{1}$ and $\fhha_{2}$ of $G_{1}$
+  % and $G_{2}$ respectively; ;
+  % \item $\lambda_{1}\in \fhhaso$ and $\lambda_2\in \fhhast$ are fixed regular
+  % elements such that $\lambda_{1} = \lambda_{2}\circ \ff$;
+  % \item $\ff$ induces an isomorphism
+  % $\ff\colon R_{\lambda_{1}}^{+}\rightarrow R_{\lambda_{2}}^{+}$, and the
+  % associated integral Weyl groups
+  % $\ff\colon W_{[\lambda_{1}]}\rightarrow W_{[\lambda_{2}]}$;
+  \item there is an injection
+        \[
+        \ff \colon B\rightarrow \cP_{\lambda_{2}}(G_{2}),
+        \]
+        where $B\subseteq \cP_{\lambda_{1}}(G_{1})$ is a union of blocks.
+  \item for $\gamma_{1}\in B$ and $\gamma_{2} = \ff(\gamma_{1})\in \cP_{\lambda_{2}}(G_{2})$, the conditions (vi), (vii), (viii), (ix) and (x) of \cite{GI}*{\S 3E}) are satisfied. 
+  \end{enumerate}
+  
+  \delete{
+  the following conditions are satisfied:
+        \begin{enumerate}[label=(\alph*)]
+          \item $\ff \circ \theta _{\gamma_{1}} = \theta _{\gamma_{2}}\circ \ff$
+                where $\theta _{\gamma_{i}}$ is the Cartan involution on
+                the corresponding abstract root system. \trivial[h]{ This
+                condition implies that, the notion of compact/complex/real and
+                $\alpha\in R^{+}(\gamma), \Phi(\alpha)\notin R^{+}(\gamma)$
+                are preserved by $\ff$. In particular, the integral length
+                function $l^{I}$ (defined up to a shifting) of $G_{1}$ and
+                $G_{2}$ can be uniformly identified. }
+              % \item Suppose $\alpha_{1}$ is noncompact type I (resp.
+              % noncompact/real type I/II) if and only if
+              % $\alpha_{2}:= \ff(\alpha_{1})$ is noncompact type I (resp. type
+              % II).
+          \item For simple roots in $\Delta ^{+}_{[\lambda_{i}]}$, the notions of
+                noncompact/real type I/II \cite{V4} are preserved by $\ff$: $\alpha_{1}$
+                is noncompact if and only if
+                $\alpha_{2}:= \ff(\alpha_{1})$ is noncompact, and so forth;
+          \item The cross actions are compatible under $f$:
+                \[
+                \ff(w\cross [\gamma_{1}]) = \ff(w)\cross [\ff(\gamma_{1})], \qquad \forall \gamma_{1}\in B, w\in W_{[\lambda_{1}]}.
+                \]
+          \item The Cayley transforms \cite{V4} are compatible under $f$:
+                \[
+                \ff( c^{\alpha_{1}} (\gamma_{1})) = c^{\ff(\alpha_{1})}(\ff(\gamma_{1})), \qquad \forall \gamma_{1}\in B, \alpha_{1} \text{ is
+                noncompact imaginary}
+                \]
+                and
+                \[
+                  \ff( c_{\alpha_{1}} (\gamma_{1})) = c_{\ff(\alpha_{1})}(\ff(\gamma_{1})),
+                \]
+                for all $\gamma_{1}\in B, \alpha_{1}$ is
+                real and satisfies the parity condition \cite[Definition 8.3.11]{V4}.
+          % \item The $\tau$ invariants are compatible:
+          %       \[
+          %       \ff(\tau(\gamma_{1})) = \tau(\ff(\gamma_{1}))\qquad \forall \gamma_{1}\in B_{1}.
+          %       \]
+          %       \trivial[]{ This condition seems not been used below, but used
+          %       in Gan-Ichino's proof! For linear group the matching of
+          %       $\tau$-invariant is automatic since it is explicitly determined
+          %       by the types of simple roots. For metaplectic groups, it needs
+          %       extra information to determine the $\tau$-invariant, see
+          %       \cite{RT1}*{Lemma~6.28}. It is not clear to me that the
+          %       $\tau$-invariant must match.
+
+          %       On the other hand, the proof of \Cref{lem:ff.irr} seems implies
+          %       that $\tau$-invariants match automatically! }
+        \end{enumerate}
+}
+
+%For a fixed block $B$ a regular infinitesimal character $\lambda_{1}$,
+Under the above assumptions, let $\Grt_{\mathrm b}$ be the span of
+$\set{\barpi_{\gamma}|\gamma\in B}$ in $\CK_{\lambda_1}(G_1)$, and $\Coh_{1} := \ev{\lambda_1}^{-1}(\Grt_{B})$.
+% What we really need is the validity of the following
+% conditions:
+% \begin{itemize}
+%   \item there is an injection of $W_{[\lambda_{1}]}=W_{[\lambda_{2}]}$-module
+%   \begin{equation}\label{eq:coh.ff}
+%     \ff\colon \Coh_{B_{1}}\rightarrow \Coh_{B_{2}}
+%   \end{equation}
+%   such that, at our fixed regular infinitesimal character $\lambda_{1}$,
+%   $\Phi(\lambda_{1})$ is irreducible implies $\ff(\Phi)(\ff(\lambda_{1}))$
+%   is irreducible.
+% \end{itemize}
+Define $\ffcoh$ by sending $\Phi_{\pi_{\gamma_{1}}}$ to
+$\Phi_{\pi_{\gamma_{2}}}$, where $\Phi_{\pi_{\gamma_{1}}}$ denotes the unique coherent family such that $\Phi_{\pi_{\gamma_{1}}}(\lambda _1)=\pi_{\gamma_{1}}$, likewise for $\Phi_{\pi_{\gamma_{2}}}$. 
+Given our assumptions $(vi)$ and $(vii)$, argument of \cite{GI}*{\S 3E}) implies that %the above map on coherent continuation representations
+$\ffcoh$ can be lifted to a map of Hecke algebra modules and the Kazhdan-Lusztig-Vogan algorithm (\cite{V3,RT1}) implies the preservation of irreducibility of
+$\ffcoh$ at $\lambda_{1}$, i.e., condition $(v)$ is satisfied.
+
+
+% \begin{lem}[{c. f. \cite{GI}*{Lemma~3.3}}]\label{lem:ff.irr}
+%   Suppose $\mu_{1}\in [\lambda_{1}]$ is dominant and $\Phi\in \Coh_{B_{1}}$.
+%   The evaluation at $\mu_{1}$ induces an injection
+%   \[
+%   \ff_{\mu_{1}}  \ev{\mu_{1}}(\Coh_{B_{1}}) \longrightarrow  \ev{\mu_{2}}(\Coh_{B_{2}}).
+%   \]
+%   Moreover, $\ff_{\mu_{1}}(\pi)$ is irreducible if $\pi$ i irreducible.
+% \end{lem}
+% \begin{proof}
+%   The injectivity of $\ff_{\mu_{1}}$ is clear from \Cref{lem:coh.count} and the
+%   injectivity of \Cref{eq:coh.ff}. \trivial[]{Note that $W_{[\lambda_{1}]}$ is a
+%     finite group!}
+
+%   We now prove the second claim. Let $\Phi\in \Coh_{B_{1}}$ such that
+%   $\Phi(\mu_{1})=\pi$ and $\Phi(\lambda_{1})$ is irreducible (the existence
+%   of $\Phi$ is an abstract property of the coherent continuation). By our
+%   assumption $\ff(\Phi)(\lambda_{1})$ is irreducible. Therefore
+%   $\ff(\Phi)(\ff(\mu_{1}))$ must be irreducible since it is non zero by the
+%   first claim.
+% \end{proof}
+
+
+We set $G_{1} := G_{\mathrm b}\times G_{\mathrm g}$ and $G_{2}:=G$.
+There is a natural map
+\[
+\ff\colon G_{1} = G_{\mathrm b}\times G_{\mathrm g}\longrightarrow G = G_{2}.
+\]
+The map is given in \cite{GI}*{\S 3G} when $\star = B$ and in
+\cite{RT2}*{\S 5} when $\star = \wtC$. In all other cases, it is the natural
+embedding. The map between the duals of abstract Cartan subalgebras
+$\ff\colon \fhhaso\rightarrow \fhhast$ is given by putting the coordinates of
+$G_{\mathrm b}$ before those of $G_{\mathrm g}$.
+
+Let $\lambda _2\in\fhhast $ be a dominant regular element in $[\lamck]$.
+Then
+$\lambda_{1}:= \ff^{-1}(\lambda_2)$ is dominant regular for $G_{1}$.
+Let $B := \cP_{\lambda_{1}}(G_{1})$ in all cases.
+The map $\ff\colon B\rightarrow \cP_{\lambda}(G_{2})$ is induced by the natural map between real Cartan subalgebras.
+This is clear when $\ff$ is an embedding.
+See \cite{GI}*{\S 3} when $G$ is a special orthogonal group and
+\cite{RT2}*{\S 5} when $G$ is a metaplectic group.
+
 \begin{lem}\label{lem:BGcount}
   We have
   \[
@@ -6355,406 +6011,92 @@ To reconcile the notation in \cite{GI}, we set
   \]
 \end{lem}
 
-\def\IFF{\text{ if and only if }}
-\def\IFF{\Longleftrightarrow\ \  }
 \begin{proof}
   It suffices to consider the case where $\nbb$ and $\ngg$ are both non-zero.
-  Recall that for each
-  primitive ideal $J$ we have attached an irreducible $\WLamck$-representation
-  $\sigma_{J}$, see \Cref{thm:prim}.
-
-  % Fix a dominant regular infinitesimal character $\lambda\in [\lamck]$ and write
-  % $(\lambda_{\mathrm b},\lambda_{\mathrm g}):=\ff^{-1}(\lambda)$. We will
-  % require some more precise information about the blocks of $G$.
-  %Let $G_{1} = \Gb\times \Gg$.
-  Let $\Psi_{2}$ be a basal element in
-  $\Coh_{[\lamb]}(\CK(\Gb))\otimes \Coh_{[\lamg]}(\CK(\Gg))$ and $\Psi:=\varphi(\Psi_{2})$ such that
-  $\pi:=\Psi(\lamck) \neq 0$.
-
-  % \xrightarrow[\ \ \ \varphi  \ \ \ ]{\cong}
-  Via the injective basal homomorphism \eqref{eq:cohinj}, we have $\braket{\Psi_{2}}\stackrel{\varphi}{\cong} \braket{\Psi}$.
-  By \Cref{hcgoldie}, $\sigma_{\Ann(\pi_{2})} = \sigma_{\Ann(\pi)}$ is the irreducible representation of $\WLamck$ having minimal fake degree
-  occurring in $\braket{\Psi_{2}}\stackrel{\varphi}{\cong} \braket{\Psi}$.
-
-  Let $I_{\lamck}$ and $I'_{\lamck}$ be the maximal primitive ideal in $\rU(\fgg)$
-  and $\rU(\fgg_{2})$
-  %$\rU(\Lie(G_{2})_{\bC})$
-  with infinitesimal
-  character $\lamck$ respectively.
-  By \eqref{eq:LC}, $\sigma_{I_{\lamck}} = j_{W_{\lamck}}^{\WLamck} = \sigma_{I'_{\lamck}}$ is also the Goldie rank representation attached to $I'_{\lamck}$.
-  % Let $I_{\lamck}$ be the maximal primitive ideal in $\rU(\fgg)$ with infinitesimal
-  % character $\lamck$ and $\sigma_{I_{\lamck}}$ be the Goldie rank representation
-  % attached to $I_{\lamck}$.
-  % Let $I'_{\lamck}$ be the maximal primitive ideal in $\rU(\fgg_{1})$ with infinitesimal
-  % character $\lamck$. By construction, $\sigma_{\lamck}$ is also the Goldie rank representation
-  % attached to $I'_{\lamck}$.
-
-  Since $\pi \neq 0$ and $\pi_{2}\neq 0$ has infinitesimal character $\lamck$,  we have
-  $\Ann(\pi)\subseteq I_{\lamck}$ and $\Ann(\pi_{2})\subseteq I'_{\lamck}$.
-  By \Cref{lem:ord},
+  Fix a dominant regular infinitesimal character $\lambda\in [\lamck]$ and write
+  $(\lambda_{\mathrm b},\lambda_{\mathrm g}):=\ff^{-1}(\lambda)$. We will require some more
+  precise information about the blocks/cells of $G$. Suppose $\star \neq D^{*}$.
+  Then by direct computation, 
   \[
-\begin{split}
-   & \AVC(\pi)  \subseteq \bcO %\\
-  \IFF  \Ann(\pi)  = I_{\lamck} \\
-  \IFF & \sigma_{\Ann(\pi)}  = \sigma_{I_{\lamck}} %\\
-  \IFF  \sigma_{\Ann(\pi_{2})}  = \sigma_{I'_{\lamck}}\\
-  \IFF & \Ann(\pi_{2})  = I'_{\lamck} %\\
-   \IFF \AVC(\pi_{2})  \subseteq  \bcOb\times \bcOg
+    \ff \colon \cP_{\lambda_{\mathrm b}}(G_{\mathrm b})\times \cP_{\lambda_{\mathrm g}}(G_{\mathrm g}) \longrightarrow \cP_{\lambda}(G)
+  \]
+  is a bijection. In particular each Harish-Chandra cell in $\cP_{\lambda}(G)$
+  is the product of a cell in $\cP_{\lambda_{\mathrm b}}(G_{\mathrm b})$ and a cell in
+  $\cP_{\lambda_{\mathrm g}}(G_{\mathrm g})$. By \Cref{counteq} and \Cref{lem:lcell.BV0}, this implies $\ffcoh$
+  restricts to an isomorphism
+  \[
+    \Coh_{[\lambda_{\mathrm b}],\bcO_{\mathrm b}}(\CK(G_{\mathrm b}))\otimes \Coh_{[\lambda_{\mathrm g}],\bcO_{\mathrm g}}(\CK(G_{\mathrm g})) \xrightarrow{\ \ \ \ffcoh\ \ \ } \Coh_{[\lambda],\bcO}(\CK(G)).
+  \]
+  and the lemma follows by the evaluation at $\lamck$.
+
+  Now consider the case where $\star = D^{*}$. In this case, $\cP_{\lambda}(G)$
+  has $2$ blocks. Both $\cP_{\lambda_{\mathrm b}}(G_{\mathrm b})$ and
+  $\cP_{\lambda_{\mathrm g}}(G_{\mathrm g})$ have only have $1$ block each. Let
+  $B_{1} := \ff(\cP_{\lambda_{\mathrm b}}(G_{\mathrm b})\times \cP_{\lambda_{\mathrm g}}(G_{\mathrm g}))$ and
+  $B_{2}$ be the other block. For any $\sfW'_{n}$-module $\tau$, let $\tau^{s}$
+  denote the twist of $\tau$ by any non-trivial element in $\sfW_{n}/\sfW'_{n}$.
+
+  Then \[
+    \begin{split}
+      \Coh_{B_{1}} &\cong \cC_{\mathrm b}^{\nbb}\otimes \cC_{\mathrm g}^{p_{\mathrm g},q_{\mathrm g}} = \Coh_{[\lambda_{\mathrm b}],\bcO_{\mathrm b}}(\CK(G_{\mathrm g}))\otimes \Coh_{[\lambda_{\mathrm g}],\bcO_{\mathrm g}}(\CK(G_{\mathrm b})),\\
+      \Coh_{B_{2}} &\cong (\cC_{\mathrm b}^{\nbb})^{s}\otimes (\cC_{\mathrm g}^{p_{\mathrm g},q_{\mathrm g}})^{s},
+    \end{split}
+  \]
+   and
+  \[
+    \Coh_{[\lambda]}(\CK(G)) = \Coh_{B_{1}}\oplus \Coh_{B_{2}}.
+  \]
+  Clearly $\Coh_{[\lambda], \bcO}$ is compatible with the above decomposition
+  and we have
+  \[
+    \Coh_{[\lambda_{\mathrm b}],\bcO_{\mathrm b}}(\CK(G_{\mathrm g}))\otimes \Coh_{[\lambda_{\mathrm g}],\bcO_{\mathrm g}}(\CK(G_{\mathrm b})) \xrightarrow{\ \ \ \ffcoh\ \ \ } \Coh_{[\lambda],\bcO}(\CK(G))\cap \Coh_{B_{1}}.
+  \]
+
+  Observe that $[\tau_{\mathrm b}:(\cC_{\mathrm b}^{\nbb})^{s}]=0$. Therefore by \Cref{cor:bound}, we have
+  \[
+    \begin{split}
+      \abs{\Unip_{\ckcO}(G)} & = \sum_{\tau_{\mathrm b}\boxtimes \tau_{\mathrm g}\in \LC_{\ckcO}} [\tau_{\mathrm b}\otimes \tau_{\mathrm g}:\Coh_{[\lambda],\bcO}(\CK(G))\cap \Coh_{B_1}]\\
+    & \ \ + \sum_{\tau_{\mathrm b}\boxtimes \tau_{\mathrm g}\in \LC_{\ckcO}}[\tau_{\mathrm b}\otimes \tau_{\mathrm g}:\Coh_{[\lambda],\bcO}(\CK(G))\cap \Coh_{B_2}] \\
+  &= \sum_{\tau_{\mathrm b}\boxtimes \tau_{\mathrm g}\in \LC_{\ckcO}} [\tau_{\mathrm b}\otimes \tau_{\mathrm g}:
+  \Coh_{[\lambda_{\mathrm b}],\bcO_{\mathrm b}}(\CK(G_{\mathrm b}))\otimes \Coh_{[\lambda_{\mathrm g}],\bcO_{\mathrm g}}(\CK(G_{\mathrm g}))]\\
+  &= \abs{\Unip_{\ckcO_{\mathrm b}}(G_{\mathrm b})}\cdot \abs{\Unip_{\ckcO_{\mathrm g}}(G_{\mathrm g})}.
 \end{split}
-  \]
-  % note that the annihilator ideal $\Ann(\pi_{2})$ is contained in the maximal
-  % primitive ideal $I_{\lamck}$.
-  % Let $\sigma_{\lamck}$ be the Goldie rank representation attached to
-  % $I_{\lamck}$.
-  % Therefore, $a(\sigma_{\Psi_{2}}) \leq  a(\sigma_{\lamck})$,
-  % and $\AVC(\Psi_{2}) \subseteq \bcO$ if and only if $\sigma_{\Psi_2} = \sigma_{\lamck}$.
-
-  % The same argument applies to $\Phi_{1}$ and shows that
-  % $\AVC(\Psi_{1})\subseteq \bcOb\times \bcOg$ if and only if $\sigma_{\Psi_{1}} = \sigma_{\lamck}$.
-
-  Consequently, evaluating at $\lamck$ yields a linear bijection
-  \[
-    \cK_{\lamckb,\bcOb}(\Gb)\otimes \cK_{\lamckg,\bcOg}(\Gg) \longrightarrow \ev{\lamck}\left(\Im(\varphi)\cap \Coh_{\Lamck}(\cK_{\bcO}(G))\right).
-  \]
-  We claim that
-  \begin{equation}\label{eq:evlamck}
-    \ev{\lamck}\left(\Im(\varphi)\cap \Coh_{\Lamck}(\cK_{\bcO}(G))\right)  = \cK_{\lamck,\bcO}(G).
-  \end{equation}
-  Then the lemma follows by taking dimensions of the both sides.
-
-  \smallskip
-
-  When $\star \neq D^{*}$, equation  \eqref{eq:evlamck} holds since $\varphi$ is an isomorphism (\cf \Cref{prop:cohBCD}).
-
-  Now we consider the case where $\star = D^{*}$.
-  For any positive integer $k$ and a $\sfW'_{k}$-module
-  $\tau$, let $\tau^{s}$ denote the twist of $\tau$ by any non-trivial element
-  $s$ in $\sfW_{k}/\sfW'_{k}$.
-  Retain the notation in \Cref{prop:cohBCD}.
-  %We have % (\cf \Cref{prop:cohBCD})
-  As basal $\WLam$-modules,
-  \[
-    \Coh_{\Lamck}(\cK(G))  =\Coh_{B_1} \oplus \Coh_{B_{2}}
-  \]
-  % as basal $\WLam$-modules where
-  where
-  \begin{itemize}
-    \item $\Coh_{B_1} := \Im (\varphi) \cong
-    \cC_{\mathrm b}^{\nbb}\otimes \cC_{\mathrm g}^{p_{\mathrm g},q_{\mathrm g}}$ and
-    \item $\Coh_{B_2}$ is isomorphic to
-    $(\cC_{\mathrm b}^{\nbb})^{s}\otimes (\cC_{\mathrm g}^{p_{\mathrm g},q_{\mathrm g}})^{s}$.
-  \end{itemize}
-  \trivial[h]{
-  This reflects the fact that $G$ has two blocks at any regular dominant
-  infinitesimal character $\nu\in \Lamck$.
-  }
-
-  Observe that $[\tau_{\mathrm b}:(\cC_{\mathrm b}^{\nbb})^{s}]=0$.Hence
-  the Goldie rank representation $\sigma_{\lamck}
-  =\tau_{\mathrm b}\otimes \tau_{\empty}$
-  attached to $I_{\lamck}$ dose not occurs in $\Coh_{B_{2}}$ and $\ev{\lamck}(\Coh_{\Lamck}(\cK_{\bcO}(G))\cap \Coh_{B_{2}}) = 0$ by
-  \Cref{hcgoldie}. This implies the validity of \eqref{eq:evlamck}.
+\]
 \end{proof}
 
 
-% \subsection{}
+\begin{proof}[Proof of \Cref{thm:red}]: We first prove the injectivity of $\fI$. Let % $\mu_{2} = \lamck$
+      % and
+  $\mu_{1} = \ff^{-1}(\lamck)$.
+  Since coherent continuation is compatible with induction
+  \cite{Vg}*{Proposition~7.4.1}, we have the
+  following commutative diagram
+  \[
+    \begin{tikzcd}[column sep={4cm,between origins}]
+      &  \Coh_{[\lambda'_{\mathrm b}]}(\CK(G'_{\mathrm b}))\otimes \Coh_{[\lambda_{\mathrm g}]}(\CK(G_{\mathrm g})) \ar[dl,"\Ind_{P_{\mathrm b}}^{G_{\mathrm b}}\otimes \id"']\ar[dr,"\Ind_{P}^{G}"]&\\
+      \Coh_{[\lambda_{\mathrm b}]}(\CK(G_{\mathrm b}))\otimes \Coh_{[\lambda_{\mathrm g}]}(\CK(G_{\mathrm g})) \ar[d,"\ev{\mu_{1}}"'] \ar[rr,"\ffcoh"]& & \Coh_{[\lamck]}(\CK(G)) \ar[d,"\ev{\ckcO}"]\\
+      \Grt_{\mu_{1}}(G_{\mathrm b}\times G_{\mathrm g}) \ar[rr,"\ffcoh_{\mu_{1}}"]& &
+      \Grt_{\lamck}(G).\\
+    \end{tikzcd}
+  \]
+  %Here $P_{\mathrm b}$ is the parabolic subgroup of $G_{\mathrm b}$ whose Levi component is isomorphic to $G'_{\mathrm b}$ and
+  %$P$ is the parabolic of $G$ whose Levi component is isomorphic to $G'_{\mathrm b}\times G_{\mathrm g}$.
+  The horizontal line $\ffcoh$ is clearly an
+  injection, which implies $\ffcoh_{\mu_{1}}$ is an injection
+  by \Cref{lem:ff.irr}. Note that $\ffcoh_{\mu_{1}}$ sends
+  $\Ind_{P_{\mathrm b}}^{G_{\mathrm b}}(\pi')\otimes \pi_{0}$ to $\Ind_{P}^{G} (\pi'\otimes \pi_{0})$.
+  \trivial[h]{ Let
+    $\Phi'\otimes \Phi_0\in \Coh_{[\lambda'_{\mathrm b}]}(G'_{\mathrm b})\otimes \Coh_{[\lambda_{\mathrm g}]}(G_{\mathrm g})$
+    be coherent family such that
+    $\Phi'\otimes \Phi_0(\lamck) = \pi'\otimes \pi_0$. Now
+    $\Ind_{P_{\mathrm b}}(\pi')\otimes \pi_{0} = (\Ind_{P_{\mathrm b}}\otimes \id) (\Phi'\otimes \Phi_{0})(\mu_{1})$
+    and
+    $\Ind_{P}(\pi'\otimes \pi_{0}) = \ffcoh(\Ind_{P_{\mathrm b}}\otimes \id (\Phi'\otimes \Phi_{0}))(\lamck) = (\Ind_{P}^{G}) (\Phi'\otimes \Phi_{0})(\lamck)$
+  }
+  The injectivity of $\fI$ now follows from \Cref{lem:Unip.BP}.
 
-
-% \begin{lem}[{c. f. \cite{GI}*{Lemma~3.3}}]\label{lem:ff.irr} Suppose that
-%   \begin{enumerate}[label=(\roman*),series=KLff]
-%     \item \label{it:KLff.1} $G_{1}$ and $G_{2}$ are two real reductive groups in
-%           the Harish-Chandra class;
-%     \item there is an isomorphism
-%           \[ \ff\colon \fhhaso\rightarrow \fhhast
-%           \]
-%           of the duals of the abstract Cartan subalgebras of $G_{1}$ and
-%           $G_{2}$;
-%     \item $\lambda_{1} \in \fhhaso$ and $\lambda_{2} = \ff(\lambda_{1})$ are
-%           dominant regular;
-%           % \item $\lambda_{1}$ and $\lambda_{2}$ are regular;
-%     \item %\label{it:KLff.4}
-%           $\ff$ induces a bijection between $\Delta _{[\lambda_{1}]}$ and
-%           $\Delta _{[\lambda_{2}]}$, through which we identify
-%           $W_{[\lambda_{1}]}$ with $W_{[\lambda_{2}]}$;
-%   \end{enumerate}
-%   Let $\Coh_{1}$ be a $W_{[\lambda_{1}]}$-submodule of
-%   $\Coh_{[\lambda_{1}]}(\CK(G_{1}))$ such that $\ev{\lambda_{1}}(\Coh_{1})$ is
-%   spanned by irreducible $G_{1}$-modules. Suppose
-%   \begin{equation}\label{eq:coh.ff}
-%     \ffcoh\colon \Coh_{1}\longrightarrow \Coh_{[\lambda_{2}]}(\CK(G_{2}))
-%   \end{equation}
-%   is an injection of $W_{[\lambda_{1}]}=W_{[\lambda_{2}]}$-modules such
-%   that
-%   \begin{enumerate}[KLff]
-%     \item \label{it:KLff.5} $\ffcoh(\Phi)(\lambda_{2})$ is irreducible if $\Phi\in \Coh_{1}$
-%           and $\Phi(\lambda_{1})$ is irreducible.
-%   \end{enumerate}
-
-%   Then for any $\mu_{1}\in [\lambda_{1}]$, the evaluation at $\mu_{1}$ induces
-%   an injection
-%   \[
-%     \ffcoh_{\mu_{1}} \colon \ev{\mu_{1}}(\Coh_{1}) \longrightarrow \ev{\ff(\mu_{1})}(\Coh_{[\lambda_{2}]}(\CK(G_{2}))).
-%   \]
-%  Furthermore $\ffcoh_{\mu_{1}}(\pi)$ is irreducible if $\pi \in \ev{\mu_{1}}(\Coh_{1})$ is irreducible.
-% \end{lem}
-% \begin{proof}
-%   The first claim on the injectivity of $\ffcoh_{\mu_{1}}$ is clear from \Cref{prop:ev} and the
-%   injectivity of \eqref{eq:coh.ff}. \trivial[h]{Note that $W_{[\lambda_{1}]}$ is a
-%     finite group!}
-
-%   We now prove the second claim. We may easily reduce it to the case when $\mu_{1}$ is
-%   $\Delta ^{+}_{[\lambda_{1}]}$ dominant, c.f. \cite{GI}*{Lemma~3.3}.
-%   Let $\pi \in \ev{\mu_{1}}(\Coh_{1})$. We may find $\Phi\in \Coh_{1}$ such that
-%   $\Phi(\mu_{1})=\pi$ and $\Phi(\lambda_{1})$ is irreducible (this is a general property of the coherent continuation family). By our
-%   assumption $\ffcoh(\Phi)(\lambda_{2})$ is irreducible. Therefore
-%   $\ffcoh_{\mu_{1}}(\pi):=\ffcoh(\Phi)(\ff(\mu_{1}))$ must be either
-%   irreducible or zero (another general property of the coherent continuation family).
-%   By the injectivity  of $\ffcoh_{\mu_{1}}$, it is non-zero and so the lemma
-%   follows.
-% \end{proof}
-
-% %In this paper, we will use the Kazhdan-Lusztig-Vogan theory to obtain the injection
-% %\eqref{eq:coh.ff} and then reduce the problem to bad and good parities separately.
-% %Note that the method does not really rely on the Vogan duality and nor
-% %require the whole coherent continuation modules to be isomorphic.
-
-% For a real reductive group $G$ in the Harish-Chandra class, let $\cP_{\lambda}(G)$ denote the set of $K$-conjugate classes of regular characters with infinitesimal character
-%         $\lambda$, where $K$ is a maximal compact subgroup determined by a fixed Cartan involution. Attached to any regular character $\gamma$, there is a standard representation $\pi _{\gamma}$ and an irreducible representation $\barpi_{\gamma}$. See \cite{Vg}.
-
-% In order to ensure condition (v) in \Cref{lem:ff.irr}, we will make some additional assumptions (c.~f. \cite{GI}*{\S 3E}).
-
-
-
-% %In addition to \ref{it:KLff.1}-\ref{it:KLff.5} in
-% %\Cref{lem:ff.irr}, we make the following assumptions (c.~f. \cite{GI}*{\S 3E}):
-% \begin{enumerate}[KLff]
-%   % \item $G_{1}$ and $G_{2}$ are two real reductive groups ;
-%   % \item there is an isomorphism $\ff\colon \fhha_{1}\rightarrow \fhha_{2}$
-%   % between abstract Cartan subalgebras $\fhha_{1}$ and $\fhha_{2}$ of $G_{1}$
-%   % and $G_{2}$ respectively; ;
-%   % \item $\lambda_{1}\in \fhhaso$ and $\lambda_2\in \fhhast$ are fixed regular
-%   % elements such that $\lambda_{1} = \lambda_{2}\circ \ff$;
-%   % \item $\ff$ induces an isomorphism
-%   % $\ff\colon R_{\lambda_{1}}^{+}\rightarrow R_{\lambda_{2}}^{+}$, and the
-%   % associated integral Weyl groups
-%   % $\ff\colon W_{[\lambda_{1}]}\rightarrow W_{[\lambda_{2}]}$;
-%   \item there is an injection
-%         \[
-%         \ff \colon B\rightarrow \cP_{\lambda_{2}}(G_{2}),
-%         \]
-%         where $B\subseteq \cP_{\lambda_{1}}(G_{1})$ is a union of blocks.
-%   \item for $\gamma_{1}\in B$ and $\gamma_{2} = \ff(\gamma_{1})\in \cP_{\lambda_{2}}(G_{2})$, the conditions (vi), (vii), (viii), (ix) and (x) of \cite{GI}*{\S 3E}) are satisfied.
-%   \end{enumerate}
-
-%   \delete{
-%   the following conditions are satisfied:
-%         \begin{enumerate}[label=(\alph*)]
-%           \item $\ff \circ \theta _{\gamma_{1}} = \theta _{\gamma_{2}}\circ \ff$
-%                 where $\theta _{\gamma_{i}}$ is the Cartan involution on
-%                 the corresponding abstract root system. \trivial[h]{ This
-%                 condition implies that, the notion of compact/complex/real and
-%                 $\alpha\in R^{+}(\gamma), \Phi(\alpha)\notin R^{+}(\gamma)$
-%                 are preserved by $\ff$. In particular, the integral length
-%                 function $l^{I}$ (defined up to a shifting) of $G_{1}$ and
-%                 $G_{2}$ can be uniformly identified. }
-%               % \item Suppose $\alpha_{1}$ is noncompact type I (resp.
-%               % noncompact/real type I/II) if and only if
-%               % $\alpha_{2}:= \ff(\alpha_{1})$ is noncompact type I (resp. type
-%               % II).
-%           \item For simple roots in $\Delta ^{+}_{[\lambda_{i}]}$, the notions of
-%                 noncompact/real type I/II \cite{V4} are preserved by $\ff$: $\alpha_{1}$
-%                 is noncompact if and only if
-%                 $\alpha_{2}:= \ff(\alpha_{1})$ is noncompact, and so forth;
-%           \item The cross actions are compatible under $f$:
-%                 \[
-%                 \ff(w\cross [\gamma_{1}]) = \ff(w)\cross [\ff(\gamma_{1})], \qquad \textrm{ for all } \gamma_{1}\in B, w\in W_{[\lambda_{1}]}.
-%                 \]
-%           \item The Cayley transforms \cite{V4} are compatible under $f$:
-%                 \[
-%                 \ff( c^{\alpha_{1}} (\gamma_{1})) = c^{\ff(\alpha_{1})}(\ff(\gamma_{1})), \qquad \textrm{ for all } \gamma_{1}\in B, \alpha_{1} \text{ is
-%                 noncompact imaginary}
-%                 \]
-%                 and
-%                 \[
-%                   \ff( c_{\alpha_{1}} (\gamma_{1})) = c_{\ff(\alpha_{1})}(\ff(\gamma_{1})),
-%                 \]
-%                 for all $\gamma_{1}\in B, \alpha_{1}$ is
-%                 real and satisfies the parity condition \cite[Definition 8.3.11]{V4}.
-%           % \item The $\tau$ invariants are compatible:
-%           %       \[
-%           %       \ff(\tau(\gamma_{1})) = \tau(\ff(\gamma_{1}))\qquad \textrm{ for all } \gamma_{1}\in B_{1}.
-%           %       \]
-%           %       \trivial[]{ This condition seems not been used below, but used
-%           %       in Gan-Ichino's proof! For linear group the matching of
-%           %       $\tau$-invariant is automatic since it is explicitly determined
-%           %       by the types of simple roots. For metaplectic groups, it needs
-%           %       extra information to determine the $\tau$-invariant, see
-%           %       \cite{RT1}*{Lemma~6.28}. It is not clear to me that the
-%           %       $\tau$-invariant must match.
-
-%           %       On the other hand, the proof of \Cref{lem:ff.irr} seems implies
-%           %       that $\tau$-invariants match automatically! }
-%         \end{enumerate}
-% }
-
-% %For a fixed block $B$ a regular infinitesimal character $\lambda_{1}$,
-% Under the above assumptions, let $\Grt_{\mathrm b}$ be the span of
-% $\set{\barpi_{\gamma}|\gamma\in B}$ in $\CK_{\lambda_1}(G_1)$, and $\Coh_{1} := \ev{\lambda_1}^{-1}(\Grt_{B})$.
-% % What we really need is the validity of the following
-% % conditions:
-% % \begin{itemize}
-% %   \item there is an injection of $W_{[\lambda_{1}]}=W_{[\lambda_{2}]}$-module
-% %   \begin{equation}\label{eq:coh.ff}
-% %     \ff\colon \Coh_{B_{1}}\rightarrow \Coh_{B_{2}}
-% %   \end{equation}
-% %   such that, at our fixed regular infinitesimal character $\lambda_{1}$,
-% %   $\Phi(\lambda_{1})$ is irreducible implies $\ff(\Phi)(\ff(\lambda_{1}))$
-% %   is irreducible.
-% % \end{itemize}
-% Define $\ffcoh$ by sending $\Phi_{\pi_{\gamma_{1}}}$ to
-% $\Phi_{\pi_{\gamma_{2}}}$, where $\Phi_{\pi_{\gamma_{1}}}$ denotes the unique coherent family such that $\Phi_{\pi_{\gamma_{1}}}(\lambda _1)=\pi_{\gamma_{1}}$, likewise for $\Phi_{\pi_{\gamma_{2}}}$.
-% Given our assumptions $(vi)$ and $(vii)$, argument of \cite{GI}*{\S 3E}) implies that %the above map on coherent continuation representations
-% $\ffcoh$ can be lifted to a map of Hecke algebra modules and the Kazhdan-Lusztig-Vogan algorithm (\cite{V3,RT1}) implies the preservation of irreducibility of
-% $\ffcoh$ at $\lambda_{1}$, i.e., condition $(v)$ is satisfied.
-
-
-% % \begin{lem}[{c. f. \cite{GI}*{Lemma~3.3}}]\label{lem:ff.irr}
-% %   Suppose $\mu_{1}\in [\lambda_{1}]$ is dominant and $\Phi\in \Coh_{B_{1}}$.
-% %   The evaluation at $\mu_{1}$ induces an injection
-% %   \[
-% %   \ff_{\mu_{1}}  \ev{\mu_{1}}(\Coh_{B_{1}}) \longrightarrow  \ev{\mu_{2}}(\Coh_{B_{2}}).
-% %   \]
-% %   Moreover, $\ff_{\mu_{1}}(\pi)$ is irreducible if $\pi$ i irreducible.
-% % \end{lem}
-% % \begin{proof}
-% %   The injectivity of $\ff_{\mu_{1}}$ is clear from \Cref{lem:coh.count} and the
-% %   injectivity of \Cref{eq:coh.ff}. \trivial[]{Note that $W_{[\lambda_{1}]}$ is a
-% %     finite group!}
-
-% %   We now prove the second claim. Let $\Phi\in \Coh_{B_{1}}$ such that
-% %   $\Phi(\mu_{1})=\pi$ and $\Phi(\lambda_{1})$ is irreducible (the existence
-% %   of $\Phi$ is an abstract property of the coherent continuation). By our
-% %   assumption $\ff(\Phi)(\lambda_{1})$ is irreducible. Therefore
-% %   $\ff(\Phi)(\ff(\mu_{1}))$ must be irreducible since it is non zero by the
-% %   first claim.
-% % \end{proof}
-
-
-% We set $G_{1} := G_{\mathrm b}\times G_{\mathrm g}$ and $G_{2}:=G$.
-% % There is a natural map
-% % \[
-% % \ff\colon G_{1} = G_{\mathrm b}\times G_{\mathrm g}\longrightarrow G = G_{2}.
-% % \]
-% The map $f$ is given in \cite{GI}*{\S 3G} when $\star = B$ and in
-% \cite{RT2}*{\S 5} when $\star = \wtC$. In all other cases, $f$ is the natural
-% embedding. The map between the duals of abstract Cartan subalgebras
-% $\ff\colon \fhhaso\rightarrow \fhhast$ is given by putting the coordinates of
-% $G_{\mathrm b}$ before those of $G_{\mathrm g}$.
-
-% Let $\lambda _2\in\fhhast $ be a dominant regular element in $[\lamck]$.
-% Then
-% $\lambda_{1}:= \ff^{-1}(\lambda_2)$ is dominant regular for $G_{1}$.
-% Let $B := \cP_{\lambda_{1}}(G_{1})$ in all cases.
-% The map $\ff\colon B\rightarrow \cP_{\lambda}(G_{2})$ is induced by the natural map between real Cartan subalgebras.
-% This is clear when $\ff$ is an embedding.
-% See \cite{GI}*{\S 3} when $G$ is a special orthogonal group and
-% \cite{RT2}*{\S 5} when $G$ is a metaplectic group.
-
-% \begin{lem}\label{lem:BGcount}
-%   We have
-%   \[
-%     \abs{\Unip_{\ckcO}(G)} =
-%     \abs{\Unip_{\ckcO_{\mathrm b}}(G_{\mathrm b})}\cdot
-%     \abs{\Unip_{\ckcO_{\mathrm g}}(G_{\mathrm g})}.
-%   \]
-% \end{lem}
-
-% \begin{proof}
-%   It suffices to consider the case where $\nbb$ and $\ngg$ are both non-zero.
-%   Fix a dominant regular infinitesimal character $\lambda\in [\lamck]$ and write
-%   $(\lambda_{\mathrm b},\lambda_{\mathrm g}):=\ff^{-1}(\lambda)$. We will require some more
-%   precise information about the blocks/cells of $G$. Suppose $\star \neq D^{*}$.
-%   Then by direct computation,
-%   \[
-%     \ff \colon \cP_{\lambda_{\mathrm b}}(G_{\mathrm b})\times \cP_{\lambda_{\mathrm g}}(G_{\mathrm g}) \longrightarrow \cP_{\lambda}(G)
-%   \]
-%   is a bijection. In particular each Harish-Chandra cell in $\cP_{\lambda}(G)$
-%   is the product of a cell in $\cP_{\lambda_{\mathrm b}}(G_{\mathrm b})$ and a cell in
-%   $\cP_{\lambda_{\mathrm g}}(G_{\mathrm g})$. By \Cref{counteq} and \Cref{lem:lcell.BV0}, this implies $\ffcoh$
-%   restricts to an isomorphism
-%   \[
-%     \Coh_{[\lambda_{\mathrm b}],\bcO_{\mathrm b}}(\CK(G_{\mathrm b}))\otimes \Coh_{[\lambda_{\mathrm g}],\bcO_{\mathrm g}}(\CK(G_{\mathrm g})) \xrightarrow{\ \ \ \ffcoh\ \ \ } \Coh_{[\lambda],\bcO}(\CK(G)).
-%   \]
-%   and the lemma follows by the evaluation at $\lamck$.
-
-%   Now consider the case where $\star = D^{*}$. In this case, $\cP_{\lambda}(G)$
-%   has $2$ blocks. Both $\cP_{\lambda_{\mathrm b}}(G_{\mathrm b})$ and
-%   $\cP_{\lambda_{\mathrm g}}(G_{\mathrm g})$ have only have $1$ block each. Let
-%   $B_{1} := \ff(\cP_{\lambda_{\mathrm b}}(G_{\mathrm b})\times \cP_{\lambda_{\mathrm g}}(G_{\mathrm g}))$ and
-%   $B_{2}$ be the other block. For any $\sfW'_{n}$-module $\tau$, let $\tau^{s}$
-%   denote the twist of $\tau$ by any non-trivial element in $\sfW_{n}/\sfW'_{n}$.
-
-%   Then \[
-%     \begin{split}
-%       \Coh_{B_{1}} &\cong \cC_{\mathrm b}^{\nbb}\otimes \cC_{\mathrm g}^{p_{\mathrm g},q_{\mathrm g}} = \Coh_{[\lambda_{\mathrm b}],\bcO_{\mathrm b}}(\CK(G_{\mathrm g}))\otimes \Coh_{[\lambda_{\mathrm g}],\bcO_{\mathrm g}}(\CK(G_{\mathrm b})),\\
-%       \Coh_{B_{2}} &\cong (\cC_{\mathrm b}^{\nbb})^{s}\otimes (\cC_{\mathrm g}^{p_{\mathrm g},q_{\mathrm g}})^{s},
-%     \end{split}
-%   \]
-%    and
-%   \[
-%     \Coh_{[\lambda]}(\CK(G)) = \Coh_{B_{1}}\oplus \Coh_{B_{2}}.
-%   \]
-%   Clearly $\Coh_{[\lambda], \bcO}$ is compatible with the above decomposition
-%   and we have
-%   \[
-%     \Coh_{[\lambda_{\mathrm b}],\bcO_{\mathrm b}}(\CK(G_{\mathrm g}))\otimes \Coh_{[\lambda_{\mathrm g}],\bcO_{\mathrm g}}(\CK(G_{\mathrm b})) \xrightarrow{\ \ \ \ffcoh\ \ \ } \Coh_{[\lambda],\bcO}(\CK(G))\cap \Coh_{B_{1}}.
-%   \]
-
-%   Observe that $[\tau_{\mathrm b}:(\cC_{\mathrm b}^{\nbb})^{s}]=0$. Therefore by \Cref{cor:bound}, we have
-%   \[
-%     \begin{split}
-%       \abs{\Unip_{\ckcO}(G)} & = \sum_{\tau_{\mathrm b}\boxtimes \tau_{\mathrm g}\in \LC_{\ckcO}} [\tau_{\mathrm b}\otimes \tau_{\mathrm g}:\Coh_{[\lambda],\bcO}(\CK(G))\cap \Coh_{B_1}]\\
-%     & \ \ + \sum_{\tau_{\mathrm b}\boxtimes \tau_{\mathrm g}\in \LC_{\ckcO}}[\tau_{\mathrm b}\otimes \tau_{\mathrm g}:\Coh_{[\lambda],\bcO}(\CK(G))\cap \Coh_{B_2}] \\
-%   &= \sum_{\tau_{\mathrm b}\boxtimes \tau_{\mathrm g}\in \LC_{\ckcO}} [\tau_{\mathrm b}\otimes \tau_{\mathrm g}:
-%   \Coh_{[\lambda_{\mathrm b}],\bcO_{\mathrm b}}(\CK(G_{\mathrm b}))\otimes \Coh_{[\lambda_{\mathrm g}],\bcO_{\mathrm g}}(\CK(G_{\mathrm g}))]\\
-%   &= \abs{\Unip_{\ckcO_{\mathrm b}}(G_{\mathrm b})}\cdot \abs{\Unip_{\ckcO_{\mathrm g}}(G_{\mathrm g})}.
-% \end{split}
-% \]
-% \end{proof}
-
-
-% \begin{proof}[Proof of \Cref{thm:red}]: We first prove the injectivity of $\fI$. Let % $\mu_{2} = \lamck$
-%       % and
-%   $\mu_{1} = \ff^{-1}(\lamck)$.
-%   Since coherent continuation is compatible with induction
-%   \cite{Vg}*{Proposition~7.4.1}, we have the
-%   following commutative diagram
-%   \[
-%     \begin{tikzcd}[column sep={4cm,between origins}]
-%       &  \Coh_{[\lambda'_{\mathrm b}]}(\CK(G'_{\mathrm b}))\otimes \Coh_{[\lambda_{\mathrm g}]}(\CK(G_{\mathrm g})) \ar[dl,"\Ind_{P_{\mathrm b}}^{G_{\mathrm b}}\otimes \id"']\ar[dr,"\Ind_{P}^{G}"]&\\
-%       \Coh_{[\lambda_{\mathrm b}]}(\CK(G_{\mathrm b}))\otimes \Coh_{[\lambda_{\mathrm g}]}(\CK(G_{\mathrm g})) \ar[d,"\ev{\mu_{1}}"'] \ar[rr,"\ffcoh"]& & \Coh_{[\lamck]}(\CK(G)) \ar[d,"\ev{\ckcO}"]\\
-%       \Grt_{\mu_{1}}(G_{\mathrm b}\times G_{\mathrm g}) \ar[rr,"\ffcoh_{\mu_{1}}"]& &
-%       \Grt_{\lamck}(G).\\
-%     \end{tikzcd}
-%   \]
-%   %Here $P_{\mathrm b}$ is the parabolic subgroup of $G_{\mathrm b}$ whose Levi component is isomorphic to $G'_{\mathrm b}$ and
-%   %$P$ is the parabolic of $G$ whose Levi component is isomorphic to $G'_{\mathrm b}\times G_{\mathrm g}$.
-%   The horizontal line $\ffcoh$ is clearly an
-%   injection, which implies $\ffcoh_{\mu_{1}}$ is an injection
-%   by \Cref{lem:ff.irr}. Note that $\ffcoh_{\mu_{1}}$ sends
-%   $\Ind_{P_{\mathrm b}}^{G_{\mathrm b}}(\pi')\otimes \pi_{0}$ to $\Ind_{P}^{G} (\pi'\otimes \pi_{0})$.
-%   \trivial[h]{ Let
-%     $\Phi'\otimes \Phi_0\in \Coh_{[\lambda'_{\mathrm b}]}(G'_{\mathrm b})\otimes \Coh_{[\lambda_{\mathrm g}]}(G_{\mathrm g})$
-%     be coherent family such that
-%     $\Phi'\otimes \Phi_0(\lamck) = \pi'\otimes \pi_0$. Now
-%     $\Ind_{P_{\mathrm b}}(\pi')\otimes \pi_{0} = (\Ind_{P_{\mathrm b}}\otimes \id) (\Phi'\otimes \Phi_{0})(\mu_{1})$
-%     and
-%     $\Ind_{P}(\pi'\otimes \pi_{0}) = \ffcoh(\Ind_{P_{\mathrm b}}\otimes \id (\Phi'\otimes \Phi_{0}))(\lamck) = (\Ind_{P}^{G}) (\Phi'\otimes \Phi_{0})(\lamck)$
-%   }
-%   The injectivity of $\fI$ now follows from \Cref{lem:Unip.BP}.
-
-% The counting result of \Cref{lem:BGcount} finally implies the bijectivity of $\fI$.
-% \end{proof}
+The counting result of \Cref{lem:BGcount} finally implies the bijectivity of $\fI$.
+\end{proof}
 
 
 %\subfile{counting_cl}
@@ -6763,69 +6105,65 @@ To reconcile the notation in \cite{GI}, we set
 
 \section{Combinatorics of painted bipartitions}
 
-In this section, we assume that $\star \in \{B,C,\wtC,C^{*},D,D^{*}\}$, and $\ckcO = \ckcOg$, namely $\ckcO $ has $\star$-good parity.
-Recall the set  $\CPPs(\ckcO)$ of primitive $\star$-pairs in $\ckcO$. For each subset $\wp$ of $\CPPs(\ckcO)$, we have defined a bipartition $\tau_{\wp}=(\imath_{\wp},\jmath_{\wp})$ in \Cref{sec:LCBCD}.
+Let $\star$, $G$, and $\check \CO$ be as before. In this section, we assume that $\star \in \Set{B,C,\wtC,C^{*},D,D^{*}}$, and $\ckcO = \ckcOg$, namely $\ckcO $ has $\star$-good parity.
 
-\begin{prop} \label{prop:PBP} If $\star\in \set{C^{*}, D^{*}}$, then
+Recall the set of primitive $\star$-pairs $\CPPs(\ckcO)$ in $\ckcO$. For a subset $\wp$ of $\CPPs(\ckcO)$, we have defined a bipartition $\tau_{\wp}=(\imath_{\wp},\jmath_{\wp})$ in \Cref{sec:LCBCD}.
+
+The purpose of this section is to prove the   following combinatorial result. 
+
+\begin{prop} \label{prop:PBP} When $\star\in \set{C^{*}, D^{*}}$,
   \[
-    \PBP_{\star}(\tau_{\wp}) = \emptyset, \quad \text{for all nonempty subset   $\wp\subset \CPPs(\ckcO)$.}
+    \PBP_{\star}(\tau_{\wp}) = \emptyset, \quad \text{if } \wp \neq \emptyset.
   \]
-\end{prop}
-\begin{proof}
-Suppose that
-  $\emptyset\neq \wp\subset \CPPs(\ckcO)$.
-  
-   First assume that  $\star = C^{*}$. Then we have that 
-  \begin{equation}\label{eq:res.C*}
-    \bfcc_{i}(\imath_{\wp}) = \half(\bfrr_{2i-1}(\ckcO)+1)>
-    \half(\bfrr_{2i}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp}),
-    \quad \textrm{ for all } \,\, (2i-1, 2i)\in \wp,
-  \end{equation}
-  Let $\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$ be an element in $\PBP_{\star}(\tau_{\wp})$. By the requirements of a painted bipartition, we have that
+  When $\star\in \set{B,C,\wtC,D}$,
   \[
-    \bfcc_{i}(\imath_{\wp}) = \sharp\set{j| \cP(i,j)=\bullet} = \sharp\set{j| \cQ(i,j)=\bullet} \leq \bfcc_{i}(\jmath_{\wp}), \quad \textrm{ for all } \,\, i=1,2,3,\cdots,
+    \sharp(\PBP_{\star}(\tau_{\wp})) = \sharp(\PBP_{\star}(\tau_{\emptyset})), \quad \forall \wp \subseteq \CPPs(\ckcO).
   \]
-  which contradicts \eqref{eq:res.C*}. Hence, $\PBP_{\star}(\tau_{\wp})= \emptyset$.
-
-
-
-  Now we assume that $\star = D^{*}$. 
-  Then we have that
-  \begin{equation}\label{eq:res.D*}
-    \bfcc_{i+1}(\imath_{\wp}) = \half(\bfrr_{2i}(\ckcO)+1)>
-    \half(\bfrr_{2i+1}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp}),
-    \quad \textrm{ for all } \,\, (2i, 2i+1)\in \wp.
-  \end{equation}
-  Let $\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$ be an element in $\PBP_{\star}(\tau_{\wp})$. By the requirements of a painted bipartition, we have that
-  \[
-    \bfcc_{i+1}(\imath_{\wp}) \leq \sharp\set{j| \cP(i,j)=\bullet} =\sharp\set{j| \cQ(i,j)=\bullet} \leq \bfcc_{i}(\jmath_{\wp}), \quad \textrm{ for all } \,\, i = 1,2,3, \cdots,
-  \]
-  which contradicts \eqref{eq:res.D*}. Hence, $\PBP_{\star}(\tau_{\wp})= \emptyset$.
-
-\end{proof}
-
-
-
-%The purpose of this section is to prove the   following combinatorial result. 
-
-
-%We shall deal with the two quaternionic cases first, which are simple. When $\star \in \set{B, C, \wtC, D}$, the proof of the main statement of the above proposition involves an elaborate reduction argument (by removing elements from $\wp$ one-by-one), and will be handled separately in \Cref{lem:down} below.
-%[Proof of {\Cref{prop:PBP}} the quaternionic case]
-
-    \smallskip
-
-
-\begin{prop} \label{prop:PBP} Suppose that   $\star\in \set{B,C,\wtC,D}$. Then
-  \[
-    \sharp(\PBP_{\star}(\tau_{\wp})) = \sharp(\PBP_{\star}(\tau_{\emptyset})), \quad \textrm{for all } \wp \subseteq \CPPs(\ckcO).
-  \]
- Consequently, 
+ Consequently we always have
   \[
     \sharp(\tPBP_{\star}(\ckcO)) = 2^{\sharp(\CPPs(\ckcO))}\cdot \sharp(\PBP_{\star}(\ckcO)), \,\, \text{ and } \,\, \sharp(\tPBP_{\mathrm g}(\ckcO)) = 2^{\sharp(\CPPs(\ckcO))}\cdot \sharp(\PBP_{\mathrm g}(\ckcO)).
   \]
 \end{prop}
 
-The rest of this section is devoted to the proof of the following lemma, which clearly implies Proposition \ref{prop:PBP}. 
+% \subsection{The case of quaternionic groups}
+
+We shall deal with the two quaternionic cases first, which are simple. When $\star \in \set{B, C, \wtC, D}$, the proof of the main statement of the above proposition involves an elaborate reduction argument (by removing elements from $\wp$ one-by-one), and will be handled separately in \Cref{lem:down} below.
+\begin{proof}%[Proof of {\Cref{prop:PBP}} the quaternionic case]
+
+    \smallskip
+
+  First consider the case when $\star = C^{*}$. Suppose that
+  $\wp \neq \emptyset$. Then we have
+  \begin{equation}\label{eq:res.C*}
+    \bfcc_{i}(\imath_{\wp}) = \half(\bfrr_{2i-1}(\ckcO)+1)>
+    \half(\bfrr_{2i}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp}),
+    \quad \forall \,\, (2i-1, 2i)\in \wp,
+  \end{equation}
+  Let $\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$ be an element in $\PBP_{\star}(\tau_{\wp})$. By the requirements of a painted bipartition, we have
+  \[
+    \bfcc_{i}(\imath_{\wp}) = \sharp\set{j| \cP(i,j)=\bullet} = \sharp\set{j| \cQ(i,j)=\bullet} \leq \bfcc_{i}(\jmath_{\wp}), \quad \forall \,\, i=1,2,3,\cdots,
+  \]
+  which contradicts \eqref{eq:res.C*}. Hence, $\PBP_{\star}(\tau_{\wp})= \emptyset$.
+
+  \smallskip
+
+  Now consider the case when $\star = D^{*}$. Suppose that $\wp \neq \emptyset$.
+  Then we have
+  \begin{equation}\label{eq:res.D*}
+    \bfcc_{i+1}(\imath_{\wp}) = \half(\bfrr_{2i}(\ckcO)+1)>
+    \half(\bfrr_{2i+1}(\ckcO)-1) = \bfcc_{i}(\jmath_{\wp}),
+    \quad \forall \,\, (2i, 2i+1)\in \wp.
+  \end{equation}
+  Let $\uptau = (\imath_{\wp}, \cP)\times (\jmath_{\wp},\cQ)\times \star$ be an element in $\PBP_{\star}(\tau_{\wp})$. By the requirements of a painted bipartition, we have
+  \[
+    \bfcc_{i+1}(\imath_{\wp}) \leq \sharp\set{j| \cP(i,j)=\bullet} =\sharp\set{j| \cQ(i,j)=\bullet} \leq \bfcc_{i}(\jmath_{\wp}), \quad \forall \,\, i = 1,2,3, \cdots,
+  \]
+  which contradicts \eqref{eq:res.D*}. Hence, $\PBP_{\star}(\tau_{\wp})= \emptyset$.
+
+This completes the proof for the quaternionic cases.
+\end{proof}
+
+The rest of this section is devoted to the proof of the following
 
 
 \def\PPm{\wp_{\downarrow}}
@@ -6842,16 +6180,16 @@ The rest of this section is devoted to the proof of the following lemma, which c
   \[
     t:=
     \begin{cases}
-      \min\set{i|(2i-1,2i)\in \wp}, & \text{if $\star \in \set{C,\wtC}$};\\
-      \min\set{i|(2i,2i+1)\in \wp}, & \text{if $\star \in \set{B,D}$},\\
+      \min\set{i|(2i-1,2i)\in \wp} & \text{when $\star \in \set{C,\wtC}$}\\
+      \min\set{i|(2i,2i+1)\in \wp} & \text{when $\star \in \set{B,D}$}\\
     \end{cases}
   \]
   and
   \[
     \PPm:=
     \begin{cases}
-      \wp \setminus \set{(2t-1,2t)},  & \text{if $\star \in \set{C,\wtC}$};\\
-      \wp \setminus   \set{(2t,2t+1)}, & \text{if $\star \in \set{B,D}$}.\\
+      \wp - \set{(2t-1,2t)}  & \text{when $\star \in \set{C,\wtC}$}\\
+      \wp -  \set{(2t,2t+1)} & \text{when $\star \in \set{B,D}$}\\
     \end{cases}
   \]
   Then
@@ -6859,7 +6197,6 @@ The rest of this section is devoted to the proof of the following lemma, which c
     \sharp(\PBP_{\star}(\tau_{\PPm})) = \sharp(\PBP_{\star}(\tau_{\wp})).
   \]
 \end{lem}
-
 \begin{proof}
   We prove the equality by defining a bijection
   \[
@@ -6900,8 +6237,8 @@ The rest of this section is devoted to the proof of the following lemma, which c
   For $\uptaum\in\PBPs(\tau_{\PPm})$, define $\uptau=:T_{\PPm,\wp}(\uptaum)$ by the following formula:
   \[
     \begin{split}
-      \text{$\textrm{ for all } (i,j)\in \BOX{\imath_{\wp}}$,} \quad   \cP_{\uptau}(i,j) &=  \cP_{\uptaum}(i,j),\\
-      \text{$\textrm{ for all } (i,j)\in \BOX{\jmath_{\wp}}$,} \quad \cQ_{\uptau}(i,j) &= \begin{cases}
+      \text{$\forall (i,j)\in \BOX{\imath_{\wp}}$,} \quad   \cP_{\uptau}(i,j) &=  \cP_{\uptaum}(i,j),\\
+      \text{$\forall (i,j)\in \BOX{\jmath_{\wp}}$,} \quad \cQ_{\uptau}(i,j) &= \begin{cases}
         r& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=s$,}\\
         d& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=c$,}\\
         \cQ_{\uptaum}(i,j) &\text{otherwise.}
@@ -6919,12 +6256,12 @@ The rest of this section is devoted to the proof of the following lemma, which c
   is given by the following formula:
   \[
     \begin{split}
-      \text{$\textrm{ for all } (i,j)\in \BOX{\imath_{\PPm}}$,} \quad \cP_{\uptaum}(i,j) &= \begin{cases}
+      \text{$\forall (i,j)\in \BOX{\imath_{\PPm}}$,} \quad \cP_{\uptaum}(i,j) &= \begin{cases}
         s& \text{if $j=t$ and  $\cQ_{\uptau}(i,j)=r$,}\\
         c& \text{if $j=t$ and  $\cQ_{\uptau}(i,j)=d$,}\\
         \cP_{\uptau}(i,j) &\text{otherwise.}
       \end{cases}\\
-      \text{$\textrm{ for all } (i,j)\in \BOX{\jmath_{\PPm}}$,} \quad   \cQ_{\uptaum}(i,j) &=  \cQ_{\uptau}(i,j).\\
+      \text{$\forall (i,j)\in \BOX{\jmath_{\PPm}}$,} \quad   \cQ_{\uptaum}(i,j) &=  \cQ_{\uptau}(i,j).\\
     \end{split}
   \]
   }
@@ -6937,8 +6274,8 @@ The rest of this section is devoted to the proof of the following lemma, which c
   % is given by the following formula:
   % \[
   %   \begin{split}
-  %     \text{$\textrm{ for all } (i,j)\in \BOX{\imath_{\wp}}$,} \quad   \cP_{\uptau}(i,j) &=  \cP_{\uptaum}(i,j),\\
-  %     \text{$\textrm{ for all } (i,j)\in \BOX{\jmath_{\wp}}$,} \quad \cQ_{\uptau}(i,j) &= \begin{cases}
+  %     \text{$\forall (i,j)\in \BOX{\imath_{\wp}}$,} \quad   \cP_{\uptau}(i,j) &=  \cP_{\uptaum}(i,j),\\
+  %     \text{$\forall (i,j)\in \BOX{\jmath_{\wp}}$,} \quad \cQ_{\uptau}(i,j) &= \begin{cases}
   %       r& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=s$,}\\
   %       d& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=c$,}\\
   %       \cQ_{\uptaum}(i,j) &\text{otherwise.}
@@ -8182,19 +7519,6 @@ year={1981},
 %     pages ={265--311},
 % }
 
-\bib{Mat96}{article}{
-   author={Matumoto, Hisayosi},
-   title={On the representations of ${\rm U}(m,n)$ unitarily induced from
-   derived functor modules},
-   journal={Compositio Math.},
-   volume={100},
-   date={1996},
-   number={1},
-   pages={1--39},
-   issn={0010-437X},
-   review={\MR{1377407}},
-}
-
 \bib{Mat}{article}{
    author={Matumoto, Hisayosi},
    title={On the representations of ${\rm Sp}(p,q)$ and ${\rm SO}^*(2n)$
@@ -8241,50 +7565,31 @@ year={1981},
 %     pages ={1313--1346},
 % }
 
-\bib{Mo17}{article}{
-  author={M{\oe}glin, C.},
-  title = {Paquets d'Arthur Sp\'eciaux Unipotents aux Places Archim\'ediennes et Correspondance de Howe},
-  journal = {J. Cogdell et al. (eds.), Representation Theory, Number Theory, and Invariant Theory, In Honor of Roger Howe. Progress in Math.}
-  %series ={Progress in Math.},
-  volume = {323},
-  pages = {469--502}
-  year = {2017}
-}
+% \bib{Mo17}{article}{
+%   author={M{\oe}glin, C.},
+%   title = {Paquets d'Arthur Sp\'eciaux Unipotents aux Places Archim\'ediennes et Correspondance de Howe},
+%   journal = {J. Cogdell et al. (eds.), Representation Theory, Number Theory, and Invariant Theory, In Honor of Roger Howe. Progress in Math.}
+%   %series ={Progress in Math.},
+%   volume = {323},
+%   pages = {469--502}
+%   year = {2017}
+% }
 
-\bib{MR.C}{article}{
-   author={Moeglin, Colette},
-   author={Renard, David},
-   title={Paquets d'Arthur des groupes classiques complexes},
-   language={French, with English and French summaries},
-   conference={
-      title={Around Langlands correspondences},
-   },
-   book={
-      series={Contemp. Math.},
-      volume={691},
-      publisher={Amer. Math. Soc., Providence, RI},
-   },
-   date={2017},
-   pages={203--256},
-   review={\MR{3666056}},
-   doi={10.1090/conm/691/13899},
-}
-
-\bib{MR.U}{article}{
-   author={M\oe glin, Colette},
-   author={Renard, David},
-   title={Sur les paquets d'Arthur des groupes unitaires et quelques
-   cons\'{e}quences pour les groupes classiques},
-   language={French, with English and French summaries},
-   journal={Pacific J. Math.},
-   volume={299},
-   date={2019},
-   number={1},
-   pages={53--88},
-   issn={0030-8730},
-   review={\MR{3947270}},
-   doi={10.2140/pjm.2019.299.53},
-}
+% \bib{MR19}{article}{
+%    author={M\oe glin, Colette},
+%    author={Renard, David},
+%    title={Sur les paquets d'Arthur des groupes unitaires et quelques
+%    cons\'{e}quences pour les groupes classiques},
+%    language={French, with English and French summaries},
+%    journal={Pacific J. Math.},
+%    volume={299},
+%    date={2019},
+%    number={1},
+%    pages={53--88},
+%    issn={0030-8730},
+%    review={\MR{3947270}},
+%    doi={10.2140/pjm.2019.299.53},
+% }
 
 
 % \bib{MVW}{book}{
@@ -8572,28 +7877,16 @@ year = {2001},
 %  year={2015}
 %}
 
-\bib{Tr.U}{article}{
-   author={Trapa, Peter E.},
-   title={Annihilators and associated varieties of $A_{\mathfrak q}(\lambda)$
-   modules for $\mathrm U(p,q)$},
-   journal={Compositio Math.},
-   volume={129},
-   date={2001},
-   number={1},
-   pages={1--45},
-   issn={0010-437X},
-   review={\MR{1856021}},
-   doi={10.1023/A:1013115223377},
-}
 
-\bib{Tr.H}{article}{
-  title={Special unipotent representations and the Howe correspondence},
-  author={Trapa, P.},
-  year = {2004},
-  journal={University of Aarhus Publication Series},
-  volume = {47},
-  pages= {210--230}
-}
+
+% \bib{Tr}{article}{
+%   title={Special unipotent representations and the Howe correspondence},
+%   author={Trapa, P.},
+%   year = {2004},
+%   journal={University of Aarhus Publication Series},
+%   volume = {47},
+%   pages= {210--230}
+% }
 
 % \bib{Wa}{article}{
 %    author = {Waldspurger, J.-L.},
@@ -8628,18 +7921,6 @@ year = {2001},
    pages={xvii+754},
    isbn={3-7643-3037-6},
    review={\MR{632407}},
-}
-
-\bib{V1}{article}{
-   author={Vogan, David A., Jr.},
-   title={Irreducible characters of semisimple Lie groups. I},
-   journal={Duke Math. J.},
-   volume={46},
-   date={1979},
-   number={1},
-   pages={61--108},
-   issn={0012-7094},
-   review={\MR{523602}},
 }
 
 \bib{V3}{article}{

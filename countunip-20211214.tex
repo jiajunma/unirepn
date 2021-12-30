@@ -1544,7 +1544,7 @@ For example, $\CK_\sfS(G)$ is a $\Rg$-module as described previously, and it is 
 
 
 \subsection{Counting irreducible representations with a bounded complex
-  associated variety}\label{sec12}
+  associated variety} %\label{sec12}
 
 Denote by $W_\lambda$ the stabilizer of
 $\lambda$ in $W$. Then $W_\lambda\subset W_\Lam$. Write $1_{W_\lambda}$ for the
@@ -1564,9 +1564,11 @@ Our starting point is the following theorem of Vogan. We will provide a proof du
 Here and henceforth, $[\ : \ ]$ indicates the multiplicity of the first
 (irreducible) representation in the second one. Theorem \ref{count1} implies
 that
-\begin{equation}\label{countlg}
+\[
+%\begin{equation}\label{countlg}
   \sharp(\Irr_{\lambda,\sfS}(G)) = \sum_{\sigma\in \Irr(W_\Lam)} [1_{W_{\lambda}}: \sigma]\cdot [\sigma: \Coh_{\Lam}(\CK_\sfS(G))].
-\end{equation}
+%\end{equation}
+\]
 Thus it suffices to understand the multiplicity $ [\sigma: \Coh_{\Lam,\sfS}(G)]$
 for every $\sigma\in \Irr(W_\Lam)$.
 
@@ -1614,9 +1616,9 @@ Recall the notion of a Harish-Chandra cell representation in $\Coh_{\Lam}(\CK(G)
  \begin{thm}\label{counteq}
    % Under the notation of \Cref{lem:lcell.BV}, we have
    Assume that for every Harish-Chandra cell representation $V$ in $\Coh_{\Lam}(\CK(G))$, the set $\{\sigma\in \Irr(W_{[\lambda]}) \,|\, [\sigma: V]\neq 0\}$ is contained in a single double cell. Then
-  \begin{equation}\label{boundc}
+  \begin{equation*}%\label{boundc}
     \sharp(\Irr_{\lambda,\sfS}(G)) = \sum_{\sigma \in \Irr_\sfS(W_\Lam)} [1_{W_{\lambda}}: \sigma]\cdot [\sigma:\Coh_{\Lam}(\CK(G))].
-  \end{equation}
+  \end{equation*}
     \end{thm}
 
 % the equality always holds. Combining Theorem \ref{count1}, Theorem
@@ -1728,7 +1730,8 @@ we view $\lambda_{\check \CO}$ as an element of $ W\backslash \hha^*$, and write
 
  Finally, define the set of the special unipotent representations of $G$
  attached to $\ckcO$ by
- \begin{equation}\label{eq:defuni}
+\[
+ %\begin{equation}\label{eq:defuni}
    \begin{split}
      \Unip_{\ckcO}(G):=&  \Unip_{\star, \ckcO}(G) \\
      :=& \begin{cases}
@@ -1737,7 +1740,8 @@ we view $\lambda_{\check \CO}$ as an element of $ W\backslash \hha^*$, and write
        \{\pi\in \Irr(G)\mid \pi \textrm{ is annihilated by } I_{\check \CO}\}, & otherwise.\\
      \end{cases}
    \end{split}
- \end{equation}
+% \end{equation}
+\]
  Here ``genuine" means that the representation $\pi$ of
  $\widetilde \Sp_{2n}(\R)$ does not descend to $\Sp_{2n}(\R)$.
 A main goal of the current paper is to parametrize the set $\Unip_{\check \CO}(G)$, which will be used by the authors to construct all the
@@ -1764,9 +1768,12 @@ When no confusion is possible, we still use $\check \CO$ to denote the Young dia
 
 Let $\bN^+$ denote the set of positive integers. For any Young diagram $\imath$, we introduce the set $\mathrm{Box}(\imath)$ of
 boxes of $\imath$ as the following subset of $\bN^+\times \bN^+$:
-\begin{equation}\label{eq:BOX}
+\[
+% \begin{equation}\label{eq:BOX}
   \mathrm{Box}(\imath):=\Set{(i,j)\in\bN^+\times \bN^+| j\leq \bfrr_i(\imath)}.
-\end{equation}
+%\end{equation}
+\]
+
 % We will also call a subset of $\bN^+\times \bN^+$ of the form \eqref{eq:BOX} a
 % Young diagram.
 
@@ -1994,12 +2001,14 @@ In such cases, $G$ has a Levi subgroup that is identified with $\Gpb\times \Gg$ 
 \begin{thm}\label{reduction}
  If  $G$ has a closed subgroup isomorphic to $\Gpb$, then parabolic induction yields
    a bijection
-  \begin{equation}\label{eq:IND}
+   \[
+ % \begin{equation}\label{eq:IND}
     \begin{array}{rccc}
       \fI\colon &   \Unip_{\ckcO'_{b}}( G'_{b})\times \Unip_{\ckcO_{g}}( G_{g})&         \longrightarrow &\Unip_{\ckcO }(G) \\
                 &   (\pi',\pi_{0}) & \mapsto & \pi'\rtimes \pi_{0}.
     \end{array}
-  \end{equation}
+ % \end{equation}
+ \]
   Otherwise,
   \[
     \Unip_{\ckcO}(G)=\emptyset.
@@ -2164,7 +2173,7 @@ and for all $i\geq 1$,
 
 \begin{eg} Suppose that $\star=C$, and $\check \CO$ is the following Young
   diagram which has $\star$-good parity.
-  \begin{equation*}\label{eq:sp-nsp.C}
+  \begin{equation*}%\label{eq:sp-nsp.C}
     \tytb{\ \ \ \ \  , \ \ \  , \ \ \ , \ \ \  , \ \ \ , \  ,\  }
   \end{equation*}
   Then
@@ -2184,7 +2193,7 @@ and for all $i\geq 1$,
 \delete{
   \begin{eg} Suppose that $\star=C$, and $\check \CO$ is the following Young
     diagram which has $\star$-good parity.
-    \begin{equation*}\label{eq:sp-nsp.C}
+    \begin{equation*}%\label{eq:sp-nsp.C}
       \tytb{\ \ \ \ \  , \ \ \  , \ \ \ , \ \ \  , \ \ \ , \  ,\  }
     \end{equation*}
     Then
@@ -2195,7 +2204,7 @@ and for all $i\geq 1$,
     \wp))$ %\in \mathrm{BP}_\star(\check \CO)$
     has the following form.
 
-    \begin{equation*}\label{eq:sp-nsp.C}
+    \begin{equation*}%\label{eq:sp-nsp.C}
       \begin{array}{rclcrcl}
         \wp=\emptyset & : & \tytb{\ \ \ ,\ \  } \times \tytb{\ \ \ , \  }  & \qquad \quad &  \wp=\{(1,2)\}& : & \tytb{\ \ \  , \ \ , \   } \times \tytb{\ \ \  } \medskip \medskip \medskip \\
         \wp=\{(5,6)\} & : & \tytb{\ \ \ ,\ \ \ } \times \tytb{\ \ , \   }  & \qquad \quad &  \wp=\{(1,2), (5,6)\}  & : & \tytb{\ \ \  , \ \ \ ,  \ } \times \tytb{\ \   } \\
@@ -2212,7 +2221,7 @@ $\alpha\times \beta\times \gamma$ for a triple $(\alpha, \beta, \gamma)$.
 
 We introduce two more symbols $B^+$ and $B^-$, and make the following
 definition.
-\begin{defn}\label{defpbp1}
+\begin{defn} %\label{defpbp1}
   A painted bipartition is a triple
   $\tau=(\imath, \CP)\times (\jmath, \cQ)\times \alpha$, where $(\imath, \CP)$
   and $ (\jmath, \mathcal Q)$ are painted Young diagrams, and
@@ -2284,14 +2293,14 @@ following recipe.
   \item If $\star_\tau\in \{B, D, C^*\}$, $(p_\tau, q_\tau)$ is given by
         counting the various symbols appearing in $(\imath, \CP)$,
         $(\jmath, \cQ)$ and $\{\alpha\}$ :
-        \begin{equation}\label{ptqt}
+        \begin{equation*}%\label{ptqt}
           \left\{
             \begin{array}{l}
               p_\tau :=( \# \bullet)+ 2 (\# r) +(\# c )+ (\# d) + (\# B^+);\smallskip\\
               q_\tau :=( \# \bullet)+ 2 (\# s) + (\# c) + (\# d) + (\# B^-).\\
             \end{array}
           \right.
-        \end{equation}
+        \end{equation*}
         Here
         \[
         \#\bullet:=\#(\cP^{-1}(\bullet))+\#(\cQ^{-1}(\bullet))
@@ -2304,7 +2313,7 @@ following recipe.
 \smallskip
 
 We also define a classical group
-\begin{equation}\label{def:Gt}
+\begin{equation*}%\label{def:Gt}
   G_\tau:=
   \begin{cases}
     \SO(p_\tau, q_\tau), &\hbox{if $\star_\tau=B$ or $D$}; \smallskip\\
@@ -2313,19 +2322,19 @@ We also define a classical group
     \Sp(\frac{p_\tau}{2}, \frac{q_\tau}{2}), &\hbox{if $\star_\tau=C^*$}; \smallskip \\
     \oO^*(2\abs{\tau}), &\hbox{if $\star_\tau=D^*$}.\\
   \end{cases}
-\end{equation}
+\end{equation*}
 
 
 Define
-\begin{equation}\label{defpbp2}
-     \PBP_\star(\check \CO) :=\set{ \uptau\textrm{ is a painted
-        bipartition} \mid \star_\uptau = \star, \text{ and
-      } (\imath_\tau,\jmath_\tau) = (\imath_{\check \CO}, \jmath_{\check \CO})},
-      \end{equation}
+\begin{equation*}%\label{defpbp2}
+  \PBP_\star(\check \CO) :=\set{ \uptau\textrm{ is a painted
+      bipartition} \mid \star_\uptau = \star, \text{ and
+    } (\imath_\tau,\jmath_\tau) = (\imath_{\check \CO}, \jmath_{\check \CO})},
+\end{equation*}
 and
-\begin{equation} \label{defpbp3}
+\begin{equation*} %\label{defpbp3}
     \PBP_{G}(\ckcO) :=\set{\uptau\in \PBP_{\star}(\ckcO)| G_{\uptau} = G}.
-\end{equation}
+\end{equation*}
 
 \delete{
   \[
@@ -2822,9 +2831,9 @@ Theorem \ref{soer}  and Lemma  \ref{surv} imply that there is a unique element
 \overline \Psi_{w'w_0}(\nu)=  \oL(\g,\b, w' w_0 \nu) \quad \textrm{ for  every $\nu\in \Lam$ that is regular and dominant.}
 \]
 Then
-\be\label{basisi}
+\begin{equation*}%\label{basisi}
 \textrm{$\{\overline \Psi_{w'w_0}\}_{w_0\in W_\Lam}$ is also a basis of $ \Coh_{\Lam}( \CK_{w'\Lam}(\g,\b))$.}
-\ee
+\end{equation*}
 We view $ \Coh_{\Lam}( \CK_{w'\Lam}(\g,\b))$ as a basal space with this basis.
 
 Extend the representation of $W_\Lam$ on  $\Coh_{\Lam}( \CK_{w'\Lam}(\g,\b))$ to the group
@@ -2972,9 +2981,9 @@ Similarly, we also have a $W_\Lam$-subrepresentation  $\sigma_{\g_\Lam,Q_\Lam,w_
 
 
 For every $w\in W$, it is known that $\sigma_{\g,\Lam,w}$ is irreducible and Springer (see \cite{Ho} and \cite[Section 2.10]{J.av}).  Here an irreducible representation of $W$ is said to be Springer if it corresponds to a trivial local system of a nilpotent orbit in $\g^*$, under the Springer correspondence. Write $\CO_{\g, \Lam,w}\subset \g^*$ for the corresponding nilpotent orbit:
-\be \label{nilatg}
+\begin{equation*} %\label{nilatg}
 \CO_{\g, \Lam,w} :=\mathrm{Springer}^{-1}(\sigma_{\g,\Lam,w}).
-\ee
+\end{equation*}
 
 \begin{lem}\label{associatedv} (\cite[Theorem 3.9]{J.av})
 For every $w\in W$ and every $\nu \in \Lam$ that is regular and dominant, the associated variety of $\oJ(w\nu)$ equals the Zariski closure of $\CO_{\g, \Lam,w}\subset \g^*$.
@@ -3225,7 +3234,7 @@ Under the assumption of Lemma \ref{cellsfs}, we have that
 This completes the proof of Theorem \ref{counteq}.
 
 \section{An explicit formula of $\Coh_{\Lam}(\CK(G))$ \`a la Barbasch and Vogan}
-\label{secExplicit}
+%\label{secExplicit}
 
  Let $H$ be a  Cartan subgroup of $G$ with complexified Lie algebra $\h$. Write $\t$ for the complexified Lie algebra of the unique maximal compact subgroup of $H$. As before, denote by $\Delta_\h\subset \h^*$ the root system of $\g$. A root $\alpha\in \Delta_\h$ is called imaginary if $\alpha^\vee\in \t$. An imaginary root $\alpha\in \Delta_\h$ is said to compact if the root spaces $\g_\alpha$ and $\g_{-\alpha}$ are contained in  the  complexified Lie algebra of a common compact subgroup of $G$.
 
@@ -3614,7 +3623,7 @@ The following branching formula is known (see \cite{BV.W}*{Lemma~4.1~(b)}):
 }
 
 We define the set of painted partitions of type $A$ as the following:
-\begin{equation}\label{eq:PP.AR}
+\begin{equation*}%\label{eq:PP.AR}
   \PP_{A}(\ckcO) = \Set{\uptau:=(\tau, \cP)|
     \begin{array}{l}
       \text{$\tau = \ckcO^{t}$}\\
@@ -3622,7 +3631,7 @@ We define the set of painted partitions of type $A$ as the following:
       \text{$\#\set{i|\cP(i,j)=\bullet}$ is even for all $j\in \bN^{+}$}
     \end{array}
   }.
-\end{equation}
+\end{equation*}
 It is easy to see that
 \begin{equation}\label{eq:PPA.count}
   \#(\PP_{A}(\ckcO)) = \prod_{r\in \bN^{+}} (\#\set{i\in \bN^{+}| \bfrr_{i}(\ckcO)=r}+1).
@@ -3638,10 +3647,10 @@ It is easy to see that
     \Cint{\lamck}(\CK(G)) \cong \cC_{\abs{\ckcO_{e}}}\otimes \cC_{\abs{\ckcO_{o}}}.
   \]
   Furthermore,
-  \begin{equation}\label{eq:A.count}
+  \begin{equation*}%\label{eq:A.count}
     [\tau_{\lamck}: \Cint{\lamck}(\CK(G))] = \# (\PP_{A}(\ckcO_{e}))\times
     \# (\PP_{A}(\ckcO_{o})) = \# (\PP_{A}(\ckcO)).
-  \end{equation}
+  \end{equation*}
   \qed
 \end{lem}
 \begin{proof}
@@ -3928,7 +3937,7 @@ In this good parity setting, we shall state a counting result on
 $\Unip_{G}(\ckcO)$ and sketch the construction of all elements of $\Unip_{G}(\ckcO)$ by the method of theta lifting.
 
 We define the set of painted partitions of type $U$ as the following:
-\begin{equation}\label{eq:PP.U}
+\begin{equation*}%\label{eq:PP.U}
   \PP_{U}(\ckcO) = \Set{\uptau:=(\tau, \cP)|
     \begin{array}{l}
       \text{$\tau = \ckcO^{t}$}\\
@@ -3936,7 +3945,7 @@ We define the set of painted partitions of type $U$ as the following:
       \text{$\#\set{j|\cP(i,j)=\bullet}$ is even for all $i\in \bN^{+}$}
     \end{array}
   }.
-\end{equation}
+\end{equation*}
 For a painted partition $\cP$ of type $U$, define the signature of $\CP$ to be the pair
 \[
     (p_\CP, q_\cP): = \left (\frac{\sharp(\cP^{-1}(\bullet))}{2}+\sharp(\cP^{-1}(r)),\,
@@ -4096,7 +4105,7 @@ Let $\sfW'_n$ be the Weyl group of type $D_{n}$, realized as the kernel of the q
 
 Let $n_{g}$ and $n_{b}$ be defined by
 %be the rank of ${\check \g}_{g}$ and ${\check \g'}_{b}$, respectively:
-  \begin{equation}\label{eq:ngnb}
+  \begin{equation*}%\label{eq:ngnb}
     (n_g,n_b) =
     \begin{cases}
       (\half\abs{\ckcO_{g}}, \half \abs{\ckcO_{b}}) & \text{when
@@ -4104,7 +4113,7 @@ Let $n_{g}$ and $n_{b}$ be defined by
       (\half(\abs{\ckcO_{g}}-1), \half \abs{\ckcO_{b}}) & \text{when
       } \star \in \set{C,C^{*}}.\\
           \end{cases}
-  \end{equation}
+  \end{equation*}
  Then the integral Weyl group $\WLamck$ is a direct product:
     \[
     W_{[\lamck]} =\Wg\times \Wb,
@@ -4270,7 +4279,7 @@ Given the chosen imbedding of $\sfS_{n}$ into $\sfW'_{n}$, we also let $(\tau_{L
   %$\star = \wtC$.
 
   We now define
-  \begin{equation}\label{def:barA}
+  \begin{equation*}%\label{def:barA}
   \barA(\ckcO)=
   \begin{cases}
   \wtA(\ckcO)/\{\wp\sim\wp^{c}\} & \text{when } \star =\wtC,\\
@@ -4280,7 +4289,7 @@ Given the chosen imbedding of $\sfS_{n}$ into $\sfW'_{n}$, we also let $(\tau_{L
     %   \wtA(\ckcO)/\wp\sim\wp^{c} & \text{when } \star \in \set{\wtC,D,D^{*}}.\\
     %   \wtA(\ckcO) & \text{when } \star \in \set{B,C,C^{*}},\\
     % \end{cases}
-  \end{equation}
+  \end{equation*}
   Here $\wtA(\ckcO)/\{\wp\sim\wp^{c}\}$ denotes the quotient of $\wtA(\ckcO)$ by
   identifying $\wp$ with its complement $\wp^{c}$. Note that by its very definition, we have $\wtA(\ckcO)=\wtA(\ckcO_{g})$ and
   $\barA(\ckcO)=\barA(\ckcO_{g})$.
@@ -4879,9 +4888,9 @@ Given the chosen imbedding of $\sfS_{n}$ into $\sfW'_{n}$, we also let $(\tau_{L
     \cite{BMSZ1}. A key property is that this duality map commutes with parabolic induction: Suppose
     $\ckfll\subset \ckfgg$ is a parabolic subalgebra of $\ckfgg$ and
     $\fll$ is the corresponding parabolic subalgebra in $\fgg$, then
-    \begin{equation}\label{eq:inddBV}
+    \begin{equation*}%\label{eq:inddBV}
       \dBV(\ckcO) =  \Ind_{\fll}^{\fgg}(\dBV(\ckcO_{\ckfll}))
-    \end{equation}
+    \end{equation*}
     for each nilpotent orbit $\ckcO$ in $\ckfgg$ such that
     $\ckcO_{\ckfll}:=\ckcO\cap \ckfll\neq \emptyset$. This is clear by reducing
     to the type $B$ case, as in \cite{BMSZ1}*{Proposition~3.8}. By removing pairs
@@ -5388,10 +5397,10 @@ Recall from \Cref{cor:bound}, we have the inequality
   \]
   Note that $\imath_{\wp}\neq \jmath_{\wp}$ since
   $\bfcc_{1}(\imath_{\wp})> \bfcc_{1}(\jmath_{\wp})$. It is then easy to see that
-  \begin{equation}\label{eq:W''}
+  \begin{equation*}%\label{eq:W''}
     \Ind_{\sfW'_{\nbb}\times \sfW'_{\ngg}}^{\sfW_{n_b,n_g}'} \tau_{b}\boxtimes \tau_{\wp}
     = (\wttau_{b}\otimes \wttau_{\wp})|_{\sfW_{n_b,n_g}'}.
-  \end{equation}
+  \end{equation*}
 
   \trivial[h]{ When $\nbb=0$, $W'' = W_{g} = \sfW'_{\ngg}$ and so
     $\wttau_{\wp}|_{\sfW'_{\ngg}} = \tau_{\wp}$.
@@ -5684,12 +5693,12 @@ The group $G'_b$ (defined earlier) is the Levi component of a Siegel parabolic s
 Let $P$ be the standard parabolic subgroup of $G$ whose Levi component is isomorphic to $G'_{b}\times G_{g}$.
 \begin{thm}\label{thm:red}
   There is a bijection
-  \begin{equation}\label{eq:IND}
+  \begin{equation*}%\label{eq:IND}
       \begin{array}{rccc}
     \fI\colon &   \Unip_{\ckcO'_{b}}(G'_b)\times \Unip_{\ckcO_{g}}(G_{g})&         \longrightarrow &\Unip_{\ckcO}(G) \\
      &   (\pi',\pi_{0}) & \mapsto & \pi'\rtimes \pi_{0}.
       \end{array}
-    \end{equation}
+    \end{equation*}
     Here $\pi'\rtimes \pi_{0}$ refers to the parabolic induced representation from $P$.
   \end{thm}
 
@@ -5707,16 +5716,20 @@ The theorem will be proved by translating to a regular infinitesimal character u
 
 \begin{lem}[{c. f. \cite{GI}*{Lemma~3.3}}]\label{lem:ff.irr} Suppose that
   \begin{enumerate}[label=(\roman*),series=KLff]
-    \item \label{it:KLff.1} $G_{1}$ and $G_{2}$ are two real reductive groups in the Harish-Chandra class;
-          \item there is an isomorphism
+    \item \label{it:KLff.1} $G_{1}$ and $G_{2}$ are two real reductive groups in
+          the Harish-Chandra class;
+    \item there is an isomorphism
           \[ \ff\colon \fhhaso\rightarrow \fhhast
           \]
-          of the duals of the abstract Cartan subalgebras of $G_{1}$ and $G_{2}$;
+          of the duals of the abstract Cartan subalgebras of $G_{1}$ and
+          $G_{2}$;
     \item $\lambda_{1} \in \fhhaso$ and $\lambda_{2} = \ff(\lambda_{1})$ are
           dominant regular;
           % \item $\lambda_{1}$ and $\lambda_{2}$ are regular;
-    \item \label{it:KLff.4} $\ff$ induces a bijection between
-          $\Delta _{[\lambda_{1}]}$ and $\Delta _{[\lambda_{2}]}$, through which we identify $W_{[\lambda_{1}]}$ with $W_{[\lambda_{2}]}$;
+    \item %\label{it:KLff.4}
+          $\ff$ induces a bijection between $\Delta _{[\lambda_{1}]}$ and
+          $\Delta _{[\lambda_{2}]}$, through which we identify
+          $W_{[\lambda_{1}]}$ with $W_{[\lambda_{2}]}$;
   \end{enumerate}
   Let $\Coh_{1}$ be a $W_{[\lambda_{1}]}$-submodule of
   $\Coh_{[\lambda_{1}]}(\CK(G_{1}))$ such that $\ev{\lambda_{1}}(\Coh_{1})$ is
@@ -6533,15 +6546,15 @@ It is easy to check that the descent maps (horizontal arrows) in the following d
 %   year={1998},
 % }
 
-\bib{Ad83}{article}{
-  author = {Adams, J.},
-  title = {Discrete spectrum of the reductive dual pair $(O(p,q),Sp(2m))$ },
-  journal = {Invent. Math.},
-  number = {3},
- pages = {449--475},
- volume = {74},
- year = {1983}
-}
+% \bib{Ad83}{article}{
+%   author = {Adams, J.},
+%   title = {Discrete spectrum of the reductive dual pair $(O(p,q),Sp(2m))$ },
+%   journal = {Invent. Math.},
+%   number = {3},
+%  pages = {449--475},
+%  volume = {74},
+%  year = {1983}
+% }
 
 %\bib{Ad07}{article}{
 %  author = {Adams, J.},
@@ -6578,47 +6591,47 @@ It is easy to check that the descent maps (horizontal arrows) in the following d
   pages={209-259}
 }
 
-\bib{ArPro}{article}{
-  author = {Arthur, J.},
-  title = {On some problems suggested by the trace formula},
-  journal = {Lie group representations, II (College Park, Md.), Lecture Notes in Math. 1041},
- pages = {1--49},
- year = {1984}
-}
+% \bib{ArPro}{article}{
+%   author = {Arthur, J.},
+%   title = {On some problems suggested by the trace formula},
+%   journal = {Lie group representations, II (College Park, Md.), Lecture Notes in Math. 1041},
+%  pages = {1--49},
+%  year = {1984}
+% }
 
 
-\bib{ArUni}{article}{
-  author = {Arthur, J.},
-  title = {Unipotent automorphic representations: conjectures},
-  %booktitle = {Orbites unipotentes et repr\'esentations, II},
-  journal = {Orbites unipotentes et repr\'esentations, II, Ast\'erisque},
- pages = {13--71},
- volume = {171-172},
- year = {1989}
-}
+% \bib{ArUni}{article}{
+%   author = {Arthur, J.},
+%   title = {Unipotent automorphic representations: conjectures},
+%   %booktitle = {Orbites unipotentes et repr\'esentations, II},
+%   journal = {Orbites unipotentes et repr\'esentations, II, Ast\'erisque},
+%  pages = {13--71},
+%  volume = {171-172},
+%  year = {1989}
+% }
 
-\bib{AK}{article}{
-  author = {Auslander, L.},
-  author = {Kostant, B.},
-  title = {Polarizations and unitary representations of solvable Lie groups},
-  journal = {Invent. Math.},
- pages = {255--354},
- volume = {14},
- year = {1971}
-}
+% \bib{AK}{article}{
+%   author = {Auslander, L.},
+%   author = {Kostant, B.},
+%   title = {Polarizations and unitary representations of solvable Lie groups},
+%   journal = {Invent. Math.},
+%  pages = {255--354},
+%  volume = {14},
+%  year = {1971}
+% }
 
 
-\bib{B.Uni}{article}{
-  author = {Barbasch, D.},
-  title = {Unipotent representations for real reductive groups},
- %booktitle = {Proceedings of ICM, Kyoto 1990},
- journal = {Proceedings of ICM (1990), Kyoto},
-   % series = {Proc. Sympos. Pure Math.},
- %   volume = {68},
-     pages = {769--777},
- publisher = {Springer-Verlag, The Mathematical Society of Japan},
-      year = {2000},
-}
+% \bib{B.Uni}{article}{
+%   author = {Barbasch, D.},
+%   title = {Unipotent representations for real reductive groups},
+%  %booktitle = {Proceedings of ICM, Kyoto 1990},
+%  journal = {Proceedings of ICM (1990), Kyoto},
+%    % series = {Proc. Sympos. Pure Math.},
+%  %   volume = {68},
+%      pages = {769--777},
+%  publisher = {Springer-Verlag, The Mathematical Society of Japan},
+%       year = {2000},
+% }
 
 
 
@@ -6756,19 +6769,19 @@ It is easy to check that the descent maps (horizontal arrows) in the following d
  year = {1985}
 }
 
-\bib{BB}{article}{
-   author={Beilinson, Alexandre},
-   author={Bernstein, Joseph},
-   title={Localisation de $\mathfrak g$-modules},
-   language={French, with English summary},
-   journal={C. R. Acad. Sci. Paris S\'{e}r. I Math.},
-   volume={292},
-   date={1981},
-   number={1},
-   pages={15--18},
-   issn={0249-6291},
-   review={\MR{610137}},
-}
+% \bib{BB}{article}{
+%    author={Beilinson, Alexandre},
+%    author={Bernstein, Joseph},
+%    title={Localisation de $\mathfrak g$-modules},
+%    language={French, with English summary},
+%    journal={C. R. Acad. Sci. Paris S\'{e}r. I Math.},
+%    volume={292},
+%    date={1981},
+%    number={1},
+%    pages={15--18},
+%    issn={0249-6291},
+%    review={\MR{610137}},
+% }
 
 \bib{BK}{article}{
 author={Borho, Walter},
@@ -6785,14 +6798,14 @@ doi={10.1007/BF01354525},
 }
 
 
-\bib{Br}{article}{
-  author = {Brylinski, R.},
-  title = {Dixmier algebras for classical complex nilpotent orbits via Kraft-Procesi models. I},
-  journal = {The orbit method in geometry and physics (Marseille, 2000). Progress in Math.}
-  volume = {213},
-  pages = {49--67},
-  year = {2003},
-}
+% \bib{Br}{article}{
+%   author = {Brylinski, R.},
+%   title = {Dixmier algebras for classical complex nilpotent orbits via Kraft-Procesi models. I},
+%   journal = {The orbit method in geometry and physics (Marseille, 2000). Progress in Math.}
+%   volume = {213},
+%   pages = {49--67},
+%   year = {2003},
+% }
 
 \bib{BK}{article}{
    author={Brylinski, J.-L.},
@@ -6835,27 +6848,27 @@ doi={10.1007/BF01354525},
    doi={10.1016/0021-8693(86)90208-5},
 }
 
-\bib{Ca89}{article}{
- author = {Casselman, W.},
- journal = {Canad. J. Math.},
- pages = {385--438},
- title = {Canonical extensions of Harish-Chandra modules to representations of $G$},
- volume = {41},
- year = {1989}
-}
+% \bib{Ca89}{article}{
+%  author = {Casselman, W.},
+%  journal = {Canad. J. Math.},
+%  pages = {385--438},
+%  title = {Canonical extensions of Harish-Chandra modules to representations of $G$},
+%  volume = {41},
+%  year = {1989}
+% }
 
 
 
-\bib{Cl}{article}{
-  author = {Du Cloux, F.},
-  journal = {Ann. Sci. \'Ecole Norm. Sup.},
-  number = {3},
-  pages = {257--318},
-  title = {Sur les repr\'esentations diff\'erentiables des groupes de Lie alg\'ebriques},
-  url = {http://eudml.org/doc/82297},
-  volume = {24},
-  year = {1991},
-}
+% \bib{Cl}{article}{
+%   author = {Du Cloux, F.},
+%   journal = {Ann. Sci. \'Ecole Norm. Sup.},
+%   number = {3},
+%   pages = {257--318},
+%   title = {Sur les repr\'esentations diff\'erentiables des groupes de Lie alg\'ebriques},
+%   url = {http://eudml.org/doc/82297},
+%   volume = {24},
+%   year = {1991},
+% }
 
 \bib{CM}{book}{
   title = {Nilpotent orbits in semisimple Lie algebra: an introduction},
@@ -6873,29 +6886,29 @@ doi={10.1007/BF01354525},
 % 	publisher={Springer},
 %  }
 
-\bib{DKPC}{article}{
-title = {Nilpotent orbits and complex dual pairs},
-journal = {J. Algebra},
-volume = {190},
-number = {2},
-pages = {518 - 539},
-year = {1997},
-author = {Daszkiewicz, A.},
-author = {Kra\'skiewicz, W.},
-author = {Przebinda, T.},
-}
+% \bib{DKPC}{article}{
+% title = {Nilpotent orbits and complex dual pairs},
+% journal = {J. Algebra},
+% volume = {190},
+% number = {2},
+% pages = {518 - 539},
+% year = {1997},
+% author = {Daszkiewicz, A.},
+% author = {Kra\'skiewicz, W.},
+% author = {Przebinda, T.},
+% }
 
-\bib{DKP2}{article}{
-  author = {Daszkiewicz, A.},
-  author = {Kra\'skiewicz, W.},
-  author = {Przebinda, T.},
-  title = {Dual pairs and Kostant-Sekiguchi correspondence. II. Classification
-	of nilpotent elements},
-  journal = {Central European J. Math.},
-  year = {2005},
-  volume = {3},
-  pages = {430--474},
-}
+% \bib{DKP2}{article}{
+%   author = {Daszkiewicz, A.},
+%   author = {Kra\'skiewicz, W.},
+%   author = {Przebinda, T.},
+%   title = {Dual pairs and Kostant-Sekiguchi correspondence. II. Classification
+% 	of nilpotent elements},
+%   journal = {Central European J. Math.},
+%   year = {2005},
+%   volume = {3},
+%   pages = {430--474},
+% }
 
 
 \bib{DM}{article}{
@@ -6924,49 +6937,49 @@ author = {Przebinda, T.},
   year = {1977}
 }
 
-\bib{Du82}{article}{
- author = {Duflo, M.},
- journal = {Acta Math.},
-  volume = {149},
- number = {3-4},
- pages = {153--213},
- title = {Th\'eorie de Mackey pour les groupes de Lie alg\'ebriques},
- year = {1982}
-}
+% \bib{Du82}{article}{
+%  author = {Duflo, M.},
+%  journal = {Acta Math.},
+%   volume = {149},
+%  number = {3-4},
+%  pages = {153--213},
+%  title = {Th\'eorie de Mackey pour les groupes de Lie alg\'ebriques},
+%  year = {1982}
+% }
 
 
 
-\bib{GZ}{article}{
-author={Gomez, R.},
-author={Zhu, C.-B.},
-title={Local theta lifting of generalized Whittaker models associated to nilpotent orbits},
-journal={Geom. Funct. Anal.},
-year={2014},
-volume={24},
-number={3},
-pages={796--853},
-}
+% \bib{GZ}{article}{
+% author={Gomez, R.},
+% author={Zhu, C.-B.},
+% title={Local theta lifting of generalized Whittaker models associated to nilpotent orbits},
+% journal={Geom. Funct. Anal.},
+% year={2014},
+% volume={24},
+% number={3},
+% pages={796--853},
+% }
 
-\bib{EGAIV2}{article}{
-  title = {\'El\'ements de g\'eom\'etrie alg\'brique IV: \'Etude locale des
-    sch\'emas et des morphismes de sch\'emas. II},
-  author = {Grothendieck, A.},
-  author = {Dieudonn\'e, J.},
-  journal  = {Inst. Hautes \'Etudes Sci. Publ. Math.},
-  volume = {24},
-  year = {1965},
-}
+% \bib{EGAIV2}{article}{
+%   title = {\'El\'ements de g\'eom\'etrie alg\'brique IV: \'Etude locale des
+%     sch\'emas et des morphismes de sch\'emas. II},
+%   author = {Grothendieck, A.},
+%   author = {Dieudonn\'e, J.},
+%   journal  = {Inst. Hautes \'Etudes Sci. Publ. Math.},
+%   volume = {24},
+%   year = {1965},
+% }
 
 
-\bib{EGAIV3}{article}{
-  title = {\'El\'ements de g\'eom\'etrie alg\'brique IV: \'Etude locale des
-    sch\'emas et des morphismes de sch\'emas. III},
-  author = {Grothendieck, A.},
-  author = {Dieudonn\'e, J.},
-  journal  = {Inst. Hautes \'Etudes Sci. Publ. Math.},
-  volume = {28},
-  year = {1966},
-}
+% \bib{EGAIV3}{article}{
+%   title = {\'El\'ements de g\'eom\'etrie alg\'brique IV: \'Etude locale des
+%     sch\'emas et des morphismes de sch\'emas. III},
+%   author = {Grothendieck, A.},
+%   author = {Dieudonn\'e, J.},
+%   journal  = {Inst. Hautes \'Etudes Sci. Publ. Math.},
+%   volume = {28},
+%   year = {1966},
+% }
 
 \bib{GI}{article}{
    author={Gan, Wee Teck},
@@ -6983,33 +6996,33 @@ pages={796--853},
    doi={10.2140/tunis.2019.1.73},
 }
 
-\bib{HLS}{article}{
-    author = {Harris, M.},
-    author = {Li, J.-S.},
-    author = {Sun, B.},
-     title = {Theta correspondences for close unitary groups},
- %booktitle = {Arithmetic Geometry and Automorphic Forms},
-    %series = {Adv. Lect. Math. (ALM)},
-    journal = {Arithmetic Geometry and Automorphic Forms, Adv. Lect. Math. (ALM)},
-    volume = {19},
-     pages = {265--307},
- publisher = {Int. Press, Somerville, MA},
-      year = {2011},
-}
+% \bib{HLS}{article}{
+%     author = {Harris, M.},
+%     author = {Li, J.-S.},
+%     author = {Sun, B.},
+%      title = {Theta correspondences for close unitary groups},
+%  %booktitle = {Arithmetic Geometry and Automorphic Forms},
+%     %series = {Adv. Lect. Math. (ALM)},
+%     journal = {Arithmetic Geometry and Automorphic Forms, Adv. Lect. Math. (ALM)},
+%     volume = {19},
+%      pages = {265--307},
+%  publisher = {Int. Press, Somerville, MA},
+%       year = {2011},
+% }
 
-\bib{HS}{book}{
- author = {Hartshorne, R.},
- title = {Algebraic Geometry},
-publisher={Graduate Texts in Mathematics, 52. New York-Heidelberg-Berlin: Springer-Verlag},
-year={1983},
-}
+% \bib{HS}{book}{
+%  author = {Hartshorne, R.},
+%  title = {Algebraic Geometry},
+% publisher={Graduate Texts in Mathematics, 52. New York-Heidelberg-Berlin: Springer-Verlag},
+% year={1983},
+% }
 
-\bib{He}{article}{
-author={He, H.},
-title={Unipotent representations and quantum induction},
-journal={arXiv:math/0210372},
-year = {2002},
-}
+% \bib{He}{article}{
+% author={He, H.},
+% title={Unipotent representations and quantum induction},
+% journal={arXiv:math/0210372},
+% year = {2002},
+% }
 
 
 
@@ -7026,81 +7039,81 @@ year={1984},
 
 
 
-\bib{Howe79}{article}{
-  title={$\Phi$-series and invariant theory},
-  author={Howe, R.},
-  book = {
-    title={Automorphic Forms, Representations and $L$-functions},
-    series={Proc. Sympos. Pure Math},
-    volume={33},
-    year={1979},
-  },
-  pages={275-285},
-}
+% \bib{Howe79}{article}{
+%   title={$\Phi$-series and invariant theory},
+%   author={Howe, R.},
+%   book = {
+%     title={Automorphic Forms, Representations and $L$-functions},
+%     series={Proc. Sympos. Pure Math},
+%     volume={33},
+%     year={1979},
+%   },
+%   pages={275-285},
+% }
 
-\bib{HoweRank}{article}{
-author={Howe, R.},
-title={On a notion of rank for unitary representations of the classical groups},
-journal={Harmonic analysis and group representations, Liguori, Naples},
-pages={223-331},
-year={1982},
-}
+% \bib{HoweRank}{article}{
+% author={Howe, R.},
+% title={On a notion of rank for unitary representations of the classical groups},
+% journal={Harmonic analysis and group representations, Liguori, Naples},
+% pages={223-331},
+% year={1982},
+% }
 
-\bib{Howe89}{article}{
-author={Howe, R.},
-title={Transcending classical invariant theory},
-journal={J. Amer. Math. Soc.},
-volume={2},
-pages={535--552},
-year={1989},
-}
+% \bib{Howe89}{article}{
+% author={Howe, R.},
+% title={Transcending classical invariant theory},
+% journal={J. Amer. Math. Soc.},
+% volume={2},
+% pages={535--552},
+% year={1989},
+% }
 
-\bib{Howe95}{article}{,
-  author = {Howe, R.},
-  title = {Perspectives on invariant theory: Schur duality, multiplicity-free actions and beyond},
-  journal = {Piatetski-Shapiro, I. et al. (eds.), The Schur lectures (1992). Ramat-Gan: Bar-Ilan University, Isr. Math. Conf. Proc. 8,},
-  year = {1995},
-  pages = {1-182},
-}
-
-
-
-\bib{HL}{article}{
-author={Huang, J.-S.},
-author={Li, J.-S.},
-title={Unipotent representations attached to spherical nilpotent orbits},
-journal={Amer. J. Math.},
-volume={121},
-number = {3},
-pages={497--517},
-year={1999},
-}
+% \bib{Howe95}{article}{,
+%   author = {Howe, R.},
+%   title = {Perspectives on invariant theory: Schur duality, multiplicity-free actions and beyond},
+%   journal = {Piatetski-Shapiro, I. et al. (eds.), The Schur lectures (1992). Ramat-Gan: Bar-Ilan University, Isr. Math. Conf. Proc. 8,},
+%   year = {1995},
+%   pages = {1-182},
+% }
 
 
-\bib{HZ}{article}{
-author={Huang, J.-S.},
-author={Zhu, C.-B.},
-title={On certain small representations of indefinite orthogonal groups},
-journal={Represent. Theory},
-volume={1},
-pages={190--206},
-year={1997},
-}
+
+% \bib{HL}{article}{
+% author={Huang, J.-S.},
+% author={Li, J.-S.},
+% title={Unipotent representations attached to spherical nilpotent orbits},
+% journal={Amer. J. Math.},
+% volume={121},
+% number = {3},
+% pages={497--517},
+% year={1999},
+% }
 
 
-\bib{H}{book}{
-   author={Humphreys, James E.},
-   title={Representations of semisimple Lie algebras in the BGG category
-   $\scr{O}$},
-   series={Graduate Studies in Mathematics},
-   volume={94},
-   publisher={American Mathematical Society, Providence, RI},
-   date={2008},
-   pages={xvi+289},
-   isbn={978-0-8218-4678-0},
-   review={\MR{2428237}},
-   doi={10.1090/gsm/094},
-}
+% \bib{HZ}{article}{
+% author={Huang, J.-S.},
+% author={Zhu, C.-B.},
+% title={On certain small representations of indefinite orthogonal groups},
+% journal={Represent. Theory},
+% volume={1},
+% pages={190--206},
+% year={1997},
+% }
+
+
+% \bib{H}{book}{
+%    author={Humphreys, James E.},
+%    title={Representations of semisimple Lie algebras in the BGG category
+%    $\scr{O}$},
+%    series={Graduate Studies in Mathematics},
+%    volume={94},
+%    publisher={American Mathematical Society, Providence, RI},
+%    date={2008},
+%    pages={xvi+289},
+%    isbn={978-0-8218-4678-0},
+%    review={\MR{2428237}},
+%    doi={10.1090/gsm/094},
+% }
 
 
 
@@ -7148,19 +7161,19 @@ year={1997},
    doi={10.1016/0021-8693(80)90217-3},
 }
 
-\bib{J3}{article}{
-   author={Joseph, A.},
-   title={Goldie rank in the enveloping algebra of a semisimple Lie algebra.
-   III},
-   journal={J. Algebra},
-   volume={73},
-   date={1981},
-   number={2},
-   pages={295--326},
-   issn={0021-8693},
-   review={\MR{640039}},
-   doi={10.1016/0021-8693(81)90324-0},
-}
+% \bib{J3}{article}{
+%    author={Joseph, A.},
+%    title={Goldie rank in the enveloping algebra of a semisimple Lie algebra.
+%    III},
+%    journal={J. Algebra},
+%    volume={73},
+%    date={1981},
+%    number={2},
+%    pages={295--326},
+%    issn={0021-8693},
+%    review={\MR{640039}},
+%    doi={10.1016/0021-8693(81)90324-0},
+% }
 
 
 
@@ -7177,18 +7190,18 @@ year={1997},
    doi={10.1016/0021-8693(85)90172-3},
 }
 
-\bib{J.ann}{article}{
-   author={Joseph, Anthony},
-   title={Annihilators and associated varieties of unitary highest weight
-   modules},
-   journal={Ann. Sci. \'{E}cole Norm. Sup. (4)},
-   volume={25},
-   date={1992},
-   number={1},
-   pages={1--45},
-   issn={0012-9593},
-   review={\MR{1152612}},
-}
+% \bib{J.ann}{article}{
+%    author={Joseph, Anthony},
+%    title={Annihilators and associated varieties of unitary highest weight
+%    modules},
+%    journal={Ann. Sci. \'{E}cole Norm. Sup. (4)},
+%    volume={25},
+%    date={1992},
+%    number={1},
+%    pages={1--45},
+%    issn={0012-9593},
+%    review={\MR{1152612}},
+% }
 
 \bib{J.hw}{article}{
    author={Joseph, Anthony},
@@ -7204,16 +7217,16 @@ year={1997},
 }
 
 
-\bib{JLS}{article}{
-author={Jiang, D.},
-author={Liu, B.},
-author={Savin, G.},
-title={Raising nilpotent orbits in wave-front sets},
-journal={Represent. Theory},
-volume={20},
-pages={419--450},
-year={2016},
-}
+% \bib{JLS}{article}{
+% author={Jiang, D.},
+% author={Liu, B.},
+% author={Savin, G.},
+% title={Raising nilpotent orbits in wave-front sets},
+% journal={Represent. Theory},
+% volume={20},
+% pages={419--450},
+% year={2016},
+% }
 
 \bib{King}{article}{
 author={King, D. R.},
@@ -7226,134 +7239,134 @@ year={1981},
 }
 
 
-\bib{Ki62}{article}{
-author={Kirillov, A. A.},
-title={Unitary representations of nilpotent Lie groups},
-journal={Uspehi Mat. Nauk},
-volume={17},
-issue ={4},
-pages={57--110},
-year={1962},
-}
+% \bib{Ki62}{article}{
+% author={Kirillov, A. A.},
+% title={Unitary representations of nilpotent Lie groups},
+% journal={Uspehi Mat. Nauk},
+% volume={17},
+% issue ={4},
+% pages={57--110},
+% year={1962},
+% }
 
-\bib{Ko70}{article}{
-author={Kostant, B.},
-title={Quantization and unitary representations},
-journal={Lectures in Modern Analysis and Applications III, Lecture Notes in Math.},
-volume={170},
-pages={87--208},
-year={1970},
-}
-
-
-\bib{KP}{article}{
-author={Kraft, H.},
-author={Procesi, C.},
-title={On the geometry of conjugacy classes in classical groups},
-journal={Comment. Math. Helv.},
-volume={57},
-pages={539--602},
-year={1982},
-}
-
-\bib{KR}{article}{
-author={Kudla, S. S.},
-author={Rallis, S.},
-title={Degenerate principal series and invariant distributions},
-journal={Israel J. Math.},
-volume={69},
-pages={25--45},
-year={1990},
-}
+% \bib{Ko70}{article}{
+% author={Kostant, B.},
+% title={Quantization and unitary representations},
+% journal={Lectures in Modern Analysis and Applications III, Lecture Notes in Math.},
+% volume={170},
+% pages={87--208},
+% year={1970},
+% }
 
 
-\bib{Ku}{article}{
-author={Kudla, S. S.},
-title={Some extensions of the Siegel-Weil formula},
-journal={In: Gan W., Kudla S., Tschinkel Y. (eds) Eisenstein Series and Applications. Progress in Mathematics, vol 258. Birkh\"auser Boston},
-%volume={69},
-pages={205--237},
-year={2008},
-}
+% \bib{KP}{article}{
+% author={Kraft, H.},
+% author={Procesi, C.},
+% title={On the geometry of conjugacy classes in classical groups},
+% journal={Comment. Math. Helv.},
+% volume={57},
+% pages={539--602},
+% year={1982},
+% }
+
+% \bib{KR}{article}{
+% author={Kudla, S. S.},
+% author={Rallis, S.},
+% title={Degenerate principal series and invariant distributions},
+% journal={Israel J. Math.},
+% volume={69},
+% pages={25--45},
+% year={1990},
+% }
 
 
+% \bib{Ku}{article}{
+% author={Kudla, S. S.},
+% title={Some extensions of the Siegel-Weil formula},
+% journal={In: Gan W., Kudla S., Tschinkel Y. (eds) Eisenstein Series and Applications. Progress in Mathematics, vol 258. Birkh\"auser Boston},
+% %volume={69},
+% pages={205--237},
+% year={2008},
+% }
 
 
 
-\bib{LZ1}{article}{
-author={Lee, S. T.},
-author={Zhu, C.-B.},
-title={Degenerate principal series and local theta correspondence II},
-journal={Israel J. Math.},
-volume={100},
-pages={29--59},
-year={1997},
-}
 
-\bib{LZ2}{article}{
-author={Lee, S. T.},
-author={Zhu, C.-B.},
-title={Degenerate principal series of metaplectic groups and Howe correspondence},
-journal = {D. Prasad at al. (eds.), Automorphic Representations and L-Functions, Tata Institute of Fundamental Research, India,},
-year = {2013},
-pages = {379--408},
-}
 
-\bib{Li89}{article}{
-author={Li, J.-S.},
-title={Singular unitary representations of classical groups},
-journal={Invent. Math.},
-volume={97},
-number = {2},
-pages={237--255},
-year={1989},
-}
+% \bib{LZ1}{article}{
+% author={Lee, S. T.},
+% author={Zhu, C.-B.},
+% title={Degenerate principal series and local theta correspondence II},
+% journal={Israel J. Math.},
+% volume={100},
+% pages={29--59},
+% year={1997},
+% }
 
-\bib{LiuAG}{book}{
-  title={Algebraic Geometry and Arithmetic Curves},
-  author = {Liu, Q.},
-  year = {2006},
-  publisher={Oxford University Press},
-}
+% \bib{LZ2}{article}{
+% author={Lee, S. T.},
+% author={Zhu, C.-B.},
+% title={Degenerate principal series of metaplectic groups and Howe correspondence},
+% journal = {D. Prasad at al. (eds.), Automorphic Representations and L-Functions, Tata Institute of Fundamental Research, India,},
+% year = {2013},
+% pages = {379--408},
+% }
 
-\bib{LM}{article}{
-   author = {Loke, H. Y.},
-   author = {Ma, J.},
-    title = {Invariants and $K$-spectrums of local theta lifts},
-    journal = {Compositio Math.},
-    volume = {151},
-    issue = {01},
-    year = {2015},
-    pages ={179--206},
-}
+% \bib{Li89}{article}{
+% author={Li, J.-S.},
+% title={Singular unitary representations of classical groups},
+% journal={Invent. Math.},
+% volume={97},
+% number = {2},
+% pages={237--255},
+% year={1989},
+% }
 
-\bib{DL}{article}{
-   author={Deligne, P.},
-   author={Lusztig, G.},
-   title={Representations of reductive groups over finite fields},
-   journal={Ann. of Math. (2)},
-   volume={103},
-   date={1976},
-   number={1},
-   pages={103--161},
-   issn={0003-486X},
-   review={\MR{393266}},
-   doi={10.2307/1971021},
-}
+% \bib{LiuAG}{book}{
+%   title={Algebraic Geometry and Arithmetic Curves},
+%   author = {Liu, Q.},
+%   year = {2006},
+%   publisher={Oxford University Press},
+% }
 
-\bib{KL}{article}{
-   author={Kazhdan, David},
-   author={Lusztig, George},
-   title={Representations of Coxeter groups and Hecke algebras},
-   journal={Invent. Math.},
-   volume={53},
-   date={1979},
-   number={2},
-   pages={165--184},
-   issn={0020-9910},
-   review={\MR{560412}},
-   doi={10.1007/BF01390031},
-}
+% \bib{LM}{article}{
+%    author = {Loke, H. Y.},
+%    author = {Ma, J.},
+%     title = {Invariants and $K$-spectrums of local theta lifts},
+%     journal = {Compositio Math.},
+%     volume = {151},
+%     issue = {01},
+%     year = {2015},
+%     pages ={179--206},
+% }
+
+% \bib{DL}{article}{
+%    author={Deligne, P.},
+%    author={Lusztig, G.},
+%    title={Representations of reductive groups over finite fields},
+%    journal={Ann. of Math. (2)},
+%    volume={103},
+%    date={1976},
+%    number={1},
+%    pages={103--161},
+%    issn={0003-486X},
+%    review={\MR{393266}},
+%    doi={10.2307/1971021},
+% }
+
+% \bib{KL}{article}{
+%    author={Kazhdan, David},
+%    author={Lusztig, George},
+%    title={Representations of Coxeter groups and Hecke algebras},
+%    journal={Invent. Math.},
+%    volume={53},
+%    date={1979},
+%    number={2},
+%    pages={165--184},
+%    issn={0020-9910},
+%    review={\MR{560412}},
+%    doi={10.1007/BF01390031},
+% }
 
 \bib{Lu}{book}{
    author={Lusztig, George},
@@ -7370,39 +7383,39 @@ year={1989},
 }
 
 
-\bib{Lu.I}{article}{
-   author={Lusztig, G.},
-   title={Intersection cohomology complexes on a reductive group},
-   journal={Invent. Math.},
-   volume={75},
-   date={1984},
-   number={2},
-   pages={205--272},
-   issn={0020-9910},
-   review={\MR{732546}},
-   doi={10.1007/BF01388564},
-}
+% \bib{Lu.I}{article}{
+%    author={Lusztig, G.},
+%    title={Intersection cohomology complexes on a reductive group},
+%    journal={Invent. Math.},
+%    volume={75},
+%    date={1984},
+%    number={2},
+%    pages={205--272},
+%    issn={0020-9910},
+%    review={\MR{732546}},
+%    doi={10.1007/BF01388564},
+% }
 
 
-\bib{LS}{article}{
-   author = {Lusztig, G.},
-   author = {Spaltenstein, N.},
-    title = {Induced unipotent classes},
-    journal = {j. London Math. Soc.},
-    volume = {19},
-    year = {1979},
-    pages ={41--52},
-}
+% \bib{LS}{article}{
+%    author = {Lusztig, G.},
+%    author = {Spaltenstein, N.},
+%     title = {Induced unipotent classes},
+%     journal = {J. London Math. Soc.},
+%     volume = {19},
+%     year = {1979},
+%     pages ={41--52},
+% }
 
 
-\bib{Ma}{article}{
-   author = {Mackey, G. W.},
-    title = {Unitary representations of group extentions},
-    journal = {Acta Math.},
-    volume = {99},
-    year = {1958},
-    pages ={265--311},
-}
+% \bib{Ma}{article}{
+%    author = {Mackey, G. W.},
+%     title = {Unitary representations of group extentions},
+%     journal = {Acta Math.},
+%     volume = {99},
+%     year = {1958},
+%     pages ={265--311},
+% }
 
 \bib{Mat}{article}{
    author={Matumoto, Hisayosi},
@@ -7440,149 +7453,149 @@ year={1989},
 }
 
 
-\bib{Mo96}{article}{
- author={M{\oe}glin, C.},
-    title = {Front d'onde des repr\'esentations des groupes classiques $p$-adiques},
-    journal = {Amer. J. Math.},
-    volume = {118},
-    issue = {06},
-    year = {1996},
-    pages ={1313--1346},
-}
+% \bib{Mo96}{article}{
+%  author={M{\oe}glin, C.},
+%     title = {Front d'onde des repr\'esentations des groupes classiques $p$-adiques},
+%     journal = {Amer. J. Math.},
+%     volume = {118},
+%     issue = {06},
+%     year = {1996},
+%     pages ={1313--1346},
+% }
 
-\bib{Mo17}{article}{
-  author={M{\oe}glin, C.},
-  title = {Paquets d'Arthur Sp\'eciaux Unipotents aux Places Archim\'ediennes et Correspondance de Howe},
-  journal = {J. Cogdell et al. (eds.), Representation Theory, Number Theory, and Invariant Theory, In Honor of Roger Howe. Progress in Math.}
-  %series ={Progress in Math.},
-  volume = {323},
-  pages = {469--502}
-  year = {2017}
-}
+% \bib{Mo17}{article}{
+%   author={M{\oe}glin, C.},
+%   title = {Paquets d'Arthur Sp\'eciaux Unipotents aux Places Archim\'ediennes et Correspondance de Howe},
+%   journal = {J. Cogdell et al. (eds.), Representation Theory, Number Theory, and Invariant Theory, In Honor of Roger Howe. Progress in Math.}
+%   %series ={Progress in Math.},
+%   volume = {323},
+%   pages = {469--502}
+%   year = {2017}
+% }
 
-\bib{MR19}{article}{
-   author={M\oe glin, Colette},
-   author={Renard, David},
-   title={Sur les paquets d'Arthur des groupes unitaires et quelques
-   cons\'{e}quences pour les groupes classiques},
-   language={French, with English and French summaries},
-   journal={Pacific J. Math.},
-   volume={299},
-   date={2019},
-   number={1},
-   pages={53--88},
-   issn={0030-8730},
-   review={\MR{3947270}},
-   doi={10.2140/pjm.2019.299.53},
-}
-
-
-\bib{MVW}{book}{
-  volume={1291},
-  title={Correspondances de Howe sur un corps $p$-adique},
-  author={M{\oe}glin, C.},
-  author={Vign\'eras, M.-F.},
-  author={Waldspurger, J.-L.},
-  series={Lecture Notes in Mathematics},
-  publisher={Springer}
-  ISBN={978-3-540-18699-1},
-  date={1987},
-}
-
-\bib{NOTYK}{article}{
-   author = {Nishiyama, K.},
-   author = {Ochiai, H.},
-   author = {Taniguchi, K.},
-   author = {Yamashita, H.},
-   author = {Kato, S.},
-    title = {Nilpotent orbits, associated cycles and Whittaker models for highest weight representations},
-    journal = {Ast\'erisque},
-    volume = {273},
-    year = {2001},
-   pages ={1--163},
-}
-
-\bib{NOZ}{article}{
-  author = {Nishiyama, K.},
-  author = {Ochiai, H.},
-  author = {Zhu, C.-B.},
-  journal = {Trans. Amer. Math. Soc.},
-  title = {Theta lifting of nilpotent orbits for symmetric pairs},
-  volume = {358},
-  year = {2006},
-  pages = {2713--2734},
-}
+% \bib{MR19}{article}{
+%    author={M\oe glin, Colette},
+%    author={Renard, David},
+%    title={Sur les paquets d'Arthur des groupes unitaires et quelques
+%    cons\'{e}quences pour les groupes classiques},
+%    language={French, with English and French summaries},
+%    journal={Pacific J. Math.},
+%    volume={299},
+%    date={2019},
+%    number={1},
+%    pages={53--88},
+%    issn={0030-8730},
+%    review={\MR{3947270}},
+%    doi={10.2140/pjm.2019.299.53},
+% }
 
 
-\bib{NZ}{article}{
-   author = {Nishiyama, K.},
-   author = {Zhu, C.-B.},
-    title = {Theta lifting of unitary lowest weight modules and their associated cycles},
-    journal = {Duke Math. J.},
-    volume = {125},
-    number= {03},
-    year = {2004},
-   pages ={415--465},
-}
+% \bib{MVW}{book}{
+%   volume={1291},
+%   title={Correspondances de Howe sur un corps $p$-adique},
+%   author={M{\oe}glin, C.},
+%   author={Vign\'eras, M.-F.},
+%   author={Waldspurger, J.-L.},
+%   series={Lecture Notes in Mathematics},
+%   publisher={Springer}
+%   ISBN={978-3-540-18699-1},
+%   date={1987},
+% }
+
+% \bib{NOTYK}{article}{
+%    author = {Nishiyama, K.},
+%    author = {Ochiai, H.},
+%    author = {Taniguchi, K.},
+%    author = {Yamashita, H.},
+%    author = {Kato, S.},
+%     title = {Nilpotent orbits, associated cycles and Whittaker models for highest weight representations},
+%     journal = {Ast\'erisque},
+%     volume = {273},
+%     year = {2001},
+%    pages ={1--163},
+% }
+
+% \bib{NOZ}{article}{
+%   author = {Nishiyama, K.},
+%   author = {Ochiai, H.},
+%   author = {Zhu, C.-B.},
+%   journal = {Trans. Amer. Math. Soc.},
+%   title = {Theta lifting of nilpotent orbits for symmetric pairs},
+%   volume = {358},
+%   year = {2006},
+%   pages = {2713--2734},
+% }
+
+
+% \bib{NZ}{article}{
+%    author = {Nishiyama, K.},
+%    author = {Zhu, C.-B.},
+%     title = {Theta lifting of unitary lowest weight modules and their associated cycles},
+%     journal = {Duke Math. J.},
+%     volume = {125},
+%     number= {03},
+%     year = {2004},
+%    pages ={415--465},
+% }
 
 
 
-\bib{Ohta}{article}{
-  author = {Ohta, T.},
-  %doi = {10.2748/tmj/1178227492},
-  journal = {Tohoku Math. J.},
-  number = {2},
-  pages = {161--211},
-  publisher = {Tohoku University, Mathematical Institute},
-  title = {The closures of nilpotent orbits in the classical symmetric
-    pairs and their singularities},
-  volume = {43},
-  year = {1991}
-}
+% \bib{Ohta}{article}{
+%   author = {Ohta, T.},
+%   %doi = {10.2748/tmj/1178227492},
+%   journal = {Tohoku Math. J.},
+%   number = {2},
+%   pages = {161--211},
+%   publisher = {Tohoku University, Mathematical Institute},
+%   title = {The closures of nilpotent orbits in the classical symmetric
+%     pairs and their singularities},
+%   volume = {43},
+%   year = {1991}
+% }
 
-\bib{Ohta2}{article}{
-  author = {Ohta, T.},
-  journal = {Hiroshima Math. J.},
-  number = {2},
-  pages = {347--360},
-  title = {Induction of nilpotent orbits for real reductive groups and associated varieties of standard representations},
-  volume = {29},
-  year = {1999}
-}
+% \bib{Ohta2}{article}{
+%   author = {Ohta, T.},
+%   journal = {Hiroshima Math. J.},
+%   number = {2},
+%   pages = {347--360},
+%   title = {Induction of nilpotent orbits for real reductive groups and associated varieties of standard representations},
+%   volume = {29},
+%   year = {1999}
+% }
 
-\bib{Ohta4}{article}{
-  title={Nilpotent orbits of $\mathbb{Z}_4$-graded Lie algebra and geometry of
-    moment maps associated to the dual pair $(\mathrm{U} (p, q), \mathrm{U} (r, s))$},
-  author={Ohta, T.},
-  journal={Publ. RIMS},
-  volume={41},
-  number={3},
-  pages={723--756},
-  year={2005}
-}
+% \bib{Ohta4}{article}{
+%   title={Nilpotent orbits of $\mathbb{Z}_4$-graded Lie algebra and geometry of
+%     moment maps associated to the dual pair $(\mathrm{U} (p, q), \mathrm{U} (r, s))$},
+%   author={Ohta, T.},
+%   journal={Publ. RIMS},
+%   volume={41},
+%   number={3},
+%   pages={723--756},
+%   year={2005}
+% }
 
-\bib{PT}{article}{
-  title={Some small unipotent representations of indefinite orthogonal groups and the theta correspondence},
-  author={Paul, A.},
-  author={Trapa, P.},
-  journal={University of Aarhus Publ. Series},
-  volume={48},
-  pages={103--125},
-  year={2007}
-}
+% \bib{PT}{article}{
+%   title={Some small unipotent representations of indefinite orthogonal groups and the theta correspondence},
+%   author={Paul, A.},
+%   author={Trapa, P.},
+%   journal={University of Aarhus Publ. Series},
+%   volume={48},
+%   pages={103--125},
+%   year={2007}
+% }
 
 
-\bib{PV}{article}{
-  title={Invariant Theory},
-  author={Popov, V. L.},
-  author={Vinberg, E. B.},
-  book={
-  title={Algebraic Geometry IV: Linear Algebraic Groups, Invariant Theory},
-  series={Encyclopedia of Mathematical Sciences},
-  volume={55},
-  year={1994},
-  publisher={Springer},}
-}
+% \bib{PV}{article}{
+%   title={Invariant Theory},
+%   author={Popov, V. L.},
+%   author={Vinberg, E. B.},
+%   book={
+%   title={Algebraic Geometry IV: Linear Algebraic Groups, Invariant Theory},
+%   series={Encyclopedia of Mathematical Sciences},
+%   volume={55},
+%   year={1994},
+%   publisher={Springer},}
+% }
 
 
 
@@ -7600,34 +7613,34 @@ year={1989},
 %}
 
 
-\bib{PrzInf}{article}{
-      author={Przebinda, T.},
-       title={The duality correspondence of infinitesimal characters},
-        date={1996},
-     journal={Colloq. Math.},
-      volume={70},
-       pages={93--102},
-}
+% \bib{PrzInf}{article}{
+%       author={Przebinda, T.},
+%        title={The duality correspondence of infinitesimal characters},
+%         date={1996},
+%      journal={Colloq. Math.},
+%       volume={70},
+%        pages={93--102},
+% }
 
 
-\bib{Pz}{article}{
-author={Przebinda, T.},
-title={Characters, dual pairs, and unitary representations},
-journal={Duke Math. J. },
-volume={69},
-number={3},
-pages={547--592},
-year={1993}
-}
+% \bib{Pz}{article}{
+% author={Przebinda, T.},
+% title={Characters, dual pairs, and unitary representations},
+% journal={Duke Math. J. },
+% volume={69},
+% number={3},
+% pages={547--592},
+% year={1993}
+% }
 
-\bib{Ra}{article}{
-author={Rallis, S.},
-title={On the Howe duality conjecture},
-journal={Compositio Math.},
-volume={51},
-pages={333--399},
-year={1984}
-}
+% \bib{Ra}{article}{
+% author={Rallis, S.},
+% title={On the Howe duality conjecture},
+% journal={Compositio Math.},
+% volume={51},
+% pages={333--399},
+% year={1984}
+% }
 
 \bib{RT1}{article}{
    author={Renard, David A.},
@@ -7656,53 +7669,53 @@ year={1984}
    doi={10.1515/crll.2003.028},
 }
 
-\bib{RT3}{article}{
-   author={Renard, David A.},
-   author={Trapa, Peter E.},
-   title={Kazhdan-Lusztig algorithms for nonlinear groups and applications
-   to Kazhdan-Patterson lifting},
-   journal={Amer. J. Math.},
-   volume={127},
-   date={2005},
-   number={5},
-   pages={911--971},
-   issn={0002-9327},
-   review={\MR{2170136}},
-}
+% \bib{RT3}{article}{
+%    author={Renard, David A.},
+%    author={Trapa, Peter E.},
+%    title={Kazhdan-Lusztig algorithms for nonlinear groups and applications
+%    to Kazhdan-Patterson lifting},
+%    journal={Amer. J. Math.},
+%    volume={127},
+%    date={2005},
+%    number={5},
+%    pages={911--971},
+%    issn={0002-9327},
+%    review={\MR{2170136}},
+% }
 
 
-\bib{Sa}{article}{
-author={Sahi, S.},
-title={Explicit Hilbert spaces for certain unipotent representations},
-journal={Invent. Math.},
-volume={110},
-number = {2},
-pages={409--418},
-year={1992}
-}
+% \bib{Sa}{article}{
+% author={Sahi, S.},
+% title={Explicit Hilbert spaces for certain unipotent representations},
+% journal={Invent. Math.},
+% volume={110},
+% number = {2},
+% pages={409--418},
+% year={1992}
+% }
 
-\bib{Se}{article}{
-author={Sekiguchi, J.},
-title={Remarks on real nilpotent orbits of a symmetric pair},
-journal={J. Math. Soc. Japan},
-%publisher={The Mathematical Society of Japan},
-year={1987},
-volume={39},
-number={1},
-pages={127--138},
-}
+% \bib{Se}{article}{
+% author={Sekiguchi, J.},
+% title={Remarks on real nilpotent orbits of a symmetric pair},
+% journal={J. Math. Soc. Japan},
+% %publisher={The Mathematical Society of Japan},
+% year={1987},
+% volume={39},
+% number={1},
+% pages={127--138},
+% }
 
-\bib{SV}{article}{
-  author = {Schmid, W.},
-  author = {Vilonen, K.},
-  journal = {Annals of Math.},
-  number = {3},
-  pages = {1071--1118},
-  %publisher = {Princeton University, Mathematics Department, Princeton, NJ; Mathematical Sciences Publishers, Berkeley},
-  title = {Characteristic cycles and wave front cycles of representations of reductive Lie groups},
-  volume = {151},
-year = {2000},
-}
+% \bib{SV}{article}{
+%   author = {Schmid, W.},
+%   author = {Vilonen, K.},
+%   journal = {Annals of Math.},
+%   number = {3},
+%   pages = {1071--1118},
+%   %publisher = {Princeton University, Mathematics Department, Princeton, NJ; Mathematical Sciences Publishers, Berkeley},
+%   title = {Characteristic cycles and wave front cycles of representations of reductive Lie groups},
+%   volume = {151},
+% year = {2000},
+% }
 
 
 \bib{Soergel}{article}{
@@ -7731,25 +7744,25 @@ pages = {790--812},
 year = {2001},
 }
 
-\bib{SS}{book}{
-  author = {Springer, T. A.},
-  author = {Steinberg, R.},
-  title = {Seminar on algebraic groups and related finite groups; Conjugate classes},
-  series = {Lecture Notes in Math.},
-  volume = {131},
-publisher={Springer},
-year={1970},
-}
+% \bib{SS}{book}{
+%   author = {Springer, T. A.},
+%   author = {Steinberg, R.},
+%   title = {Seminar on algebraic groups and related finite groups; Conjugate classes},
+%   series = {Lecture Notes in Math.},
+%   volume = {131},
+% publisher={Springer},
+% year={1970},
+% }
 
-\bib{SZ1}{article}{
-title={A general form of Gelfand-Kazhdan criterion},
-author={Sun, B.},
-author={Zhu, C.-B.},
-journal={Manuscripta Math.},
-pages = {185--197},
-volume = {136},
-year={2011}
-}
+% \bib{SZ1}{article}{
+% title={A general form of Gelfand-Kazhdan criterion},
+% author={Sun, B.},
+% author={Zhu, C.-B.},
+% journal={Manuscripta Math.},
+% pages = {185--197},
+% volume = {136},
+% year={2011}
+% }
 
 
 %\bib{SZ2}{article}{
@@ -7764,14 +7777,14 @@ year={2011}
 
 
 
-\bib{Tr}{article}{
-  title={Special unipotent representations and the Howe correspondence},
-  author={Trapa, P.},
-  year = {2004},
-  journal={University of Aarhus Publication Series},
-  volume = {47},
-  pages= {210--230}
-}
+% \bib{Tr}{article}{
+%   title={Special unipotent representations and the Howe correspondence},
+%   author={Trapa, P.},
+%   year = {2004},
+%   journal={University of Aarhus Publication Series},
+%   volume = {47},
+%   pages= {210--230}
+% }
 
 % \bib{Wa}{article}{
 %    author = {Waldspurger, J.-L.},
@@ -7858,16 +7871,16 @@ pages={315--388},
   editor = {W. Barker and P. Sally},
 }
 
-\bib{Vo98}{article}{
-  author = {Vogan, D. A. },
-  title = {The method of coadjoint orbits for real reductive groups},
- %booktitle ={Representation theory of Lie groups (Park City, UT, 1998)},
- journal = {Representation theory of Lie groups (Park City, UT, 1998). IAS/Park City Math. Ser.},
-  volume={8},
-  publisher = {Amer. Math. Soc.},
-  year = {2000},
-pages={179--238},
-}
+% \bib{Vo98}{article}{
+%   author = {Vogan, D. A. },
+%   title = {The method of coadjoint orbits for real reductive groups},
+%  %booktitle ={Representation theory of Lie groups (Park City, UT, 1998)},
+%  journal = {Representation theory of Lie groups (Park City, UT, 1998). IAS/Park City Math. Ser.},
+%   volume={8},
+%   publisher = {Amer. Math. Soc.},
+%   year = {2000},
+% pages={179--238},
+% }
 
 
 
@@ -7883,36 +7896,36 @@ pages={147--167},
 }
 
 
-\bib{Wa1}{book}{
-  title={Real reductive groups I},
-  author={Wallach, N. R.},
-  year={1988},
-  publisher={Academic Press Inc. }
-}
+% \bib{Wa1}{book}{
+%   title={Real reductive groups I},
+%   author={Wallach, N. R.},
+%   year={1988},
+%   publisher={Academic Press Inc. }
+% }
 
-\bib{Wa2}{book}{
-  title={Real reductive groups II},
-  author={Wallach, N. R.},
-  year={1992},
-  publisher={Academic Press Inc. }
-}
+% \bib{Wa2}{book}{
+%   title={Real reductive groups II},
+%   author={Wallach, N. R.},
+%   year={1992},
+%   publisher={Academic Press Inc. }
+% }
 
 
-\bib{Weyl}{book}{
-  title={The classical groups: their invariants and representations},
-  author={Weyl, H.},
-  year={1947},
-  publisher={Princeton University Press}
-}
+% \bib{Weyl}{book}{
+%   title={The classical groups: their invariants and representations},
+%   author={Weyl, H.},
+%   year={1947},
+%   publisher={Princeton University Press}
+% }
 
-\bib{Ya}{article}{
-  title={Degenerate principal series representations for quaternionic unitary groups},
-  author={Yamana, S.},
-  year = {2011},
-  journal={Israel J. Math.},
-  volume = {185},
-  pages= {77--124}
-}
+% \bib{Ya}{article}{
+%   title={Degenerate principal series representations for quaternionic unitary groups},
+%   author={Yamana, S.},
+%   year = {2011},
+%   journal={Israel J. Math.},
+%   volume = {185},
+%   pages= {77--124}
+% }
 
 
 \bib{Zu}{article}{
