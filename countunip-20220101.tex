@@ -1358,6 +1358,7 @@
 
 \def\nng{n_{\mathrm g}}
 \def\nnb{n_{\mathrm b}}
+\providecommand{\pib}{\pi_{\mathrm b}}
 \def\Gb{G_{\mathrm b}}
 \def\Gpb{G'_{\mathrm b}}
 \def\Pb{P_{\mathrm b}}
@@ -3921,7 +3922,7 @@ the inductive formula.
 }
 
 \subsection{Special unipotent representations of $\GL_n(\bR)$}
-
+\label{sec:GLR}
 
 
 Special unipotent representations of general linear groups $\GL_{n}(F)$, where $F= \bR$ or $\bH$, are well-known and comprise
@@ -6213,6 +6214,31 @@ Recall from \Cref{cor:bound}, we have the inequality
 
 Recall that $G$ is a classical Lie group of type $\star \in \set{B,\wtC, C,D,C^{*}, D^{*}}$.
 
+
+We now set
+\[
+  (G_{\mathrm g},G_{\mathrm b}) =
+  \begin{cases}
+    (\SO(p-n_{\mathrm b},q-n_{\mathrm b}), \SO(\nnb,\nnb+1)), &\quad \text{if } \star = B; \\
+    % (\Sp(2n_{\mathrm g},\bR),\Sp(2n_{\mathrm b},\bR)), &\quad \text{if } \star = C; \\
+    (\Sp(2n_{\mathrm g},\bR),\SO(\nnb,\nnb)), &\quad \text{if } \star = C; \\
+    % ( \Sp(p-\frac{n_{\mathrm b}}{2},q-\frac{n_{\mathrm b}}{2}), \Sp(n_{\mathrm b},n_{\mathrm b})), &\quad \text{if
+    % } \star = C^{*}, \\
+    ( \Sp(p-\frac{n_{\mathrm b}}{2},q-\frac{n_{\mathrm b}}{2}), \rO^{*}(n_{\mathrm b}), &\quad \text{if
+    } \star = C^{*}, \\
+    (\tSp(2n_{\mathrm b},\bR),\SO(\nnb,\nnb+1)), &\quad \text{if
+    } \star = \wtC; \\
+    % (\tSp(2n_{\mathrm b},\bR),\widetilde \Sp(2n_{\mathrm g},\bR)), &\quad \text{if
+    % } \star = \wtC; \\
+    ( \rO^{*}(n_{\mathrm g}), \rO^{*}(n_{\mathrm b})), &\quad  \text{if } \star = D^{*}; \\
+    ( \SO(p-n_{\mathrm b},q-n_{\mathrm b}), \SO(n_{\mathrm b},n_{\mathrm b}) ), & \quad \text{when
+    } \star = D. \\
+  \end{cases}
+\]
+Recall that the group $G'_{\mathrm b}$ (defined in \eqref{Gpb}) is the Levi
+component of a Siegel parabolic subgroup $P_{\mathrm b}$ of $G_{\mathrm b}$.
+
+
 \def\fIb{\fI_{\mathrm b}}
 
 \begin{prop}\label{lem:Unip.BP} 
@@ -6222,17 +6248,18 @@ Suppose that $n_{\mathrm g}=0$.
 \item Then we have a bijection
   \[
     \begin{array}{rccc}
-      \fI_{\mathrm b}: &\Unip_{\ckcO'_{\mathrm b}}(G'_{\mathrm b}) & \longrightarrow & \Unip_{\ckcO}(G) \\
-      &\pi' & \mapsto & \pi:=\Ind_{P}^{G}\pi'
+      \fIb: &\Unip_{\ckcO'_{\mathrm b}}(G'_{\mathrm b}) & \longrightarrow & \Unip_{\ckcO}(\Gb) \\
+      &\pi' & \mapsto & \pib:=\Ind_{\Pb}^{\Gb}\pi'.
     \end{array}
   \]
-  where $P$ is a parabolic subgroup of $G$ whose Levi component is
-  isomorphic to $G'_{\mathrm b}$.
- \item Denote by $\sO'$ the real nilpotent orbit in $G'_{\mathrm b}$ such that $\sO'_{\bC}=\cO$, and let $\sO$ be the real induction of $\sO'$ to $G$.
+  % where $P$ is a parabolic subgroup of $G$ whose Levi component is
+  % isomorphic to $G'_{\mathrm b}$.
+ \item Suppose by $\sO'$ the real nilpotent orbit in $G'_{\mathrm b}$ such that $\WF(\sO')=\overline{\sO'}$.  % \item Denote by $\sO'$ the real nilpotent orbit in $G'_{\mathrm b}$ such that $\sO'_{\bC}=\cO$, and let $\sO$ be the real induction of $\sO'$ to $\Gb$.
   Then the wavefront cycle of $\pi $ is
   \[
-    \WF(\pi) = [\sO].
+    \WF(\pib) = \overline{\sO}
   \]
+  where $\sO$ is the real induction of $\sO'$ to $\Gb$.
  \end{enumerate}
 \end{prop}
 \begin{proof} First note that $\WF(\pi')=[\sO']$.
@@ -6256,71 +6283,123 @@ Suppose that $n_{\mathrm g}=0$.
     % Note that every $W_{[\mu]}$-module in $\Grt_{\mu}(G)$ is in $\Ind_{W_{\mu}}^{W_{[\mu]}}$
   }
 
-  We now claim that $\fIb$ is injective, which a consequence of Vogan's
-  classification of irreducible components in principal series representations.
+  \begin{claim*}
+    The map $\fIb$ is injective.
+  \end{claim*}
   \begin{proof}[Proof of the claim]
-    Note that $G$ is quasi-split in our case
-    We fix a  split Cartan subgroup $H\subseteq \Gpb\subseteq G$ and let
-    $H = MA$ where $M \cong \set{\pm 1}^{\nnb}$ is the compact part of $H$ and
-    $A$ is the split part of $H$.
+    When $\star' = A^{\bH}$, the set $\Unip_{\ckcOpb}(\Gpb)$ is a singleton and
+    the claim is trivial.
+    Now we retain the notation in \Cref{sec:GLR} consider the case when $\star'=A^{\bH}$.
+   Then  $\Gb = \SO(\nnb,\nnb+a)$ with $a \in \set{0,1}$.
+
+    %We first consider the case when  $\Gb = \SO(\nnb,\nnb+a)$ with $a \in \set{0,1}$.
+
+    We fix a maximally split Cartan subgroup
+    $(\GL_{1}(\bR))^{\nnb}=H\subseteq \Gpb\subseteq G$ and let $H = MA$ where
+    $M \cong \set{\pm 1}^{\nnb}$ is the compact part of $H$ and
+    $A = \bR^{\nnb}_{>0}$ is the split part of $H$. We identify an irreducible
+    representation $A$ with a vector in $\bC^{\nnb}$. Let
+    $K=S(\rO(\nnb)\times \rO(\nnb+a))$ be a maximal compact subgroup of $\Gb$ and
+    $B$ be a minimal parabolic subgroup of $\Gb$ contained in $\Pb$.
+
+    Suppose $l$ is an integer such that $0\leq l \leq \nnb$. Let
+    \[
+      \delta_{l} = \underbrace{1_{1}\otimes \cdots \otimes 1_{1}}_{l} \otimes
+      \underbrace{\sgn_{1} \otimes \cdots \otimes \sgn_{1}}_{\nnb-l}
+    \]
+    which is a fine $M$-type (\cite{Vg}*{Definition~4.3.8}). Let $\mu_{l}$ be
+    the restriction to $K$ of the the irreducible
+    $\rO(\nnb)\times \rO(\nnb)$-representation
+    $\wedge^{l}\,\bC^{\nnb}\otimes \wedge^{0}\,\bC^{\nnb+a}$. Then $\mu_{l}$ is a
+    fine $K$-type, see \cite{BGG.M}*{\S 6}.
+
+    \def\cusp{\fC}
+    Let $W_{\sigma_{l}}$ be the stabilizer of $\sigma_{l}$ in
+    the real Weyl group of $H$ in $\Gb$ which acts naturally on
+    $\Irr(A)=\bC^{*}$.
     Let
-    $\delta_{l} = \underbrace{1\otimes \cdots \otimes 1}_{l}\otimes \underbrace{\sgn \otimes \cdots \otimes \sgn}_{\nnb-l}$
-    which is a fine $M$-type. We identify an irreducible representation $A$ with
-    a vector $\bC^{\nnb}$.
+    \[
+      \cusp := \bigcup_{0\leq l\leq \nnb}\Set{(\sigma_{l},[\nu])| \nu\in \bC^{\nnb}}
+    \]
+    to be the set of cuspidal data where $[\nu]$ denote the $W_{\sigma_{l}}$-orbit of $\nu$.
+    Vogan proved that
+    the map
+    \[
+      \begin{array}{lccc}
+       \fX\colon & \cusp &\longrightarrow & \Irr(G)\\
+       & (\sigma_{l},[\nu])& \mapsto & (\Ind_{B}^{\Gb}\sigma_{l}\otimes \nu)(\mu_{l})
+      \end{array}
+    \]
+    is injective, see \cite{Vg}*{Theorem 4.4.8}.
+    Here $(\Ind_{B}^{\Gb}\sigma_{l}\otimes \nu)(\mu_{l})$ denote the unique
+    irreducible subquotient in the principal series
+    $\Ind_{B}^{\Gb}\sigma_{l}\otimes \nu$ containing the $K$-type $\mu_{l}$.
 
-    Suppose
-    $\pi' = 1_{n_{1}}\cdots 1_{n_{r}}\times \sgn_{n_{r}}\times \cdots \sgn_{n_{k}}$,
-    then we attach $\delta_{\pi'}:=\delta_{l}$ with
-    $l=n_{1}+n_{2}+\cdots + n_{r}$
-    and $\nu = (\rho_{n_{1}}, \rho_{n_{2}},\cdots, \rho_{n_{k}})$ with
-    $\rho_{n}= (\frac{n-1}{2},\frac{n-3}{2},\cdots \frac{-n+1}{2})$.
-    Note that $\delta_{\pi'}$ is well defined and $\nu$ is well defined upto permutation.
-    Let $\pi'_{l} = 1_{l}\times \sgn_{\nnb-l}$ and $\pi_{l}:=\Ind_{\Pb}^{\Gb}\pi'_{l}$.
+    Now take $\pi'\in \Unip_{\Gpb}(\ckcOpb)$ and take $n_{i}$ ($1\leq l\leq k$) are positive integers such
+    that
+    $\pi' = 1_{n_{1}}\cdots 1_{n_{r}}\times \sgn_{n_{r}}\times \cdots \sgn_{n_{k}}$
+    we attach $\delta_{\pi'}:=\delta_{l}$ with $l=n_{1}+n_{2}+\cdots + n_{r}$
+    and
+    \[
+      \begin{split}
+        \nu_{\pi'} =& \big( {\tfrac{n_{1}-1}{2},\tfrac{n_{1}-3}{2},\cdots \tfrac{-n_{1}+1}{2}, \tfrac{n_{2}-1}{2},\tfrac{n_{2}-3}{2},\cdots \tfrac{-n_{2}+1}{2}, \cdots \tfrac{n_{k}-1}{2},\tfrac{n_{k}-3}{2},\cdots \tfrac{-n_{k}+1}{2}} \big)
+      \end{split}
+    \]
+    Clearly the map $\fP: \pi'\mapsto (\sigma_{\pi'}, [\nu_{\pi'}])$ is
+    injective. By the construction of $\pib$, we see that $\fI(\pi') = \fX\circ \fP(\pi')$ and the
+    injectivity of $\fI$ follows from the injectivity of $\fX$ and $\fP$.
 
-    We claim that $\pi = \Ind_{\Pb}^{\Gb} \pi'$ contains a fine K-type.
-    Note that $\pi_{l}|_{K}\subseteq \pi|_{K}$ by induction by stage.
-    It suffice to show that $\pi_{l}$ has a fine $K$-type.
-    %This is clear by checking \cite{VgT}*{Table~5.8}.
-    \trivial[]{
-      We have two cases. When $\Gb = \Sp(2\nnb,\bR)$, Then $K = \rU(\nnb)$
-      $\GL_{l}(\bR)\times \GL_{\nnb-l}(\bR)\cap \rU(\nnb)$ and the the fine
-      $K$-type is $\wedge^{\nnb-l}\bC^{\nnb}$.
 
-      When $\Gb = \SO(\nnb,\nnb)$, then
-      $K = S(\rO(n)\times \rO(n))\subset \rO(n)\times \rO(n)$ the fine $K$-type is
-      $\wedge^{\nnb-l}\bC^{\nnb}\otimes 1$.
-    }
-    Now \cite{Vg}*{Theorem~4.4.8} implies that $\fIb$ is injective.
+    \trivial[h]{
+      Let's avoid the metaplectic group case!
+   \smallskip
+
+   Now consider the case when $\Gb = \wtSp(\nnb,\bR)$.
+   Now
+   \begin{itemize}
+     \item $H = \GL(1)^{\nnb}\times \set{\pm 1}$,
+     \item $\sigma_{l}$ is the twist of  by the non-trivial
+           character of $\set{\pm 1}$
+     \item $W_{\sigma_{l}}$
+     \item $K$ is the $\det^{2}$ double cover of $\rU(\nnb)$ which is equipped
+           with a genuine character $\det^{\half}$,
+     \item $\mu_{l}$ is the twist of $\rU(\nnb)$-representation
+           $\wedge^{l}\bC^{\nnb}$ by $\det^{\half}$.
+   \end{itemize}
+   The rest parts of the proof are the same as that in the orthogonal group
+   case.
+
+ }
+    % \trivial[]{ Note that $G$ is quasi-split in our case.
+
+
+    %   We have two cases. When $\Gb = \Sp(2\nnb,\bR)$, Then $K = \rU(\nnb)$
+    %   $\GL_{l}(\bR)\times \GL_{\nnb-l}(\bR)\cap \rU(\nnb)$ and the the fine
+    %   $K$-type is $\wedge^{\nnb-l}\bC^{\nnb}$.
+
+    %   When $\Gb = \SO(\nnb,\nnb)$, then
+    %   $K = S(\rO(n)\times \rO(n))\subset \rO(n)\times \rO(n)$ the fine $K$-type
+    %   is $\wedge^{\nnb-l}\bC^{\nnb}\otimes 1$. } Now \cite{Vg}*{Theorem~4.4.8}
+    % implies that $\fIb$ is injective.
   \end{proof}
 
-  Note that representations in $\Unip_{\ckcO'_{\mathrm b}}(G'_{\mathrm b})$ have distinct
-  cuspidal data/Langlands parameters. This implies that $\Ind_{P}^{G}\pi'$ have distinct cuspidal data/Langlands parameters as $\pi'$ varies.
-  Therefore, $\fI_{\mathrm b}$ is injective.
 
-  The bijection follows from the counting
+  The bijection follows from the claim above and the counting
   inequalities below:
   \[
     \abs{\PP_{\star'}(\ckcO'_{\mathrm b})}=\abs{\Unip_{\ckcO'_{\mathrm b}}(G'_{\mathrm b})}\leq \abs{\Unip_{\ckcO}(G)}
     \leq \abs{\PBP_{\star}(\ckcO_{\mathrm b}; \tau_{\mathrm b})} = \abs{\PP_{\star'}(\ckcO'_{\mathrm b})}.
   \]
   Here $\star' \in \set{A^\R,A^{\bH}}$ is as in \eqref{def:star'} and the last equality is in \Cref{prop:BP.PP}.
+
+  % Note that representations in $\Unip_{\ckcO'_{\mathrm b}}(G'_{\mathrm b})$ have distinct
+  % cuspidal data/Langlands parameters. This implies that $\Ind_{P}^{G}\pi'$ have distinct cuspidal data/Langlands parameters as $\pi'$ varies.
+  % Therefore, $\fI_{\mathrm b}$ is injective.
+
   %. The last equality holds because of \Cref{cor:bound} and \Cref{prop:cohBCD}.
 \end{proof}
 
 
-We now set
-\[
-  (G_{\mathrm b},G_{\mathrm g}) =
-  \begin{cases}
-    (\SO(n_{\mathrm b},n_{\mathrm b}+1),\SO(p-n_{\mathrm b},q-n_{\mathrm b})) & \text{when } \star = B, \\
-    (\Sp(2n_{\mathrm b},\bR),\Sp(2n_{\mathrm g},\bR)) & \text{when } \star = C, \\
-    (\Sp(n_{\mathrm b},n_{\mathrm b}), \Sp(p-\frac{n_{\mathrm b}}{2},q-\frac{n_{\mathrm b}}{2})) & \text{when } \star = C^{*}, \\
-    (\widetilde{\Sp}(2n_{\mathrm b},\bR),\widetilde \Sp(2n_{\mathrm g},\bR)) & \text{when } \star = \wtC, \\
-    (\rO^{*}(n_{\mathrm b}), \rO^{*}(n_{\mathrm g})) & \text{when } \star = D^{*}, \\
-    (\SO(n_{\mathrm b},n_{\mathrm b}), \SO(p-n_{\mathrm b},q-n_{\mathrm b}) )& \text{when } \star = D. \\
-  \end{cases}
-\]
-Note that the group $G'_{\mathrm b}$ (defined in \eqref{Gpb}) is the Levi component of a Siegel parabolic subgroup $P_{\mathrm b}$ of $G_{\mathrm b}$.
 
 Let $P$ be  a parabolic subgroup of $G$ whose Levi component is identified with $G'_{\mathrm b}\times G_{\mathrm g}$ (or $(G'_{\mathrm b}\times G_{\mathrm g})/\{\pm 1\}$ when $\star=\wtC$). 
 \begin{thm}\label{thm:red}
@@ -7678,6 +7757,21 @@ It is easy to check that the descent maps (horizontal arrows) in the following d
   volume = {323},
   pages = {47--85},
   year = {2017},
+}
+
+\bib{BGG.M}{article}{
+   author={Bernstein, I. N.},
+   author={Gel'fand, I. M.},
+   author={Gel'fand, S. I.},
+   title={Models of representations of compact Lie groups},
+   language={Russian},
+   journal={Funkcional. Anal. i Prilo\v{z}en.},
+   volume={9},
+   date={1975},
+   number={4},
+   pages={61--62},
+   %issn={0374-1990},
+   %review={\MR{0414792}},
 }
 
 
