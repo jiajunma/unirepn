@@ -1418,14 +1418,25 @@
 \def\PBPes{\mathsf{PBP}^{\mathrm{ext}}_{\star}}
 \def\PBPsb{\mathsf{PBP}_{\star,b}}
 
-\def\PBPop#1#2#3{\PBP_{#1}(#2,#3)}
-\def\PBPOP{\PBPop{\star}{\ckcO}{\wp}}
-\def\PBPOPp{\PBPop{\star'}{\ckcO'}{\wp'}}
-\def\PBPOPpp{\PBPop{\star}{\ckcO''}{\wp''}}
+\def\PBPop#1#2#3#4{\PBP_{#1}^{#2}(#3,#4)}
+\newcommand{\PBPOP}[1][]{\PBPop{\star}{#1}{\ckcO}{\wp}}
+% \def\PBPdOP{\PBPop{\star}{\mathrm{d}}{\ckcO}{\wp}}
+% \def\PBPrcOP{\PBPop{\star}{\mathrm{rc}}{\ckcO}{\wp}}
+% \def\PBPsOP{\PBPop{\star}{\mathrm{s}}{\ckcO}{\wp}}
+\def\PBPOPp{\PBPop{\star'}{}{\ckcO'}{\wp'}}
+%\def\PBPOPpp{\PBPop{\star}{}{\ckcO''}{\wp''}}
+\newcommand{\PBPOPpp}[1][]{\PBPop{\star}{#1}{\ckcO''}{\wp''}}
+
+% \def\PBPdOPpp{\PBPop{\star}{\mathrm{d}}{\ckcO''}{\wp}}
+% \def\PBPrcOPpp{\PBPop{\star}{\mathrm{rc}}{\ckcO''}{\wp}}
+% \def\PBPsOPpp{\PBPop{\star}{\mathrm{s}}{\ckcO''}{\wp}}
 
 \def\PBPGOP{\PBPop{G}{\ckcO}{\wp}}
 \def\PBPGOPp{\PBPop{G'}{\ckcO'}{\wp'}}
 \def\PBPGOPpp{\PBPop{G''}{\ckcO''}{\wp''}}
+
+\def\yrow#1{\left[#1\right]_{\mathrm{row}}}
+\def\ycol#1{\left[#1\right]_{\mathrm{col}}}
 
 %\newcommand{\DDn}{\DD_{\mathrm{naive}}}
 
@@ -4446,7 +4457,7 @@ $\PBPOP = \emptyset $ otherwise.
 
 
 The following proposition summaries the key properties of the descent map.
-\begin{prop}
+\begin{prop} \label{lem:PBPd.C}
   Suppose that $\star\in \set{C,\wtC, D^*}$. Let $\ckcO$ be a non-empty partition of good
   parity and $\ckcO' := \DD(\ckcO)$.
   \begin{enumerate}[label=(\alph*)]
@@ -4510,24 +4521,91 @@ Moreover,  for every $\uptau\in  \PBPOP$,
 We have the following immediate corollary.
 
 \begin{cor}\label{prop:DD.BDinj}
-If $\star \in \set{B, D,C^*}$, then the map
+  Suppose $\star \in \set{B, D,C^*}$.
+  We define
+  \[
+    \varepsilon_{\uptau} = \begin{cases}
+      0 & \text{if $\star\in \set{B,D}$, and $x_{\uptau}=d$,}\\
+      1 & \text{otherwise.}
+    \end{cases}
+  \]
+  Then the map
 \begin{equation}
   \begin{array}{rcl}
-   \PBP_\star(\ckcO)&\rightarrow&
-   \PBP_{\star'}(\ckcOp)\times \BN\times \bN\times \Z/2\Z, \smallskip\\
-   \tau& \mapsto & (\DD(\tau), p_\tau, q_\tau, \varepsilon_\tau)
-   \end{array}
-\end{equation}
-is injective. If $\star \in  \set{C,\wtC,D^*}$, then the map
-\begin{equation}
-  \begin{array}{rcl}
-  \DD:  \PBP_\star(\ckcO)&\rightarrow&
-   \PBP_{\star'}(\ckcOp)
+   \PBPOP&\rightarrow&
+   \PBPOPp \times \BN\times \bN\times \Z/2\Z, \smallskip\\
+   \uptau& \mapsto & (\DD(\uptau), p_\uptau, q_\uptau, \varepsilon_\uptau)
    \end{array}
 \end{equation}
 is injective.
 \end{cor}
+\begin{proof}
+  It is easy to verify the the basic case where $\bfrr_{3}(\ckcO)=0$ and
+    \[
+      (\bfrr_{1}(\ckcO), \bfrr_{2}(\ckcO))
+      =
+      \begin{cases}
+        (2k-2,0) & \text{if } \star=B,\\
+        (2k-1,1) & \text{if } \star=D,\\
+        (2k-1,0) & \text{if } \star=C^{*}.\\
+      \end{cases}
+    \]
+    \trivial[h]{
+    Then $\ckcO$ is the regular nilpotent orbit.
+    % % in $\check \fgg$
+    and $\cO =\dBV(\ckcO) = (1^{\bfrr_{1}(\ckcO)+1})_{\star}$.
+    }
+    The other cases follows from the injectivity of $\DD$ in \Cref{lem:PBPd.C}
+    and the signature formula in \Cref{lem:delta}.
+\end{proof}
 
+
+
+Now we define some generating functions of painted bipartition. %$(\ckcO,\wp)$
+
+
+Let $\star \in \set{B,D}$.
+For each $\wp\in \PP(\ckcO)$ and a subset $S\subset \set{c,d,r,s}$, we define
+\[
+  \PBPOP[S] = \set{\uptau\in \PBPOP|x_{\uptau}\in S}
+\]
+and the corresponding generating function
+\[
+   f_{\star,\ckcO,\wp}^{S} := \sum_{\uptau \in \PBPOP[S]} \bfpp^{p_{\uptau}} \bfqq^{q_{\uptau}}
+\]
+in $\bZ[\bfpp,\bfqq]$ where $(p_{\uptau}, q_{\uptau})$ is the signature of
+$\uptau$ and $\bfpp$
+and $\bfqq$ are indeterminants.
+
+\def\Tdk{g_{k}^{\mathrm d}}
+\def\Trck{g_{k}^{\mathrm{rc}}}
+\def\Tsk{g_{k}^{\mathrm s}}
+\def\RS{\nu}
+
+For an integer $k$,
+we define
+\[
+\RS_{k} := \sum_{i=0}^{k} \bfpp^{i}\bfqq^{k-i}
+\]
+if $k\geq 0$ and $0$ otherwise.
+\trivial[]{
+This is the generating function of all PBP of type D with only one row filled
+by r or s.
+}
+
+It is easy to see the following formula and we made the following definition:
+\[
+  \begin{split}
+  \Tdk &:= f_{D,\yrow{2k-1,1},\emptyset}^{\set{d}}= \bfpp\bfqq(\RS_{k-1} + \bfpp\bfqq\RS_{k-2}) \\
+  \Trck &= f_{D,\yrow{2k-1,1},\emptyset}^{\set{rc}}= (\bfpp\bfqq+\bfpp^{2})\RS_{k-2}\\
+  \Tsk &= f_{D,\yrow{2k-1,1},\emptyset}^{\set{s}}= \bfqq^{2n}
+  \end{split}
+\]
+
+
+\begin{lem}
+  Suppose $\ckcO$
+\end{lem}
 
 In this section, we exhibit the inductive structure of painted bipartitions.
 The key is to define the descent of a painted bipartition.
