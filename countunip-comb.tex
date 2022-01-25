@@ -1431,9 +1431,9 @@
 % \def\PBPrcOPpp{\PBPop{\star}{\mathrm{rc}}{\ckcO''}{\wp}}
 % \def\PBPsOPpp{\PBPop{\star}{\mathrm{s}}{\ckcO''}{\wp}}
 
-\def\PBPGOP{\PBPop{G}{\ckcO}{\wp}}
-\def\PBPGOPp{\PBPop{G'}{\ckcO'}{\wp'}}
-\def\PBPGOPpp{\PBPop{G''}{\ckcO''}{\wp''}}
+\def\PBPGOP{\PBPop{G}{}{\ckcO}{\wp}}
+\def\PBPGOPp{\PBPop{G'}{}{\ckcO'}{\wp'}}
+\def\PBPGOPpp{\PBPop{G''}{}{\ckcO''}{\wp''}}
 
 \def\yrow#1{\left[#1\right]_{\mathrm{row}}}
 \def\ycol#1{\left[#1\right]_{\mathrm{col}}}
@@ -3608,6 +3608,12 @@ Recall the group $G_\mathrm g$ from \eqref{gg00} (with $l=\nnb$).  Its Langlands
 In this section, we assume that $\star \in \{B,C,\wtC,C^{*},D,D^{*}\}$, and $\ckcO = \ckcOg$, namely $\ckcO $ has $\star$-good parity.
 Recall the set  $\CPPs(\ckcO)$ of primitive $\star$-pairs in $\ckcO$. For each subset $\wp$ of $\CPPs(\ckcO)$, we have defined a bipartition $\tau_{\wp}=(\imath_{\wp},\jmath_{\wp})$ in \Cref{sec:LCBCD}.
 
+In this section, we study the set
+\[
+\PBPGOP := \set{\uptau \text{ is a painted bi
+    partition}| G_{\uptau}=G,  (\imath_{\uptau},\jmath_{\uptau}) = \tau_{\wp}}
+\]
+for each $\wp\in \CPP(\ckcO)$
 
 
 % The following two combinatorial results follow by induction on $\mathbf c_1(\check \CO)$. As the proof is quite tedious, we omit the details.
@@ -3663,19 +3669,6 @@ Suppose that
 %We shall deal with the two quaternionic cases first, which are simple. When $\star \in \set{B, C, \wtC, D}$, the proof of the main statement of the above proposition involves an elaborate reduction argument (by removing elements from $\wp$ one-by-one), and will be handled separately in \Cref{lem:down} below.
 %[Proof of {\Cref{prop:PBP}} the quaternionic case]
 
-    \smallskip
-
-The following combinatorial result follows by induction on $\mathbf c_1(\check \CO)$.
-
-\begin{prop} \label{prop:PBP2} Suppose that   $\star\in \set{B,C,\wtC,D}$. Then
-  \[
-    \sharp(\PBP_{G}(\tau_{\wp})) = \sharp(\PBP_{G}(\tau_{\emptyset})), \quad \textrm{for all } \wp \subset \CPPs(\ckcO).
-  \]
- Consequently,
-     \[
-     \sharp(\tPBP_{G}(\ckcO)) = 2^{\sharp(\CPPs(\ckcO))}\cdot \sharp(\PBP_{G}(\ckcO)).
-  \]
-\end{prop}
 
 
 Because of the following vanishing proposition, we will only need to consider
@@ -3699,8 +3692,33 @@ This  also forces that   $\check \CO$ is quasi-distinguished.
  \end{proof}
 
 %\subsection{Descent of painted bi-partition}
+The following proposition is clear by \Cref{lem:gf.C*}.
+\begin{prop}\label{prop:count.CD*}
+  Suppose that $\star\in \set{C^*, D^*}$ and $\ckcO$ is quasi-distinguished.
+  Then $\# \PBP_{G}(\ckcO)$ equals to the number of real nilpotent orbits of $G$
+  whose complexification is $\dBV(\ckcO)$.
+\end{prop}
 
- \subsection{Shape shifting in type $C$ and $\wtC$, the basic case}
+\subsection{Counting in type $B,C,\wtC,D$}
+
+
+%The following combinatorial result follows by induction on $\mathbf c_1(\check \CO)$.
+In the rest of the section, we will establish \Cref{lem:gf.BD} and \Cref{lem:gf.C} which
+imply the following counting result.
+
+\begin{prop} \label{prop:PBP2} Suppose that   $\star\in \set{B,C,\wtC,D}$. Then
+  \[
+    \sharp(\PBP_{G}(\tau_{\wp})) = \sharp(\PBP_{G}(\tau_{\emptyset})), \quad \textrm{for all } \wp \subset \CPPs(\ckcO).
+  \]
+ Consequently,
+     \[
+     \sharp(\tPBP_{G}(\ckcO)) = 2^{\sharp(\CPPs(\ckcO))}\cdot \sharp(\PBP_{G}(\ckcO)).
+  \]
+\end{prop}
+
+
+
+ \subsection{Shape shifting in type $C$ and $\wtC$}
  In this subsection, we assume $\star \in \set{C,\wtC}$ and $\ckcO$ is an orbit
  with good parity.
 
@@ -4565,21 +4583,31 @@ Now we define some generating functions of painted bipartition. %$(\ckcO,\wp)$
 
 
 Let $\star \in \set{B,D}$.
-For each $\wp\in \PP(\ckcO)$ and a subset $S\subset \set{c,d,r,s}$, we define
+For each $\wp\in \CPPs(\ckcO)$ and a subset $S\subset \set{c,d,r,s}$, we define
 \[
   \PBPOP[S] = \set{\uptau\in \PBPOP|x_{\uptau}\in S}
 \]
 and the corresponding generating function
 \[
-   f_{\star,\ckcO,\wp}^{S} := \sum_{\uptau \in \PBPOP[S]} \bfpp^{p_{\uptau}} \bfqq^{q_{\uptau}}
+   f_{\star,\ckcO,\wp}^{S}(\bfpp,\bfqq) := \sum_{\uptau \in \PBPOP[S]} \bfpp^{p_{\uptau}} \bfqq^{q_{\uptau}}
 \]
 in $\bZ[\bfpp,\bfqq]$ where $(p_{\uptau}, q_{\uptau})$ is the signature of
 $\uptau$ and $\bfpp$
 and $\bfqq$ are indeterminants.
+By to ease the notation, we write
+\[
+  f_{\star,\ckcO,\wp} := f_{\star,\ckcO,\wp}^{\set{c,d,r,s}} =
+  f_{\star,\ckcO,\wp}^{\set{s}}
+  + f_{\star,\ckcO,\wp}^{\set{c,r}}
+  + f_{\star,\ckcO,\wp}^{\set{d}}
+\]
+whose coefficient of $\bfpp^{p}\bfqq^{q}$ equals the cardinality of
+$\PBPop{\SO(p,q)}{}{\ckcO}{\wp}$.
+% $\PBPGOP$
+% with $\Sign(G)=(p,q)$.
 
-\def\Tdk{g_{k}^{\mathrm d}}
-\def\Trck{g_{k}^{\mathrm{rc}}}
-\def\Tsk{g_{k}^{\mathrm s}}
+\def\CSk#1#2{h_{#1}^{#2}}
+\def\TSk#1#2{g_{#1}^{#2}}
 \def\RS{\nu}
 
 For an integer $k$,
@@ -4593,902 +4621,118 @@ This is the generating function of all PBP of type D with only one row filled
 by r or s.
 }
 
-It is easy to see the following formula and we made the following definition:
+We make the following definition:
 \[
   \begin{split}
-  \Tdk &:= f_{D,\yrow{2k-1,1},\emptyset}^{\set{d}}= \bfpp\bfqq(\RS_{k-1} + \bfpp\bfqq\RS_{k-2}) \\
-  \Trck &= f_{D,\yrow{2k-1,1},\emptyset}^{\set{rc}}= (\bfpp\bfqq+\bfpp^{2})\RS_{k-2}\\
-  \Tsk &= f_{D,\yrow{2k-1,1},\emptyset}^{\set{s}}= \bfqq^{2n}
+  \TSk{k}{\set{d}} &:= f_{D,\yrow{2k-1,1},\emptyset}^{\set{d}}= \bfpp\bfqq\RS_{k-1} + \bfpp^{2}\bfqq^{2}\RS_{k-2}, \\
+  \TSk{k}{\set{c,r}} &:= f_{D,\yrow{2k-1,1},\emptyset}^{\set{rc}}= (\bfpp\bfqq+\bfpp^{2})\RS_{k-1},  \\
+  \TSk{k}{\set{s}}& :=\CSk{k}{\set{s}} := f_{D,\yrow{2k-1,1},\emptyset}^{\set{s}}= \bfqq^{2n},\\
+  \CSk{k}{\set{d}} &:= \bfpp^{2}\bfqq^{2}\RS_{k-2} + \bfpp\bfqq^{3}\RS_{k-2}, \AND \\
+  \CSk{k}{\set{c,r}} &:= \bfpp\bfqq\RS_{k-1}+\bfpp^{2}\bfqq^{2}\RS_{k-2}.\\
   \end{split}
 \]
+\trivial[h]{
+  For reference, rest = column filled by r and s.
+\[
+  \begin{split}
+  \TSk{k}{\set{d}} &:=  rest + d\cup rest+cd \\
+  \TSk{k}{\set{c,r}} &:= rest+c \cup rest+r\\
+  \TSk{k}{\set{s}}& :=\CSk{k}{\set{s}} := ss\cdots s,\\
+  \CSk{k}{\set{d}} &:= rest+cd \cup s+rest + d\\
+  \CSk{k}{\set{c,r}} &:= rest+c \cup s+rest+r \\
+  \end{split}
+\]
+}
+
+It is also straight to see that, for non-negative  integer $k$,
+\[
+  \begin{split}
+   f_{B,\yrow{2k},\emptyset}^{\set{d}} & = (\bfpp^{2}\bfqq+ \bfpp\bfqq^{3})\RS_{k-1}, \\
+   f_{B,\yrow{2k},\emptyset}^{\set{rc}} & = \bfpp\RS_{k} + \bfpp^{2}\bfqq\RS_{k-1},  \\
+  f_{B,\yrow{2k},\emptyset}^{\set{s}} & = \bfqq^{2k+1},\\
+  \end{split}
+\]
+\trivial[h]{
+  For reference, rest := count columns filled by r and s.
+\[
+  \begin{split}
+    f_{B,\yrow{2k},\emptyset}^{\set{d}} &:=  B^{+} + rest + d \cup B^{-}+rest+d, \\
+    f_{B,\yrow{2k},\emptyset}^{\set{rc}}   &:= B^{+} + rest \cup B^{-}+rest+r, \\
+    f_{B,\yrow{2k},\emptyset}^{\set{s}} & := B^{-} + ss\cdots s.\\
+  \end{split}
+\]
+}
+
+By convention, we set
+\[
+  f_{D,\yrow{0}, \emptyset}^{\set{d}} := 1, \quad
+  f_{D,\yrow{0}, \emptyset}^{\set{r,c}} := 0,
+  \AND
+  f_{D,\yrow{0}, \emptyset}^{\set{s}} := 0,
+\]
+
+\begin{lem}\label{lem:gf.BD}
+  Suppose $\star\in\set{B,D}$ and $\ckcO$ is a good parity partition such that $\bfrr_{2}(\ckcO)>0$.
+
+  Let $k:=\frac{\bfrr_{1}(\ckcO)-\bfrr_{2}(\ckcO)}{2}+1$.
+  Then we have the following  recursive formulas of the generating functions
+  with $S \in \set{\set{d}, \set{c,r}, \set{s}}$:
+  \begin{enumerate}[label=(\alph*)]
+    \item If $(2,3)\in \CPPs(\ckcO)$, then
+    \[
+      f_{D,\ckcO, \wp}^{S} := \TSk{k}{S} \cdot  f_{D,\DD^{2}(\ckcO),\DD^{2}(\wp)}.
+    \]
+    \item If $(2,3)\notin \CPPs(\ckcO)$,
+    then
+    \[
+      f_{D,\ckcO, \wp}^{S} := \TSk{k}{S} \cdot f_{D,\DD^{2}(\ckcO),\DD^{2}(\wp)}^{\set{d}}
+      + \CSk{k}{S} \cdot f_{D,\DD^{2}(\ckcO),\DD^{2}(\wp)}^{\set{r,c}}.
+    \]
+  \end{enumerate}
+  In particular, the generating function is independent of $\wp$ and so
+  \[
+    f_{D,\ckcO,\wp} = f_{D,\ckcO,\emptyset} \quad \text{for all $\wp\in \CPPs(\ckcO)$.}
+  \]
+\end{lem}
+\begin{proof}
+  This follows immediately from \Cref{lem:delta}.
+\end{proof}
 
 
-\begin{lem}
-  Suppose $\ckcO$
+\begin{lem}\label{lem:gf.C}
+  Suppose $\star\in\set{C,\wtC}$ and $\ckcO$ is a good parity partition such that $\bfrr_{1}(\ckcO)>0$.
+  Then % we have the following  formulas of the generating functions
+  % with $S \in \set{\set{d}, \set{c,r}, \set{s}}$:
+  \begin{enumerate}[label=(\alph*)]
+    \item If $(1,2)\in \CPPs(\ckcO)$, then
+    \[
+      \# \PBPOP =  f_{\star',\DD(\ckcO), \DD(\wp)}(1,1).
+    \]
+    \item If $(1,2)\notin \CPPs(\ckcO)$,
+    then
+    \[
+      \# \PBPOP = f_{\star',\DD(\ckcO), \DD(\wp)}^{\set{c,r}}(1,1) + f_{\star',\DD(\ckcO), \DD(\wp)}^{\set{d}}(1,1).
+    \]
+  \end{enumerate}
+  In particular, the cardinality of $\PBPOP$ is independent of $\wp$ and so
+  \[
+    \# \PBPOP = \# \PBPop{\star}{}{\ckcO}{\emptyset} \quad \text{for all $\wp\in \CPPs(\ckcO)$.}
+  \]
+\end{lem}
+\begin{proof}
+  This follows immediately from \Cref{lem:delta} and \Cref{lem:gf.BD}.
+\end{proof}
+
+% In this section, we exhibit the inductive structure of painted bipartitions.
+% The key is to define the descent of a painted bipartition.
+% As before, let  $\star\in \set{B, C,  D, \wtC,  C^*, D^*}$ and let $\check \CO$ be a Young diagram that has $\star$-good parity.
+
+\begin{lem}\label{lem:gf.C*}
+  We have the following recursive formula
 \end{lem}
 
-In this section, we exhibit the inductive structure of painted bipartitions.
-The key is to define the descent of a painted bipartition.
-As before, let  $\star\in \set{B, C,  D, \wtC,  C^*, D^*}$ and let $\check \CO$ be a Young diagram that has $\star$-good parity.
 
 
-
-
-
-
-% \begin{defn}
-% The dual descent of a partition $\ckcO$ is the partition $\ckDD$
-
-% \end{defn}
-
-% \delete{Put
-% \begin{equation}\label{lstarco}
-%   l:=l_{\star, \check \CO}:=\begin{cases}
-%  \frac{\bfrr_1(\ckcO)}{2}; & \quad \textrm{if } \star\in \{B, \widetilde C\};\smallskip\\
-%  \frac{\bfrr_1(\ckcO)-1}{2}, &\quad \textrm{if } \star\in \{C, C^* \};\smallskip\\
-%  \frac{\bfrr_1(\ckcO)+1}{2}, &\quad \textrm{if } \star\in \{ D, D^*\}.\\
-% \end{cases}
-% \end{equation}
-% This is the length of the leading column of every element of $\mathrm{PBP}_\star(\check \CO)$.
-% }
-
-
-% For a diagram $\imath$, its naive descent, which is denoted by $\nabla_\mathrm{naive}(\imath)$, is defined to be the Young diagram obtained from $\imath$ by removing the first column. By convention, $\nabla_\mathrm{naive}(\emptyset)=\emptyset$.
-
-% In the rest of this section, we assume that $\check \CO\neq \emptyset$. Recall that we have its dual descent $\check \CO'$, and $\check \CO'$ has $\star'$-good parity, where $\star'$ is the Howe dual of $\star$.
-%  %Put\[
-% %l':=l_{\star', \check \CO'}
-% %\]
-
-% % A painted bipartition $\uptau = (\imath,\cP)\times (\jmath,\cQ)\times \alpha$ now remembers where it come from.
-
-% % \subsection{Tail of painted bipartition}
-% % In this section, We assume $\star\in \set{B,C^{*}, D}$ and define the tail of
-% % $\uptau$.
-
-
-
-
-% \subsubsection{Naive descent of a painted bipartition }
-% \def\bipartl{\mathrm{bi\cP_L}}
-% \def\bipartr{\mathrm{bi\cP_R}}
-% \def\dsdiagl{\mathrm{DS_L}}
-% \def\dsdiagr{\mathrm{DS_R}}
-% \def\DDl{\eDD_\mathrm{L}}
-% \def\DDr{\eDD_\mathrm{R}}
-
-
-% In this subsection, let $\tau=(\imath,\cP)\times (\jmath,\cQ)\times \alpha$ be a  painted bipartition such that $\star_\tau=\star$. Put
-% \delete{\begin{equation} \label{eq:def.alphap}
-% \alpha'=\begin{cases} B^+,
-% & \textrm{if $\alpha = \wtC$ and $\cP_\tau(l_{\star,\ckcO},1),1) \neq c$;}\\
-% B^-,
-% & \textrm{if $\alpha = \wtC$ and $\cP_\tau(l_{\star,\ckcO},1),1)  = c$;}\\
-% \star', & \textrm{if $\alpha\neq \widetilde C$}.
-% \end{cases}
-% \end{equation}
-% }
-%   \begin{equation} \label{eq:def.alphap}
-%     \alpha'=\begin{cases} B^+,
-%   & \textrm{if $\alpha=\widetilde{C}$ and $c$ does not occur in the first column of $(\imath,\cP)$}; \smallskip \\
-%   B^-,
-%   & \textrm{if $\alpha=\widetilde{C}$ and  $c$ occurs in the first column of $(\imath,\cP)$}; \smallskip \\
-%   \star', & \textrm{if $\alpha\neq \widetilde C$}.
-%   \end{cases}
-%   \end{equation}
-
-% \begin{lem}\label{lemDDn1}
-%   If $\star \in \set{B,C,C^*}$, then there is a unique painted bipartition of the form $\tau'= (\imath',\cP')\times (\jmath',\cQ')\times \alpha'$ with the following properties:
-%   \begin{itemize}
-%         \item $
-%    (\imath',\jmath')= (\imath,\DD_\mathrm{naive}(\jmath)); \smallskip
-%    $
-%    \item for all $(i,j)\in \BOX{\imath'}$,
-%    \[
-%      \cP'(i,j)=\begin{cases}
-%     \bullet \textrm{ or } s,&\textrm{ if  $\ \cP(i,j)\in \{\bullet, s\}$;} \smallskip \\
-%   \cP(i,j),& \textrm{ if $\ \cP(i,j)\notin \{\bullet, s\}$};\end{cases}
-%    \]
-%    \item for all $(i,j)\in \BOX{\jmath'}$,
-%    \[
-%      \cQ'(i,j)=\begin{cases}
-%     \bullet \textrm{ or } s,&\textrm{ if  $\ \cQ(i,j+1)\in \{\bullet, s\}$;} \smallskip \\
-%   \cQ(i,j+1), & \textrm{ if $\ \cQ(i,j+1)\notin \{\bullet, s\}$}.  \end{cases}
-%    \]
-%     \end{itemize}
-%     \end{lem}
-
-
-
-
-%    \begin{proof}
-%     First assume that the images of $\cP$ and $\cQ$ are both contained in $\{\bullet, s\}$. Then  the image of $\cP$  is in fact contained in $\{\bullet\}$, and $(\imath, \jmath)$ is  right interlaced in the sense that
-%  \[
-%  \mathbf{c}_1(\jmath)\geq \mathbf{c}_1(\imath)\geq \mathbf{c}_2(\jmath)\geq \mathbf{c}_2(\imath)\geq \mathbf{c}_3(\jmath)\geq \mathbf{c}_3(\imath) \geq \cdots.
-%  \]
-%  Hence $ (\imath',\jmath'):= (\imath,\DD(\jmath))$ is left interlaced in the sense that
-%  \[
-%  \mathbf{c}_1(\imath')\geq \mathbf{c}_1(\jmath')\geq \mathbf{c}_2(\imath')\geq \mathbf{c}_2(\jmath')\geq \mathbf{c}_3(\imath')\geq \mathbf{c}_3(\jmath') \geq \cdots.
-%  \]
-%  Then it is clear that there is a unique painted bipartition of the form  $\tau'=(\imath',\cP')\times (\jmath',\cQ')\times \alpha'$ such that images of $\cP'$ and $\cQ'$ are both contained in $\{\bullet, s\}$. This proves the lemma in the special case when the images of $\cP$ and $\cQ$ are both contained in $\{\bullet, s\}$.
-
-%  The proof of the lemma in the general case is easily reduced to this special case.
-%    \end{proof}
-%     \begin{lem}\label{lemDDn2}
-%     If $\star \in \set{ \widetilde C, D,D^*}$, then there is a unique painted bipartition of the form $\tau'= (\imath',\cP')\times (\jmath',\cQ')\times \alpha'$ with the following properties:
-%   \begin{itemize}
-%         \item $
-%    (\imath',\jmath')= (\DD_\mathrm{naive}(\imath),\jmath); \smallskip
-%    $
-%    \item for all $(i,j)\in \BOX{\imath'}$,
-%    \[
-%      \cP'(i,j)=\begin{cases}
-%     \bullet \textrm{ or } s,&\textrm{ if  $\ \cP(i,j+1)\in \{\bullet, s\}$;} \smallskip \\
-%   \cP(i,j+1),& \textrm{ if $\ \cP(i,j+1)\notin \{\bullet, s\}$};\end{cases}
-%    \]
-%    \item for all $(i,j)\in \BOX{\jmath'}$,
-%    \[
-%      \cQ'(i,j)=\begin{cases}
-%     \bullet \textrm{ or } s,&\textrm{ if  $\ \cQ(i,j)\in \{\bullet, s\}$;} \smallskip \\
-%   \cQ(i,j), & \textrm{ if $\ \cQ(i,j)\notin \{\bullet, s\}$}.  \end{cases}
-%    \]
-
-%     \end{itemize}
-% \end{lem}
-% \begin{proof}
-%   The proof is similar to that of \Cref{lemDDn1}.
-% \end{proof}
-
-% \begin{defn}
-%  In the notation of \Cref{lemDDn1,lemDDn2}, we call $\tau'$ the naive descent of $\tau$, to be denoted by $\DDn(\tau)$.
-% \end{defn}
-
-
-
-
-%  \begin{eg} If
-%     \[
-%      \tau = \ytb{\bullet\bullet\bullet {c},\bullet {s} {c},{s},{c}}
-%     \times \ytb{\bullet\bullet\bullet ,\bullet {r} {d},{d}{d}, \none}
-%     \times \widetilde C, \]
-%    then
-%    \[
-%     \nabla_{\mathrm{naive}}(\tau) =\ytb{\bullet\bullet{c} ,\bullet{c},\none }
-%     \times  \ytb{\bullet\bullet {s} ,\bullet {r} {d},{d}{d}}\times B^-.
-%     \]
-
-% \end{eg}
-
-% \subsubsection{Descents of painted bipartitions}\label{sec:desc}
-
-
-% Suppose that
-% $
-% \tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \mathrm{PBP}_\star(\check \CO)
-% $
-% and write
-% \[
-%   \tau'_{\mathrm{naive}}=(\imath', \cP'_{\mathrm{naive}})\times (\jmath', \cQ'_{\mathrm{naive}})\times \alpha'
-% \]
-% for the naive descent of $\tau$. This is clearly an element of $  \mathrm{PBP}_{\star'}(\check \CO')$.
-% %Put
-% %\begin{equation}\label{lstarco}
-% %  l:=l_{\star, \check \CO}:=\begin{cases}
-% % \frac{\bfrr_2(\ckcO)}{2}; & \quad \textrm{if } \star\in \{B, \widetilde C\};\\
-% % \frac{\bfrr_2(\ckcO)+1}{2}, &\quad \textrm{if } \star\in \{C, C^* \};\\
-% % \frac{\bfrr_2(\ckcO)-1}{2}, &\quad \textrm{if } \star\in \{ D, D^*\}.\\
-% %\end{cases}
-% %\end{equation}
-
-% The following two lemmas are easily verified and we omit the proofs. We will give an example for each case.
-% \delete{
-% \begin{lem}\label{descb}
-% Suppose that
-% \[
-% \begin{cases}
-% \alpha = B^+; & \\
-% (2,3)\in \wp;\quad  &\\
-% \cQ(l',1)\in \set{r,d}.
-% \end{cases}
-% \]
-% Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO',\wp')$ of the form
-%   \[
-%       \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
-%   \]
-% such that
-%      $
-%      \cP' = \cP'_{\mathrm{naive}}
-%      $
-%      and
-%      for all $(i,j)\in \BOX(\jmath')$,
-% \[
-% \cQ'(i,j) = \begin{cases}
-%   r, & \ \text{ if  $(i,j) = (l',1)$;}\\
-%   \cQ'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
-% \end{cases}
-% \]
-% \end{lem}
-
-
-% \begin{Example}
-%  If
-%  \[
-%  \tau= \ytb{\bullet\bullet,\none} \times \ytb{\bullet \bullet, dd}\times
-%   B^+,
-%  \]
-%  then
-% \[
-%  \tau'_{\mathrm{naive}}= \ytb{\bullet s,\none} \times \ytb{\bullet, d}\times
-%   \widetilde C\qquad\textrm{and}\qquad \tau'= \ytb{\bullet s,\none} \times \ytb{\bullet, r}\times
-%   \widetilde C.
-%  \]
-%  Note that in this case, the nonzero row lengths of $\check \CO$ are $4,4,2,2$, $\wp=\{(2,3)\}$ and $l'=2$.
-% \end{Example}
-% \delete{\begin{proof}
-%  We only need to check that the triple $\tau'$ defined in the lemma is a painted bipartition.
-
-%  Note that
-%  \[
-%   \bar \Lambda_{l-1,2}(\imath', \cP')=\bar \Lambda_{l-1,2}(\imath'_{\mathrm{naive}}, \cP'_{\mathrm{naive}})
-%  \]
-%  and
-%  \[
-%  \begin{array}{ccc}
-
-%       \Lambda_{l-1,1}(\cP_\tau)\times \Lambda_{l-1,2}(\cQ_\tau)
-%      &  &
-%         \Lambda_{l-1,1}(\cP_{\tau'})\times \Lambda_{l-1,2}(\cQ_{\tau'})\\
-%      \hline
-%      \hspace{1em}\\
-%        \emptyset
-%       \times
-%       \ytb{ {x_{1}}{x_0},{\enon{\vdots}},{\enon{\vdots}},{x_{n}}}
-%       &
-%         \mapsto  &
-%         \emptyset
-%         \times
-%       \ytb{ {\none}{r},{\none},{\none},\none}
-%       \end{array}
-%     \]
-
-% \end{proof}
-
-% Lemma \ref{descb} is easy to check and we omit the details. Note that $(\frac{\bfrr_2(\ckcO)}{2},1) \in \BOX(\jmath')$ under the first two conditions  of Lemma \ref{descb}. Similarly, we also have the following three lemmas.
-% }
-%  }
-% \begin{lem}\label{descb2}
-%   Suppose that
-% \[  \begin{cases}
-%  \alpha = B^+; & \\
-%  \bfrr_2(\ckcO)>0; & \\
-%  \cQ(\mathbf c_1(\jmath),1)\in \set{r,d}.
-% \end{cases}
-% \]
-%  Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO')$ of the form
-%   \[
-%       \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
-%   \]
-%  such that
-%      $
-%      \cQ' = \cQ'_{\mathrm{naive}}
-%      $
-%      and
-%      for all $(i,j)\in \BOX(\imath')$,
-% \[
-% \cP'(i,j) = \begin{cases}
-%   s, & \ \text{ if $(i,j) = (\mathbf c_1(\imath'),1)$;}\\
-%   \cP'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
-% \end{cases}
-% \]
-% \end{lem}
-
-% \begin{eg}
-%  If
-%  \[
-%  \tau= \ytb{\bullet c, c} \times \ytb{\bullet r, rd}\times
-%   B^+,
-%  \]
-%  then
-% \[
-%  \tau'_{\mathrm{naive}}= \ytb{s c, c} \times \ytb{r, d}\times
-%   \widetilde C\qquad\textrm{and}\qquad \tau'= \ytb{s c, s} \times \ytb{r, d}\times
-%   \widetilde C.
-%  \]
-%  Note that in this case, the nonzero row lengths of $\check \CO$ are $4,4,4,2$.
-% \end{eg}
-
-% \delete{
-% \begin{lem}\label{descd1}
-%   Suppose that
-%   \[  \begin{cases}
-%  \alpha = D; & \\
-%  (2,3)\in \wp;\quad  &\\
-%  \cP(\mathbf c_1(\imath'),1) \in \set{r,c}.
-% \end{cases}
-% \]
-%  Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO',\wp')$ of the form
-%   \[
-%       \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
-%   \]
-%   such that $\cQ'=\cQ'_{\mathrm{naive}}$ and  for all $(i,j)\in \BOX(\imath')$,
-%   \[
-% \cP'(i,j) = \begin{cases}
-%   r, & \ \text{ if } (i,j) = (\mathbf c_1(\imath'),1); \\
-%   \cP(\mathbf c_1(\imath'),1), &\  \text{ if } (i,j) = (\mathbf c_1(\imath')+1,1);\\
-%   \cP'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
-% \end{cases}
-% \]
-
-% \end{lem}
-
-
-
-
-% \begin{Example}
-%  If
-%  \[
-%  \tau= \ytb{\bullet s,  c c, d d} \times \ytb{\bullet,\none, \none }\times
-%   D,
-%  \]
-%  then
-% \[
-%  \tau'_{\mathrm{naive}}=  \ytb{\bullet,  c,  d}  \times  \ytb{\bullet,\none, \none }\times
-%   C,\qquad\textrm{and}\qquad \tau'= \ytb{\bullet, r, c}  \times  \ytb{\bullet,\none, \none }\times
-%   C.
-%  \]
-%  Note that in this case, the nonzero row lengths of $\check \CO$ are $5,5,3,1$,  $\wp=\{(2,3)\}$.
-% \end{Example}
-% }
-% \begin{lem}\label{descd2}
-%   Suppose that
-%   \[  \begin{cases}
-%  \alpha = D; & \smallskip \\
-% \mathbf r_2(\check \CO)=\mathbf r_3(\check \CO)>0;  &\smallskip\\
-% \left(\cP(\mathbf c_2(\imath),1), \textrm{\vrule width 0pt  height 0.9em  \relax} \cP(\mathbf c_2(\imath),2)\right)=(r,c); &\smallskip\\
-%  \cP(\mathbf c_1(\imath),1)\in \set{r,d}.
-% \end{cases}
-% \]
-%  Then there is a unique element in $\mathrm{PBP}_{\star'}(\check \CO')$ of the form
-%   \[
-%       \tau'=(\imath', \cP')\times (\jmath', \cQ')\times \alpha'
-%   \]
-%   such that $\cQ'=\cQ'_{\mathrm{naive}}$ and  for all $(i,j)\in \BOX(\imath')$,
-%   \[
-% \cP'(i,j) = \begin{cases}
-%   r, & \ \text{ if } \ (i,j) = (\mathbf c_1(\imath'),1); \\
-%   \cP'_{\mathrm{naive}}(i,j), & \ \text{ otherwise}.
-% \end{cases}
-% \]
-
-% \end{lem}
-
-
-% \begin{eg}
-%  If
-%  \[
-%  \tau= \ytb{\bullet\bullet, \bullet s, \bullet s, r c} \times \ytb{\bullet\bullet,\bullet,\bullet, \none }\times
-%   D,
-%  \]
-%  then
-% \[
-%  \tau'_{\mathrm{naive}}=\ytb{\bullet, \bullet , \bullet ,  c} \times \ytb{\bullet s,\bullet,\bullet, \none } \times
-%   C,\qquad\textrm{and}\qquad \tau'=\ytb{\bullet, \bullet , \bullet ,  r} \times \ytb{\bullet s,\bullet,\bullet, \none } \times
-%   C.
-%  \]
-%  Note that in this case, the nonzero row lengths of $\check \CO$ are $7,7,7,3$.
-% \end{eg}
-
-% \begin{defn}
-% We define the descent of $\tau$ to be
-% \[
-%   \nabla(\tau):= \begin{cases}
-%   \tau', & \ \text{ if either of the condition of Lemma \ref{descb2}  or \ref{descd2} holds}; \\
-%   \nabla_{\mathrm{naive}}( \tau), & \ \text{ otherwise},
-% \end{cases}
-% \]
-% which is an element of $  \mathrm{PBP}_{\star'}(\check \CO')$.
-% Here $\tau'$ is as in Lemmas  \ref{descb2} and \ref{descd2}.
-% \end{defn}
-% In conclusion, we have by now a well-defined descent map
-% \[
-% \nabla: \mathrm{PBP}_{\star}(\check \CO)\rightarrow \mathrm{PBP}_{\star'}(\check \CO').
-% \]
-
-
-% The following injectivity result will be important for us.
-% %The key property that we will need  of the descent map when $\star\in \set{D,B,C^*}$ are summarized in the following two propositions.
-
-% \begin{prop}\label{prop:DD.BDinj}
-% If $\star \in \set{B, D,C^*}$, then the map
-% \begin{equation}
-%   \begin{array}{rcl}
-%    \PBP_\star(\ckcO)&\rightarrow&
-%    \PBP_{\star'}(\ckcOp)\times \BN\times \bN\times \Z/2\Z, \smallskip\\
-%    \tau& \mapsto & (\DD(\tau), p_\tau, q_\tau, \varepsilon_\tau)
-%    \end{array}
-% \end{equation}
-% is injective. If $\star \in  \set{C,\wtC,D^*}$, then the map
-% \begin{equation}
-%   \begin{array}{rcl}
-%   \DD:  \PBP_\star(\ckcO)&\rightarrow&
-%    \PBP_{\star'}(\ckcOp)
-%    \end{array}
-% \end{equation}
-% is injective.
-
-% \end{prop}
-
-
-
-% \subsection{}
-
-
-% In fact, we only need the proposition where $G$ running over all inner classes.
-% In such case, the proof is relatively simple.
-
-% The rest of this section is devoted to the proof of the following lemma, which clearly implies Proposition \ref{prop:PBP}.
-
-
-
-
-
-% % Suppose $\star = \wtC$, $\wp\neq \emptyset$, and
-% % $t:=\min{t|(2t-1,2t)\in \wp}$. Let $\PPm:=\wp - \set{(2t-1,2t)}$. Let
-% % $\PPm:=\wp - \set{(2t-1,2t)}$.
-
-% \begin{lem}\label{lem:down}
-%   Suppose $\star \in \set{B, C, \wtC, D}$ and
-%   $\wp$ is a non-empty subset of $\CPPs(\ckcO)$.
-%   Let
-%   \[
-%     t:=
-%     \begin{cases}
-%       \min\set{i|(2i-1,2i)\in \wp}, & \text{if $\star \in \set{C,\wtC}$};\\
-%       \min\set{i|(2i,2i+1)\in \wp}, & \text{if $\star \in \set{B,D}$},\\
-%     \end{cases}
-%   \]
-%   and
-%   \[
-%     \PPm:=
-%     \begin{cases}
-%       \wp \setminus \set{(2t-1,2t)},  & \text{if $\star \in \set{C,\wtC}$};\\
-%       \wp \setminus   \set{(2t,2t+1)}, & \text{if $\star \in \set{B,D}$}.\\
-%     \end{cases}
-%   \]
-%   Then
-%   \[
-%     \sharp(\PBP_{\star}(\tau_{\PPm})) = \sharp(\PBP_{\star}(\tau_{\wp})).
-%   \]
-% \end{lem}
-
-% \begin{proof}
-%   We prove the equality by defining a bijection
-%   \[
-%     T_{\PPm,\wp}\colon \PBP_{\star}(\tau_{\PPm}) \rightarrow \PBP_{\star}(\tau_{\wp})\quad \uptaum \mapsto \uptau
-%   \]
-%   %and its inverse $T_{\wp,\PPm}$
-%   explicitly case by case.
-%   In the following, $\uptau = (\imath_{\wp},\cP_{\uptau})\times (\jmath_{\wp},\cQ_{\uptau})$
-%   will always denote an element in $\PBP_{\star}(\tau_{\wp})$ and
-%   $\uptaum = (\imath_{\PPm},\cP_{\uptaum})\times (\jmath_{\PPm},\cQ_{\uptaum})$
-%   an element in $\PBP_{\star}(\tau_{\PPm})$.
-
-%   \medskip
-
-%   % \[
-%   %   T_{\wp,\PPm}\colon \PBP_{\star}(\tau_{\wp}) \rightarrow \PBP_{\star}(\tau_{\PPm}).
-%   % \]
-
-
-%   %We start with the simplest case.
-
-%   \smallskip
-
-%   Case $\star = \wtC$:
-%   %Let $(b_{1},b_{2}) = (\frac{\bfrr_{2t-1}(\ckcO)}{2},\frac{\bfrr_{2t}(\ckcO)}{2})$.
-%   We have
-%   \[
-%     \begin{split}
-%       (\bfcc_{t}(\imath_{\PPm}), \bfcc_{t}(\jmath_{\PPm}))
-%       &= (\bfcc_{t}(\jmath_{\wp}), \bfcc_{t}(\imath_{\wp})),\AND\\
-%       % (\bfcc_{t}(\imath_{\PPm}), \bfcc_{t}(\jmath_{\PPm}))
-%       % &= (b_{1},b_{2})= (\bfcc_{t}(\jmath_{\wp}), \bfcc_{t}(\imath_{\wp})),\AND\\
-%       (\bfcc_{i}(\imath_{\PPm}), \bfcc_{i}(\jmath_{\PPm}) )
-%       & = (\bfcc_{i}(\imath_{\wp}), \bfcc_{i}(\jmath_{\wp}) ) \quad \text{for $i\neq t$}.
-%     \end{split}
-%   \]
-
-%   For $\uptaum\in\PBPs(\tau_{\PPm})$, define $\uptau=:T_{\PPm,\wp}(\uptaum)$ by the following formula:
-%   \[
-%     \begin{split}
-%       \text{$\textrm{ for all } (i,j)\in \BOX{\imath_{\wp}}$,} \quad   \cP_{\uptau}(i,j) &=  \cP_{\uptaum}(i,j),\\
-%       \text{$\textrm{ for all } (i,j)\in \BOX{\jmath_{\wp}}$,} \quad \cQ_{\uptau}(i,j) &= \begin{cases}
-%         r& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=s$,}\\
-%         d& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=c$,}\\
-%         \cQ_{\uptaum}(i,j) &\text{otherwise.}
-%       \end{cases}
-%     \end{split}
-%   \]
-%  We easily check that the above formula defines a valid
-%   painted bipartition $\uptau$ and construct the inverse map $T_{\wp,\PPm}$ by reversing the process.
-%   This finishes the proof for the case when $\star=\wtC$. \medskip
-
-%   \trivial[h]{The inverse map
-%   \[
-%     T_{\wp,\PPm}\colon \PBP_{\star}(\tau_{\wp}) \rightarrow \PBP_{\star}(\tau_{\PPm}).
-%   \]
-%   is given by the following formula:
-%   \[
-%     \begin{split}
-%       \text{$\textrm{ for all } (i,j)\in \BOX{\imath_{\PPm}}$,} \quad \cP_{\uptaum}(i,j) &= \begin{cases}
-%         s& \text{if $j=t$ and  $\cQ_{\uptau}(i,j)=r$,}\\
-%         c& \text{if $j=t$ and  $\cQ_{\uptau}(i,j)=d$,}\\
-%         \cP_{\uptau}(i,j) &\text{otherwise.}
-%       \end{cases}\\
-%       \text{$\textrm{ for all } (i,j)\in \BOX{\jmath_{\PPm}}$,} \quad   \cQ_{\uptaum}(i,j) &=  \cQ_{\uptau}(i,j).\\
-%     \end{split}
-%   \]
-%   }
-%   % We leave it to the reader to check that the above formula does define a valid
-%   % painted bipartition $\uptaum$. Retain the above notation, it is easy to check that the
-%   % inverse map
-%   % \[
-%   %   T_{\PPm,\wp}\colon \PBP_{\star}(\tau_{\PPm}) \rightarrow \PBP_{\star}(\tau_{\wp})\quad \uptaum \mapsto \uptau
-%   % \]
-%   % is given by the following formula:
-%   % \[
-%   %   \begin{split}
-%   %     \text{$\textrm{ for all } (i,j)\in \BOX{\imath_{\wp}}$,} \quad   \cP_{\uptau}(i,j) &=  \cP_{\uptaum}(i,j),\\
-%   %     \text{$\textrm{ for all } (i,j)\in \BOX{\jmath_{\wp}}$,} \quad \cQ_{\uptau}(i,j) &= \begin{cases}
-%   %       r& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=s$,}\\
-%   %       d& \text{if $j=t$ and  $\cP_{\uptaum}(i,j)=c$,}\\
-%   %       \cQ_{\uptaum}(i,j) &\text{otherwise.}
-%   %     \end{cases}
-%   %   \end{split}
-%   % \]
-
-%   \medskip
-
-%   Case $\star = C$:
-%   % Let
-%   % $(b_{1},b_{2}) = (\frac{\bfrr_{2t-1}(\ckcO)-1}{2},\frac{\bfrr_{2t}(\ckcO)+1}{2})$.
-%   We have
-%   \[
-%     \begin{split}
-%       (\bfcc_{t}(\imath_{\PPm}), \bfcc_{t}(\jmath_{\PPm})) &=
-%       (\bfcc_{t}(\jmath_{\wp})+1, \bfcc_{t}(\imath_{\wp})-1) \AND \\
-%      %  &= (b_{2},b_{1}),  \\
-%      % &= (b_{1}-1,b_{2}+1),\AND\\
-%       % (\bfcc_{t}(\imath_{\PPm}), \bfcc_{t}(\jmath_{\PPm})) &= (b_{2},b_{1}),  \\
-%       % (\bfcc_{t}(\imath_{\wp}), \bfcc_{t}(\jmath_{\wp})) &= (b_{1}-1,b_{2}+1),\AND\\
-%       (\bfcc_{i}(\imath_{\PPm}),\bfcc_{i}(\jmath_{\PPm})) &=(\bfcc_{i}(\imath_{\wp}),\bfcc_{i}(\jmath_{\wp}))\quad \text{for $i\neq t$}.
-%     \end{split}
-%   \]
-%   % Let
-%   % $a = \half(\bfrr_{2t-1}(\ckcO)-\bfrr_{2t}(\ckcO))-1 = \bfcc_{t}(\jmath_{\PPm})-\bfcc_{t}(\imath_{\PPm})$.
-
-%   \trivial[h]{
-%     The idea of the definition of $T_{\PPm,\wp}$ is that we move ``$s$'' appeared
-%     in the $t$-th column of $\cQ_{\uptaum}$ to the $t$-th column of
-%     $\cP_{\uptau}$.
-%   }
-
-%   For $\uptaum\in \PBPs(\tau_{\PPm})$, we define $\uptau$ by the following algorithm:
-%   \begin{description}
-%     \item[STEP~1] Define a map
-%           $\cP'\colon \BOX{\imath_{\wp}}\rightarrow \set{\bullet,r,c,d}$ (as a candidate for $\cP_{\uptau}$), by the following rules:
-%           \begin{enumerate}[label=(\alph*)]
-%             \item Suppose
-%             $\cP_{\uptaum}(\bfcc_{t}(\imath_{\PPm}),t)\neq \bullet$.
-%             \begin{itemize}
-%               \item If $\bfcc_{t}(\imath_{\PPm})\geq 2$ and
-%               $\cP_{\uptaum}(\bfcc_{t}(\imath_{\PPm})-1,t) = c$,
-%               we define
-%               \[
-%                 \cP'(i,j) := \begin{cases}
-%                   r ,& \text{if $j=t$ and $\bfcc_{t}(\imath_{\PPm})-1
-%                     \leq i \leq \bfcc_{t}(\imath_{\wp})-2$},\\
-%                   c ,& \text{if $(i,j)=(\bfcc_{t}(\imath_{\wp})-1,t)$},\\
-%                   d ,& \text{if $(i,j)=(\bfcc_{t}(\imath_{\wp}),t)$},\\
-%                   \cP_{\uptaum}(i,j) ,&\text{otherwise}.
-%                 \end{cases}
-%               \]
-%               \item Otherwise, we define
-%               \[
-%                 \cP'(i,j) := \begin{cases}
-%                   r ,& \text{if $j=t$ and $\bfcc_{t}(\imath_{\PPm})
-%                     \leq i \leq \bfcc_{t}(\imath_{\wp})-1$},\\
-%                   \cP_{\uptaum}(\bfcc_{t}(\imath_{\PPm}),t) ,&
-%                   \text{if $(i,j)=(\bfcc_{t}(\imath_{\wp}),t)$},\\
-%                   \cP_{\uptaum}(i,j) ,&\text{otherwise}.
-%                 \end{cases}
-%               \]
-%             \end{itemize}
-%             \item Suppose $\cP_{\uptaum}(\bfcc_{t}(\imath_{\PPm}),t)=\bullet$.
-%             \begin{itemize}
-%               \item If $\bfcc_{t+1}(\imath_{\PPm}) = \bfcc_{t}(\imath_{\PPm})$
-%               and
-%               $\cP_{\uptaum}(\bfcc_{t}(\imath_{\PPm}),t+1) = r$,
-%               we define
-%               \[
-%                 \cP'(i,j) := \begin{cases}
-%                   r ,& \text{if $j=t$ and $\bfcc_{t}(\imath_{\PPm})\leq i \leq \bfcc_{t}(\imath_{\wp})-1$},\\
-%                   c ,& \text{if $(i,j)=(\bfcc_{t+1}(\imath_{\PPm}),t+1)$},\\
-%                   d ,& \text{if $(i,j)=(\bfcc_{t}(\imath_{\wp}),t)$},\\
-%                   \cP_{\uptaum}(i,j) ,&\text{otherwise}.
-%                 \end{cases}
-%               \]
-%               \item Otherwise, we define
-%               \[
-%                 \cP'(i,j) := \begin{cases}
-%                   r ,& \text{if $j=t$ and $\bfcc_{t}(\imath_{\PPm})\leq i \leq \bfcc_{t}(\imath_{\wp})-2$},\\
-%                   c ,& \text{if $(i,j)=(\bfcc_{t}(\imath_{\wp})-1,t)$},\\
-%                   d ,& \text{if $(i,j)=(\bfcc_{t}(\imath_{\wp}),t)$},\\
-%                   \cP_{\uptaum}(i,j) ,&\text{otherwise}.
-%                 \end{cases}
-%               \]
-%             \end{itemize}
-%           \end{enumerate}
-
-%     \item[STEP 2] From the construction of $\cP'$, there are four possibilities for $\cP'$ to violate the requirements of a painting on $\imath_{\wp}$, which are detailed as follows. We must have $t>1$ and violations occur in positions of $(i,j)\in \BOX{\imath_{\wp}}$ inside the following $2\times 2$ square
-%          \[
-%           A :=
-%           \begin{pmatrix}
-%             (\bfcc_{t}(\imath_{\wp})-1,t-1) & (\bfcc_{t}(\imath_{\wp})-1,t) \\
-%             (\bfcc_{t}(\imath_{\wp})\;\phantom{-1}\;,t-1) & (\bfcc_{t}(\imath_{\wp})\;\phantom{-1}\;,t) \\
-%           \end{pmatrix}
-%           \]
-
-%           %\[
-%           %A :=
-%           %\begin{pmatrix}
-%           %  \cP'(\bfcc_{t}(\imath_{\wp})-1,t-1) & \cP'(\bfcc_{t}(\imath_{\wp})-1,t) \\
-%           %  \cP'(\bfcc_{t}(\imath_{\wp})\;\phantom{-1}\;,t-1) & \cP'(\bfcc_{t}(\imath_{\wp})\;\phantom{-1}\;,t) \\
-%           %\end{pmatrix}
-%           %\]
-%           \trivial[h]{
-%           Note that  $\cP'(\bfcc_{t}(\imath_{\wp})-1,t-1)$ is always equal to
-%           $\bullet$.
-%           }
-
-%     Let $\cP_{\uptau}\colon \BOX{\imath_{\wp}}\rightarrow \set{\bullet,r,c,d}$
-%           be the painting on $\imath_{\wp}$ defined as follows:
-%           \begin{itemize}
-%             \item When $(i,j)\in \BOX{\imath_{\wp}}$ and
-%             $\set{i-\bfcc_{t}(\imath_{\wp})+1, j-t+1}\nsubseteq \set{0,1}$
-%             (i.e. $(i,j)$ is not one of the four boxes corresponding to
-%             $A$), we define
-%             \[
-%               \cP_{\uptau}(i,j):= \cP'(i,j).
-%             \]
-
-%             \item For the four boxes corresponding to $A$, we modify the symbols by
-%             setting
-%             \begin{equation} \label{eq:modP}
-%               \begin{split}
-%               %  &\begin{pmatrix}
-%               %    \cP_{\uptau}(\bfcc_{t}(\imath_{\wp})-1,t-1) & \cP_{\uptau}(\bfcc_{t}(\imath_{\wp})-1,t) \\
-%               %   \cP_{\uptau}(\bfcc_{t}(\imath_{\wp})\;\phantom{-1}\;,t-1)
-%               %    & \cP_{\uptau}(\bfcc_{t}(\imath_{\wp})\;\phantom{-1}\;,t) \\
-%               % \end{pmatrix}\\
-%               \cP_{\uptau}|_A  :=&
-%                 \begin{cases}
-%                   \begin{pmatrix}
-%                     r & c\\
-%                     r & d
-%                   \end{pmatrix}, & \text{if } \cP'|_A =
-%                   \begin{pmatrix}
-%                     \bullet & r\\
-%                     r & r
-%                   \end{pmatrix},\\[1.5em]
-%                   \begin{pmatrix}
-%                     r & c\\
-%                     c & d
-%                   \end{pmatrix}, & \text{if } \cP'|_A =
-%                   \begin{pmatrix}
-%                     \bullet & r\\
-%                     c & r
-%                   \end{pmatrix},\\[1.5em]
-%                   \begin{pmatrix}
-%                     r & c\\
-%                     d & d
-%                   \end{pmatrix}, & \text{if } \cP'|_A =
-%                   \begin{pmatrix}
-%                     \bullet & r\\
-%                     d & r
-%                   \end{pmatrix},\\[1.5em]
-%                   \begin{pmatrix}
-%                     c & c\\
-%                     d & d
-%                   \end{pmatrix}, & \text{if } \cP'|_A =
-%                   \begin{pmatrix}
-%                     \bullet & r\\
-%                     d & c
-%                   \end{pmatrix}.\\
-%                 \end{cases}
-%               \end{split}
-%             \end{equation}
-%           \end{itemize}
-
-%     \item[STEP 3] The painted bipartition $\uptau$ is uniquely determined by
-%           $\cP_{\uptau}$. More precisely, $\cQ_{\uptau}$ is given by the following
-%           formula: for $(i,j)\in \BOX{\jmath_{\wp}}$,
-%           \[
-%           \cQ_{\uptau}(i,j) :=
-%           \begin{cases}
-%             s, & \begin{minipage}{17em}if $\cP'$ is not a valid painting on $\imath_{\wp}$\\
-%               and $(i,j)= (\bfcc_{t}(\imath_{\wp})-1,t-1)$,
-%               \end{minipage}\\
-%             \cQ_{\uptaum}(i,j), & \text{otherwise.}
-%             \end{cases}
-%           \]
-%   \end{description}
-
-%  It is not difficult to check that $\uptau$ is a valid painted bipartition
-%  and to construct the inverse map $T_{\wp,\PPm}$ by reversing the above steps.
-
-%  \trivial[h]{
-%    The inverse map $T_{\wp,\PPm}$ is given by the following algorithm:
-%    \begin{description}
-%      \item[STEP 1] We first recover $\cP'$.
-%            If $t=1$ or $\cP'(\bfcc_{t}(\imath_{\wp})-1,t-1)=\bullet$, then
-%            $\cP':= \cP_{\wp}$.
-%            Otherwise,
-%            $\cP'$ is given by $\cP_{\wp}$ except the $2\times 2$ square in
-%            \eqref{eq:modP} which is given by reversing the formula cited.
-%      \item[STEP 2]
-
-%            \def\xxn{\cP_{\uptaum}(\bfcc_t(\imath_{\PPm})-1,t)} %x_0
-%            \def\xxo{\cP_{\uptaum}(\bfcc_t(\imath_{\wp}),t)} %x_1
-%            \def\xxd{\cP_{\uptaum}(\bfcc_t(\imath_{\wp}),t+1)} %x_2
-%            \def\yyn{\cP'(\bfcc_t(\imath_{\PPm})-1,t)} %y_0
-%            \def\yyo{\cP'(\bfcc_t(\imath_{\wp})-1,t)} %y_1
-%            \def\yyt{\cP'(\bfcc_t(\imath_{\wp}),t)} %y_3
-%            \def\yyd{\cP'(\bfcc_t(\imath_{\wp}),t+1)} %y_2
-%            We have the following cases:
-%            \begin{enumerate}[label=(\alph*)]
-%              \item Suppose $\yyo=r$.
-%              \begin{itemize}
-%                \item If $\bfcc_{t+1}(\imath_{\wp}) = \bfcc_{t}(\imath_{\PPm})$
-%                and
-%                \[
-%                  (\yyd,\yyt) = (c,d),
-%                \]
-%                let
-%                \[
-%                  (\xxo,\xxd):=(\bullet, r)
-%                \]
-%                \item Otherwise, let \[
-%                  \xxo:=\yyt.
-%                \]
-%              \end{itemize}
-%              \item Suppose $\yyo=c$
-%              \begin{itemize}
-%                \item If $\bfcc_{t}(\imath_{\PPm})\geq 2$ and $\xxn=r$,
-%                then let
-%                \[
-%                  (\xxn,\xxo):=(c,d).
-%                \]
-%                \item Otherwise, let
-%                \[
-%                  \xxo :=\bullet.
-%                \]
-%              \end{itemize}
-%            \end{enumerate}
-%            For the boxes $(i,j)$ in $\BOX{\imath_{\uptaum}}$ which are not specified
-%            in the above procedure, set
-%            \[
-%            \cP_{\uptaum}(i,j):=\cP'(i,j).
-%            \]
-%      \item[STEP 3]
-%            Now $\cP_{\uptaum}$ uniquely determine the painted bipartition
-%            $\uptaum$.
-%    \end{description}
-%    The construction of the inverse map implies that $T_{\PPm,\wp}$ is a
-%    bijection.
-%  }
-
-%   \def\ckcOa{\ckcO^{\uparrow}}
-%   \def\PPa{\wp^{\uparrow}}
-%   \def\PPam{\wp^{\uparrow}_{\downarrow}}
-%   \def\uptauu{\uptau^{\uparrow}}
-%   \def\uptau
-%   \def\tauPPa{\tau_{\PPa}}
-%   \def\tauPPam{\tau_{\PPam}}
-%   \def\stara{\star^{\uparrow}}
-
-%   \medskip
-
-%   {Now suppose $\star \in \set{B,D}$.}
-%   We will prove the lemma by appealing to the corresponding assertion for the case of $\wtC/C$.
-%   Let
-%   \[
-%     \stara := \begin{cases}
-%       \wtC ,& \text{when $\star=B$},\\
-%       C ,& \text{when $\star=D$},
-%     \end{cases}
-%   \]
-%   and $\ckcOa$ be the partition defined by
-%   \[
-%     \bfrr_{1}(\ckcOa) = \bfrr_{1}(\ckcO)+2, \AND \bfrr_{i+1}(\ckcOa)
-%     = \bfrr_{i}(\ckcO)\quad \text{for all $i=1,2,3,\cdots,$}.
-%   \]
-%   Clearly
-%   \[
-%     \CPP_{\stara }(\ckcOa) = \set{(1,2)}\cup \set{(i+1,i+2)|(i,i+1)\in \CPP_{\star}(\ckcO)}.
-%   \]
-
-
-
-
-%   % Let $\PPa$ denote the subset in
-%   % $\CPP(\ckcOa)$ defined by
-%   % \[
-%   %   \PPa:=\set{(i+1,i+2)|(i,i+1)\in \sP}.
-%   % \]
-%   % Let $r_{0}:= \half \bfrr_{1}(\ckcO)+1 = \bfcc_{1}(\imath_{\PPa})$. For $x=c$
-%   % or $s$, define
-%   % \[
-%   %   \PBP_{\wtC}^{x}(\tauPPa):= \Set{\uptaua\in \PBP_{\wtC}(\tau_{\PPa})|\cP_{\uptaua}\left(r_{0},1\right)=x}
-%   % \]
-%   % where $\tauPPa$ is the bipartition defined with respect to $\ckcOa$.
-
-%   % Let $\PPam:=(\PPa)_{\downarrow}$. It is easy to check that
-%   % \begin{itemize}
-%   %   \item
-%   %   $\PBP_{\wtC}(\tauPPa) = \PBP_{\wtC}^{c}(\tauPPa)\sqcup \PBP_{\wtC}^{s}(\tauPPa)$,
-%   %   \item the map $T_{\PPa,\PPam}$ restricted into a bijection from
-%   %   $\PBP_{\wtC}^{x}(\tauPPa)$ onto $\PBP_{\wtC}^{x}(\tauPPam)$ (here $x=s$ or
-%   %   $c$), and
-%   %   \item the descent map restricted to bijections
-%   %   \[
-%   %     \text{
-%   %         $\PBP_{\wtC}^{s}(\tau_{\PPa})\longrightarrow \PBP_{B^{+}}(\tau_{\sP})$
-%   %         and
-%   %         $\PBP_{\wtC}^{c}(\tau_{\PPa})\longrightarrow \PBP_{B^{-}}(\tau_{\sP})$.
-%   %     }
-%   %   \]
-%   % \end{itemize}
-
-%   % Now the bijection $T_{\wp,\wpm}$ is defined by making the following diagram
-%   % commutative
-%   % \[
-%   %   \begin{tikzcd}
-%   %     \PBP_{\wtC}^{s}(\tau_{\PPa}) \ar[r] \ar[d] & \PBP_{B^{+}}^{s}(\tau_{\wp}) \ar[d]\\
-%   %     \PBP_{\wtC}^{s}(\tau_{\PPam}) \ar[r] & \PBP_{B^{+}}^{s}(\tau_{\PPm}) \\
-%   %   \end{tikzcd}
-%   % \]
-
-%  % For each subset $\sP\subset \CPP(\ckcO)$,
-%   Let $\PPa$ denote the subset in
-%   $\CPP_{\stara }(\ckcOa)$ defined by
-%   \[
-%     \PPa:=\set{(i+1,i+2)|(i,i+1)\in \sP}.
-%   \]
-%   % Let $r_{0}:= \half \bfrr_{1}(\ckcO)+1 = \bfcc_{1}(\imath_{\PPa})$.
-%   % For $x=c$
-%   % or $s$, define
-%   % \[
-%   %   \PBP_{\wtC}^{x}(\tauPPa):= \Set{\uptaua\in \PBP_{\wtC}(\tau_{\PPa})|\cP_{\uptaua}\left(r_{0},1\right)=x}
-%   % \]
-%   % where $\tauPPa$ is the bipartition defined with respect to $\ckcOa$.
-
-% Let $\PPam:=(\PPa)_{\downarrow}$. Recall from \cite[Section 2.3]{BMSZ2} the (naive) descent map $\DD$ of painted bipartitions.
-% It is easy to check that the descent maps (horizontal arrows) in the following diagram are bijections.
-%  %(c.f. \cite{BMSZ1}*{Lemma???}). % restricted to bijections
-%  % \[
-%  %   \PBP_{\wtC}(\tau_{\PPa})\longrightarrow \PBP_{B}(\tau_{\sP}).
-%  % \]
-%   \[
-%     \begin{tikzcd}
-%       \PBP_{\wtC}(\tau_{\PPam}) \ar[r,"\DD",two heads,hook] \ar[d,two heads,hook,"T_{\PPam,\PPa}"']
-%       & \PBP_{B}(\tau_{\PPm}) \ar[d,dashed,"T_{\PPm,\wp}"]\\
-%       \PBP_{\wtC}(\tau_{\PPa}) \ar[r,"\DD",two heads,hook] & \PBP_{B}(\tau_{\wp}) \\
-%     \end{tikzcd}
-%   \]
-%  Since there is a bijection $T_{\PPam,\PPa}$ in the left vertical arrow by case $\wtC$, we may define a bijection $T_{\PPm,\wp}$ in the right vertical arrow by making the above diagram commutative.
-%  This completes the proof for the case $B$. The case $D$ is entirely similar.
-% \end{proof}
 
 
 
