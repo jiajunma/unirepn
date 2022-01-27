@@ -2266,6 +2266,70 @@ Now we define the notion of special and non-special shape of type D.
 \end{table}
 
 
+
+\providecommand{\mapsfrom}{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+\begin{table}[hpb]
+\[\tiny
+\begin{array}{c|c|c|c:c|c}
+  & \uptaup  &\uptau^{\mathrm s}\mapsto \uptau^{\mathrm{ns}}  & \uptau^{s} & \uptau^{ns} & \uptau^{\mathrm s}\mapsfrom\uptau^{\mathrm{ns}}  \\
+  \hline & \ytb{{x'_{0}}{\ast},{x'_{1}}{x'_{2}},\none,\none,\none,\none}
+             \times \ytb{\ast,\none,\none,\none,\none,\none}
+             &
+           &\ytb{{x_{0}}{\ast},{x_{1}}{x_{2}},\ ,\ ,\ ,\ }
+    \times\ytb{{\ast}{\ast},{x_{3}},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\ }& \ytb{{y_{0}}{\ast},{*(srcol)r}{y_{2}}, {*(srcol)\vdots},{*(srcol)r},{y_{1}},{y_{3}} } \times\ytb{{\ast}\ast,\ ,\ ,\ ,\ ,\ } &  \\
+  \hline \ytb{{x'_{1}}{=}{s},{\text{then}},{z_{0}}{=}{\emptyset/}{s},{x_{0}}{=}{\emptyset/}{\bullet},{x_{1}}{=}{\bullet},
+  {x_{2}}{=}{x'_{2}}}
+  &
+            \ytb{{x'_{0}}{\ast},{s}{x_{2}},\none,\none,\none,\none}
+             \times \ytb{\ast,\none,\none,\none,\none,\none}
+                &
+                  \ytb{{x_{1} =\bullet},{x_{2}\neq r}}
+                  &
+                \ytb{{x_{0}}{\ast},{\bullet}{x_{2}},\ ,\ ,\ ,\ }
+    \times\ytb{{\ast}\ast,{\bullet},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\ }&
+  \ytb{{x_{0}}{\ast},{*(srcol)r}{x_{2}},{*(srcol)\vdots},{*(srcol)r},{c},{d} }
+                          \times\ytb{{\ast}{\ast},\ ,\ ,\ ,\ ,\ } &
+     \begin{split}y_{1}&=c\\ y_{0} &\neq r\end{split}\\
+  \cline{3-6} & &
+                  \ytb{{x_{1} =\bullet},{x_{2} = r}}
+                  &
+                  \ytb{{x_{0}}{\ast},{\bullet}{r},\ ,\ ,\ ,\ }
+    \times\ytb{{\ast}\ast,{\bullet},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\ }&
+  \ytb{{x_{0}}{\ast},{*(srcol)r}{c},{*(srcol)\vdots},{*(srcol)r},{r},{d} } \times\ytb{{\ast}\ast,\ ,\ ,\ ,\ ,\ } &
+     \begin{split}y_{1}&=r\\ (y_{2},y_{3})&=(c,d)\end{split}\\
+  \hline
+\ytb{{x'_{1}}{\neq}{s},{\text{then}},{x_{1}}{=}{x'_{1}},{x_{2}}{=}{x'_{2}}}
+  &
+            \ytb{{x'_{0}}{\ast},{x'_{1}}{x_{2}},\none,\none,\none,\none}
+             \times \ytb{\ast,\none,\none,\none,\none,\none}
+   &
+                  \ytb{{x_{1}}{\neq}{\bullet},{x_{0}}{\neq}{ c}, {\text{then}},{x'_{0}}{=}{\emptyset/}{s/}{r},{x_{0}}{=}{\emptyset/}{\bullet/}{r}}
+                  &
+    \ytb{{x_{0}}{\ast},{x_{1}}{x_{2}},\ ,\ ,\ ,\ }
+    \times\ytb{{\ast}\ast,{s},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\ }&
+  \ytb{{x_{0}}{\ast},{*(srcol)r}{x_{2}},{*(srcol)\vdots},{*(srcol)r},{r},{x_{1}} }
+       \times\ytb{{\ast}\ast,\ ,\ ,\ ,\ ,\ } &
+     \begin{split}y_{1}&=r\\ (y_{2},y_{3})&\neq (c,d)\end{split}\\
+  %\hline
+  \cline{3-6}
+   & &
+       \ytb{{x_{1}}{\neq}{\bullet},{x_{0}}{=}{ c}, {\text{then}}
+,{x_{0}}{=}{x'_{0}}{=}{c},{x_{1}}{=}{x'_{1}}{=}{d},{x_{2}}{=}{x'_{2}}{=}{\emptyset/d}}
+                  &
+    \ytb{{c}{\ast},{d}{x_{2}},\ ,\ ,\ ,\ }
+    \times\ytb{{\ast}\ast,{s},{*(srcol)s},{*(srcol)\vdots},{*(srcol)s},\ }&
+  \ytb{{r}{\ast},{*(srcol)r}{x_{2}},{*(srcol)\vdots},{*(srcol)r},{c},{d} }
+  \times\ytb{{\ast}\ast,\ ,\ ,\ ,\ ,\ }&
+     \begin{split}y_{1}&=c\\ y_{0} &= r\end{split}\\
+  \hline
+  \hline
+\end{array}
+\]
+\caption{``special-non-special'' switch}
+\label{tab:nonsp.C}
+\end{table}
+
+
 \subsection{Definition of $\eDD$ of Type D and C} \label{sec:alg.CD}
 
 The induction starts with type C: For the trivial orbit $\cO$ of
