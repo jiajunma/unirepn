@@ -748,7 +748,7 @@
 
  \def\tnaive{\mathrm{naive}}
 
- \def\Ass{A_{\mathrm{ss}}}
+ \def\Ass{A_{\mathrm{s}}}
  \def\Ans{A_{\mathrm{ns}}}
  \def\wpu{\wp_{\uparrow}}
  \def\wpm{\wp_{\downarrow}}
@@ -3708,7 +3708,7 @@ imply the following counting result.
 
 \begin{prop} \label{prop:PBP2} Suppose that   $\star\in \set{B,C,\wtC,D}$. Then
   \[
-    \sharp(\PBP_{G}(\tau_{\wp})) = \sharp(\PBP_{G}(\tau_{\emptyset})), \quad \textrm{for all } \wp \subset \CPPs(\ckcO).
+    \sharp(\PBPOP) = \sharp(\PBPop{\star}{}{\ckcO}{\emptyset}), \quad \textrm{for all } \wp \subset \CPPs(\ckcO).
   \]
  Consequently,
      \[
@@ -3725,7 +3725,7 @@ imply the following counting result.
 
 
  Moreover, we assume that $(1,2)$ is a primitive pair, i.e.
- $(1,2)\in \PP(\ckcO)$. We have the following decomposition of the power set
+ $(1,2)\in \CPPs(\ckcO)$. We have the following decomposition of the power set
  $A(\ckcO)$ of $\PP(\ckcO)$
  \[
    A(\ckcO) = \Ass(\ckcO) \sqcup \Ans(\ckcO)
@@ -3735,7 +3735,7 @@ imply the following counting result.
  \Ass(\ckcO): = \set{\wp | (1,2)\notin \wp}, \AND
  \Ans(\ckcO): = \set{\wp | (1,2)\in \wp}.
  \]
- For each $\wp\in A(\ckcO)$, we
+ For each $\wp\in \Ass(\ckcO)$, we
  define $\wp_{\uparrow}:= \wp\cup \set{(1,2)}$. Clearly, the map
  $\wp \mapsto \wp_{\uparrow}$ defines bijection from $\Ass(\ckcO)$ to
  $\Ans(\ckcO)$.
@@ -3791,8 +3791,8 @@ imply the following counting result.
        \cP_{\uptauu}(i,j) := \begin{cases}
          r ,& \text{if $j=1$ and $\bfcc_{1}(\imath_{\wpd})-1
            \leq i \leq \bfcc_{1}(\imath_{\wpu})-2$},\\
-         c ,& \text{if $(i,j)=(\bfcc_{t}(\imath_{\wpu})-1,1)$},\\
-         d ,& \text{if $(i,j)=(\bfcc_{t}(\imath_{\wpu}),1)$},\\
+         c ,& \text{if $(i,j)=(\bfcc_{1}(\imath_{\wpu})-1,1)$},\\
+         d ,& \text{if $(i,j)=(\bfcc_{1}(\imath_{\wpu}),1)$},\\
          \cP_{\uptaud}(i,j) ,&\text{otherwise};
        \end{cases}
      \]
@@ -3800,9 +3800,9 @@ imply the following counting result.
      \[
        \cP_{\uptauu}(i,j) := \begin{cases}
          r ,& \text{if $j=1$ and $\bfcc_{1}(\imath_{\wpu})
-           \leq i \leq \bfcc_{t}(\imath_{\wpu})-1$},\\
-         \cP_{\uptaud}(\bfcc_{t}(\imath_{\wpd}),t) ,&
-         \text{if $(i,j)=(\bfcc_{t}(\imath_{\wpu}),t)$},\\
+           \leq i \leq \bfcc_{1}(\imath_{\wpu})-1$},\\
+         \cP_{\uptaud}(\bfcc_{1}(\imath_{\wpd}),1) ,&
+         \text{if $(i,j)=(\bfcc_{1}(\imath_{\wpu}),1)$},\\
          \cP_{\uptaud}(i,j) ,&\text{otherwise};
        \end{cases}
      \]
@@ -3816,8 +3816,8 @@ imply the following counting result.
      \[
        \cP_{\uptauu}(i,j) := \begin{cases}
          r ,& \text{if $j=1$ and $\bfcc_{t}(\imath_{\wpd})\leq i \leq \bfcc_{t}(\imath_{\wpu})-1$},\\
-         c ,& \text{if $(i,j)=(\bfcc_{t+1}(\imath_{\wpd}),t+1)$},\\
-         d ,& \text{if $(i,j)=(\bfcc_{t}(\imath_{\wpu}),t)$},\\
+         c ,& \text{if $(i,j)=(\bfcc_{2}(\imath_{\wpd}),2)$},\\
+         d ,& \text{if $(i,j)=(\bfcc_{1}(\imath_{\wpu}),1)$},\\
          \cP_{\uptaud}(i,j) ,&\text{otherwise}.
        \end{cases}
      \]
@@ -3825,8 +3825,8 @@ imply the following counting result.
      \[
        \cP_{\uptauu}(i,j) := \begin{cases}
          r ,& \text{if $j=1$ and $\bfcc_{1}(\imath_{\wpd})\leq i \leq \bfcc_{1}(\imath_{\wpu})-2$},\\
-         c ,& \text{if $(i,j)=(\bfcc_{t}(\imath_{\wpu})-1,t)$},\\
-         d ,& \text{if $(i,j)=(\bfcc_{t}(\imath_{\wpu}),t)$},\\
+         c ,& \text{if $(i,j)=(\bfcc_{1}(\imath_{\wpu})-1,t)$},\\
+         d ,& \text{if $(i,j)=(\bfcc_{1}(\imath_{\wpu}),t)$},\\
          \cP_{\uptaud}(i,j) ,&\text{otherwise}.
        \end{cases}
      \]
@@ -3841,21 +3841,27 @@ imply the following counting result.
 {\bfseries Suppose $\star = \wtC$.}
 
   For all $(i,j)\in \BOX{\imath_{\wpu}}$,
-   \[
-     \cP_{\uptauu}(i,j) := \cP_{\uptau}(i,j).
-   \]
+  \begin{equation} \label{eq:T.M1}
+     \cP_{\uptauu}(i,j) :=
+     \begin{cases}
+       s& \text{if $j=1$ and  $\cQ_{\uptau}(i,j)=s$,}\\
+       c& \text{if $j=1$ and  $\cQ_{\uptau}(i,j)=c$,}\\
+       \cP_{\uptau}(i,j) &\text{otherwise.}
+     \end{cases}
+     % \cP_{\uptau}(i,j).
+   \end{equation}
 
   For all $(i,j)\in \BOX{\jmath_{\wpu}}$,
    % For $\uptaum\in\PBPs(\tau_{\PPm})$, define $\uptau=:T_{\PPm,\wp}(\uptaum)$
    % by the following formula:
-   \[
-     \cQ_{\uptauu}(i,j) :=
-     \begin{cases}
-       r& \text{if $j=1$ and  $\cP_{\uptau}(i,j)=s$,}\\
-       d& \text{if $j=1$ and  $\cP_{\uptau}(i,j)=c$,}\\
-       \cQ_{\uptau}(i,j) &\text{otherwise.}
-     \end{cases}
-   \]
+  \begin{equation} \label{eq:T.M1}
+    \cQ_{\uptauu}(i,j) :=
+    \begin{cases}
+      r& \text{if $j=1$ and  $\cP_{\uptau}(i,j)=s$,}\\
+      d& \text{if $j=1$ and  $\cP_{\uptau}(i,j)=c$,}\\
+      \cQ_{\uptau}(i,j) &\text{otherwise.}
+    \end{cases}
+  \end{equation}
 
 
  % to an element $\uptauu\in \PBP_{\star}(\ttau_{\wpu})$ such that
@@ -3865,74 +3871,161 @@ imply the following counting result.
   gives a well defined
   bijection
   \[
-    T_{\wp,\wpu}\colon \PBP_{\star}(\ttau_{\wp}) \rightarrow
-    \PBP_{\star}(\ttau_{\wpu}) %. \quad \uptau \mapsto \uptauu
+    T_{\wp,\wpu}\colon \PBPOP \rightarrow
+    \PBPop{\star}{}{\ckcO}{\wpu} %. \quad \uptau \mapsto \uptauu
   \]
 \end{lem}
 \begin{proof}
- It is routine to check that $\uptauu$ is a valid painted bipartition
- and to construct the inverse map $T_{\wp,\PPm}$ by reversing the above steps.
+  It is routine to check that $T_{\wp,\wpu}$ is well defined, i.e. $\uptauu$ is a valid painted bipartition.
+  Similarly, it is routine to check that the map
+  \[
+    T_{\wpu,\wp}\colon
+    \PBPop{\star}{}{\ckcO}{\wpu} \rightarrow \PBPOP
+  \]
+  given by the following recipe is well defined:
+  {\bfseries Suppose $\star = C$.}
+  For all $(i,j)\in \BOX{\jmath_{\wpd}}$, we define $\cP_{\uptaud}(i,j)$ and $\cQ_{\uptaud}(i,j)$ case by
+  case:
+ \begin{enumerate}[label=(\alph*)]
+   \item Suppose
+   $\cP_{\uptauu}(\bfcc_{1}(\imath_{\wpu})-1,1)=c$.
+   \begin{enumerate}[label={\localtextbulletone}]
+     \item If $\bfcc_{1}(\imath_{\wpd})\geq 2$ and
+     $\cP_{\uptau}(\bfcc_{1}(\imath_{\wpd})-1,1) = r$,
+     we define
+     \[
+       \cP_{\uptaud}(i,j) := \begin{cases}
+         c ,& \text{if $(i,j)=(\bfcc_{1}(\imath_{\wpd})-1,1)$},\\
+         d ,& \text{if $(i,j)=(\bfcc_{1}(\imath_{\wpd}),1)$},\\
+         \cP_{\uptauu}(i,j) ,&\text{otherwise};
+       \end{cases}
+     \]
+     and
+     \[
+       \cQ_{\uptaud}(i,j) := \begin{cases}
+         s ,& \text{if $j=1$ and $\bfcc_{1}(\imath_{\wpd})\leq i \leq \bfcc_{1}(\jmath_{\wpd})$},\\
+         \cQ_{\uptauu}(i,j) ,&\text{otherwise};
+       \end{cases}
+     \]
+     \item Otherwise, we define
+     \[
+       \cP_{\uptaud}(i,j) := \begin{cases}
+         \bullet ,& \text{if $(i,j)=(\bfcc_{1}(\imath_{\wpd}),1)$},\\
+         \cP_{\uptauu}(i,j) ,&\text{otherwise};
+       \end{cases}
+     \]
+     and
+     \[
+       \cQ_{\uptaud}(i,j) := \begin{cases}
+         \bullet ,& \text{if $(i,j)=(\bfcc_{1}(\imath_{\wpd}),1)$},\\
+         s ,& \text{if $j=1$ and $\bfcc_{1}(\imath_{\wpd})+1\leq i \leq \bfcc_{1}(\jmath_{\wpd})$},\\
+         \cQ_{\uptauu}(i,j) ,&\text{otherwise};
+       \end{cases}
+     \]
+   \end{enumerate}
+   \item Suppose $\cP_{\uptauu}(\bfcc_{1}(\imath_{\wpu})-1,1)=r$.
+   \begin{enumerate}[label={\localtextbulletone}]
+     \item If $\bfcc_{2}(\imath_{\wpu}) = \bfcc_{1}(\jmath_{\wpu})+1$
+     and
+     $(\cP_{\uptauu}(\bfcc_{2}(\imath_{\wpu}),2),\cP_{\uptauu}(\bfcc_{1}(\imath_{\wpu}),1) ) = (c,d)$,
+     we define
+     \[
+       \cP_{\uptaud}(i,j) := \begin{cases}
+         \bullet ,& \text{if $(i,j)=(\bfcc_{1}(\imath_{\wpd}),1)$},\\
+         r ,& \text{if $(i,j)=(\bfcc_{2}(\imath_{\wpd}),2)$},\\
+         \cP_{\uptaud}(i,j) ,&\text{otherwise}.
+       \end{cases}
+     \]
+     and
+     \[
+       \cQ_{\uptaud}(i,j) := \begin{cases}
+         \bullet ,& \text{if $(i,j)=(\bfcc_{1}(\imath_{\wpd}),1)$},\\
+         s ,& \text{if $j=1$ and $\bfcc_{1}(\imath_{\wpd})+1\leq i \leq \bfcc_{1}(\jmath_{\wpd})$},\\
+         \cQ_{\uptauu}(i,j) ,&\text{otherwise};
+       \end{cases}
+     \]
+     \item Otherwise, we define
+     \[
+       \cP_{\uptauu}(i,j) := \begin{cases}
+         \cP_{\uptaud}(\bfcc_{1}(\imath_{\wpu}),1), & \text{if $(i,j)=(\bfcc_{1}(\imath_{\wpd}),1)$},\\
+         \cP_{\uptaud}(i,j) ,&\text{otherwise}.
+       \end{cases}
+     \]
+     and
+     \[
+       \cQ_{\uptaud}(i,j) := \begin{cases}
+         s ,& \text{if $j=1$ and $\bfcc_{1}(\imath_{\wpd})\leq i \leq \bfcc_{1}(\jmath_{\wpd})$},\\
+         \cQ_{\uptauu}(i,j) ,&\text{otherwise};
+       \end{cases}
+     \]
+   \end{enumerate}
+ \end{enumerate}
 
- \trivial[h]{
-   The inverse map $T_{\wp,\PPm}$ is given by the following algorithm:
-   \begin{description}
-     \item[STEP 1] We first recover $\cP'$.
-           If $t=1$ or $\cP'(\bfcc_{t}(\imath_{\wp})-1,t-1)=\bullet$, then
-           $\cP':= \cP_{\wp}$.
-           Otherwise,
-           $\cP'$ is given by $\cP_{\wp}$ except the $2\times 2$ square in
-           \eqref{eq:modP} which is given by reversing the formula cited.
-     \item[STEP 2]
 
-           \def\xxn{\cP_{\uptaum}(\bfcc_t(\imath_{\PPm})-1,t)} %x_0
-           \def\xxo{\cP_{\uptaum}(\bfcc_t(\imath_{\wp}),t)} %x_1
-           \def\xxd{\cP_{\uptaum}(\bfcc_t(\imath_{\wp}),t+1)} %x_2
-           \def\yyn{\cP'(\bfcc_t(\imath_{\PPm})-1,t)} %y_0
-           \def\yyo{\cP'(\bfcc_t(\imath_{\wp})-1,t)} %y_1
-           \def\yyt{\cP'(\bfcc_t(\imath_{\wp}),t)} %y_3
-           \def\yyd{\cP'(\bfcc_t(\imath_{\wp}),t+1)} %y_2
-           We have the following cases:
-           \begin{enumerate}[label=(\alph*)]
-             \item Suppose $\yyo=r$.
-             \begin{itemize}
-               \item If $\bfcc_{t+1}(\imath_{\wp}) = \bfcc_{t}(\imath_{\PPm})$
-               and
-               \[
-                 (\yyd,\yyt) = (c,d),
-               \]
-               let
-               \[
-                 (\xxo,\xxd):=(\bullet, r)
-               \]
-               \item Otherwise, let \[
-                 \xxo:=\yyt.
-               \]
-             \end{itemize}
-             \item Suppose $\yyo=c$
-             \begin{itemize}
-               \item If $\bfcc_{t}(\imath_{\PPm})\geq 2$ and $\xxn=r$,
-               then let
-               \[
-                 (\xxn,\xxo):=(c,d).
-               \]
-               \item Otherwise, let
-               \[
-                 \xxo :=\bullet.
-               \]
-             \end{itemize}
-           \end{enumerate}
-           For the boxes $(i,j)$ in $\BOX{\imath_{\uptaum}}$ which are not specified
-           in the above procedure, set
-           \[
-           \cP_{\uptaum}(i,j):=\cP'(i,j).
-           \]
-     \item[STEP 3]
-           Now $\cP_{\uptaum}$ uniquely determine the painted bipartition
-           $\uptaum$.
-   \end{description}
-   The construction of the inverse map implies that $T_{\PPm,\wp}$ is a
-   bijection.
- }
+  {\bfseries Suppose $\star = \wtC$.}
+  The definition of $T_{\wpu,\wp}$ is given by the formula \eqref{eq:T.M1} and
+  \eqref{eq:T.M2} with the
+  role of $\wp$ and $\wpu$ switched.
+
+
+ %   \begin{description}
+ %     \item[STEP 1] We first recover $\cP'$.
+ %           If $t=1$ or $\cP'(\bfcc_{t}(\imath_{\wp})-1,t-1)=\bullet$, then
+ %           $\cP':= \cP_{\wp}$.
+ %           Otherwise,
+ %           $\cP'$ is given by $\cP_{\wp}$ except the $2\times 2$ square in
+ %           \eqref{eq:modP} which is given by reversing the formula cited.
+ %     \item[STEP 2]
+
+ %           \def\xxn{\cP_{\uptaum}(\bfcc_t(\imath_{\PPm})-1,t)} %x_0
+ %           \def\xxo{\cP_{\uptaum}(\bfcc_t(\imath_{\wp}),t)} %x_1
+ %           \def\xxd{\cP_{\uptaum}(\bfcc_t(\imath_{\wp}),t+1)} %x_2
+ %           \def\yyn{\cP'(\bfcc_t(\imath_{\PPm})-1,t)} %y_0
+ %           \def\yyo{\cP'(\bfcc_t(\imath_{\wp})-1,t)} %y_1
+ %           \def\yyt{\cP'(\bfcc_t(\imath_{\wp}),t)} %y_3
+ %           \def\yyd{\cP'(\bfcc_t(\imath_{\wp}),t+1)} %y_2
+ %           We have the following cases:
+ %           \begin{enumerate}[label=(\alph*)]
+ %             \item Suppose $\yyo=r$.
+ %             \begin{itemize}
+ %               \item If $\bfcc_{t+1}(\imath_{\wp}) = \bfcc_{t}(\imath_{\PPm})$
+ %               and
+ %               \[
+ %                 (\yyd,\yyt) = (c,d),
+ %               \]
+ %               let
+ %               \[
+ %                 (\xxo,\xxd):=(\bullet, r)
+ %               \]
+ %               \item Otherwise, let \[
+ %                 \xxo:=\yyt.
+ %               \]
+ %             \end{itemize}
+ %             \item Suppose $\yyo=c$
+ %             \begin{itemize}
+ %               \item If $\bfcc_{t}(\imath_{\PPm})\geq 2$ and $\xxn=r$,
+ %               then let
+ %               \[
+ %                 (\xxn,\xxo):=(c,d).
+ %               \]
+ %               \item Otherwise, let
+ %               \[
+ %                 \xxo :=\bullet.
+ %               \]
+ %             \end{itemize}
+ %           \end{enumerate}
+ %           For the boxes $(i,j)$ in $\BOX{\imath_{\uptaum}}$ which are not specified
+ %           in the above procedure, set
+ %           \[
+ %           \cP_{\uptaum}(i,j):=\cP'(i,j).
+ %           \]
+ %     \item[STEP 3]
+ %           Now $\cP_{\uptaum}$ uniquely determine the painted bipartition
+ %           $\uptaum$.
+ %   \end{description}
+ %   The construction of the inverse map implies that $T_{\PPm,\wp}$ is a
+ %   bijection.
+ % }
 
 \end{proof}
 
@@ -4027,11 +4120,10 @@ Note that $\bfrr_{2}(\ckcO)>0$ is odd in our assumption.
 
 From the pair $(\star, \ckcO)$, we define a Young diagram $\ckcO_{\bftt}$ as follows:
 \begin{itemize}
-    \item If $\star \in \set{B,D}$,
-then $\ckcO_{\bftt}$  consists of two rows with lengths $2k-1$ and $1$.
-\item
-If $\star =C^*$, then $\ckcO_{\bftt}$ consists of one row
-with length  $2k+1$.
+  \item If $\star \in \set{B,D}$, then $\ckcO_{\bftt}$ consists of two rows with
+        lengths $2k-1$ and $1$.
+  \item If $\star =C^*$, then $\ckcO_{\bftt}$ consists of one row with length
+        $2k+1$.
 \end{itemize}
 Note that in all three cases
  $\check \CO_{\mathbf t}$ has $\star_{\mathbf t}$-good parity and every element in $\PBP_{\star_\bftt}(\ckcO_\bftt)$ has the form
@@ -4050,8 +4142,8 @@ according to $\star=B, D$ or $C^*$, respectively. %Here $k$ can be zero if $\sta
 \medskip
 
 
-Let $ \tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in
-\mathrm{PBP}_\star(\check \CO) $. The tail $\tau_\bftt$ of $\tau$ will be a painted bipartition in
+Let $ \uptau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in
+\mathrm{PBP}_\star(\check \CO) $. The tail $\uptau_\bftt$ of $\uptau$ will be a painted bipartition in
 $\PBP_{\star_\bftt}(\ckcO_\bftt)$, which is defined below case by case.
 
 {\bfseries The case when $\star = B$:}
@@ -4108,9 +4200,9 @@ If $k> 0$, we define the tail $\tau_\bftt$ to be the third painted bipartition i
 \]
 
 
- When $\star \in \set{B,D}$, the symbol in the last box of the tail $\tau_\bftt\in \PBP_{\star_\bftt}(\ckcO_\bftt)$ will be important for us. We write $x_\tau$ for it, namely
+ When $\star \in \set{B,D}$, the symbol in the last box of the tail $\uptau_\bftt\in \PBP_{\star_\bftt}(\ckcO_\bftt)$ will be important for us. We write $x_\uptau$ for it, namely
 \[
-x_\tau := \cP_{\tau_\bftt}(k,1).
+x_\uptau := \cP_{\uptau_\bftt}(k,1).
 \]
 
 
@@ -4333,7 +4425,7 @@ We define
 \]
 such that $\cP'$ and $\cQ'$ are paintings on $\BOX{\imath_{\wp'}}$ and
 $\BOX{\jmath_{\wp'}}$  % determined
-by the following algorithm respectively:
+by the following rules  respectively:
 
 %the descent of the painted bipartition $\uptau$ by to be
 
@@ -4453,8 +4545,8 @@ We define $\alpha' := \alphapn$.
   \]
   where $\wpm := \wp - \set{(1,2)}$ and
   $\uptau_{\wpm}  := T_{\wpm,\wp}^{-1}(\uptau)$ (see \Cref{lem:sn}).
+        (Note that when $\star \in \set{C^{*},D^{*}}$, case (b) never happen.)
 \end{enumerate}
-
 
 It is routine to check that the above definition do gives valid painted
 bipartition and we record the following lemma.
@@ -4469,7 +4561,7 @@ bipartition and we record the following lemma.
   \qed
 \end{lem}
 
-Note that when $\star\in \set{C^{*}, D^{*}}$, we will only consider the case
+Note that, when $\star\in \set{C^{*}, D^{*}}$, we will only consider the case
 when $\ckcO$ is quasi-distinguished and $\wp=\emptyset$ since
 $\PBPOP = \emptyset $ otherwise.
 
@@ -4479,8 +4571,8 @@ The following proposition summaries the key properties of the descent map.
   Suppose that $\star\in \set{C,\wtC, D^*}$. Let $\ckcO$ be a non-empty partition of good
   parity and $\ckcO' := \DD(\ckcO)$.
   \begin{enumerate}[label=(\alph*)]
-    \item When $\bfrr_1(\ckcO)>\bfrr_2(\ckcO)$,
-    the map \eqref{eq:DD.CC} is bijective.
+    \item When $\star = D^{*}$ or $\bfrr_1(\ckcO)>\bfrr_2(\ckcO)$,
+    the map \eqref{eq:DD.CC} is bijective. %Case $D^{*}$.
     \item When $\star\in \{C,\widetilde C\}$ and $\bfrr_1(\ckcO)=\bfrr_2(\ckcO)$,
     then the  map \eqref{eq:DD.CC} is injective and its image equals
     \[
@@ -4488,6 +4580,9 @@ The following proposition summaries the key properties of the descent map.
     \]
   \end{enumerate}
 \end{prop}
+\begin{proof}
+  This is clear from the definition of the descent algorithm.
+\end{proof}
 
 
 
@@ -4530,10 +4625,12 @@ Moreover,  for every $\uptau\in  \PBPOP$,
 \end{enumerate}
 \end{prop}
 \begin{proof}
-  One can deduce the inverse of $\delta$ (implemented in \cite{MU}) and signature formula via a patient analysis % The proposition can be verified
-  % by a patient analysis
-  of the descent algorithm.
+  % One can deduce the inverse of $\delta$ (implemented in \cite{MU}) and signature formula via a patient analysis % The proposition can be verified
+  % % by a patient analysis
+  % of the descent algorithm.
+  This follows from detailed description of the descent algorithm.
 \end{proof}
+
 
 
 We have the following immediate corollary.
@@ -4581,9 +4678,21 @@ is injective.
 
 Now we define some generating functions of painted bipartition. %$(\ckcO,\wp)$
 
+When $\star \in  \set{B,C^{*}, D}$, we define
+\[
+   f_{\star,\ckcO,\wp}(\bfpp,\bfqq) := \sum_{\uptau \in \PBPOP} \bfpp^{p_{\uptau}} \bfqq^{q_{\uptau}}.
+\]
+for each $\wp\in \CPPs(\ckcO)$.
+The coefficient of $\bfpp^{p}\bfqq^{q}$ in $f_{\star,\ckcO,\wp}(\bfpp,\bfqq)$  equals the cardinality of
+ $\PBPop{\SO(p,q)}{}{\ckcO}{\wp}$ if $\star\in \set{B,D}$ or
+ $\PBPop{\Sp(\frac{p}{2},\frac{q}{2})}{}{\ckcO}{\wp}$ if $\star = C^{*}$.
 
-Let $\star \in \set{B,D}$.
-For each $\wp\in \CPPs(\ckcO)$ and a subset $S\subset \set{c,d,r,s}$, we define
+
+\trivial[]{
+Clearly $f_{\star,\ckcO,\wp}=0$, if $\star\in \set{C^*}$ and $\wp\neq \emptyset$.
+}
+
+When $\star \in \set{B,D}$,  for each subset $S\subset \set{c,d,r,s}$, we define
 \[
   \PBPOP[S] = \set{\uptau\in \PBPOP|x_{\uptau}\in S}
 \]
@@ -4594,15 +4703,19 @@ and the corresponding generating function
 in $\bZ[\bfpp,\bfqq]$ where $(p_{\uptau}, q_{\uptau})$ is the signature of
 $\uptau$ and $\bfpp$
 and $\bfqq$ are indeterminants.
-By to ease the notation, we write
-\[
-  f_{\star,\ckcO,\wp} := f_{\star,\ckcO,\wp}^{\set{c,d,r,s}} =
-  f_{\star,\ckcO,\wp}^{\set{s}}
-  + f_{\star,\ckcO,\wp}^{\set{c,r}}
-  + f_{\star,\ckcO,\wp}^{\set{d}}
-\]
-whose coefficient of $\bfpp^{p}\bfqq^{q}$ equals the cardinality of
-$\PBPop{\SO(p,q)}{}{\ckcO}{\wp}$.
+In the following we will compute
+$f_{\star,\ckcO,\wp}^{\set{s}}$, $f_{\star,\ckcO,\wp}^{\set{c,r}}$ and
+$f_{\star,\ckcO,\wp}^{\set{d}}$ whose sum is the desired function
+$f_{\star, \ckcO,\wp}$.
+% % By to ease the notation,
+% \[
+%   f_{\star,\ckcO,\wp} %:= f_{\star,\ckcO,\wp}^{\set{c,d,r,s}} =
+%   f_{\star,\ckcO,\wp}^{\set{s}}
+%   + f_{\star,\ckcO,\wp}^{\set{c,r}}
+%   + f_{\star,\ckcO,\wp}^{\set{d}}
+% \]
+% whose coefficient of $\bfpp^{p}\bfqq^{q}$ equals the cardinality of
+% $\PBPop{\SO(p,q)}{}{\ckcO}{\wp}$.
 % $\PBPGOP$
 % with $\Sign(G)=(p,q)$.
 
@@ -4613,7 +4726,7 @@ $\PBPop{\SO(p,q)}{}{\ckcO}{\wp}$.
 For an integer $k$,
 we define
 \[
-\RS_{k} := \sum_{i=0}^{k} \bfpp^{i}\bfqq^{k-i}
+\RS_{k} := \sum_{i=0}^{k} \bfpp^{2i}\bfqq^{2(k-i)}
 \]
 if $k\geq 0$ and $0$ otherwise.
 \trivial[]{
@@ -4625,7 +4738,7 @@ We make the following definition:
 \[
   \begin{split}
   \TSk{k}{\set{d}} &:= f_{D,\yrow{2k-1,1},\emptyset}^{\set{d}}= \bfpp\bfqq\RS_{k-1} + \bfpp^{2}\bfqq^{2}\RS_{k-2}, \\
-  \TSk{k}{\set{c,r}} &:= f_{D,\yrow{2k-1,1},\emptyset}^{\set{rc}}= (\bfpp\bfqq+\bfpp^{2})\RS_{k-1},  \\
+  \TSk{k}{\set{c,r}} &:= f_{D,\yrow{2k-1,1},\emptyset}^{\set{c,r}}= (\bfpp\bfqq+\bfpp^{2})\RS_{k-1},  \\
   \TSk{k}{\set{s}}& :=\CSk{k}{\set{s}} := f_{D,\yrow{2k-1,1},\emptyset}^{\set{s}}= \bfqq^{2n},\\
   \CSk{k}{\set{d}} &:= \bfpp^{2}\bfqq^{2}\RS_{k-2} + \bfpp\bfqq^{3}\RS_{k-2}, \AND \\
   \CSk{k}{\set{c,r}} &:= \bfpp\bfqq\RS_{k-1}+\bfpp^{2}\bfqq^{2}\RS_{k-2}.\\
@@ -4648,7 +4761,7 @@ It is also straight to see that, for non-negative  integer $k$,
 \[
   \begin{split}
    f_{B,\yrow{2k},\emptyset}^{\set{d}} & = (\bfpp^{2}\bfqq+ \bfpp\bfqq^{3})\RS_{k-1}, \\
-   f_{B,\yrow{2k},\emptyset}^{\set{rc}} & = \bfpp\RS_{k} + \bfpp^{2}\bfqq\RS_{k-1},  \\
+   f_{B,\yrow{2k},\emptyset}^{\set{c,r}} & = \bfpp\RS_{k} + \bfpp^{2}\bfqq\RS_{k-1},  \\
   f_{B,\yrow{2k},\emptyset}^{\set{s}} & = \bfqq^{2k+1},\\
   \end{split}
 \]
@@ -4657,7 +4770,7 @@ It is also straight to see that, for non-negative  integer $k$,
 \[
   \begin{split}
     f_{B,\yrow{2k},\emptyset}^{\set{d}} &:=  B^{+} + rest + d \cup B^{-}+rest+d, \\
-    f_{B,\yrow{2k},\emptyset}^{\set{rc}}   &:= B^{+} + rest \cup B^{-}+rest+r, \\
+    f_{B,\yrow{2k},\emptyset}^{\set{c,r}}   &:= B^{+} + rest \cup B^{-}+rest+r, \\
     f_{B,\yrow{2k},\emptyset}^{\set{s}} & := B^{-} + ss\cdots s.\\
   \end{split}
 \]
@@ -4666,7 +4779,7 @@ It is also straight to see that, for non-negative  integer $k$,
 By convention, we set
 \[
   f_{D,\yrow{0}, \emptyset}^{\set{d}} := 1, \quad
-  f_{D,\yrow{0}, \emptyset}^{\set{r,c}} := 0,
+  f_{D,\yrow{0}, \emptyset}^{\set{c,r}} := 0,
   \AND
   f_{D,\yrow{0}, \emptyset}^{\set{s}} := 0,
 \]
@@ -4680,18 +4793,18 @@ By convention, we set
   \begin{enumerate}[label=(\alph*)]
     \item If $(2,3)\in \CPPs(\ckcO)$, then
     \[
-      f_{D,\ckcO, \wp}^{S} := \TSk{k}{S} \cdot  f_{D,\DD^{2}(\ckcO),\DD^{2}(\wp)}.
+      f_{\star,\ckcO, \wp}^{S} = (\bfpp\bfqq)^{\bfcc_{1}(\ckcO)} \TSk{k}{S} \cdot  f_{\star,\DD^{2}(\ckcO),\DD^{2}(\wp)}.
     \]
     \item If $(2,3)\notin \CPPs(\ckcO)$,
     then
     \[
-      f_{D,\ckcO, \wp}^{S} := \TSk{k}{S} \cdot f_{D,\DD^{2}(\ckcO),\DD^{2}(\wp)}^{\set{d}}
-      + \CSk{k}{S} \cdot f_{D,\DD^{2}(\ckcO),\DD^{2}(\wp)}^{\set{r,c}}.
+      f_{\star,\ckcO, \wp}^{S} := (\bfpp\bfqq)^{\bfcc_{1}(\ckcO)-1} (\TSk{k}{S} \cdot f_{\star,\DD^{2}(\ckcO),\DD^{2}(\wp)}^{\set{d}}
+      + \CSk{k}{S} \cdot f_{\star,\DD^{2}(\ckcO),\DD^{2}(\wp)}^{\set{c,r}}).
     \]
   \end{enumerate}
   In particular, the generating function is independent of $\wp$ and so
   \[
-    f_{D,\ckcO,\wp} = f_{D,\ckcO,\emptyset} \quad \text{for all $\wp\in \CPPs(\ckcO)$.}
+    f_{\star,\ckcO,\wp} = f_{\star,\ckcO,\emptyset} \quad \text{for all $\wp\in \CPPs(\ckcO)$.}
   \]
 \end{lem}
 \begin{proof}
@@ -4727,13 +4840,38 @@ By convention, we set
 % The key is to define the descent of a painted bipartition.
 % As before, let  $\star\in \set{B, C,  D, \wtC,  C^*, D^*}$ and let $\check \CO$ be a Young diagram that has $\star$-good parity.
 
+\section{More precise result in type $C^{*}$ and $D^{*}$}
+The following lemma is straight forward  to check.
 \begin{lem}\label{lem:gf.C*}
-  We have the following recursive formula
+  Suppose $\star = C^{*}$.
+  \begin{enumerate}[label=(\alph*)]
+    \item Then %The following equation holds:
+          \[
+          f_{\star, \yrow{2k-1},\emptyset} = \RS_{k}.
+          \]
+    \item Assume that $\ckcO$ is a non-empty good parity partition such that
+          $\bfrr_{2}(\ckcO)>0$. Then $\DD^{2}(\ckcO)$ is also non-empty and there is
+          the following recursive formula
+          \[
+          f_{\star,\ckcO,\emptyset} = (\bfpp\bfqq)^{\bfrr_{2}(\ckcO)+1} \RS_{k}\cdot f_{\star,\DD^{2}(\ckcO),\emptyset}
+          \]
+          where $k = \frac{\bfrr_{1}(\ckcO)-\bfrr_{2}(\ckcO)}{2}-1$.
+  \end{enumerate}
 \end{lem}
 
 
+We have the following consequence of the above lemma.
 
-
+\begin{lem}\label{lem:gf.C*}
+  When $\star = D^{*}$ and $\ckcO$ is non-empty,
+  the following equation holds
+  \[
+    \# \PBPGOP = f_{\star',\DD(\ckcO),\emptyset}(1,1).
+  \]
+  Suppose $\star\in \set{C^{*}, D^{*}}$. The cardinality of  $\PBPGOP(\ckcO)$ equals
+  to the real nilpotent orbit of $G$ whose complexification is $\dBV(\ckcO)$.
+  \qed
+\end{lem}
 
 
 
