@@ -2227,26 +2227,17 @@ We call $\star'$
   \]
   where $\tytb{\   }$ denotes the Young diagram that has total size $1$.
 
-  % Here $\emptyset$ stands for the empty Young diagram, and $\tytb{\ }$ stands for the Young diagram of total size $1$.
+  We define the descent of primitive pairs to be the map
+  \[
+    \begin{array}{rcccl}
+      \DD\colon & A(\ckcO) & \rightarrow & A(\ckcOp)\\
+      & \wp &\mapsto & \wp':= &\set{(i,i+1)| (i+1,i+2)\in \wp}.
+    \end{array}
+  \]
 
-\delete{Put
-\begin{equation}\label{lstarco}
-  l:=l_{\star, \check \CO}:=\begin{cases}
- \frac{\bfrr_1(\ckcO)}{2}; & \quad \textrm{if } \star\in \{B, \widetilde C\};\smallskip\\
- \frac{\bfrr_1(\ckcO)-1}{2}, &\quad \textrm{if } \star\in \{C, C^* \};\smallskip\\
- \frac{\bfrr_1(\ckcO)+1}{2}, &\quad \textrm{if } \star\in \{ D, D^*\}.\\
-\end{cases}
-\end{equation}
-This is the length of the leading column of every element of $\mathrm{PBP}_\star(\check \CO)$.
-}
 
 For a Young diagram $\imath$, its naive descent, which is denoted by $\nabla_\mathrm{naive}(\imath)$, is defined to be the Young diagram obtained from $\imath$ by removing the first column. By convention, $\nabla_\mathrm{naive}(\emptyset)=\emptyset$.
 
-%In the rest of this section, we assume that $\check \CO\neq \emptyset$.
-
- %Put\[
-%l':=l_{\star', \check \CO'}
-%\]
 
 
 \def\bipartl{\mathrm{bi\cP_L}}
@@ -2256,22 +2247,17 @@ For a Young diagram $\imath$, its naive descent, which is denoted by $\nabla_\ma
 \def\DDl{\eDD_\mathrm{L}}
 \def\DDr{\eDD_\mathrm{R}}
 
-We first define the naive descent of a painted bipartition. Let $\tau=(\imath,\cP)\times (\jmath,\cQ)\times \alpha$ be a  painted bipartition such that $\star_\tau=\star$. Put
-\delete{\begin{equation} \label{eq:def.alphap}
-\alpha'=\begin{cases} B^+,
-& \textrm{if $\alpha = \wtC$ and $\cP_\tau(l_{\star,\ckcO},1),1) \neq c$;}\\
-B^-,
-& \textrm{if $\alpha = \wtC$ and $\cP_\tau(l_{\star,\ckcO},1),1)  = c$;}\\
-\star', & \textrm{if $\alpha\neq \widetilde C$}.
-\end{cases}
-\end{equation}
-}
+We first define the naive descent of a painted bipartition. Let
+\[
+\tau=(\imath,\cP)\times (\jmath,\cQ)\times \alpha
+\]
+be a  painted bipartition such that $\star_\tau=\star$. Put
   \begin{equation} \label{eq:def.alphap}
     \alpha'=\begin{cases} B^+,
   & \textrm{if $\alpha=\widetilde{C}$ and $c$ does not occur in the first column of $(\imath,\cP)$}; \smallskip \\
   B^-,
   & \textrm{if $\alpha=\widetilde{C}$ and  $c$ occurs in the first column of $(\imath,\cP)$}; \smallskip \\
-  \star', & \textrm{if $\alpha\neq \widetilde C$}.
+  \star', & \textrm{if $\alpha\neq \wtC$}.
   \end{cases}
   \end{equation}
 
@@ -2354,15 +2340,15 @@ B^-,
     \nabla_{\mathrm{naive}}(\tau) =\ytb{\bullet\bullet{c} ,\bullet{c},\none }
     \times  \ytb{\bullet\bullet {s} ,\bullet {r} {d},{d}{d}}\times B^-.
     \]
-
 \end{Example}
 
+
+
 We now define the descent of a painted bipartition.
-\label{sec:desc}
-Suppose that
-$
-\tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \mathrm{PBP}_\star(\check \CO)
-$
+Suppose that $\wp\in A(\ckcO)$.
+\[
+\tau=(\imath,\cP)\times(\jmath,\cQ)\times \alpha \in  \PBP_\star(\tau_{\wp})
+\]
 and write
 \[
   \tau'_{\mathrm{naive}}=(\imath', \cP'_{\mathrm{naive}})\times (\jmath', \cQ'_{\mathrm{naive}})\times \alpha'
@@ -9516,7 +9502,6 @@ pages={147--167},
 %%% Local Variables:
 %%% coding: utf-8
 %%% mode: latex
-%%% TeX-engine: xetex
 %%% ispell-local-dictionary: "en_US"
 %%% End:
 
