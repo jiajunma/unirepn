@@ -3854,7 +3854,7 @@ imply the following counting result.
   For all $(i,j)\in \BOX{\jmath_{\wpu}}$,
    % For $\uptaum\in\PBPs(\tau_{\PPm})$, define $\uptau=:T_{\PPm,\wp}(\uptaum)$
    % by the following formula:
-  \begin{equation} \label{eq:T.M1}
+  \begin{equation} \label{eq:T.M2}
     \cQ_{\uptauu}(i,j) :=
     \begin{cases}
       r& \text{if $j=1$ and  $\cP_{\uptau}(i,j)=s$,}\\
@@ -3890,8 +3890,12 @@ imply the following counting result.
    \item Suppose
    $\cP_{\uptauu}(\bfcc_{1}(\imath_{\wpu})-1,1)=c$.
    \begin{enumerate}[label={\localtextbulletone}]
-     \item If $\bfcc_{1}(\imath_{\wpd})\geq 2$ and
-     $\cP_{\uptau}(\bfcc_{1}(\imath_{\wpd})-1,1) = r$,
+     \item
+           If $\bfcc_{1}(\jmath_{\wpu})\geq 1$ and
+           $\cP_{\uptau}(\bfcc_{1}(\jmath_{\wpu}),1) = r$,
+
+     %       If $\bfcc_{1}(\imath_{\wpd})\geq 2$ and
+     % $\cP_{\uptau}(\bfcc_{1}(\imath_{\wpd})-1,1) = r$,
      we define
      \[
        \cP_{\uptaud}(i,j) := \begin{cases}
@@ -3907,6 +3911,7 @@ imply the following counting result.
          \cQ_{\uptauu}(i,j) ,&\text{otherwise};
        \end{cases}
      \]
+     %% Note that c_1(j_wpu)+1 =c_1(i_wpd)
      \item Otherwise, we define
      \[
        \cP_{\uptaud}(i,j) := \begin{cases}
