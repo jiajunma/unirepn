@@ -2106,9 +2106,10 @@ This completes the proof of Theorem \ref{thm16}.
 
 \def\Irr{\mathrm{Irr}}
 \def\bNil{\overline{\Nil}}
-
+\def\bNilSP{\bNil(\fsp_{2n}(\bC))}
 
 \def\Irrms{\Irr^{\mathrm ms}}
+\def\Irrsp{\Irr^{\mathrm sp}}
 
 \def\tdLS{\tilde{\mathrm d}_{\mathrm LS}}
 \def\tdSP{\tilde{\mathrm d}_{\mathrm SP}}
@@ -2118,9 +2119,14 @@ This completes the proof of Theorem \ref{thm16}.
 \def\SpringerO{\fO_{\rO}}
 \def\bSpringerO{\overline{\fO}_{\rO}}
 \def\RSp{\fR_C}
+\def\RRD{\fR_D}
+
+\def\cuprow{\stackrel{r}{\sqcup}}
+\def\cupcol{\stackrel{c}{\sqcup}}
 
 Let $\sfW_{n}$ be the Weyl group of type $BC_{n}$ and $\sfW'_{n}$ be the Weyl
-group of type $D_{n}$. We identify $\sfW'_{n}$ as a subgroup of $\sfW_{n}$.
+group of type $D_{n}$. We identify $\sfW'_{n}$ as the kernel of
+$\varepsilon\colon \sfW_{n}\rightarrow \set{\pm}$.
 
 We use $\sim$ to denote the usual double cell relation on $\sfW_{n}$.
 
@@ -2141,7 +2147,9 @@ $\bNil(\fso_{2n}(\bC))\rightarrow \bNil(\foo_{2n}(\bC))$ sending $\cO'$ to
 $\rO_{2n}(\bC)\cO'$ we get a well defined map
 \[
 \SpringerO\colon  \Irr(\sfW'_{n}) \rightarrow  \bNil(\foo_{2n}(\bC).
-\].
+\]
+which factors through $\Irr(\sfW'_{n})/\sfW_{n}$ (where $\sfW_{n}$ acts by
+conjugation).
 
 
 \begin{lem}
@@ -2168,7 +2176,17 @@ $\sigma_{1}|_{\sfW'_{n}}$ and $\sigma_{2}|_{\sfW'_{n}}$ such that $\sigma'_{1}$
 and $\sigma'_{2}$ are in the same double cell of $\sfW'_{n}$.
 
 
-We call the equivalent classes of $\msim$ big cells of $\Irr(\sfW_{n})$.
+We call the equivalent classes of $\msim$ metaplectic cells of $\Irr(\sfW_{n})$.
+
+It is easy to see that twisting by sign character also descents to an
+involution on $\Irr(\sfW'_{n})/\osim$.
+It is clear by Lusztig that
+
+\begin{lem}
+  For each metaplectic cell $\cC \in \Irr(\sfW_{n})/\msim$, there is a unique
+  irreducible character $\sigma_{\cC}$ in $\cC$ with minimal fake degree.
+\end{lem}
+
 
 By Clifford theory, for $\sigma\in \Irr(\sfW_{n})$, we have
 \begin{itemize}
@@ -2190,8 +2208,7 @@ either $\sigma|_{\sfW'_{n}}$ is
   \tdSP \colon
     \bNil^{ms}(\fsp_{2n}(\bC))\xleftarrow{\Springer_{C}} \Irr(\sfW_{n})/\msim \xrightarrow{\ \iota \ } \Irr(\sfW'_{n})/\osim \xrightarrow{\ \SpringerO \ } \bNil^{sp}(\foo_{2n}(\bC)).
   \]
-  Here $\iota$ is given by $\cC\mapsto \set{\sigma'\in \Irr(\sfW'_{n})| \text{$\sigma'$ is an
-      irreducible component of $\sigma\in \cC$}}$.
+  Here $\iota$ is given by $\cC\mapsto \set{\sigma'\in \Irr(\sfW'_{n})| \text{$\sigma'$ is an irreducible component of $\sigma\in \cC$}}$.
 
   Moreover, in each metaplectic cell $\cC$, where is a unique irreducible
   representation $\sigma_{\cC}$ such that $\sigma_{\cC}$ has minimal fake
@@ -2222,8 +2239,27 @@ The following is a properity in analog to the claim of Lusztig-Spaltenstein dual
   \[
     \tdLS(\ckcO) = \SpringerO(\sigma'_{\cO})
   \]
-  where $\sigma'_{\cO}$ is the special representation in the cell of $\RSp(\ckcO)\otimes \sgn$.
+  where $\sigma'_{\cO}$ is the special representation in the cell of $\RRD(\ckcO)\otimes \sgn$.
 \end{prop}
+\begin{proof}
+  Let $\ckcO\in \bNilSP$.
+  Suppose all rows in $\ckcO$ have even length and the row length are distinct,
+  i.e. $\ckcO$ is a distinct orbit.
+  Then it is easy to compute $\sigma_{\ckcO}$ which is special.
+  In general, $\ckcO = \ckcO_{0}\cuprow \ckcO'\cuprow \ckcO'$.
+
+  Then $\ckcO_{D} = (\ckcO_{0})_{D} \cuprow \ckcO'\cuprow \ckcO'$.
+  By Sommer, $E_{\ckcO_{D}} = E_{\ckcO}$.
+  By the Lusztig-Spaltenstien duality map,
+  \[
+    \sigma'_{\ckcO_{D}} = j_{\sfS_{\abs{\ckcO'}}\otimes \sfW'_{\abs{\ckcO_{0}}}}^{\sfW'_{n}}
+    \cO'\otimes \sigma'_{\ckcO_{0}}.
+  \]
+  where $\cO' = \ckcO^{t}$.
+  Therefore
+  $\SpringerO(\sigma'_{\cO})  = \Ind \cO' \times \tdLS(\ckcO') = \tdLS(\ckcO)$
+  by the formula on the induction of nilpotent oribt.
+\end{proof}
 
 
 \begin{bibdiv}
