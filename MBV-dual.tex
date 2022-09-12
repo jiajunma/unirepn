@@ -1,0 +1,2803 @@
+\documentclass[12pt,a4paper]{amsart}
+\usepackage[margin=2.5cm,marginpar=2cm]{geometry}
+
+
+
+% \usepackage{showkeys}
+% \makeatletter
+%   \SK@def\Cref#1{\SK@\SK@@ref{#1}\SK@Cref{#1}}
+%   \SK@def\cref#1{\SK@\SK@@ref{#1}\SK@cref{#1}}
+% \makeatother
+\usepackage[bookmarksopen,bookmarksdepth=3]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+%% FONTS
+
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathbbol,mathabx}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{braket}
+
+
+\usepackage{amsrefs}
+\usepackage[all,cmtip]{xy}
+\usepackage{rotating}
+\usepackage{leftidx}
+
+\DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
+\DeclareSymbolFontAlphabet{\mathbbold}{bbold}
+
+
+\usepackage[rgb,table,dvipsnames]{xcolor}
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{3}
+
+
+
+\usepackage[normalem]{ulem}
+
+% circled number
+\usepackage{pifont}
+\makeatletter
+\newcommand*{\circnuma}[1]{%
+  \ifnum#1<1 %
+    \@ctrerr
+  \else
+    \ifnum#1>20 %
+      \@ctrerr
+    \else
+      \mbox{\ding{\numexpr 171+(#1)\relax}}%
+     \fi
+  \fi
+}
+\makeatother
+
+
+
+
+\usepackage{enumitem}
+%% Enumitem
+\newlist{enumC}{enumerate}{1} % Conditions in Lemma/Theorem/Prop
+\setlist[enumC,1]{label=(\alph*),wide,ref=(\alph*)}
+\crefname{enumCi}{condition}{conditions}
+\Crefname{enumCi}{Condition}{Conditions}
+\newlist{enumT}{enumerate}{3} % "Theorem"=conclusions in Lemma/Theorem/Prop
+\setlist[enumT]{label=(\roman*),wide}
+\setlist[enumT,1]{label=(\roman*),wide}
+\setlist[enumT,2]{label=(\alph*),ref ={(\roman{enumTi}.\alph*)}}
+\setlist[enumT,3]{label=(\arabic*), ref ={(\roman{enumTi}.\alph{enumTii}.\alph*)}}
+\crefname{enumTi}{}{}
+\Crefname{enumTi}{Item}{Items}
+\crefname{enumTii}{}{}
+\Crefname{enumTii}{Item}{Items}
+\crefname{enumTiii}{}{}
+\Crefname{enumTiii}{Item}{Items}
+\newlist{enumPF}{enumerate}{3}
+\setlist[enumPF]{label=(\alph*),wide}
+\setlist[enumPF,1]{label=(\roman*),wide}
+\setlist[enumPF,2]{label=(\alph*)}
+\setlist[enumPF,3]{label=\arabic*).}
+\newlist{enumS}{enumerate}{3} % Statement outside Lemma/Theorem/Prop
+\setlist[enumS]{label=\roman*)}
+\setlist[enumS,1]{label=\roman*)}
+\setlist[enumS,2]{label=\alph*)}
+\setlist[enumS,3]{label=\arabic*.}
+\newlist{enumI}{enumerate}{3} % items
+\setlist[enumI,1]{label=\roman*),leftmargin=*}
+\setlist[enumI,2]{label=\alph*), leftmargin=*}
+\setlist[enumI,3]{label=\arabic*), leftmargin=*}
+\newlist{enumIL}{enumerate*}{1} % inline enum
+\setlist*[enumIL]{label=\roman*)}
+\newlist{enumR}{enumerate}{1} % remarks
+\setlist[enumR]{label=\arabic*.,wide,labelwidth=!, labelindent=0pt}
+\crefname{enumRi}{remark}{remarks}
+
+\crefname{equation}{}{}
+\Crefname{equation}{Equation}{Equations}
+\Crefname{lem}{Lemma}{Lemma}
+
+% editing macros.
+\blendcolors{!80!black}
+\long\def\okay#1{\ifcsname highlightokay\endcsname
+{\color{red} #1}
+\else
+{#1}
+\fi
+}
+\long\def\editc#1{{\color{red} #1}}
+\long\def\mjj#1{{{\color{blue}#1}}}
+\long\def\mjjr#1{{\color{red} (#1)}}
+\long\def\mjjd#1#2{{\color{blue} #1 \sout{#2}}}
+\def\mjjb{\color{blue}}
+\def\mjje{\color{black}}
+\def\mjjcb{\color{green!50!black}}
+\def\mjjce{\color{black}}
+
+\long\def\sun#1{{{\color{cyan}#1}}}
+\long\def\sund#1#2{{\color{cyan}#1  \sout{#2}}}
+\long\def\mv#1{{{\color{red} {\bf move to a proper place:} #1}}}
+\long\def\delete#1{}
+
+%\reversemarginpar
+\newcommand{\lokec}[1]{\marginpar{\color{blue}\tiny #1 \mbox{--loke}}}
+\newcommand{\mjjc}[1]{\marginpar{\color{green}\tiny #1 \mbox{--ma}}}
+
+%\def\showtrivial{}
+
+\newcommand{\trivial}[2][]{\if\relax\detokenize{#1}\relax
+{\color{Bittersweet} \vspace{0em} $[$  #2 $]$}
+\else
+\ifx#1h
+\ifcsname showtrivial\endcsname
+{\color{orange} \vspace{0em}  $[$ #2 $]$}
+\fi
+\else {\red Wrong argument!} \fi
+\fi
+}
+
+\newcommand{\byhide}[2][]{\if\relax\detokenize{#1}\relax
+{\color{orange} \vspace{0em} Plan to delete:  #2}
+\else
+\ifx#1h\relax\fi
+\fi
+}
+
+
+
+\newcommand{\Rank}{\mathrm{rk}}
+\newcommand{\cqq}{\mathscr{D}}
+\newcommand{\rsym}{\mathrm{sym}}
+\newcommand{\rskew}{\mathrm{skew}}
+\newcommand{\fraksp}{\mathfrak{sp}}
+\newcommand{\frakso}{\mathfrak{so}}
+\newcommand{\frakm}{\mathfrak{m}}
+\newcommand{\frakp}{\mathfrak{p}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\rhopst}{\rho'^*}
+\newcommand{\Rad}{\mathrm{Rad}}
+\newcommand{\Res}{\mathrm{Res}}
+\newcommand{\Hol}{\mathrm{Hol}}
+\newcommand{\AC}{\mathrm{AC}}
+%\newcommand{\AS}{\mathrm{AS}}
+\newcommand{\WF}{\mathrm{WF}}
+\newcommand{\AV}{\mathrm{AV}}
+\newcommand{\VC}{\mathrm{V}_\bC}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\depth}{\mathrm{depth}}
+\newcommand{\wtM}{\widetilde{M}}
+\newcommand{\wtMone}{{\widetilde{M}^{(1,1)}}}
+
+\newcommand{\nullpp}{N(\fpp'^*)}
+\newcommand{\nullp}{N(\fpp^*)}
+%\newcommand{\Aut}{\mathrm{Aut}}
+
+\def\mstar{{\medstar}}
+
+
+\newcommand{\bfone}{\mathbf{1}}
+\newcommand{\piSigma}{\pi_\Sigma}
+\newcommand{\piSigmap}{\pi'_\Sigma}
+
+
+\newcommand{\sfVprime}{\mathsf{V}^\prime}
+\newcommand{\sfVdprime}{\mathsf{V}^{\prime \prime}}
+\newcommand{\gminusone}{\mathfrak{g}_{-\frac{1}{m}}}
+
+\newcommand{\eva}{\mathrm{eva}}
+
+% \newcommand\iso{\xrightarrow{
+%    \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+\def\Ueven{{U_{\rm{even}}}}
+\def\Uodd{{U_{\rm{odd}}}}
+\def\ttau{\tilde{\tau}}
+\def\Wcp{W}
+\def\Kur{{K^{\mathrm{u}}}}
+
+\def\Im{\operatorname{Im}}
+
+\providecommand{\bcN}{{\overline{\cN}}}
+
+
+
+\makeatletter
+
+\def\gen#1{\left\langle
+    #1
+      \right\rangle}
+\makeatother
+
+\makeatletter
+\def\inn#1#2{\left\langle
+      \def\ta{#1}\def\tb{#2}
+      \ifx\ta\@empty{\;} \else {\ta}\fi ,
+      \ifx\tb\@empty{\;} \else {\tb}\fi
+      \right\rangle}
+\def\binn#1#2{\left\lAngle
+      \def\ta{#1}\def\tb{#2}
+      \ifx\ta\@empty{\;} \else {\ta}\fi ,
+      \ifx\tb\@empty{\;} \else {\tb}\fi
+      \right\rAngle}
+\makeatother
+
+\makeatletter
+\def\binn#1#2{\overline{\inn{#1}{#2}}}
+\makeatother
+
+
+\def\innwi#1#2{\inn{#1}{#2}_{W_i}}
+\def\innw#1#2{\inn{#1}{#2}_{\bfW}}
+\def\innv#1#2{\inn{#1}{#2}_{\bfV}}
+\def\innbfv#1#2{\inn{#1}{#2}_{\bfV}}
+\def\innvi#1#2{\inn{#1}{#2}_{V_i}}
+\def\innvp#1#2{\inn{#1}{#2}_{\bfV'}}
+\def\innp#1#2{\inn{#1}{#2}'}
+
+% choose one of then
+\def\simrightarrow{\iso}
+\def\surj{\twoheadrightarrow}
+%\def\simrightarrow{\xrightarrow{\sim}}
+
+\newcommand\iso{\xrightarrow{
+   \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+\newcommand\riso{\xleftarrow{
+   \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+
+
+% Using some symbols in MnSymbol
+\DeclareFontFamily{U} {MnSymbolC}{}
+\DeclareFontShape{U}{MnSymbolC}{m}{n}{
+  <-6> MnSymbolC5
+  <6-7> MnSymbolC6
+  <7-8> MnSymbolC7
+  <8-9> MnSymbolC8
+  <9-10> MnSymbolC9
+  <10-12> MnSymbolC10
+  <12-> MnSymbolC12}{}
+\DeclareFontShape{U}{MnSymbolC}{b}{n}{
+  <-6> MnSymbolC-Bold5
+  <6-7> MnSymbolC-Bold6
+  <7-8> MnSymbolC-Bold7
+  <8-9> MnSymbolC-Bold8
+  <9-10> MnSymbolC-Bold9
+  <10-12> MnSymbolC-Bold10
+  <12-> MnSymbolC-Bold12}{}
+
+\DeclareFontFamily{U} {MnSymbolD}{}
+\DeclareFontShape{U}{MnSymbolD}{m}{n}{
+  <-6> MnSymbolD5
+  <6-7> MnSymbolD6
+  <7-8> MnSymbolD7
+  <8-9> MnSymbolD8
+  <9-10> MnSymbolD9
+  <10-12> MnSymbolD10
+  <12-> MnSymbolD12}{}
+\DeclareFontShape{U}{MnSymbolD}{b}{n}{
+  <-6> MnSymbolD-Bold5
+  <6-7> MnSymbolD-Bold6
+  <7-8> MnSymbolD-Bold7
+  <8-9> MnSymbolD-Bold8
+  <9-10> MnSymbolD-Bold9
+  <10-12> MnSymbolD-Bold10
+  <12-> MnSymbolD-Bold12}{}
+
+\DeclareSymbolFont{MnSyC} {U} {MnSymbolC}{m}{n}
+\DeclareSymbolFont{MnSyD} {U} {MnSymbolD}{m}{n}
+
+\DeclareMathSymbol{\medstar}{\mathord}{MnSyC}{130}
+\DeclareMathSymbol{\boxslash}{\mathord}{MnSyC}{114}
+\DeclareMathSymbol{\boxbackslash}{\mathord}{MnSyC}{115}
+\DeclareMathSymbol{\smblksquare}{\mathord}{MnSyC}{105}
+\DeclareMathSymbol{\nequiv}{\mathord}{MnSyD}{121}
+
+% Smaller otimes and boxtimes
+\DeclareMathSymbol{\otimes}{\mathrel}{MnSyC}{97}
+\DeclareMathSymbol{\boxtimes}{\mathrel}{MnSyC}{117}
+
+
+
+\def\O{{\rm O}}
+
+
+
+
+
+
+\usepackage{xparse}
+\def\usecsname#1{\csname #1\endcsname}
+\def\useLetter#1{#1}
+\def\usedbletter#1{#1#1}
+
+% \def\useCSf#1{\csname f#1\endcsname}
+
+\ExplSyntaxOn
+
+\def\mydefcirc#1#2#3{\expandafter\def\csname
+  circ#3{#1}\endcsname{{}^\circ {#2{#1}}}}
+\def\mydefvec#1#2#3{\expandafter\def\csname
+  vec#3{#1}\endcsname{\vec{#2{#1}}}}
+\def\mydefdot#1#2#3{\expandafter\def\csname
+  dot#3{#1}\endcsname{\dot{#2{#1}}}}
+
+\def\mydefacute#1#2#3{\expandafter\def\csname a#3{#1}\endcsname{\acute{#2{#1}}}}
+\def\mydefbr#1#2#3{\expandafter\def\csname br#3{#1}\endcsname{\breve{#2{#1}}}}
+\def\mydefbar#1#2#3{\expandafter\def\csname bar#3{#1}\endcsname{\bar{#2{#1}}}}
+\def\mydefhat#1#2#3{\expandafter\def\csname hat#3{#1}\endcsname{\hat{#2{#1}}}}
+\def\mydefwh#1#2#3{\expandafter\def\csname wh#3{#1}\endcsname{\widehat{#2{#1}}}}
+\def\mydeft#1#2#3{\expandafter\def\csname t#3{#1}\endcsname{\tilde{#2{#1}}}}
+\def\mydefu#1#2#3{\expandafter\def\csname u#3{#1}\endcsname{\underline{#2{#1}}}}
+\def\mydefr#1#2#3{\expandafter\def\csname r#3{#1}\endcsname{\mathrm{#2{#1}}}}
+\def\mydefb#1#2#3{\expandafter\def\csname b#3{#1}\endcsname{\mathbb{#2{#1}}}}
+\def\mydefwt#1#2#3{\expandafter\def\csname wt#3{#1}\endcsname{\widetilde{#2{#1}}}}
+%\def\mydeff#1#2#3{\expandafter\def\csname f#3{#1}\endcsname{\mathfrak{#2{#1}}}}
+\def\mydefbf#1#2#3{\expandafter\def\csname bf#3{#1}\endcsname{\mathbf{#2{#1}}}}
+\def\mydefc#1#2#3{\expandafter\def\csname c#3{#1}\endcsname{\mathcal{#2{#1}}}}
+\def\mydefsf#1#2#3{\expandafter\def\csname sf#3{#1}\endcsname{\mathsf{#2{#1}}}}
+\def\mydefs#1#2#3{\expandafter\def\csname s#3{#1}\endcsname{\mathscr{#2{#1}}}}
+\def\mydefcks#1#2#3{\expandafter\def\csname cks#3{#1}\endcsname{{\check{
+        \csname s#2{#1}\endcsname}}}}
+\def\mydefckc#1#2#3{\expandafter\def\csname ckc#3{#1}\endcsname{{\check{
+      \csname c#2{#1}\endcsname}}}}
+\def\mydefck#1#2#3{\expandafter\def\csname ck#3{#1}\endcsname{{\check{#2{#1}}}}}
+
+\cs_new:Npn \mydeff #1#2#3 {\cs_new:cpn {f#3{#1}} {\mathfrak{#2{#1}}}}
+
+\cs_new:Npn \doGreek #1
+{
+  \clist_map_inline:nn {alpha,beta,gamma,Gamma,delta,Delta,epsilon,varepsilon,zeta,eta,theta,vartheta,Theta,iota,kappa,lambda,Lambda,mu,nu,xi,Xi,pi,Pi,rho,sigma,varsigma,Sigma,tau,upsilon,Upsilon,phi,varphi,Phi,chi,psi,Psi,omega,Omega,tG} {#1{##1}{\usecsname}{\useLetter}}
+}
+
+\cs_new:Npn \doSymbols #1
+{
+  \clist_map_inline:nn {otimes,boxtimes} {#1{##1}{\usecsname}{\useLetter}}
+}
+
+\cs_new:Npn \doAtZ #1
+{
+  \clist_map_inline:nn {A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z} {#1{##1}{\useLetter}{\useLetter}}
+}
+
+\cs_new:Npn \doatz #1
+{
+  \clist_map_inline:nn {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z} {#1{##1}{\useLetter}{\usedbletter}}
+}
+
+\cs_new:Npn \doallAtZ
+{
+\clist_map_inline:nn {mydefsf,mydeft,mydefu,mydefwh,mydefhat,mydefr,mydefwt,mydeff,mydefb,mydefbf,mydefc,mydefs,mydefck,mydefcks,mydefckc,mydefbar,mydefvec,mydefcirc,mydefdot,mydefbr,mydefacute} {\doAtZ{\csname ##1\endcsname}}
+}
+
+\cs_new:Npn \doallatz
+{
+\clist_map_inline:nn {mydefsf,mydeft,mydefu,mydefwh,mydefhat,mydefr,mydefwt,mydeff,mydefb,mydefbf,mydefc,mydefs,mydefck,mydefbar,mydefvec,mydefdot,mydefbr,mydefacute} {\doatz{\csname ##1\endcsname}}
+}
+
+\cs_new:Npn \doallGreek
+{
+\clist_map_inline:nn {mydefck,mydefwt,mydeft,mydefwh,mydefbar,mydefu,mydefvec,mydefcirc,mydefdot,mydefbr,mydefacute} {\doGreek{\csname ##1\endcsname}}
+}
+
+\cs_new:Npn \doallSymbols
+{
+\clist_map_inline:nn {mydefck,mydefwt,mydeft,mydefwh,mydefbar,mydefu,mydefvec,mydefcirc,mydefdot} {\doSymbols{\csname ##1\endcsname}}
+}
+
+
+
+\cs_new:Npn \doGroups #1
+{
+  \clist_map_inline:nn {GL,Sp,rO,rU,fgl,fsp,foo,fuu,fkk,fuu,ufkk,uK} {#1{##1}{\usecsname}{\useLetter}}
+}
+
+\cs_new:Npn \doallGroups
+{
+\clist_map_inline:nn {mydeft,mydefu,mydefwh,mydefhat,mydefwt,mydefck,mydefbar} {\doGroups{\csname ##1\endcsname}}
+}
+
+
+\cs_new:Npn \decsyms #1
+{
+\clist_map_inline:nn {#1} {\expandafter\DeclareMathOperator\csname ##1\endcsname{##1}}
+}
+
+\decsyms{Mp,id,SL,Sp,SU,SO,GO,GSO,GU,GSp,PGL,Pic,Lie,Mat,Ker,Hom,Ext,Ind,reg,res,inv,Isom,Det,Tr,Norm,Sym,Span,Stab,Spec,PGSp,PSL,tr,Ad,Br,Ch,Cent,End,Aut,Dvi,Frob,Gal,GL,Gr,DO,ur,vol,ab,Nil,Supp,rank}
+
+\def\abs#1{\left|{#1}\right|}
+\def\norm#1{{\left\|{#1}\right\|}}
+
+
+% \NewDocumentCommand\inn{m m}{
+% \left\langle
+% \IfValueTF{#1}{#1}{000}
+% ,
+% \IfValueTF{#2}{#2}{000}
+% \right\rangle
+% }
+\NewDocumentCommand\cent{o m }{
+  \IfValueTF{#1}{
+    \mathop{Z}_{#1}{(#2)}}
+  {\mathop{Z}{(#2)}}
+}
+
+
+\def\fsl{\mathfrak{sl}}
+\def\fsp{\mathfrak{sp}}
+\def\fgl{\mathfrak{gl}}
+%\def\sp{\mathfrak{sp}}
+\def\fso{\mathfrak{so}}
+%\def\so{\mathfrak{so}}
+
+
+%\def\cent#1#2{{\mathrm{Z}_{#1}({#2})}}
+
+
+\doallAtZ
+\doallatz
+\doallGreek
+\doallGroups
+\doallSymbols
+\ExplSyntaxOff
+
+
+% \usepackage{geometry,amsthm,graphics,tabularx,amssymb,shapepar}
+% \usepackage{amscd}
+% \usepackage{mathrsfs}
+
+
+\usepackage{diagbox}
+% Update the information and uncomment if AMS is not the copyright
+% holder.
+%\copyrightinfo{2006}{American Mathematical Society}
+
+
+\newcommand{\BA}{{\mathbb{A}}}
+%\newcommand{\BB}{{\mathbb {B}}}
+\newcommand{\BC}{{\mathbb {C}}}
+\newcommand{\BD}{{\mathbb {D}}}
+\newcommand{\BE}{{\mathbb {E}}}
+\newcommand{\BF}{{\mathbb {F}}}
+\newcommand{\BG}{{\mathbb {G}}}
+\newcommand{\BH}{{\mathbb {H}}}
+\newcommand{\BI}{{\mathbb {I}}}
+\newcommand{\BJ}{{\mathbb {J}}}
+\newcommand{\BK}{{\mathbb {U}}}
+\newcommand{\BL}{{\mathbb {L}}}
+\newcommand{\BM}{{\mathbb {M}}}
+\newcommand{\BN}{{\mathbb {N}}}
+\newcommand{\BO}{{\mathbb {O}}}
+\newcommand{\BP}{{\mathbb {P}}}
+\newcommand{\BQ}{{\mathbb {Q}}}
+\newcommand{\BR}{{\mathbb {R}}}
+\newcommand{\BS}{{\mathbb {S}}}
+\newcommand{\BT}{{\mathbb {T}}}
+\newcommand{\BU}{{\mathbb {U}}}
+\newcommand{\BV}{{\mathbb {V}}}
+\newcommand{\BW}{{\mathbb {W}}}
+\newcommand{\BX}{{\mathbb {X}}}
+\newcommand{\BY}{{\mathbb {Y}}}
+\newcommand{\BZ}{{\mathbb {Z}}}
+\newcommand{\Bk}{{\mathbf {k}}}
+
+\newcommand{\CA}{{\mathcal {A}}}
+\newcommand{\CB}{{\mathcal {B}}}
+\newcommand{\CC}{{\mathcal {C}}}
+
+\newcommand{\CE}{{\mathcal {E}}}
+\newcommand{\CF}{{\mathcal {F}}}
+\newcommand{\CG}{{\mathcal {G}}}
+\newcommand{\CH}{{\mathcal {H}}}
+\newcommand{\CI}{{\mathcal {I}}}
+\newcommand{\CJ}{{\mathcal {J}}}
+\newcommand{\CK}{{\mathcal {K}}}
+\newcommand{\CL}{{\mathcal {L}}}
+\newcommand{\CM}{{\mathcal {M}}}
+\newcommand{\CN}{{\mathcal {N}}}
+\newcommand{\CO}{{\mathcal {O}}}
+\newcommand{\CP}{{\mathcal {P}}}
+\newcommand{\CQ}{{\mathcal {Q}}}
+\newcommand{\CR}{{\mathcal {R}}}
+\newcommand{\CS}{{\mathcal {S}}}
+\newcommand{\CT}{{\mathcal {T}}}
+\newcommand{\CU}{{\mathcal {U}}}
+\newcommand{\CV}{{\mathcal {V}}}
+\newcommand{\CW}{{\mathcal {W}}}
+\newcommand{\CX}{{\mathcal {X}}}
+\newcommand{\CY}{{\mathcal {Y}}}
+\newcommand{\CZ}{{\mathcal {Z}}}
+
+
+\newcommand{\RA}{{\mathrm {A}}}
+\newcommand{\RB}{{\mathrm {B}}}
+\newcommand{\RC}{{\mathrm {C}}}
+\newcommand{\RD}{{\mathrm {D}}}
+\newcommand{\RE}{{\mathrm {E}}}
+\newcommand{\RF}{{\mathrm {F}}}
+\newcommand{\RG}{{\mathrm {G}}}
+\newcommand{\RH}{{\mathrm {H}}}
+\newcommand{\RI}{{\mathrm {I}}}
+\newcommand{\RJ}{{\mathrm {J}}}
+\newcommand{\RK}{{\mathrm {K}}}
+\newcommand{\RL}{{\mathrm {L}}}
+\newcommand{\RM}{{\mathrm {M}}}
+\newcommand{\RN}{{\mathrm {N}}}
+\newcommand{\RO}{{\mathrm {O}}}
+\newcommand{\RP}{{\mathrm {P}}}
+\newcommand{\RQ}{{\mathrm {Q}}}
+%\newcommand{\RR}{{\mathrm {R}}}
+\newcommand{\RS}{{\mathrm {S}}}
+\newcommand{\RT}{{\mathrm {T}}}
+\newcommand{\RU}{{\mathrm {U}}}
+\newcommand{\RV}{{\mathrm {V}}}
+\newcommand{\RW}{{\mathrm {W}}}
+\newcommand{\RX}{{\mathrm {X}}}
+\newcommand{\RY}{{\mathrm {Y}}}
+\newcommand{\RZ}{{\mathrm {Z}}}
+
+\DeclareMathOperator{\absNorm}{\mathfrak{N}}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\LAnn}{L-Ann}
+\DeclareMathOperator{\RAnn}{R-Ann}
+\DeclareMathOperator{\ind}{ind}
+%\DeclareMathOperator{\Ind}{Ind}
+
+
+
+\newcommand{\cod}{{\mathrm{cod}}}
+\newcommand{\cont}{{\mathrm{cont}}}
+\newcommand{\cl}{{\mathrm{cl}}}
+\newcommand{\cusp}{{\mathrm{cusp}}}
+
+\newcommand{\disc}{{\mathrm{disc}}}
+\renewcommand{\div}{{\mathrm{div}}}
+
+
+
+\newcommand{\Gm}{{\mathbb{G}_m}}
+
+
+
+\newcommand{\I}{{\mathrm{I}}}
+
+\newcommand{\Jac}{{\mathrm{Jac}}}
+\newcommand{\PM}{{\mathrm{PM}}}
+
+
+\newcommand{\new}{{\mathrm{new}}}
+\newcommand{\NS}{{\mathrm{NS}}}
+\newcommand{\N}{{\mathrm{N}}}
+
+\newcommand{\ord}{{\mathrm{ord}}}
+
+%\newcommand{\rank}{{\mathrm{rank}}}
+
+\newcommand{\rk}{{\mathrm{k}}}
+\newcommand{\rr}{{\mathrm{r}}}
+\newcommand{\rh}{{\mathrm{h}}}
+
+\newcommand{\Sel}{{\mathrm{Sel}}}
+\newcommand{\Sim}{{\mathrm{Sim}}}
+
+\newcommand{\wt}{\widetilde}
+\newcommand{\wh}{\widehat}
+\newcommand{\pp}{\frac{\partial\bar\partial}{\pi i}}
+\newcommand{\pair}[1]{\langle {#1} \rangle}
+\newcommand{\wpair}[1]{\left\{{#1}\right\}}
+\newcommand{\intn}[1]{\left( {#1} \right)}
+\newcommand{\sfrac}[2]{\left( \frac {#1}{#2}\right)}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ov}{\overline}
+\newcommand{\incl}{\hookrightarrow}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\imp}{\Longrightarrow}
+%\newcommand{\lto}{\longmapsto}
+\newcommand{\bs}{\backslash}
+
+\newcommand{\cover}[1]{\widetilde{#1}}
+
+\renewcommand{\vsp}{{\vspace{0.2in}}}
+
+\newcommand{\Norma}{\operatorname{N}}
+\newcommand{\Ima}{\operatorname{Im}}
+\newcommand{\con}{\textit{C}}
+\newcommand{\gr}{\operatorname{gr}}
+\newcommand{\ad}{\operatorname{ad}}
+\newcommand{\der}{\operatorname{der}}
+\newcommand{\dif}{\operatorname{d}\!}
+\newcommand{\pro}{\operatorname{pro}}
+\newcommand{\Ev}{\operatorname{Ev}}
+% \renewcommand{\span}{\operatorname{span}} \span is an innernal command.
+%\newcommand{\degree}{\operatorname{deg}}
+\newcommand{\Invf}{\operatorname{Invf}}
+\newcommand{\Inv}{\operatorname{Inv}}
+\newcommand{\slt}{\operatorname{SL}_2(\mathbb{R})}
+%\newcommand{\temp}{\operatorname{temp}}
+%\newcommand{\otop}{\operatorname{top}}
+\renewcommand{\small}{\operatorname{small}}
+\newcommand{\HC}{\operatorname{HC}}
+\newcommand{\lef}{\operatorname{left}}
+\newcommand{\righ}{\operatorname{right}}
+\newcommand{\Diff}{\operatorname{DO}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\sh}{\varsigma}
+\newcommand{\sch}{\operatorname{sch}}
+%\newcommand{\oleft}{\operatorname{left}}
+%\newcommand{\oright}{\operatorname{right}}
+\newcommand{\open}{\operatorname{open}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Sh}{\operatorname{Sh}}
+\newcommand{\oN}{\operatorname{N}}
+
+\newcommand{\oc}{\operatorname{c}}
+\newcommand{\od}{\operatorname{d}}
+\newcommand{\os}{\operatorname{s}}
+\newcommand{\ol}{\operatorname{l}}
+\newcommand{\oL}{\operatorname{L}}
+\newcommand{\oJ}{\operatorname{J}}
+\newcommand{\oH}{\operatorname{H}}
+\newcommand{\oO}{\operatorname{O}}
+\newcommand{\oS}{\operatorname{S}}
+\newcommand{\oR}{\operatorname{R}}
+\newcommand{\oT}{\operatorname{T}}
+%\newcommand{\rU}{\operatorname{U}}
+\newcommand{\oZ}{\operatorname{Z}}
+\newcommand{\oD}{\textit{D}}
+\newcommand{\oW}{\textit{W}}
+\newcommand{\oE}{\operatorname{E}}
+\newcommand{\oP}{\operatorname{P}}
+\newcommand{\PD}{\operatorname{PD}}
+\newcommand{\oU}{\operatorname{U}}
+
+\newcommand{\g}{\mathfrak g}
+\newcommand{\gC}{{\mathfrak g}_{\C}}
+\renewcommand{\k}{\mathfrak k}
+\newcommand{\h}{\mathfrak h}
+\newcommand{\p}{\mathfrak p}
+%\newcommand{\q}{\mathfrak q}
+\renewcommand{\a}{\mathfrak a}
+\renewcommand{\b}{\mathfrak b}
+\renewcommand{\c}{\mathfrak c}
+\newcommand{\n}{\mathfrak n}
+\renewcommand{\u}{\mathfrak u}
+\renewcommand{\v}{\mathfrak v}
+\newcommand{\e}{\mathfrak e}
+\newcommand{\f}{\mathfrak f}
+\renewcommand{\l}{\mathfrak l}
+\renewcommand{\t}{\mathfrak t}
+\newcommand{\s}{\mathfrak s}
+\renewcommand{\r}{\mathfrak r}
+\renewcommand{\o}{\mathfrak o}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\z}{\mathfrak z}
+%\renewcommand{\sl}{\mathfrak s \mathfrak l}
+\newcommand{\gl}{\mathfrak g \mathfrak l}
+
+
+\newcommand{\re}{\mathrm e}
+
+\renewcommand{\rk}{\mathrm k}
+
+\newcommand{\Z}{\mathbb{Z}}
+\DeclareDocumentCommand{\C}{}{\mathbb{C}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\renewcommand{\H}{\mathbb{H}}
+%\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\S}{\mathbf S}
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathbf{B}}
+%\renewcommand{\G}{\mathbf{G}}
+\newcommand{\V}{\mathbf{V}}
+\newcommand{\W}{\mathbf{W}}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\E}{\mathbf{E}}
+%\newcommand{\J}{\mathbf{J}}
+\renewcommand{\H}{\mathbf{H}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Y}{\mathbf{Y}}
+%\newcommand{\RR}{\mathcal R}
+\newcommand{\FF}{\mathcal F}
+%\newcommand{\BB}{\mathcal B}
+\newcommand{\HH}{\mathcal H}
+%\newcommand{\UU}{\mathcal U}
+%\newcommand{\MM}{\mathcal M}
+%\newcommand{\CC}{\mathcal C}
+%\newcommand{\DD}{\mathcal D}
+\def\DD{\nabla}
+\def\DDc{\boldsymbol{\nabla}}
+\def\gDD{\nabla^{\mathrm{gen}}}
+\def\gDDc{\boldsymbol{\nabla}^{\mathrm{gen}}}
+%\newcommand{\OO}{\mathcal O}
+%\newcommand{\ZZ}{\mathcal Z}
+\newcommand{\ve}{{\vee}}
+\newcommand{\aut}{\mathcal A}
+\newcommand{\ii}{\mathbf{i}}
+\newcommand{\jj}{\mathbf{j}}
+\newcommand{\kk}{\mathbf{k}}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bp}{\bigskip}
+\newcommand{\be}{\begin {equation}}
+\newcommand{\ee}{\end {equation}}
+
+\numberwithin{equation}{section}
+
+
+\def\flushl#1{\ifmmode\makebox[0pt][l]{${#1}$}\else\makebox[0pt][l]{#1}\fi}
+\def\flushr#1{\ifmmode\makebox[0pt][r]{${#1}$}\else\makebox[0pt][r]{#1}\fi}
+\def\flushmr#1{\makebox[0pt][r]{${#1}$}}
+
+
+%\theoremstyle{Theorem}
+% \newtheorem*{thmM}{Main Theorem}
+% \crefformat{thmM}{main theorem}
+% \Crefformat{thmM}{Main Theorem}
+\newtheorem*{thm*}{Theorem}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{thml}[thm]{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{lemt}[thm]{Lemma}
+\newtheorem*{lem*}{Lemma}
+\newtheorem{whyp}[thm]{Working Hypothesis}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{prpt}[thm]{Proposition}
+\newtheorem{prpl}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+%\newtheorem*{prop*}{Proposition}
+\newtheorem{claim}{Claim}
+\newtheorem*{claim*}{Claim}
+%\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{dfnl}[thm]{Definition}
+\newtheorem*{IndH}{Induction Hypothesis}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{remarks}{Remarks}
+\newtheorem*{eg*}{Example}
+
+
+
+
+
+\def\cpc{\sigma}
+\def\ccJ{\epsilon\dotepsilon}
+\def\ccL{c_L}
+
+\def\wtbfK{\widetilde{\bfK}}
+%\def\abfV{\acute{\bfV}}
+\def\AbfV{\acute{\bfV}}
+%\def\afgg{\acute{\fgg}}
+%\def\abfG{\acute{\bfG}}
+\def\abfV{\bfV'}
+\def\afgg{\fgg'}
+\def\abfG{\bfG'}
+
+\def\half{{\tfrac{1}{2}}}
+\def\ihalf{{\tfrac{\mathbf i}{2}}}
+\def\slt{\fsl_2(\bC)}
+\def\sltr{\fsl_2(\bR)}
+
+% \def\Jslt{{J_{\fslt}}}
+% \def\Lslt{{L_{\fslt}}}
+\def\slee{{
+\begin{pmatrix}
+ 0 & 1\\
+ 0 & 0
+\end{pmatrix}
+}}
+\def\slff{{
+\begin{pmatrix}
+ 0 & 0\\
+ 1 & 0
+\end{pmatrix}
+}}\def\slhh{{
+\begin{pmatrix}
+ 1 & 0\\
+ 0 & -1
+\end{pmatrix}
+}}
+\def\sleei{{
+\begin{pmatrix}
+ 0 & i\\
+ 0 & 0
+\end{pmatrix}
+}}
+\def\slxx{{\begin{pmatrix}
+-\ihalf & \half\\
+\phantom{-}\half & \ihalf
+\end{pmatrix}}}
+% \def\slxx{{\begin{pmatrix}
+% -\sqrt{-1}/2 & 1/2\\
+% 1/2 & \sqrt{-1}/2
+% \end{pmatrix}}}
+\def\slyy{{\begin{pmatrix}
+\ihalf & \half\\
+\half & -\ihalf
+\end{pmatrix}}}
+\def\slxxi{{\begin{pmatrix}
++\half & -\ihalf\\
+-\ihalf & -\half
+\end{pmatrix}}}
+\def\slH{{\begin{pmatrix}
+   0   & -\mathbf i\\
+\mathbf i & 0
+\end{pmatrix}}
+}
+
+\ExplSyntaxOn
+\clist_map_inline:nn {J,L,C,X,Y,H,c,e,f,h,}{
+  \expandafter\def\csname #1slt\endcsname{{\mathring{#1}}}}
+\ExplSyntaxOff
+
+
+\def\Mop{\fT}
+
+\def\fggJ{\fgg_J}
+\def\fggJp{\fgg'_{J'}}
+
+\def\NilGC{\Nil_{\bfG}(\fgg)}
+\def\NilGCp{\Nil_{\bfG'}(\fgg')}
+\def\Nilgp{\Nil_{\fgg'_{J'}}}
+\def\Nilg{\Nil_{\fgg_{J}}}
+\def\Nilms{\Nil^{\mathrm{ms}}}
+%\defpp{\Nil^{\mathrm{sp}}}
+\def\orb{\mathrm{Orbit}}
+%\def\NilP'{\Nil_{\fpp'}}
+
+\NewDocumentCommand{\NilP}{t'}{
+\IfBooleanTF{#1}{\Nil_{\fpp'}}{\Nil_\fpp}
+}
+
+\def\KS{\mathsf{KS}}
+\def\MM{\bfM}
+\def\MMP{M}
+
+\NewDocumentCommand{\KTW}{o g}{
+  \IfValueTF{#2}{
+    \left.\varsigma_{\IfValueT{#1}{#1}}\right|_{#2}}{
+    \varsigma_{\IfValueT{#1}{#1}}}
+}
+\def\IST{\rho}
+\def\tIST{\trho}
+
+\NewDocumentCommand{\CHI}{o g}{
+  \IfValueTF{#1}{
+    {\chi}_{\left[#1\right]}}{
+    \IfValueTF{#2}{
+      {\chi}_{\left(#2\right)}}{
+      {\chi}}
+  }
+}
+\NewDocumentCommand{\PR}{g}{
+  \IfValueTF{#1}{
+    \mathop{\pr}_{\left(#1\right)}}{
+    \mathop{\pr}}
+}
+\NewDocumentCommand{\XX}{g}{
+  \IfValueTF{#1}{
+    {\cX}_{\left(#1\right)}}{
+    {\cX}}
+}
+\NewDocumentCommand{\PP}{g}{
+  \IfValueTF{#1}{
+    {\fpp}_{\left(#1\right)}}{
+    {\fpp}}
+}
+\NewDocumentCommand{\LL}{g}{
+  \IfValueTF{#1}{
+    {\bfL}_{\left(#1\right)}}{
+    {\bfL}}
+}
+\NewDocumentCommand{\ZZ}{g}{
+  \IfValueTF{#1}{
+    {\cZ}_{\left(#1\right)}}{
+    {\cZ}}
+}
+
+\NewDocumentCommand{\WW}{g}{
+  \IfValueTF{#1}{
+    {\bfW}_{\left(#1\right)}}{
+    {\bfW}}
+}
+
+
+
+
+\def\gpi{\wp}
+\NewDocumentCommand\KK{g}{
+\IfValueTF{#1}{K_{(#1)}}{K}}
+% \NewDocumentCommand\OO{g}{
+% \IfValueTF{#1}{\cO_{(#1)}}{K}}
+\NewDocumentCommand\XXo{d()}{
+\IfValueTF{#1}{\cX^\circ_{(#1)}}{\cX^\circ}}
+\def\bfWo{\bfW^\circ}
+\def\bfWoo{\bfW^{\circ \circ}}
+\def\bfWg{\bfW^{\mathrm{gen}}}
+\def\Xg{\cX^{\mathrm{gen}}}
+\def\Xo{\cX^\circ}
+\def\Xoo{\cX^{\circ \circ}}
+\def\ckfgg{\check{\fgg}}
+\def\fppo{\fpp^\circ}
+\def\fggo{\fgg^\circ}
+\NewDocumentCommand\ZZo{g}{
+\IfValueTF{#1}{\cZ^\circ_{(#1)}}{\cZ^\circ}}
+
+% \ExplSyntaxOn
+% \NewDocumentCommand{\bcO}{t' E{^_}{{}{}}}{
+%   \overline{\cO\sb{\use_ii:nn#2}\IfBooleanTF{#1}{^{'\use_i:nn#2}}{^{\use_i:nn#2}}
+%   }
+% }
+% \ExplSyntaxOff
+
+\NewDocumentCommand{\bcO}{t'}{
+  \overline{\cO\IfBooleanT{#1}{'}}}
+
+\NewDocumentCommand{\oliftc}{g}{
+\IfValueTF{#1}{\boldsymbol{\vartheta} (#1)}{\boldsymbol{\vartheta}}
+}
+\NewDocumentCommand{\oliftr}{g}{
+\IfValueTF{#1}{\vartheta_\bR(#1)}{\vartheta_\bR}
+}
+\NewDocumentCommand{\olift}{g}{
+\IfValueTF{#1}{\vartheta(#1)}{\vartheta}
+}
+% \NewDocumentCommand{\dliftv}{g}{
+% \IfValueTF{#1}{\ckvartheta(#1)}{\ckvartheta}
+% }
+\def\dliftv{\vartheta}
+\NewDocumentCommand{\tlift}{g}{
+\IfValueTF{#1}{\wtvartheta(#1)}{\wtvartheta}
+}
+
+\def\slift{\cL}
+
+\def\BB{\bB}
+
+
+\def\thetaO#1{\vartheta\left(#1\right)}
+
+\def\bbThetav{\check{\mathbbold{\Theta}}}
+\def\Thetav{\check{\Theta}}
+\def\thetav{\check{\theta}}
+
+\DeclareDocumentCommand{\NN}{g}{
+\IfValueTF{#1}{\fN(#1)}{\fN}
+}
+\DeclareDocumentCommand{\RR}{m m}{
+\fR({#1},{#2})
+}
+
+\NewDocumentCommand{\sign}{m}{
+  \mathrm{Sign}(#1)
+}
+\NewDocumentCommand{\lsign}{m}{
+{}^l\mathrm{Sign}(#1)
+}
+
+
+
+\NewDocumentCommand\lnn{t+ t- g}{
+  \IfBooleanTF{#1}{{}^l n^+\IfValueT{#3}{(#3)}}{
+    \IfBooleanTF{#2}{{}^l n^-\IfValueT{#3}{(#3)}}{}
+  }
+}
+
+
+% Fancy bcO, support feature \bcO'^a_b = \overline{\cO'^a_b}
+\makeatletter
+\def\bcO{\def\O@@{\cO}\@ifnextchar'\@Op\@Onp}
+\def\@Opnext{\@ifnextchar^\@Opsp\@Opnsp}
+\def\@Op{\afterassignment\@Opnext\let\scratch=}
+\def\@Opnsp{\def\O@@{\cO'}\@Otsb}
+\def\@Onp{\@ifnextchar^\@Onpsp\@Otsb}
+\def\@Opsp^#1{\def\O@@{\cO'^{#1}}\@Otsb}
+\def\@Onpsp^#1{\def\O@@{\cO^{#1}}\@Otsb}
+\def\@Otsb{\@ifnextchar_\@Osb{\@Ofinalnsb}}
+\def\@Osb_#1{\overline{\O@@_{#1}}}
+\def\@Ofinalnsb{\overline{\O@@}}
+
+% Fancy \command: \command`#1 will translate to {}^{#1}\bfV, i.e. superscript on the
+% lift conner.
+
+\def\defpcmd#1{
+  \def\nn@tmp{#1}
+  \def\nn@np@tmp{@np@#1}
+  \expandafter\let\csname\nn@np@tmp\expandafter\endcsname \csname\nn@tmp\endcsname
+  \expandafter\def\csname @pp@#1\endcsname`##1{{}^{##1}{\csname @np@#1\endcsname}}
+  \expandafter\def\csname #1\endcsname{\,\@ifnextchar`{\csname
+      @pp@#1\endcsname}{\csname @np@#1\endcsname}}
+}
+
+% \def\defppcmd#1{
+% \expandafter\NewDocumentCommand{\csname #1\endcsname}{##1 }{}
+% }
+
+
+
+\defpcmd{bfV}
+\def\KK{\bfK}\defpcmd{KK}
+\defpcmd{bfG}
+\def\A{\!A}\defpcmd{A}
+\def\K{\!K}\defpcmd{K}
+\def\G{G}\defpcmd{G}
+\def\J{\!J}\defpcmd{J}
+\def\L{\!L}\defpcmd{L}
+\def\eps{\epsilon}\defpcmd{eps}
+\def\pp{p}\defpcmd{pp}
+\defpcmd{wtK}
+\makeatother
+
+\def\fggR{\fgg_\bR}
+\def\rmtop{{\mathrm{top}}}
+\def\dimo{\dim^\circ}
+
+\NewDocumentCommand\LW{g}{
+\IfValueTF{#1}{L_{W_{#1}}}{L_{W}}}
+%\def\LW#1{L_{W_{#1}}}
+\def\JW#1{J_{W_{#1}}}
+
+\def\floor#1{{\lfloor #1 \rfloor}}
+
+\def\KSP{K}
+\def\UU{\rU}
+\def\UUC{\rU_\bC}
+\def\tUUC{\widetilde{\rU}_\bC}
+\def\OmegabfW{\Omega_{\bfW}}
+
+
+\def\BB{\bB}
+
+
+\def\thetaO#1{\vartheta\left(#1\right)}
+
+\def\Thetav{\check{\Theta}}
+\def\thetav{\check{\theta}}
+
+\def\Thetab{\bar{\Theta}}
+
+\def\cKaod{\cK^{\mathrm{aod}}}
+
+%G_V's or G
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \def\GVr{G_{\bfV}}
+% \def\tGVr{\wtG_{\bfV}}
+% \def\GVpr{G_{\bfV'}}
+% \def\tGVpr{\wtG_{\bfV'}}
+% \def\GVpr{G_{\abfV}}
+% \def\tGVar{\wtG_{\abfV}}
+% \def\GV{\bfG_{\bfV}}
+% \def\GVp{\bfG_{\bfV'}}
+% \def\KVr{K_{\bfV}}
+% \def\tKVr{\wtK_{\bfV}}
+% \def\KV{\bfK_{\bfV}}
+% \def\KaV{\bfK_{\acute{V}}}
+
+% \def\KV{\bfK}
+% \def\KaV{\acute{\bfK}}
+% \def\acO{\acute{\cO}}
+% \def\asO{\acute{\sO}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\GVr{G}
+\def\tGVr{\wtG}
+\def\GVpr{G'}
+\def\tGVpr{\widetilde{G'}}
+\def\GVar{G'}
+\def\tGVar{\wtG'}
+\def\GV{\bfG}
+\def\GVp{\bfG'}
+\def\KVr{K_{\bfV}}
+\def\tKVr{\wtK_{\bfV}}
+\def\KV{\bfK_{\bfV}}
+\def\KaV{\bfK_{\acute{V}}}
+
+\def\KV{\bfK}
+\def\KaV{\acute{\bfK}}
+\def\acO{{\cO'}}
+\def\asO{{\sO'}}
+
+\DeclareMathOperator{\sspan}{span}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\bfLz{\bfL_0}
+\def\sOpe{\sO^\perp}
+\def\sOpeR{\sO^\perp_\bR}
+\def\sOR{\sO_\bR}
+
+\def\ZX{\cZ_{X}}
+\def\gdliftv{\vartheta}
+\def\gdlift{\vartheta^{\mathrm{gen}}}
+\def\bcOp{\overline{\cO'}}
+\def\bsO{\overline{\sO}}
+\def\bsOp{\overline{\sO'}}
+\def\bfVpe{\bfV^\perp}
+\def\bfEz{\bfE_0}
+\def\bfVn{\bfV^-}
+\def\bfEzp{\bfE'_0}
+
+\def\totimes{\widehat{\otimes}}
+\def\dotbfV{\dot{\bfV}}
+
+\def\aod{\mathrm{aod}}
+\def\unip{\mathrm{unip}}
+
+
+\def\ssP{{\ddot\cP}}
+\def\ssD{\ddot{\bfD}}
+\def\ssdd{\ddot{\bfdd}}
+\def\phik{\phi_{\fkk}}
+\def\phikp{\phi_{\fkk'}}
+%\def\bbfK{\breve{\bfK}}
+\def\bbfK{\wtbfK}
+\def\brrho{\breve{\rho}}
+
+\def\whAX{\widehat{A_X}}
+\def\mktvvp{\varsigma_{{\bf V},{\bf V}'}}
+\def\chico{\chi_{\ckcO}}
+
+\def\Piunip{\Pi^{\mathrm{unip}}}
+\def\cf{\emph{cf.} }
+\def\tdBV{\tilde{\mathrm{d}}_{\mathrm{BV}}}
+\def\tdLS{\tilde{\mathrm{d}}_{\mathrm{LS}}}
+\def\tdSP{\tilde{\mathrm{d}}_{\mathrm{SP}}}
+\def\dBV{{\mathrm{d}}_{\mathrm{BV}}}
+
+\newtheorem{theoremA}{Theorem A\ignorespaces}
+\newtheorem{theoremB}{Theorem B\ignorespaces}
+
+\newtheorem{introtheorem}{\bf{Theorem}}
+\renewcommand{\theintrotheorem}{\Alph{introtheorem}}
+\renewcommand{\theintrotheorem}{\Alph{introtheorem}}
+
+\begin{document}
+
+
+\title[]{On the notion of metaplectic Barbasch-Vogan duality}
+
+\author [D. Barbasch] {Dan Barbasch}
+\address{Department of Mathematics\\
+Cornell University\\
+Ithaca, NY14853, USA}
+\email{barbasch@math.cornell.edu}
+
+\author [J.-J. Ma] {Jia-Jun Ma}
+\address{School of Mathematical Sciences\\
+  Xiamen University\\
+  Xiamen, China} \email{hoxide@xmu.edu.cn}
+
+%\author [J.-J. Ma] {Jia-jun Ma}
+%\address{School of Mathematical Sciences\\
+%  Shanghai Jiao Tong University\\
+%  800 Dongchuan Road, Shanghai, 200240,
+% China} \email{hoxide@sjtu.edu.cn}
+
+\author [B. Sun] {Binyong Sun}
+% MCM, HCMS, HLM, CEMS, UCAS,
+\address{Institute for Advanced Study in Mathematics, Zhejiang University\\
+  Hangzhou, 310058, China}\email{sunbinyong@zju.edu.cn}
+%\address{Academy of Mathematics and Systems Science\\
+%  Chinese Academy of Sciences\\
+%  Beijing, 100190, China} \email{sun@math.ac.cn}
+
+\author [C.-B. Zhu] {Chen-Bo Zhu}
+\address{Department of Mathematics\\
+  National University of Singapore\\
+  10 Lower Kent Ridge Road, Singapore 119076} \email{matzhucb@nus.edu.sg}
+
+
+
+
+\subjclass[2020]{16D60, 22E46} \keywords{Classical group, metaplectic group, nilpotent orbit, Barbasch-Vogan duality, primitive ideal, special unipotent
+  representation, theta lift}
+
+% \thanks{Supported by NSFC Grant 11222101}
+
+\begin{abstract}
+In analogy with the Barbasch-Vogan duality for reductive linear groups, we introduce a duality map from the set of nilpotent orbits in $\s\p_{2n}(\BC)$ to the set of nilpotent orbits in $\s\p_{2n}(\BC)$, whose range consists of the so-called metaplectic special nilpotent orbits. We relate this duality notion with the theory of primitive ideals and extend the notion of special unipotent representations to the real metaplectic groups. We also interpret the duality map in terms of double cells of Weyl group representations.
+  \end{abstract}
+
+
+\maketitle
+
+
+%\tableofcontents
+
+
+
+
+\section{Introduction and the main results}\label{sec:intro}
+
+%\subsection{Infinitesimal characters}
+
+
+
+
+%Let $G$ denote  the metaplectic double cover of the symplectic group $\Sp_{2n}(\R)$ ($n\geq 1$).
+
+We introduce some notations for complex classical Lie algebras and their nilpotent orbits. We refer the reader to \cite{CM} as a general reference.
+
+Write $\overline{\mathrm{Nil}}(\s\p_{2n}(\BC))$ ($n \geq 0$) for the set of nilpotent $\Sp_{2n}(\BC)$-orbits in the symplectic  Lie algebra $\s\p_{2n}(\BC)$, and $\overline{\mathrm{Nil}}^{\mathrm{sp}}(\s\p_{2n}(\BC))$ for its subset of the special nilpotent orbits (in the sense of Lusztig \cite{Lu}). Similar notations apply for the orthogonal Lie algebra $\o_{m}(\BC)$ and for $\fgl_n(\BC)$.
+%of the for the set of special nilpotent orbits in $\overline{\mathrm{Nil}}(\o_{m}(\BC))$ and  $\overline{\mathrm{Nil}}(\sp_{2n}(\BC))$, respectively.
+Elements of $\overline{\mathrm{Nil}} (\g\l_n(\BC))$, $\overline{\mathrm{Nil}}(\o_{2n+1}(\BC))$, $\overline{\mathrm{Nil}}(\s\p_{2n}(\BC))$ or  $\overline{\mathrm{Nil}}(\o_{2n}(\BC))$ will be called nilpotent orbits of type A, B, C, or D, respectively, and referred to as classical nilpotent orbits. When no confusion is possible, we will not distinguish a classical nilpotent orbit with its Young diagram.
+
+Recall that a nilpotent orbit of type B, C, or D is special if and only if the transpose of its Young diagram is of type B, C or C, respectively. See \cite[Section 6.3]{CM}.
+
+\begin{defn}
+A nilpotent orbit of type $\mathrm C$ is said to be metaplectic special if the transpose of its Young diagram is of type $\mathrm D$.
+\end{defn}
+
+\begin{remark} The notion of metaplectic special appears earlier in \cite{Mo96} (where it is called anti-special) and in \cite{JLS}.
+\end{remark}
+
+For the rest of this introduction, let $\g:=\s\p_{2n}(\C)$ ($n\geq 0$). % Let $\h$ denote the universal Cartan subalgebra of $\g$, and let $\Psi^+\subset \h^*$ denote the positive
+As usual, the universal Cartan subalgebra $\t$ of $\g$ is identified with $\BC^n$, and the set of positive roots is identified with
+\[
+  \Psi^+=\{e_i\pm e_j\mid 1\leq i<j\leq n\}\sqcup \{2e_i\mid 1\leq i\leq n\}\subset \t^*.
+\]
+Here $e_1, e_2,\cdots, e_n$ is the standard basis of $\BC^n$, and we identify the dual space $(\BC^n)^*$ with $\BC^n$ in the obvious way. The Weyl group $W_n\subset \GL_n(\BC)$ is generated by all the permutation matrices and the diagonal matrices of order $2$. Write $\oZ(\g)$ for the center of the universal enveloping algebra $\oU(\g)$ of $\g$.  Through the Harish-Chandra isomorphism, we have an identification
+\be\label{zg}
+ \oZ(\g)=\left(\oS(\C^n)\right)^{W_n},
+\ee
+where $\oS$ indicates the symmetric algebra, and a superscript group indicates invariants under the group action.
+A character of $\oZ(\g)$ is thus represented by an element of $W_n\backslash \BC^n$.
+
+\begin{defn}
+A character $\chi: \oZ(\g)\rightarrow \BC$ is said to be metaplectic integral if it is represented by an element in $(\frac{1}{2}+\BZ)^n$.
+\end{defn}
+
+%For example, the oscillator representations of $G$ has metaplectic integral infinitesimal characters.
+
+We identify $\g$ with its linear dual $\g^*$ via the trace form
+\[
+  \la X, Y\ra:=\tr(XY),\qquad X, Y\in \g.
+\]
+We may thus speak of a nilpotent orbit in $\g^*$, as well as the notion of metaplectic special nilpotent orbit in $\g^*$. We adopt the same convention for other classical Lie algebras.
+
+The main results of this note concern the primitive ideals of $\oU(\g)$. We refer the reader to \cite{Dix} as a general reference.
+Recall the well-known result of Joseph \cite{Jos} that the associated variety of a primitive ideal of $\oU(\g)$ is the closure of a single nilpotent orbit in $\g^*$.
+
+\begin{introtheorem}\label{thm13}
+%\begin{thm}\label{thm13}
+Let $I$ be a primitive ideal of $\oU(\g)$ with a metaplectic integral infinitesimal character.  Then the associated variety of $I$ is the closure of a metaplectic special nilpotent orbit in $\g^*$.
+%\end{thm}
+\end{introtheorem}
+
+\begin{remark} Theorem \ref{thm13} should be viewed as an analogue of the result of Barbasch and Vogan on representations of complex semisimple groups with integral infinitesimal characters (\cite[Definition 1.10]{BVUni} and remarks immediately after).  We refer the reader to the work of M{\oe}glin, and Jiang, Liu and Savin for analogous results in the case of $p$-adic groups (\cite[Theorem 1.4]{Mo96} and \cite[Theorem 11.1]{JLS}).
+%\Cref{thm13} may also be under
+%\mjj{Should refer to Joseph and Soergel instead of Lusztig and Yun. We can thank Yun for the helpful comments. }
+\Cref{thm13} may also be understood in terms of double cells of Weyl group representations, see \Cref{sec:cell}.
+%Lusztig and Yun on monodromic Hecke category \cite{LY}. .
+%The authors thank Zhiwei Yun for explaining to us this connection.
+\end{remark}
+
+
+In analogy with the Langlands dual, we define $\check \g=\g=\s\p_{2n}(\BC)$ and call it the metaplectic dual of $\g$.
+Also define the metaplectic Lusztig-Spaltenstein duality map:
+\be\label{tdls00}
+\begin{array}{rcl}
+   \tilde{\mathrm d}_{\mathrm{LS}}:\overline{\mathrm{Nil}}(\check \g)&\rightarrow & \overline{\mathrm{Nil}}^{\mathrm{sp}}(\o_{2n}(\BC))\\
+     \bfdd&\mapsto &  \textrm{the D-collapse of  $\bfdd^{\mathrm t}$}.
+     \end{array}
+\ee
+Here and henceforth, a superscript $\mathrm t$ of a Young diagram indicates the transpose of the Young diagram. %a nilpotent orbit is identified with its Young diagram, and
+
+For a Young diagram $\bfdd$, write $\bfdd^+$ for the Young diagram obtained by adding one box at the first row. When $\bfdd$ is non-empty, write $\bfdd^-$ for the Young diagram obtained by removing  one box from the last row. Define a map
+\be\label{tdsp00}
+\begin{array}{rcl}
+  \tilde{ \mathrm d}_{\mathrm{SP}}:  \overline{\mathrm{Nil}}^{\mathrm{sp}}(\o_{2n}(\BC))&\rightarrow &\overline{\mathrm{Nil}}^{\mathrm{ms}}(\g^*)\\
+  \bfdd&\mapsto & \textrm{the C-collapse of $(\bfdd^+)^-$},
+     \end{array}
+\ee
+where $\overline{\mathrm{Nil}}^{\mathrm{ms}}(\g^*)$ denotes the set of metaplectic special nilpotent orbits in $\overline{\mathrm{Nil}}(\g^*)$.
+
+
+\begin{prop}\label{lemin1}
+\begin{itemize}
+\item [(a)]
+The map $\tilde{\mathrm d}_{\mathrm{LS}}$ in \eqref{tdls00} is  well-defined, surjective, and order reversing.
+\item [(b)]
+The map $\tilde{ \mathrm d}_{\mathrm{SP}}$ in \eqref{tdsp00} is well-defined,  bijective, and order preserving.
+\end{itemize}
+\end{prop}
+
+
+
+%\begin{lem}\label{lemin2}
+%The map \eqref{tdsp00}  is well-defined,  bijective, and order preserving.
+%\end{lem}
+%on from $\mathrm{Nil}^{\mathrm{sp}}(\o_{2n}(\BC))$ to $\mathrm{Nil}^{\mathrm{ms}}(\g^*)$.
+
+ %image of this map is $\mathrm{Nil}^{\mathrm{sp}}(\o_{2n}(\BC))$, the set of special nilpotent orbits in $\mathrm{Nil}(\o_{2n}(\BC))$.
+
+
+\begin{defn} \label{def:MBV} The metaplectic Barbash-Vogan duality is defined to be the composition of \eqref{tdls00} and \eqref{tdsp00}:
+\begin{equation}\label{MBV}
+  \tilde{\mathrm d}_{\mathrm{BV}}:=  \tilde{ \mathrm d}_{\mathrm{SP}}\circ
+  \tilde{\mathrm d}_{\mathrm{LS} }:
+  \overline{\mathrm{Nil}}(\check \g)\rightarrow \overline{\mathrm{Nil}}^{\mathrm{ms}}(\g^*).
+\end{equation}
+\end{defn}
+
+\begin{eg*}
+\begin{itemize}
+\item The metaplectic Barbasch-Vogan dual of $[2n]$ (principal nilpotent orbit) is $[2,1^{2n-2}]$ (minimal nilpotent orbit).
+\item The metaplectic Barbasch-Vogan dual of $[1^{2n}]$ (zero orbit) is $[2n]$ (principal nilpotent orbit).
+\end{itemize}
+\end{eg*}
+
+\begin{remark} The duality map of \Cref{def:MBV} appears in \cite[Section 1.4.2]{MoUnip}. One may also find its detailed description in \cite[Section 7]{MR}.
+\end{remark}
+
+
+\trivial[h]{
+
+\begin{remark}
+  The map $\tdBV$ may also be defined in the same fashion as Barbasch-Vogan's definition of $\dBV$
+  in \cite[Section~3]{BVUni}. This is consistent with Renard-Trapa's
+  work \cite{RT1,RT2} on the Vogan duality of metaplectic groups.
+
+  Let $W(C_n)$ and $W(D_n)$ be the Weyl group of type $C_n$ and $D_n$
+  respectively. We view $W(D_n)$ as a subgroup of $W(C_n)$ (of index $2$) in the obvious way.
+  We now describe the alternative definitions mentioned above:
+  \begin{itemize}
+    \item {\bf Definiton of $\tdBV$:}
+  For $\cO\in\overline{\mathrm{Nil}}(\fsp_{2n}(\bC))$, let $\sigma_\cO$ be the representation of
+  $W(C_n)$ obtained by the Springer correspondence; let $\sigma'_{\cO}$ be the
+  unique irreducible $W(D_n)$-representation contained in $\sigma_\cO|_{W(D_n)}$; let $\tau'_{\cO}$ be
+  the unique special representation of $W(D_n)$ in the double cell containing
+  $\sigma'_\cO$; now $\tdLS(\cO)$ is exactly the special nilpotent orbit
+  $\cO_{\tau'_{\cO}\otimes \sgn}$ given by the Springer correspondence (here
+  $\sgn$ denotes the sign character of $W(D_n)$ and we also ignore the label I/II for the very even orbits).
+\item {\bf Definition of $\tdSP$:}
+  Let $\cO \in \overline{\mathrm{Nil}}^{\mathrm{sp}}(\fso_{2n}(\bC))$ and $\binom{\lambda_0, \cdots,
+    \lambda_k}{\mu_0, \cdots, \mu_k}$ be the symbol corresponding to the
+  Springer representation $\sigma_\cO$ of $\cO$ such that
+  \[
+    0=\lambda_0\leq \mu_0 \leq \lambda_1\leq \cdots \leq \lambda_k\leq \mu_k.
+  \]
+  Now $\tdSP(\cO)$ is the nilpotent orbit in $\fsp_{2n}(\bC)$ corresponding to
+  the $W(C_n)$-representation with the symbol
+  \[
+    \binom{\mu_0, \ \ \ \ \  \mu_1, \ \cdots, \mu_{k-1},\ \ \
+    \mu_k}{\lambda_1-1,\ \  \cdots, \ \ \ \   \lambda_k-1}.
+  \]
+\end{itemize}
+\end{remark}
+}
+
+%{\color{red}
+%  Note that $\Nilms(\fsp_{2n}(\bC))\longrightarrow \Nilsp(\fso_{2n}(\bC))$ defined
+%  by $\bfdd\mapsto \bfdd^{\rtt}$ is a bijection (c.f. \cite[Prop~6.3.7]{CM}).
+%  We deduce that
+% $\tdBV|_{\Nilms(\fgg)} \colon \Nilms(\fgg)\longrightarrow \Nilms(\fgg)$ is a
+% order reversing bijection.
+%}
+
+
+%Write $\Nil(\o_{2n}(\BC))$ for the set of nilpotent $\oO_{2n}(\BC)$-orbits in the orthogonal Lie algebra $\o_{2n}(\BC)$. Similarly define $\Nil(\check \g)=\Nil(\s\p_{2n}(\BC)$  and $\Nil(\g^*)$.
+
+%The Langlands dual $\check G$ of $G$ is the complex symplectic group $\Sp_{2n}(\BC)$. Write $\Nil(\s\p_{2n}(\BC)$ for the set of nilpotent orbits in $\s\p_{2n}(\BC)$,
+
+
+Let $\check \CO\in  \overline{\mathrm{Nil}}(\check \g)$.  It determines a character $\chi _{\check \CO}: \oZ(\g)\rightarrow \C$ as in what follows. For every  integer $a\geq 0$, write
+\[
+  \rho(a):=\left\{ \begin{array}{ll}
+                     (1, 2, \cdots, \frac{a-1}{2}), \quad &\textrm{if $a$ is odd;}\\
+                     (\frac{1}{2}, \frac{3}{2}, \cdots, \frac{a-1}{2}), \quad &\textrm{if $a$ is even;}\\
+                    \end{array}
+                 \right.
+\]
+By convention, $\rho(1)$ and $\rho(0)$ are  the empty sequence.
+Write $a_1\geq  a_2\geq \cdots\geq a_s>0$ for the rows of the Young diagram of $\check \CO$. Following Arthur and Barbasch-Vogan \cite[Chapter 27]{ABV}, define
+\begin{equation}\label{chico}
+ \chi_{\check \CO}:= (\rho( a_1), \rho(a_2),  \cdots, \rho(a_s), 0, 0, \cdots, 0 )\in \BC^n,
+\end{equation}
+to be viewed as a character $\chi_{\check \CO}: \oZ(\g)\rightarrow \C$. Here the number of $0$'s is half of the number of odd rows in the Young diagram of $\check \CO$.
+%$ \frac{\textrm{the number of odd rows of the Young diagram of $\check \CO$}}{2}.$
+
+Recall the following well-known result of Dixmier \cite[Section 3]{Bor}: for every algebraic character $\chi$ of $\oZ(\g)$, there exists a unique maximal ideal of $\oU(\g)$ that contains the kernel of $\chi$, to be called
+the maximal ideal of $\oU(\g)$ with infinitesimal character $\chi$.
+%See \cite{Dix, Du77}.
+Note that all maximal ideals of $\oU(\g)$ are primitive ideals.
+
+\begin{introtheorem}\label{thm16}
+%\begin{thm}\label{thm16}
+Let $\check \CO\in  \overline{\mathrm{Nil}}(\check \g)$ and denote by $I_{\check \CO}$ the maximal ideal of $\oU(\g)$ with infinitesimal character $\chi_{\check \CO}$. Then the associated variety of $I_{\check \CO}$ equals the closure of $\tilde{\mathrm d}_{\mathrm{BV}}(\check \CO)$.
+%\end{thm}
+\end{introtheorem}
+
+\begin{remark} In the case of the Langlands dual, the corresponding result is a theorem (resp. definition) of Barbasch-Vogan on the representation-theoretical interpretation of the Lusztig-Spaltenstein (resp. Barbasch-Vogan) duality. See Theorem \ref{DesBV}. Our proof of Theorem \ref{thm16} is reduced to this case via the technique of theta lifting (for complex dual pairs in the stable range).
+\end{remark}
+
+\begin{remark} The afore-mentioned result of Barbasch-Vogan is based on their work \cite{BVPri1,BVPri2} on the classification of primitive ideals in terms of Weyl group representations and Springer correspondence. Our metaplectic Barbasch-Vogan dual map $\tdBV$ may also be defined \'a la Barbasch-Vogan. For the purpose of this note, we have adopted a more direct approach.
+\end{remark}
+
+Write $\widetilde{\Sp}_{2n}(\R)$ for the metaplectic double cover of the real symplectic group $\Sp_{2n}(\R)$. %$\widetilde{\Sp}_{2n}(\R)$
+Recall that a  smooth Fr\'echet representation of  moderate growth  of a real reductive group is called a Casselman-Wallach representation \cite{Ca89,Wa2} if its Harish-Chandra module has  finite length. Following Barbasch and Vogan \cite{ABV,BVUni}, we make the following definition.
+
+\begin{defn}
+%Let $\check \CO\in \Nil(\check \g)$.
+Let $\check \CO\in \overline{\mathrm{Nil}}(\check \g)$. We say that a genuine irreducible Casselman-Wallach representation $V$ of $\widetilde{\Sp}_{2n}(\R)$  is attached to $\check \CO$ if
+\begin{itemize}
+\item the infinitesimal character of $V$ equals $\chi_{\check \CO}$, and
+\item the associated variety of the annihilator ideal of $V$ equals  the closure of $\tilde{\mathrm d}_{\mathrm{BV}}(\check \CO)$.
+\end{itemize}
+\end{defn}
+
+We will call a genuine irreducible Casselman-Wallach representation $V$ of $\widetilde{\Sp}_{2n}(\R)$ (metaplectic) special unipotent if it is attached to $\check \CO$, for some $\check \CO\in \overline{\mathrm{Nil}}(\check \g)$. Thus the irreducible pieces of the Weil (or oscillator) representations \cite{Weil} are (metaplectic) special, and are attached to the principal nilpotent orbit of $\check \g=\s\p_{2n}(\BC)$.
+
+In the rest of this introduction, we will give some general remarks on representation theory of $\widetilde{\Sp}_{2n}(\R)$ as well as the relationship of this article to  the authors' series of two papers \cite{BMSZ1,BMSZ2}, in which we construct and classify special unipotent representations of real classical groups (including $\widetilde{\Sp}_{2n}(\R)$). As a consequence of the construction and classification, we show that all of them are unitarizable, as predicted by the Arthur-Barbasch-Vogan conjecture \cite[Introduction]{ABV}. Apart from their clear and well-known interest for the theory of automorphic forms \cite{ArPro,ArUni}, we note that special unipotent representations belong to a fundamental class of unitary representations which are associated to nilpotent coadjoint orbits in
+the Kirillov philosophy (the orbit method; see \cite{Ki62,Ko70,VoBook}). These are known informally as unipotent representations, which are expected to play a central role in the unitary dual problem of a real reductive group and therefore have been a subject of great interest. See
+\cite{VoICM,VoBook,Vo89}.
+
+Due to the historical origin, representations of $\widetilde{\Sp}_{2n}(\R)$ are often investigated in the framework of the oscillator representation and local theta correspondence \cite{Howe79,Howe89}. Indeed our construction of special unipotent representations for all real classical groups in \cite{BMSZ2} (the second paper in the series) is carried out in this framework, and it requires us to have a consistent notion of nilpotent orbit duality for the real metaplectic group, which the current article provides.
+
+In addition we remark that Renard and Trapa \cite{RT1} have established a Kazhdan-Lusztig algorithm to compute characters of irreducible genuine representations of $\widetilde{\Sp}_{2n}(\R)$ (with metaplectic integral infinitesimal character) as well as a character multiplicity duality theorem, following the seminal work of Vogan \cite{VoIC3,VoIC4} on irreducible characters of reductive linear groups (with integral infinitesimal character). These results (for reductive linear groups as well as the metaplectic group) form part of the ingredients towards the main goal of \cite{BMSZ1} (the first paper in the series), which is to count special unipotent representations attached to any $\check \CO$ in $\overline{\mathrm{Nil}}(\check \g)$.
+
+
+\vsp
+
+This article is organized as follows. In Section 2, we review the Barbasch-Vogan duality for classical Lie algebras. In Section 3, we relate
+the metaplectic Barbasch-Vogan duality with the Barbash-Vogan duality for a (much) larger
+symplectic Lie algebra. Along the way we prove basic properties of the
+metaplectic Barbash-Vogan duality, namely Proposition \ref{lemin1}. To work with primitive ideals of $\oU(\g)$ with infinitesimal character $\chi_{\check \CO}$, our main idea is to ``lift'' all that we do in $\g =\s\p_{2n}(\C)$ to $\h = \o_{2n+2a+1}(\BC)$, through theta lifting for the complex dual pair $(G,H)=(\Sp_{2n}(\BC), \oO_{2n+2a+1}(\BC))$ in the stable range (where we fix an integer $a\geq n$). This is done in Section 4, and in particular it allows us to link primitive
+ideals of $\oU(\g)$ with a metaplectic integral infinitesimal character with primitive ideals of $\oU(\h)$ with an integral infinitesimal character. Sections 5 and 6 will be devoted to the proof of our main results, Theorems \ref{thm13} and \ref{thm16}, respectively.
+
+\vsp
+
+\noindent {\bf Acknowledgements}: The authors thank Hiroyuki Ochiai, David Renard and Zhiwei Yun for their interest and comments on an earlier version of the article.
+
+\section{Review of the Barbasch-Vogan duality}
+
+In this section, we review the Barbasch-Vogan duality for complex classical Lie algebras.
+
+We will work with a pair $(\epsilon, V)$, where $\epsilon=\pm 1$, and $V$ is an $\epsilon$-symmetric complex bilinear space, i.e., a finite dimensional complex vector space equipped with a non-degenerate $\epsilon$-symmetric bilinear form. Write $G_V$ for the isometry group of $V$, $\g_V$  for the Lie algebra of $G_V$, $\overline{\mathrm{Nil}}(\g_{V})$ for the set of nilpotent $G_V$-orbits in $\g_{V}$.
+
+The following terminology helps us to achieve some notational economy.
+
+\begin{dfnl}  Two pairs $(\epsilon, V)$ and $(\check \epsilon, \check V)$ are said to be Langlands duals of each other if either
+\[
+  \textrm{$\epsilon=\check \epsilon=1, \ $  and $\ \dim V=\dim \check V$ is even},
+\]
+or
+\[
+  \textrm{$\epsilon\neq \check \epsilon,\ $  and $\ \dim V-\frac{\epsilon}{2}=\dim \check V-\frac{\check \epsilon}{2}$}.
+\]
+\end{dfnl}
+
+\begin{remark} For comparison, we note that $(\epsilon, V)$ and $(\check \epsilon, \check V)$ are metaplectic duals of each other if
+\[
+  \textrm{$\epsilon=\check \epsilon=-1, \ $  and $\ \dim V=\dim \check V$}.
+\]
+\end{remark}
+
+Fix a pair $(\check \epsilon, \check V)$. First we have the Lusztig-Spaltenstein duality map \cite{Spa}:
+\be\label{dls}
+\begin{array}{rcl}
+   \mathrm d_{\mathrm{LS}}:  \overline{\mathrm{Nil}}(\g_{\check V})&\rightarrow &\overline{\mathrm{Nil}}(\g_{\check V}),\\
+     \bfdd&\mapsto&  \textrm{the (B, C or D) collapse of  $\bfdd^{\mathrm t}$}.
+     \end{array}
+\ee
+It is order reversing and the image of this map is $\overline{\mathrm{Nil}}^{\mathrm{sp}}(\g_{\check V})$.
+
+When $(\check \epsilon, \check V)$ is a Langlands dual of $(\epsilon, V)$, we have an order preserving bijection:
+\be\label{dsp}
+\begin{array}{rcl}
+  \mathrm d_{\mathrm{SP}}:  \overline{\mathrm{Nil}}^{\mathrm{sp}}(\g_{\check V})&\rightarrow &\overline{\mathrm{Nil}}^{\mathrm{sp}}(\g_V^*),\smallskip\\
+     \bfdd&\mapsto&
+     \left\{
+                \begin{array}{ll}
+                  \textrm{the C-collapse of $\bfdd^-$,} \quad &\textrm{if $\g_{\check V}$ has type B;}\\
+                      \textrm{the B-collapse of $\bfdd^+$,} \quad &\textrm{if $\g_{\check V}$ has type C;}\\
+                      \bfdd,  \quad &\textrm{if $\g_{\check V}$ has type D.}\\
+                    \end{array}
+                    \right.
+     \end{array}
+\ee
+\trivial[h]{
+  Remark: $d_{SP}$ from type B to C is the inverse of $d_{SP}$ from type C to
+  type B. See ``Sommers, Lusztig's Canonical Quotient and Generalized Duality,
+  Section~10''.
+}
+The Barbash-Vogan duality map is then the composition of \eqref{dls} and \eqref{dsp}:
+\begin{equation}\label{DefBV}
+   \mathrm d_{\mathrm{BV}}=:    \mathrm d_{\mathrm{SP}}\circ \mathrm d_{\mathrm{LS} }: \overline{\mathrm{Nil}}(\g_{\check V})\rightarrow \overline{\mathrm{Nil}}^{\mathrm{sp}}(\g_{V}^*).
+\end{equation}
+
+The group $G_V$ acts on $\oU(\g_V)$ through the adjoint representation. The invariant space $\oU(\g_V)^{G_V}$ equals the center $\oZ(\g_V)$ of $\oU(\g_V)$ unless $G_V$ is an even orthogonal group. In all cases, we have an identification
+\[
+ \oU(\g_V)^{G_V}=\left(\oS(\C^n)\right)^{W_n}
+\]
+ as in \eqref{zg}, where $n=\lfloor\frac{\dim V}{2}\rfloor$.
+
+Let $\check \CO\in \overline{\mathrm{Nil}}(\g_{\check V})$. As in \eqref{chico}, we attach the following algebraic character $\chi(\check \CO)$ of $\oU(\g_V)^{G_V}$:
+\begin{equation}\label{usual-chico}
+ \chi(\check \CO):= (\rho( a_1), \rho(a_2),  \cdots, \rho(a_s), 0, 0, \cdots, 0 ),
+\end{equation}
+where $a_1\geq  a_2\geq \cdots\geq a_s>0$ are the rows of the Young diagram of $\check \CO$. This is the usual Arthur infinitesimal character, determined by $\half {^{L}h}$ as in
+  \cite[Equation~(1.15)]{BVUni}.
+
+The following result \cite[Corollary A3]{BVUni} gives a representation-theoretical interpretation of the Barbash-Vogan duality map, in terms of maximal ideals. More discussions of Lusztig-Spaltenstein and Barbasch-Vogan dualities can be found in \cite[Section 3.5]{Ach}.
+
+\begin{thm}\label{DesBV} {\bf {\upshape (Barbasch-Vogan)}}
+Let $\check \CO\in  \overline{\mathrm{Nil}}(\g_{\check V})$ and denote by $I_{\check \CO}$ the maximal $G_V$-stable ideal of $\oU(\g_V)$ that contains the kernel of $\chi_{\check \CO}$. Then the associated variety of $I_{\check \CO}$ equals the closure of ${\mathrm d}_{\mathrm{BV}}(\check \CO)$.
+\end{thm}
+
+\begin{remark} Except for the case when $G_V$ is an even orthogonal group, all ideals of $\oU(\g_V)$ are $G_V$-stable. When $G_V$ is an even orthogonal group, a maximal $G_V$-stable ideal of $\oU(\g_V)$ is either a maximal ideal of $\oU(\g_V)$ or the intersection of two distinct maximal ideals of $\oU(\g_V)$. As noted previously, all maximal ideals of $\oU(\g_V)$ are primitive.
+We refer the reader to \cite{BVPri1} for the classification of primitive ideals of $\oU(\g_V)$.
+\end{remark}
+
+
+\section{Metaplectic Barbasch-Vogan duality and Barbasch-Vogan duality}
+
+
+
+%$\CO\in \Nil(\o_{m}(\BC))$, $\Nil(\s\p_{2n}(\BC))$ or $\Nil(\g\l_{m}(\BC))$, write $\mathrm r_1(\CO)$  for the length of the first row of the Young diagram of $\CO$, and likewise write $\mathrm c_1(\CO)$  for the length of the first column of the Young diagram of $\CO$. We define  $\nabla(\CO)$ to be the nilpotent orbit in $\Nil(\s\p_{m-c}(\BC))$, $\Nil(\o_{2n-c}(\BC)$ or $\Nil(\g\l_{m}(\BC))$, respectively, such that its Young diagram  is obtained from that of $\CO$ by deleting the first column. Here $c:=\mathrm c_1(\CO)$.
+%Write $r:=\mathrm r_1(\CO)$. If $r$ is odd when $\CO\in \Nil(\o_{m}(\BC))$, and $r$ is even when $\CO\in \Nil(\s\p_{2n}(\BC))$, define $\check \nabla(\CO)$ to be the nilpotent orbit in $\Nil(\o_{m-r}(\BC))$, $\Nil(\s\p_{2n-r}(\BC)$ or $\Nil(\g\l_{m-a}(\BC))$, respectively, such that its Young diagram  is obtained from that of $\CO$ by deleting the first row.
+
+
+%For simplicity in notation, we identify $\o_{m}(\BC)$ and $\s\p_{2n}(\BC)$ with their respective dual spaces, by using the trace forms.
+
+Recall we have the Lusztig-Spaltenstein duality for the symplectic Lie algebra:
+%\be\label{lssp}
+\[
+\begin{array}{rcl}
+   \mathrm d_{\mathrm{LS}}:  \overline{\mathrm{Nil}}(\s\p_{2n}(\BC))&\rightarrow &\overline{\mathrm{Nil}}^{\mathrm{sp}}(\s\p_{2n}(\BC)),\\
+     \bfdd&\mapsto&  \textrm{the C  collapse of  $\bfdd^{\mathrm t}$}.
+     \end{array}
+     \]
+%\ee
+%This map is order reversing and surjective.
+
+%For every $\check \CO\in \Nil(\s\p_{2n+2a}(\BC))$ ($a\geq 0$) such that the first row of its Young diagram has even length $2a$, define  $\check \nabla(\check \CO)$ to be the nilpotent orbit in $\Nil(\s\p_{2n}(\BC))$ whose Young diagram  is obtained from that of $\check \CO$ by removing  the first row.
+
+We shall first relate the metaplectic Lusztig-Spaltenstein duality map $\tilde{\mathrm d}_{\mathrm{LS}}$ in \eqref{MBV} with the Lusztig-Spaltenstein duality map ${\mathrm d}_{\mathrm{LS}}$ for a larger symplectic Lie algebra $\s\p_{2n+2a}(\BC)$.
+
+We start with some notations. For a Young diagram $\bfdd$, write $\nabla(\bfdd)$ for the Young diagram obtained from $\bfdd$ by removing the first column, and write $\check \nabla(\bfdd)$ for the Young diagram obtained from $\bfdd$ by removing the first row.  Write $\mathrm r_1(\bfdd)$ and $\mathrm c_1(\bfdd)$ for the lengths of the first row and the first column of $\bfdd$, respectively.
+
+
+\begin{lem}\label{spspo000}
+Suppose that $a\geq n$ is an integer. Then the diagram
+\be\label{cdls}
+ \begin{CD}
+            \{\check \CO\in \overline{\mathrm{Nil}}(\s\p_{2n+2a}(\BC))\mid \mathrm{r}_1(\check \CO)=2a\} @>  \check \nabla  >> \overline{\mathrm{Nil}}(\s\p_{2n}(\BC)) \\
+            @V \bfdd\mapsto \textrm{the C-collapse of  $\bfdd^{\mathrm t}$} VV           @V\bfdd\mapsto \textrm{the D-collapse of  $\bfdd^{\mathrm t}$}V V\\
+               \{\CO\in \overline{\mathrm{Nil}}(\s\p_{2n+2a}(\BC))\mid \mathrm{c}_1( \CO)=2a\}
+             @> \nabla   >>  \overline{\mathrm{Nil}}(\o_{2n}(\BC))\\
+  \end{CD}
+\ee
+commutes.%, where  $\mathrm r_1$ indicates the  length of the first row of the Young diagram, and  $\mathrm c_1$ indicates the  length of the first column of the Young diagram.
+
+\end{lem}
+
+\begin{proof} It is easy to check that both of the following diagrammes
+\[
+ \begin{CD}
+            \{\check \CO\in \overline{\mathrm{Nil}}(\s\p_{2n+2a}(\BC))\mid \mathrm{r}_1(\check \CO)=2a\} @>  \check \nabla  >> \overline{\mathrm{Nil}}(\s\p_{2n}(\BC)) \\
+            @V \bfdd\mapsto \textrm{$\bfdd^{\mathrm t}$} VV           @V\bfdd\mapsto \textrm{$\bfdd^{\mathrm t}$}V V\\
+               \{\CO\in \overline{\mathrm{Nil}}(\g\l_{2n+2a}(\BC))\mid \mathrm{c}_1(\CO)=2a\}
+             @> \nabla   >>  \overline{\mathrm{Nil}}(\g\l_{2n}(\BC))\\
+  \end{CD}
+\]
+and
+\[
+%\be\label{cdcdc}
+ \begin{CD}
+            \{ \CO\in \overline{\mathrm{Nil}}(\g\l_{2n+2a}(\BC))\mid \mathrm{c}_1( \CO)=2a\} @>   \nabla  >> \overline{\mathrm{Nil}}(\g\l_{2n}(\BC)) \\
+            @V \textrm{C-collapse} VV           @V \textrm{D-collapse}V V\\
+               \{\CO\in \overline{\mathrm{Nil}}(\s\p_{2n+2a}(\BC))\mid \mathrm{c}_1( \CO)=2a\}
+             @> \nabla   >>  \overline{\mathrm{Nil}}(\o_{2n}(\BC))\\
+  \end{CD}
+%\ee
+\]
+commute. %We remark that it is clear that the left vertical arrows of \eqref{cdcdc} and \eqref{cdls} are well-defined.
+\end{proof}
+
+
+We will use $\preccurlyeq$ to indicate the dominance order of the Young diagrams.
+
+\begin{lem}\label{aaaa}
+Suppose that $a\geq n$ is an integer. Let $\bfdd $ be a Young diagram of size $2n+2a$, and write $\bfdd_C$ for its C-collapse. If $\mathrm c_1(\bfdd_C)=2a$, then $\mathrm c_1(\bfdd)=2a$. % the first row of the Young diagram, and  $\mathrm c_1$ indicates the  length of the first column of the Young diagram.
+
+\end{lem}
+\begin{proof}
+If $\mathrm c_1(\bfdd)>2a$, then it is clear that $\mathrm c_1(\bfdd_C)>2a$, which is a contradiction. Thus  $\mathrm c_1(\bfdd)\leq 2a$. Suppose that $\mathrm c_1(\bfdd)\leq 2a-1$. Let $\bfdd_1$ be the Young diagram  such that its columns are
+\[
+  \left\{
+    \begin{array}{ll}
+      (2a-1, 2n+1), & \hbox{if $a>n$;} \\
+      (2a-1,2a-1,2), & \hbox{if $a=n\geq 2$;} \\
+      (2a-1,2a-1,2a-1,2a-1), & \hbox{if $a=n=1$.}
+    \end{array}
+  \right.
+\]
+Then $\bfdd_1$ has type C, and  $\bfdd_1\preccurlyeq \bfdd$. Hence $\bfdd_1\preccurlyeq \bfdd_C$. This implies that $2a-1=\mathrm c_1(\bfdd_1)\geq \mathrm c_1(\bfdd_C)=2a$, which is also a contradiction. This proves the lemma.
+\end{proof}
+
+Part (a) of Proposition \ref{lemin1} may be reformulated as the following lemma.
+\begin{lem}\label{lemin11}
+The right vertical arrow of \eqref{cdls} is order reversing, and its image equals $\overline{\mathrm{Nil}}^{\mathrm{sp}}(\o_{2n}(\BC))$.
+\end{lem}
+\begin{proof}
+We only prove the second assertion as the first one is obvious. Note that the two horizontal arrows of \eqref{cdls} are bijective, and the bottom horizontal arrow yields a bijection
+\[
+   \mathrm N_1:= \{\CO\in \overline{\mathrm{Nil}}^{\mathrm{sp}}(\s\p_{2n+2a}(\BC))\mid \mathrm{c}_1( \CO)=2a\}
+             \xrightarrow{ \nabla}  \overline{\mathrm{Nil}}^{\mathrm{sp}}(\o_{2n}(\BC)).
+\]
+Thus it remains to show that the image of the left vertical arrow of  \eqref{cdls} equals $\mathrm N_1$. This follows from Lemma \ref{aaaa} and the surjectivity of the Lusztig-Spaltenstein duality map for symplectic Lie algebras. %(see \eqref{lssp}).
+\end{proof}
+
+
+Recall we have the order preserving bijective map
+%\be\label{mapsp}
+\[
+\begin{array}{rcl}
+  \mathrm d_{\mathrm{SP}}:  \overline{\mathrm{Nil}}^{\mathrm{sp}}(\s\p_{2n}(\BC))&\rightarrow &\overline{\mathrm{Nil}}^{\mathrm{sp}}(\o_{2n+1}(\BC)),\\
+     \bfdd & \mapsto &           \textrm{the B-collapse of $\bfdd^+$}
+     \end{array}
+%     \ee
+\]
+The Barbash-Vogan duality for an odd orthogonal group is given by
+     \[
+   \mathrm d_{\mathrm{BV}}=:    \mathrm d_{\mathrm{SP}}\circ \mathrm d_{\mathrm{LS} }: \overline{\mathrm{Nil}}(\s\p_{2n}(\BC))\rightarrow \overline{\mathrm{Nil}}^{\mathrm{sp}}(\o_{2n+1}(\BC)).
+\]
+
+We now relate the map $\tilde{ \mathrm d}_{\mathrm{SP}}$ in \eqref{tdsp00} with the map $\mathrm d_{\mathrm{SP}}$ for the larger symplectic Lie algebra $\s\p_{2n+2a}(\BC)$.
+We start with an elementary lemma.
+
+\begin{lem}\label{colb}
+Let $\bfdd_1, \bfdd_2$ be two Young diagrams of size $2n+1$. Suppose that $\mathrm{c}_1(\bfdd_1)$ is odd, and  $\nabla(\bfdd_1)=(\nabla(\bfdd_2))^-$.   Then $\bfdd_1$ and $\bfdd_2$ have the same B-collapses.
+\end{lem}
+\begin{proof}
+ %$(\mathbb d')^{\mathrm t}$ is the smallest Young diagram such that its first row has odd length, and  $(\mathbb d')^{\mathrm t}\succcurlyeq {\mathbb d}^{\mathrm t}$.
+Note that $\bfdd_1$ is the largest Young diagram such that its first column has odd length, and  $\bfdd_1\preccurlyeq \bfdd_2$. The lemma then follows by noting that the first column of every Young diagram of type B has odd length.
+\end{proof}
+
+\begin{lem}\label{spspo00}
+Suppose that $a\geq n$ is an integer. Then the diagram
+\be\label{cdls22}
+ \begin{CD}
+                          \{\CO\in \overline{\mathrm{Nil}}(\s\p_{2n+2a}(\BC))\mid \mathrm{c}_1( \CO)=2a\}
+             @> \nabla   >>  \overline{\mathrm{Nil}}(\o_{2n}(\BC))\\
+            @V \bfdd\mapsto \textrm{the B-collapse of  $\bfdd^+$} VV           @V\bfdd\mapsto \textrm{the C-collapse of  $(\bfdd^+)^-$}V V\\
+ \{\CO\in \overline{\mathrm{Nil}}(\o_{2n+2a+1}(\BC))\mid \mathrm{c}_1(\CO)=2a+1\} @>  \nabla  >> \overline{\mathrm{Nil}}(\s\p_{2n}(\BC)) \\
+  \end{CD}
+\ee
+commutes.%, where  $\mathrm r_1$ indicates the  length of the first row of the Young diagram, and  $\mathrm c_1$ indicates the  length of the first column of the Young diagram.
+
+\end{lem}
+\begin{proof}
+
+
+Suppose that $\bfdd\in \overline{\mathrm{Nil}}(\s\p_{2n+2a}(\BC))$ and $\mathrm c_1(\bfdd)=2a$. If $a=0$ then the lemma obviously holds. Thus we assume that $a>0$ so that $\bfdd$ is not the empty Young diagram.
+
+Let $\bfdd'$ denote the Young diagram such that  $\mathrm{c}_1(\bfdd')=2a+1$ and
+\be\label{bdff1}
+\nabla(\bfdd')=(\nabla(\bfdd^+))^-.
+\ee
+ By  Lemma \ref{colb},
+\be\label{bdff2}
+  \textrm{the B-collapse of  $\bfdd^+$}= \textrm{the B-collapse of  $\bfdd'$}.
+\ee
+Note that
+\be\label{bdff3}
+  \nabla(\textrm{the B-collapse of  $\bfdd'$})=\textrm{the C-collapse of  $\nabla(\bfdd')$}
+\ee
+and
+\be\label{bdff4}
+  \nabla(\bfdd^+)=(\nabla(\bfdd))^+.
+\ee
+The lemma then follows by combining \eqref{bdff1}, \eqref{bdff2}, \eqref{bdff3} and \eqref{bdff4}.
+\end{proof}
+
+\begin{lem}\label{spspo}
+The left vertical arrow of \eqref{cdls22} yields a bijective map
+ \[
+                      \{\CO\in \overline{\mathrm{Nil}}^{\mathrm{sp}}(\s\p_{2n+2a}(\BC))\mid \mathrm{c}_1( \CO)=2a\}\rightarrow
+ \{\CO\in \overline{\mathrm{Nil}}^{\mathrm{sp}}(\o_{2n+2a+1}(\BC))\mid \mathrm{c}_1(\CO)=2a+1\}.
+\]
+
+\end{lem}
+\begin{proof}
+Recall that the map
+\be\label{mapsp}
+\begin{array}{rcl}
+  \mathrm d_{\mathrm{SP}}:  \overline{\mathrm{Nil}}^{\mathrm{sp}}(\s\p_{2n+2a}(\BC))&\rightarrow &\overline{\mathrm{Nil}}^{\mathrm{sp}}(\o_{2n+2a+1}(\BC)),\\
+     \bfdd & \mapsto &           \textrm{the B-collapse of $\bfdd^+$.}
+     \end{array}
+\ee
+is well-defined and bijective. Thus it suffices to show that if $\bfdd\in \overline{\mathrm{Nil}}^{\mathrm{sp}}(\s\p_{2n+2a}(\BC))$ and $\mathrm{c}_1(\mathrm d_{\mathrm{SP}}(\bfdd))=2a+1$, then $\mathrm{c}_1(\bfdd)=2a$.
+
+It is clear that $\mathrm c_1(\bfdd)\leq 2a+1$.
+Suppose by contradiction that  $\mathrm c_1(\bfdd)= 2a+1$. Since $\bfdd$ is special, we know that the first two columns of $\bfdd$ both have length $2a+1$. This contradicts the assumption that $a\geq n$. Therefore we conclude that $\mathrm c_1(\bfdd)\leq 2a$.
+
+ Suppose that $\mathrm c_1(\bfdd)\leq 2a-1$. Let $\bfdd_1$ be the Young diagram  such that its columns are
+\[
+  \left\{
+    \begin{array}{ll}
+      (2a-1, 2n+2), & \hbox{if $a\geq n+2$;} \\
+      (2a-1,2a-1,1), & \hbox{if $a=n+1$;} \\
+      (2a-1,2a-1,3), & \hbox{if $a=n\geq 2$;}\\
+         (2a-1,2a-1,1,1,1), & \hbox{if $a=n=1$.}
+    \end{array}
+  \right.
+\]
+Then $\bfdd_1$ has type B, and  $\bfdd_1\preccurlyeq \bfdd^+$. Hence $\bfdd_1\preccurlyeq (\bfdd^+)_B$. This implies that $2a-1=\mathrm c_1(\bfdd_1)\geq \mathrm c_1((\bfdd^+)_B)=2a+1$, which is also a contradiction. This proves the lemma.
+\end{proof}
+
+
+Part (b) of Proposition \ref{lemin1}
+%\ref{lemin2}
+may be reformulated as the following lemma.
+\begin{lem}\label{lemin11}
+The right vertical arrow of \eqref{cdls22} induces an order preserving bijection map from  $\overline{\mathrm{Nil}}^{\mathrm{sp}}(\o_{2n}(\BC))$ onto $\overline{\mathrm{Nil}}^{\mathrm{ms}}(\s\p_{2n}(\BC))$.
+\end{lem}
+\begin{proof}
+Note that the top horizontal arrow of \eqref{cdls22} induces a bijection
+ \[
+                      \{\CO\in \overline{\mathrm{Nil}}^{\mathrm{sp}}(\s\p_{2n+2a}(\BC))\mid \mathrm{c}_1( \CO)=2a\}\rightarrow
+ \overline{\mathrm{Nil}}^{\mathrm{sp}}(\o_{2n}(\BC)),
+\]
+and the bottom
+horizontal arrow of \eqref{cdls22} induces a bijection
+ \[
+                      \{\CO\in \overline{\mathrm{Nil}}^{\mathrm{sp}}(\o_{2n+2a+1}(\BC))\mid \mathrm{c}_1( \CO)=2a+1\}\rightarrow
+\overline{\mathrm{Nil}}^{\mathrm{ms}}(\s\p_{2n}(\BC)).
+\]
+Thus the lemma follows from Lemmas \ref{spspo00} and \ref{spspo}.
+\end{proof}
+
+Combining Lemma \ref{spspo000} and Lemma \ref{spspo00}, we arrive at the following result.
+
+\begin{prop}\label{cdnn}
+Suppose that $a\geq n$ is an integer. Then the diagram
+\[
+ \begin{CD}
+            \{\check \CO\in \overline{\mathrm{Nil}}(\s\p_{2n+2a}(\BC))\mid \mathrm{r}_1(\check \CO)=2a\} @>  \check \nabla  >> \overline{\mathrm{Nil}}(\s\p_{2n}(\BC)) \\
+            @V \mathrm d_{\mathrm{BV}} VV           @V \tilde{\mathrm d}_{\mathrm{BV}} V V\\
+               \{\CO\in \overline{\mathrm{Nil}}^{\mathrm{sp}}(\o_{2n+2a+1}(\BC))\mid \mathrm{c}_1( \CO)=2a+1\}
+             @> \nabla   >>  \overline{\mathrm{Nil}}^{\mathrm{ms}}(\s\p_{2n}(\BC))\\
+  \end{CD}
+\]
+commutes.%, where  $\mathrm r_1$ indicates the  length of the first row of the Young diagram, and  $\mathrm c_1$ indicates the  length of the first column of the Young diagram.
+
+\end{prop}
+
+%\begin{prop}
+%Suppose that $\check \CO\in \Nil(\s\p_{2n}(\BC))$ and the length of the first row of its Young diagram is even and $\geq n$. Then
+%\[
+ % \nabla( \mathrm d_{\mathrm{BV}}(\check \CO))= \tilde{\mathrm d}_{\mathrm{BV}}(\check \nabla(\check \CO)).
+%\]
+%\end{prop}
+%\begin{proof}
+%Note that the length of the first column of the Young diagram of $\CO$ is odd. Hence the lemma obviously follows.
+%\end{proof}
+
+
+
+%\begin{lem}
+%Let $\CO\in \Nil(\o_{2m+1}(\BC))$. Then $\CO$ is special if and only if $\nabla(\CO)$ is metaplectic special.
+%\end{lem}
+%\begin{proof}
+%Note that the length of the first column of the Young diagram of $\CO$ is odd. Hence the lemma obviously follows.
+%\end{proof}
+
+
+
+\section{Theta lifting for the complex dual pair $(\Sp_{2n}(\BC), \oO_{2n+2a+1}(\BC))$}
+
+Consider the complex dual pair $(G,H):=(\Sp_{2n}(\BC), \oO_{2n+2a+1}(\BC))$ in $\Sp_{2n(2n+2a+1)}(\BC)$ \cite{Howe79}, where we fix an integer $a\geq n$.
+The condition $a\geq n$ ensures that the dual pair $(G,H)$ is in the so-called stable range with $G$ the smaller member \cite{Li89}.
+All our assertions concerning $n$ appearing in this note are trivial when $n=0$. We thus assume that $n\geqq 1$.
+
+Fix a Cartan involution $\sigma$ of $\Sp_{2n(2n+2a+1)}(\BC)$ that stabilizes both $G$ and $H$. Then the fixed point sets $\Sp_{2n(2n+2a+1)}(\BC)^\sigma$, $G^\sigma$ and $H^\sigma$ are respectively maximal compact subgroups of $\Sp_{2n(2n+2a+1)}(\BC)$, $G$ and $H$.
+
+As before, $\g=\s\p_{2n}(\BC)$ is the Lie algebra of $G$, and $\check \g=\g$ is the metaplectic dual of $\g$. Denote by $\sigma :\g\rightarrow \g$  the differential of $\sigma: G\rightarrow G$, which is a complex conjugation of $\g$.
+We identify the complexified Lie algebra $\g_\BC:=\g\otimes_\R \BC$ with $\g\times \g$ via the complexification map
+\[
+  \g\rightarrow \g\times \g, \quad x\mapsto (x,  \sigma(x)).
+\]
+We also identify the complexification of $G^\sigma$ with $G$ via the inclusion homomorphism $G^\sigma\rightarrow G$. Then every $(\g_\BC, G^\sigma)$-module  is also a $(\g\times \g, G)$-module. Here a  $(\g\times \g, G)$-module means a $\g\times \g$-module carrying a locally algebraic representation of $G$ with the usual compatibility conditions.
+Similarly, denote by $\h$ the Lie algebra of $H$. Then every $(\h_\BC, H^\sigma)$-module is also a $(\h\times \h, H)$-module.
+
+
+We introduce algebraic theta lifting. Let $\omega^\infty$ be the smooth oscillator representation of $\Sp_{2n(2n+2a+1)}(\BC)$ \cite{Howe89}. Write $\sY$ for the set of $\Sp_{2n(2n+2a+1)}(\BC)^\sigma$-finite vectors in $\omega^\infty$.
+By restriction, $\sY$ is a $(\g\times \g, G)\times (\h\times \h,H)$-module. For every $(\g\times \g, G)$-module $V$, define an $(\h\times \h, H)$-module
+\[
+  \Theta(V):=(\sY \otimes \check V)_{\g\times \g},
+\]
+where $\check V$ denotes the contragredient of $V$, and a subscript Lie algebra indicates the coinvariant space.
+
+\begin{lem}\label{theta1}
+Suppose that $V$ is an irreducible $(\g\times \g, G)$-module. Then $\Theta(V)$ is a nonzero $(\h\times \h, H)$-module of finite length.
+\end{lem}
+
+\begin{proof} It is a general result of Howe \cite{Howe89} that $\Theta(V)$ is a $(\h\times \h, H)$-module of finite length. The fact that $\Theta(V)$ is nonzero is a consequence of the stable range condition
+\cite{PrPr}.
+\end{proof}
+
+
+Write $\oZ(\h)$ for the center of the universal enveloping algebra $\oU(\h)$ of $\h$.  By Harish-Chandra isomorphism, we have an identification
+\[
+ \oZ(\h)=\left(\oS(\C^{n+a})\right)^{W_{n+a}}.
+\]
+The set of characters of $\oZ(\h)$ is thus identified with the set $W_{n+a}\backslash \BC^{n+a}$.
+
+From the correspondence of infinitesimal characters \cite{PrzInf}, we have the following
+
+\begin{lem}\label{theta2}
+Suppose that $V$ is an irreducible $(\g\times \g, G)$-module with infinitesimal character
+\[
+  (\lambda_1, \lambda_2, \cdots, \lambda_n; \lambda'_1, \lambda'_2, \cdots, \lambda'_n)\in \BC^n\times \BC^n.
+\]
+Then the $(\h\times \h, H)$-module  $\Theta(V)$ has infinitesimal character
+%\[
+ % (\lambda_1, \lambda_2, \cdots, \lambda_n, 1/2, 3/2, \cdots, (2a-1)/2 ; \lambda'_1, \lambda'_2, \cdots, \lambda_n, 1/2, 3/2, \cdots, (2a-1)/2)\in \BC^{n+a}\times \BC^{n+a}.
+%\]
+\[
+  (\lambda_1, \lambda_2, \cdots, \lambda_n, \frac{1}{2}, \frac{3}{2}, \cdots, \frac{2a-1}{2} ; \lambda'_1, \lambda'_2, \cdots, \lambda'_n, \frac{1}{2}, \frac{3}{2}, \cdots, \frac{2a-1}{2})\in \BC^{n+a}\times \BC^{n+a}.
+\]
+\end{lem}
+
+Recall \cite{Jos} that for every irreducible $(\g\times \g, G)$-module $V$, there is a
+unique nilpotent orbit $\CO\in \overline{\mathrm{Nil}}(\g^*)$ such that the associated variety of
+the annihilator ideal of $V$ equals $\overline \CO\times \overline \CO$, where
+the overbar %$\overline{\phantom{\CO}}$
+indicates the closure. We write $\mathrm{Orbit}(V)$
+for this nilpotent orbit $\CO$. The same notation applies to irreducible
+$(\h\times \h, H)$-modules.
+
+\begin{lem}\label{theta3}
+  Suppose that $V$ is an irreducible $(\g\times \g, G)$-module. Then there exists an irreducible subquotient $\eta(V)$ of $\Theta(V)$ whose orbit satisfies the following conditions:
+ \[
+  {\rcc_1(\orb(\eta(V)) = 2a+1 } \quad and \quad \nabla(\mathrm{Orbit}(\eta(V)))=\mathrm{Orbit}(V).
+\]
+\end{lem}
+
+\begin{proof} We know from a result of Loke and Ma \cite[Theorem D]{LM}, combined with a general result of Vogan \cite[Theorem 8.4]{Vo89}, that the associated variety of the annihilator ideal of $\Theta (V)$ is irreducible. Denote its open orbit by $\mathrm{Orbit}(\Theta(V))$. Now from the explicit description of nilpotent orbit correspondence in \cite{DKPC}, $\mathrm{Orbit}(\Theta(V))$ satisfies the two stated conditions of the current lemma.
+We then pick an irreducible quotient $\eta(V)$ of $\Theta(V)$ whose Gelfand-Kirillov dimension is that of $\Theta(V)$. Obviously we will have $\mathrm{Orbit}(\eta(V))=\mathrm{Orbit}(\Theta(V))$. This proves the lemma.
+\end{proof}
+
+
+For every ideal $I$ of $\oU(\g)$, $\oU(\g)/I$ is a $(\g\times \g, G)$-module such that
+\[
+  (X, Y)\cdot v=Xv-vY, \quad \textrm{for all } \, X, Y\in \g, v\in \oU(\g)/I.
+\]
+This module is generated by a spherical vector (the image of $1$).  Note that $I$ is maximal if and
+only if $\oU(\g)/I$ is irreducible. On the other hand, every spherical
+irreducible $(\g\times \g, G)$-module is isomorphic to $\oU(\g)/I$ for a unique
+maximal ideal $I$ of $\oU(\g)$. Similar results hold for $H$.
+
+
+\begin{lem}\label{theta4}
+Suppose that $V$ is a spherical irreducible unitarizable $(\g\times \g, G)$-module. Then $\Theta(V)$ is also a spherical irreducible unitarizable $(\h\times \h, H)$-module.
+\end{lem}
+
+\begin{proof} The fact that $\Theta(V)$ is spherical follows from the correspondence of $G^{\sigma}$ and $H^{\sigma}$ types in the space of
+joint harmonics \cite[Section 3]{Howe89}. The irreducibility is in \cite[Theorem~A]{LM}, and the unitarity is in \cite{Li89}, all because of the stable range condition.
+\end{proof}
+
+%\hrule
+%\hspace{1em}
+
+\medskip
+
+For each nilpotent orbit $\ckcO\in \overline{\mathrm{Nil}}(\check \fgg)$,
+let $V_{\ckcO}$ be the spherical irreducible $(\fgg\times \fgg, G)$-module with
+infinitesimal character $(\chico, \chico)$. The following is a key property of $V_{\ckcO}$.
+
+\begin{lem} \label{sunitary}
+  The $(\fgg\times \fgg, G)$-module $V_{\ckcO}$ is unitarizable.
+\end{lem}
+\begin{proof}
+  We pair the rows in the Young diagram of $\ckcO$ by their length. Without loss
+  of generality, we can assume that
+  $\ckcO$ has row lengths as a multi-set
+  \[
+    \set{a_{1}, a_2,\cdots, a_{2p-1},a_{2p}, b_1, b_1, b_2, b_2, \cdots, b_l,
+      b_l| a_i \in 2\bN, a_i < a_{i+1}, b_i \in \bN}.
+  \]
+  %$\set{a_1, \cdots, a_{2p}}$ . % and $\set{b_1, \cdots, b_l}$ are
+  % disjoint.  %= \emptyset$.
+  Note that $a_1< \cdots< a_{2p}$ are distinct even integers and we allow $a_1=0$.
+  Let $a := \sum_{i=1}^{2p} a_i$,
+  $\ckfgg_a:=\fgg_a := \fsp_{2a}(\bC)$, $G_a = \Sp_{2a}(\bC)$,
+  % $\ckfgg_0 := \fgg_0 :=
+  % \fsp_{a}(\bC)$,
+  and $\ckcO_0$ be the nilpotent orbit in
+  $\overline{\mathrm{Nil}}(\ckfgg_a)$ whose Young diagram has rows $a_1<a_2< \cdots<
+  a_{2p}$.
+
+  The spherical $(\fgg_a\times \fgg_a, G_a)$-module $V_{\ckcO_0}$ has infinitesimal character $(\chi_{\ckcO_0},\chi_{\ckcO_0})$, where $\chi_{\ckcO_0}$ is defined similarly as in \eqref{chico}.
+  In the sense of \cite[Section 2.7]{B17}, the parameter $\chi_{\ckcO_0}$ is attached to the nilpotent orbit $\cO_0\in
+  \overline{\mathrm{Nil}}(\fsp_{2a}(\bC))$ whose Young diagram has columns
+  \[
+    (c_0,c_1)\cdots (c_{2p-2}, c_{2p-1})(c_{2p}) = (a_{2p}-1, a_{2p-1} +1) \cdots (a_{2}-1,
+    a_{1}+1)(0).
+  \]
+  One checks that $\chi_{\ckcO_0}$ satisfies all three conditions of \cite[Proposition~10.6]{B89} and therefore $V_{\ckcO_0}$ is unitarizable.
+  % is preunipotent rigid extremal.
+  See also \cite[Section 2.3]{B17}, under ``Main Properties of $\lambda_{\CO}$''.
+
+  Now we conclude that $V_\ckcO$ is unitarizable since it is the spherical component of the
+  % normalized
+  unitary induction
+  \[
+  \Ind^{\Sp_{2n}(\bC)}_{P} V_{\ckcO_0}\otimes \bfone\otimes \cdots\otimes  \bfone,
+  \]
+  where $P$ has Levi factor $\Sp_{2a}(\bC)\times \GL_{b_1}(\bC) \times
+  \GL_{b_2}(\bC) \times \cdots \times \GL_{b_l}(\bC)$ and
+  $\bfone$ denotes the trivial representations on
+  $\GL_{b_i}(\bC)$ factors.
+  \end{proof}
+
+
+
+  \trivial[h]{
+    {\bf Check $\chi_{\ckcO_0}$ is preunipotent rigid extremal.}
+
+    To easy the notation, we assume $\ckcO_0 = \ckcO$.
+    Recall the notation in \cite[Section~10]{B89}.
+    Since all entries of $\lambda := \chi_{\ckcO}$ are half-integers,
+    $\fss(\lambda) =\fss_e\times \fss_o =  \fso(1)\times \fso(2n) = \fso(2n)$
+    \cite[(10.2.1)]{B89}.
+    The Weyl group $W(\lambda) = W(D_n)$.
+
+    {\bf Preunipotent: }Now the parameter $\lambda$ is (integral) preunipotent with respect to
+    $\fso(2n)$ \cite[Definition~9.3, p146]{B89}.
+
+    Now ${}^L\fss(\lambda) = \fso(2n)$, and $\overline{\mathrm{Nil}}({}^L\fss(\lambda)) \ni
+    {}^L\cO = [a_{2p}-1, a_{2p-1}+1, \cdots, a_{1}-1, a_0+1]$ (here $a_{2i}-1,
+    a_{2i-1}+1$ are row lengths, they are all odd integers).
+
+    {\bf Rigid: }
+    The Springer correspondence yields that ${}^L\cO$ is attached to the
+    representation (as bi-partition)
+    \[
+      \binom{\xi}{\eta} = \binom{\frac{a_1}{2}, \cdots,
+        \frac{a_{2i-1}}{2},\cdots,
+        \frac{a_{2p-1}}{2}}{\frac{a_2}{2}, \cdots, \frac{a_{2i}}{2}, \cdots, \frac{a_{2p}}{2}}
+    \]
+    The corresponding symbol is (here $m=p-1$, see \cite[(6.3.1)]{B89})
+    \[
+      \binom{x_0, x_2, \cdots, x_{2p-2}}{x_1, x_3 \cdots, x_{2p-1} }
+      = \binom{\frac{a_1}{2}, \cdots,
+        \frac{a_{2i-1}}{2}+i-1,\cdots,
+        \frac{a_{2p-1}}{2}+p-1}{
+        \frac{a_2}{2}, \cdots, \frac{a_{2i}}{2}+i-1, \cdots, \frac{a_{2p}}{2}+p-1}
+    \]
+    So $x_{2i} = \frac{a_{2i+1}}{2}+i$, $x_{2i+1} = \frac{a_{2i+2}}{2}+i$, i.e.
+    $x_j = \frac{a_{j+1}}{2} + \floor{\frac{j}{2}}$ which satisfies the condition
+    \cite[(6.3.1)]{B89}.  By \cite[(9.6.13), (0.6.18)]{B89} and the inequality
+    $a_1< a_2< \cdots < a_{2p}$, the ${}^L\cO$ is rigid (see
+    \cite[Definition~9.6]{B89}).
+
+    {\bf Extremal:} See \cite[Definition~10.3]{B89}.
+    Since $k_e=0$, the condition \cite[(10.4.7a),(10.4.7b)]{B89} are vacant.
+
+    In summary, $\lambda$ is preunipotent rigid (see \cite[last line, p150]{B89}).
+    and extremal. Therefore, $V_{\ckcO}$ is unitarizable by \cite[Proposition~10.6]{B89}.
+  }
+
+  \trivial[h]{ Suppose $a_{2i-1}\leq a_{2i}-4$ for all $i$. Then $V_{\ckcO_0}$ is
+    unitarizable since it is the unipotent representation $\overline{X}$ of $\Sp_{a}(\bC)$
+    defined in \cite[p~157-158]{B89} corresponding to the parameter under the
+    notation of loc. cit. :
+  \[
+    \begin{split}
+      (n_0, n_1, \cdots, n_{2p}) &= (0, \frac{a_1}{2}, \frac{a_2}{2}-1, \cdots,
+      \frac{a_{2p-1}}{2}, \frac{a_{2p}}{2}-1)\\
+      s= (\varepsilon_0, \varepsilon_1, \cdots, \varepsilon_{2p}) &= (1, -1, -1,
+      \cdots, -1)
+    \end{split}
+  \]
+  Note that the condition $n_{2i-1}< n_{2i}$ is satisfied under our assumption.
+  Under the above parameter,
+    $(\epsilon_0, n_0)$ dose not contribute the infinitesimal character
+  Since
+  $(m_0, \cdots, m_{2p-1}) = (\frac{a_1}{2}, \frac{a_2}{2}-1, \cdots,
+  \frac{a_{2p-1}}{2}, \frac{a_{2p}}{2}-1)$.
+  The infinitesimal character $\chi_s = (\rho(a_1), \rho(a_2), \cdots, \rho(a_{2p}))$.
+
+  Now $\overline{X}$ is the spherical representation with
+  infinitesimal
+  character $\lambda_s$ by its definition \cite[(10.2.1)]{B89}. The unitarity
+  of $\overline{X}$ follows from \cite[Section~10, see also line~6, p158]{B89}.
+}
+
+
+\trivial[h]{
+    {\bf Remark on the unitary induction.}
+
+  Note that the tivial representation of
+    $\GL_n(\bC)$ has infinitesimal character $(\frac{n-1}{2}, \cdots,
+    -\frac{n-1}{2})$. Since normalized induction preserves infinitesimal
+    character. We see that, up to the Weyl group action, it is contribute the
+    string $(\rho(n),\rho(n))$ if $n$ is even and $(\rho(n), \rho(n), 0)$ if
+    $n$ is odd. Note that
+    $V_{\ckcO_0}$ has infinitesimal character
+    $\chi_{\ckcO_0}$.  So one will see that the above induced representation has
+    the correct infinitesimal character. It is also spherical since the
+    induction starts with a spherical representation on the Levi.  This leads
+    to the claim.  }
+
+
+\section{Proof of Theorem \ref{thm13}}
+
+We are in the setting of Theorem \ref{thm13}. Thus $I$ is a primitive ideal of $\oU(\g)$ with a metaplectic integral infinitesimal character $\chi_{I}$. Denote by $\CO\in \overline{\mathrm{Nil}}(\g^*)$ the nilpotent orbit such that the associated variety of $I$ equals the closure of $\CO$.
+
+\begin{lem}\label{exv}
+There exists an irreducible  $(\g\times \g, G)$-module $V$ such that its infinitesimal character is represented by an element in $(\frac{1}{2}+\BZ)^n\times (\frac{1}{2}+\BZ)^n$, and $\mathrm{Orbit}(V)=\CO$.
+\end{lem}
+\begin{proof}
+Put $V_1:=\oU(\g)/I$, which is a $(\g\times \g, G)$-module.
+Then $V_1$ has finite length, with infinitesimal character $(\chi_{I},\chi_{I})$,
+% and its annihilator ideal equals $\oU(\g)\otimes \check I+I\otimes \oU(\g)$. Here $\check I$ denotes the image of $I$ under the anti-automorphism
+and the associated variety of its annihilator ideal equals $\overline \CO\times \overline \CO$. Let $V$ be an irreducible subquotient of $V_1$ with the largest Gelfand-Kirillov dimension. Then the  associated variety of the annihilator ideal of $V$ also equals $\overline \CO\times \overline \CO$, i.e., $\mathrm{Orbit}(V)=\CO$. This proves the lemma as the infinitesimal character of $V$ is $(\chi_{I},\chi_{I})$, and is thus represented by an element in $(\frac{1}{2}+\BZ)^n\times (\frac{1}{2}+\BZ)^n$.
+ \end{proof}
+
+
+ Let $V$ be as in Lemma \ref{exv}, and let $\eta(V)$ be an irreducible subquotient of $\Theta (V)$, as in Lemma
+ \ref{theta3}. By Lemmas \ref{theta2}, $\eta(V)$ has an integral infinitesimal character. We invoke a result of Barbasch and Vogan to conclude that $\mathrm{Orbit}(\eta(V))\in \overline{\mathrm{Nil}}^{\mathrm{sp}}(\h^*)$. See \cite[Definition 1.10]{BVUni} and the remarks immediately after. As in Lemma
+ \ref{theta3},  $\mathrm c_1(\orb(\eta(V)))=2a+1$ and $\nabla(\mathrm{Orbit}(\eta(V)))= \mathrm{Orbit}(V)$, which is $\CO$.
+Therefore $\CO$ is metaplectic special by Proposition \ref{cdnn}. This completes the proof of Theorem \ref{thm13}.
+
+\section{Proof of Theorem \ref{thm16}}
+
+We are in the setting of Theorem \ref{thm16}. Thus
+$\check \CO\in \overline{\mathrm{Nil}}(\check \g)$ and $I_{\check \CO}$ is the maximal
+ideal of $\oU(\g)$ with infinitesimal character $\chi_{\check \CO}$.
+Then $V_{\check \CO}=\oU(\g)/I_{\check \CO}$ is the spherical irreducible
+$(\g\times \g, G)$-module with infinitesimal character $\chico\otimes \chico$.
+By Lemma~\ref{sunitary}, $V_{\ckcO}$ is unitarizable.
+% Note that the center of $\oU(\g\times \g)$ equals $\oZ(\g)\otimes \oZ(\g)$,
+% and the infinitesimal character of $V_{\check \CO}$ equals
+% $\chi_{\check \CO}\otimes \chi_{\check \CO}$. By the unitarity of spherical
+% special unipotent representations for split classical groups \cite[Section
+% 9]{B.Sph}, we know that $V_{\check \CO}$ is unitarizable.
+
+Let $\check \CO'$ be the element in $\overline{\mathrm{Nil}}(\s\p_{2n+2a}(\BC))$ such that $\mathrm{r}_1(\check \CO')=2a$ and $\check \nabla(\check \CO')=\check \CO$. The Lie algebra  $\s\p_{2n+2a}(\BC)$ is the  Langlands dual of $\h=\o_{2n+2a+1}(\BC)$, and $\check \CO'$ determines a character $\chi_{\check \CO'}: \oZ(\h)\rightarrow \BC$ in the usual way (see \eqref{usual-chico}). Suppose that $\chi_{\check \CO}$ is represented by  $(\lambda_1, \lambda_2, \cdots, \lambda_n)$, then  $\chi_{\check \CO'}$ is represented by
+\[
+  (\lambda_1, \lambda_2, \cdots, \lambda_n, \frac{1}{2}, \frac{3}{2}, \cdots, \frac{2a-1}{2}).
+\]
+
+
+
+
+By Lemmas \ref{theta2} and \ref{theta4}, $\Theta(V_{\check \CO})$ is a spherical irreducible unitarizable $(\h\times \h, H)$-module with the infinitesimal character $\chi_{\check \CO'}\otimes \chi_{\check \CO'}$.
+Hence
+\[
+  \Theta(V_{\check \CO})\cong \oU(\h)/I'
+\]
+where $I'$ is the maximal ideal of $\oU(\h)$ with infinitesimal
+character $\chi_{\check \CO'}$. By Theorem \ref{DesBV}, we
+know that the associated variety of $I'$ equals the closure of $\mathrm d_{\mathrm{BV}}(\check \CO')$, namely
+%\subset \h^*$
+\be\label{orbitt} \mathrm{Orbit}(\Theta(V_{\check \CO}))=\mathrm d_{\mathrm{BV}}(\check
+\CO').  \ee Finally, we see that the associated variety of $I_{\check \CO}$ is the closure of
+\begin{eqnarray*}
+% \nonumber to remove numbering (before each equation)
+%  && \textrm{the associated variety of $I_{\check \CO}$} \\
+   && \mathrm{Orbit}(V_{\check \CO}) \\
+   &=& \nabla(\mathrm{Orbit}(\Theta(V_{\check \CO})))\qquad \quad \quad \textrm{by Lemma \ref{theta3}}\\
+&=&\nabla(\mathrm d_{\mathrm{BV}}(\check \CO')) \qquad  \quad \quad \qquad \,\,\textrm{by \eqref{orbitt}}\\
+&=&\tilde{\mathrm d}_{\mathrm{BV}}(\check \nabla(\check \CO')) \qquad  \quad \quad \qquad \,\,\textrm{by Proposition \ref{cdnn}}\\
+&=&\tilde{\mathrm d}_{\mathrm{BV}}(\check \CO).
+\end{eqnarray*}
+This completes the proof of Theorem \ref{thm16}.
+
+
+\section{Duality and double cells}
+\label{sec:cell}
+
+\def\msim{\stackrel{m}{\sim}}
+\def\osim{\stackrel{o}{\sim}}
+
+\def\Irr{\mathrm{Irr}}
+\def\bNil{\overline{\Nil}}
+
+
+\def\Irrms{\Irr^{\mathrm ms}}
+
+\def\tdLS{\tilde{\mathrm d}_{\mathrm LS}}
+\def\tdSP{\tilde{\mathrm d}_{\mathrm SP}}
+
+\def\Springer{\fO}
+\def\SpringerD{\fO_D}
+\def\SpringerO{\fO_{\rO}}
+\def\bSpringerO{\overline{\fO}_{\rO}}
+\def\RSp{\fR_C}
+
+Let $\sfW_{n}$ be the Weyl group of type $BC_{n}$ and $\sfW'_{n}$ be the Weyl
+group of type $D_{n}$. We identify $\sfW'_{n}$ as a subgroup of $\sfW_{n}$.
+
+We use $\sim$ to denote the usual double cell relation on $\sfW_{n}$.
+
+We define big double cell on $\Irr(\sfW'_{n})$ by glueing the cells attached to
+very even orbits:
+Define $\sigma'_{1}\osim \sigma'_{2}$ if there is $s\in \sfW_{n}$ such that
+$\sigma'_{1}$ and $(\sigma'_{2})^{s}$ are in the same double cell of $\sfW'_{n}$.
+We call the equivalent classes of $\osim$ big cells of $\Irr(\sfW'_{n})$.
+
+
+Let $\SpringerD\colon \Irr(\sfW'_{n}) \rightarrow  \bNil(\fso_{2n}(\bC)$ denote
+the usual Springer correspondence map for type $D$. We take the normalization
+that the trivial representation is maped to the regular nilpotent orbit.
+The following lemma is follows easyly by clifford theory.
+
+Composition of $\SpringerD$ and the natural map
+$\bNil(\fso_{2n}(\bC))\rightarrow \bNil(\foo_{2n}(\bC))$ sending $\cO'$ to
+$\rO_{2n}(\bC)\cO'$ we get a well defined map
+\[
+\SpringerO\colon  \Irr(\sfW'_{n}) \rightarrow  \bNil(\foo_{2n}(\bC).
+\].
+
+
+\begin{lem}
+ % We have the following is a well defined bijection
+ The map $\SpringerO$ yields a well defined bijection
+  \[
+   \bSpringerO\colon  \Irr(\sfW'_{n})/\osim \xrightarrow{ } \bNil(\foo_{2n}(\bC)).
+  \]
+  Here $\bSpringerO$ maps $\cC$ to $ \SpringerD(\sigma')$ and
+  $\sigma'$ is any special representation of $\sfW'_{n}$ in $\cC$.
+ % Here $\iota$ is given by $\cC\mapsto \set{\sigma'\in \Irr{\sfW'_{n}}| \text{$\sigma'$ is an
+ %     irreducible component of $\sigma\in \cC$}}$ and
+ % $\SpringerD$ is given by $\cD\mapsto \bigcup_{\sigma'} \SpringerD(\sigma')$
+%  where $\sigma'$ running over special representaton
+\end{lem}
+
+
+We define the notion of metaplectic double cell on $\Irr(\sfW_{n})$ in terms of
+big cell:
+For $\sigma_{1}$ and $\sigma_{2}\in \Irr(\sfW_{n})$ we write $\sigma_{1}\msim \sigma_{2}$
+if and only if there are irreducible components
+$\sigma'_{1}$ and $\sigma'_{2}$ of
+$\sigma_{1}|_{\sfW'_{n}}$ and $\sigma_{2}|_{\sfW'_{n}}$ such that $\sigma'_{1}$
+and $\sigma'_{2}$ are in the same double cell of $\sfW'_{n}$.
+
+
+We call the equivalent classes of $\msim$ big cells of $\Irr(\sfW_{n})$.
+
+By Clifford theory, for $\sigma\in \Irr(\sfW_{n})$, we have
+\begin{itemize}
+        \item
+either $\sigma|_{\sfW'_{n}}$ is
+        irreducible,
+        \item or $\sigma|_{\sfW'_{n}}$ has two irreducible compoents (and each
+        compoent form a single double cell of $\sfW'_{n}$).
+\end{itemize}
+
+
+% Let $\SpringerD\colon \Irr(\sfW'_{n}) \rightarrow  \bNil(\fso_{2n}(\bC)$ denote
+% the usual Springer correspondence map for type $D$. We take the normalization
+% that the trivial representation is maped to the regular nilpotent orbit.
+% The following lemma is follows easyly by clifford theory.
+\begin{lem}
+  We have the following bijections
+  \[
+  \tdSP \colon
+    \bNil^{ms}(\fsp_{2n}(\bC))\xleftarrow{\Springer_{C}} \Irr(\sfW_{n})/\msim \xrightarrow{\ \iota \ } \Irr(\sfW'_{n})/\osim \xrightarrow{\ \SpringerO \ } \bNil^{sp}(\foo_{2n}(\bC)).
+  \]
+  Here $\iota$ is given by $\cC\mapsto \set{\sigma'\in \Irr(\sfW'_{n})| \text{$\sigma'$ is an
+      irreducible component of $\sigma\in \cC$}}$.
+
+  Moreover, in each metaplectic cell $\cC$, where is a unique irreducible
+  representation $\sigma_{\cC}$ such that $\sigma_{\cC}$ has minimal fake
+  degree. We call such representations $\sigma_{\cC}$ a metaplectic special
+  representation.
+
+  Let $\Irrms(\sfW_{n})$ be the set of metaplectic special representations.
+  Then then natural inclusion induces a bijection
+  $\Irrms(\sfW_{n})\xrightarrow{1-1} \Irr(\sfW_{n})/\msim$.
+\end{lem}
+
+Recall that the involution $\otimes \sgn_{\sfW'_{n}}$ descents to an involution
+on $\Irr(\sfW'_{n})/\sim$.
+It is easy to see that twisting by sign character also descents to an
+involution on $\Irr(\sfW'_{n})/\osim$.
+It is clear by Lusztig that
+
+
+
+Let $\RSp\colon \Nil(\fsp_{2n}(\bC))$ be the map sending
+$\cO\in \Nil(\fsp_{2n}(\bC))$ to the representation attached to the trivial
+local system on $\cO$ under the springer correspondence.
+
+
+The following is a properity in analog to the claim of Lusztig-Spaltenstein duality
+\begin{prop}
+  The metaplectic Lusztig-Spaltenstien duality map
+  \[
+    \tdLS(\ckcO) = \SpringerO(\sigma'_{\cO})
+  \]
+  where $\sigma'_{\cO}$ is the special representation in the cell of $\RSp(\ckcO)\otimes \sgn$.
+\end{prop}
+
+
+\begin{bibdiv}
+  \begin{biblist}
+
+\bib{Ach}{article}{
+      author={Achar, P. N.},
+       title={An order-reversing duality map for conjugacy classes in Lusztig's canonical quotient},
+        date={2003},
+     journal={Transformation Groups},
+      volume={8},
+      issue ={02},
+       pages={107--145},
+}
+
+    \bib{ABV}{book}{
+      title={The Langlands classification and irreducible characters for real reductive groups},
+      author={Adams, J.},
+      author={Barbasch, D.},
+      author={Vogan, D. A.},
+      series={Progress in Math.},
+      volume={104},
+      year={1991},
+      publisher={Birkhauser}
+    }
+
+
+    \bib{ArPro}{article}{
+    author = {Arthur, J.},
+    title = {On some problems suggested by the trace formula},
+    journal = {Lie group representations, II (College Park, Md.), Lecture Notes in Math. 1041},
+    pages = {1--49},
+    year = {1984}
+    }
+
+
+    \bib{ArUni}{article}{
+       author = {Arthur, J.},
+       title = {Unipotent automorphic representations: conjectures},
+       % booktitle = {Orbites unipotentes et repr\'esentations, II},
+       journal = {Orbites unipotentes et repr\'esentations, II, Ast\'erisque},
+       pages = {13--71},
+       volume = {171-172},
+       year = {1989}
+     }
+
+    \bib{B89}{article}{
+      author = {Barbasch, D.},
+      journal = {Invent. Math.},
+      number = {1},
+      pages = {103--176},
+      title = {The unitary dual for complex classical Lie groups},
+      url = {http://eudml.org/doc/143674},
+      volume = {96},
+      year = {1989},
+    }
+
+   % \bib{B.Uni}{article}{
+   %   author = {Barbasch, D.},
+   %   title = {Unipotent representations for real reductive groups},
+   %   % booktitle = {Proceedings of ICM, Kyoto 1990},
+   %   journal = {Proceedings of ICM (1990), Kyoto},
+   %   % series = {Proc. Sympos. Pure Math.},
+   %   % volume = {68},
+   %   pages = {769--777},
+   %   publisher = {Springer-Verlag, The Math. Soc. Japan},
+   %   year = {1991},
+   % }
+
+
+    % \bib{B.Sph}{article}{
+    %   author = {Barbasch, D.},
+    %   title = {The unitary spherical spectrum for split classical groups},
+    %   journal = {J. Inst. Math. Jussieu},
+    %   volume = {9},
+    %   number = {2},
+    %   pages = {265--356},
+    %   year = {2010}
+    % }
+
+
+\bib{B17}{article}{
+  author = {Barbasch, D.},
+  title = {Unipotent representations and the dual pair correspondence},
+  journal = {In: Cogdell, J., Kim J.-L., Zhu, C.-B. (Eds.) Representation Theory, Number Theory, and Invariant Theory,
+    In Honor of Roger Howe. Progress in Math., vol. 323, Birkhäuser/Springer},
+  %series ={Progress in Math.},
+  %volume = {323},
+  pages = {47--85},
+  year = {2017},
+}
+
+\bib{BMSZ1}{article}{
+  author = {Barbasch, D.},
+  author = {Ma, J.-J.},
+  author = {Sun, B.},
+  author = {Zhu, C.-B.},
+  title = {Special unipotent representations of real classical groups : counting and reduction to good parity},
+  journal = {arXiv:2205.05266},
+}
+
+\bib{BMSZ2}{article}{
+  author = {Barbasch, D.},
+  author = {Ma, J.-J.},
+  author = {Sun, B.},
+  author = {Zhu, C.-B.},
+  title = {Special unipotent representations of real classical groups : construction and unitarity},
+  journal = {arXiv:1712.05552},
+}
+
+\bib{BVPri1}{article}{
+   author = {Barbasch, D.},
+   author = {Vogan, D. A.},
+   title = {Primitive ideals and orbital integrals in complex classical groups},
+   journal = {Math. Ann.},
+   volume = {259},
+   number = {2},
+   pages = {153--199},
+   year = {1982}
+ }
+
+\bib{BVPri2}{article}{
+   author = {Barbasch, D.},
+   author = {Vogan, D. A.},
+   title = {Primitive ideals and orbital integrals in complex exceptional groups},
+   journal = {J. Algebra},
+   volume = {80},
+   number = {2},
+   pages = {350--382},
+   year = {1983}
+ }
+
+
+\bib{BVUni}{article}{
+ author = {Barbasch, D.},
+ author = {Vogan, D. A.},
+ journal = {Annals of Math.},
+ number = {1},
+ pages = {41--110},
+ title = {Unipotent representations of complex semisimple groups},
+ volume = {121},
+ year = {1985}
+}
+
+
+\bib{Bor}{article}{
+ author = {Borho, W.},
+ journal = {S\'eminaire Bourbaki, Exp. No. 489},
+ pages = {1--18},
+ title = {Recent advances in enveloping algebras of semisimple Lie-algebras},
+ year = {1976/77}
+}
+
+
+\bib{Ca89}{article}{
+ author = {Casselman, W.},
+ journal = {Canad. J. Math.},
+ pages = {385--438},
+ title = {Canonical extensions of Harish-Chandra modules to representations of $G$},
+ volume = {41},
+ year = {1989}
+}
+
+
+\bib{CM}{book}{
+  title = {Nilpotent orbits in semisimple Lie algebra: an introduction},
+  author = {Collingwood, D. H.},
+  author = {McGovern, W. M.},
+  year = {1993}
+  publisher = {Van Nostrand Reinhold Co.},
+}
+
+
+% \bib{Dieu}{book}{
+%    title={La g\'{e}om\'{e}trie des groupes classiques},
+%    author={Dieudonn\'{e}, Jean},
+%    year={1963},
+% 	publisher={Springer},
+%  }
+
+\bib{DKPC}{article}{
+title = {Nilpotent orbits and complex dual pairs},
+journal = {J. Algebra},
+volume = {190},
+number = {2},
+pages = {518--539},
+year = {1997},
+author = {Daszkiewicz, A.},
+author = {Kra\'skiewicz, W.},
+author = {Przebinda, T.},
+}
+
+
+%\bibitem[DM]{DM}
+%J. Dixmier and P. Malliavin, \textit{Factorisations de fonctions et de vecteurs ind\'efiniment diff\'erentiables}, Bull. Sci. Math. (2), 102 (4),  307-330 (1978).
+
+
+\bib{Dix}{book}{
+  title={Enveloping algebras},
+  author={Dixmier, J.},
+  year={1996},
+  publisher={Graduate Studies in Math., vol. 11, Amer. Math. Soc.},
+}
+
+%\bib{Du77}{article}{
+% author = {Duflo, M.},
+% journal = {Annals of Math.},
+% number = {1},
+% pages = {107-120},
+% title = {Sur la Classification des Ideaux Primitifs Dans
+%   L'algebre Enveloppante d'une Algebre de Lie Semi-Simple},
+% volume = {105},
+% year = {1977}
+%}
+
+
+
+\bib{Howe79}{article}{
+  title={$\theta$-series and invariant theory},
+  author={Howe, R.},
+  Journal={In: Borel, A., Casselman, W. (Eds.) Automorphic Forms, Representations and $L$-functions. Proc. Sympos. Pure Math., vol. 33, Amer. Math. Soc.}
+    year={1979},
+  pages={275--285},
+}
+
+
+\bib{Howe89}{article}{
+  author={Howe, R.},
+  title={Transcending classical invariant theory},
+  journal={J. Amer. Math. Soc.},
+  volume={2},
+  pages={535--552},
+  year={1989},
+}
+
+\bib{JLS}{article}{
+  author={Jiang, D.},
+  author={Liu, B.},
+  author={Savin, G.},
+  title={Raising nilpotent orbits in wave-front sets},
+  journal={Represent. Theory},
+  volume={20},
+  pages={419--450},
+  year={2016},
+}
+
+\bib{Jos}{article}{
+ author={Joseph, A.},
+ title={On the associated variety of a primitive ideal},
+ journal={J. Algebra},
+ volume={93},
+ issue={02},
+ pages={509--523},
+ year={1985},
+ }
+
+\bib{Ki62}{article}{
+author={Kirillov, A. A.},
+title={Unitary representations of nilpotent Lie groups},
+journal={Uspehi Mat. Nauk},
+volume={17},
+issue ={4},
+pages={57--110},
+year={1962},
+}
+
+\bib{Ko70}{article}{
+author={Kostant, B.},
+title={Quantization and unitary representations},
+bookTitle ={Lectures in Modern Analysis and Applications III, Lecture Notes in Math., vol. 170},
+pages={87--208},
+year={1970},
+}
+
+
+
+% \bib{KP}{article}{
+% author={Kraft, H.},
+% author={Procesi, C.},
+% title={On the geometry of conjugacy classes in classical groups},
+% journal={Comment. Math. Helv.},
+% volume={57},
+% pages={539--602},
+% year={1982},
+% }
+
+\bib{Li89}{article}{
+author={Li, J.-S.},
+title={Singular unitary representations of classical groups},
+journal={Invent. Math.},
+volume={97},
+issue={02},
+pages={237--255},
+year={1989},
+}
+
+
+\bib{LM}{article}{
+   author = {Loke, H. Y.},
+   author = {Ma, J.-J.},
+    title = {Invariants and $K$-spectrums of local theta lifts},
+    journal = {Compositio Math.},
+    volume = {151},
+    issue = {01},
+    year = {2015},
+    pages ={179--206},
+}
+
+\bib{Lu}{article}{
+   author = {Lusztig, G.},
+    title = {A class of irreducible representations of a Weyl group},
+    journal = {Nederl. Akad. Wetensch. Indag. Math.},
+    volume = {41},
+    issue = {03},
+    year = {1979},
+    pages ={323--335},
+}
+
+\bib{LY}{article}{
+   author = {Lusztig, G.},
+   author = {Yun, Z.},
+    title = {Endoscopy for Hecke categories, character sheaves and representations},
+    journal = {Forum Math. Pi},
+    volume = {8},
+    year = {2020},
+    pages ={e12, 93 pp},
+}
+
+\bib{Mo96}{article}{
+ author={M{\oe}glin, C.},
+    title = {Front d'onde des repr\'esentations des groupes classiques $p$-adiques},
+    journal = {Amer. J. Math.},
+    volume = {118},
+    issue = {06},
+    year = {1996},
+    pages ={1313--1346},
+}
+
+\bib{MoUnip}{article}{
+ author={M{\oe}glin, C.},
+    title = {Repr\'esentations quadratiques unipotentes des groupes classiques $p$-adiques},
+    journal = {Duke Math. J.},
+    volume = {84},
+    issue = {02},
+    year = {1996},
+    pages ={267--332},
+}
+
+
+\bib{MR}{article}{
+ author={M{\oe}glin, C.},
+ author={Renard, D.},
+    title = {Paquets d'Arthur des groupes classiques complexes},
+    journal = {Around Langlands correspondences, Contemp. Math., vol. 691, Amer. Math. Soc.},
+    year = {2017},
+    pages ={203--256},
+}
+
+%\bib{PPz}{article}{
+%author={Protsak, V.} ,
+%author={Przebinda, T.},
+%title={On the occurrence of admissible representations in the real Howe
+%    correspondence in stable range},
+%journal={Manuscr. Math.},
+%volume={126},
+%number={2},
+%pages={135--141},
+%year={2008}
+%}
+
+\bib{PrPr}{article}{
+      author={Protsak, V.},
+      author={Przebinda, T.},
+       title={On the occurrence of admissible representations in the real Howe correspondence in stable range},
+        date={2008},
+     journal={Manuscripta Math.},
+      volume={126},
+       pages={135--141},
+}
+
+
+\bib{PrzInf}{article}{
+      author={Przebinda, T.},
+       title={The duality correspondence of infinitesimal characters},
+        date={1996},
+     journal={Colloq. Math.},
+      volume={70},
+       pages={93--102},
+}
+
+%\bib{Som}{article}{
+%      author={Sommers, E.},
+%       title={Lusztig's canonical quotient and generalized duality},
+%        date={2001},
+%     journal={J. Algebra},
+%      volume={243},
+%      issue ={02},
+%       pages={790--812},
+%}
+
+\bib{RT1}{article}{
+  author = {Renard, D.},
+  author = {Trapa, P.},
+  year = {2000},
+  pages = {245--295},
+  title = {Irreducible genuine characters of the metaplectic group: Kazhdan-Lusztig algorithm and Vogan duality},
+  volume = {4},
+  journal = {Represent. Theory},
+  %doi = {10.1090/S1088-4165-00-00105-9}
+}
+
+%\bib{RT2}{article}{
+%  author = {Renard, David},
+%  author = {Trapa, Peter},
+%  year = {2003},
+%  month = {01},
+%  pages = {},
+%  title = {Irreducible characters of the metaplectic group. II: Functoriality},
+%  volume = {557},
+%  journal = {Journal f\"ur die Reine und Angewandte Mathematik},
+%  doi = {10.1515/crll.2003.028}
+%}
+
+\bib{Spa}{book}{
+      author={Spaltenstein, N.},
+       title={Classes unipotentes et sous-groupes de Borel},
+        date={1982},
+     publisher={Lecture Notes in Math., vol. 946, Springer-Verlag, Berlin-New York},
+}
+
+
+%\bib{SZ2}{article}{
+%  title={Conservation relations for local theta correspondence},
+%  author={Sun, B.},
+%  author={Zhu, C.-B.},
+%  journal={J. Amer. Math. Soc.},
+%  pages = {939--983},
+%  volume = {28},
+%  year={2015}
+%}
+
+%\bib{Tra}{article}{
+%      author={Trapa, P.},
+%       title={Special unipotent representations and the Howe correspondence},
+%        date={2004},
+%     journal={University of Aarhus Publ. Ser.},
+%      volume={47},
+%       pages={210--229},
+%}
+
+% \bib{Wa}{article}{
+%    author = {Waldspurger, J.-L.},
+%     title = {D\'{e}monstration d'une conjecture de dualit\'{e} de Howe dans le cas $p$-adique, $p \neq 2$ in Festschrift in honor of I. I. Piatetski-Shapiro on the occasion of his sixtieth birthday},
+%   journal = {Israel Math. Conf. Proc., 2, Weizmann, Jerusalem},
+%  year = {1990},
+% pages = {267-324},
+% }
+
+
+% \bib{VoGK}{article}{
+%       author={Vogan, D. A.},
+%        title={Gelfand-Kirillov dimension for Harish-Chandra modules},
+%         date={1978},
+%      journal={Invent. Math.},
+%       volume={48},
+%       issue ={01},
+%        pages={75--98},
+% }
+
+
+% \bib{VoBook}{book}{
+% author = {Vogan, D. A.},
+%   title={Unitary representations of reductive Lie groups},
+%   year={1987},
+%   series = {Ann. of Math. Stud.},
+%  volume={118},
+%   publisher={Princeton University Press}
+% }
+
+\bib{VoIC3}{article}{
+   author={Vogan, D. A.},
+   title={Irreducible characters of semisimple Lie groups. III. Proof of Kazhdan-Lusztig conjecture in the integral case},
+         date={1983},
+      journal={Invent. Math.},
+       volume={71},
+       issue ={02},
+        pages={381-417},
+ }
+
+
+\bib{VoIC4}{article}{
+   author={Vogan, D. A.},
+   title={Irreducible characters of semisimple Lie groups. IV. Character-multiplicity duality},
+         date={1982},
+      journal={Duke Math. J.},
+       volume={49},
+       issue ={04},
+        pages={943--1073},
+ }
+
+ \bib{VoICM}{article}{
+author={Vogan, D. A.},
+   title={Representations of reductive Lie groups},
+   bookTitle={Proc. Intern. Congr. Math. (Berkeley, Calif., 1986)},
+   publisher = {Amer. Math. Soc.},
+  year = {1987},
+pages={246--266},
+}
+
+\bib{VoBook}{book}{
+author = {Vogan, D. A.},
+  title={Unitary representations of reductive Lie groups},
+  year={1987},
+  series = {Ann. of Math. Stud.},
+ volume={118},
+  publisher={Princeton University Press}
+}
+
+
+
+ \bib{Vo89}{article}{
+   author = {Vogan, D. A.},
+   title = {Associated varieties and unipotent representations},
+  journal={In: Barker, W., Sally, P. (Eds.) Harmonic Analysis on Reductive Groups (Bowdoin College, 1989). Progress in Math., vol. 101, Birkh\"{a}user, Boston-Basel-Berlin},
+   year = {1991},
+ pages={315--388},
+ }
+
+
+\bib{Wa2}{book}{
+  title={Real reductive groups II},
+  author={Wallach, N. R.},
+  year={1992},
+  publisher={Academic Press Inc. }
+}
+
+\bib{Weil}{article}{
+  title={Sur certain group d'operateurs unitaires},
+  author={Weil, A.},
+  year = {1964},
+  journal={Acta Math.},
+  volume = {111},
+  pages= {143--211}
+}
+
+% \bib{Weyl}{book}{
+%   title={The classical groups: their invariants and representations},
+%   author={Weyl, H.},
+%   year={1947},
+%   publisher={Princeton University Press}
+% }
+
+
+
+% \bib{EGAIV4}{article}{
+%   title = {\'El\'ements de g\'eom\'etrie alg\'brique IV 4: \'Etude locale des
+%     sch\'emas et des morphismes de sch\'emas},
+%   author = {Grothendieck, Alexandre},
+%   author = {Dieudonn\'e, Jean},
+%   journal  = {Inst. Hautes \'Etudes Sci. Publ. Math.},
+%   volume = {32},
+%   year = {1967},
+%   pages = {5--361}
+% }
+
+
+\end{biblist}
+\end{bibdiv}
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
