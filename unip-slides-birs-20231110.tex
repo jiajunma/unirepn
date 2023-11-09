@@ -1,5 +1,5 @@
-\documentclass[t,serif,11pt,handout,usenames,dvipsnames]{beamer}
-%\documentclass[t,11pt,usenames,dvipsnames]{beamer}
+%\documentclass[t,serif,11pt,handout,usenames,dvipsnames]{beamer}
+\documentclass[t,11pt,usenames,dvipsnames]{beamer}
 %\documentclass[t,mathserif,11pt]{beamer} 
 %\usetheme{Berlin}
 %\usecolortheme{seahorse}
@@ -381,9 +381,6 @@
 \def\bPsi{{\overline{\Psi}}}
 \def\bpsi{{\overline{\psi}}}
 
-\def\vG{{\overrightarrow{G}}}
-\def\vrr{{\overrightarrow{r}}}
-\def\vphi{{\overrightarrow{\phi}}}
 
 \def\Cent#1#2{{\mathrm{Z}_{#1}({#2})}}
 
@@ -539,12 +536,13 @@
 
 \def\vV{\bfV^\vee}
 \def\bSb{\bS(\bfbb)}
-\def\vcO{\widehat{\cO}}
+\def\vcO{\check{\cO}}
 
 
 \def\bbF{\overline{\bF}}
 
 \def\PBP{\mathrm{PBP}}
+\def\ePBP{\mathrm{PBP}^{\text{ext}}}
 \def\LS{\mathrm{LS}}
 \def\AOD{\mathrm{AOD}}
 
@@ -581,14 +579,15 @@
 \usetikzlibrary{matrix,arrows,positioning,cd,backgrounds}
 \usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing}
 
-\title[Uni. Repn.]{Unipotent representations \\
-of real classical groups}
+\title[Uni. Repn.]{The weak Arthur packets of real classical groups}
 
 \author[Ma, Jia-Jun]{Ma, Jia-Jun\\[2em] 
 (joint with Dan Barbasch, Binyong Sun and  Chengbo Zhu)
 }
 
-\institute[XMUM]{Department of Mathematics\\
+\institute[XMU]{
+School of Mathematical Sciences, Xiamen University\\  
+Department of Mathematics, 
 Xiamen University Malaysia Campus}
 
 
@@ -617,7 +616,13 @@ Xiamen University Malaysia Campus}
   \arrowfill@\leftarrow\relbar\rightarrow}
 \makeatother
 
-\def\ckcO{\widehat{\cO}}
+%\def\ckcO{\widehat{\cO}}
+
+\def\SU{\mathrm{SU}}
+\def\Spin{\mathrm{Spin}}
+\def\Spr{\mathrm{Springer}}
+
+\def\vG{{\check{G}}}
 
 \begin{document}
 
@@ -625,9 +630,9 @@ Xiamen University Malaysia Campus}
     
     \titlepage
     \vspace{-3em}
-% \centering{
-%     (Zhejiang University)
-% }
+ \centering{
+     (BIRS-IASM, Arthur packets)
+ }
 \end{frame}
 
 
@@ -652,45 +657,46 @@ Xiamen University Malaysia Campus}
               g=su=us,
              \]
        \item $s$ is semisimple, and $u$ is unipotent ($u-1$ is nilpotent.)
-       \item \hhgraph{0.15\textwidth}{Jordan.jpg}{Camille Jordan}
+       \item[] \hhgraph{0.15\textwidth}{Jordan.jpg}{Camille Jordan}
              \hhgraph{0.15\textwidth}{Chevalley.jpg}{Claude Chevalley}
        \item Classification of conjugation classes in $G$:
              \[
-             G/\sim = \bigsqcup_{s\in G_{\mathrm{s.s.}}/\sim} \set{s u|u\in G^{s}}/\sim \;
-             \xleftrightarrow{\ \ bij. \ \ } \bigsqcup_{s\in G_{\mathrm{s.s.}}/\sim} \unip(G^{s})
+             G/\sim = \bigsqcup_{s\in G_{\mathrm{s.s.}}/\sim} \set{s u|u\in G_{s}}/\sim \;
+             \xleftrightarrow{\ \ bij. \ \ } \bigsqcup_{s\in G_{\mathrm{s.s.}}/\sim} \unip(G_{s})
              \]
      \end{itemize}
    \end{frame}
 
-    \begin{frame}
-      \frametitle{Reductive groups and its representation}
-      \begin{itemize}[<+->]
-        \item $\bfG$: a linear algebraic group: $\SL_{n}$, $\Sp_{2n}$, $\rO_{n}$,
-              $G_{2}$, $F_{4}$, $E_{6}$, $E_{7}$, $E_{8}\cdots$.
-        \item \emph{Question:} How to classify \emph{$\Irr(G)$} where $G= \bfG(k)$?
-        \item What is the structure of $\Irr(G)$?
-        \item When $G$ is abelian:
-        \item[]    \hhgraph{0.2\textwidth}{Pontryagin.jpg}{Lev S. Pontryagin}
-              \hspace{0.5em}
-            $ G\leftrightsquigarrow \Irr_{\text{unit.}}(G)=\widehat{G}, \text{
-              an
-              abelian group} $
-        \item Examples: $\bR\leftrightsquigarrow \bR$,
-              $\bZ \leftrightsquigarrow S^{1}$,
-              $\bZ/n\bZ \leftrightsquigarrow \mu_{n}$
-      \end{itemize}
-    \end{frame}
+%     \begin{frame}
+%       \frametitle{Reductive groups and its representation}
+%       \begin{itemize}[<+->]
+%         \item $\bfG$: a linear algebraic group: $\SL_{n}$, $\Sp_{2n}$, $\rO_{n}$,
+%               $G_{2}$, $F_{4}$, $E_{6}$, $E_{7}$, $E_{8}\cdots$.
+%         \item \emph{Question:} How to classify \emph{$\Irr(G)$} where $G= \bfG(k)$?
+%         \item What is the structure of $\Irr(G)$?
+%         \item When $G$ is abelian:
+%         \item[]    \hhgraph{0.2\textwidth}{Pontryagin.jpg}{Lev S. Pontryagin}
+%               \hspace{0.5em}
+%             $ G\leftrightsquigarrow \Irr_{\text{unit.}}(G)=\widehat{G}, \text{
+%               an
+%               abelian group} $
+%         \item Examples: $\bR\leftrightsquigarrow \bR$,
+%               $\bZ \leftrightsquigarrow S^{1}$,
+%               $\bZ/n\bZ \leftrightsquigarrow \mu_{n}$
+%       \end{itemize}
+%     \end{frame}
+    
 
-    \begin{frame}{Finite group of Lie type: $G:=\bfG(\bF_{q})$}
+  \begin{frame}{Finite group of Lie type: $G:=\bfG(\bF_{q})$}
       \begin{itemize}[<+->]
         \item Deligne-Lusztig and Lusztig (1970s--1980s)
         \item \emph{Jordan decomposition}:
-        \item[] Define dual group $\widehat{\bfG}$.
-            E.g. $\Sp_{2n} = \bfG\leftrightsquigarrow \widehat{\bfG} = \SO_{2n+1}$\\
+        \item[] Define dual group $\vG$.
+            E.g. $\Sp_{2n} = G\leftrightsquigarrow \vG = \SO_{2n+1}$\\
         \[
              \hhgraph{0.14\textwidth}{Deligne}{Deligne}
               \hspace{2em}
-              \Irr(G) = \displaystyle \bigsqcup_{s \in \widehat{G}_{\text{s.s.}}/\sim
+              \Irr(G) = \displaystyle \bigsqcup_{s \in \vG_{\text{s.s.}}/\sim
               %\substack{\text{semisimple class}\\ s \in \widehat{G}_{\text{s.s.}}/\sim}
             } \cE(G, s).
              \hspace{2em}
@@ -698,7 +704,7 @@ Xiamen University Malaysia Campus}
             \]
         \item[] Lusztig's map to the unipotent packet.
         \[
-          \cE(G,s)\xleftrightarrow{\ \  bij. \ \ } \cE(\widehat{G}_{s},1)
+          \cE(G,s)\xrightarrow[\cL_s]{\ \ \ \  bij. \ \ \ \ } \cE(\vG_{s},1)
         \]
       \end{itemize}
     \end{frame}
@@ -706,8 +712,8 @@ Xiamen University Malaysia Campus}
     \begin{frame}
       \frametitle{Representations of Real Lie groups}
       \begin{itemize}[<+->]
-        \item $G=\GL_{n}(\bR),\rU(p,q), \rO(p,q), \Sp(2n,\bR), \Mp(2n,\bR), \cdots$\\[-1em]
-        \item[]\
+        \item $G\in \set{\GL_{n}(\bR),\rU(p,q), \rO(p,q), \Sp(2n,\bR), \Mp(2n,\bR), \cdots}$
+        \item[] \
               \vspace{-1em}
         \[
           \set{\text{discrete series}}\subset\set{\text{tempered}}
@@ -717,20 +723,23 @@ Xiamen University Malaysia Campus}
         \[
           \vgraph{0.6\textwidth}{unitary_sl2.png}
         \]
+        \pause
+        \begin{tikzpicture}[overlay, remember picture]
+          \draw [red] (4.9cm,1.05cm) circle (0.2cm);
+          \draw [red] (5.8cm,1.05cm) circle (0.1cm);
+      \end{tikzpicture}
         \item \emph{Open problem:} Structure of the unitary dual!
       \end{itemize}
     \end{frame}
 
-    \def\vG{\widehat{G}}
     \begin{frame}
       \frametitle{Langlands and Arthur}
       \begin{itemize}[<+->]
         \item $W_{\bR} = \bC^{\times} \cup j\, \bC^{\times}$
         such that $jzj^{\, -1} = \overline{z}, j^{\, 2}=-1\in \bC^{\times}$.
-        \item Langlands dual group ${}^{L}G = \vG \rtimes \braket{j}$. Eg:
-        \[
-          \Sp_{2n}(\bR)=G\longleftrightarrow \vG=\SO_{2n+1}(\bC)
-        \]
+        \item Langlands dual group ${}^{L}G = \vG \rtimes \braket{j}$.\\
+        Eg. \hspace{2em} $ 
+          \Sp_{2n}(\bR)=G\longleftrightarrow {}^L G=\SO_{2n+1}(\bC)\times \braket{j}$
         \item \emph{Langlands}
         \[
           \vgraph{0.12\textwidth}{Langlands.jpeg}
@@ -739,7 +748,7 @@ Xiamen University Malaysia Campus}
             }} \set{\phi\colon W_{\bR}\rightarrow {}^{L}G}/\vG.
           \hspace{4em}
         \]
-        \item \emph{Arthur: (Classical group, 2013)} $\Irr_{\text{temp}}(G) \subset \Irr_{A}(G)\subset
+        \item \emph{Arthur} \hspace{2em}$\Irr_{\text{temp}}(G) \subset \Irr_{A}(G)\subset
         \Irr_{\text{unit}}(G)$
         \[
           \vgraph{0.15\textwidth}{Arthur.jpg}
@@ -762,7 +771,7 @@ Xiamen University Malaysia Campus}
         packets
         \item[] ``On some problems suggested
         by the trace formula'' 1980's
-        \item \hhgraph{0.15\textwidth}{Moeglin.jpg}{M\oe glin}
+        \item \hhgraph{0.15\textwidth}{Moeglin3.png}{M\oe glin}
         \hhgraph{0.15\textwidth}{Renard.jpg}{Renard}
         % \item[]
               \emph{Reduction to unipotent Arthur packet}
@@ -778,10 +787,10 @@ Xiamen University Malaysia Campus}
           \hhgraph{0.12\textwidth}{Barbasch.jpg}{Barbasch}
           \hhgraph{0.12\textwidth}{Vogan.jpg}{Vogan}
               \hspace{.5em}
-         $ \Unip(G) \approx \text{repn. has smallest ``size''} $
+         $ \Unip(G) := \text{repn. with smallest ``size''} $
         \item Wavefront cycle/Associated cycle:
         \[
-          \Irr(G) \longrightarrow \cK(\text{equiv. sheaves on
+        AC :  \Irr(G) \longrightarrow \cK(\text{equiv. sheaves on
               nil-cone})
         \]
        \item E.g.: $\Lie(\SL_{2}(\bR))\cong \bR^{3}$.
@@ -795,15 +804,15 @@ Xiamen University Malaysia Campus}
       \frametitle{Barbasch-Vogan's definition of  special unip. repn. II}
       \begin{itemize}[<+->]
             \item[] $G$: a real reductive group.
-            \item  $\ckcO$ : a nilpotent orbit in $\vG$.
+            \item  $\ckcO$ : a nilpotent orbit in $\vG$ $\leadsto$ inf. char. $\chi_{\ckcO}$.
               \vspace{-1.5em}
             \item[] \hspace{1em} $\leadsto$  the maximal primitive ideal
             $\cI_{\ckcO}\subset \cU(\fgg)$. %attached to $\ckcO$.
               \hhgraph{0.11\textwidth}{Duflo}{Duflo}
-              \hhgraph{0.11\textwidth}{Joseph2}{Joseph}
+              %\hhgraph{0.11\textwidth}{Joseph2}{Joseph}
               \vspace{-1.5em}
             \item  \emph{Definition} (Barbasch-Vogan):
-            \item [] An irr. admissible $G$-repn. is called
+            \item [] An irr. adm. $G$-module is called
             \emph{special unipotent} if
             \[
             \Ann_{\cU(\fgg)}(\pi) = \cI_{\ckcO}.
@@ -812,7 +821,7 @@ Xiamen University Malaysia Campus}
             \item[]
             $\Longleftrightarrow$ $\pi$ has inf. char. $\chi_{\ckcO}$ and
             $\AV_\bC(\pi) = \overline{\cO}$
-            \item $\cO\in \Nil^{\text{special}}(\bfG)$:\\
+            \item $\Nil^{\text{special}}(\bfG)\ni \cO:=$
             the \hhgraph{0.08\textwidth}{Lusztig2}{\ }
             \hhgraph{0.08\textwidth}{Spaltenstein1}{\tiny Spaltenstein}
             \hhgraph{0.08\textwidth}{Barbasch2}{\ }
@@ -822,7 +831,7 @@ Xiamen University Malaysia Campus}
       \end{itemize}
     \end{frame}
 
-   \begin{frame}[label=DU]
+   \begin{frame}[label=CO]
         \frametitle{Conjecture/Open problems}
         \begin{itemize}[<+->]
             \item \emph{Major open problem:} Classify the {\red unitary dual}:
@@ -831,115 +840,310 @@ Xiamen University Malaysia Campus}
             \item \emph{Philosophy:}
             $\Unip_{\ckcO}(G)$
              $=$  the {\color{red} building blocks} of the unitary dual.
+             \item [] \hspace{2em} {\color{red} Special unip. repn. are  enough in general}\\
+                      \hspace{2em}  E.g., Complex Spin group, by Wong-Zhang.\\
+                      \hspace{2em}  c.f. Mason-Brown's talk.
              \item \emph{Conjecture (1980s)}:
              $\Unip_{\ckcO}(G)$ consists of {\red unitary} repn.
-            \item {\red Question 1:} Size of $\Unip_{\ckcO}(G)$?
-            \item {\red Question 2:} Construction of unipotent repn.
-            \item {\red Question 3:} Character formula? % of $\Unip_{\ckcO}(G)$?
+            \item[] {\red Question 1:} Size of $\Unip_{\ckcO}(G)$?\\
+             {\red Question 2:} Construction of unipotent repn. \\
+             {\red Question 3:} Character formula? % of $\Unip_{\ckcO}(G)$?
             % of elements in $\Unip_{\ckcO}(G)$?
-            \item \emph{Barbasch-Vogan} 1985: Complete answers for {\lblue
+            \item \emph{Barbasch-Vogan} 1985: Classification for {\lblue
               complex groups}.
             %\item Vogan 1986: Classify the unitary dual of {\lblue $GL(n)$}.
             \item \emph{Barbasch} 1989: Proved the conj. for {\lblue complex classical groups}.
         \end{itemize}
     \end{frame}
 
+    \begin{frame}[label=UN]
+        \frametitle{Special unip. repn. of simply conn. classical groups}
+        \begin{block}{Theorem (Barbasch-M.-Sun-Zhu)}
+        Suppose $G$ is a simply connected real classical group, i.e. one of the following groups
+        \[\SU(p,q), \Spin(p,q), \Spin(2n,\bH), \Sp(2n,\bR), \Mp(2n,\bR), \Sp(p,q)
+        \] 
+            Arthur-Barbasch-Vogan's unitarity conj. for special unipotent repn. holds:\\[1em]
+            \pause
+            \centering{All \emph{special unipotent repn.} of $G$  are \emph{unitarizable}.}
+        \end{block}
+
+    \end{frame}
+
+%     \begin{frame}[label=UN]
+%         \frametitle{Classical groups and special unipotent representations}
+%         \begin{table}
+%             \centering
+%             \begin{tabular}{c|c|c|c|c}
+%                 \hline
+%                 & $G$ & $\bfG$  & $\widehat{\bfG}$ & \\
+%                 \hline
+%                 \hline
+%                 $D_n$ & $\rO(p,2n-p)$ & $\rO(2n,\bC)$& $\rO(2n,\bC)$ & $D_n$\\
+%                 \hline
+%                 $C_n$ & $\Sp(2n,\bR)$ & $\rSp(2n,\bC)$& $\SO(2n+1,\bC)$ & $B_n$\\
+%                 \hline
+%                 \hline
+%                 $B_n$ & $\rO(p,2n+1-p)$ & $\rO(2n+1,\bC)$& $\Sp(2n,\bC)$ & $C_n$\\
+%                 \hline
+%                 ${\tilde C}_n$ &  $\Mp(2n,\bR)$ & $\Sp(2n,\bC)$ & $\Sp(2n,\bC)$ & $C_n$\\
+%                 \hline 
+%                 \hline
+%                 $D_n$ &  $\rO^*(n)$ & $\SO(2n,\bC)$ & $\SO(2n,\bC)$ & $D_n$\\
+%                 \hline
+%                 $C_n$ & $\Sp(p,n-p)$ & $\Sp(2n,\bC)$ & $\SO(2n+1,\bC)$ & $B_n$\\
+%                 \hline 
+%                 \hline
+%                 $A_n$ & $\rU(p,n-p)$ & $\GL(n,\bC)$ & $\GL(n,\bC)$ & $A_n$\\
+%                 \hline
+%                 $A_m$ & $\rU(r,m-r)$ & $\GL(m,\bC)$ & $\GL(m,\bC)$ & $A_m$\\
+%                 \hline
+%             \end{tabular}
+%         \end{table}
+% 
+% 
+%         % \pause
+%         % \centering{ $\Nil(\bfG^\vee):=\set{\text{nilpotent $\bfG^\vee$-oribt in }\fgg^\vee }$}
+%         \pause 
+%         
+%         \begin{block}{Theorem (Barbasch-M.-Sun-Zhu 2021)}
+%             Arthur-Barbasch-Vogan's conj.  on special unipotent repn. holds for $G$:
+%             \pause
+%             
+%             \centering{All \emph{specail unipotent repn.} of $G$  are \emph{unitarizable}.}
+%         \end{block}
+%     \end{frame}
+% 
+
    \begin{frame}
-     \frametitle{Atlas of Lie groups}
-     \begin{itemize}[<+->]
-     \item \hhgraph{0.11\textwidth}{decloux-adams}{De Cloux, Adams}
-    \hhgraph{0.11\textwidth}{Leeuwen}{Leeuwen}
-    \hhgraph{0.11\textwidth}{Paul}{Paul}
-    \hhgraph{0.11\textwidth}{Trapa}{Trapa}
-    \hhgraph{0.11\textwidth}{Vogan3}{Vogan}
-    \hhgraph{0.11\textwidth}{Yee}{Yee}
-     \item[]
-     \[
-       \hgraph{0.3\textwidth}{atlas}
-       \quad
-       \hgraph{0.15\textwidth}{atlas_Sp22}
-     \]
-    \item[]
-     $\leadsto$ complete answer for \emph{exceptional groups}.
-     \end{itemize}
+    \frametitle{Answer for \emph{exceptional groups}}
+      J. Adams, S. Miller, M. van Leeuven, and D. A. Vogan\\
+      \hspace{2em} atlas  $\hgraph{0.3\textwidth}{atlas}$ + other method. 
    \end{frame}
 
-    \begin{frame}[label=DU]
-        \frametitle{Classical groups and special unipotent representations}
-        \begin{table}
-            \centering
-            \begin{tabular}{c|c|c|c|c}
-                \hline
-                & $G$ & $\bfG$  & $\widehat{\bfG}$ & \\
-                \hline
-                \hline
-                $D_n$ & $\rO(p,2n-p)$ & $\rO(2n,\bC)$& $\rO(2n,\bC)$ & $D_n$\\
-                \hline
-                $C_n$ & $\Sp(2n,\bR)$ & $\rSp(2n,\bC)$& $\SO(2n+1,\bC)$ & $B_n$\\
-                \hline
-                \hline
-                $B_n$ & $\rO(p,2n+1-p)$ & $\rO(2n+1,\bC)$& $\Sp(2n,\bC)$ & $C_n$\\
-                \hline
-                ${\tilde C}_n$ &  $\Mp(2n,\bR)$ & $\Sp(2n,\bC)$ & $\Sp(2n,\bC)$ & $C_n$\\
-                \hline 
-                \hline
-                $D_n$ &  $\rO^*(n)$ & $\SO(2n,\bC)$ & $\SO(2n,\bC)$ & $D_n$\\
-                \hline
-                $C_n$ & $\Sp(p,n-p)$ & $\Sp(2n,\bC)$ & $\SO(2n+1,\bC)$ & $B_n$\\
-                \hline 
-                \hline
-                $A_n$ & $\rU(p,n-p)$ & $\GL(n,\bC)$ & $\GL(n,\bC)$ & $A_n$\\
-                \hline
-                $A_m$ & $\rU(r,m-r)$ & $\GL(m,\bC)$ & $\GL(m,\bC)$ & $A_m$\\
-                \hline
-            \end{tabular}
-        \end{table}
-        
-        % \pause
-        % \centering{ $\Nil(\bfG^\vee):=\set{\text{nilpotent $\bfG^\vee$-oribt in }\fgg^\vee }$}
-        \pause 
-        
-        \begin{block}{Theorem (Barbasch-M.-Sun-Zhu 2021)}
-            Arthur-Barbasch-Vogan's conj.  on special unipotent repn. holds for $G$:
-            \pause
-            
-            \centering{All \emph{specail unipotent repn.} of $G$  are \emph{unitarizable}.}
-        \end{block}
-    \end{frame}
+%    \begin{frame}
+%      \frametitle{Atlas of Lie groups}
+%     Answer for \emph{exceptional groups}.
+%      \begin{itemize}[<+->]
+%      \item \hhgraph{0.11\textwidth}{decloux-adams}{De Cloux, Adams}
+%     \hhgraph{0.11\textwidth}{Leeuwen}{Leeuwen}
+%     \hhgraph{0.11\textwidth}{Paul}{Paul}
+%     \hhgraph{0.11\textwidth}{Trapa}{Trapa}
+%     \hhgraph{0.11\textwidth}{Vogan3}{Vogan}
+%     \hhgraph{0.11\textwidth}{Yee}{Yee}
+%      \item[]
+%      \[
+%        \hgraph{0.3\textwidth}{atlas}
+%        \quad
+%        \hgraph{0.15\textwidth}{atlas_Sp22}
+%      \]
+%      \end{itemize}
+%    \end{frame}
 
 
     \begin{frame}
-      \frametitle{Theta lifting}
+        \frametitle{Counting $G$-module with a specific ann. variety}
+        \begin{itemize}[<+->]
+            \item  Fix inf. char. $\mu\in \fhh^*/W$ 
+            \item  integral Weyl group
+           \[
+               W(\mu) := \set{w\in W | \inn{\mu- w\mu}{\check\alpha}\in \bZ,
+              \ \forall \alpha \in \Delta(\fgg,\fhh) 
+               }
+           \] 
+            double cell $\cD\subset \Irr(W(\mu))$
+            $\leadsto$ the special repn. $\tau_0$\\
+            $\leadsto$ truncated ind. $J_{W(\mu)}^W \tau_0$ 
+            $\xrightarrow{\text{Springer corr.} }$ $\cO$. 
+           %\item Let $\mu \in \lambda + X^*$ ($X^*$ is the weight lattice), 
+           \item[] \hspace{2em} $ W_\mu = \set{w\in W | w \mu = \mu}.  $ 
+            %\item $\sG_{\lambda}(\fgg,K)$:  the Groth. gp. of $(\fgg,K)$-modules with inf. char. $\lambda$. 
+            \item $\sG_{\mu}(G)$:  the coherent countinuation repn. of $W(\mu)$. 
+            \begin{block}{Lemma: \uncover<6->{\color{red}If $\fgg$ has no $E_8$ factor, then}}
+            \[
+                \begin{split}
+             & \#\set{\pi \in \Irr_{\mu}(\fgg,K)(G) | \AV_\bC(\pi) = \overline{\cO}}\\
+            &= \sum_{\substack{\cD\leadsto \cO\\ \tau\in \cD}} [\tau:1_{W_\mu}]\cdot [\tau: \sG_{\mu}(G)]
+                \end{split}
+            \]
+              \end{block}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Applications}
       \begin{itemize}[<+->]
-        \item \hhgraph{0.12\textwidth}{Howe}{Howe}
-              $\exists \theta$-correspondence.
-              (1970s)
-              \vspace{-2em}
-        \[
-          \text{\emph{E.g.}}\quad
-          \text{a subset of } \Irr(\rO(p,q))\xleftrightarrow{bij.} \text{a subset of } \Irr(\Sp(2n,\bR))
-        \]
-        \item $\theta$-lifting $\approx \sqrt{\text{induction}}$: a effective
-              tool for
-        \emph{``small''} repn.% and auto. forms.
-        \item Towards the construction of unipotent repn.:
-        \item[]
-        \hhgraph{0.1\textwidth}{Adams2}{Adams}
-        \hhgraph{0.1\textwidth}{Barbasch3}{Barbasch}
-        \hhgraph{0.1\textwidth}{He}{He}
-        \hhgraph{0.1\textwidth}{Huang}{Huang}
-        \hhgraph{0.1\textwidth}{Li}{Li}
-        \hhgraph{0.1\textwidth}{Loke}{Loke}
-        \hhgraph{0.1\textwidth}{Nishiyama}{Nishiyama}
-        \hhgraph{0.1\textwidth}{Moeglin2}{M\oe glin}
-        \hhgraph{0.1\textwidth}{Paul2}{Paul}
-        \hhgraph{0.1\textwidth}{Przebinda}{Przebinda}
-        \hhgraph{0.1\textwidth}{Trapa2}{Trapa} $\cdots$
+        \item $\Unip_{\ckcO}(\SL_n(\bH))= \text{restricition of } \Unip_{\ckcO}(\GL_n(\bH))$.
+        \item $\Unip_{\ckcO}(\SL_n(\bR))= \text{components in the rest. of }\Unip_{\ckcO}(\GL_n(\bR))$.
+        \item $\Unip_{\ckcO}(\SU_(p,q))= \text{rest. of }\Unip_{\ckcO}(\text{det double cover of } \rU(p,q))$.
+        \item genuine special unipotent repn. of $\Spin(p,q)$ are some obvious irreducibly parabolicaly induced module. 
       \end{itemize}
     \end{frame}
 
+    \begin{frame}
+        \frametitle{Nilpotent orbits with ``good/bad parity''}
+        \begin{itemize}
+            \item Bad parity (must occur with even multiplicity in $\ckcO$):
+            \[
+            \begin{cases}
+                \text{even number,} & \text{when $\vG$ is type $B$ or $D$}\\ 
+                \text{odd number,} & \text{when $\vG$ is type $C$} 
+            \end{cases}
+            \]
+            \item  $\ckcO$ has \emph{``good parity'' } if $\ckcO$ only contains 
+            \[
+            \begin{cases}
+                \text{odd rows}, & \text{when $\vG$ is type $B$ or $D$}\\ 
+                \text{even rows}, & \text{when $\vG$ is type $C$} 
+            \end{cases}
+            \]
+            \item $\lambda_{\ckcO}$ is integral.
+            \vspace{-1em}
+            %\item  Example of good parity:
+            \[
+            \begin{tikzcd}[ampersand replacement=\&,column sep=3em,row sep = -0.2em]     
+                \cO \&  \vcO  \\
+                \ydiagram{4,4,4,2} \& \ydiagram{5,3,3,3,1} \\  
+                \Sp(14,\bC) \& \SO(15,\bC)
+            \end{tikzcd} 
+            \]
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Reduction to the ``good parity''}
+        \begin{itemize}
+            \item Consider $G= \Sp(2n,\bR)$. 
+            \item  $\ckcO$ decompose into two parts $\ckcO_{g}$ (good parity)  and $\ckcO_{b}$ (bad parity).
+            \item Assume $\ckcO_{b} = \{r_1, r_1, \cdots, r_k, r_k\}$.\pause
+            %  ,  $\abs{\ckcO_b}=2n_1$ and 
+            % $|\ckcO_{g}| = 2n_0$
+            \begin{block}{ Theorem {\color{black}Let $\ckcO'_b = \set{r_1,\cdots, r_k}\in \Nil_{\GL}$.}}
+              \hspace{2em}
+              $
+            \begin{array}{ccc}
+                {\tiny\Unip_{\ckcO'_b}(\GL)
+                \times \Unip_{\ckcO_g}(\Sp)} &\xrightarrow{\ \ bij.\ \ }&
+                {\tiny \Unip_{\ckcO}(\Sp)} \\[.6em]
+                (\pi',\pi_0 ) &\mapsto & 
+                \Ind_{\raisebox{-0.5em}{\tiny$\GL_{\abs{\ckcO'_b}}\times \Sp(2n_0,\bR)\ltimes U$}}^{\tiny\raisebox{1em}{$\Sp(2n,\bR)$}}
+                \hspace{-5em}\pi'\otimes \pi_0
+            \end{array}
+            $
+          \end{block}
+          \vspace{-1em}
+            \[
+            \begin{split}
+                {\tiny\Unip_{\ckcO'_b}(\GL)}
+                = 
+                \Set{\Ind \mathop{\otimes}_{j=1}^k \sgn^{\epsilon_j}_{\GL(r_j,\bR)}
+                % \Set{\Ind_{\raisebox{-0.7em}{\tiny$\GL(r_1)\times\cdots\times \GL(r_k)$}}^{\tiny\raisebox{1em}{$\GL(2n_1,\bR)$}} \hspace{-6.8em}\raisebox{0em}{ $\sgn^{\epsilon_1}\otimes \cdots \otimes\sgn^{\epsilon_k}$}
+                % | 
+                |\epsilon_j \in \bZ/2\bZ}
+            \end{split}
+            \]
+            \pause
+            \item Use \emph{theta correspondence}  to study 
+            $ \Unip_{\ckcO_{g}}(G)$.
+            \item We assume  $\ckcO$ has {\red good parity} from now on.
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+        \frametitle{Counting unipotent representations I}
+        \begin{itemize}[<+->]
+            \item Example: $G = \Sp(2n,\bR)$ and  $\chi_{\ckcO}\in \rho_G +$ weight lattice. %$\ckcO\in \Nil^{gp}(\bfG^\vee)$, i.e. $\ckcO$ only has odd length rows.  
 
-    \begin{frame}[label=CG]
+            \item[] \vspace{-1em} 
+            \[
+              \begin{split}
+              W(\chi_{\ckcO}) &= S_n \ltimes \set{\pm 1}^n,\\ 
+            \sG_{\rho_G}(G) &= \sum_{\substack{b,c,d,r,\\
+            \sigma\in \widehat{S_r}}} \Ind_{S_r\times W_{2b}\times W_c\times
+            W_d}^{W_n} \sgn\otimes(\sigma\times \sigma)\otimes \bfone\otimes \bfone .\\[-1em]
+            & \hspace{8em}\updownarrow\\
+            & \text{max. torus }\bC^b \times \rU(1)^r \times \bR^{c+d} 
+              \end{split}
+           \] 
+            \item[] \vspace{-1em}$\ckcO\leadsto$ special repn. $\tau = \Spr(d_{BV}(\ckcO)) $ 
+            \item[] Lusztig left cell $\cC = \set{\tau_1,
+            \cdots,\tau_{2^l}}$ containing $\tau$
+            %\item $\sG_{\rho}(G)$:  the Groth. gp. of $(\fgg,K)$-modules with inf. char. $\rho$. 
+            \item $[\tau_i:1_{W_{\lambda_{\ckcO}}}]=1$ %is counted by painted bi-partitions $\PBP(\ckcO)$.
+            and {\color{red}$[\tau_i:\sG_{\rho_G}(G)] = [\tau:\sG_{\rho_G}(G)]$}
+            \item[]
+            \vspace{-1em}
+            \[
+            \lblue
+            \#\Unip_{\vcO}(G) = 2^l \cdot [\tau:\sG_{\rho_G}(G)] 
+            \]
+            \item \vspace{-1em}$[\tau:\sG_{\rho_G}(G)]$ is counted by painted bi-partitions $\PBP(\ckcO)$.
+            % \item $LS(\cO)\subset \cK_\cO(\bfK)$: all local systems could be obtained by
+            % theta lifting.
+            % \item When $\cO^\vee\in \Nil^{qd}(\fgg^\vee)$,  $\# \PBP(\cO) 
+            % = \# \AOD(\cO) = \# \LS(\cO)$ 
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Example of $\PBP$} 
+        \[
+        % \lblue \ckcO = [6,6,5,5,2,2] =  \ydiagram{6,6,5,5,2,2}   
+         \lblue \ckcO = [7,5,5,5,3,1,1] =  \ydiagram{7,5,5,5,3,1,1}   
+        \]
+        \[
+        \begin{array}{ccc}
+            \PBP_{\ckcO}(\Sp(2n,\bR)) & & \text{Associated character}\\
+         \ytb{\bullet\bullet\bullet, \bullet c, r d, d}   
+         \times 
+         \ytb{\bullet\bullet\bullet, \bullet s, \none,\none}   
+         & 
+         \mapsto &
+         \ytb{\ast=\ast=\ast=,
+             \ast=\ast=\ast=,
+            =\ast=\ast,
+        \ast=\ast=, \ast=\ast=, -+
+         }   
+           \cup 
+         \ytb{\ast=\ast=\ast=,
+             \ast=\ast=\ast=,
+            =\ast=\ast,
+        =\ast=\ast, \ast=\ast=, +-
+         }  \\ 
+     %    \vdots & &\vdots 
+        \end{array}
+        \]
+    \end{frame}
+
+
+%    \begin{frame}
+%      \frametitle{Theta lifting}
+%      \begin{itemize}[<+->]
+%        \item \hhgraph{0.12\textwidth}{Howe}{Howe}
+%              $\exists \theta$-correspondence.
+%              (1970s)
+%              \vspace{-2em}
+%        \[
+%          \text{\emph{E.g.}}\quad
+%          \text{a subset of } \Irr(\rO(p,q))\xleftrightarrow{bij.} \text{a subset of } \Irr(\Sp(2n,\bR))
+%        \]
+%        \item $\theta$-lifting $\approx \sqrt{\text{induction}}$: a effective
+%              tool for
+%        \emph{``small''} repn.% and auto. forms.
+%        \item Towards the construction of unipotent repn.:
+%        \item[]
+%        \hhgraph{0.1\textwidth}{Adams2}{Adams}
+%        \hhgraph{0.1\textwidth}{Barbasch3}{Barbasch}
+%        \hhgraph{0.1\textwidth}{He}{He}
+%        \hhgraph{0.1\textwidth}{Huang}{Huang}
+%        \hhgraph{0.1\textwidth}{Li}{Li}
+%        \hhgraph{0.1\textwidth}{Loke}{Loke}
+%        \hhgraph{0.1\textwidth}{Nishiyama}{Nishiyama}
+%        \hhgraph{0.1\textwidth}{Moeglin2}{M\oe glin}
+%        \hhgraph{0.1\textwidth}{Paul2}{Paul}
+%        \hhgraph{0.1\textwidth}{Przebinda}{Przebinda}
+%        \hhgraph{0.1\textwidth}{Trapa2}{Trapa} $\cdots$
+%      \end{itemize}
+%    \end{frame}
+
+
+    \begin{frame}
       \frametitle{Inductive structure of nilpotent orbits}
         \[
       \small
@@ -952,24 +1156,115 @@ Xiamen University Malaysia Campus}
             \bfG_i \&  \Sp(14,\bC) \&  \rO(10,\bC) \&  \Sp(6,\bC) \& \rO(4,\bC)\\
         \end{tikzcd}
       \]
-      \\[-1em]
-        \pause
-        \emph{Relate to}\\
-        \hhgraph{0.13\textwidth}{Kraft}{Kraft}
-        \hhgraph{0.13\textwidth}{Procesi}{Procesi} \begin{minipage}{0.6\textwidth}
-         \hhgraph{0.05\textwidth}{Ohta}{Takuya Ohta}'s
-          study of singularities of\\
-          a nilpotent orbit closure.
+      \\[-1em]\pause
+        \hhgraph{0.10\textwidth}{Kraft}{\tiny Kraft}
+        \hhgraph{0.10\textwidth}{Procesi}{\tiny Procesi} 
+          resolution of singularities of
+          nilpotent orbit closures.
           % $\overline{\text{nilpotent orbit}}$.
-        \end{minipage}
     \end{frame}
+
+
+    \begin{frame}
+        \frametitle{Example of descent sequences}
+        \[
+        \begin{tikzcd}[ampersand replacement=\&,column sep=1em,row sep=.5em]     
+            \bfG_i^\vee \&  \SO(15,\bC) \&  \rO(10,\bC) \&  \SO(7,\bC) \& \rO(4,\bC)\\
+            \vcO_i \& \ydiagram{5,3,3,3,1} \&
+            \ydiagram{0,3,3,3,1} \& \ydiagram{0,0,3,3,1} \& \ydiagram{0,0,0,3,1}    \\
+            \cO_i \& \ytb{-+-+\none,+-+-,+-+-,+-}\& \ytb{+-+,-+-,-+-,-} \& \ytb{-+\none,+-,+-,\none} \&
+            \ytb{+,+,-,-\none\none}\\
+            G_i \&  \Sp(14,\bR) \&  \rO(4,6) \&  \Sp(6,\bR) \& \rO(2,2)\\
+        \end{tikzcd} 
+        \]
+        \pause
+        {\lblue Ohta's} resolution of singularities of a nilpotent orbit closure in symmetric pairs. 
+    \end{frame}
+    
+    
+    \begin{frame}
+        \frametitle{Construction of elements in $\Unip_{\ckcO}(G)$}
+        \begin{itemize}
+            \item 
+            $\chi=\displaystyle\mathop{\otimes}_{j=0}^{2a}\chi_{j}$, a 1-dim repn. 
+            of
+            $\displaystyle\mathop{\textstyle\prod}_{j=0}^{2a}G_{j}$.
+            \item $\chi_j \in \{ \bfone, \sgn^{+,-}, \sgn^{-,+},  {\det}\}$
+            \item 
+            Define a smooth repn. of $G = G_{2a}$ (the symplectic group). 
+            \[
+            {\lblue \pi_{\chi}}:=(\omega_{G_{2a},G_{2a-1}}\widehat \otimes
+            \omega_{G_{2a-1},G_{2a-2}} \widehat \otimes \cdots \widehat \otimes
+            \omega_{G_1,G_0} \otimes \chi)_{G_{2a-1}\times G_{2a-2}\times \cdots \times G_{0}}
+            \]\pause 
+            \begin{thm}[Barbasch-M.-Sun-Zhu]
+                Suppose $\ckcO$ is an orbit with good parity.
+                Then
+                \begin{itemize}[<+->]
+                    \item either $\pi_\chi = 0$ or
+                    \item $\lblue \pi_{\chi}\in  \Unip_{\ckcO}(G)$ and   
+                    {\lblue unitarizable}.
+                    \item Moreover, 
+                    \[\lblue
+                    \Unip_{\vcO}(G) = \set{\pi_{\chi} | \pi_{\chi}\neq 0}. 
+                    \]
+                \end{itemize}
+            \end{thm}
+        \end{itemize}
+    \end{frame}
+    
+    
+    
+    \begin{frame}
+        \frametitle{Example: Coincidences of theta lifting}
+        Lift to $G = \Sp(6,\bR)$ from real forms of $\bfG = \rO(4,\bC)$.\\
+        $\ckcO = 3^2 1^1$ and  $\cO = 2^3$.
+        \[
+        \begin{tikzcd}[ampersand replacement=\&,column sep=2em, row sep=1em,execute at end picture={
+            \draw (-7em,-7em)--(-7em,8em);
+          }]
+            \& \& \Sp(6,\bR)\\[-1em]
+            \hline
+            \rO(4,0) \& \  \& \theta(\sgn^{+,-}) \ar[dr,equal]\& \   \\
+            \rO(3,1) \& \theta(\bfone) \& \theta(\sgn^{+,-}) \ar[dr,equal] \& \theta(\sgn^{-,+}) \\
+            \rO(2,2) \& \theta(\bfone) \& \theta(\sgn^{+,-}) \ar[dr,equal] \& \theta(\sgn^{-,+}) \\
+            \rO(1,3) \& \theta(\bfone) \& \theta(\sgn^{+,-}) \ar[dr,equal] \& \theta(\sgn^{-,+}) \\
+            \rO(0,4) \& \  \&\  \& \theta(\sgn^{-,+}) \\
+        \end{tikzcd}
+        \]
+    \end{frame}
+    
+    
+    \begin{frame}
+        \frametitle{Matching unipotent representations with PBP}
+        \begin{itemize}[<+->]
+            \item $\PBP(\ckcO)$ is complicate.
+            \item $\LS(\ckcO) = \set{\AC(\pi_\chi)}$ is also complicate.
+            \item {\lblue Proof of Exhaustion}
+            \item[] Define descent of painted bi-part., {\red compatible with the theta!}
+            \[
+            \begin{tikzcd}[ampersand replacement=\&]
+               \LS(\ckcO) \& \ePBP(\ckcO) \ar[r,<->]\ar[d,"\nabla"'] \ar[l,"\AC",two heads]\& \bigcup \Unip_{\ckcO}(G)  \\
+               \LS(\ckcO') \ar[u,"\color{red}\vartheta^{\text{geo}}"]\& \ePBP(\ckcO') \ar[r,<->]\ar[l,"\AC",two heads] \& \bigcup \Unip_{\ckcO'}(G') \ar[u,"\theta"'] 
+            \end{tikzcd}
+            \]
+            \item[] 
+            \[
+                \pi_{\tau} := \Theta(\pi_{\nabla(\tau)}\otimes \chi'_{\tau})\otimes \chi_{\tau}
+            \]
+            \item The {\red injectivity} of theta lifting is crucial!
+        \end{itemize}
+    \end{frame}
+    
+
+
 
     \begin{frame}
       \frametitle{About the proof}
-      \begin{itemize}[<+->]
+      \begin{itemize}
         \item $\theta$-lifting $\approx \sqrt{\text{parabolic induction}}$
-        \item  Structure of degenerate principle series ({Algebra}).
-        \item Estimation of matrix coeff. integrals ({Analysis}) $\leadsto$ unitarity
+        \item  Structure of degenerate principle series ({Algebra}). 
+        \item Estimation of matrix coeff. integrals ({Analysis}) $\leadsto$ unitarity \pause
         \item  {Sharp formula of Asso. Cycles}: {\color{orange} lower bound=upper bound}
               \begin{itemize}
                 \item \emph{Algebra+Analysis: } $\leadsto$ lower bound.
@@ -979,7 +1274,7 @@ Xiamen University Malaysia Campus}
         \item {Exhaustion}: {\color{orange} lower bound=upper bound} (Combinatorics)
               \begin{itemize}
                 \item Character theory (Kazhdan-Lusztig-Vogan theory)
-                \item[] $\leadsto$ upper bound by counting ``tableaux'.
+                \item[] $\leadsto$ upper bound by counting ``tableaux''.
                 \item {Asso. Cycle+Injectivity of $\theta$} $\leadsto$
                       lower bound.
               \end{itemize}
@@ -1002,16 +1297,17 @@ Xiamen University Malaysia Campus}
           \item[]
    	On the notion of metaplectic Barbasch-Vogan duality
         \href{https://arxiv.org/abs/2010.16089}{https://arxiv.org/abs/2010.16089}
-          \item \emph{Construction using $\theta$-lifting, 76 pages}
+          \item \emph{Construction and unitarity using $\theta$-lifting}
           \item[]
         Special unipotent representations: orthogonal and symplectic groups\\
-        \href{https://arxiv.org/abs/1712.05552v2}{https://arxiv.org/abs/1712.05552v2}
-          \item \emph{Counting unipotent representations (in preparation)}
+        \href{https://arxiv.org/abs/1712.05552}{https://arxiv.org/abs/1712.05552}
+          \item \emph{Counting unipotent representations}
+        \href{https://arxiv.org/abs/2205.05266}{https://arxiv.org/abs/2205.05266}
         \vfill
-        \hhgraph{.2\textwidth}{arxiv_uni.png}{\ }
-        \hhgraph{.2\textwidth}{Barbasch4}{Barbasch}
-        \hhgraph{.2\textwidth}{Sun}{Sun}
-        \hhgraph{.2\textwidth}{Zhu}{Zhu}
+%        \hhgraph{.2\textwidth}{arxiv_uni.png}{\ }
+%        \hhgraph{.2\textwidth}{Barbasch4}{Barbasch}
+%        \hhgraph{.2\textwidth}{Sun}{Sun}
+%        \hhgraph{.2\textwidth}{Zhu}{Zhu}
          \end{itemize}
     \end{frame}
 
