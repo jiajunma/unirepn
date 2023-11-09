@@ -1,0 +1,1456 @@
+%------
+% This is a template file for typesetting papers
+% to appear in the ICM 2022 Proceedings.
+%------
+% Before you edit this file, please read the
+% INSTRUCTIONS given in ICM_instructions.pdf
+%------
+\documentclass[lang = american]{ems-icm} %% change to `american' if you use American English
+
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+\usepackage[margin=2.5cm,marginpar=2cm]{geometry}
+%\usepackage{amscd}
+
+\usepackage[bookmarksopen,bookmarksdepth=2,hidelinks,colorlinks=false]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+% \usepackage[color]{showkeys}
+% \makeatletter
+%   \SK@def\Cref#1{\SK@\SK@@ref{#1}\SK@Cref{#1}}%
+% \makeatother
+
+\usepackage{array}
+%% FONTS
+\usepackage{amssymb}
+%\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{mathbbol,mathabx}
+%\usepackage{amsthm}
+%\usepackage{graphicx}
+\usepackage{braket}
+\usepackage{mathtools}
+
+\usepackage{amsrefs}
+\usepackage[small,nohug,heads=vee]{diagrams}
+
+\usepackage[all,cmtip]{xy}
+\usepackage{rotating}
+\usepackage{leftidx}
+%\usepackage{arydshln}
+
+
+
+
+%\usepackage[dvipdfx,rgb,table]{xcolor}
+\usepackage[rgb,table,dvipsnames]{xcolor}
+%\usepackage{color}
+
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+
+%\usepackage[abbrev,shortalphabetic]{amsrefs}
+
+
+\usepackage{imakeidx}
+\def\idxemph#1{\emph{#1}\index{#1}}
+\makeindex
+
+
+\usepackage[normalem]{ulem}
+\usepackage[centertableaux]{ytableau}
+
+%\usepackage[mathlines,pagewise]{lineno}
+%\linenumbers
+
+\usepackage{enumitem}
+%% Enumitem
+\newlist{enumC}{enumerate}{1} % Conditions in Lemma/Theorem/Prop
+\setlist[enumC,1]{label=(\alph*),wide,ref=(\alph*)}
+\crefname{enumCi}{condition}{conditions}
+\Crefname{enumCi}{Condition}{Conditions}
+\newlist{enumT}{enumerate}{3} % "Theorem"=conclusions in Lemma/Theorem/Prop
+\setlist[enumT]{label=(\roman*),wide}
+\setlist[enumT,1]{label=(\roman*),wide}
+\setlist[enumT,2]{label=(\alph*),ref ={(\roman{enumTi}.\alph*)},left=2em}
+\setlist[enumT,3]{label*=.(\arabic*), ref ={(\roman{enumTi}.\alph{enumTii}.\alph*)}}
+\crefname{enumTi}{}{}
+\Crefname{enumTi}{Item}{Items}
+\crefname{enumTii}{}{}
+\Crefname{enumTii}{Item}{Items}
+\crefname{enumTiii}{}{}
+\Crefname{enumTiii}{Item}{Items}
+\newlist{enumPF}{enumerate}{3}
+%\setlist[enumPF]{label=(\alph*),wide}
+\setlist[enumPF,1]{label=(\roman*),wide}
+\setlist[enumPF,2]{label=(\alph*),left=2em}
+\setlist[enumPF,3]{label=\arabic*).,left=1em}
+\newlist{enumS}{enumerate}{3} % Statement outside Lemma/Theorem/Prop
+\setlist[enumS]{label=\roman*)}
+\setlist[enumS,1]{label=\roman*)}
+\setlist[enumS,2]{label=\alph*)}
+\setlist[enumS,3]{label=\arabic*.}
+\newlist{enumI}{enumerate}{3} % items
+\setlist[enumI,1]{label=\roman*),leftmargin=*}
+\setlist[enumI,2]{label=\alph*), leftmargin=*}
+\setlist[enumI,3]{label=\arabic*), leftmargin=*}
+\newlist{enumIL}{enumerate*}{1} %inline enum
+\setlist*[enumIL]{label=\roman*)}
+\newlist{enumR}{enumerate}{1} % remarks
+\setlist[enumR]{label=\arabic*.,wide,labelwidth=!, labelindent=0pt}
+\crefname{enumRi}{remark}{remarks}
+
+
+\newlist{enuma}{enumerate}{1} % Statement in Lemma/Theorem/Prop
+\setlist[enuma]{label=(\alph*),nosep,leftmargin=*}
+
+%\definecolor{srcol}{RGB}{255,255,51}
+\colorlet{srcol}{black!15}
+
+\crefname{equation}{}{}
+\Crefname{equation}{Equation}{Equations}
+\Crefname{lem}{Lemma}{Lemma}
+\Crefname{thm}{Theorem}{Theorem}
+
+\newlist{des}{enumerate}{1}
+\setlist[des]{font=\upshape\sffamily\bfseries, label={}}
+%\setlist[des]{before={\renewcommand\makelabel[1]{\sffamily \bfseries ##1 }}}
+
+
+
+
+
+\newcommand{\bfonenp}{\mathbf{1}^{-,+}}
+\newcommand{\bfonepn}{\mathbf{1}^{+,-}}
+\newcommand{\bfone}{\mathbf{1}}
+
+
+% \newcommand\iso{\xrightarrow{
+%    \,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+
+
+
+\usepackage{diagbox}
+% Update the information and uncomment if AMS is not the copyright
+% holder.
+%\copyrightinfo{2006}{American Mathematical Society}
+%\usepackage{nicematrix}
+\usepackage{arydshln}
+\usepackage[mode=buildnew]{standalone}% requires -shell-escape
+
+\usepackage{tikz,etoolbox}
+\usetikzlibrary{matrix,arrows,positioning,backgrounds}
+\usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing}
+\usetikzlibrary{cd}
+% \usetikzlibrary{external}
+%   \tikzexternalize
+% \usetikzlibrary{cd}
+
+%  \AtBeginEnvironment{tikzcd}{\tikzexternaldisable}
+%  \AtEndEnvironment{tikzcd}{\tikzexternalenable}
+
+%  \usetikzlibrary{matrix,arrows,positioning,backgrounds}
+%  \usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing}
+
+% % externalization not work properly
+% % \usetikzlibrary{external}
+% \tikzexternalize[prefix=figures/]
+% % % activate the following such that you can check the macro expansion in
+% % % *-figure0.md5 manually
+% %\tikzset{external/up to date check=diff}
+% \usepackage{environ}
+
+% \def\temp{&} \catcode`&=\active \let&=\temp
+
+% \newcommand{\mytikzcdcontext}[2]{
+%   \begin{tikzpicture}[baseline=(maintikzcdnode.base)]
+%     \node (maintikzcdnode) [inner sep=0, outer sep=0] {\begin{tikzcd}[#2]
+%         #1
+%     \end{tikzcd}};
+%   \end{tikzpicture}}
+
+% \NewEnviron{mytikzcd}[1][]{%
+% % In the following, we need \BODY to expanded before \mytikzcdcontext
+% % such that the md5 function gets the tikzcd content with \BODY expanded.
+% % Howerver, expand it only once, because the \tikz-macros aren't
+% % defined at this point yet. The same thing holds for the arguments to
+% % the tikzcd-environment.
+% \def\myargs{#1}%
+% \edef\mydiagram{\noexpand\mytikzcdcontext{\expandonce\BODY}{\expandonce\myargs}}%
+% \mydiagram%
+% }
+
+\usepackage{upgreek}
+
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\tiny,
+    keywordstyle=\color{black},
+    commentstyle=\color{white}, % white comments
+    stringstyle=\ttfamily, % typewriter type for strings
+    showstringspaces=false,
+    breaklines=true,
+    emph={Output},emphstyle=\color{blue},
+}
+
+%Start of notation
+
+\newcommand{\Z}{\mathbb{Z}}
+\DeclareDocumentCommand{\C}{}{\mathbb{C}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\renewcommand{\H}{\mathbb H}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+\def\abs#1{\left|{#1}\right|}
+\def\norm#1{{\left\|{#1}\right\|}}
+
+\newcommand{\wt}{\widetilde}
+\newcommand{\wh}{\widehat}
+\newcommand{\cover}[1]{\widetilde{#1}}
+
+
+\def\Sp{{\mathrm{Sp}}}
+\newcommand{\GL}{\operatorname{GL}}
+
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Unip}{\operatorname{Unip}}
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\AC}{\mathrm{AC}}
+\newcommand{\WF}{\mathrm{WF}}
+\newcommand{\AV}{\mathrm{AV}}
+
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\ind}{ind}
+
+
+\newcommand{\g}{\mathfrak g}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\s}{\mathfrak s}
+\newcommand{\h}{\mathfrak h}
+\newcommand{\gl}{\mathfrak g \mathfrak l}
+\newcommand{\gC}{{\mathfrak g}_{\C}}
+\newcommand{\gR}{{\mathfrak g}_{\R}}
+
+
+\newcommand{\RA}{{\mathrm {A}}}
+\newcommand{\RB}{{\mathrm {B}}}
+\newcommand{\RC}{{\mathrm {C}}}
+\newcommand{\RD}{{\mathrm {D}}}
+\newcommand{\RE}{{\mathrm {E}}}
+\newcommand{\RF}{{\mathrm {F}}}
+\newcommand{\RG}{{\mathrm {G}}}
+\newcommand{\RH}{{\mathrm {H}}}
+\newcommand{\RI}{{\mathrm {I}}}
+\newcommand{\RJ}{{\mathrm {J}}}
+\newcommand{\RK}{{\mathrm {K}}}
+\newcommand{\RL}{{\mathrm {L}}}
+\newcommand{\RM}{{\mathrm {M}}}
+\newcommand{\RN}{{\mathrm {N}}}
+\newcommand{\RO}{{\mathrm {O}}}
+\newcommand{\RP}{{\mathrm {P}}}
+\newcommand{\RQ}{{\mathrm {Q}}}
+\newcommand{\RS}{{\mathrm {S}}}
+\newcommand{\RT}{{\mathrm {T}}}
+\newcommand{\RU}{{\mathrm {U}}}
+\newcommand{\RV}{{\mathrm {V}}}
+\newcommand{\RW}{{\mathrm {W}}}
+\newcommand{\RX}{{\mathrm {X}}}
+\newcommand{\RY}{{\mathrm {Y}}}
+\newcommand{\RZ}{{\mathrm {Z}}}
+
+\newcommand{\rD}{\mathrm D}
+\newcommand{\re}{\mathrm e}
+\newcommand{\rr}{{\mathrm{r}}}
+\newcommand{\rh}{{\mathrm{h}}}
+
+\newcommand{\oN}{\operatorname{N}}
+\newcommand{\oc}{\operatorname{c}}
+\newcommand{\od}{\operatorname{d}}
+\newcommand{\os}{\operatorname{s}}
+\newcommand{\ol}{\operatorname{l}}
+\newcommand{\oG}{\operatorname{G}}
+\newcommand{\oL}{\operatorname{L}}
+\newcommand{\oJ}{\operatorname{J}}
+\newcommand{\oH}{\operatorname{H}}
+\newcommand{\oO}{\operatorname{O}}
+\newcommand{\oS}{\operatorname{S}}
+\newcommand{\oR}{\operatorname{R}}
+\newcommand{\oT}{\operatorname{T}}
+\newcommand{\oZ}{\operatorname{Z}}
+\newcommand{\oD}{\textit{D}}
+\newcommand{\oW}{\textit{W}}
+\newcommand{\oE}{\operatorname{E}}
+\newcommand{\oP}{\operatorname{P}}
+\newcommand{\PD}{\operatorname{PD}}
+\newcommand{\oU}{\operatorname{U}}
+
+
+\newcommand{\CA}{{\mathcal {A}}}
+\newcommand{\CB}{{\mathcal {B}}}
+\newcommand{\CC}{{\mathcal {C}}}
+\newcommand{\CE}{{\mathcal {E}}}
+\newcommand{\CF}{{\mathcal {F}}}
+\newcommand{\CG}{{\mathcal {G}}}
+\newcommand{\CH}{{\mathcal {H}}}
+\newcommand{\CJ}{{\mathcal {J}}}
+\newcommand{\CK}{{\mathcal {K}}}
+\newcommand{\CL}{{\mathcal {L}}}
+\newcommand{\CM}{{\mathcal {M}}}
+\newcommand{\CN}{{\mathcal {N}}}
+\newcommand{\CO}{{\mathcal {O}}}
+\newcommand{\CP}{{\mathcal {P}}}
+\newcommand{\CQ}{{\mathcal {Q}}}
+\newcommand{\CR}{{\mathcal {R}}}
+\newcommand{\CS}{{\mathcal {S}}}
+\newcommand{\CT}{{\mathcal {T}}}
+\newcommand{\CU}{{\mathcal {U}}}
+\newcommand{\CV}{{\mathcal {V}}}
+\newcommand{\CW}{{\mathcal {W}}}
+\newcommand{\CX}{{\mathcal {X}}}
+\newcommand{\CY}{{\mathcal {Y}}}
+\newcommand{\CZ}{{\mathcal {Z}}}
+
+\newcommand{\ci}{{\mathcal {i}}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\sO}{\mathscr{O}}
+\newcommand{\SY}{\mathscr{Y}}
+
+
+\makeatother
+%\ytableausetup{noframe=on,smalltableaux}
+\ytableausetup{noframe=off,boxsize=1.3em}
+\let\ytb=\ytableaushort
+
+\newcommand{\tytb}[1]{{\tiny\ytb{#1}}}
+
+\makeatletter
+\newcommand{\dotminus}{\mathbin{\text{\@dotminus}}}
+
+\newcommand{\@dotminus}{%
+  \ooalign{\hidewidth\raise1ex\hbox{.}\hidewidth\cr$\m@th-$\cr}%
+}
+\makeatother
+
+
+%End of notation
+
+
+\newcommand{\FF}{\mathcal F}
+\newcommand{\HH}{\mathcal H}
+
+
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathbf{B}}
+\newcommand{\V}{\mathbf{V}}
+\newcommand{\W}{\mathbf{W}}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\E}{\mathbf{E}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Y}{\mathbf{Y}}
+
+
+
+
+\newcommand{\BA}{{\mathbb{A}}}
+\newcommand{\BB}{{\mathbb {B}}}
+\newcommand{\BC}{{\mathbb {C}}}
+\newcommand{\BD}{{\mathbb {D}}}
+\newcommand{\BE}{{\mathbb {E}}}
+\newcommand{\BF}{{\mathbb {F}}}
+\newcommand{\BG}{{\mathbb {G}}}
+\newcommand{\BH}{{\mathbb {H}}}
+\newcommand{\BI}{{\mathbb {I}}}
+\newcommand{\BJ}{{\mathbb {J}}}
+\newcommand{\BK}{{\mathbb {U}}}
+\newcommand{\BL}{{\mathbb {L}}}
+\newcommand{\BM}{{\mathbb {M}}}
+\newcommand{\BN}{{\mathbb {N}}}
+\newcommand{\BO}{{\mathbb {O}}}
+\newcommand{\BP}{{\mathbb {P}}}
+\newcommand{\BQ}{{\mathbb {Q}}}
+\newcommand{\BR}{{\mathbb {R}}}
+\newcommand{\BS}{{\mathbb {S}}}
+\newcommand{\BT}{{\mathbb {T}}}
+\newcommand{\BU}{{\mathbb {U}}}
+\newcommand{\BV}{{\mathbb {V}}}
+\newcommand{\BW}{{\mathbb {W}}}
+\newcommand{\BX}{{\mathbb {X}}}
+\newcommand{\BY}{{\mathbb {Y}}}
+\newcommand{\BZ}{{\mathbb {Z}}}
+\newcommand{\Bk}{{\mathbf {k}}}
+
+
+
+
+
+\newcommand{\pair}[1]{\langle {#1} \rangle}
+\newcommand{\wpair}[1]{\left\{{#1}\right\}}
+\newcommand{\intn}[1]{\left( {#1} \right)}
+\newcommand{\sfrac}[2]{\left( \frac {#1}{#2}\right)}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\incl}{\hookrightarrow}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\imp}{\Longrightarrow}
+%\newcommand{\lto}{\longmapsto}
+\newcommand{\bs}{\backslash}
+
+
+\renewcommand{\vsp}{{\vspace{0.2in}}}
+
+
+\numberwithin{equation}{section}
+
+
+\def\flushl#1{\ifmmode\makebox[0pt][l]{${#1}$}\else\makebox[0pt][l]{#1}\fi}
+\def\flushr#1{\ifmmode\makebox[0pt][r]{${#1}$}\else\makebox[0pt][r]{#1}\fi}
+\def\flushmr#1{\makebox[0pt][r]{${#1}$}}
+
+
+\newtheorem*{thm*}{Theorem}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{thml}[thm]{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{lemt}[thm]{Lemma}
+\newtheorem*{lem*}{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{exa}[thm]{Example}
+\newtheorem*{exa*}{Example}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{dfnl}[thm]{Definition}
+\newtheorem*{IndH}{Induction Hypothesis}
+
+\newtheorem*{eg*}{Example}
+\newtheorem{eg}[thm]{Example}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{remarks}{Remarks}
+\newtheorem*{Example}{Example}
+
+
+
+
+
+\def\PP{\mathrm{PP}}
+
+
+\def\upp{{\rotatebox[origin=c]{45}{$+$}}}
+\def\umm{{\rotatebox[origin=c]{45}{$-$}}}
+
+\usepackage{subfiles}
+
+%------
+% Include here your personal symbol definitions
+% and macros as well as any extra LaTeX packages
+% you need. Do not include any commands/packages
+% that alter the layout of the page, e.g. height/width.
+%------
+% Do not include packages that are already loaded:
+%   amsthm, amsmath, enumitem,
+%   geometry, caption, graphicx,
+%   hyperref, fontenc, inputenc,
+% as well as:
+%   array, babel, booktabs,
+%   cite, float, footmisc,
+%   iftex, indentfirst, kvoptions,
+%   newtxmath, newtxtext, pdf14, pdftexcmds,
+%   ragged2e, url, xcolor, xpatch
+%------
+
+
+% To include the section number in the equation numbering:
+
+
+
+
+%\numberwithin{equation}{section}
+
+
+
+
+\begin{document}
+
+\volumetitle{ICM 2022} % Don't alter this line.
+
+%------
+% Insert the title of your paper and (if necessary)
+% a short title for the running head.
+%------
+\title{Theta correspondence and the orbit method}
+\titlemark{Theta correspondence and orbit method}
+
+%------
+% Insert full names of the authors.
+% Add further authors as follows:
+%  \emsauthor{2}{NAME INCL. FULL FIRST NAME}{NAME WITH FIRST NAME INITIALS}
+%  \emsauthor{3}{NAME INCL. FULL FIRST NAME}{NAME WITH FIRST NAME INITIALS}
+% etc.
+%------
+\emsauthor{1}{Binyong Sun}{B. ~Sun}
+
+
+\emsauthor{2}{Chen-Bo Zhu}{C.-B. ~Zhu}
+
+
+%------
+% Add one \emsaffil and one \email for each author.
+%------
+
+
+\emsaffil{1}{Institute for Advanced Study in Mathematics,
+Zhejiang  University, Hangzhou, China $\&$ Academy of Mathematics and Systems Science, Chinese Academy of Sciences, Beijing, China
+\email{sunbinyong@zju.edu.cn}
+}
+
+
+
+%------
+% Add one \emsaffil and one \email for each author.
+%------
+
+\emsaffil{2}{Department of Mathematics,
+National University of Singapore,
+10 Lower Kent Ridge Road, Singapore 119076
+\email{matzhucb@nus.edu.sg}
+}
+
+
+%\dedication{Dedicated to ...}
+
+%------
+% Insert your abstract.
+%------
+\begin{abstract}
+The theory of theta correspondence, initiated by R. Howe, provides a powerful method of constructing irreducible admissible representations of classical groups over local fields. For archimedean local fields, a principle of great importance is the orbit method introduced by A. A. Kirillov, and it seeks to describe irreducible unitary representations of a Lie group by its coadjoint orbits. In this article, we examine implications of Howe's theory for the orbit method and unitary representation theory, with a focus on a recent work of Barbasch, Ma, and the authors on the construction and classification of special unipotent representations of real classical groups (in the sense of Arthur and Barbasch-Vogan).
+\end{abstract}
+
+\maketitle
+
+%------
+% INSERT THE BODY OF THE PAPER HERE (except
+% acknowledgments, funding info and bibliography)
+%------
+
+
+\section{Theta lifting: the basic construction}\label{sec1}
+
+
+Classical invariant theory, as expounded by H. Weyl (\cite{Wey}), is the study of the polynomial invariants for an arbitrary number of (contravariant or covariant) variables for a standard classical group action. A related theme is the study of the isotypic decomposition of the full tensor
+algebra for such an action.  It is well-known that Weyl's approach to classical invariant theory yields in particular a full description of all irreducible rational representations of a classical group. See \cite{Ho2} as well as \cites{KV,GW} for a modern treatment. The theory of theta correspondences, initiated by R. Howe in the 1970's, is a transcendental version and a profound generalization of classical invariant theory (\cites{Ho1,Ho3}). The theory includes both global and local aspects, and has been investigated extensively and by many authors. We will focus on the archimedean local aspect and will thus concern admissible representations of classical Lie groups.
+
+Let $W$ be a finite-dimensional real symplectic vector space with symplectic form $\langle \,,\, \rangle_W: W\times W\rightarrow \R$.
+Denote by $\sigma$ the anti-involution of $\mathrm{End}_\R(W)$ specified by
+\[
+   \langle x\cdot u, v\rangle_W=\langle u, x^\sigma\cdot v\rangle_W, \qquad u,v\in W,\,x\in \mathrm{End}_\R(W).
+\]
+Then the symplectic group is $\Sp(W)=\{x\in \mathrm{End}_\R(W)\mid x^\sigma x=1\}$.
+Let $(A, A')$ be a pair of $\sigma$-stable semisimple $\R$-subalgebras of $\mathrm{End}_\R(W)$ that are mutual centralizers of each other. Put $G:=A\cap \Sp(W)$ and $G':=A'\cap \Sp(W)$, which are closed subgroups of $\Sp(W)$. Following Howe (\cite{Ho1}), the pair of groups $(G,G')$ is called a reductive dual pair in $\Sp(W)$. The dual pair $(G, G')$ is said to be irreducible if the algebra $A$ (or equivalently, $A'$) is either simple or the product of two simple algebras that are exchanged by $\sigma$.
+
+Every reductive dual pair is uniquely a product of  irreducible dual pairs, and  complete classification of irreducible reductive dual pairs has been given by Howe (\cite{Ho1,MVW}), as described in what follows. Let $(\rD, \sigma_0)$ be one of the following seven pairs so that $\rD$ is an $\R$-algebra and $\sigma_0$ is an anti-involution of $\rD$:
+\[
+ (\R, \textrm{identity map}), \quad (\C, \textrm{identity map}),\quad (\C, \overline{\phantom a}), \quad (\H,  \overline{\phantom a}),
+ \]
+ \[
+ (\R\times \R, ((x,y)\mapsto (y,x)),\quad (\C\times \C, ((x,y)\mapsto (y,x)),\quad (\H\times \H, ((x,y)\mapsto (\bar y,\bar x)),
+\]
+where $\H$ denotes the algebra of Hamiltonian quaternions, and  $\overline{\phantom a}\,$ indicates the complex conjugation or the quaternionic conjugation.
+
+Let $\epsilon=\pm 1$. Let $V$ be an $\epsilon$-Hermitian right $\rD$-module, namely a free right $\rD$-module of finite rank,  equipped with a non-degenerate $\R$-bilinear map
+\[
+\langle\cdot , \cdot  \rangle_{V}: V\times V\rightarrow \rD
+\]
+such that
+\[
+  \langle u a, v\rangle_V=\langle u,v\rangle_V a, \quad \langle u,v\rangle_V=\epsilon (\langle v,u\rangle_V)^{\sigma_0}, \qquad \textrm{for all }u,v\in V, \, a\in \rD.
+\]
+This $\R$-bilinear map is called the $\epsilon$-Hermitian form on $V$.
+The isometry group $\oG(V)$ is a  classical Lie group, namely, a real orthogonal group, a real symplectic group, a complex orthogonal group, a complex symplectic group, a unitary group, a quaternionic symplectic group, a quaternionic orthogonal group, a real general linear group, a complex general linear group, or a quaternionic general linear group.
+
+
+Let $V'$ be an $\epsilon'$-Hermitian right $\rD$-module, equipped with the $\epsilon'$-Hermitian form
+$\langle \cdot , \cdot  \rangle_{V'}$, where $\epsilon \epsilon '=-1$. % Denote by $G'=\oG(V')$ the corresponding isometry group.
+Let $W:=\Hom_{\rD}(V,V')$, equipped with the symplectic form $\langle\cdot , \cdot  \rangle _W$ given by
+\[
+\la T, S\ra_{W}:=\Tr_{\R} (T^{\ast}S), \qquad \mbox{$T$, $S\in \Hom_{\rD}(V,V')$,}
+\]
+where $\Tr_{\R} (T^{\ast}S)$ is the trace of $T^{\ast}S$ as a $\R$-linear transformation, and $T^{\ast}\in \Hom_{\rD}(V',V)$ is the adjoint of $T$ defined by
+\begin{equation}\label{adj}
+\langle Tv,v'\rangle_{V'}=\langle v,T^{\ast}v'\rangle_{V}, \qquad \mbox{for all $\, v\in V$, $v'\in V'$.}
+\end{equation}
+
+
+There is a natural homomorphism: $\oG(V) \times \oG(V')\longrightarrow \Sp(W)$ given by
+\[
+ (g,g')\cdot T = g' T g^{-1} \qquad \mbox{for $T \in \Hom_{\rD}(V,{V}')$, $g\in G$, $g'\in G'$}.
+\]
+If both $V$ and $V'$ are nonzero, then $\oG(V)$ and $\oG(V')$ are both identified with subgroups of $\Sp(W)$, and $(\oG(V),\oG(V'))$ is an irreducible reductive dual pair in $\Sp(W)$. Moreover, all irreducible reductive dual pairs arise in this way.
+
+
+
+Now we return to the general setting so that $(G,G')$ is an arbitrary reductive dual pair in $\Sp(W)$.
+Write  $\mathrm{H}(W):=W\times \R$ for  the Heisenberg group with group multiplication
+\[
+  (u,t)\cdot (u',t')=(u+u', t+t'+\langle u, u'\rangle_W), \qquad u,u'\in W, \ t, t'\in \R.
+\]
+Its center is obviously identified with $\R$.
+Fix a nontrivial unitary character $\psi: \R\rightarrow \mathbb C^\times$. Recall the Stone-von
+Neumann Theorem which asserts that up to isomorphism, there exists a unique irreducible
+unitary representation of
+$\mathrm H(W)$ with central character $\psi$.
+
+
+Let $\widetilde G$ and $\widetilde G'$ be a pair of reductive Lie groups together with surjective Lie group homomorphisms $\widetilde G\rightarrow G$ and $\widetilde G'\rightarrow G'$.  The
+group $\widetilde G\times \widetilde G'$ acts on the Heisenberg group $\mathrm{H}(W)$ as group automorphisms through its obvious action on $W$.
+Using this action, we define the Jacobi group
+\[
+  J:=(\widetilde G\times \widetilde G')\ltimes \mathrm{H}(W).
+\]
+
+\begin{remark} A typical pair $(\widetilde G, \widetilde G')$ is obtained by taking the inverse image of $(G,G')$ in $\widetilde{\Sp}(W)$, where $\widetilde{\Sp}(W)$ is the real metaplectic group, namely the unique double cover of $\Sp(W)$ that is nonsplit whenever $W$ is nonzero.
+\end{remark}
+
+Suppose that $J$ has a unitary representation $\widehat \omega$ whose restriction $\widehat \omega|_{\mathrm{H}(W)}$ to $\mathrm{H}(W)$ is irreducible with central character $\psi$. (See \cite{Ku} for the related issue of splittings.) All such representations, if they exist, are isomorphic to each other up to twisting by unitary characters. We fix one such $\widehat \omega$ and write $\omega$ for the space of smooth vectors of $\widehat \omega|_{\mathrm{H}(W)}$, which is $J$-stable and is a smooth representation of $J$. We will refer to $\omega$ as a smooth oscillator representation (\cites{Wei,Ho1}).
+
+Let $\pi$ be a Casselman-Wallach representation of $\widetilde G$, whose contragredient representation is denoted by $\pi^\vee$. (We refer the reader to \cite[Chapter 11]{Wa2} for generalities on Casselman-Wallach representations.) The full theta lift of $\pi$ is defined to be
+\[
+  \Theta_{\widetilde G}^{\widetilde G'}(\pi):=(\omega\widehat \otimes \pi^\vee)_{\widetilde G},
+\]
+which is a Casselman-Wallach representation of $\widetilde G'$.
+Here and hence forth, $\widehat \otimes$ indicates the completed projective tensor product, and a subscript group indicates the Hausdorff coinvariant space.
+The theta lift $\theta_{\widetilde G}^{\widetilde G'}(\pi)$ of $\pi$ is defined to be the largest semisimple quotient of $\Theta_{\widetilde G}^{\widetilde G'}(\pi)$.
+The following result is one formulation of Howe's duality theorem.
+
+
+\begin{thm}\label{howe}\emph{(\cite{Ho3})}
+Suppose that $\pi$ is irreducible. Then $\theta_{\widetilde G}^{\widetilde G'}(\pi)$ is irreducible or zero.
+\end{thm}
+
+By reversing the role of $\widetilde G$ and $\widetilde G'$, Theorem \ref{howe} implies that theta lift is injective in the following sense: for any irreducible Casselman-Wallach representations $\pi_1$ and $\pi_2$  of $\widetilde G$, if $\theta_{\widetilde G}^{\widetilde G'}(\pi_1)\cong \theta_{\widetilde G}^{\widetilde G'}(\pi_2)\neq \{0\}$, then $\pi_1\cong \pi_2$.
+
+
+\section{Theta lifting via matrix coefficient integrals and preservation of unitarity}\label{sec2}
+
+
+Let $V$ be an $\epsilon$-Hermitian right $\rD$-module as in \Cref{sec1}. Fix a maximal compact subgroup $K_V$ of $\oG(V)$. Recall that an element $g\in \oG(V)$ is said to be hyperbolic if the linear operator $g\otimes 1: V\otimes_\R \C\rightarrow V\otimes_\R \C$ is diagonalizable and all its eigenvalues are positive real numbers.
+Denote by  $\Psi_V$ the function of $\oG(V)$ satisfying the following conditions:
+\begin{itemize}
+\item it is both left and right $K_V$-invariant;
+\item for all hyperbolic elements $g\in \oG(V)$,
+\[
+  \Psi_V(g)=\prod_{a} \left(\frac{1+a}{2}\right)^{-\frac{1}{2}},
+\]
+ where $a$ runs over all eigenvalues of $g\otimes 1: V\otimes_\R \C\rightarrow V\otimes_\R \C$, counted with multiplicities.
+\end{itemize}
+Note that  $0<\Psi_V(g)\leq 1$ for all $g\in \oG(V)$.
+
+Denote by $\Xi_V$ the bi-$K_V$-invariant Harish-Chandra's $\Xi$ function on $\oG(V)$. (For a convenient reference, see \cite{Wa1}.)
+Put
+\[
+  \nu_{V}:=\rank_\rD(V)-\frac{2\dim_{\R}\{t\in \rD\,|\,t^{\sigma_0}=\epsilon t\}}{\dim_{\R}(\rD)}.
+  \]
+If $\oG(V)$ is noncompact, then $\nu_V$ is the smallest real number such that
+\[
+\Psi_V^{\nu_V}\cdot \Xi_V^{-1}\textrm{ is bounded}.
+\]
+Given $\nu\in \R$, a  positive function $\Psi$ on $\oG(V)$ is said to be $\nu$-bounded if there is a real number $r>0$  such that
+\[
+  \Psi(kak')\leq (\log(3+\Tr_{\R}(a)))^r \cdot \Psi_{V}^\nu(a)\cdot \Xi_V(a)
+  \]
+  for all $k,k'\in K_V$ and all hyperbolic elements $a\in \oG(V)$.
+
+
+In the rest of this section, we assume that $G=\oG(V)$, $G'=\oG(V')$, $W=\Hom_{\rD}(V,V')$, and both $V$ and $V'$ are nonzero so that $(G,G')$ is an irreducible dual pair in $\Sp(W)$.
+Let $\widetilde G\rightarrow G$, $\widetilde G'\rightarrow G'$, $J$, $\widehat \omega$ and $\omega$ be as in \Cref{sec1}.
+
+\begin{defn}
+A Casselman-Wallach representation $\pi$ of $\widetilde G$ is said to be $\nu$-bounded if there
+exist a $\nu$-bounded positive function $\Psi$ on $\oG(V)$, and continuous seminorms $\abs{\,\cdot\,}_{\pi}$ and $\abs{\,\cdot\,}_{\pi^\vee}$ on  $ \pi$ and $\pi^\vee$ (respectively) such that
+\[
+ \abs{ \la \tilde g \cdot u, v\ra}\leq \Psi(g)\cdot \abs{u}_{\pi}\cdot \abs{v}_{\pi^\vee}
+\]
+for all $u\in \pi$, $v\in \pi^\vee$, and $\tilde g\in \widetilde G$, where $g$ denotes the image of $\tilde g$ under the homomorphism $\widetilde G\rightarrow G$.
+
+\end{defn}
+
+
+
+For a complex vector space $E$, denote by $\bar E$ its complex conjugate. Thus $\bar E$ is a complex vector space equipped with a conjugate linear isomorphism  $E\rightarrow \bar E, \ v\mapsto \bar v$. In the setting of \Cref{sec1}, $\bar \omega$ is a smooth representation of $J$ in the obvious way, and the inner product on $\widehat \omega$ induces a $J$-invariant continuous bilinear form
+\[
+  \langle\ ,\ \rangle :  \omega\times \bar \omega\rightarrow \C.
+\]
+Write $Z$ for the kernel of the homomorphism $\widetilde G\rightarrow G$, and denote by $\chi_Z$ the unitary character of $Z$ by which $Z$ acts on $\omega$.
+
+Let $\pi$ be a Casselman-Wallach representation of $\widetilde{G}$. Assume that $Z$ acts on $\pi$ by the character $\chi_Z$.
+
+\begin{defn}\label{defn:CRcov}
+ The Casselman-Wallach representation $\pi$ of $\widetilde{G}$ is convergent for $\Theta_{\widetilde G}^{\widetilde G'}$ if it is $\nu$-bounded for some $\nu>\nu_{V}-\rank_{\rD}(V')$.
+\end{defn}
+
+Suppose that $\pi$ is convergent for $\Theta_{\widetilde G}^{\widetilde G'}$. Then the integral
+\begin{equation}\label{mi1}
+\begin{array}{rcl}
+   \omega\times \pi^\vee \times  \bar \omega\times \pi &\rightarrow & \mathbb C, \\
+    (\phi, v', \phi', v)&\mapsto  & \int_{G} \langle \tilde g\cdot\phi, \phi'\rangle \cdot \langle \tilde g\cdot v', v\rangle \, d g,
+    \end{array}
+\end{equation}
+is absolutely convergent and defines a continuous multi-linear map, where $dg$ is a fixed Haar measure on $G$, and $\tilde g\in \widetilde{G}$  is an element whose image under the homomorphism $\widetilde{G}\rightarrow G$ equals $g$.
+
+
+The map \eqref{mi1} yields a continuous bilinear map
+ \begin{equation}\label{mi2}
+(\omega\widehat \otimes \pi^\vee) \times ( \bar \omega\widehat \otimes \pi)
+   \rightarrow \mathbb C.
+ \end{equation}
+Define
+\begin{equation}\label{mi3}
+  \bar \theta_{\widetilde G}^{\widetilde G'}(\pi):=\frac{\omega\widehat \otimes \pi^\vee}{\textrm{the left kernel of \eqref{mi2}}}.
+\end{equation}
+This is a quotient of $\Theta_{\widetilde G}^{\widetilde G'}(\pi)$, and hence a Casselman-Wallach representation of $\widetilde G'$.
+
+
+\begin{remark} The idea of studying theta lifting by matrix coefficient integrals, as in \cref{mi3}, first appeared in Li's work (\cites{Li1,Li2}).
+\end{remark}
+
+
+\begin{defn}\label{defn:OVcov}
+The Casselman-Wallach representation $\pi$ of $\widetilde{G}$ is overconvergent for $\Theta_{\widetilde G}^{\widetilde G'}$ if it is $\nu$-bounded for some $\nu>\nu^{\circ}_{V}-\rank_{\rD}(V')$, where
+\[
+  \nu^{\circ}_{V}:=\begin{cases}
+         \nu_{V}+1,\quad & \textrm{if $G$ is a real or complex odd orthogonal group};\\
+         \nu_{V}+\frac{1}{2},\quad & \textrm{if $G$ is a quaternionic symplectic or quaternionic orthogonal group};\\
+      \nu_{V} ,\quad &\textrm{otherwise}.\\
+  \end{cases}
+\]
+\end{defn}
+
+
+The idea that one could produce interesting sets of unitary representations from theta lifting was due to Howe (\cite{HoSmall}).
+The following result gives a sufficient condition for the preservation of unitarity (see \cites{Li1, Li2, He1, He2} for some earlier results along the same direction).
+
+\begin{thm}\label{positivity} \emph{(\cite{BMSZ3})}
+Assume that $\rank_{\rD}(V')\geq \nu^\circ_{V}$, and $\pi$ is overconvergent for $\Theta_{\widetilde G}^{\widetilde G'}$.
+If $\pi $ is unitarisable, then so is $\bar \theta_{\widetilde G}^{\widetilde G'}(\pi)$.
+\end{thm}
+
+
+\begin{remark} Given that $\bar \theta_{\widetilde G}^{\widetilde G'}(\pi)$ is unitarisable, it is clearly a semisimple quotient of $\Theta_{\widetilde G}^{\widetilde G'}(\pi)$. If in addition,
+$\bar \theta_{\widetilde G}^{\widetilde G'}(\pi)\neq \{0\}$, then the fundamental result of Howe implies that $\theta_{\widetilde G}^{\widetilde G'}(\pi)=\bar \theta_{\widetilde G}^{\widetilde G'}(\pi)$ and is irreducible.
+\end{remark}
+
+
+
+
+\begin{conj}\label{conj1}
+Suppose that  $\pi$ is irreducible and convergent for $\Theta_{\widetilde G}^{\widetilde G'}$. Then  $\theta_{\widetilde G}^{\widetilde G'}(\pi)=\bar \theta_{\widetilde G}^{\widetilde G'}(\pi)$ as quotients of $\Theta_{\widetilde G}^{\widetilde G'}(\pi)$.
+\end{conj}
+
+
+\begin{remark} When $\pi$ is not convergent for $\Theta_{\widetilde G}^{\widetilde G'}$, by the doubling method and by taking the leading coefficient of the local zeta integral (\cite{PsR} and \cite[Section 3]{LR}), we may still define a continuous bilinear map as in \eqref{mi2}, and therefore $\bar \theta_{\widetilde G}^{\widetilde G'}(\pi)$. We expect that the statement of Conjecture \ref{conj1} remains true for any irreducible $\pi$, whether or not it is  convergent for $\Theta_{\widetilde G}^{\widetilde G'}$. It will be interesting to establish a version of Theorem \ref{positivity} in this more general setting.
+\end{remark}
+
+
+
+\section{Algebraic theta lifting and bound via moment maps}\label{sec3}
+
+We continue with the notation of \Cref{sec2}, and further assume that the homomorphisms $\widetilde G\rightarrow G$ and $\widetilde G'\rightarrow G'$ are finite fold covering maps.  We fix a choice of maximal compact subgroups $K$ of $G$, and $K'$ of $G'$, compatible with a given choice of maximal compact subgroup $U$ of $\Sp(W)$. Let $\Omega \subset \omega$ be the Harish-Chandra module associated to $U$,  which is
+naturally  a $(\g\times \g', \widetilde{K}\times \widetilde{K'})$-module. Here and as usual, $\g$ and $\g'$ denote the complexified Lie algebras of $G$ and $G'$, respectively, and $\widetilde {K}\subset \widetilde G$ and $\widetilde{K'}\subset \widetilde G$ are respectively the preimages of $K$ and $K'$.
+
+
+Let $\Pi$ be a $(\g,\widetilde{K})$-module of finite length, whose Harish-Chandra dual is denoted by $\Pi^{\vee}$. The (algebraic) full theta lift of $\Pi$ is defined to be
+\[
+  \Theta_{V}^{V'}(\Pi ):= \left(\Omega \otimes \Pi^{\vee} \right)_{\g, \widetilde{K}},\qquad
+  \text{(the coinvariant space).}
+\]
+The $(\g',\widetilde{K'})$-module $\Theta_{V}^{V'}(\Pi)$ is of finite length (\cite{Ho3}).
+
+We will be concerned with the associated cycles of $\Theta_{V}^{V'}(\Pi)$.
+
+\subsection{The associated cycle map}
+
+We recall basic notions from the theory of associated varieties (\cite{VoAss}). The theory is a key part of Vogan's formulation of the orbit method for reductive Lie groups (\cites{VoUni,VoPar}).
+
+Write $V_\C:=V\otimes_\R \C$, which is a right $\rD\otimes_\R \C$-module. The $\R$-bilinear map $
+\langle\cdot , \cdot  \rangle_{V}: V\times V\rightarrow \rD
+$ extends to a $\C$-bilinear map
+$
+\langle\cdot , \cdot  \rangle_{V_\C}: V_\C\times V_\C\rightarrow \rD\otimes_\R \C.
+$
+Write $G_\C$ for the isometry group of $(V_\C, \langle\cdot , \cdot  \rangle_{V_\C})$, which is a complexification of $G$. Write $K_\C$ and $\widetilde K_\C$ for the complexifications of the compact groups $K$ and $\widetilde K$ respectively.
+The space $V'_\C$ and the groups $G'_\C$, $K'_\C$ and $\widetilde K'_\C$ are similarly defined.
+We identify $\g$ with its dual space $\g^*$ by using the trace form
+\[
+  \g\times \g\rightarrow \C, \quad (x,y)\mapsto \textrm{the trace of the $\C$-linear endomorphism $xy: V_\C\rightarrow V_\C$}.
+\]
+Likewise, $\g'$ is identified with ${\g'}^*$.
+
+Let $\mathrm{Nil}_{G_{\C}}(\g)$ be the set of nilpotent $G_{\C}$-orbits in $\g$. Suppose that $\CO \in \mathrm{Nil}_{G_{\C}}(\g)$.
+We say that a finite length $(\g,\widetilde{K})$-module $\Pi$ is \emph{$\CO$-bounded} if the associated variety of the annihilator ideal in $\CU(\g)$ (the universal enveloping algebra of $\g$) is contained in the Zariski closure $\overline \CO$ of $\CO$. Denote
+\[
+  \g=\mathfrak{k}\oplus \p
+\]
+the complexified Cartan decomposition fixed by our choice of the maximal compact subgroup $K$ of $G$, and $\mathrm{Nil}_{K_{\C}}(\p)$ the set of nilpotent $K_{\C}$-orbits in $\p$.
+It follows from \cite[Theorem 8.4]{VoUni}
+that $\Pi$ is $\CO$-bounded if and only if its associated variety $\AV(\Pi)$ is contained in
+$\overline \CO \cap \p$.
+Let
+$\CM_{\CO}(\g,\widetilde{K})$ denote the category of $\CO$-bounded finite length $(\g,\widetilde{K})$-modules, and write
+$\CK_{\CO}(\g,\widetilde{K})$ for its Grothendieck group.
+
+Under the adjoint action of $K_{\C}$, the complex variety $\CO\cap \p$ is a union of finitely many
+orbits, each of dimension $\frac{\dim_\C \CO}{2}$.  For any $K_{\C}$-orbit
+$\sO\subset \CO\cap \p$, let $\CK_{\sO}(\widetilde{K}_{\C})$ denote the Grothendieck group of the category of $\widetilde{K}_{\C}$-equivariant algebraic vector bundles on $\sO$,
+and $\CK^+_{\sO}(\widetilde{K}_{\C})$ the submonoid generated by the $\widetilde{K}_{\C}$-equivariant algebraic vector bundles.
+Taking the isotropy representation at a point $X\in \sO$ yields an identification
+\begin{equation*}
+  \CK_{\sO}(\widetilde{K}_{\C})=\CR((\widetilde{K}_{\C})_{X}),
+\end{equation*}
+where the right hand side denotes the Grothendieck group of the category of algebraic representations of the stabilizer group $(\widetilde{K}_{\C})_X$.
+
+Put
+\begin{equation*}
+  \CK_{\CO}(\widetilde{K}_{\C}):=\bigoplus_{\sO\textrm{ is a $K_{\C}$-orbit in $\CO\cap \p$}}
+  \mathrm \CK_{\sO}(\widetilde{K}_{\C}),
+\end{equation*}
+and
+\begin{equation*}
+  \CK^+_{\CO}(\widetilde{K}_{\C}):=\bigoplus_{\sO\textrm{ is a $K_{\C}$-orbit in $\CO\cap \p$}}
+  \mathrm \CK^+_{\sO}(\widetilde{K}_{\C}).
+  \end{equation*}
+
+
+
+ There is a partial order $\preceq $ on $\CK_{\CO}(\widetilde{K}_{\C})$ defined by
+\[
+  \CE_1\preceq \CE_2\Leftrightarrow \CE_2-\CE_1\in \CK^+_{\CO}(\widetilde{K}_{\C}),
+  \qquad \CE_1, \CE_2\in \CK_{\CO}(\widetilde{K}_{\C}).
+\]
+
+According to Vogan (\cite[Theorem~2.13]{VoUni}),  we have a canonical homomorphism, called the associated cycle map:
+\[
+  \mathrm{AC}_{\CO}: \CK_{\CO}(\g, \widetilde{K})\rightarrow \CK_{\CO}(\widetilde{K}_{\C}).
+  \]
+For a $(\g,\widetilde{K})$-module of finite length $\Pi$ which is $\CO$-bounded, we call $ \mathrm{AC}_\CO(\Pi)$ the associated cycle of $\Pi$. This is a fundamental invariant attached to $\Pi$.
+
+
+
+\subsection{The moment maps}
+
+Put $\CW=\Hom_{\rD\otimes_\R \C}(V_\C,{V}'_\C)=W\otimes_\R \C$.
+Recall we have the moment maps (\cites{KP,DKPC})
+\[
+    \xymatrix@R=0em@C=4em{
+      \g &\ar[l]_{\CM }\CW\ar[r]^{\CM' }& \g'
+    }
+  \]
+  that are given by
+  \[\CM (\phi)= \phi^{*}\phi, \ \ \text{ and } \ \ \CM '(\phi)=\phi \phi ^{*}.\]
+  Here $\phi ^{*}$ denotes the adjoint map as in \eqref{adj}.
+
+  As in \cite[Section 3]{BMSZ3}, we may find ``Cartan transforms'' $L$ on $V_{\C}$, $L'$ on $V'_{\C}$ and $\CL$ on $\CW$ which will induce compatible Cartan involutions on $G$, $G'$ and $\Sp(W)$, respectively. Then $K_{\C} =G_{\C}^{L}$ (the centralizer of $L$) and $K'_{\C} =(G'_{\C})^{L'}$.
+
+
+%Denote by $\mathbf i$ a fixed choice of $\sqrt{-1}$.
+We decompose
+\begin{equation}\label{CX}
+\CW= \CX\oplus \CY
+\end{equation}
+where $\CX$ and $\CY$ are $\sqrt{-1}$ and $-\sqrt{-1}$ eigenspaces of $\CL$, respectively.
+We have the following two algebraic maps (\cite{NOZ}):
+  \[\label{momentmap}
+    \xymatrix@R=0em@C=4em{
+      \p &\ar[l]_{M=\CM |_{\CX}} \CX\ar[r]^{M'=\CM' |_{\CX}}& \p',\\
+     \phi^* \phi & \ar@{|->}[l] \phi \ar@{|->}[r] & \phi \phi^*.
+    }
+  \]
+These two maps $M$ and $M'$ are also called the moment maps. They are both $K_{\C}\times K'_{\C}$-equivariant. Here $K'_{\C}$ acts trivially on $\p$,
+ $K_{\C}$ acts trivially on $\p'$, and all the other actions are the obvious ones.
+
+Put
+\[
+  \CW^\circ:=\{\phi\in \CW \mid \textrm{the image of $\phi^*$ is non-degenerate with respect to $\la\,,\,\ra_{V_{\C}}$}\}
+\]
+and
+\[
+  \CX^\circ:=\CX\cap \CW^\circ.
+\]
+
+\begin{lem}\label{descko}\emph{(\cite{BMSZ3})}
+Let $\sO'$ be a $K'_{\C}$-orbit in $\p'$. Suppose that $\sO'$ is contained in the image of the moment map $M'$. Then the set
+\begin{equation} \label{kkpo}
+  (M')^{-1}(\sO')\cap \CX^\circ
+  \end{equation}
+is a single $K_{\C}\times K'_{\C}$-orbit. Moreover, for every element $\phi$ in $(M')^{-1}(\sO')\cap \CX^\circ$, there is an exact sequence of algebraic groups:
+\[
+  1\rightarrow (K_{\C})_\phi \rightarrow (K_{\C}\times K'_{\C})_\phi\xrightarrow{\textrm{the projection to the second factor}} (K'_{\C})_{e'}\rightarrow 1,
+\]
+where $e':=M'(\phi)\in \sO'$, and a subscript element indicates the stabilizer group of the element.
+\end{lem}
+
+In the notation of Lemma \ref{descko}, write
+\[
+  \nabla(\sO'):=\textrm{the image of the set \eqref{kkpo} under the moment map  $M$,}
+\]
+which is a $ K_{\C}$-orbit in $\p$. This is called the descent of $\sO'$. It is an element of $\mathrm{Nil}_{K_{\C}}(\p)$ if $\sO'\in \mathrm{Nil}_{K'_{\C}}(\p')$.
+
+Now suppose that we have a $G'_{\C}$-orbit $\CO'\subset \g'$, which is contained in the image of the moment map $\CM'$. Similar to
+the first assertion of Lemma \ref{descko}, the set
+\begin{equation}\label{kkpo2}
+  (\CM')^{-1}(\CO')\cap \CW^\circ
+\end{equation}
+is a single $G_{\C}\times G'_{\C}$-orbit.
+Write
+\[
+ \nabla (\CO'):=\textrm{the image of the set \eqref{kkpo2} under the moment map  $\CM$,}
+\]
+which is a $ G_{\C}$-orbit in $\g$. This is called the descent of $\CO'$. It is an element of  $\mathrm{Nil}_{G_{\C}}(\g)$ if $\CO'\in \mathrm{Nil}_{G'_{\C}}(\g')$.
+
+
+
+\subsection{Geometric theta lift}
+
+We are back in the setting of Lemma \ref{descko}, with $\sO'\in \mathrm{Nil}_{K'_{\C}}(\p')$. Write $\sO:=\nabla(\sO')$, and let $e:=M(\phi)$.
+
+Recall from \cite[Section 3.3]{BMSZ3} that there is a distinguished character
+  $\zeta $ of $\widetilde{K}_{\C} \times \widetilde{K'}_{\C}$ arising from the oscillator representation $\widehat \omega$.
+
+Let $\CE$ be a $\widetilde{K}_{\C}$-equivariant algebraic vector bundle over $\sO$. Its fibre
+$\CE_{e}$ at $e$ is an algebraic representation of the stabilizer group $(\widetilde{K}_{\C})_{e}$. We also view it as a representation of the group
+$(\widetilde{K}_{\C}\times \widetilde {K'_{\C}})_\phi$ via the pull-back through the homomorphism
+\[
+  (K_{\C}\times K'_{\C})_\phi\xrightarrow{\textrm{the projection to the first factor}} (K_{\C})_{e}.
+\]
+We may thus view $\CE_{e} \otimes \zeta$ as a representation of $(\widetilde{K}_{\C}\times \widetilde {K'_{\C}})_\phi$ and by taking the coinvariant space
+$(\CE_{e} \otimes \zeta)_{ (\widetilde{K}_{\C})_\phi}$, we get an algebraic representation of $(\widetilde{K'}_{\C})_{e'}$. Write $\CE':= \check \vartheta_{\sO}^{\sO'}(\mathcal E)$ for the  $\widetilde{K'}_{\C}$-equivariant algebraic vector bundle over $\sO'$ whose fibre at $e'$ equals this coinvariant space representation. In this way, we get an exact functor $\check \vartheta_{\sO}^{\sO'}$ from the category of
+$\widetilde{K}_{\C}$-equivariant algebraic vector bundle over $\sO$ to the category of $\widetilde{K'}_{\C}$-equivariant algebraic vector bundle  over $\sO'$. This exact functor induces a  homomorphism of the Grothendieck groups:
+\[
+   \check \vartheta_{\sO}^{\sO'}:  \CK_{\sO}(\widetilde{K}_{\C})\rightarrow  \CK_{\sO'}(\widetilde{K'}_{\C}).
+\]
+The above homomorphism is independent of the choice of $\phi$ in Lemma \ref{descko}.
+
+
+Now let $\CO:= \nabla(\CO')$, where $\CO'\in \mathrm{Nil}_{G'_{\C}}(\g')$. We define the geometric theta lift to be the homomorphism
+\[
+ \check \vartheta_{\CO}^{\CO'}: \CK_{\CO}(\widetilde{K}_{\C})\rightarrow \CK_{\CO'}(\widetilde{K'}_{\C})
+\]
+such that
+\[
+ \check \vartheta_{\CO}^{\CO'}(\CE)= \sum_{\sO'\textrm{ is a $K'_{\C} $-orbit in $\CO'\cap \p'$,  $\, \nabla (\sO')=\sO$}}    \check \vartheta_{\sO}^{\sO'}(\CE),
+\]
+for any $K_{\C} $-orbit $\sO $ in $\CO\cap \p$, and any $\widetilde{K}_{\C}$-equivariant algebraic vector bundle $\CE$ over $\sO$.
+
+
+Recall the setting of \Cref{sec3}. Denote by $\s$ the orthogonal complement of the complexified Lie algebra of $U$ in $\mathfrak s\p(\CW)$.  Write $ \widetilde U\rightarrow U$ for the double cover of $U$ induced by the metaplectic double cover $\widetilde \Sp(W)\rightarrow \Sp(W)$. Note that $\Omega$ is naturally an $(\mathfrak s\p(\CW), \widetilde U)$-module.
+We assume that the choice of $\CX$ in \eqref{CX} is compatible with $\Omega$ in the following sense: the image of the moment map $\CX\rightarrow \s$ equals the associated variety of the $(\mathfrak {sp}(\CW), \widetilde U)$-module $\Omega$.
+
+
+A basic result in algebraic theta lifting is the following theorem.
+
+\begin{thm}\emph{(\cite{BMSZ3})}
+\label{GDS.AC}
+Suppose that $\CO:= \nabla(\CO')$, and $\CO'$ is regular for $\nabla $ (\cite[Definition 7.6]{BMSZ3}).
+Let $\Pi$ be an $\CO$-bounded $(\g, K)$-module of finite length. Then  $\Theta_V^{V'}(\check \Pi)$ is $\CO'$-bounded, and
+    \[
+    \mathrm{AC}_{\cO'}(\Theta_V^{V'}(\check \Pi))\preceq \check \vartheta_{\cO}^\cO'(\mathrm{AC}_{\cO}(\Pi)).
+  \]
+\end{thm}
+
+\begin{remark} Earlier results on the associated cycles of $\Theta_V^{V'}(\check \Pi)$ appeared in \cites{NOTYK,NZ,LM}.
+\end{remark}
+
+\section{Combinatorial parameters for special unipotent representations}\label{sec4}
+
+In \cite{VoICM}, Vogan proposed that the orbit method (introduced by A. A. Kirillov (\cite{Ki1}); see also \cite{Ko} for an extension in geometric terms) should serve as a unifying principle in the description of the unitary duals of reductive Lie groups. Furthermore the quantization problem (attaching irreducible unitary representations to coadjoint orbits) should involve three steps in accordance with the Jordan decomposition of the element representing an (co)adjoint orbit, and in the order of the nilpotent step, the elliptic step and the hyperbolic step. The elliptic and hyperbolic steps are implemented by cohomological induction and parabolic induction respectively, and are well-understood. The nilpotent step is the most difficult, and is the theory of unipotent representations (\cites{VoAss,VoUni}), which is still in development. We refer the reader to \cite{VoPar} for a comprehensive account of Vogan's conception of the orbit method for reductive Lie groups.
+
+We will be concerned with special unipotent representations, which originated in Arthur's work (\cites{ArPro, ArUni}) and are defined by Vogan and Barbasch (\cites{BV,ABV}).
+It will turn out that all special unipotent representations of classical Lie groups can be constructed via iterated theta lifts, supplemented by irreducible unitary parabolic inductions. We take even real orthogonal groups and real symplectic groups as examples, and will construct a (combinatorially defined) parameter set which underlies the special unipotent representations of both groups.
+
+For every Young diagram $\imath$, write $ \mathbf r_i(\imath)$ and $\mathbf c_i(\imath)$ ($i\in \mathbb N^+$, the set of positive integers) respectively for its $i$-th row length and $i$-th column length.  Let $\check \CO$ be a nonempty Young diagram which satisfies the following good parity condition (for type $D$ and $C$):
+\begin{equation}\label{GP}
+\text{All nonzero row lengths of $\check \CO$ are odd.}
+\end{equation}
+Put
+\[
+ m:= |\check \CO |:= \sum_{i=1}^\infty \mathbf r_i(\check \CO)\qquad\textrm{and}\qquad l:=\mathbf c_1(\check \CO).
+\]
+We define a pair $(\imath_{\check \CO}, \jmath_{\check \CO})$ of Young diagrams such that the nonzero column lengths are given by
+\[
+   \left\{
+     \begin{array}{l}
+       \mathbf c_i(\imath_{\check \CO})=\frac{\mathbf r_{2i}(\check \CO)+1}{2}, \quad 1\leq i\leq \frac{l-1}{2}; \\
+        \mathbf c_i(\jmath_{\check \CO})=\frac{\mathbf r_{2i-1}(\check \CO)-1}{2}, \quad 1\leq i\leq \frac{l+1}{2},
+     \end{array}
+   \right.
+  \]
+if $l$ is odd, and
+\[
+   \left\{
+     \begin{array}{l}
+       \mathbf c_i(\imath_{\check \CO})=\frac{\mathbf r_{2i-1}(\check \CO)+1}{2}, \quad 1\leq i\leq \frac{l}{2}; \\
+        \mathbf c_i(\jmath_{\check \CO})=\frac{\mathbf r_{2i}(\check \CO)-1}{2}, \quad 1\leq i\leq \frac{l}{2}.
+     \end{array}
+   \right.
+  \]
+if $l$ is even.
+
+
+For any Young diagram $\imath$, we introduce the set $\mathrm{BOX}(\imath)$ of boxes of $\imath$ as the following subset
+of $\mathbb N^+\times \mathbb N^+$:
+\begin{equation*}\label{eq:BOX}
+\mathrm{BOX}(\imath):=\{(i,j)\in\mathbb N^+\times \mathbb N^+| j\leq \mathbf r_i(\imath)\}.
+\end{equation*}
+
+
+We introduce five symbols $\bullet$, $s$, $r$, $c$ and $d$, and make the following definition.
+
+\begin{defn}
+A painting on a Young diagram $\imath$ is a map
+\[
+  \CP: \mathrm{Box}(\imath) \rightarrow \{\bullet, s, r, c, d \}
+\]
+with the following properties:
+\begin{itemize}
+\item
+ $\CP^{-1}(S)$ is the set of boxes of a Young diagram when $S=\{\bullet\}, \{\bullet, s \}, \{\bullet, s, r\}$ or $\{\bullet, s, r, c \} $;
+ \item
+ when $S=\{s\}$ or $ \{r\}$, every row of $\imath$ has at most one  box in $\CP^{-1}(S)$;
+   \item
+ when $S=\{c\}$ or $ \{d \}$, every column of $\imath$ has at most one  box in $\CP^{-1}(S)$.
+ \end{itemize}
+%A painted Young diagram is then a pair $(\imath, \CP)$, consisting of a Young diagram $\imath$ and a painting $\CP$ on $\imath$.
+\end{defn}
+
+
+
+\begin{defn}\label{defpbp0}
+Define $\mathrm{PBP}(\check \CO)$ to be the set of all pairs $(\CP, \CQ)$, where $\CP$ and $\CQ$ are paintings on $\imath_{\check \CO}$ and $\jmath_{\check \CO}$ respectively, subject to the following conditions:
+ \begin{itemize}
+  \item
+ $\CP^{-1}(\bullet)=\CQ^{-1}(\bullet)$;
+ \item
+ the image of $\CP$ is contained in
+ \[
+ \left\{
+     \begin{array}{ll}
+         \{\bullet,  r, c,d\}, &\quad \hbox{if $l$ is odd};\smallskip\\
+\{\bullet, s, r, c,d\}, &\quad \hbox{if $l$ is even}
+                  .
+                     \end{array}
+   \right.
+ \]
+ \item
+ the image of $\CQ$ is contained in
+ \[
+ \left\{
+     \begin{array}{ll}
+   \{\bullet, s\}, &\quad \hbox{if  $l$ is odd }; \smallskip\\
+         \{\bullet\}, &\quad \hbox{if $l$ is even}.
+
+            \end{array}
+   \right.
+ \]
+
+ \end{itemize}
+ \end{defn}
+
+Let $\tau=(\CP, \CQ)\in \mathrm{PBP}(\check \CO)$. We associate a classical group $G_\tau$ as follows.
+
+If $l$ is odd, define $G_\tau:=\Sp_{m-1}(\R)$.
+
+If $l$ is even, define the signature  $(p_\tau, q_\tau)$ by counting the various symbols appearing in $(\imath_{\check \CO}, \CP)$, $(\jmath_{\check \CO}, \CQ)$:
+  \begin{equation*}\label{ptqt}
+  \left\{
+     \begin{array}{l}
+    p_\tau :=( \# \bullet)+ 2 (\# r) +(\# c )+ (\# d);\smallskip\\
+    q_\tau :=( \# \bullet)+ 2 (\# s) + (\# c) + (\# d).\\
+    \end{array}
+    \right.
+\end{equation*}
+Here
+\[
+\#\bullet:=\#(\CP^{-1}(\bullet))+\#(\CQ^{-1}(\bullet))\qquad (\textrm{$\#$ indicates the cardinality of a finite set}),
+\]
+and the other terms are similarly defined. Define $G_\tau:=\oO(p_\tau,q_\tau)$. In addition define $\varepsilon_\tau \in \Z/2\Z$ such that $\varepsilon_\tau=0$ if and only if the symbol $d$ occurs in the first column of $\CP$ or $\CQ$.
+
+
+If $l>1$, we define $\check \CO'$ to be the Young diagram obtained from $\check \CO$ by removing the first row. The descent map
+\[
+\nabla: \mathrm{PBP}(\check \CO)\rightarrow\mathrm{PBP}(\check \CO')
+\]
+is defined in \cite[Section 2]{BMSZ3} and plays a crucial role in our construction of special unipotent representations.
+
+
+\begin{exa*}
+Let
+\[
+  \check \CO=\ytb{\ \ \ \ \ \ \ , \ \ \ \ \ \ \ , \ \ \ \ \ \ \ , \ \ \ }.
+\]
+Then
+\[
+(\imath_{\check \CO},\jmath_{\check \CO})= \left(\ \ytb{\ \ , \ \ , \ \ , \ \ }\ , \  \ytb{\ \ ,\ ,\  }\ \right),
+\]
+and
+\[
+  \check \CO'=\ytb{\ \ \ \ \ \ \ , \ \ \ \ \ \ \ , \ \ \ }.
+\]
+Also let
+ \[
+ \tau=(\CP,\CQ)= \left(\  \ytb{\bullet\bullet, \bullet s, \bullet s, r d}\ ,\  \ytb{\bullet\bullet,\bullet,\bullet, \none }\right)\in \mathrm{PBP}(\check \CO).
+ \]
+Then $G_\tau=\oO(11,13)$, $\varepsilon_\tau =1$, and
+\[
+\nabla(\tau)=(\CP',\CQ')=\left(\  \ytb{\bullet, \bullet , \bullet ,  d} \ , \
+ \ytb{\bullet s,\bullet,\bullet, \none }\ \right)\in \mathrm{PBP}(\check \CO').
+ \]
+
+\end{exa*}
+
+
+
+Define $ \mathrm{PP}(\check \CO)$ to be the set of all $i \in \mathbb N^+$ such that
+\[
+ \mathbf r_i(\check \CO)>\mathbf r_{i+1}(\check \CO)>0 \qquad \textrm{and}\qquad
+ i\equiv l \ (\textrm{mod 2}).
+\]
+Put
+\[
+  \mathrm{PBP}^{\mathrm{ext}}(\check \CO):=
+           \mathrm{PBP}(\check \CO)\times \{\wp\subset  \mathrm{PP}(\check \CO)\}.
+\]
+
+For each $(\tau, \wp)\in  \mathrm{PBP}^{\mathrm{ext}}(\check \CO)$, we will construct a representation $\pi_{\tau,\wp}$ of $G_\tau$.
+
+
+\section{Special unipotent representations of classical Lie groups}\label{sec5}
+
+
+As in \Cref{sec4}, let $\check \CO$ be a nonempty Young diagram which satisfies the good parity condition \eqref{GP} and $(\tau, \wp)\in  \mathrm{PBP}^{\mathrm{ext}}(\check \CO)$. Let $G:=G_\tau$, whose complexification $G_\C$ equals $\Sp_{m-1}(\C)$ or $\oO_{m}(\C)$ respectively when $l$ is odd or even. The Langlands dual of $G_\C$ is defined to be $\oO_m(\C)$.
+Identify  $\check \CO$ with the corresponding nilpotent $\oO_m(\C)$-orbit in $\mathfrak o_m(\C)$.  Take an $\mathfrak{sl}_2$-triple $(\check e, \check h, \check f)$ in $\mathfrak o_m(\C)$ such that $\check e\in \check \CO$. Then $\frac{1}{2} \check h$ is a semisimple element of $\mathfrak o_m(\C)$, which determines a character $\chi(\check \CO): \mathcal U(\g)^{G_\C}\rightarrow \C$ in the  usual way (\cites{ArUni,BV}).
+%Here $\mathcal U$ indicates the universal enveloping algebra, and a superscript group indicate the space of invariant vectors under the group action.
+By a well-known result of Dixmier (\cite[Section 3]{Bor}), we know that there is a unique maximal $G$-stable ideal of $\mathcal U(\g)$ that contains the kernel of $\chi(\check \CO)$. Write $I_{\check \CO}$ for this ideal. The associated variety of $I_{\check \CO}$ is the closure of a nilpotent orbit $\CO \in \Nil_{G_{\C}}(\g)$ which is called the Barbasch-Vogan dual of $\check \CO$.
+Following Barbasch and Vogan (\cites{ABV,BV}), an irreducible Casselman-Wallach representation $\pi$ of $G$  is said to be special unipotent attached to $\check \CO$ if
+ $I_{\check \CO}$ annihilates $\pi$.  Write  $\mathrm{Unip}_{\check \CO}(G)$ for the set of isomorphism classes of irreducible Casselman-Wallach representations of $G$ that are special unipotent attached to $\check \CO$.
+
+%For every $(\tau,\wp)\in \mathrm{PBP}^{\mathrm{ext}}(\check \CO,G)$, we will define a representation $\pi_{\tau,\wp}$ of $G$ by iterated theta lifts.
+
+Put
+\begin{equation*}\label{def:unipGc}
+  \mathrm{Unip}(\check \CO):=\left\{
+     \begin{array}{ll}
+           \Unip_{\check \CO}(\Sp_{m-1}(\R)), &\text{if $l$ is odd}; \medskip\\
+           \bigsqcup_{p,q\in \BN, p+q=m} \Unip_{\check \CO}(\oO(p,q)), &\text{if $l$ is even}.\\
+           \end{array}
+   \right.
+\end{equation*}
+
+We have the following result on the counting of special unipotent representations.
+
+\begin{thm}\label{thmcount}\emph{(\cites{BMSZ2, BMSZ3})}
+Let $\check \CO$ be a nonempty Young diagram which satisfies the good parity condition \cref{GP}. Then
+\[
+ \#(\mathrm{Unip}(\check \CO))= \begin{cases}
+\#(\mathrm{PBP}^{\mathrm{ext}}(\check \CO)),  &\quad  \textrm{if $l$ is odd};\\
+2  \#(\mathrm{PBP}^{\mathrm{ext}}(\check \CO)),&\quad  \textrm{if $l$ is even}.
+\end{cases}
+\]
+\end{thm}
+
+For each $(\tau, \wp)\in  \mathrm{PBP}^{\mathrm{ext}}(\check \CO)$, we shall now construct an irreducible Casselman-Wallach representation $\pi_{\tau,\wp}$ of $G$ by induction on $l$. First assume that $l=1$, namely the Young diagram $\check \CO$ has only one row. Then $G=\Sp_{m-1}(\R)$, and the set $\mathrm{PBP}^{\mathrm{ext}}(\check \CO)$ has a unique element. In this case, we define $\pi_{\tau,\wp}$ to be the trivial representation of $G$.
+
+Now assume that the Young diagram of $\check \CO$ has at least two rows. Write $\tau':=\nabla(\tau)\in \mathrm{PBP}^{}(\check \CO')$, and define
+\[
+  \wp':=\{i\in \mathbb N^+\mid i+1\in \wp\}\subset \mathrm{PP}(\check \CO').
+\]
+Write $m':=|\check \CO'|$ and $G':=G_{\tau'}$. Note that $G$ and $G'$ form a reductive dual pair in $\Sp(W)$, where $W$ is a real symplectic space of dimension $(m-1) m'$ or $m(m'-1)$ respectively when $l$ is odd or even.  Suppose that $J=(G\times G')\ltimes \mathrm H(W)$ and let $\omega$ be as in \Cref{sec1}. If $G$ is an even orthogonal group, we assume $G$ acts trivially on the one-dimensional space $\omega_{X}$ (the coinvariant space of $X$), for every $G$-stable Lagrangian subspace $X$ of $W$. Similar assumption is made when $G'$ is an even orthogonal group.
+
+By induction hypothesis, we have an irreducible Casselman-Wallach representation $\pi_{\tau',\wp'}$ of $G'$.   We define
+\begin{equation}\label{eq:def-pi}
+    \pi_{\tau,\wp}:=\left\{
+     \begin{array}{ll}
+  \Theta_{G'}^{G}(\pi_{\tau',\wp'}^\vee \otimes \det^{\varepsilon_{\wp}}),\quad  &\quad \hbox{if $l$ is odd};  \smallskip\\
+          \Theta_{G'}^{G}(\pi_{\tau',\wp'}^\vee)\otimes (1_{p_\tau, q_\tau}^{+,-})^{\varepsilon_{\tau}}, \quad & \quad \hbox{if  $l$ is even}.
+            \end{array}
+   \right.
+ \end{equation}
+ Here $1_{p_\tau, q_\tau}^{+,-}$ denotes the character of $\oO(p_\tau, q_\tau)$ whose restriction to $\oO(p_\tau)\times \oO(q_\tau)$ equals $1\otimes \det$ ($1$ stands for the trivial character), and
+$\varepsilon_{\wp}$ denote the element in $\Z/2\Z$ such that  \[
+ \varepsilon_{\wp}=1\Leftrightarrow  1\in \wp.
+\]
+It turns out that the representation $\pi_{\tau, \wp}$ remains unchanged if we replace $\Theta_{G'}^{G}$ by $\theta_{G'}^{G}$ or $\bar \theta_{G'}^{G}$ in \eqref{eq:def-pi}.
+
+%\begin{remark} We would like to mention the unpublished work of He (\cite{He1}), among many earlier work on the construction of special unipotent representations by the formalism of theta lifting.
+%\end{remark}
+
+\begin{thm}\emph{(\cite{BMSZ3})}
+\label{thmclassify} Let $\check \CO$ be a nonempty Young diagram which satisfies the good parity condition \eqref{GP}.
+
+\noindent (a) For every $(\tau,\wp)\in \mathrm{PBP}^{\mathrm{ext}}(\check \CO)$, the representation $\pi_{\tau,\wp}$ of $G_\tau$  is irreducible, unitarisable, and special unipotent attached to $\check \CO$.
+
+\noindent  (b) Suppose that $l$ is odd so that $G=\Sp_{m-1}(\R)$. Then the map
+\[
+\begin{array}{rcl}
+\mathrm{PBP}^{\mathrm{ext}}(\check \CO)&\rightarrow &\mathrm{Unip}_{\check \CO}(G),\\
+  (\tau,\wp) &\mapsto& \pi_{\tau,\wp}
+  \end{array}
+\]
+is bijective.
+
+\noindent  (c) Suppose that $l$ is even, and $p,q$ are non-negative integers with $p+q=m$. Then the map
+\[
+\begin{array}{rcl}
+\{(\tau, \wp)\in\mathrm{PBP}^{\mathrm{ext}}(\check \CO)\mid (p_\tau,q_\tau)=(p,q)\} \times \Z/2\Z&\rightarrow &\mathrm{Unip}_{\check \CO}(\oO(p,q)),\\
+  (\tau, \wp, \epsilon)&\mapsto& \pi_{\tau,\wp}\otimes \det^\epsilon
+  \end{array}
+\]
+is bijective.
+
+
+\end{thm}
+
+We remark that the unitarisability of $\pi_{\tau,\wp}$ in Part (a) of Theorem \ref{thmclassify} follows from the preservation of unitarity (Theorem \ref{positivity}). Furthermore the
+computation of the associated cycles of $\pi_{\tau,\wp}$, in particular Theorem \ref{GDS.AC}, plays a critical role in the proof of Theorem \ref{thmclassify}.
+By Theorem \ref{thmclassify}, we have explicitly constructed all special unipotent representations in $\mathrm{Unip}_{\check \CO}(G)$, when all row lengths of $\check \CO$ are odd. If some row lengths of $\check \CO$ are even, then these even row lengths must come in pairs. In this case, the set $\mathrm{Unip}_{\check \CO}(G)$ of the special unipotent representations attached to $\check \CO$ is similarly defined, and via irreducible unitary parabolic inductions,  the construction of representations in  $\mathrm{Unip}_{\check \CO}(G)$ is reduced to the case when all row lengths of $\check \CO$ are odd (see \cite{BMSZ2}). In the same approach, we may parameterize and construct all special unipotent representations of the real classical groups $\GL_n(\R)$, $\GL_n(\C)$, $\GL_n(\mathbb H)$, $\oU(p,q)$, $\oO(p,q)$, $\Sp_{2n}(\R)$, $\oO^*(2n)$, $\Sp(p,q)$,  $\oO_n(\C)$, $\Sp_{2n}(\C)$, as well as all metaplectic special unipotent representations of $\widetilde \Sp_{2n}(\R)$ and $\Sp_{2n}(\C)$. See \cite{BMSZ1} for the notion of metaplectic special unipotent representations.
+
+We thus have the following result which confirms the Arthur-Barbasch-Vogan conjecture (\cite[Introduction]{ABV}) for real classical groups.
+
+\begin{thm}\emph{(\cite{BMSZ3})}
+All special unipotent representations of the real classical groups are unitarisable; all metaplectic special unipotent representations of $\widetilde \Sp_{2n}(\R)$ and $\Sp_{2n}(\C)$ are also unitarizable.
+\end{thm}
+
+\begin{remark} The unitarisability of special unipotent representations for quasisplit classical groups is independently due to Adams, Arancibia Robert and Mezo (\cite{ARM}).
+\end{remark}
+
+
+The authors would like to conclude by noting the prescient remark of A. A. Kirillov in a survey article on the orbit method in 1999 (\cite{Ki2}): Howe duality - a new branch of representation theory where the orbit method has not yet been used to the fullest.
+
+%------
+% Insert acknowledgments and information
+% regarding funding at the end of the last
+% section, i.e., right before the bibliography.
+%------
+
+\begin{ack}
+We thank Roger Howe for sharing his mathematical insight and for his encouragement.
+\end{ack}
+
+\begin{funding}
+B. Sun is supported in part by National Key R\&D Program of China \linebreak
+(2020YFA0712600), National Natural Science Foundation of China (11688101, 11621061), and Kunpeng program of Zhejiang Province.
+\end{funding}
+
+\begin{funding}
+C.-B. Zhu is supported in part by MOE AcRF Tier 1 grant R-146-000-314-114, and Provost's Chair grant C-146-000-052-001 in NUS.
+\end{funding}
+
+
+%------
+% Insert the bibliography.
+%------
+
+
+\begin{thebibliography}{99}
+
+
+\bibitem{ABV}
+J. ~Adams, D. ~Barbasch, D. ~Vogan, The Langlands classification and irreducible characters for real reductive groups, \emph{Progress in Math.} 104, Birkh{a}user, 1991.
+
+\bibitem{ARM}
+J. ~Adams, N. ~Arancibia Robert and P. ~Mezo,
+Equivalent definitions of Arthur packets for real classical groups, arXiv:2108.05788.
+
+\bibitem{ArPro}
+J. ~Arthur, On some problems suggested by the trace formula, in: Lie group representations, II (College Park, Md.),  \emph{ Lecture Notes in Math.} vol 1041, 1--49, 1984.
+
+\bibitem{ArUni}
+J. ~Arthur, Unipotent automorphic representations: conjectures, in: Orbites unipotentes et repr\'esentations, II, \emph{Ast\'erisque} 171--172 (1989), 13--71.
+
+\bibitem{BMSZ1}
+D. ~Barbasch, J. ~Ma, B. ~Sun and C.-B. ~Zhu, On the notion of metaplectic Barbasch-Vogan duality, arXiv:2010.16089.
+
+\bibitem{BMSZ2}
+D. ~Barbasch, J. ~Ma, B. ~Sun and C.-B. ~Zhu, Counting special unipotent representations, in preparation.
+
+\bibitem{BMSZ3}
+D. ~Barbasch, J. ~Ma, B. ~Sun and C.-B. ~Zhu, Special unipotent representations : orthogonal and symplectic groups, arXiv:1712.05552v2
+
+\bibitem{BV}
+ D. ~Barbasch and D. ~Vogan, Unipotent representations of complex semisimple groups, \emph{Annals of Math.} 121 (1985), 41--110.
+
+\bibitem{Bor}
+W. ~Borho, Recent advances in enveloping algebras of semisimple Lie-algebras, \emph{S\'eminaire Bourbaki, Exp. No. 489},1976/77, 1--18.
+
+\bibitem{DKPC}
+A. ~Daszkiewicz, W. ~Kraskiewicz and T. ~Przebinda, Nilpotent orbits and complex dual pairs, \emph{J. Algebra} 190 (1997), no. 2, 518--539.
+
+\bibitem{GW}
+R. ~Goodman and N. R. ~Wallach, Symmetry, Representations, and Invariants. \emph{Graduate Texts in Math.} 255, Springer, 2009.
+
+\bibitem{He1}
+H. ~He,
+Unipotent representations and quantum induction,
+arXiv:math/0210372, 2002.
+
+\bibitem{He2}
+H. ~He,
+Unitary representations and theta correspondence for type I classical groups,
+\emph{J. Funct. Anal.} 199 (2003), no. 1, 92--121.
+
+\bibitem{Ho1}
+R. ~Howe, $\theta$-series and invariant theory, in
+``Automorphic Forms, Representations and $L$-functions'', \emph{Proc. Symp.
+Pure Math.} 33 (1979), 275--285.
+
+\bibitem{HoSmall}
+R. ~Howe, Small unitary representations of classical groups, in ``Group representations, ergodic theory, operator algebras, and mathematical physics'', 121–-150.
+Math. Sci. Res. Inst. Publ., 6, Springer, New York, 1987.
+
+
+\bibitem{Ho2}
+R. ~Howe, Remarks on classical invariant theory, \emph{Trans. Amer. Math. Soc.} 313 (1989), 539--570.
+
+\bibitem{Ho3}
+R. ~Howe, Transcending classical invariant theory, \emph{J. Amer. Math. Soc.} 2 (1989), 535--552.
+
+\bibitem{Ki1}
+A. A. ~Kirillov, Unitary representations of nilpotent Lie groups, \emph{Uspehi Mat. Nauk} 17 (1962), no. 4, 57--110.
+
+\bibitem{Ki2}
+A. A. ~Kirillov, Merits and demerits of the orbit method, \emph{Bull. Amer. Math. Soc.} 36 (1999), no. 4, 433--488.
+
+\bibitem{Ko}
+B. ~Kostant, Quantization and unitary representations, \emph{Lectures in Modern Analysis and Applications III}, 1970, Lecture Notes in Math., vol. 170, 87--208.
+
+\bibitem{Ku}
+S. S. ~Kudla, Splitting metaplectic covers of dual reductive
+pairs, \emph{Israel J. Math.} 87, (1994), 361--401.
+
+\bibitem{KV}
+M. ~Kashiwara and M. ~Vergne, On the Segal-Shale-Weil Representations and Harmonic Polynomials, \emph{Invent. Math.} 44, (1978), 1--48.
+
+\bibitem{KP}
+H. ~Kraft and C. ~Procesi, On the geometry of conjugate classes in classical groups, \emph{Comment. Math. Helvetici} 57, (1982), 539--602.
+
+
+\bibitem{Li1}
+J.-S. ~Li,
+Singular unitary representations of classical groups,
+\emph{Invent. Math.} 97 (1989), 237--255.
+
+
+\bibitem{Li2}
+J.-S. ~Li,
+Theta lifting for unitary representations with nonzero cohomology,
+\emph{Duke Math. J.} 61 (1990), no. 3, 913--937.
+
+
+\bibitem{LR}
+E. ~Lapid and S. ~Rallis, On the local factors of representations of classical groups, in ``Automorphic representations, L-functions and applications: progress and prospects'', 309--359, Ohio State Univ. Math. Res. Inst. Publ., 11, de Gruyter, Berlin, 2005.
+
+\bibitem{LM}
+H. Y. ~Loke and J. ~Ma,
+Invariants and $K$-spectrums of local theta lifts,
+\emph{Compositio Math.} 151 (2015), no. 1, 179--206.
+
+
+\bibitem{MVW}
+C. ~Moeglin, M.-F. ~Vigneras, and J.-L. ~Waldspurger,
+Correspondances de Howe sur un corps p-adique, \emph{Lecture Notes
+in Math.} vol. 1291, Springer-Verlag, 1987.
+
+
+\bibitem{NOZ}
+K. ~Nishiyama, H. ~Ochiai and C.-B. ~Zhu, Theta lifting of nilpotent orbits for symmetric pairs, \emph{Trans. Amer. Math. Soc.} 358 (2006), 2713--2734.
+
+
+\bibitem{NOTYK}
+K. ~Nishiyama, H. ~Ochiai, K. ~Taniguchi, H. ~Yamashita and S. ~Kato,
+Nilpotent orbits, associated cycles and Whittaker models for highest weight representations,
+\emph{Ast\'erisque} 273 (2001), 1--163.
+
+
+\bibitem{NZ}
+K. ~Nishiyama and C.-B. ~Zhu,
+Theta lifting of unitary lowest weight modules and their associated cycles,
+\emph{Duke Math. J.} 125 (2004), no. 3, 415--465.
+
+
+\bibitem{PsR}
+I. ~Piatetski-Shapiro and S. ~Rallis, $\epsilon$ factor of representations of classical groups, \emph{Proc. Nat. Acad. Sci. U.S.A.} 83 (1986), no. 13, 4589--4593.
+
+
+\bibitem{VoICM}
+D. A. ~Vogan, \emph{Representations of reductive Lie groups}, Proceedings of the International Congress of Mathematicians (Berkeley, California): 245--266, 1986.
+
+
+\bibitem{VoUni}
+D. A. ~Vogan, \emph{Unitary representations of reductive Lie groups}, Annals Math. Studies, No. 118, Princeton University Press, 1987.
+
+\bibitem{VoAss}
+D. A. ~Vogan, \emph{Associated varieties and unipotent representations}, In: Barker, W., Sally, P. (Eds.) Harmonic Analysis on Reductive Groups (Bowdoin College, 1989). Progress in Mathematics, vol 101, 315--388, Birkh\"{a}user (Boston-Basel-Berlin), 1991.
+
+\bibitem{VoPar}
+D. A. ~Vogan, \emph{The method of coadjoint orbits for real reductive groups}, In: Representation theory of Lie groups (Park City, UT, 1998). IAS/Park City Math. Ser., vol 8, 179--238, Amer. Math. Soc., 2000.
+
+\bibitem{Wa1}
+N. R. ~Wallach, Real Reductive Groups I. Academic Press, Inc., 1988.
+
+\bibitem{Wa2}
+N. R. ~Wallach, Real Reductive Groups II. Academic Press, Inc., 1992.
+
+
+\bibitem{Wei}
+A. ~Weil, Sur certain group d'operateurs unitaires, \emph{Acta Math.} 111 (1964), 143--211.
+
+\bibitem{Wey}
+H. ~Weyl, The Classical Groups. \emph{Princeton University Press}, Princeton, New Jersey, 1939.
+
+
+%------ Example for a paper in journal:
+% \bibitem{article1}
+% A.~Petrunin, Parallel transportation for Alexandrov space with curvature bounded below.
+% \emph{Geom. Funct. Anal.} \textbf{8} (1998), no.~1, 123--148.
+
+%------ Example for a book:
+% \bibitem{book1}
+% W.~P. Ziemer, \emph{Weakly differentiable functions}.
+% Grad. Texts in Math. 120,  Springer, New York, 1989.
+
+%------ Example for a paper in a book:
+% \bibitem{incollection1}
+% J.~S. Milne, Introduction to Shimura varieties.
+% In \emph{Harmonic analysis, the trace formula, and Shimura varieties},
+% edited by M.~W. Marcellin and E.~Giorgi, pp. 265--378,
+% Clay Math. Proc. 4, Amer. Math. Soc., Providence, RI, 2005.
+
+%------ Example for a preprint on arXiv:
+% \bibitem{preprint1}
+% D.~V. Nguyen, S.~K. Chilappagari, M.~W. Marcellin, and B.~Vasic,
+% LDPC codes from latin squares free of small trapping sets,
+% 2010, \href{http://arxiv.org/abs/1008.4177}{arXiv:1008.4177}.
+
+%------ Example for a report:
+% \bibitem{report1}
+% J.~Schöberl, Commuting quasi-interpolation operators.
+% Technical report isc-01-10-math, Texas A\&M University, 2001,
+% \url{www.isc.tamu.edu/publications-reports/tr/0110.pdf}.
+
+%------ Example for a thesis:
+% \bibitem{thesis1}
+% E.~Giorgi, \emph{The geometric universe}.
+% Ph.D. thesis, University of Maryland, College Park, 2002.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,1480 @@
+\documentclass{amsart}[12pt]
+\usepackage{mathrsfs}
+
+\usepackage{amssymb}
+\usepackage{}
+%\usepackage{stmaryrd}
+\usepackage{bbding}
+\usepackage{amsfonts}
+\usepackage{amsmath,color}
+\usepackage[colorlinks,linkcolor=blue,urlcolor=cyan,citecolor=green,pagebackref]{hyperref}
+\usepackage{amssymb,amscd,colordvi,amsthm,verbatim,mathrsfs,latexsym,  graphicx}
+
+\newcommand\reduline{\bgroup\markoverwith
+      {\textcolor{red}{\rule[0.5ex]{2pt}{1pt}}}\ULon}
+
+\usepackage{times}
+\newtheorem{Pro}{Proposition}[section]
+\newtheorem{Lem}{Lemma}[section]
+\newtheorem{Thm}[Lem]{Theorem}
+\newtheorem{Cor}{Corollary}[section]
+\newtheorem{Rem}{Remark}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{Con}{Conjecture}[section]
+\newcommand{\eq}{\begin{equation}}
+\newcommand{\en}{\end{equation}}
+\newcommand{\beqna}[1]{\begin{eqnarray}\label{#1}}
+\newcommand{\eeqna}{\end{eqnarray}}
+\newcommand{\beqn}[1]{\begin{equation}\label{#1}}
+\newcommand{\eeqn}{\end{equation}}
+
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+ \newcommand{\minitab}[2][l]{\begin{tabular}{#1}#2\end{tabular}}
+
+\def\fhh{\mathfrak{h}}
+\def\fbb{\mathfrak{b}}
+\def\fnn{\mathfrak{n}}
+\def\fpp{\mathfrak{p}}
+\def\fqq{\mathfrak{q}}
+\def\fuu{\mathfrak{u}}
+\def\fll{\mathfrak{l}}
+\def\fbb{\mathfrak{b}}
+\def\fgg{\mathfrak{g}}
+\def\fkk{\mathfrak{k}}
+\def\cD{\mathcal{D}}
+\def\cO{\mathcal{O}}
+\def\cV{\mathcal{V}}
+\def\cQ{\mathcal{Q}}
+\def\cM{\mathcal{M}}
+\def\cL{\mathcal{L}}
+\def\cU{\mathcal{U}}
+\def\tM{\widetilde{M}}
+\def\CC{\mathrm{CC}}
+\def\Gr{\mathrm{Gr}}
+
+
+
+\newcommand{\mb}{\mathbf}
+\newcommand{\bb}{\mathbb}
+\newcommand{\ms}{\mathscr}
+\newcommand{\mr}{\mathrm}
+\newcommand{\frk}{\mathfrak}
+
+\newcommand{\Wsmall}{W_{[\lambda]}}
+
+\newcommand{\psp}{\vspace{0.4cm}}
+\newcommand{\pse}{\vspace{0.2cm}}
+\newcommand{\ptl}{\partial}
+\newcommand{\dlt}{\delta}
+\newcommand{\sgm}{\sigma}
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+%\newcommand{\G}{\Gamma}
+\newcommand{\g}{\gamma}
+\newcommand{\gm}{\gamma}
+\newcommand{\vs}{\varsigma}
+\newcommand{\Lmd}{\Lambda}
+\newcommand{\lmd}{\lambda}
+\newcommand{\td}{\tilde}
+\newcommand{\vf}{\varphi}
+\newcommand{\yt}{Y^{\nu}}
+\newcommand{\wt}{\mbox{wt}\:}
+\newcommand{\der}{\mbox{Der}\:}
+\newcommand{\es}{\epsilon}
+\newcommand{\dmd}{\diamond}
+\newcommand{\clt}{\clubsuit}
+\newcommand{\vt}{\vartheta}
+\newcommand{\ves}{\varepsilon}
+\newcommand{\dg}{\dagger}
+
+\newcommand{\fra}{\mathfrak{a}}
+\newcommand{\frb}{\mathfrak{b}}
+\newcommand{\fre}{\mathfrak{e}}
+\newcommand{\frf}{\mathfrak{f}}
+\newcommand{\frg}{\mathfrak{g}}
+\newcommand{\frh}{\mathfrak{h}}
+\newcommand{\frkk}{\mathfrak{k}}
+\newcommand{\frl}{\mathfrak{l}}
+\newcommand{\frm}{\mathfrak{m}}
+\newcommand{\frn}{\mathfrak{n}}
+\newcommand{\fro}{\mathfrak{o}}
+\newcommand{\frp}{\mathfrak{p}}
+\newcommand{\frq}{\mathfrak{q}}
+\newcommand{\frr}{\mathfrak{r}}
+\newcommand{\frs}{\mathfrak{s}}
+\newcommand{\frt}{\mathfrak{t}}
+\newcommand{\fru}{\mathfrak{u}}
+\newcommand{\frv}{\mathfrak{v}}
+\newcommand{\frgl}{\mathfrak{gl}}
+\newcommand{\frsl}{\mathfrak{sl}}
+\newcommand{\frsu}{\mathfrak{su}}
+\newcommand{\frso}{\mathfrak{so}}
+\newcommand{\frsp}{\mathfrak{sp}}
+
+\newcommand{\gk}{Gelfand-Kirillov dimension }
+\newcommand{\gks}{Gelfand-Kirillov dimensions }
+\newcommand{\aff}{$ \mathbf{a} $}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\msc}[1]{\mathscr{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\renewcommand{\subset}{\subseteq}
+\newcommand{\rar}{\rightarrow}
+\newcommand{\bil}[2]{\langle{#1},{#2}^{\vee} \rangle }
+\newcommand{\hs}{ \mathfrak{h}^*}
+\newcommand{\Ocat}{\mathscr{O}}
+
+\newcommand{\gkd}{\operatorname{GKdim}}
+\renewcommand{\hom}{\operatorname{Hom}}
+\newcommand{\sln}{\mathfrak{sl}(n)}
+\newcommand{\lambdarho}{\lambda+\rho=(\lambda_1,\lambda_2,\cdots,\lambda_n)}
+\newcommand{\sn}{\mf{S}_n}
+\newcommand{\su}{{SU}}
+\newcommand{\nodd}{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\numberwithin{equation}{section}
+
+\usepackage{hyperref,color}
+
+
+
+\newcommand{\rmk}[2]{\textcolor{red}{#1}
+\marginpar{
+\color{red}\footnotesize#2
+}}
+\begin{document}
+
+\title[Minimal highest weight modules]{Minimal highest weight modules for classical Lie algebras}
+
+\author{ Zhanqiang Bai, Jia-Jun Ma, Wei Xiao and Xun Xie*}
+
+\address[Bai]{School of Mathematical Sciences, Soochow University, Suzhou 215006, P. R. China}
+\email{zqbai@suda.edu.cn}
+
+
+\address[Ma]{School of Mathematical Sciences, Shanghai Jiao Tong University, 800 Dongchuan Rd Shanghai 200240, P. R. China}
+
+\email{hoxide@sjut.edu.cn}
+
+\address[Xiao]{College of Mathematics and statistics, Shenzhen Key Laboratory of Advanced Machine Learning and Applications, Shenzhen University,
+Shenzhen 518060, Guangdong, P. R. China}
+\email{xiaow@szu.edu.cn}
+
+
+
+
+\address[Xie]{School of Mathematics and Statistics, Beijing
+Institute of Technology, Beijing 100081, P. R. China}
+%    Current address
+%\curraddr{Institute for Advanced Study, Einstein Drive, Princeton, New Jersey 08540 USA}
+\email{xieg7@163.com}
+%
+%\thanks{
+%The project is supported  by the National Science Foundation of China (Grant No. 11601394). The project is also supported by the National
+%Science
+%Foundation of China (Grant No. 11701381) and Guangdong Natural Science Foundation (Grant No. 2017A030310138)}
+\thanks{*Corresponding author}
+
+\subjclass[2010]{Primary 22E47; Secondary 17B08}
+%17B35
+
+
+\date{}
+\maketitle
+
+
+\begin{abstract}
+The highest weight modules with minimal Gelfand-Kirillov dimension play important roles in the study of representations of Lie groups and Lie algebras. In this paper, we will give a classification of these modules for all classical type Lie algebras. Our characterization is given by Young tableaux and the information of highest weights of these modules. We also describe the associated varieties of these modules. This work is a generalization of Joseph's work on quantization of minimal orbital varieties.
+% When $L(\lambda)$ is an integral highest weight module in a given parabolic category $\mathscr{O}^{\mathfrak{p}}$ with maximal Gelfand-Kirillov dimension, we will show that its associated variety is the nilradical of $\mathfrak{p}$.
+
+
+
+
+{\bf Key Words:} Highest weight module, associated variety, orbital variety, Kazhdan-Lusztig cell, Gelfand-Kirillov dimension.
+
+\end{abstract}
+
+
+\section{ Introduction}
+
+Let $\mathfrak{g}$ be a complex simple Lie algebra with adjoint group $G$. Fix a triangular decomposition $\mathfrak{g}=\mathfrak{n}\oplus \mathfrak{h} \oplus \bar{\mathfrak{n}}$ so that $\mathfrak{b}=\mathfrak{h}+\mathfrak{n}$ is a Borel subalgebra and $\mathfrak{h}$ is a Cartan subalgebra of $\mathfrak{g}$. Let $B$ be the Borel subgroup of $G$ corresponding to $\mathfrak{b}$. Let $\Phi$ be the root system of $(\frg, \frh)$ with the positive system $\Phi^+$ and simple system $\Delta$ determined by $\mathfrak{b}$. Denote by $W$ the Weyl group of $\Phi$. Note that any subset $I\subset\Delta$ generates a subsystem $\Phi_I\subset\Phi$. Let $\mathfrak{p}_I$ be the standard parabolic subalgebra corresponding to $I$ with Levi decomposition $\mathfrak{p}_I=\mathfrak{l}_I\oplus \mathfrak{u}_I$.  We will drop the
+subscript $I$ if there is no confusion.
+
+%We have  a simple system $\Delta=\{\alpha_i|1\leq i\leq n\}\subset\Phi^+$. We use $e_{\alpha}$ to denote a root vector for a given root $\alpha \in \Phi$. Let $\rho$ be half the  sum of roots in $\Phi^+$.
+%Let $F(\lambda)$ be a finite-dimensional irreducible $\mathfrak{l}$-module with highest weight $\lambda\in  \mathfrak{h}^*$. It can also be viewed as a
+%$\mathfrak{p}$-module with trivial $\mathfrak{u}$-action. The {\it generalized Verma module} $M_I(\lambda)$ is defined by
+%\[
+%M_I(\lambda):=U(\mathfrak{g})\otimes_{U(\mathfrak{p})}F(\lambda).
+%\]
+%The simple quotient of $M_I(\lambda)$ is denoted by $L(\lambda)$. We use $\mathscr{O}^{\mathfrak{p}}$ to denote the corresponding parabolic  category.
+
+For $\lambda\in\frh^*$, let $L(\lambda)$ be the simple highest weight $\mathfrak{g}$-module with highest weight $\lambda-\rho$, where $\rho$ is half sum of all the positive roots. For convenience, we put $L_w:=L(w\lambda)$ for $w\in W$. They form all of the simple highest weight modules of infinitesimal character $\rho$. Suppose that $\mathcal{O}\subseteq \mathfrak{g}$ is a nilpotent $G$-orbit with closure $\overline{\mathcal{O}}$ \cite{CM}. Each irreducible component of $\overline{\mathcal{O}}\cap \mathfrak{n}$ is called an {\it orbital varieties} of  $\mathcal{O}$. It can be written as $\mathcal{V}(w):=\overline{B(\mathfrak{n}\cap w\mathfrak{n})}$ for some $w\in W$ \cite{Ta}. Although this definition is widely used, one should be aware that an orbital variety could mean an irreducible component of $\mathcal{O}\cap \mathfrak{n}$ in some paper (see for example \cite{Jo84}). For every finitely generated $U(\mathfrak{g})$-module $M$, Bernstein  constructed a variety $V(M)$ in $\mathfrak{g}^{\ast}$ \cite{Be}, which is called the associated variety of $M$ and whose dimenison is equal to the Gelfand-Kirillov dimension of $M$. Since we can identify $\frg^*$ with $\frg$ via the Killing form on $\frg$, $V(M)$ can also be viewed as a variety of $\frg$. From Joseph \cite{Jo84} we know that $V(L_w)$ is a union of some orbital varieties. Tanisaki \cite{Ta} showed that there exist examples with reducible associated varieties in type $B$ and $C$. For a long time, people believed that $V(L_w)$ is irreducible for type $A$ \cite{BoB3, Mel}. However, counter examples of type $A$ were found by Williamson in 2014\cite{Wi}. So the structure of $V(L_w)$ or $V(L(\lambda))$ is still mysterious. For example, the following questions are unknown:
+\begin{itemize}
+  \item [(Q1)] Can we determine the relationship between $\lambda$ and $\mu$ when $V(L(\lambda))=V(L(\mu)) $?
+  \item [(Q2)] Can we find out all those $\lambda$ such that $V(L(\lambda)) $ is irreducible? In particular, can we find out all those $w$ such that $V(L_w) $ is irreducible?
+
+\end{itemize}
+
+In this paper, we will answer the above problems for some cases.
+
+
+
+For the question (Q1), in the case of  the unitary highest weight modules (the classification of these modules had been done by Enright-Howe-Wallach \cite{EHW} and Jakobsen \cite{Ja} independently) Bai and Hunziker \cite{BH}  found that $V(L(\lambda))=V(L(\mu)) $ if and only if $(\lambda-\mu,\beta)=0$,  where $\beta$ is the unique maximal root. In the case of non-unitary highest weight modules, we will give some answer in this paper.
+
+We use $\stackrel{R}{\sim}$ (resp. $\stackrel{L}{\sim}$ and $\stackrel{LR}{\sim}$ ) to denote the Kazhdan-Lusztig right (resp. left and double) cell equivalence relation \cite{KL} .
+%
+%In this paper we will prove the following theorem.
+%\begin{Thm}\label{m1} Suppose $\mathfrak{g}$ is of type $A, B, C, D, E_6, G_2$. Let  $w,y\in W$, then $w\stackrel{R}{\sim} y$ if and only if $V(L_w)=V(L_y)$.
+%\end{Thm}
+
+
+For the question (Q2), from Vogan \cite{Vo91} or Nishiyama-Ochiai-Taniguchi \cite{NOT}, we know  $V(L(\lambda)) $ is irreducible if  $L(\lambda) $ is a Harish-Chandra module.   From Enright-Howe-Wallach \cite{EHW}, we know  $L(\lambda) $ is a Harish-Chandra $G$-module if and only if $G$ is of Hermitian type, $\mathfrak{p}_I$ is a maximal abelian parabolic subalgebra and $\lambda-\rho$ is $\Phi_I^+$-dominant integral. But there are many other highest weight modules with irreducible associated varieties. For example, see Borho-Brylinski \cite[Corollary 4.3]{BoB3}.
+
+
+We write $\lambda=(\lambda_1,...,\lambda_n)$.
+ A weight $ \lambda\in\hs $ is called \textit{antidominant} if $ \bil{\lambda+\rho}{\al} \notin\mathbb{Z}_{>0}$ for all $ \al\in\Phi^+ $. Let   \begin{equation}\label{eq:phil}
+\Phi_{[\lambda]}:=\{\al\in\Phi\mid \bil{\lambda}{\al}\in\mathbb{Z} \},
+\end{equation}
+%\[
+%\mf{g}_\lambda:=\mf{h}\op\sum_{\al\in\Phi_\lambda}\mf{g}_\al
+%\]
+and let $ \Wsmall $ be the subgroup of $ W $ generated by $ \{s_\al\mid \al\in\Phi_{[\lambda]} \} $.
+Then $\Phi_{[\lambda]}  $ is a root system, and let $ \Delta_{[\lambda]} $ be the set of simple roots of $ \Phi_{[\lambda]} $ with respect to  $ \Phi_{[\lambda]}^+=\Phi_{[\lambda]}\cap\Phi^+$.
+Let $ S_\lambda=\{s_\alpha\mid \alpha\in \Delta_{[\lambda]} \} $. Then $ (\Wsmall,S_\lambda) $ is a Coxeter system.
+%When $\mathfrak{g}$ is of type $A$, $\lambda+\rho$  is called \emph{ordered} if all differences $\lambda_i-\lambda_{i+1}$ are positive integers.
+From Bai-Xie \cite{BX}, we know each $\lambda$ can be associated to some $w_{\lambda}\in W$ which is the element of $ \Wsmall $ of minimal length such that $ w^{-1}.\lambda $ is antidominant.
+
+For any simple Lie algebra $\mathfrak{g}$, there is a unique non-zero nilpotent orbit $\mathcal{O}_{min}$ of minimal dimension. From Wang \cite{Wang}, we know $\dim {\mathcal {O}}_{min}=2(\rho, \beta^{\vee})=2(h^{\vee}-1)$, where $\beta$ is the highest root and $h^{\vee}$ is the dual Coxeter number. The irreducible components of $\overline{\mathcal{O}_{min}}\cap \mathfrak{n}$ are called \emph{minimal orbital varieties} by Joseph \cite{Jo98}. Joseph showed that every minimal orbital variety outside of type $B$ is \emph{weakly quantizable} (i.e., it is the associated variety of some highest weight module). The highest weight modules with minimal Gelfand-Kirillov dimension $(\rho, \beta^{\vee})$ play an important role in the study of representations of Lie groups and Lie algebras, see for example \cite{BBL, GS, Jo98, Li, Ma,Sun}. In this paper, we simply call these modules \emph{minimal highest weight modules}. These previous studies on minimal highest weight modules didn't give us a complete classification for these modules. The aim of this article is to give an answer for this problem for all classical type Lie algebras.
+
+
+
+
+
+
+We call a sequence $(\lambda_1,...,\lambda_n)$  \emph{ordered} if all differences $\lambda_i-\lambda_{i+1}$ are positive integers. In this paper we will prove the following theorems.
+
+\begin{Thm}\label{m2} Suppose $\mathfrak{g}=\mathfrak{sl}(n, \mathbb{C})$. Let $L(\lambda)$ be a highest weight $\mathfrak{g}$-module. Suppose $\gkd L(\lambda)$ takes the minimal value $n-1$. Then $\lambda=(\lambda_1,...,\lambda_n)$ is ordered after removing one term $\lambda_{i_0}$ for some $1\leq i_0\leq n$. When $i_0=1$ or $n$, or $L(\lambda)$ is integral, $L(\lambda)$ will be a Harish-Chandra $SU(p,n-p)$-module for some $1\leq p\leq n-1$ and
+	moreover, $V(L(\lambda))=\mathcal{V}(w_{\lambda})=\overline{Be_{\alpha_{p}}}$, and $w_{\lambda}\stackrel{R}{\sim} w'=(n,...,{\widehat{p+1}},...,1,p+1)$. Then $\gkd L_w=n-1$ if and only if   $w \stackrel{R}{\sim} w'=(n,...,\hat{k},...,1,k)$  for  some  $2\leq k\leq n$ and  $V(L_w)=\mathcal{V}(w)=\overline{Be_{\alpha_{k-1}}}$.
+When $L(\lambda)$ is non-integral and $\lambda=(\lambda_1,...,\lambda_n)$ is ordered after removing one term $\lambda_{i_0}$ for some $1<i_0<n$, we will have $V(L(\lambda))=\overline{Be_{\alpha_{i_0-1}}}\cup \overline{Be_{\alpha_{i_0}}}$.	
+	
+\end{Thm}
+
+
+%\begin{Thm}\label{m2} Suppose $\mathfrak{g}=\mathfrak{sl}(n, \mathbb{C})$. Let $L(\lambda)$ be an integral highest weight $\mathfrak{g}$-module. Then $GKdim L(\lambda)$ takes the minimal value $n-1$ if and only if $L(\lambda)$ is a Harish-Chandra $SU(p,n-p)$-module for some $1\leq p\leq n-1$ and  $\lambda+\rho$ is ordered (i.e., all differences $\lambda_i-\lambda_{i+1}$ are positive integers.) after removing one term.
+% Moreover, $V(L(\lambda))=\mathcal{V}(w_{\lambda})=\overline{B\alpha_{p}}$, and $w_{\lambda}\stackrel{R}{\sim} w'=(n,...,{\widehat{p+1}},...,1,p+1)$. Then $GKdim L_w=n-1$ if and only if   $w \stackrel{R}{\sim} w'=(n,...,\hat{k},...,1,k)$  for  some  $2\leq k\leq n$ and  $V(L_w)=\mathcal{V}(w)=\overline{B\alpha_{k-1}}$.
+%\end{Thm}
+
+\begin{Thm}\label{m21}
+		Suppose $\mathfrak{g}=\mathfrak{sp }(n, \mathbb{C})$. Let $L(\lambda)$ be a highest weight $\mathfrak{g}$-module. Suppose $\gkd L(\lambda)$ takes the minimal value $n$. Then
+	$L(\lambda)$ is a half-integral Harish-Chandra mdoule of $Sp(n, \mathbb{R})$ with $\lambda_1>\lambda_2>...>\lambda_{n-1}>|\lambda_n|>0$,  and $V(L(\lambda))=\mathcal{V}(s_{\alpha_{n}}w_0)=\overline{Be_{\alpha_{n}}}$.
+	
+\end{Thm}
+
+These results in type $A$ and $C$ imply that the minimal highest weight modules appeared in Mathieu \cite{Ma} exhaust all minimal highest weight modules. The modules in Sun \cite{Sun} also exhaust all  minimal highest weight modules in type $C$.
+
+
+\begin{Thm}\label{m22}
+	Suppose $\mathfrak{g}=\mathfrak{so }(2n+1, \mathbb{C})$. Let $L(\lambda)$ be a highest weight $\mathfrak{g}$-module. Suppose $\gkd L(\lambda)$ takes the minimal value $2n-2$. Then
+$\lambda=(\lambda_1,...,\lambda_n)$ is half-integral  with $\lambda_n>0$  and ordered after removing one term $\lambda_{i_0}>0$ for some $1\leq i_0\leq n$. When ${i_0}=1$, $L(\lambda)$ will be a highest weight Harish-Chandra module of $SO(2,2n-1)$ and $V(L(\lambda))=\mathcal{V}(s_{\alpha_{1}}w_0)=\overline{Be_{\alpha_{1}}}$ is a $K_{\mathbb{C}}$-orbit closure. 	When $2\leq i_0\leq n-1$, we will have $V(L(\lambda))=\overline{Be_{\alpha_{i-1}}}\cup \overline{Be_{\alpha_{i}}}$.  When $ i_0=n$,  we will have $V(L(\lambda))=\overline{Be_{\alpha_{n-1}}}$.
+\end{Thm}
+
+\begin{Thm}\label{m23}
+	Suppose $\mathfrak{g}=\mathfrak{so }(2n, \mathbb{C})$. Let $L(\lambda)$ be a highest weight $\mathfrak{g}$-module. Suppose $\gkd L(\lambda)$ takes the minimal value $2n-3$. Then
+$\lambda=(\lambda_1,...,\lambda_n)$ is integral and $V(L(\lambda))=V(L(w_{\lambda}))=\overline{Be_{\alpha_i}}=\mathcal{V}(s_{\alpha_i}w_0)$ with $w_{\lambda}\stackrel{R}{\sim}s_{\alpha_{i}}w_0$ for some $1\leq i\leq n$. Then $\gkd L_w=2n-3$ if and only if   $w \stackrel{R}{\sim} s_{\alpha_{i}}w_0$  for some $1\leq i\leq n$.
+\end{Thm}
+
+
+
+%
+%For $\alpha \in \Delta$, we use $s_\alpha$ to denote the corresponding reflection. Let $W_I=\langle s_{\alpha}: \alpha \in \Delta_I\rangle$. There is a unique longest element $w_I\in W_I$ which maps all positive roots in $\Phi_I^+$ to negative roots. This element $w_I$ is called a \emph{Richardson element} of the Weyl group $W$.
+% A nilpotent orbit $\mathcal{O} \in \mathfrak{g}$ is called a \emph{Richardson orbit} if it intersects densely the nilradical $\mathfrak{u}_I$ of some parabolic subalgebra $\mathfrak{p}_I$.
+% Irving \cite{Ir} found that the projective modules which have the self-dulity property are those modules with maximal Gelfand-Kirillov dimension equal to $\dim(\mathfrak{u}_I)$ in the parabolic category $\mathscr{O}^{\mathfrak{p}_{I}}$. These modules play an important role in the study of parabolic category $\mathscr{O}^{\mathfrak{p}_I}$.
+%
+%For these modules, we have the following theorem.
+%
+%
+%\begin{Thm}\label{m3}
+%Let  $\mathfrak{g}$ be a complex simple Lie algebra with a parabolic subalgebra $\mathfrak{p}_I=\mathfrak{l}_I\oplus \mathfrak{u}_I$ for some set $I$.  Let $L(\lambda)\in \mathscr{O}^{\mathfrak{p}_{I}}$ be an integral highest weight $\mathfrak{g}$-module with maximal GKdim equal to $\dim(\mathfrak{u}_I)$.
+%Then  $V(L(\lambda))=\mathcal{V}(w_I)=\mathfrak{u}_I$ is irreducible. In particular, $V(L_w)=\mathfrak{u}_I$ if and only if   $w \stackrel{R}{\sim} w_I$.
+
+
+
+%Suppose $\mathfrak{g}$ is a simple Lie algebra with a parabolic subalgebra $\mathfrak{p}_I=\mathfrak{l}_I\oplus \mathfrak{u}_I$ for some set $I$. Let $L(\lambda)$ be a highest weight $\mathfrak{g}$-module with maximal Gelfand-Kirillov dimension $\dim(\mathfrak{u}_I)$ in $\mathscr{O}^{\mathfrak{p}_{I}}$.
+%Then  $V(L(\lambda))=\mathfrak{u}_I$ is irreducible. In particular, $GKdim(L_w)=\dim(\mathfrak{u}_I)$ if and only if  $w$ belongs to a right cell containing the element $w_I$.
+%\end{Thm}
+
+The paper is organized as follows. In section 2 we recall the definitions of Gelfand-Kirillov dimension and associated variety of modules and ideals. In section 3 we prove two lemmas about some properties of associated varieties of highest weight modules.
+In section 4 we prove theorem \ref{m2} by using the algorithm found by Bai-Xie \cite{BX}.
+In section 5, we prove theorem \ref{m21}, \ref{m22} and \ref{m23} by using the algorithm found by Bai-Xie \cite{BX-2}.
+%In section 6, we prove theorem \ref{m3}.
+
+
+
+\section{Preliminaries}
+
+In this section, we will recall the definitons of Gelfand-Kirillov dimensions and associated varieties of highest weight moudules. More details can be found in Vogan \cite{Vo78}.
+
+\begin{definition} Let $\mathfrak{g}$ be a finite-dimensional simple Lie algebra. Let $M$ be a $U(\mathfrak{g})$-module generated by a finite-dimensional subspace $M_0$. Let $U_{n}(\mathfrak{g})$ be the standard filtration of $U(\mathfrak{g})$.  Then the \textit{Gelfand-Kirillov dimension} of $M$  is defined by$$
+	\operatorname{GKdim} M = \overline{\lim\limits_{n\rightarrow \infty}}\frac{\log\dim( U_n(\mathfrak{g})M_{0} )}{\log n}.
+	$$
+\end{definition}
+It is well-known that the above definition  is independent of  the choice of  $M_0$.
+
+The graded module of $M$ is defined by $\text{gr} (M)=\bigoplus\limits_{n=0}^{\infty} \text{gr}_n M$ (here $M_n=U_n(\mathfrak{g})M_0$, $\text{gr}_n M=M_n/{M_{n-1}}$), which is a finitely generated $\text{gr}(U(\mathfrak{g}))$($\approx S(\mathfrak{g})$)-module.
+
+The  \textit{ associated variety} of $M$ is defined by
+$$
+V(M):=\text{Supp}(\text{gr} (M))=\{X\in \mathfrak{g}^* \mid p(X)=0 \text{ for all~} p\in \operatorname{Ann}_{S(\mathfrak{g})}(\operatorname{gr} M)\}.
+$$
+We have $\dim V(M)=\gkd M$.
+
+
+Let $\mathfrak{g}$ be a finite-dimensional semisimple Lie algebra. Let $I$ be a two-sided ideal in $U(\mathfrak{g})$. Then $\text{gr}(U(\mathfrak{g})/I)\simeq S(\mathfrak{g})/\text{gr}I$ is a graded $S(\mathfrak{g})$-module with annihilator $\text{gr}I$. We define the associated variety of $J$ by
+$$V(I):=V(U(\mathfrak{g})/I)=\{X\in \mathfrak{g}^* \mid p(X)=0\ \mbox{for all $p \in {\text{gr}}I$}\}.
+$$
+
+
+
+
+Let $(G,K)$ be a Hermitian symmetric pair. Then $G$ is a simple real Lie group with a maximal compact subgroup $K$ so that $G/K$ is a Hermitian symmetric space. We denote their complexified Lie algebra by $\mathfrak{g}$ and $\mathfrak{k}$. The classification can be found in Enright-Howe-Wallach \cite{EHW}.  Let $\mathfrak{g} =\mathfrak{p}^-\oplus\mathfrak{k}\oplus\mathfrak{p}^+$ be the usual decomposition of $\mathfrak{k}$-modules, where $\mathfrak{p}^\pm$ are abelian. Then $\mathfrak{q}=\mathfrak{k}\oplus\mathfrak{p}^+$ is a maximal parabolic subalgebra of $\mathfrak{g}$ with nilradical $\mathfrak{p}^+$. Let $\mathfrak{h}$ be a Cartan subalgebra of $\mathfrak{k}$ and $\mathfrak{g}$.
+
+Let $F(\lambda)$ be the finite-dimensional irreducible $\mathfrak{k}$-module of highest weight $\lambda-\rho \in \mathfrak{h}^*$. By letting $\mathfrak{p}^+$ act trivially on $F(\lambda)$, we may consider $F(\lambda)$ as a module of $\mathfrak{q}$. The \textit{highest weight Harish-Chandra module} $L(\lambda)$ is the irreducible quotient of the  generalized Verma module
+\[
+N(\lambda):=U(\mathfrak{g})\otimes_{U(\mathfrak{q})}F(\lambda).
+\]
+$L(\lambda)$ is equivalent to the $\mathfrak{g}$-module of $\mathfrak{k}$-finite vectors in a representation of $G$.  From Vogan \cite{Vo91} and Nishiyama-Ochiai-Taniguchi \cite{NOT}, we know that the closures of $K_\mathbb{C}$-orbits in $ \mathfrak{p}^+ $ form a linear chain of varieties:
+\begin{equation}\label{eq:chain}
+\{0\}={\bar{\mathcal{O}}}_0\subset \bar{\mathcal{O}}_1\subset ...\subset\bar{\mathcal{O}}_{r-1}\subset \bar{\mathcal{O}}_r=\mathfrak{p}^+,
+\end{equation}
+where $r$ is the real rank of $G$. So we have
+$V(L(\lambda))=\bar{\mathcal{O}}_{k(\lambda)}$ for some integer $k(\lambda)\geq 0$.
+Bai-Hunziker \cite{BH} found a simple and uniform formula for the value of $k(\lambda)$ in the case of unitary highest weight Harish-Chandra modules for all types of Hermitian symmetric pairs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Two lemmas about associated varieties of highest weight modules}
+In this section, we will prove two key lemmas and some corollaries which will be used in the proofs of our theorems.
+
+Let $\mathfrak{g}$ be a complex simple Lie algebra with a triangular decomposition $\mathfrak{g}=\mathfrak{n}\oplus \mathfrak{h} \oplus \mathfrak{n}^-$. Let $\mathfrak{p} = \fll\oplus \fuu$ be a parabolic subalgebra containing $\fnn$.
+Let $\mathscr{O}^{\mathfrak{p}}$ be the parabolic subcategory of the category-$\mathscr{O}$. More details about the properties of $\mathscr{O}^{\mathfrak{p}}$ can be found in Humphreys \cite{Hum}.
+
+
+
+The following is a generalization of Joseph's result \cite[Lemma 6.1]{Jo84}.
+\begin{Lem}\label{ma}
+	Let $M\in \mathscr{O}$ be an (irreducible/finite length) highest weight module.
+	Suppose $V(M)\subset \fuu$, then
+	\[
+	M\in \mathscr{O}^{\mathfrak{p}}.
+	\]
+	(Note that we identify $(\fnn^-)^*$ with $\fnn$.)
+\end{Lem}
+\begin{proof}
+	\def\fnlm{\fnn_\fll^-}
+	\def\fnm{\fnn^-}
+	\def\Supp{\mathrm{Supp}}
+	\def\bN{\mathbb{N}}
+	\def\sO{\mathscr{O}}
+	%Fix the Levi decomposition $\fpp  = \fll \oplus \fuu$ where $\fll$ is the Levi subalgebra. 
+	%Let $\fnn^-$ and $\fuu^-$ be the nilpotent subalgebras opposite to $\fnn$ and $\fuu$ respectively. 
+	Let $\fuu^-$ be the nilpotent subalgebra opposite to $\fuu$. 
+	Then $\fnn^- = \fuu^- \oplus \fnn_\fll^-$ and $\fpp = \fnlm \oplus \fbb$ where
+	$\fnn_\fll^- := \fnn^- \cap \fll$. 
+	% In the proof, we identify $\fnn^-$ and $\fuu^-$ with 
+	% $\fnn^*$ and $\fuu^*$. % via a fixed  $\fgg$-invariant non-degenerate bilinear form on $\fgg$.  
+
+	Recall that a sequence $\{M_i\}_{i\in \bN}$ %\subseteq M_1 \subseteq \cdots \subseteq M_i \subseteq \cdots$ of 
+	of finite dimensional subspaces of $M$ is called a  good filtration of $M$ if  
+	\begin{itemize}
+	\item  $M_i\subset M_{i+1}$, 
+	\item $M_i$ is $\fbb$-invariant, and %for every $i \in \bN$;  
+	\item there is a $i_0\in \bN$ such that 
+	\[
+	M_{i+i_0} = \cU^i(\fgg)M_{i_0}. %   = \cU^i(\fnn^-) M_{i_0}. 
+	\]
+	\end{itemize}
+	for all $i\in \bN$. 
+	% Let $M_0$ be a finite dimensional $\fbb$-stable subspace of $M$ such that $M = \cU(\fgg)M_0$. 
+	% Then 
+	% \[
+	% M_i := \cU^i(\fgg)M_0 = \cU^i(\fnn^-) M_0 
+	% \]
+	% is a good filtration of $M$ and $\Supp\, \Gr M_i \subset \fnn $. 
+
+	Let $\{M_i\}$ be a good filtration of $M$. 
+	Since the subvariety $\fuu = (\fuu^-)^*$ is defined
+	by the ideal $\fnn_\fll^- S(\fnn^-)$,  
+	the condition $V(M) = \Supp\, \Gr M_i   \subset \fuu$
+	implies that the $\fnn_\fll^-$ action on $\Gr M_i$ is nilpotent. 
+	In other words, there
+	is a positive integer $j$ such that 
+	\[
+		\cU^j(\fnn_\fll^-) M_i \subset M_{i+j-1} \qquad \forall i\in \bN. 
+	\] 
+	For each good filtration $\{M_i\}$,  
+	let $j(\{M_i\})$ be the minimal positive integer satisfying the above condition.
+
+	
+    Note that $M\in \sO^\fpp$ is equivalent to the existence of a good filtration $\{M_i\}$ such 
+	that each term $M_i$ is $\fpp$-invariant, i.e. $j(\{M_i\}) = 1$. 
+	Now the lemma follows by induction using the following claim. 
+
+	\noindent {\bf \underline{Claim.} } Suppose $M_i$ is a good filtration such that 
+	$j:=j(\{M_i\})>1$. Then here is a good filtration $\tM_i$ such that $j(\{\tM_i\}) < j(\{M_i\})$.
+
+	\proof
+	Define 
+	\[
+		\tM_i := \fnn_\fll^- M_{i-1} + M_{i-1}.
+	\]	
+
+	For sufficiently large $i$, we have 
+	\[
+	\begin{split}
+		\fnn^- \tM_i & = \fnm \fnlm M_{i-1} + \fnm M_{i-1}\\
+		 &\subset  \fnlm \fnm M_{i-1} + [\fnm,\fnlm] M_{i-1} + \fnm M_{i-1} \\
+		 &\subset \fnlm  M_i + M_i = \tM_{i+1} \\
+		 & \text{and}\\
+	\tM_{i+1} 	& = \fnn_\fll^- M_i + M_i \subset \fnlm \cU^1(\fnm) M_{i-1} +
+	\cU^1(\fnm) M_{i-1} \\
+	& \subset \fnn^- \fnn_\fll^- M_{i-1} + [\fnn^-, \fnn^-_\fll] M_{i-1}
+	+ \fnn^- M_{i-1} + M_{i-1}\\
+	& \subset \fnn^- (\fnn_\fll^- M_{i-1}+ M_{i-1}) + M_{i-1} \subset  \cU^1(\fnn^-) \tM_{i}.
+	\end{split}
+	\]
+	Therefore $\tM_i$ is a good filtration. %, since %$. In fact,
+
+	Note that $M_{i-1}$ is $\fbb$-invariant. We conclude that  
+	$\tM_i$ is $\fbb$-stable since % (note that ), so we have
+	\[
+	\begin{split}
+	\fbb\tM_i &= \fbb\fnn_{\fll}^- M_{i-1}   + \fbb M_{i-1}\\
+	& \subset \fnn_{\fll}^- \fbb M_{i-1} + [\fbb, \fnn_{\fll}^-] M_{i-1} + \fbb M_{i-1}  \\
+	& \subset  \fnn_{\fll}^- M_{i-1} + [\fbb\cap \fll + \fuu, \fnn_{\fll}^-]
+	M_{i-1}  + M_{i-1}\\
+	& \subset \fnn_{\fll}^- M_{i-1} + M_{i-1} = \tM_i\\
+	& \quad  \text{(by $[\fbb\cap \fll, \fnn_{\fll}^-] \subset \fll \subset \fnn_\fll^-
+		+ \fbb$ and $[\fuu, \fnn_{\fll}^-]\subset[\fuu, \fll] \subset \fuu\subset \fbb$ )}.
+	\end{split}
+	\]
+	In summary, $\tM_i$ is a good filtration. 
+
+	By the definition of $\tM_i$, we have 
+	\[
+	\begin{split}
+	\cU^{j-1}(\fnn_{\fll}^-)\tM_i \subset \cU^j(\fnn_\fll^-)M_{i-1} +
+	\cU^{j-1}(\fnn_\fll^-)M_{i-1} \subset M_{i+j-2}\subset \tM_{i+j-1}.
+	\end{split}
+	\]
+	Therefore $j(\tM_i)\leq  j-1$ and the claim is proved.    
+\end{proof}
+
+
+
+\begin{Rem}
+	The condition for $L(\lambda)$  to be in $\mathscr{O}^\fpp$ is equivalent to that $\lambda-\rho$ is dominant integral with respect to $\fll$ or $\Delta_I$.
+\end{Rem}
+%
+%Suppose $\lambda$ is antidominant.
+%The condition for $L(w\lambda)$  to be in $\cO^\fpp$ seems in Milicic's notes:
+%
+%1. $w$ is the longest element in the right coset $w W_L  \in W/W_L$.
+%
+%2. $w\lambda$ is integral with respect to $\fll$.
+
+%I guess this should be known to some experts.
+
+%\color{black}
+
+
+Let $G$ be a simple real Lie group with the complexified Lie algebra $\mathfrak{g}$ and a maximal compact subgroup $K$ with the complexified Lie algebra $\mathfrak{k}$, so that $G/K$ is a Hermitian symmetric space. Let $\mathfrak{g} =\mathfrak{p}^-\oplus\mathfrak{k}\oplus\mathfrak{p}^+$ be the usual decomposition of $\mathfrak{k}$-modules, where $\mathfrak{p}^\pm$ are abelian.  Let $\mathfrak{h}$ be a Cartan subalgebra of $\mathfrak{k}$ and $\mathfrak{g}$. Then we have the following corollary.
+
+
+\begin{Cor}\label{HC}Let $(G,K)$ be a Hermitian symmetric pair with complexified Lie algebras $\mathfrak{g}$ and $\mathfrak{k}$. Suppose $L(\lambda)$ is a highest weight $\mathfrak{g}$-module, then the following conditions are equivalent:
+	\begin{itemize}
+		\item [(1)]  $L(\lambda)$ is a highest weight Harish-Chandra ($\mathfrak{g}$, $K$)-module;
+		\item [(2)] $V(L(\lambda))$ is a $K_{\mathbb{C}}$-orbit closure contained in $\mathfrak{p}^+$.
+		
+	\end{itemize}
+
+\end{Cor}
+
+%\begin{Rem}
+%	For a highest weight Harish-Chandra module, from Vogan \cite{Vo91} and Nishiyama-Ochiai-Taniguchi \cite{NOT}  we know that its associated variety is the closure of some $K_\mathbb{C}$-orbit in  $\mathfrak{p}^+$.
+%	\begin{equation*}
+%	\mathfrak{u}=\{\left(
+%	\begin{array}{cc}
+%	0 & c \\
+%	0 & 0 \\
+%	\end{array}
+%	\right)|c\in M_{p\times q}(\mathbb{C})\},
+%	\end{equation*}
+%	where $M_{p\times q}(\mathbb{C})$ denotes the set of complex $p$ by $q$ matrices and $ \mathfrak{u}$ is the nilradical of some maximal Hermitian type parabolic subalegbra. The closures of $GL(p,\mathbb{C})\times GL(q,\mathbb{C})$-orbits in $ \mathfrak{u} $ form a linear chain of varieties:
+%	\begin{equation}\label{eq:chain}
+%	\{0\}={\bar{\mathcal{O}}}_0\subset \bar{\mathcal{O}}_1\subset ...\subset\bar{\mathcal{O}}_{r-1}\subset \bar{\mathcal{O}}_r=\mathfrak{u},
+%	\end{equation}
+%	where $r=\min\{p,q\}$. From NOTYK \cite{NOTYK}, we know $$\mathcal{O}_j=\{\left(
+%	\begin{array}{cc}
+%	0 & c \\
+%	0 & 0 \\
+%	\end{array}
+%	\right)|c\in M_{p\times q}(\mathbb{C}), \text{rank}(c)=j \}.$$
+%	And we have $$\overline{\mathcal{O}}_m=\coprod\limits_{j\leq m}\mathcal{O}_j=\{\left(
+%	\begin{array}{cc}
+%	0 & c \\
+%	0 & 0 \\
+%	\end{array}
+%	\right)|c\in M_{p\times q}(\mathbb{C}), \text{rank}(c)\leq j \}.$$
+%	Sometime we will write it as $\overline{\mathcal{O}}_m(p,q)$ to emphasize that it comes from $SU(p,q)$.
+%\end{Rem}
+
+
+
+
+
+
+
+Our second key lemma is as follows.
+
+\begin{Lem}\label{m1} Suppose $\mathfrak{g}$ is a complex simple Lie algebra of classical type. Let  $w,y\in W$, then $w\stackrel{R}{\sim} y$ if and only if $V(L_w)=V(L_y)$.
+\end{Lem}
+
+
+We denote $I_w=Ann(L_w)$. Then by Borho-Brylinski \cite{BoB1} and Joseph \cite{Jo85}, we know $V(I_w)=V(U(\mathfrak{g})/I_w)$ is the closure of a single special (in the sense of Lusztig \cite{Lu79}) nilpotent orbit. From Springer \cite{Sp}, there is a bijection between special nilpotent orbits of $\mathfrak{g}$ and double cells of the Weyl group $W$, which is called Springer correspondence. The special orbits are listed in Collingwood-McGovern \cite{CM}.
+To prove our lemma \ref{m1}, we recall a conjecture of Tanisaki \cite{Ta}.
+\begin{Con}[Tanisaki]\label{Ta}
+Let $\mathcal{O}$ be a special nilpotent orbit and $\mathscr{C}$  the double cell corresponding to $\mathcal{O}$. Let $\mathscr{C}/ {\small \stackrel{R}{\sim}}$ be the right cells contained in $\mathscr{C}$. Then there exists a bijection $\varphi$ from $\mathscr{C}/ {\small \stackrel{R}{\sim}}$ to Irr$(\overline{\mathcal{O}}\cap \mathfrak{n})$ ($w\mapsto Y_w$) and an ordering $\prec$ on the set Irr$(\overline{\mathcal{O}}\cap \mathfrak{n})$ such that $V(L_w)=Y_w \cup \widetilde{Y}_w$. Here $Y_w$ is the orbital variety corresponding to $w$ in the bijection $\varphi$ and $\widetilde{Y}_w$ is a union of some orbital varieties $\mathcal{V}(y)$ in Irr$(\overline{\mathcal{O}}\cap \mathfrak{n})$  with $\mathcal{V}(y)\prec Y_w$.
+\end{Con}
+
+% From Borho-Brylinski \cite{BoB3} or McGovern \cite{Mc}, we know this ordering $\prec$ is the Bruhat-Chevalley order on the Weyl group $W$, i.e., the components in $V(L_w)$ are some $\mathcal{V}(y)\prec \mathcal{V}(w)$  if $y\leq w$ in the Bruhat-Chevalley order.
+\begin{Rem}
+The case of type $A$  for this conjecture is proved by Borho-Brylinski \cite{BoB3}. The  cases of types $B, C, D$ for this conjecture are proved by McGovern \cite{Mc}. The cases of type $E_6$ and $G_2$ for this conjecture are proved by Tanisaki \cite{Ta}. Tanisaki \cite{Ta} also proved that this conjecture is true for nine special nilpotent orbits among eleven special orbits for the case of type $F_4$.  The complete proofs of this conjecture for the cases of type $E_7, E_8, F_4$ are still unknown.
+\end{Rem}
+
+
+
+{\bf Proof of the lemma \ref{m1}.}
+From Joseph \cite{Jo84} and Borho-Brylinski \cite{BoB3}, we know if $w\stackrel{R}{\sim} y$, then $V(L_w)=V(L_y)$. Now we suppose $V(L_w)=V(L_y)$ and  $\mathfrak{g}$ is a complex simple Lie algebra of classical type. Then from Tanisaki's conjecture, we have $V(L_w)=Y_w \cup \widetilde{Y}_w$ and $V(L_y)=Y_y \cup \widetilde{Y}_y$.  So $Y_w=\varphi(w)=\varphi(y)=Y_y$, which is the maximal element in the ordering $\prec$. We denote the Springer correspondence image of $w$ by $\mathcal{O}_w $, which is a special nilpotent orbit. From Borho-Brylinski \cite{BoB1}, we know $V(I_w)=\overline{\mathcal{O}_w}=\overline{GV(L_w)}=\overline{GV(L_y)}=\overline{\mathcal{O}_y}=V(I_y)$.  Let $\mathscr{C} $ be the double cell corresponding to $\mathcal{O}_w=\mathcal{O}_y$ in the Springer correspondence. Then $w$ and $y$ belong to $\mathscr{C} $.
+From proposition 2.5 of Tanisaki \cite{Ta}, we know $Irr(V(L_w))\subset Irr(\overline{\mathcal{O}_w}\cap \mathfrak{n})$. So $Y_w=Y_y \in Irr(\overline{\mathcal{O}_w}\cap \mathfrak{n}$).
+Then Tanisaki's conjecture implies that $w\stackrel{R}{\sim} y$.  \quad  \quad \quad \quad \quad \quad \quad \quad \quad \quad\quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad $\Box$
+
+%
+\begin{Rem}\label{EG} Since the cases of type $E_6$ and $G_2$ are proved by Tanisaki, our lemma still holds for these two cases.
+
+\end{Rem}
+
+From this theorem we can get an interesting corollary about Harish-Chandra cells. This concept is defined by Barbasch-Vogan \cite{BV83}.   We recall its definition.
+Let $X,Y$ be two irreducible (Harish-Chandra) modules with the same infinitesimal character. We write $X>Y$ if there exists a finite-dimensional module $F$ (appearing in the tensor algebra $T(\mathfrak{g})$) such that $Y$ appears in $X\otimes F$ as a subquotient. We write $X\sim Y$ if both $X>Y$ and $Y>X$. The equivalence classes for the relation $\sim$ are called {\it cells of Harish-Chandra modules} or {\it Harish-Chandra cells}.
+From Barbasch-Vogan \cite{BV}, we know two highest weight modules $L_w$ and $L_y$ belong to the same Harish-Chandra cell with infinitesimal character $\rho$ if and only if  $w\stackrel{R}{\sim} y$. So we have the following corollory.
+
+\begin{Cor} Suppose $\mathfrak{g}$ is of type $A, B, C, D, E_6$, or $ G_2$.  Two highest weight Harish-Chandra modules with infinitesimal character $\rho$ have the same associated variety if and only if they belong to the same Harish-Chandra cell.
+
+\end{Cor}
+
+\begin{Rem}Recently the Atlas people are very interested in the properties of Harish-Chandra cells. It is well-known that the associated variety is a constant on each Harish-Chandra cell. But in general the converse is not true, i.e., two modules with the same associated variety may belong to different Harish-Chandra cells. Some more properties about Harish-Chandra cells can be found in McGovern \cite{Mc98}, Trapa \cite{Tr} and Barchini-Zierau \cite{BZ}.
+
+
+
+\end{Rem}
+
+
+
+
+%\begin{Rem}For the case of type $A$, the proof of this theorem can be given in a simpler way. Suppose $V(L_w)=V(L_y)$. From Joseph \cite{Jo84}, we know  From Spaltenstein \cite{Spa},
+%\end{Rem}
+
+%\begin{equation}
+%D=\left|
+%\begin{array}{cc}
+%1 & 2\\
+%3 & 4
+%\end{array}\right|
+%\end{equation},
+%
+%
+%\begin{equation}
+%\left|
+%\begin{array}{ccc}
+%1 &   2&2\\
+%3 & 4&3
+%\end{array}\right|
+%\end{equation}
+%
+%\begin{equation}
+%D=\left|
+%\begin{array}{cccc}
+%5& 3 &1&2\\
+%1&7&2&5\\
+%0&2 &1&1\\
+%0& 4&1&4
+%\end{array}\right|
+%\end{equation}
+%
+%\begin{equation}
+%D=\left|
+%\begin{array}{cccc}
+%5& 3 &-1&2\\
+%1&7&2&5\\
+%0&-2 &1&1\\
+%0& -4&-1&4
+%\end{array}\right|
+%\end{equation}
+%
+%\begin{equation}
+%D=\left|
+%\begin{array}{cccccc}
+%0 &0&...&0&1&0\\
+%0 &0&...&2&0&0 \\
+%\vdots &\vdots& \ldots   &\vdots &\vdots & \vdots\\
+%0&n-1&...&0&0&0 \\
+%n&0&... &0&0&0\\
+%0&0&... &0&0&n+1
+%\end{array}\right|
+%\end{equation}.
+
+% We have proved our theorem.
+%For Wallach representations, the Gelfand-Kirillov dimension is a well-known %fact. For example, see Ref. \cite{EH}. Then case by case,  we can check that %our theorem is true for Wallach representations.
+
+
+
+
+
+%\section{A corollary about primitive ideals}
+
+Let $G$ be a connected semisimple algebraic group over $\mathbb{C}$ with Lie algebra $\mathfrak{g}$. Let $X$ be the flag variety of $G$. We denote by $\mathcal{D}_X$ the sheaf of linear (algebraic) differential operators on $X$. For a finitely generated $U(\mathfrak{g})$-module $M$, the natural action of $G$ on $X$ can induce a coherent $\mathcal{D}_X$-module
+ $\mathcal{M}:=\mathcal{D}_X\otimes_{U(\mathfrak{g})}M$. We choose a good filtration of $\mathcal{M}$, then the associated graded module $\text{gr}\mathcal{M}$ is a coherent $\text{gr}\mathcal{D}_X$-module.
+ The \textit{characteristic variety} of $\mathcal{M}$ is
+ defined as  the support of $\text{gr}\mathcal{M}$  on $T^*X$, which is denoted by $$Ch(M)=\text{Supp}(\text{gr}\mathcal{M}).$$
+
+
+
+
+ Let $\mathscr{I}_0$ be the set of primitive ideals of $U(\mathfrak{g})$ with trivial central character. From Duflo \cite{Du}, we know $\mathscr{I}_0=\{I_w| w\in W\}$.  Tanisaki \cite{Ta} proposed the following conjecture.
+
+
+ \begin{Con}[Tanisaki]Suppose $\mathfrak{g}$ is a simple Lie algebra.
+If $$\text{Ch}(U(\mathfrak{g})/I_w)=\text{Ch}(U(\mathfrak{g})/I_y)$$ for $I_w,I_y \in \mathscr{I}_0$, then $I_w=I_y$, equivalently $w\stackrel{L}{\sim} y$.
+\end{Con}
+
+
+Now we can prove this conjecture for many cases by our lemma \ref{m1} and remark \ref{EG}.
+
+ \begin{Cor}Suppose $\mathfrak{g}$ is a simple Lie algebra
+	of type $A, B, C, D, E_6$, or $G_2$,
+then Tanisaki's conjecture holds.
+\end{Cor}
+
+\begin{proof}
+
+ From Joseph \cite{Jo79} and Vogan \cite{Vo80}, we know $I_w=I_y$ if and only if $w\stackrel{L}{\sim} y$.
+Let $\text{Ch}(U(\mathfrak{g})/I_w)$ be the characteristic variety defined by Borho-Brylinski \cite{BoB3}. We have $\text{Ch}(U(\mathfrak{g})/I_w)=G\times^{B}V(L_{w^{-1}})$.   So $\text{Ch}(U(\mathfrak{g})/I_w)=\text{Ch}(U(\mathfrak{g})/I_y)$ is equivalent to $V(L_{w^{-1}})=V(L_{y^{-1}})$.  By our lemma \ref{m1}, we have $w^{-1}\stackrel{R}{\sim} y^{-1}$, equivalently $w\stackrel{L}{\sim} y$. So we get  $I_w=I_y$.
+
+\end{proof}
+
+\begin{Rem}The case of type $A$ for this conjecture is proved by Borho-Brylinski \cite{BoB3}. Modulo Tanisaki's conjecture \ref{Ta}, our proofs for the lemma \ref{m1} and the above corollary  also hold for the Lie algebras of types $E_7, E_8$ and $F_4$.
+
+
+\end{Rem}
+
+
+
+\section{ Associated varieties of minimal highest weight modules of $\mathfrak{sl}(n, \mathbb{C})$ }
+
+An orbital variety is called {\it weakly quantizable} by Joseph\cite{Jo98} if it is the associated variety of a highest weight module. For minimal orbital varities, we have the following properties.
+
+
+
+
+	\begin{Pro}[Braverman-Joseph \cite{BJ}]\label{JB}
+	Every minimal orbital variety of $\mathcal{O}_{min}$ takes the form $\overline{Be_{\alpha}}=\mathcal{V}(s_{\alpha}w_0)$ for some long simple root $\alpha$ in the standard simple root system.
+\end{Pro}
+
+\begin{Pro}[Joseph \cite{Jo98}]
+	Every minimal orbital variety is weakly quantizable except the $V_i=\overline{Be_{\alpha_i}}: i=2,3,...,n-2$ in type $B_n: n\geq 4$.
+\end{Pro}
+%In type $B_n$, let $\lambda_i=s_{i-1}s_{i-2}...s_0(-(n-1/2)w_1)=(-n+1/2)e_i$.  Joseph found that $V(L(\lambda_i))=\overline{Be_{\alpha_{i-1}}}\cup \overline{Be_{\alpha_i}}$.
+
+
+
+
+
+
+
+Now we suppose  $\mathfrak{g}=\mathfrak{sl}(n, \mathbb{C})$.
+The Weyl group of $\mathfrak{g}$ is  $S_n$. From Sagan \cite{Sa} or Bai-Xie \cite[Lemma 4.1]{BX}, we know there is a bijection between the right cells in the symmetric group $S_n$ and the Young tableaux through the famous Robinson-Schensted algorithm.
+We use $T(\sigma)$ to denote the corresponding Young tableau for any $\sigma \in S_n$.
+
+From Bai-Xie \cite{BX}, we know that for any integral weight $\lambda \in \mathfrak{h}^*$, there is a Young tableau corresponding to it through a similar method with the R-S algorithm.
+We recall this method from Bai-Xie \cite{BX}.
+For an integral weight $ \lambda\in\ \mathfrak{h}^* $, we write  $\lambda=(\lambda_1,...,\lambda_n)$. We associate to $ \lambda $ a  Young tableau  $ T(\lambda) $ as follows. Let $ T_0 $ be an empty Young tableau. Assume that we have constructed Young tableau $ T_k $ associated to $ (\lambda_1,\cdots,\lambda_k) $, $ 0\leq k<n $. Then $ T_{k+1} $ is obtained by adding $ \lambda_{k+1} $ to $ T_k $ as follows. First add $ \lambda_{k+1} $ to the first row of $ T_k $ by replacing the leftmost entry $ x $ in the first row which is \textit{strictly} bigger than $ \lambda_{k+1} $.  (If there is no such an entry $ x $, we just add a box with entry $\lambda_{k+1}  $ to the right side of the first row, and end this process). Then add $ x $ to the next row as the same way of adding $\lambda_{k+1} $ to the first row.  Then we put $T(\lambda)=T_n$.
+
+
+
+For the Young tableau $T(\lambda)$, we define $ F_A(\lambda) :=\sum\limits_{i\geq 1}\frac{c_i(c_i-1)}2$ where $ c_i $ is the number of entries in the $ i $-th column of $T(\lambda)$.
+
+ When  $ \lambda $ is non-integral, we  associated to $ \lambda $ a set $ P(\lambda) $ of some Young tableaux as follows. Let $ \lambda_Y:\lambda_{i_1}, \lambda_{i_2}, \dots, \lambda_{i_r} $  be a maximal subsequence of $ \lambda_1,\lambda_2,\dots,\lambda_n $ such that $ \lambda_{i_k} $, $ 1\leq k\leq r $ are congruent to each other by $ \mathbb{Z} $. Then the Young tableau associated to the subsequence $ \lambda_Y $ using R-S insertion algorithm is a Young tableau in $ P(\lambda) $. If $ Y $ is a Young tableau, define $ F_A(Y) :=\sum\limits_{i\geq 1}\frac{c_i(c_i-1)}2$ where $ c_i $ is the number of entries in the $i$-th column of $ Y $. Then we  define $ A(P(\lambda)) :=\sum_{Y\in P(\lambda)}F_A(Y)$.
+	
+
+\begin{Pro}[Bai-Xie \cite{BX}]
+	Let $ \mathfrak{g}=\mathfrak{sl}(n,\mathbb{C}) $. For any $ \lambda\in\mathfrak{h}^* $, we have \[
+	\gkd L(\lambda)=\frac{n(n-1)}2-A(P(\lambda)).
+	\]
+In particular, for any integral  weight $ \lambda\in \mathfrak{h}^* $, we suppose  $T(\lambda)$   has $k$  columns for some integer $k$. Then
+$$\gkd L(\lambda)=\frac{n(n-1)}2-F_A(\lambda)=\frac{1}{2}(n^2-\sum\limits_{1\leq i \leq k}c_i^2).
+$$
+\end{Pro}
+
+
+
+
+We have the following lemma.
+
+
+\begin{Lem}\label{c12}
+Let $ \mathfrak{g}=\mathfrak{sl}(n,\mathbb{C}) $. Suppose $L(\lambda)$ is an integral highest weight $\mathfrak{g}$-module. Then  the $\gkd L(\lambda)$ takes the minimal value $n-1$ if and only if
+$$c_1=n-1, c_2=1.$$
+\end{Lem}
+\begin{proof} Suppose  $T(\lambda)$   has $k$  columns for some integer $k$. We use $ c_i $ to denote the number of entries in the $i$-th column of  $T(\lambda)$.
+Now $GKdimL(\lambda)=n-1=\frac{1}{2}(n^2-\sum\limits_{1\leq i \leq k}c_i^2)$. From $\sum c_i=n$, we can get $\sum\limits_{i=1}^{k} c_i^2=(n-1)^2+1$.
+Since $c_i$ are positive integers and $c_1\geq c_2\geq...\geq c_k>0$, we  claim that: $k=2$ and $c_1=n-1,c_2=1$.
+If fact, we have $(n-1)^2+1=\sum\limits_{i=1}^{k} c_i^2\leq c_1^2+(\sum\limits_{i=2}^{k} c_i)^2=c_1^2+(n-c_1)^2$. The function $f(x)=(n-x)^2+x^2$ is decreasing for $x\in[1,\frac{n}{2}]$ and increasing for $x\in[\frac{n}{2},n-1]$. Thus the inequality $(n-1)^2+1\leq c_1^2+(n-c_1)^2$ will imply that $c_1=n-1$ or $c_1=1$. We delete the case $c_1=1$. Therefore we have proved the claim.
+\end{proof}
+
+Similarly we can get the following corollary.
+\begin{Cor}\label{non}
+Let $ \mathfrak{g}=\mathfrak{sl}(n,\mathbb{C}) $. Suppose $L(\lambda)$ is a non-integral highest weight $\mathfrak{g}$-module. Then   $\gkd L(\lambda)$ takes the minimal value $n-1$ if
+and only if $\lambda$ is divided into two parts $x=(\lambda_1,\lambda_2,..,\lambda_{i_0-1},\lambda_{i_0+1},\dots,\lambda_n)$ being ordered and $y=\lambda_{i_0}$.
+\end{Cor}
+
+
+
+For $\lambda=(\lambda_1,...,\lambda_n)$, $ \lambda $ is called a \textit{$ (p,q) $-dominant} weight, if $ \lambda_i-\lambda_j\in\mathbb{Z}_{>0} $ for $ 1\leq i<j\leq p $ and $ p+1\leq i<j\leq p+q=n $. From Enright-Howe-Wallach \cite{EHW}, we know $L(\lambda)$ will be a Harish-Chandra $SU(p,q)$-module if and only if $ \lambda $ is  a $ (p,q) $-dominant weight for some $p$ and $q$. Therefore, $L_w$ is a highest weight Harish-Chandra $SU(p,q)$-module if and only if $-w\rho $ is  $ (p,q) $-dominant. The number of these modules is $|S_n/(S_p\times S_q)|=\frac{n!}{p!q!}$. From Nishiyama-Ochiai-Taniguchi \cite{NOT}, we have
+$$\mathfrak{p}^+=\{\left(
+\begin{array}{cc}
+0 & c \\
+0 & 0 \\
+\end{array}
+\right)|c\in M_{p\times q}(\mathbb{C}) \}$$
+and
+ the minimal $K_{\mathbb{C}}$-orbit (minimal orbital variety) is $$\mathcal{O}_1=\{\left(
+	\begin{array}{cc}
+	0 & c \\
+	0 & 0 \\
+	\end{array}
+	\right)|c\in M_{p\times q}(\mathbb{C}), \text{rank}(c)=1 \}.$$
+	And we also have $$\overline{\mathcal{O}}_1=\{\left(
+	\begin{array}{cc}
+	0 & c \\
+	0 & 0 \\
+	\end{array}
+	\right)|c\in M_{p\times q}(\mathbb{C}), \text{rank}(c)\leq 1 \}.$$
+	Sometime we will write it as $\overline{\mathcal{O}}_1(p,q)$ to emphasize that it comes from $SU(p,q)$. Actually we have $\overline{\mathcal{O}}_1(p,q)=\overline{Be_{\alpha_{p}}}$.
+
+
+
+
+From the construction of  the Young tableau $T(\lambda)$, we have the following corollary.
+
+
+\begin{Cor}\label{pq}
+Let $ \mathfrak{g}=\mathfrak{sl}(n,\mathbb{C}) $. Suppose $L(\lambda)$ is an integral highest weight $\mathfrak{g}$-module. Then  the $GKdim L(\lambda)=n-1$  if and only if   there exists an  index $1\leq p\leq n-1$ such that $\lambda$ is  $ (p,n-p) $-dominant, and we can find a smallest index $1\leq i_1\leq p$ such that $\lambda_{i_1}\leq \lambda_{p+1}$ and $\lambda_{p}>\lambda_{p+2}$(when $i_1\neq p$).
+\end{Cor}
+
+\begin{Rem}
+A module of a finite-dimensional simple Lie algebra $\mathfrak{g}$ is called a
+\emph{weight module} if it is a direct sum of its weight subspaces. The classification of weight modules had been completed by Mathieu \cite{Ma}.
+A weight module $M$ is called \emph{admissible} if the dimension of its any weight subspace is uniformly bounded. Benkart-Britten-Kemire \cite{BBL}  found that theses modules have minimal Gelfand-Kirillov dimension and only exist when $\mathfrak{g}$ is of type $A$ or $C$.
+The admissible highest weight modules played an important role in Mathieu' work.
+
+%%When $\mathfrak{g}=\mathfrak{sp}(2n, \mathbb{C})$, Britten-Kemire \cite{BL} classified the  admissible highest weight modules and found that they can be realized as submodules of a tensor product. Sun \cite{Sun} classified the minimal lowest (equivalently, highest) weight Harish-Chandra $(\mathfrak{g}, K)$-modules. By comparing their work, we know that a module is an admissible highest weight module if and only if it is a highest weight Harish-Chandra $(\mathfrak{g}, K)$-module with minimal Gelfand-Kirillov dimension.
+
+
+In Mathieu's work \cite{Ma}, $\lambda=(\lambda_1,...,\lambda_n)$ is called \emph{ordered} if all differences $\lambda_i-\lambda_{i+1}$ are positive integers.
+Mathieu found that a highest weight $\mathfrak{sl}(n, \mathbb{C})$-module $L(\lambda)$ is admissible if and only if $\lambda$ is ordered after removing one term.
+\end{Rem}
+
+Now we have the following corollary after comparing with Mathieu's result.
+\begin{Cor}
+Let $ \mathfrak{g}=\mathfrak{sl}(n,\mathbb{C}) $. Suppose $L(\lambda)$ is a  highest weight $\mathfrak{g}$-module. Then   $\gkd L(\lambda)=n-1$  if and only   there exists an  index $1\leq i_0\leq n$ such that  $\lambda$ will be ordered after removing this $i_0$-th  term.
+In other words, $\gkd L(\lambda)=n-1$  if and only if $L(\lambda)$ is admissible. When $L(\lambda)$ is integral and $\lambda$ is  $ (p,n-p) $-dominant, we will have $i_0=p+1$ if $\lambda_{p+1}>\lambda_{p-1}>\lambda_p>\lambda_{p+2}$, $i_0=p$ if $\lambda_{p-1}>\lambda_{p+1}>\lambda_{+2}>\lambda_{p}$ and $i_0=p$ or $p+1$ if $\lambda_{p-1}>\lambda_{p+1}>\lambda_p>\lambda_{p+2}$.
+\end{Cor}
+
+{\bf Proof of the theorem \ref{m2}.}
+Suppose $\gkd L(\lambda)$ takes the minimal value $n-1$. When $L(\lambda)$ is non-integral,
+ $\lambda$ will be divided into two parts $x=(\lambda_1,\lambda_2,..,\lambda_{i_0-1},\lambda_{i_0+1},\dots,\lambda_n)$ being ordered and $y=\lambda_{i_0}$ by corollary \ref{non}. When $i_0=1$ or $n$, we still can regard $L(\lambda)$ as a highest weight Harish-Chandra module of $SU(1,n-1)$ or $SU(n-1,1)$ by Enright-Howe-Wallach \cite{EHW}. For these two cases, the corresponding generalized Verma module $M(\lambda)$ is irreducible and thus we have $M(\lambda)=L(\lambda)$. So we have $V( L(\lambda))=\overline{Be_{\alpha_{1}}}$ for $SU(1,n-1)$ and  $V( L(\lambda))=\overline{Be_{\alpha_{n}}}$ for $SU(n-1,1)$.
+
+Now we suppose $L(\lambda)$ is an integral highest weight $\mathfrak{sl}(n,\mathbb{C})$-module with $\gkd L(\lambda)=n-1$. Then from corollary \ref{pq}, we know $L(\lambda)$ is a Harish-Chandra module and  $V(L(\lambda))$ is irreducible. So this $\lambda$ is $(p,q)$-dominant for some $p$ and $q$. We write the corresponding parabolic subalgebra by $\mathfrak{p}=\mathfrak{l} \oplus \mathfrak{u}$. Let $K$ be the maximal compact subgroup of $G=SU(p,q)$. Then the Lie algebra of $K$ is $\mathfrak{l}$.
+
+From Bai-Xie \cite{BX}, we know  $V( L(\lambda))$  is the  closure $\bar{\mathcal{O}}_1$ of the first $K_{\mathbb{C}}$ orbit in $\mathfrak{u}$.
+Since  $V( L(\lambda))$ is irreducible, it must equal to some orbital variety $\mathcal{V}(w_{\lambda})=\overline{B(\mathfrak{n}\cap w_{\lambda}\mathfrak{n})}$ by Tanisaki \cite{Ta}.
+Since  $GKdim L(\lambda)=n-1$, the orbital variety $\mathcal{V}(w_{\lambda})$ must come from the unique non-zero nilpotent orbit $\mathcal{O}_{min}$ of minimal dimension.
+From Joseph \cite{Jo98}, we know all   minimal orbital varieties will take the form $\overline{Be_{\alpha_{i}}}$ with $\alpha_i \in \Delta$. Here $\Delta=\{\alpha_i=e_i-e_{i+1}|1\leq i \leq n-1\}$ is the set of simple roots.
+
+Now our $\lambda$ is $(p,q)$-dominant, so we have $(\lambda, \alpha_i)\in \mathbb{Z}_{>0}$ for all $\alpha_i \in \Delta \setminus \{\alpha_p\}$.
+Then from Joseph \cite[Theorem 4.14]{Jo98}, we know $V( L(\lambda))=\mathcal{V}(w_{\lambda})=\overline{Be_{\alpha_{p}}}$.
+
+When $\gkd L_w=n-1$,  $L_w$ will be a highest weight Harish-Chandra module. We know $V(L_w)$ is just one orbital variety. From Joseph \cite{Jo84}, we have $\mathcal{V}(w)\subset V(L_w)$ and  $\dim(\mathcal{V}(w))=\dim( V(L_w))$. So we must have $V(L_w)=\mathcal{V}(w)$ for all highest weight Harish-Chandra modules $L_w$ with minimal Gelfand-Kirillov dimension.
+
+When  $w=(n,...,\hat{k},...,1,k)$, we denote $\lambda=-w\rho$, then $T(\lambda)$ and $T(w)$ have the same shape by Bai-Xie \cite{BX}. It is obvious that $\gkd L_w=n-1$. When $\sigma \stackrel{R}{\sim} w$, from Steinberg \cite{St} or Ariki \cite{Ar} we have $T(\sigma)=T(w)$. So   $\gkd L_{\sigma}=n-1$.
+
+Conversely, suppose $\gkd L_w=n-1$. We use $T(w)$ to denote the Young tableau corresponding to $w$. $T(\lambda)$ and $T(w)$ have the same shape.  Then from lemma \ref{c12}, we know $c_1(T(w))=n-1$ and $c_2(T(w))=1$. We denote the entries in the first column of $T(w)$ by $(\lambda_1,...,\lambda_{n-1})$ from top to bottom and denote the unique entry in the second column by $s$. Then we have $\lambda_{1}\leq s$. We put $(\lambda_1,...,\lambda_{n-1})$ and $s$ together, then we get an increasing sequence $(\lambda_1,...,\lambda_{k-1},s,\lambda_{k},...,\lambda_{n-1})$ such that $ \lambda_{k-1}\leq s< \lambda_{k}$ for some $2\leq k\leq n$ (when $k=n$, the increasing sequence is $(\lambda_1,...,\lambda_{n-1},s)$). We say $s$ is the $k$-th entry in this sequence. We let $w'=(n,...,\hat{k},...,1,k)$. Then we have $T(w')=T(w)$ by Fresse-Melnikov \cite{FM}. So from Steinberg \cite{St} or Ariki \cite{Ar}, we have $w\stackrel{R}{\sim} w'$.
+
+When  $w=(n,...,\hat{k},...,1,k)$, we have $\lambda=-w\rho=\frac{1}{2}((n-3)e_1+...+(n-2k+1)e_{k-1}+(n-1)e_k+(n-2k-1)e_{k+1}+...+(-n+1)e_n)$, which is $(k-1,n-k+1)$-dominant. So we have $p=k-1$ and $V(L_w)=\mathcal{V}(w)=\overline{Be_{\alpha_{p}}}=\overline{Be_{\alpha_{k-1}}}$.
+From the above arguments, when  $V(L(\lambda))=\mathcal{V}(w_{\lambda})=\overline{Be_{\alpha_{p}}}$, we must have $w_{\lambda}\stackrel{R}{\sim} w'=(n,...,{\widehat{p+1}},...,1,p+1)$.
+
+When $L(\lambda)$ is non-integral with minimal Gelfand-Kirillov dimension and $\lambda=(\lambda_1,...,\lambda_n)$ is ordered after removing one term $\lambda_{i_0}$ for some $1<i_0<n$. Let $I=\{1,2,...,i_0-2,i_0+1,i_0+2,...,n-1\}$. Let $\mathfrak{p}_I$ be the standard parabolic subalgebra corresponding to $I$ with Levi decomposition $\mathfrak{p}_I=\mathfrak{l}_I\oplus \mathfrak{u}_I$.
+Then $L(\lambda)\in \mathscr{O}^{\mathfrak{p}_{I}}$ and $V(L(\lambda))\subset \fuu_I$. When $V(L(\lambda))$ is irreducible (we must have $V(L(\lambda))=\overline{Be_{\alpha_{k}}}$ for some $1\leq k\leq n$), $L(\lambda)$ will be a Harish-Chandra module by corollary \ref{HC}. This is a contradiction! On the other hand, only
+$\overline{Be_{\alpha_{i_0-1}}}$ and $\overline{Be_{\alpha_{i_0}}}$ are contained in $\mathfrak{u}_I$ since we have $$\mathfrak{u}_I=\{\left(
+\begin{array}{ccc}
+0 & c_1& c_2 \\
+0 & 0&c_3 \\
+0&0&0
+\end{array}
+\right)|c_1\in M_{(i_0-1)\times 1}(\mathbb{C}), c_2\in M_{(i_0-1)\times (n-i_0)}(\mathbb{C}), c_3\in M_{1\times (n-i_0)}(\mathbb{C})\}.$$
+So we must have $V(L(\lambda))=\overline{Be_{\alpha_{i_0-1}}}\cup \overline{Be_{\alpha_{i_0}}}$.
+                                                     \qed
+%\begin{Rem}Joseph \cite {Jo98} had shown that there is one ,iunique minimal orbital variety $\mathcal{V}$ in types $C_n$ and $G_2$. Suppose $\mathfrak{g}$ is a simple Lie algebra of type $C_n$ or $G_2$. Let $L(\lambda)$ be a simple $\mathfrak{g}$-module. Then $GKdim(L(\lambda))$ is minimal  if and only if  $V(L(\lambda))=\mathcal{V}$ is irreducible. Tanisaki \cite{Ta}  found some highest weight modules $L_w$ with reducible associated varieties in type $B_3$ and $C_3$. So we can see that the Gelfand-Kirillov dimension of such unique  highest weight module in type  $C_3$ is not minimal.
+%\end{Rem}
+
+%
+%\begin{Rem}From Bai-Hunziker \cite{BH}, we know there exists unitary highest weight modules $L(\lambda)$ with the minimal $GKdim(L(\lambda))=n$ for type $C$. So the minimal orbital variety $\mathcal{V}$ in type $C$ is also a $K_{\mathbb{C}}$-orbit. Therefore,  the minimal orbital varieties  in type $C$ and $A$ are all  $K_{\mathbb{C}}$-orbits. From Barchini-Zierau \cite{BZ}, we know $\mathcal{V}(w)=\overline{B(\mathfrak{n}\cap w\mathfrak{n})}$ is a $K_{\mathbb{C}}$-orbit if and only if $L_w$ is a Harish-Chandra module. So in type $C$,  we have $GKdim(L_w)=n$ if and only if $L_w$ is a Harish-Chandra module, if and only if $V(L_w)=\mathcal{V}(w)=\mathcal{V}$ is the minimal orbital variety.
+%\end{Rem}
+
+\section{ Associated varieties of minimal highest weight modules of types $BCD$ }
+Firstly we recall the algorithm of computing Gelfand-Kirillov dimensions of highest weight modules from Bai-Xie \cite{BX-2}.
+
+	When $L(\lambda)$ is a highest weight $\mathfrak{so}(2n+1,\mathbb{C})$ (resp. $\mathfrak{sp}(n,\mathbb{C})$) module and $\rho=(n-1/2,n-3/2,...,1/2)$ (resp. $\rho=(n,n-1,...,1)$),  we have the following.
+
+\begin{Pro}[Bai-Xie \cite{BX-2}]
+	Assume that $ \lambda $ is an integral weight with $  \lambda=(\lambda_1,\cdots,\lambda_n)$.
+	Let $ Y(\lambda) $ be the  Young tableau obtained by applying Schensted insertion algorithm to the sequence \(
+	\lambda_1,\lambda_2,\cdots,\lambda_n,-\lambda_n,\cdots,-\lambda_2,-\lambda_1.\)
+	Then
+	\begin{align*}
+	&\gkd L(\lambda)=n^2-F_B(\lambda)\\
+	&=n^2-\sum\limits_{k=1}^{2m+1} (2m+1-k)\left \lfloor \frac{p_k+k-1}{2}\right \rfloor +\frac{1}{6}m(m-1)(4m+1),
+	\end{align*}
+	
+	
+	where $ \{p_k\mid 1\leq k\leq 2m+1\} $, an increasing sequence, is  a partition of $ 2n $ given by the numbers of boxes in each row of $ Y(\lambda) $.
+\end{Pro}
+
+	When $L(\lambda)$ is a highest weight $\mathfrak{so}(2n,\mathbb{C})$ module and $\rho=(n-1,n-2,...,1,0)$, we have the following.
+
+\begin{Pro}[Bai-Xie \cite{BX-2}]\label{modi}
+	Assume that $ \lambda $ is an integral weight with $  \lambda=(\lambda_1,\cdots,\lambda_n)$.
+	When the number of positive elements in $ \{\lambda_i \}$ is even, we do nothing.
+	When the number of positive elements in $ \{\lambda_i \}$ is odd, we modify $ \{\lambda_i\} $ to $\{ \lambda'_i \}$ in the following way: suppose $ \lambda_{i_1}, \lambda_{i_2},\cdots \lambda_{i_k}$ is the subsequence of $ \{\lambda_i\} $ with a minimal absolute value $ \tau $ and $ 0< \epsilon< \tau $, then
+	\begin{itemize}
+		\item[(1)] If $ \tau=0 $,  we change all $ \lambda_{i_j}$ to $-\epsilon $  except  the right-most one which is changed to $ \epsilon $.
+		\item[(2)] If all $ \lambda_{i_j} $ are equal to $ -\tau $,  we change the right-most  $-\tau$ to $ \tau $.
+		\item[(3)] If some of  $ \lambda_{i_j} $ are equal to $ \tau $, we change the left-most $ \tau $  to $ -\epsilon $.
+	\end{itemize}
+	Let $ Y(\lambda') $ be the  Young tableau obtained by applying Robinson-Schensted insertion algorithm to the modified sequence \(
+	\lambda'_1, \lambda'_2,\cdots,\lambda'_n,-\lambda'_n,\cdots, -\lambda'_2, -\lambda'_1.\)
+	Then
+	\begin{align*}
+	&\gkd L(\lambda)=n^2-n-F_D(\lambda)\\
+	&=n^2-n-\sum\limits_{k=1}^{2m} (2m-k)\left \lfloor \frac{p_k+k-1}{2}\right \rfloor +\frac{1}{6}m(m-1)(4m-5),
+	\end{align*}
+	
+	
+	where $ \{p_k\mid 1\leq k\leq 2m\} $, an increasing sequence, is  a partition of $ 2n $ given by the numbers of boxes in each row of $ Y(\lambda') $.
+\end{Pro}
+
+
+
+For the non-integral case, we define $ [\lambda] $ to be the set of maximal  subsequences  $ x  $ of  $ (\lambda_1,\lambda_2,\cdots,\lambda_n)  $ such that any pair of entries of $ x $  has either an integral sum or an integral difference. Let $ [\lambda]_1 $ (resp. $ [\lambda]_2 $) be the subset of $ [\lambda] $ consisting of sequences with  all of entries belonging to $ \mathbb{Z} $ (resp. $ \frac12+\mathbb{Z} $). Set $ [\lambda]_3=[\lambda]\setminus([\lambda]_1\cup [\lambda]_2) $.
+	
+	
+	Let  $ x=(\lambda_{i_1}, \lambda_{i_2},\cdots \lambda_{i_r})\in[\lambda]_3 $. Let $  x_1=(\lambda_{j_1}, \lambda_{j_2},\cdots, \lambda_{j_p}) $ be the maximal subsequence of $ x $ such that $ j_1=i_1 $ and the difference of any two entries of $ x_1 $ is an integer. Let $ x_2= (\lambda_{k_1}, \lambda_{k_2},\cdots, \lambda_{k_q}) $ be the subsequence of $ x $ obtained by deleting $ x_1 $, which is possible empty. Note that $ p+q=r $ and $ \lambda_{j_a}+\lambda_{k_b} \in \mathbb{Z}$ for all $ a,b $.
+	Define
+	$ \tilde{x}=(\lambda_{j_1}, \lambda_{j_2},\cdots, \lambda_{j_p}, -\lambda_{k_q}, -\lambda_{k_{q-1}},\cdots ,-\lambda_{k_1}). $
+	By using the R-S algorithm, we can get a Young tableau $T(\tilde{x})$.  We define $ F_A(\tilde{x}) :=\sum\limits_{i\geq 1}\frac{c_i(c_i-1)}2$ where $ c_i $ is the number of entries in the $ i $-th column of $T(\tilde{x})$. Similarly with the algorithm of types $BCD$, we can define $F_B(x)$ and  $F_D(x)$ for any $x\in [\lambda]$.
+	
+	
+	
+	
+	
+	
+	
+	%Note we can change the role of $ x_1 $ and $ x_2 $, but $ \tilde{F}_A(x) $ is invariant.
+
+
+
+
+\begin{Pro}[Bai-Xie \cite{BX-2}]\label{BCD}
+	Keep notations as above. Let $ n\geq 1 $.
+	For any $ \lambda\in \mathfrak{h}^* $, the GK dimension of  $ L(\lambda) $  is given as follows.
+	\begin{enumerate}
+		\item If $  \mathfrak{g}= \mathfrak{sp}(n,\mathbb{C})$,
+		\[
+		\gkd L(\lambda)=n^2-\sum _{x\in [\lambda]_1} F_B(x)-\sum _{x\in [\lambda]_2} F_D(x)-\sum _{x\in [\lambda]_3} F_A(\tilde{x}).
+		\]
+		\item  If $  \mathfrak{g} = \mathfrak{so}(2n+1,\mathbb{C}) $,
+		\[
+	\gkd L(\lambda)=	n^2-\sum _{x\in [\lambda]_1\cup [\lambda]_2} F_B(x)-\sum _{x\in [\lambda]_3} F_A(\tilde{x}).
+		\]
+		\item  If $  \mathfrak{g} = \mathfrak{so}(2n,\mathbb{C}) $,
+		\[
+		\gkd L(\lambda)=n^2-n-\sum _{x\in [\lambda]_1\cup [\lambda]_2} F_D(x)-\sum _{x\in [\lambda]_3} F_A(\tilde{x}).
+		\]
+	\end{enumerate}
+\end{Pro}
+
+
+
+Now	we suppose  $\mathfrak{g}=\mathfrak{sp}(n, \mathbb{C})$ with a Cartan subalgebra $\mathfrak{h}$. Let $\Phi\subseteq \mathfrak{h}^*$ be the set of roots and $\Phi^+$ be the set of positive roots. We choose  a simple system $\Delta=\{\alpha_i|1\leq i\leq n\}\subset\Phi^+$. There is a unique long root in $\Delta^+$, i.e., $\alpha_{n}=2e_n$. We have the following theorem.
+
+\begin{Thm}
+		Suppose $\mathfrak{g}=\mathfrak{sp }(n, \mathbb{C})$. Let $L(\lambda)$ be a highest weight $\mathfrak{g}$-module. Suppose $\gkd L(\lambda)$ takes the minimal value $n$. Then
+	$L(\lambda)$ is a half-integral Harish-Chandra mdoule of $Sp(n, \mathbb{R})$ with $\lambda_1>\lambda_2>...>\lambda_{n-1}>|\lambda_n|>0$,  and $V(L(\lambda))=\mathcal{V}(s_{\alpha_{n}}w_0)=\overline{Be_{\alpha_{n}}}$.
+
+\end{Thm}
+
+\begin{proof}
+From Proposition \ref{JB}, we know there is only one minimal orbital variety. From Joseph \cite{Jo98}, we know $V(L(\lambda))$ is a union of minimal orbital varieties when  $\gkd L(\lambda)$ takes the minimal value $n$. So $V(L(\lambda))=\mathcal{V}(s_{\alpha_{n}}w_0)=\overline{Be_{\alpha_{n}}}$.
+From Bai-Hunziker \cite{BH}, we know that the Gelfand-Kirillov dimension of the first Wallach representation $L(\mu)$ (with $\mu=(n-\frac{1}{2},n-\frac{3}{2},...,\frac{1}{2})$) is $n$.
+So $V(L(\mu))=\mathcal{V}(s_{\alpha_{n}}w_0)=\overline{Be_{\alpha_{n}}}$ is a $K_{\mathbb{C}}$-orbit closure since $L(\mu)$ is a highest weight Harish-Chandra module.
+From corollary \ref{HC}, $L(\lambda)$ must a highest weight Harish-Chandra module. Then $\lambda$ is integral or half-integral by Enright-Howe-Wallach \cite{EHW}.
+
+
+When $L(\lambda)$ is integral,  we have
+\[
+\gkd L(\lambda)=n^2-F_B(\lambda).
+\]
+Let $ Y(\lambda) $ be the  Young tableau obtained by applying Schensted insertion algorithm to the sequence \(
+\lambda_1,\lambda_2,\cdots,\lambda_n,-\lambda_n,\cdots,-\lambda_2,-\lambda_1.\)	
+It is easy to check that $F_B(\lambda)$  will take the maximal value $(n-1)^2$ when $ Y(\lambda) $ is a Young tableau with $c_1(Y(\lambda))=2n-1$ and  $c_2(Y(\lambda))=1$. In this case, we have \[
+\gkd L(\lambda)=n^2-F_B(\lambda)=2n-1,
+\]
+which implies that $\gkd L(\lambda)$ is not minimal. This is a contradiction!
+
+So $L(\lambda)$ is a half-integral highest weight Harish-Chandra module. From Enright-Howe-Wallach \cite{EHW}, we have $\lambda_i-\lambda_j \in \mathbb{Z}_{> 0}$ for $1\leq i<j\leq n$ and $\lambda_k-\frac{1}{2} \in \mathbb{Z}$ for $1\leq k\leq n$.
+So $\Phi_{[\lambda]}$ has an irreducible component of type $D_n$:
+$$\{e_i \pm e_j|1\leq i\leq j\leq n\}.$$
+Let $ Y(\lambda) $ be the  Young tableau obtained by applying Schensted insertion algorithm to the sequence \(
+\lambda_1,\lambda_2,\cdots,\lambda_n,-\lambda_n,\cdots,-\lambda_2,-\lambda_1\).	Then by proposition \ref{BCD}, we have $F_D(x)=n^2-n$ for $x=\lambda$ being half-integral. From Bai-Xie \cite{BX-2}, this will be equivalent to
+$c_2(Y(\lambda))=0$ or $1$.
+
+When $c_2(Y(\lambda))=0$, $Y(\lambda)$ will be a Young tableau with just one column. So we have $\lambda_1>\lambda_2>...>\lambda_{n-1}>\lambda_n>0$.
+
+When $c_2(Y(\lambda))=1$, $Y(\lambda)$ will be a Young tableau with $c_1(Y(\lambda))=2n-1$. So we have
+$\lambda_1>\lambda_2>...>\lambda_{n-1}>-\lambda_n>0$.
+
+In the above two cases, we always have $\lambda_1>\lambda_2>...>\lambda_{n-1}>|\lambda_n|>0$ with $\lambda$ being half-integral.
+
+\end{proof}
+
+\begin{Rem}
+		When $\mathfrak{g}=\mathfrak{sp}(n, \mathbb{C})$, Britten-Lemire \cite{BL} classified the  admissible highest weight modules and found that they can be realized as submodules of a tensor product. Sun \cite{Sun} classified the minimal lowest (equivalently, highest) weight Harish-Chandra $(\mathfrak{g}, K)$-modules. By comparing their work, we know that a module is an admissible highest weight module if and only if it is a highest weight Harish-Chandra $(\mathfrak{g}, K)$-module of $Sp(n, \mathbb{R})$ with minimal Gelfand-Kirillov dimension.
+	
+\end{Rem}
+%
+%Note that for type $C$, we have $GKdim L(\lambda)=n$ if and only if $Y(\lambda)$ (associated to the sequence$
+%(\lambda_1,\lambda_2,\cdots,\lambda_n,-\lambda_n,\cdots,-\lambda_2,-\lambda_1)
+%$)	is a Young tableau with only one column or two columns with $c_1=2n-1$ and $c_2=1$.
+
+
+
+Now	we suppose $\mathfrak{g}=\mathfrak{so}(2n+1, \mathbb{C})$ with a Cartan subalgebra $\mathfrak{h}$. Let $\Phi\subseteq \mathfrak{h}^*$ be the set of roots and $\Phi^+$ be the set of positive roots. We choose  a simple system $\Delta=\{\alpha_i|1\leq i\leq n\}\subset\Phi^+$. We have the following theorem.
+
+\begin{Thm}
+	Suppose $\mathfrak{g}=\mathfrak{so }(2n+1, \mathbb{C})$. Let $L(\lambda)$ be a highest weight $\mathfrak{g}$-module. Suppose $\gkd L(\lambda)$ takes the minimal value $2n-2$. Then
+	$\lambda=(\lambda_1,...,\lambda_n)$ is half-integral with $\lambda_n>0$ and ordered  after removing one term $\lambda_{i_0}>0$ for some $1\leq i_0\leq n$. When ${i_0}=1$, $L(\lambda)$ will be a highest weight Harish-Chandra module of $SO(2, 2n-1)$ and $V(L(\lambda))=\mathcal{V}(s_{\alpha_{1}}w_0)=\overline{Be_{\alpha_{1}}}$ is a $K_{\mathbb{C}}$-orbit closure.
+	When $2\leq i_0\leq n-1$, we will have $V(L(\lambda))=\overline{Be_{\alpha_{i-1}}}\cup \overline{Be_{\alpha_{i}}}$.  When $ i_0=n$,  we will have $V(L(\lambda))=\overline{Be_{\alpha_{n-1}}}$.
+	
+	
+	%	And $V(L(\lambda))=V(L(w_{\lambda}))$ with $w_{\lambda}\stackrel{R}{\sim}s_{\alpha_{i_0}}w_0 $.
+	%	 Then $GKdim L_w=2n-2$ if and only if   $w \stackrel{R}{\sim} s_{\alpha_{i}}w_0$.
+\end{Thm}
+
+\begin{proof}
+Suppose $\gkd L(\lambda)$ takes the minimal value $2n-2$.
+
+
+
+ If $\lambda$ is integral, then  we have  $2\lambda_k\in  \mathbb{Z}$ for $1\leq k\leq n $ and $\lambda_i-\lambda_j \in \mathbb{Z}$ for $1\leq i<j\leq n$.	
+
+Then  we have
+ \[
+ \gkd L(\lambda)=n^2-F_B(\lambda).
+ \]
+ It is easy to check that $F_B(\lambda)$  will take the maximal value $(n-1)^2$ when $ Y(\lambda) $ is a Young tableau with $c_1(Y(\lambda))=2n-1$ and  $c_2(Y(\lambda))=1$. In this case, we have \[
+ \gkd L(\lambda)=n^2-F_B(\lambda)=2n-1,
+ \]
+ which implies that $\gkd L(\lambda)$ is not minimal. This is a contradiction!
+
+
+If $L(\lambda)$ is not integral or not half-integral, from proposition \ref{BCD}, we have 	\[
+\gkd L(\lambda)=	n^2-\sum _{x\in [\lambda]_1\cup [\lambda]_2} F_B(x)-\sum _{x\in [\lambda]_3} F_A(\tilde{x}).
+\]
+It is easy to check that the maximal value for  $\sum\limits_{x\in [\lambda]_1\cup [\lambda]_2} F_B(x)$ is $k_1^2$, where there is only one $x \in [\lambda]_1\cup [\lambda]_2$ with length $k_1$ such that $ x=(\lambda_{i_1}, \lambda_{i_2},\cdots \lambda_{i_{k_1}})$ and the corresponding Young tableau $Y(x)$ for the sequence $\lambda_{i_1}, \lambda_{i_2},\cdots \lambda_{i_{k_1}}, -\lambda_{i_{k_1}},...,-\lambda_{i_1}$ contains just one column with
+		$c_1(Y(x))=2k_1$.
+It is easy to check that the maximal value for $\sum\limits_{x\in [\lambda]_3} F_A(\tilde{x})$ is $\frac{(n-k_1)(n-k_1-1)}{2}$, where there is only one $x \in [\lambda]_3$ with length $n-k_1$ such that $ x=(\lambda_{j_1}, \lambda_{j_2},\cdots \lambda_{j_{n-k_1}})$ and the corresponding Young tableau $Y(x)$ for the sequence $\lambda_{j_1}, \lambda_{j_2},\cdots \lambda_{j_{n-k_1}}$ contains just one column with
+$c_1(Y(x))=n-k_1$.
+Then we have
+\begin{align*}
+\gkd L(\lambda)&=	n^2-\sum _{x\in [\lambda]_1\cup [\lambda]_2} F_B(x)-\sum _{x\in [\lambda]_3} F_A(\tilde{x})\\
+&=n^2-k_1^2-\frac{(n-k_1)(n-k_1-1)}{2}\\
+&>n^2-k_1^2-(n-k_1)^2\\
+&\geq n^2-(n-1)^2-1 \quad \quad \text{by lemma}~ \ref{c12}\\
+&=2n-2.
+\end{align*}
+This is a contradiction since  $\gkd L(\lambda)=2n-2$.
+
+So $L(\lambda)$ is half-integral. We have $\gkd L(\lambda)=	n^2-\sum\limits_{x\in [\lambda]_1\cup [\lambda]_2} F_B(x)$.
+There are at least two sequences in $[\lambda]_1\cup [\lambda]_2$ since $\lambda$ is half-integral. For each sequence $x$, the maximal value for $F_B(x)$ is $k_x^2$ where $k_x$ is the length of $x$. Then similar with the arguments in lemma \ref{c12}, we can prove that there are just two sequences with lengths being $n-1$ and $1$. We may suppose they are the following:
+$$x=(\lambda_1,...,\lambda_{i_{0}-1},\lambda_{i_0+1},...,\lambda_n)\in [\lambda]_1, y=\lambda_{i_0}\in [\lambda]_2,$$
+or $$x=(\lambda_1,...,\lambda_{i_{0}-1},\lambda_{i_0+1},...,\lambda_n)\in [\lambda]_2, y=\lambda_{i_0}\in [\lambda]_1.$$
+
+Since $\gkd L(\lambda)=2n-2=n^2-F_B(x)-F_B(y)\geq n^2-(n-1)^2-1=2n-2$, we must have $F_B(x)=(n-1)^2$ and $F_B(y)=1$.
+So the Young tableau corresponding to $x$ must be a  tableau with just one column and $\lambda_{i_0}>0$. Equivalently we have $\lambda_1>\lambda_2>...>\lambda_{i_0-1}>\lambda_{i_0+1}>...>\lambda_n>0>-\lambda_n>...->\lambda_{i_0+1}>-\lambda_{i_0-1}>...>-\lambda_1$.
+
+Therefore we proved that 	$\lambda=(\lambda_1,...,\lambda_n)$ is half-integral with $\lambda_n>0$ and ordered after removing one term $\lambda_{i_0}>0$.
+
+When $i_0=1$, $L(\lambda)$ will be a highest weight Harish-Chandra module by Enright-Howe-Wallach \cite{EHW}, so we have $V(L(\lambda))=\mathcal{V}(s_{\alpha_{1}}w_0)=\overline{Be_{\alpha_{1}}}$ being a $K_{\mathbb{C}}$-orbit closure.
+
+When $2\leq i_0\leq n$, note that every $\overline{Be_{\alpha_i}}$ for $ 2\leq i\leq n-2$ is not weakly quantizable. Then by a similar argument with the proof in type $A$, we can show that $V(L(\lambda))=\overline{Be_{\alpha_{n-1}}}$ for $i_0=n$ and $V(L(\lambda))=\overline{Be_{\alpha_{i-1}}}\cup \overline{Be_{\alpha_{i}}}$ for $2\leq i_0\leq n-1$. We omit the details here.
+
+
+\end{proof}
+
+
+\begin{Rem}
+For  $\lambda_i=(n-\frac{3}{2})e_1+...+(n-\frac{2i-1}{2})e_{i-1}+e_{i}+(n-\frac{2i+1}{2})e_{i+1}+...+\frac{1}{2}e_n$, Joseph \cite{Jo98} found that $V(L(\lambda_{1}))=\overline{Be_{\alpha_{1}}}$, $V(L(\lambda_{n}))=\overline{Be_{\alpha_{n-1}}}$ and $V(L(\lambda_i))=\overline{Be_{\alpha_{i-1}}}\cup \overline{Be_{\alpha_{i}}}$ for $2\leq i\leq n-1$.
+
+	
+\end{Rem}
+%Note that for type $B$, we have $GKdim L(\lambda)=2n-2$ if and only if  from the sequence
+%$
+%(\lambda_1,\lambda_2,\cdots,\lambda_n,-\lambda_n,\cdots,-\lambda_2,-\lambda_1)
+%$, we can get two Young tableaux, with the first one being just one column and the second one corresponding to $\lambda_{i_0}$. $\overline{Be_{\alpha_1}}=\mathcal{V}(s_{\alpha_1}w_0)$ is the $K_{\mathbb{C}}$-orbit.
+
+
+
+
+Now	we suppose  $\mathfrak{g}=\mathfrak{so}(2n, \mathbb{C})$ with a Cartan subalgebra $\mathfrak{h}$. Let $\Phi\subseteq \mathfrak{h}^*$ be the set of roots and $\Phi^+$ be the set of positive roots. We choose  a simple system $\Delta=\{\alpha_i|1\leq i\leq n\}\subset\Phi^+$. We have the following theorem.
+
+\begin{Thm}
+	Suppose $\mathfrak{g}=\mathfrak{so }(2n, \mathbb{C})$. Let $L(\lambda)$ be a highest weight $\mathfrak{g}$-module. Suppose $\gkd L(\lambda)$ takes the minimal value $2n-3$. Then
+	$\lambda=(\lambda_1,...,\lambda_n)$ is integral and $V(L(\lambda))=V(L(w_{\lambda}))=\overline{Be_{\alpha_i}}=\mathcal{V}(s_{\alpha_i}w_0)$ with $w_{\lambda}\stackrel{R}{\sim}s_{\alpha_{i}}w_0$ for some $1\leq i\leq n$. Then $\gkd L_w=2n-3$ if and only if   $w \stackrel{R}{\sim} s_{\alpha_{i}}w_0$  for some $1\leq i\leq n$.
+\end{Thm}
+
+\begin{proof}	Suppose $\gkd L(\lambda)$ takes the minimal value $2n-3$.
+	
+If $L(\lambda)$ is not integral, from proposition \ref{BCD}, we have 	\[
+\gkd L(\lambda)=	n^2-n-\sum _{x\in [\lambda]_1\cup [\lambda]_2} F_D(x)-\sum _{x\in [\lambda]_3} F_A(\tilde{x}).
+\]
+It is easy to check that the maximal value for  $\sum\limits_{x\in [\lambda]_1\cup [\lambda]_2} F_D(x)$ is $k_1^2-k_1$, where there is only one $x \in [\lambda]_1\cup [\lambda]_2$ with length $k_1$ such that $ x=(\lambda_{i_1}, \lambda_{i_2},\cdots \lambda_{i_{k_1}})$ and the corresponding Young tableau $Y(x)$ for the sequence $\lambda_{i_1}, \lambda_{i_2},\cdots \lambda_{i_{k_1}}, -\lambda_{i_{k_1}},...,-\lambda_{i_1}$ contains just one column with
+$c_1(Y(x))=2k_1$.
+It is easy to check that the maximal value for $\sum\limits_{x\in [\lambda]_3} F_A(\tilde{x})$ is $\frac{(n-k_1)(n-k_1-1)}{2}$, where there is only one $x \in [\lambda]_3$ with length $n-k_1$ such that $ x=(\lambda_{j_1}, \lambda_{j_2},\cdots \lambda_{j_{n-k_1}})$ and the corresponding Young tableau $Y(\tilde{x})$  contains just one column with
+$c_1(Y(\tilde{x}))=n-k_1$.
+Then we have
+\begin{align*}
+\gkd L(\lambda)&=	n^2-n-\sum _{x\in [\lambda]_1\cup [\lambda]_2} F_D(x)-\sum _{x\in [\lambda]_3} F_A(\tilde{x})\\
+&=n^2-n-k_1^2+k_1-\frac{(n-k_1)(n-k_1-1)}{2}\\
+&>n^2-n-k_1^2+k_1-(n-k_1)^2+(n-k_1)\\
+&=n^2-k_1^2-(n-k_1)^2\\
+&\geq n^2-(n-1)^2-1 \quad \quad \text{by lemma}~ \ref{c12}\\
+&=2n-2.
+\end{align*}
+This is a contradiction since  $\gkd L(\lambda)=2n-3$.
+
+
+
+
+
+
+
+
+So $\lambda$ is integral, then  we have  $2\lambda_k\in  \mathbb{Z}$ for $1\leq k\leq n $ and $\lambda_i-\lambda_j \in \mathbb{Z}$ for $1\leq i<j\leq n$.	
+Then from proposition \ref{BCD}, we have
+\[
+\gkd L(\lambda)=n^2-n-F_D(\lambda).
+\]
+When the number of positive elements in $ \{\lambda_i \}$ is odd, we modify $ \{\lambda_i\} $ to $\{ \lambda'_i \}$ by proposition \ref{modi}.  Let $ Y(\lambda) $ (or $ Y(\lambda') $)  be the  Young tableau obtained by applying Schensted insertion algorithm to the sequence $
+\lambda_1,\lambda_2,\cdots,\lambda_n,-\lambda_n,\cdots,-\lambda_2,-\lambda_1$ (resp. $\lambda'_1, \lambda'_2,\cdots,\lambda'_n,$ $-\lambda'_n,\cdots, -\lambda'_2, -\lambda'_1$).	
+It is easy to check that $F_D(\lambda)$  will take the maximal value $n^2-3n+3$ if and only if $ Y(\lambda) $ (or $ Y(\lambda') $) is a Young tableau with $c_1(Y(\lambda))=2n-2$ and  $c_2(Y(\lambda))=2$ or $c_1(Y(\lambda))=2n-3$ and  $c_2(Y(\lambda))=3$. In this case, we have \[
+\gkd L(\lambda)=n^2-n-F_D(\lambda)=2n-3.
+\]
+From the construction of Young tableau $Y(\lambda) $ (or $ Y(\lambda') $), we can see that there is only one simple root $\alpha$ such that $(\lambda,\alpha)\in \mathbb{Z}_{\leq 0}$ (otherwise we will have $c_2(Y(\lambda))\geq 4$ or $c_3(Y(\lambda))\geq 1$ (or $c_2(Y(\lambda'))\geq 4$ or $c_3(Y(\lambda'))\geq 1$)).  So $L(\lambda)\in \mathscr{O}^{\mathfrak{p}}$ for some maximal parabolic subalgebra $\mathfrak{p}$. We denote $I_i=\{1,2,...,i-1,i+1,i+2,...,n\}$. The corresponding parabolic subalgebra is $\mathfrak{p}_{I_i}=\mathfrak{l}_{I_i}\oplus \mathfrak{u}_{I_i}$ and the parabolic category is  $\mathscr{O}^{\mathfrak{p}_{I_i}}$.
+From Joseph \cite[Proposition 2.4]{Jo98}, we also note that the nilradical $\mathfrak{u}_{I_i}$ of the maximal parabolic subalgebra $\mathfrak{p}_{I_i}$  contains only one minimal orbital variety $\overline{Be_{\alpha_i}}=\mathcal{V}(s_{\alpha_i}w_0)$.
+
+Therefore when $\gkd L(\lambda)=2n-3$ and $L(\lambda)\in \mathscr{O}^{\mathfrak{p}_{I_i}}$ for some $1\leq i\leq n$, we will have $V(L(\lambda))=V(L(w_{\lambda}))=\overline{Be_{\alpha_i}}=\mathcal{V}(s_{\alpha_i}w_0)$. On the other hand we also have $\gkd L(s_{\alpha_{i}}w_0)=2n-3$ and $L(s_{\alpha_{i}}w_0)\in \mathscr{O}^{\mathfrak{p}_{I_i}}$, so $V(L(s_{\alpha_{i}}w_0))=\overline{Be_{\alpha_i}}=\mathcal{V}(s_{\alpha_i}w_0)$. By lemma \ref{m1}, we have $w_{\lambda}\stackrel{R}{\sim}s_{\alpha_{i}}w_0$.
+
+
+The proof for the rest results is similar with the case of type $A$, we omit it here.
+\end{proof}
+
+
+\begin{Rem}
+From our proof, we can see that $\gkd L(\lambda)=2n-3$ if and only if $\lambda$ is integral and from the sequence
+$
+(\lambda_1,\lambda_2,\cdots,\lambda_n,-\lambda_n,\cdots,-\lambda_2,-\lambda_1)
+$, we can get a Young tableau $Y(\lambda)$ with two columns and  $c_1(Y(\lambda))=2n-2$,  $c_2(Y(\lambda))=2$ or  $c_1(Y(\lambda))=2n-3$,  $c_2(Y(\lambda))=3$. In particular, when $V(L(\lambda))=V(L(w_{\lambda}))=\overline{Be_{\alpha_1}}=\mathcal{V}(s_{\alpha_1}w_0)$, $L(\lambda)$ will be a highest weight Harish-Chandra module for $SO(2,2n-2)$. When $V(L(\lambda))=V(L(w_{\lambda}))=\overline{Be_{\alpha_n}}=\mathcal{V}(s_{\alpha_n}w_0)$, $L(\lambda)$ will a be a highest weight Harish-Chandra module for  $SO^*(2n)$.
+
+
+
+Garfinkle \cite{Ga1,Ga2,Ga3} classified the Kazhdan-Lusztig left (right) cells by domino tableaux. But in general it is not easy for people to use it when they are not familiar with her algorithm.
+
+Denote   $\lambda_i=\rho-e_1-e_2-...-e_{i-1}+(i+1-n)e_{i}~$ for $1\leq i\leq n-2$, $\lambda_{n-1}=\rho-e_1-e_2-...-e_{n-1}+e_{n}$ and $\lambda_{n}=\rho-e_1-e_2-...-e_{n}$. Joseph \cite{Jo98} found that  $V(L(\lambda_i))=\overline{Be_{\alpha_{i}}}=\mathcal{V}(s_{\alpha_i}w_0)$ for $1\leq i\leq n$. It is easy to check that $L(\lambda_i)\in \mathscr{O}^{\mathfrak{p}_{I_i}}$. Now in our theorem, when we know $\gkd L(\lambda)=2n-3$ by using the algorithm found by Bai-Xie \cite{BX-2}, we only need to find out the unique index $i$ for which we have $L(\lambda)\in \mathscr{O}^{\mathfrak{p}_{I_i}}$. Actually there exists a unique simple root $\alpha_i$ such that $(\lambda,\alpha_i)\in \mathbb{Z}_{\leq 0}$. Then we will have $V(L(\lambda))=\overline{Be_{\alpha_{i}}}=\mathcal{V}(s_{\alpha_i}w_0)$ for this index $i$. By this method, we can avoid using Garfinkle's domino tableaux to find out the index $i$ such that
+$w_{\lambda}\stackrel{R}{\sim}s_{\alpha_{i}}w_0$.
+
+
+
+
+
+\end{Rem}
+
+
+%
+%
+%
+%$L_w$ is a highest weight Harish-Chandra module with infinitesimal character $\rho$.  From Barchini-Zierau \cite{BZ},  we know $V(L_w)$ is just one orbital variety.
+%From Tanisaki \cite{Ta}, we have $\mathcal{V}(w)\subset V(L_w)$. So we must have $V(L_w)=\mathcal{V}(w)$ for all highest weight Harish-Chandra modules $L_w$.
+%Then from our theorem, we know that there exists only one right cell (i.e., Harish-Chandra cell with infinitesimal character $\rho$) with associated variety $\mathcal{V}(w)$. When $\mathfrak{g}=Sp(2n, \mathbb{R})$ and  $\mathcal{V}(w)$  is  the associated variety of some  Wallach representation with integral infinitesimal character, Barchini-Zierau \cite{BZ}  have proved that  there indeed exists only one Harish-Chandra cell (right cell) containing the highest weight Harish-Chandra module $L_w$ with associated variety $\mathcal{V}(w)$.
+
+
+
+
+
+
+
+%
+%\section{ Proof of the theorem \ref{m3} }
+%We recall some properties of the Steinberg map. The details can be found in Steinberg \cite{St} or Joseph \cite{Jo84}.
+%
+%Let $\mathfrak{g}=\mathfrak{n}\oplus \mathfrak{h} \oplus \mathfrak{n}^-$ be a simple Lie algebra with a parabolic subalgebra $\mathfrak{p}_I=\mathfrak{l}_I\oplus \mathfrak{u}_I$ for some set $I$. We use $G$ to denote the adjoint group of $\mathfrak{g}$. Let $\mathcal{N}$ denote the variety of nilpotent elements of $\mathfrak{g}$ and $W$ be the Weyl group of $\mathfrak{g}$.  For every $w\in W$, $G(\mathfrak{n}\cap w\mathfrak{n})$ is an irreducible subvariety of $\mathcal{N}$. It admits a unique dense orbit $\mathcal{O}_w$. This map $St: w\mapsto \mathcal{O}_w$  is called the \emph{Steinberg map}. The Springer correspondence is a quotient map of this Steinberg map. We have $w \stackrel{LR}{\sim}\sigma$ iff $\mathcal{O}_w=\mathcal{O}_{\sigma}$. From Joseph \cite{Jo84}, we know every orbital $\mathcal{V}(w)$ is an irreducible component of $\overline{\mathcal{O}_w}\cap \mathfrak{n}$.
+%
+% A Richardson orbit $\mathcal{O} \in \mathfrak{g}$ is a nilpotent orbit which intersects densely the nilradical $\mathfrak{u}_I$ of some parabolic subalgebra $\mathfrak{p}_I$. Let $W_I=\langle s_{\alpha}: \alpha \in \Delta_I\rangle$. The unique longest element $w_I\in W_I$  is called a \emph{Richardson element} of the Weyl group $W$. These orbits are characterized by Fresse-Melnikov \cite{FM}.
+%
+%
+%
+%\begin{Pro} The followings are equivalent:
+%\begin{enumerate}
+%  \item [(1)] A nilpotent orbit $\mathcal{O} \subset  \mathfrak{g}$ is Richardson;
+%  \item [(2)] $\mathcal{O}=\mathcal{O}_{w_I}$ for some set $I$;
+%  \item [(3)] $St^{-1}(\mathcal{O})$ contains a Richardson element of $W$.
+%\end{enumerate}
+%
+%\end{Pro}
+%
+%From the definition of orbital variety, we have  $\mathcal{V}(w_I)=\overline{B(\mathfrak{n}\cap w_I\mathfrak{n})}=\overline{B(\mathfrak{u}_I)}=\overline{\mathfrak{u}_I}=\mathfrak{u}_I$.
+%
+%
+%
+%%We usually write $V(L_{w_I})=\mathfrak{u}_I$ since $V(L_{w_I})\subseteq \mathfrak{n}$ under the identification of $\mathfrak{g}$ and $\mathfrak{g}^*$.
+%
+%
+%{\bf Proof of the theorem \ref{m3}.}
+%Let  $\mathfrak{g}$ be a complex simple Lie algebra with a parabolic subalgebra $\mathfrak{p}_I=\mathfrak{l}_I\oplus \mathfrak{u}_I$ for some set $I$.
+%We denote by $\mathfrak{u}_I^-$ the opposite nilpotent Lie algebra to $\mathfrak{u}_I$. Then we have $\mathfrak{g}=\mathfrak{p}_I\oplus \mathfrak{u}_I^-$.
+% Let $L(\lambda)$ be an integral highest weight $\mathfrak{g}$-module with maximal Gelfand-Kirillov dimension equal to $\dim(\mathfrak{u}_I)$ in $\mathscr{O}^{\mathfrak{p}_{I}}$. We know it is the simple quotient of the generalized Verma module $M_I(\lambda):=U(\mathfrak{g})\otimes_{U(\mathfrak{p}_I)}F(\lambda)$, where $F(\lambda)$ is the highest weight $\mathfrak{l}_I$-module with highest weight $\lambda$ and is also a $\mathfrak{p}_I$-module by letting $\mathfrak{u}_I$ act by zero.
+%% From Nishiyama-Ochiai-Taniguchi \cite[Proposition 2.1]{NOT}, we know $V(M_I(\lambda))=\mathfrak{u}_I$.
+%From Borho-Brylinski \cite[Proposition 6.12]{BoB1}, we have $V(I_{w_I}):=V(U(\mathfrak{g})/I_{w_I})=\overline{\mathcal{O}_{w_I}}$ and $V(L_{w_I})=\mathcal{V}(w_I)=\mathfrak{u}_I$.
+% From Brundan \cite[Theorem 5.5]{Br}, we know $V(Ann_{U(\mathfrak{g})}L(\lambda))$ is the same for all highest weight modules with maximal Gelfand-Kirillov dimension $\dim(\mathfrak{u}_I)$ in $\mathscr{O}^{\mathfrak{p}_{I}}$. Therefore we have $V(Ann_{U(\mathfrak{g})}L(\lambda))=\overline{\mathcal{O}_{w_I}}$.
+%
+%
+%  From Nishiyama-Ochiai-Taniguchi \cite{NOT}, we use gr$L(\lambda)$ to denote the corresponding graded $S(\mathfrak{g})$-module. By definition, $V(L(\lambda))=V(Ann_{S(\mathfrak{g})}\text{gr}L(\lambda))$.
+%From the construction of $L(\lambda)$, we can see that $\mathfrak{p}_I$ is contained in $Ann_{S(\mathfrak{g})}\text{gr}L(\lambda)$ since $F(\lambda)$ is a $\mathfrak{p}_I$ module.
+%So we have $V(S(\mathfrak{g})\mathfrak{p}_I)\supseteq V(Ann_{S(\mathfrak{g})}\text{gr}L(\lambda))=V(L(\lambda))$. Since $\mathfrak{g}\simeq\mathfrak{g}^*$, we have $V(L(\lambda))\subseteq V(S(\mathfrak{g})\mathfrak{p}_I)\simeq \mathfrak{u}_I^-\simeq \mathfrak{u}_I$. That is, $V(L(\lambda))\subseteq  \mathfrak{u}_I$.
+% From Bai-Xie \cite{BX}, we know $V(L(\lambda))=V(L_{w_{\lambda}})$.
+%%From Tanisaki's conjecture \ref{Ta}, we know there exists some $y\stackrel{R}{\sim}w_{\lambda}$ such that $\mathcal{V}(y)\subseteq V(L_{w_{\lambda}})$ and $\dim \mathcal{V}(y)=\dim V(L_{w_{\lambda}})$.
+%%But $\mathcal{V}(y)$ and
+%From Borho-Brylinski \cite[Proposition 4.2]{BoB3},
+%we know there exists some $w' \in W$ such that
+%%From Joseph \cite[$\S$ 9.14]{Jo84}, we know
+%$ \mathcal{V}(w')\subseteq V(L_{w_{\lambda}})$ and $\dim \mathcal{V}(w')=\dim V(L_{w_{\lambda}})=\dim(\mathfrak{u}_I)$. So we must have $\mathcal{V}(w')=\mathcal{V}(w_{I})=\mathfrak{u}_I$ since they are orbital varieties associated with $\mathcal{O}_{w_I}$.
+%Therefore $V(L(\lambda))=\mathfrak{u}_I$ is irreducible.
+%
+%
+%By our lemma \ref{m1}, we have $V(L_{w})=\mathfrak{u}_I=V(L_{w_I})$ if and only if $w \stackrel{R}{\sim} w_I$.       \qed
+%
+%
+%
+%
+%
+%
+%
+
+
+
+
+
+%
+%\section{An application to the classification of  minimal highest weight modules of type $A$}
+% Recall a highest weight module $L(\lambda)$ with highest weight $\lambda$ is the irreducible quotient of some Verma module. We call $L(\lambda)$ a minimal module if the Gelfand-Kirillov dimension of $L(\lambda)$ is positive minimal. From Vogan \cite{Vo81}, we know $GKdim(L(\lambda))=(\rho, \beta^{\vee})$ for minimal highest weight modules, where $\beta$ is the  maximal positive root.
+%
+%A module of a finite-dimensional simple Lie algebra $\mathfrak{g}$ is called a
+%weight module if it is a direct sum of its weight subspaces. The classification of weight modules had been completed by Mathieu \cite{Ma}.
+%A weight module $M$ is called admissible if the dimension of its any weight subspace is uniformly bounded. Benkart-Britten-Kemire \cite{BBL}  found that theses modules have minimal Gelfand-Kirillov dimension and only exist when $\mathfrak{g}$ is of type $A$ or $C$.
+%The admissible highest weight modules played
+% an important role in Mathieu' work.
+%
+%When $\mathfrak{g}=\mathfrak{sp}(2n, \mathbb{C})$, Britten-Kemire \cite{BL} classified the  admissible highest weight modules and found that they can be realized as submodules of a tensor product. Sun \cite{Sun} classified the minimal lowest (equivalently, highest) weight $(\mathfrak{g}, K)$-modules. By comparing their work, we know that a module is an admissible highest weight module if and only if it is a minimal highest weight $(\mathfrak{g}, K)$-modules.
+%
+%
+%
+%
+%When $\mathfrak{g}=\mathfrak{sl}(n, \mathbb{C})$, we suppose $L_w$ is a minimal highest weight module. From Bai-Xie \cite{BX}, we can use the Schensted algorithm to compute its Gelfand-Kirillov dimesnsion. We know the number of entries in the second column of the corresponding Young tableau is just one. So if we write $\lambda+\rho=(\lambda_1, \lambda_2,...,\lambda_n)$, there must exist one index $i_0\in \{1, 2,..., n\}$ such that $\lambda+\rho$ will become ordered after removing $\lambda_{i_0}$.
+
+\subsection*{Acknowledgments}
+The first author would like to thank Toshiyuki Tanisaki for very helpful conversations and many useful comments for an earlier version of the manuscript. We also would like to thank Binyong Sun for inspiring us this problem.
+The first author is supported by NSFC Grant No.11601394, the second author is supported by NSFC Grant No.?,   the third author is supported by NSFC Grant No. 11701381 and Guangdong Natural Science Foundation (Grant No. 2017A030310138), the fourth author is supported by
+NSFC Grant No. 11801031 and 11601116.
+
+
+\begin{thebibliography}{99}
+%\bibitem{Ar} S. Ariki, Robinson�CSchensted correspondence and left cells, in: Combinatorial Methods in Representation Theory, Kyoto, 1998, in: Adv. Stud. Pure Math., vol. 28, Kinokuniya, Tokyo, 2000, pp. 1-20.
+
+\bibitem{Ar} S. Ariki, Robinson-Schensted correspondence and left cells, in: Combinatorial Methods in Representation Theory, Kyoto, 1998, in: Adv. Stud. Pure Math., vol. 28, Kinokuniya, Tokyo, 2000, pp. 1-20.
+
+
+\bibitem{BH}
+Z. Bai and M.~Hunziker,  The Gelfand-Kirillov dimension of a unitary highest weight  module,
+ Sci. China Math., 58(12) (2015), 2489--2498.
+
+\bibitem{BX}Z. Bai and X. Xie, Gelfand-Kirillov dimensions of highest weight Harish-Chandra modules for $SU(p,q)$,  Int. Math. Res. Not. IMRN 2019, no. 14, 4392-4418.
+
+\bibitem{BX-2}Z. Bai and X. Xie, Gelfand-Kirillov dimensions of simple highest weight modules for types BCD,  arXiv:2005.11536v1.
+
+
+
+
+\bibitem{BV83}D. Barbasch and D. Vogan, Weyl group representations and nilpotent orbits, in: Representation Theory of Reductive Groups (Park City, Utah, 1982), P. C. Trombi, ed., Progress in Mathematics, Vol. 40, Birkh\"{a}auser Boston, Boston, MA, 1983, pp. 21-33.
+
+\bibitem{BV}D. Barbasch and D. Vogan, Primitive ideals and orbital integrals in complex exceptional groups.
+J. Algebra 80 (1983), 350-382.
+
+\bibitem{BZ}L. Barchini and R. Zierau, Characteristic cycles of highest weight Harish-Chandra modules for $Sp(2n, \mathbb{R})$, Transform. Groups 22 (2017),  591-630.
+
+
+\bibitem{BBL}G. Benkart, D. J. Britten and F. W. Lemire,  Modules with bounded weight multiplicities for simple Lie algebras,  Math. Z. 225 (1997), 333-353.
+
+\bibitem{Be}J. Bernstein, Modules over the ring of differential operators; the study of fundamental solutions of equations with constant coefficients, Funct. Anal. Appl. 5 (2) (1971), 89-101.
+
+
+\bibitem{BoB1} W. Borho and J.-L. Brylinski, Differential operators on homogeneous spaces. I. Irreducibility of the associated variety for annihilators of induced modules. Invent. Math. 69 (1982), no. 3, 437-476.
+
+\bibitem{BoB3} W. Borho and J.-L. Brylinski,  Differential operators on homogeneous spaces. III. Characteristic varieties of Harish-Chandra modules and of primitive ideals. { Invent. Math.} { 80} (1985), no. 1, 1-68.
+
+
+
+\bibitem{BJ}A. Braverman and A. Joseph,
+The minimal realization from deformation theory.
+J. Algebra 205 (1998), no. 1, 13-36.
+
+
+\bibitem{BL}D. J. Britten and F. W. Lemire,   On Modules of bounded weight multiplicities for symplectic algebras,  Trans. Amer. Math. Soc. 351(1999), 3413-3431.
+
+
+\bibitem{Br} J. Brundan,
+M{\oe}glin's theorem and Goldie rank polynomials in Cartan type A, Compos. Math. 147 (2011), no. 6, 1741-1771.
+
+
+
+\bibitem{CM}D. Collingwood and W. McGovern, Nilpotent Orbits in Semisimple Lie Algebras, Van Nostrand Reinhold Co.,
+New York, 1993.
+
+
+
+
+\bibitem{Du}M. Duflo,  Sur la classification des id\'{e}aux primitifs dans l'alg\`{e}bre enveloppante d'une alg\`{e}bre de Lie semi-simple, Ann. Math. 105 (1977), 107-120.
+
+
+
+
+%\bibitem{BK}N. Bourbaki,  Groupes et alg$\mathrm{\grave{e}}$bres de Lie. Chaps. IV-VI, Act. Sci. Ind. 1337. Paris: Hermann 1968.
+
+
+\bibitem{EHW}T. J. Enright, R. Howe and N. Wallach, A Classification of unitary highest weight modules, in: "Representation
+Theory of Reductive Groups," Progress in Math. {\bf 40}, Birkh\"{a}user
+Boston Inc. (1983), pp. 97-143.
+%
+%
+%\bibitem{EH}T. J. Enright  and M. Hunziker, Resolutions and Hilbert series of determinantal varieties and unitary highest weight modules,  J. Algebra {\bf 273}, 608-639 (2004).
+%
+%\bibitem{EJ}T. J. Enright and A. Joseph, An intrinsic analysis of unitarizable highest weight modules, Math. Ann. {\bf 288} (1990), 571-594.
+%
+
+
+\bibitem{FM}L. Fresse and A. Melnikov,  Smooth orbital varieties and orbital varieties with a dense $B$-orbit. Int. Math. Res. Not. IMRN  (2013),  no. 5, 1122-1203.
+
+
+
+
+\bibitem{GS}
+W. T. Gan and G. Savin, On minimal representations definitions and properties. Represent. Theory 9 (2005), 46-93.
+
+
+
+\bibitem{Ga1}
+D. Garfinkle, On the classification of primitive ideals for complex classical Lie algebras, I, Compositio Math. 75 (1990), 135-169.
+
+
+\bibitem{Ga2}
+D. Garfinkle, On the classification of primitive ideals for complex classical Lie algebras, II, Compositio Math. 81 (1992), 307-336.
+
+\bibitem{Ga3}
+D. Garfinkle, On the classification of primitive ideals for complex classical Lie algebras, III, Compositio Math. 88 (1993), 187-234.
+
+
+\bibitem{Hum} J. E. Humphreys, {Representations of Semisimple Lie Algebras in the BGG Category $\mathscr{O}$}, Graduate Studies in Mathematics, Volume 94, American Mathematical Society, Providence, Rhode Island, 2008.
+%\bibitem{Hum} J. E. Humphreys,  Representations of semisimple Lie algebras in the BGG category {$\mathscr{O}$. Graduate Studies in Mathematics, 94. American Mathematical Society, Providence, RI, 2008. xvi+289 pp.
+
+
+\bibitem {Ir} R. S.  Irving, Projective modules in the category $\mathscr{O}_S$: self-duality,
+Trans. Amer. Math. Soc. 291 (1985), no. 2, 701-732.
+
+
+
+
+%
+%
+%\bibitem{SH}S. Helgason,  Differential geometry, Lie groups, and Symmetric Spaces,
+%Academic Press,  New York, 1978.
+%
+%\bibitem[H]{H} J. E. Humphreys, \textit{Representations of Semisimple Lie Algebras in the BGG Category $\mathscr{O}$}, Graduate Studies in Mathematics, Volume 94 (2008), American Mathematical Society, Providence, Rhode Island.
+%\bibitem{hp}H. P. Jakobsen, The last possible place of unitarity for certain highest weight modules, Math. Ann. {\bf 256} (1981), no. 4, 439-447.
+%
+\bibitem{Ja}H. P. Jakobsen, Hermitian symmetric spaces and their unitary highest weight modules, J. Funct. Anal. {\bf 52} (1983), no. 3, 385-412.
+%
+%\bibitem[J]{J} J. C. Jantzen, \textit{Kontravariante Formen auf induzierten Darstellungen halbeinfacher Lie-Algebren}, Mathematische Annalen, Volume 226 (1977), Page 53--65.
+
+%\bibitem{Jo78}A. Joseph, Gelfand-Kirillov dimension for the annihilators of simple quotients of Verma modules. J. London Math. Soc. (2)  18  (1978), no. 1, 50-60.
+
+\bibitem{Jo79}A. Joseph, $W$-module structure in the primitive spectrum of the enveloping algebra of a semisimple Lie algebra, In: Noncommutative harmonic analysis (Proc. Third Colloq., Marseille-Luminy, 1978), pp. 116-135, Lecture Notes in Math., 728, Springer, Berlin, 1979.
+
+
+\bibitem{Jo84}A. Joseph, On the variety of a highest weight module. J. Algebra 88 (1984), no. 1, 238-278.
+
+
+\bibitem{Jo85}A. Joseph, On the associated variety of a primitive ideal. J. Algebra 93 (1985), no. 2, 509-523.
+
+\bibitem{Jo98}A. Joseph, Orbital varieties of the minimal orbit, Ann. Sci. $\rm{\acute{E}}$cole Norm.
+Sup. (4) 31 (1998), no. 1, 17-45.
+
+
+\bibitem{KL}D. Kazhdan and G. Lusztig,  Representations of Coxeter groups and Hecke algebras. Invent. Math. 53 (1979), no. 2, 165-184.
+
+
+\bibitem{Li}J.-S. Li, Minimal representations and reductive dual pairs. Representation theory of Lie groups (Park City, UT, 1998), 293-340, IAS/Park City Math. Ser., 8, Amer. Math. Soc., Providence, RI, 2000.
+
+%\bibitem{kn: Knapp}A. W. Knapp, Lie groups beyond an introduction, second ed., Progress in Mathematics, vol. {\bf 140}, Birkh\"{a}user Boston, Inc., Boston, MA, 2002.
+%
+%\bibitem[Ku]{Ku} T. Kubo, \textit{Conformally Invariant Systems of Differential Operators Associative to Two-Step Nilpotent Maximal Parabolics of Non-Heisenberg Type}, Ph.D. Thesis Submitted to Oklahoma State University for the Degree of Doctor of Philosophy (2012).
+%\bibitem{kn:NOTYK} K. Nishiyama, H. Ochiai, K. Taniguchi, H. Yamashita, and S. Kato, Nilpotent
+%orbits, associated cycles and Whittaker models for highest weight representations,
+%Ast$\rm{\acute{e}}$risque {\bf 273} (2001), 1-163.
+
+
+\bibitem{Lu79}G. Lusztig, A class of irreducible representations of a Weyl group, Proc. Nederl.
+Akad. 422 (1979), 323-335.
+
+\bibitem{Ma}
+O. Mathieu,   Classification of irreducible weight modules,   Ann. Inst. Fourier (Grenoble),  50  (2000), 537-592.
+
+
+%\bibitem[M]{M} H. Matumoto, \textit{The homomorphisms between scalar generalized Verma modules associated to maximal parabolic subalgebras}, Duke Mathematical Journal, Volume 131 (2006), Number 1, Page 75--118.
+
+
+\bibitem{Mc} W. McGovern, A triangularity result for associated varieties of highest weight modules. Comm. Algebra 28 (2000), no. 4, 1835-1843.
+
+\bibitem{Mc98} W. McGovern, Cells of Harish-Chandra modules for real classical groups, Amer. J. Math. 120
+(1998), 211-228.
+
+\bibitem{Mel}A. Melnikov,  Irreducibility of the associated varieties of simple highest weight modules in $\mathfrak{sl}(n)$, C. R. Acad. Sci. Paris S\'{e}r. I Math.  316  (1993),  no.1, 53-57.
+
+
+
+
+\bibitem{NOT} K. Nishiyama, H. Ochiai, and K. Taniguchi, Bernstein degree and associated cycles of Harish-Chandra
+modules - Hermitian case, Nilpotent Orbits, Assoicated Cycles and Whittaker Models for Highest
+Wieght Representations (K. Nishiyama, H. Ochiai, K. Taniguchi, H. Yamashita, and S. Kato, eds.),
+Ast\'{e}rique, vol. 273, Soc. Math. France, 2001, pp. 13-80.
+
+
+
+
+\bibitem {Sa} B.E. Sagan, The Symmetric Group. Representations, Combinatorial Algorithms, and Symmetric Functions, second edition, Graduate Texts in Mathematics, vol. {\bf 203}, Springer-Verlag, New York, 2001.
+
+
+
+%\bibitem{Spa}N. Spaltenstein,  Classes unipotentes et sous-groupes de Borel.(French) [Unipotent classes and Borel subgroups] Lecture Notes in Mathematics, 946. Springer-Verlag, Berlin-New York, 1982.
+
+
+\bibitem{Sp}T. A. Springer, A construction of representations of Weyl groups, Invent. Math. 44 (1978), 279-293.
+
+\bibitem{St}R. Steinberg, An occurrence of the Robinson-Schensted correspondence, J. Algebra. 113 (1988), 523-528.
+
+\bibitem{Sun}
+B. Sun,  Lowest weight modules of $\widetilde{Sp_{2n}(\mathbb{R})}$ of minimal Gelfand-Kirillov dimension,   J. Algebra.  319 (2008), 3062-3074.
+
+
+
+
+
+\bibitem{Ta}T. Tanisaki, Characteristic varieties of highest weight modules and primitive quotients. Representations of Lie groups, Kyoto, Hiroshima, 1986, 1-30, Adv. Stud. Pure Math., 14, Academic Press, Boston, MA, 1988.
+\bibitem{Tr}P. Trapa, Leading-term cycles of Harish-Chandra modules and partial orders on components of the Springer fiber, Compos. Math. 143 (2007), no. 2, 515-540.
+
+\bibitem{Vo78}D. A. Vogan, Jr., Gelfand-Kirillov dimension for Harish-Chandra modules, $ Invent.Math.$ {\bf 48}(1978), 75-98.
+
+\bibitem{Vo80}D. Vogan, Ordering of the primitive spectrum of a semisimple Lie  algebra, Math. Ann. 248 (1980), 195-203.
+%
+%
+%
+%\bibitem{Vo81}
+%D. Vogan,   Singular unitary representations, in: Noncommutative harmonic analysis and Lie groups,  Lecture Notes in Mathamatics, Vol. 880, pp. 506-535, Springer, Berlin-New York, 1981.
+
+
+
+
+
+%
+%
+%\bibitem{Vogan}D. A. Vogan, Jr., Unitary Representations of Reductive Lie Groups, Annals of Mathematical Studies, {\bf 118}, Princeton University Press, 1987.
+%
+\bibitem{Vo91}D. Vogan, Associated varieties and unipotent representations. Harmonic Analysis on
+Reductive Groups (eds. W. Barker and P. Sally). Birkh\"{a}user, pp. 315-388
+(1991).
+
+
+\bibitem{Wang}W. Wang, Dimension of a minimal nilpotent orbit. Proc Amer Math Soc, 127 (1999), no. 3, 935-936.
+
+
+\bibitem{Wi}G. Williamson, A reducible characteristic variety in type A. Representations of reductive groups, 517-532, Progr. Math. 312,  Birkh\"{a}user/Springer, Cham, 2015.
+
+
+\end{thebibliography}
+
+\end{document}
+
