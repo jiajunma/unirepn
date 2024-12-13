@@ -1,0 +1,1128 @@
+% !TEX program = xelatex
+%\documentclass[t,serif,11pt,handout,usenames,dvipsnames]{beamer}
+%\documentclass[t,11pt,usenames,dvipsnames]{beamer}
+\documentclass[t,mathserif,11pt]{beamer} 
+%\usetheme{Berlin}
+%\usecolortheme{seahorse}
+%
+%\usetheme{CambridgeUS}
+%\usecolortheme{rose}
+%\usecolortheme{dolphin}
+\usecolortheme{seahorse}
+%
+\usefonttheme{serif}
+%\usefonttheme{professionalfonts}
+%\usepackage{mathpazo}
+%\usepackage{pxfonts}
+
+\setbeamertemplate{itemize items}[square]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{itemize subsubitem}[triangle]
+
+\setbeamertemplate{enumerate items}[default]
+
+
+
+
+\usepackage{verbatim}
+%\usepackage{multirow}
+\usepackage[normalem]{ulem}
+
+%\newcommand\hmmax{0}
+\usepackage{hyperref}
+%\usepackage[abbrev]{amsrefs}
+
+%\usepackage{bbold}
+%\usepackage{bbm}
+%\def\mathbb{\mathbbm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+%\usepackage{unicode-math}
+%\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{braket}
+%\usepackage{paralist}
+%\usepackage{rotating}
+%\usepackage{arydshln}
+
+%\usepackage{color}
+\usepackage{xcolor}
+%\usepackage[all,color]{xy}
+%\UseCrayolaColors
+
+%\usepackage{mathabx}
+\usepackage{mathrsfs}
+%\usepackage{MnSymbol}
+%\usepackage{mathbbol}
+%\usepackage{psnfss}
+
+
+
+\usepackage{youngtab}
+\Yautoscale1
+\Yvcentermath1
+
+\usepackage[centertableaux,smalltableaux]{ytableau}
+
+%\usepackage{cleveref}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{conj}{Conjecture}
+
+%\newtheorem{lemA}[thmA]{Lemma}
+%\newtheorem{propA}[thmA]{Proposition}
+%\newtheorem{corA}[thmA]{Corollary}
+%\newtheorem{thm}[subsection]{Theorem}
+%\newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+%\newtheorem*{prop*}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+
+
+\definecolor{refkey}{gray}{.3}
+\definecolor{labelkey}{gray}{.3}
+
+
+% \def\cone{\ding{172}}
+% \def\ctwo{\ding{173}}
+% \def\cthree{\ding{174}}
+% \def\cfour{\ding{175}}
+% \def\cfive{\ding{176}}
+
+
+
+\newcommand{\mjjc}[1]{\marginpar{\color{green}\tiny #1 \mbox{--ma}}}
+
+
+\newcommand{\rk}{\mathrm{rk}}
+\newcommand{\cqq}{\mathscr{D}}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\rSp}{\mathrm{Sp}}
+\newcommand{\rsym}{\mathrm{sym}}
+\newcommand{\rO}{\mathrm{O}}
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\rskew}{\mathrm{skew}}
+\newcommand{\fraksp}{\mathfrak{sp}}
+\newcommand{\frakso}{\mathfrak{so}}
+\newcommand{\frakm}{\mathfrak{m}}
+\newcommand{\frakp}{\mathfrak{p}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\rhopst}{\rho'^*}
+\newcommand{\Rad}{\mathrm{Rad}}
+\newcommand{\Res}{\mathrm{Res}}
+\newcommand{\Hol}{\mathrm{Hol}}
+\newcommand{\AC}{\mathrm{AC}}
+\newcommand{\AV}{\mathrm{AV}}
+\newcommand{\VC}{\mathrm{V}_\bC}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\depth}{\mathrm{depth}}
+\newcommand{\wtM}{\widetilde{M}}
+\newcommand{\wtMone}{{\widetilde{M}^{(1,1)}}}
+
+\newcommand{\nullpp}{N(\fpp'^*)}
+\newcommand{\nullp}{N(\fpp^*)}
+\newcommand{\Aut}{\mathrm{Aut}}
+
+
+
+\newcommand{\bfone}{\mathbf{1}}
+\newcommand{\bbone}{\mathbb{1}}
+
+
+
+
+\newcommand{\sfVprime}{\mathsf{V}^\prime}
+\newcommand{\sfVdprime}{\mathsf{V}^{\prime \prime}}
+\newcommand{\gminusone}{\mathfrak{g}_{-\frac{1}{m}}}
+
+\newcommand{\eva}{\mathrm{eva}}
+
+\newcommand\iso{\xrightarrow{
+\,\smash{\raisebox{-0.65ex}{\ensuremath{\scriptstyle\sim}}}\,}}
+
+\def\tmu{\tilde{\mu}}
+
+\def\tr{\mathrm{tr}}
+\def\trD{{\tr_{D/F}}}
+\def\trF{{\tr_F}}
+
+\def\Ueven{{U_{\rm{even}}}}
+\def\Uodd{{U_{\rm{odd}}}}
+\def\ttau{\tilde{\tau}}
+\def\Wcp{W}
+\def\Kur{{K^{\mathrm{u}}}}
+
+
+\providecommand{\bcN}{{\overline{\cN}}}
+\providecommand{\bcO}{{\overline{\cO}}}
+
+\def\Mpii{M'^{(1,1)}}
+\def\Mptz{M'^{(2,0)}}
+\def\Mpzt{M'^{(0,2)}}
+\def\mpii{\fmm'^{(1,1)}}
+\def\mptz{\fmm'^{(2,0)}}
+\def\mpzt{\fmm'^{(0,2)}}
+\def\bcOp{\overline{\cO'}}
+
+\def\frakN{\mathfrak{N}}
+\def\topform{\mbox{$\bigwedge^{\! \mathrm{top} \, }$}}
+
+\def\barxi{{\overline{\xi}}}
+\def\Stab{{\rm Stab}}
+\def\ad{{\rm ad}}
+\def\Ad{{\rm Ad}}
+\def\id{{\rm id}}
+\def\sgn{{\rm sgn}}
+\def\gcd{{\rm gcd}}
+
+\makeatletter
+\def\inn#1#2{\left\langle 
+\def\ta{#1}\def\tb{#2}
+\ifx\ta\@empty{\;} \else {\ta}\fi ,
+\ifx\tb\@empty{\;} \else {\tb}\fi
+\right\rangle} 
+\makeatother
+
+\def\innw#1#2{\inn{#1}{#2}_{W}}
+\def\innv#1#2{\inn{#1}{#2}_{V}}
+\def\innvp#1#2{\inn{#1}{#2}_{V'}}
+\def\innGa#1#2{\inn{#1}{#2}_{\Gamma}}
+\def\innGap#1#2{\inn{#1}{#2}_{\Gamma'}}
+
+\def\abs#1{\left|{#1}\right|}
+\def\norm#1{{\left\|{#1}\right\|}}
+
+
+
+\def\mydefhat#1{\expandafter\def\csname hat#1\endcsname{\hat{#1}}}
+\def\mydefwh#1{\expandafter\def\csname wh#1\endcsname{\widehat{#1}}}
+\def\mydeft#1{\expandafter\def\csname t#1\endcsname{\tilde{#1}}}
+\def\mydefr#1{\expandafter\def\csname r#1\endcsname{\mathrm{#1}}}
+\def\mydefb#1{\expandafter\def\csname b#1\endcsname{\mathbb{#1}}}
+\def\mydefwt#1{\expandafter\def\csname wt#1\endcsname{\widetilde{#1}}}
+\def\mydeff#1{\expandafter\def\csname f#1\endcsname{\mathfrak{#1}}}
+\def\mydefbf#1{\expandafter\def\csname bf#1\endcsname{\mathbf{#1}}}
+\def\mydefc#1{\expandafter\def\csname c#1\endcsname{\mathcal{#1}}}
+\def\mydefsf#1{\expandafter\def\csname sf#1\endcsname{\mathsf{#1}}}
+\def\mydefs#1{\expandafter\def\csname s#1\endcsname{\mathscr{#1}}}
+\def\mydefcks#1{\expandafter\def\csname cks#1\endcsname{{\check{
+\csname s#1\endcsname}}}}
+\def\mydefck#1{\expandafter\def\csname ck#1\endcsname{{\check{
+#1}}}}
+
+\def\mydefbfdowncase#1{
+\expandafter\def\csname bf#1#1\endcsname{\mathbf{#1}}
+}
+\def\mydefckdowncase#1{
+\expandafter\def\csname ck#1#1\endcsname{\check{#1}}
+}
+\def\mydefrmdowncase#1{
+\expandafter\def\csname r#1#1\endcsname{\mathrm{#1}}
+}
+\def\mydefsfdowncase#1{
+\expandafter\def\csname sf#1#1\endcsname{\mathsf{#1}}
+}
+\def\mydeffdowncase#1{
+\expandafter\def\csname f#1#1\endcsname{\mathfrak{#1}}
+}
+
+\def\doAZ#1{#1A #1B #1C #1D #1E #1F #1G #1H #1I #1J #1K #1L 
+#1M #1N #1O #1P #1Q #1R #1S #1T #1U #1V #1W #1X #1Y #1Z}
+\def\doaz#1{#1a #1b #1c #1d #1e #1f #1g #1h #1i #1j #1k #1l 
+#1m #1n #1o #1p #1q #1r #1s #1t #1u #1v #1w #1x #1y #1z}
+
+\doAZ{\mydefsf}
+\doAZ{\mydeft}
+\doAZ{\mydefwh}
+\doAZ{\mydefhat}
+\doAZ{\mydefr}
+\doAZ{\mydefwt}
+\doAZ{\mydeff}
+\doAZ{\mydefb}
+\doAZ{\mydefbf}
+\doAZ{\mydefc}
+\doAZ{\mydefs}
+\doAZ{\mydefck}
+\doAZ{\mydefcks}
+
+\doaz{\mydefbfdowncase}
+\doaz{\mydeffdowncase}
+\doaz{\mydefrmdowncase}
+\doaz{\mydefsfdowncase}
+\doaz{\mydefckdowncase}
+
+
+
+
+\def\wtGL{\widetilde{\GL}}
+\def\wtSp{\widetilde{\rSp}}
+\def\tSp{\tilde{\rSp}}
+
+
+\def\trho{{\widetilde{\rho}}}
+\def\tiota{{\widetilde{\iota}}}
+\def\biota{{\overline{\iota}}}
+
+
+
+\def\GL{\mathrm{GL}}
+\def\wtSp{\widetilde{\mathrm{Sp}}}
+\def\fsp{{\mathfrak{sp}}}
+\def\fgl{{\mathfrak{gl}}}
+\def\fsl{{\mathfrak{sl}}}
+\DeclareMathOperator{\Wh}{Wh}
+\DeclareMathOperator{\WF}{WF}
+
+\def\Id{\mathrm{Id}}
+\def\Ann{{\mathrm{Ann}\,}}
+\def\Ker{{\rm Ker}\,}
+\def\Lie{{\rm Lie}}
+\def\Im{{\rm Im\,}}
+\def\Hom{{\rm Hom}}
+\def\End{{\rm End}}
+\def\Mat{{\rm Mat}}
+\def\Ind{{\rm Ind}}
+\def\ind{{\rm ind}}
+\def\Spec{{\rm Spec\,}}
+\def\Supp{\mathrm{Supp}}
+\def\Sym{\mathrm{Sym}}
+\def\Alt{\mathrm{Alt}}
+\def\Gr{\mathrm{Gr\,}}
+\def\codim{\mathrm{codim}}
+\def\rank{\mathrm{rank}}
+\def\Gal{\mathrm{Gal}}
+
+\def\cAV{{\cA\cV}}
+\def\supp{{\rm{supp}\,}}
+\def\wtMoo{{{\wtM^{(1,1)}}}}
+
+\def\nosizesub#1#2{{{#1}_{\makebox[0pt][l]{$\scriptstyle {#2}$}}}}
+
+% editing macros. 
+\long\def\mjj#1{{{\color{magenta}#1}}}
+\long\def\delete#1{}
+\long\def\mjjd#1#2{{\color{blue}#1 \sout{#2}}}
+
+\newcommand{\trivial}[2][]{\if\relax\detokenize{#1}\relax
+{\green {\medskip The following is trivial. } #2}
+\else 
+\ifx#1h\relax  \else {\red Wrong argument!} \fi
+\fi
+}
+
+
+\def\floor#1{{\lfloor #1 \rfloor}}
+\def\ceil#1{{\lceil #1 \rceil}}
+\def\foo{{\mathfrak{o}}}
+\def\sV{{\mathscr{V}}}
+\def\tjj{{\tilde{j}}}
+\def\wtA{{\widetilde{A}}}
+\def\iinn#1#2{\ll#1,#2\gg}
+\def\fF{{\mathfrak{F}}}
+\def\fM{{\mathfrak{M}}}
+\def\Hom{{\mathrm{Hom}}}
+
+\def\tww{{\tilde{w}}}
+\def\tgg{{\tilde{g}}}
+\def\hG{{\hat{G}}}
+\def\LG{{{}^LG}}
+\def\LN{{{}^LN}}
+\def\hn{{\hat{n}}}
+\def\hns{{\hat{n}_s}}
+\def\hnt{{\hat{n}_t}}
+
+\def\fppC{\fpp_\bC}
+\def\fppCp{\fpp'_{\bC}}
+
+
+\def\sW{{\mathscr{W}}}
+\def\Stab{{\mathrm{Stab}}}
+\def\Mp{{\mathrm{Mp}}}
+\def\Sp{{\mathrm{Sp}}}
+\def\SL{{\mathrm{SL}}}
+\def\Irr{{\mathrm{Irr}}}
+\def\cX{{\mathcal{X}}}
+\def\cW{{\mathcal{W}}}
+\def\rG{{\mathrm{G}}}
+\def\Unip{{\mathrm{Unip}}}
+\def\unip{{\mathrm{unip}}}
+\def\Ch{{\mathrm{Ch}}}
+
+\def\Xllp{{{\mathsf{X}}_{\lambda,\lambda'}}}
+\def\Pil{{\pi_{\lambda,\check{\rho}}}}
+\def\Pilp{{\pi'_{\lambda',\rho'}}}
+
+\def\piSigma{{\pi_\Sigma}}
+\def\piSigmap{{\pi'_{\Sigma'}}}
+\def\piSigmapp{{\pi'_{\Sigma''}}}
+
+
+\def\wteta{{\widetilde{\eta}}}
+\def\wtpi{{\widetilde{\pi}}}
+\def\tpiSigma{{\wtpi_\Sigma}}
+\def\tpiSigmap{{\wtpi'_{\Sigma'}}}
+\def\tpiSigmapp{{\wtpi'_{\Sigma''}}}
+
+\def\Latto{{\mathrm{Latt^1}}}
+
+
+\def\half{{\frac{1}{2}}}
+\def\halfm{{\frac{m}{2}}}
+\def\halfmm{{\frac{m-1}{2}}}
+\def\fracmm{{\frac{1}{m}}}
+\def\fracdmm{{\frac{1}{2m}}}
+
+\def\cdt{{c}}
+\def\bPsi{{\overline{\Psi}}}
+\def\bpsi{{\overline{\psi}}}
+
+\def\vG{{\overrightarrow{G}}}
+\def\vrr{{\overrightarrow{r}}}
+\def\vphi{{\overrightarrow{\phi}}}
+
+\def\Cent#1#2{{\mathrm{Z}_{#1}({#2})}}
+
+\def\bomega{{\overline{\omega}}}
+\def\bomegaS{{\bomega_S}}
+\def\bomegadgS{{\bomega_{\dgS}}}
+
+%\def\cInd{{\mathrm{c-Ind}}}
+\DeclareMathOperator{\cInd}{c-Ind}
+
+\def\istar{{\filledstar}}
+\def\mstar{{\medstar}}
+\def\dstar{{\medstarofdavid}}
+
+\def\skewinv{{\mathrm{skew-inv}}}
+\def\btt{{\mathbbm{t}}}
+
+\def\diagJ{{J^\triangle}}
+
+\def\dd{{\rm{d}}}
+\def\dalpha{{\dd\alpha}}
+\def\dalphap{{\dd\alpha^\perp}}
+\def\odalpha{\overline{\dd\alpha}}
+\def\odalphap{\overline{\dd\alpha^\perp}}
+
+\def\vol{{\mathrm{vol}}}
+
+\def\Jump{{\mathrm{Jump}}}
+
+\def\CO{\cO}
+\def\bTheta{\overline{\Theta}}
+\def\ckcO{{\check{\cO}}}
+\def\ckfgg{{\check{\fgg}}}
+\def\ckfgl{{\check{\fgl}}}
+\def\ckGamma{{\check{\Gamma}}}
+\def\ckww{{\check{w}}}
+\def\ckD{{\check{D}}}
+
+\def\sspan{{\mathrm{Span}}}
+
+\def\dbK{{\breve{K}}}
+\def\dbKp{{\dbK_+}}
+\def\dbKzp{{\dbK_{0^+}}}
+\def\dbpsi{{\breve{\psi}}}
+\def\dbrho{{\breve{\rho}}}
+\def\dbkappa{{\breve{\kappa}}}
+\def\dbeta{{\breve{\eta}}}
+
+\def\TTidx#1#2{\,{}^{#1}\hspace{-0.1em}#2}
+
+\def\mydefTT#1#2#3{
+\expandafter\def\csname ii#3{#1}\endcsname{\TTidx{i}{#2{#1}}}
+\expandafter\def\csname zz#3{#1}\endcsname{\TTidx{0}{#2{#1}}}
+\expandafter\def\csname ll#3{#1}\endcsname{\TTidx{l}{#2{#1}}}
+\expandafter\def\csname aa#3{#1}\endcsname{\TTidx{a}{#2{#1}}}
+\expandafter\def\csname bb#3{#1}\endcsname{\TTidx{b}{#2{#1}}}
+\expandafter\def\csname oo#3{#1}\endcsname{\TTidx{1}{#2{#1}}}
+\expandafter\def\csname ss#3{#1}\endcsname{\TTidx{\boxslash}{#2{#1}}}
+\expandafter\def\csname dg#3{#1}\endcsname{\TTidx{\boxbackslash}{#2{#1}}}
+}
+\def\usecsname#1{\csname #1\endcsname}
+\def\useLetter#1{#1}
+\def\usedbletter#1{#1#1}
+
+\def\Vp{V'}
+\def\sLp{\sL'}
+\def\Sigmap{\Sigma'}
+\def\fggp{\fgg'}
+
+\mydefTT{sB}{\usecsname}{\useLetter}
+\mydefTT{Sigma}{\usecsname}{\useLetter}
+\mydefTT{Sigmap}{\usecsname}{\useLetter}
+\mydefTT{Gamma}{\usecsname}{\useLetter}
+\mydefTT{Omega}{\usecsname}{\useLetter}
+\mydefTT{phi}{\usecsname}{\useLetter}
+\mydefTT{eta}{\usecsname}{\useLetter}
+\mydefTT{kappa}{\usecsname}{\useLetter}
+\mydefTT{dbkappa}{\usecsname}{\useLetter}
+\mydefTT{bomega}{\usecsname}{\useLetter}
+\mydefTT{rho}{\usecsname}{\useLetter}
+\mydefTT{dbrho}{\usecsname}{\useLetter}
+\mydefTT{bfbb}{\usecsname}{\useLetter}
+\mydefTT{sL}{\usecsname}{\useLetter}
+\mydefTT{sLp}{\usecsname}{\useLetter}
+\mydefTT{G}{\useLetter}{\useLetter}
+\mydefTT{K}{\useLetter}{\useLetter}
+\mydefTT{W}{\useLetter}{\useLetter}
+\mydefTT{S}{\useLetter}{\useLetter}
+\mydefTT{V}{\useLetter}{\useLetter}
+\mydefTT{Vp}{\usecsname}{\useLetter}
+\mydefTT{dbK}{\usecsname}{\useLetter}
+\mydefTT{dbG}{\usecsname}{\useLetter}
+\mydefTT{End}{\usecsname}{\useLetter}
+
+\mydefTT{x}{\useLetter}{\usedbletter}
+\mydefTT{v}{\useLetter}{\usedbletter}
+\mydefTT{w}{\useLetter}{\usedbletter}
+\mydefTT{fgg}{\usecsname}{\useLetter}
+\mydefTT{fggp}{\usecsname}{\useLetter}
+
+
+\def\zzll{\ell}
+
+\def\bbsSB{\sS(\bbsB_0)}
+\def\aasSB{\sS(\aasB_0)}
+\def\iisSB{\sS(\iisB_0)}
+\def\ssdbkappa{\TTidx{\boxslash}{\dbkappa}}
+
+\def\ssbasB{\TTidx{\boxslash}{\sB^{ba}}}
+\def\ssabsB{\TTidx{\boxslash}{\sB^{ab}}}
+\def\ssiota{\TTidx{\boxslash}{\iota}}
+
+\def\ssbabfbb{\TTidx{\boxslash}{\bfbb^{ba}}}
+\def\ssabbfbb{\TTidx{\boxslash}{\bfbb^{ab}}}
+
+
+\def\ssbaW{\TTidx{\boxslash}{W^{ba}}}
+\def\ssabW{\TTidx{\boxslash}{W^{ab}}}
+
+\def\ggs{\fgg_{x,s}}
+\def\ggsp{\fgg'_{x',s}}
+\def\ggss{\fgg_{x,s:s^+}}
+\def\ggssp{\fgg'_{x',s:s^+}}
+
+
+\def\nuD{{\nu_D}}
+\def\nuF{{\nu_F}}
+\def\fooD{{\foo_D}}
+\def\fppD{{\fpp_D}}
+\def\fffD{{\fff_D}}
+
+\def\tkappa{{\widetilde{\kappa}}}
+\def\tpsi{{\widetilde{\psi}}}
+
+\def\sfGz{\sfG^0_x}
+\def\sfGzp{\sfG'^0_{x'}}
+
+\def\MM{\sfM}
+\def\MMp{\sfM'}
+\def\Nil{\mathrm{Nil}}
+
+\def\barX{\bar{X}}
+
+\def\psiGa{\psi_\Gamma}
+
+
+\def\Sec#1{\S~#1}
+
+\def\blue{\color{blue}}
+\def\gray{\color{gray}}
+\def\red{\color{red}}
+\def\lblue{\color{blue}}
+
+\def\vV{\bfV^\vee}
+\def\bSb{\bS(\bfbb)}
+\def\vcO{\widehat{\cO}}
+
+
+\def\bbF{\overline{\bF}}
+
+\def\PBP{\mathrm{PBP}}
+\def\LS{\mathrm{LS}}
+\def\AOD{\mathrm{AOD}}
+
+\def\gen#1{\langle #1 \rangle}
+
+\let\oldemph\emph
+\def\emph#1{\oldemph{\blue #1}}
+%\def\emp#1{\blue #1}
+
+\allowdisplaybreaks
+
+\let\ytb=\ytableaushort
+
+\setbeamertemplate{section in toc}[sections numbered]
+
+\def\TTPG{
+\begin{frame}[c]{}
+    \tableofcontents[currentsection,hideallsubsections,subsubsectionstyle=hide]
+\end{frame}
+}
+
+\usepackage{listings}
+% \lstset{
+%     basicstyle=\ttfamily\tiny,
+%     keywordstyle=\color{black},
+%     commentstyle=\color{white}, % white comments
+%     stringstyle=\ttfamily, % typewriter type for strings
+%     showstringspaces=false,
+%     breaklines=true,
+%     emph={Output},emphstyle=\color{blue},
+% } 
+
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows,positioning,cd,backgrounds}
+\usetikzlibrary{decorations.pathmorphing,decorations.pathreplacing}
+
+\title[Uni. Repn.]{Unipotent representations \\
+and theta correspondence}
+
+\author[Ma, Jia-Jun]{Ma, Jia-Jun}
+
+\institute[XMU]{School of Mathematics\\
+Xiamen University\\[1.5em]
+Department of Mathematics\\
+Xiamen University Malaysia Campus
+}
+
+
+
+%\setbeamercovered{invisible}
+%\setbeamercovered{transparent}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{navigation symbols}{}
+\defbeamertemplate{footline}{my footline}{%
+\vskip1pt%
+%\hrule
+%\makebox[0pt][l]{\,\insertsection}%
+\hspace*{\fill}%\insertshorttitle\hspace*{\fill}%
+%\hfill
+\llap{\insertpagenumber\,/\,\insertpresentationendpage\,}
+%\hspace*{\fill}
+\hspace*{\fill}
+}
+%\setbeamertemplate{footline}[my footline]
+\setbeamertemplate{footline}[frame number]
+
+
+\makeatletter
+\newcommand\xleftrightarrow[2][]{%
+  \ext@arrow 9999{\longleftrightarrowfill@}{#1}{#2}}
+\newcommand\longleftrightarrowfill@{%
+  \arrowfill@\leftarrow\relbar\rightarrow}
+\makeatother
+
+%\date{Dec. 13, 2024\\ at NCTS}
+
+%\def\ckcO{\widehat{\cO}}
+\def\dBV{d_{BV}}
+
+\def\Witt{\mathrm{Witt}}
+\def\Quad{\mathrm{Quad}}
+
+
+\begin{document}
+
+\begin{frame}[plain,label=tt]
+    
+    \titlepage
+    \vspace{-3em}
+% \centering{
+%     (Zhejiang University)
+% }
+\end{frame}
+
+
+
+
+% \begin{frame}[c]{Outline}
+    %   \tableofcontents[hideallsubsections,subsubsectionstyle=hide]
+    % \end{frame}
+
+\def\vgraph#1#2{\ensuremath{\vcenter{\hbox{\includegraphics[width=#1]{#2}}}}}
+\def\hgraph#1#2{\ensuremath{\vcenter{\hbox{\includegraphics[height=#1]{#2}}}}}
+\def\hhgraph#1#2#3{\ensuremath{\begin{array}{c}\text{#3}\\
+        \hbox{\includegraphics[height=#1]{#2}}
+        \end{array}}}
+    \section{Motivation}
+
+    \begin{frame}{Jordan-Chevalley decomposition}
+     \begin{itemize}[<+->]
+       \item For each $g\in G:=\GL_{n}(\bC)$, $\exists !$ pair $(s,u)$
+             such that
+             \[
+              g=su=us,
+             \]
+       \item $s$ is semisimple, and $u$ is unipotent ($u-1$ is nilpotent.)
+       \item \hhgraph{0.15\textwidth}{Jordan.jpg}{Camille Jordan}
+             \hhgraph{0.15\textwidth}{Chevalley.jpg}{Claude Chevalley}
+       \item Classification of conjugation classes in $G$:
+             \[
+             G/\sim = \bigsqcup_{s\in G_{\mathrm{s.s.}}/\sim} \set{s u|u\in G^{s}}/\sim \;
+             \xleftrightarrow{\ \ bij. \ \ } \bigsqcup_{s\in G_{\mathrm{s.s.}}/\sim} \unip(G^{s})
+             \]
+     \end{itemize}
+   \end{frame}
+
+    \begin{frame}{Finite group of Lie type: $G:=\bfG(\bF_{q})$}
+      \begin{itemize}[<+->]
+        \item \emph{Jordan decomposition of representations}:
+        \item[] Langlands Dual group $\check{\bfG}$.
+            E.g. $\Sp_{2n} = \bfG\leftrightsquigarrow \check{\bfG} = \SO_{2n+1}$\\
+        \[
+             \hhgraph{0.14\textwidth}{Deligne}{Deligne}
+              \hspace{2em}
+              \Irr(G) = \displaystyle \bigsqcup_{s \in \check{G}_{\text{s.s.}}/\sim
+              %\substack{\text{semisimple class}\\ s \in \widehat{G}_{\text{s.s.}}/\sim}
+            } \cE(G, s).
+             \hspace{2em}
+              \hhgraph{0.14\textwidth}{Lusztig}{Lusztig}
+            \]
+        \item[] Lusztig's map to the unipotent packet.
+        \[
+          \cE(G,s)\xleftrightarrow{\ \  bij. \ \ } \cE(\check{G}_{s},1)
+        \]
+        \item[] Preserve cuspidality. 
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      \frametitle{Unipotent cuspidal representations}
+      \begin{itemize}
+        \item[] Let $q$ be an odd prime power.
+        \item[] Unipotent cuspidal representations (for classical groups) exist only in the following cases:
+        \item $\rU_n(\bF_q)$  has one $\pi_k$, when $n= k(k+1)/2$; 
+        \item $\Sp_{2n}(\bF_q)$ has one $\pi_k^{\Sp}$, when $n = k(k+1)$
+        \item $\rO^{\epsilon}_{2n}(\bF_q)$ has two $\pi_{k,a/b}^{e}$, when $n=k^2$ and $\epsilon = (-1)^k$. 
+         \item $\rO^{\epsilon}_{2n+1}(\bF_q)$ has two $\pi_{k,a/b}^{o}$, when $n=k(k+1)$. 
+      \end{itemize}
+      By Adams-Moy, all the unipotent cuspidal representations can be consturced by theta lifting.
+    \end{frame}
+
+    \begin{frame}{Rational nilpotent orbits of orthogonal/symplectic groups}
+      \begin{itemize}
+      \item $\Quad(k) $ be the isometric classes of quadratic spaces over $k$.
+      \item $\Witt(k)$ be the Witt group of a field $k$.
+      \item[] We identify $\Witt(k)\times \bN =\Quad(k)$ via
+      \[
+      ([V_0], n)\mapsto V_0\oplus \bH^n \quad \text{with $V_0$ anisotropic}
+      \]
+      \item \pause The rational nilpotent oribts are parameterized by 
+        formed Yong-diagram : 
+        \[[(Q_1,r_1),(Q_2,r_2), \cdots (Q_l,r_l)]\] such that
+      \begin{itemize}
+      \item $Q_i \in \Quad(k)$,
+      \item  $r_1> r_2> \cdots r_l>0$
+      \item and $Q_i$ is split if $r_i$ is even for orthogonal group 
+      \item[] $r_i$ is odd for symplectic group.  
+      \end{itemize}
+      \end{itemize}
+    \end{frame}
+
+    \def\ytb#1{{\tiny\ytableaushort{#1}}}
+    \begin{frame}{}
+      The chain/descent sequence of unipotent cuspdial representations \\
+      \centering{
+      \begin{tikzcd}[column sep=4em, row sep=0em, ampersand replacement=\&]
+      \emptyset \&  \pi^e_{0,a}  \arrow[r] \&  \pi^{\Sp}_0 \ar[ld,""] \& \emptyset\\
+      \ytb{Q,Q}\&  \pi^e_{1,a} \arrow[d,"\det\otimes"] \& \\
+      \&  \pi^e_{1,b} \arrow[r,""] \& \pi^{\Sp}_1 \ar[ld] \& \ytb{Q\ ,Q\ }\\
+      \ytb{Q\ \ ,Q\ \ ,Q,Q}\&  \pi^e_{2,a} \arrow[d,"\det\otimes"] \& \\
+      \&  \pi^e_{2,b} \arrow[r,""] \& \pi^{\Sp}_2 \ar[ld] \& \ytb{Q\ \ \ ,Q\ \ \ ,Q\ ,Q\ } \\
+       \ytb{Q\ \ \ \ ,Q\ \ \ \ ,Q\ \ ,Q\ \ ,Q,Q}\&  \pi^e_{3,a} \arrow[d,"\det\otimes"] \& \\
+      \&  \pi^e_{3,b} \arrow[r,""] \& \pi^{\Sp}_3 \ar[ld] \\
+      \&  \cdots \&
+        \end{tikzcd}
+      }\\
+        \pause
+
+      (The complete result on the rational Wavefront of finite classical group has been worked out by Z.-C. Wang)
+    \end{frame}
+    \let\ytb=\ytableaushort
+
+\begin{frame}
+  %\frametitle{Geometry of the \underline{moment maps}}
+  \frametitle{Lifting of cycles}
+  \begin{itemize}
+  \item Example $(G,G')=(\Sp_{2n}, \rO_m)$ 
+    \[
+      \begin{tikzcd}[ampersand replacement=\&,column sep=3em, row sep=1em]
+        \& M_{m,2n}\ar[rd,"\varphi"]
+        \ar[ld,"\varphi'"'] \& \\
+      \Alt^2_m\cong {\mathfrak{g}'} \&  \text{\footnotesize $A$} \ar[rd,mapsto]\ar[ld,mapsto]\& {\mathfrak g}\cong
+        \Sym^2_{2n}\\
+       \text{\footnotesize $X'=AJ A^T$} \& \& \text{\footnotesize $X = A^T A$}\\
+      \end{tikzcd}
+    \] \pause
+  \item $\cO := G \cdot X$ is called the lift of $\cO' := G' \cdot X'$ 
+  \item[] if $A$ is full rank and $m\leq 2n$.  \pause
+  \item  One can define lifting of cycles use the geometry of moment maps 
+    \[\vartheta^{\text{geo}}\colon
+       \cK_{\cO'}(G') \longrightarrow \cK_{\cO}(G)\]
+   \item[] {\lblue Theorem (Gomez-Zhu)} Theta lift of generalized Whittaker models 
+    \[
+       \Wh_{\cO}(\Theta(\pi')) = \vartheta^{\text{geo}} (\Wh_{\cO'}(\pi')),
+     \]
+  \end{itemize}
+\end{frame}
+
+
+    \begin{frame}
+      \frametitle{Representations of Real Lie groups}
+      \begin{itemize}[<+->]
+        \item $G$ real reductive group\\[-1em]
+        \item[]\
+              \vspace{-1em}
+        \[
+          \set{\text{discrete series}}\subset\set{\text{tempered}}
+          \subset\set{\text{unitary}}\subset\Irr(G)
+        \]
+        \item Unitary dual of $\SL_{2}(\bR)$:
+        \[
+          \vgraph{0.6\textwidth}{unitary_sl2.png}
+        \]
+        \item \emph{Open problem:} Structure of the unitary dual!
+      \end{itemize}
+    \end{frame}
+
+    % \def\vG{\widehat{G}}
+    % \begin{frame}
+    %   \frametitle{Weakly unipotent representation}
+    %   \begin{itemize}[<+->]
+    %     \item \emph{Arthur} $\Irr_{\text{temp}}(G) \subset \Irr_{A}(G)\subset
+    %     \Irr_{\text{unit}}(G)$
+    %     \[
+    %       \vgraph{0.15\textwidth}{Arthur.jpg}
+    %       \hspace{1em}
+    %       \Irr_{A}(G)\xrightarrow{\text{\ finite to finite\
+    %         }} \set{\psi\colon WD_{k}\times \SL_{2}(\bC)\rightarrow {}^{L}G}/\vG.
+    %     \]
+    %     \item Barabasch-Vogan 
+    %   \end{itemize}
+    % \end{frame}
+
+    \begin{frame}
+      \frametitle{Arthur's unipotent representations (for real classical groups)}
+      \begin{itemize}[<+->]
+        \item $W_{\bR} = \bC^{\times} \cup j\, \bC^{\times}$
+        \item $\psi:W_{\bR}\times \SL_{2}(\bC)\rightarrow {}^{L} G $
+        \item Unipotent parameter: % $\Leftrightarrow$
+              $\psi|_{\bC^\times}=$ trivial
+        \item[] $\Leftrightarrow$ nilpotent orbit of a real from of $\vG$.
+        \item \vgraph{0.15\textwidth}{Arthur2.jpg}  \emph{Conjecture:} $\exists$ unipotent Arthur
+        packets
+        \item[] ``On some problems suggested
+        by the trace formula'' 1980's
+        \item \hhgraph{0.15\textwidth}{Moeglin3.png}{M\oe glin}
+        \hhgraph{0.15\textwidth}{Renard.jpg}{Renard}
+        % \item[]
+              \emph{Reduction to unipotent Arthur packet}
+        \item[] ``Sur Les paquets d'Arthur des groupes classiques r\'eels''\\
+        (2020)
+      \end{itemize}
+    \end{frame}
+
+
+
+    \begin{frame}
+      \frametitle{Barbasch-Vogan's definition of  special unip. repn.}
+      \begin{itemize}[<+->]
+            \item[] $G$: a real reductive group.
+            \item  $\ckcO$ : a nilpotent orbit in $\ckG$ $\leadsto$ inf. char. $\chi_{\ckcO}$.
+            \item[] \hspace{1em} $\leadsto$  the maximal primitive ideal
+            $\cI_{\ckcO}\subset \cU(\fgg)$. %attached to $\ckcO$.
+              %\hhgraph{0.11\textwidth}{Duflo}{Duflo}
+              %\hhgraph{0.11\textwidth}{Joseph2}{Joseph}
+            \item  \emph{Definition} (Barbasch-Vogan):
+            \item [] An irr. adm. $G$-module is called
+            \emph{special unipotent} if
+            \[
+            \Ann_{\cU(\fgg)}(\pi) = \cI_{\ckcO}.
+            \]
+            %\item  \emph{Theorem} (Barbasch-Vogan):
+            \item[]
+            $\Longleftrightarrow$ $\pi$ has inf. char. $\chi_{\ckcO}$ and
+            $\AV_\bC(\pi) \leq  \dBV(\ckcO)$
+            %\item $\Nil^{\text{special}}(\bfG)\ni \cO:=$
+            %the \hhgraph{0.08\textwidth}{Lusztig2}{\ }
+            %\hhgraph{0.08\textwidth}{Spaltenstein1}{\tiny Spaltenstein}
+            %\hhgraph{0.08\textwidth}{Barbasch2}{\ }
+            %\hhgraph{0.08\textwidth}{Vogan2}{\ }
+            %dual of $\ckcO$.
+            \item \emph{Weak Unipotent Packet:}
+            \item[] $\Unip_{\ckcO}(G):= \{ $ special unipotent repn. attached to $\ckcO\}$.
+            \item Conjecture 1:
+            $\Unip_{\ckcO}(G)$ consists of {\red unitary} repn.
+            \item Conjecture 2:
+            $\Unip_{\ckcO}(G)$ is the union of certain {\red Arthur packets}.
+
+      \end{itemize}
+    \end{frame}
+    \def\SU{\mathrm{SU}}
+    \def\Spin{\mathrm{Spin}}
+    \begin{frame}[label=UN]
+        \frametitle{Special unip. repn. of simply conn. classical groups} 
+        \begin{block}{Theorem (Barbasch-M.-Sun-Zhu)}
+        Suppose $G$ is a simply connected real classical group, i.e. one of the following groups
+        \[\SU(p,q), \Spin(p,q), \Spin(2n,\bH), \Sp(2n,\bR), \Mp(2n,\bR), \Sp(p,q)
+        \] 
+            Arthur-Barbasch-Vogan's unitarity conj. for special unipotent repn. holds:\\[1em]
+            \pause
+            \centering{All \emph{special unipotent repn.} of $G$  are \emph{unitarizable}.}
+        \end{block}
+        The Arthur parameter of these representations are determined by recent  work of Sun-Xu. 
+    \end{frame}
+
+    \begin{frame}{Reduction to the ``good parity''}
+        \begin{itemize}
+            \item Consider $G= \Sp(2n,\bR)$ for example. 
+            \item  $\ckcO$ decompose into two parts $\ckcO_{g}$ (good parity)  and $\ckcO_{b}$ (bad parity).
+            \item Assume $\ckcO_{b} = \{r_1, r_1, \cdots, r_k, r_k\}$ and
+            \item Set $\ckcO'_b = \set{r_1,\cdots, r_k}\in \Nil_{\GL}$.\pause \\
+            %  ,  $\abs{\ckcO_b}=2n_1$ and 
+            % $|\ckcO_{g}| = 2n_0$
+            \begin{block}{ Theorem  (Barbasch-M.-Sun-Zhu) }
+              \hspace{2em}
+              $
+            \begin{array}{ccc}
+                {\tiny\Unip_{\ckcO'_b}(\GL)
+                \times \Unip_{\ckcO_g}(\Sp)} &\xrightarrow{\ \ bij.\ \ }&
+                {\tiny \Unip_{\ckcO}(\Sp)} \\[.6em]
+                (\pi',\pi_0 ) &\mapsto & 
+                \Ind_{\raisebox{-0.5em}{\tiny$\GL_{\abs{\ckcO'_b}}\times \Sp(2n_0,\bR)\ltimes U$}}^{\tiny\raisebox{1em}{$\Sp(2n,\bR)$}}
+                \hspace{-5em}\pi'\otimes \pi_0
+            \end{array}
+            $
+          \end{block}
+          \vspace{-1em}
+            \[
+            \begin{split}
+                {\tiny\Unip_{\ckcO'_b}(\GL)}
+                = 
+                \Set{\Ind \mathop{\otimes}_{j=1}^k \sgn^{\epsilon_j}_{\GL(r_j,\bR)}
+                % \Set{\Ind_{\raisebox{-0.7em}{\tiny$\GL(r_1)\times\cdots\times \GL(r_k)$}}^{\tiny\raisebox{1em}{$\GL(2n_1,\bR)$}} \hspace{-6.8em}\raisebox{0em}{ $\sgn^{\epsilon_1}\otimes \cdots \otimes\sgn^{\epsilon_k}$}
+                % | 
+                |\epsilon_j \in \bZ/2\bZ}
+            \end{split}
+            \]
+            \pause
+            \item Use \emph{theta correspondence}  to study 
+            $ \Unip_{\ckcO_{g}}(G)$.
+            \item We assume  $\ckcO$ has {\red good parity} from now on.
+        \end{itemize}
+    \end{frame}
+
+
+    \begin{frame}{}
+      \frametitle{Inductive structure of nilpotent orbits}
+        \[
+        \begin{tikzcd}[ampersand replacement=\&,column sep=1em,row sep=.5em]
+            \check{\bfG}_i \&  \SO(15,\bC) \&  \rO(10,\bC) \&  \SO(7,\bC) \& \rO(4,\bC)\\
+            \ckcO_i \& \ydiagram{5,3,3,3,1} \&
+            \ydiagram{0,3,3,3,1} \& \ydiagram{0,0,3,3,1} \& \ydiagram{0,0,0,3,1}    \\
+            \cO_i \& \ydiagram{4,4,4,2}\& \ydiagram{3,3,3,1} \& \ydiagram{2,2,2,0} \&
+            \ydiagram{1,1,1,1}\\
+            \bfG_i \&  \Sp(14,\bC) \&  \rO(10,\bC) \&  \Sp(6,\bC) \& \rO(4,\bC)\\
+        \end{tikzcd}
+      \]
+      \\
+        \pause
+        Relate to
+        Kraft-Procesi and Ohta's 
+          study of singularities of
+          a nilpotent orbit closure.
+    \end{frame}
+
+
+    \begin{frame}
+      \frametitle{Construction of elements in $\Unip_{\ckcO}(G)$}
+      \begin{itemize}
+          \item 
+          $\chi=\displaystyle\mathop{\otimes}_{j=0}^{a}\chi_{j}$, a character 
+          of
+          $\displaystyle\mathop{\textstyle\prod}_{j=0}^{a}G_{j}$.
+          \item $\chi_j \in \{ \bfone, \sgn^{+,-}, \sgn^{-,+},  {\det}\}$ when $G_j$ is an orthogonal group.
+          \item 
+          Define a smooth repn. of $G = G_{a}$ 
+          \[
+          {\lblue \pi_{\chi}}:=(\omega_{G_{a},G_{a-1}}\widehat \otimes
+          \omega_{G_{a-1},G_{a-2}} \widehat \otimes \cdots \widehat \otimes
+          \omega_{G_1,G_0} \otimes \chi)_{G_{a-1}\times G_{a-2}\times \cdots \times G_{0}}
+          \]
+          The AC of $\pi_\chi$ is computable by an algorithm of lift of AC (Nishiyama-Zhu, Loke-M., BMSZ) 
+          \pause 
+          \begin{thm}[Barbasch-M.-Sun-Zhu]
+              Suppose $\ckcO$ is an orbit with good parity.
+              Then $\WF(\pi_\chi) = \Wh(\pi_\chi)$ 
+              \begin{itemize}
+                  \item either $\pi_\chi = 0$ or
+                  $\lblue \pi_{\chi}\in  \Unip_{\ckcO}(G)$ and   
+                  {\lblue unitarizable}.\pause
+                  \item Moreover, 
+                  \[\lblue
+                  \Unip_{\ckcO}(G) = \set{\pi_{\chi} | \pi_{\chi}\neq 0}. 
+                  \]
+              \end{itemize}
+          \end{thm}
+      \end{itemize}
+      %Moreover, 
+  \end{frame}
+  
+  \begin{frame}
+      \frametitle{Example 1: }
+      Lift to $G = \Sp(8,\bR)$ from real forms of $\bfG = \rO(4,\bC)$.\\
+      $\ckcO = 5 3 1$ and  $\cO = 2222$.
+      Then 
+      \[
+      \begin{split}
+      & \Unip_\ckcO(G) \\
+      &= \Set{\pi_{p,q}^{\pm } := \text{ theta lift of trivial and sign of $\rO(p,q)$} | p+q=4} 
+      \end{split}
+      \]
+      Then $\WF(\pi_{p,q}^{\pm}) = \Wh(\pi_{p,q}^{\pm})$ 
+      consists of the single orbit:\\[2em]
+
+      \centering{
+      \ytb{
+        \pm\mp,
+        \pm\mp,
+        \vdots\vdots,
+        \pm\mp
+      }
+      }
+  \end{frame}    
+  
+  
+  \begin{frame}
+      \frametitle{Example 2: Coincidences of theta liftings}
+      Lift to $G = \Sp(6,\bR)$ from real forms of $\bfG = \rO(4,\bC)$.\\
+      $\ckcO = 3^2 1^1$ and  $\cO = 2^3$.
+      \[
+      \begin{tikzcd}[ampersand replacement=\&,column sep=2em, row sep=1em,execute at end picture={
+          \draw (-7em,-7em)--(-7em,8em);
+        }]
+          \& \& \Sp(6,\bR)\\[-1em]
+          \hline
+          \rO(4,0) \& \  \& \theta(\sgn^{+,-}) \ar[dr,equal]\& \   \\
+          \rO(3,1) \& \theta(\bfone) \& \theta(\sgn^{+,-}) \ar[dr,equal] \& \theta(\sgn^{-,+}) \\
+          \rO(2,2) \& \theta(\bfone) \& \theta(\sgn^{+,-}) \ar[dr,equal] \& \theta(\sgn^{-,+}) \\
+          \rO(1,3) \& \theta(\bfone) \& \theta(\sgn^{+,-}) \ar[dr,equal] \& \theta(\sgn^{-,+}) \\
+          \rO(0,4) \& \  \&\  \& \theta(\sgn^{-,+}) \\
+      \end{tikzcd}
+      \]
+  \end{frame}    
+    
+  \begin{frame}{Example 2 (cont.)}
+      All $\theta(\bfone)$ has reducible associated cycle. 
+      \[
+      \WF(\theta_{\rO(3,1)}^{\Sp_6(\bR)}(\bfone)) = 
+      \ytb{
+        -+, -+, -+ } \cup \ytb{ -+, -+, +- }
+      \] 
+      \[
+      \WF(\theta_{\rO(2,2)}^{\Sp_6(\bR)}(\bfone)) = 
+      \ytb{
+        -+, -+, +- } \cup \ytb{ -+, +-, +- }
+      \] 
+      \[
+      \WF(\theta_{\rO(1,3)}^{\Sp_6(\bR)}(\bfone)) = 
+      \ytb{
+        -+, +-, +- } \cup \ytb{ +-, +-, +- }
+      \] 
+  \end{frame}  
+  \begin{frame}{Weak unipotent packet for $p$-adic group }
+    \begin{itemize}
+    \item $G$ : a split orthogonal group or symplectic group  defined over a $p$-adic field. 
+    \item $\ckcO \in \Nil(\ckG)$, and $\ckhh \in \ckfgg$ is the semisimple element attached to $\ckcO$ \pause
+    \item Weak unipotent packet of $\ckcO$ (Ciubotaru-Mason-Brown-Okada) 
+    \item[] 
+    \[
+      \Unip_\ckcO(G):= \Set{X := X(q^{\half\ckhh},n, \rho) | 
+    \WF(X) \subseteq \dBV(\ckcO)}
+    \] 
+    Here 
+    \begin{itemize}
+    \item $n\in \fgg^\vee$ such that $[\ckhh,n] = 2n$; 
+    \item $\rho$ is an irreducible character of $A^1_{\ckG}(s,n)$;
+    (more or less the componet group of $Z_\ckG(\set{\ckhh,n})$)  
+    \item $X(q^{\half\ckhh},n, \rho)$ is Lusztig's unipotent. representation. 
+    \end{itemize}
+    \end{itemize}
+  \end{frame}
+
+  \def\AZ{\mathrm{AZ}}
+
+  \begin{frame}{Elements in a weak unipotent packet}
+    \begin{itemize}
+      \item By Ciubotaru-Mason-Brown-Okada, 
+      \[ 
+      \Unip_\ckcO(G) = \Set{AZ(X(q^{\half \ckhh},n,\rho))| n \in \text{Special piece of $\ckcO$}}.  
+      \]
+      \item \pause\emph{Question:} Can we use theta lifting to construct all elements in $\Unip_\ckcO(G)$? 
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Unipotent supercuspidal repn. (over a $p$-adic field $k$)}
+    \begin{itemize}[<+->]
+      \item Unipotent supercuspidal representation of symplectic group is parameterized by a pair of natural number $(k_1,k_2)$: 
+      \item \emph{$\pi_{k_1,k_2}:=\cInd_P^{\Sp} \pi^\Sp_{k_1}\otimes \pi^\Sp_{k_2}$} here $P$ is a paraholic subgroup with reductive quotient $\Sp_{2k_1(k_1+1)}(\bF_q)\times \Sp_{2k_2(k_2+1)}(\bF_q)$. 
+      \item $\Witt(\bF_q)\times \Witt(\bF_q)\stackrel{1-1}{\longleftrightarrow} \Witt(k)$. %\\ 
+      %where $k$ is a $p$-adic field with residual field $\bF_q$. 
+      \item descent sequence of $\pi^\Sp_{k_1}$ and $\pi^\Sp_{k_2}$ $\leadsto$ descent sequence of $\pi_{k_1,k_2}$.  
+      \item Apply Gomez-Zhu $\leadsto$ the wavefront set of $\pi_{k_1,k_2}$. 
+      \item $\WF(\pi_{k_1,k_2})$ contains a single orbit of ``triangular shape''  
+      %\item[] Not every unipotent supercuspidal repn. is weakly unipotent (since infinitesimal character may not be real).  
+    \end{itemize}
+  \end{frame}
+
+
+  \begin{frame}{Example 3: $\ckcO = \ytb{\ \ \ , \ \ \ ,\ }$  $\quad \dBV(\ckcO) = \ytb{\ \ ,\ \ , \ \ }$}
+   \begin{itemize}
+    \item $\Unip_\ckcO(\Sp_6)$ has two elements.
+    \item They are the theta lifts.
+    \item[] $\theta_{\rO^+_4}(1)$ 
+    \item[] $\theta_{\rO^-_4}(1)$
+    \item they have reducible wavefront set. 
+   \end{itemize} 
+  \end{frame}
+
+  \begin{frame}{Example 4: $\ckcO = \ytb{\ \ \ \ \ , \ \ \ ,\ }$  $\quad \dBV(\ckcO) = \ytb{\ \ ,\ \ , \ \ ,\ \ }$}
+   \begin{itemize}
+    \item $\Unip_\ckcO(\Sp_8)$ has 5 elements.
+    \item It is the union of two Arthur packets. 
+    \item The anti-tempered packet 
+    \[
+    \Set{\delta=\theta_{\rO^+_4}(1), \pi_1=\theta_{\rO^+_4}(\det),  \pi_2=\theta_{\rO^-_4}(1), \pi_{sc}=\theta_{\rO^-_4}(\det)}
+    \]
+    \item They has irreducible wavefront set. 
+    \item One non-anti-tempered packet 
+      \[
+      \Set{\pi_1, \pi_{sc},\tau^t }. 
+      \]
+   \end{itemize} 
+  \end{frame}
+
+  \begin{frame}{}
+       \vfill
+        \centering{\bf\Large\color{blue} Thank you for your attention!}
+        \vfill
+      \end{frame}
+
+  \end{document}
+    
+
+
+%%% Local Variables: 
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: pdfletex
+%%% TeX-master: t
+%%% End:

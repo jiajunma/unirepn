@@ -1,5 +1,6 @@
-%\documentclass[t,serif,11pt,handout,usenames,dvipsnames]{beamer}
-\documentclass[t,11pt,usenames,dvipsnames]{beamer}
+% !TEX program = xelatex
+\documentclass[t,serif,11pt,handout,usenames,dvipsnames]{beamer}
+% \documentclass[t,11pt,usenames,dvipsnames]{beamer}
 %\documentclass[t,mathserif,11pt]{beamer} 
 %\usetheme{Berlin}
 %\usecolortheme{seahorse}
@@ -840,9 +841,9 @@ Xiamen University Malaysia Campus}
             \item \emph{Philosophy:}
             $\Unip_{\ckcO}(G)$
              $=$  the {\color{red} building blocks} of the unitary dual.
-             \item [] \hspace{2em} {\color{red} Special unip. repn. are  enough in general}\\
+             \item [] \hspace{2em} {\color{red} Special unip. repn. are not enough in general}\\
                       \hspace{2em}  E.g., Complex Spin group, by Wong-Zhang.\\
-                      \hspace{2em}  c.f. Mason-Brown's talk.
+                      \hspace{2em}   Losev, Mason-Brown and Matvieievskyi for the generalization.
              \item \emph{Conjecture (1980s)}:
              $\Unip_{\ckcO}(G)$ consists of {\red unitary} repn.
             \item[] {\red Question 1:} Size of $\Unip_{\ckcO}(G)$?\\
@@ -995,7 +996,7 @@ Xiamen University Malaysia Campus}
                 \text{even rows}, & \text{when $\vG$ is type $C$} 
             \end{cases}
             \]
-            \item $\lambda_{\ckcO}$ is integral.
+            \item[] $\ckcO$ good parity $\leadsto \chi_{\ckcO}$ is integral.
             \vspace{-1em}
             %\item  Example of good parity:
             \[
@@ -1186,24 +1187,24 @@ Xiamen University Malaysia Campus}
         \frametitle{Construction of elements in $\Unip_{\ckcO}(G)$}
         \begin{itemize}
             \item 
-            $\chi=\displaystyle\mathop{\otimes}_{j=0}^{2a}\chi_{j}$, a 1-dim repn. 
+            $\chi=\displaystyle\mathop{\otimes}_{j=0}^{a}\chi_{j}$, a character 
             of
-            $\displaystyle\mathop{\textstyle\prod}_{j=0}^{2a}G_{j}$.
-            \item $\chi_j \in \{ \bfone, \sgn^{+,-}, \sgn^{-,+},  {\det}\}$
+            $\displaystyle\mathop{\textstyle\prod}_{j=0}^{a}G_{j}$.
+            \item $\chi_j \in \{ \bfone, \sgn^{+,-}, \sgn^{-,+},  {\det}\}$ when $G_j$ is an orthogonal group.
             \item 
-            Define a smooth repn. of $G = G_{2a}$ (the symplectic group). 
+            Define a smooth repn. of $G = G_{a}$ 
             \[
-            {\lblue \pi_{\chi}}:=(\omega_{G_{2a},G_{2a-1}}\widehat \otimes
-            \omega_{G_{2a-1},G_{2a-2}} \widehat \otimes \cdots \widehat \otimes
-            \omega_{G_1,G_0} \otimes \chi)_{G_{2a-1}\times G_{2a-2}\times \cdots \times G_{0}}
+            {\lblue \pi_{\chi}}:=(\omega_{G_{a},G_{a-1}}\widehat \otimes
+            \omega_{G_{a-1},G_{a-2}} \widehat \otimes \cdots \widehat \otimes
+            \omega_{G_1,G_0} \otimes \chi)_{G_{a-1}\times G_{a-2}\times \cdots \times G_{0}}
             \]\pause 
             \begin{thm}[Barbasch-M.-Sun-Zhu]
                 Suppose $\ckcO$ is an orbit with good parity.
                 Then
-                \begin{itemize}[<+->]
+                \begin{itemize}
                     \item either $\pi_\chi = 0$ or
                     \item $\lblue \pi_{\chi}\in  \Unip_{\ckcO}(G)$ and   
-                    {\lblue unitarizable}.
+                    {\lblue unitarizable}.\pause
                     \item Moreover, 
                     \[\lblue
                     \Unip_{\vcO}(G) = \set{\pi_{\chi} | \pi_{\chi}\neq 0}. 
@@ -1216,7 +1217,7 @@ Xiamen University Malaysia Campus}
     
     
     \begin{frame}
-        \frametitle{Example: Coincidences of theta lifting}
+        \frametitle{Example: Coincidences of theta liftings}
         Lift to $G = \Sp(6,\bR)$ from real forms of $\bfG = \rO(4,\bC)$.\\
         $\ckcO = 3^2 1^1$ and  $\cO = 2^3$.
         \[
@@ -1248,34 +1249,86 @@ Xiamen University Malaysia Campus}
                \LS(\ckcO') \ar[u,"\color{red}\vartheta^{\text{geo}}"]\& \ePBP(\ckcO') \ar[r,<->]\ar[l,"\AC",two heads] \& \bigcup \Unip_{\ckcO'}(G') \ar[u,"\theta"'] 
             \end{tikzcd}
             \]
-            \item[] 
+            \item[] For $\tau\in \ePBP(\ckcO)$, define  
             \[
                 \pi_{\tau} := \Theta(\pi_{\nabla(\tau)}\otimes \chi'_{\tau})\otimes \chi_{\tau}
             \]
-            \item The {\red injectivity} of theta lifting is crucial!
+           % \item The {\red injectivity} of theta lifting is crucial!
         \end{itemize}
     \end{frame}
     
 
+\begin{frame}
+  %\frametitle{Geometry of the \underline{moment maps}}
+  \frametitle{Lifting of Associated characters I}
+  \begin{itemize}
+  \item Example $(G,G')=(\Sp(2n,\bR), \rO(p,q))$ 
+    \[
+      \begin{tikzcd}[ampersand replacement=\&,column sep=3em, row sep=1em]
+        \& M_{p,n}\oplus M_{q,n} \ar[rd,"\varphi"]
+        \ar[ld,"\varphi'"'] \& \\
+        M_{p,q}\cong {\mathfrak{p}'} \&  \text{\footnotesize $w = (A,B)$} \ar[rd,mapsto]\ar[ld,mapsto]\& {\mathfrak p}\cong
+        \mathrm{Sym}_n\oplus \mathrm{Sym}_n\\
+       \text{\footnotesize $X'=AB^T$} \& \& \text{\footnotesize $X = (A^T A,B^T B)$} \\
+      \end{tikzcd}
+    \]
+  \item $\bcO \cap \fpp \supset \varphi(\varphi'^{-1}(\fpp'\cap \cO'))$ where
+    $\cO$ is a cplx. nil. $\bfG$-orbit. 
+  \item {\lblue Upper bound} of associated cycle: we can define 
+  \item[]
+    \[\vartheta^{\text{geo}}\colon
+       \cK_{\cO'}(G') \longrightarrow \cK_{\cO}(G)\]
+   \item[] such that
+    \[
+       \AC(\Theta(\pi'))\preceq \vartheta^{\text{geo}} (\AC(\pi')),
+     \]
+     for every $\pi'$ with $\AV(\pi')\subset \overline{\cO'}$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Lifting of Associated Characters II}
+  \begin{itemize}[<+->]
+  \item Recall 
+    $(G,G')=(\Sp(2n,\bR), \rO(p,q))$
+  \item For $\sL' \in \cK_{\cO'}(G')$, $\sL = \vartheta(\sL')\in \cK_{\cO}(G)$,
+    \[
+      \sL_X = \vartheta_{w}(\sL_{X'}):= {\red {\det}^{(p-q)/2}|_{K_{X}}} 
+     \otimes (\sL'_{X'})^{K'_{2,X'}} \circ \alpha_w,
+    \]
+  \item[] $\alpha_w\colon K_X \longrightarrow K'_{1,X'}$:
+     a homomorphism between isotropic subgroups.
+  \item The twisting is {\lblue crucial}. 
+  \item[] $\Rightarrow$ {\lblue admissible orbit data $\leadsto$ admissible orbit data. }
+
+  \item Support of $\vartheta(\sL')$ could be reducible. 
+
+%   \item Stable range lifting trick: Suppose $n > p+q$. 
+%     \[
+%       \bigcup_{p,q}\Unip_{\cO^{'\vee}}(\rO(p,q)) \hookrightarrow \Unip_{\vcO}(\Sp(2n,\bR))
+%     \]
+  \end{itemize}
+\end{frame} 
+
 
 
     \begin{frame}
-      \frametitle{About the proof}
+      \frametitle{Key ideas in the proof}
       \begin{itemize}
-        \item $\theta$-lifting $\approx \sqrt{\text{parabolic induction}}$
-        \item  Structure of degenerate principle series ({Algebra}). 
-        \item Estimation of matrix coeff. integrals ({Analysis}) $\leadsto$ unitarity \pause
-        \item  {Sharp formula of Asso. Cycles}: {\color{orange} lower bound=upper bound}
+        \item double $\theta$-lift $\approx \text{parabolic induction}$
+        \item[] $\theta$-lift $\approx \sqrt{\text{parabolic induction}}$
+        \item[]  use the structure of degenerate principle series. \pause
+        \item Estimation of matrix coeff. integrals  $\leadsto$ \emph{unitarity} \pause
+        \item  {Sharp formula of Asso. Char.}: {\color{orange} lower bound=upper bound}
               \begin{itemize}
-                \item \emph{Algebra+Analysis: } $\leadsto$ lower bound.
-                \item \emph{Algebraic Geometry:} double fibration of moment maps
-                \item[] \hspace{2em} $\leadsto$ upper bound
+                \item \emph{double $\theta$-lift} $\leadsto$ lower bound.
+                \item \emph{double fibration of moment maps}  $\leadsto$ upper bound
               \end{itemize}
         \item {Exhaustion}: {\color{orange} lower bound=upper bound} (Combinatorics)
               \begin{itemize}
                 \item Character theory (Kazhdan-Lusztig-Vogan theory)
-                \item[] $\leadsto$ upper bound by counting ``tableaux''.
-                \item {Asso. Cycle+Injectivity of $\theta$} $\leadsto$
+                \item[] $\leadsto$ upper bound by counting painted bipartitions.
+                \item {Asso. Char.+Injectivity of $\theta$} $\leadsto$
                       lower bound.
               \end{itemize}
       \end{itemize}
@@ -1284,7 +1337,7 @@ Xiamen University Malaysia Campus}
 
     \begin{frame}
       %\frametitle{Related papers (Dan Barbasch, M. ,  Binyong Sun and Chen-Bo Zhu)}
-      \frametitle{Preprints (Barbasch, M. ,  Sun and  Zhu)}
+      \frametitle{Relevant papers}
         \vfill
         %\centering{\bf\Large {\tt{atlas}} is a great teacher!} \\
         %\vspace{2em}
@@ -1297,12 +1350,13 @@ Xiamen University Malaysia Campus}
           \item[]
    	On the notion of metaplectic Barbasch-Vogan duality
         \href{https://arxiv.org/abs/2010.16089}{https://arxiv.org/abs/2010.16089}
-          \item \emph{Construction and unitarity using $\theta$-lifting}
-          \item[]
-        Special unipotent representations: orthogonal and symplectic groups\\
-        \href{https://arxiv.org/abs/1712.05552}{https://arxiv.org/abs/1712.05552}
-          \item \emph{Counting unipotent representations}
+          \item \emph{Counting and reduction to good parity}\\
+          %Special unipotent representations of real classical groups: counting and reduction\\
         \href{https://arxiv.org/abs/2205.05266}{https://arxiv.org/abs/2205.05266}
+          \item \emph{Construction and unitarity using $\theta$-lifting}\\
+          %\item[]
+          %Special unipotent representations of real classical groups: construction and unitarity
+        \href{https://arxiv.org/abs/1712.05552}{https://arxiv.org/abs/1712.05552}
         \vfill
 %        \hhgraph{.2\textwidth}{arxiv_uni.png}{\ }
 %        \hhgraph{.2\textwidth}{Barbasch4}{Barbasch}
@@ -1902,6 +1956,5 @@ Xiamen University Malaysia Campus}
 %%% Local Variables: 
 %%% coding: utf-8
 %%% mode: latex
-%%% TeX-engine: pdfletex
 %%% TeX-master: t
 %%% End:
