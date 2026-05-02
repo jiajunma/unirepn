@@ -1603,7 +1603,7 @@ As mentioned in the introduction, for a quasi-split orthogonal group or a real s
 
 We now temporarily shift gear and consider the following general class of Lie groups. Let $G_\BC$ be a connected  reductive complex Lie group, and let $G$ be a real form of $G_\BC$, namely the fixed point group of an anti-holomorphic involutive automorphism $\sigma$ of $G_\BC$.  Denote by $\check G$ the Langlands dual group of $ G_\BC$, and by $\check \g$ the Lie algebra of $\check G$. For  a nilpotent $\check G$-orbit $\check \CO$ in $\check \g$, let $\mathrm{Unip}_{\check \CO}(G)$ be the set of isomorphism classes of special unipotent representations of $G$ attached to $\check \CO$. The Arthur-ABV conjecture for unipotent parameters asserts that all representations in $\mathrm{Unip}_{\check \CO}(G)$ are unitarizable. It is easy to see that the conjecture is reduced to the case when $G_\BC$ is simply connected, and the (real) Lie algebra $\mathrm{Lie}(G)$ of $G$ is simple.  In this case the Lie algebra of $G_\BC$, denoted by $\g$, is either simple or the product of two isomorphic simple Lie algebras. Below is the list of groups $G_\BC$ and $G$ satisfying the aforementioned properties with $\g$ of a classical type ($n,m,p,q\in \BN$, $n\geq 2$, $m\geq 7$).
 \[
-\label{tableg}
+\label{tablegC}
   \begin{aligned}
     & \textrm{$G_\BC$} & \ &  G\\
     & \SL_n(\C) &\ & \SL_n(\R), \ \  \mathrm{SU}(p,q) \ (p+q=n),  \ \ \SL_{\frac{n}{2}}(\BH)\ (n\textrm{ is even})\\
@@ -6738,7 +6738,7 @@ p_{\tau_\bftt}+q_{\tau_\bftt}=\bfrr_1(\ckcO)-\bfrr_2(\ckcO)+2\geq 4.
 If $x_{\tau''}=d$, then by \Cref{lem:BD204} (d) we have that $\ac_{\uptau''}^+\neq 0$ and $\ac_{\uptau''}^-\neq 0$. Thus $\ac_{\uptau,+}\neq 0$ and $\ac_{\uptau,-}\neq 0$. The claim then follows from \Cref{taile0} (b) and (c).
 
 If $x_{\tau''}\neq d$, then \Cref{lem:delta} implies that
-\be\label{taunotd}
+\be\label{taunotd2}
 x_{\tau''}\in \set{r,c}\quad\textrm{and}\quad
     \cP_{\tau_\bftt}^{-1}(\set{s,c})\neq \emptyset.
     \ee
@@ -7147,7 +7147,7 @@ where the left vertical arrow is the map \eqref{acme0} for $\check \CO'$. \Cref{
 
 \subsection*{The case when $(1,2)$ is balanced in $\check \CO$} By the definition of ``balanced", $\bfrr_{1}(\ckcO)=\bfrr_{2}(\ckcO)>0$.
 For every classical signature $\sfss'=(\star', p',q')$ with $p'+q'=\abs{\CO'}$, and every  $\CA'\in \Z[\MYD_{\sfss'}(\CO')]$, we have that
- \be\label{tlcc1}
+ \be\label{tlcc2}
  \check{\vartheta}_{\check \CO'}^{\check \CO}(\CA')= \maltese^{\gamma} ((\CA'^+ + \CA'^-)\circledast (0,0)  ),
   \ee
 where $\gamma$ is as in \eqref{y}. For simplicity write
@@ -7586,7 +7586,40 @@ The method of this paper proves the above theorem.  We omit the details. In addi
 \def\Iso{\mathrm{Iso}}
 \section{Induced orbits and open locus}
 \label{app:induced-orbit}
-In this appendix we spell out the computation of orbit induction and classify the open locus in several special cases used in \Cref{prpaseq}.  Let $D\in\{\mathbb R,\mathbb C,\mathbb H\}$
+
+\subsection{Parabolic induction of nilpotent orbits and multiplicities}
+\label{app:induction-def}
+
+Let $G$ be a real reductive Lie group with Lie algebra $\mathfrak g$, and let $P\subset G$ be a parabolic subgroup with Levi decomposition $P=L\ltimes U$. Write $\mathfrak l:=\Lie(L)$ and $\mathfrak u:=\Lie(U)$, and view $\mathfrak l$ as a subalgebra of $\mathfrak g$ via the Levi decomposition. Let $\cO_0\subset\mathfrak l$ be a nilpotent $L$-orbit, regarded as a subset of $\mathfrak g$ through this inclusion.
+
+\begin{defn}\label{def:Ind-orbit}
+The \emph{induced set} from $\cO_0$ via $P$ is
+\[
+\Ind_P^G(\cO_0) := \overline{G\cdot(\cO_0+\mathfrak u)} \subset \mathfrak g,
+\]
+where the closure is taken in the usual topology on the finite-dimensional real vector space $\mathfrak g$. A $G$-orbit $\cO\subset\Ind_P^G(\cO_0)$ is called an \emph{induced orbit from $\cO_0$ via $P$}, if it is maximal among the $G$-orbits contained in $\Ind_P^G(\cO_0)$ for the closure order
+\[
+\cO_1\preceq \cO_2 \iff \cO_1\subseteq\overline{\cO_2}.
+\]
+\end{defn}
+
+For a closed Lie subgroup $H\subseteq G$, write $H^\circ$ for its identity component and $\pi_0(H):=H/H^\circ$ for its component group. For $x\in\mathfrak g$, let
+\[
+Z_G(x):=\{g\in G:\Ad(g)x=x\}
+\]
+denote the centralizer of $x$ in $G$.
+
+\begin{defn}\label{def:mult}
+For an induced orbit $\cO\subseteq\Ind_P^G(\cO_0)$ and any $x\in\cO\cap(\cO_0+\mathfrak u)$, the \emph{multiplicity} of $\cO$ over $P$ is
+\[
+m(\cO,P) := \frac{|\pi_0(Z_G(x))|}{|\pi_0(Z_G(x)\cap P)|}.
+\]
+This quantity is independent of the choice of $x$.
+\end{defn}
+
+\subsection{The classical group setup}
+
+In the rest of the appendix we spell out the computation of orbit induction and classify the open locus in several special cases used in \Cref{lem:ind00}.  Let $D\in\{\mathbb R,\mathbb C,\mathbb H\}$
 be equipped with its standard involution $\bar{\ }$, and let $\langle\ ,\ \rangle$ be an $\epsilon$-Hermitian sesquilinear form on a finite-dimensional right $D$-module $V$.  Fix a decomposition
 \begin{equation}\label{eq:WittDecomp}
 V=E\oplus V_0\oplus E
@@ -7774,8 +7807,9 @@ This finished the proof of (a).
 Let $X_{S,T}$ with $T\in\Herm_{-\epsilon}^{\mathrm{max}}(L'_0)$.
 From \eqref{eq:Svee}, we have
 \[
-\ker X_{S,T} =E\oplus\ker T,\qquad
-\Im x=(L_1\oplus\operatorname{Im}T)\oplus V_0.
+\ker X_{S,T} =E\oplus\ker T
+%,\qquad
+%\Im x=(L_1\oplus\operatorname{Im}T)\oplus V_0.
 \]
 
 If $r=r'$, then $T$ is  non-degenerate and so $\ker X_{S,T}=E$. Hence $Z_{G}(X_{S,T})= Z_G(X_{S,T})\cap P = Z_{P}(X_{S,T})$ and the multiplicity is $1$ if $r=r'$ and $2$ otherwise.  
@@ -7786,9 +7820,11 @@ Let $R := \ker X_{S,T}\cap\Im X_{S,T} $
 The quotient $\ker X_{S,T}/R$ is a hyperbolic plane, whose two isotropic lines
 given by $E /R $ and $\ker T + R/R$.  
 Now $Z_G(x)$ can permute these two isotropic lines.
-If $g\in Z_G(x)$ fixes the two lines, then $g$ must perserve $E$ by definition. Which means $g\in Z_G(X_{S,T}) \cap P  =  Z_P(X_{S,T})$.  
+If $g\in Z_G(x)$ fixes the two lines, then $g$ must perserve $E$ by definition. Which means $g\in Z_G(X_{S,T}) \cap P  =  Z_P(X_{S,T})$.  In conclusion,
 $m(G\cdot X_{S,T},\cO_0)= [Z_{G}(X_{S,T}) : Z_{P}(X_{S,T})]=2$.
 \end{proof}
+
+These takes care of all cases with $t_0 \geq 0$. 
 
 \subsection{The generalized good descent case}\label{sec:app-gd}
 
@@ -7837,7 +7873,7 @@ pages = {1--39},
        author = {Adams, J.},
        author = {Miller, S.},
        author = {van Leeuven, M.},
-       author = {Vogan, D. A.}
+       author = {Vogan, D. A.},
         title = {Unipotent representations of real exceptional groups},
         journal = {in preparation},
 }
@@ -8017,7 +8053,7 @@ pages = {1--39},
 \bib{Br}{article}{
   author = {Brylinski, R.},
   title = {Dixmier algebras for classical complex nilpotent orbits via Kraft-Procesi models. I},
-  journal = {The orbit method in geometry and physics (Marseille, 2000). Progr. Math.}
+  journal = {The orbit method in geometry and physics (Marseille, 2000). Progr. Math.},
   volume = {213},
   pages = {49--67},
   year = {2003},
@@ -8081,7 +8117,7 @@ pages={1--24},
   title = {Nilpotent orbits in semisimple Lie algebra: an introduction},
   author = {Collingwood, D. H.},
   author = {McGovern, W. M.},
-  year = {1993}
+  year = {1993},
   publisher = {Van Nostrand Reinhold Co.},
 }
 
@@ -8417,11 +8453,11 @@ journal = {arXiv:2108.03453},
 \bib{Mo17}{article}{
   author={M{\oe}glin, C.},
   title = {Paquets d'Arthur Sp\'eciaux Unipotents aux Places Archim\'ediennes et Correspondance de Howe},
-  journal = {J. Cogdell et al. (eds.), Representation Theory, Number Theory, and Invariant Theory, In Honor of Roger Howe. Progr. Math.}
+  journal = {J. Cogdell et al. (eds.), Representation Theory, Number Theory, and Invariant Theory, In Honor of Roger Howe. Progr. Math.},
   %series ={Progress in Math.},
   volume = {323},
-  pages = {469--502}
-  year = {2017}
+  pages = {469--502},
+  year = {2017},
 }
 
 
