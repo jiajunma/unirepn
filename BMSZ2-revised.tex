@@ -7828,22 +7828,55 @@ These takes care of all cases with $t_0 \geq 0$.
 
 \subsection{The generalized good descent case}\label{sec:app-gd}
 
-We now specialize to the case $\star\in\{B,D\}$, i.e.\ $\bar{\ }=\id$ and $D=\mathbb R$.  Write $\cO_0=\cO\subset\mathfrak g_0$ and let $\cOp$ denote an open orbit in $\Ind_P^G(\cO)$.
-
-Suppose that
+We now consider the kernel-deficient regime opposite to \eqref{eq:r}, with $D=\BR$ and $\bar{\ }=\id$:
+\begin{equation}\label{eq:r-gd}
+\dim_D(\ker X_0\cap \Im X_0)\le \dim_D E<\dim_D\ker X_0,
+\qquad
+d:=\dim_D\ker X_0-\dim_D E>0.
+\end{equation}
+Since $X_0$ is skew-adjoint, $(\Im X_0)^\perp=\ker X_0$, so $\langle\,,\,\rangle_0$ descends to a non-degenerate $\epsilon$-symmetric form $\langle\,,\,\rangle_K$ on the kernel quotient
 \[
-\bfcc_1(\cOp)-\bfcc_2(\cO)>1,\qquad \kappa=\bfcc_1(\cOp)-1\ge \bfcc_2(\cO).
+K_{X_0}:=\ker X_0/(\ker X_0\cap \Im X_0),\qquad \dim_D K_{X_0}=\dim_D\ker X_0-\dim_D(\ker X_0\cap \Im X_0).
 \]
-Then $c=\bfcc_1(\cO)$ and $r=\kappa-c=\bfcc_1(\cOp)-1-\bfcc_1(\cO)$.  Since $\star\in\{B,D\}$ and $\epsilon=1$, the forms in $\mathrm{Iso}_{r,-\epsilon}=\mathrm{Iso}_{r,-1}$ are skew-symmetric bilinear forms on $\mathbb R^r$ of maximal rank.  When $r$ is even, such forms are non-degenerate and there is a unique isometry class; when $r$ is odd, the maximal rank is $r-1$ and again there is a unique isometry class (with one-dimensional radical).  In either case $|\mathrm{Iso}_{r,-1}|=1$, so the open induced orbit is unique.
+Pick a section $V_1\subset \ker X_0$ of $q:\ker X_0\to K_{X_0}$, so that $V_0=V_1\oplus V_1^\perp$ orthogonally and $V_1^\perp$ is $X_0$-stable; any $h\in\Isom(K_{X_0},\langle\,,\,\rangle_K)$ lifts to $\tilde h\in Z_{G_0}(X_0)$ acting as $1$ on $V_1^\perp$.
 
-The multiplicity is
+Let $\mathscr A^{\mathrm{mr}}$ be the maximal-rank locus in the Grassmannian of $d$-planes in $K_{X_0}$. For $A\in \mathscr A^{\mathrm{mr}}$, let $W_A\subset V_0/\Im X_0$ be the annihilator of $A$ under $(\bar v,k)\mapsto \langle k,v\rangle_0$, choose a lift $V_A\subset V_0$ of $W_A$ and $S_A:E'\xrightarrow{\sim}V_A$, and set
+\begin{equation}\label{eq:gd-xA}
+x_A:=X_{S_A,0}\in X_0+\fuu
+\end{equation}
+in the notation of \eqref{eq:XST}.
+
+\begin{lem}\label{lem:app-gd}
+Under \eqref{eq:r-gd}, the open $G$-orbits in $\Ind_P^G(\cO)$ are exactly $\cO_A:=G\cdot x_A$ as $A$ runs through the isometry classes in $\mathscr A^{\mathrm{mr}}\subset K_{X_0}$, and
 \[
-m(\cOp,P)=
+m(\cO_A,P)=
 \begin{cases}
-1,&r\text{ even},\\
-2,&r\text{ odd}.
+1,&\epsilon=+1,\\
+1,&\epsilon=-1\ \text{and}\ d\text{ even},\\
+2,&\epsilon=-1\ \text{and}\ d\text{ odd}.
 \end{cases}
 \]
+\end{lem}
+
+\begin{proof}[Sketch]
+Set $\phi_C:=C^\vee|_{\ker X_0}:\ker X_0\to E$. The locus $\Omega\subset X_0+\fuu$ on which $\phi_C$ is surjective, $L:=\ker\phi_C$ is transverse to $R:=\ker X_0\cap \Im X_0$, and $A:=q(L)\in\mathscr A^{\mathrm{mr}}$ is open dense.
+
+\emph{Reduction to $x_A$.} The Levi action $\Ad(m_{h,s})X_{C,B}=X_{sCh^\vee,hBh^\vee}$ and the unipotent action
+\[
+\Ad(u_R)X_{C,B}=X_{C-X_0R,\,B+R^\vee C-C^\vee R-R^\vee X_0R}
+\]
+match $\phi_C$ with $\phi_{S_A}$, then absorb $C-S_A$ into $\Im X_0$, then kill the $B$-block via $R\in\Hom(E',\ker X_0)$ with $S_A^\vee R=\tfrac12 B$. The lift of $\Isom(K_{X_0})$ to $Z_{G_0}(X_0)$ shows isometric $A$'s give $P$-conjugate $x_A$'s.
+
+\emph{Maximality.} $\fuu=[\fpp,x_A]\subseteq [\mathfrak g,x_A]$, so $G\cdot x_A$ is open in $G\cdot(X_0+\fuu)$.
+
+\emph{Distinctness.} A direct computation gives $\ker x_A=E\oplus A$ and $\ker x_A\cap \Im x_A=E\oplus \mathrm{rad}(A)$, so the $G$-invariant $\ker x/(\ker x\cap \Im x)\cong A/\mathrm{rad}(A)$ separates isometry classes whenever $A$ is non-degenerate; in the case $\epsilon=-1$, $d$ odd all $A\in \mathscr A^{\mathrm{mr}}$ are already mutually isometric.
+
+\emph{Multiplicity.} If $A$ is non-degenerate, then $\ker x_A\cap \Im x_A=E$ equals the radical of $\ker x_A$, hence $Z_G(x_A)\subseteq P$ and $m(\cO_A,P)=1$. If $\epsilon=-1$ and $d$ odd, write $A=A_0\oplus \BR r$ with $\mathrm{rad}(A)=\BR r$, pick $s\in K_{X_0}$ with $\langle r,s\rangle_K=1$, and arrange $S_A(e')=r$ for $e\in E$, $e'\in E'$ with $\lambda(e,e')=1$. The $4$-plane $U=\BR e\oplus \BR r\oplus \BR s\oplus \BR e'$ is non-degenerate symplectic, $V=U\oplus U^\perp$ orthogonally, and on $U$ in the basis $(e,r,s,e')$,
+\[
+x_A|_U=\begin{pmatrix}0&I_2\\0&0\end{pmatrix}.
+\]
+A block-matrix calculation in $\Sp(U)$ shows the diagonal-block projection gives a surjection $Z_{\Sp(U)}(x_A|_U)\to O(S_2)$ with connected fibres and a section, while the parabolic intersection projects onto $\SO(S_2)\cong\BR^\times$. Hence $|\pi_0(Z_{\Sp(U)}(x_A|_U))|=2$ and $|\pi_0(Z_{\Sp(U)}(x_A|_U)\cap P(U))|=1$. The off-diagonal blocks of the orthogonal split $V=U\oplus U^\perp$ have star-shaped fibres on both centralizers, so the common $U^\perp$-factor cancels, yielding $m(\cO_A,P)=2$.
+\end{proof}
 
 
 \section*{Acknowledgements}
